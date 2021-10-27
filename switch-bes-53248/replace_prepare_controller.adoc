@@ -1,0 +1,89 @@
+---
+permalink: switch-bes-53248/replace-prepare-controller.html 
+sidebar: sidebar 
+keywords: BES-53248 switches,preparing for upgrade,upgrade bes-53248 switch 
+summary: この手順を使用して、 BES-53248 クラスタスイッチのアップグレード用にコントローラを準備できます。 
+---
+= クラスタスイッチをアップグレードするコントローラを準備します
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+この手順を使用して、 BES-53248 クラスタスイッチのアップグレード用にコントローラを準備できます。
+
+.手順
+. クラスタスイッチを管理ネットワークに接続します。
+. ping コマンドを使用して、 EFOS 、ライセンス、 RCF をホストするサーバへの接続を確認します。
++
+問題の場合は、ルーティングされていないネットワークを使用し、 IP アドレス 192.168.x または 172.19.x を使用してサービスポートを設定しますサービスポートは、あとで本番用の管理 IP アドレスに再設定できます。
+
++
+次の例では、スイッチが IP アドレス 172.19.2.1 のサーバに接続されていることを確認します。
+
++
+[listing]
+----
+(cs2) # **ping 172.19.2.1**
+Pinging 172.19.2.1 with 0 bytes of data:
+
+Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
+----
+. 次のコマンドを使用して、クラスタポートが正常であり、リンクがあることを確認します。
++
+「 network port show -ipspace cluster 」のように表示されます
+
++
+次の例は ' すべてのポートの Link 値が up で Health Status が healthy である出力のタイプを示しています
+
++
+[listing]
+----
+cluster1::> **network port show -ipspace Cluster**
+
+Node: node1
+                                                                    Ignore
+                                               Speed(Mbps) Health   Health
+Port   IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+------ ------------ ---------------- ---- ---- ----------- -------- ------
+e0a    Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b    Cluster      Cluster          up   9000  auto/10000 healthy  false
+
+Node: node2
+                                                                    Ignore
+                                               Speed(Mbps) Health   Health
+Port   IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+-----  ------------ ---------------- ---- ---- ----------- -------- ------
+e0a    Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b    Cluster      Cluster          up   9000  auto/10000 healthy  false
+
+	4 entries were displayed.
+----
+. コマンドを使用して、クラスタ LIF が管理上および運用上稼働した状態でホームポートにあることを確認します。
++
+「 network interface show -vserver Cluster 」のように表示されます
+
++
+この例では、「 -vserver 」パラメータは、クラスタポートに関連付けられている LIF に関する情報を表示します。'tatus Admin/Oper' は up であり 'Is Home' は true である必要があります
+
++
+[listing]
+----
+cluster1::>**network interface show -vserver Cluster**
+
+          Logical      Status     Network             Current       Current Is
+Vserver   Interface    Admin/Oper Address/Mask        Node          Port    Home
+--------- ----------   ---------- ------------------  ------------- ------- ----
+Cluster
+          node1_clus1
+                       up/up      169.254.217.125/16  node1         e0a     true
+          node1_clus2
+                       up/up      169.254.205.88/16   node1         e0b     true
+          node2_clus1
+                       up/up      169.254.252.125/16  node2         e0a     true
+          node2_clus2
+                       up/up      169.254.110.131/16  node2         e0b     true
+
+	4 entries were displayed.
+----
+

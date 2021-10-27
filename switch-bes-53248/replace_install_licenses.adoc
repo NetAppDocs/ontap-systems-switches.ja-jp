@@ -1,0 +1,274 @@
+---
+permalink: switch-bes-53248/replace-install-licenses.html 
+sidebar: sidebar 
+keywords: bes, cluster, switch, base, model, license, install license for bes-53428 cluster switches - bes-53428 switches 
+summary: BES-53248 クラスタスイッチの基本モデルには、 16 個の 10GbE ポートまたは 25GbE ポートと 2 個の 100GbE ポートがライセンスされています。ライセンスを追加購入すると、新しいポートを追加できます。 
+---
+= BES-53248 クラスタスイッチのライセンスをインストールします
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+BES-53248 クラスタスイッチの基本モデルには、 16 個の 10GbE ポートまたは 25GbE ポートと 2 個の 100GbE ポートがライセンスされています。ライセンスを追加購入すると、新しいポートを追加できます。
+
+BES-53248 クラスタスイッチでは次のライセンスを使用できます。
+
+[cols="1,2"]
+|===
+| ライセンスタイプ | ライセンスの詳細 
+
+
+| サポートされているファームウェアバージョン  a| 
+sw-BES - 53248A1-G1-8P-LIC
+
+
+
+ a| 
+Broadcom 8P 10/252P40-100 ライセンスキー、 X190005/R
+ a| 
+EFOS 3.4.3.3 以降
+
+
+
+ a| 
+sw-BES - 53248A1-G1-16P-LIC
+ a| 
+Broadcom 16P 10-M254P40-100 ライセンスキー、 X190005/R
+
+
+
+ a| 
+EFOS 3.4.3.3 以降
+ a| 
+sw-BES - 53248A1-G1-24P-LIC
+
+
+
+ a| 
+Broadcom 24P 10-M256P40-100 ライセンスキー、 X190005/R
+ a| 
+EFOS 3.4.3.3 以降
+
+
+
+ a| 
+SW-BES54248-40-100G-LIC
+ a| 
+Broadcom 6Port 40G100G ライセンスキー、 X190005/R
+
+
+
+ a| 
+EFOS 3.4.4.6 以降
+ a| 
+SW-BESG538-8P-10G25G-LIC
+
+
+
+ a| 
+Broadcom 8 ポート 10G25G ライセンスキー、 X190005/R
+ a| 
+EFOS 3.4.4.6 以降
+
+
+
+ a| 
+SW-BESBES-53248 16P-1025G - LIC
+ a| 
+Broadcom 16Port 10G25G ライセンスキー、 X190005/R
+
+
+
+ a| 
+EFOS 3.4.4.6 以降
+ a| 
+SW-BESG5-24P-1025G-LIC
+
+
+
+ a| 
+Broadcom 24Port 10G25G ライセンスキー、 X190005/R
+ a| 
+EFOS 3.4.4.6 以降
+
+|===
+.手順
+. クラスタスイッチを管理ネットワークに接続します。
+. 「 ping 」コマンドを使用して、 EFOS 、ライセンス、 RCF ファイルをホストするサーバへの接続を確認します。
++
+次の例では、スイッチが IP アドレス 172.19.2.1 のサーバに接続されていることを確認します。
+
++
+[listing]
+----
+(cs2) # **ping 172.19.2.1**
+Pinging 172.19.2.1 with 0 bytes of data:
+
+Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
+----
+. スイッチ cs2 の現在のライセンス使用状況を確認します。
++
+'How license'
+
++
+[listing]
+----
+(cs2) # **show license**
+Reboot needed.................................. No
+Number of active licenses...................... 0
+
+License Index  License Type     Status
+-------------- ---------------- -----------
+
+No license file found.
+----
+. ライセンスファイルをインストールします。次に、 HTTP を使用してライセンスファイルをキーインデックス 1 にコピーする例を示します。
++
+この手順を繰り返して、ライセンスを追加ロードし、異なるキーインデックス番号を使用します。
+
++
+[listing]
+----
+(cs2) # **copy http://172.19.2.1/tmp/efos/license1.dat nvram:license-key 1**
+
+Mode........................................... HTTP
+Set Server IP.................................. 172.19.2.1
+Path........................................... tmp/efos/
+Filename....................................... license1.dat
+Data Type...................................... license
+
+Management access will be blocked for the duration of the transfer
+Are you sure you want to start? (y/n) **y**
+
+File transfer in progress. Management access will be blocked for the duration of the transfer. Please wait...
+
+License Key transfer operation completed successfully. System reboot is required.
+----
+. スイッチ cs2 をリブートする前に、現在のライセンス情報をすべて表示し、ライセンスのステータスをメモします。
++
+'How license'
+
++
+[listing]
+----
+(cs2) # **show license**
+
+Reboot needed.................................. Yes
+Number of active licenses...................... 0
+
+
+License Index  License Type      Status
+-------------- ----------------- -------------------------------
+1              Port              License valid but not applied
+----
+. すべてのライセンスポートを表示します。
++
+'How port All | exclude Detach'
+
++
+追加のライセンスファイルのポートは、スイッチをリブートするまで表示されません。
+
++
+[listing]
+----
+(cs2) # **show port all \| exclude Detach**
+
+                 Admin     Physical   Physical   Link   Link    LACP   Actor
+Intf      Type   Mode      Mode       Status     Status Trap    Mode   Timeout
+--------- ------ --------- ---------- ---------- ------ ------- ------ --------
+0/1              Disable   Auto                  Down   Enable  Enable long
+0/2              Disable   Auto                  Down   Enable  Enable long
+0/3              Disable   Auto                  Down   Enable  Enable long
+0/4              Disable   Auto                  Down   Enable  Enable long
+0/5              Disable   Auto                  Down   Enable  Enable long
+0/6              Disable   Auto                  Down   Enable  Enable long
+0/7              Disable   Auto                  Down   Enable  Enable long
+0/8              Disable   Auto                  Down   Enable  Enable long
+0/9              Disable   Auto                  Down   Enable  Enable long
+0/10             Disable   Auto                  Down   Enable  Enable long
+0/11             Disable   Auto                  Down   Enable  Enable long
+0/12             Disable   Auto                  Down   Enable  Enable long
+0/13             Disable   Auto                  Down   Enable  Enable long
+0/14             Disable   Auto                  Down   Enable  Enable long
+0/15             Disable   Auto                  Down   Enable  Enable long
+0/16             Disable   Auto                  Down   Enable  Enable long
+0/55             Disable   Auto                  Down   Enable  Enable long
+0/56             Disable   Auto                  Down   Enable  Enable long
+----
+. スイッチをリブートします。
++
+「再ロード」
+
++
+[listing]
+----
+(cs2) # **reload**
+
+The system has unsaved changes.
+Would you like to save them now? (y/n) **y**
+
+Config file 'startup-config' created successfully .
+
+Configuration Saved!
+Are you sure you would like to reset the system? (y/n) **y**
+----
+. 新しいライセンスがアクティブになっていること、およびライセンスが適用されていることを確認します。
++
+'How license'
+
++
+[listing]
+----
+(cs2) # **show license**
+
+Reboot needed.................................. No
+Number of installed licenses................... 1
+Total Downlink Ports enabled................... 16
+Total Uplink Ports enabled..................... 8
+
+License Index  License Type              Status
+-------------- ------------------------- -----------------------------------
+1              Port                      License applied
+(cs2) #
+----
+. 新しいポートがすべて使用可能であることを確認します。
++
+'How port All | exclude Detach'
+
++
+[listing]
+----
+(cs2) # **show port all \| exclude Detach**
+
+                 Admin     Physical   Physical   Link   Link    LACP   Actor
+Intf      Type   Mode      Mode       Status     Status Trap    Mode   Timeout
+--------- ------ --------- ---------- ---------- ------ ------- ------ --------
+0/1              Disable    Auto                 Down   Enable  Enable long
+0/2              Disable    Auto                 Down   Enable  Enable long
+0/3              Disable    Auto                 Down   Enable  Enable long
+0/4              Disable    Auto                 Down   Enable  Enable long
+0/5              Disable    Auto                 Down   Enable  Enable long
+0/6              Disable    Auto                 Down   Enable  Enable long
+0/7              Disable    Auto                 Down   Enable  Enable long
+0/8              Disable    Auto                 Down   Enable  Enable long
+0/9              Disable    Auto                 Down   Enable  Enable long
+0/10             Disable    Auto                 Down   Enable  Enable long
+0/11             Disable    Auto                 Down   Enable  Enable long
+0/12             Disable    Auto                 Down   Enable  Enable long
+0/13             Disable    Auto                 Down   Enable  Enable long
+0/14             Disable    Auto                 Down   Enable  Enable long
+0/15             Disable    Auto                 Down   Enable  Enable long
+0/16             Disable    Auto                 Down   Enable  Enable long
+0/49             Disable   100G Full             Down   Enable  Enable long
+0/50             Disable   100G Full             Down   Enable  Enable long
+0/51             Disable   100G Full             Down   Enable  Enable long
+0/52             Disable   100G Full             Down   Enable  Enable long
+0/53             Disable   100G Full             Down   Enable  Enable long
+0/54             Disable   100G Full             Down   Enable  Enable long
+0/55             Disable   100G Full             Down   Enable  Enable long
+0/56             Disable   100G Full             Down   Enable  Enable long
+
+(cs2) #
+----
+

@@ -1,0 +1,128 @@
+---
+permalink: switch-bes-53248/replace-edit-rcf.html 
+sidebar: sidebar 
+keywords: activating licenses,additional licenses,licenses in the RCF,edit rcf 
+summary: 新しくライセンスされたポートをアクティブ化するには、 RCF の最新バージョンを編集し、該当するポートの詳細のコメントを解除する必要があります。デフォルトライセンスは、ポート 0/1~0/16 および 0/55 ～ 0/56 をアクティブにします。また、新しくライセンスされたポートは、使用可能なライセンスのタイプと数に応じて、ポート 0/17 ～ 0/54 の間になります。 
+---
+= リファレンス構成ファイル（ RCF ）の編集
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+新しくライセンスされたポートをアクティブ化するには、 RCF の最新バージョンを編集し、該当するポートの詳細のコメントを解除する必要があります。デフォルトライセンスは、ポート 0/1~0/16 および 0/55 ～ 0/56 をアクティブにします。また、新しくライセンスされたポートは、使用可能なライセンスのタイプと数に応じて、ポート 0/17 ～ 0/54 の間になります。
+
+BES-53248 クラスタスイッチで使用できるライセンスタイプの詳細については、を参照してください link:configure-licenses.html["BES-53248 クラスタスイッチのライセンスをインストールします"]。
+
+たとえば、 SW-BES54248-40-100G-LIC ライセンスをアクティブにするには、 RCF の次のセクションのコメントを解除する必要があります。
+
+[listing]
+----
+.
+.
+!
+! 2-port or 6-port 40/100GbE node port license block
+!
+interface 0/49
+no shutdown
+description "40/100GbE Node Port"
+!speed 100G full-duplex
+speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+interface 0/50
+no shutdown
+description "40/100GbE Node Port"
+!speed 100G full-duplex
+speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+interface 0/51
+no shutdown
+description "40/100GbE Node Port"
+speed 100G full-duplex
+!speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+interface 0/52
+no shutdown
+description "40/100GbE Node Port"
+speed 100G full-duplex
+!speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+interface 0/53
+no shutdown
+description "40/100GbE Node Port"
+speed 100G full-duplex
+!speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+interface 0/54
+no shutdown
+description "40/100GbE Node Port"
+speed 100G full-duplex
+!speed 40G full-duplex
+service-policy in WRED_100G
+spanning-tree edgeport
+mtu 9216
+switchport mode trunk
+datacenter-bridging
+priority-flow-control mode on
+priority-flow-control priority 5 no-drop
+exit
+exit
+!
+.
+.
+----
+
+NOTE: 0/49 ～ 0/54 以上の高速ポートの場合は、各ポートのコメントを解除しますが、これらの各ポートの RCF では 1 つの * speed * 行のみコメントを解除します。次のいずれかを実行します。
+
+* 速度 100G 全二重
+* 速度 40G 全二重
+
+
+例に示すように、
+
+0/17 ～ 0/48 以上の低速ポートの場合は、適切なライセンスがアクティブ化されているときに 8 ポートセクション全体のコメントを解除します。

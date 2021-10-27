@@ -1,0 +1,107 @@
+---
+permalink: switch-cisco-9336/setup-switches.html 
+sidebar: sidebar 
+keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 9336c-fx2 
+summary: 必要な設定情報とドキュメントをまだ入手していない場合は、クラスタおよび管理ネットワークスイッチをセットアップする前に、その情報を収集する必要があります。 
+---
+= スイッチを設定します
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+必要な設定情報とドキュメントをまだ入手していない場合は、クラスタおよび管理ネットワークスイッチをセットアップする前に、その情報を収集する必要があります。
+
+* 該当する NX-OS およびリファレンス構成ファイル（ RCF ）リリースをダウンロードするには、インストールサイトで HTTP 、 FTP 、または TFTP サーバにアクセスできる必要があります。
+* 必要なクラスタネットワークおよび管理ネットワークスイッチのドキュメントを用意しておく必要があります。
++
+を参照してください xref:setup-required-documentation.adoc[必要なドキュメント] を参照してください。
+
+* 必要なコントローラのドキュメントと ONTAP のドキュメントを用意しておく必要があります。
++
+https://netapp.com/us/documenation/index.aspx["NetApp のドキュメント"]
+
+* 該当するライセンス、ネットワークと設定情報、およびケーブルが必要です。
+* 記入済みのケーブル接続ワークシートが必要です。
++
+
+NOTE: このガイドでは、ケーブル接続の層を示すと複雑になることがあるため、ケーブル配線図は提供していません。このガイドには、推奨されるポート割り当てと、クラスタのセットアップに使用できる空白のワークシートを含むワークシートの例が記載されています。
+
++
+
+NOTE: 詳細については、 Hardware Universe を参照してください。
+
++
+https://hwu.netapp.com["Hardware Universe"]
+
+
+
+すべての Cisco クラスタネットワークスイッチおよび管理ネットワークスイッチは、シスコの工場出荷時のデフォルト設定で出荷されます。これらのスイッチには、 NX-OS ソフトウェアの最新バージョンもありますが、 RCF はロードされていません。
+
+
+NOTE: 該当するネットアップクラスタネットワークと管理ネットワークの RCF をネットアップサポートサイトからダウンロードする必要があります http://mysupport.netapp.com/["mysupport.netapp.com"] 受信したスイッチの場合。
+
+さらに、 92300YC クラスタスイッチのクラスタスイッチヘルスモニタ（ CSHM ）をサポートするために必要な構成ファイルのインストールが必要になる場合があります。を参照してください link:setup_install_cshm_file.md#["92300YC スイッチ用クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルのインストール"] を参照してください。
+
+. クラスタネットワークと管理ネットワークのスイッチとコントローラをラックに設置します。
++
+[cols="1,2"]
+|===
+| 設置対象 | 作業 
+
+
+ a| 
+NetApp システムキャビネット内の Cisco Nexus 9336C-FX2
+ a| 
+スイッチをネットアップキャビネットに設置する手順については、『 Installing a Cisco Nexus 9336C-FX2 cluster switch and pass-through panel in a NetApp cabinet_guide 』を参照してください。
+
+
+
+ a| 
+Cisco Nexus 3232C をネットアップシステムキャビネットに設置
+ a| 
+スイッチをネットアップキャビネットに設置する手順については、 _ Cisco Nexus 3232C クラスタスイッチの設置と NetApp cabinet guide のパススルーパネルを参照してください。
+
+
+
+ a| 
+ネットアップシステムキャビネット内の Cisco Nexus 3132Q-V
+ a| 
+スイッチをネットアップキャビネットに設置する手順については、 NetApp cabinet Guide の Installing a Cisco Nexus 3132Q-V cluster switch and pass-through panel in a NetApp cabinet を参照してください。
+
+
+
+ a| 
+Telco ラック内の機器
+ a| 
+スイッチのハードウェア設置ガイド、およびネットアップのセットアップガイドに記載されている手順を参照してください。
+
+
+
+ a| 
+Cisco Nexus 5596UP / 5596T をネットアップシステムキャビネットに設置します
+ a| 
+スイッチをネットアップキャビネットに設置する手順については、 _ Cisco Nexus 5596 クラスタスイッチの設置と NetApp cabinet guide のパススルーパネルを参照してください。
+
+|===
+. 入力済みのケーブル接続ワークシートを使用して、クラスタネットワークスイッチと管理ネットワークスイッチをコントローラにケーブル接続します。
+. クラスタネットワークと管理ネットワークのスイッチとコントローラの電源をオンにします。
+. に記載された情報に基づいて、クラスタネットワークスイッチの初期設定を実行します xref:setup-required-information.adoc[必要な設定情報]。
+. セットアップの最後に表示される画面で選択した設定を確認し、設定を保存します。
+. クラスタネットワークスイッチのバージョンを確認し、必要に応じてネットアップ対応バージョンのソフトウェアをスイッチにダウンロードします。
++
+ネットアップ対応バージョンのサポートソフトウェアをダウンロードする場合は、 _NetApp Cluster Network Switch Reference Configuration File_ もダウンロードし、手順 5 で保存した構成とマージする必要があります。ファイルと手順は、からダウンロードできます https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"] ページ
+
+. ネットワークスイッチのソフトウェアバージョンを確認し、必要に応じてネットアップ対応バージョンのソフトウェアをスイッチにダウンロードします。独自のスイッチがある場合は、を参照してください https://cisco.com["シスコサイト"]。
++
+ネットアップ対応バージョンのサポートソフトウェアをダウンロードする場合は、 _NetApp Management Network Switch Reference Configuration File_ もダウンロードし、手順 5 で保存した構成とマージする必要があります。ファイルと手順は、からダウンロードできます https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"] ページ
+
+
+
+* 関連情報 *
+
+xref:setup-required-information.adoc[必要なクラスタ設定情報]
+
+xref:setup-required-documentation.adoc[必要なドキュメント]
+
+xref:setup-worksheets-sample-cabling.adoc[ケーブル接続ワークシートの例と空白]

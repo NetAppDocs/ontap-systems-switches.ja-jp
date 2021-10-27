@@ -1,0 +1,62 @@
+---
+permalink: switch-cisco-9336/setup-install-cshm-file.html 
+sidebar: sidebar 
+keywords: install, applicable, configuration, file, cluster, switch, health, monitor, nexus, ontap, install the cluster switch health monitor (csm) configuration file for 92300yc switches - cisco nexus 9336c-fx2 
+summary: この手順を使用して、 Nexus 92300YC クラスタスイッチのクラスタスイッチヘルスモニタに適用可能な構成ファイルをインストールできます。ONTAP リリース 9.5P7 以前および 9.6P2 以前では、クラスタスイッチヘルスモニタの構成ファイルを個別にダウンロードする必要があります。ONTAP リリース 9.5P8 以降、 9.6P3 以降、および 9.7 以降では、クラスタスイッチヘルスモニタの構成ファイルが ONTAP にバンドルされています。 
+---
+= 92300YC スイッチ用クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+この手順を使用して、 Nexus 92300YC クラスタスイッチのクラスタスイッチヘルスモニタに適用可能な構成ファイルをインストールできます。ONTAP リリース 9.5P7 以前および 9.6P2 以前では、クラスタスイッチヘルスモニタの構成ファイルを個別にダウンロードする必要があります。ONTAP リリース 9.5P8 以降、 9.6P3 以降、および 9.7 以降では、クラスタスイッチヘルスモニタの構成ファイルが ONTAP にバンドルされています。
+
+92300YC クラスタスイッチのスイッチヘルスモニタを設定する前に、 ONTAP クラスタが稼働していることを確認する必要があります。
+
+
+NOTE: CSHM で利用可能なすべての機能を使用するには、 SSH を有効にすることを推奨します。
+
+. 対応する ONTAP リリースバージョンに基づいて、クラスタスイッチヘルスモニタ構成の zip ファイルをダウンロードします。このファイルはから入手できます https://mysupport.netapp.com/NOW/cgi-bin/software/["ネットアップソフトウェアのダウンロード"] ページ
++
+.. ソフトウェアのダウンロードページで、 * スイッチヘルスモニタ構成ファイル * を選択します
+.. Platform = * ONTAP * を選択し、 * Go ！ * をクリックします
+.. Switch Health Monitor Configuration Files for ONTAP ページで、 * View & Download * をクリックします
+.. Switch Health Monitor Configuration Files for ONTAP - 概要ページで、該当するクラスタスイッチモデルの * Download * をクリックします。例： * Cisco Nexus 92300YC *
+.. [End User License Agreement] ページで、 [*Accept*] をクリックします
+.. Switch Health Monitor Configuration Files for ONTAP - Download ページで、適切な構成ファイル（ * CISCO_NEXUS_92300YC .zip * など）を選択します
+
+
+. IP アドレスが X.X.X.X.X の内部 Web サーバに、該当する zip ファイルをアップロードします
++
+内部 Web サーバの IP アドレスが 192.168.2.20 であり、 /usr/download ディレクトリが存在する場合は、 scp を使用して zip ファイルを Web サーバにアップロードできます。
+
++
+[listing]
+----
+% scp Cisco_Nexus_92300YC.zip admin@192.168.2.20:/usr/download/Cisco_Nexus_92300YC.zip
+----
+. コマンド set -privilege advanced を使用して、クラスタ内のいずれかの ONTAP システムから advanced モード設定にアクセスします。
++
+[listing]
+----
+cluster1::> set -privilege advanced
+----
+. スイッチヘルスモニタの設定コマンド system cluster-switch configure -health-monitor -node * -package url X.X.X.X.X.X/location-to-download_zip_file を実行します。
++
+[listing]
+----
+cluster1::> system cluster-switch configure-health-monitor -node * -package-url 192.168.2.20/usr/download/Cisco_Nexus_92300YC.zip
+----
+. コマンド出力に、ダウンロードされたパッケージが正常に処理されたことを示すテキスト文字列が含まれていることを確認します。エラーが発生した場合は、ネットアップサポートにお問い合わせください。
+. ONTAP システムで system cluster-switch show コマンドを実行し、 Monitored フィールドが「 True 」に設定されているクラスタスイッチが検出されたことを確認します。
++
+[listing]
+----
+cluster1::> system cluster-switch show
+----
++
+
+NOTE: 以前のバージョンの ONTAP に戻す場合は、 CSHM 構成ファイルを再度インストールして、 92300YC クラスタスイッチのスイッチヘルスモニタを有効にする必要があります。
+
+

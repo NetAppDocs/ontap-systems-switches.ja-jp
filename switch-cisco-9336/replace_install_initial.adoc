@@ -1,0 +1,242 @@
+---
+permalink: switch-cisco-9336/replace-install-initial.html 
+sidebar: sidebar 
+keywords: initial setup steps, cisco cluster switch install 
+summary: この手順を使用して、 Cisco Nexus 9336C-FX2 スイッチの初期インストールを実行できます。 
+---
+= Nexus 9336C-FX2 クラスタスイッチの初期取り付け
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+この手順を使用して、 Cisco Nexus 9336C-FX2 スイッチの初期インストールを実行できます。
+
+使用しているスイッチに該当するネットアップ Cisco NX-OS ソフトウェアは、ネットアップサポートサイトからダウンロードできます http://mysupport.netapp.com/["mysupport.netapp.com"]
+
+http://mysupport.netapp.com/["mysupport.netapp.com"]
+
+NX-OS は、 Cisco Systems が提供する Nexus シリーズイーサネットスイッチおよび MDS シリーズ Fibre Channel （ FC ）ストレージエリアネットワークスイッチのネットワークオペレーティングシステムです。
+
+この手順には、スイッチを設置して稼働させるためのプロセスの概要が記載されています。
+
+. シリアルポートを任意のホストまたはシリアルポートに接続します。
+. 管理ポート（スイッチのポートの反対側にある）を、 SFTP サーバが配置されているネットワークと同じネットワークに接続します。
+. コンソールで、ホスト側のシリアル設定を行います。
++
+** 9600 ボー
+** 8 データビット
+** 1 ストップビット
+** パリティ：なし
+** フロー制御：なし
+
+
+. 初めてブートしたとき、または実行コンフィギュレーションを消去した後にリブートしたときに、 Nexus 9336C-FX2 スイッチはブートサイクルでループします。「 * yes * 」と入力してこのサイクルを中断し、 PowerOn Auto Provisioning を中止します。次に、システム管理者アカウントのセットアップが表示されます。
++
+....
+$ VDC-1 %$ %POAP-2-POAP_INFO:   - Abort Power On Auto Provisioning [yes - continue with normal setup, skip - bypass password and basic configuration, no - continue with Power On Auto Provisioning] (yes/skip/no)[no]:
+**yes**
+Disabling POAP.......Disabling POAP
+2019 Apr 10 00:36:17 switch %$ VDC-1 %$ poap: Rolling back, please wait... (This may take 5-15 minutes)
+....
++
+ ---- System Admin Account Setup ----
++
+ Do you want to enforce secure password standard (yes/no) [y]:
+. 「 * y * 」と入力して、セキュアなパスワード標準を適用します。
++
+[listing]
+----
+Do you want to enforce secure password standard (yes/no) [y]: **y**
+----
+. ユーザ admin のパスワードを入力して確定します。
++
+[listing]
+----
+Enter the password for "admin":
+Confirm the password for "admin":
+----
+. Basic System Configuration ダイアログを表示します。
++
+[listing]
+----
+This setup utility will guide you through the basic configuration of
+the system. Setup configures only enough connectivity for management
+of the system.
+
+Please register Cisco Nexus9000 Family devices promptly with your
+supplier. Failure to register may affect response times for initial
+service calls. Nexus9000 devices must be registered to receive
+entitled support services.
+
+Press Enter at anytime to skip a dialog. Use ctrl-c at anytime
+to skip the remaining dialogs.
+
+Would you like to enter the basic configuration dialog (yes/no):
+----
+. 別のログインアカウントを作成しますか？
++
+[listing]
+----
+Create another login account (yes/no) [n]:
+----
+. 読み取り専用および読み取り / 書き込みの SNMP コミュニティストリングを設定します。
++
+[listing]
+----
+Configure read-only SNMP community string (yes/no) [n]:
+
+Configure read-write SNMP community string (yes/no) [n]:
+----
+. クラスタスイッチ名を設定します。
++
+[listing]
+----
+Enter the switch name : **cs2**
+----
+. アウトオブバンド管理インターフェイスを設定します。
++
+[listing]
+----
+
+Continue with Out-of-band (mgmt0) management configuration? (yes/no) [y]: **y**
+
+Mgmt0 IPv4 address : 172.22.133.216
+
+Mgmt0 IPv4 netmask : 255.255.224.0
+
+Configure the default gateway? (yes/no) [y]: **y**
+
+IPv4 address of the default gateway : 172.22.128.1
+----
+. IP の詳細オプションを設定しますか？
++
+[listing]
+----
+Configure advanced IP options? (yes/no) [n]: **n**
+----
+. Telnet サービスを設定します。
++
+[listing]
+----
+Enable the telnet service? (yes/no) [n]: **n**
+----
+. SSH サービスと SSH キーを設定します。
++
+[listing]
+----
+Enable the ssh service? (yes/no) [y]: **y**
+
+       Type of ssh key you would like to generate (dsa/rsa) [rsa]: **rsa**
+
+       Number of rsa key bits <1024-2048> [1024]: **2048**
+----
+. その他の設定を行います。
++
+[listing]
+----
+Configure the ntp server? (yes/no) [n]: **n**
+
+  Configure default interface layer (L3/L2) [L2]: **L2**
+
+  Configure default switchport interface state (shut/noshut) [noshut]: **noshut**
+
+  Configure CoPP system profile (strict/moderate/lenient/dense) [strict]: **strict**
+----
+. スイッチの情報を確認し、設定を保存します。
++
+[listing]
+----
+Would you like to edit the configuration? (yes/no) [n]: **n**
+
+Use this configuration and save it? (yes/no) [y]: **y**
+
+[########################################] 100%
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+----
+. ONTAP 9.8 以降では、「 system switch ethernet log setup -password 'system switch ethernet log enable -collection' 」コマンドを使用して、スイッチ関連のログファイルを収集するための Ethernet スイッチヘルスモニタログ収集機能を有効にします
++
+[listing]
+----
+cluster1::*> **system switch ethernet log setup-password**
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+cs1
+cs2
+
+cluster1::*> **system switch ethernet log setup-password**
+
+Enter the switch name: **cs1**
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] **y**
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> **system switch ethernet log setup-password**
+
+Enter the switch name: **cs2**
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] **y**
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> **system  switch ethernet log enable-collection**
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] **y**
+
+Enabling cluster switch log collection.
+
+cluster1::*>
+----
++
+
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
+. ONTAP リリース 9.5P16 、 9.6P12 、および 9.7P10 以降のパッチリリースでは、次のコマンドを使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能を有効にします。「 system cluster-switch log setup -password 'System cluster-switch log enable-collection' 」
++
+[listing]
+----
+cluster1::*> **system cluster-switch log setup-password**
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+cs1
+cs2
+
+cluster1::*> **system cluster-switch log setup-password**
+
+Enter the switch name: **cs1**
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] **y**
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> **system cluster-switch log setup-password**
+
+Enter the switch name: **cs2**
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] **y**
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> **system cluster-switch log enable-collection**
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] **y**
+
+Enabling cluster switch log collection.
+
+cluster1::*>
+----
++
+
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
+

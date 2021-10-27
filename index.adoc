@@ -1,0 +1,16 @@
+---
+layout: landing-page 
+sidebar: sidebar 
+permalink: index.html 
+keywords: switches 
+lead: Use the docs on this site to install, upgrade and maintain your cluster, shared storage and MetroCluster switches. 
+summary: このサイトのドキュメントを使用して、クラスタ、共有ストレージ、および MetroCluster スイッチをインストール、アップグレード、および保守します。 
+---
+= AFF および FAS スイッチのマニュアル
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+

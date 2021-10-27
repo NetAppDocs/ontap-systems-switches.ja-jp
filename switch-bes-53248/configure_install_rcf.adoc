@@ -1,0 +1,178 @@
+---
+permalink: switch-bes-53248/configure-install-rcf.html 
+sidebar: sidebar 
+keywords: install rcf,setup rcf 
+summary: RCF は、 BES-53248 クラスタスイッチを初めてセットアップしたあとと、新しいライセンスを適用したあとにインストールできます。古いバージョンから RCF をアップグレードする場合、ファイルは効果的にマージされ、ここで説明する手順を実行します。 
+---
+= リファレンス構成ファイル（ RCF ）のインストール
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+RCF は、 BES-53248 クラスタスイッチを初めてセットアップしたあとと、新しいライセンスを適用したあとにインストールできます。古いバージョンから RCF をアップグレードする場合、ファイルは効果的にマージされ、ここで説明する手順を実行します。
+
+.手順
+. クラスタスイッチを管理ネットワークに接続します。
+. 「 ping 」コマンドを使用して、 EFOS 、ライセンス、 RCF をホストするサーバへの接続を確認します。
++
+接続が問題の場合は、ルーティングされていないネットワークを使用し、 IP アドレス 192.168.x または 172.19.x を使用してサービスポートを設定しますサービスポートは、あとで本番用の管理 IP アドレスに再設定できます。
+
++
+次の例では、スイッチが IP アドレス 172.19.2.1 のサーバに接続されていることを確認します。
+
++
+[listing]
+----
+(cs2) # **ping 172.19.2.1**
+Pinging 172.19.2.1 with 0 bytes of data:
+
+Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
+----
+. 「 copy 」コマンドを使用して、 BES-53248 クラスタスイッチに RCF をインストールします。
++
+[listing]
+----
+(cs2) # **copy http://172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt nvram:script BES-53248_RCF_v1.6-Cluster-HA.scr**
+
+Remote Password ********
+
+Mode........................................... HTTP
+Set Server IP.................................. 172.19.2.1
+Path........................................... //tmp/
+Filename....................................... BES-53248_RCF_v1.6-Cluster-HA.txt
+Data Type...................................... Config Script
+Destination Filename........................... BES-53248_RCF_v1.6-Cluster-HA.scr
+
+File with same name already exists.
+WARNING:Continuing with this command will overwrite the existing file.
+
+Management access will be blocked for the duration of the transfer
+Are you sure you want to start? (y/n) **y**
+
+File transfer in progress. Management access will be blocked for the duration of the transfer. Please wait...
+
+Validating configuration script...
+[the script is now displayed line by line]
+
+Configuration script validated.
+File transfer operation completed successfully.
+----
++
+
+NOTE: 環境によっては 'copy' コマンドでダブル・スラッシュを使用する必要がある場合がありますたとえば '+copy のようになります http://172.19.2.1//tmp/BES-53248_RCF_v1.6-Cluster-HA.txt[] NVRAM ：スクリプト BES-53248 RCF_v1.6 - Cluster-HA.scr +` 。
+
++
+
+NOTE: スクリプトを呼び出す前に '.scr 拡張子をファイル名の一部として設定する必要がありますこれは、 EFOS オペレーティングシステムの拡張子です。スクリプトがスイッチにダウンロードされると、スイッチはスクリプトを自動的に検証し、コンソールに出力が表示されます。また ' 読みやすくするために '.scr の名前をコンソール画面に合わせて変更することもできますたとえば '+copy のようにします http://172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt[] NVRAM ：スクリプト rcf_v1.6 - Cluster-HA.scr +` 。
+
+. スクリプトがダウンロードされ、指定したファイル名で保存されていることを確認します。
++
+「原稿リスト」
+
++
+[listing]
+----
+(cs2) # **script list**
+
+Configuration Script Name                  Size(Bytes)  Date of Modification
+-----------------------------------------  -----------  --------------------
+BES-53248_RCF_v1.6-Cluster-HA.scr        2241         2020 09 30 05:41:00
+
+1 configuration script(s) found.
+----
+. スクリプトをスイッチに適用します。
++
+「原稿」が適用されます
+
++
+[listing]
+----
+(cs2) # **script apply BES-53248_RCF_v1.6-Cluster-HA.scr**
+
+Are you sure you want to apply the configuration script? (y/n) y
+
+The system has unsaved changes.
+Would you like to save them now? (y/n) **y**
+Config file 'startup-config' created successfully .
+Configuration Saved!
+
+Configuration script 'BES-53248_RCF_v1.6-Cluster-HA.scr' applied.
+----
+. RCF を適用したあとに、追加ライセンスのポートを確認します。
++
+'How port All | exclude Detach'
+
++
+[listing]
+----
+(cs2) # **show port all \| exclude Detach**
+
+                 Admin     Physical     Physical   Link   Link    LACP   Actor
+Intf      Type   Mode      Mode         Status     Status Trap    Mode   Timeout
+--------- ------ --------- ---------- ---------- ------ ------- ------ --------
+0/1              Enable    Auto                    Down   Enable  Enable long
+0/2              Enable    Auto                    Down   Enable  Enable long
+0/3              Enable    Auto                    Down   Enable  Enable long
+0/4              Enable    Auto                    Down   Enable  Enable long
+0/5              Enable    Auto                    Down   Enable  Enable long
+0/6              Enable    Auto                    Down   Enable  Enable long
+0/7              Enable    Auto                    Down   Enable  Enable long
+0/8              Enable    Auto                    Down   Enable  Enable long
+0/9              Enable    Auto                    Down   Enable  Enable long
+0/10             Enable    Auto                    Down   Enable  Enable long
+0/11             Enable    Auto                    Down   Enable  Enable long
+0/12             Enable    Auto                    Down   Enable  Enable long
+0/13             Enable    Auto                    Down   Enable  Enable long
+0/14             Enable    Auto                    Down   Enable  Enable long
+0/15             Enable    Auto                    Down   Enable  Enable long
+0/16             Enable    Auto                    Down   Enable  Enable long
+0/49             Enable    40G Full                Down   Enable  Enable long
+0/50             Enable    40G Full                Down   Enable  Enable long
+0/51             Enable    100G Full               Down   Enable  Enable long
+0/52             Enable    100G Full               Down   Enable  Enable long
+0/53             Enable    100G Full               Down   Enable  Enable long
+0/54             Enable    100G Full               Down   Enable  Enable long
+0/55             Enable    100G Full               Down   Enable  Enable long
+0/56             Enable    100G Full               Down   Enable  Enable long
+----
+. スイッチで変更が行われたことを確認します。
++
+'how running-config'
+
++
+[listing]
+----
+(cs2) # **show running-config**
+----
+. スイッチをリブートしたときにスタートアップコンフィギュレーションになるように、実行コンフィギュレーションを保存します。
++
+「メモリの書き込み」
+
++
+[listing]
+----
+(cs2) # **write memory**
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+
+Are you sure you want to save? (y/n) **y**
+
+Config file 'startup-config' created successfully.
+
+Configuration Saved!
+----
+. スイッチをリブートし、実行コンフィギュレーションが正しいことを確認します。
++
+「再ロード」
+
++
+[listing]
+----
+(cs2) # **reload**
+
+Are you sure you would like to reset the system? (y/n)y
+
+System will now restart!
+----
+

@@ -1,0 +1,34 @@
+---
+permalink: switch-cisco-92300/configure-overview.html 
+sidebar: sidebar 
+keywords: confiure 92300yc cluster switch, cisco 92300yc 
+summary: この章で説明する手順を実行すると、新しい Nexus 92300YC スイッチを構成できます。 
+---
+= 新しい Cisco Nexus 92300YC スイッチを構成します
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+この章で説明する手順を実行すると、新しい Nexus 92300YC スイッチを構成できます。
+
+ONTAP 9.6 以降を実行しているシステムに Nexus 92300YC スイッチを取り付けるには、まず IP アドレスと構成を設定して、スイッチが管理インターフェイスを介して通信できるようにします。その後、 NX-OS ソフトウェアとリファレンス構成ファイル（ RCF ）をインストールできます。この手順は、コントローラを追加する前に Nexus 92300YC スイッチを準備するためのものです。
+
+この手順の例では、スイッチとノードで次の命名法を使用しています。
+
+* Nexus 92300YC スイッチ名は「 cs1 」と「 cs2 」です。
+* この手順で使用している例では、 2 番目のスイッチ _cs2 * 。 _ でアップグレードが開始されます
+* クラスタ LIF 名は、 node1 の場合は「 node1_clus1' 」、ノード 1 の場合は「 node1_clus1' 」、 node2 の場合は「 node2 _ clus2 」です。
+* IPspace 名は「 Cluster 」です。
+* 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
+* 各ノードのクラスタ・ポートの名前は 'e0a' および e0b です
++
+プラットフォームでサポートされている実際のクラスタポートについては、 Hardware Universe を参照してください。
+
++
+https://hwu.netapp.com/Home/Index["NetApp Hardware Universe の略"]
+
+* Nexus 92300YC スイッチでサポートされているスイッチ間リンク（ ISL ）は、ポート 1/65 と 1/66 です。
+* Nexus 92300YC スイッチでサポートされているノード接続は、ポート 1/1~1/66 です。
+* この手順の例では 2 つのノードを使用していますが、 1 つのクラスタには最大 24 のノードを含めることができます。
+

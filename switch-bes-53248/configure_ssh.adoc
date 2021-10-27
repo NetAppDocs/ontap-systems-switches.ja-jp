@@ -1,0 +1,81 @@
+---
+permalink: switch-bes-53248/configure-ssh.html 
+sidebar: sidebar 
+keywords: ssh, requirement, cluster, switch, health, monitor, chsm, log, collection, feature, bes, enable ssh on bes-53248 cluster switches - bes-53248 switches 
+summary: クラスタスイッチヘルスモニタ（ CSHM ）およびログ収集機能を使用する場合、 SSH は要件です。BES-53248 クラスタスイッチで SSH を有効にするには、まず SSH キーを生成してから、 SSH を有効にします。 
+---
+= BES-53248 クラスタスイッチ BES-53248 スイッチで SSH を有効にします
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスタスイッチヘルスモニタ（ CSHM ）およびログ収集機能を使用する場合、 SSH は要件です。BES-53248 クラスタスイッチで SSH を有効にするには、まず SSH キーを生成してから、 SSH を有効にします。
+
+.手順
+. SSH キーを生成します。
++
+「 crypto key generate 」を参照してください
+
++
+[listing]
+----
+(switch) #**show ip ssh**
+
+SSH Configuration
+
+Administrative Mode: .......................... Disabled
+SSH Port: ..................................... 22
+Protocol Level: ............................... Version 2
+SSH Sessions Currently Active: ................ 0
+Max SSH Sessions Allowed: ..................... 5
+SSH Timeout (mins): ........................... 5
+Keys Present: ................................. DSA(1024) RSA(1024) ECDSA(521)
+Key Generation In Progress: ................... None
+SCP server Administrative Mode: ............... Disabled
+
+(switch) #**config**
+
+(switch) (Config)#**crypto key generate rsa**
+
+Do you want to overwrite the existing RSA keys? (y/n):**y**
+
+
+(switch) (Config)#**crypto key generate dsa**
+
+Do you want to overwrite the existing DSA keys? (y/n):**y**
+
+
+(switch) (Config)#**crypto key generate ecdsa 521**
+
+Do you want to overwrite the existing ECDSA keys? (y/n):**y**
+
+
+(switch) (Config)#**exit**
+----
+. SSH を有効にします。
++
+「 ip ssh server enable 」
+
++
+[listing]
+----
+(switch) #**ip ssh server enable**
+
+(switch) #**show ip ssh**
+
+SSH Configuration
+
+Administrative Mode: .......................... Enabled
+SSH Port: ..................................... 22
+Protocol Level: ............................... Version 2
+SSH Sessions Currently Active: ................ 0
+Max SSH Sessions Allowed: ..................... 5
+SSH Timeout (mins): ........................... 5
+Keys Present: ................................. DSA(1024) RSA(1024) ECDSA(521)
+Key Generation In Progress: ................... None
+SCP server Administrative Mode: ............... Disabled
+
+(switch) #
+----
+

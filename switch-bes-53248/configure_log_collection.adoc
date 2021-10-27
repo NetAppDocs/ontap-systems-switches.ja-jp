@@ -1,0 +1,186 @@
+---
+permalink: switch-bes-53248/configure-log-collection.html 
+sidebar: sidebar 
+keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation 
+summary: クラスタスイッチヘルスモニタログ収集機能は、 ONTAP でスイッチ関連のログファイルを収集するために使用します。ここで説明するように、 BES-53248 クラスタスイッチ CLI を使用して環境をセットアップしておく必要があります。 
+---
+= クラスタスイッチのログ収集機能を設定します
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスタスイッチヘルスモニタログ収集機能は、 ONTAP でスイッチ関連のログファイルを収集するために使用します。ここで説明するように、 BES-53248 クラスタスイッチ CLI を使用して環境をセットアップしておく必要があります。
+
+.手順
+. SSH キーを生成します。
++
+「 crypto key generate 」を参照してください
+
++
+[listing]
+----
+(switch) #**show ip ssh**
+
+SSH Configuration
+
+Administrative Mode: .......................... Disabled
+SSH Port: ..................................... 22
+Protocol Level: ............................... Version 2
+SSH Sessions Currently Active: ................ 0
+Max SSH Sessions Allowed: ..................... 5
+SSH Timeout (mins): ........................... 5
+Keys Present: ................................. DSA(1024) RSA(1024) ECDSA(521)
+Key Generation In Progress: ................... None
+SCP server Administrative Mode: ............... Disabled
+
+(switch) #**config**
+
+(switch) (Config)#**crypto key generate rsa**
+
+Do you want to overwrite the existing RSA keys? (y/n):**y**
+
+
+(switch) (Config)#**crypto key generate dsa**
+
+Do you want to overwrite the existing DSA keys? (y/n):**y**
+
+
+(switch) (Config)#**crypto key generate ecdsa 521**
+
+Do you want to overwrite the existing ECDSA keys? (y/n):**y**
+
+(switch) (Config)#**aaa authorization commands "noCmdAuthList" none**
+(switch) (Config)#**exit**
+(switch) #**ip ssh server enable**
+(switch) #**ip ssh pubkey-auth**
+(switch) #**ip scp server enable**
+(switch) #**write mem**
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+Are you sure you want to save? (y/n) **y**
+
+Config file 'startup-config' created successfully .
+
+Configuration Saved!
+
+(switch) #
+----
+. SSH を有効にします。
++
+「 ip ssh server enable 」
+
++
+[listing]
+----
+(switch) #**ip ssh server enable**
+
+(switch) #**show ip ssh**
+
+SSH Configuration
+
+Administrative Mode: .......................... Enabled
+SSH Port: ..................................... 22
+Protocol Level: ............................... Version 2
+SSH Sessions Currently Active: ................ 0
+Max SSH Sessions Allowed: ..................... 5
+SSH Timeout (mins): ........................... 5
+Keys Present: ................................. DSA(1024) RSA(1024) ECDSA(521)
+Key Generation In Progress: ................... None
+SCP server Administrative Mode: ............... Disabled
+
+(switch) #
+----
+. ONTAP 9.8 以降では、次のコマンドを使用して、クラスタスイッチヘルスモニタログ収集機能を有効にして、スイッチ関連のログファイルを収集します。
++
+「システムスイッチイーサネットログセットアップ - パスワードシステムスイッチイーサネットログイネーブルコレクション」
+
++
+[listing]
+----
+cluster1::*> **system switch ethernet log setup-password**
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+cs1
+cs2
+
+cluster1::*> **system switch ethernet log setup-password**
+
+Enter the switch name: **cs1**
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] **y**
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+
+cluster1::*> **system switch ethernet log setup-password**
+Enter the switch name: **cs2**
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] **y**
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> **system switch ethernet log enable-collection**
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] **y**
+
+Enabling cluster switch log collection.
+
+cluster1::*>
+----
+. ONTAP 9.5P15 、 9.6P11 、 9.7P8 、およびそれ以降のパッチリリースでは、次のコマンドを使用して、スイッチ関連のログファイルを収集するためのクラスタスイッチヘルスモニタログ収集機能を有効にします。
++
+「システムクラスタスイッチログセットアップ - パスワードシステムクラスタスイッチログイネーブルコレクション」
+
++
+[listing]
+----
+cluster1::*> **system cluster-switch log setup-password**
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+cs1
+cs2
+
+cluster1::*> **system cluster-switch log setup-password**
+
+Enter the switch name: **cs1**
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] **y**
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> **system cluster-switch log setup-password**
+
+Enter the switch name: **cs2**
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] **y**
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> **system cluster-switch log enable-collection**
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] **y**
+
+Enabling cluster switch log collection.
+
+cluster1::*>
+----
++
+
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
+. 各スイッチから初期データ収集を開始します。
++
+** 'cluster1 ：：： * > system cluster-switch log collect -device <CS1>
+** 'cluster1 ：：： * > system cluster-switch log collect-device <CS2>>
+
+
+

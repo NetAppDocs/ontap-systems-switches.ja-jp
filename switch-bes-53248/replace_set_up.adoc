@@ -1,0 +1,13 @@
+---
+permalink: switch-bes-53248/replace-set-up.html 
+sidebar: sidebar 
+keywords: setup,install bes-53248,cluster switch 
+summary: セットアップ情報を使用して、クラスタスイッチを要件に合わせて設定およびカスタマイズできるように準備できます。 
+---
+= BES-53248 クラスタスイッチをセットアップします
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+セットアップ情報を使用して、クラスタスイッチを要件に合わせて設定およびカスタマイズできるように準備できます。
