@@ -12,6 +12,9 @@ summary: 新しくライセンスされたポートをアクティブ化する�
 [role="lead"]
 新しくライセンスされたポートをアクティブ化するには、 RCF の最新バージョンを編集し、該当するポートの詳細のコメントを解除する必要があります。デフォルトライセンスは、ポート 0/1~0/16 および 0/55 ～ 0/56 をアクティブにします。また、新しくライセンスされたポートは、使用可能なライセンスのタイプと数に応じて、ポート 0/17 ～ 0/54 の間になります。
 
+
+NOTE: 以前にインストールした RCF を編集しようとすると、 RCF の他の領域に既存の設定があるためにプロセスが失敗する場合があります。を参照してください <<Edit a previously installed RCF file>>。
+
 BES-53248 クラスタスイッチで使用できるライセンスタイプの詳細については、を参照してください link:configure-licenses.html["BES-53248 クラスタスイッチのライセンスをインストールします"]。
 
 たとえば、 SW-BES54248-40-100G-LIC ライセンスをアクティブにするには、 RCF の次のセクションのコメントを解除する必要があります。
@@ -126,3 +129,41 @@ NOTE: 0/49 ～ 0/54 以上の高速ポートの場合は、各ポートのコメ
 例に示すように、
 
 0/17 ～ 0/48 以上の低速ポートの場合は、適切なライセンスがアクティブ化されているときに 8 ポートセクション全体のコメントを解除します。
+
+
+
+== 以前にインストールした RCF ファイルを編集します
+
+以前にインストールした RCF ファイルを編集し、「 script apply 」コマンドを実行すると、次のエラーメッセージが表示される場合があります。
+
+[listing]
+----
+(CS1) #script apply BES-53248_RCF_v1.6-Cluster-HA.scr
+ Are you sure you want to apply the configuration script? (y/n)
+----
+「 y 」を選択すると、次のエラーメッセージが表示されます。
+
+[listing]
+----
+config
+ ...
+ match cos 5
+ Unrecognized command : match cos 5
+ Error! in configuration script file at line number 40.
+ CLI Command :: match cos 5.
+ Aborting script.
+----
+この問題を回避または解決するには、次のいずれかのオプションを選択します。
+
+* このエラーを回避するには、次の手順を使用します。
++
+.. 新しいポート設定のみを含む 2 つ目の RCF ファイルを作成します。
+.. 2 つ目の RCF ファイルをスイッチにコピーします。
+.. スクリプトをスイッチに適用します。
++
+「原稿」が適用されます
+
+
+
+* エラーを解決するには、以下の Knowledge Base 記事を参照してください。 link:++https://kb.netapp.com/?title=Advice_and_Troubleshooting%2FData_Storage_Systems%2FFabric%252C_Interconnect_and_Management_Switches%2FError%2521_in_configuration_script_file_at_line_number_XX_when_applying_a_new_RCF%20%20%20++["エラー新しい RCF を適用する場合は、 XX 行目の構成スクリプトファイルに記載されています"^]
+
