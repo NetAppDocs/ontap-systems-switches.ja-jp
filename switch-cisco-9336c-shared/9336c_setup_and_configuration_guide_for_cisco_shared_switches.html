@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head class="at-element-marker">
+  <title>Cisco 共有スイッチのセットアップおよび設定ガイド</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Cisco 共有スイッチのセットアップおよび設定ガイド" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/ja-jp/ontap-systems-switches/switch-cisco-9336c-shared/9336c_setup_and_configuration_guide_for_cisco_shared_switches.html" />
+	<meta property="og:description" content="" />
+  <meta property="og:image" content="https://docs.netapp.com/ja-jp/ontap-systems-switches/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/>
+  
+  <meta name="description" content="">
+  <meta name="keywords" content=" ">
+  
+  
+
+  <!-- Icons -->
+  <link rel="icon" href="/ja-jp/ontap-systems-switches/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed -->
+  
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/ontap-systems-switches/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/ja-jp/ontap-systems-switches/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/ontap-systems-switches/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/ontap-systems-switches/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/ja-jp/ontap-systems-switches/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/ja-jp/ontap-systems-switches/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/ja-jp/ontap-systems-switches/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/ja-jp/ontap-systems-switches/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/ja-jp/ontap-systems-switches/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/ja-jp/ontap-systems-switches/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/ontap-systems-switches/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/ontap-systems-switches/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/ja-jp/ontap-systems-switches/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/ja-jp/ontap-systems-switches/css/tabbed-blocks.css" type="text/css">
+  <link rel="stylesheet" href='/ja-jp/ontap-systems-switches/css/product-family.css' type="text/css">
+  
+
+  
+  <link rel='stylesheet' href='/ja-jp/ontap-systems-switches/css/na-feature.css' type='text/css'>
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/ja-jp/ontap-systems-switches/js/na-search.js'></script>
+  
+
+  
+  <script src='/ja-jp/ontap-systems-switches/js/na-pagenav.js'></script>
+  
+
+  <link rel='stylesheet' href='/ja-jp/ontap-systems-switches/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/ontap-systems-switches/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/ja-jp/ontap-systems-switches/js/na-utility.js'></script>
+  <script src='/ja-jp/ontap-systems-switches/js/clouddocs.js'></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    var head = document.getElementsByTagName('head')[0];
+    var adobe = document.createElement("script");
+    adobe.type = "text/javascript";
+    adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+    head.appendChild(adobe);
+  }
+  </script>
+  <script src='/ja-jp/ontap-systems-switches/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/ja-jp/ontap-systems-switches/js/toc.js'></script>
+  <script src='/ja-jp/ontap-systems-switches/js/customscripts.js'></script>
+
+  <script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+  <script src='/ja-jp/ontap-systems-switches/js/version-dropdown.js'></script>
+  <script src='/ja-jp/ontap-systems-switches/js/product-family.js'></script>
+  <script src='/ja-jp/ontap-systems-switches/js/FileSaver.min.js'></script>
+  <script src='/ja-jp/ontap-systems-switches/js/jszip-utils.min.js'></script>
+  <script src='/ja-jp/ontap-systems-switches/js/jszip.min.js'></script>
+  <script src='/ja-jp/ontap-systems-switches/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">製品とソリューション</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">サポートとトレーニング</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">コミュニティ</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">ブログ</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">ユーザ事例</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">お問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">お問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/ja-jp/ontap-systems-switches/search.html"
+          data-type="widget" 
+          data-placeholder="ドキュメントを検索" 
+          data-no-results-found="{query}に該当する結果はありません" 
+          data-did-you-mean="{suggestion} を検索" 
+          data-no-results-found-did-you-mean="{query} に該当する結果はありません。{suggestion} の間違いではありませんか?" 
+          data-results-found="{hitCount} 件見つかりました"  
+          data-sk-es-pf-indexes=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">日本語</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ja-jp/ontap-systems-switches/switch-cisco-9336c-shared/9336c_setup_and_configuration_guide_for_cisco_shared_switches.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-9336c-shared/9336c_setup_and_configuration_guide_for_cisco_shared_switches.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/ontap-systems-switches/switch-cisco-9336c-shared/9336c_setup_and_configuration_guide_for_cisco_shared_switches.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                </li></ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" >
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>利用可能なPDF<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        <a target="_blank" href="/ja-jp/ontap-systems-switches/pdfs/fullsite-sidebar/AFF_および_FAS_スイッチのマニュアル.pdf" >
+          <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>このドキュメントサイトのPDF</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/BES_53248_スイッチ.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            BES-53248 スイッチ
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/スイッチをセットアップします.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            スイッチをセットアップします
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/ライセンスをインストール.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            ライセンスをインストール
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/NDO___NDU_環境でスイッチをアップグレードします.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            NDO / NDU 環境でスイッチをアップグレードします
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/ライセンスをインストール.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            ライセンスをインストール
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/CN1610_スイッチから_BES_53248_スイッチに移行します.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            CN1610 スイッチから BES-53248 スイッチに移行します
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/2_ノードスイッチクラスタに移行する.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            2 ノードスイッチクラスタに移行する
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_9336_スイッチ.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco 9336 スイッチ
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/セットアップ.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            セットアップ
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/必要なクラスタ設定情報.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            必要なクラスタ設定情報
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/ケーブル接続ワークシートの例と空白.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            ケーブル接続ワークシートの例と空白
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_9336C_FX2_クラスタスイッチに_NX_OS_ソフトウェアと_RCF_をインストールします.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 9336C-FX2 クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_スイッチから_Cisco_Nexus_9336C_FX2_クラスタスイッチへの移行.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco スイッチから Cisco Nexus 9336C-FX2 クラスタスイッチへの移行
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_9336C_FX2_クラスタスイッチを使用して__2_ノードスイッチクラスタに移行する.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 9336C-FX2 クラスタスイッチを使用して、 2 ノードスイッチクラスタに移行する
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_9336C_FX2_クラスタスイッチを設定します.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 9336C-FX2 クラスタスイッチを設定します
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_9336C_FX2_共有スイッチ.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 9336C-FX2 共有スイッチ
+          </a>
+          
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/ja-jp/ontap-systems-switches/pdfs/pages/switch-cisco-9336c-shared/9336c_setup_and_configuration_guide_for_cisco_shared_switches.pdf" >
+    <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_92300YC_スイッチ.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco 92300YC スイッチ
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/セットアップ.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            セットアップ
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/ケーブル接続ワークシートの例と空白.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            ケーブル接続ワークシートの例と空白
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_92300YC_クラスタスイッチに_NX_OS_ソフトウェアと_RCF_をインストールします.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 92300YC クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/新しい_Cisco_Nexus_92300YC_スイッチを構成します.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            新しい Cisco Nexus 92300YC スイッチを構成します
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_92300YC_スイッチを使用して_2_ノードスイッチクラスタに移行する.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 92300YC スイッチを使用して 2 ノードスイッチクラスタに移行する
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_スイッチから_Cisco_Nexus_92300YC_スイッチに移行する.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco スイッチから Cisco Nexus 92300YC スイッチに移行する
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/その他のスイッチモデル.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            その他のスイッチモデル
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/ja-jp/ontap-systems-switches/images/pdf-zip.png" width="16" height="16"/>
+      <pre>個別のPDFドキュメントのコレクション<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="sidebar-nav-container">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/index.html">
+        ホーム
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> BES-53248 スイッチ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/overview-bes53248.html">
+        BES-53248 クラスタスイッチの概要
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> スイッチをセットアップします</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-required-documentation.html">
+        必要なドキュメント
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-requirements.html">
+        BES-53248 クラスタスイッチの設定要件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-new-switch.html">
+        新しい BES-53248 スイッチを構成します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-install-initial.html">
+        初期インストール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-ssh.html">
+        BES-53248 クラスタスイッチで SSH を有効にします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-efos-software.html">
+        EFOS ソフトウェアをインストールします
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ライセンスをインストール</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-licenses.html">
+        BES-53248 クラスタスイッチのライセンスをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-restrictions.html">
+        制限事項と制限事項
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-edit-rcf.html">
+        リファレンス構成ファイル（ RCF ）の編集
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-install-rcf.html">
+        リファレンス構成ファイル（ RCF ）のインストール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-log-collection.html">
+        クラスタスイッチのログ収集機能を設定します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-health-monitor.html">
+        クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> NDO / NDU 環境でスイッチをアップグレードします</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-upgrade.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-prepare-controller.html">
+        コントローラを準備
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-install-efos.html">
+        EFOS ソフトウェアをインストールします
+      </a></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-install-licenses.html">
+        <div class="na-navbar-padding"> ライセンスをインストール</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-restrictions.html">
+        制限事項と制限事項
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-edit-rcf.html">
+        リファレンス構成ファイル（ RCF ）の編集
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-install-rcf.html">
+        リファレンス構成ファイル（ RCF ）のインストール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-configure-log-collection.html">
+        クラスタスイッチのログ収集機能を設定します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-install-cshm-file.html">
+        クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-verify.html">
+        設定を確認します
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-switch.html">
+        BES-53248 スイッチを交換します
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> CN1610 スイッチから BES-53248 スイッチに移行します</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/migrate-cn1610-overview.html">
+        作業を開始する前に
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/migrate-cn1610.html">
+        移行方法
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 2 ノードスイッチクラスタに移行する</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/migrate-to-2n-switched.html">
+        移行を準備
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/migrate-to-2n-switched-overview.html">
+        ネットアップのスイッチクラスタ環境に移行する
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco 9336 スイッチ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/9336-overview.html">
+        概要
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> セットアップ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-switches.html">
+        スイッチを設定します
+      </a></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-required-information.html">
+        <div class="na-navbar-padding"> 必要なクラスタ設定情報</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-install-cshm-file.html">
+        92300YC スイッチ用クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-required-documentation.html">
+        必要なドキュメント
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-considerations-smart-call.html">
+        Smart Call Home の使用に関する考慮事項
+      </a></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheets-sample-cabling.html">
+        <div class="na-navbar-padding"> ケーブル接続ワークシートの例と空白</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheet-9336c.html">
+        Cisco Nexus 9336C-FX2 ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheet-92300yc.html">
+        Cisco Nexus 92300YC ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheet-3232c.html">
+        Cisco Nexus 3232C ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheet-3132q.html">
+        Cisco Nexus 3132Q-V ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheet-5596.html">
+        Cisco Nexus 5596UP / 5596T ケーブル接続ワークシート
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco Nexus 9336C-FX2 クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/install-nxos-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/install-nxos-software.html">
+        NX-OS ソフトウェアをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/install-nxos-rcf.html">
+        リファレンス構成ファイル（ RCF ）のインストール
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco スイッチから Cisco Nexus 9336C-FX2 クラスタスイッチへの移行</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/migrate-to-9336-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/migrate-to-9336.html">
+        Cisco スイッチから Cisco Nexus 9336C-FX2 クラスタスイッチへの移行方法
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco Nexus 9336C-FX2 クラスタスイッチを使用して、 2 ノードスイッチクラスタに移行する</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/migrate-to-2n-switched-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/migrate-to-2n-switched.html">
+        Cisco Nexus 9336C-FX2 クラスタスイッチを使用したネットアップのスイッチクラスタ環境への移行方法
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco Nexus 9336C-FX2 クラスタスイッチを設定します</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/replace-configure-new-switch.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/replace-install-initial.html">
+        Nexus 9336C-FX2 クラスタスイッチの初期取り付け
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/replace-install-nxos.html">
+        NX-OS ソフトウェアをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/replace-install-rcf.html">
+        リファレンス構成ファイル（ RCF ）のインストール
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/replace-9336c.html">
+        Cisco Nexus 9336C-FX2 クラスタスイッチを交換します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/install-switch-and-passthrough-panel.html">
+        Cisco Nexus 9336C-FX2 スイッチとパススルーパネルをネットアップキャビネットに設置します
+      </a></li></ul></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-shared/index.html">
+        <div class="na-navbar-padding"> Cisco Nexus 9336C-FX2 共有スイッチ</div>
+      </a>
+      <ul><li class="  active "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-shared/9336c_setup_and_configuration_guide_for_cisco_shared_switches.html">
+        Cisco 共有スイッチのセットアップおよび設定ガイド
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-shared/9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html">
+        NX-OS ソフトウェアおよび RCF のインストール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-shared/9336c_migrate_from_a_switchless_cluster_with_dat_storage_by_adding_two_new_shared_switches.html">
+        2 つの新しい共有スイッチを追加して、 DAT ストレージを持つスイッチレスクラスタから移行します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-shared/9336c_migrate_from_a_switched_configuration_with_dat_storage_by_adding_two_new_shared_switches.html">
+        2 つの新しい共有スイッチを追加して、 DAT ストレージを使用したスイッチ構成から移行します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-shared/9336c_migrate_from_a_switchless_configuration_with_sat_storage_by_reusing_the_storage_switches.html">
+        ストレージスイッチを再利用して、 SAT ストレージを搭載したスイッチレス構成から移行する
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-shared/9336c_migrate_from_a_switched_cluster_with_sat_storage_by_reusing_the_storage_switches.html">
+        ストレージスイッチを再利用して、 SAT ストレージを備えたスイッチクラスタから移行する
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-shared/9336c_replace_a_cisco_nexus_9336c-fx2_shared_switch.html">
+        Cisco Nexus 9336C-FX2 共有スイッチを交換します
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco 92300YC スイッチ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/92300-overview.html">
+        概要
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> セットアップ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-supported-switches.html">
+        ONTAP でサポートされるスイッチ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-switches.html">
+        スイッチを設定します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-required-information.html">
+        必要なクラスタ設定情報
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-install-cshm-file.html">
+        92300YC スイッチ用クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-required-documentation.html">
+        必要なドキュメント
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-considerations-smart-call.html">
+        Smart Call Home の使用に関する考慮事項
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ケーブル接続ワークシートの例と空白</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheet-9336c.html">
+        Cisco Nexus 9336C-FX2 ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheet-92300yc.html">
+        Cisco Nexus 92300YC ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheet-3232c.html">
+        Cisco Nexus 3232C ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheet-3132q.html">
+        Cisco Nexus 3132Q-V ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheet-5596.html">
+        Cisco Nexus 5596UP / 5596T ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheets-sample-cabling.html">
+        ケーブル接続ワークシートの例
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco Nexus 92300YC クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/install-nxos-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/install-nxos-software.html">
+        NX-OS ソフトウェアをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/install-nxos-rcf.html">
+        リファレンス構成ファイル（ RCF ）のインストール
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 新しい Cisco Nexus 92300YC スイッチを構成します</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/configure-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/configure-install-initial.html">
+        Cisco Nexus 92300YC スイッチの初期取り付け
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/configure-install-nxos.html">
+        NX-OS ソフトウェアをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/configure-install-rcf.html">
+        リファレンス構成ファイル（ RCF ）のインストール
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/replace-92300yc.html">
+        Cisco Nexus 92300YC スイッチを交換します
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco Nexus 92300YC スイッチを使用して 2 ノードスイッチクラスタに移行する</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/migrate-to-2n-switched-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/migrate-to-2n-switched.html">
+        移行方法
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco スイッチから Cisco Nexus 92300YC スイッチに移行する</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/migrate-to-92300yc-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/migrate-to-92300yc.html">
+        Cisco スイッチから Cisco Nexus 92300YC スイッチへの移行方法
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> その他のスイッチモデル</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/other/switch-linkout.html">
+        その他のスイッチモデル
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/legal-notices.html">
+        法的通知
+      </a></li></ul>
+</div>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container -->
+    <article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://www.netapp.com">ホーム</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">ドキュメント</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/ja-jp/ontap-systems-switches/">ONTAP&nbsp;Systems&nbsp;Switches</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          Cisco 共有スイッチのセットアップおよび設定ガイド
+        </li>
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 日本語は機械翻訳による参考訳です。内容に矛盾や不一致があった場合には、英語の内容が優先されます。 </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Cisco 共有スイッチのセットアップおよび設定ガイド</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2021-10-28 02:10:41 +0000">10/28/2021</time>
+    
+  
+
+<span>寄稿者
+  <a target="_blank" href="https://github.com/netapp-martyh">
+    <img  class="avatar avatar-small"
+          alt="netapp-martyh"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/66496079?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+</span>
+
+
+</p>
+
+
+<div class="sect1">
+<h2 id="ontap-でサポートされるスイッチ">ONTAP でサポートされるスイッチ</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチシナリオに結合できます。3 つ以上のノードで ONTAP ネットワークを構築する場合は、サポートされているネットワークスイッチが 2 つ必要です。</p>
+</div>
+<div class="paragraph">
+<p>次の Cisco 共有ネットワークスイッチがサポートされています。</p>
+</div>
+<div class="sect2">
+<h3 id="nexus-9336c-fx2">Nexus 9336C-FX2</h3>
+<div class="paragraph">
+<p>Cisco Nexus 9336C-FX2 スイッチ（ X190200/X190210 ）は、スイッチに付属の標準ブラケットを使用して、ネットアップシステムキャビネットまたは他社製キャビネットに設置できます。</p>
+</div>
+<div class="paragraph">
+<p>次の表に、 9336C-FX2 スイッチ、ファン、および電源装置の部品番号と概要を示します。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">パーツ番号</th>
+<th class="tableblock halign-left valign-top">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X190200-CS-PE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N9K-9336C-FX2 、 CS 、 PTSX 、 36PT10/25/40/100GQSFP28</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X190200-CS-PI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N9K-9336C-FX2 、 CS 、 PSIN 、 36PT10/25/40/100GQSFP28</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X190210-FE-PE のこと</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N9K-9336C 、 FTE 、 PTSX 、 36PT10/25/40/100GQSFP28</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X190210-FE-PI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N9K-9336C 、 FTE 、 PSIN 、 36PT10/25/40/100GQSFP28</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X190002</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">アクセサリキット X190001/X190003</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X-NXA-PAC1100W-PE2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N9K-9336C AC 1100W PSU - ポート側排気</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X-NXA-PAC1100W-PI2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N9K-9336C AC 1100W PSU - ポート側吸気</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X-NXA-FAN-65CFM-pe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N9K-9336C 65CFM 、ポート側排気</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X-NXA-FAN-65CFM-pi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N9K-9336C 65CFM 、ポート側吸気</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="スイッチを設定します">スイッチを設定します</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>必要な設定情報とドキュメントをまだ入手していない場合は、共有スイッチを設定する前に、その情報を収集する必要があります。</p>
+</div>
+<div class="ulist">
+<div class="title">作業を開始する前に</div>
+<ul>
+<li>
+<p>該当する NX-OS およびリファレンス構成ファイル（ RCF ）リリースをダウンロードするには、インストールサイトで HTTP 、 FTP 、または TFTP サーバにアクセスできる必要があります。</p>
+</li>
+<li>
+<p>必要な共有スイッチのドキュメントを用意しておく必要があります。</p>
+<div class="paragraph">
+<p>を参照してください <a href="#Required documentation for shared switches">[Required documentation for shared switches]</a> を参照してください。</p>
+</div>
+</li>
+<li>
+<p>必要なコントローラのドキュメントと ONTAP のドキュメントを用意しておく必要があります。</p>
+<div class="paragraph">
+<p>を参照してください <a href="https://docs.netapp.com/us-en/ontap/index.html">"NetApp ONTAP のドキュメント"</a>。</p>
+</div>
+</li>
+<li>
+<p>該当するライセンス、ネットワークと設定情報、およびケーブルが必要です。</p>
+</li>
+<li>
+<p>記入済みのケーブル接続ワークシートが必要です。</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-switches/images/note.svg" alt="注記">
+</td>
+<td class="content">
+このガイドでは、ケーブル接続図に加えて、推奨されるポート割り当てとネットワークのセットアップに使用できる空白のワークシートを含むサンプルワークシートも提供しています。詳細については、を参照してください <a href="https://hwu.netapp.com">"Hardware Universe"</a>。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>すべての Cisco 共有スイッチは、シスコの工場出荷時のデフォルト設定で出荷されます。これらのスイッチには、 NX-OS ソフトウェアの最新バージョンもありますが、 RCF はロードされていません。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>注意： * 該当するネットアップ RCF は、からダウンロードする必要があります <a href="https://mysupport.netapp.com">"ネットアップサポートサイト"</a> 受信したスイッチの場合。</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="手順">手順</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>ラックにスイッチとコントローラを配置を参照してくださいhttps://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-9336c-install-cabinet/GUID-92287262-E7A6-4A62-B159-7F148097B33B.html["Cisco Nexus 9336C-FX2 クラスタスイッチとパススルーパネルのネットアップキャビネットへの設置"] スイッチをネットアップキャビネットに設置する手順については、ガイドを参照してください。</p>
+</li>
+<li>
+<p>スイッチとコントローラの電源をオンにします。</p>
+</li>
+<li>
+<p><a id="step3"></a> で提供された情報に基づいて、スイッチの初期設定を実行します <a href="#Required configuration information">[Required configuration information]</a>。</p>
+</li>
+<li>
+<p>セットアップの最後に表示される画面で選択した設定を確認し、設定を保存します。</p>
+</li>
+<li>
+<p>スイッチのソフトウェアバージョンを確認し、必要に応じてネットアップ対応バージョンのソフトウェアをスイッチにダウンロードします。</p>
+<div class="paragraph">
+<p>ネットアップ対応バージョンのサポートソフトウェアをダウンロードする場合は、 NetApp Network Switch Reference Configuration File もダウンロードし、に保存した構成とマージする必要があります <a href="#step3">手順 3</a>。ファイルと手順は、からダウンロードできます <a href="https://mysupport.netapp.com/site/info/cisco-ethernet-switch">"Cisco イーサネットスイッチ"</a> ページ独自のスイッチがある場合は、を参照してください サイト</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="必要な設定情報">必要な設定情報</h3>
+<div class="paragraph">
+<p>構成には、スイッチに適した数とタイプのケーブルとコネクタが必要です。最初に設定するスイッチのタイプに応じて、付属のコンソールケーブルを使用してスイッチのコンソールポートに接続する必要があります。また、特定のネットワーク情報を指定する必要があります。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="すべてのスイッチに必要なネットワーク情報">すべてのスイッチに必要なネットワーク情報</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>すべてのスイッチ設定には、次のネットワーク情報が必要です。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>管理ネットワークトラフィック用の IP サブネット</p>
+</li>
+<li>
+<p>各ストレージシステムコントローラおよび該当するすべてのスイッチのホスト名と IP アドレス</p>
+</li>
+<li>
+<p>ほとんどのストレージシステムコントローラは、イーサネットサービスポート（レンチマーク）に接続することで、 e0M インターフェイスを介して管理されます。AFF A800 システムおよび AFF A700 システムでは、 e0M インターフェイスは専用のイーサネットポートを使用します。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>を参照してください <a href="https://hwu.netapp.com">"Hardware Universe"</a> 最新情報については、を参照してください。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cisco-nexus-9336c-fx2-スイッチに必要なネットワーク情報">Cisco Nexus 9336C-FX2 スイッチに必要なネットワーク情報</h3>
+<div class="paragraph">
+<p>Cisco Nexus 9336C-FX2 スイッチの場合は、スイッチの初回起動時に、次の初期セットアップに関する質問に適切な応答を指定する必要があります。サイトのセキュリティポリシーでは、有効にする応答とサービスを定義しています。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>自動プロビジョニングを中止して通常のセットアップを続行しますか？（はい / いいえ）</p>
+<div class="ulist">
+<ul>
+<li>
+<p>yes * と応答します。デフォルトは no です</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>セキュアなパスワード標準を適用しますか？（はい / いいえ）</p>
+<div class="ulist">
+<ul>
+<li>
+<p>yes * と応答します。デフォルトは yes です。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>admin のパスワードを入力します。</p>
+<div class="paragraph">
+<p>デフォルトのパスワードは admin です。新しい強力なパスワードを作成する必要があります。</p>
+</div>
+<div class="paragraph">
+<p>脆弱なパスワードは拒否される可能性があります。</p>
+</div>
+</li>
+<li>
+<p>基本設定ダイアログを開きますか？（はい / いいえ）</p>
+<div class="paragraph">
+<p>スイッチの初期設定時に * yes * と応答します。</p>
+</div>
+</li>
+<li>
+<p>別のログインアカウントを作成しますか？（はい / いいえ）</p>
+<div class="paragraph">
+<p>回答は、代替管理者に関するサイトのポリシーに依存します。デフォルトは no です</p>
+</div>
+</li>
+<li>
+<p>読み取り専用の SNMP コミュニティストリングを設定しますか？（はい / いいえ）</p>
+<div class="ulist">
+<ul>
+<li>
+<p>no * と応答します。デフォルトは no です</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>読み取り / 書き込み SNMP コミュニティストリングを設定しますか？（はい / いいえ）</p>
+<div class="ulist">
+<ul>
+<li>
+<p>no * と応答します。デフォルトは no です</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>スイッチ名を入力します。</p>
+<div class="paragraph">
+<p>スイッチ名は 63 文字までの英数字に制限されます。</p>
+</div>
+</li>
+<li>
+<p>アウトオブバンド（ mgmt0 ）管理構成で続行しますか。（はい / いいえ）</p>
+<div class="paragraph">
+<p>そのプロンプトで * yes * （デフォルト）と応答します。mgmt0 IPv4 address: プロンプトで、 IP アドレス ip_address を入力します</p>
+</div>
+</li>
+<li>
+<p>default-gateway を設定？（はい / いいえ）</p>
+<div class="ulist">
+<ul>
+<li>
+<p>yes * と応答します。default-gateway: プロンプトの IPv4 アドレスに、 default_gateway と入力します。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>IP の詳細オプションを設定しますか？（はい / いいえ）</p>
+<div class="ulist">
+<ul>
+<li>
+<p>no * と応答します。デフォルトは no です</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Telnet サービスを有効にしますか？（はい / いいえ）</p>
+<div class="ulist">
+<ul>
+<li>
+<p>no * と応答します。デフォルトは no です</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>SSH サービスを有効にしますか？（はい / いいえ）</p>
+<div class="ulist">
+<ul>
+<li>
+<p>yes * と応答します。デフォルトは yes です。</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-switches/images/note.svg" alt="注記">
+</td>
+<td class="content">
+ログ収集機能にクラスタスイッチヘルスモニタ（ CSHM ）を使用する場合は、 SSH が推奨されます。セキュリティを強化するには、 SSHv2 も推奨されます。
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step14"></a> 生成する SSH キーの種類を入力します (DSA/RSA/rsa1) 。デフォルトは rsa です。</p>
+</li>
+<li>
+<p>キービット数（ 1024~2048 ）を入力します。</p>
+</li>
+<li>
+<p>NTP サーバを設定？（はい / いいえ）</p>
+<div class="ulist">
+<ul>
+<li>
+<p>no * と応答します。デフォルトは no です</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>デフォルトのインターフェイスレイヤ（ L3/L2 ）を設定します。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>L2 * と応答します。デフォルトは L2 です。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>デフォルトのスイッチポートインターフェイスステート（ shut / noshut ）を設定します。</p>
+<div class="paragraph">
+<p>noshut * と応答します。デフォルトは noshut です。</p>
+</div>
+</li>
+<li>
+<p>CoPP システムプロファイルを設定する（ strict/moderm/lenenter/dense ）：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>strict * と応答します。デフォルトは strict です。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>設定を編集しますか？（はい / いいえ）</p>
+<div class="paragraph">
+<p>この時点で新しい設定が表示されます。入力した設定を確認し、必要な変更を行います。設定に問題がなければ、プロンプトで no と応答します。設定を編集する場合は、 * yes * と応答します。</p>
+</div>
+</li>
+<li>
+<p>この設定を使用して保存しますか？（はい / いいえ）</p>
+<div class="ulist">
+<ul>
+<li>
+<p>yes * と応答して、設定を保存します。これにより、キックスタートイメージとシステムイメージが自動的に更新されます。</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-switches/images/note.svg" alt="注記">
+</td>
+<td class="content">
+この段階で設定を保存しないと、次回スイッチをリブートしたときに変更が有効になりません。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>スイッチの初期設定の詳細については、次のガイドを参照してください。 <a href="https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9336c-fx2-e/cisco-nexus-9336c-fx2-e-nx-os-mode-switch-hardware-installation-guide.html">"『 Cisco Nexus 9336C-FX2 Installation and Upgrade Guide 』"</a>。</p>
+</div>
+<div class="sect4">
+<h5 id="共有スイッチに必要なドキュメント">共有スイッチに必要なドキュメント</h5>
+<div class="paragraph">
+<p>ONTAP ネットワークを設定するには、特定のスイッチとコントローラに関するドキュメントが必要です。</p>
+</div>
+<div class="paragraph">
+<p>Cisco Nexus 9336C-FX2 共有スイッチをセットアップするには、を参照してください <a href="https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html">"Cisco Nexus 9000 シリーズスイッチのサポート"</a> ページ</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">ドキュメントタイトル</th>
+<th class="tableblock halign-left valign-top">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9336c-fx2-e/cisco-nexus-9336c-fx2-e-nx-os-mode-switch-hardware-installation-guide.html">"Nexus 9000 Series Hardware Installation Guide 』を参照してください"</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">サイト要件、スイッチハードウェアの詳細、およびインストールオプションに関する詳細情報を提供します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-and-configuration-guides-list.html">"Cisco Nexus 9000 シリーズスイッチのソフトウェア構成ガイド"</a> （スイッチにインストールされている NX-OS リリースのガイドを選択）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">スイッチを ONTAP 動作用に設定する前に必要なスイッチの初期設定に関する情報を提供します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade">"『 Cisco Nexus 9000 Series NX-OS Software Upgrade and Downgrade Guide 』"</a> （スイッチにインストールされている NX-OS リリースのガイドを選択）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">必要に応じてスイッチを ONTAP 対応スイッチソフトウェアにダウングレードする方法について説明します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html">"Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスマスターインデックス"</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">シスコが提供するさまざまなコマンドリファレンスへのリンクを示します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/mib/quickreference/b_Cisco_Nexus_7000_Series_and_9000_Series_NX-OS_MIB_Quick_Reference.html">"Cisco Nexus 9000 MIB リファレンス"</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nexus 9000 スイッチの管理情報ベース（ MIB ）ファイルについて説明します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-system-message-guides-list.html">"Nexus 9000 Series NX-OS System Message Reference 』を参照してください"</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cisco Nexus 9000 シリーズスイッチのシステムメッセージ、情報メッセージ、およびリンク、内部ハードウェア、またはシステムソフトウェアの問題の診断に役立つその他のメッセージについて説明します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#ReleaseandCompatibility">"『 Cisco Nexus 9000 Series NX-OS Release Notes 』"</a> （スイッチにインストールされている NX-OS リリースのノートを選択してください）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cisco Nexus 9000 シリーズの機能、バグ、および制限事項について説明します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/mds9000/hw/regulatory/compliance/RCSI.html">"Cisco Nexus 9000 シリーズの適合規格および安全性に関する情報"</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nexus 9000 シリーズスイッチの国際的な適合規格、安全性、および法令に関する情報を提供します。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cisco-nexus-9336c-fx2-のケーブル配線の詳細">Cisco Nexus 9336C-FX2 のケーブル配線の詳細</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>次のケーブル接続図は、コントローラとスイッチの間のケーブル接続を完了するためのものです。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>スイッチ接続 *<span class="image"><img src="./media/9336c_image1.jpg" alt="スイッチ接続"></span></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>共有スイッチストレージポートを使用する代わりにストレージを直接接続型としてケーブル接続する場合は、直接接続型の図 * Direct-Attached * を使用します<span class="image"><img src="./media/9336c_image2.jpg" alt="直接接続"></span></p>
+</div>
+<div class="sect2">
+<h3 id="cisco-nexus-9336c-fx2-ケーブル接続ワークシート">Cisco Nexus 9336C-FX2 ケーブル接続ワークシート</h3>
+<div class="paragraph">
+<p>サポート対象のプラットフォームを文書化する場合は、入力済みのケーブル接続ワークシートの例を参考にして、空白のケーブル接続ワークシートに記入する必要があります。</p>
+</div>
+<div class="paragraph">
+<p>各スイッチペアのポート定義の例を次に示します。<span class="image"><img src="./media/cabling_worksheet.jpg" alt="ケーブル接続ワークシート"></span></p>
+</div>
+<div class="paragraph">
+<p>ここで、</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>100G ISL 経由でスイッチ A ポート 35</p>
+</li>
+<li>
+<p>100G ISL 経由でスイッチ A ポート 36</p>
+</li>
+<li>
+<p>100G ISL 経由でスイッチ B ポート 35</p>
+</li>
+<li>
+<p>100G ISL 経由でスイッチ B ポート 36</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="空白のケーブル接続ワークシート">空白のケーブル接続ワークシート</h3>
+<div class="paragraph">
+<p>空白のケーブル接続ワークシートを使用して、クラスタ内のノードとしてサポートされるプラットフォームを文書化できます。Hardware Universe の Supported Cluster Connections テーブルでは、プラットフォームで使用されるクラスタポートが定義されています。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/blank_cabling_worksheet.jpg" alt="空白のケーブル接続ワークシート"></span></p>
+</div>
+<div class="paragraph">
+<p>ここで、</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>100G ISL 経由でスイッチ A ポート 35</p>
+</li>
+<li>
+<p>100G ISL 経由でスイッチ A ポート 36</p>
+</li>
+<li>
+<p>100G ISL 経由でスイッチ B ポート 35</p>
+</li>
+<li>
+<p>100G ISL 経由でスイッチ B ポート 36</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div id="version-dropdown"></div>
+    <div class="page-nav-contribute"  >
+      <a target="_blank" href="https://github.com/NetAppDocs/ontap-systems-switches/issues/new?body=Page%3A%20[Cisco 共有スイッチのセットアップおよび設定ガイド](https://docs.netapp.com/ja-jp/ontap-systems-switches/switch-cisco-9336c-shared/9336c_setup_and_configuration_guide_for_cisco_shared_switches.html)" class="page-nav-contribute-link" role="button"><img src="/ja-jp/ontap-systems-switches/images/discuss-sm.svg" class="github-icon" />ドキュメントの変更をリクエスト</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/ontap-systems-switches/blob/main/switch-cisco-9336c-shared/9336c_setup_and_configuration_guide_for_cisco_shared_switches.adoc" class="page-nav-contribute-link" role="button"><img src="/ja-jp/ontap-systems-switches/images/edit-sm.svg" class="github-icon" />GitHub で編集</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ja-jp/ontap-systems-switches/images/article-sm.svg" class="github-icon" />寄稿者向けガイド</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">このページ</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  <div style="clear: both"></div><!-- Main needs to have height -->
+</div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2021 NetApp, Inc.</a>
+            </li>
+
+</ul>
+</div>
+<div class="n-footer__social-links">
+<ul class="n-footer__social-link-list">
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
+<span class="n-footer__social-link-text">blog</span>
+<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+  <title>blog@</title>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#blog"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
+<span class="n-footer__social-link-text">community</span>
+<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+<title>community@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#comments"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
+<span class="n-footer__social-link-text">twitter</span>
+<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+<title>twitter@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#twitter"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
+<span class="n-footer__social-link-text">facebook</span>
+<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+<title>facebook@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#facebook"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+<span class="n-footer__social-link-text">linkedin</span>
+<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+<title>linkedin@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#linkedin"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+<span class="n-footer__social-link-text">youtube</span>
+<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+<title>youtube@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#youtube"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+<span class="n-footer__social-link-text">slideshare</span>
+<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+<title>slideshare@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#slideshare"></use>
+</svg>
+
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class="n-footer__bottom-right">
+  <p class="n-footer__fine-print">Web サイトについてのフィードバックを<a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">お寄せください</a>
+  <a href="https://docs.netapp.com/ja-jp/announcements/" class="n-footer__copyright">お知らせ</a>
+  </p>
+</div>
+</div>
+</div>
+</footer>
+
+      </div>
+
+      <!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/ja-jp/ontap-systems-switches/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/ja-jp/ontap-systems-switches/js/prism.js'></script>
+      <script type="text/javascript" src='/ja-jp/ontap-systems-switches/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/ja-jp/ontap-systems-switches/js/www-ntap.js'></script>
+    <script src='/ja-jp/ontap-systems-switches/js/tabbed-blocks.js'></script>
+  </body>
+
+  
+</html>
