@@ -23,7 +23,7 @@ BES-53248 クラスタスイッチをアップグレードするには、アッ�
 * RCF バージョンと EFOS バージョンのコマンド構文の間に、コマンドの依存関係がある場合があります。
 
 
-サポートされている EFOS 、 RCF 、 ONTAP のバージョンについて、 NetApp BES-53248 スイッチのページにあるスイッチ互換性の表を参照する必要があります。 http://mysupport.netapp.com/site["NetApp BES-53248 スイッチ"]。
+サポートされている EFOS 、 RCF 、 ONTAP のバージョンについて、 NetApp BES-53248 スイッチのページにあるスイッチ互換性の表を参照する必要があります。 http://mysupport.netapp.com/site["NetApp BES-53248 スイッチ"^]。
 
 この手順環境は正常に機能しているクラスタで、 NDU と NDO が可能です。この手順の例では、スイッチとノードで次の命名法を使用しています。
 
@@ -37,7 +37,7 @@ BES-53248 クラスタスイッチをアップグレードするには、アッ�
 プラットフォームでサポートされている実際のクラスタポートについては、 __ Hardware Universe __ を参照してください。
 
 +
-https://hwu.netapp.com/Home/Index["NetApp Hardware Universe の略"]
+https://hwu.netapp.com/Home/Index["NetApp Hardware Universe の略"^]
 
 * ネットアップクラスタスイッチでサポートされるスイッチ間リンク（ ISL ）は、ポート 0/55 と 0/56 です。
 * ネットアップクラスタスイッチでサポートされるノード接続は、デフォルトのライセンスでポート 0/1~0/16 です。

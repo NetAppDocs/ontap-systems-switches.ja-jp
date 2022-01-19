@@ -588,6 +588,6 @@ cluster::*> system node autosupport invoke -node \* -type all -message MAINT=END
 
 * 関連情報 *
 
-https://hwu.netapp.com["Hardware Universe"]
+https://hwu.netapp.com["Hardware Universe"^]
 
-http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["『 Switch Setup and Configuration Guide for Broadcom Supported BES-53248 switches 』を参照してください"]
+http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["『 Switch Setup and Configuration Guide for Broadcom Supported BES-53248 switches 』を参照してください"^]

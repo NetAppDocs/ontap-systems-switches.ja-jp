@@ -26,4 +26,4 @@ Smart Call Home 機能を使用する前に、次の考慮事項について理�
 
 Cisco サポートサイトには、 Smart Call Home を設定するためのコマンドに関する情報が掲載されています。
 
-http://www.cisco.com/c/en/us/products/switches/index.html["シスコサポートサイト"]
+http://www.cisco.com/c/en/us/products/switches/index.html["シスコサポートサイト"^]

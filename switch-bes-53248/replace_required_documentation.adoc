@@ -16,7 +16,7 @@ clustered Data ONTAP 構成をセットアップするには、特定のスイ�
 
 == BES-53248 クラスタスイッチに必要なドキュメント
 
-BES-53248 クラスタスイッチをセットアップするには、 Broadcom サポートサイトから次のドキュメントを入手する必要があります。 https://www.broadcom.com/support/bes-switch["Broadcom Ethernet Switch 製品ライン"]
+BES-53248 クラスタスイッチをセットアップするには、 Broadcom サポートサイトから次のドキュメントを入手する必要があります。 https://www.broadcom.com/support/bes-switch["Broadcom Ethernet Switch 製品ライン"^]
 
 [cols="1,2"]
 |===
@@ -75,7 +75,7 @@ BES-53248 ソフトウェアに関するリリース固有の情報を示しま�
 
 == サポートされている ONTAP システムに必要なドキュメント
 
-ONTAP システムをセットアップするには、ネットアップサポートサイトから次のドキュメントを入手する必要があります http://mysupport.netapp.com/["mysupport.netapp.com"]
+ONTAP システムをセットアップするには、ネットアップサポートサイトから次のドキュメントを入手する必要があります http://mysupport.netapp.com/["mysupport.netapp.com"^]
 
 [cols="1,2"]
 |===

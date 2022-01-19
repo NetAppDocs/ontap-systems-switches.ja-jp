@@ -66,6 +66,6 @@ summary: 古い Cisco Nexus クラスタスイッチを Cisco Nexus 9336C-FX2 �
 * ノードから Nexus 9336C-FX2 クラスタスイッチへの 10GbE および 40GbE 接続を計画、移行、および文書化しておきます。
 * この手順でサポートされている ONTAP および NX-OS のバージョンは、 _Cisco イーサネットスイッチ _ ページにあります。
 +
-https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"]
+https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]
 
 

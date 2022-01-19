@@ -16,7 +16,7 @@ ONTAP クラスタをセットアップするには、特定のスイッチと�
 
 == クラスタネットワークスイッチに必要なドキュメント
 
-Cisco Nexus 9336C-FX2 および 92300YC スイッチをセットアップするには、から次のドキュメントを入手する必要があります https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズスイッチのサポート"] ページ
+Cisco Nexus 9336C-FX2 および 92300YC スイッチをセットアップするには、から次のドキュメントを入手する必要があります https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズスイッチのサポート"^] ページ
 
 [cols="1,2"]
 |===
@@ -78,7 +78,7 @@ Cisco Nexus 9000 シリーズの適合規格および安全性に関する情報
 Nexus 9000 シリーズスイッチの国際的な適合規格、安全性、および法令に関する情報を提供します。
 
 |===
-Cisco Nexus 3232C スイッチおよび 3132Q-V スイッチを設定するには、から次のドキュメントを入手する必要があります https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/series.html["Cisco Nexus 3000 シリーズスイッチのサポート"] ページ
+Cisco Nexus 3232C スイッチおよび 3132Q-V スイッチを設定するには、から次のドキュメントを入手する必要があります https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/series.html["Cisco Nexus 3000 シリーズスイッチのサポート"^] ページ
 
 [cols="1,2"]
 |===
@@ -140,7 +140,7 @@ Cisco Nexus 6000 、 Cisco Nexus 5000 シリーズ、 Cisco Nexus 3000 シリー
 Nexus 3000 シリーズスイッチの国際的な適合規格、安全性、および法令に関する情報を提供します。
 
 |===
-Cisco Nexus 5596 スイッチを設定するには、から次のドキュメントを入手する必要があります https://www.cisco.com/c/en/us/support/switches/nexus-5000-series-switches/series.html["Cisco Nexus 5000 シリーズスイッチのサポート"] ページ
+Cisco Nexus 5596 スイッチを設定するには、から次のドキュメントを入手する必要があります https://www.cisco.com/c/en/us/support/switches/nexus-5000-series-switches/series.html["Cisco Nexus 5000 シリーズスイッチのサポート"^] ページ
 
 [cols="1,2"]
 |===
@@ -199,7 +199,7 @@ Nexus 5000 シリーズスイッチの国際的な適合規格、安全性、お
 
 == サポートされている ONTAP システムに必要なドキュメント
 
-ONTAP システムをセットアップするには、使用しているオペレーティングシステムのバージョンに応じて、で次のドキュメントを参照する必要があります https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9 ドキュメンテーション・センター"]。
+ONTAP システムをセットアップするには、使用しているオペレーティングシステムのバージョンに応じて、で次のドキュメントを参照する必要があります https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9 ドキュメンテーション・センター"^]。
 
 [cols="1,2"]
 |===
@@ -221,7 +221,7 @@ ONTAP リリースのすべての側面に関する詳細情報を提供しま�
 
 
  a| 
-https://hwu.netapp.com["Hardware Universe"]
+https://hwu.netapp.com["Hardware Universe"^]
  a| 
 ネットアップハードウェアの構成と互換性に関する情報を提供します。
 
@@ -238,28 +238,28 @@ Cisco スイッチをネットアップキャビネットに設置するには�
 
 
  a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["『 42U System Cabinet 、 Deep Guide 』を参照してください"]
+https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["『 42U System Cabinet 、 Deep Guide 』を参照してください"^]
  a| 
 42U システムキャビネットに関連する FRU について説明し、メンテナンスおよび FRU の交換手順を示します。
 
 
 
  a| 
-https://library.netapp.com/ecm/ecm_get_file/ECMLP2843148["Cisco Nexus 3232C クラスタスイッチとパススルーパネルをネットアップキャビネットに設置する"]
+https://library.netapp.com/ecm/ecm_get_file/ECMLP2843148["Cisco Nexus 3232C クラスタスイッチとパススルーパネルをネットアップキャビネットに設置する"^]
  a| 
 Cisco Nexus 3232C スイッチを 4 ポストのネットアップキャビネットに設置する方法について説明します。
 
 
 
  a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMLP2518305["NetApp キャビネットへの Cisco Nexus 3132Q-V スイッチとパススルーパネルの設置"]
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2518305["NetApp キャビネットへの Cisco Nexus 3132Q-V スイッチとパススルーパネルの設置"^]
  a| 
 4 ポストのネットアップキャビネットに Cisco Nexus 3132Q-V スイッチを設置する方法について説明します。
 
 
 
  a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMP1141864["Cisco Nexus 5596 スイッチとパススルーパネルをネットアップキャビネットに設置する"]
+https://library.netapp.com/ecm/ecm_download_file/ECMP1141864["Cisco Nexus 5596 スイッチとパススルーパネルをネットアップキャビネットに設置する"^]
  a| 
 Cisco Nexus 5596 スイッチをネットアップキャビネットに設置する方法について説明します。
 

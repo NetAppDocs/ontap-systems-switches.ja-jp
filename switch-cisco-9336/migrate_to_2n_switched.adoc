@@ -29,7 +29,7 @@ Cisco Nexus 9336C-FX2 スイッチの構成：
 Hardware Universe * には、ケーブル接続の詳細が記載されています。
 
 +
-https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe - スイッチ"]
+https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe - スイッチ"^]
 
 * スイッチ間リンク（ ISL ）ケーブルは、 9336C-FX2 スイッチの両方でポート 1/35 および 1/36 に接続する必要があります。
 * 9336C-FX2 スイッチの初期カスタマイズが完了している必要があります。次のようにします。
@@ -51,7 +51,7 @@ https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe - スイッチ"]
 Hardware Universe * には、プラットフォームの実際のクラスタ・ポートに関する最新情報が含まれています。
 
 +
-https://hwu.netapp.com["Hardware Universe"]
+https://hwu.netapp.com["Hardware Universe"^]
 
 +
 .. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= xh
@@ -76,10 +76,10 @@ ISL ポートを無効にしないでください。
 +
 [listing]
 ----
-cs1# **config**
+cs1# config
 Enter configuration commands, one per line. End with CNTL/Z.
-cs1(config)# **interface e/1-34**
-cs1(config-if-range)# **shutdown**
+cs1(config)# interface e/1-34
+cs1(config-if-range)# shutdown
 ----
 .. 2 つの 9336C-FX2 スイッチ cs1 と cs2 間の ISL 上の ISL ポートと物理ポートがポート 1/35 と 1/36 で動作していることを確認します。「 How port-channel summary
 +
@@ -88,7 +88,7 @@ cs1(config-if-range)# **shutdown**
 +
 [listing]
 ----
-cs1# **show port-channel summary**
+cs1# show port-channel summary
 
 Flags:  D - Down        P - Up in port-channel (members)
         I - Individual  H - Hot-standby (LACP only)
@@ -110,7 +110,7 @@ Group Port-       Type     Protocol  Member Ports
 +
 [listing]
 ----
-(cs2)# **show port-channel summary**
+(cs2)# show port-channel summary
 
 Flags:  D - Down        P - Up in port-channel (members)
         I - Individual  H - Hot-standby (LACP only)
@@ -136,7 +136,7 @@ Group Port-       Type     Protocol  Member Ports
 +
 [listing]
 ----
-cs1# **show cdp neighbors**
+cs1# show cdp neighbors
 
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
@@ -155,7 +155,7 @@ Total entries displayed: 2
 +
 [listing]
 ----
-cs2# **show cdp neighbors**
+cs2# show cdp neighbors
 
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
@@ -175,7 +175,7 @@ Total entries displayed: 2
 +
 [listing]
 ----
-cluster1::*> **network port show -ipspace Cluster**
+cluster1::*> network port show -ipspace Cluster
 
 Node: node1
 
@@ -202,7 +202,7 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy
 +
 [listing]
 ----
-cluster1::*> **network interface show -vserver Cluster**
+cluster1::*> network interface show -vserver Cluster
 
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
@@ -218,7 +218,7 @@ Cluster
 +
 [listing]
 ----
-cluster1::*> **network interface show -vserver Cluster -fields auto-revert**
+cluster1::*> network interface show -vserver Cluster -fields auto-revert
 
           Logical
 Vserver   Interface     Auto-revert
@@ -236,7 +236,7 @@ Cluster
 Hardware Universe * には、ケーブル接続の詳細が記載されています。
 
 +
-https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe - スイッチ"]
+https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe - スイッチ"^]
 
 .. ノード 2 のクラスタポート e0a からケーブルを外し、 9336C-FX2 スイッチでサポートされている適切なケーブル接続を使用して、クラスタスイッチ cs1 のポート 2 に e0a を接続します。
 .. クラスタスイッチ cs1 のすべてのノード側ポートを有効にします。
@@ -246,10 +246,10 @@ https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe - スイッチ"]
 +
 [listing]
 ----
-cs1# **config**
+cs1# config
 Enter configuration commands, one per line. End with CNTL/Z.
-cs1(config)# **interface e1/1-34**
-cs1(config-if-range)# **no shutdown**
+cs1(config)# interface e1/1-34
+cs1(config-if-range)# no shutdown
 ----
 .. すべてのクラスタ LIF が up であり、運用可能であり、 Is Home に true と表示されていることを確認します。「 network interface show -vserver Cluster
 +
@@ -258,7 +258,7 @@ cs1(config-if-range)# **no shutdown**
 +
 [listing]
 ----
-cluster1::*> **network interface show -vserver Cluster**
+cluster1::*> network interface show -vserver Cluster
 
          Logical      Status     Network            Current     Current Is
 Vserver  Interface    Admin/Oper Address/Mask       Node        Port    Home
@@ -278,7 +278,7 @@ Cluster
 +
 [listing]
 ----
-cluster1::*> **cluster show**
+cluster1::*> cluster show
 
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------  ------------
@@ -296,10 +296,10 @@ node2                true    true          false
 +
 [listing]
 ----
-cs2# **config**
+cs2# config
 Enter configuration commands, one per line. End with CNTL/Z.
-cs2(config)# **interface e1/1-34**
-cs2(config-if-range)# **no shutdown**
+cs2(config)# interface e1/1-34
+cs2(config-if-range)# no shutdown
 ----
 .. すべてのクラスタ・ポートが up であることを確認します。「 network port show -ipspace Cluster 」
 +
@@ -308,7 +308,7 @@ cs2(config-if-range)# **no shutdown**
 +
 [listing]
 ----
-cluster1::*> **network port show -ipspace Cluster**
+cluster1::*> network port show -ipspace Cluster
 
 Node: node1
                                                                        Ignore
@@ -339,7 +339,7 @@ NOTE: この処理が完了するまでに数分かかることがあります�
 +
 [listing]
 ----
-cluster1::*> **network interface show -vserver Cluster**
+cluster1::*> network interface show -vserver Cluster
 
           Logical      Status     Network            Current    Current Is
 Vserver   Interface    Admin/Oper Address/Mask       Node       Port    Home
@@ -359,7 +359,7 @@ Cluster
 +
 [listing]
 ----
-(cs1)# **show cdp neighbors**
+(cs1)# show cdp neighbors
 
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
@@ -374,7 +374,7 @@ cs2                Eth1/36        175    R S I s     N9K-C9336C    Eth1/36
 
 Total entries displayed: 4
 
-(cs2)# **show cdp neighbors**
+(cs2)# show cdp neighbors
 
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
@@ -393,7 +393,7 @@ Total entries displayed: 4
 +
 [listing]
 ----
-cluster1::*> **network device-discovery show -protocol cdp**
+cluster1::*> network device-discovery show -protocol cdp
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  ----------------
@@ -417,7 +417,7 @@ NOTE: コマンドが完了するまでに数分かかることがあります�
 +
 [listing]
 ----
-cluster1::*> **network options switchless-cluster show**
+cluster1::*> network options switchless-cluster show
 Enable Switchless Cluster: false
 ----
 .. クラスタ内のノード・メンバーのステータスを確認します cluster show
@@ -427,7 +427,7 @@ Enable Switchless Cluster: false
 +
 [listing]
 ----
-cluster1::*> **cluster show**
+cluster1::*> cluster show
 
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------  --------
@@ -438,7 +438,7 @@ node2                true    true          false
 +
 [listing]
 ----
-cluster1::*> **cluster ping-cluster -node node2**
+cluster1::*> cluster ping-cluster -node node2
 Host is node2
 Getting addresses from network interface table...
 Cluster node1_clus1 169.254.209.69 node1 e0a
@@ -468,35 +468,35 @@ RPC status:
 +
 [listing]
 ----
-cluster1::*> **system switch ethernet log setup-password**
+cluster1::*> system switch ethernet log setup-password
 Enter the switch name: <return>
 The switch name entered is not recognized.
 Choose from the following list:
 cs1
 cs2
 
-cluster1::*> **system switch ethernet log setup-password**
+cluster1::*> system switch ethernet log setup-password
 
-Enter the switch name: **cs1**
+Enter the switch name: cs1
 RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] **y**
+Do you want to continue? {y|n}::[n] y
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> **system switch ethernet log setup-password**
+cluster1::*> system switch ethernet log setup-password
 
-Enter the switch name: **cs2**
+Enter the switch name: cs2
 RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] **y**
+Do you want to continue? {y|n}:: [n] y
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> **system  switch ethernet log enable-collection**
+cluster1::*> system  switch ethernet log enable-collection
 
 Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] **y**
+{y|n}: [n] y
 
 Enabling cluster switch log collection.
 
@@ -510,35 +510,35 @@ NOTE: これらのコマンドのいずれかでエラーが返される場合�
 +
 [listing]
 ----
-cluster1::*> **system cluster-switch log setup-password**
+cluster1::*> system cluster-switch log setup-password
 Enter the switch name: <return>
 The switch name entered is not recognized.
 Choose from the following list:
 cs1
 cs2
 
-cluster1::*> **system cluster-switch log setup-password**
+cluster1::*> system cluster-switch log setup-password
 
-Enter the switch name: **cs1**
+Enter the switch name: cs1
 RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] **y**
+Do you want to continue? {y|n}::[n] y
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> **system cluster-switch log setup-password**
+cluster1::*> system cluster-switch log setup-password
 
-Enter the switch name: **cs2**
+Enter the switch name: cs2
 RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] **y**
+Do you want to continue? {y|n}:: [n] y
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> **system cluster-switch log enable-collection**
+cluster1::*> system cluster-switch log enable-collection
 
 Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] **y**
+{y|n}: [n] y
 
 Enabling cluster switch log collection.
 

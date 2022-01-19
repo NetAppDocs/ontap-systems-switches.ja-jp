@@ -18,12 +18,12 @@ Cisco NX-OS ソフトウェアおよびリファレンス構成ファイル（ R
 * RCF のインストール時に必要なスイッチへのコンソール接続が必要です。
 * サポートされている ONTAP 、 NX-OS 、および RCF のバージョンについては、 Cisco イーサネットスイッチのページにあるスイッチ互換性の表を参照してください。
 +
-https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"]
+https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]
 
 * RCF のコマンド構文と、 NX-OS のバージョンにあるコマンド構文との間には、コマンドの依存関係が存在する場合があります。
 * Cisco スイッチのアップグレードおよびダウングレード手順の詳細については、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります（ * Cisco Nexus 9000 シリーズスイッチ * ）。
 +
-https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズスイッチ"]
+https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズスイッチ"^]
 
 * 最新の RCF が必要です。
 
@@ -35,7 +35,7 @@ CAUTION: 新しいバージョンのスイッチソフトウェアと RCF をイ
 
 プラットフォームに対応した正しいクラスタポートを確認するには、 * Hardware Universe * を参照してください。
 
-https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"]
+https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]
 
 
 NOTE: コマンド出力は、 ONTAP のリリースによって異なる場合があります。
@@ -70,7 +70,7 @@ NOTE: AutoSupport メッセージはテクニカルサポートにこのメン�
 +
 [listing]
 ----
-cluster1::*> **network device-discovery show -protocol cdp**
+cluster1::*> network device-discovery show -protocol cdp
 
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
@@ -90,7 +90,7 @@ cluster1-01/cdp
 +
 [listing]
 ----
-cluster1::*> **network port show -ipspace Cluster**
+cluster1::*> network port show -ipspace Cluster
 
 Node: cluster1-02
                                                   Speed(Mbps) Health
@@ -112,7 +112,7 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy
 +
 [listing]
 ----
-cluster1::*> **network interface show -vserver Cluster**
+cluster1::*> network interface show -vserver Cluster
 
             Logical            Status     Network            Current       Current Is
 Vserver     Interface          Admin/Oper Address/Mask       Node          Port    Home
@@ -131,7 +131,7 @@ Cluster
 +
 [listing]
 ----
-cluster1::*> **cluster ping-cluster -node cluster1-02**
+cluster1::*> cluster ping-cluster -node cluster1-02
 Host is cluster1-02
 Getting addresses from network interface table...
 Cluster cluster1-01_clus1 169.254.209.69 cluster1-01     e0a
@@ -160,7 +160,7 @@ RPC status:
 +
 [listing]
 ----
-cluster1::*> **network interface show -vserver Cluster -fields auto-revert**
+cluster1::*> network interface show -vserver Cluster -fields auto-revert
 
           Logical
 Vserver   Interface           Auto-revert
@@ -176,35 +176,35 @@ Cluster
 +
 [listing]
 ----
-cluster1::*> **system switch ethernet log setup-password**
+cluster1::*> system switch ethernet log setup-password
 Enter the switch name: <return>
 The switch name entered is not recognized.
 Choose from the following list:
 cs1
 cs2
 
-cluster1::*> **system switch ethernet log setup-password**
+cluster1::*> system switch ethernet log setup-password
 
-Enter the switch name: **cs1**
+Enter the switch name: cs1
 RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] **y**
+Do you want to continue? {y|n}::[n] y
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> **system switch ethernet log setup-password**
+cluster1::*> system switch ethernet log setup-password
 
-Enter the switch name: **cs2**
+Enter the switch name: cs2
 RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] **y**
+Do you want to continue? {y|n}:: [n] y
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> **system  switch ethernet log enable-collection**
+cluster1::*> system  switch ethernet log enable-collection
 
 Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] **y**
+{y|n}: [n] y
 
 Enabling cluster switch log collection.
 
@@ -218,35 +218,35 @@ NOTE: これらのコマンドのいずれかでエラーが返される場合�
 +
 [listing]
 ----
-cluster1::*> **system cluster-switch log setup-password**
+cluster1::*> system cluster-switch log setup-password
 Enter the switch name: <return>
 The switch name entered is not recognized.
 Choose from the following list:
 cs1
 cs2
 
-cluster1::*> **system cluster-switch log setup-password**
+cluster1::*> system cluster-switch log setup-password
 
-Enter the switch name: **cs1**
+Enter the switch name: cs1
 RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] **y**
+Do you want to continue? {y|n}::[n] y
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> **system cluster-switch log setup-password**
+cluster1::*> system cluster-switch log setup-password
 
-Enter the switch name: **cs2**
+Enter the switch name: cs2
 RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] **y**
+Do you want to continue? {y|n}:: [n] y
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> **system cluster-switch log enable-collection**
+cluster1::*> system cluster-switch log enable-collection
 
 Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] **y**
+{y|n}: [n] y
 
 Enabling cluster switch log collection.
 

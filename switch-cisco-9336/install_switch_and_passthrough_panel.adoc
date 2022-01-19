@@ -14,7 +14,7 @@ Cisco Nexus 9336C-FX2 スイッチとパススルーパネルは、スイッチ�
 
 初期準備要件、キットの内容、および安全上の注意事項を確認しておく必要があります。
 
-https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/hw/aci_9336cfx2_hig/guide/b_n9336cFX2_aci_hardware_installation_guide.html["『 Cisco Nexus 9000 Series Hardware Installation Guide 』"]
+https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/hw/aci_9336cfx2_hig/guide/b_n9336cFX2_aci_hardware_installation_guide.html["『 Cisco Nexus 9000 Series Hardware Installation Guide 』"^]
 
 * 各スイッチについて、 8 本の 10-32 ネジまたは 12-24 ネジとクリップナットを用意して、ブラケットとスライダレールを前面および背面のキャビネットポストに取り付ける必要があります。
 * スイッチをネットアップキャビネットに設置するには、 Cisco 標準レールキットを使用する必要があります。

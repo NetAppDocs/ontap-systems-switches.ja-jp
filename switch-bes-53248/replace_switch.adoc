@@ -52,7 +52,7 @@ NOTE: 次の手順は、次のクラスタネットワークトポロジに基�
 
 [listing]
 ----
-cluster1::> **network port show -ipspace Cluster**
+cluster1::> network port show -ipspace Cluster
 
 Node: node1
                                                                        Ignore
@@ -74,7 +74,7 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 4 entries were displayed.
 
 
-cluster1::> **network interface show -vserver Cluster**
+cluster1::> network interface show -vserver Cluster
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
 ----------- ---------- ---------- ------------------ ------------- ------- ----
@@ -88,7 +88,7 @@ Cluster
 
 
 
-cluster1::> **network device-discovery show -protocol cdp**
+cluster1::> network device-discovery show -protocol cdp
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  ----------------
@@ -102,7 +102,7 @@ node1      /cdp
 4 entries were displayed.
 
 
-(cs1) # **show isdp neighbors**
+(cs1) # show isdp neighbors
 
 Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
                   S - Switch, H - Host, I - IGMP, r - Repeater
@@ -115,7 +115,7 @@ cs2                      0/55      179       R          BES-53248        0/55
 cs2                      0/56      179       R          BES-53248        0/56
 
 
-(cs2) # **show isdp neighbors**
+(cs2) # show isdp neighbors
 
 Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
                   S - Switch, H - Host, I - IGMP, r - Repeater
@@ -133,8 +133,8 @@ cs1                      0/56      179       R          BES-53248        0/56
 必要に応じて、新しいスイッチ用に、 RCF および EFOS ソフトウェアの適切なバージョンを確認、ダウンロード、およびインストールします。新しいスイッチが正しくセットアップされており、 RCF および EFOS ソフトウェアのアップデートが不要であることを確認した場合は、手順 2 に進みます。
 
 +
-.. クラスタスイッチに適用可能な Broadcom EFOS ソフトウェアをからダウンロードできます https://www.broadcom.com/support/bes-switch["Broadcom Ethernet Switch のサポート"] サイトダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応する EFOS ファイルをダウンロードします。
-.. 適切な RCF はから入手できます https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom クラスタスイッチ"] ページダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応する正しい RCF をダウンロードします。
+.. クラスタスイッチに適用可能な Broadcom EFOS ソフトウェアをからダウンロードできます https://www.broadcom.com/support/bes-switch["Broadcom Ethernet Switch のサポート"^] サイトダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応する EFOS ファイルをダウンロードします。
+.. 適切な RCF はから入手できます https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom クラスタスイッチ"^] ページダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応する正しい RCF をダウンロードします。
 
 
 . 新しいスイッチに admin としてログインし、ノードクラスタインターフェイス（ポート 1~16 ）に接続するすべてのポートをシャットダウンします。
@@ -152,12 +152,12 @@ NOTE: 「 enable 」モードを開始するためにパスワードは必要あ
 +
 [listing]
 ----
-User:**admin**
+User: admin
 Password:
-(newcs2) >**enable**
-(newcs2) #**config**
-(newcs2)(config)#**interface 0/1-0/16**
-(newcs2)(interface 0/1-0/16)#**shutdown**
+(newcs2) >enable
+(newcs2) #config
+(newcs2)(config)#interface 0/1-0/16
+(newcs2)(interface 0/1-0/16)#shutdown
 (newcs2)(interface 0/1-0/16)#exit
 (newcs2)(config)#exit
 ----
@@ -168,8 +168,7 @@ network interface show -vserver Cluster -fields auto-revert を実行します
 +
 [listing]
 ----
-
-cluster1::> **network interface show -vserver Cluster -fields auto-revert**
+cluster1::> network interface show -vserver Cluster -fields auto-revert
 
 Logical
 Vserver   Interface    Auto-revert
@@ -185,9 +184,9 @@ Cluster			node2_clus2		true
 +
 [listing]
 ----
-(cs1) #**config**
-(cs1)(config)#**interface 0/55-0/56**
-(cs1)(interface 0/55-0/56)#**shutdown**
+(cs1) # config
+(cs1)(config)# interface 0/55-0/56
+(cs1)(interface 0/55-0/56)# shutdown
 ----
 . すべてのケーブルを BES-53248 cs2 スイッチから取り外し、 BES-53248 newcs2 スイッチの同じポートに接続します。
 . cs1 スイッチと newcs2 スイッチ間で ISL ポート 0/55 と 0/56 を起動し、ポートチャネルの動作ステータスを確認します。
@@ -200,10 +199,10 @@ Cluster			node2_clus2		true
 +
 [listing]
 ----
-(cs1) # **config**
-(cs1)(config)# **interface 0/55-0/56**
-(cs1)(interface 0/55-0/56)# **no shutdown**
-(cs1) # **show port-channel 1/1**
+(cs1) # config
+(cs1)(config)# interface 0/55-0/56
+(cs1)(interface 0/55-0/56)# no shutdown
+(cs1) # show port-channel 1/1
 
 
 Local Interface................................ 1/1
@@ -250,7 +249,7 @@ Password:
 +
 [listing]
 ----
-cluster1::> **network port show -ipspace Cluster**
+cluster1::> network port show -ipspace Cluster
 
 Node: node1
                                                                         Ignore
@@ -280,7 +279,7 @@ e0b       Cluster      Cluster          up   9000  auto/auto   -        false
 +
 [listing]
 ----
-cluster::> **network interface show -vserver Cluster**
+cluster::> network interface show -vserver Cluster
 
             Logical      Status     Network            Current    Current Is
 Vserver     Interface    Admin/Oper Address/Mask       Node       Port    Home
@@ -300,7 +299,7 @@ Cluster
 +
 [listing]
 ----
-cluster1::> **cluster show**
+cluster1::> cluster show
 Node                   Health Eligibility    Epsilon
 --------------------   ------- ------------  --------
 node1                   true    true           true
@@ -313,7 +312,7 @@ node2                   true    true           true
 +
 [listing]
 ----
-cluster1::> **network port show -ipspace Cluster**
+cluster1::> network port show -ipspace Cluster
 Node: node1
                                                                        Ignore
                                        Speed(Mbps)            Health   Health
@@ -333,7 +332,7 @@ e0b       Cluster      Cluster          up   9000 auto/10000  healthy  false
 4 entries were displayed.
 
 
-cluster1::> **network interface show -vserver Cluster**
+cluster1::> network interface show -vserver Cluster
 
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
@@ -347,7 +346,7 @@ Cluster
 
 
 
-cs1# **show cdp neighbors**
+cs1# show cdp neighbors
 
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
@@ -364,7 +363,7 @@ newcs2(FDO296348FU)  Eth1/66        176    R S I s     N9K-C92300YC  Eth1/66
 Total entries displayed: 4
 
 
-cs2# **show cdp neighbors**
+cs2# show cdp neighbors
 
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
@@ -386,7 +385,7 @@ Total entries displayed: 4
 +
 [listing]
 ----
-(cs1) # show isdp neighbors
+(cs1)# show isdp neighbors
 Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
 S - Switch, H - Host, I - IGMP, r - Repeater
 Device ID    Intf    Holdtime    Capability    Platform    Port ID
@@ -413,8 +412,8 @@ cs1          0/56    179         R             BES-53248   0/56
 
 * 関連情報 *
 
-https://mysupport.netapp.com/["ネットアップサポートサイト"]
+https://mysupport.netapp.com/["ネットアップサポートサイト"^]
 
-https://hwu.netapp.com/["NetApp Hardware Universe の略"]
+https://hwu.netapp.com/["NetApp Hardware Universe の略"^]
 
-http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["『 Switch Setup and Configuration Guide for Broadcom Supported BES-53248 switches 』を参照してください"]
+http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["『 Switch Setup and Configuration Guide for Broadcom Supported BES-53248 switches 』を参照してください"^]

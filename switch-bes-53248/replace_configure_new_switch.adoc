@@ -26,7 +26,7 @@ ONTAP を実行しているシステムに BES-53248 クラスタスイッチを
 プラットフォームでサポートされている実際のクラスタポートについては、 Hardware Universe を参照してください。
 
 +
-https://hwu.netapp.com/Home/Index["NetApp Hardware Universe の略"]
+https://hwu.netapp.com/Home/Index["NetApp Hardware Universe の略"^]
 
 * ネットアップのスイッチでサポートされているスイッチ間リンク（ ISL ）は、ポート 0/55 と 0/56 です。
 * ネットアップのスイッチでサポートされているノード接続は、デフォルトのライセンスを使用したポート 0/1~0/16 です。

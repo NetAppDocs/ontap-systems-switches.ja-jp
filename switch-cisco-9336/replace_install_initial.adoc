@@ -12,9 +12,7 @@ summary: この手順を使用して、 Cisco Nexus 9336C-FX2 スイッチの初
 [role="lead"]
 この手順を使用して、 Cisco Nexus 9336C-FX2 スイッチの初期インストールを実行できます。
 
-使用しているスイッチに該当するネットアップ Cisco NX-OS ソフトウェアは、ネットアップサポートサイトからダウンロードできます http://mysupport.netapp.com/["mysupport.netapp.com"]
-
-http://mysupport.netapp.com/["mysupport.netapp.com"]
+使用しているスイッチに該当するネットアップ Cisco NX-OS ソフトウェアは、ネットアップサポートサイトからダウンロードできます http://mysupport.netapp.com/["mysupport.netapp.com"^]
 
 NX-OS は、 Cisco Systems が提供する Nexus シリーズイーサネットスイッチおよび MDS シリーズ Fibre Channel （ FC ）ストレージエリアネットワークスイッチのネットワークオペレーティングシステムです。
 
@@ -47,7 +45,7 @@ Disabling POAP.......Disabling POAP
 +
 [listing]
 ----
-Do you want to enforce secure password standard (yes/no) [y]: **y**
+Do you want to enforce secure password standard (yes/no) [y]: y
 ----
 . ユーザ admin のパスワードを入力して確定します。
 +
@@ -92,20 +90,20 @@ Configure read-write SNMP community string (yes/no) [n]:
 +
 [listing]
 ----
-Enter the switch name : **cs2**
+Enter the switch name : cs2
 ----
 . アウトオブバンド管理インターフェイスを設定します。
 +
 [listing]
 ----
 
-Continue with Out-of-band (mgmt0) management configuration? (yes/no) [y]: **y**
+Continue with Out-of-band (mgmt0) management configuration? (yes/no) [y]: y
 
 Mgmt0 IPv4 address : 172.22.133.216
 
 Mgmt0 IPv4 netmask : 255.255.224.0
 
-Configure the default gateway? (yes/no) [y]: **y**
+Configure the default gateway? (yes/no) [y]: y
 
 IPv4 address of the default gateway : 172.22.128.1
 ----
@@ -113,43 +111,43 @@ IPv4 address of the default gateway : 172.22.128.1
 +
 [listing]
 ----
-Configure advanced IP options? (yes/no) [n]: **n**
+Configure advanced IP options? (yes/no) [n]: n
 ----
 . Telnet サービスを設定します。
 +
 [listing]
 ----
-Enable the telnet service? (yes/no) [n]: **n**
+Enable the telnet service? (yes/no) [n]: n
 ----
 . SSH サービスと SSH キーを設定します。
 +
 [listing]
 ----
-Enable the ssh service? (yes/no) [y]: **y**
+Enable the ssh service? (yes/no) [y]: y
 
-       Type of ssh key you would like to generate (dsa/rsa) [rsa]: **rsa**
+       Type of ssh key you would like to generate (dsa/rsa) [rsa]: rsa
 
-       Number of rsa key bits <1024-2048> [1024]: **2048**
+       Number of rsa key bits <1024-2048> [1024]: 2048
 ----
 . その他の設定を行います。
 +
 [listing]
 ----
-Configure the ntp server? (yes/no) [n]: **n**
+Configure the ntp server? (yes/no) [n]: n
 
-  Configure default interface layer (L3/L2) [L2]: **L2**
+  Configure default interface layer (L3/L2) [L2]: L2
 
-  Configure default switchport interface state (shut/noshut) [noshut]: **noshut**
+  Configure default switchport interface state (shut/noshut) [noshut]: noshut
 
-  Configure CoPP system profile (strict/moderate/lenient/dense) [strict]: **strict**
+  Configure CoPP system profile (strict/moderate/lenient/dense) [strict]: strict
 ----
 . スイッチの情報を確認し、設定を保存します。
 +
 [listing]
 ----
-Would you like to edit the configuration? (yes/no) [n]: **n**
+Would you like to edit the configuration? (yes/no) [n]: n
 
-Use this configuration and save it? (yes/no) [y]: **y**
+Use this configuration and save it? (yes/no) [y]: y
 
 [########################################] 100%
 Copy complete, now saving to disk (please wait)...
@@ -159,35 +157,35 @@ Copy complete.
 +
 [listing]
 ----
-cluster1::*> **system switch ethernet log setup-password**
+cluster1::*> system switch ethernet log setup-password
 Enter the switch name: <return>
 The switch name entered is not recognized.
 Choose from the following list:
 cs1
 cs2
 
-cluster1::*> **system switch ethernet log setup-password**
+cluster1::*> system switch ethernet log setup-password
 
-Enter the switch name: **cs1**
+Enter the switch name: cs1
 RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] **y**
+Do you want to continue? {y|n}::[n] y
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> **system switch ethernet log setup-password**
+cluster1::*> system switch ethernet log setup-password
 
-Enter the switch name: **cs2**
+Enter the switch name: cs2
 RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] **y**
+Do you want to continue? {y|n}:: [n] y
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> **system  switch ethernet log enable-collection**
+cluster1::*> system  switch ethernet log enable-collection
 
 Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] **y**
+{y|n}: [n] y
 
 Enabling cluster switch log collection.
 
@@ -201,35 +199,35 @@ NOTE: これらのコマンドのいずれかでエラーが返される場合�
 +
 [listing]
 ----
-cluster1::*> **system cluster-switch log setup-password**
+cluster1::*> system cluster-switch log setup-password
 Enter the switch name: <return>
 The switch name entered is not recognized.
 Choose from the following list:
 cs1
 cs2
 
-cluster1::*> **system cluster-switch log setup-password**
+cluster1::*> system cluster-switch log setup-password
 
-Enter the switch name: **cs1**
+Enter the switch name: cs1
 RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] **y**
+Do you want to continue? {y|n}::[n] y
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> **system cluster-switch log setup-password**
+cluster1::*> system cluster-switch log setup-password
 
-Enter the switch name: **cs2**
+Enter the switch name: cs2
 RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] **y**
+Do you want to continue? {y|n}:: [n] y
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> **system cluster-switch log enable-collection**
+cluster1::*> system cluster-switch log enable-collection
 
 Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] **y**
+{y|n}: [n] y
 
 Enabling cluster switch log collection.
 

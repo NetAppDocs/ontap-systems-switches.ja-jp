@@ -14,11 +14,11 @@ summary: 2 ノードスイッチレスクラスタを使用している場合は
 
 ほとんどのシステムでは、各コントローラに 2 つの専用クラスタネットワークポートが必要です。
 
-の説明に従って、 BES-53248 クラスタスイッチがセットアップされていることを確認します http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["『 Switch Setup and Configuration Guide for Broadcom Supported BES-53248 switches 』を参照してください"] この移行プロセスを開始する前に
+の説明に従って、 BES-53248 クラスタスイッチがセットアップされていることを確認します http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["『 Switch Setup and Configuration Guide for Broadcom Supported BES-53248 switches 』を参照してください"^] この移行プロセスを開始する前に
 
 
 NOTE: 移行が完了したら、 BES-53248 クラスタスイッチのクラスタスイッチヘルスモニタ（ CSHM ）をサポートするために必要な構成ファイルのインストールが必要になる場合があります。
 
-を参照してください http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/GUID-211616A4-C962-464A-A70E-5E057D7B13E1.html["クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルのインストール"] 『 _Switch Setup and Configuration Guide for Broadcom-supported BES-53248 switch_guide 』を参照してください。
+を参照してください http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/GUID-211616A4-C962-464A-A70E-5E057D7B13E1.html["クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルのインストール"^] 『 _Switch Setup and Configuration Guide for Broadcom-supported BES-53248 switch_guide 』を参照してください。
 
-また、の「クラスタスイッチのログ収集機能の設定」も参照してください http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["『 Switch Setup and Configuration Guide for Broadcom Supported BES-53248 switches 』を参照してください"] スイッチ関連のログファイルの収集に使用されるクラスタ健常性スイッチのログ収集を有効にするために必要な手順については、を参照してください。
+また、の「クラスタスイッチのログ収集機能の設定」も参照してください http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["『 Switch Setup and Configuration Guide for Broadcom Supported BES-53248 switches 』を参照してください"^] スイッチ関連のログファイルの収集に使用されるクラスタ健常性スイッチのログ収集を有効にするために必要な手順については、を参照してください。

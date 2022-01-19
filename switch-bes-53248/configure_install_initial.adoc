@@ -12,7 +12,7 @@ summary: この手順を使用して、 BES-53248 クラスタスイッチの初
 [role="lead"]
 この手順を使用して、 BES-53248 クラスタスイッチの初期取り付けを実行できます。
 
-クラスタスイッチに適用可能な Broadcom EFOS ソフトウェアをからダウンロードできます https://www.broadcom.com/support/bes-switch["Broadcom Ethernet Switch のサポート"] サイト
+クラスタスイッチに適用可能な Broadcom EFOS ソフトウェアをからダウンロードできます https://www.broadcom.com/support/bes-switch["Broadcom Ethernet Switch のサポート"^] サイト
 
 EFOS は、データセンターアプリケーション向けにさまざまなイーサネットシステムおよび IP インフラシステムを開発するために必要な、高度なネットワーク機能とプロトコルの広範なソフトウェアセットです。EFOS ソフトウェアは、パケットの検査や分離を完全に行う必要がある最先端のアプリケーションを使用しているネットワーク組織のあらゆるデバイスに適したアーキテクチャです。
 
@@ -34,9 +34,9 @@ EFOS は、データセンターアプリケーション向けにさまざまな
 +
 [listing]
 ----
-User: **admin**
+User: admin
 Password:
-(Routing)> **enable**
+(Routing)> enable
 Password:
 (Routing) #
 ----
@@ -44,7 +44,7 @@ Password:
 +
 [listing]
 ----
-(Routing) # **hostname cs2**
+(Routing) # hostname cs2
 (cs2) #
 ----
 . 静的 IP アドレスを設定するには、例に示すように、「サービスポートプロトコル」、「ネットワークプロトコル」、および「サービスポート IP 」コマンドを使用します。
@@ -54,9 +54,9 @@ Password:
 +
 [listing]
 ----
-(cs2) # **serviceport protocol none**
-(cs2) # **network protocol none**
-(cs2) # **serviceport ip ipaddr netmask gateway**
+(cs2) # serviceport protocol none
+(cs2) # network protocol none
+(cs2) # serviceport ip ipaddr netmask gateway
 ----
 . 次のコマンドを使用して結果を確認します。
 +
@@ -68,7 +68,7 @@ Password:
 +
 [listing]
 ----
-(cs2) # **show serviceport**
+(cs2) # show serviceport
 Interface Status............................... Up
 IP Address..................................... 172.19.2.2
 Subnet Mask.................................... 255.255.255.0
@@ -136,7 +136,7 @@ No time source
 This operation may take a few minutes.
 Management interfaces will not be available during this time.
 
-Are you sure you want to save? (y/n) **y**
+Are you sure you want to save? (y/n) y
 
 Config file 'startup-config' created successfully .
 
