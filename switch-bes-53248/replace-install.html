@@ -766,6 +766,8 @@
 
 
 
+
+
           
         </li>
       </ul>
@@ -1222,6 +1224,8 @@
         リファレンス構成ファイル（ RCF ）のインストール
       </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/replace-9336c.html">
         Cisco Nexus 9336C-FX2 クラスタスイッチを交換します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/replace_9336c_storage_switch.html">
+        Cisco Nexus 9336C-FX2 ストレージスイッチを交換します
       </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/install-switch-and-passthrough-panel.html">
         Cisco Nexus 9336C-FX2 スイッチとパススルーパネルをネットアップキャビネットに設置します
       </a></li></ul></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-shared/index.html">
@@ -1376,7 +1380,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-01-17 16:37:24 +0000">01/17/2022</time>
+    <time datetime="2022-01-19 16:51:53 +0000">01/19/2022</time>
     
   
 
@@ -1386,6 +1390,14 @@
           alt="netapp-martyh"
           width="20" height="20"
           src="https://avatars.githubusercontent.com/u/66496079?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+  <a target="_blank" href="https://github.com/netapp-yvonneo">
+    <img  class="avatar avatar-small"
+          alt="netapp-yvonneo"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/75329224?v=4"
           style="border-radius: 50%;"/>
   </a>
   
@@ -1399,7 +1411,7 @@
 <p>この手順を使用して、 BES-53248 クラスタスイッチの初期取り付けを実行できます。</p>
 </div>
 <div class="paragraph">
-<p>クラスタスイッチに適用可能な Broadcom EFOS ソフトウェアをからダウンロードできます <a href="https://www.broadcom.com/support/bes-switch">"Broadcom Ethernet Switch のサポート"</a> サイト</p>
+<p>クラスタスイッチに適用可能な Broadcom EFOS ソフトウェアをからダウンロードできます <a href="https://www.broadcom.com/support/bes-switch" target="_blank" rel="noopener">"Broadcom Ethernet Switch のサポート"</a> サイト</p>
 </div>
 <div class="paragraph">
 <p>EFOS は、データセンターアプリケーション向けにさまざまなイーサネットシステムおよび IP インフラシステムを開発するために必要な、高度なネットワーク機能とプロトコルの広範なソフトウェアセットです。EFOS ソフトウェアは、パケットの検査や分離を完全に行う必要がある最先端のアプリケーションを使用しているネットワーク組織のあらゆるデバイスに適したアーキテクチャです。</p>
@@ -1442,9 +1454,9 @@
 <p>スイッチに admin としてログインし、パスワードの入力を求められたら Enter キーを押します。デフォルトのスイッチ名は routing です。プロンプトで 'enable' と入力しますこれにより、スイッチ設定の特権 EXEC モードにアクセスできます。</p>
 <div class="listingblock">
 <div class="content">
-<pre>User:**admin**
+<pre>User: admin
 Password:
-(Routing)&gt; **enable**
+(Routing)&gt; enable
 Password:
 (Routing) #</pre>
 </div>
@@ -1454,7 +1466,7 @@ Password:
 <p>スイッチ名を cs2 に変更します。</p>
 <div class="listingblock">
 <div class="content">
-<pre>(Routing) # **hostname cs2**
+<pre>(Routing) # hostname cs2
 (cs2) #</pre>
 </div>
 </div>
@@ -1466,9 +1478,9 @@ Password:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>(cs2) # **serviceport protocol none**
-(cs2) # **network protocol none**
-(cs2) # **serviceport ip ipaddr netmask gateway**</pre>
+<pre>(cs2) # serviceport protocol none
+(cs2) # network protocol none
+(cs2) # serviceport ip ipaddr netmask gateway</pre>
 </div>
 </div>
 </li>
@@ -1482,7 +1494,7 @@ Password:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>(cs2) # **show serviceport**
+<pre>(cs2) # show serviceport
 Interface Status............................... Up
 IP Address..................................... 172.19.2.2
 Subnet Mask.................................... 255.255.255.0
