@@ -1398,7 +1398,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-01-31 18:42:26 +0000">01/31/2022</time>
+    <time datetime="2022-02-04 13:21:21 +0000">02/04/2022</time>
     
   
 
@@ -1408,6 +1408,14 @@
           alt="netapp-martyh"
           width="20" height="20"
           src="https://avatars.githubusercontent.com/u/66496079?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+  <a target="_blank" href="https://github.com/netapp-aoife">
+    <img  class="avatar avatar-small"
+          alt="netapp-aoife"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/92876203?v=4"
           style="border-radius: 50%;"/>
   </a>
   
@@ -1425,9 +1433,340 @@
 </p>
 
 
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph lead">
-<p>RCF は、 BES-53248 クラスタスイッチを初めてセットアップしたあとと、新しいライセンスを適用したあとにインストールできます。古いバージョンから RCF をアップグレードする場合、ファイルは効果的にマージされ、ここで説明する手順を実行します。</p>
+<p>RCF は、 BES-53248 クラスタスイッチを初めてセットアップしたあとと、新しいライセンスを適用したあとにインストールできます。古いバージョンから RCF をアップグレードする場合は、 Broadcom スイッチの設定をリセットし、基本的な設定を行って RCF を再適用する必要があります。この処理は、 RCF をアップグレードまたは変更するたびに実行する必要があります。</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="broadcom-ip-スイッチを工場出荷時のデフォルトにリセットします">Broadcom IP スイッチを工場出荷時のデフォルトにリセットします</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>新しいバージョンのスイッチソフトウェアと RCF をインストールする前に、 Broadcom スイッチの設定を消去し、基本的な設定を完了する必要があります。</p>
+</div>
+<div class="ulist">
+<div class="title">このタスクについて</div>
+<ul>
+<li>
+<p>この手順は各クラスタスイッチで実行する必要があります。</p>
+</li>
+<li>
+<p>シリアルコンソールを使用してスイッチに接続する必要があります。</p>
+</li>
+<li>
+<p>このタスクでは、管理ネットワークの設定をリセットします。</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">手順</div>
+<ol class="arabic">
+<li>
+<p>昇格されたコマンドプロンプト (<code>#</code>):'enable' に変更します</p>
+<div class="listingblock">
+<div class="content">
+<pre>(cs2)&gt; enable
+(cs2) #</pre>
+</div>
+</div>
+</li>
+<li>
+<p>スタートアップコンフィギュレーションを消去し、バナーを削除します</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>スタートアップ設定を消去します。</p>
+<div class="paragraph">
+<p>*`erase startup-config *</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(cs2) #erase startup-config
+Are you sure you want to clear the configuration? (y/n) y
+(cs2) #</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>このコマンドでは、バナーは消去されません。</p>
+</div>
+</li>
+<li>
+<p>バナーを削除します。</p>
+<div class="paragraph">
+<p><strong><code>no set clibanner</code></strong></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(cs2) #configure
+(cs2)(Config) # no set clibanner
+(cs2)(Config) #</pre>
+</div>
+</div>
+</li>
+<li>
+<p>スイッチを再起動します <strong><code>(CS2)#reload</strong></code></p>
+<div class="listingblock">
+<div class="content">
+<pre>Are you sure you would like to reset the system? (y/n) y</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-switches/images/note.svg" alt="注記">
+</td>
+<td class="content">
+スイッチをリロードする前に、未保存または変更された設定を保存するかどうかを確認するメッセージが表示された場合は、 <strong>No</strong> を選択します。
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>スイッチがリロードされるまで待ってから、スイッチにログインします。</p>
+<div class="paragraph">
+<p>デフォルトのユーザは「 admin 」で、パスワードは設定されていません。次のようなプロンプトが表示されます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(Routing)&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p>管理者特権のコマンドプロンプトに切り替えます。</p>
+<div class="paragraph">
+<p>「 enable 」を選択します</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Routing)&gt; enable
+(Routing) #</pre>
+</div>
+</div>
+</li>
+<li>
+<p>サービスポートプロトコルを「 none 」に設定します。</p>
+<div class="paragraph">
+<p>「サービスポートプロトコルなし」</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(Routing) #serviceport protocol none
+Changing protocol mode will reset ip configuration.
+Are you sure you want to continue? (y/n) y
+
+(Routing) #</pre>
+</div>
+</div>
+</li>
+<li>
+<p>サービスポートに IP アドレスを割り当てます。</p>
+<div class="paragraph">
+<p>'erviceport IP_address<em>netmask</em> gateway_</p>
+</div>
+<div class="paragraph">
+<p>次の例では、サービスポートに IP アドレス「 10.10.10.10 」が割り当てられています。サブネットは「 255.255.255.0 」、ゲートウェイは「 10.10.10.1 」です。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(Routing) #serviceport ip 10.10.10.10 255.255.255.0 10.10.10.1</pre>
+</div>
+</div>
+</li>
+<li>
+<p>サービスポートが正しく設定されていることを確認します。</p>
+<div class="paragraph">
+<p>'How serviceport</p>
+</div>
+<div class="paragraph">
+<p>次の例は、ポートが稼働しており、正しいアドレスが割り当てられていることを示しています。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(Routing) #show serviceport
+
+Interface Status............................... Up
+IP Address..................................... 10.10.10.10
+Subnet Mask.................................... 255.255.255.0
+Default Gateway................................ 10.10.10.1
+IPv6 Administrative Mode....................... Enabled
+IPv6 Prefix is ................................ fe80::dac4:97ff:fe56:87d7/64
+IPv6 Default Router............................ fe80::222:bdff:fef8:19ff
+Configured IPv4 Protocol....................... None
+Configured IPv6 Protocol....................... None
+IPv6 AutoConfig Mode........................... Disabled
+Burned In MAC Address.......................... D8:C4:97:56:87:D7
+
+(Routing) #</pre>
+</div>
+</div>
+</li>
+<li>
+<p>必要に応じて、 SSH サーバを設定します。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-switches/images/note.svg" alt="注記">
+</td>
+<td class="content">
+RCF ファイルで Telnet プロトコルが無効になります。SSH サーバを設定しない場合は、シリアルポート接続を使用してブリッジにアクセスする必要があります。
+</td>
+</tr>
+</table>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>RSA キーを生成します。</p>
+<div class="listingblock">
+<div class="content">
+<pre>(Routing) #configure
+(Routing) (Config)#crypto key generate rsa</pre>
+</div>
+</div>
+</li>
+<li>
+<p>DSA キーの生成（オプション）</p>
+<div class="listingblock">
+<div class="content">
+<pre>(Routing) #configure
+(Routing) (Config)#crypto key generate dsa</pre>
+</div>
+</div>
+</li>
+<li>
+<p>FIPS 準拠バージョンの EFOS を使用している場合は、 ECDSA キーを生成します。次の例では、長さ 256 のキーを作成します。有効な値は、 256 、 384 、または 521 です。</p>
+<div class="listingblock">
+<div class="content">
+<pre>(Routing) #configure
+(Routing) (Config)#crypto key generate ecdsa 256</pre>
+</div>
+</div>
+</li>
+<li>
+<p>SSH サーバを有効にします。</p>
+<div class="paragraph">
+<p>必要に応じて、設定コンテキストを終了します。</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(Routing) (Config)#end
+(Routing) #ip ssh server enable</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-switches/images/note.svg" alt="注記">
+</td>
+<td class="content">
+キーがすでに存在する場合は、それらを上書きするように求められることがあります。
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>必要に応じて、ドメインとネームサーバを設定します。</p>
+<div class="paragraph">
+<p>「 configure 」を実行します</p>
+</div>
+<div class="paragraph">
+<p>次に 'ip domain' コマンドと 'ip name server' コマンドの例を示します</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(Routing) # configure
+(Routing) (Config)#ip domain name lab.netapp.com
+(Routing) (Config)#ip name server 10.99.99.1 10.99.99.2
+(Routing) (Config)#exit
+(Routing) (Config)#</pre>
+</div>
+</div>
+</li>
+<li>
+<p>必要に応じて、タイムゾーンと時刻の同期（ SNTP ）を設定します。</p>
+<div class="paragraph">
+<p>次に 'ntp' コマンドの例を示しますこの例では 'sntp サーバの IP アドレスと相対タイム・ゾーンを指定します</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(Routing) #
+(Routing) (Config)#sntp client mode unicast
+(Routing) (Config)#sntp server 10.99.99.5
+(Routing) (Config)#clock timezone -7
+(Routing) (Config)#exit
+(Routing) (Config)#</pre>
+</div>
+</div>
+</li>
+<li>
+<p>スイッチ名を設定します。</p>
+<div class="paragraph">
+<p>ホスト名 CS2</p>
+</div>
+<div class="paragraph">
+<p>スイッチのプロンプトに新しい名前が表示されます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(Routing) # hostname cs2
+
+(cs2) #</pre>
+</div>
+</div>
+</li>
+<li>
+<p>設定を保存します。</p>
+<div class="paragraph">
+<p>「メモリの書き込み」</p>
+</div>
+<div class="paragraph">
+<p>次の例のようなプロンプトと出力が表示されます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(cs2) #write memory
+
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+
+Are you sure you want to save? (y/n) y
+
+Config file 'startup-config' created successfully .
+
+
+Configuration Saved!
+
+(cs2) #</pre>
+</div>
+</div>
+</li>
+<li>
+<p>もう一方のクラスタスイッチで、上記の手順を繰り返します。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="リファレンス構成ファイル-rcf-のインストール">リファレンス構成ファイル（ RCF ）のインストール</h2>
+<div class="sectionbody">
 <div class="olist arabic">
 <div class="title">手順</div>
 <ol class="arabic">
@@ -1628,6 +1967,8 @@ System will now restart!</pre>
 </div>
 </li>
 </ol>
+</div>
+</div>
 </div>
 
     </article>
