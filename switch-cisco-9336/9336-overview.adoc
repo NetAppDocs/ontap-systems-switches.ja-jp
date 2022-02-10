@@ -110,6 +110,6 @@ Nexus 5596UP スイッチは、 1 つまたは 2 つの 16 ポート拡張モジ
 Nexus 5596T スイッチは、 FAS2520 のクラスタインターコネクトスイッチとしてのみサポートされており、無停止でハードウェアをアップグレードする場合に使用します。
 
 +
-http://support.netapp.com/info/communications/ECMP12454150.html["販売終了"] 詳細
+http://support.netapp.com/info/communications/ECMP12454150.html["販売終了"^] 詳細
 
 

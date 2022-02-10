@@ -1,0 +1,27 @@
+---
+permalink: switch-cisco-3232c/concept_replace_a_cisco_nexus_3232c_storage_switch.html 
+sidebar: sidebar 
+keywords: replace, cisco nexus 3232c, storage switches 
+summary: Cisco Nexus 3232C ストレージスイッチを交換する場合は、特定の設定情報、ポートの接続、およびケーブル接続要件に注意する必要があります。 
+---
+= Cisco Nexus 3232C ストレージスイッチを交換します
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 3232C ストレージスイッチを交換する場合は、特定の設定情報、ポートの接続、およびケーブル接続要件に注意する必要があります。
+
+Cisco Nexus ストレージスイッチに NX-OS ソフトウェアと RCF をインストールする前に、次の条件を満たしていることを確認する必要があります。
+
+* システムで Cisco Nexus 3232C ストレージスイッチをサポートできる必要があります。
+* サポートされている ONTAP 、 NX-OS 、および RCF のバージョンについては、 Cisco イーサネットスイッチのページにあるスイッチ互換性の表を参照してください。
++
+[NOTE]
+====
+RCF バージョンと NX-OS バージョンのコマンド構文には依存関係があることに注意してください。
+
+====
+* Cisco スイッチのアップグレードおよびダウングレード手順の詳細なドキュメントについては、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります。 http://www.cisco.com/en/US/products/ps9670/prod_installation_guides_list.html["Cisco Nexus 3000 シリーズスイッチ"^]
+* 該当する RCF をダウンロードしておく必要があります。
+

@@ -12,12 +12,13 @@ summary: この手順を使用して、 Cisco Nexus 9336C-FX2 スイッチの初
 [role="lead"]
 この手順を使用して、 Cisco Nexus 9336C-FX2 スイッチの初期インストールを実行できます。
 
-使用しているスイッチに該当するネットアップ Cisco NX-OS ソフトウェアは、ネットアップサポートサイトからダウンロードできます http://mysupport.netapp.com/["mysupport.netapp.com"^]
+使用しているスイッチに該当するネットアップ Cisco NX-OS ソフトウェアは、ネットアップサポートサイトからダウンロードできます http://mysupport.netapp.com/["mysupport.netapp.com"^]。
 
 NX-OS は、 Cisco Systems が提供する Nexus シリーズイーサネットスイッチおよび MDS シリーズ Fibre Channel （ FC ）ストレージエリアネットワークスイッチのネットワークオペレーティングシステムです。
 
-この手順には、スイッチを設置して稼働させるためのプロセスの概要が記載されています。
+この手順 には、スイッチを設置して稼働させるためのプロセスの概要が記載されています。
 
+.手順
 . シリアルポートを任意のホストまたはシリアルポートに接続します。
 . 管理ポート（スイッチのポートの反対側にある）を、 SFTP サーバが配置されているネットワークと同じネットワークに接続します。
 . コンソールで、ホスト側のシリアル設定を行います。
@@ -31,16 +32,14 @@ NX-OS は、 Cisco Systems が提供する Nexus シリーズイーサネット�
 
 . 初めてブートしたとき、または実行コンフィギュレーションを消去した後にリブートしたときに、 Nexus 9336C-FX2 スイッチはブートサイクルでループします。「 * yes * 」と入力してこのサイクルを中断し、 PowerOn Auto Provisioning を中止します。次に、システム管理者アカウントのセットアップが表示されます。
 +
-....
-$ VDC-1 %$ %POAP-2-POAP_INFO:   - Abort Power On Auto Provisioning [yes - continue with normal setup, skip - bypass password and basic configuration, no - continue with Power On Auto Provisioning] (yes/skip/no)[no]:
-**yes**
+[listing]
+----
+$ VDC-1 %$ %POAP-2-POAP_INFO:   - Abort Power On Auto Provisioning [yes - continue with normal setup, skip - bypass password and basic configuration, no - continue with Power On Auto Provisioning] (yes/skip/no)[no]: yes
 Disabling POAP.......Disabling POAP
 2019 Apr 10 00:36:17 switch %$ VDC-1 %$ poap: Rolling back, please wait... (This may take 5-15 minutes)
-....
-+
- ---- System Admin Account Setup ----
-+
- Do you want to enforce secure password standard (yes/no) [y]:
+
+---- System Admin Account Setup ----
+----
 . 「 * y * 」と入力して、セキュアなパスワード標準を適用します。
 +
 [listing]
@@ -125,9 +124,9 @@ Enable the telnet service? (yes/no) [n]: n
 ----
 Enable the ssh service? (yes/no) [y]: y
 
-       Type of ssh key you would like to generate (dsa/rsa) [rsa]: rsa
+Type of ssh key you would like to generate (dsa/rsa) [rsa]: rsa
 
-       Number of rsa key bits <1024-2048> [1024]: 2048
+Number of rsa key bits <1024-2048> [1024]: 2048
 ----
 . その他の設定を行います。
 +
@@ -153,7 +152,7 @@ Use this configuration and save it? (yes/no) [y]: y
 Copy complete, now saving to disk (please wait)...
 Copy complete.
 ----
-. ONTAP 9.8 以降では、「 system switch ethernet log setup -password 'system switch ethernet log enable -collection' 」コマンドを使用して、スイッチ関連のログファイルを収集するための Ethernet スイッチヘルスモニタログ収集機能を有効にします
+. ONTAP 9.8 以降では、「 system switch ethernet log setup-password 」および「 system switch ethernet log enable -collection 」コマンドを使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能をイネーブルにします
 +
 [listing]
 ----
@@ -195,7 +194,7 @@ cluster1::*>
 
 NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
 
-. ONTAP リリース 9.5P16 、 9.6P12 、および 9.7P10 以降のパッチリリースでは、次のコマンドを使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能を有効にします。「 system cluster-switch log setup -password 'System cluster-switch log enable-collection' 」
+. ONTAP リリース 9.5P16 、 9.6P12 、および 9.7P10 以降のパッチ・リリースでは、スイッチ関連のログ・ファイルを収集するために、イーサネットスイッチヘルス・モニタのログ収集機能をイネーブルにします。これには、「 system cluster-switch log setup-password 」および「 system cluster-switch log enable-collection 」の各コマンドを使用します
 +
 [listing]
 ----

@@ -1,0 +1,38 @@
+---
+permalink: switch-cisco-3232c/concept_migrate_from_a_two_node_switchless_cluster_to_a_cluster_with_cisco_nexus_3232c_cluster_switches.html 
+sidebar: sidebar 
+keywords: migrate, two-node cluster, switchless, cisco nexus 3232c 
+summary: 2 ノードスイッチレスクラスタを Cisco Nexus 3232C クラスタスイッチでクラスタに移行する場合は、特定の設定情報、ポート接続、およびケーブル接続要件に注意する必要があります。 
+---
+= 2 ノードスイッチレスクラスタから Cisco Nexus 3232C クラスタスイッチを使用したクラスタへの移行
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+2 ノードスイッチレスクラスタを Cisco Nexus 3232C クラスタスイッチでクラスタに移行する場合は、特定の設定情報、ポート接続、およびケーブル接続要件に注意する必要があります。
+
+この手順 でサポートされている ONTAP および NX-OS のバージョンについては、 _Cisco イーサネットスイッチ _ ページを参照してください。
+
+http://mysupport.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]
+
+移行プロセスを開始する前に、次の情報を確認しておく必要があります。
+
+* ノード接続に使用可能なポート
++
+クラスタスイッチは、 Inter-Switch Link （ ISL ；スイッチ間リンク）ポート e1/31~32 を使用します。
+
+* クラスタ接続用の適切なケーブル：
++
+** 10GbE クラスタ接続のノードには、ブレークアウト光ケーブルまたは QSFP / SFP+ 銅線ブレークアウトケーブルを備えた QSFP 光モジュールが必要です。
+** 40/100GbE クラスタ接続が確立されたノードでは、サポート対象の QSFP/QSFP28 光モジュール（ファイバケーブルまたは QSFP/QSFP28 銅線直接接続ケーブルを使用）が必要です。
+** クラスタスイッチには、適切な ISL ケーブル接続が必要です。 QSFP28 ファイバケーブルまたは銅線直接接続ケーブルが 2 本必要です。
+
+
++
+[NOTE]
+====
+Nexus3232C スイツチヲシヨウシタシステムノケエフルセツソクノシヨウサイノ _Nexus_ Hardware Universe を参照してください。
+
+====
+

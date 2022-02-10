@@ -1,0 +1,33 @@
+---
+section: switch-cisco-3132qv
+title: Cisco 32QV スイッチ
+entries:
+- title: Cisco Nexus 3132Q-V クラスタスイッチを使用した 2 ノードスイッチクラスタへの移行
+  url: "/switch-cisco-3132qv/concept_migrate_from_a_two_node_switchless_cluster_to_a_cluster_with_cisco_nexus_3232c_cluster_switches.html"
+  entries:
+  - title: Cisco Nexus 3132Q-V クラスタスイッチを使用する 2 ノードスイッチクラスタの移行方法
+    url: "/switch-cisco-3132qv/task_how_to_migrate_from_a_two_node_switchless_cluster_to_a_cluster_with_cisco_nexus_3132q_v_cluster_switches.html"
+- title: Cisco Nexus 3132Q-V クラスタスイッチとパススルーパネルをネットアップキャビネットに設置します
+  url: "/switch-cisco-3132qv/task_install_a_cisco_nexus_3232c_cluster_switch_and_pass_through_panel_in_a_netapp_cabinet.html"
+- title: Cisco Nexus 3132Q-V クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします
+  url: "/switch-cisco-3132qv/task_install_nx_os_software_and_rcfs_on_cisco_nexus_3132q_v_cluster_switches.html"
+  entries:
+  - title: NX-OS ソフトウェアをインストールします
+    url: "/switch-cisco-3132qv/task_install_the_nx_os_software_3132q_v.html"
+  - title: リファレンス構成ファイル（ RCF ）のインストール
+    url: "/switch-cisco-3132qv/task_install_the_reference_configuration_file_rcf_3132q_v.html"
+- title: Cisco Nexus 3132Q-V クラスタスイッチを交換します
+  url: "/switch-cisco-3132qv/concept_replace_cisco_nexus_3132q_v_cluster_switches.html"
+  entries:
+  - title: Cisco Nexus 3132Q-V クラスタスイッチの交換方法
+    url: "/switch-cisco-3132qv/task_how_to_replace_cisco_nexus_3132q_v_cluster_switches.html"
+- title: Cisco Nexus 5596 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換します
+  url: "/switch-cisco-3132qv/concept_migrate_from_a_cisco_5596_switch_to_a_cisco_nexus_3232c.html"
+  entries:
+  - title: Cisco Nexus 5596 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換する方法
+    url: "/switch-cisco-3132qv/task_how_to_migrate_from_a_cisco_nexus_5596_cluster_switch_to_a_cisco_nexus_3232c_cluster_switch.html"
+- title: CN1610 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換します
+  url: "/switch-cisco-3132qv/concept_migrate_a_cn1610_switch_to_a_cisco_nexus_3232c_cluster_switch.html"
+  entries:
+  - title: CN1610 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換する方法
+    url: "/switch-cisco-3132qv/task_how_to_replace_cn1610_cluster_switches_with_cisco_nexus_3232c_cluster_switches.html"

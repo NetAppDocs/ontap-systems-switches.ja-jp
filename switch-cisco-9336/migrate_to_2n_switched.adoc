@@ -26,7 +26,7 @@ Cisco Nexus 9336C-FX2 スイッチの構成：
 * クラスタスイッチへのコンソールアクセスが必要です。
 * Nexus 9336C-FX2 ノード間スイッチおよびスイッチ間接続には、 TwinAx ケーブルまたはファイバケーブルを使用する必要があります。
 +
-Hardware Universe * には、ケーブル接続の詳細が記載されています。
+。 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe - スイッチ"^] ケーブル接続の詳細については、を参照してください。
 
 +
 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe - スイッチ"^]
@@ -48,13 +48,12 @@ https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe - スイッチ"^]
 * 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
 * この手順で使用されるクラスタポートは e0a および e0b です。
 +
-Hardware Universe * には、プラットフォームの実際のクラスタ・ポートに関する最新情報が含まれています。
+。 https://hwu.netapp.com["Hardware Universe"^] プラットフォームの実際のクラスタポートに関する最新情報が含まれます。
 
-+
-https://hwu.netapp.com["Hardware Universe"^]
 
-+
-.. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= xh
+
+.手順
+. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= xh
 +
 x は、メンテナンス時間の長さ（時間単位）です。
 
@@ -62,11 +61,11 @@ x は、メンテナンス時間の長さ（時間単位）です。
 
 NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
-.. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 y 」と入力します。「 set -privilege advanced 」
+. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 y 」と入力します。「 set -privilege advanced 」
 +
 詳細プロンプト (`*>') が表示されます
 
-.. 新しいクラスタスイッチ cs1 と cs2 の両方で、すべてのノード側ポート（ ISL ポートではない）を無効にします。
+. 新しいクラスタスイッチ cs1 と cs2 の両方で、すべてのノード側ポート（ ISL ポートではない）を無効にします。
 +
 ISL ポートを無効にしないでください。
 
@@ -81,7 +80,7 @@ Enter configuration commands, one per line. End with CNTL/Z.
 cs1(config)# interface e/1-34
 cs1(config-if-range)# shutdown
 ----
-.. 2 つの 9336C-FX2 スイッチ cs1 と cs2 間の ISL 上の ISL ポートと物理ポートがポート 1/35 と 1/36 で動作していることを確認します。「 How port-channel summary
+. 2 つの 9336C-FX2 スイッチ cs1 と cs2 間の ISL 上の ISL ポートと物理ポートがポート 1/35 と 1/36 で動作していることを確認します。「 How port-channel summary
 +
 次の例は、スイッチ cs1 上の ISL ポートが up になっていることを示しています。
 
@@ -126,7 +125,7 @@ Group Port-       Type     Protocol  Member Ports
 --------------------------------------------------------------------------------
 1     Po1(SU)     Eth      LACP      Eth1/35(P)   Eth1/36(P)
 ----
-.. 隣接デバイスのリストを表示します。「 CDP 隣接デバイスの表示」
+. 隣接デバイスのリストを表示します。「 CDP 隣接デバイスの表示」
 +
 このコマンドは、システムに接続されているデバイスに関する情報を提供します。
 
@@ -168,7 +167,7 @@ cs1           )    Eth1/36        177    R S I s     N9K-C9336C    Eth1/36
 
 Total entries displayed: 2
 ----
-.. すべてのクラスタ・ポートが up であることを確認します。「 network port show -ipspace Cluster 」
+. すべてのクラスタ・ポートが up であることを確認します。「 network port show -ipspace Cluster 」
 +
 各ポートは 'Link' のために表示され 'Health Status' のために正常である必要があります
 
@@ -195,7 +194,7 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy
 
 4 entries were displayed.
 ----
-.. すべてのクラスタ LIF が up で動作していることを確認します。「 network interface show -vserver cluster 」
+. すべてのクラスタ LIF が up で動作していることを確認します。「 network interface show -vserver cluster 」
 +
 各クラスタ LIF には、「 Is Home 」には true が、「 TStatus Admin/Oper 」には up/up と表示されるはずです
 
@@ -214,7 +213,7 @@ Cluster
             node2_clus2  up/up    169.254.19.183/16  node2         e0b     true
 4 entries were displayed.
 ----
-.. すべてのクラスタ LIF で自動リバートが有効になっていることを確認します。「 network interface show -vserver Cluster -fields auto-revert
+. すべてのクラスタ LIF で自動リバートが有効になっていることを確認します。「 network interface show -vserver Cluster -fields auto-revert
 +
 [listing]
 ----
@@ -231,15 +230,15 @@ Cluster
 
 4 entries were displayed.
 ----
-.. ノード 1 のクラスタポート e0a からケーブルを外し、 9336C-FX2 スイッチでサポートされている適切なケーブル接続を使用して、クラスタスイッチ cs1 のポート 1 に e0a を接続します。
+. ノード 1 のクラスタポート e0a からケーブルを外し、 9336C-FX2 スイッチでサポートされている適切なケーブル接続を使用して、クラスタスイッチ cs1 のポート 1 に e0a を接続します。
 +
-Hardware Universe * には、ケーブル接続の詳細が記載されています。
+。 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe - スイッチ"] ケーブル接続の詳細については、を参照してください。
 
 +
 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe - スイッチ"^]
 
-.. ノード 2 のクラスタポート e0a からケーブルを外し、 9336C-FX2 スイッチでサポートされている適切なケーブル接続を使用して、クラスタスイッチ cs1 のポート 2 に e0a を接続します。
-.. クラスタスイッチ cs1 のすべてのノード側ポートを有効にします。
+. ノード 2 のクラスタポート e0a からケーブルを外し、 9336C-FX2 スイッチでサポートされている適切なケーブル接続を使用して、クラスタスイッチ cs1 のポート 2 に e0a を接続します。
+. クラスタスイッチ cs1 のすべてのノード側ポートを有効にします。
 +
 次の例は、スイッチ cs1 でポート 1/1~1/34 が有効になっていることを示しています。
 
@@ -251,7 +250,7 @@ Enter configuration commands, one per line. End with CNTL/Z.
 cs1(config)# interface e1/1-34
 cs1(config-if-range)# no shutdown
 ----
-.. すべてのクラスタ LIF が up であり、運用可能であり、 Is Home に true と表示されていることを確認します。「 network interface show -vserver Cluster
+. すべてのクラスタ LIF が up であり、運用可能であり、 Is Home に true と表示されていることを確認します。「 network interface show -vserver Cluster
 +
 次の例では、すべての LIF がノード 1 とノード 2 で up になっていて、 Is Home の結果が true であることを示します。
 
@@ -271,7 +270,7 @@ Cluster
 
 4 entries were displayed.
 ----
-.. クラスタ内のノードのステータスに関する情報を表示します
+. クラスタ内のノードのステータスに関する情報を表示します
 +
 次の例は、クラスタ内のノードの健全性と参加資格に関する情報を表示します。
 
@@ -287,9 +286,9 @@ node2                true    true          false
 
 2 entries were displayed.
 ----
-.. ノード 1 のクラスタポート e0b からケーブルを外し、 9336C-FX2 スイッチでサポートされている適切なケーブル接続を使用して、クラスタスイッチ cs2 のポート 1 に e0b を接続します。
-.. ノード 2 のクラスタポート e0b からケーブルを外し、 9336C-FX2 スイッチでサポートされている適切なケーブル接続に従って、クラスタスイッチ cs2 のポート 2 に接続します。
-.. クラスタスイッチ cs2 のすべてのノード側ポートを有効にします。
+. ノード 1 のクラスタポート e0b からケーブルを外し、 9336C-FX2 スイッチでサポートされている適切なケーブル接続を使用して、クラスタスイッチ cs2 のポート 1 に e0b を接続します。
+. ノード 2 のクラスタポート e0b からケーブルを外し、 9336C-FX2 スイッチでサポートされている適切なケーブル接続に従って、クラスタスイッチ cs2 のポート 2 に接続します。
+. クラスタスイッチ cs2 のすべてのノード側ポートを有効にします。
 +
 次の例は、スイッチ cs2 でポート 1/1~1/34 が有効になっていることを示しています。
 
@@ -301,7 +300,7 @@ Enter configuration commands, one per line. End with CNTL/Z.
 cs2(config)# interface e1/1-34
 cs2(config-if-range)# no shutdown
 ----
-.. すべてのクラスタ・ポートが up であることを確認します。「 network port show -ipspace Cluster 」
+. すべてのクラスタ・ポートが up であることを確認します。「 network port show -ipspace Cluster 」
 +
 次の例は、ノード 1 とノード 2 のすべてのクラスタポートが up になっていることを示しています。
 
@@ -328,7 +327,7 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 
 4 entries were displayed.
 ----
-.. すべてのインターフェイスに Is Home に true が表示されていることを確認します
+. すべてのインターフェイスに Is Home に true が表示されていることを確認します
 +
 
 NOTE: この処理が完了するまでに数分かかることがあります。
@@ -352,7 +351,7 @@ Cluster
 
 4 entries were displayed.
 ----
-.. 両方のノードがそれぞれ 1 つのスイッチに接続されていることを確認します。「 How CDP Neighbors' 」
+. 両方のノードがそれぞれ 1 つのスイッチに接続されていることを確認します。「 How CDP Neighbors' 」
 +
 次の例は、両方のスイッチの該当する結果を示しています。
 
@@ -389,7 +388,7 @@ cs1                Eth1/36        175    R S I s     N9K-C9336C    Eth1/36
 
 Total entries displayed: 4
 ----
-.. クラスタ内で検出されたネットワークデバイスに関する情報を表示します。「 network device-discovery show -protocol cdp
+. クラスタ内で検出されたネットワークデバイスに関する情報を表示します。「 network device-discovery show -protocol cdp
 +
 [listing]
 ----
@@ -406,7 +405,7 @@ node1      /cdp
 
 4 entries were displayed.
 ----
-.. 設定が無効になっていることを確認します。「 network options switchless-cluster show
+. 設定が無効になっていることを確認します。「 network options switchless-cluster show
 +
 
 NOTE: コマンドが完了するまでに数分かかることがあります。3 分間の有効期間が終了することを通知するアナウンスが表示されるまで待ちます。
@@ -420,7 +419,7 @@ NOTE: コマンドが完了するまでに数分かかることがあります�
 cluster1::*> network options switchless-cluster show
 Enable Switchless Cluster: false
 ----
-.. クラスタ内のノード・メンバーのステータスを確認します cluster show
+. クラスタ内のノード・メンバーのステータスを確認します cluster show
 +
 次の例は、クラスタ内のノードの健全性と参加資格に関する情報を表示します。
 
@@ -434,7 +433,7 @@ Node                 Health  Eligibility   Epsilon
 node1                true    true          false
 node2                true    true          false
 ----
-.. クラスタネットワークが完全に接続されていることを確認します。「 cluster ping-cluster -node node-name 」
+. クラスタネットワークが完全に接続されていることを確認します。「 cluster ping-cluster -node node-name 」
 +
 [listing]
 ----
@@ -463,8 +462,8 @@ RPC status:
 2 paths up, 0 paths down (tcp check)
 2 paths up, 0 paths down (udp check)
 ----
-.. 特権レベルを admin に戻します。 'et -privilege admin'
-.. ONTAP 9.8 以降では、「 system switch ethernet log setup -password 'system switch ethernet log enable -collection' 」コマンドを使用して、スイッチ関連のログファイルを収集するための Ethernet スイッチヘルスモニタログ収集機能を有効にします
+. 特権レベルを admin に戻します。 'et -privilege admin'
+. ONTAP 9.8 以降では、「 system switch ethernet log setup-password 」および「 system switch ethernet log enable -collection 」コマンドを使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能をイネーブルにします
 +
 [listing]
 ----
@@ -493,7 +492,7 @@ Do you want to continue? {y|n}:: [n] y
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> system  switch ethernet log enable-collection
+cluster1::*> system switch ethernet log enable-collection
 
 Do you want to enable cluster log collection for all nodes in the cluster?
 {y|n}: [n] y
@@ -506,7 +505,7 @@ cluster1::*>
 
 NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
 
-.. ONTAP リリース 9.5P16 、 9.6P12 、および 9.7P10 以降のパッチリリースでは、次のコマンドを使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能を有効にします。「 system cluster-switch log setup -password 'System cluster-switch log enable-collection' 」
+. ONTAP リリース 9.5P16 、 9.6P12 、および 9.7P10 以降のパッチ・リリースでは、スイッチ関連のログ・ファイルを収集するために、イーサネットスイッチヘルス・モニタのログ収集機能をイネーブルにします。これには、「 system cluster-switch log setup-password 」および「 system cluster-switch log enable-collection 」の各コマンドを使用します
 +
 [listing]
 ----
@@ -548,7 +547,5 @@ cluster1::*>
 
 NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
 
-.. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して再度有効にします。「 system node AutoSupport invoke -node * -type all -message MAINT=end
-
-
+. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して再度有効にします。「 system node AutoSupport invoke -node * -type all -message MAINT=end
 

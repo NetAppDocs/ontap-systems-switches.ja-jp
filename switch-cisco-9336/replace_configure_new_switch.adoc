@@ -23,10 +23,7 @@ ONTAP 9.8 以降を実行しているシステムに Nexus 9336C-FX2 スイッ�
 * 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
 * 各ノードのクラスタポートの名前は e0a および e0b です。
 +
-プラットフォームでサポートされている実際のクラスタポートについては、 Hardware Universe を参照してください。
-
-+
-https://hwu.netapp.com/Home/Index["NetApp Hardware Universe の略"^]
+を参照してください https://hwu.netapp.com["Hardware Universe"^] をクリックします。
 
 * Nexus 9336C-FX2 スイッチでサポートされるノード接続は、ポート 1/1~1/34 です。
 * Nexus 9336C-FX2 スイッチでサポートされるスイッチ間リンク（ ISL ）は、ポート 1/35 および 1/36 です。

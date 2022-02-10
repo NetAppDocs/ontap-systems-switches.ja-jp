@@ -37,8 +37,12 @@ ONTAP クラスタの古い Cisco クラスタスイッチは、無停止で Cis
 ** 次にノードと c2 の間のケーブルを c2 から外し、 cs2 に再接続します。
 ** その後、ノードと c1 間のケーブルを c1 から切断し、 cs1 に再接続します。
 ** その後、 c1 と cs1 の間の一時的な ISL を削除します。
-+
-... このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= xh
+
+
+
+
+.手順
+. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= xh
 +
 x は、メンテナンス時間の長さ（時間単位）です。
 
@@ -46,11 +50,11 @@ x は、メンテナンス時間の長さ（時間単位）です。
 
 NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
-... 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 * y * 」と入力します。「 set -privilege advanced 」
+. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 * y * 」と入力します。「 set -privilege advanced 」
 +
 advanced のプロンプト（ * > ）が表示されます。
 
-... すべてのクラスタ LIF で自動リバートが有効になっていることを確認します。「 network interface show -vserver Cluster -fields auto-revert
+. すべてのクラスタ LIF で自動リバートが有効になっていることを確認します。「 network interface show -vserver Cluster -fields auto-revert
 +
 [listing]
 ----
@@ -67,12 +71,12 @@ Cluster
 
 4 entries were displayed.
 ----
-... 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
+. 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
 +
 各ポートは 'Link' のために表示され 'Health Status' のために正常である必要があります
 
 +
-.... ネットワークポートの属性を表示します。「 network port show -ipspace Cluster 」
+.. ネットワークポートの属性を表示します。「 network port show -ipspace Cluster 」
 +
 [listing]
 ----
@@ -96,7 +100,7 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 
 4 entries were displayed.
 ----
-.... 論理インターフェイスとそのホームノードに関する情報を表示します。「 network interface show -vserver Cluster
+.. 論理インターフェイスとそのホームノードに関する情報を表示します。「 network interface show -vserver Cluster
 +
 それぞれの LIF で、「 Status Admin/Op' 」には up/up 、「 Is Home 」には true と表示される必要があります。
 
@@ -118,7 +122,7 @@ Cluster
 ----
 
 
-... 各ノードのクラスタポートは、（ノードから見て）次のように既存のクラスタスイッチに接続されています：「 network device-discovery show -protocol cdp
+. 各ノードのクラスタポートは、（ノードから見て）次のように既存のクラスタスイッチに接続されています：「 network device-discovery show -protocol cdp
 +
 [listing]
 ----
@@ -135,7 +139,7 @@ node1      /cdp
 
 4 entries were displayed.
 ----
-... クラスタポートとスイッチは、（スイッチから見て）次のように接続されています。 'How CDP neighbors'
+. クラスタポートとスイッチは、（スイッチから見て）次のように接続されています。 'How CDP neighbors'
 +
 [listing]
 ----
@@ -180,13 +184,12 @@ c1                    Eth1/46       175    S I s       N5K-C5596UP      Eth1/46
 c1                    Eth1/47       176    S I s       N5K-C5596UP      Eth1/47
 c1                    Eth1/48       176    S I s       N5K-C5596UP      Eth1/48
 ----
-... クラスタネットワークが完全に接続されていることを確認するには、「 cluster ping-cluster -node node-name 」コマンドを使用します
+. クラスタネットワークが完全に接続されていることを確認するには、「 cluster ping-cluster -node node-name 」コマンドを使用します
 +
 [listing]
 ----
-
-
 cluster1::*> cluster ping-cluster -node node2
+
 Host is node2
 Getting addresses from network interface table...
 Cluster node1_clus1 169.254.209.69 node1     e0a
@@ -211,7 +214,7 @@ RPC status:
 2 paths up, 0 paths down (tcp check)
 2 paths up, 0 paths down (udp check)
 ----
-... ポート e1/41~48 の cs1 上に、 c1 と cs1 の間の一時的な ISL を設定します。
+. ポート e1/41~48 の cs1 上に、 c1 と cs1 の間の一時的な ISL を設定します。
 +
 次の例は、新しい ISL を c1 と cs1 に設定する方法を示しています。
 
@@ -231,11 +234,11 @@ cs1(config-if-range)# exit
 cs1(config)# interface port-channel 101
 cs1(config-if)# switchport mode trunk
 cs1(config-if)# spanning-tree port type network
-cs1(config-if)# exi
+cs1(config-if)# exit
 cs1(config)# exit
 ----
-... c2 のポート e1/41~48 から ISL ケーブルを取り外し、 cs1 のポート e1/41~48 にケーブルを接続します。
-... c1 と cs1 を接続する ISL ポートとポートチャネルが動作していることを確認します。 'how port-channel summary
+. c2 のポート e1/41~48 から ISL ケーブルを取り外し、 cs1 のポート e1/41~48 にケーブルを接続します。
+. c1 と cs1 を接続する ISL ポートとポートチャネルが動作していることを確認します。 'how port-channel summary
 +
 次の例は、 Cisco の show port-channel summary コマンドを使用して、 ISL ポートが c1 および cs1 で動作していることを確認します。
 
@@ -278,9 +281,9 @@ Group Port-       Type     Protocol  Member Ports
                                      Eth1/44(P)   Eth1/45(P)   Eth1/46(P)
                                      Eth1/47(P)   Eth1/48(P)
 ----
-... ノード 1 について、 c2 の e1/1 からケーブルを外し、 Nexus 9336C-FX2 でサポートされている適切なケーブルを使用して cs2 の e1/1 に接続します。
-... ノード 2 について、 c2 の e1/2 からケーブルを外し、 Nexus 9336C-FX2 でサポートされている適切なケーブルを使用して cs2 の e1/2 に接続します。
-... これで、各ノードのクラスタポートは、ノードから見て次のようにクラスタスイッチに接続されました。「 network device-discovery show -protocol cdp
+. ノード 1 について、 c2 の e1/1 からケーブルを外し、 Nexus 9336C-FX2 でサポートされている適切なケーブルを使用して cs2 の e1/1 に接続します。
+. ノード 2 について、 c2 の e1/2 からケーブルを外し、 Nexus 9336C-FX2 でサポートされている適切なケーブルを使用して cs2 の e1/2 に接続します。
+. これで、各ノードのクラスタポートは、ノードから見て次のようにクラスタスイッチに接続されました。「 network device-discovery show -protocol cdp
 +
 [listing]
 ----
@@ -298,9 +301,9 @@ node1      /cdp
 
 4 entries were displayed.
 ----
-... ノード 1 について、 c1 の E1/1 からケーブルを外し、 Nexus 9336C-FX2 でサポートされている適切なケーブルを使用して、 cs1 の E1/1 にケーブルを接続します。
-... ノード 2 について、 c1 の e1/2 からケーブルを外し、 Nexus 9336C-FX2 でサポートされている適切なケーブルを使用して、 cs1 の e1/2 にケーブルを接続します。
-... これで、各ノードのクラスタポートは、ノードから見て次のようにクラスタスイッチに接続されました。「 network device-discovery show -protocol cdp
+. ノード 1 について、 c1 の E1/1 からケーブルを外し、 Nexus 9336C-FX2 でサポートされている適切なケーブルを使用して、 cs1 の E1/1 にケーブルを接続します。
+. ノード 2 について、 c1 の e1/2 からケーブルを外し、 Nexus 9336C-FX2 でサポートされている適切なケーブルを使用して、 cs1 の e1/2 にケーブルを接続します。
+. これで、各ノードのクラスタポートは、ノードから見て次のようにクラスタスイッチに接続されました。「 network device-discovery show -protocol cdp
 +
 [listing]
 ----
@@ -316,7 +319,7 @@ node1      /cdp
             e0b    cs2                       0/1               N9K-C9336C
 4 entries were displayed.
 ----
-... cs1 と c1 間の一時的な ISL を削除します。
+. cs1 と c1 間の一時的な ISL を削除します。
 +
 [listing]
 ----
@@ -331,7 +334,7 @@ cs1(config-if-range)# spanning-tree bpduguard enable
 cs1(config-if-range)# exit
 cs1(config)# exit
 ----
-... クラスタの最後の設定を確認します「 network port show -ipspace Cluster 」
+. クラスタの最後の設定を確認します「 network port show -ipspace Cluster 」
 +
 各ポートは 'Link' のために表示され 'Health Status' のために正常である必要があります
 
@@ -386,8 +389,14 @@ node1      /cdp
             e0b    cs2                       0/1               N9K-C9336C
 
 4 entries were displayed.
+----
+. 両方のノードがそれぞれ 1 つのスイッチに接続されていることを確認します。「 How CDP Neighbors' 」
++
+次の例は、両方のスイッチの該当する結果を示しています。
 
-
++
+[listing]
+----
 cs1# show cdp neighbors
 
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
@@ -417,7 +426,7 @@ cs1                Eth1/36        179    R S I s     N9K-C9336C    Eth1/36
 
 Total entries displayed: 4
 ----
-... クラスタネットワークが完全に接続されていることを確認します。「 cluster ping-cluster -node node-name 」
+. クラスタネットワークが完全に接続されていることを確認します。「 cluster ping-cluster -node node-name 」
 +
 [listing]
 ----
@@ -427,7 +436,7 @@ Warning: These advanced commands are potentially dangerous; use them only when
          directed to do so by NetApp personnel.
 Do you want to continue? {y|n}: y
 
-cluster1::*> **cluster ping-cluster -node node2**
+cluster1::*> cluster ping-cluster -node node2
 Host is node2
 Getting addresses from network interface table...
 Cluster node1_clus1 169.254.209.69 node1     e0a
@@ -456,7 +465,7 @@ RPC status:
 cluster1::*> set -privilege admin
 cluster1::*>
 ----
-... ONTAP 9.8 以降では、「 system switch ethernet log setup -password 'system switch ethernet log enable -collection' 」コマンドを使用して、スイッチ関連のログファイルを収集するための Ethernet スイッチヘルスモニタログ収集機能を有効にします
+. ONTAP 9.8 以降では、 2 つのコマンド「 system switch ethernet log setup-password 」および「 system switch ethernet log enable-collection 」を使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能をイネーブルにします
 +
 [listing]
 ----
@@ -498,7 +507,7 @@ cluster1::*>
 
 NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
 
-... ONTAP リリース 9.5P16 、 9.6P12 、および 9.7P10 以降のパッチリリースでは、次のコマンドを使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能をイネーブルにします。「 system cluster-switch log setup -password system cluster-switch log enable -collection
+. ONTAP リリース 9.5P16 、 9.6P12 、および 9.7P10 以降のパッチ・リリースでは、スイッチ関連のログ・ファイルを収集するために、イーサネットスイッチヘルス・モニタのログ収集機能をイネーブルにします。これには、「 system cluster-switch log setup-password 」および「 system cluster-switch log enable-collection 」の各コマンドを使用します
 +
 [listing]
 ----
@@ -540,9 +549,5 @@ cluster1::*>
 
 NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
 
-... ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して再度有効にします。「 system node AutoSupport invoke -node * -type all -message MAINT=end
-
-
-
-
+. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して再度有効にします。「 system node AutoSupport invoke -node * -type all -message MAINT=end
 

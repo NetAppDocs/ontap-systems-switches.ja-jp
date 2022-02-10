@@ -1,0 +1,11 @@
+---
+permalink: switch-cisco-3232c/index.html 
+sidebar: sidebar 
+keywords: migrate, cn1610, switch, cisco nexus, 3232c 
+summary: CN1610 スイッチから Cisco Nexus 3232C スイッチへの移行 
+---
+= CN1610 スイッチから Cisco Nexus 3232C スイッチへの移行
+:icons: font
+:imagesdir: ../media/
+
+

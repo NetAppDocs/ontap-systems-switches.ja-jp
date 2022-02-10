@@ -1,0 +1,15 @@
+---
+permalink: switch-cisco-1610/switch-cli-command-reference-version-12xx-linkout.html 
+sidebar: sidebar 
+keywords: cn1610 network, switch cli, command reference, version 1.2.x.x 
+summary: このマニュアルでは、 CN1610 ソフトウェアの設定に使用するコマンドラインインターフェイス（ CLI ）のコマンドについて説明します。 
+---
+= CN1610 ネットワークスイッチの CLI コマンドリファレンス - バージョン 1.2.x.x
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+このマニュアルでは、 CN1610 ソフトウェアの設定に使用するコマンドラインインターフェイス（ CLI ）のコマンドについて説明します。
+
+https://library.netapp.com/ecm/ecm_download_file/ECMP1117863["コマンドリファレンス"^]

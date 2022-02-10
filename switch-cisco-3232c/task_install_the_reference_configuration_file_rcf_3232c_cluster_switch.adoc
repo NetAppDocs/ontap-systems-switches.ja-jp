@@ -1,8 +1,8 @@
 ---
-permalink: switch-cisco-9336/replace-install-rcf.html 
+permalink: switch-cisco-3232c/task_install_the_reference_configuration_file_rcf_3232c_cluster_switch.html 
 sidebar: sidebar 
-keywords: install rcf,replace rcf 
-summary: RCF は、 Nexus 9336C-FX2 スイッチを初めてセットアップしたあとにインストールできます。また、この手順を使用して RCF のバージョンをアップグレードすることもできます。 
+keywords: install, rcf 
+summary: RCF は、 Nexus 3232C スイッチを初めてセットアップしたあとにインストールできます。この手順 を使用して、 RCF のバージョンをアップグレードすることもできます。 
 ---
 = リファレンス構成ファイル（ RCF ）のインストール
 :icons: font
@@ -10,20 +10,29 @@ summary: RCF は、 Nexus 9336C-FX2 スイッチを初めてセットアップ�
 
 
 [role="lead"]
-RCF は、 Nexus 9336C-FX2 スイッチを初めてセットアップしたあとにインストールできます。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
+RCF は、 Nexus 3232C スイッチを初めてセットアップしたあとにインストールできます。この手順 を使用して、 RCF のバージョンをアップグレードすることもできます。
+
+
+
+== このタスクについて
 
 この手順の例では、スイッチとノードで次の命名法を使用しています。
 
-* 2 つの Cisco スイッチの名前は cs1 と cs2 です。
-* ノード名は cluster1-01 、 cluster1-02 、 cluster1-02 、および cluster1-02 です。
-* クラスタ LIF の名前は、 cluster1-01 _ clus1 、 cluster1-01 _ clus2 、 cluster1-02 _ clus1 、 cluster1-02 _ clus2 、 cluster1-03_clus1 です。 cluster1-03_clus2 、 cluster1-04_clus1 、および cluster1-04_clus2 。
+* 2 つの Cisco スイッチの名前は 'CS1' および CS2' です
+* ノード名は「 cluster1-01 」、「 cluster1-02 」、「 cluster1-02 」、「 cluster1-02 」、および「 cluster1-02 」です。
+* クラスタ LIF の名前は、「 cluster1-01 _ clus1 」、「 cluster1-01 _ clus2 」、「 cluster1-02 _ clus1 」、「 cluster1-02 _ clus2 」、「 cluster1-03_clus1 」です。 「 cluster1-03_clus2` 」、「 cluster1-02 」、「 cluster1-04_clus1 」、「 cluster1-04_clus2 」。
 * 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
 
 
+[NOTE]
+====
+手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
 
-NOTE: 手順では、 ONTAP コマンドと Cisco Nexus 9000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
+====
 
-.手順
+
+== 手順
+
 . クラスタスイッチに接続されている各ノードのクラスタポートを表示します。「 network device-discovery show
 +
 [listing]
@@ -33,17 +42,17 @@ Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  --------
 cluster1-01/cdp
-            e0a    cs1                       Ethernet1/7       N9K-C9336C
-            e0d    cs2                       Ethernet1/7       N9K-C9336C
+            e0a    cs1                       Ethernet1/7       N3K-C3232C
+            e0d    cs2                       Ethernet1/7       N3K-C3232C
 cluster1-02/cdp
-            e0a    cs1                       Ethernet1/8       N9K-C9336C
-            e0d    cs2                       Ethernet1/8       N9K-C9336C
+            e0a    cs1                       Ethernet1/8       N3K-C3232C
+            e0d    cs2                       Ethernet1/8       N3K-C3232C
 cluster1-03/cdp
-            e0a    cs1                       Ethernet1/1/1     N9K-C9336C
-            e0b    cs2                       Ethernet1/1/1     N9K-C9336C
+            e0a    cs1                       Ethernet1/1/1     N3K-C3232C
+            e0b    cs2                       Ethernet1/1/1     N3K-C3232C
 cluster1-04/cdp
-            e0a    cs1                       Ethernet1/1/2     N9K-C9336C
-            e0b    cs2                       Ethernet1/1/2     N9K-C9336C
+            e0a    cs1                       Ethernet1/1/2     N3K-C3232C
+            e0b    cs2                       Ethernet1/1/2     N3K-C3232C
 cluster1::*>
 ----
 . 各クラスタポートの管理ステータスと動作ステータスを確認します。
@@ -115,23 +124,24 @@ cluster1::*>
 ----
 cluster1::*> system cluster-switch show -is-monitoring-enabled-operational true
 Switch                      Type               Address          Model
---------------------------- ------------------ ---------------- -----
-cs1                         cluster-network    10.233.205.90    N9K-C9336C
-     Serial Number: FOCXXXXXXGD
+--------------------------- ------------------ ---------------- ---------------
+cs1                         cluster-network    10.233.205.92    NX3232C
+     Serial Number: FOXXXXXXXGS
       Is Monitored: true
             Reason: None
   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
+                    9.3(4)
     Version Source: CDP
 
-cs2                         cluster-network    10.233.205.91    N9K-C9336C
-     Serial Number: FOCXXXXXXGS
+cs2                         cluster-network    10.233.205.93    NX3232C
+     Serial Number: FOXXXXXXXGD
       Is Monitored: true
             Reason: None
   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
+                    9.3(4)
     Version Source: CDP
-cluster1::*>
+
+2 entries were displayed.
 ----
 
 
@@ -139,7 +149,8 @@ cluster1::*>
 +
 [listing]
 ----
-cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert false
+cluster1::*> network interface modify -vserver Cluster -lif \* -auto-revert false
+
 ----
 . クラスタスイッチ cs2 で、ノードのクラスタポートに接続されているポートをシャットダウンします。
 +
@@ -148,7 +159,7 @@ cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert false
 cs2(config)# interface eth1/1/1-2,eth1/7-8
 cs2(config-if-range)# shutdown
 ----
-. クラスタポートがクラスタスイッチ cs1 でホストされているポートに移行されていることを確認します。この処理には数秒かかることがあります。「 network interface show -role cluster 」のように表示されます
+. クラスタポートがクラスタスイッチ cs1 でホストされているポートに移行されていることを確認します。これには数秒かかることがあります。「 network interface show -role cluster 」のように表示されます
 +
 [listing]
 ----
@@ -198,7 +209,7 @@ cs2#
 .. スイッチの基本設定を実行します。
 
 
-. FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+. FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
 +
 この例は、 TFTP を使用して、スイッチ cs2 のブートフラッシュに RCF をコピーする方法を示しています。
 
@@ -206,7 +217,7 @@ cs2#
 [listing]
 ----
 cs2# copy tftp: bootflash: vrf management
-Enter source filename: Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt
+Enter source filename: Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt
 Enter hostname for the tftp server: 172.22.201.50
 Trying to connect to tftp server......Connection to Server Established.
 TFTP get operation was successful
@@ -214,17 +225,17 @@ Copy complete, now saving to disk (please wait)...
 ----
 . ブートフラッシュに前にダウンロードした RCF を適用します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
 
 +
-この例は、スイッチ cs2 にインストールされている RCF ファイル「 Nexus_9336C_RCF_v1.6 -Cluster-HA-Breakout .txt 」を示しています。
+次の例は、スイッチ cs2 に RCF ファイル「 Nexus_32323_RCF v1.6 -Cluster-HA-Breakout .txt 」をインストールする方法を示しています。
 
 +
 [listing]
 ----
-cs2# copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
+cs2# copy Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
 ----
-. 「 show banner motd 」コマンドのバナー出力を確認します。スイッチの設定と動作を適切に行うには、次の手順を参照して実行する必要があります。
+. 「 show banner motd 」コマンドのバナー出力を確認します。スイッチの設定と操作を適切に行うには、「重要な注意事項」に記載されている手順をよく読んで実行する必要があります。
 +
 [listing]
 ----
@@ -233,33 +244,40 @@ cs2# show banner motd
 ******************************************************************************
 * NetApp Reference Configuration File (RCF)
 *
-* Switch   : Nexus N9K-C9336C-FX2
-* Filename : Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt
-* Date     : 10-23-2020
+* Switch   : Cisco Nexus 3232C
+* Filename : Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt
+* Date     : Oct-20-2020
 * Version  : v1.6
 *
-* Port Usage:
-* Ports  1- 3: Breakout mode (4x10G) Intra-Cluster Ports, int e1/1/1-4, e1/2/1-4
-, e1/3/1-4
-* Ports  4- 6: Breakout mode (4x25G) Intra-Cluster/HA Ports, int e1/4/1-4, e1/5/
-1-4, e1/6/1-4
-* Ports  7-34: 40/100GbE Intra-Cluster/HA Ports, int e1/7-34
-* Ports 35-36: Intra-Cluster ISL Ports, int e1/35-36
+* Port Usage : Breakout configuration
+* Ports  1- 3: Breakout mode (4x10GbE) Intra-Cluster Ports, int e1/1/1-4,
+* e1/2/1-4, e1/3/1-4
+* Ports  4- 6: Breakout mode (4x25GbE) Intra-Cluster/HA Ports, int e1/4/1-4,
+* e1/5/1-4, e1/6/1-4
+* Ports  7-30: 40/100GbE Intra-Cluster/HA Ports, int e1/7-30
+* Ports 31-32: Intra-Cluster ISL Ports, int e1/31-32
+* Ports 33-34: 10GbE Intra-Cluster 10GbE Ports, int e1/33-34
 *
-* Dynamic breakout commands:
-* 10G: interface breakout module 1 port <range> map 10g-4x
-* 25G: interface breakout module 1 port <range> map 25g-4x
+* IMPORTANT NOTES
+* - Load Nexus_3232C_RCF_v1.6-Cluster-HA.txt for non breakout config
 *
-* Undo breakout commands and return interfaces to 40/100G configuration in confi
-g mode:
-* no interface breakout module 1 port <range> map 10g-4x
-* no interface breakout module 1 port <range> map 25g-4x
-* interface Ethernet <interfaces taken out of breakout mode>
-* inherit port-profile 40-100G
-* priority-flow-control mode auto
-* service-policy input HA
-* exit
+* - This RCF utilizes QoS and requires TCAM re-configuration, requiring RCF
+*   to be loaded twice with the Cluster Switch rebooted in between.
 *
+* - Perform the following 4 steps to ensure proper RCF installation:
+*
+*   (1) Apply RCF first time, expect following messages:
+*       - Please save config and reload the system...
+*       - Edge port type (portfast) should only be enabled on ports...
+*       - TCAM region is not configured for feature QoS class IPv4 ingress...
+*
+*   (2) Save running-configuration and reboot Cluster Switch
+*
+*   (3) After reboot, apply same RCF second time and expect following messages:
+*       - % Invalid command at '^' marker
+*       - Syntax error while parsing...
+*
+*   (4) Save running-configuration again
 ******************************************************************************
 ----
 . RCF ファイルが正しい新しいバージョンであることを確認します。 'how running-config
@@ -274,25 +292,25 @@ g mode:
 
 . RCF のバージョンとスイッチの設定が正しいことを確認したら、 running-config ファイルを startup-config ファイルにコピーします。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
 
 +
 [listing]
 ----
 cs2# copy running-config startup-config \[\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\] 100% Copy complete
 ----
-. スイッチ cs2 をリブートします。スイッチの再起動中にノードで報告された「クラスタポートがダウンしている」イベントは無視してかまいません。
+. スイッチ cs2 をリブートします。スイッチのリブート中にノードに対して報告された「クラスタポートが停止している」イベントは無視してかまいません。
 +
 [listing]
 ----
 cs2# reload
-This command will reboot the system. (y/n)? [n] y
+This command will reboot the system. (y/n)?  [n] y
 ----
 . 同じ RCF を適用し、実行中の設定をもう一度保存します。
 +
 [listing]
 ----
-cs2# copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
+cs2# copy Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
 cs2# copy running-config startup-config [########################################] 100% Copy complete
 ----
 . クラスタのクラスタポートの健常性を確認します。
@@ -345,52 +363,52 @@ Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------- --------
 cluster1-01/cdp
-            e0a    cs1                       Ethernet1/7       N9K-C9336C
-            e0d    cs2                       Ethernet1/7       N9K-C9336C
+            e0a    cs1                       Ethernet1/7       N3K-C3232C
+            e0d    cs2                       Ethernet1/7       N3K-C3232C
 cluster01-2/cdp
-            e0a    cs1                       Ethernet1/8       N9K-C9336C
-            e0d    cs2                       Ethernet1/8       N9K-C9336C
+            e0a    cs1                       Ethernet1/8       N3K-C3232C
+            e0d    cs2                       Ethernet1/8       N3K-C3232C
 cluster01-3/cdp
-            e0a    cs1                       Ethernet1/1/1     N9K-C9336C
-            e0b    cs2                       Ethernet1/1/1     N9K-C9336C
+            e0a    cs1                       Ethernet1/1/1     N3K-C3232C
+            e0b    cs2                       Ethernet1/1/1     N3K-C3232C
 cluster1-04/cdp
-            e0a    cs1                       Ethernet1/1/2     N9K-C9336C
-            e0b    cs2                       Ethernet1/1/2     N9K-C9336C
+            e0a    cs1                       Ethernet1/1/2     N3K-C3232C
+            e0b    cs2                       Ethernet1/1/2     N3K-C3232C
 
 cluster1::*> system cluster-switch show -is-monitoring-enabled-operational true
 Switch                      Type               Address          Model
 --------------------------- ------------------ ---------------- -----
-cs1                         cluster-network    10.233.205.90    NX9-C9336C
-     Serial Number: FOCXXXXXXGD
+cs1                         cluster-network    10.233.205.90    N3K-C3232C
+     Serial Number: FOXXXXXXXGD
       Is Monitored: true
             Reason: None
   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
+                    9.3(4)
     Version Source: CDP
 
-cs2                         cluster-network    10.233.205.91    NX9-C9336C
-     Serial Number: FOCXXXXXXGS
+cs2                         cluster-network    10.233.205.91    N3K-C3232C
+     Serial Number: FOXXXXXXXGS
       Is Monitored: true
             Reason: None
   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
+                    9.3(4)
     Version Source: CDP
 
 2 entries were displayed.
 ----
-+
-
-NOTE: スイッチにロードした RCF バージョンによっては、 cs1 スイッチコンソールで次の出力が表示されることがあります。
-
 
 
 +
-[listing]
-----
+[NOTE]
+====
+スイッチにロードした RCF バージョンによっては、 cs1 スイッチコンソールで次の出力が表示されることがあります
+
+....
 2020 Nov 17 16:07:18 cs1 %$ VDC-1 %$ %STP-2-UNBLOCK_CONSIST_PORT: Unblocking port port-channel1 on VLAN0092. Port consistency restored.
 2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_PEER: Blocking port-channel1 on VLAN0001. Inconsistent peer vlan.
 2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL: Blocking port-channel1 on VLAN0092. Inconsistent local vlan.
-----
+....
+====
 . クラスタスイッチ cs1 で、ノードのクラスタポートに接続されているポートをシャットダウンします。
 +
 次の例では、手順 1 の出力例を使用しています。
@@ -440,14 +458,14 @@ cluster1::*>
 +
 [listing]
 ----
-cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert True
+cluster1::*> network interface modify -vserver Cluster -lif \* -auto-revert True
 ----
-. スイッチ cs1 をリブートします。これにより、クラスタ LIF がホームポートにリバートされます。スイッチの再起動中にノードで報告された「クラスタポートがダウンしている」イベントは無視してかまいません。
+. スイッチ cs1 をリブートします。これにより、クラスタ LIF がホームポートにリバートされます。スイッチのリブート中にノードに対して報告された「クラスタポートが停止している」イベントは無視してかまいません。
 +
 [listing]
 ----
 cs1# reload
-This command will reboot the system. (y/n)? [n] y
+This command will reboot the system. (y/n)?  [n] y
 ----
 . クラスタポートに接続されているスイッチポートが動作していることを確認します。
 +
@@ -463,7 +481,7 @@ Eth1/8        1       eth  trunk  up      none                   100G(D) --
 .
 .
 ----
-. CS1 と CS2 の間の ISL が機能していることを確認します「ポートチャネルの概要
+. CS1 と CS2 の間の ISL が機能していることを確認します show port-channel summary
 +
 [listing]
 ----
@@ -477,16 +495,17 @@ Flags:  D - Down        P - Up in port-channel (members)
         p - Up in delay-lacp mode (member)
         M - Not in use. Min-links not met
 --------------------------------------------------------------------------------
-Group Port-       Type     Protocol  Member Ports      Channel
+Group Port-       Type     Protocol  Member Ports
+      Channel
 --------------------------------------------------------------------------------
-1     Po1(SU)     Eth      LACP      Eth1/35(P)        Eth1/36(P)
+1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
 cs1#
 ----
 . クラスタ LIF がホームポートにリバートされたことを確認します。「 network interface show -role cluster 」
 +
 [listing]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> **network interface show -role cluster**
             Logical            Status     Network            Current             Current Is
 Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
 ----------- ------------------ ---------- ------------------ ------------------- ------- ----

@@ -1,0 +1,551 @@
+---
+permalink: switch-cisco-1610/task_install_fastpath_software_and_rcf_files_on_netapp_cluster_switches.html 
+sidebar: sidebar 
+keywords: fastpath, software, install, netapp cluster switches, rcfs, ontap 
+summary: インストール手順は、 NetApp CN1601 管理スイッチと、 ONTAP 8.3.1 以降を実行する CN1610 クラスタスイッチのどちらについても同じです。ただし、この 2 つのモデルには、異なるソフトウェアと RCF が必要です。 
+---
+= ONTAP 8.3.1 以降を実行しているネットアップクラスタスイッチに FastPath ソフトウェアと RCF をインストールします
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+インストール手順は、 NetApp CN1601 管理スイッチと、 ONTAP 8.3.1 以降を実行する CN1610 クラスタスイッチのどちらについても同じです。ただし、この 2 つのモデルには、異なるソフトウェアと RCF が必要です。
+
+
+
+== 必要なもの
+
+* クラスタが完全に機能している必要があります。
+* クラスタ NIC に欠陥がなく、両方のクラスタスイッチで接続されているすべてのポートが機能している必要があります。
+* すべてのクラスタポートが稼働している必要があります。
+* クラスタのすべての論理インターフェイス（ LIF ）が稼働していて、移行されていない必要があります。
+* ONTAP (privilege ： advanced ） 'cluster ping-cluster -node node1 コマンドは 'larger than PMTU communication がすべてのパスで成功したことを示す必要があります
+* サポートされている FastPath 、 RCF 、および ONTAP のバージョンを使用している必要があります。
++
+RCF バージョンと FastPath バージョンでは、コマンド構文間にコマンドの依存関係が存在する場合があります。サポートされるバージョンは、スイッチの互換性ページで確認できます。
+
++
+http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^]
+
+
+
+
+
+== このタスクについて
+
+この手順の例では、スイッチとノードで次の命名法を使用しています。
+
+* 2 つのネットアップスイッチ名は cs1 と cs2 です。
+* クラスタの論理インターフェイス（ LIF ）の名前は、ノード 1 では node1_clus1 と node1_clus2 、ノード 2 では node2_clus1 と node2_clus2 です。
+* Storage Virtual Machine （ SVM ）名は Cluster です。
+* 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
+* 各ノードのクラスタポートの名前は e0a および e0b です。
++
+Hardware Universe _ には、プラットフォームでサポートされている実際のクラスタポートが含まれています。
+
+* ネットアップクラスタスイッチでサポートされるスイッチ間リンク（ ISL ）は、ポート 0/13~0/16 です。
+* ネットアップクラスタスイッチでサポートされるノード接続は、ポート 0/1~0/12 です。
+* この手順 の例は、 2 つ目のスイッチ _CS2__ でアップグレードを開始します。
+* この手順の例では 2 つのノードを使用していますが、 1 つのクラスタには最大 24 のノードを含めることができます。
+* 出力例と内容は、 FastPath 、 RCF 、および ONTAP のリリースによって異なる場合があります。
+
+
+
+
+== 手順
+
+. クラスタのネットワークポートに関する情報を表示します。
++
+'network port show --_ipspace cluster_`
+
++
+次の例は、コマンドからの出力のタイプを示しています。
+
++
+[listing]
+----
+cluster1::> network port show -ipspace cluster
+                                                             Speed (Mbps)
+Node   Port      IPspace      Broadcast Domain Link   MTU    Admin/Oper
+------ --------- ------------ ---------------- ----- ------- ------------
+node1
+       e0a       Cluster      Cluster          up       9000  auto/10000
+       e0b       Cluster      Cluster          up       9000  auto/10000
+node2
+       e0a       Cluster      Cluster          up       9000  auto/10000
+       e0b       Cluster      Cluster          up       9000  auto/10000
+4 entries were displayed.
+----
+. クラスタ上の LIF に関する情報を表示します。
++
+'network interface show --_role cluster_`
+
++
+次の例は、クラスタ上の論理インターフェイスを示しています。次の例では、「 -role 」パラメータで、クラスタポートに関連付けられた LIF に関する情報を表示します。
+
++
+[listing]
+----
+cluster1::> network interface show -role cluster
+  (network interface show)
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            node1_clus1  up/up    10.254.66.82/16    node1         e0a     true
+            node1_clus2  up/up    10.254.206.128/16  node1         e0b     true
+            node2_clus1  up/up    10.254.48.152/16   node2         e0a     true
+            node2_clus2  up/up    10.254.42.74/16    node2         e0b     true
+4 entries were displayed.
+----
+. それぞれのノードで、ノード管理 LIF を使用して、 node1 の e0a に node1_clus2 を、 node2 の e0a に node2 を移行します。
++
+「ネットワーク・インターフェイス移行」
+
++
+それぞれのクラスタ LIF を所有しているコントローラコンソールでコマンドを入力する必要があります。
+
++
+[listing]
+----
+
+cluster1::> network interface migrate -vserver Cluster -lif node1_clus2 -destination-node node1 -destination-port e0a
+cluster1::> network interface migrate -vserver Cluster -lif node2_clus2 -destination-node node2 -destination-port e0a
+----
++
+[NOTE]
+====
+このコマンドでは、クラスタの名前で大文字と小文字が区別され、各ノードでコマンドを実行する必要があります。一般的なクラスタ LIF ではこのコマンドを実行できません。
+
+====
+. ノードで network interface show コマンドを使用して、移行が実行されたことを確認します。
++
+次の例は、 clus2 がノード node1 とノード node2 のポート e0a に移行したことを示しています。
+
++
+[listing]
+----
+cluster1::> **network interface show -role cluster**
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            node1_clus1  up/up    10.254.66.82/16   node1          e0a     true
+            node1_clus2  up/up    10.254.206.128/16 node1          e0a     false
+            node2_clus1  up/up    10.254.48.152/16  node2          e0a     true
+            node2_clus2  up/up    10.254.42.74/16   node2          e0a     false
+4 entries were displayed.
+----
+. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 y 」と入力します。
++
+「 advanced 」の権限が必要です
+
++
+advanced のプロンプト（ * > ）が表示されます。
+
+. 両方のノードでクラスタポート e0b をシャットダウンします。
++
+'network port modify -node node_name --port_port_name_up-admin false
+
++
+それぞれのクラスタ LIF を所有しているコントローラコンソールでコマンドを入力する必要があります。
+
++
+次の例は、すべてのノードでポート e0b をシャットダウンするコマンドを示しています。
+
++
+[listing]
+----
+cluster1::*> network port modify -node node1 -port e0b -up-admin false
+cluster1::*> network port modify -node node2 -port e0b -up-admin false
+----
+. 両方のノードでポート e0b がシャットダウンされていることを確認します。
++
+「 network port show 」のように表示されます
+
++
+[listing]
+----
+cluster1::*> network port show -role cluster
+
+                                                             Speed (Mbps)
+Node   Port      IPspace      Broadcast Domain Link   MTU    Admin/Oper
+------ --------- ------------ ---------------- ----- ------- ------------
+node1
+       e0a       Cluster      Cluster          up       9000  auto/10000
+       e0b       Cluster      Cluster          down     9000  auto/10000
+node2
+       e0a       Cluster      Cluster          up       9000  auto/10000
+       e0b       Cluster      Cluster          down     9000  auto/10000
+4 entries were displayed.
+----
+. cs1 のスイッチ間リンク（ ISL ）ポートをシャットダウンします。
++
+[listing]
+----
+
+(cs1) #configure
+(cs1) (Config)#interface 0/13-0/16
+(cs1) (Interface 0/13-0/16)#shutdown
+(cs1) (Interface 0/13-0/16)#exit
+(cs1) (Config)#exit
+----
+. cs2 で現在アクティブなイメージをバックアップします。
++
+[listing]
+----
+(cs2) # show bootvar
+
+ Image Descriptions
+
+ active :
+ backup :
+
+
+ Images currently available on Flash
+
+--------------------------------------------------------------------
+ unit      active      backup     current-active        next-active
+--------------------------------------------------------------------
+
+    1     1.1.0.5     1.1.0.3            1.1.0.5            1.1.0.5
+
+(cs2) # copy active backup
+Copying active to backup
+Copy operation successful
+----
+. FastPath ソフトウェアの実行中のバージョンを確認します。
++
+[listing]
+----
+(cs2) # show version
+
+Switch: 1
+
+System Description............................. NetApp CN1610, 1.1.0.5, Linux
+                                                2.6.21.7
+Machine Type................................... NetApp CN1610
+Machine Model.................................. CN1610
+Serial Number.................................. 20211200106
+Burned In MAC Address.......................... 00:A0:98:21:83:69
+Software Version............................... 1.1.0.5
+Operating System............................... Linux 2.6.21.7
+Network Processing Device...................... BCM56820_B0
+Part Number.................................... 111-00893
+
+--More-- or (q)uit
+
+
+Additional Packages............................ FASTPATH QOS
+                                                FASTPATH IPv6 Management
+----
+. スイッチにイメージファイルをダウンロードします。
++
+イメージファイルをアクティブイメージにコピーすると、リブート時にそのイメージによって FastPath バージョンが確立されます。以前のイメージはバックアップとして使用できます。
+
++
+[listing]
+----
+(cs2) #copy sftp://root@10.22.201.50//tftpboot/NetApp_CN1610_1.2.0.7.stk active
+Remote Password:********
+
+Mode........................................... SFTP
+Set Server IP.................................. 10.22.201.50
+Path........................................... /tftpboot/
+Filename....................................... NetApp_CN1610_1.2.0.7.stk
+Data Type...................................... Code
+Destination Filename........................... active
+
+Management access will be blocked for the duration of the transfer
+Are you sure you want to start? (y/n) y
+SFTP Code transfer starting...
+
+
+File transfer operation completed successfully.
+----
+. 現在のブートイメージと次のアクティブイメージのバージョンを確認します。
++
+'How bootvar'
+
++
+[listing]
+----
+(cs2) #show bootvar
+
+Image Descriptions
+
+ active :
+ backup :
+
+
+ Images currently available on Flash
+
+--------------------------------------------------------------------
+ unit      active      backup     current-active        next-active
+--------------------------------------------------------------------
+
+    1     1.1.0.8     1.1.0.8            1.1.0.8            1.2.0.7
+----
+. スイッチに新しいイメージバージョン用の互換性のある RCF をインストールします。
++
+RCF のバージョンがすでに正しい場合は、手順 18 に進み、 ISL ポートを起動します。
+
++
+[listing]
+----
+(cs2) #copy tftp://10.22.201.50//CN1610_CS_RCF_v1.2.txt nvram:script CN1610_CS_RCF_v1.2.scr
+
+Mode........................................... TFTP
+Set Server IP.................................. 10.22.201.50
+Path........................................... /
+Filename....................................... CN1610_CS_RCF_v1.2.txt
+Data Type...................................... Config Script
+Destination Filename........................... CN1610_CS_RCF_v1.2.scr
+
+File with same name already exists.
+WARNING:Continuing with this command will overwrite the existing file.
+
+
+Management access will be blocked for the duration of the transfer
+Are you sure you want to start? (y/n) y
+
+
+Validating configuration script...
+[the script is now displayed line by line]
+
+Configuration script validated.
+File transfer operation completed successfully.
+----
++
+[NOTE]
+====
+スクリプトを呼び出す前に '.scr 拡張子をファイル名の一部として設定する必要がありますこの拡張機能は、 FastPath オペレーティングシステム用です。
+
+====
++
+スイッチは、スクリプトがスイッチにダウンロードされると、スクリプトを自動的に検証します。コンソールに出力が表示されます。
+
+. スクリプトがダウンロードされ、指定したファイル名で保存されていることを確認します。
++
+[listing]
+----
+(cs2) #script list
+
+Configuration Script Name        Size(Bytes)
+-------------------------------- -----------
+CN1610_CS_RCF_v1.2.scr                  2191
+
+1 configuration script(s) found.
+2541 Kbytes free.
+----
+. スクリプトをスイッチに適用します。
++
+[listing]
+----
+(cs2) #script apply CN1610_CS_RCF_v1.2.scr
+
+Are you sure you want to apply the configuration script? (y/n) y
+[the script is now displayed line by line]...
+
+Configuration script 'CN1610_CS_RCF_v1.2.scr' applied.
+----
+. 変更がスイッチに適用されたことを確認し、保存します。
++
+'how running-config'
+
++
+[listing]
+----
+(cs2) #show running-config
+----
+. スイッチをリブートしたときにスタートアップコンフィギュレーションになるように、実行コンフィギュレーションを保存します。
++
+[listing]
+----
+(cs2) #write memory
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+
+Are you sure you want to save? (y/n) y
+
+Config file 'startup-config' created successfully.
+
+Configuration Saved!
+----
+. スイッチをリブートします。
++
+[listing]
+----
+(cs2) #reload
+
+The system has unsaved changes.
+Would you like to save them now? (y/n) y
+
+Config file 'startup-config' created successfully.
+Configuration Saved!
+System will now restart!
+----
+. 再度ログインし、スイッチが FastPath ソフトウェアの新しいバージョンを実行していることを確認します。
++
+[listing]
+----
+(cs2) #show version
+
+Switch: 1
+
+System Description............................. NetApp CN1610, 1.2.0.7,Linux
+                                                3.8.13-4ce360e8
+Machine Type................................... NetApp CN1610
+Machine Model.................................. CN1610
+Serial Number.................................. 20211200106
+Burned In MAC Address.......................... 00:A0:98:21:83:69
+Software Version............................... 1.2.0.7
+Operating System............................... Linux 3.8.13-4ce360e8
+Network Processing Device...................... BCM56820_B0
+Part Number.................................... 111-00893
+CPLD version................................... 0x5
+
+
+Additional Packages............................ FASTPATH QOS
+                                                FASTPATH IPv6 Management
+----
++
+リブートが完了したら、ログインしてイメージのバージョンを確認し、実行中の設定を確認し、 RCF のバージョンラベルであるインターフェイス 3/64 の概要 を探します。
+
+. アクティブなスイッチ cs1 の ISL ポートを起動します。
++
+[listing]
+----
+(cs1) #configure
+(cs1) (Config) #interface 0/13-0/16
+(cs1) (Interface 0/13-0/16) #no shutdown
+(cs1) (Interface 0/13-0/16) #exit
+(cs1) (Config) #exit
+----
+. ISL が動作していることを確認します。
++
+「 show port-channel 3/1 」
+
++
+Link State フィールドには 'up' と表示されます
+
++
+[listing]
+----
+(cs1) #show port-channel 3/1
+
+Local Interface................................ 3/1
+Channel Name................................... ISL-LAG
+Link State..................................... Up
+Admin Mode..................................... Enabled
+Type........................................... Static
+Load Balance Option............................ 7
+(Enhanced hashing mode)
+
+Mbr    Device/       Port      Port
+Ports  Timeout       Speed     Active
+------ ------------- --------- -------
+0/13   actor/long    10G Full  True
+       partner/long
+0/14   actor/long    10G Full  True
+       partner/long
+0/15   actor/long    10G Full  False
+       partner/long
+0/16   actor/long    10G Full  True
+       partner/long
+----
+. すべてのノードでクラスタポート e0b を起動します。
++
+「 network port modify 」を参照してください
+
++
+それぞれのクラスタ LIF を所有しているコントローラコンソールでコマンドを入力する必要があります。
+
++
+次の例は、ノード 1 とノード 2 でポート e0b を起動しています。
+
++
+[listing]
+----
+cluster1::*> network port modify -node node1 -port e0b -up-admin true
+cluster1::*> network port modify -node node2 -port e0b -up-admin true
+----
+. すべてのノードでポート e0b が up になっていることを確認します。
++
+「 network port show -ipspace cluster 」のように表示されます
+
++
+[listing]
+----
+cluster1::*> network port show -ipspace cluster
+
+                                                             Speed (Mbps)
+Node   Port      IPspace      Broadcast Domain Link   MTU    Admin/Oper
+------ --------- ------------ ---------------- ----- ------- ------------
+node1
+       e0a       Cluster      Cluster          up       9000  auto/10000
+       e0b       Cluster      Cluster          up       9000  auto/10000
+node2
+       e0a       Cluster      Cluster          up       9000  auto/10000
+       e0b       Cluster      Cluster          up       9000  auto/10000
+4 entries were displayed.
+----
+. 両方のノードで LIF がホームになったことを確認します（「 true 」）。
++
+'network interface show --_role cluster_`
+
++
+[listing]
+----
+cluster1::*> network interface show -role cluster
+
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            node1_clus1  up/up    169.254.66.82/16   node1         e0a     true
+            node1_clus2  up/up    169.254.206.128/16 node1         e0b     true
+            node2_clus1  up/up    169.254.48.152/16  node2         e0a     true
+            node2_clus2  up/up    169.254.42.74/16   node2         e0b     true
+4 entries were displayed.
+----
+. ノードメンバーのステータスを表示します。
++
+「 cluster show 」を参照してください
+
++
+[listing]
+----
+cluster1::*> cluster show
+
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  ------------
+node1                true    true          false
+node2                true    true          false
+2 entries were displayed.
+----
+. admin 権限レベルに戻ります。
++
+「特権管理者」
+
+. 手順 1 ~ 18 を繰り返して、もう 1 つのスイッチ cs1 の FastPath ソフトウェアと RCF をアップグレードします。
++
+|===
+| 状況 | 作業 
+
+
+ a| 
+RCF をインストールする必要はありません
+ a| 
+手順 18 に進み、インストールを完了します。
+
+
+
+ a| 
+RCF をインストールする必要があります
+ a| 
+手順 13 に進みます。
+
+|===
+

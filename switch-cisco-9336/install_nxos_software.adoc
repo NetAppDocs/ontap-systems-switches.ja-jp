@@ -12,6 +12,7 @@ summary: この手順を使用して、 Nexus 9336C-FX2 クラスタスイッチ
 [role="lead"]
 この手順を使用して、 Nexus 9336C-FX2 クラスタスイッチに NX-OS ソフトウェアをインストールできます。
 
+.手順
 . クラスタスイッチを管理ネットワークに接続します。
 . ping コマンドを使用して、 NX-OS ソフトウェアおよび RCF をホストするサーバへの接続を確認します。
 +
@@ -47,6 +48,7 @@ Copy complete.
 
 
 cs2# copy sftp: bootflash: vrf management
+
 Enter source filename: /code/n9000-epld.9.3.5.img
 Enter hostname for the sftp server: 172.19.2.1
 Enter username: user1
@@ -166,8 +168,8 @@ Module   Image    Running-Version(pri:alt                  New-Version         U
 
 
 Switch will be reloaded for disruptive upgrade.
-Do you want to continue with the installation (y/n)?  [n] y
 
+Do you want to continue with the installation (y/n)? [n] y
 
 Install is in progress, please wait.
 

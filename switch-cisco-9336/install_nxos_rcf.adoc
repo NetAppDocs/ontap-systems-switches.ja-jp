@@ -23,6 +23,7 @@ RCF は、 Nexus 9336C-FX2 スイッチを初めてセットアップしたあ�
 
 NOTE: 手順では、 ONTAP コマンドと Cisco Nexus 9000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
 
+.手順
 . クラスタスイッチに接続されている各ノードのクラスタポートを表示します。「 network device-discovery show
 +
 [listing]
@@ -385,6 +386,8 @@ cs2                         cluster-network    10.233.205.91    NX9-C9336C
 
 NOTE: スイッチにロードした RCF バージョンによっては、 cs1 スイッチコンソールで次の出力が表示されることがあります。
 
+
+
 +
 [listing]
 ----
@@ -392,8 +395,6 @@ NOTE: スイッチにロードした RCF バージョンによっては、 cs1 �
 2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_PEER: Blocking port-channel1 on VLAN0001. Inconsistent peer vlan.
 2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL: Blocking port-channel1 on VLAN0092. Inconsistent local vlan.
 ----
-
-
 . クラスタスイッチ cs1 で、ノードのクラスタポートに接続されているポートをシャットダウンします。
 +
 次の例では、手順 1 の出力例を使用しています。
@@ -445,7 +446,7 @@ cluster1::*>
 ----
 cluster1::*> network interface modify -vserver Cluster -lif \* -auto-revert True
 ----
-. スイッチ cs1 をリブートします。これにより、クラスタ LIF がホームポートにリバートされます。スイッチの再起動中にノードで報告された「クラスタポートがダウンしている」イベントは無視してかまいません。
+. スイッチ cs1 をリブートします。これは、クラスタ LIF のホームポートへのリバートをトリガーする際に行います。スイッチの再起動中にノードで報告された「クラスタポートがダウンしている」イベントは無視してかまいません。
 +
 [listing]
 ----
