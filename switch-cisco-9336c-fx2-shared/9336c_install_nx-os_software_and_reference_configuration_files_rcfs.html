@@ -1,0 +1,4067 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head class="at-element-marker">
+  <title>NX-OS ソフトウェアおよび RCF のインストール</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="NX-OS ソフトウェアおよび RCF のインストール" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html" />
+	<meta property="og:description" content="" />
+  <meta property="og:image" content="https://docs.netapp.com/ja-jp/ontap-systems-switches/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/>
+  
+  <meta name="description" content="">
+  <meta name="keywords" content=" rcfs, nx-os, install">
+  
+  
+
+  <!-- Icons -->
+  <link rel="icon" href="/ja-jp/ontap-systems-switches/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed -->
+  
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/ontap-systems-switches/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/ja-jp/ontap-systems-switches/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/ontap-systems-switches/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/ontap-systems-switches/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/ja-jp/ontap-systems-switches/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/ja-jp/ontap-systems-switches/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/ja-jp/ontap-systems-switches/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/ja-jp/ontap-systems-switches/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/ja-jp/ontap-systems-switches/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/ja-jp/ontap-systems-switches/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/ontap-systems-switches/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/ontap-systems-switches/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/ja-jp/ontap-systems-switches/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/ja-jp/ontap-systems-switches/css/tabbed-blocks.css" type="text/css">
+  <link rel="stylesheet" href='/ja-jp/ontap-systems-switches/css/product-family.css' type="text/css">
+  
+
+  
+  <link rel='stylesheet' href='/ja-jp/ontap-systems-switches/css/na-feature.css' type='text/css'>
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/ja-jp/ontap-systems-switches/js/na-search.js'></script>
+  
+
+  
+  <script src='/ja-jp/ontap-systems-switches/js/na-pagenav.js'></script>
+  
+
+  <link rel='stylesheet' href='/ja-jp/ontap-systems-switches/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/ontap-systems-switches/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/ja-jp/ontap-systems-switches/js/na-utility.js'></script>
+  <script src='/ja-jp/ontap-systems-switches/js/clouddocs.js'></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    var head = document.getElementsByTagName('head')[0];
+    var adobe = document.createElement("script");
+    adobe.type = "text/javascript";
+    adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+    head.appendChild(adobe);
+  }
+  </script>
+  <script src='/ja-jp/ontap-systems-switches/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/ja-jp/ontap-systems-switches/js/toc.js'></script>
+  <script src='/ja-jp/ontap-systems-switches/js/customscripts.js'></script>
+
+  <script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+  <script src='/ja-jp/ontap-systems-switches/js/version-dropdown.js'></script>
+  <script src='/ja-jp/ontap-systems-switches/js/product-family.js'></script>
+  <script src='/ja-jp/ontap-systems-switches/js/FileSaver.min.js'></script>
+  <script src='/ja-jp/ontap-systems-switches/js/jszip-utils.min.js'></script>
+  <script src='/ja-jp/ontap-systems-switches/js/jszip.min.js'></script>
+  <script src='/ja-jp/ontap-systems-switches/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">製品とソリューション</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">サポートとトレーニング</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">コミュニティ</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">ブログ</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">ユーザ事例</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">お問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">お問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/ja-jp/ontap-systems-switches/search.html"
+          data-type="widget" 
+          data-placeholder="ドキュメントを検索" 
+          data-no-results-found="{query}に該当する結果はありません" 
+          data-did-you-mean="{suggestion} を検索" 
+          data-no-results-found-did-you-mean="{query} に該当する結果はありません。{suggestion} の間違いではありませんか?" 
+          data-results-found="{hitCount} 件見つかりました"  
+          data-sk-es-pf-indexes=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">日本語</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ko-kr/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li></ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>利用可能なPDF<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        <a target="_blank" href="/ja-jp/ontap-systems-switches/pdfs/fullsite-sidebar/AFF_および_FAS_スイッチのマニュアル.pdf" >
+          <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>このドキュメントサイトのPDF</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/BES_53248_スイッチ.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            BES-53248 スイッチ
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/スイッチをセットアップします.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            スイッチをセットアップします
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/ライセンスをインストール.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            ライセンスをインストール
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/NDO___NDU_環境でスイッチをアップグレードします.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            NDO / NDU 環境でスイッチをアップグレードします
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/ライセンスをインストール.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            ライセンスをインストール
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/CN1610_スイッチから_BES_53248_スイッチに移行します.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            CN1610 スイッチから BES-53248 スイッチに移行します
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/2_ノードスイッチクラスタに移行する.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            2 ノードスイッチクラスタに移行する
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_3132Q_V_スイッチ.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco 3132Q-V スイッチ
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_3132Q_V_クラスタスイッチを使用した_2_ノードスイッチクラスタへの移行.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 3132Q-V クラスタスイッチを使用した 2 ノードスイッチクラスタへの移行
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_3132Q_V_クラスタスイッチに_NX_OS_ソフトウェアと_RCF_をインストールします.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 3132Q-V クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_3132Q_V_クラスタスイッチを交換します.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 3132Q-V クラスタスイッチを交換します
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_5596_クラスタスイッチを_Cisco_Nexus_3132Q_V_クラスタスイッチに交換します.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 5596 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換します
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/CN1610_クラスタスイッチを_Cisco_Nexus_3132Q_V_クラスタスイッチに交換します.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            CN1610 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換します
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_3232C_スイッチ.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco 3232C スイッチ
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/CN1610_スイッチを_Cisco_Nexus_3232C_クラスタスイッチに移行する.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            CN1610 スイッチを Cisco Nexus 3232C クラスタスイッチに移行する
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_3232C_クラスタスイッチに_NX_OS_ソフトウェアと_RCF_をインストールする.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 3232C クラスタスイッチに NX-OS ソフトウェアと RCF をインストールする
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_5596_スイッチを_Cisco_Nexus_3232C_スイッチに移行する.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 5596 スイッチを Cisco Nexus 3232C スイッチに移行する
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/2_ノードスイッチレスクラスタから_Cisco_Nexus_3232C_クラスタスイッチを使用したクラスタへの移行.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            2 ノードスイッチレスクラスタから Cisco Nexus 3232C クラスタスイッチを使用したクラスタへの移行
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_3232C_クラスタスイッチを交換します.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 3232C クラスタスイッチを交換します
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_3232C_ストレージスイッチを交換します.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 3232C ストレージスイッチを交換します
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_9336C_FX2_スイッチ.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco 9336C-FX2 スイッチ
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/セットアップ.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            セットアップ
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/必要なクラスタ設定情報.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            必要なクラスタ設定情報
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/ケーブル接続ワークシートの例と空白.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            ケーブル接続ワークシートの例と空白
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_9336C_FX2_クラスタスイッチに_NX_OS_ソフトウェアと_RCF_をインストールします.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 9336C-FX2 クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_スイッチから_Cisco_Nexus_9336C_FX2_クラスタスイッチへの移行.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco スイッチから Cisco Nexus 9336C-FX2 クラスタスイッチへの移行
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_9336C_FX2_クラスタスイッチを使用して__2_ノードスイッチクラスタに移行する.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 9336C-FX2 クラスタスイッチを使用して、 2 ノードスイッチクラスタに移行する
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_9336C_FX2_クラスタスイッチを設定します.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 9336C-FX2 クラスタスイッチを設定します
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_9336C_FX2_共有スイッチ.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco 9336C-FX2 共有スイッチ
+          </a>
+          
+
+
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/ja-jp/ontap-systems-switches/pdfs/pages/switch-cisco-9336c-fx2-shared/9336c_install_nx-os_software_and_reference_configuration_files_rcfs.pdf" >
+    <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_92300YC_スイッチ.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco 92300YC スイッチ
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/セットアップ.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            セットアップ
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/ケーブル接続ワークシートの例と空白.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            ケーブル接続ワークシートの例と空白
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_92300YC_クラスタスイッチに_NX_OS_ソフトウェアと_RCF_をインストールします.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 92300YC クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/新しい_Cisco_Nexus_92300YC_スイッチを構成します.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            新しい Cisco Nexus 92300YC スイッチを構成します
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_Nexus_92300YC_スイッチを使用して_2_ノードスイッチクラスタに移行する.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco Nexus 92300YC スイッチを使用して 2 ノードスイッチクラスタに移行する
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/Cisco_スイッチから_Cisco_Nexus_92300YC_スイッチに移行する.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            Cisco スイッチから Cisco Nexus 92300YC スイッチに移行する
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/NetApp_CN1610_スイッチ.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            NetApp CN1610 スイッチ
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/ネットアップクラスタスイッチに_FastPath_ソフトウェアと_RCF_をインストールします.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            ネットアップクラスタスイッチに FastPath ソフトウェアと RCF をインストールします
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ja-jp/ontap-systems-switches/pdfs/sidebar/その他のスイッチモデル.pdf" 
+            
+          >
+            <img src="/ja-jp/ontap-systems-switches/images/pdf.png" width="16" height="16"/>
+            その他のスイッチモデル
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/ja-jp/ontap-systems-switches/images/pdf-zip.png" width="16" height="16"/>
+      <pre>個別のPDFドキュメントのコレクション<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="sidebar-nav-container">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/index.html">
+        AFF および FAS スイッチのドキュメント
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> BES-53248 スイッチ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/overview-bes53248.html">
+        BES-53248 クラスタスイッチの概要
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> スイッチをセットアップします</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-required-documentation.html">
+        必要なドキュメント
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-requirements.html">
+        BES-53248 クラスタスイッチの設定要件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-new-switch.html">
+        新しい BES-53248 スイッチを構成します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-install-initial.html">
+        初期インストール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-ssh.html">
+        BES-53248 クラスタスイッチで SSH を有効にします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-efos-software.html">
+        EFOS ソフトウェアをインストールします
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ライセンスをインストール</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-licenses.html">
+        BES-53248 クラスタスイッチのライセンスをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-restrictions.html">
+        制限事項と制限事項
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-edit-rcf.html">
+        リファレンス構成ファイル（ RCF ）の編集
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-install-rcf.html">
+        リファレンス構成ファイル（ RCF ）のインストール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-log-collection.html">
+        クラスタスイッチのログ収集機能を設定します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/configure-health-monitor.html">
+        クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> NDO / NDU 環境でスイッチをアップグレードします</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-upgrade.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-prepare-controller.html">
+        コントローラを準備
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-install-efos.html">
+        EFOS ソフトウェアをインストールします
+      </a></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-install-licenses.html">
+        <div class="na-navbar-padding"> ライセンスをインストール</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-restrictions.html">
+        制限事項と制限事項
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-edit-rcf.html">
+        リファレンス構成ファイル（ RCF ）の編集
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-install-rcf.html">
+        リファレンス構成ファイル（ RCF ）のインストール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-configure-log-collection.html">
+        クラスタスイッチのログ収集機能を設定します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-install-cshm-file.html">
+        クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-verify.html">
+        設定を確認します
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/replace-switch.html">
+        BES-53248 スイッチを交換します
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> CN1610 スイッチから BES-53248 スイッチに移行します</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/migrate-cn1610-overview.html">
+        作業を開始する前に
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/migrate-cn1610.html">
+        移行方法
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 2 ノードスイッチクラスタに移行する</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/migrate-to-2n-switched.html">
+        移行を準備
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-bes-53248/migrate-to-2n-switched-overview.html">
+        ネットアップのスイッチクラスタ環境に移行する
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco 3132Q-V スイッチ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3132q-vindex.html">
+        概要
+      </a></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-3132q-v/concept-migrate-from-a-two-node-switchless-cluster-to-a-cluster-with-cisco-nexus-3232c-cluster-switches.html">
+        <div class="na-navbar-padding"> Cisco Nexus 3132Q-V クラスタスイッチを使用した 2 ノードスイッチクラスタへの移行</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3132q-v/task-how-to-migrate-from-a-two-node-switchless-cluster-to-a-cluster-with-cisco-nexus-3132q-v-cluster-switches.html">
+        Cisco Nexus 3132Q-V クラスタスイッチを使用する 2 ノードスイッチクラスタの移行方法
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3132q-v/task-install-a-cisco-nexus-3232c-cluster-switch-and-pass-through-panel-in-a-netapp-cabinet.html">
+        Cisco Nexus 3132Q-V クラスタスイッチとパススルーパネルをネットアップキャビネットに設置します
+      </a></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-3132q-v/task-install-nx-os-software-and-rcfs-on-cisco-nexus-3132q-v-cluster-switches.html">
+        <div class="na-navbar-padding"> Cisco Nexus 3132Q-V クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3132q-v/task-install-the-nx-os-software-3132q-v.html">
+        NX-OS ソフトウェアをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3132q-v/task-install-the-reference-configuration-file-rcf-3132q-v.html">
+        リファレンス構成ファイル（ RCF ）のインストール
+      </a></li></ul></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-3132q-v/concept-replace-cisco-nexus-3132q-v-cluster-switches.html">
+        <div class="na-navbar-padding"> Cisco Nexus 3132Q-V クラスタスイッチを交換します</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3132q-v/task-how-to-replace-cisco-nexus-3132q-v-cluster-switches.html">
+        Cisco Nexus 3132Q-V クラスタスイッチの交換方法
+      </a></li></ul></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-3132q-v/concept-migrate-from-a-cisco-5596-switch-to-a-cisco-nexus-3232c.html">
+        <div class="na-navbar-padding"> Cisco Nexus 5596 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換します</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3132q-v/task-how-to-migrate-from-a-cisco-nexus-5596-cluster-switch-to-a-cisco-nexus-3232c-cluster-switch.html">
+        Cisco Nexus 5596 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換する方法
+      </a></li></ul></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-3132q-v/concept-migrate-a-cn1610-switch-to-a-cisco-nexus-3232c-cluster-switch.html">
+        <div class="na-navbar-padding"> CN1610 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換します</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3132q-v/task-how-to-replace-cn1610-cluster-switches-with-cisco-nexus-3232c-cluster-switches.html">
+        CN1610 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換する方法
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco 3232C スイッチ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3232c/index.html">
+        概要
+      </a></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-3232c/concept-migrate-a-cn1610-switch-to-a-cisco-nexus-3232c-cluster-switch.html">
+        <div class="na-navbar-padding"> CN1610 スイッチを Cisco Nexus 3232C クラスタスイッチに移行する</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3232c/task-how-to-replace-cn1610-cluster-switches-with-cisco-nexus-3232c-cluster-switches.html">
+        CN1610 クラスタスイッチを Cisco Nexus 3232C クラスタスイッチに移行する方法
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3232c/task-install-a-cisco-nexus-3232c-cluster-switch-and-pass-through-panel-in-a-netapp-cabinet.html">
+        Cisco Nexus 3232C クラスタスイッチとパススルーパネルをネットアップキャビネットに設置します
+      </a></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-3232c/task-install-nx-os-software-and-rcfs-on-cisco-nexus-3232-cluster-switches-running-ontap-9-4-and-later.html">
+        <div class="na-navbar-padding"> Cisco Nexus 3232C クラスタスイッチに NX-OS ソフトウェアと RCF をインストールする</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3232c/task-install-the-nx-os-software-3232c-cluster-switch.html">
+        NX-OS ソフトウェアをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3232c/task-install-the-reference-configuration-file-rcf-3232c-cluster-switch.html">
+        リファレンス構成ファイル（ RCF ）のインストール
+      </a></li></ul></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-3232c/concept-migrate-from-a-cisco-5596-switch-to-a-cisco-nexus-3232c.html">
+        <div class="na-navbar-padding"> Cisco Nexus 5596 スイッチを Cisco Nexus 3232C スイッチに移行する</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3232c/task-how-to-migrate-from-a-cisco-nexus-5596-cluster-switch-to-a-cisco-nexus-3232c-cluster-switch.html">
+        Cisco Nexus 5596 クラスタスイッチから Cisco Nexus 3232C クラスタスイッチへの移行方法
+      </a></li></ul></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-3232c/concept-migrate-from-a-two-node-switchless-cluster-to-a-cluster-with-cisco-nexus-3232c-cluster-switches.html">
+        <div class="na-navbar-padding"> 2 ノードスイッチレスクラスタから Cisco Nexus 3232C クラスタスイッチを使用したクラスタへの移行</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3232c/task-how-to-migrate-from-a-two-node-switchless-cluster-to-a-cluster-with-cisco-nexus-3132q-v-cluster-switches.html">
+        2 ノードスイッチレスクラスタから Cisco Nexus 3232C クラスタスイッチを使用するクラスタに移行する方法
+      </a></li></ul></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-3232c/concept-replace-a-cisco-nexus-3232c-cluster-switch.html">
+        <div class="na-navbar-padding"> Cisco Nexus 3232C クラスタスイッチを交換します</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3232c/task-how-to-replace-a-cisco-nexus-3232c-cluster-switch.html">
+        Cisco Nexus 3232C クラスタスイッチの交換方法
+      </a></li></ul></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-3232c/concept-replace-a-cisco-nexus-3232c-storage-switch.html">
+        <div class="na-navbar-padding"> Cisco Nexus 3232C ストレージスイッチを交換します</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3232c/task-steps-to-replace-a-cisco-nexus-3232c-storage-switch.html">
+        Cisco Nexus 3232C ストレージスイッチを交換する手順
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-3232c/task-upgrade-nx-os-software-and-rcfs-on-cisco-nexus-3232c-storage-switches.html">
+        Cisco Nexus 3232C ストレージスイッチをアップグレードする
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco 9336C-FX2 スイッチ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/9336-overview.html">
+        概要
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> セットアップ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/setup-switches.html">
+        スイッチを設定します
+      </a></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/setup-required-information.html">
+        <div class="na-navbar-padding"> 必要なクラスタ設定情報</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/setup-install-cshm-file.html">
+        92300YC スイッチ用クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/setup-required-documentation.html">
+        必要なドキュメント
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/setup-considerations-smart-call.html">
+        Smart Call Home の使用に関する考慮事項
+      </a></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheets-sample-cabling.html">
+        <div class="na-navbar-padding"> ケーブル接続ワークシートの例と空白</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-9336c.html">
+        Cisco Nexus 9336C-FX2 ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-92300yc.html">
+        Cisco Nexus 92300YC ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-3232c.html">
+        Cisco Nexus 3232C ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-3132q.html">
+        Cisco Nexus 3132Q-V ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/setup-worksheet-5596.html">
+        Cisco Nexus 5596UP / 5596T ケーブル接続ワークシート
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco Nexus 9336C-FX2 クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/install-nxos-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/install-nxos-software.html">
+        NX-OS ソフトウェアをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/install-nxos-rcf.html">
+        リファレンス構成ファイル（ RCF ）のインストール
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco スイッチから Cisco Nexus 9336C-FX2 クラスタスイッチへの移行</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/migrate-to-9336-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/migrate-to-9336.html">
+        Cisco スイッチから Cisco Nexus 9336C-FX2 クラスタスイッチへの移行方法
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco Nexus 9336C-FX2 クラスタスイッチを使用して、 2 ノードスイッチクラスタに移行する</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/migrate-to-2n-switched-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/migrate-to-2n-switched.html">
+        Cisco Nexus 9336C-FX2 クラスタスイッチを使用したネットアップのスイッチクラスタ環境への移行方法
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco Nexus 9336C-FX2 クラスタスイッチを設定します</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/replace-configure-new-switch.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/replace-install-initial.html">
+        Nexus 9336C-FX2 クラスタスイッチの初期取り付け
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/replace-install-nxos.html">
+        NX-OS ソフトウェアをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/replace-install-rcf.html">
+        リファレンス構成ファイル（ RCF ）のインストール
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/replace-9336c.html">
+        Cisco Nexus 9336C-FX2 クラスタスイッチを交換します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/replace_9336c_storage_switch.html">
+        Cisco Nexus 9336C-FX2 ストレージスイッチを交換します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2/install-switch-and-passthrough-panel.html">
+        Cisco Nexus 9336C-FX2 スイッチとパススルーパネルをネットアップキャビネットに設置します
+      </a></li></ul></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2-shared/index.html">
+        <div class="na-navbar-padding"> Cisco 9336C-FX2 共有スイッチ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_setup_and_configuration_guide_for_cisco_shared_switches.html">
+        Cisco 共有スイッチのセットアップおよび設定ガイド
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html">
+        NX-OS ソフトウェアおよび RCF のインストール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_migrate_from_a_switchless_cluster_with_dat_storage_by_adding_two_new_shared_switches.html">
+        2 つの新しい共有スイッチを追加して、 DAT ストレージを持つスイッチレスクラスタから移行します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_migrate_from_a_switched_configuration_with_dat_storage_by_adding_two_new_shared_switches.html">
+        2 つの新しい共有スイッチを追加して、 DAT ストレージを使用したスイッチ構成から移行します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_migrate_from_a_switchless_configuration_with_sat_storage_by_reusing_the_storage_switches.html">
+        ストレージスイッチを再利用して、 SAT ストレージを搭載したスイッチレス構成から移行する
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_migrate_from_a_switched_cluster_with_sat_storage_by_reusing_the_storage_switches.html">
+        ストレージスイッチを再利用して、 SAT ストレージを備えたスイッチクラスタから移行する
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_replace_a_cisco_nexus_9336c-fx2_shared_switch.html">
+        Cisco Nexus 9336C-FX2 共有スイッチを交換します
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco 92300YC スイッチ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/92300-overview.html">
+        概要
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> セットアップ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-supported-switches.html">
+        ONTAP でサポートされるスイッチ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-switches.html">
+        スイッチを設定します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-required-information.html">
+        必要なクラスタ設定情報
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-install-cshm-file.html">
+        92300YC スイッチ用クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-required-documentation.html">
+        必要なドキュメント
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-considerations-smart-call.html">
+        Smart Call Home の使用に関する考慮事項
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ケーブル接続ワークシートの例と空白</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheet-9336c.html">
+        Cisco Nexus 9336C-FX2 ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheet-92300yc.html">
+        Cisco Nexus 92300YC ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheet-3232c.html">
+        Cisco Nexus 3232C ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheet-3132q.html">
+        Cisco Nexus 3132Q-V ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheet-5596.html">
+        Cisco Nexus 5596UP / 5596T ケーブル接続ワークシート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-9336/setup-worksheets-sample-cabling.html">
+        ケーブル接続ワークシートの例
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco Nexus 92300YC クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/install-nxos-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/install-nxos-software.html">
+        NX-OS ソフトウェアをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/install-nxos-rcf.html">
+        リファレンス構成ファイル（ RCF ）のインストール
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 新しい Cisco Nexus 92300YC スイッチを構成します</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/configure-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/configure-install-initial.html">
+        Cisco Nexus 92300YC スイッチの初期取り付け
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/configure-install-nxos.html">
+        NX-OS ソフトウェアをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/configure-install-rcf.html">
+        リファレンス構成ファイル（ RCF ）のインストール
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/replace-92300yc.html">
+        Cisco Nexus 92300YC スイッチを交換します
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco Nexus 92300YC スイッチを使用して 2 ノードスイッチクラスタに移行する</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/migrate-to-2n-switched-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/migrate-to-2n-switched.html">
+        移行方法
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cisco スイッチから Cisco Nexus 92300YC スイッチに移行する</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/migrate-to-92300yc-overview.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-cisco-92300/migrate-to-92300yc.html">
+        Cisco スイッチから Cisco Nexus 92300YC スイッチへの移行方法
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> NetApp CN1610 スイッチ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/index.html">
+        概要
+      </a></li><li class="subfolders "><a href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/task-install-fastpath-software-and-rcfs-on-netapp-cluster-switch.html">
+        <div class="na-navbar-padding"> ネットアップクラスタスイッチに FastPath ソフトウェアと RCF をインストールします</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/task-install-fastpath-software.html">
+        FastPath ソフトウェアをインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/task-install-an-rcf-on-a-cn1610-switch.html">
+        CN1610 スイッチに参照構成ファイルをインストールします
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/task-install-fastpath-software-and-rcf-files-on-netapp-cluster-switches.html">
+        ONTAP 8.3.1 以降を実行しているネットアップクラスタスイッチに FastPath ソフトウェアと RCF をインストールします
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/task-migrate-to-a-two-node-switched-cluster-with-netapp-cn1610-cluster-switches.html">
+        NetApp CN1610 クラスタスイッチを使用して、 2 ノードスイッチクラスタに移行します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/task-migrate-from-a-switchless-cluster-to-a-switched-netapp-cn1610-cluster-environment.html">
+        スイッチレスクラスタ環境から、スイッチを使用している NetApp CN1610 クラスタ環境への移行
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/task-migrate-from-a-switchless-cluster-fas22xx-systems-with-a-single-cluster-network-connection.html">
+        単一のクラスタネットワーク接続を使用して、 FAS22xx システムの 2 ノードスイッチクラスタに移行する
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/switch-setup-configuration-guide-linkout.html">
+        『 CN1601 and CN1610 Switch Setup and Configuration Guide 』
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/switch-cli-command-reference-version-11xx-linkout.html">
+        CN1610 ネットワークスイッチの CLI コマンドリファレンス - バージョン 1.1.x.x
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/switch-cli-command-reference-version-12xx-linkout.html">
+        CN1610 ネットワークスイッチの CLI コマンドリファレンス - バージョン 1.2.x.x
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/netapp-10g-cluster-mode-switch-installation-guide.html">
+        『 NetApp 10G Cluster-Mode Switch Installation Guide 』
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/switch-administrator-guide-version-11xx-linkout.html">
+        『 NetApp CN1610 Switch Administrator's Guide 』 - バージョン 1.1.x.x
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/switch-administrator-guide-version-12xx-linkout.html">
+        『 NetApp CN1610 Switch Administrator's Guide 』 - バージョン 1.2.x.x
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/switch-cli-command-reference-linkout.html">
+        『 CN1601 Network Switch CLI Command Reference 』
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/switch-administrator-guide-linkout.html">
+        『 CN1601 Switch Administrator's Guide 』
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/switch-netapp-cn1610/netapp-1g-cluster-mode-switch-installation-guide-linkout.html">
+        『 NetApp 1G Cluster-Mode Switch Installation Guide 』
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> その他のスイッチモデル</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/other/switch-linkout.html">
+        その他のスイッチモデル
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/ontap-systems-switches/legal-notices.html">
+        法的通知
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container -->
+    <article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://www.netapp.com">ホーム</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">ドキュメント</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/ja-jp/ontap-systems-switches/">ONTAP&nbsp;Systems&nbsp;Switches</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          NX-OS ソフトウェアおよび RCF のインストール
+        </li>
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 日本語は機械翻訳による参考訳です。内容に矛盾や不一致があった場合には、英語の内容が優先されます。 </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">NX-OS ソフトウェアおよび RCF のインストール</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-02-17 18:56:47 +0000">02/17/2022</time>
+    
+  
+
+<span>寄稿者
+</span>
+
+
+</p>
+
+
+<div class="sect1">
+<h2 id="cisco-nexus-9336c-fx2-クラスタスイッチに-nx-os-ソフトウェアと-rcf-をインストールします">Cisco Nexus 9336C-FX2 クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cisco NX-OS ソフトウェアとリファレンス構成ファイル（ RCF ）は、 Cisco Nexus 9336C-FX2 クラスタスイッチにインストールする必要があります。</p>
+</div>
+<div class="sect2">
+<h3 id="作業を開始する前に">作業を開始する前に</h3>
+<div class="paragraph">
+<p>クラスタスイッチに NX-OS ソフトウェアと RCF をインストールする前に、次の条件が満たされている必要があります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>クラスタが完全に機能している必要があります（ログにエラーがあるなどの問題が発生していない）。</p>
+</li>
+<li>
+<p>NX-OS だけをインストールして現在の RCF バージョンをそのまま使用する場合は、目的のブートイメージを反映するように、 RCF で必要なブート設定を確認または設定しておく必要があります。</p>
+</li>
+<li>
+<p>現在のブートイメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。</p>
+</li>
+<li>
+<p>RCF のインストール時に必要なスイッチへのコンソール接続が必要です。</p>
+</li>
+<li>
+<p>サポートされている ONTAP 、 NX-OS 、および RCF のバージョンについては、 Cisco イーサネットスイッチのページにあるスイッチ互換性の表を参照してください。を参照してください <a href="https://mysupport.netapp.com/site/info/cisco-ethernet-switch">"Cisco イーサネットスイッチ"</a> を参照してください。</p>
+</li>
+<li>
+<p>RCF のコマンド構文と、 NX-OS のバージョンにあるコマンド構文との間には、コマンドの依存関係が存在する場合があります。</p>
+</li>
+<li>
+<p>Cisco スイッチのアップグレードおよびダウングレード手順の詳細については、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります。を参照してください <a href="https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html">"Cisco Nexus 9000 シリーズスイッチ"</a> を参照してください。</p>
+</li>
+<li>
+<p>最新の RCF が必要です。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="初期セットアップ">初期セットアップ</h3>
+<div class="paragraph">
+<p>この手順の例では、 2 つのノードを使用します。これらのノードは、 A400 コントローラに応じて 2 つの 100GbE クラスタインターコネクトポート e3a と e3b を使用します。を参照してください <a href="https://hwu.netapp.com">"Hardware Universe"</a> をクリックして、プラットフォームのクラスタポートが正しいことを確認します。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-switches/images/note.svg" alt="注記">
+</td>
+<td class="content">
+コマンド出力は、 ONTAP のリリースによって異なる場合があります。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>この手順の例では、スイッチとノードで次の命名法を使用しています。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2 つの Cisco スイッチの名前は、 <em>CS1_AND _CS2_</em> です。</p>
+</li>
+<li>
+<p>ノード名は _cluster1-01 と _cluster1-02 _ です。</p>
+</li>
+<li>
+<p>クラスタ LIF の名前は、 cluster1-02 および cluster1-01_clus1_clus1_clus2_cluster1 については、 cluster1-01 および _cluster1-02 _clus1_and _cluster1-02 _clus2_cluster2 についてはとなります。</p>
+</li>
+<li>
+<p>cluster1 ： * &gt; プロンプトは、クラスタの名前を示します。</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-switches/images/note.svg" alt="注記">
+</td>
+<td class="content">
+手順では、 ONTAP コマンドと Cisco Nexus 9000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">手順</div>
+<ol class="arabic">
+<li>
+<p>[[step1] このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージ「システムノード AutoSupport invoke -node * -type all -message MAINT= x h ’を呼び出して、ケースの自動作成を抑制します</p>
+<div class="paragraph">
+<p>x は、メンテナンス時間の長さ（時間単位）です。</p>
+</div>
+</li>
+<li>
+<p>[[step2] 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 y 」と入力します。「 set -privilege advanced 」</p>
+<div class="paragraph">
+<p>advanced のプロンプト（ * &gt; ）が表示されます。</p>
+</div>
+</li>
+<li>
+<p>[[step3] 各クラスタインターコネクトスイッチの各ノードで設定されているクラスタインターコネクトインターフェイスの数を表示します。「 network device-discovery show -protocol cdp</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1:: network device-discovery show -protocol cdp
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------- --------
+cluster1-02/cdp
+            e3a    cs1                       Eth1/2            N9K-C9336C
+            e3b    cs2                       Eth1/2            N9K-C9336C
+cluster1-01/cdp
+            e3a    cs1                       Eth1/1            N9K-C9336C
+            e3b    cs2                       Eth1/1            N9K-C9336C
+4 entries were displayed.</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step4] 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>ネットワーク・ポートの属性を表示します network port show – ipspace Cluster</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; network port show -ipspace Cluster
+Node: cluster1-02
+                                                  Speed(Mbps)  Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status
+--------- ------------ ---------------- ---- ---- ------------ ------
+e3a       Cluster      Cluster          up   9000  auto/100000 healthy
+e3b       Cluster      Cluster          up   9000  auto/100000 healthy
+
+Node: cluster1-01
+                                                  Speed(Mbps)  Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status
+--------- ------------ ---------------- ---- ---- ------------ ------
+e3a       Cluster      Cluster          up   9000  auto/100000 healthy
+e3b       Cluster      Cluster          up   9000  auto/100000 healthy
+4 entries were displayed.</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>LIF に関する情報を表示します。「 network interface show -vserver Cluster</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; network interface show -vserver Cluster
+        Logical            Status     Network            Current    Current Is
+Vserver Interface          Admin/Oper Address/Mask       Node        Port   Home
+------- ------------------ ---------- ------------------ ----------- ------ ----
+Cluster
+        cluster1-01_clus1  up/up      169.254.209.69/16  cluster1-01  e3a   true
+        cluster1-01_clus2  up/up      169.254.49.125/16  cluster1-01  e3b   true
+        cluster1-02_clus1  up/up      169.254.47.194/16  cluster1-02  e3a   true
+        cluster1-02_clus2  up/up      169.254.19.183/16  cluster1-02  e3b   true
+4 entries were displayed.</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step5] リモートクラスタ LIF に ping を実行します :cluster ping-cluster -node node-name`</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; cluster ping-cluster -node cluster1-02
+Host is cluster1-02
+Getting addresses from network interface table...
+Cluster cluster1-01_clus1 169.254.209.69 cluster1-01     e3a
+Cluster cluster1-01_clus2 169.254.49.125 cluster1-01     e3b
+Cluster cluster1-02_clus1 169.254.47.194 cluster1-02     e3a
+Cluster cluster1-02_clus2 169.254.19.183 cluster1-02     e3b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:
+....
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 9000 byte MTU on 4 path(s):
+    Local 169.254.19.183 to Remote 169.254.209.69
+    Local 169.254.19.183 to Remote 169.254.49.125
+    Local 169.254.47.194 to Remote 169.254.209.69
+    Local 169.254.47.194 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step6] すべてのクラスタ LIF で auto-revert コマンドが有効になっていることを確認します。「 network interface show -vserver Cluster -fields auto-revert</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; network interface show -vserver Cluster -fields auto-revert
+          Logical
+Vserver   Interface            Auto-revert
+--------- ––––––-------------- ------------
+Cluster
+          cluster1-01_clus1    true
+          cluster1-01_clus2    true
+          cluster1-02_clus1    true
+          cluster1-02_clus2    true
+4 entries were displayed.</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step7] 次のコマンドを使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタのログ収集機能を有効にします。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>「システムスイッチイーサネットログセットアップ - パスワード」</p>
+</li>
+<li>
+<p>「システムスイッチのイーサネットログの有効化」</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; system switch ethernet log setup password
+Enter the switch name: &lt;return&gt;
+The switch name entered is not recognized.
+Choose from the following list:
+cs1
+cs2
+cluster1::*&gt; system switch ethernet log setup-password
+Enter the switch name: cs1
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] y
+Enter the password: &lt;enter switch password&gt;
+Enter the password again: &lt;enter switch password&gt;
+cluster1::*&gt; system switch ethernet log setup-password
+Enter the switch name: cs2
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] y
+Enter the password: &lt;enter switch password&gt;
+Enter the password again: &lt;enter switch password&gt;
+cluster1::*&gt; system  switch ethernet log enable-collection
+Do you want to enable cluster log collection for all nodes in the cluster? {y|n}: [n] y
+Enabling cluster switch log collection.
+cluster1::*&gt;</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-switches/images/note.svg" alt="注記">
+</td>
+<td class="content">
+これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cisco-nexus-9336c-fx2-クラスタスイッチに-nx-os-ソフトウェアをインストールします">Cisco Nexus 9336C-FX2 クラスタスイッチに NX-OS ソフトウェアをインストールします</h3>
+<div class="paragraph">
+<p>この手順を使用して、 Cisco Nexus 9336C-FX2 クラスタスイッチに NX-OS ソフトウェアをインストールできます。</p>
+</div>
+<div class="olist arabic">
+<div class="title">手順</div>
+<ol class="arabic">
+<li>
+<p>[[step1] クラスタスイッチを管理ネットワークに接続します。</p>
+</li>
+<li>
+<p>[step2] NX-OS ソフトウェアおよび RCF をホストするサーバへの接続を確認するには、 ping コマンドを使用します。</p>
+<div class="paragraph">
+<p>次の例では、スイッチが IP アドレス「 172.19.2.1 」のサーバに接続できることを確認します。</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs2# ping 172.19.2.1
+Pinging 172.19.2.1 with 0 bytes of data:
+Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step3] NX-OS ソフトウェアおよび EPLD イメージを Nexus 9336C-FX2 スイッチにコピーします。</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs2# copy sftp: bootflash: vrf management
+Enter source filename: /code/nxos.9.3.5.bin
+Enter hostname for the sftp server: 172.19.2.1
+Enter username: user1
+Outbound-ReKey for 172.19.2.1:22
+Inbound-ReKey for 172.19.2.1:22
+user1@172.19.2.1's password:
+sftp&gt; progress
+Progress meter enabled
+sftp&gt; get   /code/nxos.9.3.5.bin  /bootflash/nxos.9.3.5.bin
+/code/nxos.9.3.5.bin  100% 1261MB   9.3MB/s   02:15
+sftp&gt; exit
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+cs2# copy sftp: bootflash: vrf management
+Enter source filename: /code/n9000-epld.9.3.5.img
+Enter hostname for the sftp server: 172.19.2.1
+Enter username: user1
+Outbound-ReKey for 172.19.2.1:22
+Inbound-ReKey for 172.19.2.1:22
+user1@172.19.2.1's password:
+sftp&gt; progress
+Progress meter enabled
+sftp&gt; get   /code/n9000-epld.9.3.5.img  /bootflash/n9000-epld.9.3.5.img
+/code/n9000-epld.9.3.5.img  100%  161MB   9.5MB/s   00:16
+sftp&gt; exit
+Copy complete, now saving to disk (please wait)...
+Copy complete.</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step4"></a> NX-OS ソフトウェアの実行中のバージョンを確認します : 'how version`</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs2# show version
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2020, Cisco and/or its affiliates.
+All rights reserved.
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under their own
+licenses, such as open source.  This software is provided "as is," and unless
+otherwise stated, there is no warranty, express or implied, including but not
+limited to warranties of merchantability and fitness for a particular purpose.
+Certain components of this software are licensed under
+the GNU General Public License (GPL) version 2.0 or
+GNU General Public License (GPL) version 3.0  or the GNU
+Lesser General Public License (LGPL) Version 2.1 or
+Lesser General Public License (LGPL) Version 2.0.
+A copy of each such license is available at
+http://www.opensource.org/licenses/gpl-2.0.php and
+http://opensource.org/licenses/gpl-3.0.html and
+http://www.opensource.org/licenses/lgpl-2.1.php and
+http://www.gnu.org/licenses/old-licenses/library.txt.
+Software
+  BIOS: version 08.38
+  NXOS: version 9.3(4)
+  BIOS compile time:  05/29/2020
+  NXOS image file is: bootflash:///nxos.9.3.4.bin
+  NXOS compile time:  4/28/2020 21:00:00 [04/29/2020 02:28:31]
+Hardware
+  cisco Nexus9000 C9336C-FX2 Chassis
+  Intel(R) Xeon(R) CPU E5-2403 v2 @ 1.80GHz with 8154432 kB of memory.
+  Processor Board ID FOC20291J6K
+  Device name: cs2
+  bootflash:   53298520 kB
+Kernel uptime is 0 day(s), 0 hour(s), 3 minute(s), 42 second(s)
+Last reset at 157524 usecs after Mon Nov  2 18:32:06 2020
+  Reason: Reset Requested by CLI command reload
+  System version: 9.3(4)
+  Service:
+plugin
+  Core Plugin, Ethernet Plugin
+Active Package(s):
+
+cs2#</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step5] NX-OS イメージをインストールします。</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-switches/images/note.svg" alt="注記">
+</td>
+<td class="content">
+イメージファイルをインストールすると、スイッチをリブートするたびにロードされます。
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs2# install all nxos bootflash:nxos.9.3.5.bin
+Installer will perform compatibility check first. Please wait.
+Installer is forced disruptive
+Verifying image bootflash:/nxos.9.3.5.bin for boot variable "nxos".
+[####################] 100% -- SUCCESS
+Verifying image type.
+[####################] 100% -- SUCCESS
+Preparing "nxos" version info using image bootflash:/nxos.9.3.5.bin.
+[####################] 100% -- SUCCESS
+Preparing "bios" version info using image bootflash:/nxos.9.3.5.bin.
+[####################] 100% -- SUCCESS
+Performing module support checks.
+[####################] 100% -- SUCCESS
+Notifying services about system upgrade.
+[####################] 100% -- SUCCESS
+Compatibility check is done:
+Module  bootable       Impact     Install-type  Reason
+------  --------  --------------- ------------  ------
+  1       yes      disruptive         reset     default upgrade is not hitless
+Images will be upgraded according to following table:
+Module   Image    Running-Version(pri:alt                New-Version         Upg-
+                                                                             Required
+------- --------- -------------------------------------- ------------------- ------------
+  1      nxos     9.3(4)                                 9.3(5)              yes
+  1      bios     v08.37(01/28/2020):v08.23(09/23/2015)  v08.38(05/29/2020)  yes
+Switch will be reloaded for disruptive upgrade.
+Do you want to continue with the installation (y/n)?  [n] y
+Install is in progress, please wait.
+Performing runtime checks.
+[####################] 100% -- SUCCESS
+Setting boot variables.
+[####################] 100% -- SUCCESS
+Performing configuration copy.
+[####################] 100% -- SUCCESS
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+[####################] 100% -- SUCCESS
+Finishing the upgrade, switch will reboot in 10 seconds.</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step6] スイッチのリブート後に NX-OS ソフトウェアの新しいバージョンを確認します : 'how version`</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs2# show version
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2020, Cisco and/or its affiliates.
+All rights reserved.
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under their own
+licenses, such as open source.  This software is provided "as is," and unless
+otherwise stated, there is no warranty, express or implied, including but not
+limited to warranties of merchantability and fitness for a particular purpose.
+Certain components of this software are licensed under
+the GNU General Public License (GPL) version 2.0 or
+GNU General Public License (GPL) version 3.0  or the GNU
+Lesser General Public License (LGPL) Version 2.1 or
+Lesser General Public License (LGPL) Version 2.0.
+A copy of each such license is available at
+http://www.opensource.org/licenses/gpl-2.0.php and
+http://opensource.org/licenses/gpl-3.0.html and
+http://www.opensource.org/licenses/lgpl-2.1.php and
+http://www.gnu.org/licenses/old-licenses/library.txt.
+Software
+  BIOS: version 05.33
+  NXOS: version 9.3(5)
+  BIOS compile time:  09/08/2018
+  NXOS image file is: bootflash:///nxos.9.3.5.bin
+  NXOS compile time:  11/4/2018 21:00:00 [11/05/2018 06:11:06]
+Hardware
+  cisco Nexus9000 C9336C-FX2 Chassis
+  Intel(R) Xeon(R) CPU E5-2403 v2 @ 1.80GHz with 8154432 kB of memory.
+  Processor Board ID FOC20291J6K
+  Device name: cs2
+  bootflash:   53298520 kB
+Kernel uptime is 0 day(s), 0 hour(s), 3 minute(s), 42 second(s)
+Last reset at 277524 usecs after Mon Nov  2 22:45:12 2020
+  Reason: Reset due to upgrade
+  System version: 9.3(4)
+  Service:
+plugin
+  Core Plugin, Ethernet Plugin
+Active Package(s):</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step7] EPLD イメージをアップグレードし、スイッチをリブートします。</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs2# show version module 1 epld
+EPLD Device                     Version
+---- -------------------------- -------
+MI   FPGA                        0x7
+IO   FPGA                        0x17
+MI   FPGA2                       0x2
+GEM  FPGA                        0x2
+GEM  FPGA                        0x2
+GEM  FPGA                        0x2
+GEM  FPGA                        0x2
+cs2# install epld bootflash:n9000-epld.9.3.5.img module 1
+Compatibility check:
+Module      Type        Upgradable  Impact      Reason
+------  -------------- ------------ ----------- -------
+     1      SUP        Yes          disruptive  Module Upgradable
+Retrieving EPLD versions.... Please wait.
+Images will be upgraded according to following table:
+Module  Type   EPLD              Running-Version   New-Version  Upg-Required
+------- ------ ----------------- ----------------- ------------ ------------
+     1  SUP    MI FPGA           0x07              0x07         No
+     1  SUP    IO FPGA           0x17              0x19         Yes
+     1  SUP    MI FPGA2          0x02              0x02         No
+The above modules require upgrade.
+The switch will be reloaded at the end of the upgrade
+Do you want to continue (y/n) ?  [n] y
+Proceeding to upgrade Modules.
+Starting Module 1 EPLD Upgrade
+Module 1 : IO FPGA [Programming] : 100.00% (     64 of      64 sectors)
+Module 1 EPLD upgrade is successful.
+Module   Type  Upgrade-Result
+-------- ----- --------------
+     1   SUP   Success
+EPLDs upgraded.
+Module 1 EPLD upgrade is successful.</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step8] スイッチのリブート後に再度ログインし、新しいバージョンの EPLD が正常にロードされたことを確認します。</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs2# show version module 1 epld
+EPLD Device                     Version
+---- -------------------------- --------
+MI   FPGA                        0x7
+IO   FPGA                        0x19
+MI   FPGA2                       0x2
+GEM  FPGA                        0x2
+GEM  FPGA                        0x2
+GEM  FPGA                        0x2
+GEM  FPGA                        0x2</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cisco-nexus-9336c-fx2-クラスタスイッチに-rcf-をインストールします">Cisco Nexus 9336C-FX2 クラスタスイッチに RCF をインストールします</h3>
+<div class="paragraph">
+<p>RCF は、 Nexus 9336C-FX2 クラスタスイッチを初めてセットアップしたあとにインストールできます。この手順を使用して、クラスタスイッチの RCF バージョンをアップグレードすることもできます。</p>
+</div>
+<div class="paragraph">
+<p>この手順の例では、スイッチとノードで次の命名法を使用しています。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2 つの Cisco スイッチの名前は 'CS1' および CS2' です</p>
+</li>
+<li>
+<p>ノード名は「 cluster1-01 」、「 cluster1-02 」、「 cluster1-02 」、「 cluster1-02 」、および「 cluster1-02 」です。</p>
+</li>
+<li>
+<p>クラスタ LIF の名前は、「 cluster1-01 _ clus1 」、「 cluster1-01 _ clus2 」、「 cluster1-02 _ clus1 」、「 cluster1-02 _ clus2 」、「 cluster1-03_clus1 」です。 「 cluster1-03_clus2` 」、「 cluster1-02 」、「 cluster1-04_clus1 」、「 cluster1-04_clus2 」。</p>
+</li>
+<li>
+<p>cluster1 ： * &gt; プロンプトは、クラスタの名前を示します。</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-switches/images/note.svg" alt="注記">
+</td>
+<td class="content">
+手順では、 ONTAP コマンドと Cisco Nexus 9000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">手順</div>
+<ol class="arabic">
+<li>
+<p>[[step1] クラスタスイッチに接続されている各ノードのクラスタポートを表示します。「 network device-discovery show 」を参照してください</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; network device-discovery show
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  --------
+cluster1-01/cdp
+            e3a    cs1                       Ethernet1/7       N9K-C9336C
+            e0d    cs2                       Ethernet1/7       N9K-C9336C
+cluster1-02/cdp
+            e3a    cs1                       Ethernet1/8       N9K-C9336C
+            e0d    cs2                       Ethernet1/8       N9K-C9336C
+cluster1-03/cdp
+            e3a    cs1                       Ethernet1/1/1     N9K-C9336C
+            e3b    cs2                       Ethernet1/1/1     N9K-C9336C
+cluster1-04/cdp
+            e3a    cs1                       Ethernet1/1/2     N9K-C9336C
+            e3b    cs2                       Ethernet1/1/2     N9K-C9336C
+cluster1::*&gt;</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step2] 各クラスタポートの管理ステータスおよび動作ステータスを確認します。</p>
+</li>
+<li>
+<p><a id="step3"></a> すべてのクラスタポートが正常な状態で稼働していることを確認します : 「 network port show – role cluster 」</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; network port show -role cluster
+Node: cluster1-01
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e3a       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
+Node: cluster1-02
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e3a       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
+8 entries were displayed.
+Node: cluster1-03
+
+                                                                        Ignore
+                                                  Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ---- ------------ -------- ------
+e3a       Cluster      Cluster          up   9000  auto/100000 healthy  false
+e3b       Cluster      Cluster          up   9000  auto/100000 healthy  false
+Node: cluster1-04
+                                                                        Ignore
+                                                  Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ---- ------------ -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/100000 healthy  false
+cluster1::*&gt;</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step4"></a> すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します：「 network interface show -role cluster 」</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; network interface show -role cluster
+        Logical            Status     Network         Current      Current Is
+Vserver Interface          Admin/Oper Address/Mask    Node         Port    Home
+------- ------------------ ---------- --------------- ------------ ------- ----
+Cluster
+        cluster1-01_clus1  up/up     169.254.3.4/23   cluster1-01  e3a     true
+        cluster1-01_clus2  up/up     169.254.3.5/23   cluster1-01  e0d     true
+        cluster1-02_clus1  up/up     169.254.3.8/23   cluster1-02  e3a     true
+        cluster1-02_clus2  up/up     169.254.3.9/23   cluster1-02  e0d     true
+        cluster1-03_clus1  up/up     169.254.1.3/23   cluster1-03  e3a     true
+        cluster1-03_clus2  up/up     169.254.1.1/23   cluster1-03  e3b     true
+        cluster1-04_clus1  up/up     169.254.1.6/23   cluster1-04  e3a     true
+        cluster1-04_clus2  up/up     169.254.1.7/23   cluster1-04  e3b     true
+8 entries were displayed.
+cluster1::*&gt;</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step5] クラスタが両方のクラスタスイッチの情報を表示することを確認します： 'system cluster-switch show-is-monitoring -enabled -operational true</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; system cluster-switch show -is-monitoring-enabled-operational true
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- -----
+cs1                         cluster-network    10.233.205.90    N9K-C9336C
+     Serial Number: FOCXXXXXXGD
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    9.3(5)
+    Version Source: CDP
+cs2                         cluster-network    10.233.205.91    N9K-C9336C
+     Serial Number: FOCXXXXXXGS
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    9.3(5)
+    Version Source: CDP
+cluster1::*&gt;</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step6] ] クラスタ LIF での自動リバートを無効にします。</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; network interface modify -vserver Cluster -lif * -auto-revert false</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[step7] クラスタスイッチ cs2 で、ノードのクラスタポートに接続されているポートをシャットダウンします。</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs2(config)# interface eth1/1/1-2,eth1/7-8
+cs2(config-if-range)# shutdown</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step8] クラスタ LIF が、クラスタスイッチ cs1 でホストされているポートに移行されていることを確認します。この処理には数秒かかることがあります。「 network interface show -role cluster 」のように表示されます</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; network interface show -role cluster
+        Logical           Status     Network          Current      Current  Is
+Vserver Interface         Admin/Oper Address/Mask     Node         Port     Home
+------- ----------------- --------- ---------------- ------------- ------- ----
+Cluster
+        cluster1-01_clus1 up/up     169.254.3.4/23   cluster1-01   e3a     true
+        cluster1-01_clus2 up/up     169.254.3.5/23   cluster1-01   e3a     false
+        cluster1-02_clus1 up/up     169.254.3.8/23   cluster1-02   e3a     true
+        cluster1-02_clus2 up/up     169.254.3.9/23   cluster1-02   e3a     false
+        cluster1-03_clus1 up/up     169.254.1.3/23   cluster1-03   e3a     true
+        cluster1-03_clus2 up/up     169.254.1.1/23   cluster1-03   e3a     false
+        cluster1-04_clus1 up/up     169.254.1.6/23   cluster1-04   e3a     true
+        cluster1-04_clus2 up/up     169.254.1.7/23   cluster1-04   e3a     false
+8 entries were displayed.
+cluster1::*&gt;</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step9] クラスタが正常であることを確認します : cluster show</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; cluster show
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  -------
+cluster1-01          true    true          false
+cluster1-02          true    true          false
+cluster1-03          true    true          true
+cluster1-04          true    true          false
+4 entries were displayed.
+cluster1::*&gt;</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step10] スイッチ cs2 の構成をクリーニングし、基本的なセットアップを実行します。</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>設定を消去します。この手順では、スイッチへのコンソール接続が必要です。</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs2# write erase
+Warning: This command will erase the startup-configuration.
+Do you wish to proceed anyway? (y/n)  [n] y
+cs2# reload
+This command will reboot the system. (y/n)?  [n] y
+cs2#</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>スイッチの基本設定を実行します。</p>
+</li>
+<li>
+<p><a id="step11"></a> FTP 、 TFTP 、 SFTP 、または SCP のいずれかの転送プロトコルを使用して、 RCF をスイッチ cs2 のブートフラッシュにコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください <a href="https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html">"Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"</a>。</p>
+<div class="paragraph">
+<p>この例は、 TFTP を使用して、スイッチ cs2 のブートフラッシュに RCF をコピーする方法を示しています。</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs2# copy tftp: bootflash: vrf management
+Enter source filename: Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt
+Enter hostname for the tftp server: 172.22.201.50
+Trying to connect to tftp server......Connection to Server Established.
+TFTP get operation was successful
+Copy complete, now saving to disk (please wait)...</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step12"></a> 以前にブートフラッシュにダウンロードした RCF を適用します。Cisco コマンドの詳細については、『』の該当するガイドを参照してください <a href="https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html">"Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"</a>。</p>
+<div class="paragraph">
+<p>この例は、スイッチ cs2 にインストールされている RCF ファイル「 Nexus_9336C_RCF_v1.6 -Cluster-HA-Breakout .txt 」を示しています。</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs2# copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step13"></a> 'How banner motd コマンドのバナー出力を調べますスイッチの設定と動作を適切に行うには、次の手順を参照して実行する必要があります。</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs2# show banner motd
+***************************************************************************
+* NetApp Reference Configuration File (RCF)
+*
+* Switch   : Nexus N9K-C9336C-FX2
+* Filename : Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt
+* Date     : 10-23-2020
+* Version  : v1.6
+*
+* Port Usage:
+* Ports  1- 3: Breakout mode (4x10G) Intra-Cluster Ports, int e1/1/1-4,
+* e1/2/1-4, e1/3/1-4
+* Ports  4- 6: Breakout mode (4x25G) Intra-Cluster/HA Ports, int e1/4/1-4,
+* e1/5/1-4, e1/6/1-4
+* Ports  7-34: 40/100GbE Intra-Cluster/HA Ports, int e1/7-34
+* Ports 35-36: Intra-Cluster ISL Ports, int e1/35-36
+*
+* Dynamic breakout commands:
+* 10G: interface breakout module 1 port &lt;range&gt; map 10g-4x
+* 25G: interface breakout module 1 port &lt;range&gt; map 25g-4x
+*
+* Undo breakout commands and return interfaces to 40/100G configuration in
+* config mode:
+* no interface breakout module 1 port &lt;range&gt; map 10g-4x
+* no interface breakout module 1 port &lt;range&gt; map 25g-4x
+* interface Ethernet &lt;interfaces taken out of breakout mode&gt;
+* inherit port-profile 40-100G
+* priority-flow-control mode auto
+* service-policy input HA
+* exit
+*
+***************************************************************************</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step14"></a> RCF ファイルが正しい新しいバージョンであることを確認します :'how running-config</p>
+<div class="paragraph">
+<p>出力をチェックして正しい RCF があることを確認する場合は、次の情報が正しいことを確認してください。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>RCF バナー</p>
+</li>
+<li>
+<p>ノードとポートの設定</p>
+</li>
+<li>
+<p>カスタマイズ</p>
+<div class="paragraph">
+<p>出力内容はサイトの構成によって異なります。ポートの設定を確認し、インストールした RCF に固有の変更がないかリリースノートを参照してください。</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>RCF のバージョンとスイッチの設定が正しいことを確認したら、 running-config ファイルを startup-config ファイルにコピーします。</p>
+<div class="paragraph">
+<p>Cisco コマンドの詳細については、『』の該当するガイドを参照してください <a href="https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html">"Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"</a>。</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs2# copy running-config startup-config [########################################] 100% Copy complete</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step16"></a> スイッチ cs2 をリブートします。スイッチのリブート中にノードで報告される「クラスタポートが停止している」イベントは無視してかまいません。</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs2# reload
+This command will reboot the system. (y/n)?  [n] y</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step17"></a> 同じ RCF を適用し、実行中の設定をもう一度保存します。</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs2# copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
+cs2# copy running-config startup-config [########################################] 100% Copy complete</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step18"></a> クラスタのクラスタポートの健常性を確認します。</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>クラスタ内のすべてのノードで e0d ポートが正常に稼働していることを確認します。「 network port show -role cluster 」</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; network port show -role cluster
+Node: cluster1-01
+                                                                   Ignore
+                                             Speed(Mbps)  Health   Health
+Port    IPspace   Broadcast Domain Link MTU  Admin/Oper   Status   Status
+------- --------- ---------------- ---- ---- ------------ -------- ------
+e3a     Cluster   Cluster          up   9000 auto/100000  healthy  false
+e3b     Cluster   Cluster          up   9000 auto/100000  healthy  false
+
+Node: cluster1-02
+                                                                   Ignore
+                                              Speed(Mbps)  Health  Health
+Port    IPspace   Broadcast Domain Link MTU   Admin/Oper   Status  Status
+------- --------- ---------------- ---- ----- ------------ -------- ------
+e3a    Cluster   Cluster          up   9000  auto/100000  healthy  false
+e3b    Cluster   Cluster          up   9000  auto/100000  healthy  false
+
+Node: cluster1-03
+                                                                   Ignore
+                                              Speed(Mbps) Health   Health
+Port   IPspace    Broadcast Domain Link MTU   Admin/Oper  Status   Status
+------ ---------- ---------------- ---- ----- ----------- -------- ------
+e3a    Cluster    Cluster          up   9000  auto/100000 healthy  false
+e0d    Cluster    Cluster          up   9000  auto/100000 healthy  false
+
+Node: cluster1-04
+                                                                   Ignore
+                                              Speed(Mbps) Health   Health
+Port   IPspace    Broadcast Domain Link MTU   Admin/Oper  Status   Status
+------ ---------- ---------------- ---- ----- ----------- -------- ------
+e3a    Cluster      Cluster        up   9000  auto/100000 healthy  false
+e0d    Cluster      Cluster        up   9000  auto/100000 healthy  false
+8 entries were displayed.</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>クラスタからスイッチのヘルスを確認します（ LIF が e0d にホームでないため、スイッチ cs2 が表示されない可能性があります）。</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; network device-discovery show -protocol cdp
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------- --------
+cluster1-01/cdp
+            e3a    cs1                       Ethernet1/7       N9K-C9336C
+            e0d    cs2                       Ethernet1/7       N9K-C9336C
+cluster01-2/cdp
+            e3a    cs1                       Ethernet1/8       N9K-C9336C
+            e0d    cs2                       Ethernet1/8       N9K-C9336C
+cluster01-3/cdp
+            e3a    cs1                       Ethernet1/1/1     N9K-C9336C
+            e3b    cs2                       Ethernet1/1/1     N9K-C9336C
+cluster1-04/cdp
+            e3a    cs1                       Ethernet1/1/2     N9K-C9336C
+            e3b    cs2                       Ethernet1/1/2     N9K-C9336C
+cluster1::*&gt; system cluster-switch show -is-monitoring-enabled-operational true
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- -----
+cs1                         cluster-network    10.233.205.90    NX9-C9336C
+     Serial Number: FOCXXXXXXGD
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    9.3(5)
+    Version Source: CDP
+cs2                         cluster-network    10.233.205.91    NX9-C9336C
+     Serial Number: FOCXXXXXXGS
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    9.3(5)
+    Version Source: CDP
+2 entries were displayed.</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-switches/images/note.svg" alt="注記">
+</td>
+<td class="content">
+スイッチにロードした RCF バージョンによっては、 cs1 スイッチコンソールで次の出力が表示されることがあります。
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>2020 Nov 17 16:07:18 cs1 %$ VDC-1 %$ %STP-2-UNBLOCK_CONSIST_PORT: Unblocking port port-channel1 on VLAN0092. Port consistency restored.
+2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_PEER: Blocking port-channel1 on VLAN0001. Inconsistent peer vlan.
+2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL: Blocking port-channel1 on VLAN0092. Inconsistent local vlan.</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step19"></a> クラスタスイッチ cs1 で、ノードのクラスタポートに接続されているポートをシャットダウンします。次の例では、手順 1 の出力例を使用しています。</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs1(config)# interface eth1/1/1-2,eth1/7-8
+cs1(config-if-range)# shutdown</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[step20] クラスタ LIF がスイッチ cs2 でホストされているポートに移行されたことを確認しますこの処理には数秒かかることがあります。「 network interface show -role cluster 」のように表示されます</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; network interface show -role cluster
+        Logical            Status      Network         Current      Current Is
+Vserver Interface          Admin/Oper  Address/Mask    Node         Port    Home
+------- ------------------ ----------- --------------- ------------ ------- ----
+Cluster
+        cluster1-01_clus1  up/up       169.254.3.4/23   cluster1-01   e0d  false
+        cluster1-01_clus2  up/up       169.254.3.5/23   cluster1-01   e0d   true
+        cluster1-02_clus1  up/up       169.254.3.8/23   cluster1-02   e0d  false
+        cluster1-02_clus2  up/up       169.254.3.9/23   cluster1-02   e0d   true
+        cluster1-03_clus1  up/up       169.254.1.3/23   cluster1-03   e3b  false
+        cluster1-03_clus2  up/up       169.254.1.1/23   cluster1-03   e3b   true
+        cluster1-04_clus1  up/up       169.254.1.6/23   cluster1-04   e3b  false
+        cluster1-04_clus2  up/up       169.254.1.7/23   cluster1-04   e3b   true
+8 entries were displayed.
+cluster1::*&gt;</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step2"></a> クラスタが正常であることを確認します : 'cluster show`</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; cluster show
+Node                 Health   Eligibility   Epsilon
+-------------------- -------- ------------- -------
+cluster1-01          true     true          false
+cluster1-02          true     true          false
+cluster1-03          true     true          true
+cluster1-04          true     true          false
+4 entries were displayed.
+cluster1::*&gt;</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step22"></a> スイッチ cs1 で手順 7 から 14 を繰り返します。</p>
+</li>
+<li>
+<p>クラスタ LIF で自動リバートを有効にします。</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; network interface modify -vserver Cluster -lif * -auto-revert True</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step24"></a> スイッチ cs1 をリブートします。これは、クラスタ LIF のホームポートへのリバートをトリガーする際に行います。スイッチのリブート中にノードで報告される「クラスタポートが停止している」イベントは無視してかまいません。</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs1# reload
+This command will reboot the system. (y/n)?  [n] y</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step25"></a> クラスタポートに接続されているスイッチポートが稼働していることを確認します。</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs1# show interface brief | grep up
+.
+.
+Eth1/1/1      1       eth  access up      none                   100G(D) --
+Eth1/1/2      1       eth  access up      none                   100G(D) --
+Eth1/7        1       eth  trunk  up      none                   100G(D) --
+Eth1/8        1       eth  trunk  up      none                   100G(D) --
+.
+.</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step26"></a> CS1 と CS2 の間の ISL が機能していることを確認します : 'how port-channel summary</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cs1# show port-channel summary
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/35(P)        Eth1/36(P)
+cs1#</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step27"></a> クラスタ LIF がホームポートにリバートされたことを確認します。「 network interface show -role cluster 」</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; network interface show -role cluster
+        Logical            Status     Network           Current     Current Is
+Vserver Interface          Admin/Oper Address/Mask      Node        Port    Home
+------- ------------------ ---------- ----------------- ----------- ------- ----
+Cluster
+        cluster1-01_clus1  up/up      169.254.3.4/23    cluster1-01  e0d   true
+        cluster1-01_clus2  up/up      169.254.3.5/23    cluster1-01  e0d   true
+        cluster1-02_clus1  up/up      169.254.3.8/23    cluster1-02  e0d   true
+        cluster1-02_clus2  up/up      169.254.3.9/23    cluster1-02  e0d   true
+        cluster1-03_clus1  up/up      169.254.1.3/23    cluster1-03  e3b   true
+        cluster1-03_clus2  up/up      169.254.1.1/23    cluster1-03  e3b   true
+        cluster1-04_clus1  up/up      169.254.1.6/23    cluster1-04  e3b   true
+        cluster1-04_clus2  up/up      169.254.1.7/23    cluster1-04  e3b   true
+8 entries were displayed.
+cluster1::*&gt;</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[step28]] クラスタが正常であることを確認します : cluster show</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; cluster show
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------- -------
+cluster1-01          true    true          false
+cluster1-02          true    true          false
+cluster1-03          true    true          true
+cluster1-04          true    true          false
+4 entries were displayed.
+cluster1::*&gt;</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step29"></a> リモートクラスタインタフェースに ping を実行して接続を確認します : cluster ping-cluster -node local</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster1::*&gt; cluster ping-cluster -node local
+Host is cluster1-03
+Getting addresses from network interface table...
+Cluster cluster1-03_clus1 169.254.1.3 cluster1-03 e3a
+Cluster cluster1-03_clus2 169.254.1.1 cluster1-03 e3b
+Cluster cluster1-04_clus1 169.254.1.6 cluster1-04 e3a
+Cluster cluster1-04_clus2 169.254.1.7 cluster1-04 e3b
+Cluster cluster1-01_clus1 169.254.3.4 cluster1-01 e3a
+Cluster cluster1-01_clus2 169.254.3.5 cluster1-01 e0d
+Cluster cluster1-02_clus1 169.254.3.8 cluster1-02 e3a
+Cluster cluster1-02_clus2 169.254.3.9 cluster1-02 e0d
+Local = 169.254.1.3 169.254.1.1
+Remote = 169.254.1.6 169.254.1.7 169.254.3.4 169.254.3.5 169.254.3.8 169.254.3.9
+Cluster Vserver Id = 4294967293
+Ping status:
+............
+Basic connectivity succeeds on 12 path(s)
+Basic connectivity fails on 0 path(s)
+................................................
+Detected 9000 byte MTU on 12 path(s):
+    Local 169.254.1.3 to Remote 169.254.1.6
+    Local 169.254.1.3 to Remote 169.254.1.7
+    Local 169.254.1.3 to Remote 169.254.3.4
+    Local 169.254.1.3 to Remote 169.254.3.5
+    Local 169.254.1.3 to Remote 169.254.3.8
+    Local 169.254.1.3 to Remote 169.254.3.9
+    Local 169.254.1.1 to Remote 169.254.1.6
+    Local 169.254.1.1 to Remote 169.254.1.7
+    Local 169.254.1.1 to Remote 169.254.3.4
+    Local 169.254.1.1 to Remote 169.254.3.5
+    Local 169.254.1.1 to Remote 169.254.3.8
+    Local 169.254.1.1 to Remote 169.254.3.9
+Larger than PMTU communication succeeds on 12 path(s)
+RPC status:
+6 paths up, 0 paths down (tcp check)
+6 paths up, 0 paths down (udp check)</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cisco-nexus-9336c-fx2-ストレージスイッチに-rcf-をインストールします">Cisco Nexus 9336C-FX2 ストレージスイッチに RCF をインストールします</h3>
+<div class="paragraph">
+<p>リファレンス構成ファイル（ RCF ）は、 Cisco Nexus 9336C-FX2 ストレージスイッチでアップグレードできます。</p>
+</div>
+<div class="paragraph">
+<p>ストレージスイッチの RCF をアップグレードする前に、次の条件が満たされている必要があります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>スイッチが完全に機能している必要があります（ログにエラーがないか、または同様の問題が発生していないか）。</p>
+</li>
+<li>
+<p>NX-OS だけをインストールして現在の RCF バージョンをそのまま使用する場合は、目的のブートイメージを反映するように、 RCF で必要なブート変数を確認または設定しておく必要があります。</p>
+</li>
+<li>
+<p>現在のブートイメージを反映するようにブート変数を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。</p>
+</li>
+<li>
+<p>Cisco ストレージのアップグレードおよびダウングレード手順の詳細なドキュメントについては、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります。を参照してください <a href="https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html">"Cisco Nexus 9000 シリーズスイッチ"</a> を参照してください。</p>
+</li>
+<li>
+<p>100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）で定義されています <a href="https://mysupport.netapp.com/site/info/cisco-ethernet-switch">"Cisco イーサネットスイッチ"</a> ページ</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">手順のまとめ</div>
+<ol class="arabic">
+<li>
+<p>スイッチとポートのヘルスステータスの確認（手順 1~4 ）</p>
+</li>
+<li>
+<p>NX-OS イメージを Cisco スイッチ st2 にダウンロードし、リブートします（手順 5 ～ 8 ）。</p>
+</li>
+<li>
+<p>RCF を Cisco スイッチ st2 にコピーする（手順 9-12 ）</p>
+</li>
+<li>
+<p>スイッチとポートのヘルスステータスを再確認する（手順 13 ~ 15 ）</p>
+</li>
+<li>
+<p>Cisco スイッチ st1 について、手順 1 ～ 15 を繰り返します。</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-switches/images/note.svg" alt="注記">
+</td>
+<td class="content">
+コマンド出力は、 ONTAP のリリースによって異なる場合があります。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>この手順の例では、スイッチとノードで次の命名法を使用しています。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2 つのストレージスイッチの名前は <em>st1_and _st2_</em> です。</p>
+</li>
+<li>
+<p>ノードは、 _ node1 _ と _ node2 _ です。</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-systems-switches/images/note.svg" alt="注記">
+</td>
+<td class="content">
+手順では、 ONTAP コマンドと Cisco Nexus 9000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">手順</div>
+<ol class="arabic">
+<li>
+<p>このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= xh</p>
+<div class="paragraph">
+<p>x は、メンテナンス時間の長さ（時間単位）です。</p>
+</div>
+</li>
+<li>
+<p>ストレージスイッチが使用可能であることを確認します。「 system switch ethernet show</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>storage::*&gt; system switch ethernet show
+Switch                    Type               Address          Model
+------------------------- ------------------ ---------------- ---------------
+st1
+                          storage-network    172.17.227.5     NX9-C9336C
+      Serial Number: FOC221206C2
+       Is Monitored: true
+             Reason: None
+   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                     9.3(5)
+     Version Source: CDP
+st2
+                          storage-network    172.17.227.6     NX9-C9336C
+      Serial Number: FOC220443LZ
+       Is Monitored: true
+             Reason: None
+   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                     9.3(5)
+     Version Source: CDP
+2 entries were displayed.
+storage::*&gt;</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step3"></a> ノードポートが正常で動作していることを確認します。「 storage port show -port-type enet 」</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>storage::*&gt; storage port show -port-type ENET
+                                   Speed                            VLAN
+Node     Port   Type    Mode       (Gb/s)     State     Status        ID
+------- ------- ------- ---------- ---------- --------- ----------- -----
+node1
+        e3a     ENET    storage    100        enabled   online         30
+        e3b     ENET    storage      0        enabled   offline        30
+        e7a     ENET    storage      0        enabled   offline        30
+        e7b     ENET    storage    100        enabled   online         30
+node2
+        e3a     ENET    storage    100        enabled   online         30
+        e3b     ENET    storage      0        enabled   offline        30
+        e7a     ENET    storage      0        enabled   offline        30
+        e7b     ENET    storage    100        enabled   online         30</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step4] クラスタにストレージスイッチやケーブル接続の問題がないことを確認します：「 system health alert show -instance 」</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>storage::*&gt; system health alert show -instance
+There are no entries matching your query.</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step5] NX-OS イメージをスイッチ st2 にダウンロードします。</p>
+</li>
+<li>
+<p>システムイメージをインストールして、次回スイッチ st2 をリブートしたときに新しいバージョンがロードされるようにします。次の出力に示すように、スイッチは 10 秒後に新しいイメージでリブートされます。</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>st2# install all nxos bootflash:nxos.9.3. 5.bin
+Installer will perform compatibility check first. Please wait.
+Installer is forced disruptive
+Verifying image bootflash:/nxos.9.3.4.bin for boot variable "nxos".
+[####################] 100% -- SUCCESS
+Verifying image type.
+[[####################] 100% -- SUCCESS
+Preparing "nxos" version info using image bootflash:/nxos.9.3.4.bin.
+[####################] 100% -- SUCCESS
+Preparing "bios" version info using image bootflash:/nxos.9.3.4.bin.
+[####################] 100% -- SUCCESS
+Performing module support checks.
+[####################] 100% -- SUCCESS
+Notifying services about system upgrade.
+[####################] 100% -- SUCCESS
+Compatibility check is done:
+Module  bootable  Impact  Install-type  Reason
+------    --------   ----- --------   ------------   ---- --
+     1        yes      disruptive         reset  default upgrade is not hitless
+Images will be upgraded according to following table:
+Module Image        Running-Version(pri:alt)               New-Version  Upg
+                                                                        Required
+------ --------  ---------------------------------------  ------------  --------
+ 1     nxos                                     9.3(3)          9.3(4)       yes
+ 1     bios      v08.37(01/28/2020):v08.23(09/23/2015)   v08.38(05/29/2020)   no
+Switch will be reloaded for disruptive upgrade.
+Do you want to continue with the installation (y/n)? [n] y
+input string too long
+Do you want to continue with the installation (y/n)? [n] y
+Install is in progress, please wait.
+Performing runtime checks.
+[####################] 100% -- SUCCESS
+Setting boot variables.
+[####################] 100% -- SUCCESS
+Performing configuration copy.
+[####################] 100% -- SUCCESS
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+[####################] 100% -- SUCCESS
+Finishing the upgrade, switch will reboot in 10 seconds.
+st2#</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step7] 設定を保存します。</p>
+<div class="paragraph">
+<p>次の例に示すように、システムをリブートするように求められます。</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>st2# copy running-config startup-config
+[########################################] 100% Copy complete.
+st2# reload
+This command will reboot the system. (y/n)? [n] y</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step8] 新しい NX-OS バージョン番号がスイッチ上にあることを確認します。</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>st2# show version
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Upgrading a Cisco Nexus 9336C Storage Switch 6
+Upgrading a Cisco Nexus 9336C storage switch
+Copyright (C) 2002-2020, Cisco and/or its affiliates.
+All rights reserved.
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under their own
+licenses, such as open source. This software is provided "as is," and unless otherwise stated, there is no warranty, express or implied, including but not limited to warranties of merchantability and fitness for a particular purpose.
+Certain components of this software are licensed under
+the GNU General Public License (GPL) version 2.0 or
+GNU General Public License (GPL) version 3.0 or the GNU
+Lesser General Public License (LGPL) Version 2.1 or
+Lesser General Public License (LGPL) Version 2.0.
+A copy of each such license is available at
+http://www.opensource.org/licenses/gpl-2.0.php and
+http://opensource.org/licenses/gpl-3.0.html and
+http://www.opensource.org/licenses/lgpl-2.1.php and
+.
+Software
+ BIOS: version 08.38
+ NXOS: version 9.3(5)
+ BIOS compile time: 05/29/2020
+ NXOS image file is: bootflash:///nxos.9.3. 5.bin
+ NXOS compile time: 4/28/2020 21:00:00 [04/29/2020 02:28:31]
+Hardware
+ cisco Nexus9000 C9336C Chassis (Nexus 9000 Series)
+ Intel(R) Xeon(R) CPU E5-2403 v2 @ 1.80GHz with 8154432 kB of memory.
+ Processor Board ID FOC20291J6K
+ Device name: S2
+ bootflash: 53298520 kB
+Kernel uptime is 0 day(s), 0 hour(s), 3 minute(s), 42 second(s)
+Last reset at 157524 usecs after Mon Nov 2 18:32:06 2020
+           Reason: Reset due to upgrade
+   System version: 9.3(5)
+   Service:
+plugin
+   Core Plugin, Ethernet Plugin
+   Active Package(s):
+st2#</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step9] スイッチ st2 の RCF をスイッチのブートフラッシュにコピーします。 FTP 、 HTTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用します。</p>
+<div class="paragraph">
+<p>Cisco コマンドの詳細については、『』の該当するガイドを参照してください <a href="https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html">"Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"</a>。</p>
+</div>
+<div class="paragraph">
+<p>次に、 HTTP を使用して、 RCF をスイッチ st2 のブートフラッシュにコピーする例を示します。</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>st2# copy http://172.16.10.1//cfg/Nexus_9336C_RCF_v1.6-Storage.txt bootflash: vrf management
+% Total % Received % Xferd   Average   Speed  Time   Time   Time
+Current
+   Dload     Upload  Total Spent   Left
+Speed
+ 100    3254          100     3254      0       0     8175    0 --:--:-- --:--:-- --:--:–
+8301
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+st2#</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step10] 以前にブートフラッシュにダウンロードした RCF を適用します。「 copy bootflash` 」</p>
+<div class="paragraph">
+<p>次の例は、 RCF ファイル「 Nexus_9336C_rcf_v1.6 -Storage.txt 」をスイッチ st2 にインストールする例を示しています。</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>st2# copy Nexus_9336C_RCF_v1.6-Storage.txt running-config echo-commands</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step11"></a> RCF ファイルが正しい新しいバージョンであることを確認します :'how running-config</p>
+<div class="paragraph">
+<p>出力をチェックして正しい RCF があることを確認する場合は、次の情報が正しいことを確認してください。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>RCF バナー</p>
+</li>
+<li>
+<p>ノードとポートの設定</p>
+</li>
+<li>
+<p>カスタマイズ</p>
+<div class="paragraph">
+<p>出力内容はサイトの構成によって異なります。ポートの設定を確認し、インストールした RCF に固有の変更がないかリリースノートを参照してください。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>重要： * 「 How banner motd 」コマンドのバナー出力で、「重要な注意事項」セクションの指示を読んで、スイッチの設定と操作が適切であることを確認してください。</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>st2# show banner motd
+******************************************************************************
+*NetApp Reference Configuration File (RCF)
+*
+*Switch : Nexus N9K-C9336C-FX2
+*Filename : Nexus_9336C_RCF_v1.6-Storage.txt
+* Date : 10-23-2020
+*Version  : v1.6
+*
+*Port Usage: Storage configuration
+*Ports 1-36: 100GbE Controller and Shelf Storage Ports
+*
+*IMPORTANT NOTES*
+*- This RCF utilizes QoS and requires TCAM re-configuration, requiring RCF
+*to be loaded twice with the Storage Switch rebooted in between.
+*
+*- Perform the following 4 steps to ensure proper RCF installation:
+*
+*(1) Apply RCF first time, expect following messages:
+*- Please save config and reload the system...
+*- Edge port type (portfast) should only be enabled on ports...
+*- TCAM region is not configured for feature QoS class IPv4 ingress...
+*
+*(2) Save running-configuration and reboot Cluster Switch
+*
+*(3) After reboot, apply same RCF second time and expect following messages:
+*- % Invalid command at '^' marker
+*- Syntax error while parsing...
+*
+*(4) Save running-configuration again
+******************************************************************************
+st2#</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step12"></a> ソフトウェアのバージョンとスイッチの設定が正しいことを確認したら、スイッチ st2 の startup-config ファイルに running-config ファイルをコピーします。</p>
+<div class="paragraph">
+<p>Cisco コマンドの詳細については、『』の該当するガイドを参照してください <a href="https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html">"Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"</a>。</p>
+</div>
+<div class="paragraph">
+<p>次に 'running-config' ファイルが 'artup-config ファイルに正常にコピーされた例を示します</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>st2# copy running-config startup-config
+[########################################] 100% Copy complete.</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step13"></a> 再起動後にストレージスイッチが使用可能であることを再確認します : 'system switch ethernet show</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>storage::*&gt; system switch ethernet show
+Switch                       Type               Address          Model
+---------------------------- ------------------ ---------------- ---------------
+st1
+                            storage-network     172.17.227.5     NX9-C9336C
+     Serial Number: FOC221206C2
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    9.3(5)
+    Version Source: CDP
+st2
+                            storage-network      172.17.227.6    NX9-C9336C
+     Serial Number: FOC220443LZ
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    9.3(5)
+    Version Source: CDP
+2 entries were displayed.
+storage::*</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step14"></a> リブート後にスイッチポートが正常で動作していることを確認します。「 storage port show -port-type enet 」</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>storage::*&gt; storage port show -port-type ENET
+                                   Speed                            VLAN
+Node    Port    Type    Mode       (Gb/s)      State     Status       ID
+------- ------- ------- ---------- ----------- --------- --------- -----
+node1
+        e3a     ENET    storage           100   enabled   online       30
+        e3b     ENET    storage             0   enabled   offline      30
+        e7a     ENET    storage             0   enabled   offline      30
+        e7b     ENET    storage           100   enabled   online       30
+node2
+        e3a     ENET    storage           100   enabled   online       30
+        e3b     ENET    storage             0   enabled   offline      30
+        e7a     ENET    storage             0   enabled   offline      30
+        e7b     ENET    storage           100   enabled   online       30</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step15"></a> クラスタにストレージスイッチやケーブル接続に問題がないことを再確認します : 'system health alert show-instance</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>storage::*&gt; system health alert show -instance
+There are no entries matching your query.</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step16"></a> スイッチ st1 の手順に対して、この手順を繰り返します。</p>
+</li>
+<li>
+<p>ケースの自動作成を抑制した場合は、 AutoSupport メッセージ「 system node AutoSupport invoke -node * -type all -message MAINT=end 」を呼び出して作成を再度有効にします</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cisco-nexus-9336c-fx2-共有スイッチに-rcf-をインストールします">Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします</h3>
+<div class="paragraph">
+<p>ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチシナリオに結合できます。</p>
+</div>
+<div class="ulist">
+<div class="title">作業を開始する前に</div>
+<ul>
+<li>
+<p>クラスタスイッチが完全に機能している必要があります（ログにエラーがあるなどの問題が発生していない）。</p>
+</li>
+<li>
+<p>ストレージスイッチが完全に機能している必要があります（ログにエラーが記録されていないか、または同様の問題が発生していないことが必要です）。</p>
+</li>
+<li>
+<p>2 つのストレージスイッチの名前は <em>sh1_and _sh2</em>.</p>
+</li>
+<li>
+<p>ここで使用した例は、新しいスイッチに共有 RCF をロードします。</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">手順</div>
+<ol class="arabic">
+<li>
+<p>FTP 、 HTTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ sh2 上の RCF をスイッチブートフラッシュにコピーします。</p>
+<div class="paragraph">
+<p>Cisco コマンドの詳細については、『』の該当するガイドを参照してください <a href="https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html">"Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"</a>。</p>
+</div>
+<div class="paragraph">
+<p>次に、 HTTP を使用して、 RCF をスイッチ sh2 のブートフラッシュにコピーする例を示します。</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>sh2# copy http://172.16.10.1//cfg/Nexus_9336C_RCF_v1.7-Cluster-Ha-Storage.txt bootflash: vrf management
+% Total % Received % Xferd   Average   Speed  Time   Time   Time
+Current
+   Dload     Upload  Total Spent   Left
+Speed
+ 100    5143          100     5143      0       0     11300    0 --:--:-- --:--:-- --:--:–
+11300
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+sh2#</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[step2] 以前にブートフラッシュにダウンロードした RCF を適用します。</p>
+<div class="paragraph">
+<p>次に、スイッチ sh2 に RCF ファイル「 Nexus_9336C_RCF_v1.7-Cluster-HA-Storage.txt 」をインストールする例を示します。</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>sh2# copy Nexus_9336C_RCF_v1.7-Cluster-HA-Storage.txt running-config echo-commands</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step3"></a> RCF ファイルが正しい新しいバージョンであることを確認します : 'how running-config</p>
+<div class="paragraph">
+<p>出力をチェックして正しい RCF があることを確認する場合は、次の情報が正しいことを確認してください。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>RCF バナー</p>
+</li>
+<li>
+<p>ノードとポートの設定</p>
+</li>
+<li>
+<p>カスタマイズ</p>
+<div class="paragraph">
+<p>出力内容はサイトの構成によって異なります。ポートの設定を確認し、インストールした RCF に固有の変更がないかリリースノートを参照してください。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>重要： * 「 How banner motd 」コマンドのバナー出力で、「重要な注意事項」セクションの指示を読んで、スイッチの設定と操作が適切であることを確認してください。</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>sh2# show banner motd
+******************************************************************************
+*NetApp Reference Configuration File (RCF)
+*
+*Switch : Nexus N9K-C9336C-FX2
+*Filename : Nexus_9336C_RCF_v1.7-Cluster-HA-Storage.txt
+* Date :  Jan-08-2021
+*Version  : v1.7
+*
+*Port Usage:
+*Ports  1-8: 40/100GbE Intra-Cluster/HA Ports, int e1/1-8
+*Port     9: 10GbE breakout Intra-Cluster Ports, int e1/9/1-4
+*Port    10: 25GbE breakout Intra-Cluster/HA Ports, int e1/10/1-4
+*Ports 11-22: First HA-pair Controller and Shelf Storage Ports, int e1/11-22
+*Ports 23-34: Second HA-pair Controller and Shelf Storage Ports, int e1/23-34
+*Ports 35-36: Intra-Cluster ISL Ports, int e1/35-36
+*
+* Undo breakout commands and return interfaces to 40/100G configuration in
+* config mode:
+* no interface breakout module 1 port 9 map 10g-4x
+* no interface breakout module 1 port 10 map 25g-4x
+* interface Ethernet 1/9-10
+* inherit port-profile CLUSTER_HA
+* priority-flow-control mode auto
+* service-policy type qos input HA_POLICY
+* exit
+*
+*IMPORTANT NOTES*
+* In certain conditions, N9K-C9336C-FX2 may not be able to auto-negotiate port
+* speed correctly, and port speed must be manually set, in config mode, e.g.
+* int e1/1
+* speed 40000
+* int e1/3
+* speed 100000
+*
+******************************************************************************
+sh2#</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step4"></a> ソフトウェアのバージョンとスイッチの設定が正しいことを確認したら、スイッチ sh2 の startup-config ファイルに「 running-config 」ファイルをコピーします。</p>
+<div class="paragraph">
+<p>Cisco コマンドの詳細については、『』の該当するガイドを参照してください <a href="https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html">"Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"</a>。</p>
+</div>
+<div class="paragraph">
+<p>次に 'running-config' ファイルが 'artup-config ファイルに正常にコピーされた例を示します</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>sh2# copy running-config startup-config
+[########################################] 100% Copy complete.</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[[step5] スイッチ sh1 の手順に対して、この を繰り返します。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div id="version-dropdown"></div>
+    <div class="page-nav-contribute"  >
+      <a target="_blank" href="https://github.com/NetAppDocs/ontap-systems-switches/issues/new?body=Page%3A%20[NX-OS ソフトウェアおよび RCF のインストール](https://docs.netapp.com/ja-jp/ontap-systems-switches/switch-cisco-9336c-fx2-shared/9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html)" class="page-nav-contribute-link" role="button"><img src="/ja-jp/ontap-systems-switches/images/discuss-sm.svg" class="github-icon" />ドキュメントの変更をリクエスト</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/ontap-systems-switches/blob/main/switch-cisco-9336c-fx2-shared/9336c_install_nx-os_software_and_reference_configuration_files_rcfs.adoc" class="page-nav-contribute-link" role="button"><img src="/ja-jp/ontap-systems-switches/images/edit-sm.svg" class="github-icon" />GitHub で編集</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ja-jp/ontap-systems-switches/images/article-sm.svg" class="github-icon" />寄稿者向けガイド</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">このページ</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  <div style="clear: both"></div><!-- Main needs to have height -->
+</div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+
+</ul>
+</div>
+<div class="n-footer__social-links">
+<ul class="n-footer__social-link-list">
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
+<span class="n-footer__social-link-text">blog</span>
+<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+  <title>blog@</title>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#blog"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
+<span class="n-footer__social-link-text">community</span>
+<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+<title>community@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#comments"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
+<span class="n-footer__social-link-text">twitter</span>
+<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+<title>twitter@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#twitter"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
+<span class="n-footer__social-link-text">facebook</span>
+<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+<title>facebook@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#facebook"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+<span class="n-footer__social-link-text">linkedin</span>
+<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+<title>linkedin@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#linkedin"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+<span class="n-footer__social-link-text">youtube</span>
+<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+<title>youtube@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#youtube"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+<span class="n-footer__social-link-text">slideshare</span>
+<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+<title>slideshare@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/ontap-systems-switches/common/svg/sprite.svg#slideshare"></use>
+</svg>
+
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class="n-footer__bottom-right">
+  <p class="n-footer__fine-print">Web サイトについてのフィードバックを<a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">お寄せください</a>
+  <a href="https://docs.netapp.com/ja-jp/announcements/" class="n-footer__copyright">お知らせ</a>
+  </p>
+</div>
+</div>
+</div>
+</footer>
+
+      </div>
+
+      <!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/ja-jp/ontap-systems-switches/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/ja-jp/ontap-systems-switches/js/prism.js'></script>
+      <script type="text/javascript" src='/ja-jp/ontap-systems-switches/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/ja-jp/ontap-systems-switches/js/www-ntap.js'></script>
+    <script src='/ja-jp/ontap-systems-switches/js/tabbed-blocks.js'></script>
+  </body>
+
+  
+</html>
