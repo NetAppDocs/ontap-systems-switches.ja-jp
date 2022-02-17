@@ -923,7 +923,6 @@
   <block id="2d8ee602e8b86be6af8ac2f1b24fb1d1" category="list-text">この手順で使用している例では、 2 番目のスイッチ _cs2 * 。 _ でアップグレードが開始されます</block>
   <block id="0f16b64aa3420f691cebeb708f3625c1" category="list-text">Nexus 9336C-FX2 スイッチでサポートされるノード接続は、ポート 1/1~1/34 です。</block>
   <block id="af3c17f4b70d98794e50e7c33f968914" category="list-text">Nexus 9336C-FX2 スイッチでサポートされるスイッチ間リンク（ ISL ）は、ポート 1/35 および 1/36 です。</block>
-  <block id="8aede436dd4531d2bc149cf781977ecb" category="summary">Cisco 9336 スイッチ</block>
   <block id="b393921a392ee721e4103dcc273681f6" category="doc">Cisco 9336C-FX2 スイッチ</block>
   <block id="79a952b12f7cf9e1b52379a8980a2482" category="summary">クラスタネットワーク内の障害のある Nexus 9336C-FX2 スイッチの交換は、無停止手順（ NDU ）です。</block>
   <block id="556e297f9def6449d3bf99acff84b641" category="doc">Cisco Nexus 9336C-FX2 クラスタスイッチを交換します</block>
@@ -1231,17 +1230,14 @@
   <block id="0e537830f3d70ee3a080b4d98d4c355a" category="list-text">HA ペア 1 のノード B から、ストレージスイッチ A の HA ペア 1 のノード B の NSM224 ストレージポートにケーブルを接続します</block>
   <block id="9585534fcb2acd1761f1ba9070b7baf0" category="list-text">HA ペア 1 に接続されたストレージスイッチ A が「 storage port show -port type enet 」と表示されていることを確認します</block>
   <block id="34a5a87b0cc4e8609dc123f3eda8ae15" category="inline-link-macro">Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします</block>
-  <block id="6b4eb003d068fdec4d54fd55af67485b" category="list-text">[[step6] 共有スイッチ A のストレージ RCF を共有 RCF ファイルに置き換えます。を参照してください <block ref="41062cda0a6ae510a0f118eb961870a4" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="dfaf1e0c7a26db603d75c12484eecbe5" category="list-text">HA ペア 1 に接続されたストレージスイッチ A が正常であることを確認します。「 system health alert show -instance 」</block>
   <block id="cc173b3b8d39723f6f1a95f88f27699a" category="list-text">[[step8] HA ペア 1 、 NSM224 パス B のケーブルをストレージスイッチ B から HA ペア 1 の共有 NS224 ストレージポートに移動し、パス B をストレージスイッチ B に移動します</block>
   <block id="5d5108c830c67272c71b7aadba12e4b2" category="list-text">HA ペア 1 のノード A のパス B から、 HA ペア 1 の共有ストレージポート、ノード A のパス B にケーブルを接続します</block>
   <block id="53b39cfff16d9870da3ecc23bf2f95ba" category="list-text">HA ペア 1 、ノード B 、パス B から、ストレージスイッチ B の HA ペア 1 、ノード B 、パス B の共有ストレージポートにケーブルを接続します</block>
   <block id="ce8c521f1923b2dd332b3fc771e23d2a" category="list-text">HA ペア 1 に接続されたストレージスイッチ B が正常であることを確認します。「 system health alert show -instance 」</block>
-  <block id="7d2bca8f6a7efb4ad8be7d3f7b9740a4" category="list-text">[[step12]] 共有スイッチ B のストレージ RCF ファイルを共有 RCF ファイルで置き換えます。を参照してください <block ref="41062cda0a6ae510a0f118eb961870a4" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="607592482c84ee6e3ab8d00221a34400" category="list-text">[[step14]] HA ペア 1 のストレージ構成が正しいことを確認し、エラーがないことを確認します。「 system switch ethernet show 」</block>
   <block id="447638ceee95556dee2fdf9379e52c28" category="list-text">[[step15]] 共有スイッチ A と共有スイッチ B の間に ISL をインストールします。</block>
   <block id="8a6725809e9d102de1fa5e1c7d8c431d" category="inline-link-macro">Cisco Nexus 9336C-FX2 共有スイッチを交換します</block>
-  <block id="afa9b8e6dc90129b62dcb7f7e629ccaf" category="list-text">[step16] スイッチ交換用の手順と共有の RCF を使用して、既存のクラスタスイッチから共有スイッチにクラスタネットワークを移行します。新しい共有スイッチ A は「 cs1 」です。新しい共有スイッチ B は「 cs2 」です。を参照してください <block ref="cbb16447b88abbf626db4295a94e10df" category="inline-link-macro-rx"></block> および <block ref="41062cda0a6ae510a0f118eb961870a4" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="87ee7302cf3c1ada159d4d2696688b0d" category="list-text">スイッチドネットワーク設定が有効であることを確認します。「 network port show 」</block>
   <block id="412d467b5f15dc1967df2c5af126e62d" category="list-text">使用されていないクラスタスイッチを削除します。</block>
   <block id="936648102dd0e64a9748e863cad7bbdd" category="list-text">未使用のストレージスイッチを取り外します。</block>
@@ -1372,7 +1368,6 @@
   <block id="1d9b11f893d3d9bba5e105e250f26c4e" category="list-text">[[step3]] RCF ファイルが正しい新しいバージョンであることを確認します : 'how running-config</block>
   <block id="10a6ccf9fc171d58769bff43b7d0e672" category="list-text">[[step4]] ソフトウェアのバージョンとスイッチの設定が正しいことを確認したら、スイッチ sh2 の startup-config ファイルに「 running-config 」ファイルをコピーします。</block>
   <block id="d8130767192c2723846f89cb58f48dc3" category="list-text">[[step5] スイッチ sh1 の手順に対して、この を繰り返します。</block>
-  <block id="87dea030c2813ade587ef69363ac9bad" category="doc">Cisco Nexus 9336C-FX2 共有スイッチの概要</block>
   <block id="c07d0e299690131f90afb07e5d847e3f" category="paragraph">障害のある Nexus 9336C-FX2 共有スイッチの交換は、無停止手順（ NDU ）です。</block>
   <block id="e99dfadc7ffd3ecaddd1986a48465f46" category="list-text">すべてのクラスタポートが稼働している必要があります。</block>
   <block id="b59349f8fffc7ea477834852e7e20892" category="list-text">すべてのクラスタ LIF （論理インターフェイス）が、 * up * で、ホームポートにある必要があります。</block>
@@ -1744,8 +1739,6 @@
   <block id="ec01d482cf394f212f073921cfd9d5bd" category="sidebar">ONTAP リリースノート</block>
   <block id="0052efad5d260a806d52bfcfe640936f" category="sidebar">スイッチ</block>
   <block id="a393cd4f170aafc6db54b17ca62ffb74" category="sidebar">Broadcom 対応 BES-53248 の場合</block>
-  <block id="937d0c70d7e423315a950793d262cee4" category="sidebar">Cisco 9336</block>
-  <block id="72c0fe6bd065c65c37725e2e14ab307a" category="sidebar">Cisco 9336 ：共有構成</block>
   <block id="1bc92df4184e6d4338aed95b6891adc1" category="sidebar">Cisco 92300YC</block>
   <block id="2b2815ca4a9fd5973ee66317adb580e4" category="sidebar">その他のスイッチモデル</block>
   <block id="dfcc398099d6a64026e51ab282e16253" category="sidebar">リソースの追加</block>
@@ -1754,8 +1747,6 @@
   <block id="519131237f79eadb2dc6a1e003a087bc" category="sidebar">NetApp Active IQ Config Advisor の略</block>
   <block id="bc8be72fdc9d6054f356bb2b7f80fd12" category="sidebar">NetApp Interoperability Matrix を参照してください</block>
   <block id="dd490b81914dd945601e442a41cb4222" category="sidebar">ネットアップコミュニティ</block>
-  <block id="8cf04a9734132302f96da8e113e80ce5" category="sidebar">ホーム</block>
-  <block id="a81900781d5b937693c9d6ee1967e602" category="sidebar">BES-53248 スイッチ</block>
   <block id="6eeec9944f6ad4679bda04fa9b956032" category="sidebar">BES-53248 クラスタスイッチの概要</block>
   <block id="05b96ce4c4045a64a1ae5fd6c71f6830" category="sidebar">スイッチをセットアップします</block>
   <block id="a9dca2fab3c21950236372bb872bdc3d" category="sidebar">新しい BES-53248 スイッチを構成します</block>
@@ -1773,7 +1764,6 @@
   <block id="75bf1ff39699eec70a56fedc142b67fd" category="sidebar">移行を準備</block>
   <block id="446e9d64184ff722494a9a706bbd9d06" category="sidebar">ネットアップのスイッチクラスタ環境に移行する</block>
   <block id="b191593bc602ff910417b3f85bb496ca" category="sidebar">セットアップ</block>
-  <block id="7bd0358c3b996edfe19bd3da912bde62" category="sidebar">Cisco Nexus 9336C-FX2 共有スイッチ</block>
   <block id="7f23f37c2e179a209bf0e1a2006c18c5" category="sidebar">Cisco 92300YC スイッチ</block>
   <block id="1baa759569d97857893ce0c0944816d1" category="admonition">以前にインストールした RCF を編集しようとすると、 RCF の他の領域に既存の設定があるためにプロセスが失敗する場合があります。を参照してください <block ref="127778341fc59a243ad992e8e8d679aa" category="inline-xref-macro-rx"></block>。</block>
   <block id="3a870499c4a2e7f02665b5a0b216fd3d" category="section-title">以前にインストールした RCF ファイルを編集します</block>
@@ -1948,7 +1938,6 @@
   <block id="4b4043ba52cb57475fb2a80c8e78ed11" category="list-text">すべてのクラスタポートは「 up 」状態である必要があります。</block>
   <block id="5729e9aa69186f6a516abf8447f86e21" category="list-text">Cisco Nexus 3132Q-V クラスタスイッチがサポートされている必要があります。</block>
   <block id="80e626769b8049050df26ece527f7b71" category="list-text">既存のクラスタネットワーク構成には、次のものが必要です。</block>
-  <block id="4dd112d6804b4f82a4602d3778c99cdb" category="list-text">両方のスイッチで冗長性があり、完全に機能する Nexus 3132 クラスタインフラ。</block>
   <block id="562c64546c069c9f72cfdcfa74fb7f82" category="paragraph">スイッチにインストールされている最新の RCF および NX-OS バージョン</block>
   <block id="6a949e67bd3e05d573dcf380fa5fd091" category="list-text">両方のスイッチで管理接続を使用します。</block>
   <block id="b1f28b14d768b6948c010a7ec4d9d0e2" category="list-text">両方のスイッチへのコンソールアクセス</block>
@@ -2035,11 +2024,9 @@
   <block id="0d8fed793d9728b5c397661c744b4546" category="doc">CN1610 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換する方法</block>
   <block id="3dc5654d2018530737eccf306bd892c9" category="paragraph">この手順 の例では 4 つのノードを使用しています。 2 つのノードは、 e0a 、 e0b 、 e0c 、 e0d という 4 つの 10GbE クラスタインターコネクトポートを使用します。他の 2 つのノードは、 40 / 100GbE クラスタインターコネクトファイバケーブル 2 本（ e4A と e4e ）を使用します。プラットフォームのクラスタファイバケーブルに関する情報については、 Hardware Universe を参照してください。</block>
   <block id="0b2342552013f3c2238c3e35e200689f" category="list-text">交換する CN1610 スイッチは CL1 と CL2 です。</block>
-  <block id="bc01d49ccd216cbb296208344af71590" category="list-text">CN1610 スイッチを交換する Nexus 3132Q-V スイッチは C1 と C2 です。</block>
   <block id="ca367c184753913f5878d59c9da5f868" category="list-text">n1_clus1 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続された最初のクラスタ論理インターフェイス（ LIF ）です。</block>
   <block id="cb8530ce77ebbb88d9f5df75175a3bcd" category="list-text">n1_clus2 は、ノード n1 のクラスタスイッチ 2 （ CL2 または c2 ）に接続された最初のクラスタ LIF です。</block>
   <block id="0f2b91bef7159f7575ef5d238859132a" category="list-text">n1_clus3 は、ノード n1 のクラスタスイッチ 2 （ CL2 または c2 ）に接続されている 2 つ目の LIF です。</block>
-  <block id="eb29e2026f68e263827bc6648e470d91" category="list-text">n1_clus4 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続された 2 つ目の LIF です。ノードが n1 、 n2 、 n3 、 n4 である。</block>
   <block id="cfe31ca921d74cd993703a61d1e43033" category="inline-link">Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード</block>
   <block id="48bce5ec820f8f37a68ba6bb2b9d8b81" category="list-text">10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています<block ref="cce23acfce4c9bc9bb74fd35873aedf2" category="inline-link-rx"></block> ページ</block>
   <block id="371f1a1646f7d6b19472d1817c28ab4a" category="list-text">c2 で交換するクラスタスイッチ CL2 （手順 2 ~ 22 ）：</block>
@@ -2203,7 +2190,6 @@
   <block id="eb84f986761ac9c0847e8f111c28f16f" category="paragraph"><block ref="eb84f986761ac9c0847e8f111c28f16f" category="inline-link-rx"></block></block>
   <block id="6de42699e499fd1e22f3dba2b9245b8b" category="summary">既存の Nexus 5596 クラスタスイッチを Nexus 3132Q-V クラスタスイッチに交換するには、特定の順序でタスクを実行する必要があります。</block>
   <block id="23ac2fc3038c1f714232165208fc9028" category="doc">Cisco Nexus 5596 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換する方法</block>
-  <block id="53b183f53a7f470d93858be1c1c12cce" category="paragraph">この手順 の例では、 Nexus 5596 スイッチを Nexus 3132Q-V スイッチに交換する方法について説明します。以下の手順（変更あり）を使用して、他の古い Cisco スイッチを交換できます。手順 では、スイッチとノードで次の命名法を使用します。</block>
   <block id="ba0aeff0757e53b1be2f02ce22967fe1" category="list-text">交換する Nexus 5596 スイッチは CL1 と CL2 です。</block>
   <block id="756e6368314b2aa356f2a920d85b43b2" category="list-text">Nexus 5596 スイッチを交換する Nexus 3132Q-V スイッチは C1 と C2 。</block>
   <block id="f443773aa59e1d770aa0a48d6633130c" category="list-text">n1_clus1 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続された最初のクラスタ論理インターフェイス（ LIF ）です。</block>
@@ -2333,7 +2319,6 @@
   <block id="ee6825cf6a234dbddc2afae6b53b354a" category="list-text">RU42 の 2 番目のスイッチについて、手順 5a ～ 5c を繰り返します。</block>
   <block id="6d29613dada35fd36b9ed83af0db3fac" category="list-text">各 3132Q-V スイッチの管理ポートをいずれかの管理スイッチ（発注した場合）に接続するか、または管理ネットワークに直接接続します。</block>
   <block id="dc41570bc2d65bc76b561aeb1f830c14" category="summary">2 ノードスイッチクラスタへの移行</block>
-  <block id="f971b6b755404a089556942767c45694" category="doc">2 ノードスイッチクラスタに移行する</block>
   <block id="2857ff7a9c9a45ee36f0e4dc38b4d3a4" category="summary">Cisco Nexus 3132Q-V クラスタスイッチを交換する場合は、特定の設定情報、ポート接続、およびケーブル接続要件に注意する必要があります。</block>
   <block id="f50bf609e9ecf04112d0a60d1efc13c9" category="doc">Cisco Nexus 3132Q-V クラスタスイッチを交換します</block>
   <block id="0c2f6edcf40092d5fe0e8ad541affcf0" category="list-text">Cisco Nexus 3132Q-V クラスタスイッチがサポートされています。</block>
@@ -2350,7 +2335,6 @@
   <block id="268a12d9f24b971a04341727c1c69f56" category="list-text">n1_clus2 は、ノード n1 について、クラスタスイッチ CL2 または c2 に接続された最初のクラスタ LIF です。</block>
   <block id="79ccc7eb67bc253979889e672dadf476" category="list-text">n1_clus3 は、ノード n1 について、クラスタスイッチ C2 に接続された 2 つ目の LIF です。</block>
   <block id="55adf1aee2385c98325e09137f951401" category="list-text">n1_clus4 は、ノード n1 について、クラスタスイッチ CL1 に接続されている 2 つ目の LIF です。</block>
-  <block id="484f1f733bbdd811be42e39eb76b5b6b" category="paragraph">この手順 の例では 4 つのノードを使用しています。 2 つのノードで 4 つの 10GB のクラスタインターコネクトポートを使用： e0a 、 e0b 、 e0c 、 e0d 。他の 2 つのノードは、それぞれ 4 GB のクラスタ・インターコネクト・ポートを 2 つ使用します。プラットフォームの実際のクラスタポートについては、 Hardware Universe を参照してください。</block>
   <block id="ea12a860cf044e55c11d55b729fbb10a" category="list-text">クラスタは、 4 つのノードを接続して 2 つの Nexus 3132Q-V クラスタスイッチ CL1 と CL2 から始まります。</block>
   <block id="44f8f7e7d9b67833aef50806d2e8fecd" category="list-text">クラスタスイッチ CL2 を C2 に置き換えます（手順 1~21 ）。</block>
   <block id="9f1623a9745fefdb469a3cfd4d812a89" category="list-text">CL2 に接続されたクラスタ LIF が CL1 に接続されたクラスタポートに移行されます。</block>
@@ -2565,11 +2549,7 @@
   <block id="f393302860df0aaf8d3e7eaea02936ce" category="list-text">ネットアップクラスタスイッチでサポートされているスイッチ間リンク（ ISL ）は、ポート 0/13~0/16 です。</block>
   <block id="878c5f6849bdd28aa07c25a703eda949" category="list-text">ネットアップクラスタスイッチでサポートされるノード接続は、ポート 0/1~0/12 です。</block>
   <block id="4be017d9384ec445570539f57a662d62" category="paragraph">この手順 には 2 つの部分があります。</block>
-  <block id="cc12a50e642ffc34820d7f6b648c16ee" category="list-text"><block ref="88d66b4a5546f3d605b993aa5214ec5d" category="inline-link-macro-rx"></block> FastPath ソフトウェアのインストール方法について説明します。</block>
   <block id="2bb5b20771195951bb435e974751c090" category="inline-link-macro">RCF を CN1610 スイッチにインストールします</block>
-  <block id="5545fb356fd483f2daa9b16866227adc" category="list-text"><block ref="762972998c8914e4affc8e4b471532f6" category="inline-link-macro-rx"></block>RCF のインストール方法について説明します。</block>
-  <block id="7032132887875aa8c659c7e9d5ebe772" category="summary">FastPath ソフトウェアと RCF のインストール</block>
-  <block id="de3836d754bf464485c996a00fe296ae" category="doc">FastPath ソフトウェアと RCF をインストールします</block>
   <block id="ed7aa36017fe82d21a973a1a11ca91de" category="paragraph"><block ref="ed7aa36017fe82d21a973a1a11ca91de" category="inline-link-rx"></block></block>
   <block id="daf20f967e014d2ca0616935fab019db" category="summary">リファレンス構成ファイル（ RCF ）をインストールする場合は、最初にクラスタ LIF をスイッチ cs2 から移行する必要があります。RCF をインストールして検証したら、 LIF を移行し直すことができます。</block>
   <block id="86a663d3b96e07c5a852301b9bd3b075" category="doc">CN1610 スイッチに参照構成ファイルをインストールします</block>
@@ -2669,9 +2649,7 @@
   <block id="dd8a93878054cbce275600a98a7047f8" category="paragraph">FAS22xx ノードでは、各コントローラで 1 つのクラスタポートを使用できます。</block>
   <block id="2e5b598c21b2cf2dd15994b667800858" category="paragraph">次の 2 つの移行オプションを使用できます。</block>
   <block id="78bb164de5e28aee0a6b888bd3ec4b93" category="inline-link-macro">スイッチレスクラスタから、スイッチを使用している NetApp CN1610 クラスタ環境への移行</block>
-  <block id="e5526a5f48bbee122c51ed2383ea9218" category="list-text"><block ref="e5526a5f48bbee122c51ed2383ea9218" category="inline-link-macro-rx"></block></block>
   <block id="fc4777092ddeb283fead2a767cd5e032" category="inline-xref-macro">スイッチレスクラスタ（単一のクラスタネットワーク接続を使用する FAS22xx システム）から移行する</block>
-  <block id="c92b945af692f57903975f181d310dfc" category="list-text"><block ref="c92b945af692f57903975f181d310dfc" category="inline-xref-macro-rx"></block></block>
   <block id="4cb39dbaf2fc3d7f5e81e74f6939b467" category="summary">このガイドでは、 CN1601 スイッチのハードウェアとソフトウェアの機能とインストールプロセスの概要について説明します。</block>
   <block id="96e98f400012e6584b81d57011c42c45" category="doc">『 NetApp 1G Cluster-Mode Switch Installation Guide 』</block>
   <block id="e0c8e5d4b455c7ba51623d839db163aa" category="inline-link">1G インストールガイド</block>
@@ -2679,7 +2657,6 @@
   <block id="b2d488703b049b759c1c2c0623330c66" category="summary">2 ノードスイッチレスクラスタを使用している場合は、 Cisco Nexus 3232C クラスタネットワークスイッチを含む 2 ノードスイッチクラスタに無停止で移行できます。</block>
   <block id="aff569bb7c0092d9d0b3239002773c3d" category="doc">2 ノードスイッチレスクラスタから Cisco Nexus 3232C クラスタスイッチを使用するクラスタに移行する方法</block>
   <block id="52fc717d1060f14d7c454a891d0e4eec" category="paragraph">2 ノードスイッチレスクラスタの設定で 2 ノードが接続され、機能している必要があります。</block>
-  <block id="7c30b088e8b42b02d132b35b33de580f" category="list-text">Cisco Nexus 3232C クラスタスイッチがサポートされている必要があります。</block>
   <block id="57113c7fe861ab714622235bad9f75d7" category="list-text">両方のスイッチの冗長で完全に機能している Nexus 3232C クラスタインフラ</block>
   <block id="b0d23311dc8af918a9df46d3d31a1428" category="list-text">スイッチにインストールされている最新の RCF および NX-OS バージョン</block>
   <block id="c90a40bde4233e92579c1c7a7c9d2a94" category="list-text">両方のスイッチで管理接続を使用します</block>
@@ -2908,8 +2885,6 @@
   <block id="bd25e96a4b811eb855c9cb9e6b3da1e4" category="list-text">Nexus 3232C スイッチシャーシにラックマウントブラケットを設置します。</block>
   <block id="9cc2e93e4705a1d5b4b501fe1d395a3f" category="paragraph">2 つの 3232C スイッチは、常にキャビネット RU41 と 42 の上部 2U にマウントされます。</block>
   <block id="f54d6d5d717f6ca1e74ec084730abe77" category="list-text">各 3232C スイッチの管理ポートを管理スイッチ（発注した場合）のいずれかに接続するか、または管理ネットワークに直接接続します。</block>
-  <block id="3d6850e6ebc0a7bc0b28cef3b4f73c7a" category="summary">CN1610 スイッチから Cisco Nexus 3232C スイッチへの移行</block>
-  <block id="1e6bcb88bb20c989b24adf3c4fccea0b" category="doc">CN1610 スイッチから Cisco Nexus 3232C スイッチへの移行</block>
   <block id="5a9c1ae57a80076b39ad53020fd29eed" category="summary">Cisco NX-OS ソフトウェアおよびリファレンス構成ファイル（ RCF ）は、 Cisco Nexus 3232C ストレージスイッチでアップグレードできます。</block>
   <block id="29165d4eb3f784e35d52698213cb1586" category="doc">Cisco Nexus 3232C ストレージスイッチをアップグレードする</block>
   <block id="577915e4f3d01ba98bcf87636ef5a84e" category="paragraph">ストレージスイッチで NX-OS ソフトウェアと RCF をアップグレードする前に、次の条件が満たされている必要があります。</block>
@@ -2924,7 +2899,6 @@
   <block id="c8a02ff19d4cdbefc1bf4e02ad8c4ed9" category="list-text">*IVスイッチとポートのヘルスステータスを再確認する（手順 13 ~ 15 ） *</block>
   <block id="67f6530e464d5ba6460f24a667404cff" category="list-text">*V.Cisco スイッチ S1.* について、手順 1 ～ 17 を繰り返します</block>
   <block id="f6f9b947b5b7935cd0ab6e14f7188077" category="paragraph">この手順 の例では、 2 つのノードを使用します。 node1 には 2 つのストレージポート、 node2 には 2 つのストレージポートがあります。プラットフォームに対応した正しいストレージポートを確認するには、 Hardware Universe を参照してください。</block>
-  <block id="4fd3c39884768128b1709971be9c57ab" category="list-text">2 つのストレージスイッチの名前は S1 と S2 です。</block>
   <block id="3388a8058ab6c2965d307254ea3398e6" category="list-text">クラスタにストレージ・スイッチやケーブル接続に問題がないことを確認します「 system health alert show -instance</block>
   <block id="a192bf261fd5da8051545bcfae60c0bd" category="list-text">FTP 、 HTTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ S2 上の RCF をスイッチのブートフラッシュにコピーします。</block>
   <block id="8aa0e5d5e9711d48a4320245feb83102" category="paragraph">次に、 HTTP を使用して、 RCF をスイッチ S2 上のブートフラッシュにコピーする例を示します。</block>
@@ -2965,7 +2939,6 @@
   <block id="7fb446918c9a3692267ef0527ff8db90" category="list-text">Cisco スイッチのアップグレードおよびダウングレード手順の詳細なドキュメントについては、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります。<block ref="71cb1c246557f874bc3fddad5f472c04" category="inline-link-rx"></block></block>
   <block id="4fdef1ea6071ac6e3d529280f2158011" category="summary">Cisco Nexus 3232C クラスタスイッチを交換する場合は、特定の設定情報、ポート接続、およびケーブル接続要件に注意する必要があります。</block>
   <block id="0f8423ed5e0e5c2a15b9d97280628d07" category="doc">Cisco Nexus 3232C クラスタスイッチを交換します</block>
-  <block id="49030d1ae4370d2c8c75308ad0e084d6" category="paragraph">Cisco Nexus クラスタスイッチに NX-OS ソフトウェアと RCF をインストールする前に、次の条件を満たしていることを確認する必要があります。</block>
   <block id="0e2ece23f356cc947044403993da91ce" category="list-text">システムで Cisco Nexus 3232C スイッチをサポートできる必要があります。</block>
   <block id="a4ffcefe16ed31ac848d6eed0014cc3c" category="list-text">クラスタが完全に機能している必要があります。</block>
   <block id="49f600cadb6113dc36646b3c931dbfc5" category="list-text">Cisco スイッチのアップグレードおよびダウングレード手順の詳細なドキュメントについては、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります。</block>
@@ -2992,7 +2965,6 @@
   <block id="efa28199cf64ee1bd1a7825c52a4b949" category="paragraph">この手順 は、 2 つ目の Nexus 3232C クラスタスイッチ CL2 を新しい 3232C スイッチ c2 に置き換えます。この手順の例では、スイッチとノードで次の命名法を使用しています。</block>
   <block id="0e3368a8363270e1b5da6c7ff6b307df" category="list-text">4 つのノードは、 n1 、 n2 、 n3 、 n4 です。</block>
   <block id="7e38d5b2f5b87fc1a22bd8f75f99a2f1" category="list-text">n1_clus2 は、ノード n1 について、クラスタスイッチ CL2 または C2 に接続された最初のクラスタ LIF です。</block>
-  <block id="50d94ce5a2f2e81837143b2406102c7d" category="list-text">n1_clus3 は、ノード n1 のクラスタスイッチ C2 に接続された 2 つ目の LIF です。</block>
   <block id="bdec59a866fb499bc3e0d0f01d493496" category="paragraph">この手順 の例では 4 ノードを使用します。2 つのノードが 4 つの 10GB クラスタインターコネクトポートを使用します： e0a 、 e0b 、 e0c 、 e0d他の 2 つのノードは、それぞれ 4 GB のクラスタ・インターコネクト・ポートを 2 つ使用します。使用するプラットフォームに対応した正しいクラスタポートを確認するには、 Hardware Universe を参照してください。</block>
   <block id="10f8fd1a808872877e001bc662700bc9" category="paragraph">この手順 では、次のシナリオについて説明します。</block>
   <block id="10f216a78475a54b6711a27c2ffd2a6e" category="list-text">クラスタには、最初に 4 つのノードが 2 つの Nexus 3232C クラスタスイッチ CL1 と CL2 に接続されています。</block>
@@ -3039,11 +3011,57 @@
   <block id="916ba5b1774eaf295926db30f3bad132" category="list-text">すべてのクラスタ LIF で「 auto-revert 」コマンドが有効になっていることを確認します。「 network interface show -vserver Cluster -fields auto-revert</block>
   <block id="db50b67ff76e736ef5a920a3cd2b9395" category="list-text">ONTAP 9.8 以降の場合は、「 system switch ethernet log setup-password 」コマンドを使用して、スイッチ関連のログファイルを収集するための Ethernet スイッチヘルスモニタログ収集機能をイネーブルにします</block>
   <block id="fed5c0ebbd302d8836d54ddd5217900f" category="list-text">ONTAP リリース 9.5P16 、 9.6P12 、および 9.7P10 以降のパッチリリースでは、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能を、「 system cluster-switch log setup-password 」コマンドを使用してイネーブルにします</block>
-  <block id="ec4c3d4a5405d7faf8e5de1285f0720f" category="sidebar">Cisco 32QV スイッチ</block>
-  <block id="96c93a62475d7ad1158adfe0b919ef46" category="sidebar">Cisco 1610 スイッチ</block>
   <block id="09384bea4a8d68874931d06e09f7741d" category="sidebar">CN1610 ネットワークスイッチの CLI コマンドリファレンス - バージョン 1.1.x.x</block>
   <block id="e036898c9991cc75c4b04f13f11d55dd" category="sidebar">『 NetApp CN1610 Switch Administrator's Guide 』 - バージョン 1.1.x.x</block>
   <block id="03477859b5d6af326359360c86fab17e" category="sidebar">『 NetApp CN1610 Switch Administrator's Guide 』 - バージョン 1.2.x.x</block>
   <block id="9aa8a0ae2c0c1e8fae620818f15e5745" category="sidebar">『 CN1601 Switch Administrator's Guide 』</block>
-  <block id="893449251350e9acf90d323cb3ca3d3b" category="sidebar">Cisco 3232C スイッチ</block>
+  <block id="0dbd44ca48760058c465f203895f8233" category="summary">Cisco 9336-FX2` スイッチ</block>
+  <block id="5851bb17419faa449f719ec90fe12181" category="list-text">[[step7] 共有スイッチ A のストレージ RCF を共有 RCF ファイルに置き換えます。を参照してください <block ref="2e5583639979312d3d691c4092c19d52" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="ea9f3090e45d8199fc92892a96dd0214" category="list-text">[[step13]] 共有スイッチ B のストレージ RCF ファイルを共有 RCF ファイルで置き換えます。を参照してください <block ref="2e5583639979312d3d691c4092c19d52" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="779f2e1ced3dc42aa441f71771bcb993" category="list-text">[[step16]] スイッチレスクラスタからスイッチ使用のクラスタへの HA ペア 1 の変換。共有 RCF で定義されているクラスタポートの割り当てを使用します。を参照してください <block ref="2e68fbe1bf6d8e813f758c3b7509ff6f" category="inline-link-macro-rx"></block>を参照してください。</block>
+  <block id="eeb3814415e8a8239b915a97d18679e0" category="doc">Cisco 9336C-FX2 共有スイッチの概要</block>
+  <block id="f0ce965dd466a7b645474763caf2ba5a" category="list-text">[[step6] 共有スイッチ A のストレージ RCF を共有 RCF ファイルに置き換えます。を参照してください <block ref="2e5583639979312d3d691c4092c19d52" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="3e8e79feff4b6aa3e8cf99d5fd2e529c" category="list-text">[[step12]] 共有スイッチ B のストレージ RCF ファイルを共有 RCF ファイルで置き換えます。を参照してください <block ref="2e5583639979312d3d691c4092c19d52" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="b2f0294b7ae68a5ba87ae2839d34a70c" category="list-text">[step16] スイッチ交換用の手順と共有の RCF を使用して、既存のクラスタスイッチから共有スイッチにクラスタネットワークを移行します。新しい共有スイッチ A は「 cs1 」です。新しい共有スイッチ B は「 cs2 」です。を参照してください <block ref="cbb16447b88abbf626db4295a94e10df" category="inline-link-macro-rx"></block> および <block ref="2e5583639979312d3d691c4092c19d52" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="cc02bee3f16f9cf028c930e3ae85fb8f" category="list-text"><block ref="3ddccd8b1e06c6aa2ada1397d17562ec" category="inline-link-macro-rx"></block> FastPath ソフトウェアのインストール方法について説明します。</block>
+  <block id="f8bb1b8464f9bde121f11f7a53f13011" category="list-text"><block ref="684215f55a46dbb917d8e38fd766cffd" category="inline-link-macro-rx"></block> RCF のインストール方法について説明します。</block>
+  <block id="9e94cbd196ed6920e8f54f3638a877cf" category="summary">cn1610 、スイッチ、ネットアップ</block>
+  <block id="7644ee6a5d07b8a490380246b4f6b79a" category="doc">NetApp CN1610 スイッチ</block>
+  <block id="4ea3ead37abb65fd297ca7404c0252a6" category="paragraph">CN1610 は、広帯域幅の管理対象レイヤ 2 スイッチで、 10 ギガビット Small Form-Factor Pluggable Plus （ SFP+ ）ポートを 16 個備えています。スイッチには、高可用性のためのホットスワップをサポートする冗長電源装置とファントレイが含まれています。</block>
+  <block id="c9538971330f4f4fca683d6a1d65a1a4" category="paragraph">この 1U スイッチは、標準的な 19 インチ NetApp 42U システムキャビネットまたはサードパーティ製キャビネットに設置できます。</block>
+  <block id="8cd379638fc4ccb9fe87c298fc5389eb" category="paragraph">スイッチは、コンソールポートを介したローカル管理、またはネットワーク接続を介した Telnet または SSH を使用したリモート管理をサポートします。CN1610 には、アウトオブバンドスイッチ管理用に専用の 1 ギガビットイーサネット RJ45 管理ポートが搭載されています。スイッチを管理するには、コマンドラインインターフェイス（ CLI ）にコマンドを入力するか、 SNMP ベースの Network Management System （ NMS ）を使用します。</block>
+  <block id="07de698fc2ce4ddac927fe780a14ba79" category="list-text"><block ref="07de698fc2ce4ddac927fe780a14ba79" category="inline-link-macro-rx"></block></block>
+  <block id="c59f879b473221817fcb460eb4499d66" category="list-text"><block ref="c59f879b473221817fcb460eb4499d66" category="inline-xref-macro-rx"></block></block>
+  <block id="1f1dc884981e0999a1b9b7ee0b71fbb9" category="list-text">クラスタが完全に機能している必要があります（ログにエラーがないか、同様の機能がある）。</block>
+  <block id="92383c7ab4753bb84873d3ff270797e3" category="list-text">。<block ref="e8018b6e740a667345f4bcc94e4023fc" category="inline-link-rx"></block> Nexus 3132Q-V スイッチでサポートされているケーブル接続に関する情報が含まれています。</block>
+  <block id="0b9cd483bf6573272b7e2b8f9ef9807f" category="paragraph">- この手順 の例では、 Nexus 5596 スイッチを Nexus 3132Q-V スイッチに交換します。以下の手順（変更あり）を使用して、他の古い Cisco スイッチを交換できます。手順 では、スイッチとノードで次の命名法を使用します。</block>
+  <block id="d05e0033e800da35d05e3a88b52e765d" category="doc">Cisco 3132Q-V スイッチ</block>
+  <block id="98594ec7d87795acdb09d6b3c2a6cb81" category="paragraph">AFF クラスタまたは FAS クラスタでは、 Cisco 3132Q-V スイッチをクラスタスイッチとして使用できます。これらの手順を使用して、スイッチの設置、既存のスイッチからの移行、スイッチの交換、スイッチ上の RCF ファイルの更新を行うことができます。</block>
+  <block id="a3d26f9daf0cc6c23187eaa8ced8eb62" category="list-text">- 両方のスイッチで完全に機能する冗長な Nexus 3132 クラスタインフラストラクチャ。</block>
+  <block id="49acacc605bc8ac91b7bcc38eac9fb68" category="list-text">10GbE クラスタ接続のノードには、ブレークアウト光ケーブルを備えた QSFP 光モジュールまたは QSFP-SFP+ 銅線ブレークアウトケーブルが必要です。 -</block>
+  <block id="c9d477402b3284f492647dc82f2c18c4" category="paragraph">手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。</block>
+  <block id="336d5ebc5436534e61d16e63ddfca327" category="paragraph">-</block>
+  <block id="a8657213db97a817aad0700d8696b8f7" category="list-text">ノードが n1 、 n2 、 n3 、 n4 である。- この手順 の例では、 4 つのノードを使用しています。 2 つのノードで、 e0a 、 e0b 、 e0c 、 e0d という 4 つの 10GB のクラスタインターコネクトポートを使用しています。他の 2 つのノードは、それぞれ 4 GB のクラスタ・インターコネクト・ポートを 2 つ使用します。プラットフォームの実際のクラスタポートについては、 Hardware Universe を参照してください。</block>
+  <block id="be084f95f686baa46bbec9f88235dcf4" category="paragraph">この手順 の例では、スイッチとノードで次の命名法を使用しています。 - * コマンド出力は、 ONTAP ソフトウェアのリリースによって異なる場合があります。* 交換する CN1610 スイッチは CL1 と CL2 です。* CN1610 スイッチを交換する Nexus 3132Q-V スイッチは C1 と C2 です。* n1_clus1 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続された最初のクラスタ論理インターフェイス（ LIF ）です。* n1_clus2 は、ノード n1 のクラスタスイッチ 2 （ CL2 または c2 ）に接続された最初のクラスタ LIF です。* n1_clus3 は、ノード n1 のクラスタスイッチ 2 （ CL2 または c2 ）に接続されている 2 つ目の LIF です。* n1_clus4 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続されている 2 つ目の LIF です。ノードが n1 、 n2 、 n3 、 n4 である。* 10 GbE ポートおよび 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています<block ref="cce23acfce4c9bc9bb74fd35873aedf2" category="inline-link-rx"></block> ページ</block>
+  <block id="eb387af171fd7596fd5d8179eb171457" category="paragraph">初期準備要件、キットの内容、および安全上の注意事項を確認しておく必要があります。</block>
+  <block id="bb26eaf740581b664582883271f7a4d8" category="paragraph">この手順 の例では、スイッチとノードで次の命名法を使用しています。 - * 2 つのストレージスイッチの名前は S1 と S2 です。* ノードは node1 と node2 です。</block>
+  <block id="ddae073987e9a5fb4208b6af0e8c1785" category="list-text">両方のスイッチで管理接続が確立されている必要があります。-</block>
+  <block id="863521236411601eb091fc20202c6aaf" category="list-text">n1_clus4 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続された 2 つ目の LIF です。 -</block>
+  <block id="33813b05f223e9025627eaf85a7f8eaa" category="list-text">n1_clus3 は、ノード n1 のクラスタスイッチ C2 に接続された 2 つ目の LIF です。</block>
+  <block id="33eaf8f0fd4dcf13158de8b58f7ff3cd" category="summary">Cisco 3232C スイッチシュ</block>
+  <block id="782536ad60a0c703fa10fb3d99248ea0" category="doc">Cisco 3232C スイッチ</block>
+  <block id="7f83183bd70b63d5c9f0f3836eaff634" category="paragraph">AFF または FAS クラスタでは、 Cisco 3232C スイッチをクラスタスイッチとして使用できます。これらの手順を使用して、スイッチの設置、既存のスイッチからの移行、スイッチの交換、スイッチ上の RCF ファイルの更新を行うことができます。</block>
+  <block id="57c4d0845ca4bda3e639cd12428fbcf8" category="list-text">Cisco Nexus 3232C クラスタスイッチがサポートされている必要があります。</block>
+  <block id="00fe2a2331caff584e7506ca90260bf4" category="paragraph">クラスタスイッチは、 Inter-Switch Link （ ISL ；スイッチ間リンク）ポート e1/31~32 を使用します。-</block>
+  <block id="5b44322760cb0ba15d861726e841901e" category="paragraph">Cisco Nexus クラスタスイッチに NX-OS ソフトウェアと RCF をインストールする前に、次の条件を確認する必要があります。</block>
+  <block id="253b11a727d986115d487eafdd945226" category="paragraph"><block ref="d631e277d977d88a20a9eaedfa83bd83" category="inline-link-rx"></block>-</block>
+  <block id="e828e90ef58831f8ed5d461a64858a22" category="list-text">このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。 +- `system node AutoSupport invoke -node * -type all -message MAINT= xh`</block>
+  <block id="169d09130eee97093b7590cc8496b8f9" category="list-text">各スイッチについて、 8 本の 10-32 ネジまたは 12-24 ネジとクリップナットを用意して、ブラケットとスライダレールを前面および背面のキャビネットポストに取り付ける必要があります。</block>
+  <block id="f606ada25615407b042f8f189d1b9fab" category="sidebar">Cisco 3132Q-V の設定</block>
+  <block id="059d31543d448499bd1a9c454a8d1ebb" category="sidebar">Cisco 9336C-FX2</block>
+  <block id="1c87a984d0a1c6881c9703209fd4341c" category="sidebar">Cisco 9336-FX2 （共有構成</block>
+  <block id="237aba816839b6ef546c40514ce24efe" category="sidebar">NetApp CN1610 スイッチ</block>
+  <block id="831835779ddae8b680a8580d383f130b" category="sidebar">AFF および FAS スイッチのドキュメント</block>
+  <block id="a683f6c0c6aee3dae5c1b653f54c901b" category="sidebar">Cisco 9336C-FX2 共有スイッチ</block>
+  <block id="37f197e811f5af38d0da297d1a77dc89" category="sidebar">BES-53248 スイッチ</block>
 </blocks>

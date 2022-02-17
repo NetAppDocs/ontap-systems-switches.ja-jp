@@ -1,11 +1,11 @@
 ---
 permalink: switch-cisco-3232c/index.html 
 sidebar: sidebar 
-keywords: migrate, cn1610, switch, cisco nexus, 3232c 
-summary: CN1610 スイッチから Cisco Nexus 3232C スイッチへの移行 
+keywords: cisco 3232c 
+summary: Cisco 3232C スイッチシュ 
 ---
-= CN1610 スイッチから Cisco Nexus 3232C スイッチへの移行
-:icons: font
-:imagesdir: ../media/
+= Cisco 3232C スイッチ
 
 
+[role="lead"]
+AFF または FAS クラスタでは、 Cisco 3232C スイッチをクラスタスイッチとして使用できます。これらの手順を使用して、スイッチの設置、既存のスイッチからの移行、スイッチの交換、スイッチ上の RCF ファイルの更新を行うことができます。

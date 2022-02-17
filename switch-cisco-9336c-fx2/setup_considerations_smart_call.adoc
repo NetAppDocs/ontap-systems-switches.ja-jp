@@ -1,0 +1,29 @@
+---
+permalink: switch-cisco-9336c-fx2/setup-considerations-smart-call.html 
+sidebar: sidebar 
+keywords: cisco smart call,small call home 
+summary: Smart Call Home は、ネットワーク上のハードウェアおよびソフトウェアコンポーネントを監視し、重大なシステム状態に関する電子メールベースの通知を生成します。デバイスでイベントが発生すると、 Smart Call Home は宛先プロファイルで設定されているすべての受信者にアラートを送信します。 
+---
+= Smart Call Home の使用に関する考慮事項
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Smart Call Home は、ネットワーク上のハードウェアおよびソフトウェアコンポーネントを監視し、重大なシステム状態に関する電子メールベースの通知を生成します。デバイスでイベントが発生すると、 Smart Call Home は宛先プロファイルで設定されているすべての受信者にアラートを送信します。
+
+E メールを使用して Smart Call Home システムと通信するように、クラスタネットワークスイッチを設定する必要があります。必要に応じて、 Cisco の組み込み Smart Call Home サポート機能を利用するように、クラスタネットワークスイッチをセットアップできます。
+
+Smart Call Home 機能を使用する前に、次の考慮事項について理解しておく必要があります。
+
+* E メールサーバが配置されている必要があります。
+* スイッチは、 E メールサーバに IP 接続されている必要があります。
+* 連絡先名（ SNMP サーバの連絡先）、電話番号、住所情報が設定されている必要があります。
+* これは、受信したメッセージの送信元を判別するために必要です。
+* 会社の適切な Cisco SMARTnet サービス契約に、 CCO ID を関連付ける必要があります。
+* デバイスを登録するには、 Cisco SMARTnet サービスが導入されている必要があります。
+
+
+Cisco サポートサイトには、 Smart Call Home を設定するためのコマンドに関する情報が掲載されています。
+
+http://www.cisco.com/c/en/us/products/switches/index.html["シスコサポートサイト"^]

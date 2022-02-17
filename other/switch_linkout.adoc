@@ -1,7 +1,7 @@
 ---
 permalink: other/switch-linkout.html 
 sidebar: sidebar 
-keywords: cisco, Nexus 5596, Nexus 3232C, Nexus 3132Q-V, CN1610, CN1601 
+keywords: cisco, Nexus 5596, CN1601 
 summary: 他のスイッチモデルにも使用できます。 
 ---
 = その他の Cisco クラスタ、ストレージ、および管理スイッチ
@@ -12,9 +12,6 @@ summary: 他のスイッチモデルにも使用できます。
 次のスイッチのドキュメントにアクセスするには、次のリンクを使用します。
 
 * Nexus 5596
-* Nexus 3232C
-* Nexus3132Q-V
-* CN1610
 * CN1601
 
 

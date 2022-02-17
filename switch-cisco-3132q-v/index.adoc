@@ -1,0 +1,13 @@
+---
+permalink: switch-cisco-3132q-v/index.html 
+sidebar: sidebar 
+keywords: Cisco, 3132Q-V 
+summary: 2 ノードスイッチクラスタへの移行 
+---
+= Cisco 3132Q-V スイッチ
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+AFF クラスタまたは FAS クラスタでは、 Cisco 3132Q-V スイッチをクラスタスイッチとして使用できます。これらの手順を使用して、スイッチの設置、既存のスイッチからの移行、スイッチの交換、スイッチ上の RCF ファイルの更新を行うことができます。

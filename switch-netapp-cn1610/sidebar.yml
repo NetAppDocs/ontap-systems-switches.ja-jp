@@ -1,0 +1,39 @@
+---
+section: switch-netapp-cn1610
+title: NetApp CN1610 スイッチ
+entries:
+- title: 概要
+  url: "/switch-netapp-cn1610/index.html"
+- title: ネットアップクラスタスイッチに FastPath ソフトウェアと RCF をインストールします
+  url: "/switch-netapp-cn1610/task-install-fastpath-software-and-rcfs-on-netapp-cluster-switch.html"
+  entries:
+  - title: FastPath ソフトウェアをインストールします
+    url: "/switch-netapp-cn1610/task-install-fastpath-software.html"
+  - title: CN1610 スイッチに参照構成ファイルをインストールします
+    url: "/switch-netapp-cn1610/task-install-an-rcf-on-a-cn1610-switch.html"
+- title: ONTAP 8.3.1 以降を実行しているネットアップクラスタスイッチに FastPath ソフトウェアと RCF をインストールします
+  url: "/switch-netapp-cn1610/task-install-fastpath-software-and-rcf-files-on-netapp-cluster-switches.html"
+- title: NetApp CN1610 クラスタスイッチを使用して、 2 ノードスイッチクラスタに移行します
+  url: "/switch-netapp-cn1610/task-migrate-to-a-two-node-switched-cluster-with-netapp-cn1610-cluster-switches.html"
+- title: スイッチレスクラスタ環境から、スイッチを使用している NetApp CN1610 クラスタ環境への移行
+  url: "/switch-netapp-cn1610/task-migrate-from-a-switchless-cluster-to-a-switched-netapp-cn1610-cluster-environment.html"
+- title: 単一のクラスタネットワーク接続を使用して、 FAS22xx システムの 2 ノードスイッチクラスタに移行する
+  url: "/switch-netapp-cn1610/task-migrate-from-a-switchless-cluster-fas22xx-systems-with-a-single-cluster-network-connection.html"
+- title: "『 CN1601 and CN1610 Switch Setup and Configuration Guide 』"
+  url: "/switch-netapp-cn1610/switch-setup-configuration-guide-linkout.html"
+- title: CN1610 ネットワークスイッチの CLI コマンドリファレンス - バージョン 1.1.x.x
+  url: "/switch-netapp-cn1610/switch-cli-command-reference-version-11xx-linkout.html"
+- title: CN1610 ネットワークスイッチの CLI コマンドリファレンス - バージョン 1.2.x.x
+  url: "/switch-netapp-cn1610/switch-cli-command-reference-version-12xx-linkout.html"
+- title: "『 NetApp 10G Cluster-Mode Switch Installation Guide 』"
+  url: "/switch-netapp-cn1610/netapp-10g-cluster-mode-switch-installation-guide.html"
+- title: "『 NetApp CN1610 Switch Administrator's Guide 』 - バージョン 1.1.x.x"
+  url: "/switch-netapp-cn1610/switch-administrator-guide-version-11xx-linkout.html"
+- title: "『 NetApp CN1610 Switch Administrator's Guide 』 - バージョン 1.2.x.x"
+  url: "/switch-netapp-cn1610/switch-administrator-guide-version-12xx-linkout.html"
+- title: "『 CN1601 Network Switch CLI Command Reference 』"
+  url: "/switch-netapp-cn1610/switch-cli-command-reference-linkout.html"
+- title: "『 CN1601 Switch Administrator's Guide 』"
+  url: "/switch-netapp-cn1610/switch-administrator-guide-linkout.html"
+- title: "『 NetApp 1G Cluster-Mode Switch Installation Guide 』"
+  url: "/switch-netapp-cn1610/netapp-1g-cluster-mode-switch-installation-guide-linkout.html"

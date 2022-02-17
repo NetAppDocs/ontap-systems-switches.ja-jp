@@ -1,0 +1,15 @@
+---
+permalink: switch-netapp-cn1610/switch-setup-configuration-guide-linkout.html 
+sidebar: sidebar 
+keywords: cn1601, cn1610 switch setup, configuration guide 
+summary: このマニュアルでは、クラスタ環境でスイッチのハードウェアとソフトウェアを設定する方法について説明します。 
+---
+= 『 CN1601 and CN1610 Switch Setup and Configuration Guide 』
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+このマニュアルでは、クラスタ環境でスイッチのハードウェアとソフトウェアを設定する方法について説明します。
+
+https://library.netapp.com/ecm/ecm_download_file/ECMP1118645["セットアップと設定"^]

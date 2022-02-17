@@ -1,0 +1,135 @@
+---
+permalink: switch-cisco-9336c-fx2/setup-required-information.html 
+sidebar: sidebar 
+keywords: configure, cluster, appropriate, number, cable, connector, switch, type, configuring, configure, console, port, network, information, required cluster configuration information - cisco nexus 9336c-fx2 
+summary: クラスタを設定するには、スイッチに適切な数とタイプのケーブルとコネクタが必要です。最初に設定するスイッチのタイプに応じて、付属のコンソールケーブルを使用してスイッチのコンソールポートに接続する必要があります。また、特定のネットワーク情報を指定する必要があります。 
+---
+= 必要なクラスタ設定情報
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスタを設定するには、スイッチに適切な数とタイプのケーブルとコネクタが必要です。最初に設定するスイッチのタイプに応じて、付属のコンソールケーブルを使用してスイッチのコンソールポートに接続する必要があります。また、特定のネットワーク情報を指定する必要があります。
+
+
+
+== すべてのスイッチに必要なネットワーク情報
+
+すべてのスイッチ設定には、次のネットワーク情報が必要です。
+
+* 管理ネットワークトラフィック用の IP サブネット
+* 各ストレージシステムコントローラおよび該当するすべてのスイッチのホスト名と IP アドレス
+* ほとんどのストレージシステムコントローラは、イーサネットサービスポート（レンチマーク）に接続することで、 e0M インターフェイスを介して管理されます。AFF A800 システムおよび AFF A700 システムでは、 e0M インターフェイスは専用のイーサネットポートを使用します。
+
+
+を参照してください https://hwu.netapp.com["Hardware Universe"^] 最新情報については、
+
+
+
+== Cisco Nexus 9336C-FX2 、 92300YC 、 3232C 、 3132Q-V 、および 5596UP / 5596T スイッチに必要なネットワーク情報
+
+Cisco Nexus 9336C-FX2 、 92300YC 、 3232C 、 3132Q-V 、および 5596UP / 5596T スイッチの場合、 スイッチの初回ブート時に、次の初期セットアップに関する質問に適切な回答を入力する必要があります。サイトのセキュリティポリシーでは、有効にする応答とサービスを定義しています。
+
+* 自動プロビジョニングを中止して通常のセットアップを続行しますか？（はい / いいえ）
++
+* yes * と応答します。デフォルトは no です
+
+* セキュアなパスワード標準を適用しますか？（はい / いいえ）
++
+* yes * と応答します。デフォルトは yes です。
+
+* admin のパスワードを入力します。
++
+デフォルトのパスワードは「 admin 」です。新しい強力なパスワードを作成する必要があります。脆弱なパスワードは拒否される可能性があります。
+
+* 基本設定ダイアログを開きますか？（はい / いいえ）
++
+スイッチの初期設定時に * yes * と応答します。
+
+* 別のログインアカウントを作成しますか？（はい / いいえ）
++
+回答は、代替管理者に関するサイトのポリシーに依存します。デフォルトは * no * です。
+
+* 読み取り専用の SNMP コミュニティストリングを設定しますか？（はい / いいえ）
++
+* no * と応答します。デフォルトは no です
+
+* 読み取り / 書き込み SNMP コミュニティストリングを設定しますか？（はい / いいえ）
++
+* no * と応答します。デフォルトは no です
+
+* スイッチ名を入力します。
++
+スイッチ名は 63 文字までの英数字に制限されます。
+
+* アウトオブバンド（ mgmt0 ）管理構成で続行しますか。（はい / いいえ）
++
+そのプロンプトで * yes * （デフォルト）と応答します。mgmt0 IPv4 address: プロンプトで、 IP アドレス ip_address を入力します
+
+* default-gateway を設定？（はい / いいえ）
++
+* yes * と応答します。default-gateway: プロンプトの IPv4 アドレスに、 default_gateway と入力します。
+
+* IP の詳細オプションを設定しますか？（はい / いいえ）
++
+* no * と応答します。デフォルトは no です
+
+* Telnet サービスを有効にしますか？（はい / いいえ）
++
+* no * と応答します。デフォルトは no です
+
+* SSH サービスを有効にしたか？（はい / いいえ）
++
+* yes * と応答します。デフォルトは yes です。
+
++
+
+NOTE: ログ収集機能にクラスタスイッチヘルスモニタ（ CSHM ）を使用する場合は、 SSH が推奨されます。セキュリティを強化するには、 SSHv2 も推奨されます。
+
+* 生成する SSH キーのタイプを入力します（ DSA/RSA/rsa1 ）。デフォルトは * rsa* です。
+* キービット数（ 1024~2048 ）を入力します。
+* NTP サーバを設定？（はい / いいえ）
++
+* no * と応答します。デフォルトは no です
+
+* デフォルトのインターフェイスレイヤ（ L3/L2 ）を設定します。
++
+* L2 * と応答します。デフォルトは L2 です。
+
+* デフォルトのスイッチポートインターフェイスステート（ shut / noshut ）を設定します。
++
+noshut * と応答します。デフォルトは noshut です。
+
+* CoPP システムプロファイルを設定する（ strict/moderm/lenenter/dense ）：
++
+* strict * と応答します。デフォルトは strict です。
+
+* 設定を編集しますか？（はい / いいえ）
++
+この時点で新しい設定が表示されます。入力した設定を確認し、必要な変更を行います。設定に問題がなければ、プロンプトで「 * no * 」と応答します。設定を編集する場合は、 * yes * と応答します。
+
+* この設定を使用して保存しますか？（はい / いいえ）
++
+* yes * と応答して、設定を保存します。これにより、キックスタートイメージとシステムイメージが自動的に更新されます。
+
++
+
+NOTE: この段階で設定を保存しないと、次回スイッチをリブートしたときに変更が有効になりません。
+
++
+スイッチの初期設定の詳細については、次のガイドを参照してください。
+
++
+https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#InstallandUpgradeGuides["Cisco Nexus 9336C-FX2 インストールおよびアップグレードガイド"^]
+
++
+https://www.cisco.com/c/en/us/support/switches/nexus-92300yc-switch/model.html#InstallandUpgradeGuides["Cisco Nexus 92300YC インストールおよびアップグレードガイド"^]
+
++
+https://www.cisco.com/c/en/us/support/switches/nexus-5000-series-switches/products-installation-guides-list.html["『 Cisco Nexus 5000 Series Hardware Installation Guide 』"^]
+
++
+https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["『 Cisco Nexus 3000 Series Hardware Installation Guide 』を参照してください"^]
+
+
