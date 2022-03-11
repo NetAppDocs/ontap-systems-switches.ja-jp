@@ -12,37 +12,21 @@ summary: Cisco NX-OS ソフトウェアおよびリファレンス構成ファ�
 [role="lead"]
 Cisco NX-OS ソフトウェアおよびリファレンス構成ファイル（ RCF ）を Cisco Nexus 3232C クラスタスイッチにインストールする必要があります。
 
-
-
-== 必要なもの
-
 クラスタスイッチに NX-OS ソフトウェアおよび RCF をインストールする前に、次の条件が満たされている必要があります。
 
 * クラスタが完全に機能している必要があります（ログにエラーがないか、同様の機能がある）。
 * NX-OS だけをインストールして現在の RCF バージョンをそのまま使用する場合は、目的のブートイメージを反映するように、 RCF で必要なブート設定を確認または設定しておく必要があります。
 * 現在のブートイメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。
 * RCF のインストール時に必要なスイッチへのコンソール接続が必要です。
-* サポートされている ONTAP 、 NX-OS 、および RCF のバージョンについては、 Cisco イーサネットスイッチのページにあるスイッチ互換性の表を参照してください。
-+
-https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]
-
+* のスイッチ互換性の表を参照してください link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco Ethernet Switch のページ"^] サポートされている ONTAP 、 NX-OS 、および RCF のバージョン
 * RCF のコマンド構文と、 NX-OS のバージョンにあるコマンド構文との間には、コマンドの依存関係が存在する場合があります。
-* Cisco スイッチのアップグレードおよびダウングレード手順の詳細については、 Cisco の Web サイトで入手可能な該当するソフトウェアおよびアップグレードガイドを参照しておく必要があります。
-+
-https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズスイッチ"^]
-
+* の Cisco スイッチのアップグレードおよびダウングレード手順の詳細については、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズスイッチ"^]。
 * 最新の RCF が必要です。
 
 
-
-
-== このタスクについて
-
 この手順の例では、 2 つのノードを使用します。これらのノードは 'e0a' と 'e0b' の 2 つの 10GbE クラスタ・インターコネクト・ポートを使用します
 
-プラットフォームに対応した正しいクラスタポートを確認するには、 _ Hardware Universe _ を参照してください。
-
-https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]
+を参照してください link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^] をクリックして、プラットフォームのクラスタポートが正しいことを確認します。
 
 [NOTE]
 ====
@@ -62,10 +46,7 @@ https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]
 手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
 
 ====
-
-
-== 手順
-
+.手順
 . このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= x h
 +
 ここで、 _ x _ はメンテナンス時間の長さ（時間）です。

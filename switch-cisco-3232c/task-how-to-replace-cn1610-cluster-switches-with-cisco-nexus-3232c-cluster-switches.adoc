@@ -12,10 +12,6 @@ summary: クラスタ内の既存の CN1610 クラスタスイッチを Cisco Ne
 [role="lead"]
 クラスタ内の既存の CN1610 クラスタスイッチを Cisco Nexus 3232C クラスタスイッチに交換するには、特定の順序でタスクを実行する必要があります。
 
-
-
-== このタスクについて
-
 この手順の例では、スイッチとノードで次の命名法を使用しています。
 
 * ノードが n1 、 n2 、 n3 、 n4 である。
@@ -33,8 +29,8 @@ summary: クラスタ内の既存の CN1610 クラスタスイッチを Cisco Ne
 
 クラスタスイッチを変更するときに完了しておく必要がある各ステージは次のとおりです。
 
-* I.クラスタスイッチ CL2 を C2 に交換します（手順 1~22 ）。
-* IIクラスタスイッチ CL1 を C1 に交換する（手順 23-40 ）
+* I.クラスタスイッチ CL2 を C2 に交換します（手順 <<one,1.>>-<<twentytwo,22>>)
+* IIクラスタスイッチ CL1 を C1 に交換します（手順 <<twentythree,23>>-<<forty,40>>)
 
 
 この手順 の例では 4 つのノードを使用しています。 2 つのノードは、 e0a 、 e0b 、 e0c 、 e0d という 4 つの 10GbE クラスタインターコネクトポートを使用します。他の 2 つのノードでは、 4 つの 40GbE クラスタインターコネクトファイバケーブルを使用します： e4a と e4e 。プラットフォームのクラスタファイバケーブルに関する情報については、 Hardware Universe を参照してください。
@@ -44,11 +40,11 @@ summary: クラスタ内の既存の CN1610 クラスタスイッチを Cisco Ne
 手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
 
 ====
+.手順
+. [[ワン ]] このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
++
+「 system node AutoSupport invoke -node * -type all -message MAINT= xh 」というメッセージが表示されます
 
-
-== 手順
-
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。 +- `system node AutoSupport invoke -node * -type all -message MAINT= xh`
 +
 _x_ は、メンテナンス時間の長さ（時間単位）です。
 
@@ -164,17 +160,11 @@ CL2                           cluster-network  10.10.1.102   CN1610
 この時点で両方のスイッチを準備する必要があります。RCF およびイメージをアップグレードする必要がある場合は、次の手順 を実行する必要があります。
 
 +
-.. ネットアップサポートサイトの _Cisco イーサネットスイッチ _ ページを参照してください。
-+
-http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]
-
+.. を参照してください link:http://support.netapp.com/NOW/download/software/cm_switches/.html["Cisco イーサネットスイッチ"^] ネットアップサポートサイトのページを参照してください。
 .. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
 .. 該当するバージョンの RCF をダウンロードします。
 .. 概要 * ページで * continue * をクリックし、ライセンス契約に同意して、 * Download * ページの手順に従ってをダウンロードします。
-.. 適切なバージョンのイメージソフトウェアをダウンロードします。
-+
-http://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster and Management Network Switch Reference Configuration File Download （ Cisco ® クラスタおよび管理ネットワークスイッチリファレンス構成ファイルのダウンロード"^]
-
+.. 適切なバージョンのイメージソフトウェアをからダウンロードします link:http://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.html["Cisco ® Cluster and Management Network Switch Reference Configuration File Download （ Cisco ® クラスタおよび管理ネットワークスイッチリファレンス構成ファイルのダウンロード"^]。
 
 
 . 交換する 2 つ目の CN1610 スイッチに関連付けられている LIF を移行します。「 network interface migrate-verser cluster-lif_lif-name __ -source-node-source_source-node-name_destination-node -destination -node -destination-port_destination-port-destination-port_name_`
@@ -553,7 +543,7 @@ RPC status:
 4 paths up, 0 paths down (tcp check)
 4 paths up, 0 paths down (udp check)
 ----
-. 最初の CN1610 スイッチ CL1 に関連付けられている LIF を移行します。「 network interface migrate -vserver cluster-lif_lif-name __ -source-node-node-node-name_
+. [twentytwo ]] 最初の CN1610 スイッチ CL1 に関連付けられている LIF を移行します。「 network interface migrate -vserver cluster-lif_lif-name __ -source-node-name_
 +
 次の例に示すように、各クラスタ LIF を、クラスタスイッチ C2 でホストされている適切なクラスタポートに個別に移行する必要があります。
 
@@ -569,7 +559,7 @@ cluster::*> network interface migrate -vserver cluster -lif n2_clus1 -source-nod
 cluster::*> network interface migrate -vserver cluster -lif n2_clus4 -source-node n2
 -destination-node n2 -destination-port e0c
 ----
-. クラスタのステータスを確認します「 network interface show -role cluster
+. [twentyth3] クラスタのステータスを確認します。「 network interface show -role cluster 」
 +
 次の例は、必要なクラスタ LIF が、クラスタスイッチ C2 でホストされている適切なクラスタポートに移行されたことを示しています。
 
@@ -1018,7 +1008,7 @@ C2                          cluster-network    10.10.1.104      NX3232C
 
 2 entries were displayed.
 ----
-. スイッチ関連のログファイルを収集するために ' クラスタ・スイッチのヘルス・モニタのログ収集機能を有効にします
+. [40]] スイッチ関連のログファイルを収集するためのクラスタスイッチヘルスモニタログ収集機能を有効にします。「 system cluster-switch log setup-password 」
 +
 'system cluster-switch log enable-colion
 

@@ -12,17 +12,14 @@ summary: 2 ノードのスイッチレスクラスタを使用している場合
 [role="lead"]
 2 ノードのスイッチレスクラスタを使用している場合は、 Cisco Nexus 3132Q-V クラスタネットワークスイッチを含む 2 ノードのスイッチクラスタに無停止で移行できます。
 
-
-
-== 必要なもの
-
+.作業を開始する前に
 * 構成が適切にセットアップされ、機能している必要があります。
 * ノードで ONTAP 9.4 以降が実行されている必要があります。
 * すべてのクラスタポートは「 up 」状態である必要があります。
 * Cisco Nexus 3132Q-V クラスタスイッチがサポートされている必要があります。
 * 既存のクラスタネットワーク構成には、次のものが必要です。
 +
-** - 両方のスイッチで完全に機能する冗長な Nexus 3132 クラスタインフラストラクチャ。
+** 両方のスイッチで冗長性があり、完全に機能する Nexus 3132 クラスタインフラ。
 +
 スイッチにインストールされている最新の RCF および NX-OS バージョン
 
@@ -35,10 +32,6 @@ summary: 2 ノードのスイッチレスクラスタを使用している場合
 
 
 
-
-
-== このタスクについて
-
 この手順の例では、スイッチとノードで次の命名法を使用しています。
 
 * Nexus3132Q-V クラスタスイツチ、 C1 ト C2 。
@@ -47,7 +40,7 @@ summary: 2 ノードのスイッチレスクラスタを使用している場合
 
 [NOTE]
 ====
-この手順 の例では、 2 つのノードを使用し、それぞれ 40/100GbE クラスタインターコネクトポート e4A と e4e を使用しています。プラットフォームのクラスタポートの詳細については、 Hardware Universe を参照してください。
+この手順 の例では、 2 つのノードを使用し、それぞれ 40/100GbE クラスタインターコネクトポート e4A と e4e を使用しています。。 link:https://hwu.netapp.com/["Hardware Universe"^] プラットフォームのクラスタポートに関する詳細が表示されます。
 
 ====
 * n1_clus1 は、ノード n1 のクラスタスイッチ C1 に接続する最初のクラスタ論理インターフェイス（ LIF ）です。
@@ -63,16 +56,13 @@ summary: 2 ノードのスイッチレスクラスタを使用している場合
 
 ====
 * 2 ノードスイッチレスクラスタ設定で、 2 つのノードが接続されて機能している状態からクラスタを開始します。
-* 最初のクラスタポートは C1 （手順 1~20 ）に移動しました。
-* 2 つ目のクラスタポートは C2 に移動されました（手順 21 ～ 32 ）。
-* 2 ノードスイッチレスクラスタオプションを無効にします（手順 33 ~ 35 ）。
+* 最初のクラスタポートは C1 （<<step1_migrate_2node3132q,手順 1.>>- <<step20_migrate_2node3132q,20>>)
+* 2 番目のクラスタポートは c2 （に移動されました<<step21_migrate_2node3132q,手順 21>>- <<step32_migrate_2node3132q,32>>）。
+* 2 ノードスイッチレスクラスタオプション（<<step33_migrate_2node3132q,手順 33>>- <<step35_migrate_2node3132q,35>>)
 
 
-
-
-== 手順
-
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+.手順
+. [[stp1_migrate_2node313q]] このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
 +
 'system node AutoSupport invoke -node * -type all -message MAINT=xh`
 
@@ -139,10 +129,7 @@ Cluster
 この時点で両方のスイッチを準備する必要があります。RCF とイメージソフトウェアをアップグレードする必要がある場合は、次の手順を実行する必要があります。
 
 +
-.. ネットアップサポートサイトの _Cisco イーサネットスイッチ _ ページにアクセスします。
-+
-http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]
-
+.. にアクセスします link:http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^] ネットアップサポートサイトのページを参照してください。
 .. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
 .. 適切なバージョンの RCF をダウンロードします。
 .. 概要 * ページで * continue * をクリックし、ライセンス契約に同意して、 * Download * ページの手順に従ってをダウンロードします。
@@ -347,11 +334,9 @@ RPC status:
 実行コンフィギュレーションを参照し、 Nexus 3132Q-V でサポートされているケーブル接続を使用して、スイッチ C1 （この例ではポート 1/7 ）の最初の 40 GbE ポートを n1 の e4A に接続します
 
 +
-[NOTE]
-====
-新しい Cisco クラスタスイッチにケーブルを再接続する場合は、使用するケーブルがシスコによってサポートされているファイバまたはケーブルである必要があります。
 
-====
+NOTE: 新しい Cisco クラスタスイッチにケーブルを再接続する場合は、使用するケーブルがシスコによってサポートされているファイバまたはケーブルである必要があります。
+
 . ノード n2 の e4A からケーブルを外します。
 +
 サポートされているケーブルを使用して、実行構成を参照し、 C1 のポート 1/8 で使用可能な次の 40GbE ポートに e4A を接続します。
@@ -421,7 +406,7 @@ e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 cluster::*> network interface revert -vserver Cluster -lif n1_clus1
 cluster::*> network interface revert -vserver Cluster -lif n2_clus1
 ----
-. すべてのクラスタインターコネクトポートがホームポートにリバートされたことを確認します。
+. [[step20_migrate_2node313q]] すべてのクラスタインターコネクトポートがそれぞれのホームポートにリバートされていることを確認します。
 +
 「 network interface show 」を参照してください
 
@@ -443,7 +428,7 @@ Cluster
             n2_clus2   up/up      10.10.0.4/24       n2            e4e     true
 4 entries were displayed.
 ----
-. 各ノードのクラスタポート接続を表示します。
+. [[step21_migrate_2node313q]] 各ノードのクラスタポート接続を表示します。
 +
 「 network device-discovery show 」のように表示されます
 
@@ -600,7 +585,7 @@ e4a       Cluster      Cluster          up   9000 auto/40000  -        -
 e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 4 entries were displayed.
 ----
-. 各クラスタポートが各ノードで接続されているクラスタスイッチのポート番号を表示します。
+. [[step32_migrate_2node313q]] クラスタスイッチのポート番号を表示する各クラスタポートが各ノードで接続されていることを示します。
 +
 「 network device-discovery show 」のように表示されます
 
@@ -618,7 +603,7 @@ n2         /cdp
             e4a    C1                  Ethernet1/8      N3K-C3132Q-V
             e4e    C2                  Ethernet1/8      N3K-C3132Q-V
 ----
-. 検出された監視対象のクラスタスイッチを表示します。
+. [[step33_migrate_2node313q]] 検出されたクラスタスイッチと監視対象のクラスタスイッチを表示します。
 +
 「 system cluster-switch show
 
@@ -656,7 +641,7 @@ C2                          cluster-network     10.10.1.102      NX3132V
 ----
 network options switchless-cluster modify -enabled false
 ----
-. switchless -cluster オプションがディセーブルになっていることを確認します。
+. [[step35_migrate_2node313q]] 「 switchless-cluster 」オプションが無効になっていることを確認します。
 +
 [listing]
 ----
@@ -740,11 +725,9 @@ Enabling cluster switch log collection.
 cluster::*>
 ----
 +
-[NOTE]
-====
-これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
 
-====
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
 . ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
 +
 「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます

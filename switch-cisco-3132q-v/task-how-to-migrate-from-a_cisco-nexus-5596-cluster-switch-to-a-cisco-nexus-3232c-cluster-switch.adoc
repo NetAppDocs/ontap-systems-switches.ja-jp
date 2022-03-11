@@ -12,11 +12,7 @@ summary: 既存の Nexus 5596 クラスタスイッチを Nexus 3132Q-V クラ�
 [role="lead"]
 既存の Nexus 5596 クラスタスイッチを Nexus 3132Q-V クラスタスイッチに交換するには、特定の順序でタスクを実行する必要があります。
 
-
-
-== このタスクについて
-
-- この手順 の例では、 Nexus 5596 スイッチを Nexus 3132Q-V スイッチに交換します。以下の手順（変更あり）を使用して、他の古い Cisco スイッチを交換できます。手順 では、スイッチとノードで次の命名法を使用します。
+この手順 の例では、 Nexus 5596 スイッチを Nexus 3132Q-V スイッチに交換する方法について説明します。以下の手順（変更あり）を使用して、他の古い Cisco スイッチを交換できます。手順 では、スイッチとノードで次の命名法を使用します。
 
 * コマンド出力は、 ONTAP のリリースによって異なる場合があります。
 * 交換する Nexus 5596 スイッチは CL1 と CL2 です。
@@ -26,24 +22,18 @@ summary: 既存の Nexus 5596 クラスタスイッチを Nexus 3132Q-V クラ�
 * n1_clus3 は、ノード n1 のクラスタスイッチ 2 （ CL2 または c2 ）に接続されている 2 つ目の LIF です。
 * n1_clus4 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続された 2 つ目の LIF です。
 * ノードが n1 、 n2 、 n3 、 n4 である。
+* この手順 の例では 4 つのノードを使用しています。 2 つのノードは、 e0a 、 e0b 、 e0c 、 e0d という 4 つの 10GbE クラスタインターコネクトポートを使用します。他の 2 つのノードは、 40 / 100GbE のクラスタインターコネクトポートを 2 つ使用します。 e4a 、 e4e。 link:https://hwu.netapp.com/["Hardware Universe"^] に、プラットフォームの実際のクラスタポートを示します。
 * 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
 +
-[NOTE]
-====
-手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
 
-====
+NOTE: 手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
 
 
-[NOTE]
-====
-この手順 の例では 4 つのノードを使用しています。 2 つのノードは、 e0a 、 e0b 、 e0c 、 e0d という 4 つの 10GbE クラスタインターコネクトポートを使用します。他の 2 つのノードは、 40 / 100GbE のクラスタインターコネクトポートを 2 つ使用します。 e4a 、 e4eHardware Universe には、プラットフォームの実際のクラスタポートの一覧を表示します。
 
-====
 この手順 では、次のシナリオについて説明します。
 
 * クラスタは、 2 つの Nexus 5596 クラスタスイッチで接続され、機能している 2 つのノードから始まります。
-* c2 で交換するクラスタスイッチ CL2 （手順 1~19 ）
+* c2 （で置き換えられるクラスタスイッチ CL2<<step1_replace5596_3232q,手順 1.>> - <<step19_replace5596_3232q,19>>)
 +
 ** CL2 に接続されているすべてのノードのすべてのクラスタポートと LIF のトラフィックを最初のクラスタポートに移行し、 CL1 に接続されている LIF を移行します。
 ** CL2 に接続されているすべてのノードのすべてのクラスタポートからケーブルを外し、サポートされているブレークアウトケーブルを使用してポートを新しいクラスタスイッチ C2 に再接続します。
@@ -51,7 +41,7 @@ summary: 既存の Nexus 5596 クラスタスイッチを Nexus 3132Q-V クラ�
 ** すべてのノードの C2 に接続されているすべてのクラスタポートと LIF のトラフィックがリバートされます。
 
 
-* c2 で交換するクラスタスイッチ CL2 （手順 20~33 ）
+* c2 （で置き換えられるクラスタスイッチ CL2<<step20_replace5596_3232q,手順 20>> - <<step33_replace5596_3232q,33>>)
 +
 ** CL1 に接続されているすべてのノードのすべてのクラスタポートまたは LIF のトラフィックが、 C2 に接続されている 2 つ目のクラスタポートまたは LIF に移行されます。
 ** CL1 に接続されているすべてのノードのすべてのクラスタポートからケーブルを外し、サポートされているブレークアウトケーブルを使用して新しいクラスタスイッチ C1 に再接続します。
@@ -59,23 +49,18 @@ summary: 既存の Nexus 5596 クラスタスイッチを Nexus 3132Q-V クラ�
 ** すべてのノードの C1 に接続されているすべてのクラスタポートまたは LIF のトラフィックがリバートされます。
 
 
-* クラスタの詳細を示す例で、 2 つの FAS9000 ノードがクラスタに追加されました（手順 34 ~ 37 ）。
+* 2 つの FAS9000 ノードがクラスタに追加され、クラスタの詳細を示す例（<<step34_replace5596_3232q,手順 34>> - <<step37_replace5596_3232q,37>>）。
 
 
-
-
-== 手順
-
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= xh
+.手順
+. [[step1_replace5596 _32q]] このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出して自動ケース作成を抑制します。 "system node AutoSupport invoke -node * -type all -message MAINT=xh`
 +
 _x_ は、メンテナンス時間の長さ（時間単位）です。
 
 +
-[NOTE]
-====
-このメンテナンスタスクについてテクニカルサポートに通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
-====
+NOTE: このメンテナンスタスクについてテクニカルサポートに通知し、メンテナンス時間中はケースの自動作成が停止されます。
+
 . 構成に含まれるデバイスに関する情報を表示します。
 +
 「 network device-discovery show 」のように表示されます
@@ -208,10 +193,7 @@ cluster::*> network interface modify -vserver node2 -lif clus2 -auto-revert fals
 この時点で両方のスイッチを準備する必要があります。RCF およびイメージをアップグレードする必要がある場合は、次の手順を実行します。
 
 +
-.. ネットアップサポートサイトの _Cisco イーサネットスイッチ _ ページにアクセスします。
-+
-http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]
-
+.. にアクセスします link:http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^] ネットアップサポートサイトのページを参照してください。
 .. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
 .. 該当するバージョンの RCF をダウンロードします。
 .. 概要 * ページで * continue * をクリックし、ライセンス契約に同意して、 * Download * ページの手順に従ってをダウンロードします。
@@ -360,7 +342,7 @@ Nexus 5010 または 5020 を交換する場合は、 1 ページから ISL に�
 次の例は、 CL1 と C2 の間に一時的な ISL をセットアップしています。
 
 +
-[source, nolinebreak]
+[listing]
 ----
 
 C2# configure
@@ -467,7 +449,7 @@ cluster::*> network port modify -node n1 -port e0c -up-admin true
 cluster::*> network port modify -node n2 -port e0b -up-admin true
 cluster::*> network port modify -node n2 -port e0c -up-admin true
 ----
-. すべてのノードで、 C2 に接続されている移行済みのクラスタインターコネクト LIF をすべてリバートします。
+. [[step19_replace5596 _32q]] すべてのノードで、 C2 に接続されている移行済みのクラスタインターコネクト LIF をすべてリバートします。
 +
 「 network interface revert 」の略
 
@@ -484,7 +466,7 @@ cluster::*> network interface revert -vserver Cluster -lif n1_clus3
 cluster::*> network interface revert -vserver Cluster -lif n2_clus2
 cluster::*> network interface revert -vserver Cluster -lif n2_clus3
 ----
-. すべてのクラスタインターコネクトポートがホームにリバートされたことを確認します。
+. [[step20_replace5596 _32q]] すべてのクラスタインターコネクトポートがホームにリバートされたことを確認します。
 +
 「 network interface show 」を参照してください
 
@@ -663,7 +645,7 @@ cluster::*> network port modify -node n2 -port e0d -up-admin false
 次の例は、 ISL 24 、 31 、および 32 をシャットダウンする方法を示しています。
 
 +
-[source, noline]
+[listing]
 ----
 
 C2# configure
@@ -686,7 +668,7 @@ C2#
 
 . ポート 24 の設定を復元し、 C2 の一時ポートチャネル 2 を削除します。
 +
-[source, nolinebreak]
+[listing]
 ----
 
 C2# configure
@@ -758,7 +740,7 @@ cluster::*> network port modify -node n1 -port e0d -up-admin true
 cluster::*> network port modify -node n2 -port e0a -up-admin true
 cluster::*> network port modify -node n2 -port e0d -up-admin true
 ----
-. クラスタ・ノード・ポートのステータスを確認します「 network port show
+. [[step33_replace5596 _32q]] クラスタノードポートのステータスを確認します : 'network port show`
 +
 次の例は、新しい 3132Q-V スイッチ C1 上のすべてのノードのすべてのクラスタインターコネクトポートが「 up 」になっていることを確認します。
 
@@ -788,7 +770,7 @@ e0c       Cluster      Cluster          up   9000  auto/10000 -        -
 e0d       Cluster      Cluster          up   9000  auto/10000 -        -
 8 entries were displayed.
 ----
-. すべてのノードで、特定のクラスタ LIF をそれぞれのホームポートにリバートします。
+. [step34_replace5596 _32q]] すべてのノードで、特定のクラスタ LIF をホームポートにリバートします。
 +
 「 network interface revert 」の略
 
@@ -882,7 +864,7 @@ RPC status:
 4 paths up, 0 paths down (tcp check)
 4 paths up, 0 paths down (udp check)
 ----
-. Nexus 3132Q-V クラスタスイッチにノードを追加してクラスタを拡張します。
+. [[step37_replace5596 _32q]] Nexus 3132Q-V クラスタスイッチにノードを追加してクラスタを拡張します。
 . 構成に含まれるデバイスに関する情報を表示します。
 +
 ** 「 network device-discovery show 」のように表示されます
@@ -1114,11 +1096,9 @@ Enabling cluster switch log collection.
 cluster::*>
 ----
 +
-[NOTE]
-====
-これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
 
-====
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
 . ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
 +
 「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます

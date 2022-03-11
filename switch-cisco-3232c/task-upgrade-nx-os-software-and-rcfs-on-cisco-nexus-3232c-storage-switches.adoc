@@ -12,10 +12,6 @@ summary: Cisco NX-OS ソフトウェアおよびリファレンス構成ファ�
 [role="lead"]
 Cisco NX-OS ソフトウェアおよびリファレンス構成ファイル（ RCF ）は、 Cisco Nexus 3232C ストレージスイッチでアップグレードできます。
 
-
-
-== 必要なもの
-
 ストレージスイッチで NX-OS ソフトウェアと RCF をアップグレードする前に、次の条件が満たされている必要があります。
 
 * スイッチが完全に機能している必要があります（ログにエラーがないか、または同様の問題が発生していないか）。
@@ -23,52 +19,42 @@ Cisco NX-OS ソフトウェアおよびリファレンス構成ファイル（ R
 +
 現在のブートイメージを反映するようにブート変数を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。
 
-* Cisco ストレージのアップグレードおよびダウングレード手順の詳細なドキュメントについては、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります。
-+
-http://www.cisco.com/en/US/products/ps9670/prod_installation_guides_list.html["Cisco Nexus 3000 シリーズスイッチ"^]
-
-* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco ® イーサネットスイッチ"^]ページ
+* で提供されているソフトウェアとアップグレードのガイドを参照しておく必要があります http://www.cisco.com/en/US/products/ps9670/prod_installation_guides_list.html["Cisco Nexus 3000 シリーズスイッチ"^] Cisco ストレージのアップグレードおよびダウングレード手順の詳細なドキュメントについては、ページを参照してください。
+* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco ® イーサネットスイッチ"^] ページ
 
 
 * 手順 の概要： *
 
-* * I.スイッチとポートのヘルスステータスを確認します（、手順 1~4 ） *
-* * IIRCF を Cisco スイッチ S2 にコピーします（手順 5 ～ 8 ） *
-* *III.NX-OS イメージを Cisco スイッチ S2 にダウンロードし、再起動します（ステップ 9-12 ） *
-* *IVスイッチとポートのヘルスステータスを再確認する（手順 13 ~ 15 ） *
-* *V.Cisco スイッチ S1.* について、手順 1 ～ 17 を繰り返します
+* ** I.スイッチおよびポート（<<step1_upgrade_3232c,手順 1.>>- <<step4_upgrade_3232c,4.>>） **
+* ** IIRCF を Cisco スイッチ S2 にコピーします（<<step5_upgrade_3232c,手順 5.>> - <<step8_upgrade_3232c,8.>>） **
+* ** III.NX-OS イメージを Cisco スイッチ S2 にダウンロードし、（<<step9_upgrade_3232c,手順 9.>> - <<step12_upgrade_3232c,12.>>） **
+* ** IVスイッチとポートのヘルスステータスを再確認する（<<step13_upgrade_3232c,手順 13>> - <<step15_upgrade_3232c,15>>） **
+* ** V.繰り返します <<step1_upgrade_3232c,手順 1.>>- <<step17_upgrade_3232c,17>> Cisco スイッチ S1.** の場合
 
 
-この手順 の例では、 2 つのノードを使用します。 node1 には 2 つのストレージポート、 node2 には 2 つのストレージポートがあります。プラットフォームに対応した正しいストレージポートを確認するには、 Hardware Universe を参照してください。
-
-https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]
-
-[NOTE]
-====
-コマンド出力は、 ONTAP のリリースによって異なる場合があります。
-
-====
-この手順 の例では、スイッチとノードで次の命名法を使用しています。 - * 2 つのストレージスイッチの名前は S1 と S2 です。* ノードは node1 と node2 です。
-
-[NOTE]
-====
-手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
-
-====
+この手順 の例では、 2 つのノードを使用します。 node1 には 2 つのストレージポート、 node2 には 2 つのストレージポートがあります。を参照してください link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^] をクリックして、プラットフォームの正しいストレージポートを確認します。
 
 
-== 手順
+NOTE: コマンド出力は、 ONTAP のリリースによって異なる場合があります。
 
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= xh
+この手順の例では、スイッチとノードで次の命名法を使用しています。
+
+* 2 つのストレージスイッチの名前は S1 と S2 です。
+* ノードは node1 と node2 になります。
+
+
+
+NOTE: 手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
+
+.手順
+. [[stp1_upgrade_32c]] このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。 "system node AutoSupport invoke -node * -type all -message MAINT= xh`
 +
 _x_ は、メンテナンス時間の長さ（時間単位）です。
 
 +
-[NOTE]
-====
-AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
-====
+NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+
 . ストレージスイッチが使用可能であることを確認します。「 system switch ethernet show
 +
 [listing]
@@ -116,14 +102,14 @@ node2
                    e7a  ENET  storage      0 enabled  offline       30
                    e7b  ENET  storage    100 enabled  online        30
 ----
-. クラスタにストレージ・スイッチやケーブル接続に問題がないことを確認します「 system health alert show -instance
+. [[step4_upgrade_32c]] クラスタにストレージスイッチやケーブル接続の問題がないことを確認します : "system health alert show-instance
 +
 [listing]
 ----
 storage::*> system health alert show -instance
 There are no entries matching your query.
 ----
-. FTP 、 HTTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ S2 上の RCF をスイッチのブートフラッシュにコピーします。
+. [[step5_upgrade_32c]] スイッチ S2 上の RCF を、 FTP 、 HTTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用してスイッチのブートフラッシュにコピーします。
 +
 Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
@@ -166,8 +152,7 @@ S2# copy Nexus_3232C_RCF_v1.6-Storage.txt running-config echo-commands
 「 show banner motd 」コマンドのバナー出力では、「重要な注意事項」セクションの説明を読んで、スイッチの適切な設定と動作を確認する必要があります。
 
 ====
-
-
++
 [listing]
 ----
 S2# show banner motd
@@ -205,7 +190,7 @@ S2# show banner motd
 ******************************************************************************
 S2#
 ----
-. ソフトウェアのバージョンとスイッチの設定が正しいことを確認したら、「 running-config 」ファイルをスイッチ S2 の「 startup-config 」ファイルにコピーします。
+. [[step8_upgrade_32c]] ソフトウェアのバージョンとスイッチの設定が正しいことを確認したら、「 running-config 」ファイルをスイッチ S2 の「 startup-config 」ファイルにコピーします。
 +
 Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
@@ -218,7 +203,7 @@ Cisco コマンドの詳細については、『』の該当するガイドを�
 S2# copy running-config startup-config
 [########################################] 100% Copy complete.
 ----
-. NX-OS イメージをスイッチ S2 にダウンロードします。
+. [[step9_upgrade_32c]] NX-OS イメージをスイッチ S2 にダウンロードします。
 . システムイメージをインストールして、次回スイッチ S2 をリブートするときに新しいバージョンがロードされるようにします。
 +
 次の出力に示すように、スイッチは 10 秒後に新しいイメージでリブートされます。
@@ -301,7 +286,7 @@ S2# copy running-config startup-config
 S2# reload
 This command will reboot the system. (y/n)?  [n] y
 ----
-. 新しい NX-OS バージョン番号がスイッチにあることを確認します。
+. [[step12_upgrade_32c]] 新しい NX-OS バージョン番号がスイッチにあることを確認します。
 +
 [listing]
 ----
@@ -355,7 +340,7 @@ Active Package(s):
 
 S2#
 ----
-. 再起動後にストレージ・スイッチが使用可能であることを再確認します system switch ethernet show
+. [[step13_upgrade_32c]] 再起動後にストレージ・スイッチが使用可能であることを再確認します :"system switch ethernet show
 +
 [listing]
 ----
@@ -402,7 +387,7 @@ node2
                    e7a  ENET  storage      0 enabled  offline       30
                    e7b  ENET  storage    100 enabled  online        30
 ----
-. クラスタにストレージスイッチやケーブル接続の問題がないことを再確認します。「 system health alert show -instance 」
+. [[step15_upgrade_32c]] クラスタにストレージスイッチやケーブル接続に問題がないことを再確認します : "system health alert show-instance `
 +
 [listing]
 ----
@@ -410,5 +395,5 @@ storage::*> system health alert show -instance
 There are no entries matching your query.
 ----
 . 手順 を繰り返して、スイッチ S1 の NX-OS ソフトウェアと RCF をアップグレードします。
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージ「 system node AutoSupport invoke -node * -type all -message MAINT=end 」を呼び出して作成を再度有効にします
+. [[step17_upgrade_32c]] 自動ケース作成を抑制した場合は、 AutoSupport メッセージを呼び出すことで再度有効にします。 "system node AutoSupport invoke -node * -type all -message MAINT=end`
 

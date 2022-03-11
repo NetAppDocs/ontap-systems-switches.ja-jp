@@ -12,10 +12,7 @@ summary: 2 ノードスイッチレスクラスタを使用している場合は
 [role="lead"]
 2 ノードスイッチレスクラスタを使用している場合は、 Cisco Nexus 3232C クラスタネットワークスイッチを含む 2 ノードスイッチクラスタに無停止で移行できます。
 
-
-
-== 必要なもの
-
+.作業を開始する前に
 * 構成が適切にセットアップされ、機能している必要があります。
 +
 2 ノードスイッチレスクラスタの設定で 2 ノードが接続され、機能している必要があります。
@@ -35,16 +32,12 @@ summary: 2 ノードスイッチレスクラスタを使用している場合は
 
 
 
-
-
-== このタスクについて
-
 * 手順 の概要 *
 
-* * I.物理ポートと論理ポートの表示と移行（手順 1 ~ 10 ） *
-* * II再割り当てした LIF をシャットダウンし、ケーブルを外します（手順 11-14 ） *
-* *III.クラスタポートを有効にします（手順 15~20 ） *
-* *IV再割り当てした LIF を有効にします（手順 21~33 ） *
+* * I.物理ポートと論理ポートの表示と移行（手順 <<joyce,1.>>-<<beckett,10.>>*
+* * II再割り当てした LIF をシャットダウンし、ケーブルを外します（手順 <<casey,11.>>-<<heaney,14 ）>>*
+* *III.クラスタポートを有効にします（手順 <<yeats,15>>-<<friel,20>>*
+* *IV再割り当てした LIF を有効にします（手順 <<wilde,21>>-<<swift,33>>*
 
 
 この手順の例では、スイッチとノードで次の命名法を使用しています。
@@ -70,11 +63,8 @@ summary: 2 ノードスイッチレスクラスタを使用している場合は
 手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
 
 ====
-
-
-== 手順
-
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+.手順
+. [[Joy]]] このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
 +
 'system node AutoSupport invoke -node * -type all -message MAINT=xh`
 
@@ -280,7 +270,7 @@ n2         /cdp
             e4a    n1                  e4a              FAS9000
             e4e    n1                  e4e              FAS9000
 ----
-. n1_clus1 と n2_clus1 の LIF をデスティネーションノードの物理ポートに移行します。
+. [[Beckett]] n1_clus1 と n2_clus1 の LIF をデスティネーションノードの物理ポートに移行します。
 +
 network interface migrate -vserver cluster-lif_lif-name _source -node-source-node-name-destination-port_destination-port-name_
 
@@ -295,7 +285,7 @@ cluster::*> network interface migrate -vserver cluster -lif n1_clus1 -source-nod
 cluster::*> network interface migrate -vserver cluster -lif n2_clus1 -source-node n2
 –destination-node n2 -destination-port e4e
 ----
-. クラスタインターフェイスが正常に移行されたことを確認します。
+. [[Casey] ] クラスタインターフェイスが正常に移行されたことを確認します。
 +
 「 network interface show -role cluster 」のように表示されます
 
@@ -362,11 +352,11 @@ Larger than PMTU communication succeeds on 4 path(s) RPC status:
 1 paths up, 0 paths down (tcp check)
 1 paths up, 0 paths down (ucp check)
 ----
-. ノード n1 の e4A からケーブルを外します。
+. [[Heaney] ノード n1 の E4A からケーブルを外します。
 +
 実行コンフィギュレーションを参照して、スイッチ C1 （この例ではポート 1/7 ）の最初の 40 GbE ポートを n1 の e4A に接続します（ Nexus 3232C スイッチでサポートされているケーブル接続を使用）。
 
-. ノード n2 の e4A からケーブルを外します。
+. [[yeats] ] ノード n2 の e4A からケーブルを外します。
 +
 サポートされているケーブルを使用して、実行構成を参照し、 C1 のポート 1/8 で使用可能な次の 40GbE ポートに e4A を接続します。
 
@@ -396,7 +386,7 @@ C1(config)# exit
 cluster::*> network port modify -node n1 -port e4a -up-admin true
 cluster::*> network port modify -node n2 -port e4a -up-admin true
 ----
-. 両方のノードでクラスタが動作していることを確認します。
+. [[yeats] ] 両方のノードでクラスタが稼働していることを確認します。
 +
 「 network port show -role cluster 」のように表示されます
 
@@ -436,7 +426,7 @@ network interface revert -vserver cluster -lif LIF_name です
 cluster::*> network interface revert -vserver cluster -lif n1_clus1
 cluster::*> network interface revert -vserver cluster -lif n2_clus1
 ----
-. すべての LIF がそれぞれのホームポートにリバートされたことを確認します。
+. [[friel]] すべての LIF がホームポートにリバートされたことを確認します。
 +
 「 network interface show -role cluster 」のように表示されます
 
@@ -458,7 +448,7 @@ Cluster
             n2_clus2   up/up      10.10.0.4/24       n2            e4e     true
 4 entries were displayed.
 ----
-. 各ノードのクラスタポート接続を表示します。
+. [[Wilde]] 各ノードのクラスタポート接続を表示します。
 +
 「 network device-discovery show 」のように表示されます
 
@@ -607,7 +597,7 @@ n2          /cdp
             e4a    C1                  Ethernet1/8      N3K-C3232C
             e4e    C2                  Ethernet1/8      N3K-C3232C
 ----
-. 検出された監視対象のクラスタスイッチを表示します。
+. [SWFT] 検出されたクラスタスイッチと監視対象のクラスタスイッチを表示します。
 +
 「 system cluster-switch show
 

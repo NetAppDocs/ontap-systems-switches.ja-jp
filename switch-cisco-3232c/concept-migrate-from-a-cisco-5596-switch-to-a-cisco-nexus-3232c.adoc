@@ -68,8 +68,5 @@ Cisco Nexus 5596 クラスタスイッチを Cisco Nexus 3232C クラスタス�
 
 ====
 * ノードから Nexus 3232C クラスタスイッチへの 10GbE および 40/100GbE 接続に関する必要なドキュメントの計画、移行、および確認が完了している。
-* この手順でサポートされている ONTAP および NX-OS のバージョンは、 _Cisco イーサネットスイッチ _ ページにあります。
-+
-http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]-
-
+* この手順 でサポートされている ONTAP と NX-OS のバージョンはにあります link:http://support.netapp.com/NOW/download/software/cm_switches/.html["Cisco Ethernet Switches のページ"^]。
 

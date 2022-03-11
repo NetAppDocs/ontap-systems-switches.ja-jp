@@ -12,18 +12,9 @@ summary: Cisco Nexus 3232C スイッチとパススルーパネルは、スイ�
 [role="lead"]
 Cisco Nexus 3232C スイッチとパススルーパネルは、スイッチに付属の標準ブラケットを使用してネットアップキャビネットに設置できます。
 
+の初期準備要件、キットの内容、および安全上の注意事項を確認しておく必要があります link:http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus3000/hw/installation/guide/b_n3000_hardware_install_guide.html["『 Cisco Nexus 3000 Series Hardware Installation Guide 』を参照してください"^]。
 
-
-== 必要なもの
-
-初期準備要件、キットの内容、および安全上の注意事項を確認しておく必要があります。
-
-http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus3000/hw/installation/guide/b_n3000_hardware_install_guide.html["『 Cisco Nexus 3000 Series Hardware Installation Guide 』を参照してください"^]
-
-
-
-== このタスクについて
-
+.このタスクについて
 * 各スイッチについて、 8 本の 10-32 ネジまたは 12-24 ネジとクリップナットを用意して、ブラケットとスライダレールを前面および背面のキャビネットポストに取り付ける必要があります。
 * スイッチをネットアップキャビネットに設置するには、 Cisco 標準レールキットを使用する必要があります。
 
@@ -33,10 +24,7 @@ http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus3000/hw/installati
 ジャンパコードはパススルーキットには含まれていないため、スイッチに付属しています。スイッチが付属していない場合は、ネットアップから発注できます（部品番号 X1558A-R6 ）。
 
 ====
-
-
-== 手順
-
+.手順
 . ネットアップキャビネットにパススルーブランクパネルを取り付けます。
 +
 パススルーパネルキットはネットアップが提供しています（パーツ番号 X8784-R6 ）。

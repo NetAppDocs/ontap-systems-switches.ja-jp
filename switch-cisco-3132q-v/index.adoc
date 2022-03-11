@@ -4,10 +4,17 @@ sidebar: sidebar
 keywords: Cisco, 3132Q-V 
 summary: 2 ノードスイッチクラスタへの移行 
 ---
-= Cisco 3132Q-V スイッチ
+= Cisco Nexus 3132Q-V スイッチ
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-AFF クラスタまたは FAS クラスタでは、 Cisco 3132Q-V スイッチをクラスタスイッチとして使用できます。これらの手順を使用して、スイッチの設置、既存のスイッチからの移行、スイッチの交換、スイッチ上の RCF ファイルの更新を行うことができます。
+AFF クラスタまたは FAS クラスタでは、 Cisco Nexus 3132Q-V スイッチをクラスタスイッチとして使用できます。
+
+* Cisco Nexus 3132Q-V クラスタスイッチに NX-OS と Reference Configuration File （ RCF ；参照構成ファイル）をインストールできます。
+* Cisco Nexus 3132Q-V クラスタスイッチを使用して、 2 ノードスイッチレスクラスタ環境から 2 ノードスイッチ環境に移行できます。
+* クラスタ内の障害のある Cisco Nexus 3132Q-V スイッチを交換し、スイッチのオペレーティングシステムとリファレンス構成ファイルをダウンロードできます。
+* Cisco Nexus 5596 、 Nexus 5020 、または Nexus 5010 のクラスタスイッチを Cisco Nexus 3132Q-V スイッチに交換することができます。
+* NetApp CN1610 スイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換できます。
+

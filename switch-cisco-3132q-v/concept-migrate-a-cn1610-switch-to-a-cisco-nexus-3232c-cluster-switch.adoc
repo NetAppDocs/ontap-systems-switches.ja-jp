@@ -30,7 +30,7 @@ CN1610 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチ�
 ** Cisco Nexus 3132Q-V ：ポート e1/31~32 （ 40/100GbE ）
 
 
-* Nexus3132Q-V スイツチヘノサホオトサレルケエフルセツソクニカンスルシヨウホウ Hardware Universe
+* 。 link:https://hwu.netapp.com/["Hardware Universe"^] Nexus 3132Q-V スイッチでサポートされているケーブル接続に関する情報が含まれています。
 +
 ** 10GbE クラスタ接続のノードには、 QSFP-SFP+ 光ファイバブレークアウトケーブルまたは QSFP+ 銅線ブレークアウトケーブルが必要です
 ** 40 / 100GbE クラスタ接続に対応した QSFP / QSFP28 光モジュールには、光ファイバケーブルまたは QSFP / QSFP28 銅線直接接続ケーブルが必要です
@@ -59,22 +59,14 @@ CN1610 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチ�
 「 hardware profile front portmode sf-plus 」コマンドを使用すると、 Nexus 3132Q-V スイッチの QSFP ポートの代わりに 4 つの SFP+ ポートをアクティブにできます。同様に、「 hardware profile front portmode QSFP 」コマンドを使用すると、 Nexus 3132Q-V スイッチをリセットして、 4 つの SFP+ ポートではなく QSFP ポートを使用できます。
 
 +
-[NOTE]
-====
-最初の 4 つの SFP+ ポートを使用すると、最初の 40GbE QSFP ポートは無効になります。
 
-====
+NOTE: 最初の 4 つの SFP+ ポートを使用すると、最初の 40GbE QSFP ポートは無効になります。
+
 * 10GbE または 40/100GbE で実行するために、 Nexus 3132Q-V スイッチの一部のポートを設定しておく必要があります。
 +
 最初の 6 つのポートを 4 つの 10 GbE モードに分割するには、「 interface breakout module 1 port 1-6 map 10g-4x 」コマンドを使用します。同様に 'no interface breakout module 1 port 1-6 map 10g-4x コマンドを使用して '_breakout 構成の最初の 6 つの QSFP+ ポートをグループ化し直すことができます
 
 * ノードから Nexus 3132Q-V クラスタスイッチへの 10GbE および 40/100GbE 接続に関する必要なドキュメントを計画、移行しておく必要があります。
-* この手順 でサポートされている ONTAP および NX-OS のバージョンは、「 Cisco Ethernet Switches 」ページに記載されています。
-+
-http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]
-
-* この手順 でサポートされている ONTAP および fastpath のバージョンは、「 NetApp CN1601 and CN1610 Switches 」ページに記載されています。
-+
-http://support.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^]
-
+* この手順 でサポートされている ONTAP と NX-OS のバージョンをに示します link:http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^] ページ
+* この手順 でサポートされている ONTAP および FastPath のバージョンをに示します link:http://support.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^] ページ
 

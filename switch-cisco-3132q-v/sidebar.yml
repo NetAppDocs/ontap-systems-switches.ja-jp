@@ -1,9 +1,9 @@
 ---
 section: switch-cisco-3132q-v
-title: Cisco 3132Q-V スイッチ
+title: Cisco Nexus 3132Q-V スイッチ
 entries:
 - title: 概要
-  url: switch-cisco-3132q-v/index.html
+  url: "/switch-cisco-3132q-v/index.html"
 - title: Cisco Nexus 3132Q-V クラスタスイッチを使用した 2 ノードスイッチクラスタへの移行
   url: "/switch-cisco-3132q-v/concept-migrate-from-a-two-node-switchless-cluster-to-a-cluster-with-cisco-nexus-3232c-cluster-switches.html"
   entries:

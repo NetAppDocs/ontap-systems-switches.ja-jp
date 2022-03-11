@@ -10,6 +10,6 @@ summary: このガイドでは、一般的なネットワークで CN1610 スイ
 
 
 [role="lead"]
-このガイドでは、一般的なネットワークで CN1610 スイッチを使用する例を示します。
+一般的なネットワークで CN1610 スイッチを使用する方法の例。
 
 https://library.netapp.com/ecm/ecm_download_file/ECMLP2811865["管理者ガイド"^]

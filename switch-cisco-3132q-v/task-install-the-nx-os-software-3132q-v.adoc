@@ -12,68 +12,45 @@ summary: この手順 を使用して、 Nexus 3132Q-V クラスタスイッチ�
 [role="lead"]
 この手順 を使用して、 Nexus 3132Q-V クラスタスイッチに NX-OS ソフトウェアをインストールできます。
 
-
-
-== 手順
-
+.手順
 . クラスタスイッチを管理ネットワークに接続します。
 . 「 ping 」コマンドを使用して、 NX-OS ソフトウェアおよび RCF をホストするサーバへの接続を確認します。
 +
 次の例では、スイッチが IP アドレス 172.19.2.1 のサーバに接続できることを確認します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cs2# ping 172.19.2.1
+cs2# *ping 172.19.2.1*
 Pinging 172.19.2.1 with 0 bytes of data:
 
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
+. NX-OS ソフトウェアを Nexus 3132Q-V スイッチにコピーします。
 +
--
-
-. NX-OS ソフトウェアおよび EPLD イメージを Nexus 3132Q-V スイッチにコピーします。
-+
-[listing]
+[listing, subs="+quotes"]
 ----
-cs2# copy sftp: bootflash: vrf management
-Enter source filename: /code/nxos.9.3.4.bin
-Enter hostname for the sftp server: 172.19.2.1
-Enter username: user1
+cs2# *copy sftp: bootflash: vrf management*
+Enter source filename: */code/nxos.9.3.4.bin*
+Enter hostname for the sftp server: *172.19.2.1*
+Enter username: *user1*
 
 Outbound-ReKey for 172.19.2.1:22
 Inbound-ReKey for 172.19.2.1:22
-user1@172.19.2.1's password:
-sftp> progress
+user1@172.19.2.1's password: *xxxxxxxx*
+sftp> *progress*
 Progress meter enabled
-sftp> get   /code/nxos.9.3.4.bin  /bootflash/nxos.9.3.4.bin
+sftp> *get   /code/nxos.9.3.4.bin  /bootflash/nxos.9.3.4.bin*
 /code/nxos.9.3.4.bin  100% 1261MB   9.3MB/s   02:15
-sftp> exit
-Copy complete, now saving to disk (please wait)...
-Copy complete.
-
-
-cs2# copy sftp: bootflash: vrf management
-Enter source filename: /code/n9000-epld.9.3.4.img
-Enter hostname for the sftp server: 172.19.2.1
-Enter username: user1
-
-Outbound-ReKey for 172.19.2.1:22
-Inbound-ReKey for 172.19.2.1:22
-user1@172.19.2.1's password:
-sftp> progress
-Progress meter enabled
-sftp> get   /code/n9000-epld.9.3.4.img  /bootflash/n9000-epld.9.3.4.img
-/code/n9000-epld.9.3.4.img  100%  161MB   9.5MB/s   00:16
-sftp> exit
+sftp> *exit*
 Copy complete, now saving to disk (please wait)...
 Copy complete.
 ----
 . NX-OS ソフトウェアの実行中のバージョンを確認します。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cs2# show version
+cs2# *show version*
 Cisco Nexus Operating System (NX-OS) Software
 TAC support: http://www.cisco.com/tac
 Copyright (C) 2002-2020, Cisco and/or its affiliates.
@@ -128,9 +105,9 @@ cs2#
 イメージファイルをインストールすると、スイッチをリブートするたびにロードされます。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cs2# install all nxos bootflash:nxos.9.3.4.bin
+cs2# *install all nxos bootflash:nxos.9.3.4.bin*
 Installer will perform compatibility check first. Please wait.
 Installer is forced disruptive
 
@@ -167,7 +144,7 @@ Module       Image       Running-Version(pri:alt)                New-Version    
 
 
 Switch will be reloaded for disruptive upgrade.
-Do you want to continue with the installation (y/n)?  [n] y
+Do you want to continue with the installation (y/n)?  [n] *y*
 
 Install is in progress, please wait.
 
@@ -193,9 +170,9 @@ cs2#
 'how version （バージョンの表示） '
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cs2# show version
+cs2# *show version*
 Cisco Nexus Operating System (NX-OS) Software
 TAC support: http://www.cisco.com/tac
 Copyright (C) 2002-2020, Cisco and/or its affiliates.

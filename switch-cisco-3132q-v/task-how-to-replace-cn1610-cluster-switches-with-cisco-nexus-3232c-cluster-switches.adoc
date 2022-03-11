@@ -12,18 +12,24 @@ summary: クラスタ内の既存の CN1610 クラスタスイッチを Cisco Ne
 [role="lead"]
 クラスタ内の既存の CN1610 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換するには、特定の順序でタスクを実行する必要があります。
 
+この手順 の例では 4 つのノードを使用しています。 2 つのノードは、 e0a 、 e0b 、 e0c 、 e0d という 4 つの 10GbE クラスタインターコネクトポートを使用します。他の 2 つのノードは、 40 / 100GbE クラスタインターコネクトファイバケーブル 2 本（ e4A と e4e ）を使用します。。 link:https://hwu.netapp.com/["Hardware Universe"^] プラットフォームのクラスタ光ファイバケーブルに関する情報が表示されます。
 
+この手順の例では、スイッチとノードで次の命名法を使用しています。
 
-== このタスクについて
+* コマンド出力は、 ONTAP ソフトウェアのリリースによって異なる場合があります。
+* 交換する CN1610 スイッチは CL1 と CL2 です。
+* CN1610 スイッチを交換する Nexus 3132Q-V スイッチは C1 と C2 です。
+* n1_clus1 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続された最初のクラスタ論理インターフェイス（ LIF ）です。
+* n1_clus2 は、ノード n1 のクラスタスイッチ 2 （ CL2 または c2 ）に接続された最初のクラスタ LIF です。
+* n1_clus3 は、ノード n1 のクラスタスイッチ 2 （ CL2 または c2 ）に接続されている 2 つ目の LIF です。
+* n1_clus4 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続された 2 つ目の LIF です。ノードが n1 、 n2 、 n3 、 n4 である。
+* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
 
-この手順 の例では 4 つのノードを使用しています。 2 つのノードは、 e0a 、 e0b 、 e0c 、 e0d という 4 つの 10GbE クラスタインターコネクトポートを使用します。他の 2 つのノードは、 40 / 100GbE クラスタインターコネクトファイバケーブル 2 本（ e4A と e4e ）を使用します。プラットフォームのクラスタファイバケーブルに関する情報については、 Hardware Universe を参照してください。
-
-この手順 の例では、スイッチとノードで次の命名法を使用しています。 - * コマンド出力は、 ONTAP ソフトウェアのリリースによって異なる場合があります。* 交換する CN1610 スイッチは CL1 と CL2 です。* CN1610 スイッチを交換する Nexus 3132Q-V スイッチは C1 と C2 です。* n1_clus1 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続された最初のクラスタ論理インターフェイス（ LIF ）です。* n1_clus2 は、ノード n1 のクラスタスイッチ 2 （ CL2 または c2 ）に接続された最初のクラスタ LIF です。* n1_clus3 は、ノード n1 のクラスタスイッチ 2 （ CL2 または c2 ）に接続されている 2 つ目の LIF です。* n1_clus4 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続されている 2 つ目の LIF です。ノードが n1 、 n2 、 n3 、 n4 である。* 10 GbE ポートおよび 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
 
 この手順では、次のシナリオについて説明します。
 
 * 2 つの CN1610 クラスタスイッチに接続された 2 つのノードからクラスタを開始します。
-* c2 で交換するクラスタスイッチ CL2 （手順 2 ~ 22 ）：
+* c2 （で置き換えられるクラスタスイッチ CL2<<step2_replacecn1610,手順 2.>> - <<step22_replacecn1610,22>>)
 +
 ** CL2 に接続されているすべてのノードのすべてのクラスタポートと LIF のトラフィックを最初のクラスタポートに移行し、 CL1 に接続されている LIF を移行します。
 ** CL2 に接続されているすべてのノードのすべてのクラスタポートからケーブルを外し、サポートされているブレークアウトケーブルを使用してポートを新しいクラスタスイッチ C2 に再接続します。
@@ -31,7 +37,7 @@ summary: クラスタ内の既存の CN1610 クラスタスイッチを Cisco Ne
 ** すべてのノードの C2 に接続されているすべてのクラスタポートと LIF のトラフィックがリバートされます。
 
 
-* C1 と交換するクラスタスイッチ CL1 （手順 23 ～ 43 ）
+* クラスタスイッチ CL1 を C1 （<<step23_replacecn1610,手順 23>> - <<step43_replacecn1610,43>>)
 +
 ** CL1 に接続されているすべてのノードのすべてのクラスタポートと LIF のトラフィックが、 2 番目のクラスタポートと C2 に接続されている LIF に移行されます。
 ** CL1 に接続されているすべてのノードのすべてのクラスタポートからケーブルを外し、サポートされているブレークアウトケーブルを使用してポートを新しいクラスタスイッチ C1 に再接続します。
@@ -41,15 +47,10 @@ summary: クラスタ内の既存の CN1610 クラスタスイッチを Cisco Ne
 
 
 
-[NOTE]
-====
-手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
 
-====
+NOTE: 手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
 
-
-== 手順
-
+.手順
 . このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
 +
 'system node AutoSupport invoke -node * -type all -message MAINT=xh`
@@ -58,12 +59,10 @@ summary: クラスタ内の既存の CN1610 クラスタスイッチを Cisco Ne
 _x_ は、メンテナンス時間の長さ（時間単位）です。
 
 +
-[NOTE]
-====
-AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
-====
-. 構成内のデバイスに関する情報を表示します。「 network device-discovery show
+NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+
+. [step2_replaceecn1610] 設定内のデバイスに関する情報を表示します。「 network device-discovery show 」を参照してください
 +
 次の例は、各クラスタインターコネクトスイッチの各ノードに設定されているクラスタインターコネクトインターフェイスの数を示しています。
 
@@ -189,10 +188,7 @@ cluster::*> network interface modify -vserver node2 -lif clus4 -auto-revert fals
 この時点で両方のスイッチを準備する必要があります。RCF およびイメージをアップグレードする必要がある場合は、次の手順を実行します。
 
 +
-.. ネットアップサポートサイトの _Cisco イーサネットスイッチ _ ページを参照してください。
-+
-http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]
-
+.. を参照してください link:http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^] ネットアップサポートサイトのページ
 .. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
 .. 該当するバージョンの RCF をダウンロードします。
 .. 概要 * ページで * continue * をクリックし、ライセンス契約に同意して、 * Download * ページの手順に従ってをダウンロードします。
@@ -353,11 +349,9 @@ C2(config-if)# exit
 新しい Cisco 3132Q-V スイッチ C2 のポート 1/24 を既存の CN1610 スイッチ CL1 のポート 13~16 に接続する、適切な Cisco QSFP / SFP+ ブレークアウトケーブルを接続する必要があります。
 
 +
-[NOTE]
-====
-新しい Cisco 3132Q-V スイッチにケーブルを再接続する場合は、光ファイバケーブルまたは Cisco Twinax ケーブルのいずれかを使用する必要があります。
 
-====
+NOTE: 新しい Cisco 3132Q-V スイッチにケーブルを再接続する場合は、光ファイバケーブルまたは Cisco Twinax ケーブルのいずれかを使用する必要があります。
+
 . ISL を動的にするには、アクティブ CN1610 スイッチの ISL インターフェイス 3/1 を構成し、スタティックモード「 no port-channel static 」をディセーブルにします
 +
 この設定は、手順 11 の両方のスイッチで ISL を起動した場合に、 3132Q-V スイッチ C2 の ISL 設定と一致します
@@ -520,7 +514,7 @@ e0d   cluster   cluster     up    9000  auto/10000     -        -
 
 8 entries were displayed.
 ----
-. リモートクラスタインターフェイスに ping を実行してから、リモート手順 コールサーバチェックを実行します。「 cluster ping-cluster
+. [step22_replacen1610] リモートクラスタインターフェイスに ping を実行してから、リモート手順 コールサーバチェック「 cluster ping-cluster 」を実行します
 +
 次に、リモートクラスタインターフェイスに ping を実行する例を示します。
 
@@ -570,7 +564,7 @@ RPC status:
 4 paths up, 0 paths down (tcp check)
 4 paths up, 0 paths down (udp check)
 ----
-. クラスタ内の各ノードで、最初の CN1610 スイッチ CL1 に関連付けられているインターフェイスを移行します。「 network interface migrate 」というコマンドを使用します
+. [step23_replacen1610] クラスタ内の各ノードで、最初の CN1610 スイッチ CL1 に関連付けられているインターフェイスを移行して置き換えます。「 network interface migrate 」
 +
 次の例は、ノード n1 および n2 で移行するポートまたは LIF を示しています。
 
@@ -1076,12 +1070,10 @@ Enabling cluster switch log collection.
 cluster::*>
 ----
 +
-[NOTE]
-====
-これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
 
-====
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して再度有効にします。「 system node AutoSupport invoke -node * -type all -message MAINT=end
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
+. [[step43_replaceecn1610]] 自動ケース作成を抑制した場合は、 AutoSupport メッセージを呼び出して再度有効にします。 "system node AutoSupport invoke -node * -type all -message MAINT=end`
 
 
 * 関連情報 *

@@ -63,10 +63,6 @@ QSFP 光ファイバケーブルまたは銅線直接接続ケーブル × 2
 |===
 該当するリファレンス構成ファイル（ RCF ）をダウンロードしておく必要があります。10GbE ポートと 40/100GbE ポートの数は、で使用可能な RCF に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
 
-この手順 でサポートされている ONTAP および NX-OS のバージョンは、 [Cisco Ethernet Switches] ページにリストされています。
+この手順 でサポートされている ONTAP と NX-OS のバージョンをに示します link:https://mysupport.netapp.com/NOW/download/software/cm_switches/.html["Cisco Ethernet Switches のページ"^]。
 
-https://mysupport.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]
-
-この手順 でサポートされている ONTAP および fastpath のバージョンは、 NetApp CN1601 および CN1610 スイッチのページに記載されています。
-
-http://support.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^]
+この手順 でサポートされている ONTAP および FastPath のバージョンをに示します link:http://support.netapp.com/NOW/download/software/cm_switches_ntap/.html["NetApp CN1601 / CN1610 スイッチのページ"^]。

@@ -12,10 +12,6 @@ summary: クラスタ内の障害のある Cisco Nexus 3232C スイッチは、�
 [role="lead"]
 クラスタ内の障害のある Cisco Nexus 3232C スイッチは、特定の順序でタスクを実行することで、無停止で交換できます。
 
-
-
-== 必要なもの
-
 既存のクラスタとネットワークの構成には、次のような特徴があります。
 
 * Nexus 3232C クラスタインフラは、両方のスイッチで冗長かつ完全に機能する必要があります。
@@ -35,16 +31,12 @@ Cisco Ethernet Switches のページに、スイッチ上の最新の RCF およ
 * スイッチの初期カスタマイズが完了している必要があります。
 
 
-
-
-== このタスクについて
-
 * 手順 の概要 *
 
-* * クラスタポートを表示してスイッチ C2 に移行します（手順 1~7 ） *
-* * スイッチ CL2 からスイッチ c2 に ISL ケーブルを再接続し、スイッチ CL1 と C2 に ISL を移行します（手順 8~14 ）。 *
-* * 元々割り当てられていたポートにすべての LIF を戻します（手順 15~18 ） *
-* * すべてのポートと LIF が正しく移行されていることを確認（手順 19-21 ） *
+* * クラスタポートを表示してスイッチ C2 に移行します（手順 <<one,1.>>-<<seven,7)>>*
+* * スイッチ CL2 からスイッチ c2 に ISL ケーブルを再接続し、 ISL をスイッチ CL1 と C2 に移行します（手順 <<eight,8.>>-<<fourteen,14 ）>>*
+* * 元々割り当てられていたポートにすべての LIF を戻します（手順 <<fifteen,15>>-<<eighteen,18 ）>>*
+* * すべてのポートと LIF が正しく移行されていることを確認（手順 <<nineteen,19>>-<<twentyone,21>>*
 
 
 この手順 は、 2 つ目の Nexus 3232C クラスタスイッチ CL2 を新しい 3232C スイッチ c2 に置き換えます。この手順の例では、スイッチとノードで次の命名法を使用しています。
@@ -58,9 +50,7 @@ Cisco Ethernet Switches のページに、スイッチ上の最新の RCF およ
 
 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
 
-この手順 の例では 4 ノードを使用します。2 つのノードが 4 つの 10GB クラスタインターコネクトポートを使用します： e0a 、 e0b 、 e0c 、 e0d他の 2 つのノードは、それぞれ 4 GB のクラスタ・インターコネクト・ポートを 2 つ使用します。使用するプラットフォームに対応した正しいクラスタポートを確認するには、 Hardware Universe を参照してください。
-
-https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]
+この手順 の例では 4 ノードを使用します。2 つのノードが 4 つの 10GB クラスタインターコネクトポートを使用します： e0a 、 e0b 、 e0c 、 e0d他の 2 つのノードは、それぞれ 4 GB のクラスタ・インターコネクト・ポートを 2 つ使用します。を参照してください link:https://hwu.netapp.com/SWITCH/INDEX.html["Hardware Universe"^] 使用するプラットフォームに適したクラスタポートを確認します。
 
 この手順 では、次のシナリオについて説明します。
 
@@ -74,18 +64,14 @@ https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]
 
 
 
+.手順
+. [[ワン ]] このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
 
 
-== 手順
-
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
-+
 'system node AutoSupport invoke -node * -type all -message MAINT=xh`
 
-+
-_x_ は、メンテナンス時間の長さ（時間単位）です。
++_x_ は、メンテナンス時間の長さ（時間単位）です。
 
-+
 [NOTE]
 ====
 AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
@@ -315,7 +301,7 @@ cluster::*> network port modify -node n2 -port e0c -up-admin false
 cluster::*> network port modify -node n3 -port e4e -up-admin false
 cluster::*> network port modify -node n4 -port e4e -up-admin false
 ----
-. リモートクラスタインターフェイスに ping を実行し、 RPC サーバチェックを実行します。
+. [7] リモートクラスタインターフェイスに ping を実行して RPC サーバチェックを実行します。
 +
 'cluster ping-cluster -node-node-name-'
 
@@ -382,7 +368,7 @@ Larger than PMTU communication succeeds on 32 path(s) RPC status:
 8 paths up, 0 paths down (tcp check)
 8	paths up, 0 paths down (udp check)
 ----
-. クラスタスイッチ CL1 のポート 1/31 と 1/32 をシャットダウンします。
+. [eight] クラスタスイッチ CL1 のポート 1/31 と 1/32 をシャットダウンします。
 +
 Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
@@ -455,7 +441,7 @@ Group Port-        Type   Protocol  Member Ports
 --------------------------------------------------------------------------------
 1     Po1(SU)      Eth    LACP      Eth1/31(P)   Eth1/32(P)
 ----
-. すべてのノードで、交換用スイッチ c2 に接続されているすべてのクラスタインターコネクトポートを起動します。「 network port modify -node -node_name -port_port-name __ up-admin true
+. [[14]] すべてのノードで、交換用スイッチ C2 に接続されているすべてのクラスタインターコネクトポートを起動します。「 network port modify -node node_name -port_port_port_name-up-admin true 」
 +
 [listing]
 ----
@@ -466,7 +452,7 @@ cluster::*> network port modify -node n2 -port e0c -up-admin true
 cluster::*> network port modify -node n3 -port e4e -up-admin true
 cluster::*> network port modify -node n4 -port e4e -up-admin true
 ----
-. すべてのノードで移行されたクラスタインターコネクト LIF をすべてリバートします。
+. [fify] すべてのノードで移行されたクラスタインターコネクト LIF をすべてリバートします。
 +
 network interface revert -vserver cluster -lif LIF_name です
 
@@ -557,7 +543,7 @@ e4a       Cluster      Cluster          up   9000 auto/40000  -
 e4e       Cluster      Cluster          up   9000 auto/40000  -
         12 entries were displayed.
 ----
-. リモートクラスタインターフェイスに ping を実行し、 RPC サーバチェックを実行します。
+. [18 ]] リモートクラスタインターフェイスに ping を実行し、 RPC サーバチェックを実行します。
 +
 'cluster ping-cluster -node-node-name-'
 
@@ -624,7 +610,7 @@ Larger than PMTU communication succeeds on 32 path(s) RPC status:
 8 paths up, 0 paths down (tcp check)
 8	paths up, 0 paths down (udp check)
 ----
-. 次のコマンドを入力して、構成に含まれるデバイスに関する情報を表示します。
+. [[nineteen]] 次のコマンドを入力して、構成内のデバイスに関する情報を表示します。
 +
 次のコマンドは、どの順序でも実行できます。
 
@@ -757,7 +743,7 @@ Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
 +
 'system cluster-switch delete -device cluster-switch-name
 
-. 適切なクラスタ・スイッチが監視されていることを確認します system cluster-switch show
+. [twentyOne]] 適切なクラスタスイッチが監視されていることを確認します
 +
 次の例は ' が監視されている状態が TRUE であるため ' クラスタ・スイッチを監視する方法を示しています
 

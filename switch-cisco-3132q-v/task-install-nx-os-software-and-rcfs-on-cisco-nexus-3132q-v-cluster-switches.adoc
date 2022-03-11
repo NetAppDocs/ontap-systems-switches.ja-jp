@@ -12,43 +12,25 @@ summary: Cisco NX-OS ソフトウェアおよびリファレンス構成ファ�
 [role="lead"]
 Cisco NX-OS ソフトウェアおよびリファレンス構成ファイル（ RCF ）を Cisco Nexus 3132Q-V クラスタスイッチにインストールする必要があります。
 
-
-
-== 必要なもの
-
 クラスタスイッチに NX-OS ソフトウェアおよび RCF をインストールする前に、次の条件が満たされている必要があります。
 
-* クラスタが完全に機能している必要があります（ログにエラーがないか、同様の機能がある）。
+* クラスタが完全に機能している必要があります（ログにエラーがあるなどの問題が発生していない）。
 * NX-OS だけをインストールして現在の RCF バージョンをそのまま使用する場合は、目的のブートイメージを反映するように、 RCF で必要なブート設定を確認または設定しておく必要があります。
 * 現在のブートイメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。
 * RCF のインストール時に必要なスイッチへのコンソール接続が必要です。
-* サポートされている ONTAP 、 NX-OS 、および RCF のバージョンについては、 Cisco イーサネットスイッチのページにあるスイッチ互換性の表を参照してください。
-+
-https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]
-
+* のスイッチ互換性の表を参照してください link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^] サポートされている ONTAP 、 NX-OS 、および RCF のバージョンに対応したページです。
 * RCF のコマンド構文と、 NX-OS のバージョンにあるコマンド構文との間には、コマンドの依存関係が存在する場合があります。
-* Cisco スイッチのアップグレードおよびダウングレード手順の詳細については、 Cisco の Web サイトで入手可能な該当するソフトウェアおよびアップグレードガイドを参照しておく必要があります。
-+
-https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズスイッチ"^]
-
+* の Cisco スイッチのアップグレードおよびダウングレード手順の詳細については、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズスイッチ"^]。
 * 最新の RCF が必要です。
 
 
-
-
-== このタスクについて
-
 この手順の例では、 2 つのノードを使用します。これらのノードは 'e0a' と 'e0b' の 2 つの 10GbE クラスタ・インターコネクト・ポートを使用します
 
-プラットフォームに対応した正しいクラスタポートを確認するには、 _ Hardware Universe _ を参照してください。
+を参照してください link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^] をクリックして、プラットフォームのクラスタポートが正しいことを確認します。
 
-https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]
 
-[NOTE]
-====
-コマンド出力は、 ONTAP のリリースによって異なる場合があります。
+NOTE: コマンド出力は、 ONTAP のリリースによって異なる場合があります。
 
-====
 この手順の例では、スイッチとノードで次の命名法を使用しています。
 
 * 2 つの Cisco スイッチの名前は 'CS1' および CS2' です
@@ -57,15 +39,10 @@ https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]
 * 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
 
 
-[NOTE]
-====
-手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
 
-====
+NOTE: 手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
 
-
-== 手順
-
+.手順
 . このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
 +
 「 system node AutoSupport invoke -node * -type all -message MAINT= x h 」というメッセージが表示されます
@@ -74,11 +51,9 @@ https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]
 ここで、 _ x _ はメンテナンス時間の長さ（時間）です。
 
 +
-[NOTE]
-====
-AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
-====
+NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+
 . 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 * y * 」と入力します。
 +
 「 advanced 」の権限が必要です
@@ -91,9 +66,9 @@ AutoSupport メッセージはテクニカルサポートにこのメンテナ�
 「 network device-discovery show -protocol cdp 」と入力します
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network device-discovery show -protocol cdp
+cluster1::*> *network device-discovery show -protocol cdp*
 
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
@@ -114,9 +89,9 @@ cluster1-01/cdp
 network port show – ipspace Cluster
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -ipspace Cluster
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: cluster1-02
                                                   Speed(Mbps) Health
@@ -139,9 +114,9 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy
 「 network interface show -vserver Cluster 」のように表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
 
             Logical            Status     Network            Current       Current Is
 Vserver     Interface          Admin/Oper Address/Mask       Node          Port    Home
@@ -161,10 +136,9 @@ Cluster
 'cluster ping-cluster -node-node-name-'
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-
-cluster1::*> cluster ping-cluster -node cluster1-02
+cluster1::*> *cluster ping-cluster -node cluster1-02*
 Host is cluster1-02
 Getting addresses from network interface table...
 Cluster cluster1-01_clus1 169.254.209.69 cluster1-01     e0a
@@ -194,9 +168,9 @@ RPC status:
 network interface show -vserver Cluster -fields auto-revert を実行します
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster -fields auto-revert
+cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
 
           Logical
 Vserver   Interface           Auto-revert
@@ -208,7 +182,7 @@ Cluster
           cluster1-02_clus2   true
 4 entries were displayed.
 ----
-. ONTAP 9.8 以降の場合は、次のコマンドを使用して、イーサネットスイッチヘルスモニタのログ収集機能を有効にして、スイッチ関連のログファイルを収集します。
+. ONTAP 9.8 以降では、次のコマンドを使用して、イーサネットスイッチヘルスモニタのログ収集機能を有効にし、スイッチ関連のログファイルを収集します。
 +
 「システムスイッチイーサネットログセットアップ - パスワード」
 
@@ -216,49 +190,47 @@ Cluster
 「システムスイッチのイーサネットログの有効化」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> system switch ethernet log setup-password
-Enter the switch name: <return>
+cluster1::*> *system switch ethernet log setup-password*
+Enter the switch name: *<return>*
 The switch name entered is not recognized.
 Choose from the following list:
 cs1
 cs2
 
-cluster1::*> system switch ethernet log setup-password
+cluster1::*> *system switch ethernet log setup-password*
 
-Enter the switch name: cs1
+Enter the switch name: *cs1*
 RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] y
+Do you want to continue? {y|n}::[n] *y*
 
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
 
-cluster1::*> system switch ethernet log setup-password
+cluster1::*> *system switch ethernet log setup-password*
 
-Enter the switch name: cs2
+Enter the switch name: *cs2*
 RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] y
+Do you want to continue? {y|n}:: [n] *y*
 
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
 
-cluster1::*> system  switch ethernet log enable-collection
+cluster1::*> *system  switch ethernet log enable-collection*
 
 Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] y
+{y|n}: [n] *y*
 
 Enabling cluster switch log collection.
 
 cluster1::*>
 ----
 +
-[NOTE]
-====
-これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
 
-====
-. ONTAP リリース 9.5P16 、 9.6P12 、および 9.7P10 以降のパッチリリースでは、次のコマンドを使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能を有効にします。
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
+. ONTAP リリース 9.5P16 、 9.6P12 、および 9.7P10 以降のパッチリリースでは、次のコマンドを使用して、イーサネットスイッチヘルスモニタのログ収集機能を有効にし、スイッチ関連のログファイルを収集します。
 +
 「 system cluster-switch log setup -password 」と入力します
 
@@ -266,46 +238,44 @@ cluster1::*>
 'system cluster-switch log enable-colion
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> system cluster-switch log setup-password
-Enter the switch name: <return>
+cluster1::*> *system cluster-switch log setup-password*
+Enter the switch name: *<return>*
 The switch name entered is not recognized.
 Choose from the following list:
 cs1
 cs2
 
-cluster1::*> system cluster-switch log setup-password
+cluster1::*> *system cluster-switch log setup-password*
 
-Enter the switch name: cs1
+Enter the switch name: *cs1*
 RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] y
+Do you want to continue? {y|n}::[n] *y*
 
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
 
-cluster1::*> system cluster-switch log setup-password
+cluster1::*> *system cluster-switch log setup-password*
 
 Enter the switch name: cs2
 RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] y
+Do you want to continue? {y|n}:: [n] *y*
 
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
 
-cluster1::*> system cluster-switch log enable-collection
+cluster1::*> *system cluster-switch log enable-collection*
 
 Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] y
+{y|n}: [n] *y*
 
 Enabling cluster switch log collection.
 
 cluster1::*>
 ----
 +
-[NOTE]
-====
-これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
 
-====
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
 

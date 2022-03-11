@@ -12,9 +12,7 @@ summary: 2 ノードスイッチレスクラスタを Cisco Nexus 3232C クラ�
 [role="lead"]
 2 ノードスイッチレスクラスタを Cisco Nexus 3232C クラスタスイッチでクラスタに移行する場合は、特定の設定情報、ポート接続、およびケーブル接続要件に注意する必要があります。
 
-この手順 でサポートされている ONTAP および NX-OS のバージョンについては、 _Cisco イーサネットスイッチ _ ページを参照してください。
-
-http://mysupport.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]
+。 link:http://mysupport.netapp.com/NOW/download/software/cm_switches/.html["Cisco Ethernet Switches のページ"^] に、この手順 でサポートされている ONTAP と NX-OS のバージョンに関する情報を示します。
 
 移行プロセスを開始する前に、次の情報を確認しておく必要があります。
 

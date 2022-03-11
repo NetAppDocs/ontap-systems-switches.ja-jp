@@ -4,12 +4,12 @@ sidebar: sidebar
 keywords: cn1601, switch administrator, guide 
 summary: このガイドでは、一般的なネットワークで CN1601 スイッチを使用する方法の例を示します。 
 ---
-= 『 CN1601 Switch Administrator ’ s Guide 』
+= CN1601 スイッチ管理者
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-このガイドでは、一般的なネットワークで CN1601 スイッチを使用する方法の例を示します。
+一般的なネットワークで CN1601 スイッチを使用する方法の例。
 
 https://library.netapp.com/ecm/ecm_download_file/ECMP1117844["管理者ガイド"^]

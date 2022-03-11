@@ -22,6 +22,6 @@ Cisco Nexus ストレージスイッチに NX-OS ソフトウェアと RCF を�
 RCF バージョンと NX-OS バージョンのコマンド構文には依存関係があることに注意してください。
 
 ====
-* Cisco スイッチのアップグレードおよびダウングレード手順の詳細なドキュメントについては、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります。 http://www.cisco.com/en/US/products/ps9670/prod_installation_guides_list.html["Cisco Nexus 3000 シリーズスイッチ"^]
+* Cisco スイッチのアップグレードおよびダウングレード手順の詳細については、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります link:http://www.cisco.com/en/US/products/ps9670/prod_installation_guides_list.html["Cisco Nexus 3000 シリーズスイッチ"^]。
 * 該当する RCF をダウンロードしておく必要があります。
 

@@ -12,15 +12,12 @@ summary: クラスタネットワーク内の障害のある Cisco Nexus 3132Q-V
 [role="lead"]
 クラスタネットワーク内の障害のある Cisco Nexus 3132Q-V スイッチの交換は Nondisruptive 手順 （ NDO ；無停止 NDO ；ノンストップオペレーション）であり、特定の順序でタスクを実行する必要があります。
 
-
-
-== 必要なもの
-
+.作業を開始する前に
 * 既存のクラスタとネットワークの構成が次の要件を満たしている必要があります
 +
 ** 両方のスイッチで、 Nexus 3132Q-V クラスタインフラを冗長化し、完全に機能させる必要があります。
 +
-Cisco イーサネットスイッチの _ ページには、スイッチの RCF および NX-OS の最新バージョンがあります。
+。 link:http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^] スイッチには、ページに最新の RCF および NX-OS バージョンがあります。
 
 ** すべてのクラスタポートは「 up 」状態である必要があります。
 ** 両方のスイッチで管理接続が確立されている必要があります。
@@ -37,24 +34,20 @@ Cisco イーサネットスイッチの _ ページには、スイッチの RCF 
 
 
 
-
-
-== このタスクについて
-
 この手順 は、 2 つ目の Nexus 3132Q-V クラスタスイッチ CL2 を新しい 3132Q-V スイッチ c2 に置き換えます。この手順の例では、スイッチとノードで次の命名法を使用しています。
 
 * n1_clus1 は、ノード n1 のクラスタスイッチ C1 に接続された最初のクラスタ論理インターフェイス（ LIF ）です。
 * n1_clus2 は、ノード n1 について、クラスタスイッチ CL2 または c2 に接続された最初のクラスタ LIF です。
 * n1_clus3 は、ノード n1 について、クラスタスイッチ C2 に接続された 2 つ目の LIF です。
 * n1_clus4 は、ノード n1 について、クラスタスイッチ CL1 に接続されている 2 つ目の LIF です。
-* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
-* ノードが n1 、 n2 、 n3 、 n4 である。- この手順 の例では、 4 つのノードを使用しています。 2 つのノードで、 e0a 、 e0b 、 e0c 、 e0d という 4 つの 10GB のクラスタインターコネクトポートを使用しています。他の 2 つのノードは、それぞれ 4 GB のクラスタ・インターコネクト・ポートを 2 つ使用します。プラットフォームの実際のクラスタポートについては、 Hardware Universe を参照してください。
+* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています link:https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
+* ノードが n1 、 n2 、 n3 、 n4 である。- この手順 の例では、 4 つのノードを使用しています。 2 つのノードで、 e0a 、 e0b 、 e0c 、 e0d という 4 つの 10GB のクラスタインターコネクトポートを使用しています。他の 2 つのノードは、それぞれ 4 GB のクラスタ・インターコネクト・ポートを 2 つ使用します。を参照してください link:https://hwu.netapp.com/["Hardware Universe"^] をクリックします。
 
 
 この手順では、次のシナリオについて説明します。
 
 * クラスタは、 4 つのノードを接続して 2 つの Nexus 3132Q-V クラスタスイッチ CL1 と CL2 から始まります。
-* クラスタスイッチ CL2 を C2 に置き換えます（手順 1~21 ）。
+* クラスタスイッチ CL2 を C2 （<<step1_replace3132q,手順 1.>> -<<step21_replace3132q,21>>)
 +
 ** CL2 に接続されたクラスタ LIF が CL1 に接続されたクラスタポートに移行されます。
 ** CL2 上のすべてのポートからケーブルを外し、交換用スイッチ C2 の同じポートにケーブルを再接続します。
@@ -63,11 +56,8 @@ Cisco イーサネットスイッチの _ ページには、スイッチの RCF 
 
 
 
-
-
-== 手順
-
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+.手順
+. [[step1_replace313313q]] このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
 +
 'system node AutoSupport invoke -node * -type all -message MAINT=xh`
 
@@ -224,7 +214,7 @@ CL2                          cluster-network   10.10.1.102      NX3132V
 この時点で、交換用スイッチを準備する必要があります。RCF およびイメージをアップグレードする必要がある場合は、次の手順を実行する必要があります。
 
 +
-.. ネットアップサポートサイトで、次の場所にアクセスします。 http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]
+.. ネットアップサポートサイトで、にアクセスします link:http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^] ページ
 .. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
 .. 該当するバージョンの RCF をダウンロードします。
 .. 概要 * ページで * continue * をクリックし、ライセンス契約に同意して、 * Download * ページの手順に従ってをダウンロードします。
@@ -746,7 +736,7 @@ C2                          cluster-network    10.10.1.103      NX3132V
 
 3 entries were displayed.
 ----
-. 交換した Nexus 3132Q-V スイッチが自動的に削除されていない場合は、削除します。
+. [[step21_replace313313q]] 置き換えられた Nexus 3132Q-V スイッチが自動的に削除されていない場合は削除します。
 +
 「 system cluster - switch delete 」というコマンドを入力します
 
@@ -830,11 +820,9 @@ Enabling cluster switch log collection.
 cluster::*>
 ----
 +
-[NOTE]
-====
-これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
 
-====
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
 . ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
 +
 「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます

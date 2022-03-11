@@ -12,34 +12,20 @@ summary: NetApp CN1610 クラスタスイッチに FastPath ソフトウェア�
 [role="lead"]
 NetApp CN1610 クラスタスイッチに FastPath ソフトウェアとリファレンス構成ファイル（ RCF ）をインストールする必要があります。
 
-
-
-== 必要なもの
-
+.作業を開始する前に
 * クラスタが完全に機能している必要があります。
 * クラスタネットワークインターフェイスカード（ NIC ）に欠陥がないこと、およびクラスタスイッチで接続されているすべてのポートが機能していることが必要です。
 * すべてのクラスタポートが稼働している必要があります。
 * クラスタのすべての論理インターフェイス（ LIF ）が稼働していて、移行されていない必要があります。
 * ONTAP (privilege ： advanced ） 'cluster ping-cluster -node node1 コマンドは 'larger than PMTU communication がすべてのパスで成功したことを示す必要があります
-* サポートされる FastPath 、 RCF 、および ONTAP のバージョンについては、 _NetApp CN1601 および CN1610 Switchs_page のスイッチ互換性の表を参照する必要があります。
-+
-http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^]
-
+* のスイッチ互換性の表を参照する必要があります http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^] サポートされている FastPath 、 RCF 、および ONTAP のバージョンについては、ページを参照してください。
 +
 RCF バージョンと FastPath バージョンでは、コマンド構文間にコマンドの依存関係が存在する場合があります。
 
 
 
-[NOTE]
-====
-RCF バージョン 1.2 では、セキュリティ上の理由から、 Telnet のサポートが明示的に無効になっています。RCF 1.2 のインストール時の接続の問題を回避するには、 Secure Shell （ SSH ）が有効になっていることを確認する必要があります。SSH の詳細については、 NetApp ® CN1610 Switch 管理者ガイドを参照してください。
 
-====
-https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["『 NetApp ® CN1610 Switch Administrator's Guide 』"^]
-
-
-
-== このタスクについて
+NOTE: RCF バージョン 1.2 では、セキュリティ上の理由から、 Telnet のサポートが明示的に無効になっています。RCF 1.2 のインストール時の接続の問題を回避するには、 Secure Shell （ SSH ）が有効になっていることを確認する必要があります。。 https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["『 NetApp ® CN1610 Switch Administrator's Guide 』"^] SSH の詳細については、を参照してください。
 
 この手順の例では、スイッチとノードで次の命名法を使用しています。
 
@@ -50,7 +36,7 @@ https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["『 NetApp ® CN1610 Sw
 * 'cluster::*>' プロンプトは ' クラスタの名前を示します
 * 各ノードのクラスタポートには、 e1a および e2a という名前が付けられます。
 +
-プラットフォームでサポートされている実際のクラスタポートの詳細については、 Hardware Universe を参照してください。
+。 https://hwu.netapp.com/["Hardware Universe"^] 使用しているプラットフォームでサポートされている実際のクラスタポートに関する詳細情報が表示されます。
 
 * ネットアップクラスタスイッチでサポートされているスイッチ間リンク（ ISL ）は、ポート 0/13~0/16 です。
 * ネットアップクラスタスイッチでサポートされるノード接続は、ポート 0/1~0/12 です。

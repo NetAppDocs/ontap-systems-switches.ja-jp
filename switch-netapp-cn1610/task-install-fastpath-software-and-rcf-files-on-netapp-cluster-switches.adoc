@@ -12,10 +12,7 @@ summary: インストール手順は、 NetApp CN1601 管理スイッチと、 O
 [role="lead"]
 インストール手順は、 NetApp CN1601 管理スイッチと、 ONTAP 8.3.1 以降を実行する CN1610 クラスタスイッチのどちらについても同じです。ただし、この 2 つのモデルには、異なるソフトウェアと RCF が必要です。
 
-
-
-== 必要なもの
-
+.作業を開始する前に
 * クラスタが完全に機能している必要があります。
 * クラスタ NIC に欠陥がなく、両方のクラスタスイッチで接続されているすべてのポートが機能している必要があります。
 * すべてのクラスタポートが稼働している必要があります。
@@ -23,16 +20,9 @@ summary: インストール手順は、 NetApp CN1601 管理スイッチと、 O
 * ONTAP (privilege ： advanced ） 'cluster ping-cluster -node node1 コマンドは 'larger than PMTU communication がすべてのパスで成功したことを示す必要があります
 * サポートされている FastPath 、 RCF 、および ONTAP のバージョンを使用している必要があります。
 +
-RCF バージョンと FastPath バージョンでは、コマンド構文間にコマンドの依存関係が存在する場合があります。サポートされるバージョンは、スイッチの互換性ページで確認できます。
-
-+
-http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^]
+RCF バージョンと FastPath バージョンでは、コマンド構文間にコマンドの依存関係が存在する場合があります。サポートされるバージョンは、スイッチの互換性ページで確認できます。を参照してください http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^] を参照してください。
 
 
-
-
-
-== このタスクについて
 
 この手順の例では、スイッチとノードで次の命名法を使用しています。
 
@@ -42,7 +32,7 @@ http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN16
 * 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
 * 各ノードのクラスタポートの名前は e0a および e0b です。
 +
-Hardware Universe _ には、プラットフォームでサポートされている実際のクラスタポートが含まれています。
+。 https://hwu.netapp.com/["Hardware Universe"^] プラットフォームでサポートされている実際のクラスタポートが含まれます。
 
 * ネットアップクラスタスイッチでサポートされるスイッチ間リンク（ ISL ）は、ポート 0/13~0/16 です。
 * ネットアップクラスタスイッチでサポートされるノード接続は、ポート 0/1~0/12 です。
@@ -51,10 +41,7 @@ Hardware Universe _ には、プラットフォームでサポートされてい
 * 出力例と内容は、 FastPath 、 RCF 、および ONTAP のリリースによって異なる場合があります。
 
 
-
-
-== 手順
-
+.手順
 . クラスタのネットワークポートに関する情報を表示します。
 +
 'network port show --_ipspace cluster_`
@@ -114,11 +101,9 @@ cluster1::> network interface migrate -vserver Cluster -lif node1_clus2 -destina
 cluster1::> network interface migrate -vserver Cluster -lif node2_clus2 -destination-node node2 -destination-port e0a
 ----
 +
-[NOTE]
-====
-このコマンドでは、クラスタの名前で大文字と小文字が区別され、各ノードでコマンドを実行する必要があります。一般的なクラスタ LIF ではこのコマンドを実行できません。
 
-====
+NOTE: このコマンドでは、クラスタの名前で大文字と小文字が区別され、各ノードでコマンドを実行する必要があります。一般的なクラスタ LIF ではこのコマンドを実行できません。
+
 . ノードで network interface show コマンドを使用して、移行が実行されたことを確認します。
 +
 次の例は、 clus2 がノード node1 とノード node2 のポート e0a に移行したことを示しています。
@@ -318,11 +303,9 @@ Configuration script validated.
 File transfer operation completed successfully.
 ----
 +
-[NOTE]
-====
-スクリプトを呼び出す前に '.scr 拡張子をファイル名の一部として設定する必要がありますこの拡張機能は、 FastPath オペレーティングシステム用です。
 
-====
+NOTE: スクリプトを呼び出す前に '.scr 拡張子をファイル名の一部として設定する必要がありますこの拡張機能は、 FastPath オペレーティングシステム用です。
+
 +
 スイッチは、スクリプトがスイッチにダウンロードされると、スクリプトを自動的に検証します。コンソールに出力が表示されます。
 
