@@ -4,13 +4,34 @@ title: Cisco Nexus 3232C スイッチ
 entries:
 - title: 概要
   url: "/switch-cisco-3232c/index.html"
-- title: CN1610 スイッチを Cisco Nexus 3232C クラスタスイッチに移行する
-  url: "/switch-cisco-3232c/concept-migrate-a-cn1610-switch-to-a-cisco-nexus-3232c-cluster-switch.html"
-  entries:
-  - title: CN1610 クラスタスイッチを Cisco Nexus 3232C クラスタスイッチに移行する方法
-    url: "/switch-cisco-3232c/task-how-to-replace-cn1610-cluster-switches-with-cisco-nexus-3232c-cluster-switches.html"
 - title: Cisco Nexus 3232C クラスタスイッチとパススルーパネルをネットアップキャビネットに設置します
   url: "/switch-cisco-3232c/task-install-a-cisco-nexus-3232c-cluster-switch-and-pass-through-panel-in-a-netapp-cabinet.html"
+- title: セットアップ
+  entries:
+  - title: スイッチを設定します
+    url: "/switch-cisco-9336c-fx2/setup-switches.html"
+  - title: 必要なクラスタ設定情報
+    url: "/switch-cisco-9336c-fx2/setup-required-information.html"
+    entries:
+    - title: 92300YC スイッチ用クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします
+      url: "/switch-cisco-9336c-fx2/setup-install-cshm-file.html"
+  - title: 必要なドキュメント
+    url: "/switch-cisco-9336c-fx2/setup-required-documentation.html"
+  - title: Smart Call Home の使用に関する考慮事項
+    url: "/switch-cisco-9336c-fx2/setup-considerations-smart-call.html"
+  - title: ケーブル接続ワークシートの例と空白
+    url: "/switch-cisco-9336c-fx2/setup-worksheets-sample-cabling.html"
+    entries:
+    - title: Cisco Nexus 9336C-FX2 ケーブル接続ワークシート
+      url: "/switch-cisco-9336c-fx2/setup-worksheet-9336c.html"
+    - title: Cisco Nexus 92300YC ケーブル接続ワークシート
+      url: "/switch-cisco-9336c-fx2/setup-worksheet-92300yc.html"
+    - title: Cisco Nexus 3232C ケーブル接続ワークシート
+      url: "/switch-cisco-9336c-fx2/setup-worksheet-3232c.html"
+    - title: Cisco Nexus 3132Q-V ケーブル接続ワークシート
+      url: "/switch-cisco-9336c-fx2/setup-worksheet-3132q.html"
+    - title: Cisco Nexus 5596UP / 5596T ケーブル接続ワークシート
+      url: "/switch-cisco-9336c-fx2/setup-worksheet-5596.html"
 - title: Cisco Nexus 3232C クラスタスイッチに NX-OS ソフトウェアと RCF をインストールする
   url: "/switch-cisco-3232c/task-install-nx-os-software-and-rcfs-on-cisco-nexus-3232-cluster-switches-running-ontap-9-4-and-later.html"
   entries:
@@ -18,6 +39,11 @@ entries:
     url: "/switch-cisco-3232c/task-install-the-nx-os-software-3232c-cluster-switch.html"
   - title: リファレンス構成ファイル（ RCF ）のインストール
     url: "/switch-cisco-3232c/task-install-the-reference-configuration-file-rcf-3232c-cluster-switch.html"
+- title: CN1610 スイッチを Cisco Nexus 3232C クラスタスイッチに移行する
+  url: "/switch-cisco-3232c/concept-migrate-a-cn1610-switch-to-a-cisco-nexus-3232c-cluster-switch.html"
+  entries:
+  - title: CN1610 クラスタスイッチを Cisco Nexus 3232C クラスタスイッチに移行する方法
+    url: "/switch-cisco-3232c/task-how-to-replace-cn1610-cluster-switches-with-cisco-nexus-3232c-cluster-switches.html"
 - title: Cisco Nexus 5596 スイッチを Cisco Nexus 3232C スイッチに移行する
   url: "/switch-cisco-3232c/concept-migrate-from-a-cisco-5596-switch-to-a-cisco-nexus-3232c.html"
   entries:

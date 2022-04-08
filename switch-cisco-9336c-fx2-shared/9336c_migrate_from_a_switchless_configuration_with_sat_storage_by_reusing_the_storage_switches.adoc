@@ -4,7 +4,7 @@ permalink: switch-cisco-9336c-fx2-shared/9336c_migrate_from_a_switchless_configu
 keywords:  
 summary:  
 ---
-= ストレージスイッチを再利用して、 SAT ストレージを搭載したスイッチレス構成から移行する
+= ストレージスイッチを再利用して、スイッチ接続ストレージを使用するスイッチレス構成から移行する
 :hardbreaks:
 :nofooter: 
 :icons: font

@@ -23,10 +23,7 @@ ONTAP 9.6 以降を実行しているシステムに Nexus 92300YC スイッチ�
 * 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
 * 各ノードのクラスタ・ポートの名前は 'e0a' および e0b です
 +
-プラットフォームでサポートされている実際のクラスタポートについては、 Hardware Universe を参照してください。
-
-+
-https://hwu.netapp.com/Home/Index["NetApp Hardware Universe の略"]
+を参照してください link:https://hwu.netapp.com/Home/Index["_ Hardware Universe ^_"] をクリックします。
 
 * Nexus 92300YC スイッチでサポートされているスイッチ間リンク（ ISL ）は、ポート 1/65 と 1/66 です。
 * Nexus 92300YC スイッチでサポートされているノード接続は、ポート 1/1~1/66 です。

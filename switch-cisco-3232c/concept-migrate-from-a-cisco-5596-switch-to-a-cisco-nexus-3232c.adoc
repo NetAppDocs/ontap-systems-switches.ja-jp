@@ -30,7 +30,7 @@ Cisco Nexus 5596 クラスタスイッチを Cisco Nexus 3232C クラスタス�
 ** ポート e1/31~32 （ 40/100GbE ）： Nexus 3232C
 
 
-* Nexus3232C スイツチヘノサホオトサレルケエフルセツソクノシヨウホウ Hardware Universe
+* 。 link:https://hwu.netapp.com/["_ Hardware Universe _"^] Nexus 3232C スイッチでサポートされているケーブル接続の詳細については、次の URL を参照
 +
 ** 10GbE クラスタ接続のノードには、 QSFP-SFP+ 光ファイバブレークアウトケーブルまたは QSFP+ 銅線ブレークアウトケーブルが必要です。
 ** 40 / 100GbE クラスタ接続に対応した QSFP / QSFP28 光モジュールには、ファイバケーブルまたは QSFP / QSFP28 銅線直接接続ケーブルが必要です。

@@ -32,6 +32,18 @@ entries:
     url: "/switch-bes-53248/configure-log-collection.html"
   - title: クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします
     url: "/switch-bes-53248/configure-health-monitor.html"
+- title: CN1610 スイッチから BES-53248 スイッチに移行します
+  entries:
+  - title: 作業を開始する前に
+    url: "/switch-bes-53248/migrate-cn1610-overview.html"
+  - title: 移行方法
+    url: "/switch-bes-53248/migrate-cn1610.html"
+- title: 2 ノードスイッチクラスタに移行する
+  entries:
+  - title: 移行を準備
+    url: "/switch-bes-53248/migrate-to-2n-switched.html"
+  - title: ネットアップのスイッチクラスタ環境に移行する
+    url: "/switch-bes-53248/migrate-to-2n-switched-overview.html"
 - title: NDO / NDU 環境でスイッチをアップグレードします
   entries:
   - title: 概要
@@ -57,15 +69,3 @@ entries:
     url: "/switch-bes-53248/replace-verify.html"
 - title: BES-53248 スイッチを交換します
   url: "/switch-bes-53248/replace-switch.html"
-- title: CN1610 スイッチから BES-53248 スイッチに移行します
-  entries:
-  - title: 作業を開始する前に
-    url: "/switch-bes-53248/migrate-cn1610-overview.html"
-  - title: 移行方法
-    url: "/switch-bes-53248/migrate-cn1610.html"
-- title: 2 ノードスイッチクラスタに移行する
-  entries:
-  - title: 移行を準備
-    url: "/switch-bes-53248/migrate-to-2n-switched.html"
-  - title: ネットアップのスイッチクラスタ環境に移行する
-    url: "/switch-bes-53248/migrate-to-2n-switched-overview.html"

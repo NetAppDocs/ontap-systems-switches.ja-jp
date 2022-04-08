@@ -96,8 +96,6 @@ Cisco Nexus 5596UP / 5596T をネットアップシステムキャビネット�
 
 
 
-* 関連情報 *
-
 xref:setup-required-information.adoc[必要なクラスタ設定情報]
 
 xref:setup-required-documentation.adoc[必要なドキュメント]

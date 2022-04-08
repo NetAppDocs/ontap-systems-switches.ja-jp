@@ -4,7 +4,7 @@ permalink: switch-cisco-9336c-fx2-shared/9336c_migrate_from_a_switched_cluster_w
 keywords:  
 summary:  
 ---
-= ストレージスイッチを再利用して、 SAT ストレージを備えたスイッチクラスタから移行する
+= ストレージスイッチを再利用して、スイッチ接続ストレージを使用するスイッチクラスタから移行する
 :hardbreaks:
 :nofooter: 
 :icons: font
@@ -148,7 +148,7 @@ sh1 (config-if)# spanning-tree port type network
 sh1 (config-if)# exit
 sh1 (config)# exit
 ----
-. [step16] スイッチ交換用の手順と共有の RCF を使用して、既存のクラスタスイッチから共有スイッチにクラスタネットワークを移行します。新しい共有スイッチ A は「 cs1 」です。新しい共有スイッチ B は「 cs2 」です。を参照してください link:9336c_replace_a_cisco_nexus_9336c-fx2_shared_switch.html["Cisco Nexus 9336C-FX2 共有スイッチを交換します"] および  を参照してください。
+. [step16] スイッチ交換用の手順と共有の RCF を使用して、既存のクラスタスイッチから共有スイッチにクラスタネットワークを移行します。新しい共有スイッチ A は「 cs1 」です。新しい共有スイッチ B は「 cs2 」です。を参照してください link:9336c_replace_a_cisco_nexus_9336c-fx2_shared_switch.html["Cisco Nexus 9336C-FX2 共有スイッチを交換します"] および link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします"] を参照してください。
 . スイッチドネットワーク設定が有効であることを確認します。「 network port show 」
 . 使用されていないクラスタスイッチを削除します。
 . 未使用のストレージスイッチを取り外します。

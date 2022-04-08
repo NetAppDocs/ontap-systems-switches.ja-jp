@@ -18,3 +18,60 @@ AFF クラスタまたは FAS クラスタでは、 Cisco Nexus 3132Q-V スイ�
 * Cisco Nexus 5596 、 Nexus 5020 、または Nexus 5010 のクラスタスイッチを Cisco Nexus 3132Q-V スイッチに交換することができます。
 * NetApp CN1610 スイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換できます。
 
+
+次の表に、 Cisco Nexus 3132Q-V スイッチで使用可能なドキュメントを示します。
+
+|===
+
+
+| タイトル | 説明 
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3132q-v/task-install-a-cisco-nexus-3232c-cluster-switch-and-pass-through-panel-in-a-netapp-cabinet.html["_ NetApp ® キャビネットに Cisco ® Nexus 3132Q-V クラスタスイッチとパススルーパネルを設置 _"^]
+ a| 
+パススルーパネルをシステムキャビネットに取り付ける方法について説明します。システムキャビネットの電源コネクタはシャーシの前面に、配電ユニットはシャーシの背面にあります。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-9336c-fx2/setup-switches.html["_Cisco ® Nexus 3132Q-V クラスタスイッチを設定します"^]
+ a| 
+Cisco Nexus 3132Q-V クラスタスイッチを設定および設定する方法について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3132q-v/task-install-nx-os-software-and-rcfs-on-cisco-nexus-3132q-v-cluster-switches.html["NX-OS および RCF をインストールします _"^]
+ a| 
+Nexus 3132Q-V クラスタスイッチに NX-OS とリファレンス構成ファイル（ RCF ）をインストールする方法について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3132q-v/concept-migrate-from-a-cisco-5596-switch-to-a-cisco-nexus-3232c.html["_Cisco Nexus 5596 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換 _"^]
+ a| 
+古い Cisco スイッチを使用する環境から Cisco 3132Q-V スイッチを使用する環境に移行する方法について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3132q-v/concept-migrate-a-cn1610-switch-to-a-cisco-nexus-3232c-cluster-switch.html["_CN1610 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換 _"^]
+ a| 
+CN1610 スイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換する手順 について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3132q-v/concept-migrate-from-a-two-node-switchless-cluster-to-a-cluster-with-cisco-nexus-3232c-cluster-switches.html["_ 2 ノードスイッチレスクラスタからの移行 _"^]
+ a| 
+2 ノードスイッチレスクラスタ環境から Cisco Nexus 3132Q-V クラスタスイッチを使用する 2 ノードスイッチ環境への移行方法について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3132q-v/concept-replace-cisco-nexus-3132q-v-cluster-switches.html["_Cisco Nexus 3132Q-V クラスタスイッチを交換します"^]
+ a| 
+クラスタ内の障害のある Cisco Nexus 3132Q-V スイッチを交換し、スイッチのオペレーティングシステムとリファレンス構成ファイルをダウンロードするための手順 について説明します。
+
+|===

@@ -273,6 +273,11 @@ cs2# show banner motd
 *   (4) Save running-configuration again
 ******************************************************************************
 ----
+
+
+
+NOTE: RCF を初めて適用するときは、「 Error ： Failed to write VSH commands * 」というメッセージが表示されるため、無視してかまいません。
+
 . RCF ファイルが正しい新しいバージョンであることを確認します。 'how running-config
 +
 出力をチェックして正しい RCF があることを確認する場合は、次の情報が正しいことを確認してください。

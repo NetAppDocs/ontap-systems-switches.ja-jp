@@ -4,6 +4,8 @@ title: Cisco Nexus 9336C-FX2 スイッチ
 entries:
 - title: 概要
   url: "/switch-cisco-9336c-fx2/9336-overview.html"
+- title: Cisco Nexus 9336C-FX2 スイッチとパススルーパネルをネットアップキャビネットに設置します
+  url: "/switch-cisco-9336c-fx2/install-switch-and-passthrough-panel.html"
 - title: セットアップ
   entries:
   - title: スイッチを設定します
@@ -64,5 +66,3 @@ entries:
   url: "/switch-cisco-9336c-fx2/replace-9336c.html"
 - title: Cisco Nexus 9336C-FX2 ストレージスイッチを交換します
   url: "/switch-cisco-9336c-fx2/replace_9336c_storage_switch.html"
-- title: Cisco Nexus 9336C-FX2 スイッチとパススルーパネルをネットアップキャビネットに設置します
-  url: "/switch-cisco-9336c-fx2/install-switch-and-passthrough-panel.html"

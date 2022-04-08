@@ -83,7 +83,8 @@ NOTE: このガイドでは、ケーブル接続図に加えて、推奨され�
 
 すべての Cisco 共有スイッチは、シスコの工場出荷時のデフォルト設定で出荷されます。これらのスイッチには、 NX-OS ソフトウェアの最新バージョンもありますが、 RCF はロードされていません。
 
-* 注意： * 該当するネットアップ RCF は、からダウンロードする必要があります https://mysupport.netapp.com["ネットアップサポートサイト"] 受信したスイッチの場合。
+
+IMPORTANT: 該当するネットアップ RCF をからダウンロードする必要があります https://mysupport.netapp.com["ネットアップサポートサイト"] 受信したスイッチの場合。
 
 
 
@@ -95,7 +96,7 @@ NOTE: このガイドでは、ケーブル接続図に加えて、推奨され�
 . セットアップの最後に表示される画面で選択した設定を確認し、設定を保存します。
 . スイッチのソフトウェアバージョンを確認し、必要に応じてネットアップ対応バージョンのソフトウェアをスイッチにダウンロードします。
 +
-ネットアップ対応バージョンのサポートソフトウェアをダウンロードする場合は、 NetApp Network Switch Reference Configuration File もダウンロードし、に保存した構成とマージする必要があります <<step3,手順 3>>。ファイルと手順は、からダウンロードできます https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"] ページ独自のスイッチがある場合は、を参照してください サイト
+ネットアップ対応バージョンのサポートソフトウェアをダウンロードする場合は、 NetApp Network Switch Reference Configuration File もダウンロードし、に保存した構成とマージする必要があります <<step3,手順 3>>。ファイルと手順は、からダウンロードできます https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"] ページ独自のスイッチがある場合は、を参照してください http://www.cisco.com["シスコ"] サイト
 
 
 
@@ -211,10 +212,11 @@ noshut * と応答します。デフォルトは noshut です。
 +
 * yes * と応答して、設定を保存します。これにより、キックスタートイメージとシステムイメージが自動的に更新されます。
 
-
-
++
 
 NOTE: この段階で設定を保存しないと、次回スイッチをリブートしたときに変更が有効になりません。
+
+
 
 スイッチの初期設定の詳細については、次のガイドを参照してください。 https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9336c-fx2-e/cisco-nexus-9336c-fx2-e-nx-os-mode-switch-hardware-installation-guide.html["『 Cisco Nexus 9336C-FX2 Installation and Upgrade Guide 』"]。
 
@@ -259,9 +261,11 @@ Cisco Nexus 9336C-FX2 共有スイッチをセットアップするには、を�
 
 次のケーブル接続図は、コントローラとスイッチの間のケーブル接続を完了するためのものです。
 
-* スイッチ接続 *image:9336c_image1.jpg["スイッチ接続"]
+image:9336c_image1.jpg["スイッチ接続"]
 
-共有スイッチストレージポートを使用する代わりにストレージを直接接続型としてケーブル接続する場合は、直接接続型の図 * Direct-Attached * を使用しますimage:9336c_image2.jpg["直接接続"]
+共有スイッチのストレージポートを使用する代わりに、ストレージを直接接続型としてケーブル接続する場合は、次の図を参考にしてください。
+
+image:9336c_image2.jpg["直接接続"]
 
 
 

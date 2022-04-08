@@ -17,21 +17,15 @@ Cisco NX-OS ソフトウェアとリファレンス構成ファイル（ RCF ）
 * クラスタが完全に機能している必要があります（ログにエラーがあるなどの問題が発生していない）。
 * NX-OS だけをインストールして現在の RCF バージョンをそのまま使用する場合は、目的のブートイメージを反映するように、 RCF で必要なブート設定を確認または設定しておく必要があります。
 * 現在のブートイメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。
-* サポートされている ONTAP 、 NX-OS 、および RCF のバージョンについては、 Cisco イーサネットスイッチのページにあるスイッチ互換性の表を参照してください。
-+
-https://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"]
-
+* のスイッチ互換性の表を参照してください https://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^] サポートされている ONTAP 、 NX-OS 、および RCF のバージョンに対応したページです。
 * RCF のコマンド構文と、 NX-OS のバージョンにあるコマンド構文との間には、コマンドの依存関係が存在する場合があります。
-* Cisco スイッチのアップグレードおよびダウングレード手順の詳細については、 Cisco の Web サイトで入手可能な該当するソフトウェアおよびアップグレードガイドを参照しておく必要があります。 On_Cisco Nexus 9000 シリーズ Switchs_.
-+
-https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 9000 シリーズスイッチ"]
-
+* の Cisco スイッチのアップグレードおよびダウングレード手順の詳細については、 Cisco の Web サイトで入手可能な該当するソフトウェアおよびアップグレードガイドを参照しておく必要があります https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズスイッチ"^] ページ
 * 最新の RCF が必要です。
 
 
 この手順の例では、 2 つのノードを使用します。これらのノードは 'e0a' と 'e0b' の 2 つの 10GbE クラスタ・インターコネクト・ポートを使用します
 
-を参照してください https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"] をクリックして、プラットフォームのクラスタポートが正しいことを確認します。
+を参照してください https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^] をクリックして、プラットフォームのクラスタポートが正しいことを確認します。
 
 
 NOTE: コマンド出力は、 ONTAP のリリースによって異なる場合があります。
@@ -76,9 +70,9 @@ cluster1:> system node autosupport invoke -node * -type all -message MAINT=2h
 ----
 . 各クラスタインターコネクトスイッチの各ノードに設定されているクラスタインターコネクトインターフェイスの数を表示します。「 network device-discovery show -protocol cdp
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> **network device-discovery show -protocol cdp**
+cluster1::*> *network device-discovery show -protocol cdp*
 
  Node/      Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
@@ -96,9 +90,9 @@ node1      /cdp
 +
 .. ネットワーク・ポートの属性を表示します「 network port show – ipspace Cluster
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> **network port show -ipspace Cluster**
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: node2
                                                   Speed(Mbps) Health
@@ -118,9 +112,9 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy
 ----
 .. LIF に関する情報を表示します。「 network interface show -vserver Cluster
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> **network interface show -vserver Cluster**
+cluster1::*> *network interface show -vserver Cluster*
 
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
@@ -140,9 +134,9 @@ Cluster
 cluster ping-cluster -node node-name
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> **cluster ping-cluster -node node2**
+cluster1::*> *cluster ping-cluster -node node2*
 Host is node2
 Getting addresses from network interface table...
 Cluster node1_clus1 169.254.209.69 node1     e0a
@@ -172,9 +166,9 @@ RPC status:
 network interface show -vserver Cluster -fields auto-revert を実行します
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> **network interface show -vserver Cluster -fields auto-revert**
+cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
 
           Logical
 Vserver   Interface     Auto-revert
@@ -187,42 +181,42 @@ Cluster
 
 4 entries were displayed.
 ----
-. ONTAP 9.4 以降では、クラスタスイッチヘルスモニタのログ収集機能を有効にしてスイッチ関連のログファイルを収集します。
+. ONTAP 9.4 以降の場合は、コマンドを使用してスイッチ関連のログファイルを収集するために、クラスタスイッチヘルスモニタのログ収集機能を有効にします。
 +
-「システムクラスタスイッチログセットアップ - パスワードシステムクラスタスイッチログイネーブルコレクション」
+'system cluster-switch log setup-password ' および 'system cluster-switch log enable-collection
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> **system cluster-switch log setup-password**
+cluster1::*> *system cluster-switch log setup-password*
 Enter the switch name: <return>
 The switch name entered is not recognized.
 Choose from the following list:
-NBS-NIC-NXYC-01
-NBS-NIC-NXYC-02
+cs1
+cs2
 
-cluster1::*> **system cluster-switch log setup-password**
+cluster1::*> *system cluster-switch log setup-password*
 
-Enter the switch name: **NBS-NIC-NXYC-01
-**RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] **y**
+Enter the switch name: *cs1*
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] *y*
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> **system cluster-switch log setup-password**
+cluster1::*> *system cluster-switch log setup-password*
 
-Enter the switch name: **NBS-NIC-NXYC-02**
+Enter the switch name: *cs2*
 RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] **y**
+Do you want to continue? {y|n}:: [n] *y*
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> **system cluster-switch log enable-collection**
+cluster1::*> *system cluster-switch log enable-collection*
 
 Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] **y**
+{y|n}: [n] *y*
 
 Enabling cluster switch log collection.
 

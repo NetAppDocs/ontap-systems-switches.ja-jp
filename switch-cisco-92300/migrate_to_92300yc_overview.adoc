@@ -36,14 +36,12 @@ summary: 古い Cisco Nexus クラスタスイッチを Cisco Nexus 92300YC ク�
 ** ポート e1/13~20 （ 10GbE ）： Nexus 5010
 
 
-* Hardware Universe には、すべてのクラスタスイッチでサポートされているケーブル接続に関する情報が記載されています。
+* 。 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe スイッチ _"^] すべてのクラスタスイッチでサポートされているケーブル接続について説明します。
 * Nexus 92300YC スイッチの一部のポートを 10GbE または 40GbE で実行するように設定しておく必要があります。
 * ノードから Nexus 92300YC クラスタスイッチへの 10GbE および 40GbE 接続を計画、移行、および文書化しておく必要があります。
-* この手順でサポートされている ONTAP および NX-OS のバージョンは、 _Cisco イーサネットスイッチ _ ページにあります。
+* この手順 でサポートされている ONTAP と NX-OS のバージョンはにあります https://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^] ページ
 +
-https://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"]
-
-
-
 
 NOTE: 移行が完了したあと、 92300YC クラスタスイッチのクラスタスイッチヘルスモニタ（ CSHM ）をサポートするために必要な構成ファイルのインストールが必要になる場合があります。の 92300YC スイッチ用クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルのインストールを参照してください link:../com.netapp.doc.hw-sw-cisco-setup/home.html["セットアップ中です"] ガイド
+
+

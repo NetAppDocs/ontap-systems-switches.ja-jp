@@ -292,13 +292,6 @@ cs2# copy running-config startup-config \[\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
 cs2# reload
 This command will reboot the system. (y/n)?  [n] y
 ----
-. 同じ RCF を適用し、実行中の設定をもう一度保存します。
-+
-[listing]
-----
-cs2# copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
-cs2# copy running-config startup-config [########################################] 100% Copy complete
-----
 . クラスタのクラスタポートの健常性を確認します。
 +
 .. クラスタ内のすべてのノードで e0d ポートが正常に稼働していることを確認します。「 network port show -role cluster 」

@@ -1,5 +1,5 @@
 ---
-permalink: switch-cisco-9336/setup-worksheet-5596.html 
+permalink: switch-cisco-9336c-fx2/setup-worksheet-5596.html 
 sidebar: sidebar 
 keywords: cable worksheet, Cisco NX 5596T 
 summary: サポート対象のプラットフォームを文書化する場合は、入力済みのケーブル接続ワークシートの例を参考にして、空白のケーブル接続ワークシートに記入する必要があります。 

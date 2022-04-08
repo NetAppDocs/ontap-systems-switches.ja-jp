@@ -4,7 +4,7 @@ permalink: switch-cisco-9336c-fx2-shared/9336c_migrate_from_a_switched_configura
 keywords:  
 summary:  
 ---
-= 2 つの新しい共有スイッチを追加して、 DAT ストレージを使用したスイッチ構成から移行します
+= 2 つの新しい共有スイッチを追加して、直接接続型ストレージを使用するスイッチ構成から移行する
 :hardbreaks:
 :nofooter: 
 :icons: font
@@ -14,7 +14,7 @@ summary:
 
 
 
-== DAT ストレージを使用したスイッチ構成からの移行
+== 直接接続型ストレージを使用するスイッチ構成から移行
 
 一部の古い Cisco Nexus クラスタスイッチを Cisco Nexus 9336C-FX2 共有スイッチに交換する場合は、特定の設定情報、ポート接続、およびケーブル接続要件に注意する必要があります。
 

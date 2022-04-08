@@ -31,7 +31,7 @@ summary: クラスタネットワーク内での、障害のある Nexus 92300YC
 ** 必要なリファレンス構成ファイル（ RCF ）と NX-OS オペレーティングシステムのイメージスイッチをスイッチにロードする必要があります。
 ** スイッチの初期カスタマイズが完了している必要があります。詳細については、次を参照してください。
 +
-link:configure_overview.md#["新しい Cisco Nexus 92300YC スイッチの構成"]
+link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/configure-overview.html["新しい Cisco Nexus 92300YC スイッチの構成"^]
 
 +
 STP 、 SNMP 、 SSH などの以前のサイトのカスタマイズは、すべて新しいスイッチにコピーする必要があります。
@@ -55,9 +55,9 @@ STP 、 SNMP 、 SSH などの以前のサイトのカスタマイズは、す�
 
 NOTE: 次の手順は、次のクラスタネットワークトポロジに基づいています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> **network port show -ipspace Cluster**
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: node1
                                                                        Ignore
@@ -78,7 +78,7 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 
 
 
-cluster1::*> **network interface show -vserver Cluster**
+cluster1::*> *network interface show -vserver Cluster*
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
 ----------- ---------- ---------- ------------------ ------------- ------- ----
@@ -91,7 +91,7 @@ Cluster
 
 
 
-cluster1::*> **network device-discovery show -protocol cdp**
+cluster1::*> *network device-discovery show -protocol cdp*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  ----------------
@@ -105,7 +105,7 @@ node1      /cdp
 
 
 
-cs1# **show cdp neighbors**
+cs1# *show cdp neighbors*
 
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
@@ -122,7 +122,7 @@ Total entries displayed: 4
 
 
 
-cs2# **show cdp neighbors**
+cs2# *show cdp neighbors*
 
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
@@ -154,21 +154,21 @@ Total entries displayed: 4
 交換するスイッチが機能せず、電源がオフになっている場合は、手順 4 に進みます。クラスタノードの LIF は、各ノードのもう一方のクラスタポートにすでにフェイルオーバーされている必要があります。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-newcs2# **config**
+newcs2# *config*
 Enter configuration commands, one per line. End with CNTL/Z.
-newcs2(config)# **interface e1/1-64**
-newcs2(config-if-range)# **shutdown**
+newcs2(config)# *interface e1/1-64*
+newcs2(config-if-range)# *shutdown*
 ----
 . すべてのクラスタ LIF で自動リバートが有効になっていることを確認します。
 +
 network interface show -vserver Cluster -fields auto-revert を実行します
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> **network interface show -vserver Cluster -fields auto-revert**
+cluster1::> *network interface show -vserver Cluster -fields auto-revert*
 
              Logical
 Vserver      Interface     Auto-revert
@@ -185,9 +185,9 @@ Cluster      node2_clus2   true
 「 cluster ping-cluster 」を参照してください
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> **cluster ping-cluster node1**
+cluster1::*> *cluster ping-cluster node1*
 
 Host is node2
 Getting addresses from network interface table...
@@ -215,12 +215,12 @@ RPC status:
 ----
 . Nexus 92300YC スイッチ cs1 の ISL ポート 1/65 および 1/66 をシャットダウンします。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cs1# **configure**
+cs1# *configure*
 Enter configuration commands, one per line. End with CNTL/Z.
-cs1(config)# **interface e1/65-66**
-cs1(config-if-range)# **shutdown**
+cs1(config)# *interface e1/65-66*
+cs1(config-if-range)# *shutdown*
 cs1(config-if-range)#
 ----
 . すべてのケーブルを Nexus 92300YC cs2 スイッチから取り外し、 Nexus 92300YC newcs2 スイッチの同じポートに接続します。
@@ -232,12 +232,12 @@ cs1(config-if-range)#
 次に、 ISL ポート 1/65 および 1/66 を有効にし、スイッチ cs1 のポートチャネルの概要を表示する例を示します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cs1# **configure**
+cs1# *configure*
 Enter configuration commands, one per line. End with CNTL/Z.
-cs1(config)# **int e1/65-66**
-cs1(config-if-range)# **no shutdown**
+cs1(config)# *int e1/65-66*
+cs1(config-if-range)# *no shutdown*
 
 cs1(config-if-range)# show port-channel summary
 Flags:  D - Down        P - Up in port-channel (members)
@@ -264,9 +264,9 @@ cs1(config-if-range)#
 次のような出力が表示されます。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> **network port show -ipspace Cluster**
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: node1
                                                                         Ignore
@@ -294,9 +294,9 @@ e0b       Cluster      Cluster          up   9000  auto/auto   -        false
 次のコマンドは、 node1 上の LIF 'node1_clus2' をホームポート e0a に返し、両方のノード上の LIF に関する情報を表示します。両方のクラスタ・インターフェイスで Is Home 列が true で、ノード 1 の「 e0a' 」と「 e0b 」のように正しいポート割り当てが表示されている場合、最初のノードの起動は成功します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> **network interface show -vserver Cluster**
+cluster1::*> *network interface show -vserver Cluster*
 
             Logical      Status     Network            Current    Current Is
 Vserver     Interface    Admin/Oper Address/Mask       Node       Port    Home
@@ -317,9 +317,9 @@ Cluster
 次の例では、このクラスタのノード node1 と node2 のノードの健常性が true であることを示します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> **cluster show**
+cluster1::*> *cluster show*
 
 Node          Health  Eligibility
 ------------- ------- ------------
@@ -331,9 +331,9 @@ node2         true    true
 「 network port show -ipspace cluster 」のように表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> **network port show -ipspace Cluster**
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: node1
 																																									 					 																					 	  Ignore
@@ -358,9 +358,9 @@ e0b       Cluster      Cluster          up    9000  auto/10000  healthy  false
 「 cluster ping-cluster 」を参照してください
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> **cluster ping-cluster -node node2**
+cluster1::*> *cluster ping-cluster -node node2*
 Host is node2
 Getting addresses from network interface table...
 Cluster node1_clus1 169.254.209.69 node1 e0a
@@ -390,9 +390,9 @@ RPC status:
 「 network port show 」のように表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> **network port show -ipspace Cluster**
+cluster1::*> *network port show -ipspace Cluster*
 Node: node1
 																																																																			 	  Ignore
                                        Speed(Mbps)            Health   Health
@@ -412,7 +412,7 @@ e0b       Cluster      Cluster          up   9000 auto/10000  healthy  false
 4 entries were displayed.
 
 
-cluster1::*> **network interface show -vserver Cluster**
+cluster1::*> *network interface show -vserver Cluster*
 
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
@@ -425,7 +425,7 @@ Cluster
 
 4 entries were displayed.
 
-cluster1::> **network device-discovery show -protocol cdp**
+cluster1::> *network device-discovery show -protocol cdp*
 
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
@@ -440,7 +440,7 @@ node1      /cdp
 4 entries were displayed.
 
 
-cs1# **show cdp neighbors**
+cs1# *show cdp neighbors*
 
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
@@ -457,7 +457,7 @@ newcs2(FDO296348FU)  Eth1/66        176    R S I s     N9K-C92300YC  Eth1/66
 Total entries displayed: 4
 
 
-cs2# **show cdp neighbors**
+cs2# *show cdp neighbors*
 
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
@@ -472,42 +472,42 @@ cs1(FDO220329KU)   Eth1/66        178    R S I s     N9K-C92300YC  Eth1/66
 
 Total entries displayed: 4
 ----
-. ONTAP 9.4 以降では、クラスタスイッチヘルスモニタのログ収集機能を有効にしてスイッチ関連のログファイルを収集します。
+. ONTAP 9.4 以降では、 gthe コマンドを使用して、スイッチ関連のログファイルを収集するためのクラスタスイッチヘルスモニタログ収集機能を有効にします。
 +
-「システムクラスタスイッチログセットアップ - パスワードシステムクラスタスイッチログイネーブルコレクション」
+'system cluster-switch log setup-password ' および 'system cluster-switch log enable-collection
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> **system cluster-switch log setup-password**
+cluster1::*> *system cluster-switch log setup-password*
 Enter the switch name: <return>
 The switch name entered is not recognized.
 Choose from the following list:
-NBS-NIC-NXYC-01
-NBS-NIC-NXYC-02
+cs1
+cs2
 
-cluster1::*> **system cluster-switch log setup-password**
+cluster1::*> *system cluster-switch log setup-password*
 
-Enter the switch name: **NBS-NIC-NXYC-01
-**RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] **y**
+Enter the switch name: *cs1*
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] *y*
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> **system cluster-switch log setup-password**
+cluster1::*> *system cluster-switch log setup-password*
 
-Enter the switch name: **NBS-NIC-NXYC-02**
+Enter the switch name: *cs2*
 RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] **y**
+Do you want to continue? {y|n}:: [n] *y*
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> **system cluster-switch log enable-collection**
+cluster1::*> *system cluster-switch log enable-collection*
 
 Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] **y**
+{y|n}: [n] *y*
 
 Enabling cluster switch log collection.
 

@@ -1,8 +1,8 @@
 ---
 permalink: switch-cisco-3232c/index.html 
 sidebar: sidebar 
-keywords: cisco 3232c 
-summary: Cisco 3232C スイッチシュ 
+keywords: cisco 3232c, cluster switches 
+summary: AFF または FAS クラスタでは、 Cisco Nexus 3232C スイッチをクラスタスイッチとして使用できます。 
 ---
 = Cisco Nexus 3232C スイッチ
 :icons: font
@@ -12,9 +12,74 @@ summary: Cisco 3232C スイッチシュ
 [role="lead"]
 AFF または FAS クラスタでは、 Cisco Nexus 3232C スイッチをクラスタスイッチとして使用できます。
 
+.概要
 * スイッチの設置、既存のスイッチからの移行、スイッチの交換、およびスイッチ上の RCF ファイルの更新を行うことができます。
 * Cisco Nexus 3232C クラスタスイッチには、 NX-OS とリファレンス構成ファイル（ RCF ）をインストールできます。
 * Cisco Nexus 3232C クラスタスイッチを使用して、 2 ノードスイッチスイッチレスクラスタからクラスタに移行できる。
 * Cisco Nexus 3232C クラスタまたはストレージスイッチを交換することができます。
 * Cisco Nexus 3232C スイッチ（ X190100 ）は、スイッチに付属のカスタムブラケットを使用してネットアップシステムキャビネットに設置するか、スイッチに付属の標準ブラケットを使用してラックに設置できます。
 
+
+次の表に、 Cisco Nexus 3232C スイッチのマニュアルを示します。
+
+|===
+
+
+| タイトル | 説明 
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3232c/task-install-a-cisco-nexus-3232c-cluster-switch-and-pass-through-panel-in-a-netapp-cabinet.html["_ Cisco ® Nexus 3232C クラスタスイッチとパススルーパネルをネットアップ ® キャビネットに設置 _"^]
+ a| 
+パススルーパネルをシステムキャビネットに取り付ける方法について説明します。システムキャビネットの電源コネクタはシャーシの前面に、配電ユニットはシャーシの背面にあります。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-9336c-fx2/setup-switches.html["_ Cisco ® Nexus 3232C クラスタスイッチをセットアップします _"^]
+ a| 
+Cisco Nexus 3232C クラスタスイッチをセットアップおよび設定する方法について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3232c/task-install-nx-os-software-and-rcfs-on-cisco-nexus-3232-cluster-switches-running-ontap-9-4-and-later.html["NX-OS および RCF をインストールします _"^]
+ a| 
+Nexus 3232C クラスタスイッチに NX-OS とリファレンス構成ファイル（ RCF ）をインストールする方法について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3232c/concept-migrate-from-a-cisco-5596-switch-to-a-cisco-nexus-3232c.html["Cisco Nexus 5596 スイッチから Cisco Nexus 3232C スイッチへの移行 _"^]
+ a| 
+古い Cisco スイッチを使用する環境から Cisco 3232C スイッチを使用する環境に移行する方法について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3232c/concept-migrate-a-cn1610-switch-to-a-cisco-nexus-3232c-cluster-switch.html["CN1610 スイッチから Cisco Nexus 3232C スイッチへの移行 _"^]
+ a| 
+CN1610 スイッチを Cisco Nexus 3232C クラスタスイッチに交換する手順 について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3232c/concept-migrate-from-a-two-node-switchless-cluster-to-a-cluster-with-cisco-nexus-3232c-cluster-switches.html["_ 2 ノードスイッチレスクラスタからの移行 _"^]
+ a| 
+Cisco Nexus 3232C クラスタスイッチを使用して、 2 ノードスイッチレスクラスタ環境から 2 ノードスイッチ環境に移行する方法について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3232c/concept-replace-a-cisco-nexus-3232c-cluster-switch.html["Cisco Nexus 3232C クラスタスイッチを交換してください _"^]
+ a| 
+クラスタ内の障害のある Cisco Nexus 3232C スイッチを交換し、スイッチのオペレーティングシステムとリファレンス構成ファイルをダウンロードするための手順 について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-3232c/concept-replace-a-cisco-nexus-3232c-storage-switch.html["Cisco Nexus 3232C ストレージスイッチを交換してください _"^]
+ a| 
+故障した Cisco Nexus 3232C ストレージスイッチを交換し、スイッチのオペレーティングシステムとリファレンス構成ファイルをダウンロードするための手順 について説明します。
+
+|===

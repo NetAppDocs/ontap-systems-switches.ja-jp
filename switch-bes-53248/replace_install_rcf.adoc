@@ -10,7 +10,7 @@ summary: RCF は、 BES-53248 クラスタスイッチを初めてセットア�
 
 
 [role="lead"]
-RCF は、 BES-53248 クラスタスイッチを初めてセットアップしたあとと、新しいライセンスを適用したあとにインストールできます。古いバージョンから RCF をアップグレードする場合は、 Broadcom スイッチの設定をリセットし、基本的な設定を行って RCF を再適用する必要があります。この処理は、 RCF をアップグレードまたは変更するたびに実行する必要があります。
+RCF は、 BES-53248 クラスタスイッチを初めてセットアップしたあとと、新しいライセンスを適用したあとにインストールできます。古いバージョンから RCF をアップグレードする場合は、 Broadcom スイッチの設定をリセットし、基本的な設定を行って RCF を再適用する必要があります。この処理は、 RCF をアップグレードまたは変更するたびに実行する必要があります。以下を参照してください https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric%2C_Interconnect_and_Management_Switches/Error!_in_configuration_script_file_at_line_number_XX_when_applying_a_new_RCF["こちらの技術情報アーティクル"^] を参照してください。
 
 
 

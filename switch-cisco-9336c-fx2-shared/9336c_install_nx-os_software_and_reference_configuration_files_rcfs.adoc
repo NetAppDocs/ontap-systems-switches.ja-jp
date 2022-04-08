@@ -4,7 +4,7 @@ permalink: switch-cisco-9336c-fx2-shared/9336c_install_nx-os_software_and_refere
 keywords: rcfs, nx-os, install 
 summary:  
 ---
-= NX-OS ソフトウェアおよび RCF のインストール
+= NX-OS ソフトウェアと RCF をインストールします
 :hardbreaks:
 :nofooter: 
 :icons: font
@@ -14,13 +14,9 @@ summary:
 
 
 
-== Cisco Nexus 9336C-FX2 クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします
+== Cisco Nexus 9336C-FX2 スイッチに NX-OS ソフトウェアと RCF をインストールします
 
 Cisco NX-OS ソフトウェアとリファレンス構成ファイル（ RCF ）は、 Cisco Nexus 9336C-FX2 クラスタスイッチにインストールする必要があります。
-
-
-
-=== 作業を開始する前に
 
 クラスタスイッチに NX-OS ソフトウェアと RCF をインストールする前に、次の条件が満たされている必要があります。
 
@@ -33,10 +29,6 @@ Cisco NX-OS ソフトウェアとリファレンス構成ファイル（ RCF ）
 * Cisco スイッチのアップグレードおよびダウングレード手順の詳細については、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります。を参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html["Cisco Nexus 9000 シリーズスイッチ"] を参照してください。
 * 最新の RCF が必要です。
 
-
-
-
-=== 初期セットアップ
 
 この手順の例では、 2 つのノードを使用します。これらのノードは、 A400 コントローラに応じて 2 つの 100GbE クラスタインターコネクトポート e3a と e3b を使用します。を参照してください https://hwu.netapp.com["Hardware Universe"] をクリックして、プラットフォームのクラスタポートが正しいことを確認します。
 
