@@ -2153,7 +2153,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-08 14:03:03 +0000">04/08/2022</time>
+    <time datetime="2022-04-12 18:33:15 +0000">04/12/2022</time>
     
   
 
@@ -2164,7 +2164,7 @@
 <h2 id="ontap-でサポートされるスイッチ">ONTAP でサポートされるスイッチ</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチシナリオに結合できます。3 つ以上のノードで ONTAP ネットワークを構築する場合は、サポートされているネットワークスイッチが 2 つ必要です。</p>
+<p>ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチ構成に組み合わせることができます。3 つ以上のノードで ONTAP クラスタを構築する場合は、サポートされている 2 つのネットワークスイッチが必要です。</p>
 </div>
 <div class="paragraph">
 <p>次の Cisco 共有ネットワークスイッチがサポートされています。</p>
@@ -2196,14 +2196,6 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">X190200-CS-PI</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N9K-9336C-FX2 、 CS 、 PSIN 、 36PT10/25/40/100GQSFP28</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X190210-FE-PE のこと</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N9K-9336C 、 FTE 、 PTSX 、 36PT10/25/40/100GQSFP28</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X190210-FE-PI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N9K-9336C 、 FTE 、 PSIN 、 36PT10/25/40/100GQSFP28</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">X190002</p></td>
@@ -2294,10 +2286,10 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>ラックにスイッチとコントローラを配置を参照してくださいhttps://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-9336c-install-cabinet/GUID-92287262-E7A6-4A62-B159-7F148097B33B.html["Cisco Nexus 9336C-FX2 クラスタスイッチとパススルーパネルのネットアップキャビネットへの設置"] スイッチをネットアップキャビネットに設置する手順については、ガイドを参照してください。</p>
+<p>スイッチ、コントローラ、および NS224 NVMe ストレージシェルフをラックに配置します。を参照してくださいhttps://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-9336c-install-cabinet/GUID-92287262-E7A6-4A62-B159-7F148097B33B.html["Cisco Nexus 9336C-FX2 クラスタスイッチとパススルーパネルのネットアップキャビネットへの設置"] スイッチをネットアップキャビネットに設置する手順については、ガイドを参照してください。</p>
 </li>
 <li>
-<p>スイッチとコントローラの電源をオンにします。</p>
+<p>スイッチ、コントローラ、および NS224 NVMe ストレージシェルフの電源をオンにします。</p>
 </li>
 <li>
 <p><a id="step3"></a> で提供された情報に基づいて、スイッチの初期設定を実行します <a href="#Required configuration information">[Required configuration information]</a>。</p>
@@ -2335,7 +2327,7 @@
 <p>各ストレージシステムコントローラおよび該当するすべてのスイッチのホスト名と IP アドレス</p>
 </li>
 <li>
-<p>ほとんどのストレージシステムコントローラは、イーサネットサービスポート（レンチマーク）に接続することで、 e0M インターフェイスを介して管理されます。AFF A800 システムおよび AFF A700 システムでは、 e0M インターフェイスは専用のイーサネットポートを使用します。</p>
+<p>ほとんどのストレージシステムコントローラは、イーサネットサービスポート（レンチマーク）に接続することで、 e0M インターフェイスを介して管理されます。AFF A800 および AFF A700s システムでは、 e0M インターフェイスは専用のイーサネットポートを使用します。</p>
 </li>
 </ul>
 </div>
@@ -2619,13 +2611,13 @@
 <h2 id="cisco-nexus-9336c-fx2-のケーブル配線の詳細">Cisco Nexus 9336C-FX2 のケーブル配線の詳細</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>次のケーブル接続図は、コントローラとスイッチの間のケーブル接続を完了するためのものです。</p>
+<p>次のケーブル接続図は、コントローラとスイッチの間のケーブル接続を完了するためのものです。NS224 ストレージをスイッチ接続でケーブル接続する場合は、スイッチ接続の図に従ってください。</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./media/9336c_image1.jpg" alt="スイッチ接続"></span></p>
 </div>
 <div class="paragraph">
-<p>共有スイッチのストレージポートを使用する代わりに、ストレージを直接接続型としてケーブル接続する場合は、次の図を参考にしてください。</p>
+<p>共有スイッチのストレージポートを使用する代わりに NS224 ストレージを直接接続型としてケーブル接続する場合は、次の図に従って直接接続してください。</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./media/9336c_image2.jpg" alt="直接接続"></span></p>
