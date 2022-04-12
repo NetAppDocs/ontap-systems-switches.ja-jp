@@ -5,6 +5,7 @@ keywords: cn1601, cn1610 switch setup, configuration guide
 summary: このマニュアルでは、クラスタ環境でスイッチのハードウェアとソフトウェアを設定する方法について説明します。 
 ---
 = CN1601 および CN1610 スイッチの設定と構成
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

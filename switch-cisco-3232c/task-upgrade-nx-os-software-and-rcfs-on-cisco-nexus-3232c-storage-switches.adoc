@@ -5,6 +5,7 @@ keywords: upgrade, cisco nexus, 3232c storage switch
 summary: Cisco NX-OS ソフトウェアおよびリファレンス構成ファイル（ RCF ）は、 Cisco Nexus 3232C ストレージスイッチでアップグレードできます。 
 ---
 = Cisco Nexus 3232C ストレージスイッチをアップグレードする
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

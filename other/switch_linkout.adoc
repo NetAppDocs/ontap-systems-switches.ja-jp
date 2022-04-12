@@ -5,6 +5,7 @@ keywords: cisco, Nexus 5596, CN1601
 summary: 他のスイッチモデルにも使用できます。 
 ---
 = その他の Cisco クラスタ、ストレージ、および管理スイッチ
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -6,6 +6,7 @@ summary:
 ---
 = NX-OS ソフトウェアと RCF をインストールします
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

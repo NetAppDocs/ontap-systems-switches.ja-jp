@@ -5,6 +5,7 @@ keywords: install, nx-os software, rcfs, cisco nexus 3132q-v, cluster switches
 summary: Cisco NX-OS ソフトウェアおよびリファレンス構成ファイル（ RCF ）を Cisco Nexus 3132Q-V クラスタスイッチにインストールする必要があります。 
 ---
 = Cisco Nexus 3132Q-V クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -5,6 +5,7 @@ keywords: replace, cisco nexus 3232c, cluster switch
 summary: クラスタ内の障害のある Cisco Nexus 3232C スイッチは、特定の順序でタスクを実行することで、無停止で交換できます。 
 ---
 = Cisco Nexus 3232C クラスタスイッチの交換方法
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

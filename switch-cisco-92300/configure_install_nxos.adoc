@@ -5,6 +5,7 @@ keywords: install nx-os, nx-os install
 summary: この手順を使用して、 Nexus 92300YC スイッチに NX-OS ソフトウェアをインストールできます。 
 ---
 = NX-OS ソフトウェアをインストールします
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

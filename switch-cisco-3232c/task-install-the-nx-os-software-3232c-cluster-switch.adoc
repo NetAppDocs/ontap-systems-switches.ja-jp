@@ -5,6 +5,7 @@ keywords: install, nx-os software
 summary: この手順 を使用して、 Nexus 3232C クラスタスイッチに NX-OS ソフトウェアをインストールできます。 
 ---
 = NX-OS ソフトウェアをインストールします
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

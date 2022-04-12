@@ -5,6 +5,7 @@ keywords: require, configuration, information, documentation, cluster, managemen
 summary: 必要な設定情報とドキュメントをまだ入手していない場合は、クラスタおよび管理ネットワークスイッチをセットアップする前に、その情報を収集する必要があります。 
 ---
 = スイッチを設定します
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

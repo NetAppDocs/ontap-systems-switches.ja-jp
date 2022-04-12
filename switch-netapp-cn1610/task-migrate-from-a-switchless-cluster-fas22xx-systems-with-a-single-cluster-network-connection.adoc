@@ -5,6 +5,7 @@ keywords: migrate, two-node switched cluster, fas22xx systems, single, network c
 summary: FAS22xx システムが既存の 2 ノードスイッチレスクラスタにある場合、各コントローラモジュールにクラスタ接続用の単一のバックツーバック 10GbE 接続があるときは、スイッチレスクラスタネットワークオプションを使用して、スイッチ接続に直接バックツーバック接続を置き換えることができます。 
 ---
 = 単一のクラスタネットワーク接続を使用して、 FAS22xx システムの 2 ノードスイッチクラスタに移行する
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

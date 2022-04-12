@@ -6,6 +6,7 @@ summary:
 ---
 = ストレージスイッチを再利用して、スイッチ接続ストレージを使用するスイッチクラスタから移行する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

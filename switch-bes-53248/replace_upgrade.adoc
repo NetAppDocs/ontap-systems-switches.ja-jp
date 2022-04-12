@@ -5,6 +5,7 @@ keywords: BES-53248 switches,upgrading,BES-53248 switches
 summary: BES-53248 クラスタスイッチをアップグレードするには、アップグレードのためのコントローラの準備、 EFOS ソフトウェア、ライセンス、リファレンス構成ファイル \ （ RCF \ ）のインストールを開始します。インストールが完了したら、無停止アップグレード（ NDU ）および無停止運用（ NDO ）環境でコントローラ構成をリストアできます。 
 ---
 = NDO / NDU 環境で BES-53248 クラスタスイッチをアップグレードします
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

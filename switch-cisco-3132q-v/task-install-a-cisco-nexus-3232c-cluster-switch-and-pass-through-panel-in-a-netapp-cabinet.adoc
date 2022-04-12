@@ -5,6 +5,7 @@ keywords: install, cisco nexus 3132q-v cluster switch, pass-through panel, netap
 summary: Cisco Nexus 3132Q-V スイッチとパススルーパネルは、スイッチに付属の標準ブラケットを使用してネットアップキャビネットに設置できます。 
 ---
 = Cisco Nexus 3132Q-V クラスタスイッチとパススルーパネルをネットアップキャビネットに設置します
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

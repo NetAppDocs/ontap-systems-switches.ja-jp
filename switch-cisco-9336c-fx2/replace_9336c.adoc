@@ -5,6 +5,7 @@ keywords: replacing, replace, defective, nexus, switch, cluster, network, nondis
 summary: クラスタネットワーク内の障害のある Nexus 9336C-FX2 スイッチの交換は、無停止手順（ NDU ）です。 
 ---
 = Cisco Nexus 9336C-FX2 クラスタスイッチを交換します
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

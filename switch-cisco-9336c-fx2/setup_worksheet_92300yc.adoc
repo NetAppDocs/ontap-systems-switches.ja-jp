@@ -5,6 +5,7 @@ keywords: cable worksheet, Cisco NX 92300YC
 summary: サポート対象のプラットフォームを文書化する場合は、入力済みのケーブル接続ワークシートの例を参考にして、空白のケーブル接続ワークシートに記入する必要があります。 
 ---
 = Cisco Nexus 92300YC ケーブル接続ワークシート
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

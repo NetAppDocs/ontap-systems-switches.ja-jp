@@ -5,6 +5,7 @@ keywords: migrating to a cluster with Cisco Nexus 9336C-FX2 cluster switches, ho
 summary: ONTAP クラスタの古い Cisco クラスタスイッチは、無停止で Cisco Nexus 9336C-FX2 クラスタネットワークスイッチに移行できます。 
 ---
 = Cisco スイッチから Cisco Nexus 9336C-FX2 クラスタスイッチへの移行方法
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

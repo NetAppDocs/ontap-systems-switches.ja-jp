@@ -5,6 +5,7 @@ keywords: install, fastpath, software, rcfs, netapp cluster switch
 summary: NetApp CN1610 クラスタスイッチに FastPath ソフトウェアとリファレンス構成ファイル（ RCF ）をインストールする必要があります。 
 ---
 = ネットアップクラスタスイッチに FastPath ソフトウェアと RCF をインストールします
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

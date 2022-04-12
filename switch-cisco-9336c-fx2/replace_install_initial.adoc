@@ -5,6 +5,7 @@ keywords: initial setup steps, cisco cluster switch install
 summary: この手順を使用して、 Cisco Nexus 9336C-FX2 スイッチの初期インストールを実行できます。 
 ---
 = Nexus 9336C-FX2 クラスタスイッチの初期取り付け
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -5,6 +5,7 @@ keywords: BES-53248 switches,preparing for upgrade,upgrade bes-53248 switch
 summary: この手順を使用して、 BES-53248 クラスタスイッチのアップグレード用にコントローラを準備できます。 
 ---
 = クラスタスイッチをアップグレードするコントローラを準備します
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

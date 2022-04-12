@@ -5,6 +5,7 @@ keywords: worksheet,cabling sample,blank worksheet
 summary: ケーブル接続ワークシートの例には、スイッチからコントローラへの推奨されるポート割り当ての例が記載されています。空白のワークシートは、クラスタのセットアップに使用できるテンプレートとして提供されます。 
 ---
 = ケーブル接続ワークシートの例と空白
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

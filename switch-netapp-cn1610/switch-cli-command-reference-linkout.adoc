@@ -5,6 +5,7 @@ keywords: cn1601 network, switch cli, command reference
 summary: このマニュアルでは、 CN1601 ソフトウェアの設定に使用するコマンドラインインターフェイス（ CLI ）のコマンドについて説明します。 
 ---
 = 『 CN1601 Network Switch CLI Command Reference 』
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

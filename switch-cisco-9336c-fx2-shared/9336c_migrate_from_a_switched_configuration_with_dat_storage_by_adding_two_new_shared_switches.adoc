@@ -6,6 +6,7 @@ summary:
 ---
 = 2 つの新しい共有スイッチを追加して、直接接続型ストレージを使用するスイッチ構成から移行する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

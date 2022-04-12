@@ -5,6 +5,7 @@ keywords: install rcf
 summary: RCF は、 Nexus 3132Q-V スイッチを初めて設定したあとにインストールできます。この手順 を使用して、 RCF バージョンをアップグレードすることもできます。 
 ---
 = リファレンス構成ファイル（ RCF ）のインストール
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

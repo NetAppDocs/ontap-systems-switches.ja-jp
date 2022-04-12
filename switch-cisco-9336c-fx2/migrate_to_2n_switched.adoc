@@ -5,6 +5,7 @@ keywords: two-node switchless cluster environments,migrating to a two-node switc
 summary: 既存の 2 ノードスイッチレスクラスタ環境を使用している場合は、 Cisco Nexus 9336C-FX2 スイッチを使用して 2 ノードスイッチクラスタ環境に移行し、 3 ノード以上にクラスタを拡張できます。 
 ---
 = Cisco Nexus 9336C-FX2 クラスタスイッチを使用したネットアップのスイッチクラスタ環境への移行方法
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -5,6 +5,7 @@ keywords: install cisco 92300YC cluster switch, cisco nx 92300yc
 summary: この手順を使用して、 Cisco Nexus 92300YC スイッチの初期取り付けを実行できます。 
 ---
 = Cisco Nexus 92300YC スイッチの初期取り付け
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

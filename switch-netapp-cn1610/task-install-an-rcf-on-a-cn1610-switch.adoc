@@ -5,6 +5,7 @@ keywords: reference configuration, file ,install, cn1610, switch, install rcf
 summary: リファレンス構成ファイル（ RCF ）をインストールする場合は、最初にクラスタ LIF をスイッチ cs2 から移行する必要があります。RCF をインストールして検証したら、 LIF を移行し直すことができます。 
 ---
 = CN1610 スイッチに参照構成ファイルをインストールします
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -5,6 +5,7 @@ keywords: broadcom, support, bes, cluster, switch, broadcam-supported bes-53248 
 summary: Broadcom 対応 BES-53248 クラスタスイッチ 
 ---
 = Broadcom 対応 BES-53248 クラスタスイッチ
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

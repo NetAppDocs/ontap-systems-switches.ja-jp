@@ -5,6 +5,7 @@ keywords: cisco nexus 92300YC
 summary: 3 つ以上のノードで ONTAP クラスタを構築する場合は、サポートされている 2 つのクラスタネットワークスイッチが必要です。オプションとして、追加の管理スイッチを使用できます。 
 ---
 = Cisco Nexus 92300YC スイッチの概要
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

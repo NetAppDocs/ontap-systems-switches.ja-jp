@@ -5,6 +5,7 @@ keywords: cable worksheet, Cisco NX 5596T
 summary: サポート対象のプラットフォームを文書化する場合は、入力済みのケーブル接続ワークシートの例を参考にして、空白のケーブル接続ワークシートに記入する必要があります。 
 ---
 = Cisco Nexus 5596UP / 5596T ケーブル接続ワークシート
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

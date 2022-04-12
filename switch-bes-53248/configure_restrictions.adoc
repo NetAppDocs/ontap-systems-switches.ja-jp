@@ -5,6 +5,7 @@ keywords: problem, arise, install, license, debug, command, copy, restriction, l
 summary: ライセンスのインストール時に問題が発生した場合は、 copy コマンドを再度実行してライセンスをインストールする前に、次の debug コマンドを実行する必要があります。 
 ---
 = 制限事項と制限事項 - BES-53248 スイッチ
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

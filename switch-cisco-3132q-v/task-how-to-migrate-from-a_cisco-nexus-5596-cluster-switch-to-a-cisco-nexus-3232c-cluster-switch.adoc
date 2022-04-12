@@ -5,6 +5,7 @@ keywords: replace, cisco nexus 5596 cluster switch, 3132q-v
 summary: 既存の Nexus 5596 クラスタスイッチを Nexus 3132Q-V クラスタスイッチに交換するには、特定の順序でタスクを実行する必要があります。 
 ---
 = Cisco Nexus 5596 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換する方法
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

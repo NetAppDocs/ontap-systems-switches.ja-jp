@@ -5,6 +5,7 @@ keywords: install, fastpath, software
 summary: ネットアップのスイッチに FastPath ソフトウェアをインストールするときは、 2 つ目のスイッチ cs2 でアップグレードを開始する必要があります。 
 ---
 = FastPath ソフトウェアをインストールします
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

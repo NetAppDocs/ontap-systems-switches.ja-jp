@@ -5,6 +5,7 @@ keywords: install rcf, rcf install
 summary: RCF は、 Nexus 92300YC スイッチを初めてセットアップしたあとにインストールできます。 
 ---
 = リファレンス構成ファイル（ RCF ）のインストール
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

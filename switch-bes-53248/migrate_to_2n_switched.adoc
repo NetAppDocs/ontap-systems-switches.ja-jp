@@ -5,6 +5,7 @@ keywords: two-node switchless clusters,migrating to a two-node switched BES-5324
 summary: 2 ノードスイッチレスクラスタを使用している場合は、 Broadcom 対応 BES-53248 クラスタスイッチを含む 2 ノードスイッチクラスタに無停止で移行できます。ここで説明するプロセスは、光ポートまたは Twinax ポートを使用するすべてのクラスタノードポートに使用できますが、ノードでクラスタネットワークポートにオンボード 10GBASE-T RJ45 ポートを使用している場合、このスイッチではサポートされません。 
 ---
 = Broadcom 対応 BES-53248 クラスタスイッチを使用して 2 ノードスイッチクラスタに移行する
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

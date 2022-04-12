@@ -5,6 +5,7 @@ keywords: cn1601, switch administrator, guide
 summary: このガイドでは、一般的なネットワークで CN1601 スイッチを使用する方法の例を示します。 
 ---
 = CN1601 スイッチ管理者
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

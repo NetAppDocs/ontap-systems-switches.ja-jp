@@ -8,6 +8,7 @@ summary: このサイトのドキュメントを使用して、クラスタ、�
 ---
 = AFF および FAS スイッチのマニュアル
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

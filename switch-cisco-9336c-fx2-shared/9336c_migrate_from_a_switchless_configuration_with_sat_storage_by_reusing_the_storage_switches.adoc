@@ -6,6 +6,7 @@ summary:
 ---
 = ストレージスイッチを再利用して、スイッチ接続ストレージを使用するスイッチレス構成から移行する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

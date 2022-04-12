@@ -5,6 +5,7 @@ keywords: controller, documentation, ontap, cluster, required documentation - ci
 summary: ONTAP クラスタをセットアップするには、特定のスイッチとコントローラに関するドキュメントが必要です。 
 ---
 = 必要なドキュメント
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

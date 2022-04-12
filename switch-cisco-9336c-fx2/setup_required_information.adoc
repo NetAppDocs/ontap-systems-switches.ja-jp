@@ -5,6 +5,7 @@ keywords: configure, cluster, appropriate, number, cable, connector, switch, typ
 summary: クラスタを設定するには、スイッチに適切な数とタイプのケーブルとコネクタが必要です。最初に設定するスイッチのタイプに応じて、付属のコンソールケーブルを使用してスイッチのコンソールポートに接続する必要があります。また、特定のネットワーク情報を指定する必要があります。 
 ---
 = 必要なクラスタ設定情報
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -5,6 +5,7 @@ keywords: cisco nexus 9336c-fx2
 summary: 3 つ以上のノードで ONTAP クラスタを構築する場合は、サポートされている 2 つのクラスタネットワークスイッチが必要です。オプションとして、追加の管理スイッチを使用できます。 
 ---
 = Cisco 9336C-FX2 スイッチの概要
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

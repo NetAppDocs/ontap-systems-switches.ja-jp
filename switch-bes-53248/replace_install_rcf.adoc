@@ -5,6 +5,7 @@ keywords: rcf,install rcf,bes-53248 switch
 summary: RCF は、 BES-53248 クラスタスイッチを初めてセットアップしたあとと、新しいライセンスを適用したあとにインストールできます。古いバージョンから RCF をアップグレードする場合、ファイルは効果的にマージされ、ここで説明する手順を実行します。 
 ---
 = リファレンス構成ファイル（ RCF ）のインストール
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

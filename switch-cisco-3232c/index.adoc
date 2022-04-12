@@ -5,6 +5,7 @@ keywords: cisco 3232c, cluster switches
 summary: AFF または FAS クラスタでは、 Cisco Nexus 3232C スイッチをクラスタスイッチとして使用できます。 
 ---
 = Cisco Nexus 3232C スイッチ
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -5,6 +5,7 @@ keywords: cisco smart call,small call home
 summary: Smart Call Home は、ネットワーク上のハードウェアおよびソフトウェアコンポーネントを監視し、重大なシステム状態に関する電子メールベースの通知を生成します。デバイスでイベントが発生すると、 Smart Call Home は宛先プロファイルで設定されているすべての受信者にアラートを送信します。 
 ---
 = Smart Call Home の使用に関する考慮事項
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

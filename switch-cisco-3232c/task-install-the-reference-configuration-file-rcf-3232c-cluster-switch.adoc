@@ -5,6 +5,7 @@ keywords: install, rcf
 summary: RCF は、 Nexus 3232C スイッチを初めてセットアップしたあとにインストールできます。この手順 を使用して、 RCF のバージョンをアップグレードすることもできます。 
 ---
 = リファレンス構成ファイル（ RCF ）のインストール
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -5,6 +5,7 @@ keywords: install nx-os rcf cisco nx 92300yc cluster switch
 summary: Cisco NX-OS ソフトウェアおよびリファレンス構成ファイル（ RCF ）を Cisco Nexus 92300YC クラスタスイッチにインストールする必要があります。 
 ---
 = Cisco Nexus 92300YC クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -5,6 +5,7 @@ keywords: bes, cluster, switch, base, model, license, 10gbe, 25gbe, 100gbe, port
 summary: BES-53248 クラスタスイッチの基本モデルには、 16 個の 10GbE ポートまたは 25GbE ポートと 2 個の 100GbE ポートがライセンスされています。ライセンスを追加購入すると、新しいポートを追加できます。 
 ---
 = BES-53248 クラスタスイッチ BES-53248 スイッチのライセンスをインストールします
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -5,6 +5,7 @@ keywords: migration steps for cisco nexus 92300yc cluster switch
 summary: ONTAP クラスタの古い Cisco クラスタスイッチは、無停止で Cisco Nexus 92300YC クラスタネットワークスイッチに移行できます。 
 ---
 = Cisco スイッチから Cisco Nexus 92300YC スイッチへの移行方法
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

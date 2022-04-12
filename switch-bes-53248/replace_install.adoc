@@ -5,6 +5,7 @@ keywords: procedure, perform, initial, installation, bes, cluster, switch, initi
 summary: この手順を使用して、 BES-53248 クラスタスイッチの初期取り付けを実行できます。 
 ---
 = BES-53248 クラスタスイッチの初期取り付け
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

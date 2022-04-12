@@ -5,6 +5,7 @@ keywords: documentation requirements, BES-53248 switches,cluster switches
 summary: clustered Data ONTAP 構成をセットアップするには、特定のスイッチとコントローラに関するドキュメントが必要です。 
 ---
 = BES-53248 クラスタスイッチにはドキュメントが必要です
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -5,6 +5,7 @@ keywords: cisco, nx-os, software, reference, configuration, file, rcf, install, 
 summary: Cisco NX-OS ソフトウェアおよびリファレンス構成ファイル（ RCF ）は、 Cisco Nexus 9336C-FX2 クラスタスイッチにインストールする必要があります。 
 ---
 = Cisco Nexus 9336C-FX2 クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします
+:allow-uri-read: 
 
 
 [role="lead"]

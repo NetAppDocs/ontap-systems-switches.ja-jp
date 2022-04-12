@@ -5,6 +5,7 @@ keywords: BES-53248 switches,installing EFOS software,efos
 summary: この手順を使用して、 BES-53248 クラスタスイッチに EFOS ソフトウェアをインストールできます。クラスタスイッチに対応する Broadcom EFOS ソフトウェアを Broadcom イーサネットスイッチサポートサイトからダウンロードできます。 
 ---
 = EFOS ソフトウェアをインストールします
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

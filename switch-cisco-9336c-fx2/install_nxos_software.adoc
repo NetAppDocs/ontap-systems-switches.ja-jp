@@ -5,6 +5,7 @@ keywords: procedure, install, nx-os, software, nexus, cluster, switch, install t
 summary: この手順を使用して、 Nexus 9336C-FX2 クラスタスイッチに NX-OS ソフトウェアをインストールできます。 
 ---
 = NX-OS ソフトウェアをインストールします
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -5,6 +5,7 @@ keywords: replace, replacing, defective, broadcom-supported, bes, cluster, switc
 summary: クラスタネットワーク内での、障害のある Broadcom 対応 BES-53248 クラスタスイッチの交換は、無停止手順（ NDU ）です。 
 ---
 = Broadcom 対応 BES-53248 クラスタスイッチ BES-53248 スイッチを交換します
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

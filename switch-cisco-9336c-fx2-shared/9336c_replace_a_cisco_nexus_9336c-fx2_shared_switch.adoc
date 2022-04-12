@@ -6,6 +6,7 @@ summary:
 ---
 = Cisco Nexus 9336C-FX2 共有スイッチを交換します
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -5,6 +5,7 @@ keywords: BES-53248 switches, initial installation, configure new bes-53248 swit
 summary: この章で説明する手順を実行すると、新しい BES-53248 クラスタスイッチを構成できます。 
 ---
 = 新しい BES-53248 クラスタスイッチを構成します
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -5,6 +5,7 @@ keywords: CN1610,CN1610 replacing, migrate from CN1610
 summary: クラスタ内の既存の CN1610 クラスタスイッチを Broadcom 対応 BES-53248 クラスタスイッチに交換するには、特定の順序でタスクを実行する必要があります。 
 ---
 = CN1610 クラスタスイッチを BES-53248 クラスタスイッチに移行する方法 - BES-53248 スイッチ
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

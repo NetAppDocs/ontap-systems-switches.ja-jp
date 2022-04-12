@@ -5,6 +5,7 @@ keywords: nx-os software, install, cisco nexus cluster switches, 3232c, rcfs
 summary: Cisco NX-OS ソフトウェアおよびリファレンス構成ファイル（ RCF ）を Cisco Nexus 3232C クラスタスイッチにインストールする必要があります。 
 ---
 = Cisco Nexus 3232C クラスタスイッチに NX-OS ソフトウェアと RCF をインストールする
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

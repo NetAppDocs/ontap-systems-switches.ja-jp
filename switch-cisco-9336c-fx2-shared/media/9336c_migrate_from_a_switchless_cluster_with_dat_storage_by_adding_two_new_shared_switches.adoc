@@ -6,6 +6,7 @@ summary:
 ---
 = 2 つの新しい共有スイッチを追加して、 DAT ストレージを持つスイッチレスクラスタから移行します
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

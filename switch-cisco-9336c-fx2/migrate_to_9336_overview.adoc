@@ -5,6 +5,7 @@ keywords: Cisco Nexus cluster switches,replacing older Cisco switches,9336C-FX2 
 summary: 古い Cisco Nexus クラスタスイッチを Cisco Nexus 9336C-FX2 クラスタスイッチに交換する場合は、特定の設定情報、ポート接続、およびケーブル接続要件に注意する必要があります。 
 ---
 = Cisco スイッチから Cisco Nexus 9336C-FX2 クラスタスイッチへの移行
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

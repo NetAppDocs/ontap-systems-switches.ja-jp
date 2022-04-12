@@ -5,6 +5,7 @@ keywords: command, verify, operational, bes, cluster, switch, upgrade, verify th
 summary: ここに示すコマンドを使用して、 BES-53248 クラスタスイッチのアップグレード後にすべてが動作していることを確認できます。 
 ---
 = クラスタスイッチのアップグレード後に構成を確認する - BES-53248 スイッチ
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

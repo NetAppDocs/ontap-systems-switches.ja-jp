@@ -5,6 +5,7 @@ keywords: install rcf,replace rcf
 summary: RCF は、 Nexus 9336C-FX2 スイッチを初めてセットアップしたあとにインストールできます。また、この手順を使用して RCF のバージョンをアップグレードすることもできます。 
 ---
 = リファレンス構成ファイル（ RCF ）のインストール
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

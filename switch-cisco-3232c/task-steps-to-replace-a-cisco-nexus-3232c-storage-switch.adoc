@@ -5,6 +5,7 @@ keywords: replace, cisco nexus, 3232c storage switch
 summary: 障害が発生した Cisco Nexus 3232C ストレージスイッチは、特定の順序でタスクを実行することで、無停止で交換できます。 
 ---
 = Cisco Nexus 3232C ストレージスイッチを交換する手順
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

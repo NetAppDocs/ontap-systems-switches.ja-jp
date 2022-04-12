@@ -5,6 +5,7 @@ keywords: log collection feature,collect switch-related log files,SSh key,crypto
 summary: クラスタスイッチヘルスモニタログ収集機能は、 ONTAP でスイッチ関連のログファイルを収集するために使用します。ここで説明するように、 BES-53248 クラスタスイッチ CLI を使用して環境をセットアップしておく必要があります。 
 ---
 = クラスタスイッチのログ収集機能を設定します
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -5,6 +5,7 @@ keywords: CSHM,initial setup,configuration file,cshm,enable SSH
 summary: この手順を使用して、 BES-53248 クラスタスイッチのクラスタスイッチヘルスモニタに適用可能な構成ファイルをインストールできます。ONTAP リリース 9.5P7 以前および 9.6P2 以前では、クラスタスイッチヘルスモニタの構成ファイルを個別にダウンロードする必要があります。ONTAP リリース 9.5P8 以降、 9.6P3 以降、および 9.7 以降では、クラスタスイッチヘルスモニタの構成ファイルが ONTAP にバンドルされています。 
 ---
 = クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

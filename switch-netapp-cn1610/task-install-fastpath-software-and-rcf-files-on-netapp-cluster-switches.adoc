@@ -5,6 +5,7 @@ keywords: fastpath, software, install, netapp cluster switches, rcfs, ontap
 summary: インストール手順は、 NetApp CN1601 管理スイッチと、 ONTAP 8.3.1 以降を実行する CN1610 クラスタスイッチのどちらについても同じです。ただし、この 2 つのモデルには、異なるソフトウェアと RCF が必要です。 
 ---
 = ONTAP 8.3.1 以降を実行しているネットアップクラスタスイッチに FastPath ソフトウェアと RCF をインストールします
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

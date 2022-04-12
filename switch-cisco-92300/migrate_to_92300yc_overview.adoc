@@ -5,6 +5,7 @@ keywords: migrate to cisco nx 92300yc cluster switch,new cluster switch migratio
 summary: 古い Cisco Nexus クラスタスイッチを Cisco Nexus 92300YC クラスタスイッチに交換する場合は、特定の構成情報、ポート接続、およびケーブル接続要件に注意する必要があります。 
 ---
 = Cisco スイッチから Cisco Nexus 92300YC スイッチに移行する
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -5,6 +5,7 @@ keywords: cluster-mode,supported versions,switches supported,cluster network,efo
 summary: Broadcom 対応 BES-53248 クラスタスイッチは、 ONTAP 9.5P8 以降では 2~24 ノードのサイズのクラスタで動作するように設計されています。40/100GbE クラスタポートのサポートは、 EFOS ファームウェアバージョン 3.4.4.6 以降から開始されます。 
 ---
 = Broadcom 対応 BES-53248 クラスタスイッチの概要
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

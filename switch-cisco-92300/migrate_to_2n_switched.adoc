@@ -5,6 +5,7 @@ keywords: 2-node switched Cisco 92300YC cluster switch migration
 summary: 既存の 2 ノードスイッチレスクラスタ環境を使用している場合は、 Cisco Nexus 92300YC スイッチを使用して 2 ノードスイッチクラスタ環境に移行し、 3 ノード以上にクラスタを拡張できます。 
 ---
 = Cisco Nexus 92300YC スイッチを使用した 2 ノードスイッチクラスタへの移行方法
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

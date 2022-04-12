@@ -5,6 +5,7 @@ keywords: replace, cisco nexus 3132q-v cluster switches
 summary: クラスタネットワーク内の障害のある Cisco Nexus 3132Q-V スイッチの交換は Nondisruptive 手順 （ NDO ；無停止 NDO ；ノンストップオペレーション）であり、特定の順序でタスクを実行する必要があります。 
 ---
 = Cisco Nexus 3132Q-V クラスタスイッチの交換方法
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

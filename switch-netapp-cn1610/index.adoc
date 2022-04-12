@@ -5,6 +5,7 @@ keywords: install, fastpath, software, rcfs
 summary: cn1610 、スイッチ、ネットアップ 
 ---
 = NetApp CN1610 スイッチ
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

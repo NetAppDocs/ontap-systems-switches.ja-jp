@@ -5,6 +5,7 @@ keywords: migrate, cisco nexus 5596 switch, 3232c
 summary: クラスタ内の既存の Cisco Nexus 5596 クラスタスイッチを Nexus 3232C クラスタスイッチで交換するには、特定の順序でタスクを実行する必要があります。 
 ---
 = Cisco Nexus 5596 クラスタスイッチから Cisco Nexus 3232C クラスタスイッチへの移行方法
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

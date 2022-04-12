@@ -5,6 +5,7 @@ keywords: install, cisco, nexus, switch, pass-through, panel, netapp, cabinet, b
 summary: Cisco Nexus 9336C-FX2 スイッチとパススルーパネルは、スイッチに付属の標準ブラケットを使用してネットアップキャビネットに設置できます。 
 ---
 = Cisco Nexus 9336C-FX2 スイッチとパススルーパネルをネットアップキャビネットに設置します
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
