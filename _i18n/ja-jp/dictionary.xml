@@ -1507,7 +1507,6 @@
   <block id="00f1aa07463199047fef449f663dd76d" category="list-text">[[step14]] ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して再度有効にします。「 system node AutoSupport invoke -node * -type all -message MAINT=end`</block>
   <block id="eac9e7086f92a026c0dbe06001206204" category="doc">Cisco 共有スイッチのセットアップおよび設定ガイド</block>
   <block id="949a9350bf341b8fa64977aa3c2584c5" category="section-title">ONTAP でサポートされるスイッチ</block>
-  <block id="641d7ad5c2ec29d01cc93211bd6393b9" category="paragraph">ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチシナリオに結合できます。3 つ以上のノードで ONTAP ネットワークを構築する場合は、サポートされているネットワークスイッチが 2 つ必要です。</block>
   <block id="8a5fdb7aa013af2f886a0745ecad55fa" category="paragraph">次の Cisco 共有ネットワークスイッチがサポートされています。</block>
   <block id="f1375f4dce82b7173addf1ef166c2ebc" category="section-title">スイッチを設定します</block>
   <block id="7b6ae48e36dd3d7cf6fae83bada46583" category="paragraph">必要な設定情報とドキュメントをまだ入手していない場合は、共有スイッチを設定する前に、その情報を収集する必要があります。</block>
@@ -1519,8 +1518,6 @@
   <block id="1771b579c10634da9a764a221c18f7e1" category="paragraph">すべての Cisco 共有スイッチは、シスコの工場出荷時のデフォルト設定で出荷されます。これらのスイッチには、 NX-OS ソフトウェアの最新バージョンもありますが、 RCF はロードされていません。</block>
   <block id="8c4271e6faf2cea4cfc8e5b7108d8ee9" category="section-title">手順</block>
   <block id="b01c82f53d899ee81ba67bfac6270f54" category="inline-link">Cisco Nexus 9336C-FX2 クラスタスイッチとパススルーパネルのネットアップキャビネットへの設置</block>
-  <block id="d3e18e6cda55c62cb1229ed70a876467" category="list-text">ラックにスイッチとコントローラを配置を参照してください<block ref="90faa892a4d50a53b0a7930f42b5c315" category="inline-link-rx"></block> スイッチをネットアップキャビネットに設置する手順については、ガイドを参照してください。</block>
-  <block id="78e6dfddb13e04b530aa5e137fbcffcb" category="list-text">スイッチとコントローラの電源をオンにします。</block>
   <block id="6ee5954a9939ee0324616b71255a1ea7" category="list-text">[[step3]] で提供された情報に基づいて、スイッチの初期設定を実行します <block ref="4e098ee0fc4ed6ae0122d7d616100d24" category="inline-xref-macro-rx"></block>。</block>
   <block id="39ea6d6c5412ec7e0e17dd391cd35f3a" category="list-text">スイッチのソフトウェアバージョンを確認し、必要に応じてネットアップ対応バージョンのソフトウェアをスイッチにダウンロードします。</block>
   <block id="7b1d1185b835814de783483f686e9825" category="inline-link">シスコ</block>
@@ -1568,7 +1565,6 @@
   <block id="b3c830c1f46c78e5e5bfa160bf68597f" category="cell"><block ref="2ac6309dec20e42c583f3092a07361f2" category="inline-link-macro-rx"></block> （スイッチにインストールされている NX-OS リリースのノートを選択してください）</block>
   <block id="83a1f0b32ba6ed26d00737e3faf8fc2e" category="cell"><block ref="83a1f0b32ba6ed26d00737e3faf8fc2e" category="inline-link-macro-rx"></block></block>
   <block id="fd063930033e8c3d34fa893faa14f4ee" category="section-title">Cisco Nexus 9336C-FX2 のケーブル配線の詳細</block>
-  <block id="5a5c48f7dd282373e89a35f202529de4" category="paragraph">次のケーブル接続図は、コントローラとスイッチの間のケーブル接続を完了するためのものです。</block>
   <block id="4e4e9a3c74ffafdd7400bec54125834f" category="inline-image-macro">直接接続</block>
   <block id="d2aa2982691bcb6b044696b6691d5677" category="paragraph">サポート対象のプラットフォームを文書化する場合は、入力済みのケーブル接続ワークシートの例を参考にして、空白のケーブル接続ワークシートに記入する必要があります。</block>
   <block id="3d7fd5afdd3e2a9008c8eb6e9d19e41c" category="inline-image-macro">ケーブル接続ワークシート</block>
@@ -3111,7 +3107,6 @@
   <block id="3ebdfe501befb632f105d0771d49b2ed" category="section-title">直接接続型ストレージを使用するスイッチレスクラスタから移行する</block>
   <block id="a4d6f36c2fec3f157bf2efa75150d45d" category="admonition">該当するネットアップ RCF をからダウンロードする必要があります<block ref="1ccfcc282c22bbf629043880b6e3d7b2" category="inline-link-rx"></block> 受信したスイッチの場合。</block>
   <block id="6a2cf54f6a37518ec42d92fd7fd3e59c" category="paragraph"><block ref="6a2cf54f6a37518ec42d92fd7fd3e59c" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="0b33aa659f82969dceca5746d61c3616" category="paragraph">共有スイッチのストレージポートを使用する代わりに、ストレージを直接接続型としてケーブル接続する場合は、次の図を参考にしてください。</block>
   <block id="6c2050d09711322397bf2564af018947" category="paragraph"><block ref="6c2050d09711322397bf2564af018947" category="inline-image-macro-rx" type="image"></block></block>
   <block id="979ffb8500894419af56930a4367f4cf" category="list-text">ライセンスファイルをインストールします。次の例では、 SFTP を使用してライセンスファイルをキーインデックス 1 にコピーします。</block>
   <block id="dd76252ea7a50def2a98f218cb1505b4" category="inline-link">こちらの技術情報アーティクル</block>
@@ -3260,5 +3255,10 @@
   <block id="403284bd44beda112195a484c8a76421" category="sidebar">ストレージスイッチ</block>
   <block id="bc8a2cd252a5beb1dbf4f209baea67eb" category="sidebar">共有スイッチ</block>
   <block id="7bd0358c3b996edfe19bd3da912bde62" category="sidebar">Cisco Nexus 9336C-FX2 共有スイッチ</block>
-  <block id="e4c1ca77c9404c4e475b957c8cc99c46" category="sidebar">NVIDIA MSN2100 スイッチ</block>
+  <block id="c362338c56e3a8923a48d3ee53e0fe46" category="paragraph">ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチ構成に組み合わせることができます。3 つ以上のノードで ONTAP クラスタを構築する場合は、サポートされている 2 つのネットワークスイッチが必要です。</block>
+  <block id="a4e916c58a0625a75d1a7d3a587de12d" category="list-text">スイッチ、コントローラ、および NS224 NVMe ストレージシェルフをラックに配置します。を参照してください<block ref="90faa892a4d50a53b0a7930f42b5c315" category="inline-link-rx"></block> スイッチをネットアップキャビネットに設置する手順については、ガイドを参照してください。</block>
+  <block id="33b51f739542d105d7c5028b7244b26e" category="list-text">スイッチ、コントローラ、および NS224 NVMe ストレージシェルフの電源をオンにします。</block>
+  <block id="42129f3fe0d8a21bc1cebadaaaa93763" category="list-text">ほとんどのストレージシステムコントローラは、イーサネットサービスポート（レンチマーク）に接続することで、 e0M インターフェイスを介して管理されます。AFF A800 および AFF A700s システムでは、 e0M インターフェイスは専用のイーサネットポートを使用します。</block>
+  <block id="59a2ddcfdc456f577bc1f4ec1b24677c" category="paragraph">次のケーブル接続図は、コントローラとスイッチの間のケーブル接続を完了するためのものです。NS224 ストレージをスイッチ接続でケーブル接続する場合は、スイッチ接続の図に従ってください。</block>
+  <block id="3dda7fcad085dc5c2976b2c7124be51b" category="paragraph">共有スイッチのストレージポートを使用する代わりに NS224 ストレージを直接接続型としてケーブル接続する場合は、次の図に従って直接接続してください。</block>
 </blocks>
