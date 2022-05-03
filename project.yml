@@ -10,7 +10,7 @@ settings:
   pdf:
     zip-level: 1
     zip-filename: ontap-systems-switches-pdfs.zip
-  langs: ja-jp,us-en,zh-cn,ko-kr
+  langs: ja-jp,us-en,zh-cn,zh-tw,ko-kr
 sidebar:
   entries:
   - title: AFF および FAS スイッチのドキュメント
