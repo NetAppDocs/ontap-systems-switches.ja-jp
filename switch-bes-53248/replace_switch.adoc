@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: replace, replacing, defective, broadcom-supported, bes, cluster, switch, network, nondisruptive, procedure, ndu, replace a broadcom-supported bes-53428 cluster switch - bes-53428 switches 
 summary: クラスタネットワーク内での、障害のある Broadcom 対応 BES-53248 クラスタスイッチの交換は、無停止手順（ NDU ）です。 
 ---
-= Broadcom 対応 BES-53248 クラスタスイッチ BES-53248 スイッチを交換します
+= Broadcom対応BES-53248クラスタスイッチを交換します
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -29,7 +29,7 @@ summary: クラスタネットワーク内での、障害のある Broadcom 対�
 ** 交換用スイッチへのコンソールアクセスが確立されている必要があります。
 ** ノード接続は、デフォルトのライセンスを使用したポート 0/1~0/16 です。
 ** ポート 0/55 および 0/56. では、すべてのスイッチ間リンク（ ISL ）ポートを無効にする必要があります。
-** 目的のリファレンス構成ファイル（「 RCF 」）と「 EFOS 」オペレーティングシステムスイッチイメージをスイッチにロードする必要があります。
+** 目的のリファレンス構成ファイル（RCF）とEFOSオペレーティングシステムスイッチイメージをスイッチにロードする必要があります。
 ** スイッチの初期カスタマイズが完了している必要があります。詳細については、を参照してください xref:configure-new-switch.adoc[Broadcom 対応の新しい BES-53248 スイッチの構成]。
 +
 STP 、 SNMP 、 SSH などの以前のサイトのカスタマイズは、すべて新しいスイッチにコピーする必要があります。
@@ -51,9 +51,9 @@ STP 、 SNMP 、 SSH などの以前のサイトのカスタマイズは、す�
 
 NOTE: 次の手順は、次のクラスタネットワークトポロジに基づいています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> network port show -ipspace Cluster
+cluster1::> *network port show -ipspace Cluster*
 
 Node: node1
                                                                        Ignore
@@ -72,10 +72,8 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 
-4 entries were displayed.
 
-
-cluster1::> network interface show -vserver Cluster
+cluster1::> *network interface show -vserver Cluster*
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
 ----------- ---------- ---------- ------------------ ------------- ------- ----
@@ -85,11 +83,8 @@ Cluster
             node2_clus1  up/up    169.254.47.194/16  node2         e0a     true
             node2_clus2  up/up    169.254.19.183/16  node2         e0b     true
 
-4 entries were displayed.
 
-
-
-cluster1::> network device-discovery show -protocol cdp
+cluster1::> *network device-discovery show -protocol cdp*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  ----------------
@@ -99,11 +94,10 @@ node2      /cdp
 node1      /cdp
             e0a    cs1                       0/1               BES-53248
             e0b    cs2                       0/1               BES-53248
-
-4 entries were displayed.
-
-
-(cs1) # show isdp neighbors
+----
+[listing, subs="+quotes"]
+----
+(cs1)# *show isdp neighbors*
 
 Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
                   S - Switch, H - Host, I - IGMP, r - Repeater
@@ -116,7 +110,7 @@ cs2                      0/55      179       R          BES-53248        0/55
 cs2                      0/56      179       R          BES-53248        0/56
 
 
-(cs2) # show isdp neighbors
+(cs2)# show isdp neighbors
 
 Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
                   S - Switch, H - Host, I - IGMP, r - Repeater
@@ -151,25 +145,26 @@ NOTE: 追加ポート用の追加ライセンスを購入した場合は、そ�
 NOTE: 「 enable 」モードを開始するためにパスワードは必要ありません。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-User: admin
+User: *admin*
 Password:
-(newcs2) >enable
-(newcs2) #config
-(newcs2)(config)#interface 0/1-0/16
-(newcs2)(interface 0/1-0/16)#shutdown
-(newcs2)(interface 0/1-0/16)#exit
-(newcs2)(config)#exit
+(newcs2)> *enable*
+(newcs2)# *config*
+(newcs2)(config)# *interface 0/1-0/16*
+(newcs2)(interface 0/1-0/16)# *shutdown*
+(newcs2)(interface 0/1-0/16)# *exit*
+(newcs2)(config)# *exit*
+(newcs2)#
 ----
 . すべてのクラスタ LIF で「 auto-revert 」が有効になっていることを確認します。
 +
 network interface show -vserver Cluster -fields auto-revert を実行します
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> network interface show -vserver Cluster -fields auto-revert
+cluster1::> *network interface show -vserver Cluster -fields auto-revert*
 
 Logical
 Vserver   Interface    Auto-revert
@@ -177,17 +172,16 @@ Vserver   Interface    Auto-revert
 Cluster   node1_clus1  true
 Cluster   node1_clus2  true
 Cluster   node2_clus1  true
-Cluster			node2_clus2		true
+Cluster   node2_clus2  true
 
-4 entries were displayed.
 ----
 . BES-53248 スイッチ cs1 の ISL ポート 0/55 と 0/56 をシャットダウンします。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs1) # config
-(cs1)(config)# interface 0/55-0/56
-(cs1)(interface 0/55-0/56)# shutdown
+(cs1)# *config*
+(cs1)(config)# *interface 0/55-0/56*
+(cs1)(interface 0/55-0/56)# *shutdown*
 ----
 . すべてのケーブルを BES-53248 cs2 スイッチから取り外し、 BES-53248 newcs2 スイッチの同じポートに接続します。
 . cs1 スイッチと newcs2 スイッチ間で ISL ポート 0/55 と 0/56 を起動し、ポートチャネルの動作ステータスを確認します。
@@ -198,13 +192,13 @@ Cluster			node2_clus2		true
 次に、 ISL ポート 0/55 および 0/56 を有効にし、スイッチ cs1 のポートチャネル 1/1 のリンク状態を表示する例を示します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs1) # config
-(cs1)(config)# interface 0/55-0/56
-(cs1)(interface 0/55-0/56)# no shutdown
-(cs1) # show port-channel 1/1
-
+(cs1)# *config*
+(cs1)(config)# *interface 0/55-0/56*
+(cs1)(interface 0/55-0/56)# *no shutdown*
+(cs1)(interface 0/55-0/56)# *exit*
+(cs1)# *show port-channel 1/1*
 
 Local Interface................................ 1/1
 Channel Name................................... Cluster-ISL
@@ -229,16 +223,16 @@ Ports  Timeout       Speed      Active
 NOTE: 追加ポート用の追加ライセンスを購入した場合は、それらのポートもシャットダウンします。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
 User:admin
 Password:
-(newcs2) >enable
-(newcs2) #config
-(newcs2)(config)#interface 0/1-0/16
-(newcs2)(interface 0/1-0/16)#no shutdown
-(newcs2)(interface 0/1-0/16)#exit
-(newcs2)(config)#exit
+(newcs2)> *enable*
+(newcs2)# *config*
+(newcs2)(config)# *interface 0/1-0/16*
+(newcs2)(interface 0/1-0/16)# *no shutdown*
+(newcs2)(interface 0/1-0/16)# *exit*
+(newcs2)(config)# *exit*
 ----
 . ポート e0b が「 up 」になっていることを確認します。
 +
@@ -248,9 +242,9 @@ Password:
 次のような出力が表示されます。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> network port show -ipspace Cluster
+cluster1::> *network port show -ipspace Cluster*
 
 Node: node1
                                                                         Ignore
@@ -267,8 +261,6 @@ Port      IPspace      Broadcast Domain Link MTU   Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ----- ----------- -------- -------
 e0a       Cluster      Cluster          up   9000  auto/10000  healthy  false
 e0b       Cluster      Cluster          up   9000  auto/auto   -        false
-
-4 entries were displayed.
 ----
 . 前の手順で使用したのと同じノードで、ノード 1 のクラスタ LIF node1_clus2 が自動リバートするまで待ちます。
 +
@@ -278,9 +270,9 @@ e0b       Cluster      Cluster          up   9000  auto/auto   -        false
 次のコマンドは、両方のノードの LIF に関する情報を表示します。両方のクラスタ・インターフェイスの Is Home が true の場合 ' 最初のノードの起動は成功し ' 正しいポート・アサインメントが表示されますこの例では 'e0a' と node1 の e0b を示します
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::> network interface show -vserver Cluster
+cluster::> *network interface show -vserver Cluster*
 
             Logical      Status     Network            Current    Current Is
 Vserver     Interface    Admin/Oper Address/Mask       Node       Port    Home
@@ -290,30 +282,28 @@ Cluster
             node1_clus2  up/up      169.254.49.125/16  node1      e0b     true
             node2_clus1  up/up      169.254.47.194/16  node2      e0a     true
             node2_clus2  up/up      169.254.19.183/16  node2      e0a     false
-
-4 entries were displayed.
 ----
 . クラスタ内のノードに関する情報を表示します cluster show
 +
 次の例では ' このクラスタの node1 と node2 のノードの正常性が true であることを示します
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> cluster show
-Node                   Health Eligibility    Epsilon
---------------------   ------- ------------  --------
-node1                   true    true           true
-node2                   true    true           true
+cluster1::> *cluster show*
+Node   Health   Eligibility   Epsilon
+------ -------- ------------  --------
+node1  true     true          true
+node2  true     true          true
 ----
 . 次のクラスタネットワーク構成を確認します。
 +
 「 network port show 」のように表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> network port show -ipspace Cluster
+cluster1::> *network port show -ipspace Cluster*
 Node: node1
                                                                        Ignore
                                        Speed(Mbps)            Health   Health
@@ -330,10 +320,8 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 e0a       Cluster      Cluster          up   9000 auto/10000  healthy  false
 e0b       Cluster      Cluster          up   9000 auto/10000  healthy  false
 
-4 entries were displayed.
 
-
-cluster1::> network interface show -vserver Cluster
+cluster1::> *network interface show -vserver Cluster*
 
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
@@ -344,10 +332,11 @@ Cluster
             node2_clus1  up/up    169.254.47.194/16  node2         e0a     true
             node2_clus2  up/up    169.254.19.183/16  node2         e0b     true
 4 entries were displayed.
-
-
-
-cs1# show cdp neighbors
+----
++
+[listing, subs="+quotes"]
+----
+cs1# *show cdp neighbors*
 
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
@@ -361,10 +350,7 @@ newcs2(FDO296348FU)  Eth1/65        176    R S I s     N9K-C92300YC  Eth1/65
 newcs2(FDO296348FU)  Eth1/66        176    R S I s     N9K-C92300YC  Eth1/66
 
 
-Total entries displayed: 4
-
-
-cs2# show cdp neighbors
+cs2# *show cdp neighbors*
 
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
@@ -376,17 +362,15 @@ node1              Eth1/1         139    H           FAS2980       e0b
 node2              Eth1/2         124    H           FAS2980       e0b
 cs1(FDO220329KU)   Eth1/65        178    R S I s     N9K-C92300YC  Eth1/65
 cs1(FDO220329KU)   Eth1/66        178    R S I s     N9K-C92300YC  Eth1/66
-
-Total entries displayed: 4
 ----
 . クラスタネットワークが正常であることを確認します。
 +
 「 isdp 隣人」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs1)# show isdp neighbors
+(cs1)# *show isdp neighbors*
 Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
 S - Switch, H - Host, I - IGMP, r - Repeater
 Device ID    Intf    Holdtime    Capability    Platform    Port ID
@@ -396,7 +380,7 @@ node2        0/2     152         H             FAS2750     e0a
 newcs2       0/55    179         R             BES-53248   0/55
 newcs2       0/56    179         R             BES-53248   0/56
 
-(newcs2) # show isdp neighbors
+(newcs2)# *show isdp neighbors*
 Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
 S - Switch, H - Host, I - IGMP, r - Repeater
 
@@ -417,4 +401,4 @@ https://mysupport.netapp.com/["ネットアップサポートサイト"^]
 
 https://hwu.netapp.com/["NetApp Hardware Universe の略"^]
 
-http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["『 Switch Setup and Configuration Guide for Broadcom Supported BES-53248 switches 』を参照してください"^]
+link:replace-requirements.html["Broadcom対応BES-53248スイッチのセットアップと設定"^]

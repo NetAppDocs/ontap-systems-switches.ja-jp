@@ -13,10 +13,6 @@ summary: clustered Data ONTAP 構成をセットアップするには、特定�
 [role="lead"]
 clustered Data ONTAP 構成をセットアップするには、特定のスイッチとコントローラに関するドキュメントが必要です。
 
-
-
-== BES-53248 クラスタスイッチに必要なドキュメント
-
 BES-53248 クラスタスイッチをセットアップするには、 Broadcom サポートサイトから次のドキュメントを入手する必要があります。 https://www.broadcom.com/support/bes-switch["Broadcom Ethernet Switch 製品ライン"^]
 
 [cols="1,2"]
@@ -72,10 +68,6 @@ _ EFOS リリースノート v3.4.3_
 BES-53248 ソフトウェアに関するリリース固有の情報を示します。
 
 |===
-
-
-== サポートされている ONTAP システムに必要なドキュメント
-
 ONTAP システムをセットアップするには、ネットアップサポートサイトから次のドキュメントを入手する必要があります http://mysupport.netapp.com/["mysupport.netapp.com"^]
 
 [cols="1,2"]
@@ -84,7 +76,7 @@ ONTAP システムをセットアップするには、ネットアップサポ�
 
 
  a| 
-_ Hardware Universe _
+https://hwu.netapp.com/Home/Index["NetApp Hardware Universe の略"^]
  a| 
 システムキャビネットを含むすべてのネットアップハードウェアの電源要件とサイト要件について説明します。
 

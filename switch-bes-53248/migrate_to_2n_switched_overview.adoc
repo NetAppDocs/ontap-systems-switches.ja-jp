@@ -28,10 +28,7 @@ Broadcom 対応 BES-53248 クラスタスイッチ構成：
 * クラスタスイッチへのコンソールアクセスが必要です。
 * BES-53248 ノード間スイッチおよびスイッチ間接続には、 Twinax ケーブルまたはファイバケーブルを使用する必要があります。
 +
-ONTAP の互換性、サポートされている EFOS ファームウェア、 BES-53248 スイッチへのケーブル接続に関する情報については、 NetApp __ Hardware Universe を参照してください。
-
-+
-https://hwu.netapp.com/Switch/Index["Hardware Universe - スイッチ"^]
+。 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe _"^] ONTAP の互換性、サポートされているEFOSファームウェア、BES-53248スイッチへのケーブル接続に関する情報が含まれています。
 
 * スイッチ間リンク（ ISL ）ケーブルが、両方の BES-53248 スイッチのポート 0/55 と 0/56 に接続されている必要があります。
 * 両方の BES-53248 スイッチの初期カスタマイズを完了しておく必要があります。次のようにします。
@@ -54,10 +51,7 @@ SMTP 、 SNMP 、 SSH などのサイトのカスタマイズは、新しいス�
 * 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
 * この手順で使用されるクラスタ・ポートは 'e0a' と e0b です
 +
-プラットフォームの実際のクラスタポートの最新情報については、 Hardware Universe を参照してください。
-
-+
-https://hwu.netapp.com["Hardware Universe"^]
+。 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe _"^] プラットフォームの実際のクラスタポートに関する最新情報が含まれます。
 
 
 
@@ -97,13 +91,13 @@ NOTE: ISL ポートを無効にしないでください。
 次の例は、スイッチ cs1 でノードに接続されたポート 1~16 が無効になっていることを示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs1)# configure
-(cs1)(Config)# interface 0/1-0/16
-(cs1)(Interface 0/1-0/16)# shutdown
-(cs1)(Interface 0/1-0/16)# exit
-(cs1)(Config)# exit
+(cs1)# *configure*
+(cs1)(Config)# *interface 0/1-0/16*
+(cs1)(Interface 0/1-0/16)# *shutdown*
+(cs1)(Interface 0/1-0/16)# *exit*
+(cs1)(Config)# *exit*
 ----
 . 2 つの BES-53248 スイッチ cs1 と cs2 間の ISL で ISL ポートと物理ポートが「 up 」になっていることを確認します。
 +
@@ -113,9 +107,9 @@ NOTE: ISL ポートを無効にしないでください。
 次の例は、スイッチ cs1 上の ISL ポートが up になっていることを示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs1)# show port-channel 1/1
+(cs1)# *show port-channel 1/1*
 Local Interface................................ 1/1
 Channel Name................................... Cluster-ISL
 Link State..................................... Up
@@ -138,9 +132,9 @@ Ports  Timeout       Speed      Active
 次の例は、スイッチ cs2 上の ISL ポートが up になっていることを示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2)# show port-channel 1/1
+(cs2)# *show port-channel 1/1*
 Local Interface................................ 1/1
 Channel Name................................... Cluster-ISL
 Link State..................................... Up
@@ -157,7 +151,6 @@ Ports  Timeout       Speed      Active
        partner/long
 0/56   actor/long    100G Full  True
        partner/long
-(cs2) #
 ----
 . 隣接デバイスのリストを表示します。
 +
@@ -170,9 +163,9 @@ Ports  Timeout       Speed      Active
 次の例は、スイッチ cs1 上の隣接デバイスを示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs1)# show isdp neighbors
+(cs1)# *show isdp neighbors*
 
 Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
                   S - Switch, H - Host, I - IGMP, r - Repeater
@@ -185,10 +178,9 @@ cs2            0/56     176       R            BES-53248   0/56
 次の例は、スイッチ cs2 上の隣接デバイスを表示します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-
-(cs2)# show isdp neighbors
+(cs2)# *show isdp neighbors*
 
 Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
                   S - Switch, H - Host, I - IGMP, r - Repeater
@@ -205,9 +197,9 @@ cs2            0/56     176       R            BES-53248   0/56
 各ポートは 'Link' と 'HealthStatus' の場合に Healthy と表示されるはずです
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -ipspace Cluster
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: node1
 
@@ -224,18 +216,15 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
 --------- ------------ ---------------- ---- ---- ----------- --------
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy
-
-4 entries were displayed.
 ----
 . すべてのクラスタ LIF が「 up 」で動作していることを確認します。「 network interface show -vserver Cluster
 +
 各クラスタ LIF には「 Is Home 」の「 true 」が表示され、「 TStatus Admin/Oper 」には「 up/up 」が表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
 
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
@@ -245,13 +234,12 @@ Cluster
             node1_clus2  up/up    169.254.49.125/16  node1         e0b     true
             node2_clus1  up/up    169.254.47.194/16  node2         e0a     true
             node2_clus2  up/up    169.254.19.183/16  node2         e0b     true
-4 entries were displayed.
 ----
 . すべてのクラスタ LIF で「 auto-revert 」が有効になっていることを確認します。「 network interface show -vserver Cluster -fields auto-revert
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster -fields auto-revert
+cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
 
           Logical
 Vserver   Interface     Auto-revert
@@ -261,15 +249,10 @@ Cluster
           node1_clus2   true
           node2_clus1   true
           node2_clus2   true
-
-4 entries were displayed.
 ----
 . ノード 1 のクラスタポート e0a からケーブルを外し、クラスタスイッチ cs1 のポート 1 に e0a を接続します。これには、 BES-53248 スイッチでサポートされている適切なケーブル接続を使用します。
 +
-ケーブル接続の詳細については、 NetApp Hardware Universe _ を参照してください。
-
-+
-https://hwu.netapp.com/Switch/Index["Hardware Universe - スイッチ"^]
+。 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe _"^] ケーブル接続の詳細については、を参照してください。
 
 . ノード 2 のクラスタポート e0a からケーブルを外し、クラスタスイッチ cs1 のポート 2 に e0a を接続します。これには、 BES-53248 スイッチでサポートされている適切なケーブル接続を使用します。
 . クラスタスイッチ cs1 のすべてのノード側ポートを有効にします。
@@ -277,13 +260,13 @@ https://hwu.netapp.com/Switch/Index["Hardware Universe - スイッチ"^]
 次の例は、スイッチ cs1 でポート 1~16 が有効になっていることを示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs1)# configure
-(cs1)(Config)# interface 0/1-0/16
-(cs1)(Interface 0/1-0/16)# no shutdown
-(cs1)(Interface 0/1-0/16)# exit
-(cs1)(Config)# exit
+(cs1)# *configure*
+(cs1)(Config)# *interface 0/1-0/16*
+(cs1)(Interface 0/1-0/16)# *no shutdown*
+(cs1)(Interface 0/1-0/16)# *exit*
+(cs1)(Config)# *exit*
 ----
 . すべてのクラスタ LIF が up であり、運用可能であり、 Is Home に「 true 」と表示されていることを確認します。
 +
@@ -293,9 +276,9 @@ https://hwu.netapp.com/Switch/Index["Hardware Universe - スイッチ"^]
 次の例では、すべての LIF がノード 1 とノード 2 で up になっていて、 Is Home の結果が「 true 」であることを示します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
 
          Logical      Status     Network            Current     Current Is
 Vserver  Interface    Admin/Oper Address/Mask       Node        Port    Home
@@ -305,8 +288,6 @@ Cluster
          node1_clus2  up/up      169.254.49.125/16  node1       e0b     true
          node2_clus1  up/up      169.254.47.194/16  node2       e0a     true
          node2_clus2  up/up      169.254.19.183/16  node2       e0b     true
-
-4 entries were displayed.
 ----
 . クラスタ内のノードのステータスに関する情報を表示します。
 +
@@ -316,16 +297,14 @@ Cluster
 次の例は、クラスタ内のノードの健全性と参加資格に関する情報を表示します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------  ------------
 node1                true    true          false
 node2                true    true          false
-
-2 entries were displayed.
 ----
 . ノード 1 のクラスタポート e0b からケーブルを外し、 BES-53248 スイッチでサポートされている適切なケーブル接続に従って、クラスタスイッチ cs2 のポート 1 に接続します。
 . ノード 2 のクラスタポート e0b からケーブルを外し、 BES-53248 スイッチでサポートされている適切なケーブル接続に従って、クラスタスイッチ cs2 のポート 2 に接続します。
@@ -334,13 +313,13 @@ node2                true    true          false
 次の例は、スイッチ cs2 でポート 1~16 が有効になっていることを示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2)# configure
-(cs2)(Config)# interface 0/1-0/16
-(cs2)(Interface 0/1-0/16)# no shutdown
-(cs2)(Interface 0/1-0/16)# exit
-(cs2)(Config)# exit
+(cs2)# *configure*
+(cs2)(Config)# *interface 0/1-0/16*
+(cs2)(Interface 0/1-0/16)# *no shutdown*
+(cs2)(Interface 0/1-0/16)# *exit*
+(cs2)(Config)# *exit*
 ----
 . すべてのクラスタポートが「 up 」になっていることを確認します。
 +
@@ -350,9 +329,9 @@ node2                true    true          false
 次の例は、ノード 1 とノード 2 のすべてのクラスタポートが up になっていることを示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -ipspace Cluster
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: node1
                                                                        Ignore
@@ -369,8 +348,6 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-
-4 entries were displayed.
 ----
 . すべてのインターフェイスに Is Home の true が表示されていることを確認します。
 +
@@ -384,9 +361,9 @@ NOTE: この処理が完了するまでに数分かかることがあります�
 次の例では、すべての LIF がノード 1 とノード 2 で up になっていて、 Is Home の結果が「 true 」であることを示します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
 
           Logical      Status     Network            Current    Current Is
 Vserver   Interface    Admin/Oper Address/Mask       Node       Port    Home
@@ -396,8 +373,6 @@ Cluster
           node1_clus2  up/up      169.254.49.125/16  node1      e0b     true
           node2_clus1  up/up      169.254.47.194/16  node2      e0a     true
           node2_clus2  up/up      169.254.19.183/16  node2      e0b     true
-
-4 entries were displayed.
 ----
 . 両方のノードのそれぞれで、各スイッチに 1 つの接続があることを確認します。
 +
@@ -407,9 +382,9 @@ Cluster
 次の例は、両方のスイッチの該当する結果を示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs1)# show isdp neighbors
+(cs1)# *show isdp neighbors*
 
 Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
                   S - Switch, H - Host, I - IGMP, r - Repeater
@@ -421,7 +396,7 @@ cs2            0/55         178       R            BES-53248   0/55
 cs2            0/56         178       R            BES-53248   0/56
 
 
-(cs2)# show isdp neighbors
+(cs2)# *show isdp neighbors*
 
 Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge,
                   S - Switch, H - Host, I - IGMP, r - Repeater
@@ -437,9 +412,9 @@ cs1            0/56         175       R            BES-53248   0/56
 「 network device-discovery show -protocol cdp 」と入力します
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network device-discovery show -protocol cdp
+cluster1::*> *network device-discovery show -protocol cdp*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  ----------------
@@ -449,8 +424,6 @@ node2      /cdp
 node1      /cdp
             e0a    cs1                       0/1               BES-53248
             e0b    cs2                       0/1               BES-53248
-
-4 entries were displayed.
 ----
 . 設定が無効になっていることを確認します。
 +
@@ -464,9 +437,9 @@ NOTE: コマンドが完了するまでに数分かかることがあります�
 次の例では 'false' の出力は ' 構成設定が無効になっていることを示しています
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network options switchless-cluster show
+cluster1::*> *network options switchless-cluster show*
 Enable Switchless Cluster: false
 ----
 . クラスタ内のノードメンバーのステータスを確認します。
@@ -477,9 +450,9 @@ Enable Switchless Cluster: false
 次の例は、クラスタ内のノードの健全性と参加資格に関する情報を表示します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------  --------
@@ -491,9 +464,9 @@ node2                true    true          false
 'cluster ping-cluster -node-node-name-'
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster ping-cluster -node local
+cluster1::*> *cluster ping-cluster -node local*
 
 Host is node2
 Getting addresses from network interface table...
@@ -534,12 +507,12 @@ cluster1::*> system node autosupport invoke -node \* -type all -message MAINT=EN
 ----
 
 
-のクラスタスイッチログ収集機能の設定を参照してください http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["『 Switch Setup and Configuration Guide for Broadcom Supported BES-53248 switches 』を参照してください"^] スイッチ関連のログファイルの収集に使用されるクラスタ健常性スイッチのログ収集を有効にするために必要な手順については、を参照してください。
+を参照してください link:configure-health-monitor.html["クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします"] および link:configure-log-collection["クラスタスイッチのログ収集機能を設定します"] スイッチ関連のログファイルの収集に使用されるクラスタ健常性スイッチのログ収集を有効にするために必要な手順については、を参照してください。
 
 * 関連情報 *
 
-https://hwu.netapp.com["Hardware Universe"^]
+https://hwu.netapp.com/Home/Index["NetApp Hardware Universe の略"^]
 
-http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["『 Switch Setup and Configuration Guide for Broadcom Supported BES-53248 switches 』を参照してください"^]
+link:replace-requirements.html["Broadcom対応BES-53248スイッチのセットアップと設定"^]
 
 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows["ネットアップの技術情報アーティクル：「 How to suppress automatic case creation during scheduled maintenance windows"^]

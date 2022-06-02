@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: CN1610,CN1610 replacing, migrate from CN1610 
 summary: クラスタ内の既存の CN1610 クラスタスイッチを Broadcom 対応 BES-53248 クラスタスイッチに交換するには、特定の順序でタスクを実行する必要があります。 
 ---
-= CN1610 クラスタスイッチを BES-53248 クラスタスイッチに移行する方法 - BES-53248 スイッチ
+= CN1610クラスタスイッチをBES-53248クラスタスイッチに移行する方法
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -75,9 +75,9 @@ advanced のプロンプト（ * > ）が表示されます。
 network interface show -vserver Cluster -fields auto-revert を実行します
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster -fields auto-revert
+cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
 
           Logical
 Vserver   Interface     Auto-revert
@@ -87,8 +87,6 @@ Cluster
           node1_clus2   true
           node2_clus1   true
           node2_clus2   true
-
-4 entries were displayed.
 ----
 . 構成に含まれるデバイスに関する情報を表示します。
 +
@@ -98,9 +96,9 @@ Cluster
 次の例は、各クラスタインターコネクトスイッチの各ノードに設定されているクラスタインターコネクトインターフェイスの数を示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network device-discovery show -protocol cdp
+cluster1::*> *network device-discovery show -protocol cdp*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  ----------------
@@ -110,8 +108,6 @@ node2      /cdp
 node1      /cdp
             e0a    CL2                       0/1               CN1610
             e0b    CL1                       0/1               CN1610
-
-4 entries were displayed.
 ----
 . 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
 +
@@ -120,9 +116,9 @@ node1      /cdp
 「 network port show -ipspace cluster 」のように表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -ipspace Cluster
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: node1
                                                                        Ignore
@@ -139,17 +135,15 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-
-4 entries were displayed.
 ----
 .. 論理インターフェイスに関する情報を表示します。
 +
 「 network interface show -vserver Cluster 」のように表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
 
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
@@ -159,7 +153,6 @@ Cluster
             node1_clus2  up/up    169.254.49.125/16  node1         e0b     true
             node2_clus1  up/up    169.254.47.194/16  node2         e0a     true
             node2_clus2  up/up    169.254.19.183/16  node2         e0b     true
-4 entries were displayed.
 ----
 
 
@@ -172,9 +165,9 @@ cluster ping-cluster -node node-name
 次に、リモートクラスタインターフェイスに ping を実行する例を示します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster ping-cluster -node node2
+cluster1::*> *cluster ping-cluster -node node2*
 
 Host is node2
 Getting addresses from network interface table...
@@ -210,13 +203,13 @@ RPC status:
 次の例は、 CN1610 スイッチ CL1 の ISL ポート 13~16 をシャットダウンします。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(CL1)# configure
-(CL1)(Config)# interface 0/13-0/16
-(CL1)(Interface 0/13-0/16)# shutdown
-(CL1)(Interface 0/13-0/16)# exit
-(CL1)(Config)# exit
+(CL1)# *configure*
+(CL1)(Config)# *interface 0/13-0/16*
+(CL1)(Interface 0/13-0/16)# *shutdown*
+(CL1)(Interface 0/13-0/16)# *exit*
+(CL1)(Config)# *exit*
 (CL1)#
 ----
 . CN1610 CL1 と新しい BES-53248 cs2 の間に一時的な ISL を構築します。CL1 の既存の ISL を再利用できるのは cs2 だけです。
@@ -224,20 +217,20 @@ RPC status:
 次の例は、 cs2 上の一時的な ISL を構築し、 CL1 （ポート 13~16 ）の既存の ISL に接続します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # configure
-(cs2) (Config)# port-channel name 1/2 temp-isl-cn1610
-(cs2) (Config)# interface 0/13-0/16
-(cs2) (Interface 0/13-0/16)# no spanning-tree edgeport
-(cs2) (Interface 0/13-0/16)# addport 1/2
-(cs2) (Interface 0/13-0/16)# exit
-(cs2) (Config)# interface lag 2
-(cs2) (Interface lag 2)# mtu 9216
-(cs2) (Interface lag 2)# port-channel load-balance 7
-(cs2) (Config)# exit
+(cs2)# *configure*
+(cs2) (Config)# *port-channel name 1/2 temp-isl-cn1610*
+(cs2) (Config)# *interface 0/13-0/16*
+(cs2) (Interface 0/13-0/16)# *no spanning-tree edgeport*
+(cs2) (Interface 0/13-0/16)# *addport 1/2*
+(cs2) (Interface 0/13-0/16)# *exit*
+(cs2) (Config)# *interface lag 2*
+(cs2) (Interface lag 2)# *mtu 9216*
+(cs2) (Interface lag 2)# *port-channel load-balance 7*
+(cs2) (Config)# *exit*
 
-(cs2) # show port-channel 1/2
+(cs2)# *show port-channel 1/2*
 Local Interface................................ 1/2
 Channel Name................................... temp-isl-cn1610
 Link State..................................... Down
@@ -261,7 +254,7 @@ Ports   Timeout        Speed     Active
 ----
 . すべてのノードで、 CN1610 スイッチ CL2 に接続されているケーブルを外します。
 +
-その後、すべてのノードの切断されたポートを新しい BES-53248 スイッチ cs2 に再接続する必要があります。承認されているケーブル接続オプションについては、 _ Hardware Universe _ を参照してください。
+その後、すべてのノードの切断されたポートを新しい BES-53248 スイッチ cs2 に再接続する必要があります。を参照してください https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe _"^] 承認されているケーブル接続オプションについては、
 
 . CN1610 スイッチ CL2 のポート 13~16 から、 4 本の ISL ケーブルを取り外します。
 +
@@ -272,13 +265,13 @@ Ports   Timeout        Speed     Active
 次の例は、 CL1 で ISL ポート 13~16 を起動するプロセスを示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(CL1)# configure
-(CL1)(Config)# interface 0/13-0/16
-(CL1)(Interface 0/13-0/16,3/1)# no shutdown
-(CL1)(Interface 0/13-0/16,3/1)# exit
-(CL1)(Config)# exit
+(CL1)# *configure*
+(CL1)(Config)# *interface 0/13-0/16*
+(CL1)(Interface 0/13-0/16,3/1)# *no shutdown*
+(CL1)(Interface 0/13-0/16,3/1)# *exit*
+(CL1)(Config)# *exit*
 (CL1)#
 ----
 . CN1610 スイッチ CL1 の ISL が * up * になっていることを確認します。
@@ -289,9 +282,9 @@ Ports   Timeout        Speed     Active
 「 Link State 」は「 Up 」、「 Type 」は「 S tatic 」、「 Port Active 」は「 True 」でなければなりません。ポート 0/13 ～ 0/16 の場合：
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(CL2)# show port-channel 3/1
+(CL2)# *show port-channel 3/1*
 Local Interface................................ 3/1
 Channel Name................................... ISL-LAG
 Link State..................................... Up
@@ -318,9 +311,9 @@ Ports    Timeout        Speed       Active
 'how port-channel
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # show port-channel 1/2
+(cs2)# *show port-channel 1/2*
 
 Local Interface................................ 1/2
 Channel Name................................... temp-isl-cn1610
@@ -349,9 +342,9 @@ Ports   Timeout       Speed     Active
 「 network interface show -vserver Cluster 」のように表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
             Logical      Status     Network            Current       Current Is
 Vserver     Interface    Admin/Oper Address/Mask       Node          Port    Home
 ----------- ------------ ---------- ------------------ ------------- ------- ----
@@ -360,7 +353,6 @@ Cluster
             node1_clus2  up/up      169.254.49.125/16  node1         e0b     true
             node2_clus1  up/up      169.254.47.194/16  node2         e0a     true
             node2_clus2  up/up      169.254.19.183/16  node2         e0b     true
-4 entries were displayed.
 ----
 . すべてのクラスタポートが接続されていることを確認します。
 +
@@ -370,9 +362,9 @@ Cluster
 次の例は、前のコマンドの結果を示しており、すべてのクラスタインターコネクトが稼働していることを確認しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -ipspace Cluster
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: node1
                                                                        Ignore
@@ -389,8 +381,6 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-
-4 entries were displayed.
 ----
 . リモートクラスタインターフェイスに ping を実行します。
 +
@@ -400,9 +390,9 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 次に、リモートクラスタインターフェイスに ping を実行する例を示します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster ping-cluster -node node2
+cluster1::*> *cluster ping-cluster -node node2*
 Host is node2
 Getting addresses from network interface table...
 Cluster node1_clus1 169.254.209.69  node1     e0a
@@ -429,7 +419,7 @@ RPC status:
 ----
 . すべてのノードで、 CN1610 スイッチ CL1 に接続されているケーブルを取り外します。
 +
-その後、すべてのノードの切断されたポートを新しい BES-53248 スイッチ cs1 に再接続する必要があります。承認されているケーブル接続オプションについては、 _ Hardware Universe _ を参照してください。
+その後、すべてのノードの切断されたポートを新しい BES-53248 スイッチ cs1 に再接続する必要があります。を参照してください https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe _"^] 承認されているケーブル接続オプションについては、
 
 . BES-53248 スイッチ cs2 のポート 13~16 から、 4 本の ISL ケーブルを取り外します。
 . cs2 の一時ポートチャネル 2 を取り外します。
@@ -437,20 +427,20 @@ RPC status:
 次の例は、ポートチャネル 2 を削除し、実行中の構成ファイルをスタートアップ構成ファイルにコピーします。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # configure
-(cs2) (Config)# deleteport 1/2 all
-(cs2) (Config)# interface 0/13-0/16
-(cs2) (Interface 0/13-0/16)# spanning-tree edgeport
-​​​​​(cs2) (Interface 0/13-0/16)# exit
-(cs2) (Config)# exit
-(cs2) # write memory
+(cs2)# *configure*
+(cs2) (Config)# *deleteport 1/2 all*
+(cs2) (Config)# *interface 0/13-0/16*
+(cs2) (Interface 0/13-0/16)# *spanning-tree edgeport*
+​​​​​(cs2) (Interface 0/13-0/16)# *exit*
+(cs2) (Config)# *exit*
+(cs2)# *write memory*
 
 This operation may take a few minutes.
 Management interfaces will not be available during this time.
 
-Are you sure you want to save? (y/n) y
+Are you sure you want to save? (y/n) *y*
 
 Config file 'startup-config' created successfully .
 ----
@@ -462,9 +452,9 @@ Config file 'startup-config' created successfully .
 次の例では、 node1 と node2 のすべてのクラスタインターコネクトポートが「 up 」になっていることを確認します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -ipspace Cluster
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: node1
                                                                        Ignore
@@ -481,8 +471,6 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-
-4 entries were displayed.
 ----
 . インターフェイスがホームになったことを確認します。
 +
@@ -492,9 +480,9 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 次の例は、クラスタインターコネクトインターフェイスのステータスが「 up 」であり、「 Is home 」でノード 1 とノード 2 を示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
             Logical      Status     Network            Current   Current Is
 Vserver     Interface    Admin/Oper Address/Mask       Node      Port    Home
 ----------- ------------ ---------- ------------------ --------- ------- ------
@@ -503,8 +491,6 @@ Cluster
             node1_clus2  up/up      169.254.49.125/16  node1     e0b     true
             node2_clus1  up/up      169.254.47.194/16  node2     e0a     true
             node2_clus2  up/up      169.254.19.183/16  node2     e0b     true
-
-4 entries were displayed.
 ----
 . リモートクラスタインターフェイスに ping を実行してから、リモート手順コールサーバチェックを実行します。
 +
@@ -514,9 +500,9 @@ Cluster
 次に、リモートクラスタインターフェイスに ping を実行する例を示します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster ping-cluster -node node2
+cluster1::*> *cluster ping-cluster -node node2*
 Host is node2
 Getting addresses from network interface table...
 Cluster node1_clus1 169.254.209.69  node1     e0a
@@ -549,9 +535,9 @@ RPC status:
 次の例は、ノード 1 とノード 2 が CN1610 CL2 と CL1 から BES-53248 cs2 と cs1 に移行されたことを示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network device-discovery show -protocol cdp
+cluster1::*> *network device-discovery show -protocol cdp*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  ----------------
@@ -561,8 +547,6 @@ node1      /cdp
 node2      /cdp
             e0a    cs2                       0/2               BES-53248
             e0b    cs1                       0/2               BES-53248
-
-4 entries were displayed.
 ----
 . 交換した CN1610 スイッチが自動的に削除されていない場合は、これらを削除します。
 +
@@ -572,26 +556,26 @@ node2      /cdp
 次に、 CN1610 スイッチを削除する例を示します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> system cluster-switch delete –device CL2
-cluster::*> system cluster-switch delete –device CL1
+cluster::*> *system cluster-switch delete –device CL2*
+cluster::*> *system cluster-switch delete –device CL1*
 ----
 . ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
 +
 「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> system node autosupport invoke -node \* -type all -message MAINT=END
+cluster::*> *system node autosupport invoke -node \* -type all -message MAINT=END*
 ----
 
 
-のクラスタスイッチログ収集機能の設定を参照してください http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["『 Switch Setup and Configuration Guide for Broadcom Supported BES-53248 switches 』を参照してください"] スイッチ関連のログファイルの収集に使用されるクラスタ健常性スイッチのログ収集を有効にするために必要な手順については、を参照してください。
+を参照してください link:configure-health-monitor.html["クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします"] および link:configure-log-collection["クラスタスイッチのログ収集機能を設定します"] スイッチ関連のログファイルの収集に使用されるクラスタ健常性スイッチのログ収集を有効にするために必要な手順については、を参照してください。
 
 * 関連情報 *
 
 https://hwu.netapp.com["Hardware Universe"^]
 
-http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["『 Switch Setup and Configuration Guide for Broadcom Supported BES-53248 switches 』を参照してください"^]
+link:replace-requirements.html["Broadcom対応BES-53248スイッチのセットアップと設定"^]

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: command, verify, operational, bes, cluster, switch, upgrade, verify the configuration after a cluster switch upgrade - bes-53428 switches 
 summary: ここに示すコマンドを使用して、 BES-53248 クラスタスイッチのアップグレード後にすべてが動作していることを確認できます。 
 ---
-= クラスタスイッチのアップグレード後に構成を確認する - BES-53248 スイッチ
+= BES-53248クラスタスイッチのアップグレード後に構成を確認します
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -25,9 +25,9 @@ summary: ここに示すコマンドを使用して、 BES-53248 クラスタス
 次の例は、コマンドからの出力例を示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> network port show -ipspace Cluster
+cluster1::> *network port show -ipspace Cluster*
 
 Node: node1
                                                                     Ignore
@@ -44,17 +44,15 @@ Port   IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 -----  ------------ ---------------- ---- ---- ----------- -------- ------
 e0a    Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b    Cluster      Cluster          up   9000  auto/10000 healthy  false
-
-	4 entries were displayed.
 ----
 . 次のコマンドを使用して、両方のノードの各 LIF の「 Is Home 」が「 true 」で、「 S Tatus Admin/Oper 」が「 up 」であることを確認します。
 +
 「 network interface show -vserver Cluster 」のように表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> network interface show -vserver Cluster
+cluster1::> *network interface show -vserver Cluster*
 
             Logical    Status     Network            Current       Current Is
 Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
@@ -64,20 +62,16 @@ Cluster
             node1_clus2  up/up    169.254.205.88/16  node1         e0b     true
             node2_clus1  up/up    169.254.252.125/16 node2         e0a     true
             node2_clus2  up/up    169.254.110.131/16 node2         e0b     true
-
-4 entries were displayed.
 ----
 . コマンド :cluster show を使用して ' 各ノードの Health Status が true であることを確認します
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> cluster show
+cluster1::> *cluster show*
 
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------  ------------
 node1                true    true          false
 node2                true    true          false
-
-2 entries were displayed.
 ----
 

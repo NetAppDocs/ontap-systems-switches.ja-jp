@@ -35,7 +35,7 @@ NOTE: ポートライセンスを購入すると、追加のポートをアク�
 ** BES-53248 ：ポート 0/55~0/56 （ 100GbE ）
 
 
-* Hardware Universe には、 ONTAP の互換性、サポートされている EFOS ファームウェア、 BES-53248 クラスタスイッチへのケーブル接続に関する情報が含まれています。
+* 。 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe _"^] ONTAP の互換性、サポートされているEFOSファームウェア、BES-53248クラスタスイッチへのケーブル接続に関する情報が含まれています。
 * 適切な ISL ケーブル接続は次のとおりです。
 +
 ** * 初期： CN1610 から CN1610 （ SFP+ から SFP+ ）の場合は、 SFP+ 光ファイバケーブルまたは銅線直接接続ケーブル 4 本。
@@ -48,6 +48,4 @@ NOTE: ポートライセンスを購入すると、追加のポートをアク�
 
 NOTE: 移行が完了したら、 BES-53248 クラスタスイッチのクラスタスイッチヘルスモニタ（ CSHM ）をサポートするために必要な構成ファイルのインストールが必要になる場合があります。
 
-を参照してください http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/GUID-211616A4-C962-464A-A70E-5E057D7B13E1.html["クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルのインストール"] 『 _Switch Setup and Configuration Guide for Broadcom-supported BES-53248 switch_guide 』を参照してください。
-
-のクラスタスイッチログ収集機能の設定を参照してください http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-ix8-setup/home.html["『 Switch Setup and Configuration Guide for Broadcom Supported BES-53248 switches 』を参照してください"] スイッチ関連のログファイルの収集に使用されるクラスタ健常性スイッチのログ収集を有効にするために必要な手順については、を参照してください。
+を参照してください link:configure-health-monitor.html["クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします"] および link:configure-log-collection["クラスタスイッチのログ収集機能を設定します"] スイッチ関連のログファイルの収集に使用されるクラスタ健常性スイッチのログ収集を有効にするために必要な手順については、を参照してください。

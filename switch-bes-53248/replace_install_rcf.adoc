@@ -28,10 +28,10 @@ RCF は、 BES-53248 クラスタスイッチを初めてセットアップし�
 .手順
 . 昇格されたコマンドプロンプト (`#`):'enable' に変更します
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2)> enable
-(cs2) #
+(cs2)> *enable*
+(cs2)#
 ----
 . スタートアップコンフィギュレーションを消去し、バナーを削除します
 +
@@ -40,11 +40,11 @@ RCF は、 BES-53248 クラスタスイッチを初めてセットアップし�
 *`erase startup-config *
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) #erase startup-config
-Are you sure you want to clear the configuration? (y/n) y
-(cs2) #
+(cs2)# *erase startup-config*
+Are you sure you want to clear the configuration? (y/n) *y*
+(cs2)#
 ----
 +
 このコマンドでは、バナーは消去されません。
@@ -54,19 +54,19 @@ Are you sure you want to clear the configuration? (y/n) y
 *`no set clibanner`*
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) #configure
-(cs2)(Config) # no set clibanner
-(cs2)(Config) #
+(cs2)# *configure*
+(cs2)(Config)# *no set clibanner*
+(cs2)(Config)#
 ----
 
 
 . スイッチを再起動します *`(CS2)#reload*`
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-Are you sure you would like to reset the system? (y/n) y
+Are you sure you would like to reset the system? (y/n) *y*
 ----
 +
 
@@ -86,22 +86,21 @@ NOTE: スイッチをリロードする前に、未保存または変更され�
 「 enable 」を選択します
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-Routing)> enable
-(Routing) #
+Routing)> *enable*
+(Routing)#
 ----
 . サービスポートプロトコルを「 none 」に設定します。
 +
 「サービスポートプロトコルなし」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) #serviceport protocol none
+(Routing)# *serviceport protocol none*
 Changing protocol mode will reset ip configuration.
-Are you sure you want to continue? (y/n) y
-
+Are you sure you want to continue? (y/n) *y*
 (Routing) #
 ----
 . サービスポートに IP アドレスを割り当てます。
@@ -112,9 +111,9 @@ Are you sure you want to continue? (y/n) y
 次の例では、サービスポートに IP アドレス「 10.10.10.10 」が割り当てられています。サブネットは「 255.255.255.0 」、ゲートウェイは「 10.10.10.1 」です。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) #serviceport ip 10.10.10.10 255.255.255.0 10.10.10.1
+(Routing)# *serviceport ip 10.10.10.10 255.255.255.0 10.10.10.1*
 ----
 . サービスポートが正しく設定されていることを確認します。
 +
@@ -124,10 +123,9 @@ Are you sure you want to continue? (y/n) y
 次の例は、ポートが稼働しており、正しいアドレスが割り当てられていることを示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) #show serviceport
-
+(Routing)# *show serviceport*
 Interface Status............................... Up
 IP Address..................................... 10.10.10.10
 Subnet Mask.................................... 255.255.255.0
@@ -139,7 +137,6 @@ Configured IPv4 Protocol....................... None
 Configured IPv6 Protocol....................... None
 IPv6 AutoConfig Mode........................... Disabled
 Burned In MAC Address.......................... D8:C4:97:56:87:D7
-
 (Routing) #
 ----
 . 必要に応じて、 SSH サーバを設定します。
@@ -150,34 +147,34 @@ NOTE: RCF ファイルで Telnet プロトコルが無効になります。SSH �
 +
 .. RSA キーを生成します。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) #configure
-(Routing) (Config)#crypto key generate rsa
+(Routing)# *configure*
+(Routing) (Config)# *crypto key generate rsa*
 ----
 .. DSA キーの生成（オプション）
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) #configure
-(Routing) (Config)#crypto key generate dsa
+(Routing)# *configure*
+(Routing) (Config)# *crypto key generate dsa*
 ----
 .. FIPS 準拠バージョンの EFOS を使用している場合は、 ECDSA キーを生成します。次の例では、長さ 256 のキーを作成します。有効な値は、 256 、 384 、または 521 です。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) #configure
-(Routing) (Config)#crypto key generate ecdsa 256
+(Routing)# *configure*
+(Routing) (Config)# *crypto key generate ecdsa 256*
 ----
 .. SSH サーバを有効にします。
 +
 必要に応じて、設定コンテキストを終了します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) (Config)#end
-(Routing) #ip ssh server enable
+(Routing) (Config)# *end*
+(Routing)# *ip ssh server enable*
 ----
 +
 
@@ -193,27 +190,25 @@ NOTE: キーがすでに存在する場合は、それらを上書きするよ�
 次に 'ip domain' コマンドと 'ip name server' コマンドの例を示します
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) # configure
-(Routing) (Config)#ip domain name lab.netapp.com
-(Routing) (Config)#ip name server 10.99.99.1 10.99.99.2
-(Routing) (Config)#exit
-(Routing) (Config)#
+(Routing)# *configure*
+(Routing) (Config)# *ip domain name lab.netapp.com*
+(Routing) (Config)# *ip name server 10.99.99.1 10.99.99.2*
+(Routing) (Config)# *exit*
 ----
 . 必要に応じて、タイムゾーンと時刻の同期（ SNTP ）を設定します。
 +
 次に 'ntp' コマンドの例を示しますこの例では 'sntp サーバの IP アドレスと相対タイム・ゾーンを指定します
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) #
-(Routing) (Config)#sntp client mode unicast
-(Routing) (Config)#sntp server 10.99.99.5
-(Routing) (Config)#clock timezone -7
-(Routing) (Config)#exit
-(Routing) (Config)#
+(Routing)# *configure*
+(Routing) (Config)# *sntp client mode unicast*
+(Routing) (Config)# *sntp server 10.99.99.5*
+(Routing) (Config)# *clock timezone -7*
+(Routing) (Config)# *exit*
 ----
 . スイッチ名を設定します。
 +
@@ -223,11 +218,9 @@ NOTE: キーがすでに存在する場合は、それらを上書きするよ�
 スイッチのプロンプトに新しい名前が表示されます。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) # hostname cs2
-
-(cs2) #
+(Routing)# *hostname cs2*
 ----
 . 設定を保存します。
 +
@@ -237,23 +230,19 @@ NOTE: キーがすでに存在する場合は、それらを上書きするよ�
 次の例のようなプロンプトと出力が表示されます。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) #write memory
+(cs2)# *write memory*
 
 This operation may take a few minutes.
 Management interfaces will not be available during this time.
 
-Are you sure you want to save? (y/n) y
+Are you sure you want to save? (y/n) *y*
 
-Config file 'startup-config' created successfully .
-
+Config file 'startup-config' created successfully.
 
 Configuration Saved!
-
-(cs2) #
 ----
-. もう一方のクラスタスイッチで、上記の手順を繰り返します。
 
 
 
@@ -270,62 +259,58 @@ Configuration Saved!
 次の例では、スイッチが IP アドレス 172.19.2.1 のサーバに接続されていることを確認します。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # ping 172.19.2.1
+(cs2)# *ping 172.19.2.1*
 Pinging 172.19.2.1 with 0 bytes of data:
 
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
 . copy コマンドを使用して、 BES-53248 クラスタスイッチに RCF をインストールします。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # copy http://172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt nvram:script BES-53248_RCF_v1.6-Cluster-HA.scr
+(cs2)# *copy sftp://172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt nvram:script BES-53248_RCF_v1.6-Cluster-HA.scr*
 
-Remote Password ********
+Remote Password:********
 
-Mode........................................... HTTP
+Mode........................................... SFTP
 Set Server IP.................................. 172.19.2.1
 Path........................................... //tmp/
 Filename....................................... BES-53248_RCF_v1.6-Cluster-HA.txt
 Data Type...................................... Config Script
 Destination Filename........................... BES-53248_RCF_v1.6-Cluster-HA.scr
 
-File with same name already exists.
-WARNING:Continuing with this command will overwrite the existing file.
-
 Management access will be blocked for the duration of the transfer
-Are you sure you want to start? (y/n) y
+Are you sure you want to start? (y/n) *y*
+SFTP Code transfer starting...
 
-File transfer in progress. Management access will be blocked for the duration of the transfer. Please wait...
-
-Validating configuration script...
-[the script is now displayed line by line]
-
-Configuration script validated.
 File transfer operation completed successfully.
 ----
 +
 
-NOTE: 環境によっては '+copy のように 'copy コマンドで二重スラッシュを使用する必要があります http://172.19.2.1//tmp/BES-53248_RCF_v1.6-Cluster-HA.txt[] NVRAM ：スクリプト BES-53248 RCF_v1.6 - Cluster-HA.scr +` 。
+NOTE: 環境によっては、copyコマンドで二重スラッシュを使用する必要があります。たとえば、「+ copy sftp：//172.19.2.1//tmp/BES-53248_RCF_v1.6-Cluster-HA.txt nvram：script BES-53248 rcf_v1.6 -Cluster-HA.scr +」のように指定します。
 
 +
 
-NOTE: スクリプトを呼び出す前に '.scr 拡張子をファイル名の一部として設定する必要がありますこれは、 EFOS オペレーティングシステムの拡張子です。スクリプトがスイッチにダウンロードされると、スイッチはスクリプトを自動的に検証し、コンソールに出力が表示されます。また ' 読みやすくするために '.scr の名前をコンソール画面に合わせて変更することもできますたとえば '+copy のようにします http://172.19.2.1/tmp/BES-53248_RCF_v1.6-Cluster-HA.txt[] NVRAM ：スクリプト rcf_v1.6 - Cluster-HA.scr +` 。
+NOTE: スクリプトを呼び出す前に '.scr 拡張子をファイル名の一部として設定する必要がありますこれは、 EFOS オペレーティングシステムの拡張子です。スクリプトがスイッチにダウンロードされると、スイッチはスクリプトを自動的に検証し、コンソールに出力が表示されます。また、わかりやすくするために、コンソール画面に合わせて「.scr」の名前を変更することもできます。例：「+ copy sftp：//172.19.2.1/tmp/ BES-53248_RCF_v1.6-Cluster-HA.txt nvram：script rcf_v1.6 -Cluster-ha.scr +」。
+
++
+
+NOTE: ファイル名には記号「\/：*？」を含めることはできません。最大長は32文字です。
 
 . スクリプトがダウンロードされ、指定したファイル名で保存されていることを確認します。
 +
 「原稿リスト」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # script list
+(cs2)# *script list*
 
 Configuration Script Name                  Size(Bytes)  Date of Modification
 -----------------------------------------  -----------  --------------------
-BES-53248_RCF_v1.6-Cluster-HA.scr        2241         2020 09 30 05:41:00
+BES-53248_RCF_v1.6-Cluster-HA.scr          2241         2020 09 30 05:41:00
 
 1 configuration script(s) found.
 ----
@@ -334,15 +319,15 @@ BES-53248_RCF_v1.6-Cluster-HA.scr        2241         2020 09 30 05:41:00
 「原稿」が適用されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # script apply BES-53248_RCF_v1.6-Cluster-HA.scr
+(cs2)# *script apply BES-53248_RCF_v1.6-Cluster-HA.scr*
 
-Are you sure you want to apply the configuration script? (y/n) y
+Are you sure you want to apply the configuration script? (y/n) *y*
 
 The system has unsaved changes.
-Would you like to save them now? (y/n) y
-Config file 'startup-config' created successfully .
+Would you like to save them now? (y/n) *y*
+Config file 'startup-config' created successfully.
 Configuration Saved!
 
 Configuration script 'BES-53248_RCF_v1.6-Cluster-HA.scr' applied.
@@ -352,13 +337,13 @@ Configuration script 'BES-53248_RCF_v1.6-Cluster-HA.scr' applied.
 'How port All | exclude Detach'
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # show port all \| exclude Detach
+(cs2)# *show port all \| exclude Detach*
 
                  Admin     Physical     Physical   Link   Link    LACP   Actor
 Intf      Type   Mode      Mode         Status     Status Trap    Mode   Timeout
---------- ------ --------- ---------- ---------- ------ ------- ------ --------
+--------- ------ --------- ------------ ---------- ------ ------- ------ -------
 0/1              Enable    Auto                    Down   Enable  Enable long
 0/2              Enable    Auto                    Down   Enable  Enable long
 0/3              Enable    Auto                    Down   Enable  Enable long
@@ -389,22 +374,22 @@ Intf      Type   Mode      Mode         Status     Status Trap    Mode   Timeout
 'how running-config'
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # show running-config
+(cs2)# *show running-config*
 ----
 . スイッチをリブートしたときにスタートアップコンフィギュレーションになるように、実行コンフィギュレーションを保存します。
 +
 「メモリの書き込み」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # write memory
+(cs2)# *write memory*
 This operation may take a few minutes.
 Management interfaces will not be available during this time.
 
-Are you sure you want to save? (y/n) y
+Are you sure you want to save? (y/n) *y*
 
 Config file 'startup-config' created successfully.
 
@@ -415,12 +400,18 @@ Configuration Saved!
 「再ロード」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # reload
+(cs2)# *reload*
 
-Are you sure you would like to reset the system? (y/n) y
+Are you sure you would like to reset the system? (y/n) *y*
 
 System will now restart!
 ----
 
+
+
+NOTE: 最初のスイッチにRCFをインストールしたら、次の手順を繰り返して2番目のクラスタスイッチにRCFをインストールします。
+
+
+CAUTION: を参照してください link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/BES-53248_communication_issue_after_firmware%2F%2FRCF_upgrade["KB"^] MetroCluster 用のRCFをインストールする際の詳細については、を参照してください。

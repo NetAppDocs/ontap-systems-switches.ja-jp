@@ -34,29 +34,29 @@ NOTE: CSHM で利用可能なすべての機能を使用するには、 SSH を�
 内部 Web サーバの IP アドレスが 192.168.2.20 であり、 /usr/download ディレクトリが存在する場合は、 scp を使用して zip ファイルを Web サーバにアップロードできます。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-% scp Broadcom_BES-53248.zip admin@192.168.2.20:/usr/download/Broadcom_BES-53248.zip
+% *scp Broadcom_BES-53248.zip admin@192.168.2.20:/usr/download/Broadcom_BES-53248.zip*
 ----
 . コマンド「 set -privilege advanced 」を使用して、クラスタ内のいずれかの ONTAP システムから advanced モード設定にアクセスします。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> set -privilege advanced
+cluster1::> *set -privilege advanced*
 ----
 . スイッチヘルスモニタ設定コマンド「 system cluster-switch configure -health-monitor -node * -package url 」 http://server/file-location`: を実行します
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> system cluster-switch configure-health-monitor -node * -package-url
-http://192.168.2.20/usr/download/Broadcom_BES-53248.zip
+cluster1::> *system cluster-switch configure-health-monitor -node * -package-url
+http://192.168.2.20/usr/download/Broadcom_BES-53248.zip*
 ----
 . コマンド出力に、ダウンロードされたパッケージが正常に処理されたことを示すテキスト文字列が含まれていることを確認します。エラーが発生した場合は、ネットアップサポートにお問い合わせください。
 . ONTAP システムで「 system cluster-switch show 」コマンドを実行し、監視対象フィールドが「 True 」に設定された状態でクラスタスイッチが検出されたことを確認します。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::> system cluster-switch show
+cluster1::> *system cluster-switch show*
 ----
 +
 

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: problem, install, license, debug, command, restriction, limitation, switch, restrictions and limitations - bes-53428 switches 
 summary: ライセンスのインストール時に問題が発生した場合は、 copy コマンドを再度実行してライセンスをインストールする前に、次の debug コマンドを実行する必要があります。 
 ---
-= 制限事項と制限事項 - BES-53248 スイッチ
+= 制限事項と制限事項
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,15 +13,13 @@ summary: ライセンスのインストール時に問題が発生した場合�
 [role="lead"]
 ライセンスのインストール時に問題が発生した場合は ' ライセンスをインストールするために 'copy' コマンドを再度実行する前に ' 次のデバッグコマンドを実行する必要があります
 
-使用するデバッグコマンド：
+使用するデバッグコマンドは、「debug transfer」と「debug license」です
 
-「バグ転送ライセンス」
-
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # debug transfer
+(cs2)# *debug transfer*
 Debug transfer output is enabled.
-(cs2) # debug license
+(cs2)# *debug license*
 Enabled capability licensing debugging.
 ----
 「バグ転送」および「バグライセンス」オプションを有効にして「 copy 」コマンドを実行すると、次のログ出力が返されます。
@@ -60,9 +58,9 @@ CAPABILITY LICENSING : Fri Sep 11 13:41:32 2020: Applying license file 1.
 
 ポート・ライセンスをサーバにバックアップするには 'copy コマンドを使用します
 
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # copy nvram:license-key 1 scp://<UserName>@<IP_address>/saved_license_1.dat
+(cs2)# *copy nvram:license-key 1 scp://<UserName>@<IP_address>/saved_license_1.dat*
 ----
 を参照してください link:configure-licenses.html["BES-53248 クラスタスイッチのライセンスをインストールします"] 使用可能なライセンスでサポートされているファームウェアバージョンの詳細については、を参照してください。
 

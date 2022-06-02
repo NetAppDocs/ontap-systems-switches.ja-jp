@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: switches initial setup,initial setup,efos download 
 summary: この手順を使用して、 BES-53248 クラスタスイッチの初期取り付けを実行できます。 
 ---
-= BES-53248 クラスタスイッチ BES-53248 スイッチの初期取り付け
+= BES-53248 クラスタスイッチの初期取り付け
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -33,31 +33,31 @@ EFOS は、データセンターアプリケーション向けにさまざまな
 
 . スイッチに admin としてログインし、パスワードの入力を求められたら Enter キーを押します。デフォルトのスイッチ名は routing です。プロンプトで 'enable' と入力しますこれにより、スイッチ設定の特権 EXEC モードにアクセスできます。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-User: admin
+User: *admin*
 Password:
-(Routing)> enable
+(Routing)> *enable*
 Password:
-(Routing) #
+(Routing)#
 ----
 . スイッチ名を cs2 に変更します。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(Routing) # hostname cs2
-(cs2) #
+(Routing)# *hostname cs2*
+(cs2)#
 ----
 . 静的 IP アドレスを設定するには、例に示すように、「サービスポートプロトコル」、「ネットワークプロトコル」、および「サービスポート IP 」コマンドを使用します。
 +
 デフォルトでは、サービスポートは DHCP を使用するように設定されています。IP アドレス、サブネットマスク、およびデフォルトゲートウェイアドレスが自動的に割り当てられます。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # serviceport protocol none
-(cs2) # network protocol none
-(cs2) # serviceport ip ipaddr netmask gateway
+(cs2)# *serviceport protocol none*
+(cs2)# *network protocol none*
+(cs2)# *serviceport ip ipaddr netmask gateway*
 ----
 . 次のコマンドを使用して結果を確認します。
 +
@@ -67,9 +67,9 @@ Password:
 次の例は、 DHCP サーバから提供される IP 情報を示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # show serviceport
+(cs2)# *show serviceport*
 Interface Status............................... Up
 IP Address..................................... 172.19.2.2
 Subnet Mask.................................... 255.255.255.0
@@ -87,12 +87,12 @@ Burned In MAC Address.......................... D8:C4:97:71:12:3C
 「 configure 」を実行します
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) # configure
-(cs2) (Config)#ip domain name company.com
-(cs2) (Config)#ip name server 10.10.99.1 10.10.99.2
-(cs2) (Config)#exit
+(cs2)# *configure*
+(cs2) (Config)# *ip domain name company.com*
+(cs2) (Config)# *ip name server 10.10.99.1 10.10.99.2*
+(cs2) (Config)# *exit*
 (cs2) (Config)#
 ----
 . NTP サーバを設定？
@@ -102,13 +102,13 @@ Burned In MAC Address.......................... D8:C4:97:71:12:3C
 「 NTP 」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) #
-(cs2) (Config)#sntp client mode unicast
-(cs2) (Config)#sntp server 10.99.99.5
-(cs2) (Config)#clock timezone -7
-(cs2) (Config)#exit
+(cs2)#
+(cs2) (Config)# *sntp client mode unicast*
+(cs2) (Config)# *sntp server 10.99.99.5*
+(cs2) (Config)# *clock timezone -7*
+(cs2) (Config)# *exit*
 (cs2) (Config)#
 ----
 .. 時間を手動で設定します。
@@ -116,30 +116,30 @@ Burned In MAC Address.......................... D8:C4:97:71:12:3C
 「 clock 」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-(cs2) #config
-(cs2) (Config)#no sntp client mode
-(cs2) (Config)#clock summer-time recurring 1 sun mar 02:00 1 sun nov 02:00 offset 60 zone EST
-(cs2) (Config)#clock timezone -5 zone EST
-(cs2) (Config)#clock set 07:00:00
-(cs2) (Config)#clock set 10/20/2020
+(cs2)# *config*
+(cs2) (Config)# *no sntp client mode*
+(cs2) (Config)# *clock summer-time recurring 1 sun mar 02:00 1 sun nov 02:00 offset 60 zone EST*
+(cs2) (Config)# *clock timezone -5 zone EST*
+(cs2) (Config)# *clock set 07:00:00
+(cs2) (Config)# *clock set 10/20/2020*
 
-(cs2) (Config)#show clock
+(cs2) (Config)# *show clock*
 
 07:00:11 EST(UTC-5:00) Oct 20 2020
 No time source
 
-(cs2) (Config)#exit
+(cs2) (Config)# *exit*
 
-(cs2) #write memory
+(cs2)# *write memory*
 
 This operation may take a few minutes.
 Management interfaces will not be available during this time.
 
-Are you sure you want to save? (y/n) y
+Are you sure you want to save? (y/n) *y*
 
-Config file 'startup-config' created successfully .
+Config file 'startup-config' created successfully.
 
 Configuration Saved!
 ----
