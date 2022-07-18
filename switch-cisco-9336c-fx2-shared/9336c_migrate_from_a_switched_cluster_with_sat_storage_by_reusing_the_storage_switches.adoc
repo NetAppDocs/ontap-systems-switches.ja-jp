@@ -21,11 +21,10 @@ summary:
 
 .手順
 . HA ペア 1 （および HA ペア 2 ）のストレージ構成が正しいこと、およびエラーがないことを確認します。「 system switch ethernet show
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system switch ethernet show
+storage::*> *system switch ethernet show*
 Switch                    Type               Address          Model
 ------------------------- ------------------ ---------------- ----------
 sh1
@@ -52,11 +51,10 @@ storage::*>
 . HA ペア 1 のノード A から、 HA ペア 1 の場合は NSM224 ストレージポート、ストレージスイッチ A にケーブルを接続します
 . HA ペア 1 のノード B から、ストレージスイッチ A の HA ペア 1 のノード B の NSM224 ストレージポートにケーブルを接続します
 . HA ペア 1 に接続されたストレージスイッチ A が「 storage port show -port type enet 」と表示されていることを確認します
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> storage port show -port-type ENET
+storage::*> *storage port show -port-type ENET*
                                    Speed                             VLAN
 Node    Port    Type    Mode       (Gb/s)       State     Status       ID
 ------- ------- ------- ---------- ------------ --------- --------- -----
@@ -74,39 +72,37 @@ node2
 ----
 . [[step6] 共有スイッチ A のストレージ RCF を共有 RCF ファイルに置き換えます。を参照してください link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします"] を参照してください。
 . HA ペア 1 に接続されたストレージスイッチ A が正常であることを確認します。「 system health alert show -instance 」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system health alert show -instance
+storage::*> *system health alert show -instance*
 There are no entries matching your query.
 ----
 . [[step8] HA ペア 1 、 NSM224 パス B のケーブルをストレージスイッチ B から HA ペア 1 の共有 NS224 ストレージポートに移動し、パス B をストレージスイッチ B に移動します
 . HA ペア 1 のノード A のパス B から、 HA ペア 1 の共有ストレージポート、ノード A のパス B にケーブルを接続します
 . HA ペア 1 、ノード B 、パス B から、ストレージスイッチ B の HA ペア 1 、ノード B 、パス B の共有ストレージポートにケーブルを接続します
 . HA ペア 1 に接続されたストレージスイッチ B が正常であることを確認します。「 system health alert show -instance 」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system health alert show -instance
+storage::*> *system health alert show -instance*
 There are no entries matching your query.
 ----
 . [[step12]] 共有スイッチ B のストレージ RCF ファイルを共有 RCF ファイルで置き換えます。を参照してください link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします"] を参照してください。
 . HA ペア 1 に接続されたストレージスイッチ B が正常であることを確認します。「 system health alert show -instance 」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system health alert show -instance
+storage::*> *system health alert show -instance*
 There are no entries matching your query.
 ----
+
+
 . [[step14]] HA ペア 1 のストレージ構成が正しいことを確認し、エラーがないことを確認します。「 system switch ethernet show 」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-storage::*> system switch ethernet show
+storage::*> *system switch ethernet show*
 Switch                    Type                 Address          Model
 ------------------------- -------------------- ---------------- ----------
 sh1
@@ -130,24 +126,23 @@ sh2
 storage::*>
 ----
 . [[step15]] 共有スイッチ A と共有スイッチ B の間に ISL をインストールします。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-sh1# configure
+sh1# *configure*
 Enter configuration commands, one per line. End with CNTL/Z.
-sh1 (config)# interface e1/35-36
-sh1 (config-if-range)# no lldp transmit
-sh1 (config-if-range)# no lldp receive
-sh1 (config-if-range)# switchport mode trunk
-sh1 (config-if-range)# no spanning-tree bpduguard enable
-sh1 (config-if-range)# channel-group 101 mode active
-sh1 (config-if-range)# exit
-sh1 (config)# interface port-channel 101
-sh1 (config-if)# switchport mode trunk
-sh1 (config-if)# spanning-tree port type network
-sh1 (config-if)# exit
-sh1 (config)# exit
+sh1 (config)# interface e1/35-36*
+sh1 (config-if-range)# *no lldp transmit*
+sh1 (config-if-range)# *no lldp receive*
+sh1 (config-if-range)# *switchport mode trunk*
+sh1 (config-if-range)# *no spanning-tree bpduguard enable*
+sh1 (config-if-range)# *channel-group 101 mode active*
+sh1 (config-if-range)# *exit*
+sh1 (config)# *interface port-channel 101*
+sh1 (config-if)# *switchport mode trunk*
+sh1 (config-if)# *spanning-tree port type network*
+sh1 (config-if)# *exit*
+sh1 (config)# *exit*
 ----
 . [step16] スイッチ交換用の手順と共有の RCF を使用して、既存のクラスタスイッチから共有スイッチにクラスタネットワークを移行します。新しい共有スイッチ A は「 cs1 」です。新しい共有スイッチ B は「 cs2 」です。を参照してください link:9336c_replace_a_cisco_nexus_9336c-fx2_shared_switch.html["Cisco Nexus 9336C-FX2 共有スイッチを交換します"] および link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします"] を参照してください。
 . スイッチドネットワーク設定が有効であることを確認します。「 network port show 」

@@ -84,11 +84,10 @@ x は、メンテナンス時間の長さ（時間単位）です。
 
 . 各クラスタポートの管理ステータスと動作ステータスを確認します。
 . すべてのクラスタポートが正常な状態で稼働していることを確認します。「 network port show – role cluster 」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -role cluster
+cluster1::*> *network port show -role cluster*
 Node: node1
                                                                    Ignore
                                              Speed(Mbps)  Health   Health
@@ -108,11 +107,10 @@ e3b     Cluster   Cluster          up   9000  auto/100000 healthy  false
 cluster1::*>
 ----
 . [[step4]] すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します：「 network interface show -role cluster 」
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -role cluster*
          Logical     Status     Network           Current     Current Is
 Vserver  Interface   Admin/Oper Address/Mask      Node        Port    Home
 -------  ----------- ---------- ----------------- ----------- ------- ----
@@ -125,11 +123,10 @@ Cluster
 cluster1::*>
 ----
 . [[step5] クラスタが両方のクラスタスイッチの情報を表示することを確認します： 'system cluster-switch show-is-monitoring -enabled -operational true
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> system cluster-switch show -is-monitoring-enabled-operational true
+cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
 Switch                    Type               Address          Model
 ------------------------- ------------------ ---------------- ------
 sh1                       cluster-network    10.233.205.90    N9K-C9336C
@@ -149,28 +146,25 @@ sh2                       cluster-network    10.233.205.91    N9K-C9336C
 cluster1::*>
 ----
 . [[step6] ] クラスタ LIF での自動リバートを無効にします。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert false
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
 ----
 . [[step7] C2 スイッチをシャットダウンします。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-c2# configure terminal
+c2# *configure terminal*
 Enter configuration commands, one per line. End with CNTL/Z.
-c2(config)# interface ethernet <int range>
-c2(config)#shutdown
+c2(config)# *interface ethernet <int range>*
+c2(config)# *shutdown*
 ----
 . [[step8] クラスタ LIF が、クラスタスイッチ sh1 でホストされているポートに移行したことを確認します。「 network interface show -role cluster 」この処理には数秒かかることがあります。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -role cluster*
           Logical     Status     Network         Current      Current  Is
 Vserver   Interface   Admin/Oper Address/Mask    Node         Port     Home
 --------- ----------- ---------- --------------- ------------ -------- -----
@@ -185,21 +179,19 @@ cluster1::*>
 . [[step9] スイッチ c2 を新しいスイッチ sh2 に交換し、新しいスイッチをケーブル接続し直します。
 . ポートが sh2 でバックアップされていることを確認します。* 注 * LIF はスイッチ c1 にあります。
 . c1 スイッチをシャットダウンします。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-c1# configure terminal
+c1# *configure terminal*
 Enter configuration commands, one per line. End with CNTL/Z.
-c1(config)# interface ethernet <int range>
-c1(config)#shutdown
+c1(config)# *interface ethernet <int range>*
+c1(config)# *shutdown*
 ----
 . [[step12]] クラスタ LIF が、クラスタスイッチ sh2 でホストされているポートに移行されたことを確認します。これには数秒かかることがあります。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -role cluster*
          Logical        Status     Network         Current   Current Is
 Vserver  Interface      Admin/Oper Address/Mask    Node      Port    Home
 -------- -------------- ---------- --------------- --------- ------- ----
@@ -214,18 +206,16 @@ cluster1::*>
 . [[step13]] スイッチ c1 を新しいスイッチ sh1 に交換し、新しいスイッチをケーブル接続し直します。
 . ポートが sh1 でバックアップされていることを確認します。* LIF がスイッチ C2 に接続されたままであることに注意してください。
 . クラスタ LIF で自動リバートを有効にします。
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert True
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True*
 ----
 . [step16]] クラスタが正常であることを確認します : cluster show
-
-
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------- -------
 node1                true    true          false
@@ -233,3 +223,4 @@ node2                true    true          false
 2 entries were displayed.
 cluster1::*>
 ----
+

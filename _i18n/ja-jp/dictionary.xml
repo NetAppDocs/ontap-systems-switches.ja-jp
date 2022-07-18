@@ -3200,7 +3200,6 @@
   <block id="f267a68fd1c8bddcc992701898021398" category="sidebar">クラスタスイッチ</block>
   <block id="21cefb007c9064d8adcf6c162e74b0bf" category="sidebar">Cisco Nexus 3232C</block>
   <block id="403284bd44beda112195a484c8a76421" category="sidebar">ストレージスイッチ</block>
-  <block id="bc8a2cd252a5beb1dbf4f209baea67eb" category="sidebar">共有スイッチ</block>
   <block id="7bd0358c3b996edfe19bd3da912bde62" category="sidebar">Cisco Nexus 9336C-FX2 共有スイッチ</block>
   <block id="c362338c56e3a8923a48d3ee53e0fe46" category="paragraph">ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチ構成に組み合わせることができます。3 つ以上のノードで ONTAP クラスタを構築する場合は、サポートされている 2 つのネットワークスイッチが必要です。</block>
   <block id="a4e916c58a0625a75d1a7d3a587de12d" category="list-text">スイッチ、コントローラ、および NS224 NVMe ストレージシェルフをラックに配置します。を参照してください<block ref="90faa892a4d50a53b0a7930f42b5c315" category="inline-link-rx"></block> スイッチをネットアップキャビネットに設置する手順については、ガイドを参照してください。</block>
@@ -3273,4 +3272,325 @@
   <block id="cf3535500bcccab825299556e95f0ad5" category="sidebar">BES-53248クラスタスイッチを設定します</block>
   <block id="bd5be81124f2541ff1af3a04e8cb403d" category="sidebar">RCFを編集して、ライセンスされたポートをアクティブ化します</block>
   <block id="693a9843040b044d741691bedf1fd616" category="sidebar">BES-53248スイッチに移行する方法</block>
+  <block id="1d70d7c880f9a4b8e9ccbd4cbaeefcd8" category="list-text">この手順 を実行する前に、スイッチ構成の最新のバックアップがあることを確認してください。</block>
+  <block id="c291fea66565616d9e881666325c1ee2" category="list-text">スイッチの現在のバックアップがない場合は、次のコマンドの出力をログファイルにコピーすることで、現在のスイッチ設定を保存できます。</block>
+  <block id="a795131211df008d0b468a0608997557" category="list-text">この手順 を実行する前に、スイッチ設定の最新のバックアップがあることを確認してください。</block>
+  <block id="3f8f6d237f18036be3a3fb24642d16ba" category="list-text">現在のスイッチ設定をまだ保存していない場合は、次のコマンドの出力をログファイルにコピーして保存します。</block>
+  <block id="c0693be270b6d9eda70557c59dfec11c" category="list-text">この手順 を実行する前に、スイッチ構成の最新のバックアップがあることを確認してください。</block>
+  <block id="1a29ca4be6c9125e8ac9fccfa8df289c" category="summary">障害のあるNVIDIA SN2100ストレージスイッチを無停止手順 \（NDU \）で交換します。</block>
+  <block id="ca56e40e95211438888f7e4c9e051ea5" category="doc">NVIDIA SN2100ストレージスイッチを交換してください</block>
+  <block id="fceed1976e801d73d13b11405b47a86b" category="paragraph">NVIDIA SN2100ストレージスイッチを交換する場合は、特定の構成情報、ポート接続、およびケーブル接続の要件に注意する必要があります。</block>
+  <block id="899d97d3e02cd2b765c3558b86d81068" category="paragraph">NVIDIA SN2100ストレージスイッチにCumulusソフトウェアとRCFをインストールする前に、次の条件が満たされていることを確認する必要があります。</block>
+  <block id="c6198cbcde2894fb96409239ec92a834" category="list-text">お使いのシステムではNVIDIA SN2100ストレージスイッチをサポートできます。</block>
+  <block id="9a6126268af75b2f859c1a03dc4714c1" category="list-text">。<block ref="b973743bc19e2a373fedee1a51a110cc" category="inline-link-rx"></block> サポートされているポートとその構成の詳細が表示されます。</block>
+  <block id="dba3be5e6f4f846b2a75667e3ff0477a" category="list-text">スイッチの交換が必要かどうかを確認するために、すべてのトラブルシューティング手順が完了していることを確認します。</block>
+  <block id="e06dcb466641dd36c53f025080bbb45e" category="paragraph">交換用NVIDIA SN2100スイッチには次の特性が必要です。</block>
+  <block id="7398a7e3818a30c650d193a2db2016f7" category="list-text">適切なRCFおよびCumulusオペレーティングシステムイメージをスイッチにロードする必要があります。</block>
+  <block id="a622ee7c770c8ba1cbb73f2815e7ae56" category="paragraph">この手順 は、2台目のNVIDIA SN2100ストレージスイッチSW2を新しいNVIDIA SN2100スイッチnsw2に置き換えます。2 つのノードは node1 と node2 になります。</block>
+  <block id="cc2313221eef083d36ffb52b29f6f98f" category="list-text">交換するスイッチがSW2であることを確認します。</block>
+  <block id="68bdf3a88cf83c1044a28599dd9d552b" category="list-text">スイッチSW2からケーブルを外します。</block>
+  <block id="801161caa4832eac3a4336de33e12441" category="list-text">スイッチnsw2にケーブルを再接続します。</block>
+  <block id="856b3f22a7bc84281004d6833f8e5dd4" category="list-text">スイッチnsw2のすべてのデバイス設定を確認します。</block>
+  <block id="59ca6b134acac6e54edff8bb46ecd484" category="list-text">ストレージ・スイッチsw1が使用可能であることを確認しますnetwork device-discovery show</block>
+  <block id="9b24f35607cbd93e203a1229537c7235" category="list-text">動作中のスイッチでnet show interfaceコマンドを実行して'ノードとすべてのシェルフの両方が表示されることを確認しますnet show interface</block>
+  <block id="088f485f3bfad97fa43d043685e12b05" category="list-text">ストレージ・システムのシェルフ・ポートを確認しますstorage shelf port show -fields remote-device、remote-port</block>
+  <block id="d8f5536086bacf684c44e47a90fb5320" category="list-text">ストレージスイッチSW2に接続されているすべてのケーブルを取り外します。</block>
+  <block id="166bf8fabdaf0d92b7865b37f13efc05" category="list-text">交換用スイッチnsw2にすべてのケーブルを再接続します。</block>
+  <block id="7c8a62eb89bcf224c1a631d0b7e4a8f8" category="list-text">両方のスイッチが使用可能であることを確認します:net device-discovery show</block>
+  <block id="b366aa7d44d5ae24af827fa423f8a2f2" category="list-text">スイッチに関連するログファイルを収集するためのEthernetスイッチのヘルスモニタログ収集機能を有効にしますこれには'system switch ethernet log setup-password'およびsystem switch ethernet log enable-collection'の2つのコマンドを使用します</block>
+  <block id="6d5256d36c2629c07d67ddb2fc78e95c" category="list-text">スイッチ・ログ収集機能を開始します：system switch ethernet log collect-device *</block>
+  <block id="676b4f116c6b65afc97655131da52093" category="paragraph">10分間待ってから'次のコマンドを使用してログ収集が成功したことを確認しますsystem switch ethernet log show</block>
+  <block id="af0741a63009a71666c8a00c5279b401" category="summary">既存の2ノードスイッチレスクラスタ環境を使用している場合は、NVIDIA SN2100スイッチを使用して2ノードスイッチクラスタ環境に移行して、3ノード以上にクラスタを拡張できます。</block>
+  <block id="47da18a30b9fcd2d1294cf032080276b" category="doc">NVIDIA SN2100クラスタスイッチを使用する2ノードスイッチクラスタに移行します</block>
+  <block id="cc3660d80bc2c5730b70b777e1a7f05b" category="paragraph">2ノードスイッチレスクラスタをNVIDIA SN2100クラスタスイッチを使用するクラスタに無停止で移行する場合は、特定の構成情報、ポート接続、およびケーブル接続要件に注意する必要があります。使用する手順は、各コントローラに 2 つの専用クラスタネットワークポートがあるか、 1 つのクラスタポートがあるかによって異なります。ここで説明するプロセスは、光ポートまたはTwinaxポートを使用するすべてのノードに対応しますが、ノードでクラスタネットワークポートにオンボード10GBASE-T RJ45ポートを使用している場合、このスイッチではサポートされません。</block>
+  <block id="f4d3615da83026723a97f90653b00097" category="list-title">2ノードスイッチレス構成</block>
+  <block id="7f9038e0cb80da2d88c487e9bccca0d1" category="list-text">ノードでONTAP 9.10.1P3以降が実行されている必要があります。</block>
+  <block id="4bc0285bd4ff021f690292024f91a657" category="list-title">NVIDIA SN2100クラスタスイッチ構成</block>
+  <block id="6f604266345008efe009e8a2f02e7dc0" category="list-text">NVIDIA SN2100ノード間スイッチおよびスイッチ間接続では、TwinAxケーブルまたはファイバケーブルを使用する必要があります。</block>
+  <block id="1d9152605063cf1b257a36675cece81c" category="inline-link-macro">ケーブル接続と構成に関する考慮事項</block>
+  <block id="b8e6dac17b1f60251a359674d65117a9" category="admonition">を参照してください <block ref="58ea2a922914aa470e8c647f2a05d6be" category="inline-link-macro-rx"></block> 警告および詳細については、を参照してください。</block>
+  <block id="2ab78bdcb0ea707a89a06e2121680282" category="list-text">スイッチ間リンク（ISL）ケーブルは、両方のNVIDIA SN2100スイッチでポートswp15およびswp16に接続する必要があります。</block>
+  <block id="2b8ba42446639a6c2fe280c152c68d19" category="list-text">両方のSN2100スイッチの初期カスタマイズを完了する必要があります。次のようにします。</block>
+  <block id="91fff5a6134f2be64c56d1695113e1f9" category="list-text">SN2100スイッチは、最新バージョンのCumulus Linuxを実行しています</block>
+  <block id="8e674e3cc0c8b6ecbd4956d1e90317e0" category="list-text">SN2100スイッチの名前は_sw1_and _sw2_.です。</block>
+  <block id="ee5bb83d3cbaf132eeecb309a393b94c" category="list-text">この手順 で使用されているクラスタポートは_e3aおよび_e3bです。</block>
+  <block id="852c5f97fc5712493a0f4ae06bc9d050" category="list-text">ブレークアウトポートの形式は、SWP[ポート] s [ブレークアウトポート0-3]です。たとえば'swp1の4つのブレークアウトポートは'_swp1s0'_swp1s1_'_swp1s2s'_swp1s3_です</block>
+  <block id="c844edac5ec41b6dac1cc863f127ff48" category="list-text">新しいクラスタスイッチsw1とSW2の両方で、すべてのノード側ポート（ISLポートではない）を無効にします。</block>
+  <block id="00bb8074e6bd1737f80dabe96f73b517" category="paragraph">次のコマンドは、スイッチsw1およびSW2のノード側ポートを無効にします。</block>
+  <block id="67931ae596ec519b34f4d63e1772dea2" category="list-text">2つのSN2100スイッチsw1とSW2の間のISL上のISLポートと物理ポートがswp15とswp16: net show interfaceで動作していることを確認します</block>
+  <block id="79db2f8f30aa3d04c6b263659d467402" category="paragraph">次の例は、スイッチsw1のISLポートがupになっていることを示しています。</block>
+  <block id="07e4cb210a1196abcb5adb44dde333b4" category="paragraph">次の例は、スイッチSW2のISLポートが稼働していることを示しています。</block>
+  <block id="6bb0bcacdec60dbc4e5eff8e7819821c" category="list-text">すべてのクラスタ・ポートが動作していることを確認します。「network port show」を参照してください</block>
+  <block id="c0093a431c96f2dc5a1e13aab041a68e" category="list-text">すべてのクラスタLIFが稼働していることを確認します。「network interface show」</block>
+  <block id="e64ef54bc22e89a7865d584c549641bf" category="list-text">クラスタLIFで自動リバートを無効にします。「network interface modify -vserver Cluster -lif *-auto-giveback false」</block>
+  <block id="881b0c6ec04a04c3fcbc1ba781dc7646" category="list-text">ノード1のクラスタポートe3aからケーブルを外し、SN2100スイッチでサポートされている適切なケーブル接続を使用して、クラスタスイッチsw1のポート3にe3aを接続します。</block>
+  <block id="89815af81c37a8f9a7a98396057d0bcd" category="list-text">ノード2のクラスタポートe3aからケーブルを外し、SN2100スイッチでサポートされている適切なケーブル接続を使用して、クラスタスイッチsw1のポート4にe3aを接続します。</block>
+  <block id="1c0aead7e1e98fe84e1a13e550546826" category="list-text">スイッチsw1で、すべてのノード側ポートを有効にします。</block>
+  <block id="e689d496da4acf9b83967f63b30bfff1" category="paragraph">次のコマンドは、スイッチsw1のすべてのノード側ポートを有効にします。</block>
+  <block id="aef48d101ce6aeaf1d9e06a4f8133421" category="list-text">スイッチsw1で、すべてのポートがアップしていることを確認します。「net show interface all」</block>
+  <block id="1f365578e399c977a3cb861440635597" category="list-text">ノード1のクラスタポートe3bからケーブルを外し、SN2100スイッチでサポートされている適切なケーブルを使用して、クラスタスイッチSW2のポート3にe3bを接続します。</block>
+  <block id="2d65594cff5cc6e71db9a1b2fbbe8525" category="list-text">ノード2のクラスタポートe3bからケーブルを外し、SN2100スイッチでサポートされている適切なケーブルを使用して、クラスタスイッチSW2のポート4にe3bを接続します。</block>
+  <block id="864ef5d9db6d1180631c2ebb8b3bf606" category="list-text">スイッチSW2で、すべてのノード側ポートを有効にします。</block>
+  <block id="b9d99f7d075a8daf5ab7e89104f0e843" category="paragraph">次のコマンドは、スイッチSW2のノード側ポートを有効にします。</block>
+  <block id="a2bff1080bbbe5b4e639dc2fbf988208" category="list-text">スイッチSW2で、すべてのポートが動作していることを確認します。「net show interface all」</block>
+  <block id="d09534185b2afa2c71d2d73bab9e4ceb" category="list-text">両方のスイッチsw1とSW2で、両方のノードがそれぞれ1つの接続を持つことを確認します。「net show lldp」</block>
+  <block id="8bd9cf76d8aa16ab6c3c62b74388262d" category="paragraph">次の例は、sw1とSW2の両方のスイッチについて適切な結果を示しています。</block>
+  <block id="c4578e234eef8aa67fea2889f9b72b89" category="list-text">クラスタ内で検出されたネットワークデバイスに関する情報を表示します。「net device-discovery show -protocol lldp</block>
+  <block id="a78fbb2a7f637cdf29314befa6e61768" category="list-text">すべてのクラスタLIFで自動リバートを有効にします。net interface modify -vserver Cluster -lif *-auto-revert true</block>
+  <block id="096583756a3fa84e84e5f51c149129b2" category="list-text">すべてのインターフェイスにIs Homeにtrueが表示されていることを確認します:net interface show -vserver Cluster</block>
+  <block id="7c1863f1ebbe4335b617904d5c56fbc1" category="admonition">この処理が完了するまでに1分かかることがあります。</block>
+  <block id="efe6750a163af17e0e2f647d97ffba88" category="list-text">スイッチ関連のログファイルを収集するためにEthernetスイッチのヘルスモニタログ収集機能をイネーブルにします。これには、コマンド「system switch ethernet log setup-password」および「system switch ethernet log enable -col関係」を使用します</block>
+  <block id="7c18d4b4801585bab9d42a3318b71c29" category="summary">RCFスクリプトをインストールする前に、スイッチで次のコンポーネントが使用可能であることを確認してください</block>
+  <block id="3722090c5c0b0496759b23b1db5566cd" category="doc">RCFスクリプトをインストールします</block>
+  <block id="01ed8be95a2e23de884b7ae4035220ed" category="paragraph">RCFスクリプトをインストールする前に、スイッチに次のものがあることを確認してください。</block>
+  <block id="f0628c60efd94ed2822e83944aa83ad5" category="list-text">Cumulus Linux 4.4.2がインストールされている。</block>
+  <block id="90bd80eefde443be8809a3edf64f7ef2" category="list-text">IPアドレス、サブネットマスク、およびデフォルトゲートウェイは、DHCPを使用して定義するか、手動で設定します。</block>
+  <block id="526990b43ff7cafabc1a3c5dda4e8c9b" category="paragraph">クラスタリングアプリケーションとストレージアプリケーション用に2つのRCFスクリプトが用意されています。各の手順 は同じです。</block>
+  <block id="d43ffd29b9c1918eacb74ce61ab9c93d" category="list-text">クラスタリング：* MSN2100-RCF v1.8 - Cluster *</block>
+  <block id="85948408e24eaebde36ef1a070afa259" category="list-text">ストレージ：* MSN2100-RCF v1.8 -ストレージ*</block>
+  <block id="6dc14e04a8a9872060eabb70b3146d4f" category="admonition">次の手順 の例は、クラスタ用のRCFスクリプトをダウンロードして適用する方法を示しています。</block>
+  <block id="cba289d19a283a01be4ec7d5598b25e8" category="list-text">SN2100スイッチで使用可能なインターフェイスを表示します。</block>
+  <block id="3b5e7c0b44bbb42aa1029b700aab77f6" category="list-text">RCFスクリプトをスイッチにコピーします。</block>
+  <block id="5bcea87b922ca81c4fc511e929c08c37" category="list-text">RCFスクリプト* MSN2100-RCF v1.8 -Cluster *を適用します。</block>
+  <block id="04e918e1232eed920664403f155f32ab" category="paragraph">RCFスクリプトで実行する手順は次のとおりです。</block>
+  <block id="2256b58fcf58cb3dc806692af4a92886" category="list-text">バナーのMOTDを更新します</block>
+  <block id="d24cee5d31595748374cfe2b0d8f60e6" category="list-text">apt-get for OSのアップデートを無効にします</block>
+  <block id="63d6c0b7f07c6f3189dd21648d0b707b" category="list-text">ブレークアウトインターフェイスとブレークアウト以外のインターフェイスを定義します</block>
+  <block id="411060d174ebfad660d876a708c33ffd" category="list-text">インターフェイスおよびSNMPを設定します</block>
+  <block id="0e095946edae537f1daa4858140e3425" category="list-text">CDPを無効にします</block>
+  <block id="c9f5089d48a4ebb41131b7219479c281" category="list-text">LLDPの設定を変更します</block>
+  <block id="a39c98037d6a87c77e02c368fa9d3609" category="list-text">RoCE構成を追加します</block>
+  <block id="b80fb4489f390f48d56968db613b82e3" category="list-text">HAおよびクラスタRDMAのRoCE設定を変更します</block>
+  <block id="49effc2a848dda4523f36af8403e034d" category="list-text">スイッチをリブートします</block>
+  <block id="0cf73b1dd1fc2f75b9293a2ee7043140" category="list-text">リブート後に設定を確認します。</block>
+  <block id="b9751a8031dd55824b4acd4237c6eb3b" category="list-text">インターフェイス内のトランシーバの情報を確認します。net show interface Pluggable</block>
+  <block id="17eb42e5e21b8a355d025bf8a2ccfb82" category="list-text">各ノードが各スイッチに接続されていることを確認します。net show lldp</block>
+  <block id="f94f0c733aca2a6e08b26eff8a1263b4" category="list-text">クラスタのスイッチの健常性を確認します（LIFはe0dにホーム設定されていないため、スイッチSW2が表示されない場合があります）。</block>
+  <block id="2e48063923d7005a1d5b4c086c0a902a" category="summary">NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10/25/40/100GbEイーサネットスイッチです。SN2100スイッチは、ONTAP 9.10.1のクラスタおよびストレージアプリケーションに、異なるスイッチペアを介して対応します。</block>
+  <block id="736869e2dc47a4e8d50ebe15f7663677" category="doc">NVIDIA SN2100スイッチをセットアップして設定します</block>
+  <block id="80e45406c521e50547dc90b37e743cb3" category="paragraph">NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10/25/40/100Gbイーサネットスイッチです。SN2100スイッチは、ONTAP 9.10.1P3のクラスタおよびストレージアプリケーションに、異なるスイッチペアを提供します。</block>
+  <block id="d9ce026d1dc9a271f8978a5496b35800" category="paragraph">Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます。このリリースでサポートされるCumulus Linuxの最小バージョンは4.4.2です。</block>
+  <block id="d3f340b9ec1ceb3e805d6d66529c1899" category="admonition">ここでの手順では、ネットワークコマンドラインユーティリティ（NCLU）を使用します。NCLUは、すべてのCumulus Linuxに完全にアクセスできるようにするためのコマンドラインインタフェースです。netコマンドは、端末からアクションを実行するために使用するラッパーユーティリティです。</block>
+  <block id="5d33e9de1f292100664c873ddbc4d5d2" category="admonition">10Gおよび25Gにブレークアウトケーブルを使用する場合は、自動ネゴシエーションがオフになっていて、スイッチのポート速度をハードセットしていることを確認してください。を参照してください <block ref="58ea2a922914aa470e8c647f2a05d6be" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="4e4a4a02911e122627365a67b690270e" category="summary">Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます。</block>
+  <block id="5c336d9150225836a1bf47b21339dedc" category="doc">Cumulus LinuxをONIEモードでインストールします</block>
+  <block id="4937b958fd592ecf33cfd084ea040c92" category="paragraph">クムルスLinuxは、ネットワークインストーライメージの自動検出を可能にするOpen Network Install Environment（ONIE）を使用してインストールできます。これにより、Cumulus Linuxなどのオペレーティングシステムの選択により、スイッチをセキュリティ保護するシステムモデルが容易になります。ONIEでCumulus Linuxをインストールする最も簡単な方法は、ローカルHTTP検出です。</block>
+  <block id="fdabb4753161a9b4bd109b3c1128441f" category="admonition">ホストがIPv6対応の場合は、Webサーバを実行していることを確認します。ホストがIPv4対応の場合は、Webサーバに加えてDHCPも実行されていることを確認します。</block>
+  <block id="458f980bedd0795625e83f297c0a66fd" category="paragraph">この手順 では、管理者がONIEで起動した後にCumulus Linuxをアップグレードする方法を説明します。</block>
+  <block id="36f831960326f190db5b27c1556e1475" category="list-text">Cumulus LinuxインストールファイルをWebサーバーのルートディレクトリにダウンロードします。このファイル名を「ONIE-installer」に変更します。</block>
+  <block id="2878ffd45e62a3c24da481616a508352" category="list-text">イーサネットケーブルを使用して、スイッチの管理イーサネットポートにホストを接続します。</block>
+  <block id="a83ecacfc8440093b21963c19b9cac25" category="list-text">スイッチの電源をオンにします。スイッチはONIEイメージインストーラをダウンロードして起動します。インストールが完了すると、ターミナルウィンドウにCumulus Linuxログインプロンプトが表示されます。</block>
+  <block id="815792b56cadfb802621ba5d3728c768" category="admonition">Cumulus Linuxをインストールするたびに、ファイルシステム構造全体が消去され、再構築されます。</block>
+  <block id="55f75855d3473529a9c81705515c63b5" category="list-text">SN2100スイッチをリブートします。</block>
+  <block id="bcf1a8adc78a0a57e9bd29992bcba6ab" category="list-text">GNU GRUB画面で*Esc*キーを押して、通常の起動プロセスを中断し、*ONIE*を選択してEnterを押します。</block>
+  <block id="b76e78139e129fd7b040b8c7c0c2cfe8" category="list-text">表示された次の画面で、*ONIE: Install OS*を選択します。</block>
+  <block id="20e1a7fe30403f4a66c9409cc2bf3d02" category="list-text">ONIEインストーラの検出処理が実行され、自動インストールが検索されます。Enterキーを押して、プロセスを一時的に停止します。</block>
+  <block id="42d9c8af3d281f936f3a1eb9fb48e341" category="list-text">検出プロセスが停止したら、次の手順を実行します。</block>
+  <block id="1e36934707ca773ba62f0533c37dd8ee" category="list-text">ネットワークでDHCPサービスが実行されている場合は、IPアドレス、サブネットマスク、およびデフォルトゲートウェイが正しく割り当てられていることを確認します。</block>
+  <block id="165a7d7a1fcfac867768dfbb458bd9a0" category="list-text">IPアドレッシング方式が手動で定義されている場合は、次の手順を実行します。</block>
+  <block id="148ef6fa9ac908db569ad63c96fb01e8" category="list-text">手順9を繰り返して、静的情報が正しく入力されていることを確認します。</block>
+  <block id="71a98c939bf9fe1ba2c2453cd7777824" category="list-text">Cumulus Linuxのインストール：</block>
+  <block id="5bb8ca227d3f9b0b9fc45003bbe7d06c" category="list-text">インストールが完了したら、スイッチにログインします。</block>
+  <block id="098d312f939d7511ad5f9bf80ccaea96" category="list-text">Cumulus Linuxのバージョンを確認します。</block>
+  <block id="9d36413c7ae238ebf79e37939969b9ee" category="summary">ONTAP クラスタの古いCiscoスイッチは、無停止でNVIDIA SN2100ストレージスイッチに移行できます。</block>
+  <block id="c0e54fd32010cccd4fea353a8f62265e" category="doc">CiscoストレージスイッチからNVIDIA SN2100ストレージスイッチに移行する</block>
+  <block id="55f16d2d38939d5e5613dcce4660779c" category="paragraph">一部の古いCiscoスイッチをNVIDIA SN2100ストレージスイッチに交換する場合は、特定の設定情報、ポート接続、およびケーブル接続要件に注意する必要があります。</block>
+  <block id="bdcdaedb42f04c50f04fe5d093e593c6" category="list-text">サポートされるストレージスイッチは次のとおりです。</block>
+  <block id="2685d1886e5c6ce7a602fe324c7fbea8" category="paragraph">ONTAP クラスタの古いCiscoストレージスイッチは、無停止でNVIDIA SN2100ストレージスイッチに移行できます。</block>
+  <block id="bc6363ffb66952fddf7b24a035852e22" category="list-text">ノンストップオペレーションを実現するには、すべてのストレージポートがupの状態になっている必要があります。</block>
+  <block id="28fa2edb91149d5384166eeb2f7688c8" category="list-text">NVIDIA SN2100ストレージスイッチは、リファレンス構成ファイル（RCF）を適用した状態で、適切なバージョンのCumulus Linuxをインストールした状態で設定し、動作させる必要があります。</block>
+  <block id="9708d0a2f674de8d78d458c499b9780c" category="list-text">既存のストレージネットワーク構成には、次のものが必要です。</block>
+  <block id="b51910f2be8efa76921ebe6a40149d60" category="list-text">NVIDIA SN2100スイッチの一部のポートを100GbEで実行するように設定しておきます。</block>
+  <block id="776ee262c20b0dd2648bccba5b2cc347" category="list-text">ノードからNVIDIA SN2100ストレージスイッチへの100GbE接続を計画、移行、文書化しておきます。</block>
+  <block id="9f4cc971f3ab9fd0958fd265eb306525" category="admonition">この手順 では、コマンドや出力の例として、Cisco Nexus 9336C-FX2ストレージスイッチが使用されています。</block>
+  <block id="dab9b0ece6f1f8f1890127dd86465ac5" category="list-text">既存のCisco Nexus 9336C-FX2ストレージスイッチは、_s1_and _s2_です。</block>
+  <block id="9e868f2bf21bd2cd90fca2dc5bafc948" category="list-text">新しいNVIDIA SN2100ストレージスイッチは_sw1_AND _sw2_です。</block>
+  <block id="f02bf1e73f684a60f05864e6d5488f35" category="list-text">この手順 で使用されるネットワークポートは、_e5a_AND _e5b_です。</block>
+  <block id="c0dafa6a26d68c5516d35ddacdc99210" category="list-text">ブレークアウトポートの形式はswp1s0-3です。たとえば'swp1のブレークアウトポートは'_swp1s0'_swp1s1_'_swp1s2s'_swp1s3_です</block>
+  <block id="241262ab86a3f2909548b2df8d4b4ef3" category="list-text">最初にスイッチS2をスイッチSW2に交換し、次にスイッチS1をスイッチsw1に交換します。</block>
+  <block id="9fdbbd8b74f2465ba22ef8f94cc417db" category="list-text">次に、ノードとS2間のケーブルがS2から切断され、SW2に再接続されます。</block>
+  <block id="4ded409be8e99d0222e6920dab03f559" category="list-text">ノードとS1間のケーブル接続がS1から切断され、sw1に再接続されます。</block>
+  <block id="4e7a83da96739a6c51f20930a3c125eb" category="list-text">AutoSupport が有効な場合は、AutoSupport メッセージ「system node AutoSupport invoke -node *-type all -message MAINT=xh」を呼び出して、ケースの自動作成を抑制します</block>
+  <block id="dbcef39ce4cc869cf2edc60abf080ec9" category="list-text">各ストレージインターフェイスの管理ステータスまたは動作ステータスを確認します。</block>
+  <block id="9444ed63276c185ae4fc3959a828cfbf" category="paragraph">各ポートは'Status'に対してEnabledと表示されます</block>
+  <block id="09c14abe0805eabd797e1813234da84d" category="paragraph">ネットワーク・ポートの属性を表示しますstorage port show</block>
+  <block id="7208d2743e2eb0a664acffbc1d2bed76" category="list-text">各ノードのストレージポートは、（ノードから見て）次のように既存のストレージスイッチに接続されています：「network device-discovery show -protocol lldp</block>
+  <block id="e7e725db477bdb3d29a07c4150816731" category="list-text">スイッチS1とS2では、コマンド「show lldp neighbors」を使用して、（スイッチの観点から）ストレージポートとスイッチが次のように接続されます</block>
+  <block id="b82d0a886822fefc74546a0db57a5f3f" category="list-text">スイッチSW2で、ディスクシェルフのストレージポートおよびノードに接続されているポートをシャットダウンします。</block>
+  <block id="ea22015d2dbd58bc8c791b53805a2859" category="list-text">NVIDIA SN2100でサポートされている適切なケーブル配線を使用して、コントローラとディスクシェルフのノードストレージポートを古いスイッチS2から新しいスイッチSW2に移動します。</block>
+  <block id="af57695f7703a9c9e1b729a8d9522e28" category="list-text">スイッチSW2で、ノードおよびディスクシェルフのストレージポートに接続されているポートを起動します。</block>
+  <block id="ece31ff94247476496637a7601f809ca" category="list-text">これで、各ノードのストレージポートは、ノードから見て次のようにスイッチに接続されました。</block>
+  <block id="479f3a8c088d1257d183873dfde80fd3" category="list-text">ネットワーク・ポートの属性を確認しますstorage port show</block>
+  <block id="713a50cb8a7385b4bb65e05c034427cd" category="list-text">スイッチSW2で、すべてのノードストレージポートが動作していることを確認します。</block>
+  <block id="f2b2a4a72d2a8eed29cbd3b748d725d8" category="list-text">スイッチsw1で、ノードおよびディスクシェルフのストレージポートに接続されているポートをシャットダウンします。</block>
+  <block id="ec0b0e240b5321461bce6981d9989a3e" category="list-text">NVIDIA SN2100でサポートされている適切なケーブル配線を使用して、コントローラとディスクシェルフのノードストレージポートを古いスイッチS1から新しいスイッチsw1に移動します。</block>
+  <block id="9dbf824bd31cc26010a5afdff9a86832" category="list-text">スイッチsw1で、ノードおよびディスクシェルフのストレージポートに接続されているポートを起動します。</block>
+  <block id="177b054724009ae5ee691333205a7f85" category="list-text">これで、各ノードのストレージポートは、ノードから見て次のようにスイッチに接続されました。</block>
+  <block id="187000b30b0a352995713820903db6ec" category="list-text">最終的な構成を確認しますstorage port show</block>
+  <block id="6a4d86e98be7e5b289b38a5117298bfb" category="paragraph">各ポートは'State'に対してはEnabledと表示され'Status'に対してはEnabledと表示されます</block>
+  <block id="4cde2dc8257c4b4ae4c8d09b8edb9633" category="list-text">両方のノードがそれぞれ1つのスイッチに接続されていることを確認します。net show lldp</block>
+  <block id="aaea07599d1157945444c3c301565e94" category="summary">NVIDIA SN2100スイッチ</block>
+  <block id="d502e4d284e017c272fbc044d1c805ee" category="paragraph">ONTAP 9.10.1P3以降では、NVIDIA SN2100スイッチを使用してストレージとクラスタの機能を共有スイッチのシナリオに統合できます。</block>
+  <block id="268d7e69c1c7b6a30eee297bf5fab5b9" category="summary">NVIDIA SN2100スイッチを設定する前に、次の情報を確認してください。</block>
+  <block id="e3d3971b51c381172149f6e144f03e90" category="list-text">SN2100スイッチでは、X1151A NIC、X1146A NIC、またはオンボード100GbEポートを使用した場合にのみ、光接続がサポートされます。例：</block>
+  <block id="d35d5ab77a6267b38526b184dcfce0af" category="list-text">ポートe0aとe0b上のAFF A800</block>
+  <block id="b9017574c175e97b1d6c5e950a79e4c7" category="list-text">ポートe0gとe0hにAFF A320を追加します</block>
+  <block id="137008107cba2aab0763be2879d9da87" category="list-text">QSAアダプタを使用してプラットフォーム上のオンボードインテルクラスタポートに接続した場合、すべてのリンクが表示されるわけではありません。</block>
+  <block id="39b92cc163c876722512c8dc4c617b9f" category="paragraph">FAS2750、AFF A300、FAS8200（オール10G）、AFF A250（25G）などのプラットフォームが該当します。</block>
+  <block id="b1e03e9ce1f7041c2da53fa42cd21af3" category="paragraph">この問題 を解決するには、次の手順を実行します。</block>
+  <block id="1257c60c0e4da71f409960bf9095202c" category="list-text">Intel 10Gの場合、swp1s0-3リンク速度を10000に手動で設定し、オートネゴシエーションをoffsetに設定します</block>
+  <block id="b9f4ea426e4b9a2590c25e8559103a64" category="list-text">Chelsio 25Gの場合、swp2s0～3リンク速度を25000に手動で設定し、オートネゴシエーションをオフに設定します</block>
+  <block id="ee42c1d9d1520c3cdd715411436b7999" category="admonition">10G / 25G QSAを使用して、ブレークアウト以外の40 / 100Gポートを使用します。ブレークアウト用に設定されたポートにはQSAアダプタを挿入しないでください。</block>
+  <block id="2fdeef1f910c4fc8f12a5b45d51952bc" category="list-text">スイッチポートのトランシーバによっては、スイッチポートの速度を固定の速度に設定しなければならない場合があります。10Gおよび25Gブレークアウトポートを使用する場合は、自動ネゴシエーションがオフになっていて、スイッチのポート速度をハードセットしていることを確認してください。例：</block>
+  <block id="7b3d3dc3c1c084f2a1b3b79612d49fdd" category="doc">Cumulus LinuxをCumulusモードでインストールします</block>
+  <block id="b68d7103bcc4e5db1876ba13a6e45bf9" category="paragraph">前提条件は次のとおりです。</block>
+  <block id="1e5770738372c5d084640412f3475232" category="list-text">Linuxに関する中級レベルの知識があること。</block>
+  <block id="d4e1be5631ea2ef9eddf5d1491821590" category="list-text">テキストの基本的な編集、UNIXファイル権限、プロセスの監視について十分に理解している必要があります。viやnanoなど、様々なテキストエディタがあらかじめインストールされています。</block>
+  <block id="0fd11f677b5f359fd48a5abfac889417" category="list-text">LinuxシェルまたはUNIXシェルへのアクセスが必要です。Windowsを実行している場合は、Linux環境をコマンドラインツールとして使用して、クムルスLinuxと対話します。</block>
+  <block id="6ae4d8bf3ebde7936b05c2fe894d7ada" category="admonition">cumulusユーザーアカウントのデフォルトパスワードは*cumulus *です。Cumulus Linuxに初めてログインするときは、このデフォルトのパスワードを変更する必要があります。新しいイメージをインストールする前に、必ず自動化スクリプトを更新してください。Cumulus Linuxには、インストールプロセス中にデフォルトのパスワードを自動的に変更するためのコマンドラインオプションが用意されています。</block>
+  <block id="06c2ede7dabacb6c8f4f628bf6b1de39" category="paragraph">NVIDIA SN2100スイッチのコンソールアクセスでは、シリアルコンソールスイッチでボーレート要件を115200に設定する必要があります。</block>
+  <block id="b7d317c3216324e11b73a2840fd43e28" category="list-text">スイッチにログインします。スイッチへの初回ログインには、sudo権限を持つ*cumulux*/*cumulux*のユーザ名/パスワードが必要です。</block>
+  <block id="9e6b336700c1d2e767e05525b2b57ef3" category="list-text">Cumulus Linuxのバージョンを確認します。</block>
+  <block id="2667c65a518ae8fb280dc9f6a61de3c5" category="list-text">ホスト名、IPアドレス、サブネットマスク、およびデフォルトゲートウェイを設定します。新しいホスト名が有効になるのは、コンソール/SSHセッションを再起動した後だけです。</block>
+  <block id="62b623b92c382746efee9767d590d86c" category="admonition">Cumulus Linuxスイッチには、「eth0」という専用イーサネット管理ポートが少なくとも1つあります。このインターフェイスは、アウトオブバンド管理専用です。デフォルトでは、管理インターフェイスはアドレス指定にDHCPv4を使用します。</block>
+  <block id="91dcca4278a428afbccb2f118d523e13" category="admonition">ホスト名には、アンダースコア（_）、アポストロフィ（'）、非ASCII文字を使用しないでください。</block>
+  <block id="5e82a0b4b15e3bfeac2a57b4a294a39c" category="paragraph">このコマンドは'/etc/hostname'ファイルと/etc/hostsファイルの両方を変更します</block>
+  <block id="13ddc20a0230a7df1f3c90a8ed3da8a5" category="list-text">ホスト名、IPアドレス、サブネットマスク、およびデフォルトゲートウェイが更新されたことを確認します。</block>
+  <block id="6c42fa7e4c3302fb56f4374e70b97fc2" category="list-text">NTPインタラクティブモードを使用してタイムゾーンを設定します。</block>
+  <block id="3f13db29081af25b57d3e76ea324a03b" category="list-text">端末で次のコマンドを実行します。</block>
+  <block id="83d1563d45527134091bdab8d6e5072d" category="list-text">画面上のメニューオプションに従って、地理的エリアと地域を選択します。</block>
+  <block id="fe0f6a5f9b992c1eea817100a2c1c148" category="list-text">すべてのサービスおよびデーモンのタイムゾーンを設定するには、スイッチをリブートします。</block>
+  <block id="61d6aab01fc093c66c1e769d05c39812" category="list-text">スイッチの日付と時刻が正しいことを確認し、必要に応じて更新します。</block>
+  <block id="f415282bef0374e283b8082be4765eea" category="list-text">Cumulus Linux 4.4.2のインストール：</block>
+  <block id="9a828cf107e0b55e82b0e52b871aa982" category="paragraph">インストーラがダウンロードを開始します。プロンプトが表示されたら「* y *」と入力します</block>
+  <block id="b64202cf747d1cf1ed877a2b16051b9b" category="list-text">NVIDIA SN2100スイッチをリブートします。</block>
+  <block id="9f4f33c5c40ac522549c3e58d187e0a0" category="list-text">インストールが自動的に開始され、次のGRUB画面が表示されます。Do * not *（実行しない）を選択します。</block>
+  <block id="0356af5b3daf1c5f334184d547ba7462" category="list-text">Cumulus - Linux GNU/Linux</block>
+  <block id="a64ef5ea949c8d49f35a27151295f942" category="list-text">ONIE: OSのインストール</block>
+  <block id="e0fb005ad468c2c6da5d94ae5ee83311" category="list-text">クムルス-インストール</block>
+  <block id="aaf5ecccbfaebfdecab9b13474cd1016" category="list-text">ログインするには、手順1~4を繰り返します。</block>
+  <block id="c883d7af8e0067ad8d312770086b2d07" category="list-text">Cumulus Linuxのバージョンが4.4.2であることを確認します。</block>
+  <block id="ec456cd346911330a2200aa0d18eceaf" category="list-text">新しいユーザを作成し、このユーザを「sudo」グループに追加します。このユーザが有効になるのは、コンソール/SSHセッションを再起動した後だけです。</block>
+  <block id="6cce5d78fc7baf999a2f91945cec4681" category="doc">NVIDIA SN2100スイッチ</block>
+  <block id="d7ddb122f5b0d427125ca1728604348a" category="paragraph">NVIDIA SN2100スイッチ（X190006/X190106）は、スイッチに付属の標準ブラケットを使用して、NVIDIAデュアル/シングルスイッチキャビネットに設置します。</block>
+  <block id="b0bf0f217cb1d53bd191aca5d6b62108" category="paragraph">次の表に、MSN2100スイッチおよびレールキットの部品番号と概要 を示します。</block>
+  <block id="572fe15be859e8e821675b10e630a4ae" category="paragraph">X190006-PE</block>
+  <block id="1545f8e8b25daf1dcedbccfac0ffeb23" category="paragraph">クラスタスイッチ、NVIDIA SN2100、16pt 100G、PTSX</block>
+  <block id="30f7229b421f56d9234c0201f097a8e0" category="paragraph">X190006-PI</block>
+  <block id="50db68e5e1edfdae301d0e13cf36b35c" category="paragraph">クラスタスイッチ、NVIDIA SN2100、16pt 100G、PSIN</block>
+  <block id="11d13ed1e5722e39b9eed159c504b273" category="paragraph">X190106-FE-PEの実行</block>
+  <block id="af3bf35952bf379b9c77580834f0ccea" category="paragraph">スイッチ、NVIDIA SN2100、16pt 100G、PTSX、フロントエンド</block>
+  <block id="6c0dabd674a229e6a71c9efa0506c26c" category="paragraph">X190106-FE-PIの実行</block>
+  <block id="89e63d10029caf2d14bf259863a398e7" category="paragraph">スイッチ、NVIDIA SN2100、16pt 100G、PSIN、フロントエンド</block>
+  <block id="f14cae44efe4b8ece4c67a0bb8c96cf0" category="paragraph">X-MTEFキット-D</block>
+  <block id="dd0da9a2cc690d430884295e008a2dab" category="paragraph">レールキット、NVIDIAデュアルスイッチ、サイド</block>
+  <block id="80ba4b0b3a217933f761ba1440471dee" category="paragraph">X-MTEFキット-E</block>
+  <block id="65adcaebf2b7d6b4197e6a8aff31717f" category="paragraph">レールキット、NVIDIAシングルスイッチショート</block>
+  <block id="8a6e8b822a02f19c1d150c230a03bf69" category="inline-link">SN2100スイッチとレールキットの取り付け</block>
+  <block id="865b448eabcf17df6b422f9231393d1a" category="admonition">詳細については、NVIDIAのドキュメントを参照してください<block ref="39747b316e7d3df3f73757faf591c2d2" category="inline-link-rx"></block>。</block>
+  <block id="4cbae0b27dc5bb331502b630a138cc4a" category="paragraph">次の表に、NVIDIA SN2100スイッチで使用可能なマニュアルを示します。</block>
+  <block id="b6b0513dd441d375575669499c028d77" category="inline-link-macro">NVIDIA SN2100スイッチをセットアップして設定します_</block>
+  <block id="bc73d70686c873ae5e2f4e513f491722" category="paragraph"><block ref="bc73d70686c873ae5e2f4e513f491722" category="inline-link-macro-rx"></block></block>
+  <block id="77f388375aa4a60bc88c77b1a62210b1" category="paragraph">Cumulus Linuxおよび該当するRCFのインストールなど、NVIDIA SN2100スイッチのセットアップおよび設定方法について説明します。</block>
+  <block id="7f3bf3d40898d5f432e8fac499b35019" category="inline-link-macro">_ CiscoクラスタスイッチからNVIDIA SN2100クラスタスイッチへの移行_</block>
+  <block id="3bbe54c8552e40dc5f89b73892046850" category="paragraph"><block ref="3bbe54c8552e40dc5f89b73892046850" category="inline-link-macro-rx"></block></block>
+  <block id="c215cbb78c56580b18190d97abd7667b" category="paragraph">Ciscoクラスタスイッチを使用する環境からNVIDIA SN2100クラスタスイッチを使用する環境に移行する方法について説明します。</block>
+  <block id="821a2f7945b3464ddee06f602c686f9b" category="inline-link-macro">_ CiscoストレージスイッチからNVIDIAストレージスイッチへの移行_</block>
+  <block id="3fbe15969453ca44c2deb4fdfe8323ee" category="paragraph"><block ref="3fbe15969453ca44c2deb4fdfe8323ee" category="inline-link-macro-rx"></block></block>
+  <block id="26872f7030028e1569f2ce01c9bc352c" category="paragraph">Ciscoストレージスイッチを使用する環境からNVIDIA SN2100ストレージスイッチを使用する環境に移行する方法について説明します。</block>
+  <block id="6f2cf7b704c57c57ef32132488de219a" category="inline-link-macro">NVIDIA SN2100クラスタスイッチを使用する2ノードスイッチクラスタへの移行_</block>
+  <block id="a5fe3028e8bedffa1849e536a4538b5b" category="paragraph"><block ref="a5fe3028e8bedffa1849e536a4538b5b" category="inline-link-macro-rx"></block></block>
+  <block id="f47598dac203329e94811e7ca007b4e2" category="paragraph">NVIDIA SN2100クラスタスイッチを使用して2ノードスイッチ環境に移行する方法について説明します。</block>
+  <block id="704deb422a6b7e49bc71f93eb9153e24" category="inline-link-macro">NVIDIA SN2100クラスタスイッチを交換してください_</block>
+  <block id="cb35bcc230f43141ffe95979875e1193" category="paragraph"><block ref="cb35bcc230f43141ffe95979875e1193" category="inline-link-macro-rx"></block></block>
+  <block id="04c9967f210e3a292f67ab723d461b51" category="paragraph">クラスタ内の故障したNVIDIA SN2100スイッチを交換し、Cumulus Linuxおよびリファレンス構成ファイルをダウンロードする手順 について説明します。</block>
+  <block id="44bb54091263606f157bbaad0fdef9c3" category="inline-link-macro">NVIDIA SN2100ストレージスイッチを交換してください_</block>
+  <block id="38c797c6506c8619afc1b09c65aa0655" category="paragraph"><block ref="38c797c6506c8619afc1b09c65aa0655" category="inline-link-macro-rx"></block></block>
+  <block id="2875df17f2e2895666eddce90fc6146f" category="paragraph">欠陥のあるNVIDIA SN2100ストレージスイッチを交換し、Cumulus Linuxおよびリファレンス構成ファイルをダウンロードする手順 について説明します。</block>
+  <block id="3d9882663c241e5e6078e7d90137ebc4" category="doc">NS224シェルフをスイッチ接続型ストレージとしてケーブル接続します</block>
+  <block id="b154454eef50aecacf60925ed8851078" category="paragraph">NS224ドライブシェルフを（直接接続型ストレージではなく）スイッチ接続型ストレージとしてケーブル接続する必要があるシステムの場合は、ここに記載された情報を使用してください。</block>
+  <block id="0ab54354ff641ba8f3492f71c03aa435" category="list-text">NS224 ドライブシェルフをストレージスイッチ経由でケーブル接続します。</block>
+  <block id="afb935b1a48a04ad288c97c7899d840d" category="inline-link">スイッチ接続型 NS224 ドライブシェルフのケーブル接続に関する情報</block>
+  <block id="9824994e3f8651cf2b6d695555bdc011" category="paragraph"><block ref="9824994e3f8651cf2b6d695555bdc011" category="inline-link-rx"></block></block>
+  <block id="d1f671afbf5d4ca47b95e86f70c6bcc1" category="list-text">ストレージスイッチを設置します。</block>
+  <block id="008b8867712161228bd794977fcd0d4b" category="paragraph"><block ref="008b8867712161228bd794977fcd0d4b" category="inline-link-rx"></block></block>
+  <block id="4aaebba2a5287c74eb41bf080e6d1fe4" category="list-text">使用しているプラットフォームモデルでサポートされているストレージスイッチやケーブルなどのハードウェアを確認します。</block>
+  <block id="a1db73a47f571c20627d62d37a2069c2" category="summary">クラスタネットワーク内の不良なNVIDIA SN2100スイッチの交換は、無停止手順 （NDNDU）です。</block>
+  <block id="a3651ea5ff10cfef31750e91f195d5ee" category="doc">NVIDIA SN2100クラスタスイッチを交換してください</block>
+  <block id="087a0cdfa40d1253f83403998d37833d" category="paragraph">クラスタネットワーク内で障害のあるNVIDIA SN2100スイッチを交換することは、無停止手順 （NDU）です。</block>
+  <block id="6aaebc9be5cb9f30472fb63a824c949e" category="list-text">ONTAP のcluster ping-cluster -node node1コマンドは'基本的な接続性とPMTUよりも大きな通信がすべてのパスで正常に行われていることを示す必要があります</block>
+  <block id="3d783a6ce1d3577899a2187587c7adeb" category="list-text">NVIDIA SN2100交換用スイッチ：</block>
+  <block id="7c203e1a3f4b15f49b599181ccad697e" category="list-text">ノード接続は、ポートswp1からswp14です。</block>
+  <block id="9870eb7c51de1228e9b0b748603b1cc9" category="list-text">ポートswp15およびswp16のすべてのInter-Switch Link（ISL；スイッチ間リンク）ポートを無効にする必要があります。</block>
+  <block id="1b7189a6869b63c94afb7f51281b21ff" category="list-text">目的のリファレンス構成ファイル（RCF）とCumulusオペレーティングシステムイメージスイッチをスイッチにロードする必要があります。</block>
+  <block id="a4c878fb98636575acf74bb5da1fe02d" category="list-text">既存のNVIDIA SN2100スイッチの名前は_sw1_AND _sw2_です。</block>
+  <block id="7245dce9803a65915577b9b6c0a8fba4" category="list-text">新しいNVIDIA SN2100スイッチの名前は_nsw2_.</block>
+  <block id="982217e543f0fa5e9da851302f28d805" category="list-text">クラスタLIFの名前は、ノード1の場合は_node1_clus1_AND _node1_clus2_(1つ)、ノード2の場合は_node2_clus1_and _node2_clus2_(1つ)です。</block>
+  <block id="251c6c04656af97cbcbd1aa3eea2bee5" category="list-text">すべてのクラスタ・ノードへの変更を求めるプロンプトは、'cluster1：*&gt;`です</block>
+  <block id="2c84a4166919cc5a80a8c0726d1059e6" category="list-text">適切なRCFとイメージをスイッチnsw2にインストールし、必要なサイトの準備を行います。</block>
+  <block id="1eee77e5510e91c39ad8de358a66db8b" category="paragraph">必要に応じて、新しいスイッチ用のRCFおよびCumulusソフトウェアの適切なバージョンを確認、ダウンロード、およびインストールします。新しいスイッチが正しくセットアップされており、RCFおよびCumulusソフトウェアの更新が不要であることを確認した場合は、手順3に進みます。を参照してください <block ref="f205112049fd2d705b8f40351f7959dc" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="1c7edbc9e87d89abba60270ce35ec08a" category="list-text">ご使用のクラスタスイッチに適用可能なCumulusソフトウェアは、_nvidia Support_siteからダウンロードできます。ダウンロードページの手順に従って、インストールするONTAP ソフトウェアのバージョンに対応したCumulus Linuxをダウンロードします。</block>
+  <block id="cb246b83c0c732bd49f45fceb6d1246f" category="inline-link-macro">NVIDIAクラスタとストレージスイッチ_</block>
+  <block id="7d496a68b55e69a007c148b8b4cf8fbe" category="list-text">適切な RCF はから入手できます <block ref="bf48368f6fb605c4425a53dc48551d85" category="inline-link-macro-rx"></block> ページダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応する正しい RCF をダウンロードします。</block>
+  <block id="f9ffe766b106d2867657d83e79723a59" category="list-text">新しいスイッチnsw2にadminとしてログインし、ノードクラスタインターフェイス（ポートswp1からswp14）に接続するすべてのポートをシャットダウンします。</block>
+  <block id="419843a482aac1b6d5c300aad109bf65" category="list-text">SN2100スイッチsw1でISLポートswp15およびswp16をシャットダウンします。</block>
+  <block id="cbcdd16fbdf580bf90f773d5fa321dd0" category="list-text">すべてのケーブルをSN2100 sw1スイッチから取り外し、SN2100 nsw2スイッチの同じポートに接続します。</block>
+  <block id="3e1aa25294b9d1912eb351028c0ddab6" category="list-text">sw1スイッチとnsw2スイッチの間で、ISLポートswp15とswp16を起動します。</block>
+  <block id="f49c15d121cb3262e7dc4648fba76e8d" category="paragraph">次のコマンドは、スイッチsw1でISLポートswp15およびswp16を有効にします。</block>
+  <block id="b64c4a65624312e01d00d227b23dc7bb" category="paragraph">次の例は、スイッチnsw2のISLポートが稼働していることを示しています。</block>
+  <block id="897e1548fc4ec5cb743ba59eb85c00b1" category="list-text">すべてのノードでポート「e3b」が稼働していることを確認します。「network port show -ipspace Cluster」</block>
+  <block id="b277a4be4886a83e4adc96de6cdbe36c" category="list-text">すべてのノードクラスタポートがupであることを確認します。「net show interface」</block>
+  <block id="141e7533eab03ff727c6bcbd3b10c6b7" category="list-text">クラスタLIFで自動リバートを有効にします。cluster1：：*&gt; network interface modify -vserver Cluster -lif *-auto-revert true</block>
+  <block id="4c8512f4b28df0de74c476436e30e971" category="list-text">スイッチnsw2で、ノードのネットワークポートに接続されているポートを起動します。</block>
+  <block id="0b9620a0fea8fa88010e59eebf7cbf63" category="summary">ONTAP クラスタの古いCiscoクラスタスイッチは、無停止でNVIDIA SN2100クラスタネットワークスイッチに移行できます。</block>
+  <block id="9cb69df206c9ac9ed5e1f4f5f353f643" category="doc">CiscoクラスタスイッチからNVIDIA SN2100クラスタスイッチに移行します</block>
+  <block id="7d5958b12629d1a14fcc8aaf271ffebc" category="paragraph">ONTAP クラスタのCiscoクラスタスイッチは、無停止でNVIDIA SN2100クラスタスイッチに移行できます。一部の古いCiscoクラスタスイッチをNVIDIA SN2100クラスタスイッチに交換する場合は、特定の設定情報、ポート接続、およびケーブル接続要件に注意する必要があります。</block>
+  <block id="59e1b5d69300b7a66f466e0b62bf4f80" category="paragraph">次のCiscoクラスタスイッチがサポートされます。</block>
+  <block id="3c4c5e6b442060363c10c67d61881b89" category="paragraph">ONTAP クラスタの古いCiscoクラスタスイッチは、無停止でNVIDIA SN2100クラスタスイッチに移行できます。</block>
+  <block id="807cbcaff3adfa7ca5f01a1549249db3" category="list-text">NVIDIA SN2100クラスタスイッチは、リファレンス構成ファイル（RCF）を適用した適切なバージョンのCumulus Linuxで構成および動作している必要があります。</block>
+  <block id="aa3331890b15956f0bf51715ce392770" category="list-text">NVIDIA SN2100スイッチの一部のポートを40GbEまたは100GbEで実行するように設定しておきます。</block>
+  <block id="8ff8ee6709912b52c1e6b3870b6b7250" category="list-text">ノードからNVIDIA SN2100クラスタスイッチへの40GbEおよび100GbE接続を計画、移行、文書化済みである。</block>
+  <block id="55f909861b55f297c21514fdad63abae" category="admonition">この手順 では、コマンドや出力の例にCisco Nexus 3232Cクラスタスイッチを使用します。</block>
+  <block id="6407f122215af9069ce04e183a44eaff" category="list-text">新しいNVIDIA SN2100クラスタスイッチは、_sw1_and _sw2_です。</block>
+  <block id="a628f874b9a2e414a9d3d71d13573dfa" category="list-text">最初にスイッチc2をスイッチsw2に交換し、次にスイッチc1をスイッチsw1に交換します。</block>
+  <block id="ac84ae267a95761c56ac989f4e20ca23" category="list-text">次に、ノードとC2間のケーブル接続がC2から切断され、SW2に再接続されます。</block>
+  <block id="8fe643f8e27975633f1ded07424aa6c9" category="list-text">その後、ノードとc1間のケーブルをc1から切断し、sw1に再接続しました。</block>
+  <block id="3dc587636ea58bb39b951053c233b58b" category="list-text">各ノードのクラスタポートは、（ノードから見て）次のように既存のクラスタスイッチに接続されています：「network device-discovery show -protocol lldp</block>
+  <block id="9e23ccbda503c8dd0fa60d4057a41702" category="list-text">スイッチC2で、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
+  <block id="aba8d89ac417a82d843ceaf3c6ac2faa" category="list-text">NVIDIA SN2100でサポートされている適切なケーブル配線を使用して、ノードのクラスタポートを古いスイッチC2から新しいスイッチSW2に移動します。</block>
+  <block id="203a7f618c9b080eaa78a5e38ccd907d" category="list-text">スイッチSW2で、すべてのノードクラスタポートが稼働していることを確認します。「net show interface」</block>
+  <block id="fb04bba6a926fcde1b4b8e9928fc6c8c" category="list-text">スイッチc1で、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
+  <block id="43f33859444af6796131da2f85045577" category="list-text">NVIDIA SN2100でサポートされている適切なケーブルを使用して、ノードのクラスタポートを古いスイッチc1から新しいスイッチsw1に移動します。</block>
+  <block id="8c4a30f92fb2c8309be6461a7438998f" category="list-text">スイッチsw1およびSW2で、すべてのノードクラスタポートが動作していることを確認します。「net show interface」</block>
+  <block id="43d78ef507715bc4715cbc41d27662ca" category="list-text">すべてのクラスタネットワークLIFがホームポートに戻っていることを確認します。「network interface show」</block>
+  <block id="bc4274a2b29e343ef128738332ca9770" category="section-title">Cisco Nexus 9336C-FX2クラスタスイッチにNX-OSソフトウェアをインストールします</block>
+  <block id="3e454cc37301157c6dcaed10a3b08867" category="section-title">Cisco Nexus 9336C-FX2クラスタスイッチにRCFをインストールします</block>
+  <block id="92d9ae69eba0fa3ac3e966c3c94b564f" category="list-text">[[step10]]まだ実行していない場合は、次のコマンドの出力をログファイルにコピーして、現在のスイッチ設定を保存します。</block>
+  <block id="115b3eebd512ee4202039df3f366f2ae" category="list-text">[[step11]]スイッチcs2の設定をクリーニングし、基本的なセットアップを実行します。</block>
+  <block id="88e443f4dea0f336ffb2a1e71cadaa9a" category="list-text">[[step12]] FTP、TFTP、SFTP、またはSCPのいずれかの転送プロトコルを使用して、RCFをスイッチcs2のブートフラッシュにコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください<block ref="ddab0e4c59f1173186c88b8e6d2844d1" category="inline-link-rx"></block>。</block>
+  <block id="72526445e2be6a9088640582a9f5bdb5" category="list-text">[[step13]]以前にブートフラッシュにダウンロードしたRCFを適用します。Cisco コマンドの詳細については、『』の該当するガイドを参照してください<block ref="ddab0e4c59f1173186c88b8e6d2844d1" category="inline-link-rx"></block>。</block>
+  <block id="43cc1a7739266f00d3e17aa68c62b3bd" category="list-text">[[step14]]「show banner motd」コマンドのバナー出力を確認します。スイッチの設定と動作を適切に行うには、次の手順を参照して実行する必要があります。</block>
+  <block id="e4639ed362366fa603bb051957b3e184" category="list-text">[[step15]] RCFファイルが正しい新しいバージョンであることを確認します:`show running-config`</block>
+  <block id="4c845124006255569acf9386860c3afe" category="list-text">[[step17]]スイッチcs2をリブートします。スイッチのリブート中にノードで報告される「クラスタポートが停止している」イベントは無視してかまいません。</block>
+  <block id="d7f8a9e1da7aa2cdb453e4d467f2d669" category="list-text">[[step18]]同じRCFを適用し、実行中の設定をもう一度保存します。</block>
+  <block id="2d12222cc8dfef0926f77e34d1dda110" category="list-text">[[step19]]クラスタのクラスタポートの健全性を確認します。</block>
+  <block id="98f27854249be5389c472896da146faf" category="list-text">[[step20]]クラスタスイッチcs1で、ノードのクラスタポートに接続されているポートをシャットダウンします。次の例では、手順 1 の出力例を使用しています。</block>
+  <block id="2348e2d8b2a73450b31d411de164b6d4" category="list-text">[step21]クラスタLIFがスイッチcs2でホストされているポートに移行されたことを確認します。この処理には数秒かかることがあります。「 network interface show -role cluster 」のように表示されます</block>
+  <block id="25c714ecc2d6ce822d54ff16b088b6fb" category="list-text">[[step22]]クラスタが正常であることを確認します:'cluster show</block>
+  <block id="f9ff3561b7cddd3d834386d45df14463" category="list-text">[[step23]]スイッチcs1で手順7から14を繰り返します。</block>
+  <block id="16c4b8aecf92f25b1a72c0838b3e2e4d" category="list-text">[[step25]]スイッチcs1をリブートします。これは、クラスタ LIF のホームポートへのリバートをトリガーする際に行います。スイッチのリブート中にノードで報告される「クラスタポートが停止している」イベントは無視してかまいません。</block>
+  <block id="c7b76568d81b3a16e3bef4555e1f1d81" category="list-text">[[step26]]クラスタポートに接続されているスイッチポートが稼働していることを確認します。</block>
+  <block id="cc4a1fb10aa0ea3b42a78f3f155d0616" category="list-text">[step27]] CS1とCS2の間のISLが機能していることを確認しますshow port-channel summary</block>
+  <block id="615554e73817bc858849bc77c308a465" category="list-text">[[step28]]クラスタLIFがホームポートにリバートされたことを確認します。「network interface show -role cluster」</block>
+  <block id="c1149c08490444b20498c10e50c2a14b" category="list-text">[step29]]クラスタが正常であることを確認します: cluster show</block>
+  <block id="e5b11cf3c23c3508c3b896786ad6720a" category="list-text">[[step30]]リモートクラスタインタフェースにpingを実行して接続を確認します: cluster ping-cluster -node local</block>
+  <block id="77a2f8547fffecb69f2d5527dcc4cb77" category="list-text">[[step5]隣接デバイスのリストを表示します:'show cdp neighbors'</block>
+  <block id="104f202730dfa230b37a1822877fcba1" category="sidebar">共有構成のCisco Nexus 9336C-FX2</block>
+  <block id="94f92369bb57ec3cd50af356ac87615d" category="sidebar">NVIDIA SN2100</block>
+  <block id="3ee7af3967e9385ab7a25cd0ac2015ae" category="sidebar">NVIDIA SN2100スイッチ</block>
+  <block id="5f0a12b5e055df565d02795623cf4bc2" category="sidebar">NVIDIA SN2100スイッチをセットアップして設定します</block>
+  <block id="2f4146deaddc6e88b575577116cf8ce8" category="sidebar">CiscoクラスタスイッチからNVIDIA SN2100クラスタスイッチへの移行</block>
+  <block id="61203301024e828295cf8cd1ef164fc3" category="sidebar">CiscoストレージスイッチからNVIDIA SN2100ストレージスイッチへの移行</block>
+  <block id="fdb05c6a8582161eedd71436841b5d8c" category="sidebar">NVIDIA SN2100スイッチを使用する2ノードスイッチクラスタに移行します</block>
+  <block id="d758c27204bd1511d766f1b9d917e78a" category="sidebar">NVIDIA SN2100スイッチを交換してください</block>
 </blocks>
