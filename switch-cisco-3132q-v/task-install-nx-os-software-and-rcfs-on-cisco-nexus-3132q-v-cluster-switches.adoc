@@ -46,7 +46,7 @@ NOTE: 手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイ
 .手順
 . このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= x h 」というメッセージが表示されます
+「 system node AutoSupport invoke -node * -type all -message MAINT= xh 」というメッセージが表示されます
 
 +
 ここで、 _ x _ はメンテナンス時間の長さ（時間）です。
@@ -80,8 +80,6 @@ cluster1-02/cdp
 cluster1-01/cdp
             e0a    cs1                       Eth1/1            N3K-C3132Q-V
             e0b    cs2                       Eth1/1            N3K-C3132Q-V
-
-4 entries were displayed.
 ----
 . 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
 +
@@ -107,8 +105,6 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
 --------- ------------ ---------------- ---- ---- ----------- ------
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy
-
-4 entries were displayed.
 ----
 .. LIF に関する情報を表示します。
 +
@@ -127,19 +123,17 @@ Cluster
             cluster1-01_clus2  up/up      169.254.49.125/16  cluster1-01   e0b     true
             cluster1-02_clus1  up/up      169.254.47.194/16  cluster1-02   e0a     true
             cluster1-02_clus2  up/up      169.254.19.183/16  cluster1-02   e0b     true
-
-4 entries were displayed.
 ----
 
 
 . リモートクラスタ LIF に ping を実行します。
 +
-'cluster ping-cluster -node-node-name-'
+「 cluster ping-cluster -node local 」を参照してください
 
 +
 [listing, subs="+quotes"]
 ----
-cluster1::*> *cluster ping-cluster -node cluster1-02*
+cluster1::*> *cluster ping-cluster -node local*
 Host is cluster1-02
 Getting addresses from network interface table...
 Cluster cluster1-01_clus1 169.254.209.69 cluster1-01     e0a
@@ -181,102 +175,5 @@ Cluster
           cluster1-01_clus2   true
           cluster1-02_clus1   true
           cluster1-02_clus2   true
-4 entries were displayed.
 ----
-. ONTAP 9.8 以降では、次のコマンドを使用して、イーサネットスイッチヘルスモニタのログ収集機能を有効にし、スイッチ関連のログファイルを収集します。
-+
-「システムスイッチイーサネットログセットアップ - パスワード」
-
-+
-「システムスイッチのイーサネットログの有効化」
-
-+
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log setup-password*
-Enter the switch name: *<return>*
-The switch name entered is not recognized.
-Choose from the following list:
-cs1
-cs2
-
-cluster1::*> *system switch ethernet log setup-password*
-
-Enter the switch name: *cs1*
-RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] *y*
-
-Enter the password: *<enter switch password>*
-Enter the password again: *<enter switch password>*
-
-cluster1::*> *system switch ethernet log setup-password*
-
-Enter the switch name: *cs2*
-RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] *y*
-
-Enter the password: *<enter switch password>*
-Enter the password again: *<enter switch password>*
-
-cluster1::*> *system  switch ethernet log enable-collection*
-
-Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] *y*
-
-Enabling cluster switch log collection.
-
-cluster1::*>
-----
-+
-
-NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
-
-. ONTAP リリース 9.5P16 、 9.6P12 、および 9.7P10 以降のパッチリリースでは、次のコマンドを使用して、イーサネットスイッチヘルスモニタのログ収集機能を有効にし、スイッチ関連のログファイルを収集します。
-+
-「 system cluster-switch log setup -password 」と入力します
-
-+
-'system cluster-switch log enable-colion
-
-+
-[listing, subs="+quotes"]
-----
-cluster1::*> *system cluster-switch log setup-password*
-Enter the switch name: *<return>*
-The switch name entered is not recognized.
-Choose from the following list:
-cs1
-cs2
-
-cluster1::*> *system cluster-switch log setup-password*
-
-Enter the switch name: *cs1*
-RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] *y*
-
-Enter the password: *<enter switch password>*
-Enter the password again: *<enter switch password>*
-
-cluster1::*> *system cluster-switch log setup-password*
-
-Enter the switch name: cs2
-RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] *y*
-
-Enter the password: *<enter switch password>*
-Enter the password again: *<enter switch password>*
-
-cluster1::*> *system cluster-switch log enable-collection*
-
-Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] *y*
-
-Enabling cluster switch log collection.
-
-cluster1::*>
-----
-+
-
-NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
-
 

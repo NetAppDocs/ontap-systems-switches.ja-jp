@@ -27,7 +27,10 @@ Pinging 172.19.2.1 with 0 bytes of data:
 
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
-. NX-OS ソフトウェアを Nexus 3132Q-V スイッチにコピーします。
+. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、NX-OSソフトウェアをNexus 3132Q-Vスイッチにコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
++
+次の例は、SFTPを使用してNX-OSソフトウェアをNexus 3132Q-Vスイッチにコピーしています。
+
 +
 [listing, subs="+quotes"]
 ----

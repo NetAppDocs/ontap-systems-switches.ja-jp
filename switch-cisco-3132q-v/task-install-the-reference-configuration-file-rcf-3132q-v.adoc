@@ -34,9 +34,9 @@ RCF は、 Nexus 3132Q-V スイッチを初めて設定したあとにインス�
 「 network device-discovery show 」のように表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network device-discovery show
+cluster1::*> *network device-discovery show*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  ------------
@@ -58,12 +58,12 @@ cluster1::*>
 +
 .. すべてのクラスタポートが正常な状態であることを確認します。
 +
-「 network port show – role cluster 」と表示されます
+「 network port show -ipspace cluster 」のように表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -role cluster
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: cluster1-01
                                                                        Ignore
@@ -102,12 +102,12 @@ cluster1::*>
 ----
 .. すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+「 network interface show -vserver Cluster 」のように表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -vserver Cluster*
             Logical            Status     Network           Current      Current Is
 Vserver     Interface          Admin/Oper Address/Mask      Node         Port    Home
 ----------- ------------------ ---------- ----------------- ------------ ------- ----
@@ -120,7 +120,6 @@ Cluster
             cluster1-03_clus2  up/up     169.254.1.1/23     cluster1-03  e0b     true
             cluster1-04_clus1  up/up     169.254.1.6/23     cluster1-04  e0a     true
             cluster1-04_clus2  up/up     169.254.1.7/23     cluster1-04  e0b     true
-8 entries were displayed.
 cluster1::*>
 ----
 .. クラスタが両方のクラスタスイッチの情報を表示していることを確認します。
@@ -128,9 +127,9 @@ cluster1::*>
 system cluster-switch show -is-monitoring enabled-operational true を使用します
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> system cluster-switch show -is-monitoring-enabled-operational true
+cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
 Switch                      Type               Address          Model
 --------------------------- ------------------ ---------------- ---------------
 cs1                         cluster-network    10.0.0.1         NX3132QV
@@ -151,30 +150,36 @@ cs2                         cluster-network    10.0.0.2         NX3132QV
 
 2 entries were displayed.
 ----
++
+
+NOTE: ONTAP 9.8以降の場合は、「system ethernet switch show -is-monitoring -enabled operational true」コマンドを使用してください。
+
 
 
 . クラスタ LIF で自動リバートを無効にします。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface modify -vserver Cluster -lif \* -auto-revert false
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
+----
++
+このコマンドの実行後は、自動リバートが無効になっていることを確認してください。
 
-----
 . クラスタスイッチ cs2 で、ノードのクラスタポートに接続されているポートをシャットダウンします。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cs2(config)# interface eth1/1/1-2,eth1/7-8
-cs2(config-if-range)# shutdown
+cs2(config)# *interface eth1/1/1-2,eth1/7-8*
+cs2(config-if-range)# *shutdown*
 ----
 . クラスタポートがクラスタスイッチ cs1 でホストされているポートに移行されていることを確認します。これには数秒かかることがあります。
 +
-「 network interface show -role cluster 」のように表示されます
+「 network interface show -vserver Cluster 」のように表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -vserver Cluster*
             Logical           Status     Network            Current       Current Is
 Vserver     Interface         Admin/Oper Address/Mask       Node          Port    Home
 ----------- ----------------- ---------- ------------------ ------------- ------- ----
@@ -187,7 +192,6 @@ Cluster
             cluster1-03_clus2 up/up      169.254.1.1/23     cluster1-03   e0a     false
             cluster1-04_clus1 up/up      169.254.1.6/23     cluster1-04   e0a     true
             cluster1-04_clus2 up/up      169.254.1.7/23     cluster1-04   e0a     false
-8 entries were displayed.
 cluster1::*>
 ----
 . クラスタが正常であることを確認します。
@@ -195,16 +199,15 @@ cluster1::*>
 「 cluster show 」を参照してください
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------  -------
 cluster1-01          true    true          false
 cluster1-02          true    true          false
 cluster1-03          true    true          true
 cluster1-04          true    true          false
-4 entries were displayed.
 cluster1::*>
 ----
 . スイッチの現在のバックアップがない場合は、次のコマンドの出力をログファイルにコピーすることで、現在のスイッチ設定を保存できます。
@@ -219,13 +222,13 @@ cluster1::*>
 NOTE: この手順では、スイッチへのコンソール接続が必要です。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cs2# write erase
+cs2# *write erase*
 Warning: This command will erase the startup-configuration.
-Do you wish to proceed anyway? (y/n)  [n] y
-cs2# reload
-This command will reboot the system. (y/n)?  [n] y
+Do you wish to proceed anyway? (y/n)  [n] *y*
+cs2# *reload*
+This command will reboot the system. (y/n)?  [n] *y*
 cs2#
 ----
 .. スイッチの基本設定を実行します。
@@ -236,10 +239,10 @@ cs2#
 この例は、 TFTP を使用して、スイッチ cs2 のブートフラッシュに RCF をコピーする方法を示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cs2# copy tftp: bootflash: vrf management
-Enter source filename: Nexus_3132QV_RCF_v1.6-Cluster-HA-Breakout.txt
+cs2# *copy tftp: bootflash: vrf management*
+Enter source filename: *Nexus_3132QV_RCF_v1.6-Cluster-HA-Breakout.txt*
 Enter hostname for the tftp server: 172.22.201.50
 Trying to connect to tftp server......Connection to Server Established.
 TFTP get operation was successful
@@ -253,16 +256,15 @@ Cisco コマンドの詳細については、『』の該当するガイドを�
 次の例は、スイッチ cs2 にインストールされている RCF ファイル「 Nexus_313QV_RC_v1.6 - Cluster-HA-Breakout .txt 」を示しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cs2# copy Nexus_3132QV_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
+cs2# *copy Nexus_3132QV_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands*
 ----
 . 「 show banner motd 」コマンドのバナー出力を確認します。スイッチの設定と操作を適切に行うには、「重要な注意事項」に記載されている手順をよく読んで実行する必要があります。
 +
 [listing]
 ----
 cs2# show banner motd
-
 
 ******************************************************************************
 * NetApp Reference Configuration File (RCF)
@@ -319,10 +321,10 @@ cs2# copy running-config startup-config [#######################################
 ----
 . スイッチ cs2 をリブートします。スイッチのリブート中にノードに対して報告された「クラスタポートが停止している」イベントは無視してかまいません。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cs2# reload
-This command will reboot the system. (y/n)?  [n] y
+cs2# *reload*
+This command will reboot the system. (y/n)?  [n] *y*
 ----
 . 同じ RCF を適用し、実行中の設定をもう一度保存します。
 +
@@ -333,14 +335,14 @@ cs2# copy running-config startup-config [#######################################
 ----
 . クラスタのクラスタポートの健常性を確認します。
 +
-.. クラスタ内のすべてのノードで e0d ポートが稼働しており、正常に動作していることを確認します。
+.. クラスタポートが起動しており、クラスタ内のすべてのノードで正常に動作していることを確認します。
 +
-「 network port show -role cluster 」のように表示されます
+「 network port show -ipspace cluster 」のように表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -role cluster
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: cluster1-01
                                                                        Ignore
@@ -373,13 +375,12 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
 e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
-8 entries were displayed.
 ----
-.. クラスタからスイッチのヘルスを確認します（ LIF が e0d にホームでないため、スイッチ cs2 が表示されない可能性があります）。
+.. クラスタからスイッチの健常性を確認します。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network device-discovery show -protocol cdp
+cluster1::*> *network device-discovery show -protocol cdp*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------- --------
@@ -396,7 +397,7 @@ cluster1-04/cdp
             e0a    cs1                       Ethernet1/1/2     N3K-C3132Q-V
             e0b    cs2                       Ethernet1/1/2     N3K-C3132Q-V
 
-cluster1::*> system cluster-switch show -is-monitoring-enabled-operational true
+cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
 Switch                      Type               Address          Model
 --------------------------- ------------------ ---------------- -----
 cs1                         cluster-network    10.233.205.90    N3K-C3132Q-V
@@ -417,7 +418,9 @@ cs2                         cluster-network    10.233.205.91    N3K-C3132Q-V
 
 2 entries were displayed.
 ----
++
 
+NOTE: ONTAP 9.8以降の場合は、「system ethernet switch show -is-monitoring -enabled operational true」コマンドを使用してください。
 
 +
 [NOTE]
@@ -431,24 +434,26 @@ cs2                         cluster-network    10.233.205.91    N3K-C3132Q-V
 2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL: Blocking port-channel1 on VLAN0092. Inconsistent local vlan.
 ----
 ====
+
+
 . クラスタスイッチ cs1 で、ノードのクラスタポートに接続されているポートをシャットダウンします。
 +
 次の例では、手順 1 の出力例を使用しています。
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cs1(config)# interface eth1/1/1-2,eth1/7-8
-cs1(config-if-range)# shutdown
+cs1(config)# *interface eth1/1/1-2,eth1/7-8*
+cs1(config-if-range)# *shutdown*
 ----
 . クラスタ LIF がスイッチ cs2 でホストされているポートに移行されたことを確認します。これには数秒かかることがあります。
 +
-「 network interface show -role cluster 」のように表示されます
+「 network interface show -vserver Cluster 」のように表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -vserver Cluster*
             Logical            Status     Network            Current             Current Is
 Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
 ----------- ------------------ ---------- ------------------ ------------------- ------- ----
@@ -461,7 +466,6 @@ Cluster
             cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
             cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     false
             cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
-8 entries were displayed.
 cluster1::*>
 ----
 . クラスタが正常であることを確認します。
@@ -469,9 +473,9 @@ cluster1::*>
 「 cluster show 」を参照してください
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 Node                 Health   Eligibility   Epsilon
 -------------------- -------- ------------- -------
 cluster1-01          true     true          false
@@ -481,25 +485,25 @@ cluster1-04          true     true          false
 4 entries were displayed.
 cluster1::*>
 ----
-. スイッチ cs1 で手順 7 ~ 14 を繰り返します。
+. スイッチcs1で手順7 ~ 16を繰り返します。
 . クラスタ LIF で自動リバートを有効にします。
 +
 [listing]
 ----
-cluster1::*> network interface modify -vserver Cluster -lif \* -auto-revert True
+cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert True
 ----
-. スイッチ cs1 をリブートします。これにより、クラスタ LIF がホームポートにリバートされます。スイッチのリブート中にノードに対して報告された「クラスタポートが停止している」イベントは無視してかまいません。
+. スイッチ cs1 をリブートします。これは、クラスタ LIF のホームポートへのリバートをトリガーする際に行います。スイッチのリブート中にノードに対して報告された「クラスタポートが停止している」イベントは無視してかまいません。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cs1# reload
-This command will reboot the system. (y/n)?  [n] y
+cs1# *reload*
+This command will reboot the system. (y/n)?  [n] *y*
 ----
 . クラスタポートに接続されているスイッチポートが動作していることを確認します。
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cs1# show interface brief \| grep up
+cs1# *show interface brief | grep up*
 .
 .
 Eth1/1/1      1       eth  access up      none                    10G(D) --
@@ -514,9 +518,9 @@ Eth1/8        1       eth  trunk  up      none                   100G(D) --
 「ポートチャネルの概要」
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cs1# show port-channel summary
+cs1# *show port-channel summary*
 Flags:  D - Down        P - Up in port-channel (members)
         I - Individual  H - Hot-standby (LACP only)
         s - Suspended   r - Module-removed
@@ -534,12 +538,12 @@ cs1#
 ----
 . クラスタ LIF がホームポートにリバートされたことを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+「 network interface show -vserver Cluster 」のように表示されます
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -role cluster
+cluster1::*> *network interface show -vserver Cluster*
             Logical            Status     Network            Current             Current Is
 Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
 ----------- ------------------ ---------- ------------------ ------------------- ------- ----
@@ -552,7 +556,6 @@ Cluster
             cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
             cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     true
             cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
-8 entries were displayed.
 cluster1::*>
 ----
 . クラスタが正常であることを確認します。
@@ -560,16 +563,15 @@ cluster1::*>
 「 cluster show 」を参照してください
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster show
+cluster1::*> *cluster show*
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------- -------
 cluster1-01          true    true          false
 cluster1-02          true    true          false
 cluster1-03          true    true          true
 cluster1-04          true    true          false
-4 entries were displayed.
 cluster1::*>
 ----
 . リモートクラスタインターフェイスに ping を実行して接続を確認します。
@@ -577,9 +579,9 @@ cluster1::*>
 「 cluster ping-cluster -node local 」を参照してください
 
 +
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster ping-cluster -node local
+cluster1::*> *cluster ping-cluster -node local*
 Host is cluster1-03
 Getting addresses from network interface table...
 Cluster cluster1-03_clus1 169.254.1.3 cluster1-03 e0a
@@ -616,4 +618,118 @@ RPC status:
 6 paths up, 0 paths down (tcp check)
 6 paths up, 0 paths down (udp check)
 ----
+. ONTAP 9.8 以降では、次のコマンドを使用して、イーサネットスイッチヘルスモニタのログ収集機能を有効にし、スイッチ関連のログファイルを収集します。
++
+「system switch ethernet log setup -password」およびを入力します
+
++
+「システムスイッチのイーサネットログの有効化」
+
++
+「 system switch ethernet log setup -password 」と入力します
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet log setup-password*
+Enter the switch name: *<return>*
+The switch name entered is not recognized.
+Choose from the following list:
+*cs1*
+*cs2*
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *cs1*
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] *y*
+
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *cs2*
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] *y*
+
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
+----
++
+次に 'system switch ethernet log enable-colion' を実行します
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *system  switch ethernet log enable-collection*
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] *y*
+
+Enabling cluster switch log collection.
+
+cluster1::*>
+----
++
+
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
+. ONTAP リリース 9.5P16 、 9.6P12 、および 9.7P10 以降のパッチリリースでは、次のコマンドを使用して、イーサネットスイッチヘルスモニタのログ収集機能を有効にし、スイッチ関連のログファイルを収集します。
++
+「system cluster-switch log setup -password'」およびです
+
++
+'system cluster-switch log enable-colion
+
++
+「 system cluster-switch log setup -password 」と入力します
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *system cluster-switch log setup-password*
+Enter the switch name: *<return>*
+The switch name entered is not recognized.
+Choose from the following list:
+*cs1*
+*cs2*
+
+cluster1::*> *system cluster-switch log setup-password*
+
+Enter the switch name: *cs1*
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] *y*
+
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
+
+cluster1::*> *system cluster-switch log setup-password*
+
+Enter the switch name: *cs2*
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] *y*
+
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
+----
++
+次に 'system cluster-switch log enable-collection' を指定します
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *system cluster-switch log enable-collection*
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] *y*
+
+Enabling cluster switch log collection.
+
+cluster1::*>
+----
++
+
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
 
