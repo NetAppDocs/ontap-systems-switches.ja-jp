@@ -3307,4 +3307,80 @@
   <block id="91cd808758081ea75f478b14ac3c3471" category="paragraph">「system cluster-switch log setup -password'」およびです</block>
   <block id="e01441503925272a0ebbfb7fba0455f0" category="list-text">FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、NX-OSソフトウェアをNexus 3132Q-Vスイッチにコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください<block ref="f93981dab484b88c422e924c27565997" category="inline-link-rx"></block> ガイド。</block>
   <block id="8722c59bf526716ce1e70019843b09a5" category="paragraph">次の例は、SFTPを使用してNX-OSソフトウェアをNexus 3132Q-Vスイッチにコピーしています。</block>
+  <block id="9f5be684442d922984d48ddc3b7aa93f" category="summary">クラスタインターコネクトスイッチを使用する2ノードクラスタには、2つのノードが直接接続されたクラスタに移行できます。</block>
+  <block id="ff5ad6d56644222030f6f4bc94bd5506" category="paragraph">クラスタインターコネクトスイッチを使用する既存の2ノードクラスタがONTAP 9.3以降を実行している場合は、スイッチをノード間の直接のバックツーバック接続に交換できます。</block>
+  <block id="759516932a18c0379d0054bce4b2e64e" category="paragraph">3ノード以上のスイッチレスクラスタインターコネクト機能は使用できません。</block>
+  <block id="a2c17c2ce71b362b920e8850ba8c4dbc" category="paragraph">2ノードスイッチレスクラスタ構成への移行は無停止で実行されます。ほとんどのシステムでは、各ノードに2つの専用クラスタインターコネクトポートがありますが、4、6、8など、各ノードに多数の専用クラスタインターコネクトポートがあるシステムでもこの手順 を使用できます。</block>
+  <block id="4d60464781e02c960e35d4e4cea119aa" category="paragraph">この手順 では、ONTAP 9.3以降で2つのノードが直接接続されたクラスタにスイッチクラスタネットワークを移行する方法について説明します。</block>
+  <block id="e92a37c58dda9b6ad3b2129262043d6a" category="summary">2ノードクラスタ内のスイッチは、ノード間の直接のバックツーバック接続で交換できます。</block>
+  <block id="42831c80a579ed060615d4e90f0500cf" category="doc">スイッチを直接接続に交換します</block>
+  <block id="f9ca0dca2bbe2bca99b0ad5e676f7bb6" category="paragraph">クラスタインターコネクトスイッチを使用する2ノードクラスタがある場合は、スイッチをノード間の直接のバックツーバック接続に交換します。これはノンストップオペレーションです。</block>
+  <block id="085c76ece7f19b4de00a80d42051e8df" category="list-text">クラスタは正常に動作しており、クラスタスイッチで接続された2つのノードで構成されている必要があります。また、ノードで同じONTAP リリースが実行されている必要があります。</block>
+  <block id="aadaf9415e70bd5bc3b6c11d549fbe14" category="list-text">各ノードには、システム構成をサポートするための冗長なクラスタインターコネクト接続を提供するために必要な数の専用クラスタポートが必要です。たとえば、各ノードに2つの専用クラスタインターコネクトポートがあるシステムの場合、2つの冗長ポートが必要です。</block>
+  <block id="2f5c59a7e0a2102f6d7508bee5ccb15b" category="paragraph">次の手順 は、2ノードクラスタ内のクラスタスイッチを削除し、スイッチへの各接続をパートナーノードへの直接接続に置き換えます。</block>
+  <block id="8a2504e6dbf1489f594645cb7c55753d" category="image-alt">クラスタスイッチを直接接続に置き換えます</block>
+  <block id="2a2f19f24bfba5cc72f797777f88530a" category="paragraph">次の手順 の例は、「e0a」と「e0b」をクラスタポートとして使用しているノードを示しています。システムによって異なるクラスタポートがノードによって使用されている場合があります。</block>
+  <block id="e5dabd8c96e3431757aa87e41f4bedd6" category="paragraph">アドバンス・プロンプトが表示されます</block>
+  <block id="469c7d60dd90f1a2bb1658da470e8143" category="list-text">ONTAP 9.3以降では、スイッチレスクラスタの自動検出がサポートされます。このクラスタはデフォルトで有効になっています。</block>
+  <block id="e127f1d4385ec7a8d3e94aacf34721de" category="paragraph">スイッチレスクラスタの検出が有効になっていることを確認するには、advanced権限のコマンドを実行します。</block>
+  <block id="8b70a23bbedce91a74790296a731d7bb" category="paragraph">「network options detect-switchless -cluster show」を参照してください</block>
+  <block id="47b756a48fc6435a553f74738cb41468" category="paragraph">オプションが有効になっている場合の出力例を次に示します。</block>
+  <block id="9c4d948f63c8c6f48823d7e858286716" category="paragraph">[Enable Switchless Cluster Detection](スイッチレスクラスタ検出を有効にする)が[false]の場合は、サポートにお問い合わせください。</block>
+  <block id="790ec52cbe66e86d508c608424b62c2d" category="paragraph">「system node AutoSupport invoke -node *-type all -message MAINT=&lt;number_OF_hours &gt;」の形式で指定します</block>
+  <block id="de1ef371a5c4d9b1200b8a294381f2c8" category="paragraph">ここで'h'は'メンテナンス時間の長さを時間単位で表したものですこのメンテナンスタスクについてテクニカルサポートに通知し、メンテナンス時間中にケースの自動作成を停止できるようにします。</block>
+  <block id="31aa5da225dda6126c6cbf160562d03b" category="paragraph">次の例は、ケースの自動作成を2時間停止します。</block>
+  <block id="2e5f20d09e0222d9ff8e734356b6da06" category="list-text">グループ1のクラスタポートがクラスタスイッチ1に、グループ2のクラスタポートがクラスタスイッチ2になるように、各スイッチのクラスタポートをグループにまとめます。これらのグループは、手順 の後半で必要になります。</block>
+  <block id="57c684517aec25172f7d07c58ad05de8" category="list-text">クラスタポートを特定し、リンクのステータスと健全性を確認します。</block>
+  <block id="b4cb3437a4bd287cc325f112caa8be67" category="paragraph">次の例では、クラスタポート「e0a」と「e0b」を持つノードについて、1つのグループは「node1：e0a」と「node2：e0a」、もう1つのグループは「node1：e0b」と「node2：e0b」と識別されます。使用するクラスタポートはシステムによって異なるため、ノードによって異なるクラスタポートが使用されている場合があります。</block>
+  <block id="af10d52efe2cd47b065f90fdd28575f5" category="image-alt">ノード1とノード2の間のクラスタスイッチ接続</block>
+  <block id="1742cd0ed0e3d9a5d0c757426e551f53" category="paragraph">次の例に示すように'ポートのLinkカラムの値がUpで' Health Statusカラムの値がHealthyであることを確認します</block>
+  <block id="ff66496bf4e9ec1deed0dc59b97eb6cb" category="list-text">すべてのクラスタLIFがそれぞれのホームポートにあることを確認します。</block>
+  <block id="455e2d37ef416448b13da810b3bf798a" category="paragraph">各クラスタLIFの「is-home」列が「true」になっていることを確認します。</block>
+  <block id="4db0b2597279fa6c63908e8a06d54f68" category="paragraph">network interface show -vserver Cluster -fields is-fehome」というコマンドを入力します</block>
+  <block id="fd894a783c8c8400a3021bd2ad147cba" category="paragraph">次の例のような出力が表示されます。</block>
+  <block id="12769ddb40f8063f816fcbdca9a00d5d" category="paragraph">ホームポートにないクラスタLIFがある場合は、それらのLIFをホームポートにリバートします。</block>
+  <block id="268d66b259b50e25cbef3d39885d450f" category="paragraph">network interface revert -vserver Cluster -lif *</block>
+  <block id="fc7b1f226781bbe058721d0dcebf5133" category="list-text">クラスタLIFの自動リバートを無効にします。</block>
+  <block id="b1046cdb57cd97fe9c20f711ba08bed8" category="paragraph">network interface modify -vserver Cluster -lif *-auto-revert false</block>
+  <block id="5509fa38d3415bf6dfbd28918cf766f3" category="list-text">前の手順で確認したすべてのポートがネットワークスイッチに接続されていることを確認します。</block>
+  <block id="101ead84905a0da72281347a2d3e5846" category="paragraph">「network device-discovery show -port_cluster_port_」というコマンドを実行します</block>
+  <block id="fe02c7580400b9e0117d9abf6c4cbde1" category="paragraph">[Discovered Device]列には、ポートが接続されているクラスタスイッチの名前を指定します。次の例は、クラスタポート「e0a」と「e0b」がクラスタスイッチ「cs1」と「cs2」に正しく接続されていることを示しています。</block>
+  <block id="fad8bc8bd6f8c2ecbc098cd96431ebde" category="list-text">クラスタの接続を確認します。</block>
+  <block id="e477c0774c6014b5173ffa6810d512ab" category="paragraph">「 cluster ring show 」を参照してください</block>
+  <block id="c992f99b79e71a5eb5127e5f190fab4e" category="paragraph">すべてのユニットはマスタまたはセカンダリのいずれかでなければなりません。</block>
+  <block id="048592cc00af171e1fa6348b090a6c78" category="list-text">グループ1のポートにスイッチレス構成を設定します。</block>
+  <block id="12bc07b1c4101cd8e151510c4571a54d" category="admonition">ネットワークの潜在的な問題を回避するには、group1からポートを切断し、できるだけ速やかに元に戻します。たとえば、20秒未満の*の場合は、「*」のようにします。</block>
+  <block id="dd1a07ba1c68088dd4d2dfd921793a63" category="list-text">group1内のポートからすべてのケーブルを同時に外します。</block>
+  <block id="da4df375887ff4e2473f47d4c2698b52" category="paragraph">次の例では、各ノードのポート「e0a」からケーブルが切断され、クラスタトラフィックがスイッチとポート「e0b」を経由して各ノードで続行されています。</block>
+  <block id="7e406f2debaed4ad453c52ae7b59f3e5" category="image-alt">ClusterSwitch1が切断された</block>
+  <block id="0859a2eee1a4fdcb7d3c0c3f5453a911" category="list-text">group1内のポートを背面にケーブル接続します。</block>
+  <block id="843716887cbd88ba04652283a40bf49d" category="paragraph">次の例では、node1の「e0a」がnode2の「e0a」に接続されています。</block>
+  <block id="cad47f7ffe7579e68a294494fa25af17" category="image-alt">ポート「e0a」間の直接接続</block>
+  <block id="e9ec4835d23694aed9844bcf9e7e87ea" category="list-text">スイッチレス・クラスタ・ネットワーク・オプションは'false'からtrue'に移行しますこの処理には最大45秒かかることがあります。スイッチレス・オプションが「true」に設定されていることを確認します。</block>
+  <block id="c412aebcb1566f8e5e0323f2afe60d0e" category="paragraph">次の例は、スイッチレスクラスタを有効にします。</block>
+  <block id="6d1b5eebdb14196ce07c51c623533431" category="list-text">クラスタネットワークが中断しないことを確認します。</block>
+  <block id="f643d26da1df28bcffc5c5067726246b" category="list-text">グループ2のポートにスイッチレス構成を設定します。</block>
+  <block id="863e48e1ab590a3004febd635c0c772c" category="admonition">ネットワークの潜在的な問題を回避するには、ポートをgroup2から切断して、できるだけ速やかに元に戻す必要があります。たとえば、20秒以内に*と入力します。</block>
+  <block id="29f9df63556e07a416ddabb7ae9e6ad1" category="list-text">group2のポートからすべてのケーブルを同時に外します。</block>
+  <block id="f7107cbf076f0517cc09ef7864ab4721" category="paragraph">次の例では、各ノードのポート「e0b」からケーブルが切断され、クラスタトラフィックは「e0a」ポート間の直接接続を経由して続行されます。</block>
+  <block id="7f811e877a123112a56cd337a96a946a" category="image-alt">クラスタスイッチ2が切断されました</block>
+  <block id="29035200b1c604db07130926a477b161" category="list-text">group2のポートを背面にケーブル接続します。</block>
+  <block id="0883e07187c2d888880312f0fa00ed04" category="paragraph">次の例では、node1の「e0a」がnode2の「e0a」に接続され、node2の「e0b」がnode2の「e0b」に接続されています。</block>
+  <block id="fdd6dd4aa052ef34512800aa4ec60d74" category="image-alt">ノード1のポートとノード2のポート間で直接接続します</block>
+  <block id="fbbe76d16326b63ad1d4f272c5493136" category="list-text">両方のノードのポートが正しく接続されていることを確認します。</block>
+  <block id="65abe70d5b91b27886fd257d6422593d" category="paragraph">次の例は、クラスタポート「e0a」と「e0b」がクラスタパートナーの対応するポートに正しく接続されていることを示しています。</block>
+  <block id="7d828f71c40144b012224932607715ca" category="list-text">クラスタLIFの自動リバートを再度有効にします。</block>
+  <block id="2c70d9b6ebd85a5ee2fff0f363a115ac" category="paragraph">network interface modify -vserver Cluster -lif *-auto-revert trueを指定します</block>
+  <block id="5fa7d5204d3d489974fd1ec321213563" category="list-text">すべてのLIFがホームにあることを確認する。この処理には数秒かかることがあります。</block>
+  <block id="e602723d0e5f9bdd1222eae8ea457289" category="paragraph">network interface show -vserver Cluster -lif LIF_nameです</block>
+  <block id="038dfaef435585ad7a241ece49eb90ca" category="paragraph">次の例では、「Is Home」列が「true」の場合、LIFはリバートされています。</block>
+  <block id="ca781b2f6ba431222707604fe0989dc1" category="paragraph">いずれかのクラスタLIFがホームポートに戻っていない場合は、手動でリバートします。</block>
+  <block id="31d2e20cefb76721dace23dfd9a35896" category="paragraph">「network interface revert -vserver Cluster -lif LIF_name」のようになります</block>
+  <block id="aeb90980ffc18e4c949766c382d409d4" category="list-text">いずれかのノードのシステムコンソールで、ノードのクラスタステータスを確認します。</block>
+  <block id="90d334e25f499d80506823cb341c39d7" category="paragraph">次の例では'両方のノードのイプシロンをfalseに設定しています</block>
+  <block id="26ba805ccb9566fb36369f48374b79c8" category="list-text">クラスタポート間の接続を確認します。</block>
+  <block id="a76aa36cc43767185eb24bf3e6381bdb" category="paragraph">「cluster ping-cluster local」と入力します</block>
+  <block id="fb49a7219fb53efa33b80ec1a40ab7ce" category="paragraph"><block ref="fb49a7219fb53efa33b80ec1a40ab7ce" category="inline-link-macro-rx"></block></block>
+  <block id="e55e97993d59e593f9db82748c7205cd" category="sidebar">その他のスイッチの手順</block>
+  <block id="66a1a209b630861db25c9013c19efe3b" category="sidebar">2ノードスイッチレスクラスタに移行する</block>
 </blocks>

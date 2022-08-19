@@ -1,0 +1,10 @@
+---
+section: other-procedures
+title: その他のスイッチの手順
+entries:
+- title: 2ノードスイッチレスクラスタに移行する
+  entries:
+  - title: 概要
+    url: "/other-procedures/transition-to-two-node-switchless-cluster-index.html"
+  - title: スイッチを直接接続に交換します
+    url: "/other-procedures/replace-switches-with-direct-connections.html"
