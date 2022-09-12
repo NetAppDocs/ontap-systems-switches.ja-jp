@@ -28,12 +28,12 @@ indexpage:
       url: "/switch-cisco-92300/92300-overview.html"
     - title: その他のスイッチモデル
       url: "/other/switch-linkout.html"
-    - title: その他のスイッチの手順
-      url: "/other-procedures/transition-to-two-node-switchless-cluster-index.html"
   - title: リソースの追加
     links:
     - title: その他のスイッチモデル
       url: other/switch-linkout.html
+    - title: その他のスイッチの手順
+      url: "/other-procedures/transition-to-two-node-switchless-cluster-index.html"
     - title: ONTAP リリースノート
       url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508
     - title: AFF および FAS のドキュメント

@@ -3365,7 +3365,6 @@
   <block id="f7107cbf076f0517cc09ef7864ab4721" category="paragraph">次の例では、各ノードのポート「e0b」からケーブルが切断され、クラスタトラフィックは「e0a」ポート間の直接接続を経由して続行されます。</block>
   <block id="7f811e877a123112a56cd337a96a946a" category="image-alt">クラスタスイッチ2が切断されました</block>
   <block id="29035200b1c604db07130926a477b161" category="list-text">group2のポートを背面にケーブル接続します。</block>
-  <block id="0883e07187c2d888880312f0fa00ed04" category="paragraph">次の例では、node1の「e0a」がnode2の「e0a」に接続され、node2の「e0b」がnode2の「e0b」に接続されています。</block>
   <block id="fdd6dd4aa052ef34512800aa4ec60d74" category="image-alt">ノード1のポートとノード2のポート間で直接接続します</block>
   <block id="fbbe76d16326b63ad1d4f272c5493136" category="list-text">両方のノードのポートが正しく接続されていることを確認します。</block>
   <block id="65abe70d5b91b27886fd257d6422593d" category="paragraph">次の例は、クラスタポート「e0a」と「e0b」がクラスタパートナーの対応するポートに正しく接続されていることを示しています。</block>
@@ -3383,4 +3382,5 @@
   <block id="fb49a7219fb53efa33b80ec1a40ab7ce" category="paragraph"><block ref="fb49a7219fb53efa33b80ec1a40ab7ce" category="inline-link-macro-rx"></block></block>
   <block id="e55e97993d59e593f9db82748c7205cd" category="sidebar">その他のスイッチの手順</block>
   <block id="66a1a209b630861db25c9013c19efe3b" category="sidebar">2ノードスイッチレスクラスタに移行する</block>
+  <block id="749e4fff30fa6550a6b7216922e76856" category="paragraph">次の例では、node1の「e0a」がnode2の「e0a」に接続され、node1の「e0b」がnode2の「e0b」に接続されています。</block>
 </blocks>

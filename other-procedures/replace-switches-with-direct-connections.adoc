@@ -222,7 +222,7 @@ image::../media/tnsc_clusterswitch2_disconnected.PNG[クラスタスイッチ2�
 
 .. group2のポートを背面にケーブル接続します。
 +
-次の例では、node1の「e0a」がnode2の「e0a」に接続され、node2の「e0b」がnode2の「e0b」に接続されています。
+次の例では、node1の「e0a」がnode2の「e0a」に接続され、node1の「e0b」がnode2の「e0b」に接続されています。
 
 +
 image::../media/tnsc_node1_and_node2_direct_connection.PNG[ノード1のポートとノード2のポート間で直接接続します]
