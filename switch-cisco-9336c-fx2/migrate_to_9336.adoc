@@ -44,6 +44,10 @@ NOTE: コマンド出力は、ONTAP のリリースによって異なる場合�
 
 NOTE: 手順 では、ONTAP コマンドとの両方を使用する必要があります https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.htmlCisco["Nexus 9000シリーズスイッチ"^] コマンド。特に指定がないかぎり、ONTAP コマンドが使用されます。
 
+*スイッチの初期設定*
+
+image::../media/Initial_setup.png[スイッチの初期セットアップ]
+
 .手順
 . このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= xh
 +
@@ -187,7 +191,7 @@ cs2(config-if-range)# *shutdown*
 +
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -vserver cluster*
+cluster1::*> *network interface show -vserver Cluster*
             Logical       Status     Network            Current    Current Is
 Vserver     Interface     Admin/Oper Address/Mask       Node       Port    Home
 ----------- ------------- ---------- ------------------ ---------- ------- ----
@@ -208,6 +212,12 @@ node1      true    true          false
 node2      true    true          false
 ----
 . すべてのクラスタノード接続を古いcs2スイッチから新しいcs2スイッチに移動します。
++
+*クラスタノードの接続がcs2 -新しいスイッチ*に移動されました
+
++
+image::../media/new_switch_cs1.png[クラスタノードの接続がcs2新しいスイッチに移動されました]
+
 . cs2に移動したネットワーク接続の正常性を確認します「network port show -ipspace Cluster
 +
 [listing, subs="+quotes"]
@@ -274,7 +284,7 @@ cs1(config-if-range)# *shutdown*
 +
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -vserver cluster*
+cluster1::*> *network interface show -vserver Cluster*
             Logical      Status     Network            Current     Current Is
 Vserver     Interfac     Admin/Oper Address/Mask       Node        Port    Home
 ----------- ------------ ---------- ------------------ ----------- ------- ----
@@ -295,6 +305,12 @@ node1      true    true          false
 node2      true    true          false
 ----
 . 接続をcs1から新しいcs1新しいスイッチに移動します。
++
+*クラスタノードの接続をcs1に移動-新しいスイッチ*
+
++
+image::../media/new_switch_cs2.png[クラスタノードの接続をcs1 -新しいスイッチに移動]
+
 . cs1に移動されたネットワーク接続の正常性を確認します。新しい例として、「network port show -ipspace Cluster」があります
 +
 [listing, subs="+quotes"]
