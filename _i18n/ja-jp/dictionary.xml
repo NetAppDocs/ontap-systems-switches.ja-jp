@@ -1743,7 +1743,6 @@
   <block id="d7de59d570551ce510d04111914f9ad7" category="paragraph">ネットアップ対応バージョンのサポートソフトウェアをダウンロードする場合は、 _NetApp Cluster Network Switch Reference Configuration File_ もダウンロードし、手順 5 で保存した構成とマージする必要があります。ファイルと手順は、からダウンロードできます<block ref="91aaf2f14ce017094691ed108f35b756" category="inline-link-rx"></block> ページ</block>
   <block id="771335554e309a1fffe48143bbab90a9" category="list-text">ネットワークスイッチのソフトウェアバージョンを確認し、必要に応じてネットアップ対応バージョンのソフトウェアをスイッチにダウンロードします。独自のスイッチがある場合は、を参照してください<block ref="c602ce64cde2f26d0f98979dc6b3aef5" category="inline-link-rx"></block>。</block>
   <block id="b2cb13c509425b76d525187f976cf094" category="paragraph">ネットアップ対応バージョンのサポートソフトウェアをダウンロードする場合は、 _NetApp Management Network Switch Reference Configuration File_ もダウンロードし、手順 5 で保存した構成とマージする必要があります。ファイルと手順は、からダウンロードできます<block ref="91aaf2f14ce017094691ed108f35b756" category="inline-link-rx"></block> ページ</block>
-  <block id="da89029df4f4f3d5cb89934f58459d5d" category="paragraph">を参照してください<block ref="452267e26d0f038af434d2b1530dbe66" category="inline-link-rx"></block> 『 _Switch Setup and Configuration Guide for Broadcom-supported BES-53248 switch_guide 』を参照してください。</block>
   <block id="a0cf70ca38e1fd0262591cf56e31f46f" category="paragraph">BES-53248 クラスタスイッチで使用できるライセンスタイプの詳細については、を参照してください <block ref="fa313c84214758de3e89db1ed227f8b1" category="inline-link-macro-rx"></block>。</block>
   <block id="34d5959f829dd84d53199b6f1474e69b" category="paragraph">*`crypto key generate`*</block>
   <block id="83a0e3bf9dd48caad05146cc29f81e6b" category="list-text">SSH が有効になっていることを確認します。</block>
@@ -3217,7 +3216,6 @@
   <block id="c538bd274909af8b508e01f0ef04034d" category="doc">CN1610クラスタスイッチをBES-53248クラスタスイッチに移行する方法</block>
   <block id="aca231809cb1cd80c1435dd9914b66dd" category="paragraph">その後、すべてのノードの切断されたポートを新しい BES-53248 スイッチ cs2 に再接続する必要があります。を参照してください<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 承認されているケーブル接続オプションについては、</block>
   <block id="cbd2e2da439fbaf2fd95743ddedbb09e" category="paragraph">その後、すべてのノードの切断されたポートを新しい BES-53248 スイッチ cs1 に再接続する必要があります。を参照してください<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 承認されているケーブル接続オプションについては、</block>
-  <block id="2fdf2d2e9946eb8adc48fbf536fd79b1" category="paragraph">を参照してください <block ref="22274518ab78de16bd162dd23a69479d" category="inline-link-macro-rx"></block> および <block ref="ad7a44206ec014fec7df9283bb056461" category="inline-link-macro-rx"></block> スイッチ関連のログファイルの収集に使用されるクラスタ健常性スイッチのログ収集を有効にするために必要な手順については、を参照してください。</block>
   <block id="1ba5b0ffd5b0d90e8b5fbf1938e87f52" category="section-title">BES-53248クラスタスイッチポートの割り当て</block>
   <block id="16c3e502f28be460a987ad28ccd36874" category="paragraph">Broadcom対応BES-53248クラスタスイッチポート割り当て表を参考にして、クラスタを設定できます。</block>
   <block id="fa4755458f8910a0033438b214e14730" category="paragraph">01-16</block>
@@ -3238,7 +3236,6 @@
   <block id="762a244fe152a19f04047b412d16e8df" category="paragraph">ONTAP を実行しているシステムに BES-53248 クラスタスイッチを取り付けるには、まず IP アドレスと構成を設定して、スイッチが管理インターフェイスを介して通信できるようにします。次に、イーサネットファブリック OS （ EFOS ）ソフトウェア、リファレンス構成ファイル（ RCF ）、およびその他のライセンスを必要に応じてインストールできます。この手順は、コントローラを追加する前に BES-53248 スイッチを準備するためのものです。さらに、 BES-53248 クラスタスイッチのクラスタスイッチヘルスモニタ（ CSHM ）をサポートするために必要な構成ファイルのインストールが必要になる場合があります。を参照してください <block ref="22274518ab78de16bd162dd23a69479d" category="inline-link-macro-rx"></block> 詳細：</block>
   <block id="23e7cf6793dbbe3c59640d6ebb6cf4fc" category="list-text">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> ONTAP の互換性、サポートされているEFOSファームウェア、BES-53248クラスタスイッチへのケーブル接続に関する情報が含まれています。</block>
   <block id="d1e4ca1900305cb93087d6668cebf0f9" category="paragraph">の説明に従って、BES-53248クラスタスイッチがセットアップされていることを確認します <block ref="29f190705d64b052fe2941415d5984d8" category="inline-link-macro-rx"></block> 移行プロセスを開始する前に、</block>
-  <block id="d7d3a566381272c7d9d5ad6a790a9a99" category="paragraph">また、も参照してください <block ref="22274518ab78de16bd162dd23a69479d" category="inline-link-macro-rx"></block> および <block ref="ad7a44206ec014fec7df9283bb056461" category="inline-link-macro-rx"></block> スイッチ関連のログファイルの収集に使用されるクラスタ健常性スイッチのログ収集を有効にするために必要な手順については、を参照してください。</block>
   <block id="98b6bf2585261f62aff01449faad7684" category="paragraph">使用するデバッグコマンドは、「debug transfer」と「debug license」です</block>
   <block id="c0be2d74ddb0ea6b8972b9da2fc2c223" category="paragraph">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> ONTAP の互換性、サポートされているEFOSファームウェア、BES-53248スイッチへのケーブル接続に関する情報が含まれています。</block>
   <block id="91950abebf25a4752db5969582aa4bb7" category="paragraph">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> プラットフォームの実際のクラスタポートに関する最新情報が含まれます。</block>
@@ -3420,4 +3417,5 @@
   <block id="1f5e0ea57e0f194957353e2db3df4e2d" category="image-alt">クラスタノードの接続がcs2新しいスイッチに移動されました</block>
   <block id="3fb38d5aab534a043c30d7f1a3b0a9dd" category="paragraph">*クラスタノードの接続をcs1に移動-新しいスイッチ*</block>
   <block id="84532259a7d4acf54c61408e0d42d0ce" category="image-alt">クラスタノードの接続をcs1 -新しいスイッチに移動</block>
+  <block id="51c9a924c6ea752a49b8df35531a26e7" category="paragraph">を参照してください <block ref="22274518ab78de16bd162dd23a69479d" category="inline-link-macro-rx"></block> および <block ref="a2f030b123da393c4875ac0d059237dd" category="inline-link-macro-rx"></block> スイッチ関連のログファイルの収集に使用されるクラスタ健常性スイッチのログ収集を有効にするために必要な手順については、を参照してください。</block>
 </blocks>
