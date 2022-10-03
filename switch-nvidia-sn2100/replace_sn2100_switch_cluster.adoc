@@ -1,0 +1,420 @@
+---
+permalink: switch-nvidia-sn2100/replace_sn2100_switch_cluster.html 
+sidebar: sidebar 
+keywords: replacing, replace, defective, nvidia, switch, cluster, network, nondisruptive, procedure, ndu, replace a nvidia msn2100 cluster switch - nvidia SN2100 
+summary: クラスタネットワーク内の不良なNVIDIA SN2100スイッチの交換は、無停止手順 （NDNDU）です。 
+---
+= NVIDIA SN2100クラスタスイッチを交換してください
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスタネットワーク内で障害のあるNVIDIA SN2100スイッチを交換することは、無停止手順 （NDU）です。
+
+現在の環境および交換用スイッチでスイッチの交換を実行する前に、次の条件が満たされている必要があります。
+
+* 既存のクラスタとネットワークインフラ：
++
+** 既存のクラスタで、少なくとも 1 つのクラスタスイッチが完全に接続されており、完全に機能することを確認する必要があります。
+** すべてのクラスタポートが稼働している必要があります。
+** すべてのクラスタ LIF が、 up の状態でホームポートにある必要があります。
+** ONTAP のcluster ping-cluster -node node1コマンドは'基本的な接続性とPMTUよりも大きな通信がすべてのパスで正常に行われていることを示す必要があります
+
+
+* NVIDIA SN2100交換用スイッチ：
++
+** 交換用スイッチの管理ネットワーク接続が機能している必要があります。
+** 交換用スイッチへのコンソールアクセスが確立されている必要があります。
+** ノード接続は、ポートswp1からswp14です。
+** ポートswp15およびswp16のすべてのInter-Switch Link（ISL；スイッチ間リンク）ポートを無効にする必要があります。
+** 目的のリファレンス構成ファイル（RCF）とCumulusオペレーティングシステムイメージスイッチをスイッチにロードする必要があります。
+** スイッチの初期カスタマイズが完了している必要があります。詳細については、次を参照してください。
++
+STP 、 SNMP 、 SSH などの以前のサイトのカスタマイズは、すべて新しいスイッチにコピーする必要があります。
+
+
+
+
+
+クラスタ LIF を移行するコマンドは、そのクラスタ LIF がホストされているノードで実行する必要があります。
+
+この手順の例では、スイッチとノードで次の命名法を使用しています。
+
+* 既存のNVIDIA SN2100スイッチの名前は_sw1_AND _sw2_です。
+* 新しいNVIDIA SN2100スイッチの名前は_nsw2_.
+* ノード名は _node1_AND _node2 _ です。
+* 各ノードのクラスタポートの名前は _e3a および _e3b _ です。
+* クラスタLIFの名前は、ノード1の場合は_node1_clus1_AND _node1_clus2_(1つ)、ノード2の場合は_node2_clus1_and _node2_clus2_(1つ)です。
+* すべてのクラスタ・ノードへの変更を求めるプロンプトは、'cluster1：*>`です
+* ブレークアウトポートの形式は、SWP[ポート] s [ブレークアウトポート0-3]です。たとえば'swp1の4つのブレークアウトポートは'_swp1s0'_swp1s1_'_swp1s2s'_swp1s3_です
++
+
+NOTE: 次の手順は、次のクラスタネットワークトポロジに基づいています。
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -ipspace Cluster*
+
+Node: node1
+                                                                        Ignore
+                                                  Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ---- ------------ -------- ------
+e3a       Cluster      Cluster          up   9000  auto/100000 healthy  false
+e3b       Cluster      Cluster          up   9000  auto/100000 healthy  false
+
+Node: node2
+                                                                        Ignore
+                                                  Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ---- ------------ -------- ------
+e3a       Cluster      Cluster          up   9000  auto/100000 healthy  false
+e3b       Cluster      Cluster          up   9000  auto/100000 healthy  false
+
+
+cluster1::*> *network interface show -vserver Cluster*
+
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            node1_clus1  up/up    169.254.209.69/16  node1         e3a     true
+            node1_clus2  up/up    169.254.49.125/16  node1         e3b     true
+            node2_clus1  up/up    169.254.47.194/16  node2         e3a     true
+            node2_clus2  up/up    169.254.19.183/16  node2         e3b     true
+
+
+cluster1::*> *network device-discovery show -protocol lldp*
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface     Platform
+----------- ------ ------------------------- ------------  ----------------
+node1      /lldp
+            e3a    sw1 (b8:ce:f6:19:1a:7e)   swp3          -
+            e3b    sw2 (b8:ce:f6:19:1b:96)   swp3          -
+node2      /lldp
+            e3a    sw1 (b8:ce:f6:19:1a:7e)   swp4          -
+            e3b    sw2 (b8:ce:f6:19:1b:96)   swp4          -
+----
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net show lldp*
+
+LocalPort  Speed  Mode        RemoteHost         RemotePort
+---------  -----  ----------  -----------------  -----------
+swp3       100G   Trunk/L2    sw2                e3a
+swp4       100G   Trunk/L2    sw2                e3a
+swp15      100G   BondMember  sw2                swp15
+swp16      100G   BondMember  sw2                swp16
+
+
+cumulus@sw2:~$ *net show lldp*
+
+LocalPort  Speed  Mode        RemoteHost         RemotePort
+---------  -----  ----------  -----------------  -----------
+swp3       100G   Trunk/L2    sw1                e3b
+swp4       100G   Trunk/L2    sw1                e3b
+swp15      100G   BondMember  sw1                swp15
+swp16      100G   BondMember  sw1                swp16
+----
+
+
+.手順
+. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= xh
++
+ここで、 _ x _ はメンテナンス時間の長さ（時間）です。
+
+. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 * y * 」と入力します。「 set -privilege advanced 」
++
+advanced のプロンプト（ * > ）が表示されます。
+
+. 適切なRCFとイメージをスイッチnsw2にインストールし、必要なサイトの準備を行います。
++
+必要に応じて、新しいスイッチ用のRCFおよびCumulusソフトウェアの適切なバージョンを確認、ダウンロード、およびインストールします。新しいスイッチが正しくセットアップされており、RCFおよびCumulusソフトウェアの更新が不要であることを確認した場合は、手順3に進みます。を参照してください link:install_setup_sn2100_switches_overview.html["NVIDIA SN2100スイッチをセットアップして設定します"] を参照してください。
+
++
+.. ご使用のクラスタスイッチに適用可能なCumulusソフトウェアは、_nvidia Support_siteからダウンロードできます。ダウンロードページの手順に従って、インストールするONTAP ソフトウェアのバージョンに対応したCumulus Linuxをダウンロードします。
+.. 適切な RCF はから入手できます link:https://mysupport.netapp.com/site/products/all/details/nvidia-cluster-storage-switch/downloads-tab["NVIDIAクラスタとストレージスイッチ_"^] ページダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応する正しい RCF をダウンロードします。
+
+
+. 新しいスイッチnsw2にadminとしてログインし、ノードクラスタインターフェイス（ポートswp1からswp14）に接続するすべてのポートをシャットダウンします。
++
+交換するスイッチが機能せず、電源がオフになっている場合は、手順 4 に進みます。クラスタノードの LIF は、各ノードのもう一方のクラスタポートにすでにフェイルオーバーされている必要があります。
+
++
+[listing, subs="+quotes"]
+----
+cumulus@nsw2:~$ *net add interface swp1s0-3, swp2s0-3, swp3-14 link down*
+cumulus@nsw2:~$ *net pending*
+cumulus@nsw2:~$ *net commit*
+----
+. クラスタLIFで自動リバートを無効にします。「network interface modify -vserver Cluster -lif *-auto-giveback false」
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
+
+Warning: Disabling the auto-revert feature of the cluster logical interface may effect the availability of your cluster network. Are you sure you want to continue? {y|n}: *y*
+----
+. SN2100スイッチsw1でISLポートswp15およびswp16をシャットダウンします。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net add interface swp15-16 link down*
+cumulus@sw1:~$ *net pending*
+cumulus@sw1:~$ *net commit*
+----
+. すべてのケーブルをSN2100 sw1スイッチから取り外し、SN2100 nsw2スイッチの同じポートに接続します。
+. sw1スイッチとnsw2スイッチの間で、ISLポートswp15とswp16を起動します。
++
+次のコマンドは、スイッチsw1でISLポートswp15およびswp16を有効にします。
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net del interface swp15-16 link down*
+cumulus@sw1:~$ *net pending*
+cumulus@sw1:~$ *net commit*
+----
++
+次の例は、スイッチsw1のISLポートがupになっていることを示しています。
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net show interface*
+
+State  Name         Spd   MTU    Mode        LLDP           Summary
+-----  -----------  ----  -----  ----------  -------------- ----------------------
+...
+...
+UP     swp15        100G  9216   BondMember  nsw2 (swp15)   Master: cluster_isl(UP)
+UP     swp16        100G  9216   BondMember  nsw2 (swp16)   Master: cluster_isl(UP)
+----
++
+次の例は、スイッチnsw2のISLポートが稼働していることを示しています。
+
++
+[listing, subs="+quotes"]
+----
+cumulus@nsw2:~$ *net show interface*
+
+State  Name         Spd   MTU    Mode        LLDP           Summary
+-----  -----------  ----  -----  ----------  -------------  -----------------------
+...
+...
+UP     swp15        100G  9216   BondMember  sw1 (swp15)    Master: cluster_isl(UP)
+UP     swp16        100G  9216   BondMember  sw1 (swp16)    Master: cluster_isl(UP)
+----
+. すべてのノードでポート「e3b」が稼働していることを確認します。「network port show -ipspace Cluster」
++
+次のような出力が表示されます。
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -ipspace Cluster*
+
+Node: node1
+                                                                         Ignore
+                                                   Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ----- ------------ -------- -------
+e3a       Cluster      Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster      Cluster          up   9000  auto/100000  healthy  false
+
+
+Node: node2
+                                                                         Ignore
+                                                   Speed(Mbps) Health    Health
+Port      IPspace      Broadcast Domain Link MTU   Admin/Oper  Status    Status
+--------- ------------ ---------------- ---- ----- ----------- --------- -------
+e3a       Cluster      Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster      Cluster          up   9000  auto/100000  healthy  false
+----
+. これで、各ノードのクラスタポートは、ノードから見て次のようにクラスタスイッチに接続されました。
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol lldp*
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface     Platform
+----------- ------ ------------------------- ------------  ----------------
+node1      /lldp
+            e3a    sw1  (b8:ce:f6:19:1a:7e)   swp3          -
+            e3b    nsw2 (b8:ce:f6:19:1b:b6)   swp3          -
+node2      /lldp
+            e3a    sw1  (b8:ce:f6:19:1a:7e)   swp4          -
+            e3b    nsw2 (b8:ce:f6:19:1b:b6)   swp4          -
+----
+. すべてのノードクラスタポートがupであることを確認します。「net show interface」
++
+[listing, subs="+quotes"]
+----
+cumulus@nsw2:~$ *net show interface*
+
+State  Name         Spd   MTU    Mode        LLDP              Summary
+-----  -----------  ----  -----  ----------  ----------------- ----------------------
+...
+...
+UP     swp3         100G  9216   Trunk/L2                      Master: bridge(UP)
+UP     swp4         100G  9216   Trunk/L2                      Master: bridge(UP)
+UP     swp15        100G  9216   BondMember  sw1 (swp15)       Master: cluster_isl(UP)
+UP     swp16        100G  9216   BondMember  sw1 (swp16)       Master: cluster_isl(UP)
+----
+. 両方のノードがそれぞれ1つのスイッチに接続されていることを確認します。net show lldp
++
+次の例は、両方のスイッチの該当する結果を示しています。
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net show lldp*
+
+LocalPort  Speed  Mode        RemoteHost         RemotePort
+---------  -----  ----------  -----------------  -----------
+swp3       100G   Trunk/L2    node1              e3a
+swp4       100G   Trunk/L2    node2              e3a
+swp15      100G   BondMember  nsw2               swp15
+swp16      100G   BondMember  nsw2               swp16
+
+
+cumulus@nsw2:~$ *net show lldp*
+
+LocalPort  Speed  Mode        RemoteHost         RemotePort
+---------  -----  ----------  -----------------  -----------
+swp3       100G   Trunk/L2    node1                e3b
+swp4       100G   Trunk/L2    node2                e3b
+swp15      100G   BondMember  sw1                swp15
+swp16      100G   BondMember  sw1                swp16
+----
+. クラスタLIFで自動リバートを有効にします。cluster1：：*> network interface modify -vserver Cluster -lif *-auto-revert true
+. スイッチnsw2で、ノードのネットワークポートに接続されているポートを起動します。
++
+[listing, subs="+quotes"]
+----
+cumulus@nsw2:~$ *net del interface swp1-14 link down*
+cumulus@nsw2:~$ *net pending*
+cumulus@nsw2:~$ *net commit*
+----
+. クラスタ内のノードに関する情報を表示します cluster show
++
+次の例では、このクラスタのノード node1 と node2 のノードの健常性が true であることを示します。
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster show*
+
+Node          Health  Eligibility
+------------- ------- ------------
+node1         true    true
+node2         true    true
+----
+. すべての物理クラスタ・ポートが動作していることを確認します「 network port show ipspace Cluster
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -ipspace Cluster*
+
+Node node1                                                               Ignore
+                                                    Speed(Mbps) Health   Health
+Port      IPspace     Broadcast Domain  Link  MTU   Admin/Oper  Status   Status
+--------- ----------- ----------------- ----- ----- ----------- -------- ------
+e3a       Cluster     Cluster           up    9000  auto/10000  healthy  false
+e3b       Cluster     Cluster           up    9000  auto/10000  healthy  false
+
+Node: node2
+                                                                         Ignore
+                                                    Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link  MTU   Admin/Oper  Status   Status
+--------- ------------ ---------------- ----- ----- ----------- -------- ------
+e3a       Cluster      Cluster          up    9000  auto/10000  healthy  false
+e3b       Cluster      Cluster          up    9000  auto/10000  healthy  false
+
+----
+. クラスタネットワークが正常であることを確認します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net show lldp*
+
+LocalPort  Speed  Mode        RemoteHost      RemotePort
+---------  -----  ----------  --------------  -----------
+swp3       100G   Trunk/L2    node1           e3a
+swp4       100G   Trunk/L2    node2           e3a
+swp15      100G   BondMember  nsw2            swp15
+swp16      100G   BondMember  nsw2            swp16
+----
+. スイッチ関連のログファイルを収集するためにEthernetスイッチのヘルスモニタログ収集機能をイネーブルにします。これには、コマンド「system switch ethernet log setup-password」および「system switch ethernet log enable -col関係」を使用します
++
+「 system switch ethernet log setup -password 」と入力します
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet log setup-password*
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+*sw1*
+*nsw2*
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *sw1*
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] *y*
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *nsw2*
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] *y*
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+----
++
+次に 'system switch ethernet log enable-colion' を実行します
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet log enable-collection*
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] *y*
+
+Enabling cluster switch log collection.
+
+cluster1::*>
+----
++
+
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
+. スイッチ・ログ収集機能を開始します：system switch ethernet log collect-device *
++
+10分間待ってから'次のコマンドを使用してログ収集が成功したことを確認しますsystem switch ethernet log show
+
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet log show*
+Log Collection Enabled: true
+
+Index  Switch                       Log Timestamp        Status
+------ ---------------------------- -------------------  ---------    
+1      sw1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
+2      nsw2 (b8:ce:f6:19:1b:96)     4/29/2022 03:07:42   complete
+----
+. 特権レベルを admin に戻します。 'et -privilege admin'
+. ケースの自動作成を抑制した場合は、 AutoSupport メッセージ「 system node AutoSupport invoke -node * -type all -message MAINT=end 」を呼び出して作成を再度有効にします
+

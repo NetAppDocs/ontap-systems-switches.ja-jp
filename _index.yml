@@ -5,7 +5,7 @@ indexpage:
   - title: クラスタスイッチ
     links:
     - title: Broadcom 対応 BES-53248 の場合
-      url: "/switch-bes-53248/overview-bes53248.html"
+      url: switch-bes-53248/overview-bes53248.html
     - title: Cisco Nexus 3132Q-V の 2 つのポートを設定します
       url: switch-cisco-3132q-v/index.html
     - title: Cisco Nexus 3232C
@@ -16,14 +16,18 @@ indexpage:
       url: switch-cisco-92300/92300-overview.html
     - title: NetApp CN1610
       url: switch-netapp-cn1610/index.html
+    - title: NVIDIA SN2100
+      url: switch-nvidia-sn2100/sn2100-overview.html
     - title: その他のスイッチモデル
-      url: "/other/switch-linkout.html"
+      url: other/switch-linkout.html
   - title: ストレージスイッチ
     links:
     - title: Cisco Nexus 3232C
       url: switch-cisco-3232c/index.html
     - title: Cisco Nexus 9336C-FX2
-      url: "/switch-cisco-9336c-fx2/9336-overview.html"
+      url: switch-cisco-9336c-fx2/9336-overview.html
+    - title: NVIDIA SN2100
+      url: switch-nvidia-sn2100/sn2100-overview.html
   - title: 共有スイッチ
     links:
     - title: Cisco Nexus 9336C-FX2
@@ -32,7 +36,7 @@ indexpage:
     links:
     - title: AFF および FAS のドキュメント
       url: https://docs.netapp.com/us-en/ontap-systems/index.html
-    - title: AFF および FAS のアップグレードに関するドキュメント
+    - title: AFF およびFAS のアップグレードに関するドキュメント
       url: https://docs.netapp.com/us-en/ontap-systems-upgrade/index.html
     - title: ONTAP リリースノート
       url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508
