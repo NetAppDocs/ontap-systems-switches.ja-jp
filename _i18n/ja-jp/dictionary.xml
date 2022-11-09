@@ -850,7 +850,6 @@
   <block id="28a53e17dbed56e3e939f59daaad8359" category="list-text">このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= x h</block>
   <block id="255e02cb0fbcf856f38cae0c4b19764d" category="list-text">各クラスタインターコネクトスイッチの各ノードに設定されているクラスタインターコネクトインターフェイスの数を表示します。「 network device-discovery show -protocol cdp</block>
   <block id="519cb91ef6e75c3c3143746a3e987bba" category="list-text">各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。</block>
-  <block id="f59d55fc3deab7022d8bbc8911bc97d9" category="list-text">ネットワーク・ポートの属性を表示します「 network port show – ipspace Cluster</block>
   <block id="58d8f5733e0a28fbb10c789b8e8b1006" category="list-text">LIF に関する情報を表示します。「 network interface show -vserver Cluster</block>
   <block id="2f5cda1fef4930180b762512f154862a" category="list-text">リモートクラスタ LIF に ping を実行します。 cluster ping-cluster -node node-name</block>
   <block id="fb42ee387302bdd24daf7381862b77b2" category="list-text">すべてのクラスタ LIF で auto-revert コマンドが有効になっていることを確認します。「 network interface show -vserver Cluster -fields auto-revert</block>
@@ -1117,7 +1116,6 @@
   <block id="cb3b33954945611e0ba8b2628e06d629" category="inline-link">Cisco イーサネットスイッチ</block>
   <block id="eb70cbf636a549bd2cc86304b271576a" category="summary">この手順を使用して、 Cisco Nexus 9336C-FX2 スイッチの初期インストールを実行できます。</block>
   <block id="5f901dd2812b5cf833eff71d3b59a900" category="doc">Nexus 9336C-FX2 クラスタスイッチの初期取り付け</block>
-  <block id="4dad97b74eb8f56ecdedfd5718fe8d6a" category="paragraph">使用しているスイッチに該当するネットアップ Cisco NX-OS ソフトウェアは、ネットアップサポートサイトからダウンロードできます<block ref="7bc6752d2076d2c755eaebbdfeb91d23" category="inline-link-rx"></block></block>
   <block id="dc13ff13441dfc204b36688d5d7342b7" category="paragraph">NX-OS は、 Cisco Systems が提供する Nexus シリーズイーサネットスイッチおよび MDS シリーズ Fibre Channel （ FC ）ストレージエリアネットワークスイッチのネットワークオペレーティングシステムです。</block>
   <block id="f67462100040a7cd4a5b4d5bc2f2f73e" category="list-text">管理ポート（スイッチのポートの反対側にある）を、 SFTP サーバが配置されているネットワークと同じネットワークに接続します。</block>
   <block id="98bce1f85d815f540ae5aa99708e61f4" category="list-text">9600 ボー</block>
@@ -1605,7 +1603,6 @@
   <block id="29b5c9f7c3e370b92a6acd04f777cd76" category="paragraph">この手順の例では、 2 つのノードを使用します。これらのノードは 'e0a' と 'e0b' の 2 つの 10GbE クラスタ・インターコネクト・ポートを使用します</block>
   <block id="3fab38e14396889cbb0c1a3103fa74e4" category="paragraph">を参照してください<block ref="e98f5e4074ae8b028a5791870586403d" category="inline-link-rx"></block> をクリックして、プラットフォームのクラスタポートが正しいことを確認します。</block>
   <block id="ae51aab75debd2e4f744aa3423ddf6cf" category="list-text">クラスタ LIF 名は、 node1 の場合は「 node1_clus1' 」、ノード 1 の場合は「 node1_clus1' 」、 node2 の場合は「 node2 _ clus2 」です。</block>
-  <block id="a7e5cc3b90446f6b486e4393aced65d6" category="paragraph">「 system node AutoSupport invoke -node * -type all -message MAINT= x h 」というメッセージが表示されます</block>
   <block id="4910851fa218a8942f3c3f40e877fda8" category="paragraph">ここで、 _ x _ はメンテナンス時間の長さ（時間）です。</block>
   <block id="e73ca78de91a85725d7897c5caaeeb3e" category="list-text">リモートクラスタ LIF に ping を実行します。</block>
   <block id="f640804165fe8b3014b443db071bd7c2" category="list-text">すべてのクラスタ LIF で auto-revert コマンドが有効になっていることを確認します。</block>
@@ -1629,7 +1626,6 @@
   <block id="7004b79d6da7a937e4f095cf3128beec" category="list-text">Nexus 92300YC 交換スイッチ：</block>
   <block id="14aed4c393ab30261f9a29fa3cb60712" category="list-text">ノード接続はポート 1/1~1/64 です。</block>
   <block id="12014b8ecc927f834dff435ab28b8c21" category="list-text">ポート 1/65 および 1/66. では、すべてのスイッチ間リンク（ ISL ）ポートを無効にする必要があります。</block>
-  <block id="50a23b934f4f37044bdd5eac939b6cd6" category="inline-link-macro">新しい Cisco Nexus 92300YC スイッチの構成</block>
   <block id="e6a737d65dbbe364da94490cf2b1e13c" category="list-text">既存の Nexus 92300YC スイッチの名前は cs1 と cs2 になります。</block>
   <block id="e33736da514784e931928160187a8d8d" category="list-text">新しい Nexus 92300YC スイッチの名前は newcs2 です。</block>
   <block id="843e8bce6b1f5f343fc75f65042e3608" category="list-text">ブラウザの戻る矢印をクリックして、 * 概要 * ページに戻り、 * continue * をクリックしてライセンス契約に同意し、 * Download * ページに移動します。</block>
@@ -3152,22 +3148,16 @@
   <block id="42e9b9ed0e598b47d3d52b57a6de6d6b" category="inline-link">_ Cisco Nexus 92300YC クラスタスイッチを交換します _</block>
   <block id="6ec490ecbf6e7036a91b8275d198efb1" category="paragraph"><block ref="6ec490ecbf6e7036a91b8275d198efb1" category="inline-link-rx"></block></block>
   <block id="d4ca40c00226dd9154451b22e0c4d626" category="paragraph">クラスタ内の障害のある Cisco Nexus 92300YC スイッチを交換し、スイッチのオペレーティングシステムとリファレンス構成ファイルをダウンロードするための手順 について説明します。</block>
-  <block id="6c9cb5b0a3e8788afc621cc80a43f532" category="paragraph"><block ref="6c9cb5b0a3e8788afc621cc80a43f532" category="inline-link-macro-rx"></block></block>
   <block id="00f618bdb0daf68aeb2d205ea0709450" category="list-text">ONTAP 9.4 以降では、 gthe コマンドを使用して、スイッチ関連のログファイルを収集するためのクラスタスイッチヘルスモニタログ収集機能を有効にします。</block>
   <block id="4d17ac80e3b613f4f1e738899b7885ec" category="paragraph">'system cluster-switch log setup-password ' および 'system cluster-switch log enable-collection</block>
   <block id="4d044e6cf669ad04cc841f7358407e18" category="inline-link">Hardware Universe スイッチ _</block>
-  <block id="45af8674e7855691a3f6af99bffdc7d8" category="list-text">。<block ref="fc28ececd6878428d18cc5d1e48226af" category="inline-link-rx"></block> すべてのクラスタスイッチでサポートされているケーブル接続について説明します。</block>
-  <block id="46f4e846ca08ef976e5fa57699be7358" category="list-text">この手順 でサポートされている ONTAP と NX-OS のバージョンはにあります<block ref="a29f73ef9de6be7554c49272d8910429" category="inline-link-rx"></block> ページ</block>
   <block id="31c61e8324cd3af2b0a885021ca2c68b" category="list-text">ONTAP 9.6P8 以降の場合は、スイッチ関連のログファイルを収集するために、イーサネットスイッチヘルスモニタのログ収集機能をイネーブルにします。この機能をイネーブルにするには、「 system cluster-switch log setup-password 」および「 system cluster-switch log enable-col関係 」コマンドを使用します</block>
-  <block id="d0cbcb031a5b57d5da00e038ff554757" category="list-text">のスイッチ互換性の表を参照してください<block ref="eea3e069983adcbba5050ccdef577ded" category="inline-link-rx"></block> サポートされている ONTAP 、 NX-OS 、および RCF のバージョンに対応したページです。</block>
   <block id="3f5c9d6967d91a65ea882b77345f4b64" category="list-text">の Cisco スイッチのアップグレードおよびダウングレード手順の詳細については、 Cisco の Web サイトで入手可能な該当するソフトウェアおよびアップグレードガイドを参照しておく必要があります<block ref="8cf592c671d256b1fe33924853db0b89" category="inline-link-rx"></block> ページ</block>
   <block id="bd377da5df344ea4407f28a5db2a6983" category="paragraph">を参照してください<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block> をクリックして、プラットフォームのクラスタポートが正しいことを確認します。</block>
   <block id="07d9b89ec6258781d7ac664bc095c5af" category="list-text">ONTAP 9.4 以降の場合は、コマンドを使用してスイッチ関連のログファイルを収集するために、クラスタスイッチヘルスモニタのログ収集機能を有効にします。</block>
   <block id="53564612bada3c4cb7f13055cbf73c80" category="list-text">ONTAP 9.4 以降の場合は、コマンドを使用して、クラスタスイッチヘルスモニタのログ収集機能を有効にしてスイッチ関連のログファイルを収集します。</block>
   <block id="e1d4a65999e59095e2f5717315918e3a" category="paragraph">。<block ref="fc28ececd6878428d18cc5d1e48226af" category="inline-link-rx"></block> ケーブル接続の詳細については、を参照してください。</block>
   <block id="3a0b0dd1c880db53d26f43f8e16362f2" category="paragraph">。<block ref="ff01bb393f25256f57a8767d2f828068" category="inline-link-rx"></block> プラットフォームの実際のクラスタポートに関する最新情報が含まれます。</block>
-  <block id="c2995f917cf848b1a8ad4f123990b08f" category="inline-link-macro">_ Hardware Universe ^_</block>
-  <block id="47db2740e391cb9dd7afd4c727db1c28" category="paragraph">を参照してください <block ref="2e30f42bb79c7c9fe477a9d63d7f110d" category="inline-link-macro-rx"></block> をクリックします。</block>
   <block id="f267a68fd1c8bddcc992701898021398" category="sidebar">クラスタスイッチ</block>
   <block id="21cefb007c9064d8adcf6c162e74b0bf" category="sidebar">Cisco Nexus 3232C</block>
   <block id="403284bd44beda112195a484c8a76421" category="sidebar">ストレージスイッチ</block>
@@ -3645,7 +3635,6 @@
   <block id="982217e543f0fa5e9da851302f28d805" category="list-text">クラスタLIFの名前は、ノード1の場合は_node1_clus1_AND _node1_clus2_(1つ)、ノード2の場合は_node2_clus1_and _node2_clus2_(1つ)です。</block>
   <block id="251c6c04656af97cbcbd1aa3eea2bee5" category="list-text">すべてのクラスタ・ノードへの変更を求めるプロンプトは、'cluster1：*&gt;`です</block>
   <block id="2c84a4166919cc5a80a8c0726d1059e6" category="list-text">適切なRCFとイメージをスイッチnsw2にインストールし、必要なサイトの準備を行います。</block>
-  <block id="1eee77e5510e91c39ad8de358a66db8b" category="paragraph">必要に応じて、新しいスイッチ用のRCFおよびCumulusソフトウェアの適切なバージョンを確認、ダウンロード、およびインストールします。新しいスイッチが正しくセットアップされており、RCFおよびCumulusソフトウェアの更新が不要であることを確認した場合は、手順3に進みます。を参照してください <block ref="f205112049fd2d705b8f40351f7959dc" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="1c7edbc9e87d89abba60270ce35ec08a" category="list-text">ご使用のクラスタスイッチに適用可能なCumulusソフトウェアは、_nvidia Support_siteからダウンロードできます。ダウンロードページの手順に従って、インストールするONTAP ソフトウェアのバージョンに対応したCumulus Linuxをダウンロードします。</block>
   <block id="cb246b83c0c732bd49f45fceb6d1246f" category="inline-link-macro">NVIDIAクラスタとストレージスイッチ_</block>
   <block id="7d496a68b55e69a007c148b8b4cf8fbe" category="list-text">適切な RCF はから入手できます <block ref="bf48368f6fb605c4425a53dc48551d85" category="inline-link-macro-rx"></block> ページダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応する正しい RCF をダウンロードします。</block>
@@ -3734,4 +3723,33 @@
   <block id="d645f4ad64c5de549a6e962f1b7e9a5d" category="doc">NVIDIA SN2100スイッチをセットアップして設定します</block>
   <block id="0bfa1a1e232ece62b9507c3e20a01280" category="paragraph">ONTAP 9.10.1P3以降では、NVIDIA SN2100スイッチを使用してストレージとクラスタの機能を共有スイッチ構成に統合できます。</block>
   <block id="153a5c90883f7a8479e2748a0919a601" category="sidebar">NVIDIA SN2100スイッチをセットアップして設定します</block>
+  <block id="f244d0b9bbad19d8b6169c577369193c" category="paragraph">必要に応じて、新しいスイッチ用のRCFおよびCumulusソフトウェアの適切なバージョンを確認、ダウンロード、およびインストールします。新しいスイッチが正しくセットアップされており、RCFおよびCumulusソフトウェアの更新が不要であることを確認した場合は、手順4に進みます。を参照してください <block ref="f205112049fd2d705b8f40351f7959dc" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="29bedbdcff648e4ff4cb387a7587b82b" category="paragraph">交換するスイッチが機能せず、電源がオフになっている場合は、手順5に進みます。クラスタノードの LIF は、各ノードのもう一方のクラスタポートにすでにフェイルオーバーされている必要があります。</block>
+  <block id="5f165828e6700ebf88d288359161875f" category="list-text">。<block ref="abaf454a950eaeabe7c7af627e77fec0" category="inline-link-rx"></block> すべてのクラスタスイッチでサポートされているケーブル接続について説明します。</block>
+  <block id="3ce37c2e20f62b8f2f558b1dde3f582c" category="paragraph">使用しているスイッチに該当するネットアップCisco NX-OSソフトウェアは、からダウンロードできます<block ref="1a36b59ecae7684863b79a0f690b6840" category="inline-link-rx"></block> サイト</block>
+  <block id="423ce536244985b76193e04f1a380a55" category="paragraph"><block ref="423ce536244985b76193e04f1a380a55" category="inline-link-macro-rx"></block></block>
+  <block id="06ca91732493d122c261ce88fd963f4f" category="paragraph">RCF は、 Nexus 92300YC スイッチを初めてセットアップしたあとにインストールできます。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。</block>
+  <block id="2b85c11758e0aa43ebfe299220ad905f" category="list-text">クラスタLIFの名前はです<block ref="efdc0a97303fb41897cab634f9381835" prefix=" " category="inline-code"></block>、<block ref="bd152ff09f603987e4c87a156b246966" prefix=" " category="inline-code"></block>、<block ref="a466bba1804a252e783c3e78c73981b0" prefix=" " category="inline-code"></block>および<block ref="e136e422a5bae645f7cdf8ea4cf1a818" prefix=" " category="inline-code"></block>。</block>
+  <block id="4a07f902b1949e45ece7e6201b5ed48a" category="list-text">手順 では、ONTAP コマンドとの両方を使用する必要があります<block ref="8cf592c671d256b1fe33924853db0b89" category="inline-link-rx"></block>; ONTAP コマンドは、特に指定がない限り使用されます。</block>
+  <block id="fb4310212b202ff28abb0d68f283cb8b" category="list-text">すべてのクラスタポートが正常な状態であることを確認します。<block ref="7fcda764b68d3ee8ce2b37f3a72bab05" prefix=" " category="inline-code"></block></block>
+  <block id="bb754a8f2ed54673939ff1c56735741a" category="list-text">すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。<block ref="7af866342cc7e87972580d7b709d8820" prefix=" " category="inline-code"></block></block>
+  <block id="d94df61bb97f9ea96d2f4261018924d3" category="list-text">クラスタポートがクラスタスイッチ cs1 でホストされているポートに移行されていることを確認します。これには数秒かかることがあります。<block ref="7af866342cc7e87972580d7b709d8820" prefix=" " category="inline-code"></block></block>
+  <block id="ea0682ea1f2ae756bec0f630a5158cc9" category="list-text">FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。Ciscoコマンドの詳細については、『』の該当するガイドを参照してください<block ref="8cf592c671d256b1fe33924853db0b89" category="inline-link-rx"></block> ガイド。</block>
+  <block id="4808008925bc79a710baa7a191901060" category="paragraph">Ciscoコマンドの詳細については、『』の該当するガイドを参照してください<block ref="8cf592c671d256b1fe33924853db0b89" category="inline-link-rx"></block> ガイド。</block>
+  <block id="93bd51f238944c9338cdde2082538910" category="paragraph">この例は、RCFファイルを示しています<block ref="8749b604b31fccaea2fa775c5ecf4fdc" prefix=" " category="inline-code"></block> スイッチcs2に取り付けます。</block>
+  <block id="08aaa260c77b71319efd7f9112354999" category="list-text">[[step12]] RCFファイルが正しい新しいバージョンであることを確認します。<block ref="d064a73c32d00bf384204782a696a298" prefix=" " category="inline-code"></block></block>
+  <block id="41b08f66ec0303ffe518bbdc4d5527ad" category="list-text">クラスタのクラスタポートの健常性を確認します。</block>
+  <block id="8939c03fb033b2c9a57e27fdec9078a0" category="list-text">クラスタ内のすべてのノードで e0d ポートが稼働しており、正常に動作していることを確認します。<block ref="7fcda764b68d3ee8ce2b37f3a72bab05" prefix=" " category="inline-code"></block></block>
+  <block id="f23c856b4e6549c08ee780dcad3fc85c" category="list-text">クラスタ LIF がスイッチ cs2 でホストされているポートに移行されたことを確認します。これには数秒かかることがあります。<block ref="7af866342cc7e87972580d7b709d8820" prefix=" " category="inline-code"></block></block>
+  <block id="97283617aa91dff9f5c3768547ba0d7c" category="list-text">クラスタ LIF がホームポートにリバートされたことを確認します。<block ref="7af866342cc7e87972580d7b709d8820" prefix=" " category="inline-code"></block></block>
+  <block id="53c5b9bd181f1473f498076dceb33fdd" category="open-title">ONTAP 9.8以降</block>
+  <block id="d9ede0cfb7182a5668cc6e90c80efb6d" category="paragraph">ONTAP 9.8 以降では、次のコマンドを使用して、クラスタスイッチヘルスモニタログ収集機能を有効にして、スイッチ関連のログファイルを収集します。<block ref="36ac3c1f3bae8142b5d110fb906ba03e" prefix=" " category="inline-code"></block> および<block ref="ff5aaae616b6f326cad680284f32b588" prefix=" " category="inline-code"></block></block>
+  <block id="e430037525fdc395a913568c2bcc487b" category="paragraph">入力するコマンド <block ref="36ac3c1f3bae8142b5d110fb906ba03e" prefix="" category="inline-code"></block></block>
+  <block id="97cb97536848aa999492d6cd929b1702" category="paragraph">その後に次のコマンドを入力 <block ref="ff5aaae616b6f326cad680284f32b588" prefix="" category="inline-code"></block></block>
+  <block id="83bd7d6d3bceee06d3d796e3ff2402d4" category="open-title">ONTAP 9.4以降</block>
+  <block id="afa8e0a19468b9b0551aac700a287731" category="paragraph">その後に次のコマンドを入力 <block ref="abefab8d02f9c0ef8226a4fcf49448a1" prefix="" category="inline-code"></block></block>
+  <block id="c1b997d8bbe75177eb1d5324cccf7e5f" category="list-text">のスイッチ互換性の表を参照してください<block ref="41f6a53a5371a0ad5564ad4009d568bc" category="inline-link-rx"></block> サポートされている ONTAP 、 NX-OS 、および RCF のバージョンに対応したページです。</block>
+  <block id="57bf5d8f5891a8230d2c53c4b728728e" category="list-text">ネットワークポートの属性を表示します。 <block ref="5a2357a985889803fc9ad4bba1f860e2" prefix=" " category="inline-code"></block></block>
+  <block id="3ca5e137a21251c69373aa645cc945d5" category="paragraph">を参照してください <block ref="e90918249884ccf48e81d939a33e43ce" category="inline-link-macro-rx"></block> をクリックします。</block>
+  <block id="bb06ef3d1301c60ccc059da2e6365064" category="sidebar">リファレンス構成ファイルをインストールします</block>
 </blocks>

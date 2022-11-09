@@ -38,16 +38,16 @@ entries:
     url: "/switch-cisco-92300/configure-install-initial.html"
   - title: NX-OS ソフトウェアをインストールします
     url: "/switch-cisco-92300/configure-install-nxos.html"
-  - title: リファレンス構成ファイル（ RCF ）のインストール
-    url: "/switch-cisco-92300/configure-install-rcf.html"
+  - title: リファレンス構成ファイルをインストールします
+    url: "/switch-cisco-92300/install-the-rcf-file.html"
 - title: Cisco Nexus 92300YC クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします
   entries:
   - title: 概要
     url: "/switch-cisco-92300/install-nxos-overview.html"
   - title: NX-OS ソフトウェアをインストールします
     url: "/switch-cisco-92300/install-nxos-software.html"
-  - title: リファレンス構成ファイル（ RCF ）のインストール
-    url: "/switch-cisco-92300/install-nxos-rcf.html"
+  - title: リファレンス構成ファイルをインストールします
+    url: "/switch-cisco-92300/install-the-rcf-file.html"
 - title: Cisco Nexus 92300YC スイッチを使用して 2 ノードスイッチクラスタに移行する
   entries:
   - title: 概要
@@ -60,5 +60,5 @@ entries:
     url: "/switch-cisco-92300/migrate-to-92300yc-overview.html"
   - title: Cisco スイッチから Cisco Nexus 92300YC スイッチへの移行方法
     url: "/switch-cisco-92300/migrate-to-92300yc.html"
-  - title: Cisco Nexus 92300YC スイッチを交換します
-    url: "/switch-cisco-92300/replace-92300yc.html"
+- title: Cisco Nexus 92300YC スイッチを交換します
+  url: "/switch-cisco-92300/replace-92300yc.html"
