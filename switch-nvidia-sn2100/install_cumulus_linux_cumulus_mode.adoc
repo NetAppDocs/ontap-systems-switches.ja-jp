@@ -13,6 +13,7 @@ summary: Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIE�
 [role="lead"]
 Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます。
 
+.作業を開始する前に
 前提条件は次のとおりです。
 
 * Linuxに関する中級レベルの知識があること。

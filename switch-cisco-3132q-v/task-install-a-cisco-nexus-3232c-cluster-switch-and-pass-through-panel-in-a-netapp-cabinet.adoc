@@ -13,6 +13,7 @@ summary: Cisco Nexus 3132Q-V スイッチとパススルーパネルは、スイ
 [role="lead"]
 Cisco Nexus 3132Q-V スイッチとパススルーパネルは、スイッチに付属の標準ブラケットを使用してネットアップキャビネットに設置できます。
 
+.作業を開始する前に
 初期準備要件、キットの内容、および安全上の注意事項を確認しておく必要があります。
 
 http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus3000/hw/installation/guide/b_n3000_hardware_install_guide.html["『 Cisco Nexus 3000 Series Hardware Installation Guide 』を参照してください"^]

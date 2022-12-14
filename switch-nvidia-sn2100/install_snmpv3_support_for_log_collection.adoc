@@ -13,6 +13,7 @@ summary: このリリースでは、SNMPv3でログを監視できます。
 [role="lead"]
 このリリースでは、Switch Health Monitoring（SHM）のスイッチログ収集のSNMPv3がサポートされています。
 
+.このタスクについて
 次のコマンドは、NVIDIA SN2100スイッチでSNMPv3ユーザ名を設定します。
 
 * * no authentication *：'net add snmp-server username_user_auth-none

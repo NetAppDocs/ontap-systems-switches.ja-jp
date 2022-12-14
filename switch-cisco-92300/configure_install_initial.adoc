@@ -13,6 +13,7 @@ summary: この手順を使用して、 Cisco Nexus 92300YC スイッチの初�
 [role="lead"]
 この手順を使用して、 Cisco Nexus 92300YC スイッチの初期取り付けを実行できます。
 
+.このタスクについて
 使用しているスイッチに該当するネットアップCisco NX-OSソフトウェアは、からダウンロードできます http://mysupport.netapp.com/["ネットアップサポート"^] サイト
 
 NX-OS は、 Cisco Systems が提供する Nexus シリーズイーサネットスイッチおよび MDS シリーズ Fibre Channel （ FC ）ストレージエリアネットワークスイッチのネットワークオペレーティングシステムです。

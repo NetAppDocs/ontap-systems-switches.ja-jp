@@ -13,6 +13,7 @@ summary: Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIE�
 [role="lead"]
 Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます。
 
+.作業を開始する前に
 クムルスLinuxは、ネットワークインストーライメージの自動検出を可能にするOpen Network Install Environment（ONIE）を使用してインストールできます。これにより、Cumulus Linuxなどのオペレーティングシステムの選択により、スイッチをセキュリティ保護するシステムモデルが容易になります。ONIEでCumulus Linuxをインストールする最も簡単な方法は、ローカルHTTP検出です。
 
 

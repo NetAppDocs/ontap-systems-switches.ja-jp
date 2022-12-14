@@ -28,6 +28,7 @@ RCF バージョンと FastPath バージョンでは、コマンド構文間に
 
 NOTE: RCF バージョン 1.2 では、セキュリティ上の理由から、 Telnet のサポートが明示的に無効になっています。RCF 1.2 のインストール時の接続の問題を回避するには、 Secure Shell （ SSH ）が有効になっていることを確認する必要があります。。 https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["『 NetApp ® CN1610 Switch Administrator's Guide 』"^] SSH の詳細については、を参照してください。
 
+.このタスクについて
 この手順の例では、スイッチとノードで次の命名法を使用しています。
 
 * このドキュメントの手順では、 clustered Data ONTAP 8.2 の構文を使用しています。そのため、クラスタ SVM 、 LIF 名、および CLI 出力は Data ONTAP 8.3 の出力とは異なります。

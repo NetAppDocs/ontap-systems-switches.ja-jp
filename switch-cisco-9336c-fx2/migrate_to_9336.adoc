@@ -13,6 +13,7 @@ summary: ONTAP クラスタの古い Cisco クラスタスイッチは、無停�
 [role="lead"]
 ONTAP クラスタの古い Cisco クラスタスイッチは、無停止で Cisco Nexus 9336C-FX2 クラスタネットワークスイッチに移行できます。
 
+.作業を開始する前に
 古いCisco NexusクラスタスイッチをCisco Nexus 9336C-FX2クラスタスイッチに交換する前に、次の条件が満たされている必要があります。
 
 * クラスタが完全に機能している必要があります（ログにエラーがあるなどの問題が発生していない）。
@@ -27,6 +28,7 @@ ONTAP クラスタの古い Cisco クラスタスイッチは、無停止で Cis
 * の Cisco スイッチのアップグレードおよびダウングレード手順の詳細については、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.htmlCisco["Nexus 9000シリーズスイッチ"^]。
 
 
+.このタスクについて
 この手順の例では、 2 つのノードを使用します。これらのノードは、 2 つの 10GbE クラスタインターコネクトポート e0a と e0b を使用します。を参照してください https://hwu.netapp.com/["Hardware Universe"^] をクリックして、プラットフォームのクラスタポートが正しいことを確認します。
 
 

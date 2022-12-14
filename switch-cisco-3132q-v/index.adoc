@@ -20,6 +20,7 @@ AFF クラスタまたは FAS クラスタでは、 Cisco Nexus 3132Q-V スイ�
 * NetApp CN1610 スイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換できます。
 
 
+.参照可能なドキュメント
 次の表に、 Cisco Nexus 3132Q-V スイッチで使用可能なドキュメントを示します。
 
 |===

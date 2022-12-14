@@ -97,6 +97,7 @@ http://support.netapp.com/info/communications/ECMP12454150.html["販売終了"] 
 
 
 
+.参照可能なドキュメント
 次の表に、 Cisco Nexus 92300YC スイッチで使用できるドキュメントを示します。
 
 |===

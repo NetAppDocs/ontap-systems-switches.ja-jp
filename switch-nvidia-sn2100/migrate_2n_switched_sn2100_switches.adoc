@@ -41,6 +41,7 @@ IMPORTANT: を参照してください link:install_cabling_config_consideration
 
 
 
+.このタスクについて
 この手順の例では、クラスタスイッチとノードで次の命名法を使用しています。
 
 * SN2100スイッチの名前は_sw1_and _sw2_.です。
