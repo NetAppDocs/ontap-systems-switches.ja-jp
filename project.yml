@@ -3,7 +3,7 @@ settings:
   name: Cluster and storage switches
   search: ontap-systems-switches
   internal:
-    pdf_enabled: true
+    pdf_enabled: false
   prod:
     pdf_enabled: true
     harmony_enabled: false
@@ -15,15 +15,34 @@ sidebar:
   entries:
   - title: AFF および FAS スイッチのドキュメント
     url: "/index.html"
-  - section: switch-bes-53248
-  - section: switch-cisco-3132q-v
-  - section: switch-cisco-3232c
-  - section: switch-cisco-9336c-fx2
-  - section: switch-cisco-9336c-fx2-shared
-  - section: switch-cisco-92300
-  - section: switch-nvidia-sn2100
-  - section: other
-  - section: other-procedures
+  - title: はじめに
+    entries:
+    - title: 新機能
+      url: "/whats-new.html"
+    - title: ONTAP システムスイッチについて説明します
+      url: "/get-started/learn-switch-concept.html"
+    - title: 運用を開始
+      url: "/get-started/get-up-and-running.html"
+  - title: クラスタスイッチ
+    entries:
+    - section: switch-bes-53248
+    - section: switch-cisco-9336c-fx2
+    - section: switch-nvidia-sn2100
+  - title: ストレージスイッチ
+    entries:
+    - section: switch-cisco-9336c-fx2-storage
+    - section: switch-nvidia-sn2100-storage
+  - title: 共有スイッチ
+    entries:
+    - section: switch-cisco-9336c-fx2-shared
+  - title: 可用性が終了したスイッチ
+    entries:
+    - title: 概要
+      url: "/overview-eod.html"
+    - section: switch-cisco-3232c
+    - section: switch-cisco-3132q-v
+    - section: switch-cisco-92300
+    - section: switch-netapp-cn1610
   - title: 法的通知
     url: "/legal-notices.html"
 product-family:

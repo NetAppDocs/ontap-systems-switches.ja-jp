@@ -1,0 +1,50 @@
+---
+permalink: switch-bes-53248/replace-switch-reqs.html 
+sidebar: sidebar 
+keywords: replace, replacing, defective, broadcom-supported, bes, cluster, switch, network, nondisruptive, procedure, ndu, replace a broadcom-supported bes-53428 cluster switch - bes-53428 switches 
+summary: クラスタネットワーク内での、障害のある Broadcom 対応 BES-53248 クラスタスイッチの交換は、無停止手順（ NDU ）です。 
+---
+= 交換に際しての要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+スイッチを交換する前に、現在の環境と交換用スイッチで次の条件が満たされていることを確認してください。
+
+
+
+== 既存のクラスタとネットワークインフラ
+
+次の点を確認してください。
+
+* 既存のクラスタは、少なくとも1つのクラスタスイッチが完全に接続された状態で、完全に機能することが検証されています。
+* すべてのクラスタポートが*稼働しています。
+* すべてのクラスタLIFが、管理上および運用上の理由で稼働している状態でホームポートにあること。
+* ONTAP `cluster ping-cluster -node node1` コマンドは、設定を示す必要があります。 `basic connectivity` および `larger than PMTU communication`は、すべてのパスで成功しています。
+
+
+
+
+== BES-53248の交換用クラスタスイッチ
+
+次の点を確認してください。
+
+* 交換用スイッチの管理ネットワーク接続は機能しています。
+* 交換用スイッチへのコンソールアクセスが確立されています。
+* ノード接続は、デフォルトのライセンスを使用したポート 0/1~0/16 です。
+* ポート0/55と0/56では、すべてのスイッチ間リンク（ISL）ポートが無効になっています。
+* 目的のリファレンス構成ファイル（RCF）とEFOSオペレーティングシステムスイッチイメージがスイッチにロードされます。
+* スイッチの初期カスタマイズが完了しました。詳細については、を参照してください link:configure-install-initial.html["BES-53248クラスタスイッチを設定します"]。
+
+
+STP、SNMP、SSHなどの以前のサイトのカスタマイズは、すべて新しいスイッチにコピーされます。
+
+
+
+== を参照してください。
+
+* https://mysupport.netapp.com/["ネットアップサポートサイト"^]
+* https://hwu.netapp.com/Home/Index["NetApp Hardware Universe の略"^]
+

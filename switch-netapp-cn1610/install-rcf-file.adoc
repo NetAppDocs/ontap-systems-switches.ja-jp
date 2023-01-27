@@ -1,0 +1,474 @@
+---
+permalink: switch-netapp-cn1610/install-rcf-file.html 
+sidebar: sidebar 
+keywords: reference configuration, file ,install, cn1610, switch, install rcf 
+summary: リファレンス構成ファイル（ RCF ）をインストールする場合は、最初にクラスタ LIF をスイッチ cs2 から移行する必要があります。RCF をインストールして検証したら、 LIF を移行し直すことができます。 
+---
+= CN1610 スイッチに参照構成ファイルをインストールします
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+リファレンス構成ファイル（RCF）をインストールするには、次の手順 に従います。
+
+RCFをインストールする前に、クラスタLIFをスイッチcs2から移行する必要があります。RCF をインストールして検証したら、 LIF を移行し直すことができます。
+
+
+
+== 要件を確認
+
+.必要なもの
+* スイッチ設定の現在のバックアップ。
+* クラスタが完全に機能している（ログにエラーは記録されず、クラスタネットワークインターフェイスカード（NIC）の欠陥や同様の問題はない）。
+* クラスタスイッチ上の完全に機能するポート接続。
+* すべてのクラスタポートが設定されています。
+* すべてのクラスタ論理インターフェイス（LIF）がセットアップされている必要があります。
+* 通信パスが成功した場合：ONTAP （権限：advanced） `cluster ping-cluster -node node1` コマンドは、を示す必要があります `larger than PMTU communication` はすべてのパスで成功しています。
+* サポートされているバージョンのRCFおよびONTAP 。
++
+のスイッチ互換性の表を参照してください http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^] サポートされているRCFおよびONTAP バージョンのページを参照してください。
+
+
+
+
+
+== RCFをインストールします
+
+次の手順 では、clustered Data ONTAP 8.2の構文を使用します。そのため、クラスタSVM、LIF名、CLIの出力がData ONTAP 8.3の出力と異なります。
+
+RCF バージョンと FastPath バージョンでは、コマンド構文間にコマンドの依存関係が存在する場合があります。
+
+
+NOTE: RCF バージョン 1.2 では、セキュリティ上の理由から、 Telnet のサポートが明示的に無効になっています。RCF 1.2のインストール時の接続の問題を回避するには、Secure Shell（SSH）が有効になっていることを確認してください。。 https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp CN1610 Switch Administrator's Guide"^] SSH の詳細については、を参照してください。
+
+.例について
+この手順の例では、スイッチとノードで次の命名法を使用しています。
+
+* 2 つのネットアップスイッチは cs1 と cs2 です。
+* 2 つのクラスタ LIF は clus1 と clus2 です。
+* SVM は vs1 および vs2 です。
+* 'cluster::*>' プロンプトは ' クラスタの名前を示します
+* 各ノードのクラスタポートには、 e1a および e2a という名前が付けられます。
++
+https://hwu.netapp.com/["Hardware Universe"^] 使用しているプラットフォームでサポートされている実際のクラスタポートに関する詳細情報が表示されます。
+
+* サポートされているスイッチ間リンク（ISL）は、ポート0/13~0/16です。
+* サポートされるノード接続はポート0/1~0/12です。
+* サポートされているFastPath、RCF、およびONTAP のバージョン。
++
+のスイッチ互換性の表を参照してください http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^] サポートされている FastPath 、 RCF 、および ONTAP のバージョンについては、ページを参照してください。
+
+
+
+
+
+=== 手順1：クラスタを移行する
+
+. 現在のスイッチの設定情報を保存します。
++
+「メモリの書き込み」
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、スイッチ cs2 のスタートアップ構成（「 startup-config 」）ファイルに保存されている現在のスイッチ設定を示しています。
+
+[listing]
+----
+(cs2) # write memory
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+
+Are you sure you want to save? (y/n) y
+
+Config file 'startup-config' created successfully.
+
+Configuration Saved!
+----
+====
+. 各ノードのコンソールで、clus2をポートe1aに移行します。
++
+「ネットワーク・インターフェイス移行」
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network interface migrate -vserver vs1 -lif clus2 -source-node node1 -destnode node1 -dest-port e1a
+
+cluster::*> network interface migrate -vserver vs2 -lif clus2 -source-node node2 -destnode node2 -dest-port e1a
+----
+====
+. 各ノードのコンソールで、移行が実行されたことを確認します。
++
+「 network interface show -role cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+次の例では、 clus2 が両方のノードのポート e1a に移行されています。
+
+[listing]
+----
+cluster::*> network port show -role cluster
+         clus1      up/up      10.10.10.1/16   node2    e1a     true
+         clus2      up/up      10.10.10.2/16   node2    e1a     false
+----
+====
+. 両方のノードでポートe2aをシャットダウンします。
++
+「 network port modify 」を参照してください
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、両方のノードでポート e2a がシャットダウンされていることを示しています。
+
+[listing]
+----
+cluster::*> network port modify -node node1 -port e2a -up-admin false
+cluster::*> network port modify -node node2 -port e2a -up-admin false
+----
+====
+. 両方のノードでポートe2aがシャットダウンされていることを確認します。
++
+「 network port show 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network port show -role cluster
+
+                                  Auto-Negot  Duplex      Speed (Mbps)
+Node   Port   Role     Link MTU   Admin/Oper  Admin/Oper  Admin/Oper
+------ ------ -------- ---- ----- ----------- ----------  -----------
+node1
+       e1a    cluster  up   9000  true/true   full/full   auto/10000
+       e2a    cluster  down 9000  true/true   full/full   auto/10000
+node2
+       e1a    cluster  up   9000  true/true   full/full   auto/10000
+       e2a    cluster  down 9000  true/true   full/full   auto/10000
+----
+====
+. アクティブなネットアップスイッチ cs1 の ISL ポートをシャットダウンします。
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+(cs1) # configure
+(cs1) (config) # interface 0/13-0/16
+(cs1) (interface 0/13-0/16) # shutdown
+(cs1) (interface 0/13-0/16) # exit
+(cs1) (config) # exit
+----
+====
+
+
+
+
+=== 手順2：RCFをインストールする
+
+. RCF をスイッチにコピーします。
++
+
+NOTE: スクリプトを呼び出す前に '.scr 拡張子をファイル名の一部として設定する必要がありますこの拡張機能は、 FastPath オペレーティングシステムの拡張機能です。
+
++
+スクリプトはスイッチにダウンロードされると自動的に検証され、コンソールに出力されます。
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+(cs2) # copy tftp://10.10.0.1/CN1610_CS_RCF_v1.1.txt nvram:script CN1610_CS_RCF_v1.1.scr
+
+[the script is now displayed line by line]
+Configuration script validated.
+File transfer operation completed successfully.
+----
+====
+. スクリプトがダウンロードされ、指定したファイル名で保存されていることを確認します。
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+(cs2) # script list
+Configuration Script Name        Size(Bytes)
+-------------------------------- -----------
+running-config.scr               6960
+CN1610_CS_RCF_v1.1.scr           2199
+
+2 configuration script(s) found.
+6038 Kbytes free.
+----
+====
+. スクリプトを検証します。
++
+
+NOTE: ダウンロード中にスクリプトが検証され、各行が有効なスイッチコマンドラインであることが確認されます。
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+(cs2) # script validate CN1610_CS_RCF_v1.1.scr
+[the script is now displayed line by line]
+Configuration script 'CN1610_CS_RCF_v1.1.scr' validated.
+----
+====
+. スクリプトをスイッチに適用します。
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+(cs2) #script apply CN1610_CS_RCF_v1.1.scr
+
+Are you sure you want to apply the configuration script? (y/n) y
+[the script is now displayed line by line]...
+
+Configuration script 'CN1610_CS_RCF_v1.1.scr' applied.
+----
+====
+. スイッチに変更が実装されたことを確認します。
++
+[listing]
+----
+(cs2) # show running-config
+----
++
+次の例は、スイッチ上の「 running-config 」ファイルを表示します。ファイルを RCF と比較して、設定したパラメータが想定どおりであることを確認する必要があります。
+
+. 変更を保存します。
+. 'running-config ' ファイルを標準ファイルに設定します
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+(cs2) # write memory
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+
+Are you sure you want to save? (y/n) y
+
+Config file 'startup-config' created successfully.
+----
+====
+. スイッチを再起動し、「 running-config 」ファイルが正しいことを確認します。
++
+リブートが完了したら、ログインし、「 running-config 」ファイルを表示してから、概要 on interface 3/64 を探します。これは、 RCF のバージョンラベルです。
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+(cs2) # reload
+
+The system has unsaved changes.
+Would you like to save them now? (y/n) y
+
+
+Config file 'startup-config' created successfully.
+Configuration Saved!
+System will now restart!
+----
+====
+. アクティブなスイッチ cs1 の ISL ポートを起動します。
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+(cs1) # configure
+(cs1) (config)# interface 0/13-0/16
+(cs1) (Interface 0/13-0/16)# no shutdown
+(cs1) (Interface 0/13-0/16)# exit
+(cs1) (config)# exit
+----
+====
+. ISL が動作していることを確認します。
++
+「 show port-channel 3/1 」
+
++
+Link State フィールドには 'up' と表示されます
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+
+(cs2) # show port-channel 3/1
+
+Local Interface................................ 3/1
+Channel Name................................... ISL-LAG
+Link State..................................... Up
+Admin Mode..................................... Enabled
+Type........................................... Static
+Load Balance Option............................ 7
+(Enhanced hashing mode)
+
+Mbr    Device/       Port      Port
+Ports  Timeout       Speed     Active
+------ ------------- --------- -------
+0/13   actor/long    10G Full  True
+       partner/long
+0/14   actor/long    10G Full  True
+       partner/long
+0/15   actor/long    10G Full  True
+       partner/long
+0/16   actor/long    10G Full  True
+       partner/long
+----
+====
+. 両方のノードでクラスタポートe2aを起動します。
++
+「 network port modify 」を参照してください
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、 node1 と node2 でポート e2a を起動します。
+
+[listing]
+----
+cluster::*> network port modify -node node1 -port e2a -up-admin true
+cluster::*> network port modify -node node2 -port e2a -up-admin true
+----
+====
+
+
+
+
+=== 手順3：インストールを検証する
+
+. 両方のノードでポートe2aがupになっていることを確認します。
++
+`network port show -_role cluster_`
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network port show -role cluster
+
+                                Auto-Negot  Duplex      Speed (Mbps)
+Node   Port Role     Link MTU   Admin/Oper  Admin/Oper  Admin/Oper
+------ ---- -------- ---- ----  ----------- ----------  ------------
+node1
+       e1a  cluster  up   9000  true/true   full/full   auto/10000
+       e2a  cluster  up   9000  true/true   full/full   auto/10000
+node2
+       e1a  cluster  up   9000  true/true   full/full   auto/10000
+       e2a  cluster  up   9000  true/true   full/full   auto/10000
+----
+====
+. 両方のノードで、ポートe2aに関連付けられているclus2をリバートします。
++
+「 network interface revert 」の略
+
++
+ONTAP のバージョンによっては、この LIF が自動的にリバートされる場合があります。
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network interface revert -vserver node1 -lif clus2
+cluster::*> network interface revert -vserver node2 -lif clus2
+----
+====
+. 両方のノードで LIF がホームになったことを確認します（「 true 」）。
++
+'network interface show --_role cluster_`
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network interface show -role cluster
+
+        Logical    Status     Network        Current  Current Is
+Vserver Interface  Admin/Oper Address/Mask   Node     Port    Home
+------- ---------- ---------- -------------- -------- ------- ----
+vs1
+        clus1      up/up      10.10.10.1/24  node1    e1a     true
+        clus2      up/up      10.10.10.2/24  node1    e2a     true
+vs2
+        clus1      up/up      10.10.10.1/24  node2    e1a     true
+        clus2      up/up      10.10.10.2/24  node2    e2a     true
+----
+====
+. ノードメンバーのステータスを表示します。
++
+「 cluster show 」を参照してください
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster::> cluster show
+
+Node           Health  Eligibility
+-------------- ------- ------------
+node1
+               true    true
+node2
+               true    true
+----
+====
+. ソフトウェアのバージョンとスイッチの設定に問題がなければ 'running-config ファイルを 'startup-config ファイルにコピーします
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+(cs2) # write memory
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+
+Are you sure you want to save? (y/n) y
+
+Config file 'startup-config' created successfully.
+
+Configuration Saved!
+----
+====
+. 同じ手順を繰り返して、もう1つのスイッチcs1にRCFをインストールします。
+

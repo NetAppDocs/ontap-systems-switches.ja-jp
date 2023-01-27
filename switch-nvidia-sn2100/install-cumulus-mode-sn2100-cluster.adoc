@@ -1,0 +1,248 @@
+---
+permalink: switch-nvidia-sn2100/install-cumulus-mode-sn2100-cluster.html 
+sidebar: sidebar 
+keywords: install cumulus mode, sn2100 SN2100 switches setup, cumulus linux, cumulus mode 
+summary: Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます。 
+---
+= Cumulus LinuxをCumulusモードでインストールします
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+[Cumulus Linux(CL：Cumulus Linux)]モードでスイッチを実行している場合は、この手順 に従ってCumulus Linux（CL）OSをインストールします。
+
+
+NOTE: Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます（を参照） link:install-onie-mode-sn2100-cluster.html["ONIEモードでインストールします"]）。
+
+.必要なもの
+* Linuxに関する中級レベルの知識
+* 基本的なテキスト編集、UNIXファイル権限、およびプロセスの監視に精通していること。など、さまざまなテキストエディタが事前にインストールされています `vi` および `nano`。
+* LinuxまたはUNIXシェルへのアクセス。Windowsを実行している場合は、Linux環境をコマンドラインツールとして使用して、クムルスLinuxと対話します。
+* NVIDIA SN2100スイッチのコンソールアクセスでは、シリアルコンソールスイッチでボーレート要件が115200に設定されます。
++
+** 115200 ボー
+** 8 データビット
+** 1 ストップビット
+** パリティ：なし
+** フロー制御：なし
+
+
+
+
+.このタスクについて
+次の点に注意してください。
+
+
+NOTE: Cumulus Linuxをインストールするたびに、ファイルシステム構造全体が消去され、再構築されます。
+
+
+CAUTION: cumulusユーザーアカウントのデフォルトパスワードは*cumulus *です。Cumulus Linuxに初めてログインするときは、このデフォルトのパスワードを変更する必要があります。新しいイメージをインストールする前に、必ず自動化スクリプトを更新してください。Cumulus Linuxには、インストールプロセス中にデフォルトのパスワードを自動的に変更するためのコマンドラインオプションが用意されています。
+
+.手順
+. スイッチにログインします。
++
+スイッチへの初回ログインには、ユーザ名/パスワードとして「* cumulus */* cumulus * with」が必要です `sudo` 権限：
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus login: *cumulus*
+Password: *cumulus*
+You are required to change your password immediately (administrator enforced)
+Changing password for cumulus.
+Current password: *cumulus*
+New password: *netapp1!*
+Retype new password: *netapp1!*
+----
+====
+. Cumulus Linuxのバージョンを確認します。
++
+`net show system`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *net show system*
+Hostname......... cumulus
+Build............ *Cumulus Linux 4.4.2*
+Uptime........... 0:08:20.860000
+Model............ Mlnx X86
+CPU.............. x86_64 Intel Atom C2558 2.40GHz
+Memory........... 8GB
+Disk............. 14.7GB
+ASIC............. Mellanox Spectrum MT52132
+Ports............ 16 x 100G-QSFP28
+Part Number...... MSN2100-CB2FC
+Serial Number.... MT2105T05177
+Platform Name.... x86_64-mlnx_x86-r0
+Product Name..... MSN2100
+ONIE Version..... 2019.11-5.2.0020-115200
+Base MAC Address. 04:3F:72:43:92:80
+Manufacturer..... Mellanox
+----
+====
+. ホスト名、IPアドレス、サブネットマスク、およびデフォルトゲートウェイを設定します。新しいホスト名が有効になるのは、コンソール/SSHセッションを再起動した後だけです。
++
+
+NOTE: Cumulus Linuxスイッチには、「eth0」という専用イーサネット管理ポートが少なくとも1つあります。このインターフェイスは、アウトオブバンド管理専用です。デフォルトでは、管理インターフェイスはアドレス指定にDHCPv4を使用します。
+
++
+
+CAUTION: ホスト名には、アンダースコア（_）、アポストロフィ（'）、非ASCII文字を使用しないでください。
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *net add hostname sw1*
+cumulus@cumulus:mgmt:~$ *net add interface eth0 ip address 10.233.204.71*
+cumulus@cumulus:mgmt:~$ *net add interface eth0 ip gateway 10.233.204.1*
+cumulus@cumulus:mgmt:~$ *net pending*
+cumulus@cumulus:mgmt:~$ *net commit*
+----
+====
++
+このコマンドは'/etc/hostname'ファイルと/etc/hostsファイルの両方を変更します
+
+. ホスト名、IPアドレス、サブネットマスク、およびデフォルトゲートウェイが更新されたことを確認します。
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@sw1:mgmt:~$ *hostname sw1*
+cumulus@sw1:mgmt:~$ *ifconfig eth0*
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+inet 10.233.204.71  netmask 255.255.254.0  broadcast 10.233.205.255
+inet6 fe80::bace:f6ff:fe19:1df6  prefixlen 64  scopeid 0x20<link>
+ether b8:ce:f6:19:1d:f6  txqueuelen 1000  (Ethernet)
+RX packets 75364  bytes 23013528 (21.9 MiB)
+RX errors 0  dropped 7  overruns 0  frame 0
+TX packets 4053  bytes 827280 (807.8 KiB)
+TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0 device memory 0xdfc00000-dfc1ffff
+
+cumulus@sw1::mgmt:~$ *ip route show vrf mgmt*
+default via 10.233.204.1 dev eth0
+unreachable default metric 4278198272
+10.233.204.0/23 dev eth0 proto kernel scope link src 10.233.204.71
+127.0.0.0/8 dev mgmt proto kernel scope link src 127.0.0.1
+----
+====
+. NTPインタラクティブモードを使用してタイムゾーンを設定します。
++
+.. 端末で次のコマンドを実行します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *sudo dpkg-reconfigure tzdata*
+----
+.. 画面上のメニューオプションに従って、地理的エリアと地域を選択します。
+.. すべてのサービスおよびデーモンのタイムゾーンを設定するには、スイッチをリブートします。
+.. スイッチの日付と時刻が正しいことを確認し、必要に応じて更新します。
+
+
+. Cumulus Linux 4.4.2のインストール：
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:mgmt:~$ *sudo onie-install -a -i http://_<web-server>/<path>_/cumulus-linux-4.4.2-mlx-amd64.bin*
+----
++
+インストーラがダウンロードを開始します。プロンプトが表示されたら「* y *」と入力します
+
+. NVIDIA SN2100スイッチをリブートします。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:mgmt:~$ *sudo reboot*
+----
+. インストールが自動的に開始され'次のGRUB画面の選択肢が表示されますDo * not *（実行しない）を選択します。
++
+** Cumulus - Linux GNU/Linux
+** ONIE: OSのインストール
+** クムルス-インストール
+** Cumulus - Linux GNU/Linux
+
+
+. ログインするには、手順1~4を繰り返します。
+. Cumulus Linuxのバージョンが4.4.2であることを確認します。
++
+`net show version`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@sw1:mgmt:~$ *net show version*
+NCLU_VERSION=1.0-cl4.4.2u0
+DISTRIB_ID="Cumulus Linux"
+DISTRIB_RELEASE=*4.4.2*
+DISTRIB_DESCRIPTION=*"Cumulus Linux 4.4.2"*
+----
+====
+. 新しいユーザを作成し、に追加します `sudo` グループ：このユーザが有効になるのは、コンソール/SSHセッションが再起動された後だけです。
++
+`sudo adduser --ingroup netedit admin`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@sw1:mgmt:~$ *sudo adduser --ingroup netedit admin*
+[sudo] password for cumulus:
+Adding user `admin’ ...
+Adding new user `admin’ (1001) with group `netedit' ...
+Creating home directory `/home/admin’ ...
+Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for admin
+Enter the new value, or press ENTER for the default
+Full Name []:
+Room Number []:
+Work Phone []:
+Home Phone []:
+Other []:
+Is the information correct? [Y/n] *y*
+
+cumulus@sw1:mgmt:~$ *sudo adduser admin sudo*
+[sudo] password for cumulus:
+Adding user `admin' to group `sudo' ...
+Adding user admin to group sudo
+Done.
+cumulus@sw1:mgmt:~$ exit
+logout
+Connection to 10.233.204.71 closed.
+
+[admin@cycrh6svl01 ~]$ ssh admin@10.233.204.71
+admin@10.233.204.71's password:
+Linux sw1 4.19.0-cl-1-amd64 #1 SMP Cumulus 4.19.206-1+cl4.4.1u1 (2021-09-09) x86_64
+Welcome to NVIDIA Cumulus (R) Linux (R)
+
+For support and online technical documentation, visit
+http://www.cumulusnetworks.com/support
+
+The registered trademark Linux (R) is used pursuant to a sublicense from LMI, the exclusive licensee of Linus Torvalds, owner of the mark on a world-wide basis.
+admin@sw1:mgmt:~$
+----
+====
+
+
+.次の手順
+link:install-rcf-sn2100-cluster.html["リファレンス構成ファイル（RCF）スクリプトをインストールします"]。

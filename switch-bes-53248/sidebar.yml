@@ -1,73 +1,56 @@
 ---
 section: switch-bes-53248
-title: Broadcom 対応 BES-53248 スイッチ
+title: Broadcom 対応 BES-53248 の場合
 entries:
-- title: BES-53248 クラスタスイッチの概要
-  url: "/switch-bes-53248/overview-bes53248.html"
-- title: スイッチをセットアップします
+- title: 概要
   entries:
-  - title: BES-53248 クラスタスイッチの設定要件
-    url: "/switch-bes-53248/replace-requirements.html"
+  - title: 設定の概要
+    url: "/switch-bes-53248/configure-new-switch-overview.html"
+  - title: 設定要件
+    url: "/switch-bes-53248/configure-reqs-bes53248.html"
+  - title: コンポーネントとパーツ番号
+    url: "/switch-bes-53248/components-bes53248.html"
   - title: 必要なドキュメント
-    url: "/switch-bes-53248/replace-required-documentation.html"
-  - title: BES-53248クラスタスイッチを設定します
-    entries:
-    - title: 新しい BES-53248 スイッチを構成します
-      url: "/switch-bes-53248/configure-new-switch.html"
-    - title: 初期インストール
-      url: "/switch-bes-53248/configure-install-initial.html"
-    - title: EFOS ソフトウェアをインストールします
-      url: "/switch-bes-53248/configure-efos-software.html"
-    - title: ライセンスをインストール
-      entries:
-      - title: BES-53248 クラスタスイッチのライセンスをインストールします
-        url: "/switch-bes-53248/configure-licenses.html"
-      - title: 制限事項と制限事項
-        url: "/switch-bes-53248/configure-restrictions.html"
-      - title: RCFを編集して、ライセンスされたポートをアクティブ化します
-        url: "/switch-bes-53248/configure-edit-rcf.html"
-    - title: リファレンス構成ファイル（ RCF ）のインストール
-      url: "/switch-bes-53248/configure-install-rcf.html"
-    - title: クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします
-      url: "/switch-bes-53248/configure-health-monitor.html"
-    - title: BES-53248 クラスタスイッチで SSH を有効にします
-      url: "/switch-bes-53248/configure-ssh.html"
-    - title: クラスタスイッチのログ収集機能を設定します
-      url: "/switch-bes-53248/configure-log-collection.html"
-- title: CN1610 スイッチから BES-53248 スイッチに移行します
+    url: "/switch-bes-53248/required-documentation-bes53248.html"
+- title: ハードウェアを設置
   entries:
-  - title: 概要
-    url: "/switch-bes-53248/migrate-cn1610-overview.html"
-  - title: BES-53248スイッチに移行する方法
-    url: "/switch-bes-53248/migrate-cn1610.html"
-- title: 2 ノードスイッチクラスタに移行する
+  - title: スイッチを取り付けます
+    url: "/switch-bes-53248/install-hardware-bes53248.html"
+  - title: スイッチを設定します
+    url: "/switch-bes-53248/configure-install-initial.html"
+- title: ソフトウェアを設定します
   entries:
-  - title: 移行を準備
-    url: "/switch-bes-53248/migrate-to-2n-switched.html"
-  - title: ネットアップのスイッチクラスタ環境に移行する
-    url: "/switch-bes-53248/migrate-to-2n-switched-overview.html"
-- title: NDO / NDU 環境でスイッチをアップグレードします
-  entries:
-  - title: 概要
-    url: "/switch-bes-53248/replace-upgrade.html"
-  - title: コントローラを準備
-    url: "/switch-bes-53248/replace-prepare-controller.html"
-  - title: EFOS ソフトウェアをインストールします
-    url: "/switch-bes-53248/replace-install-efos.html"
+  - title: ソフトウェアのインストールワークフロー
+    url: "/switch-bes-53248/configure-software-overview-bes53248.html"
+  - title: EFOSソフトウェアをインストールします
+    url: "/switch-bes-53248/configure-efos-software.html"
   - title: ライセンスをインストール
-    url: "/switch-bes-53248/replace-install-licenses.html"
-    entries:
-    - title: 制限事項と制限事項
-      url: "/switch-bes-53248/replace-restrictions.html"
-    - title: リファレンス構成ファイル（ RCF ）の編集
-      url: "/switch-bes-53248/replace-edit-rcf.html"
-  - title: リファレンス構成ファイル（ RCF ）のインストール
-    url: "/switch-bes-53248/replace-install-rcf.html"
-  - title: クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします
-    url: "/switch-bes-53248/replace-install-cshm-file.html"
-  - title: クラスタスイッチのログ収集機能を設定します
-    url: "/switch-bes-53248/replace-configure-log-collection.html"
-  - title: 設定を確認します
+    url: "/switch-bes-53248/configure-licenses.html"
+  - title: RCF構成ファイルをインストールします
+    url: "/switch-bes-53248/configure-install-rcf.html"
+  - title: CSHM構成ファイルをインストールします
+    url: "/switch-bes-53248/configure-health-monitor.html"
+  - title: SSH を有効にします。
+    url: "/switch-bes-53248/configure-ssh.html"
+  - title: ログ収集を有効にします
+    url: "/switch-bes-53248/configure-log-collection.html"
+- title: スイッチをアップグレードします
+  entries:
+  - title: アップグレードの概要
+    url: "/switch-bes-53248/upgrade-switch-overview.html"
+  - title: スイッチをアップグレードします
+    url: "/switch-bes-53248/replace-upgrade.html"
+  - title: アップグレード設定を確認します
     url: "/switch-bes-53248/replace-verify.html"
-- title: BES-53248 スイッチを交換します
-  url: "/switch-bes-53248/replace-switch.html"
+- title: スイッチを移行
+  entries:
+  - title: CN1610スイッチからの移行
+    url: "/switch-bes-53248/migrate-cn1610.html"
+  - title: 2ノードスイッチに移行
+    url: "/switch-bes-53248/migrate-to-2n-switched.html"
+- title: スイッチを交換します
+  entries:
+  - title: 交換に際しての要件
+    url: "/switch-bes-53248/replace-switch-reqs.html"
+  - title: BES-53248スイッチを交換します
+    url: "/switch-bes-53248/replace-switch.html"

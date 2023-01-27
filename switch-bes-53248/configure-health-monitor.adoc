@@ -1,0 +1,75 @@
+---
+permalink: switch-bes-53248/configure-health-monitor.html 
+sidebar: sidebar 
+keywords: CSHM,initial setup,configuration file,cshm,enable SSH 
+summary: BES-53248クラスタスイッチを監視するクラスタスイッチヘルスモニタ（CSHM）構成ファイルをインストールできます。 
+---
+= クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+BES-53248クラスタスイッチを監視するクラスタスイッチヘルスモニタ（CSHM）構成ファイルをインストールできます。
+
+ONTAP リリース9.5P7以前および9.6P2以前の場合は、CSHMファイルを別途ダウンロードする必要があります。ONTAP リリース9.5P8以降、9.6P3以降、および9.7以降では、CSHMファイルがONTAP にバンドルされています。
+
+.必要なもの
+ONTAP クラスタが起動し、実行中であることを確認します。
+
+.手順
+. 対応するONTAP リリースバージョンに基づいてCSHM zipファイルをダウンロードします。このファイルは、次のページから入手できます。 https://mysupport.netapp.com/NOW/cgi-bin/software/["ネットアップソフトウェアのダウンロード"^]
++
+.. ソフトウェアのダウンロードページで、*スイッチヘルスモニタ構成ファイル*を選択します。
+.. Platform =* ONTAP *を選択し、* Go！*をクリックします。
+.. Switch Health Monitor Configuration Files for ONTAP ページで、* View & Download *をクリックします。
+.. Switch Health Monitor Configuration Files for ONTAP -概要 ページで、該当するクラスタスイッチモデルの* Download *をクリックします。例：* Broadcom-supported BES-53248 *。
+.. [End User License Agreement]ページで、[*Accept*]をクリックします。
+.. Switch Health Monitor Configuration Files for ONTAP - Downloadページで、適切な構成ファイル（例：* Broadcom_BES-53248 .zip *）を選択します。
+
+
+. IP アドレスが X.X.X.X.X の内部 Web サーバに、該当する zip ファイルをアップロードします
++
+192.168.2.2の内部WebサーバIPアドレスの場合、/usr/downloadディレクトリが存在すると仮定して、を使用してzipファイルをWebサーバにアップロードできます `scp`：
+
++
+[listing, subs="+quotes"]
+----
+% *scp Broadcom_BES-53248.zip admin@192.168.2.20:/usr/download/Broadcom_BES-53248.zip*
+----
+. コマンド「 set -privilege advanced 」を使用して、クラスタ内のいずれかの ONTAP システムから advanced モード設定にアクセスします。
++
+[listing, subs="+quotes"]
+----
+cluster1::> *set -privilege advanced*
+----
+. switch health monitor configureコマンドを実行します。
++
+`system cluster-switch configure-health-monitor -node * -package-url \http://server/file-location`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::> *system cluster-switch configure-health-monitor -node * -package-url
+http://192.168.2.20/usr/download/Broadcom_BES-53248.zip*
+----
+====
+. コマンド出力にテキスト文字列が含まれていることを確認します。 `downloaded package processed successfully`。エラーが発生した場合は、ネットアップサポートにお問い合わせください。
+. ONTAP システムで「 system cluster-switch show 」コマンドを実行し、監視対象フィールドが「 True 」に設定された状態でクラスタスイッチが検出されたことを確認します。
++
+[listing, subs="+quotes"]
+----
+cluster1::> *system cluster-switch show*
+----
++
+
+NOTE: 以前のバージョンのONTAP に戻す場合は、CSHM構成ファイルを再度インストールして、BES-53248クラスタスイッチのスイッチヘルスモニタを有効にする必要があります。
+
+
+
+.次の手順
+CSHMで利用可能なすべての機能を使用するには、SSHを有効にします（を参照） link:configure-ssh.html["BES-53248 クラスタスイッチで SSH を有効にします"]。

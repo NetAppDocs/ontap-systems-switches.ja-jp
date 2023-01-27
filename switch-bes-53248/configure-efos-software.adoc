@@ -1,0 +1,499 @@
+---
+permalink: switch-bes-53248/configure-efos-software.html 
+sidebar: sidebar 
+keywords: BES-53248 cluster switches,installing EFOS software 
+summary: 次の手順に従って、BES-53248クラスタスイッチにイーサネットファブリックOS（EFOS）ソフトウェアをインストールします。 
+---
+= EFOS ソフトウェアをインストールします
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+次の手順に従って、BES-53248クラスタスイッチにイーサネットファブリックOS（EFOS）ソフトウェアをインストールします。
+
+EFOSソフトウェアには、イーサネットシステムおよびIPインフラシステムを開発するための高度なネットワーク機能とプロトコルのセットが含まれています。このソフトウェアアーキテクチャは、パケットの検査や分離を完全に行う必要があるアプリケーションを使用するあらゆるネットワーク組織のデバイスに適しています。
+
+
+
+== 設置を準備
+
+.作業を開始する前に
+* クラスタスイッチに対応するBroadcom EFOSソフトウェアをからダウンロードします https://www.broadcom.com/support/bes-switch["Broadcom Ethernet Switch のサポート"^] サイト
+* EFOSバージョンに関する次の注意事項を確認します。
+
+
+[]
+====
+* 次の点に注意してください。 *
+
+* EFOS 3.x.x から EFOS 3.x.x 以降にアップグレードするときは、スイッチが EFOS 3.4.4.6 （または 3.4.x.x 以降のリリース）を実行している必要があります。それよりも前のリリースを実行している場合は、まずスイッチを EFOS 3.4.4.6 （または 3.4.x.x 以降のリリース）にアップグレードしてから、スイッチを EFOS 3.x.x 以降にアップグレードします。
+* EFOS 3.x.x と 3.7.x.x 以降の設定は異なります。EFOS バージョンを 3.4.x.x から 3.7.x.x 以降、またはその逆に変更する場合は、スイッチを工場出荷時のデフォルトにリセットする必要があり、対応する EFOS バージョンの RCF ファイルが適用される（再適用される）必要があります。この手順には、シリアルコンソールポート経由でアクセスする必要があります。
+* EFOS バージョン 3.7.x.x 以降では、 FIPS に準拠していないバージョンと FIPS に準拠したバージョンが提供されています。FIPSに準拠していないバージョンからFIPSに準拠したバージョンに移行する場合とFIPSに準拠していないバージョンからFIPSに準拠したバージョンに移行する場合は、EFOS を FIPS 非準拠バージョンから FIPS 準拠バージョンに変更するか、その逆に変更すると、スイッチが工場出荷時のデフォルトにリセットされます。この手順には、シリアルコンソールポート経由でアクセスする必要があります。
+
+
+====
+|===
+
+
+| * 手順 * | * 現在の EFOS バージョン * | * 新しい EFOS バージョン * | * 高レベルステップ * 
+
+
+ a| 
+FIPS に準拠している 2 つのバージョン間で EFOS をアップグレードする手順
+ a| 
+3.4.x.x
+ a| 
+3.4.x.x
+ a| 
+を使用して新しいEFOSイメージをインストールします <<方法1：EFOSをインストールする>>。構成とライセンスの情報は保持されます。
+
+
+
+ a| 
+3.4.4.6 （または 3.4.x.x 以降）
+ a| 
+3.7.x.x 以降の非 FIPS 準拠
+ a| 
+を使用してEFOSをアップグレードする <<方法1：EFOSをインストールする>>。スイッチを工場出荷時のデフォルトにリセットして、EFOS 3.x.x以降のRCFファイルを適用します。
+
+
+
+.2+| 3.7.x.x 以降の非 FIPS 準拠  a| 
+3.4.4.6 （または 3.4.x.x 以降）
+ a| 
+を使用してEFOSをダウングレードし <<方法1：EFOSをインストールする>>。スイッチを工場出荷時のデフォルトにリセットして、 EFOS 3.x.x の RCF ファイルを適用します
+
+
+
+ a| 
+3.7.x.x 以降の非 FIPS 準拠
+ a| 
+を使用して新しいEFOSイメージをインストールします <<方法1：EFOSをインストールする>>。構成とライセンスの情報は保持されます。
+
+
+
+ a| 
+3.7.x.x 以降の FIPS に準拠しています
+ a| 
+3.7.x.x 以降の FIPS に準拠しています
+ a| 
+を使用して新しいEFOSイメージをインストールします <<方法1：EFOSをインストールする>>。構成とライセンスの情報は保持されます。
+
+
+
+ a| 
+FIPS 準拠の EFOS バージョンへのアップグレード手順
+ a| 
+FIPS に準拠していません
+ a| 
+FIPS に準拠している
+ a| 
+を使用してEFOSイメージのインストール <<方法2：ONIE OSインストールを使用してEFOSをアップグレードします>>。スイッチの設定とライセンス情報が失われます。
+
+
+
+ a| 
+FIPS に準拠している
+ a| 
+FIPS に準拠していません
+
+|===
+
+IMPORTANT: BES-53248 クラスタスイッチを EFOS 3.x.x または 3.4.x.x から EFOS 3.7.0.4 または 3.8.0.2 にアップグレードしたあと、 Inter-Switch Link （ ISL ；スイッチ間リンク）とポートチャネルが * Down * 状態でマークされていることに注意してください。こちらの技術情報アーティクル： https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric%2C_Interconnect_and_Management_Switches/BES-53248_Cluster_Switch_NDU_failed_upgrade_to_EFOS_3.7.0.4_and_later["BES-53248クラスタスイッチNDUをEFOS 3.7.0.4以降にアップグレードできませんでした"^] を参照してください。
+
+
+
+== ソフトウェアをインストールします
+
+次のいずれかの方法を使用します。
+
+* <<方法1：EFOSをインストールする>>。ほとんどの場合に使用します（上の表を参照）。
+* <<方法2：ONIE OSインストールを使用してEFOSをアップグレードします>>。一方のEFOSバージョンがFIPSに準拠しており、もう一方のEFOSバージョンがFIPSに準拠していない場合に使用します。
+
+
+
+
+=== 方法1：EFOSをインストールする
+
+次の手順を実行して、EFOSソフトウェアをインストールまたはアップグレードします。
+
+.手順
+. BES-53248 クラスタスイッチを管理ネットワークに接続します。
+. 「 ping 」コマンドを使用して、 EFOS 、ライセンス、 RCF ファイルをホストするサーバへの接続を確認します。
++
+.例を示します
+[%collapsible]
+====
+次の例では、スイッチが IP アドレス 172.19.2.1 のサーバに接続されていることを確認します。
+
+[listing, subs="+quotes"]
+----
+(cs2)# *ping 172.19.2.1*
+Pinging 172.19.2.1 with 0 bytes of data:
+
+Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
+----
+====
+. cs2 で現在アクティブなイメージをバックアップします。
++
+'How bootvar'
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *show bootvar*
+
+ Image Descriptions
+
+ active :
+ backup :
+
+ Images currently available on Flash
+--------------------------------------------------------------------
+ unit      active      backup        current-active    next-active
+--------------------------------------------------------------------
+    1      3.4.3.3     Q.10.22.1     3.4.3.3           3.4.3.3
+
+(cs2)# *copy active backup*
+Copying active to backup
+Management access will be blocked for the duration of the operation
+Copy operation successful
+
+(cs2)# *show bootvar*
+
+Image Descriptions
+
+ active :
+ backup :
+ Images currently available on Flash
+--------------------------------------------------------------------
+ unit      active      backup      current-active    next-active
+--------------------------------------------------------------------
+    1      3.4.3.3     3.4.3.3     3.4.3.3           3.4.3.3
+(cs2)#
+----
+====
+. 実行中の EFOS ソフトウェアのバージョンを確認します。
++
+'how version （バージョンの表示） '
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *show version*
+
+Switch: 1
+
+System Description............................. Quanta IX8-B 48x25GB SFP 8x100GB QSFP, 3.4.3.3, Linux 4.4.117-ceeeb99d, 2016.05.00.04
+Machine Type................................... Quanta IX8-B 48x25GB SFP 8x100GB QSFP
+Machine Model.................................. IX8-B
+Serial Number.................................. QTFCU38260014
+Maintenance Level.............................. A
+Manufacturer................................... 0xbc00
+Burned In MAC Address.......................... D8:C4:97:71:12:3D
+Software Version............................... 3.4.3.3
+Operating System............................... Linux 4.4.117-ceeeb99d
+Network Processing Device...................... BCM56873_A0
+CPLD Version................................... 0xff040c03
+
+Additional Packages............................ BGP-4
+...............................................	QOS
+...............................................	Multicast
+............................................... IPv6
+............................................... Routing
+............................................... Data Center
+............................................... OpEN API
+............................................... Prototype Open API
+----
+====
+. スイッチにイメージファイルをダウンロードします。
++
+イメージファイルをアクティブイメージにコピーすると、リブート時にそのイメージによって実行中の EFOS バージョンが確立されます。以前のイメージはバックアップとして使用できます。
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *copy sftp://root@172.19.2.1//tmp/EFOS-3.4.4.6.stk active*
+Remote Password:********
+
+Mode........................................... SFTP
+Set Server IP.................................. 172.19.2.1
+Path........................................... //tmp/
+Filename....................................... EFOS-3.4.4.6.stk
+Data Type...................................... Code
+Destination Filename........................... active
+
+Management access will be blocked for the duration of the transfer
+Are you sure you want to start? (y/n) *y*
+SFTP Code transfer starting...
+
+
+File transfer operation completed successfully.
+----
+====
+. アクティブ構成とバックアップ構成のブートイメージを表示します。
++
+'How bootvar'
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *show bootvar*
+
+Image Descriptions
+
+ active :
+ backup :
+
+ Images currently available on Flash
+--------------------------------------------------------------------
+ unit      active      backup     current-active        next-active
+--------------------------------------------------------------------
+    1     3.4.3.3     3.4.3.3            3.4.3.3            3.4.4.6
+----
+====
+. スイッチをリブートします。
++
+「再ロード」
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *reload*
+
+The system has unsaved changes.
+Would you like to save them now? (y/n) *y*
+
+Config file 'startup-config' created successfully .
+Configuration Saved!
+System will now restart!
+----
+====
+. 再度ログインして、新しいバージョンの EFOS ソフトウェアを確認します。
++
+'how version （バージョンの表示） '
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *show version*
+
+Switch: 1
+
+System Description............................. x86_64-quanta_common_rglbmc-r0, 3.4.4.6, Linux 4.4.211-28a6fe76, 2016.05.00.04
+Machine Type................................... x86_64-quanta_common_rglbmc-r0
+Machine Model.................................. BES-53248
+Serial Number.................................. QTFCU38260023
+Maintenance Level.............................. A
+Manufacturer................................... 0xbc00
+Burned In MAC Address.......................... D8:C4:97:71:0F:40
+Software Version............................... 3.4.4.6
+Operating System............................... Linux 4.4.211-28a6fe76
+Network Processing Device...................... BCM56873_A0
+CPLD Version................................... 0xff040c03
+
+Additional Packages............................ BGP-4
+...............................................	QOS
+...............................................	Multicast
+............................................... IPv6
+............................................... Routing
+............................................... Data Center
+............................................... OpEN API
+............................................... Prototype Open API
+----
+====
+
+
+.次の手順
+link:configure-licenses.html["BES-53248 クラスタスイッチのライセンスをインストールします"]。
+
+
+
+=== 方法2：ONIE OSインストールを使用してEFOSをアップグレードします
+
+一方の EFOS バージョンが FIPS に準拠していて、もう一方の EFOS バージョンが FIPS に準拠していない場合は、次の手順を実行できます。次の手順は、スイッチがブートに失敗した場合に、 ONIE から FIPS 非準拠または FIPS 準拠の EFOS 3.x.x イメージをインストールするために使用できます。
+
+
+NOTE: この機能は、 EFOS 3.x.x 以降の非 FIPS 準拠に対してのみ使用できます。
+
+.手順
+. スイッチを ONIE インストールモードで起動します。
++
+起動中に、プロンプトが表示されたらONIEを選択します。
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
++--------------------------------------------------------------------+
+|EFOS                                                                |
+|*ONIE                                                               |
+|                                                                    |
+|                                                                    |
+|                                                                    |
+|                                                                    |
+|                                                                    |
+|                                                                    |
+|                                                                    |
+|                                                                    |
+|                                                                    |
+|                                                                    |
++--------------------------------------------------------------------+
+----
+====
++
+*ONIE*を選択すると、スイッチがロードされ、いくつかの選択肢が表示されます。「OSのインストール」を選択します。
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
++--------------------------------------------------------------------+
+|*ONIE: Install OS                                                   |
+| ONIE: Rescue                                                       |
+| ONIE: Uninstall OS                                                 |
+| ONIE: Update ONIE                                                  |
+| ONIE: Embed ONIE                                                   |
+| DIAG: Diagnostic Mode                                              |
+| DIAG: Burn-In Mode                                                 |
+|                                                                    |
+|                                                                    |
+|                                                                    |
+|                                                                    |
+|                                                                    |
++--------------------------------------------------------------------+
+----
+====
++
+スイッチがONIEインストールモードで起動します。
+
+. ONIE の検出を停止し、イーサネットインターフェイスを設定します。
++
+次のメッセージが表示されたら、*Enter*キーを押してONIEコンソールを起動します。
+
++
+[listing]
+----
+Please press Enter to activate this console. Info: eth0:  Checking link... up.
+ ONIE:/ #
+----
++
+
+NOTE: ONIEの検出が続行され、メッセージがコンソールに出力されます。
+
++
+[listing]
+----
+Stop the ONIE discovery
+ONIE:/ # onie-discovery-stop
+discover: installer mode detected.
+Stopping: discover... done.
+ONIE:/ #
+----
+. イーサネットインターフェイスを設定し、「 ifconfig eth0 <ipAddress> netmask <netmask> up 」および「 route add default gw <gatewayAddress> 」を使用してルートを追加します
++
+[listing]
+----
+ONIE:/ # ifconfig eth0 10.10.10.10 netmask 255.255.255.0 up
+ONIE:/ # route add default gw 10.10.10.1
+----
+. ONIE インストールファイルをホストしているサーバにアクセスできることを確認します。
++
+`ping`
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+ONIE:/ # ping 50.50.50.50
+PING 50.50.50.50 (50.50.50.50): 56 data bytes
+64 bytes from 50.50.50.50: seq=0 ttl=255 time=0.429 ms
+64 bytes from 50.50.50.50: seq=1 ttl=255 time=0.595 ms
+64 bytes from 50.50.50.50: seq=2 ttl=255 time=0.369 ms
+^C
+--- 50.50.50.50 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 0.369/0.464/0.595 ms
+ONIE:/ #
+----
+====
+. 新しいスイッチソフトウェアをインストールします。
++
+`ONIE:/ # onie-nos-install http:// 50.50.50.50/Software/onie-installer-x86_64`
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+ONIE:/ # onie-nos-install http:// 50.50.50.50/Software/onie-installer-x86_64
+discover: installer mode detected.
+Stopping: discover... done.
+Info: Fetching http:// 50.50.50.50/Software/onie-installer-3.7.0.4 ...
+Connecting to 50.50.50.50 (50.50.50.50:80)
+installer            100% |*******************************| 48841k  0:00:00 ETA
+ONIE: Executing installer: http:// 50.50.50.50/Software/onie-installer-3.7.0.4
+Verifying image checksum ... OK.
+Preparing image archive ... OK.
+----
+====
++
+ソフトウェアがインストールされ、スイッチがリブートされます。スイッチを通常どおりにリブートして新しい EFOS バージョンにします。
+
+. 新しいスイッチソフトウェアがインストールされたことを確認します。
++
+'How bootvar'
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *show bootvar*
+Image Descriptions
+active :
+backup :
+Images currently available on Flash
+---- 	----------- -------- --------------- ------------
+unit 	active 	    backup   current-active  next-active
+---- 	----------- -------- --------------- ------------
+1 	  3.7.0.4     3.7.0.4  3.7.0.4         3.7.0.4
+(cs2) #
+----
+====
+. インストールを完了します。
++
+設定を適用せずにスイッチがリブートし、工場出荷時のデフォルトにリセットされます。
+
+
+
+.次の手順
+link:configure-licenses.html["BES-53248 クラスタスイッチのライセンスをインストールします"]。

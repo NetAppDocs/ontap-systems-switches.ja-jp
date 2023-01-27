@@ -1,0 +1,136 @@
+---
+permalink: switch-nvidia-sn2100/sn2100-overview.html 
+sidebar: sidebar 
+keywords: nvidia SN2100 switches 
+summary: NVIDIA SN2100スイッチのインストールとメンテナンスについては、すべての要件と推奨されるドキュメントを確認してください。 
+---
+= NVIDIA SN2100スイッチの概要と要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NVIDIA SN2100スイッチのインストールとメンテナンスについては、すべての要件と推奨されるドキュメントを確認してください。
+
+3 つ以上のノードで ONTAP クラスタを構築する場合は、サポートされている 2 つのクラスタネットワークスイッチが必要です。オプションとして、追加の管理スイッチを使用できます。
+
+
+
+== ONTAP およびLinuxのサポート
+
+NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10/25/40/100Gbイーサネットスイッチです。スイッチは以下をサポートしています。
+
+* ONTAP 9.10.1P3SN2100スイッチは、ONTAP 9.10.1P3のクラスタおよびストレージアプリケーションに、異なるスイッチペアを提供します。ONTAP 9.10.1P3以降では、NVIDIA SN2100スイッチを使用してストレージとクラスタの機能を共有スイッチ構成に統合できます。
+* Cumulus Linux（CL）OSバージョン4.4.2Cumulus Linuxは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます。
+
+
+
+
+== キャビネットとレールキットの詳細
+
+NVIDIA SN2100スイッチ（X190006/X190106）は、スイッチに付属の標準ブラケットを使用して、NVIDIAデュアル/シングルスイッチキャビネットに設置します。
+
+次の表に、MSN2100スイッチおよびレールキットの部品番号と概要 を示します。
+
+[cols="1,2"]
+|===
+| パーツ番号 | 説明 
+
+
+ a| 
+X190006-PE
+ a| 
+クラスタスイッチ、NVIDIA SN2100、16pt 100G、PTSX
+
+
+
+ a| 
+X190006-PI
+ a| 
+クラスタスイッチ、NVIDIA SN2100、16pt 100G、PSIN
+
+
+
+ a| 
+X190106-FE-PEの実行
+ a| 
+スイッチ、NVIDIA SN2100、16pt 100G、PTSX、フロントエンド
+
+
+
+ a| 
+X190106-FE-PIの実行
+ a| 
+スイッチ、NVIDIA SN2100、16pt 100G、PSIN、フロントエンド
+
+
+
+ a| 
+X-MTEFキット-D
+ a| 
+レールキット、NVIDIAデュアルスイッチ、サイド
+
+
+
+ a| 
+X-MTEFキット-E
+ a| 
+レールキット、NVIDIAシングルスイッチショート
+
+|===
+
+NOTE: 詳細については、NVIDIAのドキュメントを参照してください https://docs.nvidia.com/networking/display/sn2000pub/Installation["SN2100スイッチとレールキットの取り付け"^]。
+
+
+
+== 参照可能なドキュメント
+
+次の表に、NVIDIA SN2100スイッチで使用可能なマニュアルを示します。
+
+[cols="1,2"]
+|===
+| タイトル | 説明 
+
+
+ a| 
+link:install_setup_sn2100_switches_overview.html["NVIDIA SN2100スイッチをセットアップして設定します_"^]
+ a| 
+Cumulus Linuxおよび該当するRCFのインストールなど、NVIDIA SN2100スイッチのセットアップおよび設定方法について説明します。
+
+
+
+ a| 
+link:migrate_cisco_sn2100_cluster_switch.html["_ CiscoクラスタスイッチからNVIDIA SN2100クラスタスイッチへの移行_"^]
+ a| 
+Ciscoクラスタスイッチを使用する環境からNVIDIA SN2100クラスタスイッチを使用する環境に移行する方法について説明します。
+
+
+
+ a| 
+link:migrate_cisco_sn2100_storage_switch.html["_ CiscoストレージスイッチからNVIDIAストレージスイッチへの移行_"^]
+ a| 
+Ciscoストレージスイッチを使用する環境からNVIDIA SN2100ストレージスイッチを使用する環境に移行する方法について説明します。
+
+
+
+ a| 
+link:migrate_2n_switched_sn2100_switches.html["NVIDIA SN2100クラスタスイッチを使用する2ノードスイッチクラスタへの移行_"^]
+ a| 
+NVIDIA SN2100クラスタスイッチを使用して2ノードスイッチ環境に移行する方法について説明します。
+
+
+
+ a| 
+link:replace_sn2100_switch_cluster.html["NVIDIA SN2100クラスタスイッチを交換してください_"^]
+ a| 
+クラスタ内の故障したNVIDIA SN2100スイッチを交換し、Cumulus Linuxおよびリファレンス構成ファイルをダウンロードする手順 について説明します。
+
+
+
+ a| 
+link:replace_sn2100_switch_storage.html["NVIDIA SN2100ストレージスイッチを交換してください_"^]
+ a| 
+欠陥のあるNVIDIA SN2100ストレージスイッチを交換し、Cumulus Linuxおよびリファレンス構成ファイルをダウンロードする手順 について説明します。
+
+|===

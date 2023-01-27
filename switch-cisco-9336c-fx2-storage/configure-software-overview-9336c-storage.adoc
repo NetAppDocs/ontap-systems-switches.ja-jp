@@ -1,0 +1,19 @@
+---
+permalink: switch-cisco-9336c-fx2-storage/configure-software-overview-9336c-storage.html 
+sidebar: sidebar 
+keywords: BES-53248 switches, initial installation, configure switch-cisco-9336c-fx2 switch 
+summary: Cisco Nexus 9336C-FX2ストレージスイッチのソフトウェア設定の概要 
+---
+= Cisco Nexus 9336C-FX2ストレージスイッチのソフトウェアインストールワークフロー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 9336C-FX2スイッチのソフトウェアをインストールおよび設定するには、次の手順を実行します。
+
+. link:install-nxos-overview-9336c-storage.html["NX-OSおよびRCFのインストールを準備します"]。準備手順に従って、Cisco NX-OSソフトウェアおよびリファレンス構成ファイル（RCF）をインストールします。
+. link:install-nxos-software-9336c-storage.html["NX-OS ソフトウェアをインストールします"]。Nexus 9336C-FX2クラスタスイッチにNX-OSソフトウェアをインストールします。
+. link:install-nxos-rcf-9336c-storage.html["RCF構成ファイルをインストールします"]。Nexus 9336C-FX2スイッチを初めてセットアップしたあとに、RCFをインストールします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
+

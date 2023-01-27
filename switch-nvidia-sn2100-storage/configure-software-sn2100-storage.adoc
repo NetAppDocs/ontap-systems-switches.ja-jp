@@ -1,0 +1,22 @@
+---
+permalink: switch-nvidia-sn2100/configure-software-sn2100-storage.html 
+sidebar: sidebar 
+keywords: sn2100 SN2100 switches setup, sn2100 SN2100 switches install, cumulus linux 
+summary: NVIDIA SN2100ストレージスイッチのソフトウェア設定プロセスの概要。 
+---
+= NVIDIA SN2100ストレージスイッチのソフトウェアインストールワークフロー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NVIDIA SN2100スイッチのソフトウェアをインストールして設定するには、次の手順に従います。
+
+. link:install-cumulus-mode-sn2100-storage.html["Cumulus LinuxをCumulusモードでインストールします"] または link:install-onie-mode-sn2100-storage.html["Cumulus LinuxをONIEモードでインストールします"]。Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます。
+. link:install-rcf-sn2100-storage.html["リファレンス構成ファイルスクリプトをインストールします"]。クラスタリングアプリケーションとストレージアプリケーション用に2つのRCFスクリプトが用意されています。
+. link:install-snmpv3-sn2100-storage.html["スイッチログ収集用のSNMPv3を設定します"]。このリリースでは、スイッチのログ収集とSwitch Health Monitoring（SHM）のSNMPv3がサポートされています。
+
+
+
+NOTE: この手順では、ネットワークコマンドラインユーティリティ（NCLU）を使用します。NCLUは、すべてのLinuxに完全にアクセスできるようにするコマンドラインインタフェースです。netコマンドは、端末からアクションを実行するために使用するラッパーユーティリティです。

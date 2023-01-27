@@ -1,0 +1,24 @@
+---
+permalink: switch-netapp-cn1610/install-hardware-cn1610.html 
+sidebar: sidebar 
+keywords: switches hardware installation 
+summary: NetApp CN1610ハードウェアの設置については、ネットアップのマニュアルを参照してください。 
+---
+= NetApp CN1610スイッチのハードウェアを設置します
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp CN1610スイッチハードウェアを設置するには、以下のいずれかのガイドに記載されている手順に従ってください。
+
+* https://library.netapp.com/ecm/ecm_download_file/ECMP1117853["1G インストールガイド"^]。
++
+CN1601 スイッチのハードウェアとソフトウェアの機能およびインストールプロセスの概要。
+
+* https://library.netapp.com/ecm/ecm_download_file/ECMP1117824["10G インストールガイド"^]
++
+CN1610 スイッチのハードウェアおよびソフトウェア機能の概要、およびスイッチの設置と CLI へのアクセス方法について説明します。
+
+

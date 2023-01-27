@@ -1,0 +1,24 @@
+---
+permalink: switch-netapp-cn1610/migrate-overview.html 
+sidebar: sidebar 
+keywords: migrate, two-node switched cluster, netapp cn1610 
+summary: 2 ノードスイッチレスクラスタを使用している場合は、 NetApp CN1610 クラスタネットワークスイッチを含む 2 ノードスイッチクラスタに、システムを停止することなく移行できます。 
+---
+= NetApp CN1610クラスタスイッチを使用する2ノードスイッチクラスタの移行オプション
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+2 ノードスイッチレスクラスタを使用している場合は、 NetApp CN1610 クラスタネットワークスイッチを含む 2 ノードスイッチクラスタに、システムを停止することなく移行できます。使用する手順は、各コントローラに 2 つの専用クラスタネットワークポートがあるか、 1 つのクラスタポートがあるかによって異なります。
+
+ほとんどのシステムでは、各コントローラに 2 つの専用クラスタネットワークポートが必要です。
+
+FAS22xx ノードでは、各コントローラで 1 つのクラスタポートを使用できます。
+
+次の 2 つの移行オプションを使用できます。
+
+* link:migrate-switched-netapp-cn1610.html["スイッチレスクラスタから、スイッチを使用している NetApp CN1610 クラスタ環境への移行"]
+* link:migrate-fas22xx-systems.html["スイッチレスクラスタ（単一のクラスタネットワーク接続を使用する FAS22xx システム）から移行する"]
+

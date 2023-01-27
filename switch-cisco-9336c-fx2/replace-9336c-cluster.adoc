@@ -1,0 +1,649 @@
+---
+permalink: switch-cisco-9336c-fx2/replace-9336c-cluster.html 
+sidebar: sidebar 
+keywords: replacing, replace, defective, nexus, switch, cluster, network, nondisruptive, procedure, ndu, replace a cisco nexus 9336c-fx2 cluster switch - cisco nexus 9336c-fx2 
+summary: クラスタネットワーク内の障害のある Nexus 9336C-FX2 スイッチの交換は、無停止手順（ NDU ）です。 
+---
+= Cisco Nexus 9336C-FX2 クラスタスイッチを交換します
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスタネットワーク内の故障したNexus 9336C-FX2スイッチを交換するには、次の手順を実行します。これは、無停止の手順 （NDU；非停止アップグレード）です。
+
+
+
+== 要件を確認
+
+スイッチの交換を実行する前に、次の点を確認してください。
+
+* 既存のクラスタとネットワークインフラ：
++
+** 既存のクラスタは、少なくとも1つのクラスタスイッチが完全に接続された状態で、完全に機能することが検証されています。
+** すべてのクラスタポートが*稼働しています。
+** クラスタのすべての論理インターフェイス（LIF）の状態が* upで、ホームポートにあることを確認します。
+** ONTAP のcluster ping-cluster -node node1コマンドは'基本的な接続性とPMTUよりも大きな通信がすべてのパスで正常に行われていることを示す必要があります
+
+
+* Nexus 9336C-FX2交換スイッチの場合：
++
+** 交換用スイッチの管理ネットワーク接続は機能しています。
+** 交換用スイッチへのコンソールアクセスが確立されています。
+** ノード接続はポート 1/1~1/34 です。
+** ポート1/35および1/36では、すべてのスイッチ間リンク（ISL）ポートが無効になっています。
+** 目的のリファレンス構成ファイル（RCF）とNX-OSオペレーティングシステムのイメージスイッチがスイッチにロードされます。
+** スイッチの初期カスタマイズが完了しました。詳細については、を参照してください link:setup-switch-9336c-cluster.html["9336C-FX2クラスタスイッチを設定します"]。
++
+STP、SNMP、SSHなどの以前のサイトのカスタマイズは、すべて新しいスイッチにコピーされます。
+
+
+
+* クラスタLIFを移行するコマンドをクラスタLIFがホストされているノードから実行しておきます。
+
+
+
+
+== スイッチを交換します
+
+.例について
+この手順の例では、スイッチとノードで次の命名法を使用しています。
+
+* 既存の Nexus 9336C-FX2 スイッチの名前は cs1 と cs2 です。
+* 新しい Nexus 9336C-FX2 スイッチの名前は newcs2 です。
+* ノード名は node1 と node2 になります。
+* 各ノードのクラスタポートの名前は e0a および e0b です。
+* クラスタ LIF の名前は、ノード 1 では node1_clus1 と node1_clus2 、ノード 2 では node2_clus1 と node2_clus2 です。
+* すべてのクラスタノードへの変更を求めるプロンプトは、 cluster1 ： * > です。
+
+
+.このタスクについて
+次の手順は、次のクラスタネットワークトポロジに基づいています。
+
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> network port show -ipspace Cluster
+
+Node: node1
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+4 entries were displayed.
+
+
+
+cluster1::*> network interface show -vserver Cluster
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            node1_clus1  up/up    169.254.209.69/16  node1         e0a     true
+            node1_clus2  up/up    169.254.49.125/16  node1         e0b     true
+            node2_clus1  up/up    169.254.47.194/16  node2         e0a     true
+            node2_clus2  up/up    169.254.19.183/16  node2         e0b     true
+4 entries were displayed.
+
+
+
+cluster1::*> network device-discovery show -protocol cdp
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node2      /cdp
+            e0a    cs1                       Eth1/2            N9K-C9336C
+            e0b    cs2                       Eth1/2            N9K-C9336C
+node1      /cdp
+            e0a    cs1                       Eth1/1            N9K-C9336C
+            e0b    cs2                       Eth1/1            N9K-C9336C
+4 entries were displayed.
+
+
+
+cs1# show cdp neighbors
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+node1              Eth1/1         144    H           FAS2980       e0a
+node2              Eth1/2         145    H           FAS2980       e0a
+cs2                Eth1/35        176    R S I s     N9K-C9336C    Eth1/35
+cs2(FDO220329V5)   Eth1/36        176    R S I s     N9K-C9336C    Eth1/36
+
+Total entries displayed: 4
+
+
+cs2# show cdp neighbors
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+node1              Eth1/1         139    H           FAS2980       e0b
+node2              Eth1/2         124    H           FAS2980       e0b
+cs1                Eth1/35        178    R S I s     N9K-C9336C    Eth1/35
+cs1                Eth1/36        178    R S I s     N9K-C9336C    Eth1/36
+
+Total entries displayed: 4
+----
+====
+
+
+=== 手順1：交換の準備をします
+
+. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
++
+「 system node AutoSupport invoke -node * -type all -message MAINT= xh 」というメッセージが表示されます
+
++
+x は、メンテナンス時間の長さ（時間単位）です。
+
++
+
+NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+
+. 適切な RCF とイメージをスイッチ newcs2 にインストールし、必要なサイトの準備を行います。
++
+必要に応じて、新しいスイッチ用に、 RCF および NX-OS ソフトウェアの適切なバージョンを確認、ダウンロード、およびインストールします。新しいスイッチが正しくセットアップされており、 RCF および NX-OS ソフトウェアの更新が不要であることを確認した場合は、手順 2 に進みます。
+
++
+.. ネットアップサポートサイトの「 _NetApp Cluster and Management Network Switches Reference Configuration File 概要 Page_on 」にアクセスします。
+.. 「 _Cluster Network and Management Network Compatibility Matrix_ 」のリンクをクリックし、必要なスイッチソフトウェアのバージョンを確認します。
+.. ブラウザの戻る矢印をクリックして概要ページに戻り、 * continue * をクリックして、ライセンス契約に同意し、ダウンロードページに移動します。
+.. ダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応した正しい RCF ファイルと NX-OS ファイルをダウンロードします。
+
+
+. 新しいスイッチに admin としてログインし、ノードクラスタインターフェイス（ポート 1/1~1/34 ）に接続するすべてのポートをシャットダウンします。
++
+交換するスイッチが機能せず、電源がオフになっている場合は、手順 4 に進みます。クラスタノードの LIF は、各ノードのもう一方のクラスタポートにすでにフェイルオーバーされている必要があります。
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+newcs2# config
+Enter configuration commands, one per line. End with CNTL/Z.
+newcs2(config)# interface e1/1-34
+newcs2(config-if-range)# shutdown
+----
+====
+. すべてのクラスタ LIF で自動リバートが有効になっていることを確認します。
++
+network interface show -vserver Cluster -fields auto-revert を実行します
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster1::> network interface show -vserver Cluster -fields auto-revert
+
+             Logical
+Vserver      Interface     Auto-revert
+------------ ------------- -------------
+Cluster      node1_clus1   true
+Cluster      node1_clus2   true
+Cluster      node2_clus1   true
+Cluster      node2_clus2   true
+
+4 entries were displayed.
+----
+====
+. すべてのクラスタ LIF が通信できることを確認します。
++
+「 cluster ping-cluster 」を参照してください
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> cluster ping-cluster node1
+
+Host is node2
+Getting addresses from network interface table...
+Cluster node1_clus1 169.254.209.69 node1 e0a
+Cluster node1_clus2 169.254.49.125 node1 e0b
+Cluster node2_clus1 169.254.47.194 node2 e0a
+Cluster node2_clus2 169.254.19.183 node2 e0b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:
+....
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 9000 byte MTU on 4 path(s):
+Local 169.254.47.194 to Remote 169.254.209.69
+Local 169.254.47.194 to Remote 169.254.49.125
+Local 169.254.19.183 to Remote 169.254.209.69
+Local 169.254.19.183 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+----
+====
+
+
+
+
+=== 手順2：ケーブルとポートを設定する
+
+. Nexus 9336C-FX2スイッチcs1のISLポート1/35および1/36をシャットダウンします。
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cs1# configure
+Enter configuration commands, one per line. End with CNTL/Z.
+cs1(config)# interface e1/35-36
+cs1(config-if-range)# shutdown
+cs1(config-if-range)#
+----
+====
+. すべてのケーブルを Nexus 9336C-FX2 cs2 スイッチから取り外し、 Nexus C9336C-FX2 newcs2 スイッチの同じポートに接続します。
+. cs1 スイッチと newcs2 スイッチ間で ISL ポート 1/35 と 1/36 を起動し、ポートチャネルの動作ステータスを確認します。
++
+ポートチャネルは Po1 （ SU ）を示し、メンバーポートは Eth1/35 （ P ）および Eth1/36 （ P ）を示している必要があります。
+
++
+.例を示します
+[%collapsible]
+====
+次の例では、 ISL ポート 1/35 および 1/36 を有効にし、スイッチ cs1 のポートチャネルの概要を表示します。
+
+[listing]
+----
+cs1# configure
+Enter configuration commands, one per line. End with CNTL/Z.
+cs1(config)# int e1/35-36
+cs1(config-if-range)# no shutdown
+
+cs1(config-if-range)# show port-channel summary
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member       Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/35(P)   Eth1/36(P)
+
+cs1(config-if-range)#
+----
+====
+. すべてのノードでポート e0b が up になっていることを確認します。
++
+「 network port show -ipspace cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+次のような出力が表示されます。
+
+[listing]
+----
+cluster1::*> network port show -ipspace Cluster
+
+Node: node1
+                                                                        Ignore
+                                                   Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU   Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ----- ----------- -------- -------
+e0a       Cluster      Cluster          up   9000  auto/10000  healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000  healthy  false
+
+Node: node2
+                                                                        Ignore
+                                                   Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU   Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ----- ----------- -------- -------
+e0a       Cluster      Cluster          up   9000  auto/10000  healthy  false
+e0b       Cluster      Cluster          up   9000  auto/auto   -        false
+
+4 entries were displayed.
+----
+====
+. 前の手順と同じノードで、 network interface revert コマンドを使用して、前の手順でポートに関連付けられたクラスタ LIF をリバートします。
++
+.例を示します
+[%collapsible]
+====
+この例では、 Home の値が true でポートが e0b の場合、ノード 1 の LIF node1_clus2 は正常にリバートされています。
+
+次のコマンドは、 node1 上の LIF 'node1_clus2' をホームポート e0a に返し、両方のノード上の LIF に関する情報を表示します。両方のクラスタ・インターフェイスで Is Home 列が true で、ノード 1 の「 e0a' 」と「 e0b 」のように正しいポート割り当てが表示されている場合、最初のノードの起動は成功します。
+
+[listing]
+----
+cluster1::*> network interface show -vserver Cluster
+
+            Logical      Status     Network            Current    Current Is
+Vserver     Interface    Admin/Oper Address/Mask       Node       Port    Home
+----------- ------------ ---------- ------------------ ---------- ------- -----
+Cluster
+            node1_clus1  up/up      169.254.209.69/16  node1      e0a     true
+            node1_clus2  up/up      169.254.49.125/16  node1      e0b     true
+            node2_clus1  up/up      169.254.47.194/16  node2      e0a     true
+            node2_clus2  up/up      169.254.19.183/16  node2      e0a     false
+
+4 entries were displayed.
+----
+====
+. クラスタ内のノードに関する情報を表示します。
++
+「 cluster show 」を参照してください
+
++
+.例を示します
+[%collapsible]
+====
+次の例では、このクラスタのノード node1 と node2 のノードの健常性が true であることを示します。
+
+[listing]
+----
+cluster1::*> cluster show
+
+Node          Health  Eligibility
+------------- ------- ------------
+node1         false   true
+node2         true    true
+----
+====
+. すべての物理クラスタポートが動作していることを確認します。
++
+「 network port show -ipspace cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> network port show -ipspace Cluster
+
+Node node1                                                               Ignore
+                                                    Speed(Mbps) Health   Health
+Port      IPspace     Broadcast Domain  Link  MTU   Admin/Oper  Status   Status
+--------- ----------- ----------------- ----- ----- ----------- -------- ------
+e0a       Cluster     Cluster           up    9000  auto/10000  healthy  false
+e0b       Cluster     Cluster           up    9000  auto/10000  healthy  false
+
+Node: node2
+                                                                         Ignore
+                                                    Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link  MTU   Admin/Oper  Status   Status
+--------- ------------ ---------------- ----- ----- ----------- -------- ------
+e0a       Cluster      Cluster          up    9000  auto/10000  healthy  false
+e0b       Cluster      Cluster          up    9000  auto/10000  healthy  false
+
+4 entries were displayed.
+----
+====
+. すべてのクラスタ LIF が通信できることを確認します。
++
+「 cluster ping-cluster 」を参照してください
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> cluster ping-cluster -node node2
+Host is node2
+Getting addresses from network interface table...
+Cluster node1_clus1 169.254.209.69 node1 e0a
+Cluster node1_clus2 169.254.49.125 node1 e0b
+Cluster node2_clus1 169.254.47.194 node2 e0a
+Cluster node2_clus2 169.254.19.183 node2 e0b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:
+....
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 9000 byte MTU on 4 path(s):
+Local 169.254.47.194 to Remote 169.254.209.69
+Local 169.254.47.194 to Remote 169.254.49.125
+Local 169.254.19.183 to Remote 169.254.209.69
+Local 169.254.19.183 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+----
+====
+. 次のクラスタネットワーク構成を確認します。
++
+「 network port show 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> network port show -ipspace Cluster
+Node: node1
+                                                                       Ignore
+                                       Speed(Mbps)            Health   Health
+Port      IPspace     Broadcast Domain Link MTU   Admin/Oper  Status   Status
+--------- ----------- ---------------- ---- ----- ----------- -------- ------
+e0a       Cluster     Cluster          up   9000  auto/10000  healthy  false
+e0b       Cluster     Cluster          up   9000  auto/10000  healthy  false
+
+Node: node2
+                                                                       Ignore
+                                        Speed(Mbps)           Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000 auto/10000  healthy  false
+e0b       Cluster      Cluster          up   9000 auto/10000  healthy  false
+
+4 entries were displayed.
+
+
+cluster1::*> network interface show -vserver Cluster
+
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            node1_clus1  up/up    169.254.209.69/16  node1         e0a     true
+            node1_clus2  up/up    169.254.49.125/16  node1         e0b     true
+            node2_clus1  up/up    169.254.47.194/16  node2         e0a     true
+            node2_clus2  up/up    169.254.19.183/16  node2         e0b     true
+
+4 entries were displayed.
+
+cluster1::> network device-discovery show -protocol cdp
+
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node2      /cdp
+            e0a    cs1                       0/2               N9K-C9336C
+            e0b    newcs2                    0/2               N9K-C9336C
+node1      /cdp
+            e0a    cs1                       0/1               N9K-C9336C
+            e0b    newcs2                    0/1               N9K-C9336C
+
+4 entries were displayed.
+
+
+cs1# show cdp neighbors
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID            Local Intrfce  Hldtme Capability  Platform      Port ID
+node1                Eth1/1         144    H           FAS2980       e0a
+node2                Eth1/2         145    H           FAS2980       e0a
+newcs2               Eth1/35        176    R S I s     N9K-C9336C    Eth1/35
+newcs2               Eth1/36        176    R S I s     N9K-C9336C    Eth1/36
+
+Total entries displayed: 4
+
+
+cs2# show cdp neighbors
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+node1              Eth1/1         139    H           FAS2980       e0b
+node2              Eth1/2         124    H           FAS2980       e0b
+cs1                Eth1/35        178    R S I s     N9K-C9336C    Eth1/35
+cs1                Eth1/36        178    R S I s     N9K-C9336C    Eth1/36
+
+Total entries displayed: 4
+----
+====
+
+
+
+
+=== 手順3：構成を確認します
+
+. ONTAP 9.8 以降の場合は、次のコマンドを使用して、イーサネットスイッチヘルスモニタのログ収集機能を有効にして、スイッチ関連のログファイルを収集します。
++
+'system switch ethernet log setup-password 'および'system switch ethernet log enable-colion
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> system switch ethernet log setup-password
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+cs1
+cs2
+
+cluster1::*> system switch ethernet log setup-password
+
+Enter the switch name: cs1
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] y
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> system switch ethernet log setup-password
+
+Enter the switch name: cs2
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] y
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> system  switch ethernet log enable-collection
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] y
+
+Enabling cluster switch log collection.
+
+cluster1::*>
+----
+====
++
+
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
+. ONTAP リリース 9.5P16 、 9.6P12 、および 9.7P10 以降のパッチリリースでは、次のコマンドを使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能を有効にします。
++
+'system cluster-switch log setup-password ' および 'system cluster-switch log enable-collection
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> system cluster-switch log setup-password
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+cs1
+cs2
+
+cluster1::*> system cluster-switch log setup-password
+
+Enter the switch name: cs1
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] y
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> system cluster-switch log setup-password
+
+Enter the switch name: cs2
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] y
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> system cluster-switch log enable-collection
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] y
+
+Enabling cluster switch log collection.
+
+cluster1::*>
+----
+====
++
+
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
+. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
++
+「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+
+

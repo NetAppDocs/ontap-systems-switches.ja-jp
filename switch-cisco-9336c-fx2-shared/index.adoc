@@ -4,7 +4,7 @@ permalink: switch-cisco-9336c-fx2-shared/index.html
 keywords: shared storage cluster switch 
 summary: ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチシナリオに結合できます。 
 ---
-= Cisco 9336C-FX2 共有スイッチの概要
+= 概要と要件
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,4 +14,96 @@ summary: ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用し
 
 
 [role="lead"]
-ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチシナリオに結合できます。
+ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチ構成に組み合わせることができます。
+
+3 つ以上のノードで ONTAP クラスタを構築する場合は、サポートされている 2 つのネットワークスイッチが必要です。
+
+
+
+== Nexus 9336C-FX2の概要
+
+Cisco Nexus 9336C-FX2 スイッチ（ X190200/X190210 ）は、スイッチに付属の標準ブラケットを使用して、ネットアップシステムキャビネットまたは他社製キャビネットに設置できます。
+
+次の表に、 9336C-FX2 スイッチ、ファン、および電源装置の部品番号と概要を示します。
+
+|===
+| パーツ番号 | 説明 
+
+
+| X190200-CS-PE | N9K-9336C-FX2 、 CS 、 PTSX 、 36PT10/25/40/100GQSFP28 
+
+
+| X190200-CS-PI | N9K-9336C-FX2 、 CS 、 PSIN 、 36PT10/25/40/100GQSFP28 
+
+
+| X190002 | アクセサリキット X190001/X190003 
+
+
+| X-NXA-PAC1100W-PE2 | N9K-9336C AC 1100W PSU - ポート側排気 
+
+
+| X-NXA-PAC1100W-PI2 | N9K-9336C AC 1100W PSU - ポート側吸気 
+
+
+| X-NXA-FAN-65CFM-pe | N9K-9336C 65CFM 、ポート側排気 
+
+
+| X-NXA-FAN-65CFM-pi | N9K-9336C 65CFM 、ポート側吸気 
+|===
+
+
+== 設定要件
+
+構成には、スイッチに適した数とタイプのケーブルとコネクタが必要です。
+
+最初に設定するスイッチのタイプに応じて、付属のコンソールケーブルを使用してスイッチのコンソールポートに接続する必要があります。また、特定のネットワーク情報を指定する必要があります。
+
+
+
+== ネットワーク要件
+
+すべてのスイッチ設定には、次のネットワーク情報が必要です。
+
+* 管理ネットワークトラフィック用の IP サブネット
+* 各ストレージシステムコントローラおよび該当するすべてのスイッチのホスト名と IP アドレス
+* ほとんどのストレージシステムコントローラは、イーサネットサービスポート（レンチマーク）に接続することで、 e0M インターフェイスを介して管理されます。AFF A800 および AFF A700s システムでは、 e0M インターフェイスは専用のイーサネットポートを使用します。
+* を参照してください https://hwu.netapp.com["Hardware Universe"] 最新情報については、を参照してください。
+
+
+スイッチの初期設定の詳細については、次のガイドを参照してください。 https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9336c-fx2-e/cisco-nexus-9336c-fx2-e-nx-os-mode-switch-hardware-installation-guide.html["『 Cisco Nexus 9336C-FX2 Installation and Upgrade Guide 』"]。
+
+
+
+== ドキュメントの要件
+
+ONTAP ネットワークを設定するには、特定のスイッチとコントローラに関するドキュメントが必要です。
+
+Cisco Nexus 9336C-FX2 共有スイッチをセットアップするには、を参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズスイッチのサポート"] ページ
+
+|===
+| ドキュメントタイトル | 説明 
+
+
+| link:https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9336c-fx2-e/cisco-nexus-9336c-fx2-e-nx-os-mode-switch-hardware-installation-guide.html["Nexus 9000 Series Hardware Installation Guide 』を参照してください"] | サイト要件、スイッチハードウェアの詳細、およびインストールオプションに関する詳細情報を提供します。 
+
+
+| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-and-configuration-guides-list.html["Cisco Nexus 9000 シリーズスイッチのソフトウェア構成ガイド"] （スイッチにインストールされている NX-OS リリースのガイドを選択） | スイッチを ONTAP 動作用に設定する前に必要なスイッチの初期設定に関する情報を提供します。 
+
+
+| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["『 Cisco Nexus 9000 Series NX-OS Software Upgrade and Downgrade Guide 』"] （スイッチにインストールされている NX-OS リリースのガイドを選択） | 必要に応じてスイッチを ONTAP 対応スイッチソフトウェアにダウングレードする方法について説明します。 
+
+
+| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスマスターインデックス"] | シスコが提供するさまざまなコマンドリファレンスへのリンクを示します。 
+
+
+| link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/mib/quickreference/b_Cisco_Nexus_7000_Series_and_9000_Series_NX-OS_MIB_Quick_Reference.html["Cisco Nexus 9000 MIB リファレンス"] | Nexus 9000 スイッチの管理情報ベース（ MIB ）ファイルについて説明します。 
+
+
+| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-system-message-guides-list.html["Nexus 9000 Series NX-OS System Message Reference 』を参照してください"] | Cisco Nexus 9000 シリーズスイッチのシステムメッセージ、情報メッセージ、およびリンク、内部ハードウェア、またはシステムソフトウェアの問題の診断に役立つその他のメッセージについて説明します。 
+
+
+| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#ReleaseandCompatibility["『 Cisco Nexus 9000 Series NX-OS Release Notes 』"] （スイッチにインストールされている NX-OS リリースのノートを選択してください） | Cisco Nexus 9000 シリーズの機能、バグ、および制限事項について説明します。 
+
+
+| link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/mds9000/hw/regulatory/compliance/RCSI.html["Cisco Nexus 9000 シリーズの適合規格および安全性に関する情報"] | Nexus 9000 シリーズスイッチの国際的な適合規格、安全性、および法令に関する情報を提供します。 
+|===

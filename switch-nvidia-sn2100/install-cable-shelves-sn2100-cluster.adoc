@@ -1,0 +1,27 @@
+---
+permalink: switch-nvidia-sn2100/install-cable-shelves-sn2100-cluster.html 
+sidebar: sidebar 
+keywords: sn2100 cabling setup, msn2100 sn2100 switches configuration, cumulus linux 
+summary: NS224ドライブシェルフを（直接接続型ストレージではなく）スイッチ接続型ストレージとしてケーブル接続する必要があるシステムの場合は、ここに記載された情報を使用してください。 
+---
+= NS224シェルフをスイッチ接続ストレージとしてケーブル接続します
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NS224ドライブシェルフを（直接接続型ストレージではなく）スイッチ接続型ストレージとしてケーブル接続する必要があるシステムの場合は、ここに記載された情報を使用してください。
+
+* NS224 ドライブシェルフをストレージスイッチ経由でケーブル接続します。
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2876580["スイッチ接続型NS224ドライブシェルフのケーブル接続"^]
+
+* 使用しているプラットフォームモデルでサポートされているストレージスイッチやケーブルなどのハードウェアを確認します。
++
+https://hwu.netapp.com/["NetApp Hardware Universe の略"^]
+
+
+
+.次の手順
+link:install-cumulus-mode-sn2100-cluster.html["Cumulus LinuxをCumulusモードでインストールします"] または link:install-onie-mode-sn2100-cluster.html["Cumulus LinuxをONIEモードでインストールします"]。

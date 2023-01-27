@@ -1,0 +1,36 @@
+---
+permalink: switch-cisco-92300/install-overview-cisco-92300.html 
+sidebar: sidebar 
+keywords: install, cisco nexus 92300 switch, 
+summary: Cisco Nexus 92300スイッチを設定する前に、プロセスの概要と名称を確認してください。 
+---
+= Cisco Nexus 92300スイッチのインストールと設定の概要
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 92300スイッチを設定する前に、手順 の概要を確認します。
+
+ONTAP を実行しているシステムでCisco Nexus 92300スイッチを初期設定する手順は、次のとおりです。
+
+. link:setup-worksheet-92300yc.html["Cisco Nexus 92300YCケーブル接続ワークシートに記入します"]。ケーブル接続ワークシートの例には、スイッチからコントローラへの推奨されるポート割り当ての例が示されています。空白のワークシートには、クラスタのセットアップに使用できるテンプレートが用意されています。
+. link:configure-install-initial.html["Cisco Nexus 92300YCスイッチを構成します"]。Cisco Nexus 92300YCスイッチをセットアップして構成します。
+. link:install-nxos-overview.html["NX-OSソフトウェアとRCFのインストールの準備"]。NX-OSソフトウェアおよびRCFをインストールするための準備をします。
+. link:install-nxos-software.html["NX-OS ソフトウェアをインストールします"]。Nexus 92300YCスイッチにNX-OSソフトウェアをインストールします。NX-OS は、 Cisco Systems が提供する Nexus シリーズイーサネットスイッチおよび MDS シリーズ Fibre Channel （ FC ）ストレージエリアネットワークスイッチのネットワークオペレーティングシステムです。
+. link:install-the-rcf-file.html["リファレンス構成ファイル（ RCF ）のインストール"]。RCFは、Nexus 92300YCスイッチを初めてセットアップしたあとにインストールします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
+. link:setup-install-cshm-file.html["クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします"]。Nexus 92300YCクラスタスイッチのクラスタスイッチヘルスモニタに適用可能な構成ファイルをインストールします。
+
+
+
+
+== 追加情報
+
+インストールまたはメンテナンスを開始する前に、次の点を確認してください。
+
+* link:configure-reqs-92300.html["設定要件"]
+* link:components-92300.html["コンポーネントとパーツ番号"]
+* link:required-documentation-92300.html["必要なドキュメント"]
+* link:smart-call-home-92300.html["Smart Call Homeの要件"]
+

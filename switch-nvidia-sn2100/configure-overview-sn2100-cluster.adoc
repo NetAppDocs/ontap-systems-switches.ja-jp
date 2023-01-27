@@ -1,0 +1,46 @@
+---
+permalink: switch-nvidia-sn2100/configure-overview-sn2100-cluster.html 
+sidebar: sidebar 
+keywords: sn2100 SN2100 switches setup, sn2100 SN2100 switches install, cumulus linux 
+summary: NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10/25/40/100GbEイーサネットスイッチです。SN2100スイッチは、ONTAP 9.10.1のクラスタおよびストレージアプリケーションに、異なるスイッチペアを介して対応します。 
+---
+= NVIDIA SN2100スイッチのインストールと設定の概要
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NVIDIA SN2100はクラスタスイッチで、3ノード以上のONTAP クラスタを構築できます。
+
+
+
+== 初期設定の概要
+
+ONTAP を実行しているシステムでNVIDIA SN2100スイッチを設定する手順は、次のとおりです。
+
+. link:install-hardware-sn2100-cluster.html["NVIDIA SN2100スイッチのハードウェアを取り付けます"]。手順については、「NVIDIA Switch Installation Guide」を参照してください。
+. link:configure-sn2100-cluster.html["スイッチを設定します"]。手順については、NVIDIAのマニュアルを参照してください。
+. link:cabling-considerations-sn2100-cluster.html["ケーブル接続と構成に関する考慮事項を確認"]。光接続、QSAアダプタ、およびスイッチポート速度の要件を確認します。
+. link:install-cable-shelves-sn2100-cluster.html["NS224シェルフをスイッチ接続ストレージとしてケーブル接続します"]。NS224ドライブシェルフをスイッチ接続型ストレージ（直接接続型ストレージではない）としてケーブル接続する必要があるシステムの場合は、次の手順に従います。
+. link:install-cumulus-mode-sn2100-cluster.html["Cumulus LinuxをCumulusモードでインストールします"] または link:install-onie-mode-sn2100-cluster.html["Cumulus LinuxをONIEモードでインストールします"]。Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます。
+. link:install-rcf-sn2100-cluster.html["リファレンス構成ファイル（RCF）スクリプトをインストールします"]。クラスタリングアプリケーションとストレージアプリケーション用に2つのRCFスクリプトが用意されています。各の手順 は同じです。
+. link:install-snmpv3-sn2100-cluster.html["スイッチログ収集用のSNMPv3を設定します"]。このリリースでは、スイッチのログ収集とSwitch Health Monitoring（SHM）のSNMPv3がサポートされています。
+
+
+
+NOTE: この手順では、ネットワークコマンドラインユーティリティ（NCLU）を使用します。NCLUは、すべてのLinuxに完全にアクセスできるようにするコマンドラインインタフェースです。netコマンドは、端末からアクションを実行するために使用するラッパーユーティリティです。
+
+
+NOTE: を参照してください https://hwu.netapp.com["Hardware Universe"^] サポートされているすべてのONTAP バージョン。
+
+
+
+== 追加情報
+
+インストールまたはメンテナンスを開始する前に、次の点を確認してください。
+
+* link:configure-reqs-sn2100-cluster.html["設定要件"]
+* link:components-sn2100-cluster.html["コンポーネントとパーツ番号"]
+* link:required-documentation-sn2100-cluster.html["必要なドキュメント"]
+

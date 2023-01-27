@@ -1,0 +1,244 @@
+---
+permalink: get-started/get-up-and-running.html 
+sidebar: sidebar 
+keywords:  
+summary: クラスタ、ストレージ、および共有スイッチについて説明します。 
+---
+= クラスタスイッチ、ストレージスイッチ、共有スイッチを導入して運用を開始できます
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスタスイッチ、ストレージスイッチ、および共有スイッチを稼働させるには、ハードウェアコンポーネントを設置し、スイッチを設定します。
+
+スイッチを導入するには、次のワークフローを実行します。
+
+
+
+== 手順1：AFF / FASコントローラを取り付ける
+
+AFF / FASコントローラをラックまたはキャビネットに設置します。使用しているAFF / FASプラットフォームモデルの設置とセットアップの手順書を参照します。
+
+[cols="9,9,9"]
+|===
+
+
+ a| 
+.AFF システム
+[%collapsible]
+====
+* https://docs.netapp.com/us-en/ontap-systems/c190/install-setup.html["AFF C190"]
+* https://docs.netapp.com/us-en/ontap-systems/a220/install-setup.html["AFF A220"]
+* https://docs.netapp.com/us-en/ontap-systems/a250/install-setup.html["AFF A250"]
+* https://docs.netapp.com/us-en/ontap-systems/a400/install-setup.html["AFF A400"]
+* https://docs.netapp.com/us-en/ontap-systems/a700/install-setup.html["AFF A700"]
+* https://docs.netapp.com/us-en/ontap-systems/a800/install-setup.html["AFF A800"]
+* https://docs.netapp.com/us-en/ontap-systems/a900/install_detailed_guide.html["AFF A900 の略"]
+
+
+==== a| 
+.FAS システム
+[%collapsible]
+====
+* https://docs.netapp.com/us-en/ontap-systems/fas500f/install-setup.html["FAS500f"]
+* https://docs.netapp.com/us-en/ontap-systems/fas8300/install-setup.html["FAS8300"]
+* https://docs.netapp.com/us-en/ontap-systems/fas8700/install-setup.html["FAS8700 の場合"]
+* https://docs.netapp.com/us-en/ontap-systems/fas9000/install-setup.html["FAS9000"]
+* https://docs.netapp.com/us-en/ontap-systems/fas9500/install-setup.html["FAS9500"]
+
+
+==== a| 
+
+|===
+
+
+== 手順2：スイッチハードウェアを設置する
+
+スイッチをラックまたはキャビネットに設置します。使用しているスイッチモデルに応じて、次の手順に従ってください。
+
+[cols="9,9,9"]
+|===
+
+
+ a| 
+.クラスタスイッチ
+[%collapsible]
+====
+* link:../switch-bes-53248/install-hardware-bes53248.html["BES-53248スイッチを設置します"]
+* link:../switch-cisco-9336c-fx2/install-switch-9336c-cluster.html["Cisco Nexus 9336C-FX2スイッチを設置します"]
+* link:../switch-nvidia-sn2100/install-hardware-sn2100-cluster.html["NVIDIA SN2100スイッチをインストールします"]
+
+
+==== a| 
+.ストレージスイッチ
+[%collapsible]
+====
+* link:../switch-cisco-9336c-fx2-storage/install-9336c-storage.html["Cisco Nexus 9336C-FX2スイッチを設置します"]
+* link:../switch-nvidia-sn2100/install-hardware-sn2100-storage.html["NVIDIA SN2100スイッチをインストールします"]
+
+
+==== a| 
+.共有スイッチ
+[%collapsible]
+====
+* link:../switch-cisco-9336c-fx2-shared/install-9336c-shared.html["Cisco Nexus 9336C-FX2スイッチを設置します"]
+
+
+====
+|===
+
+
+== 手順3：スイッチをコントローラにケーブル接続します
+
+AFF / FASのインストールとセットアップの手順には、コントローラポートをスイッチにケーブル接続する手順が含まれています。ただし、サポートされるケーブルとトランシーバのリスト、およびスイッチのホストポートの詳細情報が必要な場合は、使用しているスイッチモデルに対応する次の手順を参照してください。
+
+[cols="9,9,9"]
+|===
+
+
+ a| 
+.クラスタスイッチ
+[%collapsible]
+====
+* link:../switch-bes-53248/configure-reqs-bes53248.html#configuration-requirements["BES-53248スイッチをケーブル接続します"]
+* link:../switch-cisco-9336c-fx2/setup-worksheet-9336c-cluster.html["Cisco Nexus 9336C-FX2スイッチをケーブル接続します"]
+* link:../switch-nvidia-sn2100/cabling-considerations-sn2100-cluster.html["NVIDIA SN2100スイッチをケーブル接続します"]
+
+
+==== a| 
+.ストレージスイッチ
+[%collapsible]
+====
+* link:../switch-cisco-9336c-fx2-storage/setup-worksheet-9336c-storage.html["Cisco Nexus 9336C-FX2スイッチをケーブル接続します"]
+* link:../switch-nvidia-sn2100/cabling-considerations-sn2100-storage.html["NVIDIA SN2100スイッチをケーブル接続します"]
+
+
+==== a| 
+.共有スイッチ
+[%collapsible]
+====
+* link:../switch-cisco-9336c-fx2-shared/cable-9336c-shared.html["Cisco Nexus 9336C-FX2スイッチをケーブル接続します"]
+
+
+====
+|===
+
+
+== 手順4：スイッチを設定します
+
+スイッチの初期セットアップを実行します。使用しているスイッチモデルに応じて、次の手順に従ってください。
+
+[cols="9,9,9"]
+|===
+
+
+ a| 
+.クラスタスイッチ
+[%collapsible]
+====
+* link:../switch-bes-53248/configure-install-initial.html["BES-53248スイッチを設定します"]
+* link:../switch-cisco-9336c-fx2/setup-switch-9336c-cluster.html["Cisco Nexus 9336C-FX2スイッチを設定します"]
+* link:../switch-nvidia-sn2100/configure-sn2100-cluster.html["NVIDIA SN2100スイッチを設定します"]
+
+
+==== a| 
+.ストレージスイッチ
+[%collapsible]
+====
+* link:../switch-cisco-9336c-fx2-storage/setup-switch-9336c-storage.html["Cisco Nexus 9336C-FX2スイッチを設定します"]
+* link:../switch-nvidia-sn2100/configure-sn2100-storage.html["NVIDIA SN2100スイッチを設定します"]
+
+
+==== a| 
+.共有スイッチ
+[%collapsible]
+====
+* link:../switch-cisco-9336c-fx2-shared/setup-and-configure-9336c-shared.html["Cisco Nexus 9336C-FX2スイッチを設定します"]
+
+
+====
+|===
+
+
+== 手順5：スイッチソフトウェアをインストールする
+
+スイッチにソフトウェアをインストールして設定するには、使用しているスイッチモデルのソフトウェアインストールワークフローに従います。
+
+[cols="9,9,9"]
+|===
+
+
+ a| 
+.クラスタスイッチ
+[%collapsible]
+====
+* link:../switch-bes-53248/configure-software-overview-bes53248.html["BES-53248スイッチのソフトウェアをインストールします"]
+* link:../switch-cisco-9336c-fx2/configure-software-overview-9336c-cluster.html["Cisco Nexus 9336C-FX2スイッチ用のソフトウェアをインストールします"]
+* link:../switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html["NVIDIA SN2100スイッチ用のソフトウェアをインストールします"]
+
+
+==== a| 
+.ストレージスイッチ
+[%collapsible]
+====
+* link:../switch-cisco-9336c-fx2-storage/configure-software-overview-9336c-storage.html["Cisco Nexus 9336C-FX2スイッチ用のソフトウェアをインストールします"]
+* link:../switch-nvidia-sn2100/configure-software-sn2100-storage.html["NVIDIA SN2100スイッチ用のソフトウェアをインストールします"]
+
+
+==== a| 
+.共有スイッチ
+[%collapsible]
+====
+* link:../switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html["Cisco Nexus 9336C-FX2スイッチを設置します"]
+
+
+====
+|===
+
+
+== 手順6：システムのセットアップを完了する
+
+スイッチを設定して必要なソフトウェアをインストールしたら、お使いのAFF / FASプラットフォームモデルのインストールとセットアップの手順書にアクセスして、システムのセットアップを完了します。
+
+[cols="9,9,9"]
+|===
+
+
+ a| 
+.AFF システム
+[%collapsible]
+====
+* https://docs.netapp.com/us-en/ontap-systems/c190/install-setup.html["AFF C190"]
+* https://docs.netapp.com/us-en/ontap-systems/a220/install-setup.html["AFF A220"]
+* https://docs.netapp.com/us-en/ontap-systems/a250/install-setup.html["AFF A250"]
+* https://docs.netapp.com/us-en/ontap-systems/a400/install-setup.html["AFF A400"]
+* https://docs.netapp.com/us-en/ontap-systems/a700/install-setup.html["AFF A700"]
+* https://docs.netapp.com/us-en/ontap-systems/a800/install-setup.html["AFF A800"]
+* https://docs.netapp.com/us-en/ontap-systems/a900/install_detailed_guide.html["AFF A900 の略"]
+
+
+==== a| 
+.FAS システム
+[%collapsible]
+====
+* https://docs.netapp.com/us-en/ontap-systems/fas500f/install-setup.html["FAS500f"]
+* https://docs.netapp.com/us-en/ontap-systems/fas8300/install-setup.html["FAS8300"]
+* https://docs.netapp.com/us-en/ontap-systems/fas8700/install-setup.html["FAS8700 の場合"]
+* https://docs.netapp.com/us-en/ontap-systems/fas9000/install-setup.html["FAS9000"]
+* https://docs.netapp.com/us-en/ontap-systems/fas9500/install-setup.html["FAS9500"]
+
+
+==== a| 
+
+|===
+
+
+== 手順7：ONTAP の設定を完了します
+
+AFF / FASコントローラとスイッチを設置してセットアップしたら、ONTAP でストレージの設定を完了する必要があります。導入環境の設定に応じて、次の手順を参照してください。
+
+* ONTAP の導入については、を参照してください https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["ONTAP を設定します"]。
+* MetroCluster を使用したONTAP の導入については、を参照してください https://docs.netapp.com/us-en/ontap-metrocluster/["ONTAP を使用してMetroCluster を設定します"]。
+

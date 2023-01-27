@@ -1,0 +1,87 @@
+---
+sidebar: sidebar 
+permalink: switch-cisco-9336c-fx2-storage/components-9336c-storage.html 
+keywords: shared storage cluster switch 
+summary: ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチシナリオに結合できます。 
+---
+= Cisco Nexus 9336C-FX2ストレージスイッチのコンポーネントとパーツ番号
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cisco Nexus 9336C-FX2スイッチの設置とメンテナンスについては、コンポーネントと部品番号のリストを確認してください。
+
+次の表に、 9336C-FX2 スイッチ、ファン、および電源装置の部品番号と概要を示します。
+
+[cols="1,2"]
+|===
+| パーツ番号 | 説明 
+
+
+ a| 
+X190200-CS-PE
+ a| 
+N9K-9336C-FX2 、 CS 、 PTSX 、 36PT10/25/40/100GQSFP28
+
+
+
+ a| 
+X190200-CS-PI
+ a| 
+N9K-9336C-FX2 、 CS 、 PSIN 、 36PT10/25/40/100GQSFP28
+
+
+
+ a| 
+X190210-FE-PE のこと
+ a| 
+N9K-9336C 、 FTE 、 PTSX 、 36PT10/25/40/100GQSFP28
+
+
+
+ a| 
+X190210-FE-PI
+ a| 
+N9K-9336C 、 FTE 、 PSIN 、 36PT10/25/40/100GQSFP28
+
+
+
+ a| 
+X190002
+ a| 
+アクセサリキット X190001/X190003
+
+
+
+ a| 
+X-NXA-PAC1100W-PE2
+ a| 
+N9K-9336C AC 1100W PSU - ポート側排気
+
+
+
+ a| 
+X-NXA-PAC1100W-PI2
+ a| 
+N9K-9336C AC 1100W PSU - ポート側吸気
+
+
+
+ a| 
+X-NXA-FAN-65CFM-pe
+ a| 
+N9K-9336C 65CFM 、ポート側排気
+
+
+
+ a| 
+X-NXA-FAN-65CFM-pi
+ a| 
+N9K-9336C 65CFM 、ポート側吸気
+
+|===

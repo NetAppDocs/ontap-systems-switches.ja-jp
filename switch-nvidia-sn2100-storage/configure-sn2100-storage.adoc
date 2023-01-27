@@ -1,0 +1,22 @@
+---
+permalink: switch-nvidia-sn2100/configure-sn2100-storage.html 
+sidebar: sidebar 
+keywords: switches hardware installation 
+summary: BES-53248ハードウェアを取り付けるには、NVIDIAのマニュアルを参照してください。 
+---
+= NVIDIA SN2100スイッチを設定します
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SN2100スイッチを設定するには、NVIDIAのマニュアルを参照してください。
+
+.手順
+. を確認します link:configure-reqs-sn2100-storage.html["設定要件"]。
+. の手順に従います https://docs.nvidia.com/networking/display/sn2000pub/System+Bring-Up["NVIDIAシステムが起動します。"^]。
+
+
+.次の手順
+link:cabling-considerations-sn2100-storage.html["ケーブル接続と構成に関する考慮事項を確認"]。

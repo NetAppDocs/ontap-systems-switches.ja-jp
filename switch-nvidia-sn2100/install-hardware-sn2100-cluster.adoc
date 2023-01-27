@@ -1,0 +1,22 @@
+---
+permalink: switch-nvidia-sn2100/install-hardware-sn2100-cluster.html 
+sidebar: sidebar 
+keywords: switches hardware installation 
+summary: SN2100ハードウェアを取り付けるには、NVIDIAのマニュアルを参照してください。 
+---
+= NVIDIA SN2100スイッチのハードウェアを取り付けます
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SN2100ハードウェアを取り付けるには、NVIDIAのマニュアルを参照してください。
+
+.手順
+. を確認します link:configure-reqs-sn2100-cluster.html["設定要件"]。
+. の手順に従います https://docs.nvidia.com/networking/display/sn2000pub/Installation["NVIDIA Switchインストールガイド"^]。
+
+
+.次の手順
+link:configure-sn2100-cluster.html["スイッチを設定します"]。

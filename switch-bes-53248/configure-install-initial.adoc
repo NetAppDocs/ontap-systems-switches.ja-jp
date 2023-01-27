@@ -1,0 +1,194 @@
+---
+permalink: switch-bes-53248/configure-install-initial.html 
+sidebar: sidebar 
+keywords: switches initial setup,initial setup,efos download 
+summary: この手順を使用して、 BES-53248 クラスタスイッチの初期取り付けを実行できます。 
+---
+= BES-53248クラスタスイッチを設定します
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+BES-53248クラスタスイッチの初期セットアップを実行するには、次の手順を実行します。
+
+.必要なもの
+* の説明に従って、ハードウェアを設置します link:install-hardware-bes53248.html["ハードウェアを設置"]。
+* 次の点を確認しておきます。
++
+** link:configure-reqs-bes53248.html["設定要件"]
+** link:components-bes53248.html["コンポーネントとパーツ番号"]
+** link:required-documentation-53248.html["ドキュメントの要件"]
+
+
+
+
+.例について
+設定手順の例では、スイッチとノードで次の命名法を使用しています。
+
+* ネットアップのスイッチ名はです `cs1` および `cs2`。2つ目のスイッチ_cs2でアップグレードが開始されます。_
+* クラスタ LIF 名は、 node1 の場合は「 node1_clus1' 」、ノード 1 の場合は「 node1_clus1' 」、 node2 の場合は「 node2 _ clus2 」です。
+* IPspace 名は Cluster です。
+* 「 cluster1 ：： > 」プロンプトは、クラスタの名前を示します。
+* 各ノードのクラスタポートには、という名前が付けられます `e0a` および `e0b`。を参照してください https://hwu.netapp.com/Home/Index["NetApp Hardware Universe の略"^] をクリックします。
+* ネットアップのスイッチでサポートされているスイッチ間リンク（ ISL ）は、ポート 0/55 と 0/56 です。
+* ネットアップのスイッチでサポートされているノード接続は、デフォルトのライセンスを使用したポート 0/1~0/16 です。
+* この例では2つのノードを使用しますが、1つのクラスタには最大24のノードを含めることができます。
+
+
+.手順
+. シリアルポートをホストまたはシリアルポートに接続します。
+. 管理ポート（スイッチの左側にある RJ-45 レンチポート）を、 TFTP サーバが配置されているネットワークと同じネットワークに接続します。
+. コンソールで、ホスト側のシリアル設定を行います。
++
+** 115200 ボー
+** 8 データビット
+** 1 ストップビット
+** パリティ：なし
+** フロー制御：なし
+
+
+. スイッチにとしてログインします `admin` パスワードの入力を求められたら、Enterキーを押します。デフォルトのスイッチ名は* routing *です。プロンプトで、と入力します `enable`。これにより、スイッチ設定の特権 EXEC モードにアクセスできます。
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+User: *admin*
+Password:
+(Routing)> *enable*
+Password:
+(Routing)#
+----
+====
+. スイッチ名を* cs2 *に変更します。
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(Routing)# *hostname cs2*
+(cs2)#
+----
+====
+. 静的 IP アドレスを設定するには、例に示すように、「サービスポートプロトコル」、「ネットワークプロトコル」、および「サービスポート IP 」コマンドを使用します。
++
+デフォルトでは、サービスポートは DHCP を使用するように設定されています。IP アドレス、サブネットマスク、およびデフォルトゲートウェイアドレスが自動的に割り当てられます。
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *serviceport protocol none*
+(cs2)# *network protocol none*
+(cs2)# *serviceport ip ipaddr netmask gateway*
+----
+====
+. 次のコマンドを使用して結果を確認します。
++
+'How serviceport
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *show serviceport*
+Interface Status............................... Up
+IP Address..................................... 172.19.2.2
+Subnet Mask.................................... 255.255.255.0
+Default Gateway................................ 172.19.2.254
+IPv6 Administrative Mode....................... Enabled
+IPv6 Prefix is ................................ fe80::dac4:97ff:fe71:123c/64
+IPv6 Default Router............................ fe80::20b:45ff:fea9:5dc0
+Configured IPv4 Protocol....................... DHCP
+Configured IPv6 Protocol....................... None
+IPv6 AutoConfig Mode........................... Disabled
+Burned In MAC Address.......................... D8:C4:97:71:12:3C
+----
+====
+. ドメインとネームサーバを設定します。
++
+「 configure 」を実行します
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *configure*
+(cs2) (Config)# *ip domain name company.com*
+(cs2) (Config)# *ip name server 10.10.99.1 10.10.99.2*
+(cs2) (Config)# *exit*
+(cs2) (Config)#
+----
+====
+. NTP サーバを設定？
++
+.. タイムゾーンと時刻の同期（ SNTP ）を設定します。
++
+「 NTP 」
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)#
+(cs2) (Config)# *sntp client mode unicast*
+(cs2) (Config)# *sntp server 10.99.99.5*
+(cs2) (Config)# *clock timezone -7*
+(cs2) (Config)# *exit*
+(cs2) (Config)#
+----
+====
+.. 時間を手動で設定します。
++
+「 clock 」
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *config*
+(cs2) (Config)# *no sntp client mode*
+(cs2) (Config)# *clock summer-time recurring 1 sun mar 02:00 1 sun nov 02:00 offset 60 zone EST*
+(cs2) (Config)# *clock timezone -5 zone EST*
+(cs2) (Config)# *clock set 07:00:00
+(cs2) (Config)# *clock set 10/20/2020*
+
+(cs2) (Config)# *show clock*
+
+07:00:11 EST(UTC-5:00) Oct 20 2020
+No time source
+
+(cs2) (Config)# *exit*
+
+(cs2)# *write memory*
+
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+
+Are you sure you want to save? (y/n) *y*
+
+Config file 'startup-config' created successfully.
+
+Configuration Saved!
+----
+====
+
+
+
+
+.次の手順
+link:configure-efos-software.html["EFOS ソフトウェアをインストールします"]。

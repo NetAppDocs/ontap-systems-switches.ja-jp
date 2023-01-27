@@ -1,68 +1,46 @@
 ---
 section: switch-cisco-9336c-fx2
-title: Cisco Nexus 9336C-FX2 スイッチ
+title: Cisco Nexus 9336C-FX2
 entries:
 - title: 概要
-  url: "/switch-cisco-9336c-fx2/9336-overview.html"
-- title: Cisco Nexus 9336C-FX2 スイッチとパススルーパネルをネットアップキャビネットに設置します
-  url: "/switch-cisco-9336c-fx2/install-switch-and-passthrough-panel.html"
-- title: セットアップ
   entries:
-  - title: スイッチを設定します
-    url: "/switch-cisco-9336c-fx2/setup-switches.html"
-  - title: 必要なクラスタ設定情報
-    url: "/switch-cisco-9336c-fx2/setup-required-information.html"
-    entries:
-    - title: 92300YC スイッチ用クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします
-      url: "/switch-cisco-9336c-fx2/setup-install-cshm-file.html"
+  - title: 設定の概要
+    url: "/switch-cisco-9336c-fx2/configure-switch-overview-9336c-cluster.html"
+  - title: 設定要件
+    url: "/switch-cisco-9336c-fx2/configure-reqs-9336c-cluster.html"
+  - title: コンポーネントとパーツ番号
+    url: "/switch-cisco-9336c-fx2/components-9336c-cluster.html"
   - title: 必要なドキュメント
-    url: "/switch-cisco-9336c-fx2/setup-required-documentation.html"
-  - title: Smart Call Home の使用に関する考慮事項
-    url: "/switch-cisco-9336c-fx2/setup-considerations-smart-call.html"
-  - title: ケーブル接続ワークシートの例と空白
-    url: "/switch-cisco-9336c-fx2/setup-worksheets-sample-cabling.html"
-    entries:
-    - title: Cisco Nexus 9336C-FX2 ケーブル接続ワークシート
-      url: "/switch-cisco-9336c-fx2/setup-worksheet-9336c.html"
-    - title: Cisco Nexus 92300YC ケーブル接続ワークシート
-      url: "/switch-cisco-9336c-fx2/setup-worksheet-92300yc.html"
-    - title: Cisco Nexus 3232C ケーブル接続ワークシート
-      url: "/switch-cisco-9336c-fx2/setup-worksheet-3232c.html"
-    - title: Cisco Nexus 3132Q-V ケーブル接続ワークシート
-      url: "/switch-cisco-9336c-fx2/setup-worksheet-3132q.html"
-    - title: Cisco Nexus 5596UP / 5596T ケーブル接続ワークシート
-      url: "/switch-cisco-9336c-fx2/setup-worksheet-5596.html"
-- title: Cisco Nexus 9336C-FX2 クラスタスイッチに NX-OS ソフトウェアと RCF をインストールします
+    url: "/switch-cisco-9336c-fx2/required-documentation-9336c-cluster.html"
+  - title: Smart Call Homeの要件
+    url: "/switch-cisco-9336c-fx2/smart-call-9336c-cluster.html"
+- title: ハードウェアを設置
   entries:
-  - title: 概要
-    url: "/switch-cisco-9336c-fx2/install-nxos-overview.html"
-  - title: NX-OS ソフトウェアをインストールします
-    url: "/switch-cisco-9336c-fx2/install-nxos-software.html"
-  - title: リファレンス構成ファイル（ RCF ）のインストール
-    url: "/switch-cisco-9336c-fx2/install-nxos-rcf.html"
-- title: Cisco スイッチから Cisco Nexus 9336C-FX2 クラスタスイッチへの移行
+  - title: ケーブル接続ワークシートに記入
+    url: "/switch-cisco-9336c-fx2/setup-worksheet-9336c-cluster.html"
+  - title: スイッチを取り付けます
+    url: "/switch-cisco-9336c-fx2/install-switch-9336c-cluster.html"
+  - title: スイッチを設定します
+    url: "/switch-cisco-9336c-fx2/setup-switch-9336c-cluster.html"
+  - title: ネットアップキャビネットにスイッチを設置
+    url: "/switch-cisco-9336c-fx2/install-switch-and-passthrough-panel-9336c-cluster.html"
+- title: ソフトウェアを設定します
   entries:
-  - title: 概要
-    url: "/switch-cisco-9336c-fx2/migrate-to-9336-overview.html"
-  - title: Cisco スイッチから Cisco Nexus 9336C-FX2 クラスタスイッチへの移行方法
-    url: "/switch-cisco-9336c-fx2/migrate-to-9336.html"
-- title: Cisco Nexus 9336C-FX2 クラスタスイッチを使用して、 2 ノードスイッチクラスタに移行する
+  - title: ソフトウェアのインストールワークフロー
+    url: "/switch-cisco-9336c-fx2/configure-software-overview-9336c-cluster.html"
+  - title: NX-OSおよびRCFのインストールを準備します
+    url: "/switch-cisco-9336c-fx2/install-nxos-overview-9336c-cluster.html"
+  - title: NX-OSソフトウェアをインストールします
+    url: "/switch-cisco-9336c-fx2/install-nxos-software-9336c-cluster.html"
+  - title: RCF構成ファイルをインストールします
+    url: "/switch-cisco-9336c-fx2/install-nxos-rcf-9336c-cluster.html"
+- title: スイッチを移行
   entries:
-  - title: 概要
-    url: "/switch-cisco-9336c-fx2/migrate-to-2n-switched-overview.html"
-  - title: Cisco Nexus 9336C-FX2 クラスタスイッチを使用したネットアップのスイッチクラスタ環境への移行方法
-    url: "/switch-cisco-9336c-fx2/migrate-to-2n-switched.html"
-- title: Cisco Nexus 9336C-FX2 クラスタスイッチを設定します
-  entries:
-  - title: 概要
-    url: "/switch-cisco-9336c-fx2/replace-configure-new-switch.html"
-  - title: Nexus 9336C-FX2 クラスタスイッチの初期取り付け
-    url: "/switch-cisco-9336c-fx2/replace-install-initial.html"
-  - title: NX-OS ソフトウェアをインストールします
-    url: "/switch-cisco-9336c-fx2/replace-install-nxos.html"
-  - title: リファレンス構成ファイル（ RCF ）のインストール
-    url: "/switch-cisco-9336c-fx2/replace-install-rcf.html"
-- title: Cisco Nexus 9336C-FX2 クラスタスイッチを交換します
-  url: "/switch-cisco-9336c-fx2/replace-9336c.html"
-- title: Cisco Nexus 9336C-FX2 ストレージスイッチを交換します
-  url: "/switch-cisco-9336c-fx2/replace_9336c_storage_switch.html"
+  - title: 古いCiscoスイッチからの移行
+    url: "/switch-cisco-9336c-fx2/migrate-to-9336-cluster.html"
+  - title: 2ノードスイッチクラスタに移行する
+    url: "/switch-cisco-9336c-fx2/migrate-to-2n-switched-9336-cluster.html"
+  - title: 2ノードスイッチレスクラスタに移行する
+    url: "/switch-cisco-9336c-fx2/migrate-to-switchless-interconnect-9336-cluster.html"
+- title: クラスタスイッチを交換します
+  url: "/switch-cisco-9336c-fx2/replace-9336c-cluster.html"

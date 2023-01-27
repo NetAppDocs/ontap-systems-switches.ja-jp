@@ -1,0 +1,530 @@
+---
+permalink: switch-nvidia-sn2100/migrate-cisco-storage-switch-sn2100-storage.html 
+sidebar: sidebar 
+keywords: migrating to a storage switch with NVIDIA SN2100 storage switches, how to migrate 
+summary: ONTAP クラスタの古いCiscoスイッチは、無停止でNVIDIA SN2100ストレージスイッチに移行できます。 
+---
+= CiscoストレージスイッチからNVIDIA SN2100ストレージスイッチに移行する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP クラスタ用の古いCiscoスイッチをNVIDIA SN2100ストレージスイッチに移行できます。これは、無停止の手順 です。
+
+
+
+== 要件を確認
+
+サポートされるストレージスイッチは次のとおりです。
+
+* Cisco Nexus 9336C-FX2
+* Cisco Nexus 3232C
+* を参照してください https://hwu.netapp.com/["Hardware Universe"^] サポートされるポートとその構成の詳細については、を参照してください。
+
+
+.必要なもの
+次の点を確認します
+
+* 既存のクラスタが適切にセットアップされ、機能している。
+* ノンストップオペレーションを実現するために、すべてのストレージポートがup状態になっています。
+* NVIDIA SN2100ストレージスイッチは、リファレンス構成ファイル（RCF）が適用された適切なバージョンのCumulus Linuxで構成および動作しています。
+* 既存のストレージネットワーク構成には次のものがあります。
++
+** 両方の古い Cisco スイッチを使用する、完全に機能している冗長なネットアップクラスタ。
+** 古い Cisco スイッチと新しいスイッチの両方への管理接続とコンソールアクセス。
+** クラスタ LIF がすべて up 状態でホームポートにあること。
+** ISL ポートが有効で、古い Cisco スイッチ間および新しいスイッチ間でケーブル接続されている。
+
+
+* を参照してください https://hwu.netapp.com/["Hardware Universe"^] サポートされるポートとその構成の詳細については、を参照してください。
+* 一部のポートは、100 GbEで動作するようにNVIDIA SN2100スイッチで設定されています。
+* ノードからNVIDIA SN2100ストレージスイッチへの100GbE接続を計画、移行、文書化しておきます。
+
+
+
+
+== スイッチを移行します
+
+.例について
+この手順 では、コマンドや出力の例として、Cisco Nexus 9336C-FX2ストレージスイッチが使用されています。
+
+この手順の例では、スイッチとノードで次の命名法を使用しています。
+
+* 既存のCisco Nexus 9336C-FX2ストレージスイッチは、_s1_and _s2_です。
+* 新しいNVIDIA SN2100ストレージスイッチは_sw1_AND _sw2_です。
+* ノードは、 _ node1 _ と _ node2 _ です。
+* クラスタ LIF は、ノード 1 では _node1_clus1_AND _node1_clus2_on 、ノード 2 では _node2_clus1_and _node2_clus2_on です。
+* 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
+* この手順 で使用されるネットワークポートは、_e5a_AND _e5b_です。
+* ブレークアウトポートの形式はswp1s0-3です。たとえば'swp1のブレークアウトポートは'_swp1s0'_swp1s1_'_swp1s2s'_swp1s3_です
+* 最初にスイッチS2をスイッチSW2に交換し、次にスイッチS1をスイッチsw1に交換します。
++
+** 次に、ノードとS2間のケーブルがS2から切断され、SW2に再接続されます。
+** ノードとS1間のケーブル接続がS1から切断され、sw1に再接続されます。
+
+
+
+
+
+
+=== 手順1：移行の準備
+
+. AutoSupport が有効になっている場合は、AutoSupport メッセージを呼び出してケースの自動作成を停止します。
++
+「 system node AutoSupport invoke -node * -type all -message MAINT= xh 」というメッセージが表示されます
+
++
+ここで、 _ x _ はメンテナンス時間の長さ（時間）です。
+
+. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 * y * 」と入力します。
++
+「 advanced 」の権限が必要です
+
++
+advanced のプロンプト（ * > ）が表示されます。
+
+. 各ストレージインターフェイスの管理ステータスまたは動作ステータスを確認します。
++
+各ポートは'Status'に対してEnabledと表示されます
+
+
+
+
+
+=== 手順2：ケーブルとポートを設定する
+
+. ネットワークポートの属性を表示します。
++
+`storage port show`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *storage port show*
+                                  Speed                     VLAN
+Node           Port Type  Mode    (Gb/s) State    Status      ID
+-------------- ---- ----- ------- ------ -------- --------- ----
+node1
+               e0c  ENET  storage  100   enabled  online      30
+               e0d  ENET  storage    0   enabled  offline     30
+               e5a  ENET  storage    0   enabled  offline     30
+               e5b  ENET  storage  100   enabled  online      30
+node2
+               e0c  ENET  storage  100   enabled  online      30
+               e0d  ENET  storage    0   enabled  offline     30
+               e5a  ENET  storage    0   enabled  offline     30
+               e5b  ENET  storage  100   enabled  online      30
+cluster1::*>
+----
+====
+. コマンドを使用して、各ノードのストレージポートが（ノードから見て）既存のストレージスイッチに接続されていることを確認します。
++
+`network device-discovery show -protocol lldp`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol lldp*
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface       Platform
+----------- ------ ------------------------- --------------  ----------------
+node1      /lldp
+            e0c    S1 (7c:ad:4f:98:6d:f0)    Eth1/1           -
+            e5b    S2 (7c:ad:4f:98:8e:3c)    Eth1/1           -
+node2      /lldp
+            e0c    S1 (7c:ad:4f:98:6d:f0)    Eth1/2           -
+            e5b    S2 (7c:ad:4f:98:8e:3c)    Eth1/2           -
+----
+====
+. スイッチS1とS2で、コマンドを使用して、ストレージポートとスイッチが（スイッチの観点から）次のように接続されていることを確認します。
++
+`show lldp neighbors`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+S1# *show lldp neighbors*
+
+Capability Codes: (R) Router, (B) Bridge, (T) Telephone, (C) DOCSIS Cable Device,
+                  (W) WLAN Access Point, (P) Repeater, (S) Station (O) Other
+
+Device-ID             Local Intf     Holdtime    Capability           Port ID
+node1                 Eth1/1         121         S                    e0c
+node2                 Eth1/2         121         S                    e0c
+SHFGD1947000186       Eth1/10        120         S                    e0a         
+SHFGD1947000186       Eth1/11        120         S                    e0a         
+SHFGB2017000269       Eth1/12        120         S                    e0a         
+SHFGB2017000269       Eth1/13        120         S                    e0a
+
+S2# *show lldp neighbors*
+
+Capability Codes: (R) Router, (B) Bridge, (T) Telephone, (C) DOCSIS Cable Device,
+                  (W) WLAN Access Point, (P) Repeater, (S) Station (O) Other
+
+Device-ID             Local Intf     Holdtime    Capability          Port ID
+node1                 Eth1/1         121         S                   e5b
+node2                 Eth1/2         121         S                   e5b
+SHFGD1947000186       Eth1/10        120         S                   e0b         
+SHFGD1947000186       Eth1/11        120         S                   e0b         
+SHFGB2017000269       Eth1/12        120         S                   e0b         
+SHFGB2017000269       Eth1/13        120         S                   e0b
+----
+====
+. スイッチSW2で、ディスクシェルフのストレージポートおよびノードに接続されているポートをシャットダウンします。
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@sw2:~$ *net add interface swp1-16 link down*
+cumulus@sw2:~$ *net pending*
+cumulus@sw2:~$ *net commit*
+----
+====
+. NVIDIA SN2100でサポートされている適切なケーブル配線を使用して、コントローラとディスクシェルフのノードストレージポートを古いスイッチS2から新しいスイッチSW2に移動します。
+. スイッチSW2で、ノードおよびディスクシェルフのストレージポートに接続されているポートを起動します。
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@sw2:~$ *net del interface swp1-16 link down*
+cumulus@sw2:~$ *net pending*
+cumulus@sw2:~$ *net commit*
+----
+====
+. 各ノードのストレージポートが、ノードから見て次のようにスイッチに接続されたことを確認します。
++
+`network device-discovery show -protocol lldp`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol lldp*
+
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface      Platform
+----------- ------ ------------------------- -------------  ----------------
+node1      /lldp
+            e0c    S1 (7c:ad:4f:98:6d:f0)    Eth1/1         -
+            e5b    sw2 (b8:ce:f6:19:1a:7e)   swp1           -
+
+node2      /lldp
+            e0c    S1 (7c:ad:4f:98:6d:f0)    Eth1/2         -
+            e5b    sw2 (b8:ce:f6:19:1a:7e)   swp2           -
+----
+====
+. ネットワークポートの属性を確認します。
++
+`storage port show`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *storage port show*
+                                  Speed                     VLAN
+Node           Port Type  Mode    (Gb/s) State    Status      ID
+-------------- ---- ----- ------- ------ -------- --------- ----
+node1
+               e0c  ENET  storage  100   enabled  online      30
+               e0d  ENET  storage    0   enabled  offline     30
+               e5a  ENET  storage    0   enabled  offline     30
+               e5b  ENET  storage  100   enabled  online      30
+node2
+               e0c  ENET  storage  100   enabled  online      30
+               e0d  ENET  storage    0   enabled  offline     30
+               e5a  ENET  storage    0   enabled  offline     30
+               e5b  ENET  storage  100   enabled  online      30
+cluster1::*>
+----
+====
+. スイッチSW2で、すべてのノードストレージポートが動作していることを確認します。
++
+`net show interface`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@sw2:~$ *net show interface*
+
+State  Name    Spd   MTU    Mode        LLDP                  Summary
+-----  ------  ----  -----  ----------  --------------------  --------------------
+...
+...
+UP     swp1    100G  9216   Trunk/L2   node1 (e5b)             Master: bridge(UP)
+UP     swp2    100G  9216   Trunk/L2   node2 (e5b)             Master: bridge(UP)
+UP     swp3    100G  9216   Trunk/L2   SHFFG1826000112 (e0b)   Master: bridge(UP)
+UP     swp4    100G  9216   Trunk/L2   SHFFG1826000112 (e0b)   Master: bridge(UP)
+UP     swp5    100G  9216   Trunk/L2   SHFFG1826000102 (e0b)   Master: bridge(UP)
+UP     swp6    100G  9216   Trunk/L2   SHFFG1826000102 (e0b)   Master: bridge(UP))
+...
+...
+----
+====
+. スイッチsw1で、ノードおよびディスクシェルフのストレージポートに接続されているポートをシャットダウンします。
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net add interface swp1-16 link down*
+cumulus@sw1:~$ *net pending*
+cumulus@sw1:~$ *net commit*
+----
+====
+. NVIDIA SN2100でサポートされている適切なケーブル配線を使用して、コントローラとディスクシェルフのノードストレージポートを古いスイッチS1から新しいスイッチsw1に移動します。
+. スイッチsw1で、ノードおよびディスクシェルフのストレージポートに接続されているポートを起動します。
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net del interface swp1-16 link down*
+cumulus@sw1:~$ *net pending*
+cumulus@sw1:~$ *net commit*
+----
+====
+. 各ノードのストレージポートが、ノードから見て次のようにスイッチに接続されたことを確認します。
++
+`network device-discovery show -protocol lldp`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol lldp*
+
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface       Platform
+----------- ------ ------------------------- --------------  ----------------
+node1      /lldp
+            e0c    sw1 (b8:ce:f6:19:1b:96)   swp1            -
+            e5b    sw2 (b8:ce:f6:19:1a:7e)   swp1            -
+
+node2      /lldp
+            e0c    sw1  (b8:ce:f6:19:1b:96)  swp2            -
+            e5b    sw2  (b8:ce:f6:19:1a:7e)  swp2            -
+----
+====
+. 最終的な構成を確認します。
++
+`storage port show`
+
++
+各ポートは'State'に対してはEnabledと表示され'Status'に対してはEnabledと表示されます
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *storage port show*
+                                  Speed                     VLAN
+Node           Port Type  Mode    (Gb/s) State    Status      ID
+-------------- ---- ----- ------- ------ -------- --------- ----
+node1
+               e0c  ENET  storage  100   enabled  online      30
+               e0d  ENET  storage    0   enabled  offline     30
+               e5a  ENET  storage    0   enabled  offline     30
+               e5b  ENET  storage  100   enabled  online      30
+node2
+               e0c  ENET  storage  100   enabled  online      30
+               e0d  ENET  storage    0   enabled  offline     30
+               e5a  ENET  storage    0   enabled  offline     30
+               e5b  ENET  storage  100   enabled  online      30
+cluster1::*>
+----
+====
+. スイッチSW2で、すべてのノードストレージポートが動作していることを確認します。
++
+`net show interface`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@sw2:~$ *net show interface*
+
+State  Name    Spd   MTU    Mode        LLDP                  Summary
+-----  ------  ----  -----  ----------  --------------------  --------------------
+...
+...
+UP     swp1    100G  9216   Trunk/L2   node1 (e5b)             Master: bridge(UP)
+UP     swp2    100G  9216   Trunk/L2   node2 (e5b)             Master: bridge(UP)
+UP     swp3    100G  9216   Trunk/L2   SHFFG1826000112 (e0b)   Master: bridge(UP)
+UP     swp4    100G  9216   Trunk/L2   SHFFG1826000112 (e0b)   Master: bridge(UP)
+UP     swp5    100G  9216   Trunk/L2   SHFFG1826000102 (e0b)   Master: bridge(UP)
+UP     swp6    100G  9216   Trunk/L2   SHFFG1826000102 (e0b)   Master: bridge(UP))
+...
+...
+----
+====
+. 両方のノードのそれぞれで、各スイッチに 1 つの接続があることを確認します。
++
+`net show lldp`
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、両方のスイッチの該当する結果を示しています。
+
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net show lldp*
+LocalPort  Speed  Mode      RemoteHost             RemotePort
+---------  -----  --------  ---------------------  -----------
+...
+swp1       100G   Trunk/L2  node1                  e0c
+swp2       100G   Trunk/L2  node2                  e0c
+swp3       100G   Trunk/L2  SHFFG1826000112        e0a
+swp4       100G   Trunk/L2  SHFFG1826000112        e0a
+swp5       100G   Trunk/L2  SHFFG1826000102        e0a
+swp6       100G   Trunk/L2  SHFFG1826000102        e0a
+
+cumulus@sw2:~$ *net show lldp*
+LocalPort  Speed  Mode      RemoteHost             RemotePort
+---------  -----  --------  ---------------------  -----------
+...
+swp1       100G   Trunk/L2  node1                  e5b
+swp2       100G   Trunk/L2  node2                  e5b
+swp3       100G   Trunk/L2  SHFFG1826000112        e0b
+swp4       100G   Trunk/L2  SHFFG1826000112        e0b
+swp5       100G   Trunk/L2  SHFFG1826000102        e0b
+swp6       100G   Trunk/L2  SHFFG1826000102        e0b
+----
+====
+
+
+
+
+=== 手順3：手順 を完了します
+
+. 次の2つのコマンドを使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能を有効にします。
++
+'system switch ethernet log setup-password 'および'system switch ethernet log enable-colion
+
++
+「 system switch ethernet log setup -password 」と入力します
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet log setup-password*
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+*sw1*
+*sw2*
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *sw1*
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] *y*
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *sw2*
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] *y*
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+----
+====
++
+その後に次のコマンドを入力
+
++
+「システムスイッチのイーサネットログの有効化」
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system  switch ethernet log enable-collection*
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] *y*
+
+Enabling cluster switch log collection.
+
+cluster1::*>
+----
+====
++
+
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
+. スイッチログ収集機能を開始します。
++
+`system switch ethernet log collect -device *`
+
++
+10分待ってから、次のコマンドを使用してログ収集が成功したことを確認します。
+
++
+`system switch ethernet log show`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet log show*
+Log Collection Enabled: true
+
+Index  Switch                       Log Timestamp        Status
+------ ---------------------------- -------------------  ---------    
+1      sw1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
+2      sw2 (b8:ce:f6:19:1b:96)      4/29/2022 03:07:42   complete
+----
+====
+. 権限レベルを admin に戻します。
++
+「特権管理者」
+
+. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
++
+「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+
+

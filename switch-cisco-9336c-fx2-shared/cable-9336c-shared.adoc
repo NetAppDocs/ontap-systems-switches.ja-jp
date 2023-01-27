@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: switch-cisco-9336c-fx2-shared/cable-9336c-shared.html 
+keywords: shared storage cluster switch cable 
+summary: ケーブル接続の図を使用して、コントローラとスイッチをケーブル接続します。 
+---
+= Cisco Nexus 9336C-FX2ケーブル接続ワークシートに記入します
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+次のケーブル接続図を使用して、コントローラとスイッチをケーブル接続します。
+
+
+
+== NS224ストレージをスイッチ接続でケーブル接続します
+
+NS224 ストレージをスイッチ接続でケーブル接続する場合は、スイッチ接続の図に従ってください。
+
+image:9336c_image1.jpg["スイッチ接続"]
+
+を参照してください https://hwu.netapp.com/Switch/Index["Hardware Universe"] スイッチポートの詳細については、を参照してください。
+
+
+
+== NS224ストレージを直接接続型としてケーブル接続します
+
+共有スイッチのストレージポートを使用する代わりに NS224 ストレージを直接接続型としてケーブル接続する場合は、次の図に従って直接接続してください。
+
+image:9336c_image2.jpg["直接接続"]
+
+を参照してください https://hwu.netapp.com/Switch/Index["Hardware Universe"] スイッチポートの詳細については、を参照してください。
+
+
+
+== Cisco Nexus 9336C-FX2 ケーブル接続ワークシート
+
+サポート対象のプラットフォームを文書化する場合は、入力済みのケーブル接続ワークシートの例を参考にして、空白のケーブル接続ワークシートに記入する必要があります。
+
+各スイッチペアのポート定義の例を次に示します。image:cabling_worksheet.jpg["ケーブル接続ワークシート"]
+
+ここで、
+
+* 100G ISL 経由でスイッチ A ポート 35
+* 100G ISL 経由でスイッチ A ポート 36
+* 100G ISL 経由でスイッチ B ポート 35
+* 100G ISL 経由でスイッチ B ポート 36
+
+
+
+
+== 空白のケーブル接続ワークシート
+
+空白のケーブル接続ワークシートを使用して、クラスタ内のノードとしてサポートされるプラットフォームを文書化できます。Hardware Universe の Supported Cluster Connections テーブルでは、プラットフォームで使用されるクラスタポートが定義されています。
+
+image:blank_cabling_worksheet.jpg["空白のケーブル接続ワークシート"]
+
+ここで、
+
+* 100G ISL 経由でスイッチ A ポート 35
+* 100G ISL 経由でスイッチ A ポート 36
+* 100G ISL 経由でスイッチ B ポート 35
+* 100G ISL 経由でスイッチ B ポート 36
+

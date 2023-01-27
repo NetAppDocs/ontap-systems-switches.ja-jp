@@ -1,0 +1,50 @@
+---
+permalink: switch-cisco-9336c-fx2-storage/install-9336c-storage.html 
+sidebar: sidebar 
+keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 9336c-fx2 
+summary: 必要な設定情報とドキュメントをまだ入手していない場合は、クラスタおよび管理ネットワークスイッチをセットアップする前に、その情報を収集する必要があります。 
+---
+= 9336C-FX2ストレージスイッチを取り付けます
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 9336C-FX2ストレージスイッチを取り付けるには、次の手順 に従います。
+
+.必要なもの
+* インストールサイトでHTTP、FTP、またはTFTPサーバにアクセスし、該当するNX-OSおよびリファレンス構成ファイル（RCF）リリースをダウンロードします。
+* 該当するライセンス、ネットワークおよび設定情報、ケーブル。
+* 完了しました link:setup-worksheet-9336c-storage.html["ケーブル接続ワークシート"]。
+* 該当するネットアップクラスタネットワークと管理ネットワークのRCFをNetApp Support Site からダウンロードしました http://mysupport.netapp.com/["mysupport.netapp.com"^]。すべての Cisco クラスタネットワークスイッチおよび管理ネットワークスイッチは、シスコの工場出荷時のデフォルト設定で出荷されます。これらのスイッチには、 NX-OS ソフトウェアの最新バージョンもありますが、 RCF はロードされていません。
+* 必要なスイッチのドキュメントを参照してください link:required-documentation-9336c-storage.html["必要なドキュメント"] を参照してください。
+
+
+.手順
+. クラスタネットワークと管理ネットワークのスイッチとコントローラをラックに設置します。
++
+[cols="1,2"]
+|===
+| 設置対象 | 作業 
+
+
+ a| 
+NetApp システムキャビネット内の Cisco Nexus 9336C-FX2
+ a| 
+を参照してください link:install-switch-and-passthrough-panel-9336c-storage.html["ネットアップキャビネットにスイッチを設置"] スイッチをネットアップキャビネットに設置する手順については、を参照してください。
+
+
+
+ a| 
+Telco ラック内の機器
+ a| 
+スイッチのハードウェア設置ガイド、およびネットアップのセットアップガイドに記載されている手順を参照してください。
+
+|===
+. 入力済みのケーブル接続ワークシートを使用して、クラスタネットワークスイッチと管理ネットワークスイッチをコントローラにケーブル接続します。
+. クラスタネットワークと管理ネットワークのスイッチとコントローラの電源をオンにします。
+
+
+.次の手順
+に進みます link:setup-switch-9336c-storage.html["Cisco Nexus 9336C-FX2ストレージスイッチを設定します"]。

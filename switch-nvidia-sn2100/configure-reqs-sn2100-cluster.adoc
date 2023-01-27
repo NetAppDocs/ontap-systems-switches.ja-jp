@@ -1,0 +1,34 @@
+---
+permalink: switch-nvidia-sn2100/configure-reqs-sn2100-cluster.html 
+sidebar: sidebar 
+keywords: nvidia SN2100 switches 
+summary: NVIDIA SN2100スイッチのインストールとメンテナンスについては、すべての要件と推奨されるドキュメントを確認してください。 
+---
+= NVIDIA SN2100スイッチの構成要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NVIDIA SN2100スイッチのインストールとメンテナンスについては、すべての設定要件を確認してください。
+
+
+
+== インストールの要件
+
+3 つ以上のノードで ONTAP クラスタを構築する場合は、サポートされている 2 つのクラスタネットワークスイッチが必要です。オプションとして、追加の管理スイッチを使用できます。
+
+NVIDIA SN2100スイッチ（X190006/X190106）は、スイッチに付属の標準ブラケットを使用して、NVIDIAデュアル/シングルスイッチキャビネットに設置します。
+
+ケーブル配線のガイドラインについては、を参照してください link:cabling-considerations-sn2100-cluster.html["ケーブル接続と構成に関する考慮事項を確認"]。
+
+
+
+== ONTAP およびLinuxのサポート
+
+NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10/25/40/100Gbイーサネットスイッチです。スイッチは以下をサポートしています。
+
+* ONTAP 9.10.1P3SN2100スイッチは、ONTAP 9.10.1P3のクラスタおよびストレージアプリケーションに、異なるスイッチペアを提供します。ONTAP 9.10.1P3以降では、NVIDIA SN2100スイッチを使用してストレージとクラスタの機能を共有スイッチ構成に統合できます。
+* Cumulus Linux（CL）OSバージョン4.4.2Cumulus Linuxは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます。
+

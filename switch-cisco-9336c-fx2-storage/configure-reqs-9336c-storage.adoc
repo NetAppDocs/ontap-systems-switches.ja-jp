@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: /switch-cisco-9336c-fx2-storage/configure-reqs-9336c-storage.html 
+keywords: shared storage cluster switch 
+summary: ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチシナリオに結合できます。 
+---
+= Cisco Nexus 9336C-FX2ストレージスイッチの構成要件
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cisco Nexus 9336C-FX2スイッチの設置とメンテナンスについては、設定とネットワークの要件を確認してください。
+
+
+
+== ONTAP のサポート
+
+ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチ構成に組み合わせることができます。
+
+3 つ以上のノードで ONTAP クラスタを構築する場合は、サポートされている 2 つのネットワークスイッチが必要です。
+
+
+
+== 設定要件
+
+構成には、スイッチに適した数とタイプのケーブルとコネクタが必要です。
+
+最初に設定するスイッチのタイプに応じて、付属のコンソールケーブルを使用してスイッチのコンソールポートに接続する必要があります。また、特定のネットワーク情報を指定する必要があります。
+
+
+
+== ネットワーク要件
+
+すべてのスイッチ設定には、次のネットワーク情報が必要です。
+
+* 管理ネットワークトラフィック用の IP サブネット
+* 各ストレージシステムコントローラおよび該当するすべてのスイッチのホスト名と IP アドレス
+* ほとんどのストレージシステムコントローラは、イーサネットサービスポート（レンチマーク）に接続することで、 e0M インターフェイスを介して管理されます。AFF A800 および AFF A700s システムでは、 e0M インターフェイスは専用のイーサネットポートを使用します。
+* を参照してください https://hwu.netapp.com["Hardware Universe"] 最新情報については、を参照してください。
+
+
+スイッチの初期設定の詳細については、次のガイドを参照してください。 https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9336c-fx2-e/cisco-nexus-9336c-fx2-e-nx-os-mode-switch-hardware-installation-guide.html["『 Cisco Nexus 9336C-FX2 Installation and Upgrade Guide 』"]。

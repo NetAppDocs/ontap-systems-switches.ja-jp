@@ -1,0 +1,136 @@
+---
+permalink: switch-cisco-3232c/required-documentation-3232c.html 
+sidebar: sidebar 
+keywords: cisco 3232c, cluster switches 
+summary: Cisco Nexus 3232Cスイッチの設置およびメンテナンスについては、推奨されるすべてのマニュアルを確認してください。 
+---
+= Cisco Nexus 3232Cスイッチのドキュメントの要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 3232Cスイッチの設置およびメンテナンスについては、推奨されるすべてのマニュアルを確認してください。
+
+
+
+== スイッチのドキュメント
+
+Cisco Nexus 3232Cスイッチをセットアップするには、から次のドキュメントを入手する必要があります https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/series.html["Cisco Nexus 3000 シリーズスイッチのサポート"^] ページ
+
+[cols="1,2"]
+|===
+| ドキュメントタイトル | 説明 
+
+
+ a| 
+_ Nexus 3000 シリーズハードウェアインストレーションガイド _
+ a| 
+サイト要件、スイッチハードウェアの詳細、およびインストールオプションに関する詳細情報を提供します。
+
+
+
+ a| 
+_Cisco Nexus 3000 Series Switch Software Configuration Guides _ （スイッチにインストールされている NX-OS リリースのガイドを選択）
+ a| 
+スイッチを ONTAP 動作用に設定する前に必要なスイッチの初期設定に関する情報を提供します。
+
+
+
+ a| 
+_Cisco Nexus 3000 シリーズ NX-OS ソフトウェアアップグレードおよびダウングレードガイド _ （スイッチにインストールされている NX-OS リリースのガイドを選択）
+ a| 
+必要に応じてスイッチを ONTAP 対応スイッチソフトウェアにダウングレードする方法について説明します。
+
+
+
+ a| 
+_Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンスマスターインデックス _
+ a| 
+シスコが提供するさまざまなコマンドリファレンスへのリンクを示します。
+
+
+
+ a| 
+_Cisco Nexus 3000 MIB リファレンス _
+ a| 
+Nexus 3000 スイッチの管理情報ベース（ MIB ）ファイルについて説明します。
+
+
+
+ a| 
+_Nexus 3000 シリーズ NX-OS システムメッセージリファレンス _
+ a| 
+Cisco Nexus 3000 シリーズスイッチのシステムメッセージ、情報メッセージ、およびリンク、内部ハードウェア、またはシステムソフトウェアの問題の診断に役立つその他のメッセージについて説明します。
+
+
+
+ a| 
+_Cisco Nexus 3000 Series NX-OS Release Notes （スイッチにインストールされている NX-OS リリースのノートを選択） _
+ a| 
+Cisco Nexus 3000 シリーズの機能、バグ、および制限事項について説明します。
+
+
+
+ a| 
+Cisco Nexus 6000 、 Cisco Nexus 5000 シリーズ、 Cisco Nexus 3000 シリーズ、および Cisco Nexus 2000 シリーズの規制、コンプライアンス、および安全性に関する情報
+ a| 
+Nexus 3000 シリーズスイッチの国際的な適合規格、安全性、および法令に関する情報を提供します。
+
+|===
+
+
+== ONTAP システムのドキュメント
+
+ONTAP システムをセットアップするには、使用しているオペレーティングシステムのバージョンに応じて、で次のドキュメントを参照する必要があります https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9 ドキュメンテーション・センター"^]。
+
+[cols="1,2"]
+|===
+| 名前 | 説明 
+
+
+ a| 
+コントローラ固有の設置およびセットアップ手順 _
+ a| 
+ネットアップハードウェアの設置方法について説明します。
+
+
+
+ a| 
+ONTAP のドキュメント
+ a| 
+ONTAP リリースのすべての側面に関する詳細情報を提供します。
+
+
+
+ a| 
+https://hwu.netapp.com["Hardware Universe"^]
+ a| 
+ネットアップハードウェアの構成と互換性に関する情報を提供します。
+
+|===
+
+
+== レールキットおよびキャビネットのドキュメント
+
+3232C Ciscoスイッチをネットアップキャビネットに設置するには、次のハードウェアのドキュメントを参照してください。
+
+[cols="1,2"]
+|===
+| 名前 | 説明 
+
+
+ a| 
+https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["『 42U System Cabinet 、 Deep Guide 』を参照してください"^]
+ a| 
+42U システムキャビネットに関連する FRU について説明し、メンテナンスおよび FRU の交換手順を示します。
+
+
+
+ a| 
+link:task-install-a-cisco-nexus-3232c-cluster-switch-and-pass-through-panel-in-a-netapp-cabinet.html["Cisco Nexus 3232Cスイッチをネットアップキャビネットに設置"^]
+ a| 
+Cisco Nexus 3232C スイッチを 4 ポストのネットアップキャビネットに設置する方法について説明します。
+
+|===

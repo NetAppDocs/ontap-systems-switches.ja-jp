@@ -1,0 +1,27 @@
+---
+permalink: switch-cisco-3232c/smart-call-home-3232c.html 
+sidebar: sidebar 
+keywords: cisco 3232c, cluster switches 
+summary: AFF または FAS クラスタでは、 Cisco Nexus 3232C スイッチをクラスタスイッチとして使用できます。 
+---
+= Smart Call Homeの要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Smart Call Home機能を使用するには、次のガイドラインを確認してください。
+
+Smart Call Homeは、ネットワーク上のハードウェアおよびソフトウェアコンポーネントを監視します。重要なシステム構成が行われると、Eメールベースの通知が生成され、デスティネーションプロファイルで設定されているすべての受信者にアラートが送信されます。Smart Call Homeを使用するには、Eメールを使用してSmart Call Homeシステムと通信するようにクラスタネットワークスイッチを設定する必要があります。また、オプションでクラスタネットワークスイッチを設定して、シスコの組み込みSmart Call Homeサポート機能を利用することもできます。
+
+Smart Call Homeを使用する前に、次の考慮事項に留意してください。
+
+* E メールサーバが配置されている必要があります。
+* スイッチは、 E メールサーバに IP 接続されている必要があります。
+* 連絡先名（ SNMP サーバの連絡先）、電話番号、住所情報が設定されている必要があります。これは、受信したメッセージの送信元を判別するために必要です。
+* 会社の適切な Cisco SMARTnet サービス契約に、 CCO ID を関連付ける必要があります。
+* デバイスを登録するには、 Cisco SMARTnet サービスが導入されている必要があります。
+
+
+。 http://www.cisco.com/c/en/us/products/switches/index.html["シスコサポートサイト"^] Smart Call Homeを設定するコマンドについて説明します。

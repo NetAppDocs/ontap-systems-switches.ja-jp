@@ -1,0 +1,1271 @@
+---
+permalink: switch-cisco-3232c/migrate-cn1610-cluster-switches.html 
+sidebar: sidebar 
+keywords: migrate, cn1610 switch, cisco nexus 3232c cluster 
+summary: クラスタ内の既存の CN1610 クラスタスイッチを Cisco Nexus 3232C クラスタスイッチに交換するには、特定の順序でタスクを実行する必要があります。 
+---
+= CN1610クラスタスイッチをCisco Nexus 3232Cクラスタスイッチに移行する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスタ内の既存の CN1610 クラスタスイッチを Cisco Nexus 3232C クラスタスイッチに交換するには、特定の順序でタスクを実行する必要があります。
+
+
+
+== 要件を確認
+
+移行の前に、必ず確認してください link:migrate-requirements-3232c.html["移行の要件"]。
+
+
+NOTE: 手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
+
+必要に応じて、詳細については次を参照してください。
+
+* http://support.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 の概要 ページ"^]
+* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco Ethernet Switch 概要 ページ"^]
+* http://hwu.netapp.com["Hardware Universe"^]
+
+
+
+
+== スイッチを移行します
+
+.例について
+この手順 の例では 4 つのノードを使用しています。 2 つのノードは、 e0a 、 e0b 、 e0c 、 e0d という 4 つの 10GbE クラスタインターコネクトポートを使用します。他の 2 つのノードでは、 4 つの 40GbE クラスタインターコネクトファイバケーブルを使用します： e4a と e4e 。。 link:https://hwu.netapp.com/["_ Hardware Universe _"^] プラットフォームのクラスタ光ファイバケーブルに関する情報が表示されます。
+
+この手順の例では、スイッチとノードで次の命名法を使用しています。
+
+* ノードが n1 、 n2 、 n3 、 n4 である。
+* コマンド出力は、 ONTAP ソフトウェアのリリースによって異なる場合があります。
+* 交換する CN1610 スイッチは CL1 と CL2 です。
+* CN1610 スイッチの代わりに使用する Nexus 3232C スイッチは C1 と C2 です。
+* n1_clus1 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続された最初のクラスタ論理インターフェイス（ LIF ）です。
+* n1_clus2 は、ノード n1 のクラスタスイッチ 2 （ CL2 または c2 ）に接続された最初のクラスタ LIF です。
+* n1_clus3 は、ノード n1 のクラスタスイッチ 2 （ CL2 または c2 ）に接続されている 2 つ目の LIF です。
+* n1_clus4 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続された 2 つ目の LIF です。
+* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
+
+
+
+
+=== 手順1：移行の準備
+
+. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
++
+「 system node AutoSupport invoke -node * -type all -message MAINT= xh 」というメッセージが表示されます
+
++
+_x_ は、メンテナンス時間の長さ（時間単位）です。
+
++
+[NOTE]
+====
+このメンテナンスタスクについてテクニカルサポートに通知し、メンテナンス時間中はケースの自動作成が停止されます。
+
+====
+. 構成に含まれるデバイスに関する情報を表示します。
++
+「 network device-discovery show 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、各クラスタインターコネクトスイッチの各ノードに設定されているクラスタインターコネクトインターフェイスの数を示しています。
+
+[listing]
+----
+cluster::> network device-discovery show
+
+       Local  Discovered
+Node   Port   Device       Interface   Platform
+------ ------ ------------ ----------- ----------
+n1     /cdp
+        e0a   CL1          0/1         CN1610
+        e0b   CL2          0/1         CN1610
+        e0c   CL2          0/2         CN1610
+        e0d   CL1          0/2         CN1610
+n2     /cdp
+        e0a   CL1          0/3         CN1610
+        e0b   CL2          0/3         CN1610
+        e0c   CL2          0/4         CN1610
+        e0d   CL1          0/4         CN1610
+
+8 entries were displayed.
+----
+====
+. 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
++
+.. クラスタネットワークポートの属性を表示します。
++
+「 network port show -role cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network port show -role cluster
+       (network port show)
+
+Node: n1
+                Broadcast              Speed (Mbps) Health Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status Health Status
+----- --------- ---------- ----- ----- ------------ ------ -------------
+e0a   cluster   cluster    up    9000  auto/10000     -
+e0b   cluster   cluster    up    9000  auto/10000     -
+e0c   cluster   cluster    up    9000  auto/10000     -        -
+e0d   cluster   cluster    up    9000  auto/10000     -        -
+Node: n2
+                Broadcast              Speed (Mbps) Health Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status Health Status
+----- --------- ---------- ----- ----- ------------ ------ -------------
+e0a   cluster   cluster    up    9000  auto/10000     -
+e0b   cluster   cluster    up    9000  auto/10000     -
+e0c   cluster   cluster    up    9000  auto/10000     -
+e0d   cluster   cluster    up    9000  auto/10000     -
+
+8 entries were displayed.
+----
+====
+.. 論理インターフェイスに関する情報を表示します。
++
+「 network interface show -role cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network interface show -role cluster
+(network interface show)
+         Logical    Status      Network        Current  Current  Is
+Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
+-------- ---------- ----------- -------------- -------- -------- -----
+Cluster
+         n1_clus1   up/up       10.10.0.1/24   n1       e0a      true
+         n1_clus2   up/up       10.10.0.2/24   n1       e0b      true
+         n1_clus3   up/up       10.10.0.3/24   n1       e0c      true
+         n1_clus4   up/up       10.10.0.4/24   n1       e0d      true
+         n2_clus1   up/up       10.10.0.5/24   n2       e0a      true
+         n2_clus2   up/up       10.10.0.6/24   n2       e0b      true
+         n2_clus3   up/up       10.10.0.7/24   n2       e0c      true
+         n2_clus4   up/up       10.10.0.8/24   n2       e0d      true
+
+ 8 entries were displayed.
+----
+====
+.. 検出されたクラスタスイッチに関する情報を表示します。
++
+「 system cluster-switch show
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、クラスタで認識されているクラスタスイッチとその管理 IP アドレスを表示します。
+
+[listing]
+----
+cluster::> system cluster-switch show
+Switch                        Type             Address       Model
+----------------------------- ---------------- ------------- --------
+CL1                           cluster-network  10.10.1.101   CN1610
+     Serial Number: 01234567
+      Is Monitored: true
+            Reason:
+  Software Version: 1.2.0.7
+    Version Source: ISDP
+CL2                           cluster-network  10.10.1.102   CN1610
+     Serial Number: 01234568
+      Is Monitored: true
+            Reason:
+  Software Version: 1.2.0.7
+    Version Source: ISDP
+
+2	entries displayed.
+----
+====
+
+
+. 必要に応じて、新しい 3232C スイッチに適切な RCF とイメージがインストールされていることを確認し、必要なサイトのカスタマイズを行います。
++
+この時点で両方のスイッチを準備する必要があります。RCF およびイメージをアップグレードする必要がある場合は、次の手順 を実行する必要があります。
+
++
+.. を参照してください link:http://support.netapp.com/NOW/download/software/cm_switches/.html["Cisco イーサネットスイッチ"^] ネットアップサポートサイトのページを参照してください。
+.. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
+.. 該当するバージョンの RCF をダウンロードします。
+.. 概要 * ページで * continue * をクリックし、ライセンス契約に同意して、 * Download * ページの手順に従ってをダウンロードします。
+.. 適切なバージョンのイメージソフトウェアをからダウンロードします link:http://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.html["Cisco ® Cluster and Management Network Switch Reference Configuration File Download （ Cisco ® クラスタおよび管理ネットワークスイッチリファレンス構成ファイルのダウンロード"^]。
+
+
+. 交換する 2 つ目の CN1610 スイッチに関連付けられている LIF を移行します。「 network interface migrate-verser cluster-lif_lif-name __ -source-node-source_source-node-name_destination-node -destination -node -destination-port_destination-port-destination-port_name_`
++
+.例を示します
+[%collapsible]
+====
+次の例に示すように、各 LIF を個別に移行する必要があります。
+
+[listing]
+----
+cluster::*> network interface migrate -vserver cluster -lif n1_clus2 -source-node n1
+-destination-node  n1  -destination-port  e0a
+cluster::*> network interface migrate -vserver cluster -lif n1_clus3 -source-node n1
+-destination-node  n1  -destination-port  e0d
+cluster::*> network interface migrate -vserver cluster -lif n2_clus2 -source-node n2
+-destination-node  n2  -destination-port  e0a
+cluster::*> network interface migrate -vserver cluster -lif n2_clus3 -source-node n2
+-destination-node  n2  -destination-port  e0d
+----
+====
+. クラスタの健常性を確認します。
++
+「 network interface show -role cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network interface show -role cluster
+(network interface show)
+         Logical    Status      Network         Current  Current  Is
+Vserver  Interface  Admin/Oper  Address/Mask    Node     Port     Home
+-------- ---------- ----------- --------------- -------- -------- -----
+Cluster
+         n1_clus1   up/up       10.10.0.1/24    n1        e0a     true
+         n1_clus2   up/up       10.10.0.2/24    n1        e0a     false
+         n1_clus3   up/up       10.10.0.3/24    n1        e0d     false
+         n1_clus4   up/up       10.10.0.4/24    n1        e0d     true
+         n2_clus1   up/up       10.10.0.5/24    n2        e0a     true
+         n2_clus2   up/up       10.10.0.6/24    n2        e0a     false
+         n2_clus3   up/up       10.10.0.7/24    n2        e0d     false
+         n2_clus4   up/up       10.10.0.8/24    n2        e0d     true
+
+8 entries were displayed.
+----
+====
+
+
+
+
+=== 手順2：クラスタスイッチCL2をC2に交換します
+
+. スイッチ CL2 に物理的に接続されているクラスタインターコネクトポートをシャットダウンします。
++
+'network port modify -node node_name --port_port-name_up-admin false
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、ノード n1 とノード n2 の 4 つのクラスタインターコネクトポートがシャットダウンされていることを示しています。
+
+[listing]
+----
+cluster::*> network port modify -node n1 -port e0b -up-admin false
+cluster::*> network port modify -node n1 -port e0c -up-admin false
+cluster::*> network port modify -node n2 -port e0b -up-admin false
+cluster::*> network port modify -node n2 -port e0c -up-admin false
+----
+====
+. リモートクラスタインターフェイスに ping を実行してから、リモート手順 コールサーバチェックを実行します。
++
+'cluster ping-cluster -node-node-name-'
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、ノード n1 への ping の実行後、 RPC のステータスがと表示されています。
+
+[listing]
+----
+cluster::*> cluster ping-cluster -node n1
+Host is n1
+Getting addresses from network interface table...
+Cluster n1_clus1 n1       e0a    10.10.0.1
+Cluster n1_clus2 n1       e0b    10.10.0.2
+Cluster n1_clus3 n1       e0c    10.10.0.3
+Cluster n1_clus4 n1       e0d    10.10.0.4
+Cluster n2_clus1 n2       e0a    10.10.0.5
+Cluster n2_clus2 n2       e0b    10.10.0.6
+Cluster n2_clus3 n2       e0c    10.10.0.7
+Cluster n2_clus4 n2       e0d    10.10.0.8
+Local = 10.10.0.1 10.10.0.2 10.10.0.3 10.10.0.4
+Remote = 10.10.0.5 10.10.0.6 10.10.0.7 10.10.0.8
+Cluster Vserver Id = 4294967293 Ping status:
+....
+Basic connectivity succeeds on 16 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 9000 byte MTU on 16 path(s):
+    Local 10.10.0.1 to Remote 10.10.0.5
+    Local 10.10.0.1 to Remote 10.10.0.6
+    Local 10.10.0.1 to Remote 10.10.0.7
+    Local 10.10.0.1 to Remote 10.10.0.8
+    Local 10.10.0.2 to Remote 10.10.0.5
+    Local 10.10.0.2 to Remote 10.10.0.6
+    Local 10.10.0.2 to Remote 10.10.0.7
+    Local 10.10.0.2 to Remote 10.10.0.8
+    Local 10.10.0.3 to Remote 10.10.0.5
+    Local 10.10.0.3 to Remote 10.10.0.6
+    Local 10.10.0.3 to Remote 10.10.0.7
+    Local 10.10.0.3 to Remote 10.10.0.8
+    Local 10.10.0.4 to Remote 10.10.0.5
+    Local 10.10.0.4 to Remote 10.10.0.6
+    Local 10.10.0.4 to Remote 10.10.0.7
+    Local 10.10.0.4 to Remote 10.10.0.8
+
+Larger than PMTU communication succeeds on 16 path(s)
+RPC status:
+4 paths up, 0 paths down (tcp check)
+4 paths up, 0 paths down (udp check)
+----
+====
+. 適切なコマンドを使用して、アクティブな CN1610 スイッチ CL1 の ISL ポート 13~16 をシャットダウンします。
++
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、 CN1610 スイッチ CL1 で ISL ポート 13~16 をシャットダウンします。
+
+[listing]
+----
+(CL1)# configure
+(CL1)(Config)# interface 0/13-0/16
+(CL1)(Interface 0/13-0/16)# shutdown (CL1)(Interface 0/13-0/16)# exit
+(CL1)(Config)# exit
+(CL1)#
+----
+====
+. CL1 と C2 の間に一時的な ISL を構築します。
++
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、 Cisco`switchport mode trunk` コマンドを使用して CL1 （ポート 13~16 ）と C2 （ポート e1/24/1/4 ）の間に一時的な ISL を構築しています。
+
+[listing]
+----
+C2# configure
+C2(config)# interface port-channel 2
+C2(config-if)# switchport mode trunk
+C2(config-if)# spanning-tree port type network
+C2(config-if)# mtu 9216
+C2(config-if)# interface breakout module 1 port 24 map 10g-4x
+C2(config)# interface e1/24/1-4
+C2(config-if-range)# switchport mode trunk
+C2(config-if-range)# mtu 9216
+C2(config-if-range)# channel-group 2 mode active
+C2(config-if-range)# exit
+C2(config-if)# exit
+----
+====
+. すべてのノードで、 CN1610 スイッチ CL2 に接続されているケーブルを外します。
++
+サポートされているケーブル接続を使用して、すべてのノードの切断されたポートを Nexus 3232C スイッチ C2 に再接続する必要があります。
+
+. CN1610 スイッチ CL1 のポート 13~16 から、 4 本の ISL ケーブルを取り外します。
++
+新しい Cisco 3232C スイッチ c2 のポート 1/24 を既存の CN1610 スイッチ CL1 のポート 13~16 に接続し、適切な Cisco QSFP28 を SFP+ ブレークアウトケーブルに接続する必要があります。
+
++
+[NOTE]
+====
+新しい Cisco 3232C スイッチにケーブルを再接続する場合は、光ファイバケーブルまたは Cisco Twinax ケーブルを使用する必要があります。
+
+====
+. アクティブな CN1610 スイッチの ISL インターフェイス 3/1 を設定し、静的モードを無効にして、 ISL を動的にします。
++
+この設定は、両方のスイッチでISLが起動されたときに、3232CスイッチC2のISL設定と一致します。
+
++
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、 ISL インターフェイス 3/1 を、 ISL を動的にするように設定しています。
+
+[listing]
+----
+(CL1)# configure
+(CL1)(Config)# interface 3/1
+(CL1)(Interface 3/1)# no port-channel static
+(CL1)(Interface 3/1)# exit
+(CL1)(Config)# exit
+(CL1)#
+----
+====
+. アクティブな CN1610 スイッチ CL1 で ISL 13~16 を起動します。
++
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次の例では、ポートチャネルインターフェイス 3/1 で ISL ポート 13~16 を起動します。
+
+[listing]
+----
+(CL1)# configure
+(CL1)(Config)# interface 0/13-0/16,3/1
+(CL1)(Interface 0/13-0/16,3/1)# no shutdown
+(CL1)(Interface 0/13-0/16,3/1)# exit
+(CL1)(Config)# exit
+(CL1)#
+----
+====
+. CN1610 スイッチ CL1 の ISL が「 up 」になっていることを確認します。
++
+「 Link State 」は「 Up 」に、「 Type 」は「 Dynamic 」にする必要があります。また、「 Port Active 」列はポート 0/13 ～ 0/16 の「 True 」にする必要があります。
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、 CN1610 スイッチ CL1 で「 up 」になっている ISL を示しています。
+
+[listing]
+----
+(CL1)# show port-channel 3/1
+Local Interface................................ 3/1
+Channel Name................................... ISL-LAG
+Link State..................................... Up
+Admin Mode..................................... Enabled
+Type........................................... Dynamic
+Load Balance Option............................ 7
+(Enhanced hashing mode)
+
+Mbr    Device/       Port        Port
+Ports  Timeout       Speed       Active
+------ ------------- ----------  -------
+0/13   actor/long    10 Gb Full  True
+       partner/long
+0/14   actor/long    10 Gb Full  True
+       partner/long
+0/15   actor/long    10 Gb Full  True
+       partner/long
+0/16   actor/long    10 Gb Full  True        partner/long
+----
+====
+. ISLがであることを確認します `up` 3232CスイッチC2で次の手順を実行します。
++
+「ポートチャネルの概要」
+
++
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+
++
+ポート Eth1/24/1 ～ Eth1/24/4 は '(P)' を示している必要がありますこれは '4 つの ISL ポートがすべてポートチャネルでアップしていることを意味しますEth1/31 および Eth1/32 は ' 接続されていないので '(D) を示している必要があります
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、 3232C スイッチ c2 で「 up 」で検証されている ISL を示しています。
+
+[listing]
+----
+C2# show port-channel summary
+
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        M - Not in use. Min-links not met
+------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+------------------------------------------------------------------------------
+1	    Po1(SU)     Eth      LACP      Eth1/31(D)   Eth1/32(D)
+2	    Po2(SU)     Eth      LACP      Eth1/24/1(P) Eth1/24/2(P) Eth1/24/3(P)
+                                     Eth1/24/4(P)
+----
+====
+. すべてのノードの3232CスイッチC2に接続されているすべてのクラスタインターコネクトポートを起動します。
++
+'network port modify -node node_name --port_port-name_up-admin true
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、 3232C スイッチ C2 に接続されたクラスタインターコネクトポートを起動する方法を示しています。
+
+[listing]
+----
+cluster::*> network port modify -node n1 -port e0b -up-admin true
+cluster::*> network port modify -node n1 -port e0c -up-admin true
+cluster::*> network port modify -node n2 -port e0b -up-admin true
+cluster::*> network port modify -node n2 -port e0c -up-admin true
+----
+====
+. すべてのノードのC2に接続されている、移行されたクラスタインターコネクトLIFをすべてリバートします。
++
+network interface revert -vserver cluster -lif LIF_name です
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster::*> network interface revert -vserver cluster -lif n1_clus2
+cluster::*> network interface revert -vserver cluster -lif n1_clus3
+cluster::*> network interface revert -vserver cluster -lif n2_clus2
+cluster::*> network interface revert -vserver cluster -lif n2_clus3
+----
+====
+. すべてのクラスタインターコネクトポートがホームポートにリバートされていることを確認します。
++
+「 network interface show -role cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、 clus2 の LIF をホームポートにリバートします。「 Current Port 」列のポートのステータスが「 Is Home 」列に「 true 」の場合、 LIF が正常にリバートされていることを示しています。「 Is Home 」の値が「 false 」の場合、 LIF はリバートされません。
+
+[listing]
+----
+cluster::*> network interface show -role cluster
+(network interface show)
+         Logical    Status      Network        Current  Current  Is
+Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
+-------- ---------- ----------- -------------- -------- -------- -----
+Cluster
+         n1_clus1   up/up       10.10.0.1/24   n1       e0a      true
+         n1_clus2   up/up       10.10.0.2/24   n1       e0b      true
+         n1_clus3   up/up       10.10.0.3/24   n1       e0c      true
+         n1_clus4   up/up       10.10.0.4/24   n1       e0d      true
+         n2_clus1   up/up       10.10.0.5/24   n2       e0a      true
+         n2_clus2   up/up       10.10.0.6/24   n2       e0b      true
+         n2_clus3   up/up       10.10.0.7/24   n2       e0c      true
+         n2_clus4   up/up       10.10.0.8/24   n2       e0d      true
+
+8 entries were displayed.
+----
+====
+. すべてのクラスタポートが接続されていることを確認します。
++
+「 network port show -role cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+次に、すべてのクラスタ・インターコネクトが「 up 」になっていることを確認する出力例を示します。
+
+[listing]
+----
+cluster::*> network port show -role cluster
+       (network port show)
+
+Node: n1
+                Broadcast               Speed (Mbps) Health   Ignore
+Port  IPspace   Domain      Link  MTU   Admin/Open   Status   Health Status
+----- --------- ----------- ----- ----- ------------ -------- -------------
+e0a   cluster   cluster     up    9000  auto/10000     -
+e0b   cluster   cluster     up    9000  auto/10000     -
+e0c   cluster   cluster     up    9000  auto/10000     -        -
+e0d   cluster   cluster     up    9000  auto/10000     -        -
+Node: n2
+
+                Broadcast               Speed (Mbps) Health   Ignore
+Port  IPspace   Domain      Link  MTU   Admin/Open   Status   Health Status
+----- --------- ----------- ----- ----- ------------ -------- -------------
+e0a   cluster   cluster     up    9000  auto/10000     -
+e0b   cluster   cluster     up    9000  auto/10000     -
+e0c   cluster   cluster     up    9000  auto/10000     -
+e0d   cluster   cluster     up    9000  auto/10000     -
+
+8 entries were displayed.
+----
+====
+. リモートクラスタインターフェイスに ping を実行してから、リモート手順コールサーバチェックを実行します。
++
+'cluster ping-cluster -node-node-name-'
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、ノード n1 への ping の実行後、 RPC のステータスがと表示されています。
+
+[listing]
+----
+cluster::*> cluster ping-cluster -node n1
+Host is n1
+Getting addresses from network interface table...
+Cluster n1_clus1 n1       e0a    10.10.0.1
+Cluster n1_clus2 n1       e0b    10.10.0.2
+Cluster n1_clus3 n1       e0c    10.10.0.3
+Cluster n1_clus4 n1       e0d    10.10.0.4
+Cluster n2_clus1 n2       e0a    10.10.0.5
+Cluster n2_clus2 n2       e0b    10.10.0.6
+Cluster n2_clus3 n2       e0c    10.10.0.7
+Cluster n2_clus4 n2       e0d    10.10.0.8
+Local = 10.10.0.1 10.10.0.2 10.10.0.3 10.10.0.4
+Remote = 10.10.0.5 10.10.0.6 10.10.0.7 10.10.0.8
+Cluster Vserver Id = 4294967293
+Ping status:
+....
+Basic connectivity succeeds on 16 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 1500 byte MTU on 16 path(s):
+    Local 10.10.0.1 to Remote 10.10.0.5
+    Local 10.10.0.1 to Remote 10.10.0.6
+    Local 10.10.0.1 to Remote 10.10.0.7
+    Local 10.10.0.1 to Remote 10.10.0.8
+    Local 10.10.0.2 to Remote 10.10.0.5
+    Local 10.10.0.2 to Remote 10.10.0.6
+    Local 10.10.0.2 to Remote 10.10.0.7
+    Local 10.10.0.2 to Remote 10.10.0.8
+    Local 10.10.0.3 to Remote 10.10.0.5
+    Local 10.10.0.3 to Remote 10.10.0.6
+    Local 10.10.0.3 to Remote 10.10.0.7
+    Local 10.10.0.3 to Remote 10.10.0.8
+    Local 10.10.0.4 to Remote 10.10.0.5
+    Local 10.10.0.4 to Remote 10.10.0.6
+    Local 10.10.0.4 to Remote 10.10.0.7
+    Local 10.10.0.4 to Remote 10.10.0.8
+
+Larger than PMTU communication succeeds on 16 path(s)
+RPC status:
+4 paths up, 0 paths down (tcp check)
+4 paths up, 0 paths down (udp check)
+----
+====
+. 最初のCN1610スイッチCL1に関連付けられているLIFを移行します。
++
+`network interface migrate -vserver cluster -lif _lif-name_ -source-node _node-name_`
+
++
+.例を示します
+[%collapsible]
+====
+次の例に示すように、各クラスタ LIF を、クラスタスイッチ C2 でホストされている適切なクラスタポートに個別に移行する必要があります。
+
+[listing]
+----
+cluster::*> network interface migrate -vserver cluster -lif n1_clus1 -source-node n1
+-destination-node n1 -destination-port e0b
+cluster::*> network interface migrate -vserver cluster -lif n1_clus4 -source-node n1
+-destination-node n1 -destination-port e0c
+cluster::*> network interface migrate -vserver cluster -lif n2_clus1 -source-node n2
+-destination-node n2 -destination-port e0b
+cluster::*> network interface migrate -vserver cluster -lif n2_clus4 -source-node n2
+-destination-node n2 -destination-port e0c
+----
+====
+
+
+
+
+=== 手順3：クラスタスイッチCL1をC1に交換します
+
+. クラスタのステータスを確認します。
++
+「 network interface show -role cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、必要なクラスタ LIF が、クラスタスイッチ C2 でホストされている適切なクラスタポートに移行されたことを示しています。
+
+[listing]
+----
+cluster::*> network interface show -role cluster
+(network interface show)
+         Logical    Status      Network        Current  Current  Is
+Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
+-------- ---------- ----------- -------------- -------- -------- -----
+Cluster
+         n1_clus1   up/up       10.10.0.1/24   n1       e0b      false
+         n1_clus2   up/up       10.10.0.2/24   n1       e0b      true
+         n1_clus3   up/up       10.10.0.3/24   n1       e0c      true
+         n1_clus4   up/up       10.10.0.4/24   n1       e0c      false
+         n2_clus1   up/up       10.10.0.5/24   n2       e0b      false
+         n2_clus2   up/up       10.10.0.6/24   n2       e0b      true
+         n2_clus3   up/up       10.10.0.7/24   n2       e0c      true
+         n2_clus4   up/up       10.10.0.8/24   n2       e0c      false
+
+8 entries were displayed.
+----
+====
+. すべてのノードのCL1に接続されているノードポートをシャットダウンします。
++
+'network port modify -node node_name --port_port-name_up-admin false
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、ノード n1 および n2 で特定のポートがシャットダウンされていることを示しています。
+
+[listing]
+----
+cluster::*> network port modify -node n1 -port e0a -up-admin false
+cluster::*> network port modify -node n1 -port e0d -up-admin false
+cluster::*> network port modify -node n2 -port e0a -up-admin false
+cluster::*> network port modify -node n2 -port e0d -up-admin false
+----
+====
+. アクティブ 3232C スイッチ C2 の ISL ポート 24 、 31 、 32 をシャットダウンします。
++
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、アクティブ 3232C スイッチ C2 で ISL 24 、 31 、および 32 をシャットダウンする方法を示しています。
+
+[listing]
+----
+C2# configure
+C2(config)# interface ethernet 1/24/1-4
+C2(config-if-range)# shutdown
+C2(config-if-range)# exit
+C2(config)# interface ethernet 1/31-32
+C2(config-if-range)# shutdown
+C2(config-if-range)# exit
+C2(config)# exit
+C2#
+----
+====
+. すべてのノードの CN1610 スイッチ CL1 に接続されているケーブルを取り外します。
++
+適切なケーブル接続を使用して、すべてのノードの切断されたポートを Nexus 3232C スイッチ C1 に再接続する必要があります。
+
+. QSFP28 ケーブルを Nexus 3232C C2 ポート e1/24 から取り外します。
++
+サポートされている Cisco QSFP28 光ファイバケーブルまたは直接接続ケーブルを使用して、 C1 のポート e1/31 および e1/32 を c2 のポート e1/31 および e1/32 に接続する必要があります。
+
+. ポート 24 の設定をリストアし、 C2 の一時ポートチャネル 2 を削除します。
++
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次に 'running-configuration' ファイルを 'startup-configuration' ファイルにコピーする例を示します
+
+[listing]
+----
+C2# configure
+C2(config)# no interface breakout module 1 port 24 map 10g-4x
+C2(config)# no interface port-channel 2
+C2(config-if)# interface e1/24
+C2(config-if)# description 100GbE/40GbE Node Port
+C2(config-if)# spanning-tree port type edge
+Edge port type (portfast) should only be enabled on ports connected to a single
+host. Connecting hubs, concentrators, switches, bridges, etc...  to this
+interface when edge port type (portfast) is enabled, can cause temporary bridging loops.
+Use with CAUTION
+
+Edge Port Type (Portfast) has been configured on Ethernet 1/24 but will only
+have effect when the interface is in a non-trunking mode.
+
+C2(config-if)# spanning-tree bpduguard enable
+C2(config-if)# mtu 9216
+C2(config-if-range)# exit
+C2(config)# exit
+C2# copy running-config startup-config
+[########################################] 100%
+Copy Complete.
+----
+====
+. アクティブな 3232C スイッチの c2 の ISL ポート 31 と 32 を起動します。
++
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、 3232C スイッチ c2 に ISL 31 と 32 を配置します。
+
+[listing]
+----
+C2# configure
+C2(config)# interface ethernet 1/31-32
+C2(config-if-range)# no shutdown
+C2(config-if-range)# exit
+C2(config)# exit
+C2# copy running-config startup-config
+[########################################] 100%
+Copy Complete.
+----
+====
+. 3232C スイッチ C2 の ISL 接続が「 up 」になっていることを確認します。
++
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、検証する ISL 接続を示しています。ポート Eth1/31 および Eth1/32 は「（ P ）」を示します。これは、ポートチャネル内の ISL ポートが「 up 」であることを意味します。
+
+[listing]
+----
+C1# show port-channel summary
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        M - Not in use. Min-links not met
+------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+-----------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
+
+C2# show port-channel summary
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        M - Not in use. Min-links not met
+------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
+----
+====
+. すべてのノードの新しい3232CスイッチC1に接続されているすべてのクラスタインターコネクトポートを起動します。
++
+'network port modify -node node_name --port_port-name_up-admin true
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、新しい 3232C スイッチ C1 に接続されているすべてのクラスタインターコネクトポートを起動します。
+
+[listing]
+----
+cluster::*> network port modify -node n1 -port e0a -up-admin true
+cluster::*> network port modify -node n1 -port e0d -up-admin true
+cluster::*> network port modify -node n2 -port e0a -up-admin true
+cluster::*> network port modify -node n2 -port e0d -up-admin true
+----
+====
+. クラスタノードポートのステータスを確認します。
++
+「 network port show -role cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、新しい 3232C スイッチ C1 のノード n1 とノード n2 のクラスタインターコネクトポートが「 up 」になっていることを確認する出力を示しています。
+
+[listing]
+----
+cluster::*> network port show -role cluster
+       (network port show)
+
+Node: n1
+                Broadcast              Speed (Mbps) Health   Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status   Health Status
+----- --------- ---------- ----- ----- ------------ -------- -------------
+e0a   cluster   cluster    up    9000  auto/10000     -
+e0b   cluster   cluster    up    9000  auto/10000     -
+e0c   cluster   cluster    up    9000  auto/10000     -        -
+e0d   cluster   cluster    up    9000  auto/10000     -        -
+
+Node: n2
+                Broadcast              Speed (Mbps) Health   Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status   Health Status
+----- --------- ---------- ----- ----- ------------ -------- -------------
+e0a   cluster   cluster    up    9000  auto/10000     -
+e0b   cluster   cluster    up    9000  auto/10000     -
+e0c   cluster   cluster    up    9000  auto/10000     -
+e0d   cluster   cluster    up    9000  auto/10000     -
+
+8 entries were displayed.
+----
+====
+
+
+
+
+=== 手順4：手順 を完了します
+
+. すべてのノードのC1に接続されていた、移行されたクラスタインターコネクトLIFをすべてリバートします。
++
+`network interface revert -server cluster -lif _lif-name_`
+
++
+.例を示します
+[%collapsible]
+====
+次の例に示すように、各 LIF を個別に移行する必要があります。
+
+[listing]
+----
+cluster::*> network interface revert -vserver cluster -lif n1_clus1
+cluster::*> network interface revert -vserver cluster -lif n1_clus4
+cluster::*> network interface revert -vserver cluster -lif n2_clus1
+cluster::*> network interface revert -vserver cluster -lif n2_clus4
+----
+====
+. インターフェイスがホームになったことを確認します。
++
+「 network interface show -role cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、ノード n1 および n2 のクラスタインターコネクトインターフェイスのステータスが「 up 」で、「 Is Home 」であることを示しています。
+
+[listing]
+----
+cluster::*> network interface show -role cluster
+(network interface show)
+         Logical    Status      Network        Current  Current  Is
+Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
+-------- ---------- ----------- -------------- -------- -------- -----
+Cluster
+         n1_clus1   up/up       10.10.0.1/24   n1       e0a      true
+         n1_clus2   up/up       10.10.0.2/24   n1       e0b      true
+         n1_clus3   up/up       10.10.0.3/24   n1       e0c      true
+         n1_clus4   up/up       10.10.0.4/24   n1       e0d      true
+         n2_clus1   up/up       10.10.0.5/24   n2       e0a      true
+         n2_clus2   up/up       10.10.0.6/24   n2       e0b      true
+         n2_clus3   up/up       10.10.0.7/24   n2       e0c      true
+         n2_clus4   up/up       10.10.0.8/24   n2       e0d      true
+
+8 entries were displayed.
+----
+====
+. リモートクラスタインターフェイスに ping を実行してから、リモート手順コールサーバチェックを実行します。
++
+`cluster ping-cluster -node _host-name_`
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、ノード n1 への ping の実行後、 RPC のステータスがと表示されています。
+
+[listing]
+----
+cluster::*> cluster ping-cluster -node n1
+Host is n1
+Getting addresses from network interface table...
+Cluster n1_clus1 n1       e0a    10.10.0.1
+Cluster n1_clus2 n1       e0b    10.10.0.2
+Cluster n1_clus3 n1       e0c    10.10.0.3
+Cluster n1_clus4 n1       e0d    10.10.0.4
+Cluster n2_clus1 n2       e0a    10.10.0.5
+Cluster n2_clus2 n2       e0b    10.10.0.6
+Cluster n2_clus3 n2       e0c    10.10.0.7
+Cluster n2_clus4 n2       e0d    10.10.0.8
+Local = 10.10.0.1 10.10.0.2 10.10.0.3 10.10.0.4
+Remote = 10.10.0.5 10.10.0.6 10.10.0.7 10.10.0.8
+Cluster Vserver Id = 4294967293
+Ping status:
+....
+Basic connectivity succeeds on 16 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 9000 byte MTU on 16 path(s):
+    Local 10.10.0.1 to Remote 10.10.0.5
+    Local 10.10.0.1 to Remote 10.10.0.6
+    Local 10.10.0.1 to Remote 10.10.0.7
+    Local 10.10.0.1 to Remote 10.10.0.8
+    Local 10.10.0.2 to Remote 10.10.0.5
+    Local 10.10.0.2 to Remote 10.10.0.6
+    Local 10.10.0.2 to Remote 10.10.0.7
+    Local 10.10.0.2 to Remote 10.10.0.8
+    Local 10.10.0.3 to Remote 10.10.0.5
+    Local 10.10.0.3 to Remote 10.10.0.6
+    Local 10.10.0.3 to Remote 10.10.0.7
+    Local 10.10.0.3 to Remote 10.10.0.8
+    Local 10.10.0.4 to Remote 10.10.0.5
+    Local 10.10.0.4 to Remote 10.10.0.6
+    Local 10.10.0.4 to Remote 10.10.0.7
+    Local 10.10.0.4 to Remote 10.10.0.8
+
+Larger than PMTU communication succeeds on 16 path(s)
+RPC status:
+4 paths up, 0 paths down (tcp check)
+3	paths up, 0 paths down (udp check)
+----
+====
+. Nexus 3232C クラスタスイッチにノードを追加してクラスタを拡張します。
+. 構成に含まれるデバイスに関する情報を表示します。
++
+** 「 network device-discovery show 」のように表示されます
+** 「 network port show -role cluster 」のように表示されます
+** 「 network interface show -role cluster 」のように表示されます
+** 「 system cluster-switch show
++
+.例を示します
+[%collapsible]
+====
+次の例は、両方のNexus 3232Cクラスタスイッチのポートe1/7およびe1/8にそれぞれ接続された40GbEクラスタポートを搭載したノードn3およびn4を示しています。両方のノードがクラスタに参加している。使用する 40GbE クラスタインターコネクトポートは、 e4A および e4e です。
+
+[listing]
+----
+cluster::*> network device-discovery show
+
+       Local  Discovered
+Node   Port   Device       Interface       Platform
+------ ------ ------------ --------------- -------------
+n1     /cdp
+        e0a   C1           Ethernet1/1/1   N3K-C3232C
+        e0b   C2           Ethernet1/1/1   N3K-C3232C
+        e0c   C2           Ethernet1/1/2   N3K-C3232C
+        e0d   C1           Ethernet1/1/2   N3K-C3232C
+n2     /cdp
+        e0a   C1           Ethernet1/1/3   N3K-C3232C
+        e0b   C2           Ethernet1/1/3   N3K-C3232C
+        e0c   C2           Ethernet1/1/4   N3K-C3232C
+        e0d   C1           Ethernet1/1/4   N3K-C3232C
+
+n3     /cdp
+        e4a   C1           Ethernet1/7     N3K-C3232C
+        e4e   C2           Ethernet1/7     N3K-C3232C
+
+n4     /cdp
+        e4a   C1           Ethernet1/8     N3K-C3232C
+        e4e   C2           Ethernet1/8     N3K-C3232C
+
+12 entries were displayed.
+cluster::*> network port show -role cluster
+(network port show)
+
+Node: n1
+                Broadcast              Speed (Mbps) Health   Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status   Health Status
+----- --------- ---------- ----- ----- ------------ -------- -------------
+e0a   cluster   cluster    up    9000  auto/10000     -
+e0b   cluster   cluster    up    9000  auto/10000     -
+e0c   cluster   cluster    up    9000  auto/10000     -        -
+e0d   cluster   cluster    up    9000  auto/10000     -        -
+
+Node: n2
+                Broadcast              Speed (Mbps) Health   Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status   Health Status
+----- --------- ---------- ----- ----- ------------ -------- -------------
+e0a   cluster   cluster    up    9000  auto/10000     -
+e0b   cluster   cluster    up    9000  auto/10000     -
+e0c   cluster   cluster    up    9000  auto/10000     -
+e0d   cluster   cluster    up    9000  auto/10000     -        -
+
+Node: n3
+                Broadcast              Speed (Mbps) Health   Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status   Health Status
+----- --------- ---------- ----- ----- ------------ -------- -------------
+e4a   cluster   cluster    up    9000  auto/40000     -
+e4e   cluster   cluster    up    9000  auto/40000     -        -
+
+Node: n4
+                Broadcast              Speed (Mbps) Health   Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status   Health Status
+----- --------- ---------- ----- ----- ------------ -------- -------------
+e4a   cluster   cluster    up    9000  auto/40000     -
+e4e   cluster   cluster    up    9000  auto/40000     -
+
+12 entries were displayed.
+
+cluster::*> network interface show -role cluster
+(network interface show)
+         Logical    Status      Network        Current  Current  Is
+Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
+-------- ---------- ----------- -------------- -------- -------- -----
+Cluster
+         n1_clus1   up/up       10.10.0.1/24   n1       e0a      true
+         n1_clus2   up/up       10.10.0.2/24   n1       e0b      true
+         n1_clus3   up/up       10.10.0.3/24   n1       e0c      true
+         n1_clus4   up/up       10.10.0.4/24   n1       e0d      true
+         n2_clus1   up/up       10.10.0.5/24   n2       e0a      true
+         n2_clus2   up/up       10.10.0.6/24   n2       e0b      true
+         n2_clus3   up/up       10.10.0.7/24   n2       e0c      true
+         n2_clus4   up/up       10.10.0.8/24   n2       e0d      true
+         n3_clus1   up/up       10.10.0.9/24   n3       e4a      true
+         n3_clus2   up/up       10.10.0.10/24  n3       e4e      true
+         n4_clus1   up/up       10.10.0.11/24  n4       e4a     true
+         n4_clus2   up/up       10.10.0.12/24  n4       e4e     true
+
+12 entries were displayed.
+
+cluster::> system cluster-switch show
+
+Switch                      Type             Address       Model
+--------------------------- ---------------- ------------- ---------
+C1                          cluster-network  10.10.1.103   NX3232C
+
+     Serial Number: FOX000001
+      Is Monitored: true
+            Reason:
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    7.0(3)I6(1)
+    Version Source: CDP
+
+C2                          cluster-network  10.10.1.104   NX3232C
+
+     Serial Number: FOX000002
+      Is Monitored: true
+            Reason:
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    7.0(3)I6(1)
+    Version Source: CDP
+CL1                         cluster-network  10.10.1.101   CN1610
+
+     Serial Number: 01234567
+      Is Monitored: true
+            Reason:
+  Software Version: 1.2.0.7
+    Version Source: ISDP
+CL2                         cluster-network  10.10.1.102    CN1610
+
+     Serial Number: 01234568
+      Is Monitored: true
+            Reason:
+  Software Version: 1.2.0.7
+    Version Source: ISDP 4 entries were displayed.
+----
+====
+
+
+. 交換した CN1610 スイッチが自動的に削除されていない場合は、これらを削除します。
++
+`system cluster-switch delete -device _switch-name_`
+
++
+.例を示します
+[%collapsible]
+====
+次の例に示すように、両方のデバイスを個別に削除する必要があります。
+
+[listing]
+----
+cluster::> system cluster-switch delete –device CL1
+cluster::> system cluster-switch delete –device CL2
+----
+====
+. 適切なクラスタスイッチが監視されていることを確認します。
++
+「 system cluster-switch show
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、クラスタスイッチ C1 と C2 を監視していることを示しています。
+
+[listing]
+----
+cluster::> system cluster-switch show
+
+Switch                      Type               Address          Model
+--------------------------- ------------------ ---------------- ---------------
+C1                          cluster-network    10.10.1.103      NX3232C
+
+     Serial Number: FOX000001
+      Is Monitored: true
+            Reason:
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    7.0(3)I6(1)
+    Version Source: CDP
+
+C2                          cluster-network    10.10.1.104      NX3232C
+     Serial Number: FOX000002
+      Is Monitored: true
+          Reason:
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    7.0(3)I6(1)
+    Version Source: CDP
+
+2 entries were displayed.
+----
+====
+. [40]スイッチ関連のログファイルを収集するために、クラスタスイッチヘルスモニタのログ収集機能を有効にします。
++
+「 system cluster-switch log setup -password 」と入力します
+
++
+'system cluster-switch log enable-colion
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cluster::*> system cluster-switch log setup-password
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+C1
+C2
+
+cluster::*> system cluster-switch log setup-password
+
+Enter the switch name: C1
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] y
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster::*> system cluster-switch log setup-password
+
+Enter the switch name: C2
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] y
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster::*> system cluster-switch log enable-collection
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] y
+
+Enabling cluster switch log collection.
+
+cluster::*>
+----
+====
++
+[NOTE]
+====
+これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
+====
+. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
++
+「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+
+

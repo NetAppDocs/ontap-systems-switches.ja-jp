@@ -1,0 +1,22 @@
+---
+permalink: switch-bes-53248/configure-software-overview-bes53248.html 
+sidebar: sidebar 
+keywords: BES-53248 switches, initial installation, configure new bes-53248 switch 
+summary: ソフトウェアの概要を確認します。 
+---
+= BES-53248スイッチのソフトウェアインストールワークフロー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+BES-53248クラスタスイッチのソフトウェアを最初にインストールして設定するには、次の手順を実行します。
+
+. link:configure-efos-software.html["EFOS ソフトウェアをインストールします"]。イーサネットファブリックOS（EFOS）ソフトウェアをBES-53248クラスタスイッチにダウンロードしてインストールします。
+. link:configure-licenses.html["BES-53248 クラスタスイッチのライセンスをインストールします"]。必要に応じて、ライセンスを購入してインストールすることで新しいポートを追加します。スイッチベースモデルには、16個の10GbEまたは25GbEポートと2個の100GbEポートがライセンスされています。
+. link:configure-install-rcf.html["リファレンス構成ファイル（ RCF ）のインストール"]。BES-53248クラスタスイッチにRCFをインストールまたはアップグレードし、RCFを適用したあとに追加ライセンスのポートを確認します。
+. link:configure-health-monitor.html["クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします"]。クラスタスイッチの健常性監視用に適切な構成ファイルをインストールします。
+. link:configure-ssh.html["BES-53248 クラスタスイッチで SSH を有効にします"]。クラスタスイッチヘルスモニタ（CSHM）およびログ収集機能を使用する場合は、スイッチでSSHを有効にします。
+. link:configure-log-collection.html["ログ収集機能を有効にします"]。この機能は、ONTAP でスイッチ関連のログファイルを収集する場合に使用します。
+
