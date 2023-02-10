@@ -3444,8 +3444,6 @@
   <block id="ae93751a93d78c7a46cb2fb14c4ee8b7" category="paragraph"><block ref="37012567363af00fe31747157af69b42" prefix="" category="inline-code"></block></block>
   <block id="9678824a283295181839404bacab6aec" category="paragraph">で出力されるバナーの情報を確認します<block ref="6d53824b9996e36fd31937e922967215" prefix=" " category="inline-code"></block> コマンドを使用して、「重要事項」セクションの指示に従って、スイッチを正しく設定し、操作する必要があります。</block>
   <block id="5691cd5298e545e7d1addfde1db9b5b8" category="list-text">ソフトウェアのバージョンとスイッチの設定が正しいことを確認したら、をコピーします<block ref="092a495b03acdb0bf155d8ff2997a8d6" prefix=" " category="inline-code"></block> ファイルをに追加します<block ref="35b7dd24bfd716b0553d5e558b8afe97" prefix=" " category="inline-code"></block> スイッチS2上のファイル。</block>
-  <block id="e3adda4268a7e7bd78f47e8cc5f86c48" category="section-title">手順3：NX-OSイメージをCiscoスイッチS2にダウンロードし、リブートします</block>
-  <block id="fb7ec7093f3964bd1d568e19bda96e76" category="list-text">NX-OS イメージをスイッチ S2 にダウンロードします。</block>
   <block id="4e829ce6afd35ae225b70f58b27f634a" category="paragraph">システムをリブートするように求められます。</block>
   <block id="9f78f2ea8dc9f03e722eb98915e83eae" category="list-text">新しい NX-OS バージョン番号がスイッチにあることを確認します。</block>
   <block id="8492932a4b3a469a1fb900aea61b22ff" category="section-title">手順4：スイッチとポートのヘルスステータスを再確認する</block>
@@ -4310,4 +4308,6 @@
   <block id="a8bb0b5314965a8ac1d110202d7aae1f" category="sidebar">NX-OSをインストールします</block>
   <block id="72f2a813dae956304645ec60ccd278dd" category="sidebar">CSHMをインストールします</block>
   <block id="9c065304d8a82e97da8536d4c7484ee2" category="sidebar">古いCiscoスイッチからの移行</block>
+  <block id="c95ced7468e70606897322014b89e5b3" category="section-title">手順3：NX-OSイメージをCiscoスイッチS2にコピーし、リブートします</block>
+  <block id="04677d95852adc11088eca251913d172" category="list-text">NX-OSイメージをスイッチS2にコピーします。</block>
 </blocks>
