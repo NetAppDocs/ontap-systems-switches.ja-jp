@@ -17,8 +17,7 @@ ONTAP を実行しているシステムにネットアップCN1610スイッチ�
 . link:install-fastpath-software.html["FastPath ソフトウェアをインストールします"]
 . link:install-rcf-file.html["リファレンス構成ファイルをインストールします"]
 +
-
-NOTE: スイッチでONTAP 8.3.1以降が実行されている場合は、の手順に従います link:install-fastpath-rcf-831.html["ONTAP 8.3.1以降を実行しているスイッチにFastPathとRCFをインストールします。"]
+スイッチでONTAP 8.3.1以降が実行されている場合は、の手順に従います link:install-fastpath-rcf-831.html["ONTAP 8.3.1以降を実行しているスイッチにFastPathとRCFをインストールします。"]
 
 . link:configure-hardware-cn1610.html["スイッチを設定します"]
 

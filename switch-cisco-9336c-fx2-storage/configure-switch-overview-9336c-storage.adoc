@@ -19,13 +19,19 @@ Cisco Nexus 9336C-FX2ストレージスイッチは、Cisco Nexus 9000プラッ�
 
 ONTAP を実行しているシステムでCisco Nexus 9336C-FX2スイッチを初期設定するには、次の手順を実行します。
 
-. link:setup-worksheet-9336c-storage.html["ケーブル接続ワークシートに記入"]。ケーブル接続の図を使用して、コントローラとスイッチをケーブル接続します。
-. link:install-9336c-storage.html["スイッチを設置します"]。スイッチハードウェアを設置します。
-. link:setup-switch-9336c-storage.html["スイッチを設定します"]。Cisco Nexus 9336C-FX2共有スイッチをセットアップします。
-. link:install-switch-and-passthrough-panel-9336c-storage.html["ネットアップキャビネットにスイッチを設置"]。構成に応じて、Cisco Nexus 9336C-FX2スイッチとパススルーパネルは、スイッチに付属の標準ブラケットを使用してネットアップキャビネットに設置できます。
-. link:install-nxos-overview-9336c-storage.html["NX-OSおよびRCFのインストールを準備します"]。準備手順に従って、Cisco NX-OSソフトウェアおよびリファレンス構成ファイル（RCF）をインストールします。
-. link:install-nxos-software-9336c-storage.html["NX-OS ソフトウェアをインストールします"]。Nexus 9336C-FX2クラスタスイッチにNX-OSソフトウェアをインストールします。
-. link:install-nxos-rcf-9336c-storage.html["RCF構成ファイルをインストールします"]。Nexus 9336C-FX2スイッチを初めてセットアップしたあとに、RCFをインストールします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
+. link:setup-worksheet-9336c-storage.html["ケーブル接続ワークシートに記入"]。
+. link:install-9336c-storage.html["スイッチを設置します"]。
+. link:setup-switch-9336c-storage.html["スイッチを設定します"]。
+. link:install-switch-and-passthrough-panel-9336c-storage.html["ネットアップキャビネットにスイッチを設置"]。
++
+構成に応じて、Cisco Nexus 9336C-FX2スイッチとパススルーパネルは、スイッチに付属の標準ブラケットを使用してネットアップキャビネットに設置できます。
+
+. link:install-nxos-overview-9336c-storage.html["NX-OSおよびRCFのインストールを準備します"]。
+. link:install-nxos-software-9336c-storage.html["NX-OS ソフトウェアをインストールします"]。
+. link:install-nxos-rcf-9336c-storage.html["RCF構成ファイルをインストールします"]。
++
+Nexus 9336C-FX2スイッチを初めてセットアップしたあとに、RCFをインストールします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
+
 
 
 

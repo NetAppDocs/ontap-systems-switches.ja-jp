@@ -19,17 +19,37 @@ NVIDIA SN2100はストレージスイッチで、SAN（ストレージエリア�
 
 ONTAP を実行しているシステムでNVIDIA SN2100スイッチを設定する手順は、次のとおりです。
 
-. link:install-hardware-sn2100-storage.html["NVIDIA SN2100スイッチのハードウェアを取り付けます"]。手順については、「NVIDIA Switch Installation Guide」を参照してください。
-. link:configure-sn2100-storage.html["スイッチを設定します"]。手順については、NVIDIAのドキュメントを参照してください。
-. link:cabling-considerations-sn2100-storage.html["ケーブル接続と構成に関する考慮事項を確認"]。光接続、QSAアダプタ、およびスイッチポート速度の要件を確認します。
-. link:install-cable-shelves-sn2100-storage.html["NS224シェルフをスイッチ接続型ストレージとしてケーブル接続します"]。NS224ドライブシェルフをスイッチ接続型ストレージ（直接接続型ストレージではない）としてケーブル接続する必要があるシステムの場合は、次の手順に従います。
-. link:install-cumulus-mode-sn2100-storage.html["Cumulus LinuxをCumulusモードでインストールします"] または link:install-onie-mode-sn2100-storage.html["Cumulus LinuxをONIEモードでインストールします"]。Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます。
-. link:install-rcf-sn2100-storage.html["リファレンス構成ファイルスクリプトをインストールします"]。クラスタリングアプリケーションとストレージアプリケーション用に2つのRCFスクリプトが用意されています。
-. link:install-snmpv3-sn2100-storage.html["スイッチログ収集用のSNMPv3を設定します"]。このリリースでは、スイッチのログ収集とSwitch Health Monitoring（SHM）のSNMPv3がサポートされています。
+. link:install-hardware-sn2100-storage.html["NVIDIA SN2100スイッチのハードウェアを取り付けます"]。
++
+手順については、「NVIDIA Switch Installation Guide」を参照してください。
+
+. link:configure-sn2100-storage.html["スイッチを設定します"]。
++
+手順については、NVIDIAのドキュメントを参照してください。
+
+. link:cabling-considerations-sn2100-storage.html["ケーブル接続と構成に関する考慮事項を確認"]。
++
+光接続、QSAアダプタ、およびスイッチポート速度の要件を確認します。
+
+. link:install-cable-shelves-sn2100-storage.html["NS224シェルフをスイッチ接続型ストレージとしてケーブル接続します"]。
++
+NS224ドライブシェルフをスイッチ接続型ストレージ（直接接続型ストレージではない）としてケーブル接続する必要があるシステムの場合は、次の手順に従います。
+
+. link:install-cumulus-mode-sn2100-storage.html["Cumulus LinuxをCumulusモードでインストールします"] または link:install-onie-mode-sn2100-storage.html["Cumulus LinuxをONIEモードでインストールします"]。
++
+Cumulus Linux（CL）OSは、スイッチがCumulus LinuxまたはONIEを実行している場合にインストールできます。
+
+. link:install-rcf-sn2100-storage.html["リファレンス構成ファイルスクリプトをインストールします"]。
++
+クラスタリングアプリケーションとストレージアプリケーション用に2つのRCFスクリプトが用意されています。
+
+. link:install-snmpv3-sn2100-storage.html["スイッチログ収集用のSNMPv3を設定します"]。
++
+このリリースでは、スイッチのログ収集とSwitch Health Monitoring（SHM）のSNMPv3がサポートされています。
 
 
 
-NOTE: この手順では、ネットワークコマンドラインユーティリティ（NCLU）を使用します。NCLUは、すべてのLinuxに完全にアクセスできるようにするコマンドラインインタフェースです。netコマンドは、端末からアクションを実行するために使用するラッパーユーティリティです。
+この手順では、ネットワークコマンドラインユーティリティ（NCLU）を使用します。NCLUは、すべてのLinuxに完全にアクセスできるようにするコマンドラインインタフェースです。netコマンドは、端末からアクションを実行するために使用するラッパーユーティリティです。
 
 
 
