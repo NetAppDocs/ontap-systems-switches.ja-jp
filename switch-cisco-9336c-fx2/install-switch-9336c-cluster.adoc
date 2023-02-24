@@ -15,6 +15,7 @@ Cisco Nexus 9336C-FX2スイッチをセットアップおよび設定するに�
 
 .必要なもの
 * インストールサイトのHTTPサーバ、FTPサーバ、またはTFTPサーバにアクセスし、該当するNX-OSおよびRCFリリースをダウンロードします。
+* 該当するNX-OSバージョン（からダウンロード） https://software.cisco.com/download/home["シスコソフトウェアのダウンロード"^] ページ
 * 該当するライセンス、ネットワークおよび設定情報、ケーブル。
 * 完了しました link:setup-worksheet-9336c-cluster.html["ケーブル接続ワークシート"]。
 * 該当するネットアップクラスタネットワークと管理ネットワークのRCFをNetApp Support Site からダウンロードしました http://mysupport.netapp.com/["mysupport.netapp.com"^]。すべての Cisco クラスタネットワークスイッチおよび管理ネットワークスイッチは、シスコの工場出荷時のデフォルト設定で出荷されます。これらのスイッチには、 NX-OS ソフトウェアの最新バージョンもありますが、 RCF はロードされていません。

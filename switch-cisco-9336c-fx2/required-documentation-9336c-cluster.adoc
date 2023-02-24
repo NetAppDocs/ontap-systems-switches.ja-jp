@@ -132,7 +132,7 @@ https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["『 42U System Cab
 
 
  a| 
-link:install-switch-and-passthrough-panel.html["NetAppキャビネットにCisco 9336-FX2スイッチを設置します"^]
+link:install-switch-and-passthrough-panel-9336c-cluster.html["NetAppキャビネットにCisco 9336-FX2スイッチを設置します"^]
  a| 
 4ポストのネットアップキャビネットにCisco Nexus 9336C-FX2スイッチを設置する方法について説明します。
 

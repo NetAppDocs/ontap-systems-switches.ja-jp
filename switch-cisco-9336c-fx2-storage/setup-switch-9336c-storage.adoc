@@ -15,6 +15,7 @@ Cisco Nexus 9336C-FX2スイッチを設定するには、次の手順 に従い�
 
 .必要なもの
 * インストールサイトでHTTP、FTP、またはTFTPサーバにアクセスし、該当するNX-OSおよびリファレンス構成ファイル（RCF）リリースをダウンロードします。
+* 該当するNX-OSバージョン（からダウンロード） https://software.cisco.com/download/home["シスコソフトウェアのダウンロード"^] ページ
 * 該当するライセンス、ネットワークおよび設定情報、ケーブル。
 * 完了しました link:setup-worksheet-9336c-storage.html["ケーブル接続ワークシート"]。
 * 該当するネットアップクラスタネットワークと管理ネットワークのRCFをNetApp Support Site からダウンロードしました http://mysupport.netapp.com/["mysupport.netapp.com"^]。すべての Cisco クラスタネットワークスイッチおよび管理ネットワークスイッチは、シスコの工場出荷時のデフォルト設定で出荷されます。これらのスイッチには、 NX-OS ソフトウェアの最新バージョンもありますが、 RCF はロードされていません。
@@ -185,15 +186,8 @@ NOTE: この段階で設定を保存しないと、次回スイッチをリブ�
 
 |===
 . セットアップの最後に表示される画面で選択した設定を確認し、設定を保存します。
-. クラスタネットワークスイッチのバージョンを確認し、必要に応じてネットアップ対応バージョンのソフトウェアをスイッチにダウンロードします。
-+
-ネットアップ対応バージョンのサポートソフトウェアをダウンロードする場合は、 _NetApp Cluster Network Switch Reference Configuration File_ もダウンロードし、手順 5 で保存した構成とマージする必要があります。ファイルと手順は、からダウンロードできます https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^] ページ
-
-. ネットワークスイッチのソフトウェアバージョンを確認し、必要に応じてネットアップ対応バージョンのソフトウェアをスイッチにダウンロードします。独自のスイッチがある場合は、を参照してください https://cisco.com["シスコサイト"^]。
-+
-ネットアップ対応バージョンのサポートソフトウェアをダウンロードする場合は、 _NetApp Management Network Switch Reference Configuration File_ もダウンロードし、手順 5 で保存した構成とマージする必要があります。ファイルと手順は、からダウンロードできます https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^] ページ
-
+. クラスタネットワークスイッチのバージョンを確認し、必要に応じてからネットアップ対応バージョンのソフトウェアをスイッチにダウンロードします https://software.cisco.com/download/home["シスコソフトウェアのダウンロード"^] ページ
 
 
 .次の手順
-必要に応じて、を実行できます link:install-switch-and-passthrough-panel-9336c-storage.html["ネットアップキャビネットにスイッチを設置"]。それ以外の場合は、に進みます link:install-nxos-overview-9336c-storage.html["NX-OSおよびRCFのインストールを準備します"]。
+必要に応じて、を実行できます link:install-switch-and-passthrough-panel-9336c-storage.html["Cisco Nexus 9336C-FX2スイッチをネットアップキャビネットに設置します"]。それ以外の場合は、に進みます link:install-nxos-overview-9336c-storage.html["NX-OSおよびRCFのインストールを準備します"]。

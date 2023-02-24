@@ -204,7 +204,6 @@
   <block id="e6e127aa00381e0f24c982a7076a9434" category="list-text">各ノードのクラスタポートの名前は e0a および e0b です。</block>
   <block id="84e96c95d1b5d476873fb5e4186fdd65" category="list-text">ネットアップのスイッチでサポートされているスイッチ間リンク（ ISL ）は、ポート 0/55 と 0/56 です。</block>
   <block id="45cd9f0759a776547c2ee49b3f52d792" category="list-text">ネットアップのスイッチでサポートされているノード接続は、デフォルトのライセンスを使用したポート 0/1~0/16 です。</block>
-  <block id="1069b9aeccd9318ca5a0004bd8b60a99" category="summary">クラスタを設定するには、クラスタスイッチに適切な数とタイプのケーブルとコネクタが必要です。最初に設定するクラスタスイッチのタイプに応じて、付属のコンソールケーブルを使用してスイッチのコンソールポートに接続する必要があります。また、特定のネットワーク情報が必要です。</block>
   <block id="4af2ae6527ea9ff7343ade4e75564901" category="list-text">クラスタ LIF の名前は、ノード 1 では node1_clus1 と node1_clus2 、ノード 2 では node2_clus1 と node2_clus2 です。</block>
   <block id="8ec7bf1c1cace707d0a14358cd91829c" category="paragraph">問題の場合は、ルーティングされていないネットワークを使用し、 IP アドレス 192.168.x または 172.19.x を使用してサービスポートを設定しますサービスポートは、あとで本番用の管理 IP アドレスに再設定できます。</block>
   <block id="31520dd193e3b7aa531864090b171dab" category="list-text">次のコマンドを使用して、クラスタポートが正常であり、リンクがあることを確認します。</block>
@@ -610,9 +609,7 @@
   <block id="3f78f0799975521235b2bb917acb7e24" category="list-text">入力済みのケーブル接続ワークシートを使用して、クラスタネットワークスイッチと管理ネットワークスイッチをコントローラにケーブル接続します。</block>
   <block id="21a670863d46552ac67aada9cba01bdc" category="list-text">クラスタネットワークと管理ネットワークのスイッチとコントローラの電源をオンにします。</block>
   <block id="d51ed7f10b5732d6e9ec975c89648212" category="list-text">セットアップの最後に表示される画面で選択した設定を確認し、設定を保存します。</block>
-  <block id="96ed0cc56c5e8196aceb1b998f9535d1" category="list-text">クラスタネットワークスイッチのバージョンを確認し、必要に応じてネットアップ対応バージョンのソフトウェアをスイッチにダウンロードします。</block>
   <block id="70399670eb37f7ebf7bbd91e15766e17" category="inline-link">Cisco イーサネットスイッチ</block>
-  <block id="e75e1151ec00758e18759a8f40279f42" category="inline-link">シスコサイト</block>
   <block id="ec9e474afc999353343db9439e541082" category="summary">ONTAP クラスタの古い Cisco クラスタスイッチは、無停止で Cisco Nexus 9336C-FX2 クラスタネットワークスイッチに移行できます。</block>
   <block id="de1935bd4389d754399850801a81c6d4" category="list-text">既存のクラスタが適切にセットアップされ、機能している必要があります。</block>
   <block id="327751f77b91681c4efa7bd01dd923d1" category="list-text">ノンストップオペレーションを実現するには、すべてのクラスタポートが up の状態になっている必要があります。</block>
@@ -1122,8 +1119,6 @@
   <block id="00f1aa07463199047fef449f663dd76d" category="list-text">[[step14]] ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して再度有効にします。「 system node AutoSupport invoke -node * -type all -message MAINT=end`</block>
   <block id="eac9e7086f92a026c0dbe06001206204" category="doc">Cisco 共有スイッチのセットアップおよび設定ガイド</block>
   <block id="ce5a4a36cafe8a250cdeaae60cd5a4e3" category="inline-link">NetApp ONTAP のドキュメント</block>
-  <block id="39ea6d6c5412ec7e0e17dd391cd35f3a" category="list-text">スイッチのソフトウェアバージョンを確認し、必要に応じてネットアップ対応バージョンのソフトウェアをスイッチにダウンロードします。</block>
-  <block id="7b1d1185b835814de783483f686e9825" category="inline-link">シスコ</block>
   <block id="667cf55da9f4ccd45815c0c40a5e0099" category="list-text">を参照してください<block ref="e8018b6e740a667345f4bcc94e4023fc" category="inline-link-rx"></block> 最新情報については、を参照してください。</block>
   <block id="6bba2a7f2881fffd3aea0b613c328174" category="paragraph">* yes * と応答します。デフォルトは no です</block>
   <block id="8c028235a9cfd5a0f09aeb396a9b7f59" category="paragraph">* yes * と応答します。デフォルトは yes です。</block>
@@ -1145,7 +1140,6 @@
   <block id="5a54e42dd698c598e59f9b64356c9418" category="paragraph">* yes * と応答して、設定を保存します。これにより、キックスタートイメージとシステムイメージが自動的に更新されます。</block>
   <block id="82024d6a2c01f0a8732caf928f9407bf" category="inline-link">『 Cisco Nexus 9336C-FX2 Installation and Upgrade Guide 』</block>
   <block id="f5cfc940c5ab0e780c503445cb40f82d" category="paragraph">スイッチの初期設定の詳細については、次のガイドを参照してください。<block ref="c68d672ce672475dc8c9199a02c5303f" category="inline-link-rx"></block>。</block>
-  <block id="e2cd1c4a8333627097591821747e2b1b" category="paragraph">ONTAP ネットワークを設定するには、特定のスイッチとコントローラに関するドキュメントが必要です。</block>
   <block id="9f74bb1a4ed2d5fe3c6d27623df1cf32" category="paragraph">Cisco Nexus 9336C-FX2 共有スイッチをセットアップするには、を参照してください<block ref="ccf9a5ebd47a9c01263e95d2949e4af7" category="inline-link-rx"></block> ページ</block>
   <block id="15d9978fa28b29e838c1a90820c21d36" category="inline-link-macro">Nexus 9000 Series Hardware Installation Guide 』を参照してください</block>
   <block id="7d4653ec512f04431d73bb9bf8ab903c" category="cell"><block ref="7d4653ec512f04431d73bb9bf8ab903c" category="inline-link-macro-rx"></block></block>
@@ -1317,9 +1311,6 @@
   <block id="3f6787ea7175edfe255a564e4a1b6b07" category="paragraph">Cisco コマンドの詳細については、『』の該当するガイドを参照してください<block ref="dba0e49fdfeab9433bb71da6c505aa34" category="inline-link-rx"></block> ガイド。</block>
   <block id="28b6f527828834555fd57d7fa75b77dc" category="paragraph"><block ref="28b6f527828834555fd57d7fa75b77dc" category="inline-link-rx"></block></block>
   <block id="737342a20357f18d3845f3010879136d" category="paragraph"><block ref="737342a20357f18d3845f3010879136d" category="inline-link-rx"></block></block>
-  <block id="d7de59d570551ce510d04111914f9ad7" category="paragraph">ネットアップ対応バージョンのサポートソフトウェアをダウンロードする場合は、 _NetApp Cluster Network Switch Reference Configuration File_ もダウンロードし、手順 5 で保存した構成とマージする必要があります。ファイルと手順は、からダウンロードできます<block ref="91aaf2f14ce017094691ed108f35b756" category="inline-link-rx"></block> ページ</block>
-  <block id="771335554e309a1fffe48143bbab90a9" category="list-text">ネットワークスイッチのソフトウェアバージョンを確認し、必要に応じてネットアップ対応バージョンのソフトウェアをスイッチにダウンロードします。独自のスイッチがある場合は、を参照してください<block ref="c602ce64cde2f26d0f98979dc6b3aef5" category="inline-link-rx"></block>。</block>
-  <block id="b2cb13c509425b76d525187f976cf094" category="paragraph">ネットアップ対応バージョンのサポートソフトウェアをダウンロードする場合は、 _NetApp Management Network Switch Reference Configuration File_ もダウンロードし、手順 5 で保存した構成とマージする必要があります。ファイルと手順は、からダウンロードできます<block ref="91aaf2f14ce017094691ed108f35b756" category="inline-link-rx"></block> ページ</block>
   <block id="83a0e3bf9dd48caad05146cc29f81e6b" category="list-text">SSH が有効になっていることを確認します。</block>
   <block id="0d52d29194e7d7495637f9464a04170a" category="paragraph">BES-53248 クラスタスイッチをセットアップするには、 Broadcom サポートサイトから次のドキュメントを入手する必要があります。<block ref="833245bb0770126f6b4b9e24cbce52e7" category="inline-link-rx"></block></block>
   <block id="b99dbfb1903eb64272f53095ba7fa1bc" category="list-text">クラスタスイッチに適用可能な Broadcom EFOS ソフトウェアをからダウンロードできます<block ref="4e779817b5f74625a8640f04596c1b3d" category="inline-link-rx"></block> サイトダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応する EFOS ファイルをダウンロードします。</block>
@@ -1642,7 +1633,6 @@
   <block id="5639e2698aecc48b16c0d498dc13c4a3" category="image-alt">U39-40 での 3132Q-V ポジショニング</block>
   <block id="ee6825cf6a234dbddc2afae6b53b354a" category="list-text">RU42 の 2 番目のスイッチについて、手順 5a ～ 5c を繰り返します。</block>
   <block id="6d29613dada35fd36b9ed83af0db3fac" category="list-text">各 3132Q-V スイッチの管理ポートをいずれかの管理スイッチ（発注した場合）に接続するか、または管理ネットワークに直接接続します。</block>
-  <block id="dc41570bc2d65bc76b561aeb1f830c14" category="summary">2 ノードスイッチクラスタへの移行</block>
   <block id="2857ff7a9c9a45ee36f0e4dc38b4d3a4" category="summary">Cisco Nexus 3132Q-V クラスタスイッチを交換する場合は、特定の設定情報、ポート接続、およびケーブル接続要件に注意する必要があります。</block>
   <block id="f50bf609e9ecf04112d0a60d1efc13c9" category="doc">Cisco Nexus 3132Q-V クラスタスイッチを交換します</block>
   <block id="0c2f6edcf40092d5fe0e8ad541affcf0" category="list-text">Cisco Nexus 3132Q-V クラスタスイッチがサポートされています。</block>
@@ -2104,10 +2094,6 @@
   <block id="b2f0294b7ae68a5ba87ae2839d34a70c" category="list-text">[step16] スイッチ交換用の手順と共有の RCF を使用して、既存のクラスタスイッチから共有スイッチにクラスタネットワークを移行します。新しい共有スイッチ A は「 cs1 」です。新しい共有スイッチ B は「 cs2 」です。を参照してください <block ref="cbb16447b88abbf626db4295a94e10df" category="inline-link-macro-rx"></block> および <block ref="2e5583639979312d3d691c4092c19d52" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="cc02bee3f16f9cf028c930e3ae85fb8f" category="list-text"><block ref="3ddccd8b1e06c6aa2ada1397d17562ec" category="inline-link-macro-rx"></block> FastPath ソフトウェアのインストール方法について説明します。</block>
   <block id="f8bb1b8464f9bde121f11f7a53f13011" category="list-text"><block ref="684215f55a46dbb917d8e38fd766cffd" category="inline-link-macro-rx"></block> RCF のインストール方法について説明します。</block>
-  <block id="9e94cbd196ed6920e8f54f3638a877cf" category="summary">cn1610 、スイッチ、ネットアップ</block>
-  <block id="7644ee6a5d07b8a490380246b4f6b79a" category="doc">NetApp CN1610 スイッチ</block>
-  <block id="4ea3ead37abb65fd297ca7404c0252a6" category="paragraph">CN1610 は、広帯域幅の管理対象レイヤ 2 スイッチで、 10 ギガビット Small Form-Factor Pluggable Plus （ SFP+ ）ポートを 16 個備えています。スイッチには、高可用性のためのホットスワップをサポートする冗長電源装置とファントレイが含まれています。</block>
-  <block id="c9538971330f4f4fca683d6a1d65a1a4" category="paragraph">この 1U スイッチは、標準的な 19 インチ NetApp 42U システムキャビネットまたはサードパーティ製キャビネットに設置できます。</block>
   <block id="8cd379638fc4ccb9fe87c298fc5389eb" category="paragraph">スイッチは、コンソールポートを介したローカル管理、またはネットワーク接続を介した Telnet または SSH を使用したリモート管理をサポートします。CN1610 には、アウトオブバンドスイッチ管理用に専用の 1 ギガビットイーサネット RJ45 管理ポートが搭載されています。スイッチを管理するには、コマンドラインインターフェイス（ CLI ）にコマンドを入力するか、 SNMP ベースの Network Management System （ NMS ）を使用します。</block>
   <block id="863521236411601eb091fc20202c6aaf" category="list-text">n1_clus4 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続された 2 つ目の LIF です。 -</block>
   <block id="33813b05f223e9025627eaf85a7f8eaa" category="list-text">n1_clus3 は、ノード n1 のクラスタスイッチ C2 に接続された 2 つ目の LIF です。</block>
@@ -2422,7 +2408,6 @@
   <block id="6d5256d36c2629c07d67ddb2fc78e95c" category="list-text">スイッチ・ログ収集機能を開始します：system switch ethernet log collect-device *</block>
   <block id="676b4f116c6b65afc97655131da52093" category="paragraph">10分間待ってから'次のコマンドを使用してログ収集が成功したことを確認しますsystem switch ethernet log show</block>
   <block id="3722090c5c0b0496759b23b1db5566cd" category="doc">RCFスクリプトをインストールします</block>
-  <block id="f0628c60efd94ed2822e83944aa83ad5" category="list-text">Cumulus Linux 4.4.2がインストールされている。</block>
   <block id="90bd80eefde443be8809a3edf64f7ef2" category="list-text">IPアドレス、サブネットマスク、およびデフォルトゲートウェイは、DHCPを使用して定義するか、手動で設定します。</block>
   <block id="1d9152605063cf1b257a36675cece81c" category="inline-link-macro">ケーブル接続と構成に関する考慮事項</block>
   <block id="526990b43ff7cafabc1a3c5dda4e8c9b" category="paragraph">クラスタリングアプリケーションとストレージアプリケーション用に2つのRCFスクリプトが用意されています。各の手順 は同じです。</block>
@@ -2451,7 +2436,6 @@
   <block id="83d1563d45527134091bdab8d6e5072d" category="list-text">画面上のメニューオプションに従って、地理的エリアと地域を選択します。</block>
   <block id="fe0f6a5f9b992c1eea817100a2c1c148" category="list-text">すべてのサービスおよびデーモンのタイムゾーンを設定するには、スイッチをリブートします。</block>
   <block id="61d6aab01fc093c66c1e769d05c39812" category="list-text">スイッチの日付と時刻が正しいことを確認し、必要に応じて更新します。</block>
-  <block id="f415282bef0374e283b8082be4765eea" category="list-text">Cumulus Linux 4.4.2のインストール：</block>
   <block id="9a828cf107e0b55e82b0e52b871aa982" category="paragraph">インストーラがダウンロードを開始します。プロンプトが表示されたら「* y *」と入力します</block>
   <block id="b64202cf747d1cf1ed877a2b16051b9b" category="list-text">NVIDIA SN2100スイッチをリブートします。</block>
   <block id="9f4f33c5c40ac522549c3e58d187e0a0" category="list-text">インストールが自動的に開始され、次のGRUB画面が表示されます。Do * not *（実行しない）を選択します。</block>
@@ -2459,7 +2443,6 @@
   <block id="a64ef5ea949c8d49f35a27151295f942" category="list-text">ONIE: OSのインストール</block>
   <block id="e0fb005ad468c2c6da5d94ae5ee83311" category="list-text">クムルス-インストール</block>
   <block id="aaf5ecccbfaebfdecab9b13474cd1016" category="list-text">ログインするには、手順1~4を繰り返します。</block>
-  <block id="c883d7af8e0067ad8d312770086b2d07" category="list-text">Cumulus Linuxのバージョンが4.4.2であることを確認します。</block>
   <block id="d35d5ab77a6267b38526b184dcfce0af" category="list-text">ポートe0aとe0b上のAFF A800</block>
   <block id="b9017574c175e97b1d6c5e950a79e4c7" category="list-text">ポートe0gとe0hにAFF A320を追加します</block>
   <block id="b1e03e9ce1f7041c2da53fa42cd21af3" category="paragraph">この問題 を解決するには、次の手順を実行します。</block>
@@ -2628,8 +2611,6 @@
   <block id="44bb54091263606f157bbaad0fdef9c3" category="inline-link-macro">NVIDIA SN2100ストレージスイッチを交換してください_</block>
   <block id="38c797c6506c8619afc1b09c65aa0655" category="paragraph"><block ref="38c797c6506c8619afc1b09c65aa0655" category="inline-link-macro-rx"></block></block>
   <block id="2875df17f2e2895666eddce90fc6146f" category="paragraph">欠陥のあるNVIDIA SN2100ストレージスイッチを交換し、Cumulus Linuxおよびリファレンス構成ファイルをダウンロードする手順 について説明します。</block>
-  <block id="aaea07599d1157945444c3c301565e94" category="summary">NVIDIA SN2100スイッチ</block>
-  <block id="d502e4d284e017c272fbc044d1c805ee" category="paragraph">ONTAP 9.10.1P3以降では、NVIDIA SN2100スイッチを使用してストレージとクラスタの機能を共有スイッチのシナリオに統合できます。</block>
   <block id="94f92369bb57ec3cd50af356ac87615d" category="sidebar">NVIDIA SN2100</block>
   <block id="f244d0b9bbad19d8b6169c577369193c" category="paragraph">必要に応じて、新しいスイッチ用のRCFおよびCumulusソフトウェアの適切なバージョンを確認、ダウンロード、およびインストールします。新しいスイッチが正しくセットアップされており、RCFおよびCumulusソフトウェアの更新が不要であることを確認した場合は、手順4に進みます。を参照してください <block ref="f205112049fd2d705b8f40351f7959dc" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="29bedbdcff648e4ff4cb387a7587b82b" category="paragraph">交換するスイッチが機能せず、電源がオフになっている場合は、手順5に進みます。クラスタノードの LIF は、各ノードのもう一方のクラスタポートにすでにフェイルオーバーされている必要があります。</block>
@@ -2706,7 +2687,6 @@
   <block id="936c629e80045932a8ce12daf69dd2f2" category="section-title">ONTAP およびLinuxのサポート</block>
   <block id="8b62efe83d10f30e759dd095dcc5c1ab" category="paragraph">NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10/25/40/100Gbイーサネットスイッチです。スイッチは以下をサポートしています。</block>
   <block id="9f1786af24b58b6fc579205bca0e1f44" category="list-text">ONTAP 9.10.1P3SN2100スイッチは、ONTAP 9.10.1P3のクラスタおよびストレージアプリケーションに、異なるスイッチペアを提供します。ONTAP 9.10.1P3以降では、NVIDIA SN2100スイッチを使用してストレージとクラスタの機能を共有スイッチ構成に統合できます。</block>
-  <block id="ce72203fd2d1702e41b12d3f834f5510" category="list-text">Cumulus Linux（CL）OSバージョン4.4.2Cumulus Linuxは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます。</block>
   <block id="902062c9f73682ab740f80dc154485ac" category="paragraph">スイッチがONIEモードで動作している場合、この手順 に従ってCumulus Linux（CL）OSをインストールします。</block>
   <block id="8eccd947fcc871d4b4604f444046acb0" category="inline-link-macro">クムルスモードでインストールします</block>
   <block id="bcef27e6ee4d7b0cfadf8dab3f3c4b0a" category="admonition">Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます（を参照） <block ref="0bb74764c4aee6316512b3110279fce2" category="inline-link-macro-rx"></block>）。</block>
@@ -3130,7 +3110,6 @@
   <block id="e6119e5e7b756f5ac645bab3bd6b7cf5" category="paragraph">デフォルトのスイッチポートインターフェイスステートの設定（shut / noshut）</block>
   <block id="ddcc83d63cc173465ab257f25d480cfc" category="paragraph">CoPPシステムプロファイルの設定（strict/moderm/lenenter/dense）</block>
   <block id="91e900250e74122a13484678f32eb0d2" category="inline-link-macro">ネットアップキャビネットにスイッチを設置</block>
-  <block id="4b336a78fcb64b240386ab171f94f2ba" category="paragraph">必要に応じて、を実行できます <block ref="bc9b639ac839607472e9d3ce7e8971cb" category="inline-link-macro-rx"></block>。それ以外の場合は、に進みます <block ref="16a9a5fa8979bab3106e7aad0dfd20d9" category="inline-link-macro-rx"></block>。</block>
   <block id="470cefaa9702bc5da534dfcfab6d903d" category="doc">概要と要件：Cisco Nexus 9336C-FX2スイッチ</block>
   <block id="c7bc672c5005e17eaf6387fbc19b5add" category="paragraph">Cisco Nexus 9336C-FX2スイッチの設置とメンテナンスについては、設定要件とマニュアル要件を確認してください。</block>
   <block id="c7c3b8d53ffb83548ff8a021ca0fa284" category="section-title">スイッチのコンポーネント</block>
@@ -3273,17 +3252,6 @@
   <block id="9cb3b79ca9481ccd4278c560494c2d07" category="list-text">すべてのノードの新しい3132Q-VスイッチC1に接続されているすべてのクラスタインターコネクトポートを起動します。</block>
   <block id="1c8cc06f1e9ac44e68001d74b84384f5" category="list-text">すべてのノードのC1に接続されていた、移行されたクラスタインターコネクトLIFをすべてリバートします。</block>
   <block id="b79fbcaa83bfb2240ef82f145e0ade9d" category="list-text">[[step43_replaceecn1610]]ケースの自動作成を抑制した場合は、AutoSupport メッセージを呼び出して作成を再度有効にします。</block>
-  <block id="cd60c40cb099f72abfc853944220530f" category="doc">概要と要件：Cisco Nexus 3132Q-Vスイッチ</block>
-  <block id="c8bb0ea97175165d9cb903f8d96ce128" category="paragraph">Cisco Nexus 3132Q-Vスイッチの設置とメンテナンスについては、すべての要件と推奨されるドキュメントを確認してください。</block>
-  <block id="061d0bb17fcfd90ff506c4e0ba0995e9" category="section-title">タスクの概要</block>
-  <block id="bb99d6e220fd145b5cefd52c57ea3853" category="paragraph">AFF クラスタまたは FAS クラスタでは、 Cisco Nexus 3132Q-V スイッチをクラスタスイッチとして使用できます。インストールとメンテナンスには、次の作業が含まれます</block>
-  <block id="f99d3ad769eb6a80131b2f32d1f6d984" category="list-text">Cisco Nexus 3132Q-VクラスタスイッチへのNX-OSとReference Configuration File（RCF；参照構成ファイル）のインストール</block>
-  <block id="37150b17ca4ead4cf5b8564bbf5b4ada" category="list-text">Cisco Nexus 3132Q-Vクラスタスイッチを使用した2ノードスイッチレスクラスタ環境から2ノードスイッチ環境への移行</block>
-  <block id="63ab9ba5d362a8345289de5dd4ef671c" category="list-text">クラスタ内の障害のあるCisco Nexus 3132Q-Vスイッチの交換とスイッチのオペレーティングシステムとリファレンス構成ファイルのダウンロード</block>
-  <block id="0ad9affe7411783bea0f8abc713ab787" category="list-text">Cisco Nexus 5596、Nexus 5020、またはNexus 5010クラスタスイッチのCisco Nexus 3132Q-Vスイッチへの交換</block>
-  <block id="f5f56ff081c321e780acd2585ec8712c" category="list-text">NetApp CN1610スイッチのCisco Nexus 3132Q-Vクラスタスイッチへの交換</block>
-  <block id="009c6d363796a7a3590b6e6f670884a1" category="paragraph">Smart Call Home機能を使用する前に、次の点を考慮してください。</block>
-  <block id="c6c3624138815835afae980d749118db" category="paragraph">3132Q-VスイッチおよびONTAP クラスタを設定するには、特定のスイッチとコントローラのドキュメントが必要です。</block>
   <block id="0ae7af765bea22243f2f0d22cbd558db" category="doc">Cisco Nexus 5596クラスタスイッチをCisco Nexus 3132Q-Vクラスタスイッチに移行する</block>
   <block id="e1b10a45ea0ae3c414f25517bb673cf2" category="paragraph">既存のNexus 5596クラスタスイッチをNexus 3132Q-Vクラスタスイッチに交換する場合は、この手順 に従います。</block>
   <block id="6f36587c0914b621e91edeb0829de1d4" category="paragraph">のCisco Nexus 5596の要件を確認します <block ref="e02fb67277400e729fb31d4ea6e688c9" category="inline-link-macro-rx"></block>。</block>
@@ -3429,15 +3397,6 @@
   <block id="cc4668ea483152a8c3b841b60a9a3199" category="list-text">リブート後にストレージスイッチを使用できることを再確認します。</block>
   <block id="5655241624f11355f5911ce18ad8e847" category="list-text">リブート後にスイッチポートが正常に機能していることを確認します。</block>
   <block id="c75fb03f38414ef60d8a0ffe8c2f06d8" category="list-text">クラスタにストレージスイッチやケーブル接続の問題がないことを再確認します。</block>
-  <block id="c8c9a67674bc39cd6ff6f1f5d95bad32" category="doc">概要および要件：Cisco Nexus 3232Cスイッチ</block>
-  <block id="8d0990009da02bfb69d0f3cee5617945" category="paragraph">Cisco Nexus 3232Cスイッチの設置とメンテナンスについては、すべての要件と推奨されるドキュメントを確認してください。</block>
-  <block id="7da82735909dbd5f8aa65552d57af14d" category="paragraph">AFF または FAS クラスタでは、 Cisco Nexus 3232C スイッチをクラスタスイッチとして使用できます。インストールとメンテナンスには、次の作業が含まれます</block>
-  <block id="e09ce0e5fae2834fe0f24812765b6050" category="list-text">Cisco Nexus 3232Cスイッチ（X190100）を、スイッチに付属のカスタムブラケットを使用してネットアップシステムキャビネットに設置するか、スイッチに付属の標準ブラケットを使用してラックに設置します。</block>
-  <block id="37fdb404fc626b9459958f33fd8220cd" category="list-text">Cisco Nexus 3232CクラスタスイッチにNX-OSソフトウェアとリファレンス構成ファイル（RCF）をインストールします。</block>
-  <block id="3901ea2aee7007d4cd8300eb64cdbf75" category="list-text">2ノードスイッチレスクラスタからCisco Nexus 3232Cクラスタスイッチを使用したクラスタへの移行</block>
-  <block id="6b5b64523be0a7bcbb1d9e9aa431e32c" category="list-text">Cisco Nexus 3232Cクラスタスイッチの交換</block>
-  <block id="2ce673c77c644931c93f242577cbd91f" category="list-text">Cisco Nexus 3232Cストレージスイッチの交換</block>
-  <block id="e4c54c8db8fd1960a63e83ce1690c9f3" category="paragraph">Cisco Nexus 3232CスイッチおよびONTAP クラスタをセットアップするには、特定のスイッチおよびコントローラのドキュメントが必要です。</block>
   <block id="25728c1247afd773544099da70e4ed57" category="paragraph">構成によっては、Cisco Nexus 3232Cクラスタスイッチを設置し、スイッチに付属の標準ブラケットを使用してネットアップキャビネットにパススルーパネルを取り付ける必要がある場合があります。</block>
   <block id="1b01ab832fc13ad817bc43472fbf49f8" category="list-text">の初期準備要件、キットの内容、および安全上の注意事項 <block ref="68653a00888238590f65028b21764ae9" category="inline-link-macro-rx"></block>。</block>
   <block id="72f88d930a53e783f0262d218e3c5d3c" category="list-text">各スイッチについて、8個の10-32または12-24ネジとクリップナットで、ブラケットとスライダレールを前面および背面のキャビネットポストに取り付けます。</block>
@@ -3508,7 +3467,6 @@
   <block id="d372b5993852e5fcd13774ff6d442ef6" category="list-text">手順を繰り返します <block ref="aa6048c113ff8f7e2716bc5a5cbbd5d4" category="inline-xref-macro-rx"></block> 右側リヤポスト用。</block>
   <block id="64e83e4557dbf8dfd8cb98fc07acc1b4" category="paragraph"><block ref="ab999189278342fe22cdb57d13e768ab" category="inline-link-macro-rx"></block>。</block>
   <block id="71f5a93eca776f3223a87d3523ce52d8" category="paragraph">スイッチ名を63文字以内の英数字で入力します。</block>
-  <block id="1b9261a17b2793d1fa348fcdce0863ee" category="paragraph">ネットアップ対応バージョンのサポートソフトウェアをダウンロードする場合は、_NetApp Management Network Switch Reference Configuration File_もダウンロードし、以前に保存した構成とマージする必要があります。ファイルと手順は、からダウンロードできます<block ref="91aaf2f14ce017094691ed108f35b756" category="inline-link-rx"></block> ページ</block>
   <block id="95f749c32572d23c36c0f33b9f48fa88" category="inline-link-macro">Cisco Nexus 9336C-FX2スイッチをネットアップキャビネットに設置します</block>
   <block id="80f16525d7b1d7efe562fab354c53efe" category="paragraph">必要に応じて、を実行できます <block ref="a8c82b142f94f7d62d6e984faba746ca" category="inline-link-macro-rx"></block>。それ以外の場合は、に進みます <block ref="7be1885a02922674638042ed6280ba6b" category="inline-link-macro-rx"></block>。</block>
   <block id="e87b8cb8ca5f95ffd4513eaaf405e559" category="list-text">CiscoのWebサイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります。Cisco Nexus 3000 シリーズスイッチ</block>
@@ -3704,10 +3662,6 @@
   <block id="079b4ba0dd763c21408e99412798ff7b" category="paragraph">システムキャビネットを含むすべてのネットアップハードウェアの電源要件とサイト要件について説明し、関連するコネクタおよびケーブルオプションの情報とパーツ番号を記載します。</block>
   <block id="3d7b67107ab62f1ba7647d7f71e21e7d" category="paragraph">Broadcom対応BES-53248スイッチ_のポートライセンスを追加する方法</block>
   <block id="b1e6a082f60aae6bd5b63862087e8984" category="paragraph">ポートライセンスの追加に関する詳細情報を提供します。にアクセスします<block ref="652dcea6ca57beb1d11dc2f4bb08f5a8" category="inline-link-rx"></block>。</block>
-  <block id="834c9cf25896d0e8e1155bcd47d30a15" category="summary">BES-53248スイッチの設置とメンテナンスについては、OSのサポート、パーツ番号、構成要件、およびドキュメントの要件を確認してください。</block>
-  <block id="8593819c144c2a2ce810206970a5c7be" category="doc">概要と要件：BES-53248スイッチ</block>
-  <block id="21c14aede5215fb90baeafb94920857f" category="section-title">コンポーネントのパーツ番号を切り替えます</block>
-  <block id="dd2a270d46b6de5fa30967cb2fe61249" category="paragraph">BES-53248クラスタスイッチとONTAP クラスタをセットアップするには、特定のスイッチとコントローラのドキュメントが必要です。</block>
   <block id="086e3414d27dd4eda456c29fa97b5f6c" category="summary">次の手順に従って、BES-53248クラスタスイッチにイーサネットファブリックOS（EFOS）ソフトウェアをインストールします。</block>
   <block id="ae80de4c0477a1c32fdc86bbe008ce88" category="paragraph">EFOSソフトウェアには、イーサネットシステムおよびIPインフラシステムを開発するための高度なネットワーク機能とプロトコルのセットが含まれています。このソフトウェアアーキテクチャは、パケットの検査や分離を完全に行う必要があるアプリケーションを使用するあらゆるネットワーク組織のデバイスに適しています。</block>
   <block id="67f289221dc2b8315be57c85a28e0619" category="section-title">設置を準備</block>
@@ -3913,9 +3867,6 @@
   <block id="f1763dacc91922ffa978d054dfd1f86a" category="list-text">スイッチをブートします。</block>
   <block id="dccfac69359fbbc2d697ceff2f471768" category="paragraph">スイッチの初回ブート時に、次の初期セットアップに関する質問に適切な回答を入力します。</block>
   <block id="aae42f96c85f765e2daf91cfda78fbed" category="paragraph">サイトのセキュリティポリシーでは、有効にする応答とサービスを定義しています。</block>
-  <block id="5cc7848076482937d11b61240634ed7a" category="paragraph">ネットアップ対応バージョンのサポートソフトウェアをダウンロードする場合は、 NetApp Network Switch Reference Configuration File もダウンロードし、に保存した構成とマージする必要があります <block ref="6f5e80c5f38b7c17bfcb05f65cf8fc44" category="inline-xref-macro-rx"></block>。</block>
-  <block id="bca39608d42dd06cd48d84cb90bcb0ae" category="paragraph">ファイルと手順は、からダウンロードできます<block ref="5c27bdff6f5cc32ce77bb635aee5a3ec" category="inline-link-rx"></block> ページ</block>
-  <block id="02940b8528baa18ab229adf16971aad1" category="paragraph">独自のスイッチがある場合は、を参照してください<block ref="352cc6d5e14cbc28943a82cb55bedc13" category="inline-link-rx"></block> サイト</block>
   <block id="39f03c8807c9d36b2901f7198a4ae0c2" category="paragraph">構成に応じて、を実行できます <block ref="bd7e5f56c6474a1d0a59eeac0ce681d7" category="inline-link-macro-rx"></block>。それ以外の場合は、に進みます <block ref="16a9a5fa8979bab3106e7aad0dfd20d9" category="inline-link-macro-rx"></block>。</block>
   <block id="e0f95538095f3006db4ec3d4d022f616" category="summary">Cisco Nexus 9336C-FX2共有スイッチのインストールと設定の概要</block>
   <block id="c4081cf1ddd1a31c8c993d369968dbdb" category="paragraph">Cisco Nexus 9336C-FX2共有スイッチは、Cisco Nexus 9000プラットフォームの一部であり、ネットアップシステムキャビネットに設置できます。共有スイッチを使用すると、クラスタとストレージの機能を共有スイッチ構成に組み合わせることができ、共有クラスタとストレージリファレンス構成ファイルを使用できます。</block>
@@ -3945,8 +3896,6 @@
   <block id="bfc5294e5ec405aadbddd5d6b87ef37c" category="list-text">c1スイッチをシャットダウンします。</block>
   <block id="0e9098f369329f68f24cdf1947b5a673" category="list-text">[[step16]]クラスタが正常であることを確認します。</block>
   <block id="611b08d930d48a09d5b2a633fec085d8" category="doc">Cisco Nexus 9336C-FX2共有スイッチのコンポーネントとパーツ番号</block>
-  <block id="49274a22f777d8ee156d9a597e66731d" category="doc">概要と要件</block>
-  <block id="7a22fc80a0833e5d697b1429fc1b1020" category="section-title">Nexus 9336C-FX2の概要</block>
   <block id="aaa9a0d5919f5957251180d5a620f385" category="paragraph">2つの新しい共有スイッチを追加することで、直接接続ストレージを使用するスイッチレスクラスタから移行できます。</block>
   <block id="683b159b896f30df8627114e632f35d6" category="paragraph">使用する手順は、各コントローラに 2 つの専用クラスタネットワークポートがあるか、 1 つのクラスタポートがあるかによって異なります。ここで説明するプロセスは、すべてのノードで光ポートまたはTwinaxポートを使用しているものの、ノードでクラスタネットワークポートにオンボード10Gb BASE-T RJ45ポートが使用されている場合は、このスイッチではサポートされません。</block>
   <block id="331c391844ed254b61d20d8c72f4fb90" category="paragraph">ほとんどのシステムでは、各コントローラに 2 つの専用クラスタネットワークポートが必要です。を参照してください<block ref="5c27bdff6f5cc32ce77bb635aee5a3ec" category="inline-link-rx"></block> を参照してください。</block>
@@ -4203,9 +4152,6 @@
   <block id="6b7440a940de051fd62b68b3fd600735" category="doc">Cisco Nexus 92300YCスイッチの構成要件</block>
   <block id="8917a30f03f4abae51ca9229e01f580d" category="paragraph">Cisco Nexus 92300YCスイッチの設置とメンテナンスについては、すべての構成要件とネットワーク要件を確認してください。</block>
   <block id="d0cbcb031a5b57d5da00e038ff554757" category="list-text">のスイッチ互換性の表を参照してください<block ref="eea3e069983adcbba5050ccdef577ded" category="inline-link-rx"></block> サポートされている ONTAP 、 NX-OS 、および RCF のバージョンに対応したページです。</block>
-  <block id="3cd6cf1ddcb9cbb3fdccae78cac22205" category="doc">概要と要件：Cisco Nexus 92300YCスイッチ</block>
-  <block id="56ff75ac3271a4d12336e888f7c3fc0c" category="paragraph">Cisco Nexus 92300YCスイッチの設置とメンテナンスについては、すべての要件と推奨されたドキュメントを確認してください。</block>
-  <block id="56cfe07bba5e5bd0c1c2e82679c82db5" category="paragraph">Cisco Nexus 92300YCスイッチとONTAP クラスタを設定するには、特定のスイッチとコントローラのドキュメントが必要です。</block>
   <block id="fcd690b297e7e3c7cf5c4f955d666313" category="doc">それよりも前のモデル</block>
   <block id="1a92cf34ae749613ec6e73e2cb76ed75" category="paragraph">これらのリンクから、以前のモデルのクラスタスイッチおよびstprageスイッチのドキュメントを参照できます。リンクをクリックすると、別のドキュメントサイトにアクセスできます。</block>
   <block id="d1059cc15870b94d15f8576dff3bde50" category="list-text"><block ref="b450a925c158be20e54006429377daec" category="inline-link-rx"></block></block>
@@ -4325,4 +4271,18 @@
   <block id="f179eebc625c94b5b94fc136b78506e5" category="inline-link-macro">リファレンス構成ファイルをインストールします</block>
   <block id="67bea00aeda47411a539357c5eea36bd" category="list-text"><block ref="67bea00aeda47411a539357c5eea36bd" category="inline-link-macro-rx"></block></block>
   <block id="a4cc27f030d5855528a867889ecb752b" category="list-text"><block ref="a4cc27f030d5855528a867889ecb752b" category="inline-link-macro-rx"></block></block>
+  <block id="0b12903428200835d01a68c020062f58" category="inline-link">NVIDIAイーサネットスイッチ</block>
+  <block id="cce7d8d927747eb9a2c6b20af69fbb8a" category="list-text">Cumulus Linux（CL）OSバージョン4.4.3。最新の互換性情報については、を参照してください<block ref="f6aa36fb7711a9179cbd2c4c52b8d6ef" category="inline-link-rx"></block> 情報ページ。</block>
+  <block id="6bb3008abc00d2a0fe4d634f0b89831e" category="list-text">Cumulus Linuxは、スイッチがCumulus LinuxまたはONIEを実行しているときにインストールできます。</block>
+  <block id="8f77c20cd9bd8afa1521eb15ea44a8ef" category="list-text">Cumulus Linux 4.4.3がインストールされています。</block>
+  <block id="2da5e3ee5bdcbc1a5443b42db962c1bb" category="list-text">Cumulus Linux 4.4.3をインストールします。</block>
+  <block id="d639f69fd7b303cd7aefe025e7d76848" category="list-text">Cumulus Linuxのバージョンが4.4.3であることを確認します。</block>
+  <block id="4a4b6084f06cc45c6f17ae2aa9bd4dc4" category="inline-link">シスコソフトウェアのダウンロード</block>
+  <block id="0a6aaed7ba5c231511f7822eac6c4607" category="list-text">該当するNX-OSバージョン（からダウンロード）<block ref="f823faeecc1cbb37f2d732cc29c07d86" category="inline-link-rx"></block> ページ</block>
+  <block id="b27df45c7b9d2b8ac8126550ac4038eb" category="list-text">クラスタネットワークスイッチのバージョンを確認し、必要に応じてからネットアップ対応バージョンのソフトウェアをスイッチにダウンロードします<block ref="f823faeecc1cbb37f2d732cc29c07d86" category="inline-link-rx"></block> ページ</block>
+  <block id="23ff17cc831acddb66c70196f1a8295f" category="paragraph">この手順 では、動作可能なInter-Switch Link（ISL；スイッチ間リンク）は必要ありません。RCFのバージョンを変更するとISL接続に一時的に影響する可能性があるため、これは設計上の変更です。クラスタのノンストップオペレーションを実現するために、次の手順 は、ターゲットスイッチでの手順の実行中に、すべてのクラスタLIFを動作しているパートナースイッチに移行します。</block>
+  <block id="c00379eb260028495e53ff62fa9b3a5a" category="inline-link">シスコソフトウェアのダウンロード</block>
+  <block id="03f4e394a093a045e6047871ed96a882" category="list-text">該当するNX-OSバージョン（からダウンロード）<block ref="5a1c929e557009655aef79d819d791d1" category="inline-link-rx"></block> ページ</block>
+  <block id="c5490cef816a5fdfd03bfbae460638f5" category="paragraph"><block ref="c5490cef816a5fdfd03bfbae460638f5" category="inline-link-macro-rx"></block></block>
+  <block id="674dac01986b07db44266812735775f6" category="paragraph">必要に応じて、を実行できます <block ref="2243efeaee625d6b6076bcdcbd40e014" category="inline-link-macro-rx"></block>。それ以外の場合は、に進みます <block ref="16a9a5fa8979bab3106e7aad0dfd20d9" category="inline-link-macro-rx"></block>。</block>
 </blocks>
