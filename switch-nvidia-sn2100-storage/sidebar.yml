@@ -38,7 +38,5 @@ entries:
   entries:
   - title: Ciscoストレージスイッチから移行
     url: "/switch-nvidia-sn2100/migrate-cisco-storage-switch-sn2100-storage.html"
-  - title: 2ノードスイッチクラスタに移行する
-    url: "/switch-nvidia-sn2100/migrate-2n-switched-sn2100-storage.html"
 - title: スイッチを交換します
   url: "/switch-nvidia-sn2100/replace-sn2100-switch-storage.html"

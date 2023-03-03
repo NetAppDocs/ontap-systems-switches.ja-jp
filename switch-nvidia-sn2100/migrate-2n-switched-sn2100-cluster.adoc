@@ -44,6 +44,9 @@ IMPORTANT: を参照してください link:cabling-considerations-sn2100-cluste
 ** SN2100スイッチは、最新バージョンのCumulus Linuxを実行しています
 ** リファレンス構成ファイル（RCF）がスイッチに適用されます
 ** SMTP、SNMP、SSHなどのサイトのカスタマイズは、新しいスイッチで設定します。
++
+。 https://hwu.netapp.com["Hardware Universe"^] プラットフォームの実際のクラスタポートに関する最新情報が含まれます。
+
 
 
 
