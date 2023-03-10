@@ -208,6 +208,10 @@ Enable Switchless Cluster: true
 +
 「 cluster ping-cluster -node local 」を参照してください
 
++
+
+IMPORTANT: 次の手順に進む前に、少なくとも2分待ってグループ1でバックツーバック接続が機能していることを確認する必要があります。
+
 . グループ2のポートにスイッチレス構成を設定します。
 +
 
