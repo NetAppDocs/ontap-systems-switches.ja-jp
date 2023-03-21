@@ -40,7 +40,9 @@ entries:
     url: "/switch-cisco-9336c-fx2/migrate-to-9336-cluster.html"
   - title: 2ノードスイッチクラスタに移行する
     url: "/switch-cisco-9336c-fx2/migrate-to-2n-switched-9336-cluster.html"
-  - title: 2ノードスイッチレスクラスタに移行する
+- title: スイッチを交換します
+  entries:
+  - title: クラスタスイッチを交換します
+    url: "/switch-cisco-9336c-fx2/replace-9336c-cluster.html"
+  - title: クラスタスイッチをスイッチレス接続に交換します
     url: "/switch-cisco-9336c-fx2/migrate-to-switchless-interconnect-9336-cluster.html"
-- title: クラスタスイッチを交換します
-  url: "/switch-cisco-9336c-fx2/replace-9336c-cluster.html"

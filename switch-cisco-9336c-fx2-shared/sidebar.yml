@@ -42,7 +42,5 @@ entries:
     url: "/switch-cisco-9336c-fx2-shared/migrate-from-switchless-configuration-sat-storage.html"
   - title: スイッチドSATクラスタからの移行
     url: "/switch-cisco-9336c-fx2-shared/migrate-from-switched-cluster-sat-storage.html"
-  - title: 2ノードスイッチレスクラスタに移行する
-    url: "/switch-cisco-9336c-fx2-shared/migrate-to-switchless-cluster-interconnect.html"
 - title: スイッチを交換します
   url: "/switch-cisco-9336c-fx2-shared/replace-9336c-fx2-shared.html"

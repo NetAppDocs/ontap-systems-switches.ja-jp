@@ -36,11 +36,11 @@ entries:
     url: "/switch-cisco-3132q-v/replace-cn1610-with-cisco-nexus-3232c.html"
   - title: スイッチレスクラスタからスイッチクラスタに移行する
     url: "/switch-cisco-3132q-v/migrate-from-switchless-cluster-to-cisco-nexus-3132q-v.html"
-  - title: スイッチレスクラスタからスイッチレスクラスタに移行する
-    url: "/switch-cisco-3132q-v/migrate-to-switchless-cluster-interconnect.html"
 - title: スイッチを交換します
   entries:
   - title: 要件を交換
     url: "/switch-cisco-3132q-v/switch-requirements.html"
   - title: CN3132Q-Vスイッチを交換します
     url: "/switch-cisco-3132q-v/replace-cisco-nexus-3132q-v.html"
+  - title: クラスタスイッチをスイッチレス接続に交換します
+    url: "/switch-cisco-3132q-v/migrate-to-switchless-cluster-interconnect.html"

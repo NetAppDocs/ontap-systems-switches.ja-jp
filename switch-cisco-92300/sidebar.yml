@@ -36,7 +36,9 @@ entries:
     url: "/switch-cisco-92300/migrate-to-2n-switched.html"
   - title: 古いCiscoスイッチからの移行
     url: "/switch-cisco-92300/migrate-to-92300yc.html"
-  - title: 2ノードスイッチレスクラスタに移行する
-    url: "/switch-cisco-92300/migrate-to-switchless-cluster-interconnect.html"
 - title: スイッチを交換します
-  url: "/switch-cisco-92300/replace-92300yc.html"
+  entries:
+  - title: スイッチを交換します
+    url: "/switch-cisco-92300/replace-92300yc.html"
+  - title: クラスタスイッチをスイッチレス接続に交換します
+    url: "/switch-cisco-92300/migrate-to-switchless-cluster-interconnect.html"

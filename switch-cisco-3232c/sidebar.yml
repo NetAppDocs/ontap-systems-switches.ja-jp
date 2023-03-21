@@ -38,13 +38,13 @@ entries:
     url: "/switch-cisco-3232c/migrate-from-cisco-nexus-5596.html"
   - title: 2ノードスイッチレスクラスタから移行する
     url: "/switch-cisco-3232c/migrate-from-two-node-switchless-cluster.html"
-  - title: 2ノードスイッチレスクラスタに移行する
-    url: "/switch-cisco-3232c/migrate-to-switchless-cluster-interconnect.html"
 - title: スイッチを交換します
   entries:
   - title: クラスタスイッチを交換します
     url: "/switch-cisco-3232c/replace-cluster-switch.html"
   - title: ストレージスイッチを交換します
     url: "/switch-cisco-3232c/replace-storage-switch.html"
+  - title: クラスタスイッチをスイッチレス接続に交換します
+    url: "/switch-cisco-3232c/migrate-to-switchless-cluster-interconnect.html"
 - title: スイッチをアップグレードします
   url: "/switch-cisco-3232c/upgrade-3232c-storage-switches.html"

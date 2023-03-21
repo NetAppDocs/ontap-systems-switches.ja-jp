@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: migrate, switchless cluster interconnect, cisco nexus 3132q-v 
 summary: ONTAP 9.3以降では、スイッチクラスタネットワークを使用するクラスタから2つのノードが直接接続されたクラスタに移行できます。 
 ---
-= Cisco Nexus 3132Q-Vクラスタスイッチを使用した2ノードスイッチレスクラスタへの移行
+= Cisco Nexus 3132Q-Vクラスタスイッチをスイッチレス接続に置き換えます
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -252,6 +252,10 @@ Enable Switchless Cluster: true
 . クラスタネットワークが中断しないことを確認します。
 +
 「 cluster ping-cluster -node local 」を参照してください
+
++
+
+IMPORTANT: 次の手順に進む前に、少なくとも2分待ってグループ1でバックツーバック接続が機能していることを確認する必要があります。
 
 . グループ2のポートにスイッチレス構成を設定します。
 +

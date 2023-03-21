@@ -40,7 +40,9 @@ entries:
     url: "/switch-nvidia-sn2100/migrate-cisco-sn2100-cluster-switch.html"
   - title: 2ノードスイッチクラスタに移行する
     url: "/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html"
-  - title: 2ノードスイッチレスクラスタに移行する
+- title: スイッチを交換します
+  entries:
+  - title: クラスタスイッチを交換します
+    url: "/switch-nvidia-sn2100/replace-sn2100-switch-cluster.html"
+  - title: クラスタスイッチをスイッチレス接続に交換します
     url: "/switch-nvidia-sn2100/migrate-to-switchless-interconnect-sn2100-cluster.html"
-- title: クラスタスイッチを交換します
-  url: "/switch-nvidia-sn2100/replace-sn2100-switch-cluster.html"
