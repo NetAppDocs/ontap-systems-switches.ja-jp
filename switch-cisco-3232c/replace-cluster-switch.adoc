@@ -75,7 +75,7 @@ Cisco Ethernet Switches のページに、スイッチ上の最新の RCF およ
 
 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
 
-この交換用手順 の例では4ノードを使用します。2 つのノードが 4 つの 10GB クラスタインターコネクトポートを使用します： e0a 、 e0b 、 e0c 、 e0d他の 2 つのノードは、それぞれ 4 GB のクラスタ・インターコネクト・ポートを 2 つ使用します。を参照してください link:https://hwu.netapp.com/SWITCH/INDEX.html["Hardware Universe"^] 使用するプラットフォームに適したクラスタポートを確認します。
+この交換用手順 の例では4ノードを使用します。2 つのノードが 4 つの 10GB クラスタインターコネクトポートを使用します： e0a 、 e0b 、 e0c 、 e0d他の 2 つのノードは、それぞれ 4 GB のクラスタ・インターコネクト・ポートを 2 つ使用します。を参照してください link:https://hwu.netapp.com["Hardware Universe"^] 使用するプラットフォームに適したクラスタポートを確認します。
 
 
 

@@ -19,7 +19,7 @@ BES-53248クラスタスイッチの初期セットアップを実行するに�
 +
 ** link:configure-reqs-bes53248.html["設定要件"]
 ** link:components-bes53248.html["コンポーネントとパーツ番号"]
-** link:required-documentation-53248.html["ドキュメントの要件"]
+** link:required-documentation-bes53248.html["ドキュメントの要件"]
 
 
 

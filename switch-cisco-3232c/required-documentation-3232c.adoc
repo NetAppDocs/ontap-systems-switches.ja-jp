@@ -129,7 +129,7 @@ https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["『 42U System Cab
 
 
  a| 
-link:task-install-a-cisco-nexus-3232c-cluster-switch-and-pass-through-panel-in-a-netapp-cabinet.html["Cisco Nexus 3232Cスイッチをネットアップキャビネットに設置"^]
+link:install-cisco-nexus-3232c.html["Cisco Nexus 3232Cスイッチをネットアップキャビネットに設置"^]
  a| 
 Cisco Nexus 3232C スイッチを 4 ポストのネットアップキャビネットに設置する方法について説明します。
 

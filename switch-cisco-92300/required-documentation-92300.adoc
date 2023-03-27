@@ -129,7 +129,7 @@ https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["『 42U System Cab
 
 
  a| 
-link:install-switch-and-passthrough-panel.html["Cisco Nexus 92300YCスイッチをネットアップキャビネットに設置します"]
+link:install-cisco-nexus-3132qv.html["[Cisco Nexus 92300YCスイッチをネットアップキャビネットに設置します"]
  a| 
 Cisco Nexus 92300YCスイッチを4ポストネットアップキャビネットに設置する方法について説明します。
 

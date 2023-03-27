@@ -89,7 +89,7 @@ node2
 ====
 
 
-. [[step6] 共有スイッチ A のストレージ RCF を共有 RCF ファイルに置き換えます。を参照してください link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします"] を参照してください。
+. [[step6] 共有スイッチ A のストレージ RCF を共有 RCF ファイルに置き換えます。を参照してください link:install-nxos-rcf-9336c-shared.html["Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします"] を参照してください。
 . HAペア1のストレージスイッチAに接続されているストレージが正常であることを確認します。
 +
 `system health alert show -instance`
@@ -125,7 +125,7 @@ There are no entries matching your query.
 ====
 
 
-. [[step12]] 共有スイッチ B のストレージ RCF ファイルを共有 RCF ファイルで置き換えます。を参照してください link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします"] を参照してください。
+. [[step12]] 共有スイッチ B のストレージ RCF ファイルを共有 RCF ファイルで置き換えます。を参照してください link:install-nxos-rcf-9336c-shared.html["Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします"] を参照してください。
 . HAペア1に接続されたストレージが正常であること、ストレージスイッチBが正常であることを確認します。
 +
 `system health alert show -instance`
@@ -203,7 +203,7 @@ sh1 (config)# *exit*
 ====
 
 
-. [step16] スイッチ交換用の手順と共有の RCF を使用して、既存のクラスタスイッチから共有スイッチにクラスタネットワークを移行します。新しい共有スイッチ A は「 cs1 」です。新しい共有スイッチ B は「 cs2 」です。を参照してください link:9336c_replace_a_cisco_nexus_9336c-fx2_shared_switch.html["Cisco Nexus 9336C-FX2 共有スイッチを交換します"] および link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします"] を参照してください。
+. [step16] スイッチ交換用の手順と共有の RCF を使用して、既存のクラスタスイッチから共有スイッチにクラスタネットワークを移行します。新しい共有スイッチ A は「 cs1 」です。新しい共有スイッチ B は「 cs2 」です。を参照してください link:replace-9336c-fx2-shared.html["Cisco Nexus 9336C-FX2 共有スイッチを交換します"] および link:install-nxos-rcf-9336c-shared.html["Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします"] を参照してください。
 . スイッチネットワーク設定が有効であることを確認します。
 +
 「 network port show 」のように表示されます

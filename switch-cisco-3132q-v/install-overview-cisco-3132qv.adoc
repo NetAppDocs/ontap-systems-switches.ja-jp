@@ -20,7 +20,7 @@ AFF またはFAS クラスタでは、Cisco Nexus 3132Q-Vスイッチをクラ�
 ONTAP を実行しているシステムでCisco Nexus 3132Q-Vスイッチを初期設定するには、次の手順を実行します。
 
 . link:setup_worksheet_3132q.html["Cisco Nexus 3132Q-Vケーブル接続ワークシートの記入"]。ケーブル接続ワークシートの例には、スイッチからコントローラへの推奨されるポート割り当ての例が示されています。空白のワークシートには、クラスタのセットアップに使用できるテンプレートが用意されています。
-. link:install-cisco-nexus-3232c.html["Cisco Nexus 3132Q-Vクラスタスイッチをネットアップキャビネットに設置します"]。Cisco Nexus 3132Q-Vスイッチとパススルーパネルを、スイッチに付属の標準ブラケットを使用してネットアップキャビネットに設置します。
+. link:install-cisco-nexus-3132qv.html["Cisco Nexus 3132Q-Vクラスタスイッチをネットアップキャビネットに設置します"]。Cisco Nexus 3132Q-Vスイッチとパススルーパネルを、スイッチに付属の標準ブラケットを使用してネットアップキャビネットに設置します。
 . link:setup-switch.html["Cisco Nexus 3132Q-Vスイッチを設定します"]。Cisco Nexus 3132Q-Vスイッチを設定および設定します。
 . link:prepare-install-cisco-nexus-3132q.html["NX-OSソフトウェアおよびリファレンス構成ファイルをインストールする準備をします"]。NX-OSソフトウェアとRCFをインストールするための準備をします。
 . link:install-nx-os-software-3132q-v.html["NX-OS ソフトウェアをインストールします"]。この手順 に従って、Nexus 3132Q-VクラスタスイッチにNX-OSソフトウェアをインストールします。

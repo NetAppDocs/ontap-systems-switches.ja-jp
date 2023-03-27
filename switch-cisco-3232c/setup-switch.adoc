@@ -18,7 +18,7 @@ Cisco Nexus 3232Cスイッチをセットアップおよび設定するには、
 * 該当するNX-OSバージョン（からダウンロード） https://software.cisco.com/download/home["シスコソフトウェアのダウンロード"^] ページ
 * 必要なクラスタネットワークおよび管理ネットワークスイッチのドキュメント
 +
-を参照してください xref:setup-required-documentation.adoc[必要なドキュメント] を参照してください。
+を参照してください link:required-documentation-3232c.html["必要なドキュメント"] を参照してください。
 
 * 必要なコントローラのドキュメントとONTAP のドキュメント
 +

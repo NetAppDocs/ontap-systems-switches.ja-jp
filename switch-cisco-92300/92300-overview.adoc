@@ -79,7 +79,7 @@ Cisco Nexus 92300YC スイッチの通気の詳細：
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-9336c-fx2/setup-switches.html["_ Cisco ® Nexus 92300YC クラスタスイッチをセットアップします"^]
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/install-overview-cisco-92300.html["_ Cisco ® Nexus 92300YC クラスタスイッチをセットアップします"^]
  a| 
 Cisco Nexus 92300YC クラスタスイッチをセットアップおよび設定する方法について説明します。
 
@@ -93,7 +93,7 @@ Nexus 92300YC クラスタスイッチに NX-OS とリファレンス構成フ�
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/configure-overview.html["新しい Cisco Nexus 92300YC スイッチを構成 _"^]
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/configure-install-initial.html["新しい Cisco Nexus 92300YC スイッチを構成 _"^]
  a| 
 古い Cisco スイッチを使用する環境から Cisco 92300YC スイッチを使用する環境に移行する方法について説明します。
 

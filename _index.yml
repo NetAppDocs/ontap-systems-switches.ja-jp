@@ -25,7 +25,7 @@ indexpage:
     - title: AFF / FASハードウェアシステム
       url: https://docs.netapp.com/us-en/ontap-systems/index.html
     - title: ONTAP ソフトウェア
-      url: https://docs.netapp.com/us-en/ontap/index.htmly/
+      url: https://docs.netapp.com/us-en/ontap/index.html
   - title: ツールのサポート
     links:
     - title: NetApp Interoperability Matrix を参照してください

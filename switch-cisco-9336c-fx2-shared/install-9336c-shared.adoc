@@ -31,4 +31,4 @@ Cisco Nexus 9336C-FX2共有スイッチを設定するには、次の手順に�
 
 
 .次の手順
-に進みます link:.setup-and-configure-9336c-shared.html["Cisco Nexus 9336C-FX2共有スイッチを設定します"]。
+に進みます https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-9336c-fx2-shared/setup-and-configure-9336c-shared.html["Cisco Nexus 9336C-FX2共有スイッチを設定します"]。

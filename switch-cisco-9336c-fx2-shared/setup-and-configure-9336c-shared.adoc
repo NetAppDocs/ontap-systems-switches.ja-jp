@@ -134,4 +134,4 @@ NOTE: この段階で設定を保存しないと、次回スイッチをリブ�
 
 
 .次の手順
-構成に応じて、を実行できます link:install-switch-and-passthrough-panel-9336c-shared.html["ネットアップキャビネットにスイッチを設置"]。それ以外の場合は、に進みます link:install-nxos-overview-9336c-storage.html["NX-OSおよびRCFのインストールを準備します"]。
+構成に応じて、を実行できます link:install-switch-and-passthrough-panel-9336c-shared.html["ネットアップキャビネットにスイッチを設置"]。それ以外の場合は、に進みます link:prepare-nxos-rcf-9336c-shared.html["NX-OSおよびRCFのインストールを準備します"]。

@@ -13,7 +13,7 @@ summary: この手順を使用して、 Nexus 9336C-FX2 クラスタスイッチ
 [role="lead"]
 Nexus 9336C-FX2共有スイッチにNX-OSソフトウェアをインストールするには、次の手順 に従います。
 
-作業を開始する前に、の手順 を完了します link:install-nxos-overview-9336c-shared.html["NX-OSおよびRCFのインストールを準備します"]。
+作業を開始する前に、の手順 を完了します link:prepare-nxos-rcf-9336c-shared.html["NX-OSおよびRCFのインストールを準備します"]。
 
 
 
@@ -369,4 +369,4 @@ GEM  FPGA                        0x2
 
 
 .次の手順
-link:install-nxos-rcf-9336c-shared.html["RCF構成ファイルをインストールします"]。
+link:install-nxos-rcf-9336c-shared.html["RCF構成ファイルをインストールします"]

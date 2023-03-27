@@ -43,6 +43,6 @@ summary: 古い Cisco Nexus クラスタスイッチを Cisco Nexus 92300YC ク�
 * この手順 でサポートされている ONTAP と NX-OS のバージョンはにあります https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^] ページ
 +
 
-NOTE: 移行が完了したあと、 92300YC クラスタスイッチのクラスタスイッチヘルスモニタ（ CSHM ）をサポートするために必要な構成ファイルのインストールが必要になる場合があります。の 92300YC スイッチ用クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルのインストールを参照してください link:../com.netapp.doc.hw-sw-cisco-setup/home.html["セットアップ中です"] ガイド
+NOTE: 移行が完了したあと、 92300YC クラスタスイッチのクラスタスイッチヘルスモニタ（ CSHM ）をサポートするために必要な構成ファイルのインストールが必要になる場合があります。を参照してください link:setup-install-cshm-file.html["クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします"] を参照してください。
 
 
