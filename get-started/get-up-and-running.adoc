@@ -15,16 +15,15 @@ summary: クラスタ、ストレージ、および共有スイッチについ�
 
 スイッチを導入するには、次のワークフローを実行します。
 
-
-
-== 手順1：AFF / FASコントローラを取り付ける
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"] AFF / FASコントローラを設置
+[role="quick-margin-para"]
 AFF / FASコントローラをラックまたはキャビネットに設置します。使用しているAFF / FASプラットフォームモデルの設置とセットアップの手順書を参照します。
 
-[cols="9,9,9"]
+[cols="4,9,9,9"]
 |===
 
 
+ a| 
  a| 
 .AFF システム
 * https://docs.netapp.com/us-en/ontap-systems/c190/install-setup.html["AFF C190"]
@@ -46,16 +45,15 @@ AFF / FASコントローラをラックまたはキャビネットに設置し�
  a| 
 
 |===
-
-
-== 手順2：スイッチハードウェアを設置する
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"] スイッチハードウェアを設置します
+[role="quick-margin-para"]
 スイッチをラックまたはキャビネットに設置します。使用しているスイッチモデルに応じて、次の手順に従ってください。
 
-[cols="9,9,9"]
+[cols="2,9,9,9"]
 |===
 
 
+ a| 
  a| 
 .クラスタスイッチ
 * link:../switch-bes-53248/install-hardware-bes53248.html["BES-53248スイッチを設置します"]
@@ -73,16 +71,15 @@ AFF / FASコントローラをラックまたはキャビネットに設置し�
 
 
 |===
-
-
-== 手順3：スイッチをコントローラにケーブル接続します
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]スイッチをコントローラにケーブル接続します
+[role="quick-margin-para"]
 AFF / FASのインストールとセットアップの手順には、コントローラポートをスイッチにケーブル接続する手順が含まれています。ただし、サポートされるケーブルとトランシーバのリスト、およびスイッチのホストポートの詳細情報が必要な場合は、使用しているスイッチモデルに対応する次の手順を参照してください。
 
-[cols="9,9,9"]
+[cols="2,9,9,9"]
 |===
 
 
+ a| 
  a| 
 .クラスタスイッチ
 * link:../switch-bes-53248/configure-reqs-bes53248.html#configuration-requirements["BES-53248スイッチをケーブル接続します"]
@@ -100,16 +97,15 @@ AFF / FASのインストールとセットアップの手順には、コント�
 
 
 |===
-
-
-== 手順4：スイッチを設定します
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]スイッチを設定します
+[role="quick-margin-para"]
 スイッチの初期セットアップを実行します。使用しているスイッチモデルに応じて、次の手順に従ってください。
 
-[cols="9,9,9"]
+[cols="2,9,9,9"]
 |===
 
 
+ a| 
  a| 
 .クラスタスイッチ
 * link:../switch-bes-53248/configure-install-initial.html["BES-53248スイッチを設定します"]
@@ -127,16 +123,15 @@ AFF / FASのインストールとセットアップの手順には、コント�
 
 
 |===
-
-
-== 手順5：スイッチソフトウェアをインストールする
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"] スイッチソフトウェアをインストールします
+[role="quick-margin-para"]
 スイッチにソフトウェアをインストールして設定するには、使用しているスイッチモデルのソフトウェアインストールワークフローに従います。
 
-[cols="9,9,9"]
+[cols="2,9,9,9"]
 |===
 
 
+ a| 
  a| 
 .クラスタスイッチ
 * link:../switch-bes-53248/configure-software-overview-bes53248.html["BES-53248スイッチのソフトウェアをインストールします"]
@@ -154,16 +149,15 @@ AFF / FASのインストールとセットアップの手順には、コント�
 
 
 |===
-
-
-== 手順6：システムのセットアップを完了する
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["6"] システムのセットアップを完了します
+[role="quick-margin-para"]
 スイッチを設定して必要なソフトウェアをインストールしたら、お使いのAFF / FASプラットフォームモデルのインストールとセットアップの手順書にアクセスして、システムのセットアップを完了します。
 
-[cols="9,9,9"]
+[cols="4,9,9,9"]
 |===
 
 
+ a| 
  a| 
 .AFF システム
 * https://docs.netapp.com/us-en/ontap-systems/c190/install-setup.html["AFF C190"]
@@ -185,12 +179,11 @@ AFF / FASのインストールとセットアップの手順には、コント�
  a| 
 
 |===
-
-
-== 手順7：ONTAP の設定を完了します
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["7"] ONTAP の設定を完了します
+[role="quick-margin-para"]
 AFF / FASコントローラとスイッチを設置してセットアップしたら、ONTAP でストレージの設定を完了する必要があります。導入環境の設定に応じて、次の手順を参照してください。
 
+[role="quick-margin-list"]
 * ONTAP の導入については、を参照してください https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["ONTAP を設定します"]。
 * MetroCluster を使用したONTAP の導入については、を参照してください https://docs.netapp.com/us-en/ontap-metrocluster/["ONTAP を使用してMetroCluster を設定します"]。
 
