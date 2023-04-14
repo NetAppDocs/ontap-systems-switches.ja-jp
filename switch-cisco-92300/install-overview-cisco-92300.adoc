@@ -4,16 +4,16 @@ sidebar: sidebar
 keywords: install, cisco nexus 92300 switch, 
 summary: Cisco Nexus 92300スイッチを設定する前に、プロセスの概要と名称を確認してください。 
 ---
-= Cisco Nexus 92300スイッチのインストールと設定の概要
+= Cisco Nexus 92300YCスイッチの設置と設定の概要
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 92300スイッチを設定する前に、手順 の概要を確認します。
+Cisco Nexus 92300YCスイッチを設定する前に、手順 の概要を確認してください。
 
-ONTAP を実行しているシステムでCisco Nexus 92300スイッチを初期設定する手順は、次のとおりです。
+ONTAP を実行しているシステムでCisco Nexus 92300YCスイッチを初期設定する手順は、次のとおりです。
 
 . link:setup-worksheet-92300yc.html["Cisco Nexus 92300YCケーブル接続ワークシートに記入します"]。ケーブル接続ワークシートの例には、スイッチからコントローラへの推奨されるポート割り当ての例が示されています。空白のワークシートには、クラスタのセットアップに使用できるテンプレートが用意されています。
 . link:configure-install-initial.html["Cisco Nexus 92300YCスイッチを構成します"]。Cisco Nexus 92300YCスイッチをセットアップして構成します。

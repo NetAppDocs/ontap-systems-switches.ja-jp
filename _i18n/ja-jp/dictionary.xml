@@ -4039,9 +4039,6 @@
   <block id="4db4d99be4b5b2288798925cd1faeda3" category="list-text">スイッチの初期カスタマイズが完了しました。詳細については、を参照してください。 <block ref="f0d24ec92e2951fca3ce05ded916eb30" category="inline-link-macro-rx"></block>。</block>
   <block id="2367f63a291e7e1383961daf65d8b44f" category="example-title">トポロジを表示します</block>
   <block id="255c4d8b5fe19006ce3e32d6abe4c5dd" category="summary">Cisco Nexus 92300スイッチを設定する前に、プロセスの概要と名称を確認してください。</block>
-  <block id="69614c5d5f9b9621dc6f19eb2e11553a" category="doc">Cisco Nexus 92300スイッチのインストールと設定の概要</block>
-  <block id="c5576d656ffb0b43f469f79ee2d05339" category="paragraph">Cisco Nexus 92300スイッチを設定する前に、手順 の概要を確認します。</block>
-  <block id="13c3fd465bc0082cbe1310f539553cfc" category="paragraph">ONTAP を実行しているシステムでCisco Nexus 92300スイッチを初期設定する手順は、次のとおりです。</block>
   <block id="ffbe1aba3ae8a278e4f28ac52b2be316" category="list-text"><block ref="d38e35e34a06630798f8736804a06d84" category="inline-link-macro-rx"></block>。ケーブル接続ワークシートの例には、スイッチからコントローラへの推奨されるポート割り当ての例が示されています。空白のワークシートには、クラスタのセットアップに使用できるテンプレートが用意されています。</block>
   <block id="71be1affbed75bebb8eb96c3572e9f1b" category="list-text"><block ref="f0d24ec92e2951fca3ce05ded916eb30" category="inline-link-macro-rx"></block>。Cisco Nexus 92300YCスイッチをセットアップして構成します。</block>
   <block id="1aaeb527f308dd42bbc5d35f0f59358b" category="list-text"><block ref="8b831959a634cc7821f2f066cbf13103" category="inline-link-macro-rx"></block>。NX-OSソフトウェアおよびRCFをインストールするための準備をします。</block>
@@ -4061,7 +4058,6 @@
   <block id="e617d80a2294adb5c3c62b25af747e57" category="inline-link-macro">クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします</block>
   <block id="a08609130428631761bac82d994b04c7" category="paragraph"><block ref="6f694a83f3a80cbdd0707c7c90c80946" category="inline-link-macro-rx"></block>。</block>
   <block id="06f7473ee7b667cf7e6c7384b4e91957" category="doc">Cisco Nexus 92300YCスイッチのコンポーネント</block>
-  <block id="cca2cd595451689ee569b5dab14cb718" category="paragraph">Cisco Nexus 92300YCスイッチの設置とメンテナンスについては、すべてのスイッチコンポーネントとパーツ番号を確認してください。</block>
   <block id="26961e618ecd01e172d0cc2829344d09" category="list-text">ポート側排気（標準エア）-冷気はコールドアイル内のファンモジュールと電源装置モジュールを介してシャーシに入り、ホットアイル内のシャーシのポート側から排気されます。ポート側排気は青色で示されています。</block>
   <block id="a65de0b2540eeae253ed86b6c80d5cd8" category="list-text">ポート側吸気（リバースエア）-冷気はコールドアイル内のポート側からシャーシに入り、ホットアイル内のファンモジュールと電源装置モジュールから排気されます。ポート側吸気は赤紫色で示されています。</block>
   <block id="c24412eff0fdd364ed38f42c78180f6d" category="list-text">既存のクラスタは完全に機能する。</block>
@@ -4296,4 +4292,8 @@
   <block id="6b7eaec843bb5fcdab1371328ab1e94c" category="admonition">10G/25G QSAを使用する場合は、ブレークアウトされていない40/100Gポートに挿入します。ブレークアウト用に設定されたポートにはQSAアダプタを挿入しないでください。</block>
   <block id="92f8e266fe70da4f6717e931d81faa46" category="section-title">ブレークアウトポートのインターフェイス速度を設定しています</block>
   <block id="577c386d1bb7bbffa59ac5c15182ada1" category="paragraph">スイッチポートのトランシーバによっては、スイッチインターフェイスの速度を固定速度に設定する必要があります。10Gおよび25Gブレークアウトポートを使用する場合は、自動ネゴシエーションがオフになっていることを確認し、スイッチのインターフェイス速度をハードセットします。例：</block>
+  <block id="5501293605b4b8c8957b68e1854b0f11" category="doc">Cisco Nexus 92300YCスイッチの設置と設定の概要</block>
+  <block id="c5fed3189b0ec4237029df463c0c1f64" category="paragraph">Cisco Nexus 92300YCスイッチを設定する前に、手順 の概要を確認してください。</block>
+  <block id="109e216a5aa6e526f504483738dabc7b" category="paragraph">ONTAP を実行しているシステムでCisco Nexus 92300YCスイッチを初期設定する手順は、次のとおりです。</block>
+  <block id="ed6ae629414abab8b0e9b2e8deadb8c2" category="paragraph">Cisco Nexus 92300YCスイッチの設置とメンテナンスについては、すべてのスイッチコンポーネントとパーツ番号を確認してください。を参照してください<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block> を参照してください。</block>
 </blocks>
