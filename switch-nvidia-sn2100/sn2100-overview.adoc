@@ -19,7 +19,7 @@ NVIDIA SN2100スイッチのインストールとメンテナンスについて�
 
 == ONTAP およびLinuxのサポート
 
-NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10/25/40/100Gbイーサネットスイッチです。スイッチは以下をサポートしています。
+NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10 / 25 / 40 / 100GbEスイッチです。スイッチは以下をサポートしています。
 
 * ONTAP 9.10.1P3SN2100スイッチは、ONTAP 9.10.1P3のクラスタおよびストレージアプリケーションに、異なるスイッチペアを提供します。ONTAP 9.10.1P3以降では、NVIDIA SN2100スイッチを使用してストレージとクラスタの機能を共有スイッチ構成に統合できます。
 * Cumulus Linux（CL）OSバージョン4.4.3。最新の互換性情報については、を参照してください https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIAイーサネットスイッチ"^] 情報ページ。
@@ -42,28 +42,28 @@ NVIDIA SN2100スイッチ（X190006/X190106）は、スイッチに付属の標�
  a| 
 X190006-PE
  a| 
-クラスタスイッチ、NVIDIA SN2100、16pt 100G、PTSX
+クラスタスイッチ、NVIDIA SN2100、16ポート100GbE、PTSX
 
 
 
  a| 
 X190006-PI
  a| 
-クラスタスイッチ、NVIDIA SN2100、16pt 100G、PSIN
+クラスタスイッチ、NVIDIA SN2100、16pt 100GbE、PSIN
 
 
 
  a| 
 X190106-FE-PEの実行
  a| 
-スイッチ、NVIDIA SN2100、16pt 100G、PTSX、フロントエンド
+スイッチ、NVIDIA SN2100、16ポート100GbE、PTSX、フロントエンド
 
 
 
  a| 
 X190106-FE-PIの実行
  a| 
-スイッチ、NVIDIA SN2100、16pt 100G、PSIN、フロントエンド
+スイッチ、NVIDIA SN2100、16ポート100GbE、PSIN、フロントエンド
 
 
 

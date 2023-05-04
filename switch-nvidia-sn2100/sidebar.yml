@@ -34,6 +34,8 @@ entries:
     url: "/switch-nvidia-sn2100/install-rcf-sn2100-cluster.html"
   - title: スイッチログ収集を設定します
     url: "/switch-nvidia-sn2100/install-snmpv3-sn2100-cluster.html"
+  - title: Cumulus Linuxバージョンをアップグレードします
+    url: "/switch-nvidia-sn2100/upgrade-cl-version.html"
 - title: スイッチを移行
   entries:
   - title: Ciscoクラスタスイッチから移行

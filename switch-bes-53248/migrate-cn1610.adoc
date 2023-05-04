@@ -681,22 +681,32 @@ node2      /cdp
 ----
 ====
 . 交換した CN1610 スイッチが自動的に削除されていない場合は、これらを削除します。
-+
+
+
+[role="tabbed-block"]
+====
+.ONTAP 9.8以降
+--
+`system switch ethernet delete -device _device-name_`
+
+[listing]
+----
+cluster::*> system switch ethernet delete –device CL2
+cluster::*> system switch ethernet delete –device CL1
+----
+--
+.ONTAP 9.4以降
+--
 「 system cluster-switch delete -DEVICE_DEVICE-name _ 」というメッセージが表示されます
 
-+
-.例を示します
-[%collapsible]
-====
-次に、 CN1610 スイッチを削除する例を示します。
-
-[listing, subs="+quotes"]
+[listing]
 ----
-cluster::*> *system cluster-switch delete –device CL2*
-cluster::*> *system cluster-switch delete –device CL1*
+cluster::*> system cluster-switch delete –device CL2
+cluster::*> system cluster-switch delete –device CL1
 ----
+--
 ====
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
+. [[step5]]ケースの自動作成を抑制した場合は、AutoSupport メッセージを呼び出して再度有効にします。
 +
 「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
 

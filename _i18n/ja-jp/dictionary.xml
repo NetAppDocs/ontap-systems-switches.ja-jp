@@ -51,7 +51,6 @@
   <block id="903944fca05d1da45a504e69ed5609fb" category="paragraph">内部 Web サーバの IP アドレスが 192.168.2.20 であり、 /usr/download ディレクトリが存在する場合は、 scp を使用して zip ファイルを Web サーバにアップロードできます。</block>
   <block id="ec633497488ed81a95ccbbbb57302ba3" category="list-text">コマンド「 set -privilege advanced 」を使用して、クラスタ内のいずれかの ONTAP システムから advanced モード設定にアクセスします。</block>
   <block id="f4ab3be3915b88f9d23c5faf297e78ff" category="list-text">コマンド出力に、ダウンロードされたパッケージが正常に処理されたことを示すテキスト文字列が含まれていることを確認します。エラーが発生した場合は、ネットアップサポートにお問い合わせください。</block>
-  <block id="77050d62a86740ca649977f25aae1ddc" category="list-text">ONTAP システムで「 system cluster-switch show 」コマンドを実行し、監視対象フィールドが「 True 」に設定された状態でクラスタスイッチが検出されたことを確認します。</block>
   <block id="51a85db8f6aec59d006c765375bbaf00" category="paragraph">デバッグ出力で、次の点を確認します。</block>
   <block id="4f48e724e702608d7b36977924dd560d" category="list-text">シリアル番号が「シリアル番号 QTFCU38290012 が一致していることを確認してください。</block>
   <block id="3414bc6468a1d2264e1c8fd336a50501" category="list-text">スイッチのモデルが「 M odel BES-53248 matched 」であることを確認します</block>
@@ -334,21 +333,9 @@
   <block id="470e1e7d03d4911b1e5ad8bf036ca8cb" category="inline-link">ネットアップの技術情報アーティクル：「 How to suppress automatic case creation during scheduled maintenance windows</block>
   <block id="b8d29742df41ef40fca1e44a7b490835" category="cell">パーツ番号</block>
   <block id="3a0aeae8d2331aaa16cf8b013ee0195b" category="paragraph">X190005</block>
-  <block id="1d0e61735e0e8e09d095959b09cdfb61" category="paragraph">BES-53248 、 CLSW 、 16Pt10/25GB 、 PTSX 、 BRDCM SUPP （ PTSX はポート側排気）</block>
   <block id="cedf09ac3086a8a21f249827087f6fad" category="paragraph">X190005R</block>
-  <block id="10423b6134c0596831c1217d026117a7" category="paragraph">BES-53248 、 CLSW 、 16Pt10/25GB 、 PSIN 、 BRDCM SUPP （ PSIN はポート側吸気）</block>
   <block id="58ed1751063f5f79d08b95e0c78237bb" category="paragraph">X-LEray-4POST-190005</block>
   <block id="26e197685e29b3f6ea5c61a20464ee66" category="paragraph">ラックマウントレールキット Ozeki 4 ポスト 19 インチ</block>
-  <block id="47aa7e8b4b2b7f2529efa5e4716bbdd8" category="paragraph">X-FAN-190005-R</block>
-  <block id="6340613a1b13022e5f4fed31c639404d" category="paragraph">ファン、ポート側吸気 X190005</block>
-  <block id="ad439ccfbefbdb29a34f19a94da31301" category="paragraph">X-FAN-190001-F</block>
-  <block id="f973643b15965b5150ad07cee65175d8" category="paragraph">ファン、ポート側排気 X190005</block>
-  <block id="b234a10d56bffab6344a3cd1dd181b4e" category="paragraph">X-PSA-190005-R</block>
-  <block id="87e8525c8d2aeafd7648d58f8610f6e2" category="paragraph">電源装置、ポート側吸気 X190005</block>
-  <block id="8b561f2608f0fdce807d1fcc0e6543af" category="paragraph">X-PSA-190001-F</block>
-  <block id="65e5c871ec7e036e5a539406da60f09e" category="paragraph">電源装置、ポート側排気 X190005</block>
-  <block id="303593f84fec47f3a4eba6f5b11c2a9c" category="list-text">ポート側排気（標準エア）：冷気はコールドアイル内のファンモジュールと電源装置モジュールを介してシャーシに入り、ホットアイル内のシャーシのポート側から排気されます。ポート側排気は青色で示されています。これが最も一般的なオプションです。</block>
-  <block id="f1de0d38246c0ccc0320480848ef1258" category="list-text">ポート側吸気（リバースエア）：冷気はコールドアイル内のポート側からシャーシに入り、ホットアイル内のファンモジュールと電源装置モジュールから排気されます。</block>
   <block id="088d99e43c55d66d91452773ea081e66" category="inline-link">Broadcom クラスタスイッチ</block>
   <block id="8e4984bab9d1ed958d954b97ee853c52" category="summary">BES-53248 クラスタスイッチポート割り当て表を参考にして、クラスタを設定できます。</block>
   <block id="dc3310fe82b8aa736508dff9756c1c6a" category="cell">スイッチポート</block>
@@ -2240,7 +2227,6 @@
   <block id="1f3f639615a80a1684771c8c14152509" category="paragraph">17-48</block>
   <block id="187c30e211ba48efba7ee0554dccaf17" category="paragraph">10 / 25GbEクラスタポートノード、ライセンスあり</block>
   <block id="e911666173c65a9be604d165f8bfca24" category="paragraph">49-54</block>
-  <block id="61dd5044a608adf035955ab327098b7f" category="paragraph">100GbEクラスタポートノード、ライセンスあり、右から左に追加</block>
   <block id="87c5a8a002c26c3c0f3324085542275a" category="paragraph">55～56</block>
   <block id="cd7d89f0423765df2ea4dd61283f22c1" category="admonition">スクリプトを呼び出す前に '.scr 拡張子をファイル名の一部として設定する必要がありますこれは、 EFOS オペレーティングシステムの拡張子です。スクリプトがスイッチにダウンロードされると、スイッチはスクリプトを自動的に検証し、コンソールに出力が表示されます。また、わかりやすくするために、コンソール画面に合わせて「.scr」の名前を変更することもできます。例：「+ copy sftp：//172.19.2.1/tmp/ BES-53248_RCF_v1.6-Cluster-HA.txt nvram：script rcf_v1.6 -Cluster-ha.scr +」。</block>
   <block id="2f5b29dae6c40626ef71ff19914284d2" category="paragraph">使用するデバッグコマンド: debug transferおよびdebug license(ライセンスのデバッグ</block>
@@ -2815,7 +2801,6 @@
   <block id="81155cb9ee8ef1aa07c8376e201715db" category="paragraph">スイッチはONIEイメージインストーラをダウンロードして起動します。インストールが完了すると、ターミナルウィンドウにCumulus Linuxログインプロンプトが表示されます。</block>
   <block id="b53f6b592c12fd5937d7b72a3bcbfcfb" category="list-text">GNU GRUB画面で*Esc*キーを押して、通常の起動プロセスを中断し、*ONIE*を選択して、*Enter*を押します。</block>
   <block id="bb8165c1c0d8416da1e318e1c0f54603" category="list-text">次の画面で「* ONIE: OSのインストール*」を選択します。</block>
-  <block id="3b007ae6a2ced467726b9f5c7c59ffb0" category="list-text">インストールが完了したら、スイッチにログインします。</block>
   <block id="673b183eae1d985d3373995f15978e5b" category="inline-link-macro">リファレンス構成ファイル（RCF）スクリプトをインストールします</block>
   <block id="8dcb8ce87423e2f4276589483a457d92" category="paragraph"><block ref="464fe9c0adfef54cfb4c6fe21ef12b08" category="inline-link-macro-rx"></block>。</block>
   <block id="2eb103c9e878418bac314f3d0a12d9a6" category="paragraph">次の表に、SN2100スイッチおよびレールキットの部品番号と概要 を示します。</block>
@@ -2825,7 +2810,6 @@
   <block id="793086ebaed916943ac8fc5f192a1679" category="paragraph"><block ref="770c77dd441cd3adc4139ccb3c0d491b" category="inline-link-macro-rx"></block> または <block ref="28a30a7b340666b28d9a4222e714aaf7" category="inline-link-macro-rx"></block>。</block>
   <block id="e4476de08c6bf6f2b86938c20b3510bf" category="summary">RCFスクリプトをインストールする前に、スイッチに次のものがあることを確認してください</block>
   <block id="144a8e89f9c38ca949aede4fe56c2cb7" category="list-text">RCF Pythonスクリプトをスイッチにコピーします。</block>
-  <block id="2240e6e4afefbb052da898cb451c9d1e" category="list-text">RCF Pythonスクリプト* MSN2100-RCF v1.8 -Cluster *を適用します。</block>
   <block id="39e77b4f608ccea6c3163df34d07da19" category="paragraph">この例では、RCFスクリプトで手順を完了しています。</block>
   <block id="58706c101ce23f0143df35c3d5877993" category="paragraph"><block ref="792bc5f76cd953c88762d75870189559" category="inline-link-macro-rx"></block>。</block>
   <block id="1a8981f50831032975e7c7ab919cf671" category="list-text">を確認します <block ref="d6c0afb29fcb19bc79e093e82e35e6bb" category="inline-link-macro-rx"></block>。</block>
@@ -3543,7 +3527,6 @@
   <block id="c1321e94fa70c8284c7eb8048b1e5076" category="paragraph">以下の手順に従って、ソフトウェアをインストールします。</block>
   <block id="6e542d7f228623e0d93cb14b578964d6" category="summary">BES-53248スイッチの設置とメンテナンスを行う場合は、コンポーネントとパーツ番号の一覧を確認してください。</block>
   <block id="d243834ab21b34f6cc60b0c0c7b6ef45" category="doc">BES-53248クラスタスイッチのコンポーネントとパーツ番号</block>
-  <block id="2ba75e7c8c0701784776f8d546f84c5f" category="paragraph">次の表に、ラックマウントレールキット、ファン、電源装置を含むBES-53248クラスタスイッチコンポーネントのパーツ番号と概要 を示します。</block>
   <block id="2e251bbc5cf5abac11349f16ad8e95e7" category="summary">BES-53248クラスタスイッチを監視するクラスタスイッチヘルスモニタ（CSHM）構成ファイルをインストールできます。</block>
   <block id="4db171b1958310050d33a6161ba14156" category="paragraph">ONTAP リリース9.5P7以前および9.6P2以前の場合は、CSHMファイルを別途ダウンロードする必要があります。ONTAP リリース9.5P8以降、9.6P3以降、および9.7以降では、CSHMファイルがONTAP にバンドルされています。</block>
   <block id="294206f940bbd4f3ec7f79996b76c616" category="paragraph">ONTAP クラスタが起動し、実行中であることを確認します。</block>
@@ -3557,7 +3540,6 @@
   <block id="108fad13cb4557ce639ff2d509f833b5" category="paragraph">192.168.2.2の内部WebサーバIPアドレスの場合、/usr/downloadディレクトリが存在すると仮定して、を使用してzipファイルをWebサーバにアップロードできます<block ref="8a444a43bdf534c0c6338bb7809659b3" prefix=" " category="inline-code"></block>：</block>
   <block id="add89e2862924c702a738f3d2a28fa51" category="list-text">switch health monitor configureコマンドを実行します。</block>
   <block id="57dedb9cbe459a7c90ef4837093192ae" category="paragraph"><block ref="2f9091db6d94c377cc0c7e2fbd67bc1a" prefix="" category="inline-code"></block></block>
-  <block id="4a650fa31d16f24e5851848df6d16828" category="list-text">コマンド出力にテキスト文字列が含まれていることを確認します。<block ref="bb932139b2106289945776f4f81d066a" prefix=" " category="inline-code"></block>。エラーが発生した場合は、ネットアップサポートにお問い合わせください。</block>
   <block id="edcd33ebd5d3817ccdc17b64134c7ec8" category="admonition">以前のバージョンのONTAP に戻す場合は、CSHM構成ファイルを再度インストールして、BES-53248クラスタスイッチのスイッチヘルスモニタを有効にする必要があります。</block>
   <block id="914288f821c5d88db21f926b4e94b1b3" category="paragraph">CSHMで利用可能なすべての機能を使用するには、SSHを有効にします（を参照） <block ref="e2b4c4f5313b05dff7c4a02a4e9e0df6" category="inline-link-macro-rx"></block>。</block>
   <block id="4cf79f99b322552a5fe0fadeb4c0ae5b" category="doc">交換に際しての要件</block>
@@ -3569,11 +3551,6 @@
   <block id="27baa83a95dd19a6f10228564787bf14" category="list-text">目的のリファレンス構成ファイル（RCF）とEFOSオペレーティングシステムスイッチイメージがスイッチにロードされます。</block>
   <block id="5074769eeb418122757e7c8d01cb673f" category="list-text">スイッチの初期カスタマイズが完了しました。詳細については、を参照してください <block ref="5d9dfcd78fc81899f18975b4b56b3ae1" category="inline-link-macro-rx"></block>。</block>
   <block id="b5a925fc7db2ad87d052b8e842aaca5c" category="doc">BES-53248クラスタスイッチの構成要件</block>
-  <block id="b9bbf7b388d20cc7c0c5f0d49ac0837e" category="paragraph">BES-53248スイッチの設置とメンテナンスについては、OSのサポート要件と構成要件を確認してください。</block>
-  <block id="c2e8359468a81351d78337f472618a06" category="section-title">オペレーティングシステム（OS）のサポート</block>
-  <block id="bdd5d839ce68a4aef1b3862a3a83e388" category="paragraph">BES-53248スイッチでは次の機能がサポートされます。</block>
-  <block id="c0f4e19130e2592110e94db5ecec1cf4" category="list-text">* EFOSファームウェア3.4.4.6以降*。BES-53248スイッチは、イーサネットファブリックOS（EFOS）と呼ばれるBroadcom組み込みOSで実行されます。40/100GbE クラスタポートのサポートは、 EFOS ファームウェアバージョン 3.4.4.6 以降から開始されます。</block>
-  <block id="e9ba6fb0647a0e3943ac863a298769f5" category="list-text">* ONTAP 9.5P8以降*。Broadcom対応BES-53248クラスタスイッチは、ONTAP 9.5P8以降では2~24ノードのサイズのクラスタで動作するように設計されています。</block>
   <block id="794a085de55fb93282159bfe457b5455" category="paragraph">クラスタを設定するには、クラスタスイッチに適切な数とタイプのケーブルとコネクタが必要です。最初に設定するクラスタスイッチのタイプに応じて、付属のコンソールケーブルを使用してスイッチのコンソールポートに接続する必要があります。</block>
   <block id="2bd5eb99d9f67d841743740c2c9e58fc" category="section-title">クラスタスイッチのポート割り当て</block>
   <block id="1e398c47e90911cdd18c0dcb654a78a1" category="paragraph">BES-53248クラスタスイッチでは、48個の10 / 25GbE（SFP28 / SFP+）ポートが12個の4ポートグループに結合されます。ポート1~4、5 ~ 8、9 ~ 12、13 ~ 16、17 ~ 20、21～24、25～28、29～32、33～36、37～40、41-44および45-48。</block>
@@ -4274,26 +4251,129 @@
   <block id="d8c8c02df74538b604d42f3f6d992c40" category="paragraph">10GbEブレークアウトクラスタポートノード×4</block>
   <block id="331bcd76038fdc1605be4c587c56294c" category="paragraph">25GbEブレークアウトクラスタポートノード×4</block>
   <block id="e451d063f2ca2617078b2305ef087f02" category="paragraph">swp3-14</block>
-  <block id="0d60da82680f3305621fd4472d897e3b" category="paragraph">40 / 100クラスタポートノード</block>
   <block id="044141a7c2076e2a8d84961a043b480a" category="paragraph">swp15-16</block>
-  <block id="cab42d967475ecc877f819cc849c3392" category="paragraph">40 / 100 Inter-Switch Link（ISL；スイッチ間リンク）ポート</block>
   <block id="c462eb588f6f13a8e04bee80aae30ba8" category="paragraph">を参照してください<block ref="c043e01cdc55399f824e6d1e4eb8a5b5" category="inline-link-rx"></block> スイッチポートの詳細については、を参照してください。</block>
-  <block id="e7af52912cd69e9bf38776786cbca8a3" category="paragraph">Cumulus Linux 4.4.2では、X1151A NIC、X1146A NIC、またはオンボード100GbEポートを備えたSN2100スイッチでは、光接続のみがサポートされます。例：</block>
-  <block id="85a0e57a29218d20a48e10c13bdf7cb6" category="paragraph">Cumulus Linux 4.4.3以降では、この問題 を修正するために次の設定変更が必要です。</block>
-  <block id="f3f1289d53f31212ba6b49b341ffc7e6" category="list-text">に次の2行を追加します<block ref="d4b3c0affe66439bbee012d30e38441b" prefix=" " category="inline-code"></block> 40 / 100GbE銅線ケーブルを使用する各ポート（SWP &lt;n&gt; ）のファイル：</block>
   <block id="69cf9ddd2a167644a30a59dda49e0f6a" category="list-text"><block ref="0babc1daa70cf30fe3f5ad4e3e07fab2" prefix="" category="inline-code"></block></block>
   <block id="7ecf603eb76daba643481182546f4e38" category="list-text"><block ref="a0ce25310d7a8e2527bb141f43700add" prefix="" category="inline-code"></block></block>
-  <block id="6ec72ecd2f587c249b56c3e03401ecae" category="list-text">switchdデーモンを再起動します。<block ref="2b526042e0b783c1b2eb28b0ef5623de" prefix=" " category="inline-code"></block></block>
-  <block id="ab57fd0432e25d5b3013133a1c910d56" category="inline-link">KB</block>
-  <block id="d1230bc869b84c83439b8c8e7519dde2" category="paragraph">以下を参照してください<block ref="a885142d9d0638feca0ff8bbde23eb83" category="inline-link-rx"></block> を参照してください。</block>
-  <block id="7fa926cf10e568e38d190fa4bb643575" category="paragraph">プラットフォームのオンボードクラスタポートへの接続にQSAアダプタを使用すると、リンクが有効にならないことがあります。</block>
-  <block id="3ff6d247db095566d17ccb43d3672576" category="list-text">10Gの場合は、swp1s0-3リンク速度を手動で10000に設定し、自動ネゴシエーションをoffに設定します。</block>
-  <block id="7884c7a18dfb8ee5902cac6f25fd2535" category="list-text">25Gの場合は、swp2s0-3リンク速度を25000に手動で設定し、オートネゴシエーションをoffに設定します。</block>
-  <block id="6b7eaec843bb5fcdab1371328ab1e94c" category="admonition">10G/25G QSAを使用する場合は、ブレークアウトされていない40/100Gポートに挿入します。ブレークアウト用に設定されたポートにはQSAアダプタを挿入しないでください。</block>
   <block id="92f8e266fe70da4f6717e931d81faa46" category="section-title">ブレークアウトポートのインターフェイス速度を設定しています</block>
-  <block id="577c386d1bb7bbffa59ac5c15182ada1" category="paragraph">スイッチポートのトランシーバによっては、スイッチインターフェイスの速度を固定速度に設定する必要があります。10Gおよび25Gブレークアウトポートを使用する場合は、自動ネゴシエーションがオフになっていることを確認し、スイッチのインターフェイス速度をハードセットします。例：</block>
   <block id="5501293605b4b8c8957b68e1854b0f11" category="doc">Cisco Nexus 92300YCスイッチの設置と設定の概要</block>
   <block id="c5fed3189b0ec4237029df463c0c1f64" category="paragraph">Cisco Nexus 92300YCスイッチを設定する前に、手順 の概要を確認してください。</block>
   <block id="109e216a5aa6e526f504483738dabc7b" category="paragraph">ONTAP を実行しているシステムでCisco Nexus 92300YCスイッチを初期設定する手順は、次のとおりです。</block>
   <block id="ed6ae629414abab8b0e9b2e8deadb8c2" category="paragraph">Cisco Nexus 92300YCスイッチの設置とメンテナンスについては、すべてのスイッチコンポーネントとパーツ番号を確認してください。を参照してください<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block> を参照してください。</block>
+  <block id="647742b7ed5a74255a1cd295f9fd2fc9" category="paragraph">BES-53248スイッチの設置とメンテナンスについては、EFOSとONTAP のサポートと設定の要件を確認してください。</block>
+  <block id="553524d0c0ef22a471e2424d00a09694" category="section-title">EFOSとONTAP のサポート</block>
+  <block id="738451c0daa7cff3a610bea3abfefaf0" category="inline-link">Broadcomスイッチの互換性マトリックス</block>
+  <block id="c7c51b6011824439212ed43b1a65c583" category="paragraph">を参照してください<block ref="341c1c8afc925d24c41903215e7d4958" category="inline-link-rx"></block> および<block ref="019bec57a33f30d395c26e4eab684618" category="inline-link-rx"></block> BES-53248スイッチとのEFOSおよびONTAP の互換性情報については、を参照してください。EFOSとONTAP のサポートは、BES-53248スイッチのマシンタイプによって異なります。すべてのBES-52348スイッチマシンタイプの詳細については、を参照してください <block ref="18673e02a37b64215efc2503c4149ac9" category="inline-link-macro-rx"></block>。</block>
+  <block id="e23ae5f8811df200956902ae1686a7f0" category="paragraph">40 / 100GbEクラスタポートノード（ライセンスあり）を右から左に追加</block>
+  <block id="024464eb7b3fd909a9746dff88c6b9c9" category="section-title">その他の要件</block>
+  <block id="0367a2a79bd73fd44da88774641890f6" category="inline-link-macro">新しいライセンスポートをアクティブ化します</block>
+  <block id="9c561ca9ef6d5814e15c1944c030d12d" category="list-text">追加のライセンスを購入する場合は、を参照してください <block ref="78172331b9d74469f8abaa21c5813f50" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="1ad4f5dc9889f4859c43a213e21f389c" category="list-text">SSHがアクティブな場合は、コマンドの実行後にSSHを手動で再度有効にする必要があります<block ref="1fb554759d9d32d450daa4da09330114" prefix=" " category="inline-code"></block> スイッチを再起動します。</block>
+  <block id="fa29548058837254e54c0910a42e81ed" category="paragraph"><block ref="7d77b5b7ecc6e91232de4d87c6f561de" prefix="" category="inline-code"></block></block>
+  <block id="25e09b4fadd3fa8202fa95ea688667c1" category="list-text">[[step5]]コマンド出力にテキスト文字列が含まれていることを確認します。<block ref="bb932139b2106289945776f4f81d066a" prefix=" " category="inline-code"></block>。エラーが発生した場合は、ネットアップサポートにお問い合わせください。</block>
+  <block id="d28bbd717c002acf43e747edb594c750" category="list-text">ONTAP システムでコマンドを実行し、監視対象フィールドが「True」に設定されているクラスタスイッチが検出されたことを確認します。</block>
+  <block id="0b2982341db4239f887933204ca7720d" category="paragraph"><block ref="b4720f8aa09f4e4b3a04e78c558b6c90" prefix="" category="inline-code"></block></block>
+  <block id="4e4f70ba52e8cb595faa069991c5a9f4" category="list-text">[[step5]]ケースの自動作成を抑制した場合は、AutoSupport メッセージを呼び出して再度有効にします。</block>
+  <block id="1ad47980611dd1ee749c3478e99b4edd" category="paragraph">次の表に、BES-53248クラスタスイッチコンポーネントのパーツ番号、概要 、および最小EFOSバージョンとONTAP バージョンを示します。これには、ラックマウントレールキットの詳細も含まれます。</block>
+  <block id="4a47a181e94c352883a8741b3ec5e291" category="admonition">パーツ番号* X190005-B *および* X190005R-B *には* 3.10.0.3 *のEFOSバージョンが必要です。</block>
+  <block id="c37b8196896554a6da47b74fe6581c98" category="cell">EFOSの最小バージョン</block>
+  <block id="7fa0305f8af6535ab7e968300969da78" category="cell">ONTAP の最小バージョン</block>
+  <block id="1bc55f822ecf1e2d3fb5e4e9edcbbea1" category="paragraph">X190005-B</block>
+  <block id="c38694b655b760c0d1690bd1652f4a6b" category="paragraph">BES-53248-B/IX8、CLSW、16PT10/25GB、PTSX（PTSX =ポート側排気）</block>
+  <block id="7be91793dbca44b8b32bc51b1fbb6a91" category="paragraph">3.10.0.3</block>
+  <block id="4f7dd0fe0940df4a5fda327a4ee4ddbd" category="paragraph">9.8</block>
+  <block id="36279773f041040d825a3034566a30e6" category="paragraph">X190005R-B</block>
+  <block id="e5a686994274838fad6d941211e8a0c1" category="paragraph">BES-53248-B/IX8、CLSW、16PT10/25GB、PSIN（PSINはポート側吸気）</block>
+  <block id="8c398f37fcd837194e4ece5fd5553d32" category="paragraph">BES-53248、CLSW、16Pt10/25GB、PTSX、BRDCM SUPP</block>
+  <block id="5b3c421126de8f671e6c7e0dd2070405" category="paragraph">3.4.4.6.</block>
+  <block id="7501a55d10f73fc1f4d1a99887dad17c" category="paragraph">9.5P8</block>
+  <block id="51911b92d595d53b83df3e0bc419b628" category="paragraph">BES-53248、CLSW、16Pt10/25GB、PSIN、BRDCM SUPP</block>
+  <block id="382b0f5185773fa0f67a8ed8056c7759" category="paragraph">該当なし</block>
+  <block id="4f4750a84cf4db2252cb74295c5da46c" category="admonition">マシンタイプに関する次の情報に注意してください。</block>
+  <block id="3ea4bf9da7622edeeae1bf80e9c5cded" category="cell">マシンのタイプ</block>
+  <block id="c98b57720d007eea3bac1ec42393b6b2" category="cell">EFOS バージョン</block>
+  <block id="0455dc0ebc07890a363b2b109cd487c0" category="paragraph">BES-53248A1</block>
+  <block id="f9f7608c20cdacdffa7dd544e72cdb37" category="paragraph">BES-53248A2</block>
+  <block id="ed69a268691ed57ce7cc6feb524edfde" category="paragraph">BES-53248A3</block>
+  <block id="8e3cd01999a868b5f7d077cc81d41b25" category="paragraph">次のコマンドを使用して、特定のマシンタイプを確認できます。<block ref="48f6d03db0af7dafae461857e48942d9" prefix=" " category="inline-code"></block></block>
+  <block id="2498349a1561db3b82a697aa132adac5" category="open-title">Cumulus Linux 4.4.3.</block>
+  <block id="481b5c6e7efa133e1b6e24e6aa57e7b9" category="list-text">インストールが完了したら、スイッチにログインします。</block>
+  <block id="73256464033866019c0ab71a474924d7" category="list-text">Cumulus Linuxのバージョンを確認します。<block ref="98f5dff8534e8c39673b544f567273e7" prefix=" " category="inline-code"></block></block>
+  <block id="7eb75e0ba4663fc1aeea935cb2011f2c" category="open-title">Cumulus Linux 5.x</block>
+  <block id="2db9ca8bc5738dadc7b583c360d7d75f" category="list-text">GNU GRUB画面でEscキーを押して通常の起動プロセスを中断し、ONIEを選択してEnterキーを押します。</block>
+  <block id="0232feb830d6d5aad9aa07258e622649" category="paragraph">ONIE：* Install OS.*を選択します</block>
+  <block id="f341013c06c8fd055eeee7b2fb35f9ce" category="list-text">ONIEインストーラの検出処理が実行され、自動インストールが検索されます。Enter *を押して、プロセスを一時的に停止します。</block>
+  <block id="478fe67982f230b9dd6b03b6118c1014" category="list-text">IPアドレス、サブネットマスク、およびデフォルトゲートウェイを設定します。</block>
+  <block id="6fff52725ef1db2558a657c2f9a4a4c8" category="list-text">Cumulus Linux 5.4をインストールします。</block>
+  <block id="1b5baeeb29c57782394d9d7fe2316752" category="paragraph"><block ref="654e7566133dd316a7bccb8c83aae59b" prefix="" category="inline-code"></block></block>
+  <block id="8b0f0a4cede7fca6e2706f18eebf2e92" category="list-text">Cumulus Linuxのバージョンを確認します。<block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix=" " category="inline-code"></block></block>
+  <block id="711762c3f710af6cfac64233e6c1db32" category="list-text">新しいユーザを作成し、に追加します<block ref="d338b3f0f405eb5e51c8cc1e5ca66f02" prefix=" " category="inline-code"></block> グループ：このユーザが有効になるのは、コンソール/SSHセッションが再起動された後だけです。</block>
+  <block id="b190a0c0112c1b7ed7c1fe82d8072aa4" category="list-text">管理者ユーザがアクセスできるユーザグループを追加します<block ref="f9eab7a52fbda6f4788f438ba1a8da94" prefix=" " category="inline-code"></block> コマンド：</block>
+  <block id="b2fa408052dc67c0683eaf90858b073f" category="inline-link">NVIDIAユーザーアカウント</block>
+  <block id="9fce5f0b8e1dcabf168f42a400a2d10d" category="paragraph">を参照してください<block ref="2d38cb404d4e76c701a1714802ee2c54" category="inline-link-rx"></block> を参照してください。</block>
+  <block id="be8d2db807f6ccc0599691b80f14b976" category="list-text">Cumulus Linuxがインストールされています。を参照してください<block ref="c043e01cdc55399f824e6d1e4eb8a5b5" category="inline-link-rx"></block> を参照してください。</block>
+  <block id="6c92285fa6d3e827b198d120ea3ac674" category="inline-link">こちらをご覧ください</block>
+  <block id="b6a9bacb15977dcaaa1e05f20cc4d13b" category="paragraph">クラスタアプリケーションとストレージアプリケーションには、2つのRCFスクリプトを使用できます。からRCFをダウンロードします<block ref="89efcd657168a1e707caf54da1923871" category="inline-link-rx"></block>。各の手順 は同じです。</block>
+  <block id="54d4022f2a747cb4974fcf06961bdb21" category="list-text">クラスタ：* MSN2100-rcf-v1._x_- Cluster-HA - Breakout-LLDP *</block>
+  <block id="eac7436c884133e6b945a51430510a32" category="list-text">ストレージ：* MSN2100-rcf-v1._x_-ストレージ*</block>
+  <block id="196428336c87b3c0c9bf24432335bd6f" category="list-text">RCF Pythonスクリプト* MSN2100-rcf-v1.x-Cluster-HA-Breakout-LLDP *を適用します。</block>
+  <block id="b9dfe38b5e91454220a6cd1f3cfb9ac8" category="admonition">上記の手順3 * MOTDファイルの更新*で、コマンドを実行します<block ref="900d965bd90d181d344d976a0e3093d8" prefix=" " category="inline-code"></block> を実行します。これにより、RCFのファイル名、RCFのバージョン、使用するポート、およびその他の重要な情報をRCFバナーで確認できます。</block>
+  <block id="0440c59cc67785ca7939ff4e3eba86ed" category="admonition">上記の手順3 * MOTDファイルの更新*で、コマンドを実行します<block ref="79a5f2bb850da898bd092e3a61bda06c" prefix=" " category="inline-code"></block> を実行します。これにより、RCFのファイル名、RCFのバージョン、使用するポート、およびその他の重要な情報をRCFバナーで確認できます。</block>
+  <block id="506c2c0c7f5b70af3df68c45c46f45a7" category="paragraph">例：</block>
+  <block id="c8d246332e46cb12e9f724a357ad817f" category="paragraph"><block ref="770c77dd441cd3adc4139ccb3c0d491b" category="inline-link-macro-rx"></block> または <block ref="bba3ec5e6ca5e4f48b010488a5229b2c" category="inline-link-macro-rx"></block>。</block>
+  <block id="bd399ae0cf713e575ca26baedc0a896c" category="paragraph">NVIDIA SN2100スイッチ（X190006）は、スイッチに付属の標準ブラケットを使用して、NVIDIAデュアル/シングルスイッチキャビネットに設置します。</block>
+  <block id="1e247ada2e98c5879849d746a52a4241" category="paragraph">NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10 / 25 / 40 / 100GbEスイッチです。スイッチは以下をサポートしています。</block>
+  <block id="f555c61f64386d2582939da4025ebe47" category="list-text">ONTAP 9.10.1P3SN2100スイッチは、ONTAP 9.10.1P3のクラスタおよびストレージアプリケーションに、異なるスイッチペアを提供します。</block>
+  <block id="d40bf069d92679bf05879cf7f6cbe2cd" category="inline-link">NVIDIAエンタープライズサポートポータル</block>
+  <block id="cb8e85c2970ddd5692a09be2e61dcc13" category="list-text">Cumulus Linux（CL）OSバージョン。SN2100 Cumulusソフトウェアをダウンロードするには、にログインします<block ref="778b7445002ab4132f3edc7cada5c78a" category="inline-link-rx"></block>。Cumulusソフトウェアにアクセスするには、ログイン資格情報が必要です。最新の互換性情報については、を参照してください<block ref="f6aa36fb7711a9179cbd2c4c52b8d6ef" category="inline-link-rx"></block> 情報ページ。</block>
+  <block id="c19b9518d51b517376f0fe9109f66e90" category="paragraph">40 / 100GbEクラスタポートノード</block>
+  <block id="45a21206fd2396fdd6a59132a2a6d3a7" category="paragraph">40 / 100GbEスイッチ間リンク（ISL）ポート</block>
+  <block id="509e4d6df8b93cb5deb86271a6326df2" category="section-title">光接続でのリンクアップ遅延</block>
+  <block id="50137c9f3120823f7ba1d1983c48e011" category="paragraph">5秒以上のリンクアップ遅延が発生している場合は、Cumulus Linux 5.4以降で高速リンクアップがサポートされます。を使用してリンクを設定できます<block ref="0c14f6e7a82b0926c666f7fac383436a" prefix=" " category="inline-code"></block> 次のコマンドを実行します。</block>
+  <block id="68a8de419a9558e300d05a15cc5b2aec" category="section-title">銅線接続のサポート</block>
+  <block id="5a6f42c8f3d33107177157ef7008dfe2" category="paragraph">この問題 を修正するには、次の設定変更が必要です。</block>
+  <block id="5dfb78a5909646d153e9d260981232b4" category="list-text">40GbE / 100GbE銅線ケーブルを使用して、各インターフェイスの名前を確認します。</block>
+  <block id="17f9698fd9a933aea82b9498c3cf5318" category="list-text">に次の2行を追加します<block ref="d4b3c0affe66439bbee012d30e38441b" prefix=" " category="inline-code"></block> 40GbE / 100GbE銅線ケーブルを使用するすべてのポート（SWP &lt;n&gt; ）のファイル：</block>
+  <block id="0b17b874fe78bf6ab3bb2937838f8df1" category="list-text">を再起動します<block ref="b0df6da856b1d2d594adfbdfe27a1336" prefix=" " category="inline-code"></block> サービス：</block>
+  <block id="b1d96c90c61dd718b6a805eb818961c4" category="list-text">ポートが動作していることを確認します。</block>
+  <block id="9d018838c5ab5975b4e472fee2f89455" category="list-text">を使用してリンクを設定します<block ref="0c14f6e7a82b0926c666f7fac383436a" prefix=" " category="inline-code"></block> 次のコマンドを実行します。</block>
+  <block id="4db57c36adcedbf3d48c546b8a964490" category="list-text"><block ref="4d9dc029304fd2614ef7b9bca43ee36d" prefix="" category="inline-code"></block></block>
+  <block id="6d882d10695e4f3595987a4c3fc3b0d4" category="list-text"><block ref="2aa6f22da2ac5e9b2e1e6d3643ea273e" prefix="" category="inline-code"></block></block>
+  <block id="9c1398e0fe6bc7229e870295da6e50f0" category="list-text">をリロードします<block ref="b0df6da856b1d2d594adfbdfe27a1336" prefix=" " category="inline-code"></block> サービス</block>
+  <block id="1892645d2782c9bf9dc34851d08c3fc0" category="inline-link">こちらの技術情報</block>
+  <block id="3415ad7957144776adc29fe727ecd053" category="paragraph">を参照してください<block ref="5f1cba074f9c9f92027bd9e16fc96408" category="inline-link-rx"></block> を参照してください。</block>
+  <block id="45ac1916de26f6f51168dd562a7dfba5" category="paragraph">Cumulus Linux 4.4.2では、X1151A NIC、X1146A NIC、またはオンボード100GbEポートを搭載したSN2100スイッチで銅線接続はサポートされません。例：</block>
+  <block id="4038c0e6561afda23a992fb3c5771bed" category="paragraph">プラットフォームの10GbE / 25GbEクラスタポートへのQSAアダプタを使用して接続すると、リンクが稼働しないことがあります。</block>
+  <block id="65a7722b91e57b456663ad9dfbce3756" category="list-text">10GbEの場合は、swp1s0-3リンク速度を手動で10000に設定し、自動ネゴシエーションをoffに設定します。</block>
+  <block id="db2ee086523acdbe77c0655e5b34e140" category="list-text">25GbEの場合は、swp2s0-3のリンク速度を手動で25000に設定し、自動ネゴシエーションをoffに設定します。</block>
+  <block id="a4776f8907c629282806882eea5abb7c" category="admonition">10GbE / 25GbE QSAアダプタを使用する場合は、ブレークアウトされていない40GbE / 100GbEポート（swp3-swp14）に挿入します。ブレークアウト用に設定されたポートにQSAアダプタを挿入しないでください。</block>
+  <block id="e7e44cf1f6086f5ec92a0b659ae4c9a3" category="paragraph">スイッチポートのトランシーバによっては、スイッチインターフェイスの速度を固定速度に設定する必要があります。10GbEおよび25GbEブレークアウトポートを使用している場合は、自動ネゴシエーションがオフになっていることを確認し、スイッチのインターフェイス速度を設定します。</block>
+  <block id="0f08aaa10ce68f7f905212dc1aab73b3" category="paragraph">インターフェイスとポートのステータスを調べて、設定が適用されていることを確認します。</block>
+  <block id="9742e43179b451c849ed088319254cd9" category="summary">Cumulus Linuxのバージョンをアップグレードするには、次の手順を実行します。</block>
+  <block id="9d021cb22b9c9afdaa65e8cfcee560c5" category="doc">Cumulus Linuxのバージョンをアップグレードします</block>
+  <block id="d62448073473e6946178f647bcbfbf0e" category="paragraph">必要に応じて、次の手順 を実行してCumulus Linuxのバージョンをアップグレードします。</block>
+  <block id="0fc8a779fbe2ae3a05240b53435f18cf" category="admonition">Cumulus Linuxがアップグレードされるたびに、ファイルシステム構造全体が消去され、再構築されます。既存の設定は消去されます。Cumulus Linuxを更新する前に、スイッチの設定を保存して記録する必要があります。</block>
+  <block id="0d151e82f107d3039ec4952c010d46c4" category="admonition">cumulusユーザーアカウントのデフォルトパスワードは*cumulus *です。Cumulus Linuxに初めてログインするときは、このデフォルトのパスワードを変更する必要があります。新しいイメージをインストールする前に、自動スクリプトを更新する必要があります。Cumulus Linuxには、インストールプロセス中にデフォルトのパスワードを自動的に変更するためのコマンドラインオプションが用意されています。</block>
+  <block id="324fe5adbd1d84e1635133b2f3572f6d" category="open-title">Cumulus Linux 4.4.xからCumulus Linux 5.xへ</block>
+  <block id="6e86c333c0b662bb6dee3495ec26ec21" category="list-text">Cumulus Linuxの現在のバージョンと接続されているポートを確認します。</block>
+  <block id="698eeac576f2a03927debdd14725ba5e" category="list-text">Cumulux Linux 5.xイメージをダウンロードします。</block>
+  <block id="a034a19ca9c1623f94c8f52b386d5a41" category="list-text">パスワードを変更します。</block>
+  <block id="d853eef2a857cbfcf5b1ef1abe8db17e" category="list-text">Cumulus Linuxのバージョンを確認します。<block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix=" " category="inline-code"></block></block>
+  <block id="985599684d8f5a06353d35110138f1b2" category="list-text">ホスト名を変更します。</block>
+  <block id="0e991c1ef237b6e2304639c4e67230ec" category="list-text">スイッチをログアウトして再度ログインすると、プロンプトに更新されたスイッチ名が表示されます。</block>
+  <block id="9452c986bddec0ffc4c1e4393d954d4a" category="list-text">IPアドレスを設定します。</block>
+  <block id="b0255cc355effdccf079c37dfed7930c" category="open-title">Cumulus Linux 5.xからCumulus Linux 5.xへ</block>
+  <block id="65a9f174ce483d8b53a1a174dc734625" category="list-text">Cumulux Linux 5.4.0イメージをダウンロードします。</block>
+  <block id="ae9c690e9fad2f5c57259599dd4505b1" category="list-text">スイッチをログアウトして再度ログインすると、プロンプトに更新されたスイッチ名が表示されます。</block>
+  <block id="db20376829e65eac071b27b68736377d" category="paragraph">クラスタスイッチ、NVIDIA SN2100、16ポート100GbE、PTSX</block>
+  <block id="d2eaff24ce79ed3c374a5a2090d168b1" category="paragraph">クラスタスイッチ、NVIDIA SN2100、16pt 100GbE、PSIN</block>
+  <block id="001d5d8be5c2b491c0e7502d149d957d" category="paragraph">スイッチ、NVIDIA SN2100、16ポート100GbE、PTSX、フロントエンド</block>
+  <block id="e41188b1210c6535f254eaa7b5dbd046" category="paragraph">スイッチ、NVIDIA SN2100、16ポート100GbE、PSIN、フロントエンド</block>
+  <block id="eef96d02de8bddc099677ad1d3ec3385" category="list-text">Cumulus Linuxのバージョンを確認します。<block ref="518227d11c3d0b4ad2468e4272be661a" prefix=" " category="inline-code"></block></block>
+  <block id="5e7f834bb6ce37fe7786c30951681705" category="list-text">Cumulus Linuxのバージョンが4.4.3であることを確認します。<block ref="98f5dff8534e8c39673b544f567273e7" prefix=" " category="inline-code"></block></block>
+  <block id="d3197ab8aed6376fa7796149e9bb5d76" category="paragraph">インストーラがダウンロードを開始します。プロンプトが表示されたら「* y *」と入力します</block>
+  <block id="0d5b4669d0f67490dffe38df0a47c207" category="list-text">インストールが自動的に開始され'次のGRUB画面の選択肢が表示されますDo * not *（実行しない）を選択します。</block>
+  <block id="caf789a40cb327fa8f64258a010c13e0" category="list-text">Cumulus Linuxのバージョンが5.4であることを確認します。<block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix=" " category="inline-code"></block></block>
+  <block id="ebf243f9c791c52799ecfef9dba7e609" category="doc">NetApp CN1610クラスタスイッチをスイッチレス接続に置き換えます</block>
+  <block id="261de3e636d4ab259e73f4993ea87a6a" category="sidebar">Cumulus Linuxバージョンをアップグレードします</block>
 </blocks>

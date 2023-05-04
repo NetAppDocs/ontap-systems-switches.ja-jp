@@ -45,31 +45,50 @@ ONTAP クラスタが起動し、実行中であることを確認します。
 cluster1::> *set -privilege advanced*
 ----
 . switch health monitor configureコマンドを実行します。
-+
+
+
+[role="tabbed-block"]
+====
+.ONTAP 9.8以降
+--
+`system switch ethernet configure-health-monitor -node * -package-url \http://server/file-location`
+
+[listing]
+----
+cluster1::> switch ethernet configure-health-monitor -node * -package-url
+http://192.168.2.20/usr/download/Broadcom_BES-53248.zip
+----
+--
+.ONTAP 9.4以降
+--
 `system cluster-switch configure-health-monitor -node * -package-url \http://server/file-location`
 
-+
-.例を示します
-[%collapsible]
+[listing]
+----
+cluster1::> system cluster-switch configure-health-monitor -node * -package-url
+http://192.168.2.20/usr/download/Broadcom_BES-53248.zip
+----
+--
 ====
-[listing, subs="+quotes"]
-----
-cluster1::> *system cluster-switch configure-health-monitor -node * -package-url
-http://192.168.2.20/usr/download/Broadcom_BES-53248.zip*
-----
+. [[step5]]コマンド出力にテキスト文字列が含まれていることを確認します。 `downloaded package processed successfully`。エラーが発生した場合は、ネットアップサポートにお問い合わせください。
+. ONTAP システムでコマンドを実行し、監視対象フィールドが「True」に設定されているクラスタスイッチが検出されたことを確認します。
+
+
+[role="tabbed-block"]
 ====
-. コマンド出力にテキスト文字列が含まれていることを確認します。 `downloaded package processed successfully`。エラーが発生した場合は、ネットアップサポートにお問い合わせください。
-. ONTAP システムで「 system cluster-switch show 」コマンドを実行し、監視対象フィールドが「 True 」に設定された状態でクラスタスイッチが検出されたことを確認します。
-+
-[listing, subs="+quotes"]
-----
-cluster1::> *system cluster-switch show*
-----
-+
+.ONTAP 9.8以降
+--
+`system switch ethernet show`
+
+--
+.ONTAP 9.4以降
+--
+「 system cluster-switch show
+
+--
+====
 
 NOTE: 以前のバージョンのONTAP に戻す場合は、CSHM構成ファイルを再度インストールして、BES-53248クラスタスイッチのスイッチヘルスモニタを有効にする必要があります。
-
-
 
 .次の手順
 CSHMで利用可能なすべての機能を使用するには、SSHを有効にします（を参照） link:configure-ssh.html["BES-53248 クラスタスイッチで SSH を有効にします"]。
