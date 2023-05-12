@@ -33,7 +33,7 @@ CN1610クラスタスイッチ構成の場合：
 * クラスタスイッチへのコンソールアクセスがあります。
 * CN1610ノード間スイッチおよびスイッチ間接続では、Twinaxケーブルまたはファイバケーブルを使用します。
 +
-。 https://hwu.netapp.com/["Hardware Universe"^] ケーブル接続の詳細については、を参照してください。
+。 https://["Hardware Universe"^] ケーブル接続の詳細については、を参照してください。
 
 * スイッチ間リンク（ISL）ケーブルは、両方のCN1610スイッチのポート13~16に接続されます。
 * 両方のCN1610スイッチの初期カスタマイズが完了しました。
@@ -43,10 +43,10 @@ SMTP 、 SNMP 、 SSH など、以前のサイトのカスタマイズを新し�
 
 
 .関連情報
-* http://hwu.netapp.com["Hardware Universe"^]
-* http://support.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 の概要 ページ"^]
-* https://library.netapp.com/ecm/ecm_download_file/ECMP1118645["『 CN1601 and CN1610 Switch Setup and Configuration Guide 』"^]
-* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows["ネットアップの技術情報アーティクル 1010449 ：「 How to suppress automatic case creation during scheduled maintenance windows"^]
+* http://["Hardware Universe"^]
+* http://["NetApp CN1601 / CN1610 の概要 ページ"^]
+* https://["『 CN1601 and CN1610 Switch Setup and Configuration Guide 』"^]
+* https://["ネットアップの技術情報アーティクル 1010449 ：「 How to suppress automatic case creation during scheduled maintenance windows"^]
 
 
 
@@ -62,7 +62,7 @@ SMTP 、 SNMP 、 SSH など、以前のサイトのカスタマイズを新し�
 * 'cluster::*>' プロンプトは ' クラスタの名前を示します
 * この手順 で使用されるクラスタポートは、 e1a および e2a です。
 +
-。 https://hwu.netapp.com/["Hardware Universe"^] プラットフォームの実際のクラスタポートに関する最新情報が含まれます。
+。 https://["Hardware Universe"^] プラットフォームの実際のクラスタポートに関する最新情報が含まれます。
 
 
 

@@ -50,7 +50,7 @@ swp15-16
 40 / 100GbEスイッチ間リンク（ISL）ポート
 
 |===
-を参照してください https://hwu.netapp.com/Switch/Index["Hardware Universe"^] スイッチポートの詳細については、を参照してください。
+を参照してください https://["Hardware Universe"^] スイッチポートの詳細については、を参照してください。
 
 
 
@@ -190,7 +190,7 @@ UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
 
 --
 ====
-を参照してください https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric_Interconnect_and_Management_Switches/NVIDIA_SN2100_switch_fails_to_connect_using_40_100GbE_copper_cable["こちらの技術情報"^] を参照してください。
+を参照してください https://["こちらの技術情報"^] を参照してください。
 
 Cumulus Linux 4.4.2では、X1151A NIC、X1146A NIC、またはオンボード100GbEポートを搭載したSN2100スイッチで銅線接続はサポートされません。例：
 

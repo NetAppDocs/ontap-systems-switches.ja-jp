@@ -20,7 +20,7 @@ EFOSソフトウェアには、イーサネットシステムおよびIPイン�
 == 設置を準備
 
 .作業を開始する前に
-* クラスタスイッチに対応するBroadcom EFOSソフトウェアをからダウンロードします https://www.broadcom.com/support/bes-switch["Broadcom Ethernet Switch のサポート"^] サイト
+* クラスタスイッチに対応するBroadcom EFOSソフトウェアをからダウンロードします https://["Broadcom Ethernet Switch のサポート"^] サイト
 * EFOSバージョンに関する次の注意事項を確認します。
 
 
@@ -100,6 +100,29 @@ FIPS に準拠している
 FIPS に準拠していません
 
 |===
+[IMPORTANT]
+====
+EFOSのバージョンがFIPSに準拠しているかどうかを確認するには、を使用します `show fips status` コマンドを実行します次の例では、* IP_switch_a1 *はFIPS準拠のEFOSを使用し、* IP_switch_a2 *はFIPS非準拠のEFOSを使用しています。
+
+* スイッチIP_switch_A1：
+
+
+[listing]
+----
+IP_switch_a1 # *show fips status*
+
+System running in FIPS mode
+----
+* スイッチIP_switch_A2で、次の手順を実行します。
+
+
+[listing]
+----
+IP_switch_a2 # *show fips status*
+                     ^
+% Invalid input detected at `^` marker.
+----
+====
 
 
 == ソフトウェアをインストールします
@@ -117,7 +140,7 @@ FIPS に準拠していません
 次の手順を実行して、EFOSソフトウェアをインストールまたはアップグレードします。
 
 
-IMPORTANT: BES-53248 クラスタスイッチを EFOS 3.x.x または 3.4.x.x から EFOS 3.7.0.4 または 3.8.0.2 にアップグレードしたあと、 Inter-Switch Link （ ISL ；スイッチ間リンク）とポートチャネルが * Down * 状態でマークされていることに注意してください。こちらの技術情報アーティクル： https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric%2C_Interconnect_and_Management_Switches/BES-53248_Cluster_Switch_NDU_failed_upgrade_to_EFOS_3.7.0.4_and_later["BES-53248クラスタスイッチNDUをEFOS 3.7.0.4以降にアップグレードできませんでした"^] を参照してください。
+IMPORTANT: BES-53248 クラスタスイッチを EFOS 3.x.x または 3.4.x.x から EFOS 3.7.0.4 または 3.8.0.2 にアップグレードしたあと、 Inter-Switch Link （ ISL ；スイッチ間リンク）とポートチャネルが * Down * 状態でマークされていることに注意してください。こちらの技術情報アーティクル： https://["BES-53248クラスタスイッチNDUをEFOS 3.7.0.4以降にアップグレードできませんでした"^] を参照してください。
 
 .手順
 . BES-53248 クラスタスイッチを管理ネットワークに接続します。
@@ -192,9 +215,9 @@ Image Descriptions
 
 Switch: 1
 
-System Description............................. Quanta IX8-B 48x25GB SFP 8x100GB QSFP, 3.4.3.3, Linux 4.4.117-ceeeb99d, 2016.05.00.04
-Machine Type................................... Quanta IX8-B 48x25GB SFP 8x100GB QSFP
-Machine Model.................................. IX8-B
+System Description............................. BES-53248A1, 3.4.3.3, Linux 4.4.117-ceeeb99d, 2016.05.00.05
+Machine Type................................... BES-53248A1
+Machine Model.................................. BES-53248
 Serial Number.................................. QTFCU38260014
 Maintenance Level.............................. A
 Manufacturer................................... 0xbc00
@@ -261,9 +284,9 @@ Image Descriptions
 
  Images currently available on Flash
 --------------------------------------------------------------------
- unit      active      backup     current-active        next-active
+ unit     active      backup       current-active        next-active
 --------------------------------------------------------------------
-    1     3.4.3.3     3.4.3.3            3.4.3.3            3.4.4.6
+    1     3.4.3.3     3.4.3.3       3.4.3.3              3.4.4.6
 ----
 ====
 . スイッチをリブートします。
@@ -300,8 +323,8 @@ System will now restart!
 
 Switch: 1
 
-System Description............................. x86_64-quanta_common_rglbmc-r0, 3.4.4.6, Linux 4.4.211-28a6fe76, 2016.05.00.04
-Machine Type................................... x86_64-quanta_common_rglbmc-r0
+System Description............................. BES-53248A1, 3.4.4.6, Linux 4.4.211-28a6fe76, 2016.05.00.04
+Machine Type................................... BES-53248A1,
 Machine Model.................................. BES-53248
 Serial Number.................................. QTFCU38260023
 Maintenance Level.............................. A
@@ -445,7 +468,7 @@ ONIE:/ #
 ====
 . 新しいスイッチソフトウェアをインストールします。
 +
-`ONIE:/ # onie-nos-install http:// 50.50.50.50/Software/onie-installer-x86_64`
+`ONIE:/ # onie-nos-install http://50.50.50.50/Software/onie-installer-x86_64`
 
 +
 .例を示します
@@ -453,13 +476,13 @@ ONIE:/ #
 ====
 [listing]
 ----
-ONIE:/ # onie-nos-install http:// 50.50.50.50/Software/onie-installer-x86_64
+ONIE:/ # onie-nos-install http://50.50.50.50/Software/onie-installer-x86_64
 discover: installer mode detected.
 Stopping: discover... done.
-Info: Fetching http:// 50.50.50.50/Software/onie-installer-3.7.0.4 ...
+Info: Fetching http://50.50.50.50/Software/onie-installer-3.7.0.4 ...
 Connecting to 50.50.50.50 (50.50.50.50:80)
 installer            100% |*******************************| 48841k  0:00:00 ETA
-ONIE: Executing installer: http:// 50.50.50.50/Software/onie-installer-3.7.0.4
+ONIE: Executing installer: http://50.50.50.50/Software/onie-installer-3.7.0.4
 Verifying image checksum ... OK.
 Preparing image archive ... OK.
 ----
@@ -485,7 +508,7 @@ Images currently available on Flash
 ---- 	----------- -------- --------------- ------------
 unit 	active 	    backup   current-active  next-active
 ---- 	----------- -------- --------------- ------------
-1 	  3.7.0.4     3.7.0.4  3.7.0.4         3.7.0.4
+1 	    3.7.0.4     3.7.0.4  3.7.0.4         3.7.0.4
 (cs2) #
 ----
 ====

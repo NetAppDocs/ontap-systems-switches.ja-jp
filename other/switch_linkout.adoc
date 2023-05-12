@@ -12,11 +12,11 @@ summary: 他のスイッチモデルにも使用できます。
 
 これらのリンクから、以前のモデルのクラスタスイッチおよびstprageスイッチのドキュメントを参照できます。リンクをクリックすると、別のドキュメントサイトにアクセスできます。
 
-* https://mysupport.netapp.com/documentation/docweb/index.html?productID=62376&language=en-US["Cisco Nexus 5596"]
-* https://mysupport.netapp.com/documentation/docweb/index.html?productID=62373&language=en-USNetApp["CN1601"]
+* https://["Cisco Nexus 5596"]
+* https://["CN1601"]
 
 
 
 NOTE: Nexus 5596UP / 5596Tクラスタスイッチは、ネットアップからは提供されなくなりましたが、Ciscoでは期間限定のTimとしてサポートされます。
 
-ハードウェアのサポートが終了したAFF スイッチモデルとFAS スイッチモデルのドキュメントは、でお客様に提供しています https://mysupport.netapp.com/documentation/productsatoz/index.html?archive=true["Archive サービスの略"]。
+ハードウェアのサポートが終了したAFF スイッチモデルとFAS スイッチモデルのドキュメントは、でお客様に提供しています https://["Archive サービスの略"]。

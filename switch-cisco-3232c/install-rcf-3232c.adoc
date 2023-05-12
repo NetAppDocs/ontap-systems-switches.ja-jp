@@ -281,7 +281,7 @@ cs2#
 .. スイッチの基本設定を実行します。
 
 
-. FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+. FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
 +
 .例を示します
 [%collapsible]
@@ -300,7 +300,7 @@ Copy complete, now saving to disk (please wait)...
 ====
 . ブートフラッシュに前にダウンロードした RCF を適用します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
 
 +
 .例を示します
@@ -384,7 +384,7 @@ NOTE: RCF を初めて適用するときは、「 Error ： Failed to write VSH 
 
 . RCF のバージョンとスイッチの設定が正しいことを確認したら、 running-config ファイルを startup-config ファイルにコピーします。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
 
 +
 [listing]

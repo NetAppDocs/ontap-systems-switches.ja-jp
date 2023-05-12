@@ -59,14 +59,10 @@
   <block id="bcc8af84bc940a8ea99c5dd679fa7016" category="admonition">スイッチソフトウェアをバージョン 3.4.4.6 からダウングレードする必要がある場合は、ライセンスが削除されます。これは想定される動作です。</block>
   <block id="aafb1268dadda4c3bd9dd5d8a55b2fa2" category="paragraph">以前のバージョンのソフトウェアにリバートする前に、適切な古いライセンスをインストールする必要があります。</block>
   <block id="2ad05b5c21ff6c71199a379622544a42" category="doc">リファレンス構成ファイル（ RCF ）のインストール</block>
-  <block id="c1421c83b1d1a38b2417491ece25b6ef" category="list-text">「 ping 」コマンドを使用して、 EFOS 、ライセンス、 RCF をホストするサーバへの接続を確認します。</block>
-  <block id="cc902b05dea9b78580c439034d034533" category="paragraph">接続が問題の場合は、ルーティングされていないネットワークを使用し、 IP アドレス 192.168.x または 172.19.x を使用してサービスポートを設定しますサービスポートは、あとで本番用の管理 IP アドレスに再設定できます。</block>
-  <block id="f0e95f5c0e8e4943599aed05c5dcaa5c" category="list-text">「 copy 」コマンドを使用して、 BES-53248 クラスタスイッチに RCF をインストールします。</block>
   <block id="830bcf54c3049ac10bbbb40fb1258902" category="list-text">スクリプトがダウンロードされ、指定したファイル名で保存されていることを確認します。</block>
   <block id="406bb351c55daa6b29920fa6ce644c29" category="paragraph">「原稿リスト」</block>
   <block id="c3b43f3c21345191af043e5f0670bf83" category="list-text">スクリプトをスイッチに適用します。</block>
   <block id="02afa83850d1a1e555c0bc75967fef66" category="paragraph">「原稿」が適用されます</block>
-  <block id="c6be61a8840e03c0f7ec854569281fe0" category="list-text">RCF を適用したあとに、追加ライセンスのポートを確認します。</block>
   <block id="44204cecc6038ea77eba4b1c7fdb67ca" category="list-text">スイッチで変更が行われたことを確認します。</block>
   <block id="2c4752308de3d9f3db61274d3c1d0e24" category="paragraph">'how running-config'</block>
   <block id="3f1cea616a4c65689c504a5493308910" category="list-text">スイッチをリブートしたときにスタートアップコンフィギュレーションになるように、実行コンフィギュレーションを保存します。</block>
@@ -2216,8 +2212,6 @@
   <block id="148a1525f4c4b2d620941031bf03f670" category="inline-link">_NetApp Hardware Universe _</block>
   <block id="8761a71b0c01f0356000c0994d4fb203" category="paragraph">'system switch ethernet log setup-password 'および'system switch ethernet log enable-colion</block>
   <block id="c757279318295752ba90c940af04f05e" category="paragraph">次に 'system switch ethernet log enable-colion' を実行します</block>
-  <block id="e9e71e2f88e554c14e51453471eb9563" category="inline-link-macro">バグ1225042</block>
-  <block id="5a072aaf4668506fc992d2fe4e8eab94" category="admonition">現時点では、log collectコマンドは使用できません。を参照してください <block ref="f0dc05ac25b63ff4a92a1ab0ec233df6" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="def140a135e96c99279be95e1ef70130" category="doc">Broadcom対応BES-53248クラスタスイッチを交換します</block>
   <block id="aca231809cb1cd80c1435dd9914b66dd" category="paragraph">その後、すべてのノードの切断されたポートを新しい BES-53248 スイッチ cs2 に再接続する必要があります。を参照してください<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 承認されているケーブル接続オプションについては、</block>
   <block id="cbd2e2da439fbaf2fd95743ddedbb09e" category="paragraph">その後、すべてのノードの切断されたポートを新しい BES-53248 スイッチ cs1 に再接続する必要があります。を参照してください<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> 承認されているケーブル接続オプションについては、</block>
@@ -2228,9 +2222,7 @@
   <block id="187c30e211ba48efba7ee0554dccaf17" category="paragraph">10 / 25GbEクラスタポートノード、ライセンスあり</block>
   <block id="e911666173c65a9be604d165f8bfca24" category="paragraph">49-54</block>
   <block id="87c5a8a002c26c3c0f3324085542275a" category="paragraph">55～56</block>
-  <block id="cd7d89f0423765df2ea4dd61283f22c1" category="admonition">スクリプトを呼び出す前に '.scr 拡張子をファイル名の一部として設定する必要がありますこれは、 EFOS オペレーティングシステムの拡張子です。スクリプトがスイッチにダウンロードされると、スイッチはスクリプトを自動的に検証し、コンソールに出力が表示されます。また、わかりやすくするために、コンソール画面に合わせて「.scr」の名前を変更することもできます。例：「+ copy sftp：//172.19.2.1/tmp/ BES-53248_RCF_v1.6-Cluster-HA.txt nvram：script rcf_v1.6 -Cluster-ha.scr +」。</block>
   <block id="2f5b29dae6c40626ef71ff19914284d2" category="paragraph">使用するデバッグコマンド: debug transferおよびdebug license(ライセンスのデバッグ</block>
-  <block id="4d87d0aacff9e4a95b16be27f0f1e89e" category="admonition">ご使用の環境によっては、「copy」コマンドで二重スラッシュを使用する必要があります。たとえば、「+ copy sftp://172.19.2.1//tmp/BES-53248_RCF_v1.6-Cluster-HA.txt nvram：script BES-53248 RCF v1.6 -Cluster-HA.scr +」のようにします。</block>
   <block id="23e7cf6793dbbe3c59640d6ebb6cf4fc" category="list-text">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> ONTAP の互換性、サポートされているEFOSファームウェア、BES-53248クラスタスイッチへのケーブル接続に関する情報が含まれています。</block>
   <block id="c0be2d74ddb0ea6b8972b9da2fc2c223" category="paragraph">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> ONTAP の互換性、サポートされているEFOSファームウェア、BES-53248スイッチへのケーブル接続に関する情報が含まれています。</block>
   <block id="91950abebf25a4752db5969582aa4bb7" category="paragraph">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> プラットフォームの実際のクラスタポートに関する最新情報が含まれます。</block>
@@ -2314,13 +2306,11 @@
   <block id="c2bb2ae34a9db0e318c25b32c07dd6d5" category="list-text">cluster1：：*&gt;*プロンプトは、クラスタの名前を示します。</block>
   <block id="1a0894513362fda649e11ba9de926b82" category="list-text">各クラスタポートの管理ステータスまたは動作ステータスを確認します。</block>
   <block id="819ff57f464e039de1c480b406150b87" category="list-text">クラスタスイッチcs2で、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
-  <block id="c0aae69da186a464bb2e5ce0a8b32451" category="list-text">すべてのクラスタノード接続を古いcs2スイッチから新しいcs2スイッチに移動します。</block>
   <block id="be6163ad0c362d632b28f98dea1fdaaa" category="paragraph">移動されたすべてのクラスタポートが稼働している必要があります。</block>
   <block id="d0141bcaf704f75f043a7384708a3131" category="paragraph">移動したクラスタポートがcs2新しいスイッチをネイバーとして認識していることを確認します。</block>
   <block id="f53f913adacde30730136e7153afce35" category="list-text">スイッチCS2からのスイッチポートの接続を確認します。</block>
   <block id="c4fb5fab435d358d1b3a68ec74352416" category="list-text">クラスタスイッチ cs1 で、ノードのクラスタポートに接続されているポートをシャットダウンします。次の例では、手順7の出力例を使用しています。</block>
   <block id="8c61118abc6e9e30fd4469d362e96e00" category="paragraph">すべてのクラスタLIFがcs2新しいスイッチに移動します。</block>
-  <block id="494ad00c3b01ee37729fae8f4d4c52c0" category="list-text">接続をcs1から新しいcs1新しいスイッチに移動します。</block>
   <block id="2a5fc0afbcb2299e24c73a909b297e93" category="paragraph">移動したクラスタポートがcs1新しいスイッチをネイバーとして認識していることを確認します。</block>
   <block id="35d736ae56a7e094d4d2c2786669f8ca" category="list-text">スイッチcs1からスイッチポートの接続を確認します。これは、新しい観点です。</block>
   <block id="2a42351fd3a2f7fd74a9510816b9125f" category="list-text">スイッチ関連のログファイルを収集するには、イーサネットスイッチヘルスモニタのログ収集機能を有効にします。</block>
@@ -2333,10 +2323,6 @@
   <block id="bc8a2cd252a5beb1dbf4f209baea67eb" category="sidebar">共有スイッチ</block>
   <block id="626a7cbe056796bcb1c158b143866230" category="sidebar">ONTAP リリースノート</block>
   <block id="ce4b3e7ecf21d16073d0790ca53a6dd9" category="image-alt">スイッチの初期セットアップ</block>
-  <block id="ae7b3cb9899d7947e3b5d7996824f062" category="paragraph">*クラスタノードの接続がcs2 -新しいスイッチ*に移動されました</block>
-  <block id="1f5e0ea57e0f194957353e2db3df4e2d" category="image-alt">クラスタノードの接続がcs2新しいスイッチに移動されました</block>
-  <block id="3fb38d5aab534a043c30d7f1a3b0a9dd" category="paragraph">*クラスタノードの接続をcs1に移動-新しいスイッチ*</block>
-  <block id="84532259a7d4acf54c61408e0d42d0ce" category="image-alt">クラスタノードの接続をcs1 -新しいスイッチに移動</block>
   <block id="9d36413c7ae238ebf79e37939969b9ee" category="summary">ONTAP クラスタの古いCiscoスイッチは、無停止でNVIDIA SN2100ストレージスイッチに移行できます。</block>
   <block id="c0e54fd32010cccd4fea353a8f62265e" category="doc">CiscoストレージスイッチからNVIDIA SN2100ストレージスイッチに移行する</block>
   <block id="bdcdaedb42f04c50f04fe5d093e593c6" category="list-text">サポートされるストレージスイッチは次のとおりです。</block>
@@ -3455,10 +3441,6 @@
   <block id="f249686dfa625a48e16b61cc36dc2543" category="inline-link">Broadcom対応BES-53248クラスタスイッチインストールガイド</block>
   <block id="9343a353b1f82fabd9ee240e066471c9" category="list-text">の手順に従います<block ref="2499b40383e5eeae4a8e13c0ef2b5e8c" category="inline-link-rx"></block>。</block>
   <block id="2c313ef83d1daadd03ff286fd1bc25ab" category="paragraph"><block ref="b88c299eeb38820fb709454fcd144438" category="inline-link-macro-rx"></block>。</block>
-  <block id="cae419e0f4ccc97a6a12d463f55b5c3b" category="paragraph">ONTAP でスイッチ関連のログファイルを収集するために使用されるログ収集機能を有効にできます。</block>
-  <block id="3cad572dfde5fdce5421e54e89062e7b" category="paragraph">BES-53248クラスタスイッチCLIを使用して環境がセットアップ済みであることを確認します。</block>
-  <block id="c72a86b35a4617dacc0dd7690691bc10" category="paragraph">次のコマンドを使用して、ログ収集機能を有効にします。</block>
-  <block id="2970c748fd66e910b8a8cc8afdfef311" category="section-title">ONTAP 9.5P15、9.6P11、9.7P8以降のパッチリリース</block>
   <block id="4a79c6270afcb7ed4e28cd8c98692b07" category="inline-link-macro">アップグレード設定を確認します</block>
   <block id="201928a01eb0d8a784dcd677be49e1a6" category="paragraph">スイッチをアップグレードする場合は、に進みます <block ref="4ea612b493226a65342298638fddee90" category="inline-link-macro-rx"></block>。</block>
   <block id="e8ab0c1581dc0dcc64441ffb1b729ce5" category="summary">2ノードスイッチレスクラスタを使用している場合は、Broadcom対応BES-53248クラスタスイッチを含む2ノードスイッチクラスタに無停止で移行できます</block>
@@ -3566,8 +3548,6 @@
   <block id="4ce9c3db8b38bb08700bf7d0c8a896a4" category="list-text">CN1610スイッチCL1のISLが「稼働」になっていることを確認します。</block>
   <block id="3bc00b87c9d7974628fbaf8aa8779a0c" category="paragraph">。<block ref="2ca384e25ce18ee9f0ef797ddb07553f" prefix=" " category="inline-code"></block> "稼働"でなければなりません。<block ref="a1fa27779242b4902f7ae3bdd5c6d508" prefix=" " category="inline-code"></block> 「Static」である必要があります<block ref="574cf51f989449e27cc737b456360c82" prefix=" " category="inline-code"></block> ポート0/13～0/16の場合、「True」である必要があります。</block>
   <block id="245b6d4f01047a24b306b9ff15a6f528" category="summary">BES-53248クラスタスイッチを設定したあとと新しいライセンスを適用したあとに、リファレンス構成ファイル（RCF）をインストールできます。</block>
-  <block id="71288405dcf65a0c34e5f6f072ddacbf" category="paragraph">古いバージョンから RCF をアップグレードする場合は、 Broadcom スイッチの設定をリセットし、基本的な設定を行って RCF を再適用する必要があります。この処理は、 RCF をアップグレードまたは変更するたびに実行する必要があります。を参照してください<block ref="868fcd63f67a83c695a1a52b76012f85" category="inline-link-rx"></block> を参照してください。</block>
-  <block id="62f283441d74bc72551cfe8b6031e2e8" category="admonition">ファイル名には記号を含めることはできません<block ref="f7f78177fe7e595a817da2765186a20e" prefix=" " category="inline-code"></block> 最大文字数は32文字です。</block>
   <block id="b3d2ab282b59bbaad33610c1e37f6f97" category="list-text">スクリプトをスイッチに適用します。</block>
   <block id="4b3087862136b477f2ba4eb874340862" category="inline-link-macro">CSHM構成ファイルをインストールします</block>
   <block id="bf45031df0d96fabfb6aa0760a792168" category="paragraph"><block ref="c0636b750594571560d8b9710bfd1581" category="inline-link-macro-rx"></block>。</block>
@@ -3621,7 +3601,6 @@
   <block id="8df73a90ae64cf4b2dc8e1fb3b3f9c01" category="paragraph">次のメッセージが表示されたら、*Enter*キーを押してONIEコンソールを起動します。</block>
   <block id="8c4811a2e0b8453368548a91bdf17fc9" category="admonition">ONIEの検出が続行され、メッセージがコンソールに出力されます。</block>
   <block id="a16e89a0f24e9a42d02bbe4bb573176b" category="paragraph"><block ref="df911f0151f9ef021d410b4be5060972" prefix="" category="inline-code"></block></block>
-  <block id="830d0d51353cfd443213537734ff2e76" category="paragraph"><block ref="c982fa8ec7bf560015f478ac445de332" prefix="" category="inline-code"></block></block>
   <block id="fead9f0c9e5b3f33cc2bdfbb331d335c" category="paragraph">ソフトウェアがインストールされ、スイッチがリブートされます。スイッチを通常どおりにリブートして新しい EFOS バージョンにします。</block>
   <block id="0deffd557577017ec52052f85fe4ead6" category="list-text">新しいスイッチソフトウェアがインストールされたことを確認します。</block>
   <block id="ed0ce277f91d48d895c5e74d2431cf8f" category="summary">FAS システムとAFF システムの新しいスイッチについて説明します。</block>
@@ -4376,4 +4355,78 @@
   <block id="caf789a40cb327fa8f64258a010c13e0" category="list-text">Cumulus Linuxのバージョンが5.4であることを確認します。<block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix=" " category="inline-code"></block></block>
   <block id="ebf243f9c791c52799ecfef9dba7e609" category="doc">NetApp CN1610クラスタスイッチをスイッチレス接続に置き換えます</block>
   <block id="261de3e636d4ab259e73f4993ea87a6a" category="sidebar">Cumulus Linuxバージョンをアップグレードします</block>
+  <block id="f854d13ce34c20dd774e2f26c0bcbec7" category="paragraph">EFOSのバージョンがFIPSに準拠しているかどうかを確認するには、を使用します<block ref="861d2504fbcbe4985de13f1d87bfc483" prefix=" " category="inline-code"></block> コマンドを実行します次の例では、* IP_switch_a1 *はFIPS準拠のEFOSを使用し、* IP_switch_a2 *はFIPS非準拠のEFOSを使用しています。</block>
+  <block id="155fd6818143cef882d5eb7ac134f393" category="list-text">スイッチIP_switch_A1：</block>
+  <block id="457ab5c73d8f159a9a225c9b9c6605c3" category="list-text">スイッチIP_switch_A2で、次の手順を実行します。</block>
+  <block id="49215cf233256204aa5b6259719da694" category="paragraph"><block ref="6db371c6b710567f9ba5b5a3491f792a" prefix="" category="inline-code"></block></block>
+  <block id="830d0a0665249b8b3b3020695c8b5e4b" category="paragraph">SW-BES-53248A2-8P-2P</block>
+  <block id="29246b22307b855ef04699ca8197dbc2" category="paragraph">Broadcom 8PT-10G25G+2PT-40G100Gライセンスキー、X190005/R</block>
+  <block id="0e361df3624bdebcafc621eb4f0786a6" category="paragraph">SW-BES-53248A2-8P-1025G</block>
+  <block id="289a869a94a6cd9561fc4e79cad65152" category="paragraph">Broadcom 8ポート10G25Gライセンスキー、X190005/R</block>
+  <block id="1cf9764233d69f1045190b7401cd7289" category="paragraph">SW-BES53248A2-6P-40-100G</block>
+  <block id="6f8d029e2ec4dbf3007f214f6019e2b5" category="paragraph">Broadcom 6ポート40G100Gライセンスキー、X190005/R</block>
+  <block id="b70d80924ca5c08e45b9b84343687a46" category="section-title">レガシーライセンス</block>
+  <block id="e6459831eff3ab73436a3472b543daed" category="paragraph">次の表に、BES-53248クラスタスイッチで使用できる従来のライセンスを示します。</block>
+  <block id="5c60227e684a42ed2c4295981335965a" category="list-text">SSHが無効になっていることを確認します。</block>
+  <block id="7481f181e296e575db2349974a47cc2c" category="paragraph">クラスタスイッチヘルスモニタ（CSHM）構成ファイルをインストールする手順は、次のとおりです。</block>
+  <block id="810bc3d02021061ba2b8f87b703a66dd" category="paragraph">ログ収集機能を使用して、ONTAP でスイッチ関連のログファイルを収集できます。</block>
+  <block id="ee3c886759b6a2517a47e20c04320ed6" category="admonition">ログ収集機能を有効にするには、ONTAP バージョン9.12.1以降およびEFOS 3.8.0.2以降を実行している必要があります。</block>
+  <block id="ea234103ea5e655162d46327fb979006" category="paragraph">BES-53248クラスタスイッチ* CLI *を使用して環境がセットアップされていることを確認します。</block>
+  <block id="f7cbc1a4399eb952f71e7f3276fe30cb" category="list-text">次のコマンドを使用して、イーサネットスイッチヘルスモニタのログ収集機能を有効にし、スイッチに関連するログファイルを収集します。</block>
+  <block id="b8df928a1a67f132ebda54d2c7fee7dc" category="paragraph">古いバージョンから RCF をアップグレードする場合は、 Broadcom スイッチの設定をリセットし、基本的な設定を行って RCF を再適用する必要があります。この処理は、 RCF をアップグレードまたは変更するたびに実行する必要があります。を参照してください<block ref="ca0e22b4f868295e6cf32a824edc5c13" category="inline-link-rx"></block> を参照してください。</block>
+  <block id="fecbf70623c5c07c3f3c4c8793d5061b" category="list-text">現在のRCFファイル（から入手可能）<block ref="b4c2fb45a290e6214474529bd84dd3bc" category="inline-link-rx"></block> ページ</block>
+  <block id="23c89511c80ceef00a8d3343b5f08569" category="list-text">EFOSのみをインストールして現在のRCFバージョンを維持する場合は、目的のブートイメージが反映されたRCFのブート設定が必要です。現在のブートイメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。</block>
+  <block id="3a6a9877fc8c73a9267914b786517ca9" category="inline-link">リモート接続を維持したままBroadcomインターコネクトスイッチの設定をクリアする方法</block>
+  <block id="d814617aab418a35a7ebbe46f6db2549" category="list-text">スイッチへのコンソール接続。工場出荷時の状態からRCFをインストールする場合に必要です。ナレッジベースの記事を使用したことがある場合、この要件はオプションです <block ref="18b4271d2bf70dbfb01e42cb4850cea6" category="inline-link-rx"></block> 事前に設定をクリアしておく必要があります。</block>
+  <block id="7f3040034b245d1b75afb3699c743540" category="inline-link">EFOSソフトウェアのダウンロード</block>
+  <block id="d56ac00853938590c6688c295fc4ecaf" category="list-text">サポートされているONTAP とRCFのバージョンについては、スイッチの互換性の表を参照してください。を参照してください<block ref="d105630f090d19d3cb8ede812081d134" category="inline-link-rx"></block> ページRCFのコマンド構文とEFOSのバージョンにあるコマンド構文との間には、コマンドの依存関係が存在する可能性があることに注意してください。</block>
+  <block id="93933c6ca68705cf2c6eee19987428b0" category="inline-link">Broadcom</block>
+  <block id="c8225beca732debe3ac01e6db48e30da" category="list-text">で入手可能な該当するソフトウェアおよびアップグレードガイドを参照してください<block ref="16e70ad0a745fa89b30fcfd59454547f" category="inline-link-rx"></block> BES-53248スイッチのアップグレードおよびダウングレード手順の詳細なドキュメントのサイト。</block>
+  <block id="b3c7299de687b34f57bdbef88331d09b" category="section-title">構成ファイルをインストールします</block>
+  <block id="96645db343acbd79a0ce22b9f8615312" category="list-text">2つのBES-53248スイッチの名前はcs1とcs2です。</block>
+  <block id="020f2efcf6a1d37fe39fcf5ab7cd7681" category="list-text">クラスタLIFの名前は、cluster1-01_clus1、cluster1-01_clus2、cluster1-02_clus1、cluster1-02_clus2、cluster1-03_clus1、 cluster1-03_clus2、cluster1-04_clus1、およびcluster1-04_clus2。</block>
+  <block id="735f1f81fce19c6dbd9326c356c42794" category="list-text">この手順 の例では 4 ノードを使用します。これらのノードは、2つの10GbEクラスタインターコネクトポートを使用します<block ref="922c556baf6272bffc4fa28b2e9a0bbc" prefix=" " category="inline-code"></block> および<block ref="22fe67c2e87caff18249cf1804bbeaad" prefix=" " category="inline-code"></block>。を参照してください<block ref="e527f95d8e68b368d64d0d2dab643ea1" category="inline-link-rx"></block> をクリックして、プラットフォームのクラスタポートが正しいことを確認します。</block>
+  <block id="ce86a637b15bcd24602c029445c6ecb5" category="paragraph">手順 では、ONTAP コマンドとBroadcomスイッチコマンドの両方を使用する必要があります。特に記載がないかぎり、ONTAP コマンドを使用します。</block>
+  <block id="5ea8c6e5f4563fff82293f272dc6f6ed" category="paragraph">この手順 では、動作可能なInter-Switch Link（ISL；スイッチ間リンク）は必要ありません。RCFのバージョンを変更するとISL接続に一時的に影響する可能性があるため、これは設計上の変更です。クラスタのノンストップオペレーションを実現するために、次の手順 は、ターゲットスイッチでの手順の実行中に、すべてのクラスタLIFを動作しているパートナースイッチに移行します。</block>
+  <block id="331d3619bd86486daa8ae20287b042b0" category="inline-link">KB：リモート接続を維持したままBroadcomインターコネクトスイッチの設定をクリアする方法</block>
+  <block id="2ad76ee2dd44393b128aa703e18c0180" category="admonition">新しいバージョンのスイッチソフトウェアとRCFをインストールする前に、を使用してください<block ref="0dbbaa06eaeff384c85940b756e5a890" category="inline-link-rx"></block>。スイッチ設定を完全に消去する必要がある場合は、基本設定を再度実行する必要があります。設定を完全に消去すると管理ネットワークの設定がリセットされるため、スイッチにはシリアルコンソールを使用して接続する必要があります。</block>
+  <block id="655ebdf839055b53c81fe98843842372" category="list-text">クラスタスイッチに接続されている各ノードのクラスタポートを表示します。<block ref="633709925611b54d23e52bde1cb56811" prefix=" " category="inline-code"></block></block>
+  <block id="9d7316571cefaae2ca32e98fc9e57981" category="list-text">すべてのクラスタポートが正常な状態であることを確認します。<block ref="229e8d1240617e0b97c680c36bbc9564" prefix=" " category="inline-code"></block></block>
+  <block id="404e35375d78f3af8db8d2ab71618ce7" category="list-text">すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。<block ref="fb5130635551fff679ab6d902eaff8d9" prefix=" " category="inline-code"></block></block>
+  <block id="40bdb15fb49f18cee766c49c83713e34" category="list-text">クラスタに両方のクラスタスイッチの情報が表示されることを確認します。</block>
+  <block id="a76ff2554d27751da451d7ba735995b2" category="paragraph">ONTAP 9.8以降では、次のコマンドを使用します。<block ref="c57378c3b3bb81c6b42a2b31a30ddda7" prefix=" " category="inline-code"></block></block>
+  <block id="5a830b76ff5a71db59759b13f383410c" category="open-title">ONTAP 9.7 以前</block>
+  <block id="8db6b188941318108123dd47b9038cf7" category="paragraph">ONTAP 9.7以前の場合は、次のコマンドを使用します。<block ref="7ca607e345a217b6fb9148234fe84d0c" prefix=" " category="inline-code"></block></block>
+  <block id="a3b40857ce7fb3046b527517e75db42e" category="list-text">クラスタが正常であることを確認します。<block ref="639161158d7426b3865ce9c5a6f648b3" prefix=" " category="inline-code"></block></block>
+  <block id="7da2d511ceda949386786cd3a9b0904c" category="list-text">現在のスイッチ設定をまだ保存していない場合は、次のコマンドの出力をログファイルにコピーして保存します。<block ref="d064a73c32d00bf384204782a696a298" prefix=" " category="inline-code"></block></block>
+  <block id="044db7e4b2e2480e0b918af88e09b16c" category="list-text">スイッチにSSH接続します。</block>
+  <block id="b216a46caec0572ad44c6c3b8b20e09c" category="paragraph">この手順は、スイッチのポートからすべてのクラスタLIFを削除し、設定をクリアする準備が整っている場合にのみ実行してください。</block>
+  <block id="48ca6f7074b4cd6ad17a0b10e124e059" category="list-text">権限モードに切り替えます。</block>
+  <block id="3085a2f68e00244f5ad273171421c4a3" category="list-text">次のコマンドをコピーして貼り付け、以前のRCF設定を削除します（以前のRCFバージョンによっては、特定の設定がないと一部のコマンドでエラーが生成されることがあります）。</block>
+  <block id="3dcdf9c7761ce642c5fe2fe73d425b75" category="list-text">実行コンフィギュレーションをスタートアップコンフィギュレーションに保存します。</block>
+  <block id="b48ffac2fb8952951818ab2ce539c1d3" category="list-text">スイッチをリブートします。</block>
+  <block id="d03fee12ab01ee4f556908abcba26347" category="list-text">SSHを使用してスイッチに再度ログインし、RCFのインストールを完了します。</block>
+  <block id="a8935c8fdc41e9990bb4a300a40c1700" category="list-text">スイッチに追加のポートライセンスがインストールされている場合は、RCFを変更して追加のライセンスポートを設定する必要があります。を参照してください <block ref="4d3fc05ce7b1ba9afd520aecf6c7f3bb" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="63f7338fc9ee539e34242e8d03110038" category="list-text">FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。</block>
+  <block id="b211f67e6e9195c32683368a53542802" category="paragraph">次の例は、SFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーする方法を示しています。</block>
+  <block id="c77174e35b7f7fc235a87561809ad614" category="list-text">からのバナー出力を確認します<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block> コマンドを実行しますスイッチの設定と動作を適切に行うには、次の手順を参照して実行する必要があります。</block>
+  <block id="420b545896cb1c9b03dbccd44bf33f86" category="list-text">RCFを適用したあとにスイッチで、ライセンスが追加されたポートが表示されていることを確認します。</block>
+  <block id="2a886bfc4f98f8b2263d47853859d640" category="list-text">スイッチcs2のポートを確認します。<block ref="3ecfeafb159bbded4fdecd6f5a860f4a" prefix=" " category="inline-code"></block></block>
+  <block id="818dbe7dc43a870c6906959f7d426ba7" category="list-text">クラスタのすべてのノードでe0bポートが正常に稼働していることを確認します。<block ref="856f897c52a15ad9c779d1f7b82c2593" prefix=" " category="inline-code"></block></block>
+  <block id="7780adb3deb169c3e834888c0fec0145" category="list-text">[[step17]]クラスタスイッチcs1で、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
+  <block id="7fc0653470d537d0d0fc3997f25d581b" category="list-text">クラスタ LIF がスイッチ cs2 でホストされているポートに移行されたことを確認します。これには数秒かかることがあります。<block ref="fb5130635551fff679ab6d902eaff8d9" prefix=" " category="inline-code"></block></block>
+  <block id="b0553791d0540be1d52514a1a47621f6" category="list-text">スイッチcs1で手順4~14を繰り返します。</block>
+  <block id="9cb99e0cdd58aac4297608fa8d8ef89b" category="list-text">クラスタ LIF で自動リバートを有効にします。<block ref="478474aa0db28144d5db02c478cd5215" prefix=" " category="inline-code"></block></block>
+  <block id="e23c199f14d9e7bf9dbb9da03bf726a2" category="list-text">スイッチ cs1 をリブートします。これは、クラスタ LIF のホームポートへのリバートをトリガーする際に行います。スイッチのリブート中にノードで報告される「クラスタポートが停止している」イベントは無視してかまいません。</block>
+  <block id="d9c15a3fe5ea0c8a95b7c30c068a97e8" category="list-text">スイッチcs1で、クラスタポートに接続されたスイッチポートが「up」*になっていることを確認します。</block>
+  <block id="5f424e43ea12971db12c054ce8992c88" category="list-text">スイッチcs1とcs2間のISLが機能していることを確認します。<block ref="f366ffdad905090c14aaf5084fbd75f1" prefix=" " category="inline-code"></block></block>
+  <block id="f688ff7107bf9d836f9cd01490f96a85" category="list-text">クラスタ LIF がホームポートにリバートされたことを確認します。<block ref="fb5130635551fff679ab6d902eaff8d9" prefix=" " category="inline-code"></block></block>
+  <block id="c1d6313b7fd8031407df0653209f4d42" category="list-text">リモートクラスタインターフェイスに ping を実行して接続を確認します。<block ref="6d931e460f3e419ca5bc874e47132b6d" prefix=" " category="inline-code"></block></block>
+  <block id="6285269d7b8b003aed53cad1f3d13717" category="list-text">すべてのクラスタノード接続ケーブルを古いcs2スイッチから新しいcs2-newスイッチに移動します。</block>
+  <block id="f8e1e48a80ce2fac4d53a95f1f1ffd18" category="paragraph">*クラスタノード接続ケーブルをcs2-newスイッチに移動*</block>
+  <block id="e07ca5d2322ee212c9dcb668e9db443a" category="image-alt">クラスタノードの接続ケーブルをcs2-newスイッチに移動しました</block>
+  <block id="604d674dc95a98cb2db636e889289949" category="list-text">クラスタノード接続ケーブルをcs1から新しいcs1-newスイッチに移動します。</block>
+  <block id="2e58f874fe5dd7ef46fee2c92b1e77eb" category="paragraph">*クラスタノード接続ケーブルをcs1-newスイッチに移動*</block>
+  <block id="7d829570fe05df690649474b2bb97a3b" category="image-alt">クラスタノードの接続ケーブルをcs1-newスイッチに移動しました</block>
+  <block id="ec5ea2f0318e4d906c296f5576b9c026" category="list-text">[[step6]]ケースの自動作成を抑制した場合は、AutoSupport メッセージを呼び出して再度有効にします。<block ref="9ac424c0d7b432975df36a19daf50c9c" prefix=" " category="inline-code"></block></block>
 </blocks>

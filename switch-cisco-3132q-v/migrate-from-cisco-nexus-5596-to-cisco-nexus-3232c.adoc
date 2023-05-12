@@ -21,8 +21,8 @@ summary: 既存の Nexus 5596 クラスタスイッチを Nexus 3132Q-V クラ�
 
 詳細については、を参照してください
 
-* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco Ethernet Switch 概要 ページ"^]
-* http://hwu.netapp.com["Hardware Universe"^]
+* http://["Cisco Ethernet Switch 概要 ページ"^]
+* http://["Hardware Universe"^]
 
 
 
@@ -43,7 +43,7 @@ summary: 既存の Nexus 5596 クラスタスイッチを Nexus 3132Q-V クラ�
 * n1_clus4 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続された 2 つ目の LIF です。
 * ノードが n1 、 n2 、 n3 、 n4 である。
 * この手順 の例では 4 つのノードを使用しています。 2 つのノードは、 e0a 、 e0b 、 e0c 、 e0d という 4 つの 10GbE クラスタインターコネクトポートを使用します。他の 2 つのノードは、 40 / 100GbE のクラスタインターコネクトポートを 2 つ使用します。 e4a 、 e4e。 link:https://hwu.netapp.com/["Hardware Universe"^] に、プラットフォームの実際のクラスタポートを示します。
-* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
+* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
 +
 
 NOTE: 手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。

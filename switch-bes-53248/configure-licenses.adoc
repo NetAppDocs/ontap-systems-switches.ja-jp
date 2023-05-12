@@ -25,6 +25,43 @@ BES-53248 クラスタスイッチでは次のライセンスを使用できま�
 
 
  a| 
+SW-BES-53248A2-8P-2P
+ a| 
+Broadcom 8PT-10G25G+2PT-40G100Gライセンスキー、X190005/R
+ a| 
+EFOS 3.4.4.6 以降
+
+
+
+ a| 
+SW-BES-53248A2-8P-1025G
+ a| 
+Broadcom 8ポート10G25Gライセンスキー、X190005/R
+ a| 
+EFOS 3.4.4.6 以降
+
+
+
+ a| 
+SW-BES53248A2-6P-40-100G
+ a| 
+Broadcom 6ポート40G100Gライセンスキー、X190005/R
+ a| 
+EFOS 3.4.4.6 以降
+
+|===
+
+
+== レガシーライセンス
+
+次の表に、BES-53248クラスタスイッチで使用できる従来のライセンスを示します。
+
+[cols="1,2,3"]
+|===
+| ライセンスタイプ | ライセンスの詳細 | サポートされているファームウェアバージョン 
+
+
+ a| 
 sw-BES - 53248A1-G1-8P-LIC
  a| 
 Broadcom 8P 10/252P40-100 ライセンスキー、 X190005/R
@@ -196,7 +233,7 @@ License Index  License Type      Status
 ====
 [listing, subs="+quotes"]
 ----
-(cs2)# *show port all \| exclude Detach*
+(cs2)# *show port all | exclude Detach*
 
                  Admin     Physical   Physical   Link   Link    LACP   Actor
 Intf      Type   Mode      Mode       Status     Status Trap    Mode   Timeout
@@ -274,7 +311,7 @@ License Index  License Type              Status
 ====
 [listing, subs="+quotes"]
 ----
-(cs2)# *show port all \| exclude Detach*
+(cs2)# *show port all | exclude Detach*
 
                  Admin     Physical   Physical   Link   Link    LACP   Actor
 Intf      Type   Mode      Mode       Status     Status Trap    Mode   Timeout

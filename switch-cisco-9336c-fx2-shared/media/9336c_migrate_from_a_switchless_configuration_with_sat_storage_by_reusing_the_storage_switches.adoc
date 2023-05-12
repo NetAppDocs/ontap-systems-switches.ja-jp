@@ -80,7 +80,7 @@ node2
 storage::*> system health alert show -instance
 There are no entries matching your query.
 ----
-. [[step7] 共有スイッチ A のストレージ RCF を共有 RCF ファイルに置き換えます。を参照してください http://9336c_install_nx-os_software_and_reference_configuration_files_@rcfs@.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします"] を参照してください。
+. [[step7] 共有スイッチ A のストレージ RCF を共有 RCF ファイルに置き換えます。を参照してください http://["Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします"] を参照してください。
 . HA ペア 1 に接続されたストレージスイッチ B が正常であることを確認します。「 system health alert show -instance 」
 
 

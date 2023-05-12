@@ -60,5 +60,5 @@ Cumulus Linux（CL）OSは、スイッチがCumulus LinuxまたはONIEを実行�
 * link:configure-reqs-sn2100-cluster.html["設定要件"]
 * link:components-sn2100-cluster.html["コンポーネントとパーツ番号"]
 * link:required-documentation-sn2100-cluster.html["必要なドキュメント"]
-* https://hwu.netapp.com["Hardware Universe"^] サポートされているすべてのONTAP バージョン。
+* https://["Hardware Universe"^] サポートされているすべてのONTAP バージョン。
 

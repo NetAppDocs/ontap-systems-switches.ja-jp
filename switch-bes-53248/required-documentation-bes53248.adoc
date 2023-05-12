@@ -17,7 +17,7 @@ BES-53248スイッチの設置とメンテナンスについては、特定の�
 
 == Broadcomのドキュメント
 
-BES-53248 クラスタスイッチをセットアップするには、 Broadcom サポートサイトから次のドキュメントを入手する必要があります。 https://www.broadcom.com/support/bes-switch["Broadcom Ethernet Switch 製品ライン"^]
+BES-53248 クラスタスイッチをセットアップするには、 Broadcom サポートサイトから次のドキュメントを入手する必要があります。 https://["Broadcom Ethernet Switch 製品ライン"^]
 
 [cols="1,2"]
 |===
@@ -76,14 +76,14 @@ BES-53248 ソフトウェアに関するリリース固有の情報を示しま�
  a| 
 _クラスタネットワークおよび管理ネットワーク互換性マトリックス_
  a| 
-ネットワークの互換性に関する情報を提供します。マトリックスは、BES-53248スイッチのダウンロードサイトから入手できます https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom クラスタスイッチ"^]。
+ネットワークの互換性に関する情報を提供します。マトリックスは、BES-53248スイッチのダウンロードサイトから入手できます https://["Broadcom クラスタスイッチ"^]。
 
 |===
 
 
 == ONTAP システムのドキュメントおよび技術情報
 
-ONTAP システムをセットアップするには、NetApp Support Siteから次のドキュメントを入手する必要があります http://mysupport.netapp.com/["mysupport.netapp.com"^] またはKnowledgebase（KB）サイト（）を参照してください https://kb.netapp.com/["kb.netapp.com"^]。
+ONTAP システムをセットアップするには、NetApp Support Siteから次のドキュメントを入手する必要があります http://["mysupport.netapp.com"^] またはKnowledgebase（KB）サイト（）を参照してください https://["kb.netapp.com"^]。
 
 [cols="1,2"]
 |===
@@ -91,7 +91,7 @@ ONTAP システムをセットアップするには、NetApp Support Siteから�
 
 
  a| 
-https://hwu.netapp.com/Home/Index["NetApp Hardware Universe の略"^]
+https://["NetApp Hardware Universe の略"^]
  a| 
 システムキャビネットを含むすべてのネットアップハードウェアの電源要件とサイト要件について説明し、関連するコネクタおよびケーブルオプションの情報とパーツ番号を記載します。
 
@@ -114,6 +114,6 @@ ONTAP 9 リリースのすべての側面に関する詳細情報を提供しま
  a| 
 Broadcom対応BES-53248スイッチ_のポートライセンスを追加する方法
  a| 
-ポートライセンスの追加に関する詳細情報を提供します。にアクセスします https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_add_Additional_Port_Licensing_for_the_Broadcom-Supported_BES-53248_Switch["こちらの技術情報アーティクル"^]。
+ポートライセンスの追加に関する詳細情報を提供します。にアクセスします https://["こちらの技術情報アーティクル"^]。
 
 |===

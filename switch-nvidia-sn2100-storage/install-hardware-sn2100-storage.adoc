@@ -15,7 +15,7 @@ SN2100ハードウェアを取り付けるには、NVIDIAのマニュアルを�
 
 .手順
 . を確認します link:configure-reqs-sn2100-storage.html["設定要件"]。
-. の手順に従います https://docs.nvidia.com/networking/display/sn2000pub/Installation["NVIDIA Switchインストールガイド"^]。
+. の手順に従います https://["NVIDIA Switchインストールガイド"^]。
 
 
 .次の手順

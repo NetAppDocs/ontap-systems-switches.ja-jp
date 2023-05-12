@@ -24,7 +24,7 @@ RCF は、 Nexus 92300YC スイッチを初めてセットアップしたあと�
 
 [NOTE]
 ====
-* 手順 では、ONTAP コマンドとの両方を使用する必要があります https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズスイッチ"^]; ONTAP コマンドは、特に指定がない限り使用されます。
+* 手順 では、ONTAP コマンドとの両方を使用する必要があります https://["Cisco Nexus 9000 シリーズスイッチ"^]; ONTAP コマンドは、特に指定がない限り使用されます。
 * この手順 を実行する前に、スイッチ構成の最新のバックアップがあることを確認してください。
 * この手順 では、動作可能なInter-Switch Link（ISL；スイッチ間リンク）は必要ありません。RCFのバージョンを変更するとISL接続に一時的に影響する可能性があるため、これは設計上の変更です。クラスタのノンストップオペレーションを実現するために、次の手順 は、ターゲットスイッチでの手順の実行中に、すべてのクラスタLIFを動作しているパートナースイッチに移行します。
 
@@ -200,7 +200,7 @@ cs2#
 .. スイッチの基本設定を実行します。
 
 
-. FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズスイッチ"^] ガイド。
+. FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 9000 シリーズスイッチ"^] ガイド。
 +
 この例は、 TFTP を使用して、スイッチ cs2 のブートフラッシュに RCF をコピーする方法を示しています。
 
@@ -225,7 +225,7 @@ Copy complete.
 ----
 . ブートフラッシュに前にダウンロードした RCF を適用します。
 +
-Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズスイッチ"^] ガイド。
+Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 9000 シリーズスイッチ"^] ガイド。
 
 +
 この例は、RCFファイルを示しています `Nexus_92300YC_RCF_v1.0.2.txt` スイッチcs2に取り付けます。
@@ -316,7 +316,7 @@ NOTE: RCF を初めて適用するときは、「 Error ： Failed to write VSH 
 
 . RCF のバージョンとスイッチの設定が正しいことを確認したら、 running-config ファイルを startup-config ファイルにコピーします。
 +
-Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズスイッチ"^] ガイド。
+Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 9000 シリーズスイッチ"^] ガイド。
 
 +
 [listing, subs="+quotes"]

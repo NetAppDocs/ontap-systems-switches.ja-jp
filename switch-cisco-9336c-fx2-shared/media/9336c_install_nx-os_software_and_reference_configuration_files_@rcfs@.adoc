@@ -26,9 +26,9 @@ Cisco NX-OS ソフトウェアとリファレンス構成ファイル（ RCF ）
 * NX-OS だけをインストールして現在の RCF バージョンをそのまま使用する場合は、目的のブートイメージを反映するように、 RCF で必要なブート設定を確認または設定しておく必要があります。
 * 現在のブートイメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。
 * RCF のインストール時に必要なスイッチへのコンソール接続が必要です。
-* サポートされている ONTAP 、 NX-OS 、および RCF のバージョンについては、 Cisco イーサネットスイッチのページにあるスイッチ互換性の表を参照してください。を参照してください https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"] を参照してください。
+* サポートされている ONTAP 、 NX-OS 、および RCF のバージョンについては、 Cisco イーサネットスイッチのページにあるスイッチ互換性の表を参照してください。を参照してください https://["Cisco イーサネットスイッチ"] を参照してください。
 * RCF のコマンド構文と、 NX-OS のバージョンにあるコマンド構文との間には、コマンドの依存関係が存在する場合があります。
-* Cisco スイッチのアップグレードおよびダウングレード手順の詳細については、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります。を参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html["Cisco Nexus 9000 シリーズスイッチ"] を参照してください。
+* Cisco スイッチのアップグレードおよびダウングレード手順の詳細については、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります。を参照してください https://["Cisco Nexus 9000 シリーズスイッチ"] を参照してください。
 * 最新の RCF が必要です。
 
 
@@ -36,7 +36,7 @@ Cisco NX-OS ソフトウェアとリファレンス構成ファイル（ RCF ）
 
 ===== 初期セットアップ
 
-この手順の例では、 2 つのノードを使用します。これらのノードは、 A400 コントローラに応じて 2 つの 100GbE クラスタインターコネクトポート e3a と e3b を使用します。を参照してください https://hwu.netapp.com["Hardware Universe"] をクリックして、プラットフォームのクラスタポートが正しいことを確認します。
+この手順の例では、 2 つのノードを使用します。これらのノードは、 A400 コントローラに応じて 2 つの 100GbE クラスタインターコネクトポート e3a と e3b を使用します。を参照してください https://["Hardware Universe"] をクリックして、プラットフォームのクラスタポートが正しいことを確認します。
 
 
 NOTE: コマンド出力は、 ONTAP のリリースによって異なる場合があります。
@@ -651,7 +651,7 @@ cs2#
 . スイッチの基本設定を実行します。
 
 
-. [[step11]] FTP 、 TFTP 、 SFTP 、または SCP のいずれかの転送プロトコルを使用して、 RCF をスイッチ cs2 のブートフラッシュにコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"]。
+. [[step11]] FTP 、 TFTP 、 SFTP 、または SCP のいずれかの転送プロトコルを使用して、 RCF をスイッチ cs2 のブートフラッシュにコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"]。
 +
 この例は、 TFTP を使用して、スイッチ cs2 のブートフラッシュに RCF をコピーする方法を示しています。
 
@@ -666,7 +666,7 @@ Trying to connect to tftp server...Connection to Server Established.
 TFTP get operation was successful
 Copy complete, now saving to disk (please wait)...
 ----
-. [[step12]] 以前にブートフラッシュにダウンロードした RCF を適用します。Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"]。
+. [[step12]] 以前にブートフラッシュにダウンロードした RCF を適用します。Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"]。
 +
 この例は、スイッチ cs2 にインストールされている RCF ファイル「 Nexus_9336C_RCF_v1.6 -Cluster-HA-Breakout .txt 」を示しています。
 
@@ -729,7 +729,7 @@ cs2# show banner motd
 
 . RCF のバージョンとスイッチの設定が正しいことを確認したら、 running-config ファイルを startup-config ファイルにコピーします。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"]。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"]。
 
 
 
@@ -1030,8 +1030,8 @@ RPC status:
 * スイッチが完全に機能している必要があります（ログにエラーがないか、または同様の問題が発生していないか）。
 * NX-OS だけをインストールして現在の RCF バージョンをそのまま使用する場合は、目的のブートイメージを反映するように、 RCF で必要なブート変数を確認または設定しておく必要があります。
 * 現在のブートイメージを反映するようにブート変数を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。
-* Cisco ストレージのアップグレードおよびダウングレード手順の詳細なドキュメントについては、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります。を参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html["Cisco Nexus 9000 シリーズスイッチ"] を参照してください。
-* 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）で定義されています https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"] ページ
+* Cisco ストレージのアップグレードおよびダウングレード手順の詳細なドキュメントについては、 Cisco の Web サイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります。を参照してください https://["Cisco Nexus 9000 シリーズスイッチ"] を参照してください。
+* 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）で定義されています https://["Cisco イーサネットスイッチ"] ページ
 
 
 
@@ -1227,7 +1227,7 @@ st2#
 ----
 . [[step9] スイッチ st2 の RCF をスイッチのブートフラッシュにコピーします。 FTP 、 HTTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"]。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"]。
 
 +
 次に、 HTTP を使用して、 RCF をスイッチ st2 のブートフラッシュにコピーする例を示します。
@@ -1312,7 +1312,7 @@ st2#
 ----
 . [[step12]] ソフトウェアのバージョンとスイッチの設定が正しいことを確認したら、スイッチ st2 の startup-config ファイルに running-config ファイルをコピーします。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"]。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"]。
 
 +
 次に 'running-config' ファイルが 'artup-config ファイルに正常にコピーされた例を示します
@@ -1399,7 +1399,7 @@ ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ス
 .手順
 . FTP 、 HTTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ sh2 上の RCF をスイッチブートフラッシュにコピーします。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"]。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"]。
 
 +
 次に、 HTTP を使用して、 RCF をスイッチ sh2 のブートフラッシュにコピーする例を示します。
@@ -1489,7 +1489,7 @@ sh2#
 ----
 . [[step4]] ソフトウェアのバージョンとスイッチの設定が正しいことを確認したら、スイッチ sh2 の startup-config ファイルに「 running-config 」ファイルをコピーします。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"]。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスガイド"]。
 
 +
 次に 'running-config' ファイルが 'artup-config ファイルに正常にコピーされた例を示します

@@ -107,7 +107,7 @@ N9K-9336C 65CFM 、ポート側吸気
 * ほとんどのストレージシステムコントローラは、イーサネットサービスポート（レンチマーク）に接続することで、 e0M インターフェイスを介して管理されます。AFF A800 システムおよび AFF A700 システムでは、 e0M インターフェイスは専用のイーサネットポートを使用します。
 
 
-を参照してください https://hwu.netapp.com["Hardware Universe"^] 最新情報については、
+を参照してください https://["Hardware Universe"^] 最新情報については、
 
 
 
@@ -126,7 +126,7 @@ Smart Call Home 機能を使用する前に、次の考慮事項について理�
 * デバイスを登録するには、 Cisco SMARTnet サービスが導入されている必要があります。
 
 
-。 http://www.cisco.com/c/en/us/products/switches/index.html["シスコサポートサイト"^] Smart Call Homeを設定するコマンドについて説明します。
+。 http://["シスコサポートサイト"^] Smart Call Homeを設定するコマンドについて説明します。
 
 
 
@@ -138,7 +138,7 @@ Cisco 9336-FX2スイッチとONTAP クラスタをセットアップするには
 
 === スイッチのドキュメント
 
-Cisco Nexus 9336C-FX2スイッチをセットアップするには、から次のマニュアルを入手する必要があります https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズスイッチのサポート"^] ページ
+Cisco Nexus 9336C-FX2スイッチをセットアップするには、から次のマニュアルを入手する必要があります https://["Cisco Nexus 9000 シリーズスイッチのサポート"^] ページ
 
 [cols="1,2"]
 |===
@@ -204,7 +204,7 @@ Nexus 9000 シリーズスイッチの国際的な適合規格、安全性、お
 
 === ONTAP システムのドキュメント
 
-ONTAP システムをセットアップするには、使用しているオペレーティングシステムのバージョンに応じて、で次のドキュメントを参照する必要があります https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9 ドキュメンテーション・センター"^]。
+ONTAP システムをセットアップするには、使用しているオペレーティングシステムのバージョンに応じて、で次のドキュメントを参照する必要があります https://["ONTAP 9 ドキュメンテーション・センター"^]。
 
 [cols="1,2"]
 |===
@@ -226,7 +226,7 @@ ONTAP リリースのすべての側面に関する詳細情報を提供しま�
 
 
  a| 
-https://hwu.netapp.com["Hardware Universe"^]
+https://["Hardware Universe"^]
  a| 
 ネットアップハードウェアの構成と互換性に関する情報を提供します。
 
@@ -243,7 +243,7 @@ Cisco 9336-FX2スイッチをネットアップキャビネットに設置する
 
 
  a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["『 42U System Cabinet 、 Deep Guide 』を参照してください"^]
+https://["『 42U System Cabinet 、 Deep Guide 』を参照してください"^]
  a| 
 42U システムキャビネットに関連する FRU について説明し、メンテナンスおよび FRU の交換手順を示します。
 

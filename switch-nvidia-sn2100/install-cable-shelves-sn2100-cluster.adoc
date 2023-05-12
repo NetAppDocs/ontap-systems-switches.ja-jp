@@ -15,11 +15,11 @@ NS224ドライブシェルフを（直接接続型ストレージではなく）
 
 * NS224 ドライブシェルフをストレージスイッチ経由でケーブル接続します。
 +
-https://library.netapp.com/ecm/ecm_download_file/ECMLP2876580["スイッチ接続型NS224ドライブシェルフのケーブル接続"^]
+https://["スイッチ接続型NS224ドライブシェルフのケーブル接続"^]
 
 * 使用しているプラットフォームモデルでサポートされているストレージスイッチやケーブルなどのハードウェアを確認します。
 +
-https://hwu.netapp.com/["NetApp Hardware Universe の略"^]
+https://["NetApp Hardware Universe の略"^]
 
 
 

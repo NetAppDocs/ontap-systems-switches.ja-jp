@@ -104,13 +104,24 @@ cs1                      0/56      179       R          BES-53248        0/56
 ====
 .手順
 . を確認します link:replace-switch-reqs.html["交換に際しての要件"]。
+. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
++
+「 system node AutoSupport invoke -node * -type all -message MAINT= xh 」というメッセージが表示されます
+
++
+ここで、 _ x _ はメンテナンス時間の長さ（時間）です。
+
++
+
+NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+
 . 適切なリファレンス構成ファイル（RCF）とイメージをスイッチnewcs2にインストールし、必要なサイトの準備を行います。
 +
 必要に応じて、新しいスイッチ用に、 RCF および EFOS ソフトウェアの適切なバージョンを確認、ダウンロード、およびインストールします。新しいスイッチが正しくセットアップされており、 RCF および EFOS ソフトウェアのアップデートが不要であることを確認した場合は、手順 2 に進みます。
 
 +
-.. クラスタスイッチに適用可能な Broadcom EFOS ソフトウェアをからダウンロードできます https://www.broadcom.com/support/bes-switch["Broadcom Ethernet Switch のサポート"^] サイトダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応する EFOS ファイルをダウンロードします。
-.. 適切な RCF はから入手できます https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom クラスタスイッチ"^] ページダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応する正しい RCF をダウンロードします。
+.. クラスタスイッチに適用可能な Broadcom EFOS ソフトウェアをからダウンロードできます https://["Broadcom Ethernet Switch のサポート"^] サイトダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応する EFOS ファイルをダウンロードします。
+.. 適切な RCF はから入手できます https://["Broadcom クラスタスイッチ"^] ページダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応する正しい RCF をダウンロードします。
 
 
 . 新しいスイッチに、としてログインします `admin` ノードクラスタインターフェイス（ポート1~16）に接続するすべてのポートをシャットダウンします。
@@ -410,6 +421,10 @@ cs1          0/55    179         R             BES-53248   0/55
 cs1          0/56    179         R             BES-53248   0/56
 ----
 ====
+. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
++
+「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+
 
 
 .次の手順

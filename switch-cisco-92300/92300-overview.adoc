@@ -79,42 +79,42 @@ Cisco Nexus 92300YC スイッチの通気の詳細：
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/install-overview-cisco-92300.html["_ Cisco ® Nexus 92300YC クラスタスイッチをセットアップします"^]
+https://["_ Cisco ® Nexus 92300YC クラスタスイッチをセットアップします"^]
  a| 
 Cisco Nexus 92300YC クラスタスイッチをセットアップおよび設定する方法について説明します。
 
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/install-nxos-overview.html["NX-OS および RCF をインストールします _"^]
+https://["NX-OS および RCF をインストールします _"^]
  a| 
 Nexus 92300YC クラスタスイッチに NX-OS とリファレンス構成ファイル（ RCF ）をインストールする方法について説明します。
 
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/configure-install-initial.html["新しい Cisco Nexus 92300YC スイッチを構成 _"^]
+https://["新しい Cisco Nexus 92300YC スイッチを構成 _"^]
  a| 
 古い Cisco スイッチを使用する環境から Cisco 92300YC スイッチを使用する環境に移行する方法について説明します。
 
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/migrate-to-92300yc-overview.html["_ 古い Cisco スイッチから Cisco Nexus 92300YC スイッチに移行 _"^]
+https://["_ 古い Cisco スイッチから Cisco Nexus 92300YC スイッチに移行 _"^]
  a| 
 古い Cisco スイッチを Cisco Nexus 92300YC クラスタスイッチに交換する手順 について説明します。
 
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/migrate-to-2n-switched.html["_ 2 ノードスイッチレスクラスタからの移行 _"^]
+https://["_ 2 ノードスイッチレスクラスタからの移行 _"^]
  a| 
 2 ノードスイッチレスクラスタ環境から Cisco Nexus 92300YC クラスタスイッチを使用した 2 ノードスイッチ環境に移行する方法について説明します。
 
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/replace-92300yc.html["_ Cisco Nexus 92300YC クラスタスイッチを交換します _"^]
+https://["_ Cisco Nexus 92300YC クラスタスイッチを交換します _"^]
  a| 
 クラスタ内の障害のある Cisco Nexus 92300YC スイッチを交換し、スイッチのオペレーティングシステムとリファレンス構成ファイルをダウンロードするための手順 について説明します。
 

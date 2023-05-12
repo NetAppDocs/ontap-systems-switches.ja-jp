@@ -244,7 +244,7 @@ cumulus@sw1:mgmt:~$ *sudo adduser admin nvshow*
      Done.
 ----
 +
-を参照してください https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^] を参照してください。
+を参照してください https://["NVIDIAユーザーアカウント"^] を参照してください。
 
 
 
@@ -442,7 +442,7 @@ cumulus@sw1:mgmt:~$ *sudo adduser admin nvshow*
      Done.
 ----
 +
-を参照してください https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^] を参照してください。
+を参照してください https://["NVIDIAユーザーアカウント"^] を参照してください。
 
 
 

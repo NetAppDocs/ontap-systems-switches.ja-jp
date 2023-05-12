@@ -26,7 +26,7 @@ FAS22xx システムが既存の 2 ノードスイッチレスクラスタにあ
 
 
 .関連情報
-https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows["ネットアップの技術情報アーティクル 1010449 ：「 How to suppress automatic case creation during scheduled maintenance windows"^]
+https://["ネットアップの技術情報アーティクル 1010449 ：「 How to suppress automatic case creation during scheduled maintenance windows"^]
 
 
 

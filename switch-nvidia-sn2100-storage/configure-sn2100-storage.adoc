@@ -15,7 +15,7 @@ SN2100スイッチを設定するには、NVIDIAのマニュアルを参照し�
 
 .手順
 . を確認します link:configure-reqs-sn2100-storage.html["設定要件"]。
-. の手順に従います https://docs.nvidia.com/networking/display/sn2000pub/System+Bring-Up["NVIDIAシステムが起動します。"^]。
+. の手順に従います https://["NVIDIAシステムが起動します。"^]。
 
 
 .次の手順

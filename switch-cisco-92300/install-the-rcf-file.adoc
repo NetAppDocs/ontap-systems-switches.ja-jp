@@ -40,7 +40,7 @@ summary: RCF は、 Nexus 92300YC スイッチを初めてセットアップし�
 
 
 .このタスクについて
-手順 では、ONTAP コマンドとの両方を使用する必要があります https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズスイッチ"^]; ONTAP コマンドは、特に指定がない限り使用されます。
+手順 では、ONTAP コマンドとの両方を使用する必要があります https://["Cisco Nexus 9000 シリーズスイッチ"^]; ONTAP コマンドは、特に指定がない限り使用されます。
 
 .手順
 . クラスタスイッチに接続されている各ノードのクラスタポートを表示します。
@@ -227,7 +227,7 @@ cs2#
 .. スイッチの基本設定を実行します。
 
 
-. FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズスイッチ"^] ガイド。
+. FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 9000 シリーズスイッチ"^] ガイド。
 +
 .例を示します
 [%collapsible]
@@ -255,7 +255,7 @@ Copy complete.
 ====
 . ブートフラッシュに前にダウンロードした RCF を適用します。
 +
-Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズスイッチ"^] ガイド。
+Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 9000 シリーズスイッチ"^] ガイド。
 
 +
 .例を示します
@@ -358,7 +358,7 @@ NOTE: RCF を初めて適用するときは、「 Error ： Failed to write VSH 
 
 . RCF のバージョンとスイッチの設定が正しいことを確認したら、 running-config ファイルを startup-config ファイルにコピーします。
 +
-Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズスイッチ"^] ガイド。
+Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 9000 シリーズスイッチ"^] ガイド。
 
 +
 [listing, subs="+quotes"]

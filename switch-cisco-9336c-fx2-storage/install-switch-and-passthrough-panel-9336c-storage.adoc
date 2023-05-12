@@ -22,7 +22,7 @@ summary: Cisco Nexus 9336C-FX2 スイッチとパススルーパネルは、ス�
 NOTE: ジャンパコードはパススルーキットには含まれていないため、スイッチに付属しています。スイッチが付属していない場合は、ネットアップから発注できます（部品番号 X1558A-R6 ）。
 
 .必要なドキュメント
-の初期準備要件、キットの内容、および安全上の注意事項を確認してください https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/hw/aci_9336cfx2_hig/guide/b_n9336cFX2_aci_hardware_installation_guide.html["『 Cisco Nexus 9000 Series Hardware Installation Guide 』"^]。
+の初期準備要件、キットの内容、および安全上の注意事項を確認してください https://["『 Cisco Nexus 9000 Series Hardware Installation Guide 』"^]。
 
 .手順
 . ネットアップキャビネットにパススルーブランクパネルを取り付けます。
