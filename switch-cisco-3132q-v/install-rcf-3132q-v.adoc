@@ -192,7 +192,7 @@ cs2                         cluster-network    10.0.0.2         NX3132QV
 
 +
 
-NOTE: ONTAP 9.8以降の場合は、「system ethernet switch show -is-monitoring -enabled operational true」コマンドを使用してください。
+NOTE: ONTAP 9.8以降では、コマンドを使用します `system switch ethernet show -is-monitoring-enabled-operational true`。
 
 . クラスタ LIF で自動リバートを無効にします。
 +
@@ -268,29 +268,81 @@ cluster1::*>
 
 . スイッチ cs2 の構成をクリーンアップし、基本的なセットアップを実行します。
 +
-.. 設定を消去します。
-+
-`write erase`
+
+CAUTION: 新しい RCF を更新または適用する場合は、スイッチ設定を消去し、基本的な設定を実行する必要があります。PowerOn Auto Provisioning（POAP）を無効にできる場合（NX-OS 9.2P1以降が必要）、SSHスイッチアクセスが維持されます。スイッチのリブート後にSSHアクセスができない場合は、追加の予防措置として、シリアルコンソールを使用してスイッチに接続します。
 
 +
+.. スイッチにSSH接続します。
++
+この手順は、スイッチのポートからすべてのクラスタLIFを削除し、設定をクリアする準備が整っている場合にのみ実行してください。
 
-NOTE: この手順では、スイッチへのコンソール接続が必要です。
-
+.. 権限モードに切り替えます。
 +
 .例を示します
 [%collapsible]
 ====
 [listing, subs="+quotes"]
 ----
-cs2# *write erase*
-Warning: This command will erase the startup-configuration.
-Do you wish to proceed anyway? (y/n)  [n] *y*
-cs2# *reload*
-This command will reboot the system. (y/n)?  [n] *y*
-cs2#
+(cs2)> *enable*
 ----
 ====
-.. スイッチの基本設定を実行します。
+.. 設定を消去します。
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *write erase*
+
+Warning: This command will erase the startup-configuration.
+
+Do you wish to proceed anyway? (y/n)  [n]  *y*
+----
+====
+.. POAPを無効にする：
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *system no poap*
+----
+====
++
+を参照してください https://["PowerOn自動プロビジョニングを使用する"^] を参照してください。
+
+.. 次のリロード時にPOAPが無効になっていることを確認します。
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)#  *show boot*
+Current Boot Variables:
+ sup-1
+NXOS variable = bootflash:/nxos.9.2.1.125.bin
+Boot POAP Disabled
+
+POAP permanently disabled using 'system no poap'
+----
+====
+.. スイッチをリブートします。
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *reload*
+
+Are you sure you would like to reset the system? (y/n) *y*
+
+----
+====
+.. SSHを使用してスイッチに再度ログインし、RCFのインストールを完了します。
 
 
 . FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
@@ -372,7 +424,10 @@ cs2# show banner motd
 +
 ** RCF バナー
 ** ノードとポートの設定
-** 出力のカスタマイズは、サイトの設定によって異なります。ポートの設定を確認し、インストールした RCF に固有の変更がないかリリースノートを参照してください。
+** カスタマイズ
++
+出力内容はサイトの構成によって異なります。ポートの設定を確認し、インストールした RCF に固有の変更がないかリリースノートを参照してください。
+
 
 
 . RCF のバージョンとスイッチの設定が正しいことを確認したら、 running-config ファイルを startup-config ファイルにコピーします。
@@ -508,7 +563,7 @@ cs2                         cluster-network    10.233.205.91    N3K-C3132Q-V
 ====
 +
 
-NOTE: ONTAP 9.8以降の場合は、「system ethernet switch show -is-monitoring -enabled operational true」コマンドを使用してください。
+NOTE: ONTAP 9.8以降では、コマンドを使用します `system switch ethernet show -is-monitoring-enabled-operational true`。
 
 +
 [NOTE]

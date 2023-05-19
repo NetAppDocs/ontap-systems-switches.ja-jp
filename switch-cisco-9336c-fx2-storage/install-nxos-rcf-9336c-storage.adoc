@@ -285,25 +285,80 @@ show running-config
 . スイッチ cs2 の構成をクリーンアップし、基本的なセットアップを実行します。
 +
 
-CAUTION: 新しい RCF を更新または適用する場合は、スイッチ設定を消去し、基本的な設定を実行する必要があります。スイッチ設定を消去するには、シリアルコンソールを使用してスイッチに接続する必要があります。
+CAUTION: 新しい RCF を更新または適用する場合は、スイッチ設定を消去し、基本的な設定を実行する必要があります。PowerOn Auto Provisioning（POAP）を無効にできる場合（NX-OS 9.2P1以降が必要）、SSHスイッチアクセスが維持されます。スイッチのリブート後にSSHアクセスができない場合は、追加の予防措置として、シリアルコンソールを使用してスイッチに接続します。
 
 +
-.. 設定を消去します。この手順では、スイッチへのコンソール接続が必要です。
+.. スイッチにSSH接続します。
++
+この手順は、スイッチのポートからすべてのクラスタLIFを削除し、設定をクリアする準備が整っている場合にのみ実行してください。
+
+.. 権限モードに切り替えます。
 +
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cs2# write erase
-Warning: This command will erase the startup-configuration.
-Do you wish to proceed anyway? (y/n)  [n] y
-cs2# reload
-This command will reboot the system. (y/n)?  [n] y
-cs2#
+(cs2)> *enable*
 ----
 ====
-.. スイッチの基本設定を実行します。
+.. 設定を消去します。
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *write erase*
+
+Warning: This command will erase the startup-configuration.
+
+Do you wish to proceed anyway? (y/n)  [n]  *y*
+----
+====
+.. POAPを無効にする：
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *system no poap*
+----
+====
++
+を参照してください https://["PowerOn自動プロビジョニングを使用する"^] を参照してください。
+
+.. 次のリロード時にPOAPが無効になっていることを確認します。
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)#  *show boot*
+Current Boot Variables:
+ sup-1
+NXOS variable = bootflash:/nxos.9.2.1.125.bin
+Boot POAP Disabled
+
+POAP permanently disabled using 'system no poap'
+----
+====
+.. スイッチをリブートします。
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *reload*
+
+Are you sure you would like to reset the system? (y/n) *y*
+
+----
+====
+.. SSHを使用してスイッチに再度ログインし、RCFのインストールを完了します。
 
 
 . FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
@@ -585,7 +640,7 @@ cluster1-04          true     true          false
 cluster1::*>
 ----
 ====
-. スイッチcs1で上記の手順を繰り返します。
+. スイッチcs1で手順4 ~ 11を繰り返します。
 . クラスタ LIF で自動リバートを有効にします。
 +
 .例を示します
