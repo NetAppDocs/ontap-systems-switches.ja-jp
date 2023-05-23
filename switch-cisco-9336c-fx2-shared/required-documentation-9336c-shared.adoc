@@ -16,7 +16,7 @@ summary: Cisco Nexus 9336C-FX2スイッチの設置とメンテナンスにつ�
 [role="lead"]
 Cisco Nexus 9336C-FX2スイッチの設置とメンテナンスについては、特定のスイッチとコントローラのマニュアルを参照して、Cisco 9336-FX2スイッチとONTAP クラスタをセットアップしてください。
 
-Cisco Nexus 9336C-FX2 共有スイッチをセットアップするには、を参照してください https://["Cisco Nexus 9000 シリーズスイッチのサポート"] ページ
+Cisco Nexus 9336C-FX2 共有スイッチをセットアップするには、を参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズスイッチのサポート"] ページ
 
 |===
 | ドキュメントタイトル | 説明 

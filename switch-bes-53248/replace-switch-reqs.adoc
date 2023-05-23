@@ -45,6 +45,6 @@ STP、SNMP、SSHなどの以前のサイトのカスタマイズは、すべて�
 
 == を参照してください。
 
-* https://["ネットアップサポートサイト"^]
-* https://["NetApp Hardware Universe の略"^]
+* https://mysupport.netapp.com/["ネットアップサポートサイト"^]
+* https://hwu.netapp.com/Home/Index["NetApp Hardware Universe の略"^]
 

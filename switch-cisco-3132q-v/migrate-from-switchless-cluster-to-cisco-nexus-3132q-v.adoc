@@ -43,7 +43,7 @@ Nexus 3132Q-V の QSFP ポートの代わりに 4 つの SFP+ ポートをアク
 +
 最初の 6 つのポートを 4x10 GbE モードに分割するには、「 interface breakout module 1 port 1-6 map 10g-4x 」コマンドを使用します。同様に、 no interface breakout module 1 port 1-6 map 10g-4x コマンドを使用して、ブレークアウト構成から最初の 6 つの QSFP+ ポートをグループ化し直すことができます。
 
-* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
+* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
 
 
 .必要なもの
@@ -92,7 +92,7 @@ Nexus 3132Q-V の QSFP ポートの代わりに 4 つの SFP+ ポートをアク
 * n1_clus2 は、ノード n1 のクラスタスイッチ C2 に接続する最初のクラスタ LIF です。
 * n2_clus1 は、ノード n2 のクラスタスイッチ C1 に接続する最初のクラスタ LIF です。
 * n2_clus2 は、ノード n2 のクラスタスイッチ C2 に接続する 2 番目のクラスタ LIF です。
-* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
+* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
 
 
 [NOTE]

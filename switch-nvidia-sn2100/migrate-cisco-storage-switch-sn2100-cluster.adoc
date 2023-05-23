@@ -26,7 +26,7 @@ ONTAP クラスタ用の古いCiscoスイッチからNVIDIA SN2100ストレー�
 * Cisco Nexus 3232C
 
 
-サポートされるポートとその設定の詳細については、を参照してください https://["Hardware Universe"^]。
+サポートされるポートとその設定の詳細については、を参照してください https://hwu.netapp.com/["Hardware Universe"^]。
 
 .必要なもの
 次の点を確認します

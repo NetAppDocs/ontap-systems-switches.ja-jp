@@ -26,7 +26,7 @@ summary: ネットアップのスイッチに FastPath ソフトウェアをイ�
 * 通信パスが成功した場合：ONTAP （権限：advanced） `cluster ping-cluster -node node1` コマンドは、を示す必要があります `larger than PMTU communication` はすべてのパスで成功しています。
 * FastPathおよびONTAP のサポートされているバージョン。
 +
-のスイッチ互換性の表を参照してください http://["NetApp CN1601 / CN1610 スイッチ"^] サポートされているFastPathおよびONTAP のバージョンについては、ページを参照してください。
+のスイッチ互換性の表を参照してください http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^] サポートされているFastPathおよびONTAP のバージョンについては、ページを参照してください。
 
 
 
@@ -47,7 +47,7 @@ RCF バージョンと FastPath バージョンでは、コマンド構文間に
 * 'cluster::*>' プロンプトは ' クラスタの名前を示します
 * 各ノードのクラスタポートには、 e1a および e2a という名前が付けられます。
 +
-https://["Hardware Universe"^] 使用しているプラットフォームでサポートされている実際のクラスタポートに関する詳細情報が表示されます。
+https://hwu.netapp.com/["Hardware Universe"^] 使用しているプラットフォームでサポートされている実際のクラスタポートに関する詳細情報が表示されます。
 
 * サポートされているスイッチ間リンク（ISL）は、ポート0/13~0/16です。
 * サポートされるノード接続はポート0/1~0/12です。

@@ -24,7 +24,7 @@ NS224 ストレージをスイッチ接続でケーブル接続する場合は�
 
 image:9336c_image1.jpg["スイッチ接続"]
 
-を参照してください https://["Hardware Universe"] スイッチポートの詳細については、を参照してください。
+を参照してください https://hwu.netapp.com/Switch/Index["Hardware Universe"] スイッチポートの詳細については、を参照してください。
 
 
 
@@ -34,7 +34,7 @@ image:9336c_image1.jpg["スイッチ接続"]
 
 image:9336c_image2.jpg["直接接続"]
 
-を参照してください https://["Hardware Universe"] スイッチポートの詳細については、を参照してください。
+を参照してください https://hwu.netapp.com/Switch/Index["Hardware Universe"] スイッチポートの詳細については、を参照してください。
 
 
 

@@ -21,7 +21,7 @@ ONTAP クラスタ用の古いCiscoスイッチをNVIDIA SN2100ストレージ�
 
 * Cisco Nexus 9336C-FX2
 * Cisco Nexus 3232C
-* を参照してください https://["Hardware Universe"^] サポートされるポートとその構成の詳細については、を参照してください。
+* を参照してください https://hwu.netapp.com/["Hardware Universe"^] サポートされるポートとその構成の詳細については、を参照してください。
 
 
 .必要なもの
@@ -38,7 +38,7 @@ ONTAP クラスタ用の古いCiscoスイッチをNVIDIA SN2100ストレージ�
 ** ISL ポートが有効で、古い Cisco スイッチ間および新しいスイッチ間でケーブル接続されている。
 
 
-* を参照してください https://["Hardware Universe"^] サポートされるポートとその構成の詳細については、を参照してください。
+* を参照してください https://hwu.netapp.com/["Hardware Universe"^] サポートされるポートとその構成の詳細については、を参照してください。
 * 一部のポートは、100 GbEで動作するようにNVIDIA SN2100スイッチで設定されています。
 * ノードからNVIDIA SN2100ストレージスイッチへの100GbE接続を計画、移行、文書化しておきます。
 

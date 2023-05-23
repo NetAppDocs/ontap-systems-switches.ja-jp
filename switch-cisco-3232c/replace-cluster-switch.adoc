@@ -40,8 +40,8 @@ Cisco Ethernet Switches のページに、スイッチ上の最新の RCF およ
 .を参照してください。
 以下を参照してください。
 
-* http://["Cisco Ethernet Switch 概要 ページ"^]
-* http://["Hardware Universe"^]
+* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco Ethernet Switch 概要 ページ"^]
+* http://hwu.netapp.com["Hardware Universe"^]
 
 
 
@@ -73,7 +73,7 @@ Cisco Ethernet Switches のページに、スイッチ上の最新の RCF およ
 * n1_clus4 は、ノード n1 について、クラスタスイッチ CL1 に接続されている 2 つ目の LIF です。
 
 
-10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
+10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
 
 この交換用手順 の例では4ノードを使用します。2 つのノードが 4 つの 10GB クラスタインターコネクトポートを使用します： e0a 、 e0b 、 e0c 、 e0d他の 2 つのノードは、それぞれ 4 GB のクラスタ・インターコネクト・ポートを 2 つ使用します。を参照してください link:https://hwu.netapp.com["Hardware Universe"^] 使用するプラットフォームに適したクラスタポートを確認します。
 
@@ -255,17 +255,17 @@ Version Source: CDP
 +
 .. ネットアップサポートサイトにアクセスします。
 +
-http://["mysupport.netapp.com"^]
+http://mysupport.netapp.com/["mysupport.netapp.com"^]
 
 .. Cisco Ethernet Switches * ページにアクセスして、表に記載されている必要なソフトウェアバージョンを確認します。
 +
-https://["Cisco イーサネットスイッチ"^]
+https://mysupport.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]
 
 .. 該当するバージョンの RCF をダウンロードします。
 .. [* 概要 * （ライセンス契約） ] ページで [* CONTINUE * （続行 * ） ] をクリックし、ライセンス契約に同意して、 [* Download * （ダウンロード * ） ] ページに移動します。
 .. Cisco ® Cluster and Management Network Switch Reference Configuration File Download * ページから、正しいバージョンのイメージソフトウェアをダウンロードします。
 +
-http://["Cisco ® Cluster and Management Network Switch Reference Configuration File Download （ Cisco ® クラスタおよび管理ネットワークスイッチリファレンス構成ファイルのダウンロード"^]
+http://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster and Management Network Switch Reference Configuration File Download （ Cisco ® クラスタおよび管理ネットワークスイッチリファレンス構成ファイルのダウンロード"^]
 
 
 
@@ -424,7 +424,7 @@ Larger than PMTU communication succeeds on 32 path(s) RPC status:
 
 . クラスタスイッチ CL1 のポート 1/31 と 1/32 をシャットダウンします。
 +
-Cisco コマンドの詳細については、に記載されているガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 .例を示します
@@ -443,7 +443,7 @@ Cisco コマンドの詳細については、に記載されているガイド�
 . クラスタスイッチ CL2 のポート e1/31 と e1/32 からスイッチ間リンク（ ISL ）ケーブルを取り外し、交換用スイッチ c2 の同じポートに再接続します。
 . クラスタスイッチ CL1 の ISL ポート 1/31 と 1/32 を起動します。
 +
-Cisco コマンドの詳細については、に記載されているガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 .例を示します
@@ -461,7 +461,7 @@ Cisco コマンドの詳細については、に記載されているガイド�
 ====
 . ISL が CL1 で稼働していることを確認します。
 +
-Cisco コマンドの詳細については、に記載されているガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 ポート Eth1/31 および Eth1/32 は「（ P ）」を示している必要があります。これは、 ISL ポートがポートチャネル内で稼働していることを意味します。
@@ -488,7 +488,7 @@ Group Port-        Type   Protocol  Member Ports
 ====
 . クラスタスイッチ C2 で ISL が稼働していることを確認します。
 +
-Cisco コマンドの詳細については、に記載されているガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 .例を示します

@@ -34,7 +34,7 @@ BES-53248クラスタスイッチをアップグレードするには、次の�
 NOTE: RCF バージョンと EFOS バージョンのコマンド構文の間に、コマンドの依存関係がある場合があります。
 
 
-NOTE: スイッチの互換性については、の互換性の表を参照してください https://["Broadcom クラスタスイッチ"^] サポートされているEFOS、RCF、ONTAP のバージョンに関するページです。
+NOTE: スイッチの互換性については、の互換性の表を参照してください https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom クラスタスイッチ"^] サポートされているEFOS、RCF、ONTAP のバージョンに関するページです。
 
 
 

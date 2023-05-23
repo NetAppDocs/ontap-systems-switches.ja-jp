@@ -26,8 +26,8 @@ summary: クラスタ内の既存の Cisco Nexus 5596 クラスタスイッチ�
 ====
 詳細については、を参照してください
 
-* http://["Cisco Ethernet Switch 概要 ページ"^]
-* http://["Hardware Universe"^]
+* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco Ethernet Switch 概要 ページ"^]
+* http://hwu.netapp.com["Hardware Universe"^]
 
 
 
@@ -46,7 +46,7 @@ summary: クラスタ内の既存の Cisco Nexus 5596 クラスタスイッチ�
 * n1_clus2 は、ノード n1 のクラスタスイッチ 2 （ CL2 または c2 ）に接続された最初のクラスタ LIF です。
 * n1_clus3 は、ノード n1 のクラスタスイッチ 2 （ CL2 または c2 ）に接続されている 2 つ目の LIF です。
 * n1_clus4 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続された 2 つ目の LIF です。 -
-* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
+* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
 * ノードが n1 、 n2 、 n3 、 n4 である。
 
 
@@ -241,7 +241,7 @@ RCF およびイメージをアップグレードする必要がある場合は�
 +
 .. ネットアップサポートサイトの _Cisco イーサネットスイッチ _ ページにアクセスします。
 +
-http://["Cisco イーサネットスイッチ"^]
+http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]
 
 .. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
 .. 該当するバージョンの RCF をダウンロードします。
@@ -388,7 +388,7 @@ RPC status:
 ====
 . Cisco'shutdown' コマンドを使用して、アクティブな Nexus 5596 スイッチ CL1 で ISL 41 ～ 48 をシャットダウンします。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 .例を示します
@@ -408,7 +408,7 @@ Cisco コマンドの詳細については、『』の該当するガイドを�
 ====
 . 適切な Cisco コマンドを使用して、 CL1 と C2 の間に一時的な ISL を構築します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 .例を示します
@@ -443,7 +443,7 @@ C2(config-if)# exit
 
 . アクティブな Nexus 5596 スイッチ CL1 で ISL ポート 45~48 を起動します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 .例を示します
@@ -463,7 +463,7 @@ Cisco コマンドの詳細については、『』の該当するガイドを�
 ====
 . Nexus 5596 スイッチ CL1 の ISL が「 up 」であることを確認します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 .例を示します
@@ -722,7 +722,7 @@ cluster::*> network port modify -node n2 -port e0d -up-admin false
 ====
 . アクティブな 3232C スイッチ C2 の ISL 24 、 31 、および 32 をシャットダウンします。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 .例を示します
@@ -754,7 +754,7 @@ C2#
 
 . ポート 24 の設定を復元し、 C2 の一時ポートチャネル 2 を削除します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 .例を示します
@@ -782,7 +782,7 @@ Copy Complete.
 ====
 . アクティブな 3232C スイッチである c2 の ISL ポート 31 および 32 を起動するには、次の Cisco コマンドを入力します。 no shutdown
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 .例を示します
@@ -800,7 +800,7 @@ C2(config-if-range)# no shutdown
 ====
 . 3232C スイッチ C2 の ISL 接続が「 up 」になっていることを確認します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 ポート Eth1/31 および Eth1/32 は（ P ）を示している必要があります。これは、両方の ISL ポートがポートチャネル内で稼働していることを意味します

@@ -306,7 +306,7 @@ Do you wish to proceed anyway? (y/n)  [n]  *y*
 ----
 ====
 +
-を参照してください https://["PowerOn自動プロビジョニングを使用する"^] を参照してください。
+を参照してください https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/103x/configuration/fundamentals/cisco-nexus-9000-nx-os-fundamentals-configuration-guide-103x/m-using-poap.html?bookSearch=true#id_85315["PowerOn自動プロビジョニングを使用する"^] を参照してください。
 
 .. 次のリロード時にPOAPが無効になっていることを確認します。
 +
@@ -340,7 +340,7 @@ Are you sure you would like to reset the system? (y/n) *y*
 .. SSHを使用してスイッチに再度ログインし、RCFのインストールを完了します。
 
 
-. FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+. FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
 +
 .例を示します
 [%collapsible]
@@ -359,7 +359,7 @@ Copy complete, now saving to disk (please wait)...
 ====
 . ブートフラッシュに前にダウンロードした RCF を適用します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
 
 +
 .例を示します
@@ -443,7 +443,7 @@ NOTE: RCF を初めて適用するときは、「 Error ： Failed to write VSH 
 
 . RCF のバージョンとスイッチの設定が正しいことを確認したら、 running-config ファイルを startup-config ファイルにコピーします。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
 
 +
 [listing]

@@ -28,7 +28,7 @@ RCFをインストールする前に、クラスタLIFをスイッチcs2から�
 * 通信パスが成功した場合：ONTAP （権限：advanced） `cluster ping-cluster -node node1` コマンドは、を示す必要があります `larger than PMTU communication` はすべてのパスで成功しています。
 * サポートされているバージョンのRCFおよびONTAP 。
 +
-のスイッチ互換性の表を参照してください http://["NetApp CN1601 / CN1610 スイッチ"^] サポートされているRCFおよびONTAP バージョンのページを参照してください。
+のスイッチ互換性の表を参照してください http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^] サポートされているRCFおよびONTAP バージョンのページを参照してください。
 
 
 
@@ -41,7 +41,7 @@ RCFをインストールする前に、クラスタLIFをスイッチcs2から�
 RCF バージョンと FastPath バージョンでは、コマンド構文間にコマンドの依存関係が存在する場合があります。
 
 
-NOTE: RCF バージョン 1.2 では、セキュリティ上の理由から、 Telnet のサポートが明示的に無効になっています。RCF 1.2のインストール時の接続の問題を回避するには、Secure Shell（SSH）が有効になっていることを確認してください。。 https://["NetApp CN1610 Switch Administrator's Guide"^] SSH の詳細については、を参照してください。
+NOTE: RCF バージョン 1.2 では、セキュリティ上の理由から、 Telnet のサポートが明示的に無効になっています。RCF 1.2のインストール時の接続の問題を回避するには、Secure Shell（SSH）が有効になっていることを確認してください。。 https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp CN1610 Switch Administrator's Guide"^] SSH の詳細については、を参照してください。
 
 .例について
 この手順の例では、スイッチとノードで次の命名法を使用しています。
@@ -52,13 +52,13 @@ NOTE: RCF バージョン 1.2 では、セキュリティ上の理由から、 T
 * 'cluster::*>' プロンプトは ' クラスタの名前を示します
 * 各ノードのクラスタポートには、 e1a および e2a という名前が付けられます。
 +
-https://["Hardware Universe"^] 使用しているプラットフォームでサポートされている実際のクラスタポートに関する詳細情報が表示されます。
+https://hwu.netapp.com/["Hardware Universe"^] 使用しているプラットフォームでサポートされている実際のクラスタポートに関する詳細情報が表示されます。
 
 * サポートされているスイッチ間リンク（ISL）は、ポート0/13~0/16です。
 * サポートされるノード接続はポート0/1~0/12です。
 * サポートされているFastPath、RCF、およびONTAP のバージョン。
 +
-のスイッチ互換性の表を参照してください http://["NetApp CN1601 / CN1610 スイッチ"^] サポートされている FastPath 、 RCF 、および ONTAP のバージョンについては、ページを参照してください。
+のスイッチ互換性の表を参照してください http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^] サポートされている FastPath 、 RCF 、および ONTAP のバージョンについては、ページを参照してください。
 
 
 

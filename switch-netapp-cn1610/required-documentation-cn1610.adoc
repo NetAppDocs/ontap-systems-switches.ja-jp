@@ -19,21 +19,21 @@ NetApp CN1610スイッチの設置およびメンテナンスについては、�
 
 
  a| 
-https://["1G インストールガイド"^]
+https://library.netapp.com/ecm/ecm_download_file/ECMP1117853["1G インストールガイド"^]
  a| 
 CN1601 スイッチのハードウェアとソフトウェアの機能およびインストールプロセスの概要。
 
 
 
  a| 
-https://["10G インストールガイド"^]
+https://library.netapp.com/ecm/ecm_download_file/ECMP1117824["10G インストールガイド"^]
  a| 
 CN1610 スイッチのハードウェアおよびソフトウェア機能の概要、およびスイッチの設置と CLI へのアクセス方法について説明します。
 
 
 
  a| 
-https://["『 CN1601 and CN1610 Switch Setup and Configuration Guide 』"^]
+https://library.netapp.com/ecm/ecm_download_file/ECMP1118645["『 CN1601 and CN1610 Switch Setup and Configuration Guide 』"^]
  a| 
 クラスタ環境でスイッチのハードウェアとソフトウェアを設定する方法を詳しく説明します。
 
@@ -44,9 +44,9 @@ https://["『 CN1601 and CN1610 Switch Setup and Configuration Guide 』"^]
  a| 
 に、一般的なネットワークでCN1601スイッチを使用する方法の例を示します。
 
-* https://["管理者ガイド"^]
-* https://["管理者ガイド、バージョン1.1.x.x"^]
-* https://["管理者ガイド、バージョン1.2.x.x"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMP1117844["管理者ガイド"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2811865["管理者ガイド、バージョン1.1.x.x"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMP1117874["管理者ガイド、バージョン1.2.x.x"^]
 
 
 
@@ -56,9 +56,9 @@ CN1610ネットワークスイッチのCLIコマンドリファレンスを参�
  a| 
 では、CN1601ソフトウェアの設定に使用するコマンドラインインターフェイス（CLI）のコマンドについて詳しく説明します。
 
-* https://["コマンドリファレンス"^]
-* https://["コマンドリファレンス、バージョン1.1.x.x"^]
-* https://["コマンドリファレンス、バージョン1.2.x.x"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMP1117834["コマンドリファレンス"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2811863["コマンドリファレンス、バージョン1.1.x.x"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMP1117863["コマンドリファレンス、バージョン1.2.x.x"^]
 
 
 |===

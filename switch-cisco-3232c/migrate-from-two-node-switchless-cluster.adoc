@@ -67,7 +67,7 @@ summary: 2 ノードスイッチレスクラスタを使用している場合は
 * n1_clus2 は、ノード n1 のクラスタスイッチ C2 に接続する最初のクラスタ LIF です。
 * n2_clus1 は、ノード n2 のクラスタスイッチ C1 に接続する最初のクラスタ LIF です。
 * n2_clus2 は、ノード n2 のクラスタスイッチ C2 に接続する 2 番目のクラスタ LIF です。
-* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
+* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
 
 
 [NOTE]
@@ -172,21 +172,21 @@ Enable Switchless Cluster Detection: true
 +
 .. ネットアップサポートサイトの _Cisco イーサネットスイッチ _ ページにアクセスします。
 +
-http://["Cisco イーサネットスイッチ"^]
+http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]
 
 .. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
 .. 適切なバージョンの RCF をダウンロードします。
 .. 概要 * ページで * continue * をクリックし、ライセンス契約に同意して、 * Download * ページの手順に従ってをダウンロードします。
 .. 適切なバージョンのイメージソフトウェアをダウンロードします。
 +
-https://["Cisco Cluster and Management Network Switch Reference Configuration File のダウンロードページ"^]
+https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco Cluster and Management Network Switch Reference Configuration File のダウンロードページ"^]
 
 
 
 . 概要 * ページで * continue * をクリックし、ライセンス契約に同意して、 * Download * ページの手順に従ってをダウンロードします。
 . Nexus 3232C スイッチ C1 および C2 では、ノードに接続されているすべてのポート C1 と C2 を無効にします。ただし、 ISL ポート e1/31~32 は無効にしないでください。
 +
-Cisco コマンドの詳細については、に記載されているガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 .例を示します
@@ -218,7 +218,7 @@ C2(config)# exit
 「ポートチャネルの概要」
 
 +
-Cisco コマンドの詳細については、に記載されているガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 .例を示します
@@ -256,7 +256,7 @@ Group Port-        Type   Protocol  Member Ports
 ====
 . スイッチ上の隣接デバイスのリストを表示します。
 +
-Cisco コマンドの詳細については、に記載されているガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 .例を示します
@@ -424,7 +424,7 @@ Larger than PMTU communication succeeds on 4 path(s) RPC status:
 
 . C1 ですべてのノード側ポートを有効にします。
 +
-Cisco コマンドの詳細については、に記載されているガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 .例を示します

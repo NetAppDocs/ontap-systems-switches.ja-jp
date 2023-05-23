@@ -18,7 +18,7 @@ NVIDIA SN2100ストレージスイッチにCumulusソフトウェアとRCFをイ
 
 * お使いのシステムではNVIDIA SN2100ストレージスイッチをサポートできます。
 * 該当する RCF をダウンロードしておく必要があります。
-* 。 http://["Hardware Universe"^] サポートされているポートとその構成の詳細が表示されます。
+* 。 http://hwu.netapp.com["Hardware Universe"^] サポートされているポートとその構成の詳細が表示されます。
 
 
 .このタスクについて

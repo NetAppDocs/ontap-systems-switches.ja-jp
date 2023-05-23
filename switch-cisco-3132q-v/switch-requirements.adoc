@@ -58,7 +58,7 @@ Nexus 3132Q-V の QSFP ポートの代わりに 4 つの SFP+ ポートをアク
 ** Nexus3132Q-V
 
 
-* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
+* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
 * クラスタスイッチは、ノードへの接続に次のポートを使用します。
 +
 ** ポート e1/1~40 （ 10GbE ）： Nexus 5596

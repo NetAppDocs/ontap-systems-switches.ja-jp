@@ -15,7 +15,7 @@ BES-53248ハードウェアを取り付けるには、Broadcomのマニュアル
 
 .手順
 . を確認します link:configure-reqs-bes53248.html["設定要件"]。
-. の手順に従います https://["Broadcom対応BES-53248クラスタスイッチインストールガイド"^]。
+. の手順に従います https://library.netapp.com/ecm/ecm_download_file/ECMLP2864537["Broadcom対応BES-53248クラスタスイッチインストールガイド"^]。
 
 
 .次の手順

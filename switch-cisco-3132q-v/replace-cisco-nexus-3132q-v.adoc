@@ -40,7 +40,7 @@ summary: クラスタネットワーク内の障害のある Cisco Nexus 3132Q-V
 ** スイッチの初期カスタマイズが完了しました。
 
 
-* http://["Hardware Universe"^]
+* http://hwu.netapp.com["Hardware Universe"^]
 
 
 

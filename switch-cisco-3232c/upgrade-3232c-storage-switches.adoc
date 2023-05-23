@@ -25,8 +25,8 @@ Cisco Nexus 3232CスイッチでCisco NX-OSソフトウェアとリファレン�
 +
 現在のブートイメージを反映するようにブート変数を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。
 
-* で提供されているソフトウェアとアップグレードのガイドを参照しておきます http://["Cisco Nexus 3000 シリーズスイッチ"^] Cisco ストレージのアップグレードおよびダウングレード手順の詳細なドキュメントについては、ページを参照してください。
-* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://["Cisco ® イーサネットスイッチ"^] ページ
+* で提供されているソフトウェアとアップグレードのガイドを参照しておきます http://www.cisco.com/en/US/products/ps9670/prod_installation_guides_list.html["Cisco Nexus 3000 シリーズスイッチ"^] Cisco ストレージのアップグレードおよびダウングレード手順の詳細なドキュメントについては、ページを参照してください。
+* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco ® イーサネットスイッチ"^] ページ
 
 
 
@@ -140,7 +140,7 @@ There are no entries matching your query.
 
 . FTP 、 HTTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ S2 上の RCF をスイッチのブートフラッシュにコピーします。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 .例を示します
@@ -244,7 +244,7 @@ NOTE: RCF を初めて適用するときは、「 Error ： Failed to write VSH 
 
 . ソフトウェアのバージョンとスイッチの設定が正しいことを確認したら、をコピーします `running-config` ファイルをに追加します `startup-config` スイッチS2上のファイル。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 .例を示します
@@ -377,7 +377,7 @@ S2#
 ====
 . 設定を保存します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
 
 +
 システムをリブートするように求められます。

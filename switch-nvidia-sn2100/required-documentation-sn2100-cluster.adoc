@@ -19,21 +19,21 @@ NVIDIA SN2100スイッチのインストールとメンテナンスについて�
 
 
  a| 
-https://["NVIDIA Switchインストールガイド"^]
+https://docs.nvidia.com/networking/display/sn2000pub/Installation["NVIDIA Switchインストールガイド"^]
  a| 
 NVIDIA SN2100スイッチのインストール方法について説明します。
 
 
 
  a| 
-https://["NS224 NVMeドライブシェルフケーブル接続ガイド"^]
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2876580["NS224 NVMeドライブシェルフケーブル接続ガイド"^]
  a| 
 ドライブシェルフのケーブル接続を設定する方法を示す概要と図。
 
 
 
  a| 
-https://["NetApp Hardware Universe の略"^]
+https://hwu.netapp.com/["NetApp Hardware Universe の略"^]
  a| 
 使用しているプラットフォームモデルでサポートされているストレージスイッチやケーブルなどのハードウェアを確認できます。
 

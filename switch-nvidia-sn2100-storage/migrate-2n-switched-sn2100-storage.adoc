@@ -38,7 +38,7 @@ NVIDIA SN2100クラスタスイッチ構成の場合は、次の点を確認し�
 NOTE: を参照してください link:cabling-considerations-sn2100-storage.html["ケーブル接続と構成に関する考慮事項"] 警告および詳細については、を参照してください。
 
 +
-。 https://["Hardware Universe - スイッチ"^] ケーブル接続の詳細については、を参照してください。
+。 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe - スイッチ"^] ケーブル接続の詳細については、を参照してください。
 
 * スイッチ間リンク（ISL）ケーブルは、両方のNVIDIA SN2100スイッチのポートswp15およびswp16に接続されています。
 * 両方のSN2100スイッチの初期カスタマイズが完了しているため、次のことが可能です。
@@ -64,7 +64,7 @@ NOTE: を参照してください link:cabling-considerations-sn2100-storage.htm
 * この手順 で使用されているクラスタポートは_e3aおよび_e3bです。
 * ブレークアウトポートの形式は、SWP[ポート] s [ブレークアウトポート0-3]です。たとえば'swp1の4つのブレークアウトポートは'_swp1s0'_swp1s1_'_swp1s2s'_swp1s3_です
 +
-。 https://["Hardware Universe"^] プラットフォームの実際のクラスタポートに関する最新情報が含まれます。
+。 https://hwu.netapp.com["Hardware Universe"^] プラットフォームの実際のクラスタポートに関する最新情報が含まれます。
 
 
 
@@ -235,7 +235,7 @@ Cluster
 ====
 . ノード1のクラスタポートe3aからケーブルを外し、SN2100スイッチでサポートされている適切なケーブル接続を使用して、クラスタスイッチsw1のポート3にe3aを接続します。
 +
-。 https://["Hardware Universe - スイッチ"^] ケーブル接続の詳細については、を参照してください。
+。 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe - スイッチ"^] ケーブル接続の詳細については、を参照してください。
 
 . ノード2のクラスタポートe3aからケーブルを外し、SN2100スイッチでサポートされている適切なケーブル接続を使用して、クラスタスイッチsw1のポート4にe3aを接続します。
 . スイッチsw1で、すべてのノード側ポートを有効にします。

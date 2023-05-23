@@ -70,8 +70,8 @@ NOTE: 移行が完了したあと、 92300YC クラスタスイッチのクラ�
 ** ポート e1/13~20 （ 10GbE ）： Nexus 5010
 
 
-* https://["Hardware Universe - スイッチ"^] すべてのクラスタスイッチでサポートされているケーブル接続について説明します。
-* この手順 でサポートされている ONTAP と NX-OS のバージョンはにあります https://["Cisco イーサネットスイッチ"^] ページ
+* https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe - スイッチ"^] すべてのクラスタスイッチでサポートされているケーブル接続について説明します。
+* この手順 でサポートされている ONTAP と NX-OS のバージョンはにあります https://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^] ページ
 
 
 

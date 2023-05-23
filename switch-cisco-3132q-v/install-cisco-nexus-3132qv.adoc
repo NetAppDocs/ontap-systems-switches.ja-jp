@@ -14,7 +14,7 @@ summary: Cisco Nexus 3132Q-V スイッチとパススルーパネルは、スイ
 構成によっては、スイッチに付属の標準的なブラケットを使用して、Cisco Nexus 3132Q-Vスイッチとパススルーパネルをネットアップキャビネットに設置する必要があります。
 
 .必要なもの
-* の初期準備要件、キットの内容、および安全上の注意事項 http://["『 Cisco Nexus 3000 Series Hardware Installation Guide 』を参照してください"^]。手順 を開始する前に、これらのドキュメントを確認してください。
+* の初期準備要件、キットの内容、および安全上の注意事項 http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus3000/hw/installation/guide/b_n3000_hardware_install_guide.html["『 Cisco Nexus 3000 Series Hardware Installation Guide 』を参照してください"^]。手順 を開始する前に、これらのドキュメントを確認してください。
 * パススルーパネルキット。ネットアップが提供しています（パーツ番号X8784-R6）。ネットアップのパススルーパネルキットには、次のハードウェアが含まれています。
 +
 ** 1 つのパススルーブランクパネル

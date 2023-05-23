@@ -20,7 +20,7 @@ EFOSソフトウェアには、イーサネットシステムおよびIPイン�
 == 設置を準備
 
 .作業を開始する前に
-* クラスタスイッチに対応するBroadcom EFOSソフトウェアをからダウンロードします https://["Broadcom Ethernet Switch のサポート"^] サイト
+* クラスタスイッチに対応するBroadcom EFOSソフトウェアをからダウンロードします https://www.broadcom.com/support/bes-switch["Broadcom Ethernet Switch のサポート"^] サイト
 * EFOSバージョンに関する次の注意事項を確認します。
 
 
@@ -140,7 +140,7 @@ IP_switch_a2 # *show fips status*
 次の手順を実行して、EFOSソフトウェアをインストールまたはアップグレードします。
 
 
-IMPORTANT: BES-53248 クラスタスイッチを EFOS 3.x.x または 3.4.x.x から EFOS 3.7.0.4 または 3.8.0.2 にアップグレードしたあと、 Inter-Switch Link （ ISL ；スイッチ間リンク）とポートチャネルが * Down * 状態でマークされていることに注意してください。こちらの技術情報アーティクル： https://["BES-53248クラスタスイッチNDUをEFOS 3.7.0.4以降にアップグレードできませんでした"^] を参照してください。
+IMPORTANT: BES-53248 クラスタスイッチを EFOS 3.x.x または 3.4.x.x から EFOS 3.7.0.4 または 3.8.0.2 にアップグレードしたあと、 Inter-Switch Link （ ISL ；スイッチ間リンク）とポートチャネルが * Down * 状態でマークされていることに注意してください。こちらの技術情報アーティクル： https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric%2C_Interconnect_and_Management_Switches/BES-53248_Cluster_Switch_NDU_failed_upgrade_to_EFOS_3.7.0.4_and_later["BES-53248クラスタスイッチNDUをEFOS 3.7.0.4以降にアップグレードできませんでした"^] を参照してください。
 
 .手順
 . BES-53248 クラスタスイッチを管理ネットワークに接続します。

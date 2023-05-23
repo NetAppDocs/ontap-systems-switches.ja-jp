@@ -23,7 +23,7 @@ Nexus 9336C-FX2共有スイッチにNX-OSソフトウェアをインストール
 * スイッチ設定の現在のバックアップ。
 * クラスタが完全に機能している（ログにエラーがない、または同様の問題が発生している）。
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco Ethernet Switch のページ"^]。サポートされるONTAP とNX-OSのバージョンについては、スイッチの互換性の表を参照してください。
-* Ciscoスイッチのアップグレードおよびダウングレード手順については、CiscoのWebサイトで入手可能な適切なソフトウェアおよびアップグレードガイドを参照してください。を参照してください https://["Cisco Nexus 9000 シリーズスイッチ"^]。
+* Ciscoスイッチのアップグレードおよびダウングレード手順については、CiscoのWebサイトで入手可能な適切なソフトウェアおよびアップグレードガイドを参照してください。を参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズスイッチ"^]。
 
 
 .例について

@@ -13,4 +13,4 @@ Smart Call Homeを使用する前に、次の考慮事項に留意してくだ�
 * デバイスを登録するには、 Cisco SMARTnet サービスが導入されている必要があります。
 
 
-。 http://["シスコサポートサイト"^] Smart Call Homeを設定するコマンドについて説明します。
+。 http://www.cisco.com/c/en/us/products/switches/index.html["シスコサポートサイト"^] Smart Call Homeを設定するコマンドについて説明します。
