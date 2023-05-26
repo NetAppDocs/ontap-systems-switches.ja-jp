@@ -92,7 +92,7 @@ cluster1::*>
 ====
 . ストレージスイッチsw1が使用可能であることを確認します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show -protocol lldp`
 
 +
 .例を示します
@@ -100,15 +100,25 @@ cluster1::*>
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network device-discovery show protocol lldp*
-Node/      Local Discovered
-Protocol   Port	 Device (LLDP: ChassisID)  Interface   Platform
---------   ----  -----------------------   ---------   ---------
+cluster1::*> *network device-discovery show -protocol lldp*
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
 node1/lldp
-           e3a   sw1 (b8:ce:f6:19:1b:42)   swp3        -
-node2/lldp
-           e3a   sw1 (b8:ce:f6:19:1b:42)   swp4        -
-cluster1::*>
+            e0M    sw1 (00:ea:bd:68:6a:e8)   Eth1/46           -
+            e0b    sw2 (6c:b2:ae:5f:a5:b2)   Ethernet1/16      -
+            e0c    SHFFG1827000286 (d0:39:ea:1c:16:92)
+                                             e0a               -
+            e0e    sw3 (6c:b2:ae:5f:a5:ba)   Ethernet1/18      -
+            e0f    SHFFG1827000286 (00:a0:98:fd:e4:a9)
+                                             e0b               -
+            e0g    sw4 (28:ac:9e:d5:4a:9c)   Ethernet1/11      -
+            e0h    sw5 (6c:b2:ae:5f:a5:ca)   Ethernet1/22      -
+            e1a    sw6 (00:f6:63:10:be:7c)   Ethernet1/33      -
+            e1b    sw7 (00:f6:63:10:be:7d)   Ethernet1/34      -
+            e2a    sw8 (b8:ce:f6:91:3d:88)   Ethernet1/35      -
+Press <space> to page down, <return> for next line, or 'q' to quit...
+10 entries were displayed.
 ----
 ====
 . を実行します `net show interface` 動作中のスイッチに対してコマンドを実行し、ノードとすべてのシェルフの両方が表示されることを確認します。
@@ -193,7 +203,7 @@ cluster1::*>
 ====
 . 両方のスイッチが使用可能であることを確認します。
 +
-`net device-discovery show`
+`net device-discovery show -protocol lldp`
 
 +
 .例を示します
@@ -201,17 +211,26 @@ cluster1::*>
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network device-discovery show protocol lldp*
-Node/     Local Discovered
-Protocol  Port  Device (LLDP: ChassisID)  Interface	  Platform
---------  ----  -----------------------   ---------   ---------
+
+cluster1::*> *network device-discovery show -protocol lldp*
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
 node1/lldp
-          e3a  sw1 (b8:ce:f6:19:1b:96)    swp1        -
-          e7b  nsw2 (b8:ce:f6:19:1a:7e)   swp1        -
-node2/lldp
-          e3a  sw1 (b8:ce:f6:19:1b:96)    swp2        -
-          e7b  nsw2 (b8:ce:f6:19:1a:7e)   swp2        -
-cluster1::*>
+            e0M    sw1 (00:ea:bd:68:6a:e8)   Eth1/46           -
+            e0b    sw2 (6c:b2:ae:5f:a5:b2)   Ethernet1/16      -
+            e0c    SHFFG1827000286 (d0:39:ea:1c:16:92)
+                                             e0a               -
+            e0e    sw3 (6c:b2:ae:5f:a5:ba)   Ethernet1/18      -
+            e0f    SHFFG1827000286 (00:a0:98:fd:e4:a9)
+                                             e0b               -
+            e0g    sw4 (28:ac:9e:d5:4a:9c)   Ethernet1/11      -
+            e0h    sw5 (6c:b2:ae:5f:a5:ca)   Ethernet1/22      -
+            e1a    sw6 (00:f6:63:10:be:7c)   Ethernet1/33      -
+            e1b    sw7 (00:f6:63:10:be:7d)   Ethernet1/34      -
+            e2a    sw8 (b8:ce:f6:91:3d:88)   Ethernet1/35      -
+Press <space> to page down, <return> for next line, or 'q' to quit...
+10 entries were displayed.
 ----
 ====
 . ストレージシステムのシェルフポートを確認します。
@@ -303,7 +322,7 @@ cluster1::*>
 
 NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
 
-. スイッチログ収集機能を開始します。
+. スイッチのログ収集機能をテストします。
 +
 `system switch ethernet log collect -device *`
 

@@ -54,3 +54,5 @@ entries:
     url: "/switch-bes-53248/replace-switch-reqs.html"
   - title: BES-53248スイッチを交換します
     url: "/switch-bes-53248/replace-switch.html"
+  - title: クラスタスイッチをスイッチレス接続に交換します
+    url: "/switch-bes-53248/migrate-to-switchless-interconnect-bes-53248.html"
