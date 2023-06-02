@@ -11,7 +11,7 @@ summary: BES-53248ハードウェアを取り付けるには、Broadcomのマニ
 
 
 [role="lead"]
-BES-53248ハードウェアを取り付けるには、Broadcomのマニュアルを参照してください。
+BES-53248ハードウェアの設置については、Broadcomのドキュメントを参照してください。
 
 .手順
 . を確認します link:configure-reqs-bes53248.html["設定要件"]。

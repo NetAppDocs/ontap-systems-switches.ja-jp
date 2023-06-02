@@ -2226,7 +2226,6 @@
   <block id="b2ca5d9b00c09954ba621c25b7a4bdbf" category="paragraph">。<block ref="141c10db18cf1753fa5fc05f553c33ff" category="inline-link-rx"></block> ケーブル接続の詳細については、を参照してください。</block>
   <block id="1d70d7c880f9a4b8e9ccbd4cbaeefcd8" category="list-text">この手順 を実行する前に、スイッチ構成の最新のバックアップがあることを確認してください。</block>
   <block id="c291fea66565616d9e881666325c1ee2" category="list-text">スイッチの現在のバックアップがない場合は、次のコマンドの出力をログファイルにコピーすることで、現在のスイッチ設定を保存できます。</block>
-  <block id="3f8f6d237f18036be3a3fb24642d16ba" category="list-text">現在のスイッチ設定をまだ保存していない場合は、次のコマンドの出力をログファイルにコピーして保存します。</block>
   <block id="8fdae5a227344a83423005f83a057331" category="list-text">クラスタポートが起動しており、クラスタ内のすべてのノードで正常に動作していることを確認します。</block>
   <block id="5d1ccfeff69430937e33ed02e46dbd94" category="list-text">クラスタからスイッチの健常性を確認します。</block>
   <block id="53a0bfa393247902d9ea8fedde7e8132" category="list-text">スイッチ cs1 をリブートします。これは、クラスタ LIF のホームポートへのリバートをトリガーする際に行います。スイッチのリブート中にノードに対して報告された「クラスタポートが停止している」イベントは無視してかまいません。</block>
@@ -4423,12 +4422,7 @@
   <block id="7d829570fe05df690649474b2bb97a3b" category="image-alt">クラスタノードの接続ケーブルをcs1-newスイッチに移動しました</block>
   <block id="ec5ea2f0318e4d906c296f5576b9c026" category="list-text">[[step6]]ケースの自動作成を抑制した場合は、AutoSupport メッセージを呼び出して再度有効にします。<block ref="9ac424c0d7b432975df36a19daf50c9c" prefix=" " category="inline-code"></block></block>
   <block id="0429fa776d68090e46718ac7e32390ef" category="admonition">EFOSバージョン3.10.0.3以降の場合は、コマンドを使用します<block ref="c09633a606c51a161b16f8bf38f5ebb1" prefix=" " category="inline-code"></block>。</block>
-  <block id="455129a1d85d80f79e8d763a25910c74" category="admonition">新しい RCF を更新または適用する場合は、スイッチ設定を消去し、基本的な設定を実行する必要があります。PowerOn Auto Provisioning（POAP）を無効にできる場合（NX-OS 9.2P1以降が必要）、SSHスイッチアクセスが維持されます。スイッチのリブート後にSSHアクセスができない場合は、追加の予防措置として、シリアルコンソールを使用してスイッチに接続します。</block>
   <block id="2df26e386d021172b261bcb47e157019" category="list-text">設定を消去します。</block>
-  <block id="a5247127c3e0a3fcdf9f80746c33cb54" category="list-text">POAPを無効にする：</block>
-  <block id="b64ae68f672b168b4456ea13b494a759" category="inline-link">PowerOn自動プロビジョニングを使用する</block>
-  <block id="01197fee3250d671fd8c51972b5f4745" category="paragraph">を参照してください<block ref="ff53901c2c0b0d51a17df0925879b1a5" category="inline-link-rx"></block> を参照してください。</block>
-  <block id="b8363a3557b5e1732a20eb45a96853b7" category="list-text">次のリロード時にPOAPが無効になっていることを確認します。</block>
   <block id="f306e2be0abd8aabfa0b014c372bbac8" category="list-text">スイッチcs1で手順4 ~ 11を繰り返します。</block>
   <block id="256be937ef390f7d6dd71ad092869119" category="admonition">ONTAP 9.8以降では、コマンドを使用します<block ref="c57378c3b3bb81c6b42a2b31a30ddda7" prefix=" " category="inline-code"></block>。</block>
   <block id="393a5f0f5f1f070aac964741815cca76" category="doc">Broadcom BES-53248クラスタスイッチをスイッチレス接続に交換します</block>
@@ -4491,4 +4485,7 @@
   <block id="b047f062da383f17811a9e72a79d23f4" category="list-text">最初のノードのクラスタLIFが稼働していてホームポートにリバートされている場合は、手順25と26を繰り返してクラスタポートを起動し、クラスタ内の他のノードのクラスタLIFをリバートします。</block>
   <block id="31c3fc1c4fe98b31f2904808ddd9be0b" category="list-text">クラスタ内のノードに関する情報を表示します。</block>
   <block id="bf1b3c61d401b2f6c4dbbf5853555319" category="list-text">交換したスイッチのスタートアップコンフィギュレーションファイルと実行コンフィギュレーションファイルが正しいことを確認します。この構成ファイルは、手順1の出力と一致している必要があります。</block>
+  <block id="d23e0ef648ea8ae58d49d4170d37c221" category="list-text">現在のスイッチ設定のコピーをまだ保存していない場合は、次のコマンドの出力をテキストファイルにコピーして保存します。</block>
+  <block id="0fb51802ddab454289d99db889475b22" category="admonition">新しい RCF を更新または適用する場合は、スイッチ設定を消去し、基本的な設定を実行する必要があります。スイッチを再度セットアップするには、スイッチのシリアルコンソールポートに接続する必要があります。</block>
+  <block id="a91911d2b8a6bd2699aa77eb38d533f1" category="paragraph">BES-53248ハードウェアの設置については、Broadcomのドキュメントを参照してください。</block>
 </blocks>
