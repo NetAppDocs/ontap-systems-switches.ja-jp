@@ -38,6 +38,8 @@ entries:
     url: "/switch-nvidia-sn2100/upgrade-cl-version.html"
 - title: スイッチを移行
   entries:
+  - title: CN1610クラスタスイッチから移行します
+    url: "/switch-nvidia-sn2100/migrate-cn1610-sn2100-cluster-switch.html"
   - title: Ciscoクラスタスイッチから移行
     url: "/switch-nvidia-sn2100/migrate-cisco-sn2100-cluster-switch.html"
   - title: 2ノードスイッチクラスタに移行する

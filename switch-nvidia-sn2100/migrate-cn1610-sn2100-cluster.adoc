@@ -1,0 +1,625 @@
+---
+permalink: switch-nvidia-sn2100/migrate-cn1610-sn2100-cluster-switch.html 
+sidebar: sidebar 
+keywords: migrate cluster NVIDIA SN2100 cluster switches cn1610 
+summary: ONTAPクラスタのNetApp CN1610クラスタスイッチは、無停止でNVIDIA SN2100クラスタネットワークスイッチに移行できます。 
+---
+= CN1610クラスタスイッチをNVIDIA SN2100クラスタスイッチに移行します
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPクラスタのNetApp CN1610クラスタスイッチは、NVIDIA SN2100クラスタスイッチに移行できます。これは無停止の手順です。
+
+
+
+== 要件を確認
+
+NetApp CN1610クラスタスイッチをNVIDIA SN2100クラスタスイッチに交換する場合は、特定の構成情報、ポート接続、およびケーブル接続の要件に注意する必要があります。を参照してください link:configure-overview-sn2100-cluster.html["NVIDIA SN2100スイッチのインストールと設定の概要"]。
+
+.サポートされるスイッチ
+次のクラスタスイッチがサポートされます。
+
+* NetApp CN1610
+* NVIDIA SN2100
+
+
+サポートされるポートとその設定の詳細については、を参照してください https://hwu.netapp.com/["Hardware Universe"^]。
+
+.必要なもの
+構成に関する次の要件を満たしていることを確認します。
+
+* 既存のクラスタが正しくセットアップされて機能している。
+* ノンストップオペレーションを実現するため、すべてのクラスタポートが稼働状態です。
+* NVIDIA SN2100クラスタスイッチは、リファレンス構成ファイル（RCF）を適用してインストールされた正しいバージョンのCumulus Linuxで構成および動作しています。
+* 既存のクラスタネットワーク構成には次のものがあります。
++
+** CN1610スイッチを使用する、完全に機能する冗長なNetAppクラスタ。
+** CN1610スイッチと新しいスイッチの両方への管理接続とコンソールアクセス。
+** すべてのクラスタLIFがup状態でホームポートにクラスタLIFがある。
+** ISLポートが有効で、CN1610スイッチ間および新しいスイッチ間でケーブル接続されている。
+
+
+* 一部のポートは、NVIDIA SN2100スイッチ上で40GbEまたは100GbEで動作するように設定されています。
+* ノードからNVIDIA SN2100クラスタスイッチへの40GbEおよび100GbEの接続を計画、移行、文書化しておく必要があります。
+
+
+
+
+== スイッチを移行します
+
+.例について
+この手順の例では、スイッチとノードで次の命名法を使用しています。
+
+* 既存のCN1610クラスタスイッチは_c1_and_c2_です。
+* 新しいNVIDIA SN2100クラスタスイッチは、_sw1_and _sw2_です。
+* ノードは、 _ node1 _ と _ node2 _ です。
+* クラスタ LIF は、ノード 1 では _node1_clus1_AND _node1_clus2_on 、ノード 2 では _node2_clus1_and _node2_clus2_on です。
+* 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
+* この手順 で使用されているクラスタポートは_e3aおよび_e3bです。
+* ブレークアウトポートの形式は、SWP[ポート] s [ブレークアウトポート0-3]です。たとえば'swp1の4つのブレークアウトポートは'_swp1s0'_swp1s1_'_swp1s2s'_swp1s3_です
+* 最初にスイッチc2をスイッチsw2に交換し、次にスイッチc1をスイッチsw1に交換します。
++
+** 次に、ノードとC2間のケーブル接続がC2から切断され、SW2に再接続されます。
+** その後、ノードとc1間のケーブルをc1から切断し、sw1に再接続しました。
+
+
+
+
+
+
+=== 手順1：移行の準備
+
+. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
++
+「 system node AutoSupport invoke -node * -type all -message MAINT= xh 」というメッセージが表示されます
+
++
+ここで、 _ x _ はメンテナンス時間の長さ（時間）です。
+
+. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 * y * 」と入力します。
++
+「 advanced 」の権限が必要です
+
++
+advanced のプロンプト（ * > ）が表示されます。
+
+. クラスタLIFで自動リバートを無効にします。
++
+network interface modify -vserver Cluster -lif *-auto-revert false
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
+
+Warning: Disabling the auto-revert feature of the cluster logical interface may effect the availability of your cluster network. Are you sure you want to continue? {y|n}: *y*
+----
+====
+
+
+
+
+=== 手順2：ポートとケーブルを設定する
+
+. 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
++
+各ポートにはupと表示されます `Link` および `healthy` の場合 `Health Status`。
+
++
+.. ネットワークポートの属性を表示します。
++
+「 network port show -ipspace cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -ipspace Cluster*
+
+Node: node1
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
+----
+====
+.. LIFとそのホームノードに関する情報を表示します。
++
+「 network interface show -vserver Cluster 」のように表示されます
+
++
+それぞれのLIFが表示されます `up/up` の場合 `Status Admin/Oper` および `true` の場合 `Is Home`。
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -vserver Cluster*
+
+            Logical      Status     Network            Current     Current Is
+Vserver     Interface    Admin/Oper Address/Mask       Node        Port    Home
+----------- -----------  ---------- ------------------ ----------- ------- ----
+Cluster
+            node1_clus1  up/up      169.254.209.69/16  node1       e3a     true
+            node1_clus2  up/up      169.254.49.125/16  node1       e3b     true
+            node2_clus1  up/up      169.254.47.194/16  node2       e3a     true
+            node2_clus2  up/up      169.254.19.183/16  node2       e3b     true
+
+----
+====
+
+
+. 各ノードのクラスタポートは、（ノードから見て）次のように既存のクラスタスイッチに接続されています。
++
+`network device-discovery show -protocol`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol cdp*
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node1      /cdp
+            e3a    c1 (6a:ad:4f:98:3b:3f)    0/1               -
+            e3b    c2 (6a:ad:4f:98:4c:a4)    0/1               -
+node2      /cdp
+            e3a    c1 (6a:ad:4f:98:3b:3f)    0/2               -
+            e3b    c2 (6a:ad:4f:98:4c:a4)    0/2               -
+----
+====
+. クラスタポートとスイッチは、（スイッチから見て）次のように接続されています。
++
+'How CDP Neighbors' を参照してください
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+c1# *show cdp neighbors*
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID             Local Intrfce Hldtme Capability  Platform         Port ID
+node1                 0/1           124     H          AFF-A400         e3a
+node2                 0/2           124     H          AFF-A400         e3a
+c2                    0/13          179     S I s      CN1610           0/13
+c2                    0/14          175     S I s      CN1610           0/14
+c2                    0/15          179     S I s      CN1610           0/15
+c2                    0/16          175     S I s      CN1610           0/16
+
+c2# *show cdp neighbors*
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+
+Device-ID             Local Intrfce Hldtme Capability  Platform         Port ID
+node1                 0/1           124    H           AFF-A400         e3b
+node2                 0/2           124    H           AFF-A400         e3b
+c1                    0/13          175    S I s       CN1610           0/13
+c1                    0/14          175    S I s       CN1610           0/14
+c1                    0/15          175    S I s       CN1610           0/15
+c1                    0/16          175    S I s       CN1610           0/16
+----
+====
+. コマンドを使用して、クラスタネットワークが完全に接続されていることを確認します。
++
+cluster ping-cluster -node node-name
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster ping-cluster -node node2*
+
+Host is node2
+Getting addresses from network interface table...
+Cluster node1_clus1 169.254.209.69 node1     e3a
+Cluster node1_clus2 169.254.49.125 node1     e3b
+Cluster node2_clus1 169.254.47.194 node2     e3a
+Cluster node2_clus2 169.254.19.183 node2     e3b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:
+....
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 9000 byte MTU on 4 path(s):
+    Local 169.254.19.183 to Remote 169.254.209.69
+    Local 169.254.19.183 to Remote 169.254.49.125
+    Local 169.254.47.194 to Remote 169.254.209.69
+    Local 169.254.47.194 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+----
+====
+. スイッチC2で、ノードのクラスタポートに接続されているポートをシャットダウンします。
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(c2)# *configure*
+(c2)(Config)# *interface 0/1-0/12*
+(c2)(Interface 0/1-0/12)# *shutdown*
+(c2)(Interface 0/1-0/12)# *exit*
+(c2)(Config)# *exit*
+(c2)#
+----
+====
+. NVIDIA SN2100でサポートされている適切なケーブル配線を使用して、ノードのクラスタポートを古いスイッチC2から新しいスイッチSW2に移動します。
+. ネットワークポートの属性を表示します。
++
+「 network port show -ipspace cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -ipspace Cluster*
+
+Node: node1
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
+----
+====
+. これで、各ノードのクラスタポートは、ノードから見て次のようにクラスタスイッチに接続されました。
++
+`network device-discovery show -protocol`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol lldp*
+
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node1      /lldp
+            e3a    c1  (6a:ad:4f:98:3b:3f)   0/1               -
+            e3b    sw2 (b8:ce:f6:19:1a:7e)   swp3              -
+node2      /lldp
+            e3a    c1  (6a:ad:4f:98:3b:3f)   0/2               -
+            e3b    sw2 (b8:ce:f6:19:1b:96)   swp4              -
+----
+====
+. スイッチSW2で、すべてのノードクラスタポートが動作していることを確認します。
++
+`net show interface`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@sw2:~$ *net show interface*
+
+State  Name         Spd   MTU    Mode        LLDP              Summary
+-----  -----------  ----  -----  ----------  ----------------- ----------------------
+...
+...
+UP     swp3         100G  9216   Trunk/L2    e3b               Master: bridge(UP)
+UP     swp4         100G  9216   Trunk/L2    e3b               Master: bridge(UP)
+UP     swp15        100G  9216   BondMember  sw1 (swp15)       Master: cluster_isl(UP)
+UP     swp16        100G  9216   BondMember  sw1 (swp16)       Master: cluster_isl(UP)
+----
+====
+. スイッチc1で、ノードのクラスタポートに接続されているポートをシャットダウンします。
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(c1)# *configure*
+(c1)(Config)# *interface 0/1-0/12*
+(c1)(Interface 0/1-0/12)# *shutdown*
+(c1)(Interface 0/1-0/12)# *exit*
+(c1)(Config)# *exit*
+(c1)#
+----
+====
+. NVIDIA SN2100でサポートされている適切なケーブルを使用して、ノードのクラスタポートを古いスイッチc1から新しいスイッチsw1に移動します。
+. クラスタの最終的な構成を確認します。
++
+「 network port show -ipspace cluster 」のように表示されます
+
++
+各ポートが表示されます `up` の場合 `Link` および `healthy` の場合 `Health Status`。
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -ipspace Cluster*
+
+Node: node1
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                 Speed(Mbps)  Health   Health
+Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
+--------- ---------- ---------------- ---- ----- ------------ -------- ------
+e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
+e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
+----
+====
+. これで、各ノードのクラスタポートは、ノードから見て次のようにクラスタスイッチに接続されました。
++
+`network device-discovery show -protocol`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol lldp*
+
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface       Platform
+----------- ------ ------------------------- --------------  ----------------
+node1      /lldp
+            e3a    sw1 (b8:ce:f6:19:1a:7e)   swp3            -
+            e3b    sw2 (b8:ce:f6:19:1b:96)   swp3            -
+node2      /lldp
+            e3a    sw1 (b8:ce:f6:19:1a:7e)   swp4            -
+            e3b    sw2 (b8:ce:f6:19:1b:96)   swp4            -
+----
+====
+. スイッチsw1およびSW2で、すべてのノードクラスタポートが動作していることを確認します。
++
+`net show interface`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net show interface*
+
+State  Name         Spd   MTU    Mode        LLDP              Summary
+-----  -----------  ----  -----  ----------  ----------------- ----------------------
+...
+...
+UP     swp3         100G  9216   Trunk/L2    e3a               Master: bridge(UP)
+UP     swp4         100G  9216   Trunk/L2    e3a               Master: bridge(UP)
+UP     swp15        100G  9216   BondMember  sw2 (swp15)       Master: cluster_isl(UP)
+UP     swp16        100G  9216   BondMember  sw2 (swp16)       Master: cluster_isl(UP)
+
+
+cumulus@sw2:~$ *net show interface*
+
+State  Name         Spd   MTU    Mode        LLDP              Summary
+-----  -----------  ----  -----  ----------  ----------------- -----------------------
+...
+...
+UP     swp3         100G  9216   Trunk/L2    e3b               Master: bridge(UP)
+UP     swp4         100G  9216   Trunk/L2    e3b               Master: bridge(UP)
+UP     swp15        100G  9216   BondMember  sw1 (swp15)       Master: cluster_isl(UP)
+UP     swp16        100G  9216   BondMember  sw1 (swp16)       Master: cluster_isl(UP)
+----
+====
+. 両方のノードのそれぞれで、各スイッチに 1 つの接続があることを確認します。
++
+`net show lldp`
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、両方のスイッチの該当する結果を示しています。
+
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net show lldp*
+
+LocalPort  Speed  Mode        RemoteHost          RemotePort
+---------  -----  ----------  ------------------  -----------
+swp3       100G   Trunk/L2    node1               e3a
+swp4       100G   Trunk/L2    node2               e3a
+swp15      100G   BondMember  sw2                 swp15
+swp16      100G   BondMember  sw2                 swp16
+
+cumulus@sw2:~$ *net show lldp*
+
+LocalPort  Speed  Mode        RemoteHost          RemotePort
+---------  -----  ----------  ------------------  -----------
+swp3       100G   Trunk/L2    node1               e3b
+swp4       100G   Trunk/L2    node2               e3b
+swp15      100G   BondMember  sw1                 swp15
+swp16      100G   BondMember  sw1                 swp16
+----
+====
+
+
+
+
+=== 手順3：手順 を完了します
+
+. クラスタ LIF で自動リバートを有効にします。
++
+`cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert true`
+
+. すべてのクラスタネットワークLIFがそれぞれのホームポートに戻っていることを確認します。
++
+「 network interface show 」を参照してください
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -vserver Cluster*
+
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            node1_clus1  up/up    169.254.209.69/16  node1         e3a     true
+            node1_clus2  up/up    169.254.49.125/16  node1         e3b     true
+            node2_clus1  up/up    169.254.47.194/16  node2         e3a     true
+            node2_clus2  up/up    169.254.19.183/16  node2         e3b     true
+----
+====
+. 次の2つのコマンドを使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能を有効にします。
++
+'system switch ethernet log setup-password 'および'system switch ethernet log enable-colion
+
++
+.. 「 system switch ethernet log setup -password 」と入力します
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet log setup-password*
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+*sw1*
+*sw2*
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *sw1*
+RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
+Do you want to continue? {y|n}::[n] *y*
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *sw2*
+RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
+Do you want to continue? {y|n}:: [n] *y*
+
+Enter the password: <enter switch password>
+Enter the password again: <enter switch password>
+----
+====
+.. 次に 'system switch ethernet log enable-colion' を実行します
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system  switch ethernet log enable-collection*
+
+Do you want to enable cluster log collection for all nodes in the cluster?
+{y|n}: [n] *y*
+
+Enabling cluster switch log collection.
+
+cluster1::*>
+----
+====
++
+
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
+
+
+. スイッチログ収集機能を開始します。
++
+`system switch ethernet log collect -device *`
+
++
+10分待ってから、次のコマンドを使用してログ収集が成功したことを確認します。
+
++
+`system switch ethernet log show`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> system switch ethernet log show
+Log Collection Enabled: true
+
+Index  Switch                       Log Timestamp        Status
+------ ---------------------------- -------------------  ---------    
+1      sw1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
+2      sw2 (b8:ce:f6:19:1b:96)      4/29/2022 03:07:42   complete
+----
+====
+. 権限レベルを admin に戻します。
++
+「特権管理者」
+
+. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
++
+「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+
+
