@@ -20,7 +20,7 @@ ONTAP クラスタの古いCiscoクラスタスイッチは、Cisco Nexus 9336C-
 次の点を確認します
 
 * Nexus 9336C-FX2スイッチの一部のポートは、10GbEまたは40GbEで動作するように設定されています。
-* ノードからNexus 9336C-FX2クラスタスイッチへの10GbEおよび40GbE接続は、計画、移行、文書化されています。
+* ノードからNexus 9336C-FX2クラスタスイッチへの10GbEおよび40GbE接続については、計画、移行、文書化が完了しています。
 * クラスタは完全に機能しています（ログにエラーがないか、または同様の問題が発生していない必要があります）。
 * Cisco Nexus 9336C-FX2スイッチの初期カスタマイズは完了しています。これにより、次のことが可能になります。
 +
@@ -561,14 +561,44 @@ network interface revert -vserver Cluster -lif *
 +
 「 cluster show 」を参照してください
 
-. リモートクラスタインターフェイスに ping を実行して接続を確認します。
-+
+. リモートクラスタインターフェイスの接続を確認します。
+
+
+[role="tabbed-block"]
+====
+.ONTAP 9.9.1以降
+--
+を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+
+`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注：* showコマンドを実行して詳細を表示する前に、数秒待ってください。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source          Destination       Packet
+Node   Date                       LIF             LIF               Loss
+------ -------------------------- --------------- ----------------- -----------
+node1
+       3/5/2022 19:21:18 -06:00   node1_clus2      node2_clus1      none
+       3/5/2022 19:21:20 -06:00   node1_clus2      node2_clus2      none
+
+node2
+       3/5/2022 19:21:18 -06:00   node2_clus2      node1_clus1      none
+       3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
+----
+--
+.すべてのONTAPリリース
+--
+すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+
 `cluster ping-cluster -node <name>`
 
-+
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 cluster1::*> *cluster ping-cluster -node node2*
@@ -596,8 +626,9 @@ RPC status:
 2 paths up, 0 paths down (tcp check)
 2 paths up, 0 paths down (udp check)
 ----
+--
 ====
-. スイッチ関連のログファイルを収集するには、イーサネットスイッチヘルスモニタのログ収集機能を有効にします。
+. [[step5]]スイッチに関連するログファイルを収集するために、イーサネットスイッチヘルスモニタログ収集機能をイネーブルにします。
 
 
 [role="tabbed-block"]

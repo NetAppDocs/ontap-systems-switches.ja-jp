@@ -19,15 +19,8 @@ IMPORTANT: ログ収集機能を有効にするには、ONTAP バージョン9.1
 BES-53248クラスタスイッチ* CLI *を使用して環境がセットアップされていることを確認します。
 
 .手順
-. 次のコマンドを使用して、イーサネットスイッチヘルスモニタのログ収集機能を有効にし、スイッチに関連するログファイルを収集します。
-+
-「system switch ethernet log setup -password」およびを入力します
-
-+
-「システムスイッチのイーサネットログの有効化」
-
-+
-.. 「 system switch ethernet log setup -password 」と入力します
+. イーサネットスイッチヘルスモニタのログ収集機能のパスワードを作成します。
+`system switch ethernet log setup-password`
 +
 .例を示します
 [%collapsible]
@@ -44,8 +37,7 @@ Choose from the following list:
 cluster1::*> *system switch ethernet log setup-password*
 
 Enter the switch name: *cs1*
-RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] *y*
+Would you like to specify a user other than admin for log collection? {y|n}: *n*
 
 Enter the password: *<enter switch password>*
 Enter the password again: *<enter switch password>*
@@ -53,61 +45,46 @@ Enter the password again: *<enter switch password>*
 cluster1::*> *system switch ethernet log setup-password*
 
 Enter the switch name: *cs2*
-RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] *y*
+Would you like to specify a user other than admin for log collection? {y|n}: *n*
 
 Enter the password: *<enter switch password>*
 Enter the password again: *<enter switch password>*
 ----
 ====
-.. 入力するコマンド `system switch ethernet log enable-collection`
+. イーサネットスイッチヘルスモニタのログ収集機能を有効にします。
++
+`system switch ethernet log modify -device _<switch-name>_ -log-request true`
+
 +
 .例を示します
 [%collapsible]
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *system  switch ethernet log enable-collection*
+cluster1::*> *system switch ethernet log modify -device cs1 -log-request true*
 
-Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] *y*
+Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
 
 Enabling cluster switch log collection.
 
-cluster1::*>
+cluster1::*> *system switch ethernet log modify -device cs2 -log-request true*
+
+Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
+
+Enabling cluster switch log collection.
 ----
 ====
-
-
-. スイッチログ収集機能を開始します。
 +
-`system switch ethernet log collect -device *`
-
-+
-10分待ってから、次のコマンドを使用してログ収集が成功したことを確認します。
+10分待ってから、コマンドを使用してログの収集が完了したことを確認します。
 
 +
 `system switch ethernet log show`
 
 +
-.例を示します
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> system switch ethernet log show
-Log Collection Enabled: true
 
-Index  Switch                       Log Timestamp        Status
------- ---------------------------- -------------------  ---------
-1      cs1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete
-2      cs2 (b8:ce:f6:19:1b:96)      4/29/2022 03:07:42   complete
-----
+CAUTION: これらのコマンドのいずれかでエラーが返された場合、またはログの収集が完了しない場合は、NetAppサポートにお問い合わせください。
 
-CAUTION: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
 
 .次の手順
 スイッチをアップグレードする場合は、に進みます link:replace-verify.html["アップグレード設定を確認します"]。
-
-====
-
