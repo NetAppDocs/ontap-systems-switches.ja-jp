@@ -3,6 +3,7 @@ section: switch-nvidia-sn2100-storage
 title: NVIDIA SN2100
 entries:
 - title: 概要
+  pdf-filename: 概要_sn2100 -ストレージ
   entries:
   - title: 設定の概要
     url: "/switch-nvidia-sn2100/configure-overview-sn2100-storage.html"
@@ -13,6 +14,7 @@ entries:
   - title: 必要なドキュメント
     url: "/switch-nvidia-sn2100/required-documentation-sn2100-storage.html"
 - title: ハードウェアを設置
+  pdf-filename: install_hardware_sn2100-storage
   entries:
   - title: スイッチを取り付けます
     url: "/switch-nvidia-sn2100/install-hardware-sn2100-storage.html"
@@ -23,6 +25,7 @@ entries:
   - title: NS224シェルフをケーブル接続します
     url: "/switch-nvidia-sn2100/install-cable-shelves-sn2100-storage.html"
 - title: ソフトウェアを設定します
+  pdf-filename: software_sn2100ストレージの設定
   entries:
   - title: ソフトウェアのインストールワークフロー
     url: "/switch-nvidia-sn2100/configure-software-sn2100-storage.html"
@@ -35,8 +38,10 @@ entries:
   - title: スイッチログ収集を設定します
     url: "/switch-nvidia-sn2100/install-snmpv3-sn2100-storage.html"
 - title: スイッチを移行
+  pdf-filename: migrate_switches_sn2100 -ストレージ
   entries:
   - title: Ciscoストレージスイッチから移行
     url: "/switch-nvidia-sn2100/migrate-cisco-storage-switch-sn2100-storage.html"
 - title: スイッチを交換します
+  pdf-filename: _switch_sn2100-storageの置き換え
   url: "/switch-nvidia-sn2100/replace-sn2100-switch-storage.html"

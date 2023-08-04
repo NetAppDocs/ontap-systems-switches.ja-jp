@@ -3,6 +3,7 @@ section: switch-nvidia-sn2100
 title: NVIDIA SN2100
 entries:
 - title: 概要
+  pdf-filename: 概要_sn2100
   entries:
   - title: 設定の概要
     url: "/switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
@@ -13,6 +14,7 @@ entries:
   - title: 必要なドキュメント
     url: "/switch-nvidia-sn2100/required-documentation-sn2100-cluster.html"
 - title: ハードウェアを設置
+  pdf-filename: install_hardware_sn2100
   entries:
   - title: スイッチを取り付けます
     url: "/switch-nvidia-sn2100/install-hardware-sn2100-cluster.html"
@@ -23,6 +25,7 @@ entries:
   - title: NS224シェルフをケーブル接続します
     url: "/switch-nvidia-sn2100/install-cable-shelves-sn2100-cluster.html"
 - title: ソフトウェアを設定します
+  pdf-filename: software_sn2100の設定
   entries:
   - title: ソフトウェアのインストールワークフロー
     url: "/switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html"
@@ -37,6 +40,7 @@ entries:
   - title: Cumulus Linuxバージョンをアップグレードします
     url: "/switch-nvidia-sn2100/upgrade-cl-version.html"
 - title: スイッチを移行
+  pdf-filename: migrate_switches_sn2100
   entries:
   - title: CN1610クラスタスイッチから移行します
     url: "/switch-nvidia-sn2100/migrate-cn1610-sn2100-cluster-switch.html"
@@ -45,6 +49,7 @@ entries:
   - title: 2ノードスイッチクラスタに移行する
     url: "/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html"
 - title: スイッチを交換します
+  pdf-filename: replace_switches_sn2100
   entries:
   - title: クラスタスイッチを交換します
     url: "/switch-nvidia-sn2100/replace-sn2100-switch-cluster.html"
