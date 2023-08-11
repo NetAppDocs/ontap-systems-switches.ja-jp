@@ -27,14 +27,19 @@ sidebar:
     entries:
     - section: switch-bes-53248
     - section: switch-cisco-9336c-fx2
+      pdf-filename: スイッチ- CISCO-9336c-FX2-cluster
     - section: switch-nvidia-sn2100
+      pdf-filename: スイッチ- nvidia-sn2100-cluster
   - title: ストレージスイッチ
     entries:
     - section: switch-cisco-9336c-fx2-storage
+      pdf-filename: スイッチ- CISCO-9336c-FX2-storage
     - section: switch-nvidia-sn2100-storage
+      pdf-filename: スイッチ-nvidia-sn2100-storage
   - title: 共有スイッチ
     entries:
     - section: switch-cisco-9336c-fx2-shared
+      pdf-filename: スイッチ- CISCO-9336c-FX2-storage
   - title: 可用性が終了したスイッチ
     entries:
     - title: 概要
