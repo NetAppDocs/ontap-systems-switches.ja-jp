@@ -4612,4 +4612,5 @@
   <block id="701d9aab459b808d17f39aa5c50f97df" category="sidebar">スイッチ-nvidia-sn2100-storage</block>
   <block id="a5f4f9ed92853ea6128046eb985ff5a7" category="sidebar">CISCO-9336c-FX2-shared</block>
   <block id="759d203c3eb13a684379c7413a7ea760" category="sidebar">CISCO-9336c-FX2-cluster</block>
+  <block id="111cada5d22121a7e11aef39f4aca355" category="list-text">クラスタスイッチcs2で、ノードのクラスタポートに接続されているポートを起動します。</block>
 </blocks>

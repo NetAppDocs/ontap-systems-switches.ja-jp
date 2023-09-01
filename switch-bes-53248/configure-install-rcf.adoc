@@ -1,7 +1,7 @@
 ---
 permalink: switch-bes-53248/configure-install-rcf.html 
 sidebar: sidebar 
-keywords: install rcf,setup rcf 
+keywords: install rcf,setup rcf,rcf file 
 summary: BES-53248クラスタスイッチを設定したあとと新しいライセンスを適用したあとに、リファレンス構成ファイル（RCF）をインストールできます。 
 ---
 = リファレンス構成ファイル（ RCF ）のインストール
@@ -591,6 +591,13 @@ Are you sure you would like to reset the system? (y/n) *y*
 System will now restart!
 ----
 ====
+. クラスタスイッチcs2で、ノードのクラスタポートに接続されているポートを起動します。
++
+[listing, subs="+quotes"]
+----
+(cs2)(Config)# *interface 0/1-0/16*
+(cs2)(Interface 0/1-0/16)# *no shutdown*
+----
 . スイッチcs2のポートを確認します。 `show interfaces status all | exclude Detach`
 +
 .例を示します
