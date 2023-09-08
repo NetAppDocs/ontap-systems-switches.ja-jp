@@ -272,25 +272,12 @@ Cluster
             node2_clus2  up/up    169.254.19.183/16  node2         e0b     true
 ----
 ====
-. すべてのクラスタ LIF で「 auto-revert 」が有効になっていることを確認します。「 network interface show -vserver Cluster -fields auto-revert
+. クラスタ LIF で自動リバートを無効にします。
 +
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
-
-          Logical
-Vserver   Interface     Auto-revert
---------- ------------- ------------
-Cluster
-          node1_clus1   true
-          node1_clus2   true
-          node2_clus1   true
-          node2_clus2   true
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
 ----
-====
 . ノード 1 のクラスタポート e0a からケーブルを外し、クラスタスイッチ cs1 のポート 1 に e0a を接続します。これには、 BES-53248 スイッチでサポートされている適切なケーブル接続を使用します。
 +
 。 https://hwu.netapp.com/Home/Index["_NetApp Hardware Universe _"^] ケーブル接続の詳細については、を参照してください。
@@ -410,6 +397,22 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 
 
 === 手順3：構成を確認します
+
+. クラスタ LIF で自動リバートを有効にします。
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true*
+----
+. クラスタLIFがホームポートにリバートされたことを確認します（数分かかる場合があります）。
++
+「 network interface show -vserver Cluster 」のように表示されます
+
++
+クラスタLIFがホームポートにリバートされていない場合は、手動でリバートします。
+
++
+network interface revert -vserver Cluster -lif *
 
 . すべてのインターフェイスに Is Home の true が表示されていることを確認します。
 +

@@ -274,7 +274,6 @@
   <block id="9dd93934cbc2b0e8bd1558fefdba5ef1" category="paragraph">次の例は、スイッチ cs1 上の隣接デバイスを示しています。</block>
   <block id="1b6af97ed2dc264f0a8d2be382e6228a" category="paragraph">次の例は、スイッチ cs2 上の隣接デバイスを表示します。</block>
   <block id="341290705782dd24b9948684702337d7" category="list-text">すべてのクラスタポートが「 up 」になっていることを確認します。</block>
-  <block id="09b4c6d12807ef628dddcedb95f59fba" category="list-text">すべてのクラスタ LIF で「 auto-revert 」が有効になっていることを確認します。「 network interface show -vserver Cluster -fields auto-revert</block>
   <block id="49de00b8e8c6586fcca9fad09c76b9ed" category="list-text">ノード 1 のクラスタポート e0a からケーブルを外し、クラスタスイッチ cs1 のポート 1 に e0a を接続します。これには、 BES-53248 スイッチでサポートされている適切なケーブル接続を使用します。</block>
   <block id="4117e035e1d5632e3f6a3311cd104041" category="list-text">ノード 2 のクラスタポート e0a からケーブルを外し、クラスタスイッチ cs1 のポート 2 に e0a を接続します。これには、 BES-53248 スイッチでサポートされている適切なケーブル接続を使用します。</block>
   <block id="13926c16a2339f39a7e2d4218d47d10b" category="list-text">クラスタスイッチ cs1 のすべてのノード側ポートを有効にします。</block>
@@ -4050,8 +4049,6 @@
   <block id="9f1444ca3aac0720c37a8103593b319f" category="sidebar">インストールと設定</block>
   <block id="354a428ae5bd694cfeccb15e5faecafb" category="sidebar">RCFをインストールします</block>
   <block id="c13171629fe31c1238a32f1e3650b982" category="sidebar">ONTAP 8.3.1以降にはFASTPATHとRCFをインストールします</block>
-  <block id="c728d9401bdb127c12220b6c83da42da" category="sidebar">移行オプション</block>
-  <block id="dddf7ccc3477ae39c351d20ccb2691ab" category="sidebar">スイッチレスクラスタから移行する</block>
   <block id="a8bb0b5314965a8ac1d110202d7aae1f" category="sidebar">NX-OSをインストールします</block>
   <block id="72f2a813dae956304645ec60ccd278dd" category="sidebar">CSHMをインストールします</block>
   <block id="9c065304d8a82e97da8536d4c7484ee2" category="sidebar">古いCiscoスイッチからの移行</block>
@@ -4355,7 +4352,6 @@
   <block id="420b545896cb1c9b03dbccd44bf33f86" category="list-text">RCFを適用したあとにスイッチで、ライセンスが追加されたポートが表示されていることを確認します。</block>
   <block id="2a886bfc4f98f8b2263d47853859d640" category="list-text">スイッチcs2のポートを確認します。<block ref="3ecfeafb159bbded4fdecd6f5a860f4a" prefix=" " category="inline-code"></block></block>
   <block id="818dbe7dc43a870c6906959f7d426ba7" category="list-text">クラスタのすべてのノードでe0bポートが正常に稼働していることを確認します。<block ref="856f897c52a15ad9c779d1f7b82c2593" prefix=" " category="inline-code"></block></block>
-  <block id="7780adb3deb169c3e834888c0fec0145" category="list-text">[[step17]]クラスタスイッチcs1で、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
   <block id="7fc0653470d537d0d0fc3997f25d581b" category="list-text">クラスタ LIF がスイッチ cs2 でホストされているポートに移行されたことを確認します。これには数秒かかることがあります。<block ref="fb5130635551fff679ab6d902eaff8d9" prefix=" " category="inline-code"></block></block>
   <block id="b0553791d0540be1d52514a1a47621f6" category="list-text">スイッチcs1で手順4~14を繰り返します。</block>
   <block id="9cb99e0cdd58aac4297608fa8d8ef89b" category="list-text">クラスタ LIF で自動リバートを有効にします。<block ref="478474aa0db28144d5db02c478cd5215" prefix=" " category="inline-code"></block></block>
@@ -4613,4 +4609,5 @@
   <block id="a5f4f9ed92853ea6128046eb985ff5a7" category="sidebar">CISCO-9336c-FX2-shared</block>
   <block id="759d203c3eb13a684379c7413a7ea760" category="sidebar">CISCO-9336c-FX2-cluster</block>
   <block id="111cada5d22121a7e11aef39f4aca355" category="list-text">クラスタスイッチcs2で、ノードのクラスタポートに接続されているポートを起動します。</block>
+  <block id="325c324b922ed6e1b216f99766068e43" category="list-text">[[step18]]クラスタスイッチcs1で、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
 </blocks>

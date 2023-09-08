@@ -25,12 +25,8 @@ entries:
 - title: スイッチを移行
   pdf-filename: migrate_switches_cn1610
   entries:
-  - title: 移行オプション
-    url: "/switch-netapp-cn1610/migrate-overview.html"
-  - title: スイッチレスクラスタから移行する
+  - title: スイッチレスクラスタからスイッチクラスタに移行する
     url: "/switch-netapp-cn1610/migrate-switched-netapp-cn1610.html"
-  - title: 2ノードスイッチクラスタに移行する
-    url: "/switch-netapp-cn1610/migrate-fas22xx-systems.html"
 - title: スイッチを交換します
   pdf-filename: replace_switches_cn1610
   entries:
