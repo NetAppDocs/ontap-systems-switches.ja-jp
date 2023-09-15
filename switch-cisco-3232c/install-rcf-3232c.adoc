@@ -21,7 +21,6 @@ summary: RCF は、 Nexus 3232C スイッチを初めてセットアップした
 * スイッチ設定の現在のバックアップ。
 * クラスタが完全に機能している（ログにエラーがない、または同様の問題が発生している）。
 * 現在のリファレンス構成ファイル（RCF）。
-* NX-OSだけをインストールして現在のRCFバージョンをそのまま使用する場合に必要な、目的のブートイメージを反映したRCFでのブート設定。現在のブートイメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。
 * RCFのインストール時に必要なスイッチへのコンソール接続
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco Ethernet Switch のページ"^] サポートされているONTAP とRCFのバージョンについては、スイッチの互換性の表を参照してください。RCFのコマンド構文と、NX-OSのバージョンにあるコマンド構文との間には、コマンドの依存関係が存在する場合があります。
 * link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズスイッチ"^]。Ciscoスイッチのアップグレードおよびダウングレード手順の詳細については、CiscoのWebサイトで入手可能なソフトウェアおよびアップグレードガイドを参照してください。
