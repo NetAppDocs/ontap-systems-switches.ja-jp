@@ -76,9 +76,9 @@ _x_ は、メンテナンス時間の長さ（時間単位）です。
 ====
 次の例は、各クラスタインターコネクトスイッチの各ノードに設定されているクラスタインターコネクトインターフェイスの数を示しています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::> network device-discovery show
+cluster::> *network device-discovery show*
 
        Local  Discovered
 Node   Port   Device       Interface   Platform
@@ -107,9 +107,9 @@ n2     /cdp
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network port show -role cluster
+cluster::*> *network port show -role cluster*
        (network port show)
 
 Node: n1
@@ -140,9 +140,9 @@ e0d   cluster   cluster    up    9000  auto/10000     -
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network interface show -role cluster
+cluster::*> *network interface show -role cluster*
 (network interface show)
          Logical    Status      Network        Current  Current  Is
 Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
@@ -170,9 +170,9 @@ Cluster
 ====
 次の例は、クラスタで認識されているクラスタスイッチとその管理 IP アドレスを表示します。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::> system cluster-switch show
+cluster::> *system cluster-switch show*
 Switch                        Type             Address       Model
 ----------------------------- ---------------- ------------- --------
 CL1                           cluster-network  10.10.1.101   CN1610
@@ -205,23 +205,26 @@ CL2                           cluster-network  10.10.1.102   CN1610
 .. 適切なバージョンのイメージソフトウェアをからダウンロードします link:http://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.html["Cisco ® Cluster and Management Network Switch Reference Configuration File Download （ Cisco ® クラスタおよび管理ネットワークスイッチリファレンス構成ファイルのダウンロード"^]。
 
 
-. 交換する 2 つ目の CN1610 スイッチに関連付けられている LIF を移行します。「 network interface migrate-verser cluster-lif_lif-name __ -source-node-source_source-node-name_destination-node -destination -node -destination-port_destination-port-destination-port_name_`
+. 交換する2つ目のCN1610スイッチに関連付けられているLIFを移行します。
++
+`network interface migrate -vserver _vserver-name_ -lif _lif-name_ -source-node _source-node-name_ destination-node _destination-node-name_ -destination-port _destination-port-name_`
+
 +
 .例を示します
 [%collapsible]
 ====
 次の例に示すように、各 LIF を個別に移行する必要があります。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network interface migrate -vserver cluster -lif n1_clus2 -source-node n1
--destination-node  n1  -destination-port  e0a
-cluster::*> network interface migrate -vserver cluster -lif n1_clus3 -source-node n1
--destination-node  n1  -destination-port  e0d
-cluster::*> network interface migrate -vserver cluster -lif n2_clus2 -source-node n2
--destination-node  n2  -destination-port  e0a
-cluster::*> network interface migrate -vserver cluster -lif n2_clus3 -source-node n2
--destination-node  n2  -destination-port  e0d
+cluster::*> *network interface migrate -vserver cluster -lif n1_clus2 -source-node n1
+-destination-node  n1  -destination-port  e0a*
+cluster::*> *network interface migrate -vserver cluster -lif n1_clus3 -source-node n1
+-destination-node  n1  -destination-port  e0d*
+cluster::*> *network interface migrate -vserver cluster -lif n2_clus2 -source-node n2
+-destination-node  n2  -destination-port  e0a*
+cluster::*> *network interface migrate -vserver cluster -lif n2_clus3 -source-node n2
+-destination-node  n2  -destination-port  e0d*
 ----
 ====
 . クラスタの健常性を確認します。
@@ -232,9 +235,9 @@ cluster::*> network interface migrate -vserver cluster -lif n2_clus3 -source-nod
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network interface show -role cluster
+cluster::*> *network interface show -role cluster*
 (network interface show)
          Logical    Status      Network         Current  Current  Is
 Vserver  Interface  Admin/Oper  Address/Mask    Node     Port     Home
@@ -268,12 +271,12 @@ Cluster
 ====
 次の例は、ノード n1 とノード n2 の 4 つのクラスタインターコネクトポートがシャットダウンされていることを示しています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network port modify -node n1 -port e0b -up-admin false
-cluster::*> network port modify -node n1 -port e0c -up-admin false
-cluster::*> network port modify -node n2 -port e0b -up-admin false
-cluster::*> network port modify -node n2 -port e0c -up-admin false
+cluster::*> *network port modify -node n1 -port e0b -up-admin false*
+cluster::*> *network port modify -node n1 -port e0c -up-admin false*
+cluster::*> *network port modify -node n2 -port e0b -up-admin false*
+cluster::*> *network port modify -node n2 -port e0c -up-admin false*
 ----
 ====
 . リモートクラスタインターフェイスに ping を実行してから、リモート手順 コールサーバチェックを実行します。
@@ -286,9 +289,9 @@ cluster::*> network port modify -node n2 -port e0c -up-admin false
 ====
 次の例は、ノード n1 への ping の実行後、 RPC のステータスがと表示されています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> cluster ping-cluster -node n1
+cluster::*> *cluster ping-cluster -node n1*
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1       e0a    10.10.0.1
@@ -340,12 +343,13 @@ Cisco コマンドの詳細については、に記載されているガイド�
 ====
 次の例は、 CN1610 スイッチ CL1 で ISL ポート 13~16 をシャットダウンします。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-(CL1)# configure
-(CL1)(Config)# interface 0/13-0/16
-(CL1)(Interface 0/13-0/16)# shutdown (CL1)(Interface 0/13-0/16)# exit
-(CL1)(Config)# exit
+(CL1)# *configure*
+(CL1)(Config)# *interface 0/13-0/16*
+(CL1)(Interface 0/13-0/16)# *shutdown*
+(CL1)(Interface 0/13-0/16)# *exit*
+(CL1)(Config)# *exit*
 (CL1)#
 ----
 ====
@@ -359,20 +363,20 @@ Cisco コマンドの詳細については、に記載されているガイド�
 ====
 次の例は、 Cisco`switchport mode trunk` コマンドを使用して CL1 （ポート 13~16 ）と C2 （ポート e1/24/1/4 ）の間に一時的な ISL を構築しています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
 C2# configure
-C2(config)# interface port-channel 2
-C2(config-if)# switchport mode trunk
-C2(config-if)# spanning-tree port type network
-C2(config-if)# mtu 9216
-C2(config-if)# interface breakout module 1 port 24 map 10g-4x
-C2(config)# interface e1/24/1-4
-C2(config-if-range)# switchport mode trunk
-C2(config-if-range)# mtu 9216
-C2(config-if-range)# channel-group 2 mode active
-C2(config-if-range)# exit
-C2(config-if)# exit
+C2(config)# *interface port-channel 2*
+C2(config-if)# *switchport mode trunk*
+C2(config-if)# *spanning-tree port type network*
+C2(config-if)# *mtu 9216*
+C2(config-if)# *interface breakout module 1 port 24 map 10g-4x*
+C2(config)# *interface e1/24/1-4*
+C2(config-if-range)# *switchport mode trunk*
+C2(config-if-range)# *mtu 9216*
+C2(config-if-range)# *channel-group 2 mode active*
+C2(config-if-range)# *exit*
+C2(config-if)# *exit*
 ----
 ====
 . すべてのノードで、 CN1610 スイッチ CL2 に接続されているケーブルを外します。
@@ -402,13 +406,13 @@ Cisco コマンドの詳細については、に記載されているガイド�
 ====
 次の例は、 ISL インターフェイス 3/1 を、 ISL を動的にするように設定しています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-(CL1)# configure
-(CL1)(Config)# interface 3/1
-(CL1)(Interface 3/1)# no port-channel static
-(CL1)(Interface 3/1)# exit
-(CL1)(Config)# exit
+(CL1)# *configure*
+(CL1)(Config)# *interface 3/1*
+(CL1)(Interface 3/1)# *no port-channel static*
+(CL1)(Interface 3/1)# *exit*
+(CL1)(Config)# *exit*
 (CL1)#
 ----
 ====
@@ -422,13 +426,13 @@ Cisco コマンドの詳細については、に記載されているガイド�
 ====
 次の例では、ポートチャネルインターフェイス 3/1 で ISL ポート 13~16 を起動します。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-(CL1)# configure
-(CL1)(Config)# interface 0/13-0/16,3/1
-(CL1)(Interface 0/13-0/16,3/1)# no shutdown
-(CL1)(Interface 0/13-0/16,3/1)# exit
-(CL1)(Config)# exit
+(CL1)# *configure*
+(CL1)(Config)# *interface 0/13-0/16,3/1*
+(CL1)(Interface 0/13-0/16,3/1)# *no shutdown*
+(CL1)(Interface 0/13-0/16,3/1)# *exit*
+(CL1)(Config)# *exit*
 (CL1)#
 ----
 ====
@@ -442,9 +446,9 @@ Cisco コマンドの詳細については、に記載されているガイド�
 ====
 次の例は、 CN1610 スイッチ CL1 で「 up 」になっている ISL を示しています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-(CL1)# show port-channel 3/1
+(CL1)# *show port-channel 3/1*
 Local Interface................................ 3/1
 Channel Name................................... ISL-LAG
 Link State..................................... Up
@@ -462,7 +466,8 @@ Ports  Timeout       Speed       Active
        partner/long
 0/15   actor/long    10 Gb Full  True
        partner/long
-0/16   actor/long    10 Gb Full  True        partner/long
+0/16   actor/long    10 Gb Full  True
+       partner/long
 ----
 ====
 . ISLがであることを確認します `up` 3232CスイッチC2で次の手順を実行します。
@@ -481,9 +486,9 @@ Cisco コマンドの詳細については、に記載されているガイド�
 ====
 次の例は、 3232C スイッチ c2 で「 up 」で検証されている ISL を示しています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-C2# show port-channel summary
+C2# *show port-channel summary*
 
 Flags:  D - Down        P - Up in port-channel (members)
         I - Individual  H - Hot-standby (LACP only)
@@ -510,12 +515,12 @@ Group Port-       Type     Protocol  Member Ports
 ====
 次の例は、 3232C スイッチ C2 に接続されたクラスタインターコネクトポートを起動する方法を示しています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network port modify -node n1 -port e0b -up-admin true
-cluster::*> network port modify -node n1 -port e0c -up-admin true
-cluster::*> network port modify -node n2 -port e0b -up-admin true
-cluster::*> network port modify -node n2 -port e0c -up-admin true
+cluster::*> *network port modify -node n1 -port e0b -up-admin true*
+cluster::*> *network port modify -node n1 -port e0c -up-admin true*
+cluster::*> *network port modify -node n2 -port e0b -up-admin true*
+cluster::*> *network port modify -node n2 -port e0c -up-admin true*
 ----
 ====
 . すべてのノードのC2に接続されている、移行されたクラスタインターコネクトLIFをすべてリバートします。
@@ -526,12 +531,12 @@ network interface revert -vserver cluster -lif LIF_name です
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network interface revert -vserver cluster -lif n1_clus2
-cluster::*> network interface revert -vserver cluster -lif n1_clus3
-cluster::*> network interface revert -vserver cluster -lif n2_clus2
-cluster::*> network interface revert -vserver cluster -lif n2_clus3
+cluster::*> *network interface revert -vserver cluster -lif n1_clus2*
+cluster::*> *network interface revert -vserver cluster -lif n1_clus3*
+cluster::*> *network interface revert -vserver cluster -lif n2_clus2*
+cluster::*> *network interface revert -vserver cluster -lif n2_clus3*
 ----
 ====
 . すべてのクラスタインターコネクトポートがホームポートにリバートされていることを確認します。
@@ -544,9 +549,9 @@ cluster::*> network interface revert -vserver cluster -lif n2_clus3
 ====
 次の例は、 clus2 の LIF をホームポートにリバートします。「 Current Port 」列のポートのステータスが「 Is Home 」列に「 true 」の場合、 LIF が正常にリバートされていることを示しています。「 Is Home 」の値が「 false 」の場合、 LIF はリバートされません。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network interface show -role cluster
+cluster::*> *network interface show -role cluster*
 (network interface show)
          Logical    Status      Network        Current  Current  Is
 Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
@@ -574,9 +579,9 @@ Cluster
 ====
 次に、すべてのクラスタ・インターコネクトが「 up 」になっていることを確認する出力例を示します。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network port show -role cluster
+cluster::*> *network port show -role cluster*
        (network port show)
 
 Node: n1
@@ -610,9 +615,9 @@ e0d   cluster   cluster     up    9000  auto/10000     -
 ====
 次の例は、ノード n1 への ping の実行後、 RPC のステータスがと表示されています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> cluster ping-cluster -node n1
+cluster::*> *cluster ping-cluster -node n1*
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1       e0a    10.10.0.1
@@ -665,16 +670,16 @@ RPC status:
 ====
 次の例に示すように、各クラスタ LIF を、クラスタスイッチ C2 でホストされている適切なクラスタポートに個別に移行する必要があります。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network interface migrate -vserver cluster -lif n1_clus1 -source-node n1
--destination-node n1 -destination-port e0b
-cluster::*> network interface migrate -vserver cluster -lif n1_clus4 -source-node n1
--destination-node n1 -destination-port e0c
-cluster::*> network interface migrate -vserver cluster -lif n2_clus1 -source-node n2
--destination-node n2 -destination-port e0b
-cluster::*> network interface migrate -vserver cluster -lif n2_clus4 -source-node n2
--destination-node n2 -destination-port e0c
+cluster::*> *network interface migrate -vserver cluster -lif n1_clus1 -source-node n1
+-destination-node n1 -destination-port e0b*
+cluster::*> *network interface migrate -vserver cluster -lif n1_clus4 -source-node n1
+-destination-node n1 -destination-port e0c*
+cluster::*> *network interface migrate -vserver cluster -lif n2_clus1 -source-node n2
+-destination-node n2 -destination-port e0b*
+cluster::*> *network interface migrate -vserver cluster -lif n2_clus4 -source-node n2
+-destination-node n2 -destination-port e0c*
 ----
 ====
 
@@ -693,9 +698,9 @@ cluster::*> network interface migrate -vserver cluster -lif n2_clus4 -source-nod
 ====
 次の例は、必要なクラスタ LIF が、クラスタスイッチ C2 でホストされている適切なクラスタポートに移行されたことを示しています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network interface show -role cluster
+cluster::*> *network interface show -role cluster*
 (network interface show)
          Logical    Status      Network        Current  Current  Is
 Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
@@ -723,12 +728,12 @@ Cluster
 ====
 次の例は、ノード n1 および n2 で特定のポートがシャットダウンされていることを示しています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network port modify -node n1 -port e0a -up-admin false
-cluster::*> network port modify -node n1 -port e0d -up-admin false
-cluster::*> network port modify -node n2 -port e0a -up-admin false
-cluster::*> network port modify -node n2 -port e0d -up-admin false
+cluster::*> *network port modify -node n1 -port e0a -up-admin false*
+cluster::*> *network port modify -node n1 -port e0d -up-admin false*
+cluster::*> *network port modify -node n2 -port e0a -up-admin false*
+cluster::*> *network port modify -node n2 -port e0d -up-admin false*
 ----
 ====
 . アクティブ 3232C スイッチ C2 の ISL ポート 24 、 31 、 32 をシャットダウンします。
@@ -741,16 +746,16 @@ Cisco コマンドの詳細については、に記載されているガイド�
 ====
 次の例は、アクティブ 3232C スイッチ C2 で ISL 24 、 31 、および 32 をシャットダウンする方法を示しています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-C2# configure
-C2(config)# interface ethernet 1/24/1-4
-C2(config-if-range)# shutdown
-C2(config-if-range)# exit
-C2(config)# interface ethernet 1/31-32
-C2(config-if-range)# shutdown
-C2(config-if-range)# exit
-C2(config)# exit
+C2# *configure*
+C2(config)# *interface ethernet 1/24/1-4*
+C2(config-if-range)# *shutdown*
+C2(config-if-range)# *exit*
+C2(config)# *interface ethernet 1/31-32*
+C2(config-if-range)# *shutdown*
+C2(config-if-range)# *exit*
+C2(config)# *exit*
 C2#
 ----
 ====
@@ -772,14 +777,14 @@ Cisco コマンドの詳細については、に記載されているガイド�
 ====
 次に 'running-configuration' ファイルを 'startup-configuration' ファイルにコピーする例を示します
 
-[listing]
+[listing, subs="+quotes"]
 ----
 C2# configure
-C2(config)# no interface breakout module 1 port 24 map 10g-4x
-C2(config)# no interface port-channel 2
-C2(config-if)# interface e1/24
-C2(config-if)# description 100GbE/40GbE Node Port
-C2(config-if)# spanning-tree port type edge
+C2(config)# *no interface breakout module 1 port 24 map 10g-4x*
+C2(config)# *no interface port-channel 2*
+C2(config-if)# *interface e1/24*
+C2(config-if)# *description 100GbE/40GbE Node Port*
+C2(config-if)# *spanning-tree port type edge*
 Edge port type (portfast) should only be enabled on ports connected to a single
 host. Connecting hubs, concentrators, switches, bridges, etc...  to this
 interface when edge port type (portfast) is enabled, can cause temporary bridging loops.
@@ -788,10 +793,10 @@ Use with CAUTION
 Edge Port Type (Portfast) has been configured on Ethernet 1/24 but will only
 have effect when the interface is in a non-trunking mode.
 
-C2(config-if)# spanning-tree bpduguard enable
-C2(config-if)# mtu 9216
-C2(config-if-range)# exit
-C2(config)# exit
+C2(config-if)# *spanning-tree bpduguard enable*
+C2(config-if)# *mtu 9216*
+C2(config-if-range)# *exit*
+C2(config)# *exit*
 C2# copy running-config startup-config
 [########################################] 100%
 Copy Complete.
@@ -807,13 +812,13 @@ Cisco コマンドの詳細については、に記載されているガイド�
 ====
 次の例は、 3232C スイッチ c2 に ISL 31 と 32 を配置します。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-C2# configure
-C2(config)# interface ethernet 1/31-32
-C2(config-if-range)# no shutdown
-C2(config-if-range)# exit
-C2(config)# exit
+C2# *configure*
+C2(config)# *interface ethernet 1/31-32*
+C2(config-if-range)# *no shutdown*
+C2(config-if-range)# *exit*
+C2(config)# *exit*
 C2# copy running-config startup-config
 [########################################] 100%
 Copy Complete.
@@ -829,9 +834,9 @@ Cisco コマンドの詳細については、に記載されているガイド�
 ====
 次の例は、検証する ISL 接続を示しています。ポート Eth1/31 および Eth1/32 は「（ P ）」を示します。これは、ポートチャネル内の ISL ポートが「 up 」であることを意味します。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-C1# show port-channel summary
+C1# *show port-channel summary*
 Flags:  D - Down        P - Up in port-channel (members)
         I - Individual  H - Hot-standby (LACP only)
         s - Suspended   r - Module-removed
@@ -844,7 +849,7 @@ Group Port-       Type     Protocol  Member Ports
 -----------------------------------------------------------------------------
 1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
 
-C2# show port-channel summary
+C2# *show port-channel summary*
 Flags:  D - Down        P - Up in port-channel (members)
         I - Individual  H - Hot-standby (LACP only)
         s - Suspended   r - Module-removed
@@ -868,12 +873,12 @@ Group Port-       Type     Protocol  Member Ports
 ====
 次の例は、新しい 3232C スイッチ C1 に接続されているすべてのクラスタインターコネクトポートを起動します。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network port modify -node n1 -port e0a -up-admin true
-cluster::*> network port modify -node n1 -port e0d -up-admin true
-cluster::*> network port modify -node n2 -port e0a -up-admin true
-cluster::*> network port modify -node n2 -port e0d -up-admin true
+cluster::*> *network port modify -node n1 -port e0a -up-admin true*
+cluster::*> *network port modify -node n1 -port e0d -up-admin true*
+cluster::*> *network port modify -node n2 -port e0a -up-admin true*
+cluster::*> *network port modify -node n2 -port e0d -up-admin true*
 ----
 ====
 . クラスタノードポートのステータスを確認します。
@@ -886,9 +891,9 @@ cluster::*> network port modify -node n2 -port e0d -up-admin true
 ====
 次の例は、新しい 3232C スイッチ C1 のノード n1 とノード n2 のクラスタインターコネクトポートが「 up 」になっていることを確認する出力を示しています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network port show -role cluster
+cluster::*> *network port show -role cluster*
        (network port show)
 
 Node: n1
@@ -928,12 +933,12 @@ e0d   cluster   cluster    up    9000  auto/10000     -
 ====
 次の例に示すように、各 LIF を個別に移行する必要があります。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network interface revert -vserver cluster -lif n1_clus1
-cluster::*> network interface revert -vserver cluster -lif n1_clus4
-cluster::*> network interface revert -vserver cluster -lif n2_clus1
-cluster::*> network interface revert -vserver cluster -lif n2_clus4
+cluster::*> *network interface revert -vserver cluster -lif n1_clus1*
+cluster::*> *network interface revert -vserver cluster -lif n1_clus4*
+cluster::*> *network interface revert -vserver cluster -lif n2_clus1*
+cluster::*> *network interface revert -vserver cluster -lif n2_clus4*
 ----
 ====
 . インターフェイスがホームになったことを確認します。
@@ -946,9 +951,9 @@ cluster::*> network interface revert -vserver cluster -lif n2_clus4
 ====
 次の例は、ノード n1 および n2 のクラスタインターコネクトインターフェイスのステータスが「 up 」で、「 Is Home 」であることを示しています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network interface show -role cluster
+cluster::*> *network interface show -role cluster*
 (network interface show)
          Logical    Status      Network        Current  Current  Is
 Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
@@ -976,9 +981,9 @@ Cluster
 ====
 次の例は、ノード n1 への ping の実行後、 RPC のステータスがと表示されています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> cluster ping-cluster -node n1
+cluster::*> *cluster ping-cluster -node n1*
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1       e0a    10.10.0.1
@@ -1034,9 +1039,9 @@ RPC status:
 ====
 次の例は、両方のNexus 3232Cクラスタスイッチのポートe1/7およびe1/8にそれぞれ接続された40GbEクラスタポートを搭載したノードn3およびn4を示しています。両方のノードがクラスタに参加している。使用する 40GbE クラスタインターコネクトポートは、 e4A および e4e です。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> network device-discovery show
+cluster::*> *network device-discovery show*
 
        Local  Discovered
 Node   Port   Device       Interface       Platform
@@ -1061,7 +1066,7 @@ n4     /cdp
         e4e   C2           Ethernet1/8     N3K-C3232C
 
 12 entries were displayed.
-cluster::*> network port show -role cluster
+cluster::*> *network port show -role cluster*
 (network port show)
 
 Node: n1
@@ -1098,7 +1103,7 @@ e4e   cluster   cluster    up    9000  auto/40000     -
 
 12 entries were displayed.
 
-cluster::*> network interface show -role cluster
+cluster::*> *network interface show -role cluster*
 (network interface show)
          Logical    Status      Network        Current  Current  Is
 Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
@@ -1119,7 +1124,7 @@ Cluster
 
 12 entries were displayed.
 
-cluster::> system cluster-switch show
+cluster::> *system cluster-switch show*
 
 Switch                      Type             Address       Model
 --------------------------- ---------------- ------------- ---------
@@ -1168,10 +1173,10 @@ CL2                         cluster-network  10.10.1.102    CN1610
 ====
 次の例に示すように、両方のデバイスを個別に削除する必要があります。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::> system cluster-switch delete –device CL1
-cluster::> system cluster-switch delete –device CL2
+cluster::> *system cluster-switch delete –device CL1*
+cluster::> *system cluster-switch delete –device CL2*
 ----
 ====
 . 適切なクラスタスイッチが監視されていることを確認します。
@@ -1184,9 +1189,9 @@ cluster::> system cluster-switch delete –device CL2
 ====
 次の例は、クラスタスイッチ C1 と C2 を監視していることを示しています。
 
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::> system cluster-switch show
+cluster::> *system cluster-switch show*
 
 Switch                      Type               Address          Model
 --------------------------- ------------------ ---------------- ---------------
@@ -1221,37 +1226,37 @@ C2                          cluster-network    10.10.1.104      NX3232C
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster::*> system cluster-switch log setup-password
+cluster::*> *system cluster-switch log setup-password*
 Enter the switch name: <return>
 The switch name entered is not recognized.
 Choose from the following list:
 C1
 C2
 
-cluster::*> system cluster-switch log setup-password
+cluster::*> *system cluster-switch log setup-password*
 
-Enter the switch name: C1
+Enter the switch name: *C1*
 RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] y
+Do you want to continue? {y|n}::[n] *y*
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster::*> system cluster-switch log setup-password
+cluster::*> *system cluster-switch log setup-password*
 
-Enter the switch name: C2
+Enter the switch name: *C2*
 RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] y
+Do you want to continue? {y|n}:: [n] *y*
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster::*> system cluster-switch log enable-collection
+cluster::*> *system cluster-switch log enable-collection*
 
 Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] y
+{y|n}: [n] *y*
 
 Enabling cluster switch log collection.
 

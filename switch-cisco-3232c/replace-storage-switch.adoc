@@ -65,9 +65,9 @@ storage port show -port-type enet
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-storage::*> storage port show -port-type ENET
+storage::*> *storage port show -port-type ENET*
                                       Speed                     VLAN
 Node               Port Type  Mode    (Gb/s) State    Status      ID
 ------------------ ---- ----- ------- ------ -------- --------- ----
@@ -91,9 +91,9 @@ node2
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-storage::*> network device-discovery show
+storage::*> *network device-discovery show*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------- ----------------
@@ -123,9 +123,9 @@ node2/lldp
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-S1# show lldp neighbors
+S1# *show lldp neighbors*
 Capability codes:
   (R) Router, (B) Bridge, (T) Telephone, (C) DOCSIS Cable Device
   (W) WLAN Access Point, (P) Repeater, (S) Station, (O) Other
@@ -152,9 +152,9 @@ SHFGD2008000022         Eth1/8          120        S           e0a
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-storage::*> storage shelf port show -fields remote-device,remote-port
+storage::*> *storage shelf port show -fields remote-device,remote-port*
 
 shelf  id  remote-port  remote-device
 -----  --  -----------  -------------
@@ -176,7 +176,7 @@ shelf  id  remote-port  remote-device
 
 === 手順3：スイッチNS2のすべてのデバイス構成を確認します
 
-. ストレージノードポートのヘルスステータスを再確認します。
+. ストレージノードポートの健全性ステータスを確認します。
 +
 storage port show -port-type enet
 
@@ -184,9 +184,9 @@ storage port show -port-type enet
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-storage::*> storage port show -port-type ENET
+storage::*> *storage port show -port-type ENET*
                                       Speed                       VLAN
 Node               Port Type  Mode    (Gb/s) State    Status        ID
 ------------------ ---- ----- ------- ------ -------- ------------ ---
@@ -210,9 +210,9 @@ node2
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-storage::*> network device-discovery show
+storage::*> *network device-discovery show*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  --------
@@ -246,9 +246,9 @@ node2/lldp
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-storage::*> storage shelf port show -fields remote-device,remote-port
+storage::*> *storage shelf port show -fields remote-device,remote-port*
 shelf id remote-port remote-device
 ----- -- ----------- -------------
 3.20  0  Ethernet1/5 S1
