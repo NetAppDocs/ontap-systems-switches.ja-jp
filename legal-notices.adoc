@@ -40,11 +40,3 @@ link:https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf["https://
 == プライバシーポリシー
 
 link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.com/company/legal/privacy-policy/"^]
-
-
-
-== オープンソース
-
-通知ファイルには、ネットアップソフトウェアで使用されるサードパーティの著作権およびライセンスに関する情報が記載されています。
-
-https://library.netapp.com/ecm/ecm_download_file/ECMP12475945["ディスクシェルフについての通知が表示されます"]
