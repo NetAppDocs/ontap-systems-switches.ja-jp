@@ -260,7 +260,7 @@ cluster1::*>
 +
 'how running-config'
 
-. スイッチ cs2 の構成をクリーンアップし、基本的なセットアップを実行します。
+. スイッチcs2の設定を消去し、スイッチをリブートします。
 +
 
 CAUTION: 新しい RCF を更新または適用する場合は、スイッチ設定を消去し、基本的な設定を実行する必要があります。スイッチを再度セットアップするには、スイッチのシリアルコンソールポートに接続する必要があります。
@@ -295,6 +295,7 @@ Are you sure you would like to reset the system? (y/n) *y*
 ====
 
 
+. スイッチの基本設定を実行します。を参照してください link:setup-switch.html["3232Cクラスタスイッチを設定します"] を参照してください。
 . FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
 +
 .例を示します
@@ -602,8 +603,6 @@ cluster1::*>
 ----
 cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true*
 ----
-
-
 . クラスタポートに接続されているスイッチポートが動作していることを確認します。
 +
 .例を示します

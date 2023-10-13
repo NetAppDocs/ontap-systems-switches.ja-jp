@@ -151,9 +151,36 @@ Burned In MAC Address.......................... D8:C4:97:71:12:3C
 ----
 ====
 +
+EFOSバージョン3.10.0.3以降の場合は、コマンドを使用します `ntp`。
 
-NOTE: EFOSバージョン3.10.0.3以降の場合は、コマンドを使用します `ntp`。
++
+`ntp`
 
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)configure
+(cs2)(Config)# *ntp ?*
+
+authenticate             Enables NTP authentication.
+authentication-key       Configure NTP authentication key.
+broadcast                Enables NTP broadcast mode.
+broadcastdelay           Configure NTP broadcast delay in microseconds.
+server                   Configure NTP server.
+source-interface         Configure the NTP source-interface.
+trusted-key              Configure NTP authentication key number for trusted time source.
+vrf                      Configure the NTP VRF.
+
+(cs2)(Config)# *ntp server ?*
+
+ip-address|ipv6-address|hostname  Enter a valid IPv4/IPv6 address or hostname.
+
+(cs2)(Config)# *ntp server*
+----
+====
 .. 時間を手動で設定します。
 +
 「 clock 」
