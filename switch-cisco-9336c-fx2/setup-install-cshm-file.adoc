@@ -1,0 +1,68 @@
+---
+permalink: switch-cisco-9336c-fx2/setup-install-cshm-file.html 
+sidebar: sidebar 
+keywords: 'install, applicable, configuration, file, cluster, switch, health, monitor, nexus, ontap, install the cluster switch health monitor (csm) configuration file for 92300yc switches - cisco nexus 9336c-fx2' 
+summary: この手順を使用して、Nexus 92300YCクラスタスイッチのクラスタスイッチヘルスモニタ用の構成ファイルをインストールできます。 
+---
+= クラスタスイッチヘルスモニタ（SHM）構成ファイルをインストールする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+次の手順に従って、Nexus 9336C-FX2クラスタスイッチのクラスタスイッチヘルスモニタ（SHM）用の構成ファイルをインストールします。
+
+.必要なもの
+9336C-FX2クラスタスイッチのSHMをセットアップする前に、ONTAPクラスタが稼働していることを確認してください。
+
+
+NOTE: SHMで使用可能なすべての機能を使用するには、SSHを有効にする必要があります。
+
+.手順
+. 対応するONTAPリリースバージョンに基づいて、クラスタSHM構成zipファイルをダウンロードします。このファイルはから入手できます https://mysupport.netapp.com/NOW/cgi-bin/software/["ネットアップソフトウェアのダウンロード"^] ページ
++
+.. ソフトウェアのダウンロードページで、 * スイッチヘルスモニタ構成ファイル * を選択します
+.. [Platform]=* ONTAP *を選択し、* Go！*を選択します。
+.. [Switch Health Monitor Configuration Files for（ONTAPのスイッチヘルスモニタ設定ファイル）]ページで、*[View & Download]*を選択します。
+.. [Switch Health Monitor Configuration Files for ONTAP >概要]ページで、該当するクラスタスイッチモデルの*[Download]*を選択します（例：* Cisco Nexus 9336C-FX2*）。
+.. [End User License Agreement]ページで、*[Accept]*を選択します。
+.. [Switch Health Monitor Configuration Files for ONTAP > Download]ページで、該当する構成ファイル（* cisco_nexus_9336C-FX2.zip*など）を選択します。
+
+
+. IP アドレスが X.X.X.X.X の内部 Web サーバに、該当する zip ファイルをアップロードします
++
+内部 Web サーバの IP アドレスが 192.168.2.20 であり、 /usr/download ディレクトリが存在する場合は、 scp を使用して zip ファイルを Web サーバにアップロードできます。
+
++
+[listing]
+----
+% scp Cisco_Nexus_9336C-FX2.zip admin@192.168.2.20:/usr/download/Cisco_Nexus_9336C-FX2.zip
+----
+. クラスタ内のいずれかのONTAPシステムからadvancedモード設定にアクセスします。
++
+`set-privilege advanced`
+
++
+[listing]
+----
+cluster1::> set -privilege advanced
+----
+. switch health monitor configureコマンドを実行する `system cluster-switch configure-health-monitor -node * -package-url X.X.X.X/location_to_download_zip_file`：
++
+[listing]
+----
+cluster1::> system cluster-switch configure-health-monitor -node * -package-url 192.168.2.20/usr/download/Cisco_Nexus_9336C-FX2.zip
+----
+. コマンド出力に、ダウンロードされたパッケージが正常に処理されたことを示すテキスト文字列が含まれていることを確認します。エラーが発生した場合は、ネットアップサポートにお問い合わせください。
+. コマンドを実行します `system cluster-switch show` ONTAPシステムで、[Monitored]フィールドが[True]に設定されているクラスタスイッチが検出されていることを確認します。
++
+[listing]
+----
+cluster1::> system cluster-switch show
+----
++
+
+NOTE: 以前のバージョンのONTAPにリバートする場合は、9336C-FX2クラスタスイッチのSHMを有効にするために、SHM構成ファイルを再度インストールする必要があります。
+
+
