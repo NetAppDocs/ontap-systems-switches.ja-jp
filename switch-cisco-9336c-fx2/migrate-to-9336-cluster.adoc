@@ -34,6 +34,9 @@ summary: ONTAP クラスタの古い Cisco クラスタスイッチは、無停�
 
 
 
+NOTE: AFF A800またはAFF C800システムでクラスタポートe0aおよびe1aのポート速度を変更すると、速度変換後に不正な形式のパケットを受信することがあります。を参照してください  https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1570339["バグ1570339"^] およびナレッジベースの記事 https://kb.netapp.com/onprem/ontap/hardware/CRC_errors_on_T6_ports_after_converting_from_40GbE_to_100GbE["40GbEから100GbEへの変換後のT6ポートのCRCエラー"^] を参照してください。
+
+
 
 == スイッチを移行します
 

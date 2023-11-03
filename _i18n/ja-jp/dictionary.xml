@@ -4636,4 +4636,8 @@
   <block id="669c1a3fa77bc8a049e5cd4a16e5cff8" category="paragraph">9336C-FX2クラスタスイッチ* CLI *を使用して環境がセットアップされていることを確認します。</block>
   <block id="680284a2e0d6a86aafc85099ca58d7af" category="list-text">イーサネットスイッチヘルスモニタのログ収集機能のパスワードを作成します。</block>
   <block id="1f40996ca4617ab17127143171aa4ea4" category="sidebar">SHM構成ファイルのインストール</block>
+  <block id="3fc74bed2ec666d227e966120d5c4160" category="inline-link">バグ1570339</block>
+  <block id="a9881d2bc89c135aee3c1490acc55259" category="inline-link">40GbEから100GbEへの変換後のT6ポートのCRCエラー</block>
+  <block id="835174c5c468acf2b423cff0eb23994f" category="admonition">AFF A800またはAFF C800システムでクラスタポートe0aおよびe1aのポート速度を変更すると、速度変換後に不正な形式のパケットを受信することがあります。を参照してください <block ref="f867b947e44d8d6bccd25f3219f3d6d9" category="inline-link-rx"></block> およびナレッジベースの記事<block ref="2a93cc61bbc3892324bc1b6369d71212" category="inline-link-rx"></block> を参照してください。</block>
+  <block id="5958c0f6bda471fafb31ea3acb4b20da" category="admonition">AFF A800またはAFF C800システムでクラスタポートe0aおよびe1aのポート速度を変更すると、速度変換後に不正な形式のパケットを受信することがあります。を参照してください<block ref="f867b947e44d8d6bccd25f3219f3d6d9" category="inline-link-rx"></block> およびナレッジベースの記事<block ref="2a93cc61bbc3892324bc1b6369d71212" category="inline-link-rx"></block> を参照してください。</block>
 </blocks>
