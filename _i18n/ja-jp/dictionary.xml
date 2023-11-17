@@ -4233,9 +4233,6 @@
   <block id="c8d246332e46cb12e9f724a357ad817f" category="paragraph"><block ref="770c77dd441cd3adc4139ccb3c0d491b" category="inline-link-macro-rx"></block> または <block ref="bba3ec5e6ca5e4f48b010488a5229b2c" category="inline-link-macro-rx"></block>。</block>
   <block id="bd399ae0cf713e575ca26baedc0a896c" category="paragraph">NVIDIA SN2100スイッチ（X190006）は、スイッチに付属の標準ブラケットを使用して、NVIDIAデュアル/シングルスイッチキャビネットに設置します。</block>
   <block id="1e247ada2e98c5879849d746a52a4241" category="paragraph">NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10 / 25 / 40 / 100GbEスイッチです。スイッチは以下をサポートしています。</block>
-  <block id="f555c61f64386d2582939da4025ebe47" category="list-text">ONTAP 9.10.1P3SN2100スイッチは、ONTAP 9.10.1P3のクラスタおよびストレージアプリケーションに、異なるスイッチペアを提供します。</block>
-  <block id="d40bf069d92679bf05879cf7f6cbe2cd" category="inline-link">NVIDIAエンタープライズサポートポータル</block>
-  <block id="cb8e85c2970ddd5692a09be2e61dcc13" category="list-text">Cumulus Linux（CL）OSバージョン。SN2100 Cumulusソフトウェアをダウンロードするには、にログインします<block ref="778b7445002ab4132f3edc7cada5c78a" category="inline-link-rx"></block>。Cumulusソフトウェアにアクセスするには、ログイン資格情報が必要です。最新の互換性情報については、を参照してください<block ref="f6aa36fb7711a9179cbd2c4c52b8d6ef" category="inline-link-rx"></block> 情報ページ。</block>
   <block id="c19b9518d51b517376f0fe9109f66e90" category="paragraph">40 / 100GbEクラスタポートノード</block>
   <block id="45a21206fd2396fdd6a59132a2a6d3a7" category="paragraph">40 / 100GbEスイッチ間リンク（ISL）ポート</block>
   <block id="509e4d6df8b93cb5deb86271a6326df2" category="section-title">光接続でのリンクアップ遅延</block>
@@ -4640,4 +4637,11 @@
   <block id="a9881d2bc89c135aee3c1490acc55259" category="inline-link">40GbEから100GbEへの変換後のT6ポートのCRCエラー</block>
   <block id="835174c5c468acf2b423cff0eb23994f" category="admonition">AFF A800またはAFF C800システムでクラスタポートe0aおよびe1aのポート速度を変更すると、速度変換後に不正な形式のパケットを受信することがあります。を参照してください <block ref="f867b947e44d8d6bccd25f3219f3d6d9" category="inline-link-rx"></block> およびナレッジベースの記事<block ref="2a93cc61bbc3892324bc1b6369d71212" category="inline-link-rx"></block> を参照してください。</block>
   <block id="5958c0f6bda471fafb31ea3acb4b20da" category="admonition">AFF A800またはAFF C800システムでクラスタポートe0aおよびe1aのポート速度を変更すると、速度変換後に不正な形式のパケットを受信することがあります。を参照してください<block ref="f867b947e44d8d6bccd25f3219f3d6d9" category="inline-link-rx"></block> およびナレッジベースの記事<block ref="2a93cc61bbc3892324bc1b6369d71212" category="inline-link-rx"></block> を参照してください。</block>
+  <block id="ca995ae3d3a6595199bfe5303faa0e3f" category="admonition">間<block ref="8a444a43bdf534c0c6338bb7809659b3" prefix=" " category="inline-code"></block> はこの例で使用されていますが、お好みのファイル転送方法を使用できます。</block>
+  <block id="1c1e9c46d2bfa104a5c2592705b2220b" category="list-text">ONTAP 9.10.1P3</block>
+  <block id="daef330b681b8e827e3f464410c634c4" category="paragraph">SN2100スイッチは、ONTAP 9.10.1P3のクラスタおよびストレージアプリケーションに、異なるスイッチペアを提供します。</block>
+  <block id="2aaabdd096fa4df43267fa963dadeac8" category="list-text">Cumulus Linux（CL）OSバージョン。</block>
+  <block id="fdb970c02e151be8ab0a83ca880cb56a" category="inline-link">エンタープライズサポートポータルアクセスのためのNVIDIAへの登録方法</block>
+  <block id="e524be73a3787217a070c244dbdccb8e" category="paragraph">NVIDIAからSN2100 Cumulusソフトウェアをダウンロードするには、NVIDIAのエンタープライズサポートポータルにアクセスするためのログイン資格情報が必要です。サポート技術情報の記事を参照してください<block ref="d8e3d3a02615584c2a7ac4c59cc440b8" category="inline-link-rx"></block>。
+最新の互換性情報については、を参照してください<block ref="f6aa36fb7711a9179cbd2c4c52b8d6ef" category="inline-link-rx"></block> 情報ページ。</block>
 </blocks>
