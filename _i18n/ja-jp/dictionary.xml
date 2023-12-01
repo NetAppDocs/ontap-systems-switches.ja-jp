@@ -2054,7 +2054,6 @@
   <block id="dbdb6843e5b760ab5949d0e9950c5750" category="admonition">RCF バージョン 1.2 では、セキュリティ上の理由から、 Telnet のサポートが明示的に無効になっています。RCF 1.2 のインストール時の接続の問題を回避するには、 Secure Shell （ SSH ）が有効になっていることを確認する必要があります。。<block ref="7b6e686f3f2fcbc80901a914fb158c31" category="inline-link-rx"></block> SSH の詳細については、を参照してください。</block>
   <block id="df7d4ea20d01aeb64702dc4294dc6436" category="paragraph">。<block ref="a9613e1dbacf145285c45df4264fe797" category="inline-link-rx"></block> 使用しているプラットフォームでサポートされている実際のクラスタポートに関する詳細情報が表示されます。</block>
   <block id="bc01d49ccd216cbb296208344af71590" category="list-text">CN1610 スイッチを交換する Nexus 3132Q-V スイッチは C1 と C2 です。</block>
-  <block id="eb29e2026f68e263827bc6648e470d91" category="list-text">n1_clus4 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続された 2 つ目の LIF です。ノードが n1 、 n2 、 n3 、 n4 である。</block>
   <block id="5f6af1e958a3701a7602a4d2261afe6d" category="list-text">を参照してください <block ref="bea6a113c7846200412c9ca0694f7009" category="inline-link-macro-rx"></block> ネットアップサポートサイトのページ</block>
   <block id="d472e6c72465c08732a77102922a611d" category="paragraph">を参照してください <block ref="34774b6dc875898cd8aa59f7081c068c" category="inline-link-macro-rx"></block> をクリックして、プラットフォームのクラスタポートが正しいことを確認します。</block>
   <block id="5fe6445fb6ef9ed5befc4ee396bb9ea8" category="list-text">ONTAP 9.8 以降では、次のコマンドを使用して、イーサネットスイッチヘルスモニタのログ収集機能を有効にし、スイッチ関連のログファイルを収集します。</block>
@@ -3249,7 +3248,6 @@
   <block id="779fc6b934d55dc10ca87329087b2008" category="list-text">[5]ストレージシステムのシェルフポートを確認します。</block>
   <block id="d97a5e4575ee30a387104386bf3f240b" category="section-title">手順3：スイッチNS2のすべてのデバイス構成を確認します</block>
   <block id="cb90078e1ca3fab95e047ce21d18bdc0" category="paragraph">各スイッチは、単一の 100GbE ポート、 40GbE ポート、または 4 × 10GbE ポートとして設定できます。</block>
-  <block id="5a5a12d4dbaeac060e4d6b7c5760ca7c" category="paragraph">この手順 に従って、Nexus 3232Cスイッチを初めてセットアップしたあとにRCFをインストールします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。</block>
   <block id="319869b1ac41d35b8bb0654bf94a816d" category="list-text">からのバナー出力を確認します<block ref="6d53824b9996e36fd31937e922967215" prefix=" " category="inline-code"></block> コマンドを実行します「重要な注意事項」に記載されている手順を読んで、スイッチを正しく設定し、操作する必要があります。</block>
   <block id="aaee942f01ab7b858b2f2b63c62fe972" category="paragraph">Cisco Nexus 3232CスイッチでCisco NX-OSソフトウェアとリファレンス構成ファイル（RCF）をアップグレードするには、次の手順を実行します。</block>
   <block id="ee01b78d6cadb3e6f6a563b8d4eb8dee" category="paragraph">ストレージスイッチでNX-OSソフトウェアとRCFをアップグレードする前に、次の条件が満たされていることを確認してください。</block>
@@ -3446,7 +3444,6 @@
   <block id="6dd4b5e58bd32b079e19b1dda5c2f1bc" category="paragraph">BES-53248クラスタスイッチのソフトウェアを最初にインストールして設定するには、次の手順を実行します。</block>
   <block id="9302ce88c481ebfe72d64373c7b0d0e5" category="doc">BES-53248クラスタスイッチをアップグレードします</block>
   <block id="db3a43c92e9a5ccc39b5fabb1bd97719" category="paragraph">BES-53248クラスタスイッチをアップグレードするには、次の手順を実行します。</block>
-  <block id="ca46577f8687df3ceb14eb4b66cfa89e" category="paragraph">この 手順 環境 は正常に動作しているクラスタであり、無停止アップグレード（NDU）およびノンストップオペレーション（NDO）環境を実現します。</block>
   <block id="8ac36f1d8b0fc917225a100d2cd4a4c3" category="paragraph">既存のNetApp BES-53248クラスタスイッチにEFOSソフトウェア、ライセンス、RCFファイルをインストールする前に、次の点を確認します。</block>
   <block id="8e95d65cfa987ac59e9edd2e01c3a5f8" category="list-text">クラスタは完全に機能している（エラーログメッセージやその他の問題がない）。</block>
   <block id="39268a4fe5b4dbf6e58a5a1147276955" category="list-text">クラスタには欠陥のあるクラスタネットワークインターフェイスカード（NIC）がありません。</block>
@@ -4668,4 +4665,9 @@
   <block id="2672a0c9ba5986c403c26e013c160859" category="list-text">次のコマンドを使用して、クラスタノードが正しいクラスタVLANに含まれていることを確認します。</block>
   <block id="89706bbdab62cd83048f38305d846f95" category="paragraph"><block ref="7d4adecb4116bbfb7ed1130103f872a7" prefix="" category="inline-code"></block></block>
   <block id="12bc122b0d9a4c902fdf52bfcc13ddc2" category="paragraph"><block ref="c01eca2c804c6a35b8aa8d87eceefe5d" prefix="" category="inline-code"></block></block>
+  <block id="5cb232b7121572a8cd994eb78f5bf42e" category="inline-link">クラスタスイッチのアップグレードのためのONTAPの準備方法</block>
+  <block id="2c6ae2b5ab15a868c020423af475ce29" category="paragraph">この 手順 環境 は正常に動作しているクラスタであり、無停止アップグレード（NDU）およびノンストップオペレーション（NDO）環境を実現します。サポート技術情報の記事を参照してください<block ref="af19c072276b7cd7ef0c29b032a9fe34" category="inline-link-rx"></block>。</block>
+  <block id="3bf967e4da79afd8ac10997dbbfb40be" category="paragraph">この手順 に従って、Nexus 3232Cスイッチを初めてセットアップしたあとにRCFをインストールします。</block>
+  <block id="ce8d24a452c1c94c4680d7ce098325a9" category="inline-link">リモート接続を維持したままCiscoインターコネクトスイッチの設定をクリアする方法</block>
+  <block id="e5f3c3d2c754cc48938d50b1782093ac" category="paragraph">この手順を使用して、 RCF のバージョンをアップグレードすることもできます。サポート技術情報の記事を参照してください<block ref="c3cf8dee5fd4e009c0e2b38bfb97fe4d" category="inline-link-rx"></block> を参照してください。</block>
 </blocks>
