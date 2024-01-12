@@ -19,8 +19,6 @@ entries:
 - title: ハードウェアを設置
   pdf-filename: INSTALL_HARDWARE_9336c-FX2-STORAGE
   entries:
-  - title: ケーブル接続ワークシートに記入
-    url: "/switch-cisco-9336c-fx2-storage/setup-worksheet-9336c-storage.html"
   - title: スイッチを取り付けます
     url: "/switch-cisco-9336c-fx2-storage/install-9336c-storage.html"
   - title: スイッチを設定します

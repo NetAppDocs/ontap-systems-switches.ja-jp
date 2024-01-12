@@ -149,43 +149,56 @@ advanced のプロンプト（ * > ）が表示されます。
 
 . 新しいスイッチで、スイッチcs1とcs2間のISLがケーブル接続され、正常に機能していることを確認します。
 +
-「ポートチャネルの概要」
+'how port-channel
 
 +
 .例を示します
 [%collapsible]
 ====
+次の例は、スイッチcs1のISLポートが* up *になっていることを示しています。
+
 [listing, subs="+quotes"]
 ----
-cs1# *show port-channel summary*
-Flags:  D - Down        P - Up in port-channel (members)
-        I - Individual  H - Hot-standby (LACP only)
-        s - Suspended   r - Module-removed
-        b - BFD Session Wait
-        S - Switched    R - Routed
-        U - Up (port-channel)
-        p - Up in delay-lacp mode (member)
-        M - Not in use. Min-links not met
---------------------------------------------------------------------------------
-Group Port-       Type     Protocol  Member Ports
-      Channel
---------------------------------------------------------------------------------
-1     Po1(SU)     Eth      LACP      Eth1/55(P)   Eth1/56(P)
+(cs1)# *show port-channel 1/1*
+Local Interface................................ 1/1
+Channel Name................................... Cluster-ISL
+Link State..................................... Up
+Admin Mode..................................... Enabled
+Type........................................... Dynamic
+Port channel Min-links......................... 1
+Load Balance Option............................ 7
+(Enhanced hashing mode)
 
-cs2# *show port-channel summary*
-Flags:  D - Down        P - Up in port-channel (members)
-        I - Individual  H - Hot-standby (LACP only)
-        s - Suspended   r - Module-removed
-        b - BFD Session Wait
-        S - Switched    R - Routed
-        U - Up (port-channel)
-        p - Up in delay-lacp mode (member)
-        M - Not in use. Min-links not met
---------------------------------------------------------------------------------
-Group Port-       Type     Protocol  Member Ports
-      Channel
---------------------------------------------------------------------------------
-1     Po1(SU)     Eth      LACP      Eth1/55(P)   Eth1/56(P)
+Mbr    Device/       Port       Port
+Ports  Timeout       Speed      Active
+------ ------------- ---------  -------
+0/55   actor/long    100G Full  True
+       partner/long
+0/56   actor/long    100G Full  True
+       partner/long
+(cs1) #
+----
+次の例は、スイッチcs2上のISLポートが* up *になっていることを示しています。
+
+[listing, subs="+quotes"]
+----
+(cs2)# *show port-channel 1/1*
+Local Interface................................ 1/1
+Channel Name................................... Cluster-ISL
+Link State..................................... Up
+Admin Mode..................................... Enabled
+Type........................................... Dynamic
+Port channel Min-links......................... 1
+Load Balance Option............................ 7
+(Enhanced hashing mode)
+
+Mbr    Device/       Port       Port
+Ports  Timeout       Speed      Active
+------ ------------- ---------  -------
+0/55   actor/long    100G Full  True
+       partner/long
+0/56   actor/long    100G Full  True
+       partner/long
 ----
 ====
 . 既存のクラスタスイッチに接続されている各ノードのクラスタポートを表示します。
@@ -560,43 +573,56 @@ cs1# *show isdp neighbors*
 ----
 . cs1とcs2間のISLが動作していることを確認します。
 +
-「ポートチャネルの概要」
+'how port-channel
 
 +
 .例を示します
 [%collapsible]
 ====
+次の例は、スイッチcs1のISLポートが* up *になっていることを示しています。
+
 [listing, subs="+quotes"]
 ----
-cs1# *show port-channel summary*
-Flags:  D - Down        P - Up in port-channel (members)
-        I - Individual  H - Hot-standby (LACP only)
-        s - Suspended   r - Module-removed
-        b - BFD Session Wait
-        S - Switched    R - Routed
-        U - Up (port-channel)
-        p - Up in delay-lacp mode (member)
-        M - Not in use. Min-links not met
---------------------------------------------------------------------------------
-Group Port-       Type     Protocol  Member Ports
-      Channel
---------------------------------------------------------------------------------
-1     Po1(SU)     Eth      LACP      Eth1/55(P)   Eth1/56(P)
+(cs1)# *show port-channel 1/1*
+Local Interface................................ 1/1
+Channel Name................................... Cluster-ISL
+Link State..................................... Up
+Admin Mode..................................... Enabled
+Type........................................... Dynamic
+Port channel Min-links......................... 1
+Load Balance Option............................ 7
+(Enhanced hashing mode)
 
-cs2# *show port-channel summary*
-Flags:  D - Down        P - Up in port-channel (members)
-        I - Individual  H - Hot-standby (LACP only)
-        s - Suspended   r - Module-removed
-        b - BFD Session Wait
-        S - Switched    R - Routed
-        U - Up (port-channel)
-        p - Up in delay-lacp mode (member)
-        M - Not in use. Min-links not met
---------------------------------------------------------------------------------
-Group Port-       Type     Protocol  Member Ports
-      Channel
---------------------------------------------------------------------------------
-1     Po1(SU)     Eth      LACP      Eth1/55(P)   Eth1/56(P)
+Mbr    Device/       Port       Port
+Ports  Timeout       Speed      Active
+------ ------------- ---------  -------
+0/55   actor/long    100G Full  True
+       partner/long
+0/56   actor/long    100G Full  True
+       partner/long
+(cs1) #
+----
+次の例は、スイッチcs2上のISLポートが* up *になっていることを示しています。
+
+[listing, subs="+quotes"]
+----
+(cs2)# *show port-channel 1/1*
+Local Interface................................ 1/1
+Channel Name................................... Cluster-ISL
+Link State..................................... Up
+Admin Mode..................................... Enabled
+Type........................................... Dynamic
+Port channel Min-links......................... 1
+Load Balance Option............................ 7
+(Enhanced hashing mode)
+
+Mbr    Device/       Port       Port
+Ports  Timeout       Speed      Active
+------ ------------- ---------  -------
+0/55   actor/long    100G Full  True
+       partner/long
+0/56   actor/long    100G Full  True
+       partner/long
 ----
 ====
 . 交換したCN1610スイッチが自動的に削除されない場合は、クラスタのスイッチテーブルから削除します。

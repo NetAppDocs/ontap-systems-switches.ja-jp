@@ -673,18 +673,6 @@
   <block id="5b1c58aff8e7e4b9950fac4fb9b4f420" category="list-text">スイッチヘルスモニタの設定コマンド system cluster-switch configure -health-monitor -node * -package url X.X.X.X.X.X/location-to-download_zip_file を実行します。</block>
   <block id="56900e070e593f86cfcbc92add3c9eda" category="admonition">以前のバージョンの ONTAP に戻す場合は、 CSHM 構成ファイルを再度インストールして、 92300YC クラスタスイッチのスイッチヘルスモニタを有効にする必要があります。</block>
   <block id="645b50612eedcb03bdeff0f4c9f4de12" category="summary">サポート対象のプラットフォームを文書化する場合は、入力済みのケーブル接続ワークシートの例を参考にして、空白のケーブル接続ワークシートに記入する必要があります。各スイッチは、単一の 100GbE ポート、 40GbE ポート、または 4 × 10GbE ポートとして設定できます。</block>
-  <block id="ed549d19dafed0e7ab290c80a631336d" category="paragraph">4 × 10G / 40G / 100G ノード</block>
-  <block id="333383cad18ed1288df7f6e7b55bb269" category="paragraph">4x10G / 40G / 100G ノード</block>
-  <block id="1286cbe7601f965189bedc2e531693fe" category="paragraph">40G / 100G ノード 19</block>
-  <block id="3cdb72203b05b99dff9c7e8fe12d3297" category="paragraph">40G / 100G ノード 20</block>
-  <block id="7f63ff950e3e5909f605081e8a040c35" category="paragraph">40G / 100G ノード 21</block>
-  <block id="b031f52ea292595722079873eb50ac47" category="paragraph">40G / 100G ノード 22</block>
-  <block id="fb81c88eb2bc7e3c494e5e649e59bcb0" category="paragraph">40G / 100G ノード 23</block>
-  <block id="a3f6a2babb0d59c8269007c11baa9f0e" category="paragraph">40G / 100G ノード 24</block>
-  <block id="55eca0e94ad3924173aada9f3d092018" category="paragraph">100G ISL 経由でスイッチ B ポート 31</block>
-  <block id="d01adcc41847caac4aa8fdfe85b60992" category="paragraph">100G ISL 経由でスイッチ A ポート 31</block>
-  <block id="66b48416af1e682679b1391bc16602fd" category="paragraph">100G ISL 経由でスイッチ B ポート 32</block>
-  <block id="1ffe31824d782f0a845f2d0960162e5c" category="paragraph">100G ISL 経由でスイッチ A ポート 32</block>
   <block id="a4514f98af1e4526e3b8ea633ec10c2c" category="summary">3 つ以上のノードで ONTAP クラスタを構築する場合は、サポートされている 2 つのクラスタネットワークスイッチが必要です。オプションとして、追加の管理スイッチを使用できます。</block>
   <block id="7a132c4084cb90373827f0625aad2cb0" category="paragraph">Cisco Nexus 9336C-FX2 スイッチ（ X190200/X190210 ）は、スイッチに付属の標準ブラケットを使用して、ネットアップシステムキャビネットまたは他社製キャビネットに設置できます。</block>
   <block id="5dfcb593b3c7fd66ae6fded55e29ddb1" category="paragraph">次の表に、 9336C-FX2 スイッチ、ファン、および電源装置の部品番号と概要を示します。</block>
@@ -4585,7 +4573,6 @@
   <block id="dae02701a0a247e1012b9b2832c32464" category="list-text">交換したCN1610スイッチが自動的に削除されない場合は、クラスタのスイッチテーブルから削除します。</block>
   <block id="c8b9229aed88be3704b6c26029b7ae94" category="paragraph">ONTAP 9.7以前の場合は、次のコマンドを使用します。<block ref="f055904a9fc3a4f0bc33aca13ecd2b2d" prefix=" " category="inline-code"></block></block>
   <block id="b8590eb7d6b7365e1a0bee47b03d5b4f" category="admonition">ログ収集機能を有効にするには、ONTAP 9.10.1P15、9.11.1P12、または9.12.1以降およびEFOS 3.8.0.2以降が実行されている必要があります。</block>
-  <block id="e88b6a67743cc664a0a237ba8d94eefc" category="sidebar">スイッチ- CISCO-9336c-FX2-cluster</block>
   <block id="517242a1c337699950aef05a38af45a0" category="sidebar">スイッチ- nvidia-sn2100-cluster</block>
   <block id="3ed3b1cc0917edd8fddcdd478bb581fb" category="sidebar">スイッチ- CISCO-9336c-FX2-storage</block>
   <block id="701d9aab459b808d17f39aa5c50f97df" category="sidebar">スイッチ-nvidia-sn2100-storage</block>
@@ -4629,7 +4616,6 @@
   <block id="c94eee10204c293e476c9b772d10ddfe" category="admonition">以前のバージョンのONTAPにリバートする場合は、9336C-FX2クラスタスイッチのSHMを有効にするために、SHM構成ファイルを再度インストールする必要があります。</block>
   <block id="669c1a3fa77bc8a049e5cd4a16e5cff8" category="paragraph">9336C-FX2クラスタスイッチ* CLI *を使用して環境がセットアップされていることを確認します。</block>
   <block id="680284a2e0d6a86aafc85099ca58d7af" category="list-text">イーサネットスイッチヘルスモニタのログ収集機能のパスワードを作成します。</block>
-  <block id="1f40996ca4617ab17127143171aa4ea4" category="sidebar">SHM構成ファイルのインストール</block>
   <block id="3fc74bed2ec666d227e966120d5c4160" category="inline-link">バグ1570339</block>
   <block id="a9881d2bc89c135aee3c1490acc55259" category="inline-link">40GbEから100GbEへの変換後のT6ポートのCRCエラー</block>
   <block id="835174c5c468acf2b423cff0eb23994f" category="admonition">AFF A800またはAFF C800システムでクラスタポートe0aおよびe1aのポート速度を変更すると、速度変換後に不正な形式のパケットを受信することがあります。を参照してください <block ref="f867b947e44d8d6bccd25f3219f3d6d9" category="inline-link-rx"></block> およびナレッジベースの記事<block ref="2a93cc61bbc3892324bc1b6369d71212" category="inline-link-rx"></block> を参照してください。</block>
@@ -4670,4 +4656,37 @@
   <block id="3bf967e4da79afd8ac10997dbbfb40be" category="paragraph">この手順 に従って、Nexus 3232Cスイッチを初めてセットアップしたあとにRCFをインストールします。</block>
   <block id="ce8d24a452c1c94c4680d7ce098325a9" category="inline-link">リモート接続を維持したままCiscoインターコネクトスイッチの設定をクリアする方法</block>
   <block id="e5f3c3d2c754cc48938d50b1782093ac" category="paragraph">この手順を使用して、 RCF のバージョンをアップグレードすることもできます。サポート技術情報の記事を参照してください<block ref="c3cf8dee5fd4e009c0e2b38bfb97fe4d" category="inline-link-rx"></block> を参照してください。</block>
+  <block id="42f74bee479f7bfeefb9fd7d2c20b356" category="paragraph">10GbE×4 / 25GbE×4または40 / 100GbEノード</block>
+  <block id="ee064ffc6832da9230d1d423e3a1c01a" category="paragraph">40G / 100GbEノード19</block>
+  <block id="30fed60c2f664b1e620b396ee7590025" category="paragraph">40G / 100GbEノード20</block>
+  <block id="e868dd91c84b5ff315dc3636c26ec593" category="paragraph">40G / 100GbEノード21</block>
+  <block id="14735a659a0e84d3aeb4a50b5d38fdd8" category="paragraph">40G / 100GbEノード22</block>
+  <block id="f46e9d50d3e035a2a9cfc49b0d4ff926" category="paragraph">40G / 100GbEノード23</block>
+  <block id="7d3c40714541505308e8aeda185028a5" category="paragraph">40G / 100GbEノード24</block>
+  <block id="d92e2d02199d759e2cbe8d9b461557fc" category="paragraph">100GbE ISL経由でスイッチBポート31</block>
+  <block id="202f974033cf1161982db034d23ab80c" category="paragraph">100GbE ISL経由でスイッチAポート31</block>
+  <block id="0e799942e6eaaf5fb0e0990b9cff01d0" category="paragraph">100GbE ISL経由でスイッチBポート32</block>
+  <block id="ef3ddd21da594e200a83e463425ee831" category="paragraph">100GbE ISL経由でスイッチAポート32</block>
+  <block id="7da7e93935b02de70a378c0e3bc0915f" category="paragraph">100GbEノード7</block>
+  <block id="b06ad32bc262994927467145fa685077" category="paragraph">100GbEノード8</block>
+  <block id="bfd0f53dcd1c0732244c879c71816d76" category="paragraph">100GbEノード9</block>
+  <block id="bc335a1aa76d7bee7d077931c80ff362" category="paragraph">100GbEノード10</block>
+  <block id="8e98a1d2b82cc51b09a6f6f6150e6ea9" category="paragraph">100GbEノード11</block>
+  <block id="ca1e7465e63d54d410d96ad74bc6ad9c" category="paragraph">100GbEノード12</block>
+  <block id="dc3e73458f3b06d9f45967a4ee2eb062" category="paragraph">100GbEノード13</block>
+  <block id="58a544d323832dc62d0f7dbf25fce76c" category="paragraph">100GbEノード14</block>
+  <block id="f91030d6cc1c0d743dd19bdf834808b4" category="paragraph">100GbEノード15</block>
+  <block id="429c661f8ba4e683c488a3a16eb65450" category="paragraph">100GbEノード16</block>
+  <block id="5ac313785ff16b543307f7a2f0562c65" category="paragraph">100GbEノード17</block>
+  <block id="2badabc63a001442bc883dd04d8cd5bd" category="paragraph">100GbEノード18</block>
+  <block id="a6812bb55d441274f894ae9d2fc8c853" category="paragraph">100GbEノード19</block>
+  <block id="f81493fb0626cf611fb3d0da0abfd2fc" category="paragraph">100GbEノード20</block>
+  <block id="8ec0b4b065f720abd158003e297fd666" category="paragraph">100GbEノード21</block>
+  <block id="17267202d9429f033060c241eb243b66" category="paragraph">100GbEノード22</block>
+  <block id="6566d42cadb266b4dda1e35c1d8431b8" category="paragraph">100GbEノード23</block>
+  <block id="b0f08b7da859e9b27be7eba076cbd7c7" category="paragraph">100GbEノード24</block>
+  <block id="cfdc5fc6e4f0420a87977f2a10a74eb5" category="paragraph">100GbE ISL経由でスイッチBポート35</block>
+  <block id="88948f2b657a3c9e5eec3736dcca6cdf" category="paragraph">100GbE ISL経由でスイッチAポート35</block>
+  <block id="56299051abd1af0cbe5dbee773fed3d5" category="paragraph">100GbE ISL経由でスイッチBポート36</block>
+  <block id="5e596a6e5f0ffe0604d651cde90e34f0" category="paragraph">100GbE ISL経由でスイッチAポート36</block>
 </blocks>
