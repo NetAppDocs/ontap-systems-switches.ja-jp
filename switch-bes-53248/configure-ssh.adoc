@@ -82,6 +82,10 @@ Config file 'startup-config' created successfully.
 Configuration Saved!
 ----
 ====
++
+
+WARNING: キーを変更する前にSSHが無効になっていることを確認してください。無効になっていると、スイッチに警告が表示されます。
+
 . スイッチをリブートします。
 +
 「再ロード」
