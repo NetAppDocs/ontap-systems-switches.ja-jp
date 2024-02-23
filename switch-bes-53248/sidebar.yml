@@ -31,12 +31,12 @@ entries:
     url: "/switch-bes-53248/configure-licenses.html"
   - title: RCF構成ファイルをインストールします
     url: "/switch-bes-53248/configure-install-rcf.html"
-  - title: CSHM構成ファイルをインストールします
-    url: "/switch-bes-53248/configure-health-monitor.html"
   - title: SSH を有効にします。
     url: "/switch-bes-53248/configure-ssh.html"
   - title: ログ収集を有効にします
-    url: "/switch-bes-53248/configure-log-collection.html"
+    url: "/switch-bes-53248/CSHM_log_collection.html"
+  - title: 監視のためのSNMPv3の設定
+    url: "/switch-bes-53248/CSHM_snmpv3.html"
 - title: スイッチをアップグレードします
   pdf-filename: upgrade_switches_bes53248
   entries:
