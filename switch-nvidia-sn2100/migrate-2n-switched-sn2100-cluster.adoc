@@ -84,16 +84,18 @@ IMPORTANT: を参照してください link:cabling-considerations-sn2100-cluste
 
 === 手順2：ポートとケーブルを設定する
 
+[role="tabbed-block"]
+====
+.Cumulus Linux 4.4.x
+--
 . 新しいクラスタスイッチsw1とSW2の両方で、すべてのノード側ポート（ISLポートではない）を無効にします。
 +
 ISL ポートを無効にしないでください。
 
 +
-.例を示します
-[%collapsible]
-====
 次のコマンドは、スイッチsw1およびSW2のノード側ポートを無効にします。
 
++
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *net add interface swp1s0-3, swp2s0-3, swp3-14 link down*
@@ -104,17 +106,14 @@ cumulus@sw2:~$ *net add interface swp1s0-3, swp2s0-3, swp3-14 link down*
 cumulus@sw2:~$ *net pending*
 cumulus@sw2:~$ *net commit*
 ----
-====
 . 2つのSN2100スイッチsw1とSW2間のISL上のISLポートと物理ポートが、ポートswp15とswp16上で動作していることを確認します。
 +
 `net show interface`
 
 +
-.例を示します
-[%collapsible]
-====
-次の例は、スイッチsw1のISLポートがupになっていることを示しています。
+次のコマンドは、スイッチsw1およびsw2でISLポートがupになっていることを示しています。
 
++
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *net show interface*
@@ -125,13 +124,7 @@ State  Name       Spd   MTU    Mode        LLDP         Summary
 ...
 UP     swp15      100G  9216   BondMember  sw2 (swp15)  Master: cluster_isl(UP)
 UP     swp16      100G  9216   BondMember  sw2 (swp16)  Master: cluster_isl(UP)
-----
-+次の例は、スイッチSW2のISLポートがupになっていることを示しています。
 
-[+]
-
-[listing, subs="+quotes"]
-----
 cumulus@sw2:~$ *net show interface*
 
 State  Name       Spd   MTU    Mode        LLDP         Summary
@@ -141,8 +134,65 @@ State  Name       Spd   MTU    Mode        LLDP         Summary
 UP     swp15      100G  9216   BondMember  sw1 (swp15)  Master: cluster_isl(UP)
 UP     swp16      100G  9216   BondMember  sw1 (swp16)  Master: cluster_isl(UP)
 ----
+
+
+--
+.Cumulus Linux 5.x
+--
+. 新しいクラスタスイッチsw1とsw2の両方で、ノード側のポート（ISLポートではない）をすべて無効にします。
++
+ISL ポートを無効にしないでください。
+
++
+次のコマンドは、スイッチsw1およびSW2のノード側ポートを無効にします。
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv set interface swp1s0-3,swp2s0-3,swp3-14 link state down*
+cumulus@sw1:~$ *nv config apply*
+cumulus@sw1:~$ *nv save*
+
+cumulus@sw2:~$ *nv set interface swp1s0-3,swp2s0-3,swp3-14 link state down*
+cumulus@sw2:~$ *nv config apply*
+cumulus@sw2:~$ *nv save*
+----
+. 2つのSN2100スイッチsw1とSW2間のISL上のISLポートと物理ポートが、ポートswp15とswp16上で動作していることを確認します。
++
+`nv show interface`
+
++
+次の例は、スイッチsw1およびsw2でISLポートがupになっていることを示しています。
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv show interface*
+
+Interface     MTU    Speed  State  Remote Host  Remote Port                          Type    Summary
+------------- ------ -----  ------ ------------ ------------------------------------ ------- -------
+...
+...
++ swp14       9216          down                                                     swp
++ swp15       9216   100G   up     ossg-rcf1    Intra-Cluster Switch ISL Port swp15  swp
++ swp16       9216   100G   up     ossg-rcf2    Intra-Cluster Switch ISL Port swp16  swp
+
+
+cumulus@sw2:~$ *nv show interface*
+
+Interface     MTU    Speed  State  Remote Host  Remote Port                          Type    Summary
+------------- ------ -----  ------ ------------ ------------------------------------ ------- -------
+...
+...
++ swp14       9216          down                                                     swp
++ swp15       9216   100G   up     ossg-rcf1    Intra-Cluster Switch ISL Port swp15  swp
++ swp16       9216   100G   up     ossg-rcf2    Intra-Cluster Switch ISL Port swp16  swp
+----
+
+
+--
 ====
-. すべてのクラスタポートが動作していることを確認します。
+. [[step3]]すべてのクラスタポートが動作していることを確認します。
 +
 「 network port show 」のように表示されます
 
@@ -230,28 +280,30 @@ Cluster
 。 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe - スイッチ"^] ケーブル接続の詳細については、を参照してください。
 
 . ノード2のクラスタポートe3aからケーブルを外し、SN2100スイッチでサポートされている適切なケーブル接続を使用して、クラスタスイッチsw1のポート4にe3aを接続します。
-. スイッチsw1で、すべてのノード側ポートを有効にします。
-+
-.例を示します
-[%collapsible]
+
+
+[role="tabbed-block"]
 ====
+.Cumulus Linux 4.4.x
+--
+. [[step8]]スイッチsw1で、すべてのノード側ポートを有効にします。
++
 次のコマンドは、スイッチsw1のすべてのノード側ポートを有効にします。
 
++
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *net del interface swp1s0-3, swp2s0-3, swp3-14 link down*
 cumulus@sw1:~$ *net pending*
 cumulus@sw1:~$ *net commit*
 ----
-====
-. スイッチsw1で、すべてのポートが動作していることを確認します。
+
+
+. [[step]]スイッチsw1で、すべてのポートが稼働していることを確認します。
 +
 `net show interface all`
 
 +
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *net show interface all*
@@ -275,8 +327,58 @@ UP     swp15     100G  9216   BondMember  swp15          Master: cluster_isl(UP)
 UP     swp16     100G  9216   BondMember  swp16          Master: cluster_isl(UP)
 ...
 ----
+
+
+--
+.Cumulus Linux 5.x
+--
+. [[step8]]スイッチsw1で、すべてのノード側ポートを有効にします。
++
+次のコマンドは、スイッチsw1のすべてのノード側ポートを有効にします。
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv unset interface swp1s0-3,swp2s0-3,swp3-14 link state down*
+cumulus@sw1:~$ *nv config apply*
+cumulus@sw1:~$ *nv config save*
+----
+
+
+. [[step9]]スイッチsw1で、すべてのポートが稼働していることを確認します。
++
+`nv show interface`
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv show interface*
+
+Interface    State  Speed  MTU    Type      Remote Host                 Remote Port  Summary
+-----------  -----  -----  -----  --------  --------------------------  -----------  ----------
+...
+...
+swp1s0       up     10G    9216   swp       odq-a300-1a                         e0a
+swp1s1       up     10G    9216   swp       odq-a300-1b                         e0a
+swp1s2       down   10G    9216   swp
+swp1s3       down   10G    9216   swp
+swp2s0       down   25G    9216   swp
+swp2s1       down   25G    9216   swp
+swp2s2       down   25G    9216   swp
+swp2s3       down   25G    9216   swp
+swp3         down          9216   swp
+swp4         down          9216   swp
+...
+...
+swp14        down          9216   swp
+swp15        up     100G   9216   swp       ossg-int-rcf10                    swp15
+swp16        up     100G   9216   swp       ossg-int-rcf10                    swp16
+----
+
+
+--
 ====
-. すべてのクラスタポートが動作していることを確認します。
+. [[step10]]すべてのクラスタポートが動作していることを確認します。
 +
 「 network port show -ipspace cluster 」のように表示されます
 
@@ -331,28 +433,28 @@ node2                true    true          false
 ====
 . ノード1のクラスタポートe3bからケーブルを外し、SN2100スイッチでサポートされている適切なケーブルを使用して、クラスタスイッチSW2のポート3にe3bを接続します。
 . ノード2のクラスタポートe3bからケーブルを外し、SN2100スイッチでサポートされている適切なケーブルを使用して、クラスタスイッチSW2のポート4にe3bを接続します。
-. スイッチSW2で、すべてのノード側ポートを有効にします。
-+
-.例を示します
-[%collapsible]
+
+
+[role="tabbed-block"]
 ====
+.Cumulus Linux 4.4.x
+--
+. [[step14]]スイッチSW2で、すべてのノード側ポートを有効にします。
++
 次のコマンドは、スイッチSW2のノード側ポートを有効にします。
 
++
 [listing, subs="+quotes"]
 ----
 cumulus@sw2:~$ *net del interface swp1s0-3, swp2s0-3, swp3-14 link down*
 cumulus@sw2:~$ *net pending*
 cumulus@sw2:~$ *net commit*
 ----
-====
-. スイッチSW2で、すべてのポートが動作していることを確認します。
+. [[step15]]スイッチSW2で、すべてのポートが稼働していることを確認します。
 +
 `net show interface all`
 
 +
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 cumulus@sw2:~$ *net show interface all*
@@ -376,16 +478,16 @@ UP     swp15     100G  9216   BondMember  swp15          Master: cluster_isl(UP)
 UP     swp16     100G  9216   BondMember  swp16          Master: cluster_isl(UP)
 ...
 ----
-====
-. 両方のスイッチsw1とSW2で、両方のノードがそれぞれ1つずつ各スイッチに接続されていることを確認します。
+
+
+. [[step16]]スイッチsw1とsw2の両方で、両方のノードが各スイッチに1つずつ接続されていることを確認します。
 +
 `net show lldp`
 
 +
-.例を示します
-[%collapsible]
-====
 次の例は、sw1とSW2の両方のスイッチについて適切な結果を示しています。
+
+
 
 [listing, subs="+quotes"]
 ----
@@ -407,10 +509,112 @@ swp4       100G   Trunk/L2    node2              e3b
 swp15      100G   BondMember  sw1                swp15
 swp16      100G   BondMember  sw1                swp16
 ----
-====
-. クラスタ内で検出されたネットワークデバイスに関する情報を表示します。
+--
+.Cumulus Linux 5.x
+--
+. [[step14]]スイッチSW2で、すべてのノード側ポートを有効にします。
 +
-`net device-discovery show -protocol lldp`
+次のコマンドは、スイッチSW2のノード側ポートを有効にします。
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw2:~$ *nv unset interface swp1s0-3,swp2s0-3,swp3-14 link state down*
+cumulus@sw2:~$ *nv config apply*
+cumulus@sw2:~$ *nv config save*
+----
+. [[step15]]スイッチSW2で、すべてのポートが稼働していることを確認します。
++
+`nv show interface`
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw2:~$ *nv show interface*
+
+Interface    State  Speed  MTU    Type      Remote Host                 Remote Port  Summary
+-----------  -----  -----  -----  --------  --------------------------  -----------  ----------
+...
+...
+swp1s0       up     10G    9216   swp       odq-a300-1a                         e0a
+swp1s1       up     10G    9216   swp       odq-a300-1b                         e0a
+swp1s2       down   10G    9216   swp
+swp1s3       down   10G    9216   swp
+swp2s0       down   25G    9216   swp
+swp2s1       down   25G    9216   swp
+swp2s2       down   25G    9216   swp
+swp2s3       down   25G    9216   swp
+swp3         down          9216   swp
+swp4         down          9216   swp
+...
+...
+swp14        down          9216   swp
+swp15        up     100G   9216   swp       ossg-int-rcf10                    swp15
+swp16        up     100G   9216   swp       ossg-int-rcf10                    swp16
+----
+
+
+. [[step16]]スイッチsw1とsw2の両方で、両方のノードが各スイッチに1つずつ接続されていることを確認します。
++
+`nv show interface --view=lldp`
+
++
+次の例は、スイッチsw1とsw2の両方に該当する結果を示しています。
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv show interface --view=lldp*
+
+Interface    Speed  Type      Remote Host                         Remote Port
+-----------  -----  --------  ----------------------------------  -----------
+...
+...
+swp1s0       10G    swp       odq-a300-1a                         e0a
+swp1s1       10G    swp       odq-a300-1b                         e0a
+swp1s2       10G    swp
+swp1s3       10G    swp
+swp2s0       25G    swp
+swp2s1       25G    swp
+swp2s2       25G    swp
+swp2s3       25G    swp
+swp3                swp
+swp4                swp
+...
+...
+swp14               swp
+swp15        100G   swp       ossg-int-rcf10                      swp15
+swp16        100G   swp       ossg-int-rcf10                      swp16
+
+cumulus@sw2:~$ *nv show interface --view=lldp*
+
+Interface    Speed  Type      Remote Host                         Remote Port
+-----------  -----  --------  ----------------------------------  -----------
+...
+...
+swp1s0       10G    swp       odq-a300-1a                         e0a
+swp1s1       10G    swp       odq-a300-1b                         e0a
+swp1s2       10G    swp
+swp1s3       10G    swp
+swp2s0       25G    swp
+swp2s1       25G    swp
+swp2s2       25G    swp
+swp2s3       25G    swp
+swp3                swp
+swp4                swp
+...
+...
+swp14               swp
+swp15        100G   swp       ossg-int-rcf10                      swp15
+swp16        100G   swp       ossg-int-rcf10                      swp16
+----
+
+
+--
+====
+. [[step17]]クラスタ内で検出されたネットワークデバイスに関する情報を表示します。
++
+`network device-discovery show -protocol lldp`
 
 +
 .例を示します
@@ -591,7 +795,7 @@ RPC status:
 2 paths up, 0 paths down (udp check)
 ----
 ====
-. イーサネットスイッチヘルスモニタのログ収集機能のパスワードを作成します。
+. ログ収集を設定するには、スイッチごとに次のコマンドを実行します。ログ収集用のスイッチ名、ユーザ名、およびパスワードの入力を求められます。
 +
 「システムスイッチイーサネットログセットアップ - パスワード」
 
@@ -625,7 +829,7 @@ Enter the password: *<enter switch password>*
 Enter the password again: *<enter switch password>*
 ----
 ====
-. イーサネットスイッチヘルスモニタのログ収集機能を有効にします。
+. ログ収集を開始するには、次のコマンドを実行し、deviceを前のコマンドで使用したスイッチに置き換えます。両方のタイプのログ収集が開始されます。詳細な*サポート*ログと*定期的な*データの1時間ごとの収集です。
 +
 `system switch ethernet log modify -device _<switch-name>_ -log-request true`
 
@@ -635,13 +839,13 @@ Enter the password again: *<enter switch password>*
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *system switch ethernet log modify -device cs1 -log-request true*
+cluster1::*> *system switch ethernet log modify -device sw1 -log-request true*
 
 Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
 
 Enabling cluster switch log collection.
 
-cluster1::*> *system switch ethernet log modify -device cs2 -log-request true*
+cluster1::*> *system switch ethernet log modify -device sw2 -log-request true*
 
 Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
 
@@ -663,15 +867,15 @@ Enabling cluster switch log collection.
 cluster1::*> system switch ethernet log show
 Log Collection Enabled: true
 
-Index  Switch                       Log Timestamp        Status
------- ---------------------------- -------------------  ---------    
-1      cs1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
-2      cs2 (b8:ce:f6:19:1b:96)      4/29/2022 03:07:42   complete
+Index  Switch                       Log Timestamp        Status
+------ ---------------------------- -------------------- ---------
+1      sw1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete
+2      sw2 (b8:ce:f6:19:1b:96)      4/29/2022 03:07:42   complete
 ----
 ====
 +
 
-CAUTION: これらのコマンドのいずれかでエラーが返された場合、またはログの収集が完了しない場合は、NetAppサポートにお問い合わせください。
+CAUTION: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
 
 . 権限レベルを admin に戻します。
 +
