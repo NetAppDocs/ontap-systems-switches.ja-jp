@@ -31,6 +31,10 @@ entries:
     url: "/switch-cisco-3232c/install-nx-os-software-3232c.html"
   - title: RCF構成ファイルをインストールします
     url: "/switch-cisco-3232c/install-rcf-3232c.html"
+  - title: ログ収集を有効にします
+    url: "/switch-cisco-3232c/CSHM_log_collection.html"
+  - title: 監視のためのSNMPv3の設定
+    url: "/switch-cisco-3232c/CSHM_snmpv3.html"
 - title: スイッチを移行
   pdf-filename: 移行スイッチ_3232c
   entries:

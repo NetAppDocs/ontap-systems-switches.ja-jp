@@ -58,9 +58,20 @@ NetApp CN1610クラスタスイッチをCisco 9336C-FX2クラスタスイッチ�
 * クラスタ LIF は、ノード 1 では _node1_clus1_AND _node1_clus2_on 、ノード 2 では _node2_clus1_and _node2_clus2_on です。
 * 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
 * この手順 で使用されているクラスタポートは_e3aおよび_e3bです。
-* 最初にスイッチc2をスイッチcs2に置き換え、次にスイッチc1をスイッチcs1に置き換えます。
+
+
+.このタスクについて
+この手順では、次のシナリオについて説明します。
+
+* 最初にスイッチc2をスイッチcs2に置き換えます。
 +
-** 次に、ノードとc2間のケーブルをc2から外し、cs2に再接続します
+** クラスタノードのポートをシャットダウンします。クラスタが不安定にならないように、すべてのポートを同時にシャットダウンする必要があります。
+** 次に、ノードとc2間のケーブルをc2から外し、cs2に再接続します。
+
+
+* スイッチC1をスイッチcs1に置き換えます。
++
+** クラスタノードのポートをシャットダウンします。クラスタが不安定にならないように、すべてのポートを同時にシャットダウンする必要があります。
 ** 次に、ノードとC1の間のケーブルをC1から外し、cs1に再接続します。
 
 
@@ -91,17 +102,6 @@ advanced のプロンプト（ * > ）が表示されます。
 +
 network interface modify -vserver Cluster -lif *-auto-revert false
 
-+
-.例を示します
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
-
-Warning: Disabling the auto-revert feature of the cluster logical interface may effect the availability of your cluster network. Are you sure you want to continue? {y|n}: *y*
-----
-====
 
 
 
@@ -271,11 +271,8 @@ RPC status:
 2 paths up, 0 paths down (udp check)
 ----
 ====
-. スイッチC2で、ノードのクラスタポートに接続されているポートをシャットダウンします。
+. スイッチC2で、クラスタLIFをフェイルオーバーするために、ノードのクラスタポートに接続されているポートをシャットダウンします。
 +
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 (C2)# *configure*
@@ -284,7 +281,6 @@ RPC status:
 (C2)(Interface 0/1-0/12)# *exit*
 (C2)(Config)# *exit*
 ----
-====
 . Cisco 9336C-FX2でサポートされている適切なケーブル接続に従って、ノードクラスタポートを古いスイッチc2から新しいスイッチcs2に移動します。
 . ネットワークポートの属性を表示します。
 +
@@ -359,11 +355,8 @@ Cluster
             node2_clus2  up/up      169.254.3.9/16     node2       e0b     true
 ----
 ====
-. スイッチC1で、ノードのクラスタポートに接続されているポートをシャットダウンします。
+. スイッチC1で、クラスタLIFをフェイルオーバーするために、ノードのクラスタポートに接続されているポートをシャットダウンします。
 +
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 (C1)# *configure*
@@ -372,7 +365,6 @@ Cluster
 (C1)(Interface 0/1-0/12)# *exit*
 (C1)(Config)# *exit*
 ----
-====
 . Cisco 9336C-FX2でサポートされている適切なケーブル接続に従って、ノードクラスタポートを古いスイッチc1から新しいスイッチcs1に移動します。
 . クラスタの最終的な構成を確認します。
 +
@@ -515,12 +507,10 @@ Cluster
             node2_clus2  up/up    169.254.19.183/16  node2         e3b     true
 ----
 ====
-. 次の2つのコマンドを使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能を有効にします。
+. ログ収集を設定するには、スイッチごとに次のコマンドを実行します。ログ収集用のスイッチ名、ユーザ名、およびパスワードの入力を求められます。
 +
-'system switch ethernet log setup-password 'および'system switch ethernet log enable-colion
+「システムスイッチイーサネットログセットアップ - パスワード」
 
-+
-.. 「 system switch ethernet log setup -password 」と入力します
 +
 .例を示します
 [%collapsible]
@@ -553,33 +543,30 @@ Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 ----
 ====
-.. 次に 'system switch ethernet log enable-colion' を実行します
+. ログ収集を開始するには、次のコマンドを実行し、deviceを前のコマンドで使用したスイッチに置き換えます。両方のタイプのログ収集が開始されます。詳細な*サポート*ログと*定期的な*データの1時間ごとの収集です。
++
+`system switch ethernet log modify -device _<switch-name>_ -log-request true`
+
 +
 .例を示します
 [%collapsible]
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *system  switch ethernet log enable-collection*
+cluster1::*> *system switch ethernet log modify -device cs1 -log-request true*
 
-Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] *y*
+Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
 
 Enabling cluster switch log collection.
 
+cluster1::*> *system switch ethernet log modify -device cs2 -log-request true*
+
+Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
+
+Enabling cluster switch log collection.
 cluster1::*>
 ----
 ====
-+
-
-NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
-
-
-
-. スイッチログ収集機能を開始します。
-+
-`system switch ethernet log collect -device *`
-
 +
 10分待ってから、次のコマンドを使用してログ収集が成功したことを確認します。
 
@@ -587,20 +574,9 @@ NOTE: これらのコマンドのいずれかでエラーが返される場合�
 `system switch ethernet log show`
 
 +
-.例を示します
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> system switch ethernet log show
-Log Collection Enabled: true
 
-Index  Switch                       Log Timestamp        Status
------- ---------------------------- -------------------  ---------    
-1      cs1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
-2      cs2 (b8:ce:f6:19:1b:96)      4/29/2022 03:07:42   complete
-----
-====
+NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+
 . 権限レベルを admin に戻します。
 +
 「特権管理者」

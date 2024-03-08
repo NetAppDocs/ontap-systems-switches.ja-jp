@@ -51,7 +51,24 @@ image::../media/Initial_setup.png[スイッチの初期セットアップ]
 .このタスクについて
 手順 では、ONTAP コマンドとの両方を使用する必要があります https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Nexus 9000シリーズスイッチ"^] コマンド。特に指定がないかぎり、ONTAP コマンドが使用されます。
 
-この手順 では、動作可能なInter-Switch Link（ISL；スイッチ間リンク）は必要ありません。RCFのバージョンを変更するとISL接続に一時的に影響する可能性があるため、これは設計上の変更です。クラスタのノンストップオペレーションを実現するために、次の手順 は、ターゲットスイッチでの手順の実行中に、すべてのクラスタLIFを動作しているパートナースイッチに移行します。
+この手順では、次のシナリオについて説明します。
+
+* スイッチcs2をスイッチcs2-newに置き換えます。
++
+** クラスタノードのポートをシャットダウンします。クラスタが不安定にならないように、すべてのポートを同時にシャットダウンする必要があります。
+** 次に、ノードとcs2間のケーブルをcs2から切断し、cs2-newに再接続します。
+
+
+* スイッチcs1はスイッチcs1-newに置き換えられます。
++
+** クラスタノードのポートをシャットダウンします。クラスタが不安定にならないように、すべてのポートを同時にシャットダウンする必要があります。
+** 次に、ノードとcs1間のケーブルをcs1から切断し、cs1-newに再接続します。
+
+
+
+
+
+NOTE: この手順 では、動作可能なInter-Switch Link（ISL；スイッチ間リンク）は必要ありません。RCFのバージョンを変更するとISL接続に一時的に影響する可能性があるため、これは設計上の変更です。クラスタのノンストップオペレーションを実現するために、次の手順 は、ターゲットスイッチでの手順の実行中に、すべてのクラスタLIFを動作しているパートナースイッチに移行します。
 
 
 
@@ -228,26 +245,16 @@ cs2                         cluster-network     10.233.205.93   N5K-C5596UP
 
 . クラスタ LIF で自動リバートを無効にします。
 +
-.例を示します
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
-----
-====
-. クラスタスイッチcs2で、ノードのクラスタポートに接続されているポートをシャットダウンします。
+network interface modify -vserver Cluster -lif *-auto-revert false
+
+. クラスタスイッチcs2で、ノードのクラスタポートに接続されているポートをシャットダウンして、クラスタLIFをフェイルオーバーします。
 +
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 cs2(config)# *interface eth1/1-1/2*
 cs2(config-if-range)# *shutdown*
 ----
-====
-. クラスタ LIF が、クラスタスイッチ cs1 でホストされているポートに移行されていることを確認します。これには数秒かかることがあります。
+. クラスタスイッチcs1でホストされているポートにクラスタLIFがフェイルオーバーされたことを確認します。これには数秒かかることがあります。
 +
 「 network interface show -vserver Cluster 」のように表示されます
 
@@ -351,14 +358,14 @@ node2      /cdp
 +
 移動したクラスタポートがcs2新しいスイッチをネイバーとして認識していることを確認します。
 
-. スイッチCS2からのスイッチポートの接続を確認します。
+. スイッチcs2-newから見たスイッチポート接続を確認します。
 +
 [listing, subs="+quotes"]
 ----
 cs2-new# *show interface brief*
 cs2-new# *show cdp neighbors*
 ----
-. クラスタスイッチ cs1 で、ノードのクラスタポートに接続されているポートをシャットダウンします。次の例では、手順7の出力例を使用しています。
+. クラスタスイッチcs1で、クラスタLIFをフェイルオーバーするために、ノードのクラスタポートに接続されているポートをシャットダウンします。次の例では、手順7の出力例を使用しています。
 +
 [listing, subs="+quotes"]
 ----
@@ -368,7 +375,7 @@ cs1(config-if-range)# *shutdown*
 +
 すべてのクラスタLIFがcs2新しいスイッチに移動します。
 
-. クラスタLIFがスイッチcs2でホストされているポートに移行されたことを確認します。この処理には数秒かかることがあります。
+. スイッチcs2-newでホストされているポートにクラスタLIFがフェイルオーバーしたことを確認します。この処理には数秒かかることがあります。
 +
 「 network interface show -vserver Cluster 」のように表示されます
 
@@ -471,17 +478,13 @@ node2      /cdp
 +
 移動したクラスタポートがcs1新しいスイッチをネイバーとして認識していることを確認します。
 
-. スイッチcs1からスイッチポートの接続を確認します。これは、新しい観点です。
+. スイッチcs1-newから見たスイッチポート接続を確認します。
 +
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 cs1-new# *show interface brief*
 cs1-new# *show cdp neighbors*
 ----
-====
 . cs1 -新規とcs2 -新規の間のISLがまだ動作していることを確認します。
 +
 「ポートチャネルの概要」
@@ -531,14 +534,8 @@ Group Port-       Type     Protocol  Member Ports
 
 . クラスタ LIF で自動リバートを有効にします。
 +
-.例を示します
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true*
-----
-====
+network interface modify -vserver Cluster -lif *-auto-revert trueを指定します
+
 . クラスタLIFがホームポートにリバートされたことを確認します（数分かかる場合があります）。
 +
 「 network interface show -vserver Cluster 」のように表示されます

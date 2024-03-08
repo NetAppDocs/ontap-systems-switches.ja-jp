@@ -112,11 +112,9 @@ cluster1::*> system node autosupport invoke -node \* -type all -message MAINT=2h
 NOTE: ISL ポートを無効にしないでください。
 
 +
-.例を示します
-[%collapsible]
-====
 次の例は、スイッチ cs1 でノードに接続されたポート 1~16 が無効になっていることを示しています。
 
++
 [listing, subs="+quotes"]
 ----
 (cs1)# *configure*
@@ -125,7 +123,6 @@ NOTE: ISL ポートを無効にしないでください。
 (cs1)(Interface 0/1-0/16)# *exit*
 (cs1)(Config)# *exit*
 ----
-====
 . 2つのBES-53248スイッチcs1とcs2間のISLでISLポートと物理ポートがup *になっていることを確認します。
 +
 'how port-channel
@@ -285,11 +282,9 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert fals
 . ノード 2 のクラスタポート e0a からケーブルを外し、クラスタスイッチ cs1 のポート 2 に e0a を接続します。これには、 BES-53248 スイッチでサポートされている適切なケーブル接続を使用します。
 . クラスタスイッチ cs1 のすべてのノード側ポートを有効にします。
 +
-.例を示します
-[%collapsible]
-====
 次の例は、スイッチ cs1 でポート 1~16 が有効になっていることを示しています。
 
++
 [listing, subs="+quotes"]
 ----
 (cs1)# *configure*
@@ -298,7 +293,6 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert fals
 (cs1)(Interface 0/1-0/16)# *exit*
 (cs1)(Config)# *exit*
 ----
-====
 . すべてのクラスタ LIF が up であり、運用可能であり、 Is Home に「 true 」と表示されていることを確認します。
 +
 「 network interface show -vserver Cluster 」のように表示されます
@@ -347,11 +341,9 @@ node2                true    true          false
 . ノード 2 のクラスタポート e0b からケーブルを外し、 BES-53248 スイッチでサポートされている適切なケーブル接続に従って、クラスタスイッチ cs2 のポート 2 に接続します。
 . クラスタスイッチ cs2 のすべてのノード側ポートを有効にします。
 +
-.例を示します
-[%collapsible]
-====
 次の例は、スイッチ cs2 でポート 1~16 が有効になっていることを示しています。
 
++
 [listing, subs="+quotes"]
 ----
 (cs2)# *configure*
@@ -360,7 +352,6 @@ node2                true    true          false
 (cs2)(Interface 0/1-0/16)# *exit*
 (cs2)(Config)# *exit*
 ----
-====
 . すべてのクラスタポートが* upであることを確認します。
 +
 「 network port show -ipspace cluster 」のように表示されます
