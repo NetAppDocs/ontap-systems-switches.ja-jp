@@ -10,14 +10,17 @@ summary:
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 
 
 == ストレージスイッチを移行します
 
-ストレージスイッチを再利用することで、 HA ペア 1 のストレージスイッチが共有スイッチになります。* スイッチ接続 * の配線図image:9336c_image1.jpg["スイッチ接続"]
+ストレージスイッチを再利用することで、 HA ペア 1 のストレージスイッチが共有スイッチになります。
+* スイッチ接続 * の配線図
+
+image:9336c_image1.jpg["スイッチ接続"]
 
 .手順
 . HA ペア 1 （および HA ペア 2 ）のストレージ構成が正しいこと、およびエラーがないことを確認します。「 system switch ethernet show
@@ -80,7 +83,7 @@ node2
 storage::*> system health alert show -instance
 There are no entries matching your query.
 ----
-. [[step7] 共有スイッチ A のストレージ RCF を共有 RCF ファイルに置き換えます。を参照してください http://9336c_install_nx-os_software_and_reference_configuration_files_@rcfs@.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします"] を参照してください。
+. [[step7]]共有スイッチAのストレージRCFを共有RCFファイルに交換します。を参照してください link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします"] を参照してください。
 . HA ペア 1 に接続されたストレージスイッチ B が正常であることを確認します。「 system health alert show -instance 」
 
 
@@ -100,7 +103,7 @@ There are no entries matching your query.
 storage::*> system health alert show -instance
 There are no entries matching your query.
 ----
-. [[step13]] 共有スイッチ B のストレージ RCF ファイルを共有 RCF ファイルで置き換えます。を参照してください link:9336c_install_nx-os_software_and_reference_configuration_files_@rcfs@.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします"] を参照してください。
+. [[step13]]共有スイッチBのストレージRCFファイルを共有RCFファイルに置き換えます。を参照してください link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html#install-the-rcf-on-a-cisco-nexus-9336c-fx2-shared-switch["Cisco Nexus 9336C-FX2 共有スイッチに RCF をインストールします"] を参照してください。
 . HA ペア 1 に接続されたストレージスイッチ B が正常であることを確認します。「 system health alert show -instance 」
 
 
@@ -129,6 +132,6 @@ sh1 (config-if)# spanning-tree port type network
 sh1 (config-if)# exit
 sh1 (config)# exit
 ----
-. [[step16]] スイッチレスクラスタからスイッチ使用のクラスタへの HA ペア 1 の変換。共有 RCF で定義されているクラスタポートの割り当てを使用します。を参照してください link:9336c_install_nx-os_software_and_reference_configuration_files_@rcfs@.html["NX-OS ソフトウェアおよび RCF のインストール"]を参照してください。
+. [[step16]] スイッチレスクラスタからスイッチ使用のクラスタへの HA ペア 1 の変換。共有 RCF で定義されているクラスタポートの割り当てを使用します。を参照してください link:9336c_install_nx-os_software_and_reference_configuration_files_rcfs.html["NX-OS ソフトウェアおよび RCF のインストール"]を参照してください。
 . スイッチドネットワーク設定が有効であることを確認します。「 network port show 」
 

@@ -10,7 +10,7 @@ summary: ケーブル接続の図を使用して、コントローラとスイ�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -42,7 +42,9 @@ image:9336c_image2.jpg["直接接続"]
 
 サポート対象のプラットフォームを文書化する場合は、入力済みのケーブル接続ワークシートの例を参考にして、空白のケーブル接続ワークシートに記入する必要があります。
 
-各スイッチペアのポート定義の例を次に示します。image:cabling_worksheet.jpg["ケーブル接続ワークシート"]
+各スイッチペアのポート定義の例を次に示します。
+
+image:cabling_worksheet.jpg["ケーブル接続ワークシート"]
 
 ここで、
 

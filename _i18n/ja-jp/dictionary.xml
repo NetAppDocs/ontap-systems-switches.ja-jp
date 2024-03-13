@@ -797,7 +797,6 @@
   <block id="62bb127cfc33134b4b7ba3eb79ae05f3" category="doc">ストレージスイッチを再利用して、 SAT ストレージを備えたスイッチクラスタから移行する</block>
   <block id="5542e924104d087ae00a02e0143b2f6b" category="section-title">ストレージスイッチを移行します</block>
   <block id="29c04d28b21adc7e1a7b356455c263a4" category="inline-image-macro">スイッチ接続</block>
-  <block id="7424e91fe1d742657d5ad736cc938704" category="paragraph">ストレージスイッチを再利用することで、 HA ペア 1 のストレージスイッチが共有スイッチになります。* スイッチ接続 * の配線図<block ref="6a2cf54f6a37518ec42d92fd7fd3e59c" category="inline-image-macro-rx" type="image"></block></block>
   <block id="09de4d47ba4a61383fa6bd8275ea0013" category="list-text">HA ペア 1 （および HA ペア 2 ）のストレージ構成が正しいこと、およびエラーがないことを確認します。「 system switch ethernet show</block>
   <block id="514085dcc3bcd7f871a43182b26fc37f" category="list-text">[step2] HA ペア 1 、 NSM224 パス A ケーブルをストレージスイッチ A から HA ペア 1 の NSM224 ストレージポート、ストレージスイッチ A のパス A に移動します</block>
   <block id="9adac45c8f65af4ce2b61c1a4a107e6f" category="list-text">HA ペア 1 のノード A から、 HA ペア 1 の場合は NSM224 ストレージポート、ストレージスイッチ A にケーブルを接続します</block>
@@ -973,10 +972,7 @@
   <block id="a61fb4ee9862ad3ca2ace374860efe47" category="list-text">[[step3] HA ペア 1 の NSM224 パス A ケーブルをストレージスイッチ A から HA ペア 1 の共有 NS224 ストレージポートに移動します。このストレージスイッチ A のパス A</block>
   <block id="13edd7f420c2674d548b2a52a6da2adb" category="list-text">HA ペア 1 のノード A から、ストレージスイッチ A 上の HA ペア 1 のノード A の共有ストレージポートへケーブルを接続します</block>
   <block id="8fa35651fd65d802f471c470966f21ec" category="list-text">HA ペア 1 のノード B から、ストレージスイッチ A の HA ペア 1 のノード B の共有ストレージポートへケーブルを接続します</block>
-  <block id="a791669229b197424a1c53af3c935995" category="list-text">[[step7] 共有スイッチ A のストレージ RCF を共有 RCF ファイルに置き換えます。を参照してください<block ref="f6e7f441bcff51ec3d8080f15010fd4c" category="inline-link-rx"></block> を参照してください。</block>
   <block id="ea77aeb98674be7fb36ce74bd1108462" category="list-text">[[step9] HA ペア 1 、 NSM224 パス B のケーブルをストレージスイッチ B から HA ペア 1 の共有 NS224 ストレージポートに移動し、ストレージスイッチ B へのパス B を移動します</block>
-  <block id="ded104c4c31658cbea5c009e1de22984" category="list-text">[[step13]] 共有スイッチ B のストレージ RCF ファイルを共有 RCF ファイルで置き換えます。を参照してください <block ref="41062cda0a6ae510a0f118eb961870a4" category="inline-link-macro-rx"></block> を参照してください。</block>
-  <block id="533661dac93384c9c5129a0888e57a1d" category="list-text">[[step16]] スイッチレスクラスタからスイッチ使用のクラスタへの HA ペア 1 の変換。共有 RCF で定義されているクラスタポートの割り当てを使用します。を参照してください <block ref="2cdb0ef9b29e3206865e37e4f43be394" category="inline-link-macro-rx"></block>を参照してください。</block>
   <block id="512a76427a65e27ffb75015bb7a6951e" category="list-text">スイッチドネットワーク設定が有効であることを確認します。「 network port show 」</block>
   <block id="467a501ced0eaaee20142a975e074f95" category="doc">2 つの新しい共有スイッチを追加して、 DAT ストレージを使用したスイッチ構成から移行します</block>
   <block id="8c0efb8b0ce576c4e0176ea2d8cf7d54" category="list-text">サポートされるスイッチは次のとおりです。</block>
@@ -1100,7 +1096,6 @@
   <block id="4e4e9a3c74ffafdd7400bec54125834f" category="inline-image-macro">直接接続</block>
   <block id="d2aa2982691bcb6b044696b6691d5677" category="paragraph">サポート対象のプラットフォームを文書化する場合は、入力済みのケーブル接続ワークシートの例を参考にして、空白のケーブル接続ワークシートに記入する必要があります。</block>
   <block id="3d7fd5afdd3e2a9008c8eb6e9d19e41c" category="inline-image-macro">ケーブル接続ワークシート</block>
-  <block id="7bfa22cf35645d8a9b2e335b3ee5f0b0" category="paragraph">各スイッチペアのポート定義の例を次に示します。<block ref="5965a3db7e52c18148f117f0240c1e3f" category="inline-image-macro-rx" type="image"></block></block>
   <block id="4cd361459ea2bb087ed6c989579796c7" category="paragraph">ここで、</block>
   <block id="9ec84c8a49c539fada5b23f8acb3e112" category="paragraph">空白のケーブル接続ワークシートを使用して、クラスタ内のノードとしてサポートされるプラットフォームを文書化できます。Hardware Universe の Supported Cluster Connections テーブルでは、プラットフォームで使用されるクラスタポートが定義されています。</block>
   <block id="eff06c6a47d34c39807f7ae5e22214f9" category="paragraph"><block ref="eff06c6a47d34c39807f7ae5e22214f9" category="inline-image-macro-rx" type="image"></block></block>
@@ -4739,4 +4734,10 @@
   <block id="6fa86324fabffaee853e6eeee2824329" category="list-text">スイッチC1をスイッチcs1に置き換えます。</block>
   <block id="9f4f9b4efa8b2eb74b227e6e2a18f872" category="list-text">スイッチC2で、クラスタLIFをフェイルオーバーするために、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
   <block id="54c071b600d8be038e07b18d66329aa7" category="list-text">スイッチC1で、クラスタLIFをフェイルオーバーするために、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
+  <block id="5965a3db7e52c18148f117f0240c1e3f" category="paragraph"><block ref="5965a3db7e52c18148f117f0240c1e3f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6a5dd15f930e244dadfd412b53dd1ac0" category="paragraph">ストレージスイッチを再利用することで、 HA ペア 1 のストレージスイッチが共有スイッチになります。
+* スイッチ接続 * の配線図</block>
+  <block id="5851bb17419faa449f719ec90fe12181" category="list-text">[[step7]]共有スイッチAのストレージRCFを共有RCFファイルに交換します。を参照してください <block ref="2e5583639979312d3d691c4092c19d52" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="ea9f3090e45d8199fc92892a96dd0214" category="list-text">[[step13]]共有スイッチBのストレージRCFファイルを共有RCFファイルに置き換えます。を参照してください <block ref="2e5583639979312d3d691c4092c19d52" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="779f2e1ced3dc42aa441f71771bcb993" category="list-text">[[step16]] スイッチレスクラスタからスイッチ使用のクラスタへの HA ペア 1 の変換。共有 RCF で定義されているクラスタポートの割り当てを使用します。を参照してください <block ref="2e68fbe1bf6d8e813f758c3b7509ff6f" category="inline-link-macro-rx"></block>を参照してください。</block>
 </blocks>
