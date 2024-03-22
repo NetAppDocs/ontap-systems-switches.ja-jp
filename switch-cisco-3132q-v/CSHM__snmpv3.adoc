@@ -1,7 +1,7 @@
 ---
 permalink: switch-cisco-3132q-v/CSHM_snmpv3.html 
 sidebar: sidebar 
-keywords: SNMP,SNMPv3,SNMPv3 setup,BES-53248 Broadcom setup,BES-3248 switches configuration,EFOS 
+keywords: SNMP,SNMPv3,SNMPv3 setup,Cisco setup,3132q-v switches configuration,NX-OS 
 summary: SNMPv3は、イーサネットスイッチヘルスモニタ（CSHM）で使用できます。 
 ---
 = SNMPv3の設定

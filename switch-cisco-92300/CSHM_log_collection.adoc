@@ -1,8 +1,8 @@
 ---
-permalink: switch-cisco-3132q-v/CSHM_log_collection.html 
+permalink: switch-cisco-92300/CSHM_log_collection.html 
 sidebar: sidebar 
-keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation 
-summary: クラスタスイッチヘルスモニタログ収集機能は、 ONTAP でスイッチ関連のログファイルを収集するために使用します。ここで説明するように、92300YCクラスタスイッチCLIを使用して環境をセットアップしておく必要があります。 
+keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation,92300YC Cisco setup,92300YC switches configuration,NX-OS 
+summary: イーサネットスイッチヘルスモニタ（CSHM）のログ収集機能は、ONTAPのクラスタまたはストレージネットワークスイッチからログを収集するために使用します。 
 ---
 = イーサネットスイッチヘルスモニタリングのログ収集
 :allow-uri-read: 
@@ -11,17 +11,10 @@ summary: クラスタスイッチヘルスモニタログ収集機能は、 ONTA
 
 
 [role="lead"]
-ログ収集機能を使用して、ONTAP でスイッチ関連のログファイルを収集できます。
-
 イーサネットスイッチヘルスモニタ（CSHM）は、クラスタネットワークスイッチとストレージネットワークスイッチの動作の健全性を確認し、デバッグ用にスイッチのログを収集します。この手順では、スイッチからの詳細な*サポート*ログの収集を設定および開始するプロセスをガイドし、AutoSupportによって収集された*定期的な*データの1時間ごとの収集を開始します。
 
-.作業を開始する前に
-* Cisco 3132Q-Vクラスタスイッチ* CLI*を使用して環境がセットアップされていることを確認します。
-* スイッチのヘルスモニタが有効になっている必要があります。これを確認するには、 `Is Monitored:` フィールドは、 `system switch ethernet show` コマンドを実行します
-
-
 .手順
-. イーサネットスイッチヘルスモニタのログ収集機能のパスワードを作成します。
+. ログ収集を設定するには、スイッチごとに次のコマンドを実行します。ログ収集用のスイッチ名、ユーザ名、およびパスワードの入力を求められます。
 +
 「システムスイッチイーサネットログセットアップ - パスワード」
 
@@ -90,7 +83,7 @@ CAUTION: これらのコマンドのいずれかでエラーが返された場�
 
 
 
-.トラブルシューティング
+.トラブルシューティングを行う
 ログ収集機能によって次のいずれかのエラーステータスが報告された場合（の出力に表示されます） `system switch ethernet log show`)で、対応するデバッグ手順を試します。
 
 |===
@@ -109,7 +102,7 @@ ONTAP SSHキーを再生成します。NetAppサポートにお問い合わせ�
  a| 
 *スイッチパスワードエラー*
  a| 
-クレデンシャルを検証し、SSH接続をテストし、ONTAP SSHキーを再生成します。手順については、スイッチのマニュアルを確認するか、NetAppサポートにお問い合わせください。
+クレデンシャルを検証し、SSH接続をテストし、ONTAP SSHキーを再生成します。手順については、スイッチのマニュアルを参照するか、NetAppサポートにお問い合わせください。
 
 
 
