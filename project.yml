@@ -12,7 +12,7 @@ settings:
   langs: ja-jp,us-en,ko-kr,zh-cn,zh-tw,de-de,es-es,fr-fr,it-it
 sidebar:
   entries:
-  - title: AFF および FAS スイッチのドキュメント
+  - title: ONTAPハードウェア用のスイッチドキュメント
     url: "/index.html"
   - title: はじめに
     entries:

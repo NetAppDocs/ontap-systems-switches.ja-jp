@@ -51,7 +51,7 @@ entries:
   entries:
   - title: CN1610スイッチからの移行
     url: "/switch-bes-53248/migrate-cn1610.html"
-  - title: 2ノードスイッチに移行
+  - title: 2ノードスイッチへの移行
     url: "/switch-bes-53248/migrate-to-2n-switched.html"
 - title: スイッチを交換します
   pdf-filename: replace_switches_bes53248

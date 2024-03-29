@@ -1,6 +1,6 @@
 ---
 indexpage:
-  lead: ネットアップでは、クラスタ、ストレージ、および共有スイッチを提供してホストストレージと複数のAFF / FASコントローラを接続できるため、ストレージインフラ全体でデータやネットワークインターフェイスを無停止で移動できます。
+  lead: NetAppでは、クラスタスイッチ、ストレージスイッチ、共有スイッチを使用してホストストレージと2台以上のNetAppコントローラを接続できるため、ストレージインフラ全体でデータインターフェイスやネットワークインターフェイスを無停止で移動できます。
   tiles:
   - title: はじめに
     links:
@@ -22,7 +22,7 @@ indexpage:
       url: "/overview-eod.html"
   - title: 関連するONTAP のドキュメント
     links:
-    - title: AFF / FASハードウェアシステム
+    - title: ONTAPハードウェアシステム
       url: https://docs.netapp.com/us-en/ontap-systems/index.html
     - title: ONTAP ソフトウェア
       url: https://docs.netapp.com/us-en/ontap/index.html

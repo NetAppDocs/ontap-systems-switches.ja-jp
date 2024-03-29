@@ -275,7 +275,6 @@
   <block id="13926c16a2339f39a7e2d4218d47d10b" category="list-text">クラスタスイッチ cs1 のすべてのノード側ポートを有効にします。</block>
   <block id="a2c09169aae3d453a5de75708a6aea92" category="paragraph">次の例は、スイッチ cs1 でポート 1~16 が有効になっていることを示しています。</block>
   <block id="1cd3efec31f045ffb5449349f414844d" category="list-text">すべてのクラスタ LIF が up であり、運用可能であり、 Is Home に「 true 」と表示されていることを確認します。</block>
-  <block id="fcad649cb098b84dccd4a01a3b2eaa7f" category="paragraph">次の例では、すべての LIF がノード 1 とノード 2 で up になっていて、 Is Home の結果が「 true 」であることを示します。</block>
   <block id="37389337e6e35d88b5139f8a3c830f35" category="list-text">クラスタ内のノードのステータスに関する情報を表示します。</block>
   <block id="494cb4f7976c64f111b74e9089d5bbd5" category="paragraph">「 cluster show 」を参照してください</block>
   <block id="dbae8c204d7835be187f0c26e601f21a" category="paragraph">次の例は、クラスタ内のノードの健全性と参加資格に関する情報を表示します。</block>
@@ -286,7 +285,6 @@
   <block id="a0408f8d378bcb6403d9ed2ec21db42f" category="paragraph">次の例は、ノード 1 とノード 2 のすべてのクラスタポートが up になっていることを示しています。</block>
   <block id="30530896511238b69b0e6acc7e04d6ce" category="list-text">すべてのインターフェイスに Is Home の true が表示されていることを確認します。</block>
   <block id="d674fde4628671c3e1078935d12e7997" category="admonition">この処理が完了するまでに数分かかることがあります。</block>
-  <block id="920dd0f6e71089afe68eba9aa2f22c90" category="paragraph">次の例では、すべての LIF がノード 1 とノード 2 で up になっていて、 Is Home の結果が「 true 」であることを示します。</block>
   <block id="90c03200b8f85b5e421787d5bb39a45c" category="list-text">両方のノードのそれぞれで、各スイッチに 1 つの接続があることを確認します。</block>
   <block id="1464260572606bd5f01302103114d67a" category="paragraph">次の例は、両方のスイッチの該当する結果を示しています。</block>
   <block id="34898bfa473a2408e3c8f536845f48e5" category="list-text">クラスタ内で検出されたネットワークデバイスに関する情報を表示します。</block>
@@ -2021,7 +2019,6 @@
   <block id="8cd379638fc4ccb9fe87c298fc5389eb" category="paragraph">スイッチは、コンソールポートを介したローカル管理、またはネットワーク接続を介した Telnet または SSH を使用したリモート管理をサポートします。CN1610 には、アウトオブバンドスイッチ管理用に専用の 1 ギガビットイーサネット RJ45 管理ポートが搭載されています。スイッチを管理するには、コマンドラインインターフェイス（ CLI ）にコマンドを入力するか、 SNMP ベースの Network Management System （ NMS ）を使用します。</block>
   <block id="863521236411601eb091fc20202c6aaf" category="list-text">n1_clus4 は、ノード n1 のクラスタスイッチ 1 （ CL1 または C1 ）に接続された 2 つ目の LIF です。 -</block>
   <block id="33813b05f223e9025627eaf85a7f8eaa" category="list-text">n1_clus3 は、ノード n1 のクラスタスイッチ C2 に接続された 2 つ目の LIF です。</block>
-  <block id="831835779ddae8b680a8580d383f130b" category="sidebar">AFF および FAS スイッチのドキュメント</block>
   <block id="37fed156054fea8c26c972e349998cf7" category="paragraph">クラスタ環境でスイッチのハードウェアとソフトウェアを設定する方法を詳しく説明します。</block>
   <block id="07681dab39c1e1030eba7eb43c51f01f" category="paragraph">CN1601 スイッチのハードウェアとソフトウェアの機能およびインストールプロセスの概要。</block>
   <block id="d53f278b262fe510c209b77f0fbcca0e" category="paragraph">。<block ref="a9613e1dbacf145285c45df4264fe797" category="inline-link-rx"></block> ケーブル接続の詳細については、を参照してください。</block>
@@ -3383,18 +3380,10 @@
   <block id="d1f4afd8356da4e0148299e8020db15b" category="list-text">リファレンス構成ファイル（RCF）がスイッチに適用されます。</block>
   <block id="3162ac93186b03e54de9e68256dbb924" category="list-text">新しいスイッチには、サイトのカスタマイズ（SMTP、SNMP、SSH）が設定されています。</block>
   <block id="f0b02a6a42b62e57a146137078a39635" category="section-title">クラスタ環境に移行する</block>
-  <block id="af0f02b80aaae2d29a88a56209cd3dd0" category="list-text">2つのBES-53248スイッチcs1とcs2間のISLでISLポートと物理ポートがup *になっていることを確認します。</block>
   <block id="09a5fb271719ecae04d6c0f573fa3099" category="paragraph">次の例は、スイッチcs1のISLポートが* up *になっていることを示しています。</block>
   <block id="f9431300de8d1a48bf2e554ad1605071" category="paragraph">次の例は、スイッチcs2上のISLポートが* up *になっていることを示しています。</block>
-  <block id="96725f7c30dba4b02784c4f6b22b76f2" category="list-text">すべてのクラスタポートが「稼働」していることを確認します。</block>
-  <block id="711d7f6899df1dfa47e13a5fbedae706" category="paragraph">では、各ポートが「up」と表示されます<block ref="97e7c9a7d06eac006a28bf05467fcc8b" prefix=" " category="inline-code"></block> の場合は「正常」です<block ref="fbcf0d1f787c74663ca9dc925ebf5f0c" prefix=" " category="inline-code"></block>。</block>
-  <block id="b9342006c263bb81a72635a40bccef85" category="list-text">すべてのクラスタLIFが「up」で動作していることを確認します。<block ref="7af866342cc7e87972580d7b709d8820" prefix=" " category="inline-code"></block></block>
-  <block id="a5d7c0c5e08447fc2eab20dfb2acee00" category="paragraph">には、それぞれのクラスタLIFで「true」と表示されます<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block> には、があります<block ref="4f21ee5a18672b60f4c01e94e6be9c79" prefix=" " category="inline-code"></block> "アップ/アップ"</block>
-  <block id="cd6df0359bdf1ee77a48901029c8c000" category="list-text">すべてのクラスタポートが* upであることを確認します。</block>
-  <block id="9f7da2912010ab11954f77bf548cc0d8" category="paragraph">次の例は、ノード1とノード2のすべてのクラスタポートが* up *になっていることを示しています。</block>
   <block id="99905a9acf063a85c4bbaa70f4455984" category="list-text">コマンドを使用して、クラスタネットワークが完全に接続されていることを確認します。</block>
   <block id="1e44ccea9f1ae385026deb840bc9b5f4" category="paragraph">詳細については、を参照してください<block ref="780f810d0519883e7efdd6ef45cf51ed" category="inline-link-rx"></block></block>
-  <block id="291315307e480f559eb88bb2d33ce0be" category="paragraph">移行が完了したら、 BES-53248 クラスタスイッチのクラスタスイッチヘルスモニタ（ CSHM ）をサポートするために必要な構成ファイルのインストールが必要になる場合があります。を参照してください <block ref="22274518ab78de16bd162dd23a69479d" category="inline-link-macro-rx"></block> および <block ref="42a9a40a2570039f7bbb890cc28e41e6" category="inline-link-macro-rx"></block>。</block>
   <block id="77d285017f370185656b54b03d5b5a16" category="paragraph">BES-53248 クラスタスイッチの基本モデルには、 16 個の 10GbE ポートまたは 25GbE ポートと 2 個の 100GbE ポートがライセンスされています。ライセンスを追加購入すると、新しいポートを追加できます。</block>
   <block id="f95b7ecd3b114623b8699a07a36fd860" category="section-title">使用可能なライセンスを確認します</block>
   <block id="d0b4658a7d84a9eac4898488fcaa5c83" category="admonition">基本構成にライセンスは必要ありません。</block>
@@ -3942,12 +3931,10 @@
   <block id="b41c4700bab043f1f20ef00a3ca30550" category="admonition">Nexus 5596UP / 5596Tクラスタスイッチは、ネットアップからは提供されなくなりましたが、Ciscoでは期間限定のTimとしてサポートされます。</block>
   <block id="e727b00944f81e1d0a95c12886ac4641" category="inline-link">Archive サービスの略</block>
   <block id="43700a28b6a0a6d22cee566cf110c1ac" category="paragraph">ハードウェアのサポートが終了したAFF スイッチモデルとFAS スイッチモデルのドキュメントは、でお客様に提供しています<block ref="e7b678559b63d2ae51b0bdc075b51522" category="inline-link-rx"></block>。</block>
-  <block id="3190ff33d621d64996efea42085e5a0e" category="sidebar">ネットアップでは、クラスタ、ストレージ、および共有スイッチを提供してホストストレージと複数のAFF / FASコントローラを接続できるため、ストレージインフラ全体でデータやネットワークインターフェイスを無停止で移動できます。</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">はじめに</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">新機能</block>
   <block id="06ad314b340900d226b1196e1fe289e9" category="sidebar">クイックスタート</block>
   <block id="732eab758bc032e5cc4992b97650c69b" category="sidebar">関連するONTAP のドキュメント</block>
-  <block id="495d87219d733f7402b03ba10a7576fc" category="sidebar">AFF / FASハードウェアシステム</block>
   <block id="efd44736fee0b29831bc101f834f9425" category="sidebar">ONTAP ソフトウェア</block>
   <block id="974ad78dc53c253ebfe5b2b8b376f353" category="sidebar">ツールのサポート</block>
   <block id="668e2078ef1b1722c77cdb5c523a4463" category="sidebar">ネットアップナレッジベース</block>
@@ -3983,7 +3970,6 @@
   <block id="037fd3285f5414c76c57c401fbc5603c" category="sidebar">ログ収集を有効にします</block>
   <block id="71f5771dab663d80ba4dad1627e3386a" category="sidebar">アップグレードの概要</block>
   <block id="1f23e03e99812c23b47ad60d475647df" category="sidebar">スイッチをアップグレードします</block>
-  <block id="2707e98202897bbf6d508b6f4c5232cc" category="sidebar">2ノードスイッチに移行</block>
   <block id="90f9408edf534ae6691bfa241e3cef32" category="sidebar">BES-53248スイッチを交換します</block>
   <block id="c4767bb3bd142c908fcfd8a9e5fab38c" category="sidebar">スイッチレスDASクラスタから移行</block>
   <block id="3c0c4451f5d8950dc9b9a962b87ff4ae" category="sidebar">スイッチドDAS構成から移行します</block>
@@ -4747,4 +4733,44 @@
   <block id="7733a6a16b4fa24d09c107d2b3eefb78" category="summary">クラスタスイッチヘルスモニタログ収集機能は、 ONTAP でスイッチ関連のログファイルを収集するために使用します。ここで説明するように、92300YCクラスタスイッチCLIを使用して環境をセットアップしておく必要があります。</block>
   <block id="e7c823ebcf9c688c2043749093639ce5" category="paragraph">次のコマンドは、Cisco 92300YCスイッチにSNMPv3ユーザ名を設定します。</block>
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="paragraph-title">トラブルシューティングを行う</block>
+  <block id="3e7c0049318f1d54d121bd59293ae3f8" category="summary">Cisco 9336C-FX2スイッチを設定する前に、次の情報を確認してください。</block>
+  <block id="6f46a467644090d99e7affb0172248d7" category="paragraph">Cisco 9336C-FX2スイッチを設定する前に、次の考慮事項を確認してください。</block>
+  <block id="4c53e24e451af6129456f6303c30d40c" category="section-title">NVIDIA CX6、CX6-DX、CX7イーサネットポートのサポート</block>
+  <block id="9631cf0fb6580db66010faf0ddf48e5a" category="paragraph">NVIDIA ConnectX-6（CX6）、ConnectX-6 Dx（CX6-DX）、またはConnectX-7（CX7）NICポートを使用してスイッチポートをONTAPコントローラに接続する場合は、スイッチポート速度をハードコーディングする必要があります。</block>
+  <block id="814d720814ffd5b1d8710ed1cff64233" category="section-title">25GbE FECの要件</block>
+  <block id="5179acf3e9761e0b0a93230fb2e3563e" category="section-title">FAS2820のe0a / e0bポート</block>
+  <block id="16492a28b092a6c397b2ace11004d3ae" category="paragraph">FAS2820のe0aポートとe0bポートで9336C-FX2スイッチポートとのリンクをupにするには、FECの設定を変更する必要があります。
+スイッチポートe0aとe0bの場合、FEC設定はに設定されます。<block ref="49bb002a2d60e4cc69c3dc5b31861c1e" prefix=" " category="inline-code"></block>。</block>
+  <block id="4f87522819ea00e934b0a0922889948b" category="list-title">ポートグループ速度の制約</block>
+  <block id="ffb3876ecec1241eb99eed3e2c199c30" category="list-text">48個の10 / 25GbE（SFP28 / SFP+）ポートは、次のように12個の4ポートグループに統合されます。ポート1~4、5~8、9~12、13~16、17~20、 21-24、25-28、29-32、33-36、37-40、 41-44、45-48。</block>
+  <block id="3262b02fba07b6c88ff94cf729a2d880" category="list-text">4ポートグループの速度が異なると、スイッチポートは正常に動作しません。</block>
+  <block id="44419445a2db4f385ef269ec6901c6f0" category="list-text">2つのBES-53248スイッチcs1とcs2間のISLおよび物理ポートがupになっていることを確認します。</block>
+  <block id="d3ca9236c4922d1ced4f46317b142939" category="paragraph">移行が完了したら、BES-53248クラスタスイッチのイーサネットスイッチヘルスモニタ（CSHM）をサポートするために必要な構成ファイルのインストールが必要になる場合があります。を参照してください <block ref="69a3b5b5b3e87ce1bcae2811d815d9de" category="inline-link-macro-rx"></block>。</block>
+  <block id="884341494cf0683252982193822b1820" category="summary">Broadcom BES-53248スイッチを設定する前に、次の情報を確認してください。</block>
+  <block id="07da2741be958e9f66a97df92910bd8a" category="paragraph">Broadcom BES-53248スイッチを設定する前に、次の考慮事項を確認してください。</block>
+  <block id="5ff0ed2baf5dbbaa7302070081cdcb21" category="section-title">クラスタポートスイッチの割り当て</block>
+  <block id="6d2daece992ad0842c43707d5f1dd7e0" category="paragraph">Broadcom対応BES-53248クラスタスイッチポート割り当てテーブルを参考にして、クラスタを設定できます。</block>
+  <block id="8a97863dc2bb67b8312833e0e1177b9a" category="paragraph">0 ~ 16</block>
+  <block id="8f165dca42f321f16043254a0b0519b2" category="section-title">FECノヨウケン</block>
+  <block id="c54cb1d1758401e3642d17bb93a69d93" category="list-text">銅線ケーブルを使用した25Gポートの詳細については、次の表を参照してください。</block>
+  <block id="195cd18c7f8998650d35b4c351942586" category="paragraph">コントローラ側が<block ref="9df22f196a33acd0b372fe502de51211" prefix=" " category="inline-code"></block>スイッチ側はFEC 25Gに設定されています。</block>
+  <block id="a00291ce16531c65ee398b6881feea1f" category="paragraph">[+]
+image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
+  <block id="4acde917814132a561bfa4351ff46435" category="list-text">25Gポートと光ファイバケーブルの詳細については、次の表を参照してください。</block>
+  <block id="c6539246443696c8a670f430b739b72e" category="image-alt">25Gポートと光ファイバケーブル</block>
+  <block id="6e780ba970adeac360d7606298c46e9e" category="section-title">Bootargノシツソウ</block>
+  <block id="128b15f7c069993f4d8608bed503593c" category="paragraph">次のコマンドを使用して、25GポートFECを次のいずれかに設定します。<block ref="9df22f196a33acd0b372fe502de51211" prefix=" " category="inline-code"></block> または<block ref="e05fe30750d3ea262a610d17ebc07019" prefix=" " category="inline-code"></block>（必要に応じて）：</block>
+  <block id="82f8a8d293c0abf4e508fba4f90f77de" category="list-text">に設定すると <block ref="9df22f196a33acd0b372fe502de51211" prefix="*" category="inline-code"></block>*：</block>
+  <block id="a2db881e6e788aef3d98248893ac183d" category="list-text">。<block ref="9df22f196a33acd0b372fe502de51211" prefix=" " category="inline-code"></block> を設定すると、設定がすぐにハードウェアに伝播され、再起動は必要ありません。</block>
+  <block id="69c272de4bab8db62256f54da8bcde70" category="list-text">状況<block ref="ec0f1fb6d4ad0a1c5956dbfae578b508" prefix=" " category="inline-code"></block>を選択すると、bootargストレージから削除されます。</block>
+  <block id="e36b105e2f0954e014a0653c4237275f" category="list-text">リブート後、<block ref="9df22f196a33acd0b372fe502de51211" prefix=" " category="inline-code"></block> 設定は次の日付以降維持されます：<block ref="9df22f196a33acd0b372fe502de51211" prefix=" " category="inline-code"></block> は、デフォルトのFEC設定です。</block>
+  <block id="4cf5b76257838a13f7eaf6e128780b63" category="list-text">に設定すると <block ref="e05fe30750d3ea262a610d17ebc07019" prefix="*" category="inline-code"></block>*：</block>
+  <block id="33374324ada2340989bc045d67e0bc1e" category="list-text">。<block ref="e0a64c365feb7b2f913e6a4048472af6" prefix=" " category="inline-code"></block> を設定すると、設定がすぐにハードウェアに伝播され、リブートは不要です。</block>
+  <block id="c5a74ce2f4585cd46c311a5822607b9f" category="list-text">新しい<block ref="4b077bb4cc781686a7abd72c8354ba70" prefix=" " category="inline-code"></block> は、値を「true」に設定して作成されます。</block>
+  <block id="72477c9fa5c7321db80c98ce8db97acf" category="list-text">リブート後、<block ref="e0a64c365feb7b2f913e6a4048472af6" prefix=" " category="inline-code"></block> ドライバコードが使用できるように設定が維持されます。</block>
+  <block id="6015ba5fcef1f3caa77869608d6c2789" category="doc">ONTAPハードウェアシステムのスイッチマニュアル</block>
+  <block id="25cb4346e07d274b036816fdb6e793af" category="sidebar">NetAppでは、クラスタスイッチ、ストレージスイッチ、共有スイッチを使用してホストストレージと2台以上のNetAppコントローラを接続できるため、ストレージインフラ全体でデータインターフェイスやネットワークインターフェイスを無停止で移動できます。</block>
+  <block id="e039aa1be61543fd84f1c4eb5d3e9f6b" category="sidebar">ONTAPハードウェアシステム</block>
+  <block id="9d07d8327ebc12554e974699f677fdb7" category="sidebar">ONTAPハードウェア用のスイッチドキュメント</block>
+  <block id="1be807f8d70b208f4d04b385b1c81765" category="sidebar">2ノードスイッチへの移行</block>
 </blocks>

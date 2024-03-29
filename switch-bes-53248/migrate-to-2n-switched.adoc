@@ -53,6 +53,12 @@ summary: 2ノードスイッチレスクラスタを使用している場合は�
 * 新しいスイッチには、サイトのカスタマイズ（SMTP、SNMP、SSH）が設定されています。
 
 
+.ポートグループ速度の制約
+* 48個の10 / 25GbE（SFP28 / SFP+）ポートは、次のように12個の4ポートグループに統合されます。ポート1~4、5~8、9~12、13~16、17~20、 21-24、25-28、29-32、33-36、37-40、 41-44、45-48。
+* SFP28 / SFP+ ポート速度は、 4 ポートグループのすべてのポートで同じ（ 10GbE または 25GbE ）でなければなりません。
+* 4ポートグループの速度が異なると、スイッチポートは正常に動作しません。
+
+
 
 
 == クラスタ環境に移行する
@@ -123,7 +129,7 @@ NOTE: ISL ポートを無効にしないでください。
 (cs1)(Interface 0/1-0/16)# *exit*
 (cs1)(Config)# *exit*
 ----
-. 2つのBES-53248スイッチcs1とcs2間のISLでISLポートと物理ポートがup *になっていることを確認します。
+. 2つのBES-53248スイッチcs1とcs2間のISLおよび物理ポートがupになっていることを確認します。
 +
 'how port-channel
 
@@ -131,7 +137,7 @@ NOTE: ISL ポートを無効にしないでください。
 .例を示します
 [%collapsible]
 ====
-次の例は、スイッチcs1のISLポートが* up *になっていることを示しています。
+次の例は、スイッチ cs1 上の ISL ポートが up になっていることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -154,7 +160,7 @@ Ports  Timeout       Speed      Active
        partner/long
 (cs1) #
 ----
-次の例は、スイッチcs2上のISLポートが* up *になっていることを示しています。
+次の例は、スイッチ cs2 上の ISL ポートが up になっていることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -215,12 +221,9 @@ cs2            0/55     176       R            BES-53248   0/55
 cs2            0/56     176       R            BES-53248   0/56
 ----
 ====
-. すべてのクラスタポートが「稼働」していることを確認します。
+. すべてのクラスタポートが動作していることを確認します。
 +
 「 network port show -ipspace cluster 」のように表示されます
-
-+
-では、各ポートが「up」と表示されます `Link` の場合は「正常」です `Health Status`。
 
 +
 .例を示します
@@ -247,9 +250,9 @@ e0a       Cluster      Cluster          up   9000  auto/10000 healthy
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy
 ----
 ====
-. すべてのクラスタLIFが「up」で動作していることを確認します。 `network interface show -vserver Cluster`
+. すべてのクラスタ LIF が動作していることを確認します。
 +
-には、それぞれのクラスタLIFで「true」と表示されます `Is Home` には、があります `Status Admin/Oper` "アップ/アップ"
+「 network interface show -vserver Cluster 」のように表示されます
 
 +
 .例を示します
@@ -259,14 +262,14 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy
 ----
 cluster1::*> *network interface show -vserver Cluster*
 
-            Logical    Status     Network            Current       Current Is
-Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
------------ ---------- ---------- ------------------ ------------- ------- -----
+            Logical      Status     Network            Current       Current Is
+Vserver     Interface    Admin/Oper Address/Mask       Node          Port    Home
+----------- ------------ ---------- ------------------ ------------- ------- -----
 Cluster
-            node1_clus1  up/up    169.254.209.69/16  node1         e0a     true
-            node1_clus2  up/up    169.254.49.125/16  node1         e0b     true
-            node2_clus1  up/up    169.254.47.194/16  node2         e0a     true
-            node2_clus2  up/up    169.254.19.183/16  node2         e0b     true
+            node1_clus1  up/up      169.254.209.69/16  node1         e0a     true
+            node1_clus2  up/up      169.254.49.125/16  node1         e0b     true
+            node2_clus1  up/up      169.254.47.194/16  node2         e0a     true
+            node2_clus2  up/up      169.254.19.183/16  node2         e0b     true
 ----
 ====
 . クラスタ LIF で自動リバートを無効にします。
@@ -293,7 +296,36 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert fals
 (cs1)(Interface 0/1-0/16)# *exit*
 (cs1)(Config)# *exit*
 ----
-. すべてのクラスタ LIF が up であり、運用可能であり、 Is Home に「 true 」と表示されていることを確認します。
+. すべてのクラスタポートが動作していることを確認します。
++
+「 network port show -ipspace cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -ipspace Cluster*
+
+Node: node1
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+----
+====
+. すべてのクラスタ LIF が動作していることを確認します。
 +
 「 network interface show -vserver Cluster 」のように表示されます
 
@@ -301,8 +333,6 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert fals
 .例を示します
 [%collapsible]
 ====
-次の例では、すべての LIF がノード 1 とノード 2 で up になっていて、 Is Home の結果が「 true 」であることを示します。
-
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface show -vserver Cluster*
@@ -311,9 +341,9 @@ cluster1::*> *network interface show -vserver Cluster*
 Vserver  Interface    Admin/Oper Address/Mask       Node        Port    Home
 -------- ------------ ---------- ------------------ ----------- ------- ----
 Cluster
-         node1_clus1  up/up      169.254.209.69/16  node1       e0a     true
+         node1_clus1  up/up      169.254.209.69/16  node1       e0a     false
          node1_clus2  up/up      169.254.49.125/16  node1       e0b     true
-         node2_clus1  up/up      169.254.47.194/16  node2       e0a     true
+         node2_clus1  up/up      169.254.47.194/16  node2       e0a     false
          node2_clus2  up/up      169.254.19.183/16  node2       e0b     true
 ----
 ====
@@ -352,7 +382,7 @@ node2                true    true          false
 (cs2)(Interface 0/1-0/16)# *exit*
 (cs2)(Config)# *exit*
 ----
-. すべてのクラスタポートが* upであることを確認します。
+. すべてのクラスタポートが動作していることを確認します。
 +
 「 network port show -ipspace cluster 」のように表示されます
 
@@ -360,8 +390,6 @@ node2                true    true          false
 .例を示します
 [%collapsible]
 ====
-次の例は、ノード1とノード2のすべてのクラスタポートが* up *になっていることを示しています。
-
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network port show -ipspace Cluster*
@@ -417,8 +445,6 @@ NOTE: この処理が完了するまでに数分かかることがあります�
 .例を示します
 [%collapsible]
 ====
-次の例では、すべての LIF がノード 1 とノード 2 で up になっていて、 Is Home の結果が「 true 」であることを示します。
-
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface show -vserver Cluster*
@@ -588,4 +614,4 @@ cluster1::*> system node autosupport invoke -node \* -type all -message MAINT=EN
 
 
 .次の手順
-移行が完了したら、 BES-53248 クラスタスイッチのクラスタスイッチヘルスモニタ（ CSHM ）をサポートするために必要な構成ファイルのインストールが必要になる場合があります。を参照してください link:configure-health-monitor.html["クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします"] および link:configure-log-collection.html["ログ収集機能を有効にします"]。
+移行が完了したら、BES-53248クラスタスイッチのイーサネットスイッチヘルスモニタ（CSHM）をサポートするために必要な構成ファイルのインストールが必要になる場合があります。を参照してください link:CSHM_log_collection.html["ログ収集を有効にします"]。
