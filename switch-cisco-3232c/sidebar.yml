@@ -22,6 +22,8 @@ entries:
     url: "/switch-cisco-3232c/setup-switch.html"
   - title: ネットアップキャビネットにスイッチを設置
     url: "/switch-cisco-3232c/install-cisco-nexus-3232c.html"
+  - title: ケーブル接続と構成を確認
+    url: "/switch-cisco-3232c/cabling-considerations-3232c.html"
 - title: ソフトウェアを設定します
   pdf-filename: software_3232cの設定
   entries:

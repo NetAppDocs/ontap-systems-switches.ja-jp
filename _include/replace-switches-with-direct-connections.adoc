@@ -335,7 +335,7 @@ Cluster  node2_clus2   e0b       true
 ----
 ====
 +
-いずれかのクラスタLIFがホームポートに戻っていない場合は、手動でリバートします。
+いずれかのクラスタLIFがホームポートに戻っていない場合は、ローカルノードから手動でリバートします。
 
 +
 「network interface revert -vserver Cluster -lif LIF_name」のようになります

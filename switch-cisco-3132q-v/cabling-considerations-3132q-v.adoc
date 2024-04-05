@@ -1,0 +1,35 @@
+---
+permalink: switch-cisco-3132q-v/cabling-considerations-3132q-v.html 
+sidebar: sidebar 
+keywords: 3132Q-V cabling setup, 3132Q-V switches configuration, nx-os 
+summary: Cisco 3132Q-Vスイッチを設定する前に、次の情報を確認してください。 
+---
+= ケーブル接続と構成に関する考慮事項を確認
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco 3132Q-Vスイッチを設定する前に、次の考慮事項を確認してください。
+
+
+
+== NVIDIA CX6、CX6-DX、CX7イーサネットポートのサポート
+
+NVIDIA ConnectX-6（CX6）、ConnectX-6 Dx（CX6-DX）、またはConnectX-7（CX7）NICポートを使用してスイッチポートをONTAPコントローラに接続する場合は、スイッチポート速度をハードコーディングする必要があります。
+
+[listing, subs="+quotes"]
+----
+(cs1)(config)# interface Ethernet1/19
+*For 100GbE speed:*
+(cs1)(config-if)# *speed 100000*
+*For 40GbE speed:*
+(cs1)(config-if)# *speed 40000*
+(cs1)(config-if)# no negotiate auto
+(cs1)(config-if)# exit
+(cs1)(config)# exit
+*Save the changes:*
+(cs1)# *copy running-config startup-config*
+----
+を参照してください https://hwu.netapp.com/Switch/Index["Hardware Universe"^] スイッチポートの詳細については、を参照してください。

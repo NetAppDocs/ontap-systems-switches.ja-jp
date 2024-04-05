@@ -22,6 +22,8 @@ entries:
     url: "/switch-cisco-3132q-v/setup-switch.html"
   - title: ネットアップキャビネットにスイッチを設置
     url: "/switch-cisco-3132q-v/install-cisco-nexus-3132qv.html"
+  - title: ケーブル接続と構成を確認
+    url: "/switch-cisco-3132q-v/cabling-considerations-3132q-v.html"
 - title: ソフトウェアを設定します
   pdf-filename: configure_software_3132q -v
   entries:

@@ -22,6 +22,8 @@ entries:
     url: "/switch-cisco-92300/setup-worksheet-92300yc.html"
   - title: スイッチを設定します
     url: "/switch-cisco-92300/configure-install-initial.html"
+  - title: ケーブル接続と構成を確認
+    url: "/switch-cisco-92300/cabling-considerations-92300.html"
 - title: ソフトウェアを設定します
   pdf-filename: configure_software_92300yc
   entries:
