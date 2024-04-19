@@ -621,12 +621,6 @@ cluster1::*>
 ----
 ====
 . スイッチcs1で手順1~10を繰り返します。
-
-
-
-
-=== 手順3：設定をリブートして確認します
-
 . クラスタ LIF で自動リバートを有効にします。
 +
 .例を示します
@@ -639,15 +633,17 @@ cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert True
 ====
 . スイッチ cs1 をリブートします。これは、クラスタ LIF のホームポートへのリバートをトリガーする際に行います。スイッチのリブート中にノードに対して報告された「クラスタポートが停止している」イベントは無視してかまいません。
 +
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 cs1# *reload*
 This command will reboot the system. (y/n)?  [n] *y*
 ----
-====
+
+
+
+
+=== 手順3：構成を確認します
+
 . クラスタポートに接続されているスイッチポートが動作していることを確認します。
 +
 `show interface brief | grep up`

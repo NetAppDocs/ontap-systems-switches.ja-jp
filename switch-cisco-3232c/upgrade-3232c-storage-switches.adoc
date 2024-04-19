@@ -49,7 +49,8 @@ NOTE: 手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイ
 
 === 手順1：スイッチとポートのヘルスステータスを確認する
 
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= xh
+. AutoSupport が有効になっている場合は、AutoSupport メッセージを呼び出してケースの自動作成を停止します。
+`system node autosupport invoke -node * -type all - message MAINT=xh`
 +
 _x_ は、メンテナンス時間の長さ（時間単位）です。
 
@@ -118,7 +119,7 @@ node2
                    e7b  ENET  storage    100 enabled  online        30
 ----
 ====
-. クラスタにストレージスイッチやケーブル接続の問題がないことを確認します。
+. ストレージスイッチやケーブル接続に問題がないことを確認します。
 +
 `system health alert show -instance`
 
@@ -351,9 +352,9 @@ Module       Image                  Running-Version(pri:alt)           New-Versi
 
 
 Switch will be reloaded for disruptive upgrade.
-Do you want to continue with the installation (y/n)?  [n]  y
+Do you want to continue with the installation (y/n)?  [n] *y*
 input string too long
-Do you want to continue with the installation (y/n)?  [n] y
+Do you want to continue with the installation (y/n)?  [n] *y*
 
 Install is in progress, please wait.
 
@@ -481,7 +482,7 @@ S1
     Version Source: CDP
 
 S2
-                            storage-network    172.17.227.6     NX3232C
+                            storage-network    172.17.227.6    NX3232C
      Serial Number: FOC220443LZ
       Is Monitored: true
             Reason: None

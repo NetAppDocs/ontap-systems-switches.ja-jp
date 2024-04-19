@@ -3057,7 +3057,6 @@
   <block id="d08074ca4afc3cad1b1b41c1134b3f1e" category="section-title">手順2：セットアップを設定して確認します</block>
   <block id="b6ec5ccd50e4a92a636c1dc432c89581" category="admonition">クラスタノードが正常であると報告されるまでに最大5分かかることがあります。</block>
   <block id="442f3bc68fd4ab1c760b482d02f7ca71" category="list-text">スイッチcs1で手順1~10を繰り返します。</block>
-  <block id="06e9c44ff7df8ac56c0fec0f8ded0121" category="section-title">手順3：設定をリブートして確認します</block>
   <block id="af4d9c4c765c5c1d9c279c35191c82da" category="paragraph"><block ref="e39b44798f52b1532971ab295180e1b0" prefix="" category="inline-code"></block></block>
   <block id="525f3369fb72855c79a534b59acc786f" category="list-text">入力するコマンド<block ref="ff5aaae616b6f326cad680284f32b588" prefix=" " category="inline-code"></block></block>
   <block id="0c2ad6edfd02a5a2a481f1f6e0a45712" category="list-text">入力するコマンド<block ref="abefab8d02f9c0ef8226a4fcf49448a1" prefix=" " category="inline-code"></block></block>
@@ -4779,4 +4778,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="709ea8965bb4964023cd6e82df0d3c62" category="paragraph">Cisco 92300YCスイッチを設定する前に、次の考慮事項を確認してください。</block>
   <block id="ae721238017915904e94acd87eddf78c" category="summary">Cisco 3132Q-Vスイッチを設定する前に、次の情報を確認してください。</block>
   <block id="eae32a8cbb7853bbc6b25138f2911afa" category="paragraph">Cisco 3132Q-Vスイッチを設定する前に、次の考慮事項を確認してください。</block>
+  <block id="e3e32349be8562dbe95d6af1fcba4bbe" category="list-text">AutoSupport が有効になっている場合は、AutoSupport メッセージを呼び出してケースの自動作成を停止します。<block ref="80cae18d0d871afff6b1bcabf727d6da" prefix=" " category="inline-code"></block></block>
+  <block id="abd1e059b59ee3b3be9267c9c1319923" category="list-text">ストレージスイッチやケーブル接続に問題がないことを確認します。</block>
 </blocks>

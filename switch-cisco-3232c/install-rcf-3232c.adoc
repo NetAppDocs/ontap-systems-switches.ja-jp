@@ -605,6 +605,13 @@ cluster1::*>
 ----
 cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true*
 ----
+. スイッチ cs1 をリブートします。これは、クラスタ LIF のホームポートへのリバートをトリガーする際に行います。スイッチのリブート中にノードに対して報告された「クラスタポートが停止している」イベントは無視してかまいません。
++
+[listing, subs="+quotes"]
+----
+cs1# *reload*
+This command will reboot the system. (y/n)?  [n] *y*
+----
 . クラスタポートに接続されているスイッチポートが動作していることを確認します。
 +
 .例を示します
