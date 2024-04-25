@@ -36,8 +36,10 @@ entries:
     url: "/switch-nvidia-sn2100/install-onie-mode-sn2100-storage.html"
   - title: RCFスクリプトをインストールする
     url: "/switch-nvidia-sn2100/install-rcf-sn2100-storage.html"
-  - title: スイッチログ収集を設定します
-    url: "/switch-nvidia-sn2100/install-snmpv3-sn2100-storage.html"
+  - title: ログ収集を有効にします
+    url: "/switch-nvidia-sn2100/CSHM_log_collection.html"
+  - title: 監視のためのSNMPv3の設定
+    url: "/switch-nvidia-sn2100/CSHM_snmpv3.html"
 - title: スイッチを移行
   pdf-filename: migrate_switches_sn2100 -ストレージ
   entries:

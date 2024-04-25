@@ -1,0 +1,158 @@
+---
+permalink: switch-cisco-9336c-fx2-storage/CSHM_snmpv3.html 
+sidebar: sidebar 
+keywords: SNMP,SNMPv3,SNMPv3 setup,Cisco setup, 9336C-FX2 switches configuration, NX-OS 
+summary: SNMPv3は、イーサネットスイッチヘルスモニタ（CSHM）で使用できます。 
+---
+= SNMPv3の設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+イーサネットスイッチヘルスモニタリング（CSHM）をサポートするSNMPv3を設定するには、次の手順に従ってください。
+
+.このタスクについて
+次のコマンドは、Cisco 9336C-FX2スイッチにSNMPv3ユーザ名を設定します。
+
+* 認証なし*の場合：
+`snmp-server user _SNMPv3_USER_ NoAuth`
+* MD5/SHA認証の場合*：
+`snmp-server user _SNMPv3_USER_ auth [md5|sha] _AUTH-PASSWORD_`
+* AES/DES暗号化を使用した* MD5/SHA認証の場合*：
+`snmp-server user _SNMPv3_USER_ AuthEncrypt  auth [md5|sha] _AUTH-PASSWORD_ priv aes-128 _PRIV-PASSWORD_`
+
+
+ONTAP 側でSNMPv3ユーザ名を設定するコマンドは次のとおりです。cluster1：*> security login create -user-or -group-name_snmp3_user_-application snmp-authentication-method usm -remote-switch-ipaddress _address_`
+
+次のコマンドは、CSHMでSNMPv3ユーザ名を確立します。
+`cluster1::*> system switch ethernet modify -device _DEVICE_ -snmp-version SNMPv3 -community-or-username _SNMPv3_USER_`
+
+.手順
+. 認証と暗号化を使用するようにスイッチのSNMPv3ユーザを設定します。
++
+`show snmp user`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(sw1)(Config)# *snmp-server user SNMPv3User auth md5 <auth_password> priv aes-128 <priv_password>*
+
+(sw1)(Config)# *show snmp user*
+
+-----------------------------------------------------------------------------
+                              SNMP USERS
+-----------------------------------------------------------------------------
+
+User              Auth            Priv(enforce)   Groups          acl_filter
+----------------- --------------- --------------- --------------- -----------
+admin             md5             des(no)         network-admin
+SNMPv3User        md5             aes-128(no)     network-operator
+
+-----------------------------------------------------------------------------
+     NOTIFICATION TARGET USERS (configured  for sending V3 Inform)
+-----------------------------------------------------------------------------
+
+User              Auth               Priv
+----------------- ------------------ ------------
+
+(sw1)(Config)#
+----
+====
+. ONTAP 側でSNMPv3ユーザをセットアップします。
++
+`security login create -user-or-group-name <username> -application snmp -authentication-method usm -remote-switch-ipaddress 10.231.80.212`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet modify -device "sw1 (b8:59:9f:09:7c:22)" -is-monitoring-enabled-admin true*
+
+cluster1::*> *security login create -user-or-group-name <username> -application snmp -authentication-method usm -remote-switch-ipaddress 10.231.80.212*
+
+Enter the authoritative entity's EngineID [remote EngineID]:
+
+Which authentication protocol do you want to choose (none, md5, sha, sha2-256)
+[none]: *md5*
+
+Enter the authentication protocol password (minimum 8 characters long):
+
+Enter the authentication protocol password again:
+
+Which privacy protocol do you want to choose (none, des, aes128) [none]: *aes128*
+
+Enter privacy protocol password (minimum 8 characters long):
+Enter privacy protocol password again:
+----
+====
+. 新しいSNMPv3ユーザで監視するようにCSHMを設定します。
++
+`system switch ethernet show-all -device "sw1" -instance`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet show-all -device "sw1" -instance*
+
+                                   Device Name: sw1
+                                    IP Address: 10.231.80.212
+                                  SNMP Version: SNMPv2c
+                                 Is Discovered: true
+   SNMPv2c Community String or SNMPv3 Username: cshm1!
+                                  Model Number: N9K-C9336C-FX2
+                                Switch Network: cluster-network
+                              Software Version: Cisco Nexus Operating System (NX-OS) Software, Version 9.3(7)
+                     Reason For Not Monitoring: None  *<---- displays when SNMP settings are valid*
+                      Source Of Switch Version: CDP/ISDP
+                                Is Monitored ?: true
+                   Serial Number of the Device: QTFCU3826001C
+                                   RCF Version: v1.8X2 for Cluster/HA/RDMA
+
+cluster1::*>
+cluster1::*> *system switch ethernet modify -device "sw1" -snmp-version SNMPv3 -community-or-username <username>*
+cluster1::*>
+----
+====
+. 新しく作成したSNMPv3ユーザで照会するシリアル番号が、CSHMポーリング期間の完了後に前の手順で説明したものと同じであることを確認します。
++
+`system switch ethernet polling-interval show`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet polling-interval show*
+         Polling Interval (in minutes): 5
+
+cluster1::*> *system switch ethernet show-all -device "sw1" -instance*
+
+                                   Device Name: sw1
+                                    IP Address: 10.231.80.212
+                                  SNMP Version: SNMPv3
+                                 Is Discovered: true
+   SNMPv2c Community String or SNMPv3 Username: SNMPv3User
+                                  Model Number: N9K-C9336C-FX2
+                                Switch Network: cluster-network
+                              Software Version: Cisco Nexus Operating System (NX-OS) Software, Version 9.3(7)
+                     Reason For Not Monitoring: None  *<---- displays when SNMP settings are valid*
+                      Source Of Switch Version: CDP/ISDP
+                                Is Monitored ?: true
+                   Serial Number of the Device: QTFCU3826001C
+                                   RCF Version: v1.8X2 for Cluster/HA/RDMA
+
+cluster1::*>
+----
+====
+

@@ -2239,7 +2239,6 @@
   <block id="1a0894513362fda649e11ba9de926b82" category="list-text">各クラスタポートの管理ステータスまたは動作ステータスを確認します。</block>
   <block id="be6163ad0c362d632b28f98dea1fdaaa" category="paragraph">移動されたすべてのクラスタポートが稼働している必要があります。</block>
   <block id="d0141bcaf704f75f043a7384708a3131" category="paragraph">移動したクラスタポートがcs2新しいスイッチをネイバーとして認識していることを確認します。</block>
-  <block id="8c61118abc6e9e30fd4469d362e96e00" category="paragraph">すべてのクラスタLIFがcs2新しいスイッチに移動します。</block>
   <block id="2a5fc0afbcb2299e24c73a909b297e93" category="paragraph">移動したクラスタポートがcs1新しいスイッチをネイバーとして認識していることを確認します。</block>
   <block id="9e25219bfef39dc2d94805b599244f8d" category="open-title">ONTAP 9.8 以降</block>
   <block id="c341f6ea60d7e8508c7d6cd8d529fd71" category="paragraph">次の2つのコマンドを使用して'スイッチ関連のログ・ファイルを収集するためのEthernetスイッチのヘルス・モニタ・ログ収集機能を有効にしますsystem switch ethernet log setup-passwordと'system switch ethernet log enable-colion</block>
@@ -4695,10 +4694,8 @@
   <block id="415f7d338cb2daf9bc58ecb9861e7a38" category="list-text">次に、ノードとcs2間のケーブルをcs2から切断し、cs2-newに再接続します。</block>
   <block id="4c583a66e2c7985bcc194e39f55ceea5" category="list-text">スイッチcs1はスイッチcs1-newに置き換えられます。</block>
   <block id="e36cd913095fb9e4f8b81c803f89930b" category="list-text">次に、ノードとcs1間のケーブルをcs1から切断し、cs1-newに再接続します。</block>
-  <block id="c541a676ea1012971e3e092cd0c456bb" category="list-text">クラスタスイッチcs2で、ノードのクラスタポートに接続されているポートをシャットダウンして、クラスタLIFをフェイルオーバーします。</block>
   <block id="3e504b88532082c592970766665ca3a1" category="list-text">クラスタスイッチcs1でホストされているポートにクラスタLIFがフェイルオーバーされたことを確認します。これには数秒かかることがあります。</block>
   <block id="501db48c47898b7316de60a2bcbe9a16" category="list-text">スイッチcs2-newから見たスイッチポート接続を確認します。</block>
-  <block id="4b9f132828deb041b404e712b378ac77" category="list-text">クラスタスイッチcs1で、クラスタLIFをフェイルオーバーするために、ノードのクラスタポートに接続されているポートをシャットダウンします。次の例では、手順7の出力例を使用しています。</block>
   <block id="32172ed3b8d9ced5da325e5230b7981b" category="list-text">スイッチcs2-newでホストされているポートにクラスタLIFがフェイルオーバーしたことを確認します。この処理には数秒かかることがあります。</block>
   <block id="85e04ff5dd770cff5dbbe435ea94a7dd" category="list-text">スイッチcs1-newから見たスイッチポート接続を確認します。</block>
   <block id="784542320767d69b7e7fc2bfeb64a5b4" category="list-text">クラスタスイッチCL2で、ノードのクラスタポートに接続されているポートをシャットダウンして、クラスタLIFをフェイルオーバーします。</block>
@@ -4780,4 +4777,11 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="eae32a8cbb7853bbc6b25138f2911afa" category="paragraph">Cisco 3132Q-Vスイッチを設定する前に、次の考慮事項を確認してください。</block>
   <block id="e3e32349be8562dbe95d6af1fcba4bbe" category="list-text">AutoSupport が有効になっている場合は、AutoSupport メッセージを呼び出してケースの自動作成を停止します。<block ref="80cae18d0d871afff6b1bcabf727d6da" prefix=" " category="inline-code"></block></block>
   <block id="abd1e059b59ee3b3be9267c9c1319923" category="list-text">ストレージスイッチやケーブル接続に問題がないことを確認します。</block>
+  <block id="54be17cb6ddfe931b6d4ca0454c7bcc8" category="admonition">自動リバートを無効にすると、あとでスイッチポートがシャットダウンされた場合にのみ、ONTAPがクラスタLIFをフェイルオーバーします。</block>
+  <block id="3947ff32e82f86e7176dc28b3ee33db0" category="list-text">クラスタスイッチcs2で、クラスタLIFをフェイルオーバーするために、*すべての*ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
+  <block id="022c00ee7f7e6672d82cc079623d6e22" category="list-text">クラスタスイッチcs1で、クラスタLIFをフェイルオーバーするために、*すべての*ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
+  <block id="e6eb1709bc8131372d63990293ab75f8" category="paragraph">すべてのクラスタLIFがcs2-newスイッチにフェイルオーバーされます。</block>
+  <block id="af7a19b4dbadf7641102bf88598cfd8b" category="paragraph">[+]
+イーサネットスイッチヘルスモニタ（CSHM）は、クラスタネットワークスイッチとストレージネットワークスイッチの動作の健全性を確認し、デバッグ用にスイッチのログを収集します。この手順では、スイッチからの詳細な*サポート*ログの収集を設定および開始するプロセスをガイドし、AutoSupportによって収集された*定期的な*データの1時間ごとの収集を開始します。</block>
+  <block id="a13c9d4c750715a8b993a3fec916189f" category="list-text">リファレンス構成ファイル（RCF）を適用する場合は、ログ収集用のユーザを指定する必要があります。デフォルトでは、このユーザは_admin_に設定されています。別のユーザを使用する場合は、RCFの*# SHM User * sセクションで指定する必要があります。</block>
 </blocks>

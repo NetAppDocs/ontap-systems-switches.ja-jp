@@ -36,6 +36,10 @@ entries:
     url: "/switch-cisco-9336c-fx2-storage/install-nxos-software-9336c-storage.html"
   - title: RCF構成ファイルをインストールします
     url: "/switch-cisco-9336c-fx2-storage/install-nxos-rcf-9336c-storage.html"
+  - title: ログ収集を有効にします
+    url: "/switch-cisco-9336c-fx2-storage/CSHM_log_collection.html"
+  - title: 監視のためのSNMPv3の設定
+    url: "/switch-cisco-9336c-fx2-storage/CSHM_snmpv3.html"
 - title: ストレージスイッチを交換します
   pdf-filename: replace_switch_9336c-FX2-storage
   url: "/switch-cisco-9336c-fx2-storage/replace-storage-switch-9336c-storage.html"
