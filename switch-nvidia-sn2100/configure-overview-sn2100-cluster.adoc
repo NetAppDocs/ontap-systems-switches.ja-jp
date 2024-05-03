@@ -25,7 +25,7 @@ ONTAP を実行しているシステムでNVIDIA SN2100スイッチを設定す�
 
 . link:configure-sn2100-cluster.html["スイッチを設定します"]。
 +
-手順については、NVIDIAのマニュアルを参照してください。
+手順はNVIDIAのマニュアルに記載されています。
 
 . link:cabling-considerations-sn2100-cluster.html["ケーブル接続と構成に関する考慮事項を確認"]。
 +
@@ -43,7 +43,11 @@ Cumulus Linux（CL）OSは、スイッチがCumulus LinuxまたはONIEを実行�
 +
 クラスタリングアプリケーションとストレージアプリケーション用に2つのRCFスクリプトが用意されています。各の手順 は同じです。
 
-. link:install-snmpv3-sn2100-cluster.html["スイッチログ収集用のSNMPv3を設定します"]。
+. link:CSHM_log_collection.html["ログ収集を有効にします"]。
++
+この機能は、ONTAP でスイッチ関連のログファイルを収集する場合に使用します。
+
+. link:CSHM_snmpv3.html["監視のためのSNMPv3の設定"]。
 +
 このリリースでは、スイッチのログ収集とSwitch Health Monitoring（SHM）のSNMPv3がサポートされています。
 

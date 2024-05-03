@@ -11,11 +11,11 @@ summary: Cisco Nexus 9336C-FX2クラスタスイッチのソフトウェア設�
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2スイッチのソフトウェアをインストールおよび設定するには、次の手順を実行します。
+Cisco Nexus 9336C-FX2スイッチ用のソフトウェアをインストールおよび設定し、リファレンス構成ファイル（RCF）をインストールまたはアップグレードする手順は、次のとおりです。
 
 . link:install-nxos-overview-9336c-cluster.html["NX-OSソフトウェアとRCFをインストールするための準備をします"]。
 . link:install-nxos-software-9336c-cluster.html["NX-OS ソフトウェアをインストールします"]。
-. link:install-nxos-rcf-9336c-cluster.html["リファレンス構成ファイル（ RCF ）のインストール"]。
+. link:install-nxos-rcf-9336c-cluster.html["リファレンス構成ファイル（RCF）のインストールまたはアップグレード"]。
 +
 Nexus 9336C-FX2スイッチを初めてセットアップしたあとに、RCFをインストールします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
 

@@ -323,13 +323,11 @@
   <block id="ace72d025aa2c5badb322c055f22cb6b" category="inline-link">Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください</block>
   <block id="eb22df33c22805be63e48e35c956a5be" category="paragraph">この例は、 TFTP を使用して、スイッチ cs2 のブートフラッシュに RCF をコピーする方法を示しています。</block>
   <block id="659367eff111e1369afd80610db2fa16" category="list-text">ブートフラッシュに前にダウンロードした RCF を適用します。</block>
-  <block id="3c136715e1c82a016578b9b336ea8ac1" category="paragraph">この例は、スイッチ cs2 にインストールされている RCF ファイル「 Nexus_9336C_RCF_v1.6 -Cluster-HA-Breakout .txt 」を示しています。</block>
   <block id="1eeb76faaf7865130ddbd3d06c8e02d0" category="list-text">「 show banner motd 」コマンドのバナー出力を確認します。スイッチの設定と動作を適切に行うには、次の手順を参照して実行する必要があります。</block>
   <block id="47c173b91782927bfc36acfeeaec5f9f" category="paragraph">出力をチェックして正しい RCF があることを確認する場合は、次の情報が正しいことを確認してください。</block>
   <block id="2a4c49daad6f24fc930342baa230202a" category="list-text">RCF バナー</block>
   <block id="f867470f4d681a0d1ba65ec5afb71681" category="list-text">ノードとポートの設定</block>
   <block id="f84dbe517c4cab37d96220b08c6a7430" category="list-text">RCF のバージョンとスイッチの設定が正しいことを確認したら、 running-config ファイルを startup-config ファイルにコピーします。</block>
-  <block id="751ae8e5b1f665d84208a0d929c57d52" category="list-text">スイッチ cs2 をリブートします。スイッチの再起動中にノードで報告された「クラスタポートがダウンしている」イベントは無視してかまいません。</block>
   <block id="05287537d898f5a1b2d701a759380d28" category="list-text">同じ RCF を適用し、実行中の設定をもう一度保存します。</block>
   <block id="bc18114517d63d4db943371546b0e1ae" category="list-text">クラスタのクラスタポートの健常性を確認します。</block>
   <block id="a8b215fa6b6d814a7e68d02c02b35409" category="list-text">クラスタからスイッチのヘルスを確認します（ LIF が e0d にホームでないため、スイッチ cs2 が表示されない可能性があります）。</block>
@@ -601,7 +599,6 @@
   <block id="a8f8edb7442235385b4a149af7d45b04" category="list-text">RCF のコマンド構文と、 NX-OS のバージョンにあるコマンド構文との間には、コマンドの依存関係が存在する場合があります。</block>
   <block id="454d8bacc17503d670940b88fdf44b2a" category="inline-link">Cisco Nexus 9000 シリーズスイッチ</block>
   <block id="0e9e9e2c6f88c5f4c53342802b95a81a" category="list-text">最新の RCF が必要です。</block>
-  <block id="440845b85a76fb369b328d5783d80025" category="admonition">新しいバージョンのスイッチソフトウェアと RCF をインストールする前に、スイッチの設定を消去し、基本的な設定を完了する必要があります。シリアルコンソールを使用してスイッチに接続する必要があります。このタスクでは、管理ネットワークの設定をリセットします。</block>
   <block id="1a5fbb9c78227a044a7d11a646c64e2a" category="admonition">コマンド出力は、 ONTAP のリリースによって異なる場合があります。</block>
   <block id="75f5ca2695f30fa3987540c3aa6c3b02" category="list-text">ノード名は cluster1-01 と cluster1-02 です。</block>
   <block id="9ffdf3ff45071667f2b0aadc7de3c8d9" category="list-text">クラスタ LIF の名前は、 cluster1-01 と cluster1-02_clus1 および cluster1-01_clus2 （ cluster1-01 と cluster1-02 にそれぞれ 1 ）、 cluster1-02 にそれぞれ異なります。</block>
@@ -1241,7 +1238,6 @@
   <block id="364f99cfe2038dfe0da4fa1818e4ea8a" category="list-text">ストレージノードポートのヘルスステータスを再確認します storage port show -port -type enet</block>
   <block id="dc6d63cd7343677c50d9571794ed38e4" category="paragraph">ONTAP システムをセットアップするには、使用しているオペレーティングシステムのバージョンに応じて、で次のドキュメントを参照する必要があります<block ref="eb1214e3900207403ada8715d3d4c764" category="inline-link-rx"></block>。</block>
   <block id="ca9760b6b9ea432ebfe16433e11f6e87" category="paragraph"><block ref="ca9760b6b9ea432ebfe16433e11f6e87" category="inline-link-rx"></block></block>
-  <block id="280f0e29cdb68937737865cc2fb4331a" category="list-text">FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください<block ref="dba0e49fdfeab9433bb71da6c505aa34" category="inline-link-rx"></block> ガイド。</block>
   <block id="3f6787ea7175edfe255a564e4a1b6b07" category="paragraph">Cisco コマンドの詳細については、『』の該当するガイドを参照してください<block ref="dba0e49fdfeab9433bb71da6c505aa34" category="inline-link-rx"></block> ガイド。</block>
   <block id="28b6f527828834555fd57d7fa75b77dc" category="paragraph"><block ref="28b6f527828834555fd57d7fa75b77dc" category="inline-link-rx"></block></block>
   <block id="737342a20357f18d3845f3010879136d" category="paragraph"><block ref="737342a20357f18d3845f3010879136d" category="inline-link-rx"></block></block>
@@ -1255,7 +1251,6 @@
   <block id="99a7972582192a91deb8b3b7e9d90036" category="paragraph">。<block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block> プラットフォームの実際のクラスタポートに関する最新情報が含まれます。</block>
   <block id="4d828a1e41bcb63a1848cf4d73b10ce0" category="list-text">ONTAP 9.8 以降では、「 system switch ethernet log setup-password 」および「 system switch ethernet log enable -collection 」コマンドを使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能をイネーブルにします</block>
   <block id="4aba6d241d93fefaee83fcbcb1bcdd18" category="list-text">ONTAP リリース 9.5P16 、 9.6P12 、および 9.7P10 以降のパッチ・リリースでは、スイッチ関連のログ・ファイルを収集するために、イーサネットスイッチヘルス・モニタのログ収集機能をイネーブルにします。これには、「 system cluster-switch log setup-password 」および「 system cluster-switch log enable-collection 」の各コマンドを使用します</block>
-  <block id="31ec2342f350b363afaee03f3ba95d8b" category="list-text">スイッチ cs1 をリブートします。これは、クラスタ LIF のホームポートへのリバートをトリガーする際に行います。スイッチの再起動中にノードで報告された「クラスタポートがダウンしている」イベントは無視してかまいません。</block>
   <block id="2db039ebbdf49e3bdc8288c26bc1ec4b" category="paragraph">を参照してください<block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block> 最新情報については、</block>
   <block id="1bd4e627bdcd975837dafe72c76e0de5" category="paragraph">回答は、代替管理者に関するサイトのポリシーに依存します。デフォルトは * no * です。</block>
   <block id="824559f340eccd5b94597b7096f1753e" category="paragraph">そのプロンプトで * yes * （デフォルト）と応答します。mgmt0 IPv4 address: プロンプトで、 IP アドレス ip_address を入力します</block>
@@ -2721,7 +2716,6 @@
   <block id="e4476de08c6bf6f2b86938c20b3510bf" category="summary">RCFスクリプトをインストールする前に、スイッチに次のものがあることを確認してください</block>
   <block id="144a8e89f9c38ca949aede4fe56c2cb7" category="list-text">RCF Pythonスクリプトをスイッチにコピーします。</block>
   <block id="39e77b4f608ccea6c3163df34d07da19" category="paragraph">この例では、RCFスクリプトで手順を完了しています。</block>
-  <block id="58706c101ce23f0143df35c3d5877993" category="paragraph"><block ref="792bc5f76cd953c88762d75870189559" category="inline-link-macro-rx"></block>。</block>
   <block id="1a8981f50831032975e7c7ab919cf671" category="list-text">を確認します <block ref="d6c0afb29fcb19bc79e093e82e35e6bb" category="inline-link-macro-rx"></block>。</block>
   <block id="0575b6ffe3df5337cb3759f533fd3151" category="paragraph"><block ref="00e0372232f46e972c663d4404b271c3" category="inline-link-macro-rx"></block>。</block>
   <block id="845296543f4c0f8578120a5e5c4e09f2" category="paragraph"><block ref="845296543f4c0f8578120a5e5c4e09f2" category="inline-link-rx"></block></block>
@@ -2939,7 +2933,6 @@
   <block id="adbc02a7e46081db3727786cb62cdc0f" category="list-title">推奨されるドキュメント</block>
   <block id="10d146c112c5b50595149d6af52fe222" category="list-text"><block ref="f29158c7335be7b7fe0a46dd82de6ed4" category="inline-link-macro-rx"></block> サポートされているONTAP とRCFのバージョンについては、スイッチの互換性の表を参照してください。RCFのコマンド構文と、NX-OSのバージョンにあるコマンド構文との間には、コマンドの依存関係が存在する場合があります。</block>
   <block id="62a6080939e22aeda3281430c2563f03" category="list-text"><block ref="ad0d19783ccfa19f931108b838e4b7e4" category="inline-link-macro-rx"></block>。Ciscoスイッチのアップグレードおよびダウングレード手順の詳細については、CiscoのWebサイトで入手可能なソフトウェアおよびアップグレードガイドを参照してください。</block>
-  <block id="37470b1d6f660940951d8750617086de" category="paragraph">この手順の例では、 2 つのノードを使用します。これらのノードは、 2 つの 10GbE クラスタインターコネクトポート e0a と e0b を使用します。を参照してください<block ref="e98f5e4074ae8b028a5791870586403d" category="inline-link-rx"></block> をクリックして、プラットフォームのクラスタポートが正しいことを確認します。</block>
   <block id="2d0ac6e4c3a1c97979e887d423ec0f95" category="section-title">手順1：設置の準備をします</block>
   <block id="4877628f2f5c2ea44515bef28ca09a0b" category="list-text">すべてのクラスタポートが正常な状態で稼働していることを確認します。</block>
   <block id="1238025070f42c2c91970d4a31d2a5c4" category="paragraph"><block ref="229e8d1240617e0b97c680c36bbc9564" prefix="" category="inline-code"></block></block>
@@ -3287,10 +3280,8 @@
   <block id="922e0472f9731d915fa1e9d3a596e9cf" category="list-text">最初に設定するスイッチのタイプに応じて、付属のコンソールケーブルを使用してスイッチのコンソールポートに接続する必要があります。</block>
   <block id="541fb7ba8b8b8df9c175d1695f706597" category="list-text">を参照してください<block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block> 最新情報については、を参照してください。</block>
   <block id="27261319977efbc3c013b30ed0fd35b8" category="paragraph">スイッチの初期設定の詳細については、次のガイドを参照してください。<block ref="79f039529d1e022f29fed5c2eaec0b69" category="inline-link-rx"></block>。</block>
-  <block id="af9a958e62c3b5f2c0fb3c441adc9b39" category="paragraph">Nexus 9336C-FX2スイッチを初めてセットアップした後で、Reference Configuration File（RCF；リファレンス構成ファイル）をインストールできます。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。</block>
   <block id="515ffb6be2470ab747f049a501eb9867" category="summary">Cisco Nexus 9336C-FX2クラスタスイッチのソフトウェア設定の概要</block>
   <block id="516362c97fc00136adc7a7ad2b7ad6da" category="doc">Cisco Nexus 9336C-FX2クラスタスイッチのソフトウェアインストールワークフロー</block>
-  <block id="2ba90e9a33582c6d96c2d00c0ddf0ea5" category="paragraph">Cisco Nexus 9336C-FX2スイッチのソフトウェアをインストールおよび設定するには、次の手順を実行します。</block>
   <block id="7abb8bc9df6ce2c7758d9b3973b94f9a" category="summary">Cisco Nexus 9336C-FX2スイッチを取り付けるには、次の手順 に従います。</block>
   <block id="c213d054028b0669b85c103892e81993" category="doc">9336C-FX2クラスタスイッチを取り付けます</block>
   <block id="fb7e85c23a22dc9f90f04d9cf46a95e6" category="paragraph">Cisco Nexus 9336C-FX2スイッチをセットアップおよび設定するには、次の手順 に従います。</block>
@@ -3993,7 +3984,6 @@
   <block id="2764c65a7d4c079147d8cf98e461cb33" category="paragraph">このリリースでは、スイッチのログ収集とSwitch Health Monitoring（SHM）のSNMPv3がサポートされています。</block>
   <block id="aa0ae6c76f83fc6d32395967e66e1a57" category="list-text"><block ref="eb6455edffdd82039a8793f500a86be5" category="inline-link-macro-rx"></block>。</block>
   <block id="78a3145f7f81ea095cdce342b0eeb83a" category="list-text"><block ref="d4a90f7cd2b65eac1430336cfe2ee64b" category="inline-link-macro-rx"></block>。</block>
-  <block id="730c2f2b2335ad619f1d2f8616c9d744" category="paragraph">手順については、NVIDIAのマニュアルを参照してください。</block>
   <block id="280f95118eded8b0219c276178c30e97" category="list-text"><block ref="5e0473d3f7899dd064d2b0943ad87ca5" category="inline-link-macro-rx"></block>。</block>
   <block id="b8cd88654eafece50754fca964cba8a1" category="paragraph">NS224ドライブシェルフをスイッチ接続型ストレージ（直接接続型ストレージではない）としてケーブル接続する必要があるシステムの場合は、ケーブル接続手順に従ってください。</block>
   <block id="f652bccf577477735d669989c28905ac" category="list-text"><block ref="ec4312d0db3bce928129e7e5c3a58d73" category="inline-link-rx"></block> サポートされているすべてのONTAP バージョン。</block>
@@ -4287,7 +4277,6 @@
   <block id="ec5ea2f0318e4d906c296f5576b9c026" category="list-text">[[step6]]ケースの自動作成を抑制した場合は、AutoSupport メッセージを呼び出して再度有効にします。<block ref="9ac424c0d7b432975df36a19daf50c9c" prefix=" " category="inline-code"></block></block>
   <block id="0429fa776d68090e46718ac7e32390ef" category="admonition">EFOSバージョン3.10.0.3以降の場合は、コマンドを使用します<block ref="c09633a606c51a161b16f8bf38f5ebb1" prefix=" " category="inline-code"></block>。</block>
   <block id="2df26e386d021172b261bcb47e157019" category="list-text">設定を消去します。</block>
-  <block id="f306e2be0abd8aabfa0b014c372bbac8" category="list-text">スイッチcs1で手順4 ~ 11を繰り返します。</block>
   <block id="256be937ef390f7d6dd71ad092869119" category="admonition">ONTAP 9.8以降では、コマンドを使用します<block ref="c57378c3b3bb81c6b42a2b31a30ddda7" prefix=" " category="inline-code"></block>。</block>
   <block id="393a5f0f5f1f070aac964741815cca76" category="doc">Broadcom BES-53248クラスタスイッチをスイッチレス接続に交換します</block>
   <block id="a2ba7bf1b1a10d50fd13725865eabc47" category="list-text">スイッチのログ収集機能をテストします。</block>
@@ -4784,4 +4773,92 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="af7a19b4dbadf7641102bf88598cfd8b" category="paragraph">[+]
 イーサネットスイッチヘルスモニタ（CSHM）は、クラスタネットワークスイッチとストレージネットワークスイッチの動作の健全性を確認し、デバッグ用にスイッチのログを収集します。この手順では、スイッチからの詳細な*サポート*ログの収集を設定および開始するプロセスをガイドし、AutoSupportによって収集された*定期的な*データの1時間ごとの収集を開始します。</block>
   <block id="a13c9d4c750715a8b993a3fec916189f" category="list-text">リファレンス構成ファイル（RCF）を適用する場合は、ログ収集用のユーザを指定する必要があります。デフォルトでは、このユーザは_admin_に設定されています。別のユーザを使用する場合は、RCFの*# SHM User * sセクションで指定する必要があります。</block>
+  <block id="11a42d3d6a2e579a381b3f9fcb7ec792" category="paragraph">&lt;stdin&gt;の未解決のディレクティブ-include::../_include/install-rcf-software-9336c.adoc[]</block>
+  <block id="69a3b5b5b3e87ce1bcae2811d815d9de" category="paragraph"><block ref="69a3b5b5b3e87ce1bcae2811d815d9de" category="inline-link-macro-rx"></block></block>
+  <block id="7091e2c750a185300a6b16e37ae123f6" category="paragraph">手順はNVIDIAのマニュアルに記載されています。</block>
+  <block id="894989f86e54fb4105389f59b2f248db" category="list-text"><block ref="c4cd7ec23f215e2259f91b6eb6e7cbc1" category="inline-link-macro-rx"></block>。</block>
+  <block id="537e4a57b26f325406ead3c055f368d4" category="doc">手順1：スイッチにRCFをインストールする</block>
+  <block id="64375c1eb0a39c01e2fa4b38e4b977d5" category="paragraph">次の点を確認してください。</block>
+  <block id="88c6fb51a79a63370991d585551ed93a" category="list-text">スイッチへのコンソール接続。スイッチへのリモートアクセスがある場合、コンソール接続はオプションです。</block>
+  <block id="348c7d4dfd461435fb7a2de071510321" category="list-text">スイッチcs1とスイッチcs2の電源がオンになっており、スイッチの初期セットアップが完了している（管理IPアドレスとSSHがセットアップされている）</block>
+  <block id="5ca63eb3f2c620d1c6aec7910b16345c" category="list-text">目的のバージョンのNX-OSがインストールされている。</block>
+  <block id="02253812baf9079d763add569de5466d" category="list-text">スイッチ間のISL接続が接続されている。</block>
+  <block id="4f9d99e1896d0aa94a4ea56a61e0b5d7" category="list-text">ONTAPノードのクラスタポートが接続されていません。</block>
+  <block id="0563712f84d63c04e1bcecca2a31a5df" category="list-text">SSHまたはシリアルコンソールを使用して、スイッチcs1にログインします。</block>
+  <block id="5bbf59ef7905b487a457d2cb4ffc731b" category="list-text">FTP、TFTP、SFTP、またはSCPのいずれかの転送プロトコルを使用して、スイッチcs1のブートフラッシュにRCFをコピーします。</block>
+  <block id="e50ba1fce28410003473ea665c3f69a1" category="paragraph">次に、TFTPを使用してスイッチcs1のブートフラッシュにRCFをコピーする例を示します。</block>
+  <block id="7dd3ebbd2a9cb0ef43e6dfe425bf3368" category="paragraph">この例は、RCFファイルを示しています<block ref="5f4fa6cd54278b4d7a194c1bbdef65ea" prefix=" " category="inline-code"></block> スイッチcs1にインストールする手順は次のとおりです。</block>
+  <block id="1d46b4d726541133306aadb791fbac06" category="paragraph"><block ref="dfc31c90abcf8c7a53e718b270cdf0aa" prefix="" category="inline-code"></block></block>
+  <block id="b49fe5d89ca32aff6d41fc29d768d68c" category="paragraph">Ciscoコマンドの詳細については、『』の該当するガイドを参照してください<block ref="dba0e49fdfeab9433bb71da6c505aa34" category="inline-link-rx"></block>。</block>
+  <block id="758d64d19fd5c7f49ed73e0b94a6f13f" category="list-text">スイッチcs1をリブートします。</block>
+  <block id="c55a2ac1185a6d9fa389abde666b6620" category="paragraph"><block ref="47b50d91942746c6b7da7bcb3a3898ea" prefix="" category="inline-code"></block></block>
+  <block id="d692b83806892fb177d501de252dd5bc" category="paragraph"><block ref="b62877e87bc2393ec2c608f3105d0333" prefix="" category="inline-code"></block></block>
+  <block id="b1c7d54c4a64389501f56df63a9cb2b8" category="list-text">スイッチcs2で手順1~7を繰り返します。</block>
+  <block id="bdd2caa835c08370cb1ccd414ffee5e1" category="list-text">ONTAPクラスタ内のすべてのノードのクラスタポートをスイッチcs1とcs2に接続します。</block>
+  <block id="40a4ddeef3e9ca8e912f65eb91474da3" category="section-title">手順2：スイッチの接続を確認する</block>
+  <block id="1f541b542b1e6f49a912e719b1269f20" category="section-title">手順3：ONTAPクラスタをセットアップする</block>
+  <block id="3bd6c54403c6b14aa833a5e72558854a" category="paragraph">NetAppでは、System Managerを使用して新しいクラスタをセットアップすることを推奨しています。</block>
+  <block id="20cc4823ea421f18257cd7f8c12d50c2" category="paragraph">System Managerでは、ノード管理IPアドレスの割り当て、クラスタの初期化、ローカル階層の作成、プロトコルの設定、初期ストレージのプロビジョニングなど、クラスタのセットアップと設定のワークフローをシンプルかつ簡単に実行できます。</block>
+  <block id="16b35791c547ec7b12d2d1bc88d72f59" category="inline-link">System Managerを使用して新しいクラスタにONTAPを設定します</block>
+  <block id="bf9a81b7716182f88d21f381e05dfa63" category="paragraph">に進みます<block ref="76a0ad9e6d9605be893ded0930762dd1" category="inline-link-rx"></block> を参照してください。</block>
+  <block id="728be2ff473fb0f0109742292ad9a016" category="doc">手順1：アップグレードの準備</block>
+  <block id="41fa1e8e8b44ea8a5d6403825283c468" category="paragraph"><block ref="1c2a7e67f41c6ed8d176dc6eb8a9860b" prefix="" category="inline-code"></block></block>
+  <block id="01331faa5c7b890e3c1d22c8c90bb876" category="paragraph"><block ref="b9c7d20b5ee27c55a47abaa412f881aa" prefix="" category="inline-code"></block></block>
+  <block id="01943746f8e7d79449be6fd0bb7a8f46" category="paragraph"><block ref="ecb8ddb693785da7c0a1c7f456dde5ea" prefix="" category="inline-code"></block></block>
+  <block id="b77c6d3e350c043b8f790e806e7bc521" category="list-text">現在のrunning-configと使用中のRCFファイル（組織のSNMP設定など）の間にカスタムで追加された内容を記録します。</block>
+  <block id="085ebea59269f171d2893f7c9fd27a56" category="list-text">NX-OS 10.2以降の場合は、<block ref="9c370f72db0e0d920841657ac5268365" prefix=" " category="inline-code"></block> コマンドを使用して、ブートフラッシュに保存されているRCFファイルと比較します。  それ以外の場合は、3番目のパーツの差分/比較ツールを使用します。</block>
+  <block id="7a1b725f171ccc55c2b6a943c968b20f" category="list-text">基本設定の詳細をブートフラッシュのwrite_erase.cfgファイルに保存します。</block>
+  <block id="39a62c1e7dfb4ebb50f79d526c4b3b41" category="paragraph"><block ref="a21819917a390159ce4a3fc4cabe324f" prefix="" category="inline-code"></block></block>
+  <block id="e08fd1b6e2dcb2a7248eed4e8ddd7c7b" category="paragraph"><block ref="29620a94cb1ba65f2a65d98c6830535b" prefix="" category="inline-code"></block></block>
+  <block id="6f88c4f0ef85a211d5223ff2604d28e0" category="paragraph"><block ref="39e41c7158b7217359d1d024d442d826" prefix="" category="inline-code"></block></block>
+  <block id="eaa6f7b071ff32e6edcef64256d0871f" category="paragraph"><block ref="ad01ff5bd18b23321f4a5f80b714f692" prefix="" category="inline-code"></block></block>
+  <block id="62fcaa3e0af91f6b966bcf398e3e6086" category="list-text">問題write eraseコマンドを使用して、現在保存されている設定を消去します。</block>
+  <block id="dc6fc35df489bd6bb938c2c7b2d410c5" category="paragraph"><block ref="8b6d14a918e69565b7089260305efbc6" prefix="" category="inline-code"></block></block>
+  <block id="f455f9d17674cb5efba0664c003ad484" category="paragraph"><block ref="7812e68ffa4111ad9046c1ab43dcaf2c" prefix="" category="inline-code"></block></block>
+  <block id="e2288282565e302230f8a37041768ed2" category="paragraph"><block ref="a8fd1d47e1eed37a3bc905f1c0e383a9" prefix="" category="inline-code"></block></block>
+  <block id="459d1bc967bf4f56f677e29979bb87fd" category="list-text">以前に保存した基本設定をスタートアップコンフィギュレーションにコピーします。</block>
+  <block id="e2409a8cab7026a9fcbcf9839a3cf49d" category="paragraph"><block ref="eb00d852fdfa84462bda944d2348d9a5" prefix="" category="inline-code"></block></block>
+  <block id="1691d1c0e9b3cc92b3ba388f00d859e2" category="paragraph"><block ref="2dde6c3abd7b2f462a4f2162fae48851" prefix="" category="inline-code"></block></block>
+  <block id="cd05c6b0946147cbb3f39299b8dcdeed" category="paragraph"><block ref="320348c7039a92322f8ae8aa6b9548b3" prefix="" category="inline-code"></block></block>
+  <block id="e90414dab5eca6b338b4136c697db6b5" category="list-text">管理IPアドレスに再びアクセスできるようになったら、SSHを使用してスイッチにログインします。</block>
+  <block id="c91e8b7706844bcabdc205a7e43be636" category="paragraph">SSHキーに関連するホストファイルエントリの更新が必要になる場合があります。</block>
+  <block id="22ce77808f11e6ab0287a2c388f17c20" category="list-text">以前に特定したカスタムの追加機能をスイッチ構成に再度適用します。</block>
+  <block id="75d60e24abda3d2be5719b222283e4ab" category="list-text">RCFのバージョン、カスタム追加、およびスイッチの設定が正しいことを確認したら、running-configファイルをstartup-configファイルにコピーします。</block>
+  <block id="59a8406e97bc3122bcc4f9fec1cab7c9" category="paragraph"><block ref="e1e291973b667f98a077e4eb6f5aa9ac" prefix="" category="inline-code"></block></block>
+  <block id="a899bc4bde195885d1d8f64046805509" category="paragraph"><block ref="f09b6decdfbfa4d8cb5b241722b9a9e6" prefix="" category="inline-code"></block></block>
+  <block id="c6a89cc6a58761d5abcb1b9cf05f3b99" category="list-text">スイッチcs1をリブートします。スイッチのリブート中にノードで報告される「cluster switch health monitor」アラートおよび「cluster ports down」イベントは無視してかまいません。</block>
+  <block id="9743e816fbdd9c60a2c9c6f91cbe208b" category="list-text">スイッチcs2で手順1~18を繰り返します。</block>
+  <block id="8e74fc1d82f0252ff302e728b8ef84b7" category="paragraph"><block ref="fefdb12e2547581b07493ad4416e36ba" prefix="" category="inline-code"></block></block>
+  <block id="47de5e0c657f20c6f281aea421f423db" category="section-title">手順3：クラスタのネットワーク構成とクラスタの健全性を確認する</block>
+  <block id="bf7f666145d20a64bc0df89aff1412b4" category="paragraph">いずれかのクラスタLIFがホームポートに戻っていない場合は、ローカルノードから手動でリバートします。</block>
+  <block id="0ce224cf5d247a74b5df5578645cdfb1" category="paragraph"><block ref="33701a452aed8ed903e7f7050b36c9ad" prefix="" category="inline-code"></block></block>
+  <block id="8413afd23c9d43c590d477ddf9c3812c" category="doc">リファレンス構成ファイル（RCF）のインストールまたはアップグレード</block>
+  <block id="00e3af2dfc61e6af58ff8e0002338734" category="paragraph">Reference Configuration File（RCF；リファレンス構成ファイル）は、Nexus 9336C-FX2スイッチの初回セットアップ後にインストールします。スイッチに既存のバージョンのRCFファイルがインストールされている場合は、RCFのバージョンをアップグレードします。</block>
+  <block id="6d641e461440ab5c02bc387dd8f88790" category="inline-link-macro">Ciscoイーサネットスイッチ（NSS）</block>
+  <block id="7e857aa8a0b068cc27d4b48a1e11e878" category="list-text"><block ref="7e857aa8a0b068cc27d4b48a1e11e878" category="inline-link-macro-rx"></block></block>
+  <block id="32559ee483b61b36141f9b9e0f4bbfff" category="paragraph">NetApp Support SiteでサポートされているONTAPとRCFのバージョンについては、スイッチの互換性の表を参照してください。RCFのコマンド構文と特定のバージョンのNX-OSの構文との間には、コマンドの依存関係が存在することに注意してください。</block>
+  <block id="ad0d19783ccfa19f931108b838e4b7e4" category="list-text"><block ref="ad0d19783ccfa19f931108b838e4b7e4" category="inline-link-macro-rx"></block></block>
+  <block id="6b76d59cad5464650213d5b0a1dd84d7" category="paragraph">Ciscoスイッチのアップグレードおよびダウングレード手順の完全なマニュアルについては、シスコのWebサイトで入手可能な該当するソフトウェアおよびアップグレードガイドを参照してください。</block>
+  <block id="8fa9b99093c5cdfb4cebad0008ba3e8d" category="paragraph">この手順 の例では 4 ノードを使用します。これらのノードは、 2 つの 10GbE クラスタインターコネクトポート e0a と e0b を使用します。を参照してください<block ref="e98f5e4074ae8b028a5791870586403d" category="inline-link-rx"></block> をクリックして、プラットフォームのクラスタポートが正しいことを確認します。</block>
+  <block id="79509ba15c2970f327dd8610e3b4628c" category="paragraph-title">使用するコマンド</block>
+  <block id="1ad593dd61af4356ce9ba12d276c4336" category="section-title">オプション1：新しいスイッチにRCFファイルをインストールする</block>
+  <block id="d061b4842fee7f503446ba29253d182f" category="paragraph">Reference Configuration File（RCF；リファレンス構成ファイル）は、Nexus 9336C-FX2スイッチの初回セットアップ後にインストールします。</block>
+  <block id="121f18688d36f2438eb17eb52e61e7e8" category="section-title">オプション2：既存のスイッチを新しいバージョンのRCFにアップグレードする</block>
+  <block id="eba0713505eba2aab08d4d6fa9ca2cf7" category="paragraph">運用中のスイッチに既存のバージョンのRCFファイルがインストールされている場合は、RCFのバージョンをアップグレードします。</block>
+  <block id="ddd0020a0684c14dbd50622f84d8917a" category="paragraph">次のものがあることを確認します。</block>
+  <block id="28dbd722b252673fdce3f809670e34b8" category="list-text">RCFのバージョンを更新する場合は、目的のブートイメージが反映されたブート設定がRCFに必要です。</block>
+  <block id="5640915560bc663196a684ebfc6fa2ec" category="admonition">新しいバージョンのスイッチソフトウェアと RCF をインストールする前に、スイッチの設定を消去し、基本的な設定を完了する必要があります。スイッチ設定を消去する前に、シリアルコンソールを使用してスイッチに接続するか、基本的な設定情報を保持しておく必要があります。</block>
+  <block id="1b49e113d2db8aa6503efc6ca4257925" category="paragraph">Cisco Nexus 9336C-FX2スイッチ用のソフトウェアをインストールおよび設定し、リファレンス構成ファイル（RCF）をインストールまたはアップグレードする手順は、次のとおりです。</block>
+  <block id="814af3441f904c14570759e7e53a2eac" category="list-text"><block ref="103347887335950e25df4c7b93bdd950" category="inline-link-macro-rx"></block>。</block>
+  <block id="2d667925d48008850336e0d43e4d4306" category="sidebar">クラスタスイッチ- Broadcom BES-53248</block>
+  <block id="9013a0f95a05b68811cef544c6eea37b" category="sidebar">クラスタスイッチ- Cisco Nexus 9336C-FX2</block>
+  <block id="ed3dd7f516f69cf573ae79a1781bbcbf" category="sidebar">クラスタスイッチ- NVIDIA SN2100クラスタスイッチ</block>
+  <block id="fc01f4074d379d0722eb2fa3b21e6af4" category="sidebar">ストレージスイッチ- Cisco Nexus 9336C-FX2</block>
+  <block id="caf5170cbc1f4850f6d380c982fa61f9" category="sidebar">ストレージスイッチ- NVIDIA SN2100</block>
+  <block id="6f738209e5071a9c22c8d336c6dec7a1" category="sidebar">共有スイッチ- Cisco Nexus 9336C-FX2</block>
+  <block id="a306bc0f90914bd9715854d664b6505a" category="sidebar">クラスタスイッチ- Cisco Nexus 3232c</block>
+  <block id="2dc82baa4aac6df7519361c705672faa" category="sidebar">クラスタスイッチ- Cisco Nexus 3132Q-V</block>
+  <block id="29f6f46414f36869e8e3f9f19d16b6db" category="sidebar">クラスタスイッチ- Cisco Nexus 92300YC</block>
+  <block id="22daf846f579c427af282aa33d7c2a7b" category="sidebar">クラスタスイッチ- NetApp CN1610</block>
+  <block id="c6244de2d0f92f3ce9f4386189743190" category="sidebar">RCF構成ファイルのインストールまたはアップグレード</block>
 </blocks>

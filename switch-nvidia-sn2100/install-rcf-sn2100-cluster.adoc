@@ -605,4 +605,4 @@ sw2                         cluster-network    10.233.205.91    MSN2100-CB2RC
 --
 ====
 .次の手順
-link:install-snmpv3-sn2100-cluster.html["スイッチログ収集を設定します"]。
+link:CSHM_log_collection.html["ログ収集を有効にします"]

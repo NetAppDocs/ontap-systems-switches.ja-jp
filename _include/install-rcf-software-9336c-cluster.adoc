@@ -1,0 +1,358 @@
+= 手順1：スイッチにRCFをインストールする
+:allow-uri-read: 
+
+
+.作業を開始する前に
+次の点を確認してください。
+
+* スイッチへのコンソール接続。スイッチへのリモートアクセスがある場合、コンソール接続はオプションです。
+* スイッチcs1とスイッチcs2の電源がオンになっており、スイッチの初期セットアップが完了している（管理IPアドレスとSSHがセットアップされている）
+* 目的のバージョンのNX-OSがインストールされている。
+* スイッチ間のISL接続が接続されている。
+* ONTAPノードのクラスタポートが接続されていません。
+
+
+
+
+=== 手順1：スイッチにRCFをインストールする
+
+. SSHまたはシリアルコンソールを使用して、スイッチcs1にログインします。
+. FTP、TFTP、SFTP、またはSCPのいずれかの転送プロトコルを使用して、スイッチcs1のブートフラッシュにRCFをコピーします。
++
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+
++
+.例を示します
+[%collapsible]
+====
+次に、TFTPを使用してスイッチcs1のブートフラッシュにRCFをコピーする例を示します。
+
+[listing, subs="+quotes"]
+----
+cs1# *copy tftp: bootflash: vrf management*
+Enter source filename: *Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt*
+Enter hostname for the tftp server: *172.22.201.50*
+Trying to connect to tftp server......Connection to Server Established.
+TFTP get operation was successful
+Copy complete, now saving to disk (please wait)...
+----
+====
+. ブートフラッシュに前にダウンロードした RCF を適用します。
++
+Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+
++
+.例を示します
+[%collapsible]
+====
+この例は、RCFファイルを示しています `Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt` スイッチcs1にインストールする手順は次のとおりです。
+
+[listing]
+----
+cs1# copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
+----
+====
+. 「 show banner motd 」コマンドのバナー出力を確認します。スイッチの設定と動作を適切に行うには、次の手順を参照して実行する必要があります。
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cs1# show banner motd
+
+******************************************************************************
+* NetApp Reference Configuration File (RCF)
+*
+* Switch   : Nexus N9K-C9336C-FX2
+* Filename : Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt
+* Date     : 10-23-2020
+* Version  : v1.6
+*
+* Port Usage:
+* Ports  1- 3: Breakout mode (4x10G) Intra-Cluster Ports, int e1/1/1-4, e1/2/1-4
+, e1/3/1-4
+* Ports  4- 6: Breakout mode (4x25G) Intra-Cluster/HA Ports, int e1/4/1-4, e1/5/
+1-4, e1/6/1-4
+* Ports  7-34: 40/100GbE Intra-Cluster/HA Ports, int e1/7-34
+* Ports 35-36: Intra-Cluster ISL Ports, int e1/35-36
+*
+* Dynamic breakout commands:
+* 10G: interface breakout module 1 port <range> map 10g-4x
+* 25G: interface breakout module 1 port <range> map 25g-4x
+*
+* Undo breakout commands and return interfaces to 40/100G configuration in confi
+g mode:
+* no interface breakout module 1 port <range> map 10g-4x
+* no interface breakout module 1 port <range> map 25g-4x
+* interface Ethernet <interfaces taken out of breakout mode>
+* inherit port-profile 40-100G
+* priority-flow-control mode auto
+* service-policy input HA
+* exit
+*
+******************************************************************************
+----
+====
+. RCF ファイルが正しい新しいバージョンであることを確認します。
++
+'how running-config'
+
++
+出力をチェックして正しい RCF があることを確認する場合は、次の情報が正しいことを確認してください。
+
++
+** RCF バナー
+** ノードとポートの設定
+** カスタマイズ
++
+出力内容はサイトの構成によって異なります。ポートの設定を確認し、インストールした RCF に固有の変更がないかリリースノートを参照してください。
+
+
+
+. RCF のバージョンとスイッチの設定が正しいことを確認したら、 running-config ファイルを startup-config ファイルにコピーします。
++
+`copy running-config startup-config`
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cs1# copy running-config startup-config [########################################] 100% Copy complete
+----
+====
++
+Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^]。
+
+. スイッチcs1をリブートします。
++
+`cs1# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
+
+. スイッチcs2で手順1~7を繰り返します。
+. ONTAPクラスタ内のすべてのノードのクラスタポートをスイッチcs1とcs2に接続します。
+
+
+
+
+=== 手順2：スイッチの接続を確認する
+
+. クラスタポートに接続されているスイッチポートが*up*であることを確認します。
++
+`show interface brief`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1# *show interface brief | grep up*
+.
+.
+Eth1/1/1      1       eth  access up      none                    10G(D) --
+Eth1/1/2      1       eth  access up      none                    10G(D) --
+Eth1/7        1       eth  trunk  up      none                   100G(D) --
+Eth1/8        1       eth  trunk  up      none                   100G(D) --
+.
+.
+----
+====
+. 次のコマンドを使用して、クラスタノードが正しいクラスタVLANに含まれていることを確認します。
++
+`show vlan brief`
+
++
+`show interface trunk`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1# *show vlan brief*
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Po1, Eth1/1, Eth1/2, Eth1/3
+                                                Eth1/4, Eth1/5, Eth1/6, Eth1/7
+                                                Eth1/8, Eth1/35, Eth1/36
+                                                Eth1/9/1, Eth1/9/2, Eth1/9/3
+                                                Eth1/9/4, Eth1/10/1, Eth1/10/2
+                                                Eth1/10/3, Eth1/10/4
+17   VLAN0017                         active    Eth1/1, Eth1/2, Eth1/3, Eth1/4
+                                                Eth1/5, Eth1/6, Eth1/7, Eth1/8
+                                                Eth1/9/1, Eth1/9/2, Eth1/9/3
+                                                Eth1/9/4, Eth1/10/1, Eth1/10/2
+                                                Eth1/10/3, Eth1/10/4
+18   VLAN0018                         active    Eth1/1, Eth1/2, Eth1/3, Eth1/4
+                                                Eth1/5, Eth1/6, Eth1/7, Eth1/8
+                                                Eth1/9/1, Eth1/9/2, Eth1/9/3
+                                                Eth1/9/4, Eth1/10/1, Eth1/10/2
+                                                Eth1/10/3, Eth1/10/4
+31   VLAN0031                         active    Eth1/11, Eth1/12, Eth1/13
+                                                Eth1/14, Eth1/15, Eth1/16
+                                                Eth1/17, Eth1/18, Eth1/19
+                                                Eth1/20, Eth1/21, Eth1/22
+32   VLAN0032                         active    Eth1/23, Eth1/24, Eth1/25
+                                                Eth1/26, Eth1/27, Eth1/28
+                                                Eth1/29, Eth1/30, Eth1/31
+                                                Eth1/32, Eth1/33, Eth1/34
+33   VLAN0033                         active    Eth1/11, Eth1/12, Eth1/13
+                                                Eth1/14, Eth1/15, Eth1/16
+                                                Eth1/17, Eth1/18, Eth1/19
+                                                Eth1/20, Eth1/21, Eth1/22
+34   VLAN0034                         active    Eth1/23, Eth1/24, Eth1/25
+                                                Eth1/26, Eth1/27, Eth1/28
+                                                Eth1/29, Eth1/30, Eth1/31
+                                                Eth1/32, Eth1/33, Eth1/34
+
+cs1# *show interface trunk*
+
+-----------------------------------------------------
+Port          Native  Status        Port
+              Vlan                  Channel
+-----------------------------------------------------
+Eth1/1        1       trunking      --
+Eth1/2        1       trunking      --
+Eth1/3        1       trunking      --
+Eth1/4        1       trunking      --
+Eth1/5        1       trunking      --
+Eth1/6        1       trunking      --
+Eth1/7        1       trunking      --
+Eth1/8        1       trunking      --
+Eth1/9/1      1       trunking      --
+Eth1/9/2      1       trunking      --
+Eth1/9/3      1       trunking      --
+Eth1/9/4      1       trunking      --
+Eth1/10/1     1       trunking      --
+Eth1/10/2     1       trunking      --
+Eth1/10/3     1       trunking      --
+Eth1/10/4     1       trunking      --
+Eth1/11       33      trunking      --
+Eth1/12       33      trunking      --
+Eth1/13       33      trunking      --
+Eth1/14       33      trunking      --
+Eth1/15       33      trunking      --
+Eth1/16       33      trunking      --
+Eth1/17       33      trunking      --
+Eth1/18       33      trunking      --
+Eth1/19       33      trunking      --
+Eth1/20       33      trunking      --
+Eth1/21       33      trunking      --
+Eth1/22       33      trunking      --
+Eth1/23       34      trunking      --
+Eth1/24       34      trunking      --
+Eth1/25       34      trunking      --
+Eth1/26       34      trunking      --
+Eth1/27       34      trunking      --
+Eth1/28       34      trunking      --
+Eth1/29       34      trunking      --
+Eth1/30       34      trunking      --
+Eth1/31       34      trunking      --
+Eth1/32       34      trunking      --
+Eth1/33       34      trunking      --
+Eth1/34       34      trunking      --
+Eth1/35       1       trnk-bndl     Po1
+Eth1/36       1       trnk-bndl     Po1
+Po1           1       trunking      --
+
+------------------------------------------------------
+Port          Vlans Allowed on Trunk
+------------------------------------------------------
+Eth1/1        1,17-18
+Eth1/2        1,17-18
+Eth1/3        1,17-18
+Eth1/4        1,17-18
+Eth1/5        1,17-18
+Eth1/6        1,17-18
+Eth1/7        1,17-18
+Eth1/8        1,17-18
+Eth1/9/1      1,17-18
+Eth1/9/2      1,17-18
+Eth1/9/3      1,17-18
+Eth1/9/4      1,17-18
+Eth1/10/1     1,17-18
+Eth1/10/2     1,17-18
+Eth1/10/3     1,17-18
+Eth1/10/4     1,17-18
+Eth1/11       31,33
+Eth1/12       31,33
+Eth1/13       31,33
+Eth1/14       31,33
+Eth1/15       31,33
+Eth1/16       31,33
+Eth1/17       31,33
+Eth1/18       31,33
+Eth1/19       31,33
+Eth1/20       31,33
+Eth1/21       31,33
+Eth1/22       31,33
+Eth1/23       32,34
+Eth1/24       32,34
+Eth1/25       32,34
+Eth1/26       32,34
+Eth1/27       32,34
+Eth1/28       32,34
+Eth1/29       32,34
+Eth1/30       32,34
+Eth1/31       32,34
+Eth1/32       32,34
+Eth1/33       32,34
+Eth1/34       32,34
+Eth1/35       1
+Eth1/36       1
+Po1           1
+..
+..
+..
+..
+..
+----
+====
++
+
+NOTE: 特定のポートおよびVLANの使用方法の詳細については、RCFのバナーおよび重要な注意事項のセクションを参照してください。
+
+. cs1 と cs2 間の ISL が機能していることを確認します。
++
+「ポートチャネルの概要」
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1# *show port-channel summary*
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/35(P)        Eth1/36(P)
+cs1#
+----
+====
+
+
+
+
+=== 手順3：ONTAPクラスタをセットアップする
+
+NetAppでは、System Managerを使用して新しいクラスタをセットアップすることを推奨しています。
+
+System Managerでは、ノード管理IPアドレスの割り当て、クラスタの初期化、ローカル階層の作成、プロトコルの設定、初期ストレージのプロビジョニングなど、クラスタのセットアップと設定のワークフローをシンプルかつ簡単に実行できます。
+
+に進みます https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["System Managerを使用して新しいクラスタにONTAPを設定します"] を参照してください。
