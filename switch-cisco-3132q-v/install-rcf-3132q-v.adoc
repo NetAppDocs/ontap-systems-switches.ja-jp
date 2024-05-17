@@ -21,7 +21,7 @@ Nexus 3132Q-Vスイッチを初めて設定したあとにRCFをインストー�
 * スイッチ設定の現在のバックアップ。
 * クラスタが完全に機能している（ログにエラーがない、または同様の問題が発生している）。
 * 現在のリファレンス構成ファイル（RCF）。
-* RCFのインストール時に必要なスイッチへのコンソール接続
+* RCFのインストール時に必要なスイッチへのコンソール接続ナレッジベースの記事を使用したことがある場合、この要件はオプションです https://kb.netapp.com/on-prem/Switches/Broadcom-KBs/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままBroadcomインターコネクトスイッチの設定をクリアする方法"] 事前に設定をクリアしておく必要があります。
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]。サポートされているONTAP とRCFのバージョンについては、スイッチの互換性の表を参照してください。RCFのコマンド構文と、NX-OSのバージョンにあるコマンド構文との間には、コマンドの依存関係が存在する場合があります。
 * https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズスイッチ"^]。Ciscoスイッチのアップグレードおよびダウングレード手順の詳細については、CiscoのWebサイトで入手可能なソフトウェアおよびアップグレードガイドを参照してください。
 
@@ -268,7 +268,7 @@ cluster1::*>
 . スイッチ cs2 の構成をクリーンアップし、基本的なセットアップを実行します。
 +
 
-CAUTION: 新しい RCF を更新または適用する場合は、スイッチ設定を消去し、基本的な設定を実行する必要があります。スイッチを再度セットアップするには、スイッチのシリアルコンソールポートに接続する必要があります。
+CAUTION: 新しい RCF を更新または適用する場合は、スイッチ設定を消去し、基本的な設定を実行する必要があります。スイッチを再度セットアップするには、スイッチのシリアルコンソールポートに接続する必要があります。ナレッジベースの記事を使用したことがある場合、この要件はオプションです https://kb.netapp.com/on-prem/Switches/Broadcom-KBs/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままBroadcomインターコネクトスイッチの設定をクリアする方法"] 事前に設定をクリアしておく必要があります。
 
 +
 .. 設定を消去します。

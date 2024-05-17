@@ -1,0 +1,28 @@
+---
+permalink: switch-bes-53248/complete-upgrade.html 
+sidebar: sidebar 
+keywords: BES-53248 switches, upgrade completion, upgrade bes-53248 switch 
+summary: BES-53248クラスタスイッチを設定する前に、プロセスの概要と命名法を確認してください。 
+---
+= BES-53248クラスタスイッチのアップグレードの完了
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+必要に応じて、次の手順に従ってBES-54328クラスタスイッチのアップグレードを完了します。
+
+. link:configure-ssh.html["BES-53248 クラスタスイッチで SSH を有効にします"]。
++
+クラスタスイッチヘルスモニタ（CSHM）およびログ収集機能を使用する場合は、スイッチでSSHを有効にします。
+
+. link:configure-log-collection.html["ログ収集機能を有効にします"]。
++
+この機能は、ONTAP でスイッチ関連のログファイルを収集する場合に使用します。
+
+. link:CSHM_snmpv3.html["監視のためのSNMPv3の設定"]。
++
+クラスタスイッチヘルスモニタ（CSHM）機能を使用する場合は、イーサネットスイッチヘルスモニタ（CSHM）をサポートするSNMPv3を設定します。
+
+

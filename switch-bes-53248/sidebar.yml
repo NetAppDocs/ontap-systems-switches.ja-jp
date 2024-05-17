@@ -31,20 +31,22 @@ entries:
     url: "/switch-bes-53248/configure-licenses.html"
   - title: RCF構成ファイルをインストールします
     url: "/switch-bes-53248/configure-install-rcf.html"
-  - title: SSH を有効にします。
+  - title: ログ収集のSSHを有効にする
     url: "/switch-bes-53248/configure-ssh.html"
   - title: ログ収集を有効にします
     url: "/switch-bes-53248/CSHM_log_collection.html"
   - title: 監視のためのSNMPv3の設定
     url: "/switch-bes-53248/CSHM_snmpv3.html"
-- title: スイッチをアップグレードします
+- title: スイッチのアップグレード
   pdf-filename: upgrade_switches_bes53248
   entries:
   - title: アップグレードの概要
     url: "/switch-bes-53248/upgrade-switch-overview.html"
-  - title: スイッチをアップグレードします
-    url: "/switch-bes-53248/replace-upgrade.html"
-  - title: アップグレード設定を確認します
+  - title: EFOSバージョンのアップグレード
+    url: "/switch-bes-53248/upgrade-efos-software.html"
+  - title: RCFバージョンのアップグレード
+    url: "/switch-bes-53248/upgrade-rcf.html"
+  - title: アップグレードゴノクラスタノカクニン
     url: "/switch-bes-53248/replace-verify.html"
 - title: スイッチを移行
   pdf-filename: migrate_switches_bes53248

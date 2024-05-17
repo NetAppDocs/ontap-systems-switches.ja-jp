@@ -51,9 +51,6 @@ BES-53248クラスタスイッチの初期セットアップを実行するに�
 
 . スイッチにとしてログインします `admin` パスワードの入力を求められたら、Enterキーを押します。デフォルトのスイッチ名は* routing *です。プロンプトで、と入力します `enable`。これにより、スイッチ設定の特権 EXEC モードにアクセスできます。
 +
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 User: *admin*
@@ -62,33 +59,24 @@ Password:
 Password:
 (Routing)#
 ----
-====
 . スイッチ名を* cs2 *に変更します。
 +
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 (Routing)# *hostname cs2*
 (cs2)#
 ----
-====
 . 静的 IP アドレスを設定するには、例に示すように、「サービスポートプロトコル」、「ネットワークプロトコル」、および「サービスポート IP 」コマンドを使用します。
 +
 デフォルトでは、サービスポートは DHCP を使用するように設定されています。IP アドレス、サブネットマスク、およびデフォルトゲートウェイアドレスが自動的に割り当てられます。
 
 +
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 (cs2)# *serviceport protocol none*
 (cs2)# *network protocol none*
 (cs2)# *serviceport ip ipaddr netmask gateway*
 ----
-====
 . 次のコマンドを使用して結果を確認します。
 +
 'How serviceport
@@ -115,96 +103,124 @@ Burned In MAC Address.......................... D8:C4:97:71:12:3C
 ====
 . ドメインとネームサーバを設定します。
 +
-「 configure 」を実行します
-
+[source, cli]
+----
+ip domain name <domain_name>
+ip name server <server_name>
+----
 +
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 (cs2)# *configure*
-(cs2) (Config)# *ip domain name company.com*
-(cs2) (Config)# *ip name server 10.10.99.1 10.10.99.2*
-(cs2) (Config)# *exit*
-(cs2) (Config)#
-----
-====
-. NTP サーバを設定？
-+
-.. タイムゾーンと時刻の同期（ SNTP ）を設定します。
-+
-「 NTP 」
-
-+
-.例を示します
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
+(cs2)(Config)# *ip domain name company.com*
+(cs2)(Config)# *ip name server 10.10.99.1 10.10.99.2*
+(cs2)(Config)# *exit*
 (cs2)#
-(cs2) (Config)# *sntp client mode unicast*
-(cs2) (Config)# *sntp server 10.99.99.5*
-(cs2) (Config)# *clock timezone -7*
-(cs2) (Config)# *exit*
-(cs2) (Config)#
 ----
-====
-+
-EFOSバージョン3.10.0.3以降の場合は、コマンドを使用します `ntp`。
+. NTP サーバを設定？
 
-+
-`ntp`
 
-+
-.例を示します
-[%collapsible]
+[role="tabbed-block"]
 ====
+.EFOS 3.10.0.3以降
+--
+タイムゾーンと時刻の同期（NTP）を設定します。
+
+[source, cli]
+----
+sntp server <server_name>
+clock
+----
 [listing, subs="+quotes"]
 ----
-(cs2)configure
-(cs2)(Config)# *ntp ?*
-
-authenticate             Enables NTP authentication.
-authentication-key       Configure NTP authentication key.
-broadcast                Enables NTP broadcast mode.
-broadcastdelay           Configure NTP broadcast delay in microseconds.
-server                   Configure NTP server.
-source-interface         Configure the NTP source-interface.
-trusted-key              Configure NTP authentication key number for trusted time source.
-vrf                      Configure the NTP VRF.
-
-(cs2)(Config)# *ntp server ?*
-
-ip-address|ipv6-address|hostname  Enter a valid IPv4/IPv6 address or hostname.
-
+(cs2)# *configure*
 (cs2)(Config)# *ntp server 10.99.99.5*
+(cs2)(Config)# *clock timezone -7*
+(cs2)(Config)# *exit*
+(cs2)#
 ----
+--
+.EFOS 3.9.0.2以前
+--
+タイムゾーンと時刻の同期（ SNTP ）を設定します。
+
+[source, cli]
+----
+sntp client mode <client_mode>
+sntp server <server_name>
+clock
+----
+[listing, subs="+quotes"]
+----
+(cs2)# *configure*
+(cs2)(Config)# *sntp client mode unicast*
+(cs2)(Config)# *sntp server 10.99.99.5*
+(cs2)(Config)# *clock timezone -7*
+(cs2)(Config)# *exit*
+(cs2)#
+----
+--
 ====
-.. 時間を手動で設定します。
-+
+. [[step10]]前の手順でNTPサーバを設定しなかった場合は、時間を手動で設定します。
+
+
+[role="tabbed-block"]
+====
+.EFOS 3.10.0.3以降
+--
+時間を手動で設定します。
+
 「 clock 」
 
-+
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
-(cs2)# *config*
-(cs2) (Config)# *no sntp client mode*
-(cs2) (Config)# *clock summer-time recurring 1 sun mar 02:00 1 sun nov 02:00 offset 60 zone EST*
-(cs2) (Config)# *clock timezone -5 zone EST*
-(cs2) (Config)# *clock set 07:00:00
-(cs2) (Config)# *clock set 10/20/2020*
 
-(cs2) (Config)# *show clock*
+(cs2)# *configure*
+(cs2)(Config)# *clock summer-time recurring 1 sun mar 02:00 1 sun nov 02:00 offset 60 zone EST*
+(cs2)(Config)# *clock timezone -5 zone EST*
+(cs2)(Config)# *clock set 07:00:00*
+(cs2)(Config)# *clock set 10/20/2023*
+(cs2)(Config)# *show clock*
 
-07:00:11 EST(UTC-5:00) Oct 20 2020
+07:00:11 EST(UTC-5:00) Oct 20 2023
 No time source
 
-(cs2) (Config)# *exit*
+(cs2)(Config)# *exit*
+(cs2)#
+----
+--
+.EFOS 3.9.0.2以前
+--
+時間を手動で設定します。
 
+「 clock 」
+
+[listing, subs="+quotes"]
+----
+
+(cs2)# *configure*
+(cs2)(Config)# *no sntp client mode*
+(cs2)(Config)# *clock summer-time recurring 1 sun mar 02:00 1 sun nov 02:00 offset 60 zone EST*
+(cs2)(Config)# *clock timezone -5 zone EST*
+(cs2)(Config)# *clock set 07:00:00*
+(cs2)(Config)# *clock set 10/20/2023*
+(cs2)(Config)# *show clock*
+
+07:00:11 EST(UTC-5:00) Oct 20 2023
+No time source
+
+(cs2)(Config)# *exit*
+(cs2)#
+----
+--
+====
+. [[step11]]実行コンフィギュレーションをスタートアップコンフィギュレーションに保存します。
++
+「メモリの書き込み」
+
++
+[listing, subs="+quotes"]
+----
 (cs2)# *write memory*
 
 This operation may take a few minutes.
@@ -216,10 +232,7 @@ Config file 'startup-config' created successfully.
 
 Configuration Saved!
 ----
-====
-
-
 
 
 .次の手順
-link:configure-efos-software.html["EFOS ソフトウェアをインストールします"]。
+link:configure-efos-software.html["EFOS ソフトウェアをインストールします"]
