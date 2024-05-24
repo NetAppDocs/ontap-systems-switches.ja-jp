@@ -2847,7 +2847,6 @@
   <block id="7b93b1b58c897d187f4ffbd20253248f" category="list-text">スイッチ設定の現在のバックアップ。</block>
   <block id="3f13e146c0acc26cac7163c687a6dcb7" category="list-text">クラスタが完全に機能している（ログにエラーがない、または同様の問題が発生している）。</block>
   <block id="0a444d29f1db9e9c818ae5dc2b30ac82" category="list-text"><block ref="f29158c7335be7b7fe0a46dd82de6ed4" category="inline-link-macro-rx"></block>。サポートされるONTAP とNX-OSのバージョンについては、スイッチの互換性の表を参照してください。</block>
-  <block id="7314883bd7a56822f06716c652fae68d" category="list-text">Ciscoスイッチのアップグレードおよびダウングレード手順については、CiscoのWebサイトで入手可能な適切なソフトウェアおよびアップグレードガイドを参照してください。を参照してください<block ref="5845557b3f8314af89ad3b7e98ed4cae" category="inline-link-rx"></block>。</block>
   <block id="feb8e402dbfa149a080f8f87ee22069f" category="list-text">ノード名はcluster1-01、cluster1-02、cluster1-02、およびcluster1-02です。</block>
   <block id="1a4c52cc090c463e0a3949fd93af9ca2" category="section-title">ソフトウェアをインストールします</block>
   <block id="ec8855627efbb26afaa912164ff82dbd" category="inline-link-macro">RCF構成ファイルをインストールします</block>
@@ -3235,7 +3234,6 @@
   <block id="236c7e852889b030e9ecc664d388df22" category="paragraph">を参照してください<block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block> ケーブル接続の詳細については、を参照してください。</block>
   <block id="ebcf71eb39f7510f62abf6ea769fb245" category="paragraph">それぞれのクラスタLIFが表示されます<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> の場合<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block> には、があります<block ref="4f21ee5a18672b60f4c01e94e6be9c79" prefix=" " category="inline-code"></block> 上/上。</block>
   <block id="242de61cd0710bcf5f8d68190d392f95" category="paragraph">作業を開始する前に、の手順 を完了します <block ref="7be1885a02922674638042ed6280ba6b" category="inline-link-macro-rx"></block>。</block>
-  <block id="10e3581692b8c6e1da3364026ad637f0" category="paragraph"><block ref="1112ea12139746af7574c945e24cdc23" category="inline-link-macro-rx"></block>。</block>
   <block id="1dcfb07dc80ddc7f9df74317a5f57319" category="doc">Cisco Nexus 9336C-FX2スイッチのマニュアル要件</block>
   <block id="b456d34c399e9d9889e4c0ac830ecb7a" category="summary">Cisco Nexus 9336C-FX2クラスタスイッチのインストールと設定の概要</block>
   <block id="a48d2f73b54f1c12d4039724748b5d7a" category="paragraph">Cisco Nexus 9336C-FX2クラスタスイッチは、Cisco Nexus 9000プラットフォームの一部であり、ネットアップシステムキャビネットに設置できます。クラスタスイッチでは、3つ以上のノードでONTAP クラスタを構築できます。</block>
@@ -4214,7 +4212,6 @@
   <block id="3dcdf9c7761ce642c5fe2fe73d425b75" category="list-text">実行コンフィギュレーションをスタートアップコンフィギュレーションに保存します。</block>
   <block id="b48ffac2fb8952951818ab2ce539c1d3" category="list-text">スイッチをリブートします。</block>
   <block id="d03fee12ab01ee4f556908abcba26347" category="list-text">SSHを使用してスイッチに再度ログインし、RCFのインストールを完了します。</block>
-  <block id="a8935c8fdc41e9990bb4a300a40c1700" category="list-text">スイッチに追加のポートライセンスがインストールされている場合は、RCFを変更して追加のライセンスポートを設定する必要があります。を参照してください <block ref="4d3fc05ce7b1ba9afd520aecf6c7f3bb" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="63f7338fc9ee539e34242e8d03110038" category="list-text">FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。</block>
   <block id="b211f67e6e9195c32683368a53542802" category="paragraph">次の例は、SFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーする方法を示しています。</block>
   <block id="c77174e35b7f7fc235a87561809ad614" category="list-text">からのバナー出力を確認します<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block> コマンドを実行しますスイッチの設定と動作を適切に行うには、次の手順を参照して実行する必要があります。</block>
@@ -4786,7 +4783,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="7e857aa8a0b068cc27d4b48a1e11e878" category="list-text"><block ref="7e857aa8a0b068cc27d4b48a1e11e878" category="inline-link-macro-rx"></block></block>
   <block id="32559ee483b61b36141f9b9e0f4bbfff" category="paragraph">NetApp Support SiteでサポートされているONTAPとRCFのバージョンについては、スイッチの互換性の表を参照してください。RCFのコマンド構文と特定のバージョンのNX-OSの構文との間には、コマンドの依存関係が存在することに注意してください。</block>
   <block id="ad0d19783ccfa19f931108b838e4b7e4" category="list-text"><block ref="ad0d19783ccfa19f931108b838e4b7e4" category="inline-link-macro-rx"></block></block>
-  <block id="6b76d59cad5464650213d5b0a1dd84d7" category="paragraph">Ciscoスイッチのアップグレードおよびダウングレード手順の完全なマニュアルについては、シスコのWebサイトで入手可能な該当するソフトウェアおよびアップグレードガイドを参照してください。</block>
   <block id="8fa9b99093c5cdfb4cebad0008ba3e8d" category="paragraph">この手順 の例では 4 ノードを使用します。これらのノードは、 2 つの 10GbE クラスタインターコネクトポート e0a と e0b を使用します。を参照してください<block ref="e98f5e4074ae8b028a5791870586403d" category="inline-link-rx"></block> をクリックして、プラットフォームのクラスタポートが正しいことを確認します。</block>
   <block id="79509ba15c2970f327dd8610e3b4628c" category="paragraph-title">使用するコマンド</block>
   <block id="1ad593dd61af4356ce9ba12d276c4336" category="section-title">オプション1：新しいスイッチにRCFファイルをインストールする</block>
@@ -4941,4 +4937,22 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="6bdce5afe823363897535ce22aa832a0" category="sidebar">EFOSバージョンのアップグレード</block>
   <block id="4dc6f468164162b89152d6960a79b9d0" category="sidebar">RCFバージョンのアップグレード</block>
   <block id="24778145f75ec14966b06f3682e616c4" category="sidebar">アップグレードゴノクラスタノカクニン</block>
+  <block id="77486b34dc8c8bacbe90fd1ff1bd8f61" category="inline-link-macro">NX-OSソフトウェアのインストールまたはアップグレード</block>
+  <block id="0a41823d2a109b5dbd6f2fa1f8fe6689" category="paragraph"><block ref="0a41823d2a109b5dbd6f2fa1f8fe6689" category="inline-link-macro-rx"></block></block>
+  <block id="6b10db39cfed2551fdc8db011f0b1110" category="paragraph">Ciscoスイッチのアップグレードおよびダウングレード手順の完全なマニュアルについては、シスコのWebサイトで入手可能な該当するソフトウェアおよびアップグレードガイドを参照してください。</block>
+  <block id="893355f35b6d198e6a02f43764951a73" category="paragraph">Nexus 9336C-FX2クラスタスイッチでNX-OSソフトウェアをインストールまたはアップグレードするには、次の手順に従ってください。</block>
+  <block id="f29158c7335be7b7fe0a46dd82de6ed4" category="list-text"><block ref="f29158c7335be7b7fe0a46dd82de6ed4" category="inline-link-macro-rx"></block></block>
+  <block id="72372752f11bdb84bf66a4ce05081de7" category="paragraph">サポートされるONTAP とNX-OSのバージョンについては、スイッチの互換性の表を参照してください。</block>
+  <block id="948f862fde95b79124df1918e756eb9e" category="inline-link-macro">ソフトウェアアップグレードおよびダウングレードガイド</block>
+  <block id="fb7a0f4817a9ebc7c1050442a67a2dc1" category="list-text"><block ref="fb7a0f4817a9ebc7c1050442a67a2dc1" category="inline-link-macro-rx"></block></block>
+  <block id="cfaaf5dbf06a0559b7026ab59fba9fd1" category="inline-link-macro">Cisco Nexus 9000および3000のアップグレードとISSUのマトリックス</block>
+  <block id="a3380d044e745afdb22a3e808fb74586" category="list-text"><block ref="a3380d044e745afdb22a3e808fb74586" category="inline-link-macro-rx"></block></block>
+  <block id="7d48e882dc8cfcd3a44f3f59ba949595" category="paragraph">Nexus 9000シリーズスイッチのCisco NX-OSソフトウェアの停止を伴うアップグレード/ダウングレードに関する情報を提供します。
+現在のリリースとターゲットリリースに基づきます。</block>
+  <block id="d6221baaf45cc1f4ed9ce13f32541fa8" category="paragraph">ページで、*[Disruptive Upgrade]*を選択し、ドロップダウンリストから現在のリリースとターゲットリリースを選択します。</block>
+  <block id="103347887335950e25df4c7b93bdd950" category="paragraph"><block ref="103347887335950e25df4c7b93bdd950" category="inline-link-macro-rx"></block></block>
+  <block id="cf3a2d2c139bf5c9cc87fe714bfff3b1" category="list-text">次の点に注意してください。</block>
+  <block id="3ee80345befd8ba67ee5e3200beb2fd8" category="list-text">スイッチに追加のポートライセンスがインストールされている場合は、RCFを変更して追加のライセンスポートを設定する必要があります。を参照してください <block ref="029ce138066352981401c2da3f4be7ea" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="febb316f33bb4f57154038c792c90fc0" category="list-text">以前のRCFで行ったカスタマイズをすべて記録し、新しいRCFに適用します。たとえば、ポート速度やハードコーディングFECモードの設定などです。</block>
+  <block id="888174b5389281588448ee75f7ac8835" category="sidebar">NX-OSソフトウェアのインストールまたはアップグレード</block>
 </blocks>

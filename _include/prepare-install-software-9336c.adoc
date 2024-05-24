@@ -25,22 +25,26 @@ NOTE: AutoSupport メッセージはテクニカルサポートにこのメン�
 
 . 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 * y * 」と入力します。
 +
-「 advanced 」の権限が必要です
-
+[source, cli]
+----
+set -privilege advanced
+----
 +
 詳細プロンプト (`*>') が表示されます
 
 . クラスタインターコネクトスイッチごとに、各ノードに設定されているクラスタインターコネクトインターフェイスの数を表示します。
 +
-「 network device-discovery show -protocol cdp 」と入力します
-
+[source, cli]
+----
+network device-discovery show -protocol cdp
+----
 +
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network device-discovery show -protocol cdp
+cluster1::*> *network device-discovery show -protocol cdp*
 
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
@@ -59,14 +63,17 @@ cluster1-01/cdp
 +
 .. ネットワークポートの属性を表示します。
 +
- `network port show –ipspace Cluster`
+[source, cli]
+----
+network port show -ipspace Cluster
+----
 +
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network port show -ipspace Cluster
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: cluster1-02
                                                   Speed(Mbps) Health
@@ -87,15 +94,17 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy
 ====
 .. LIF に関する情報を表示します。
 +
-「 network interface show -vserver Cluster 」のように表示されます
-
+[source, cli]
+----
+network interface show -vserver Cluster
+----
 +
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster
+cluster1::*> *network interface show -vserver Cluster*
 
             Logical            Status     Network            Current       Current Is
 Vserver     Interface          Admin/Oper Address/Mask       Node          Port    Home
@@ -113,15 +122,17 @@ Cluster
 
 . リモートクラスタ LIF に ping を実行します。
 +
+[source, cli]
+----
 cluster ping-cluster -node node-name
-
+----
 +
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster ping-cluster -node cluster1-02
+cluster1::*> *cluster ping-cluster -node cluster1-02*
 Host is cluster1-02
 Getting addresses from network interface table...
 Cluster cluster1-01_clus1 169.254.209.69 cluster1-01     e0a
@@ -149,15 +160,17 @@ RPC status:
 ====
 . すべてのクラスタ LIF で auto-revert コマンドが有効になっていることを確認します。
 +
-network interface show -vserver Cluster -fields auto-revert を実行します
-
+[source, cli]
+----
+network interface show -vserver Cluster -fields auto-revert
+----
 +
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> network interface show -vserver Cluster -fields auto-revert
+cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
 
           Logical
 Vserver   Interface           Auto-revert
@@ -172,43 +185,46 @@ Cluster
 ====
 . ONTAP 9.8 以降の場合は、次のコマンドを使用して、イーサネットスイッチヘルスモニタのログ収集機能を有効にして、スイッチ関連のログファイルを収集します。
 +
-'system switch ethernet log setup-password 'および'system switch ethernet log enable-colion
-
+[source, cli]
+----
+system switch ethernet log setup-password
+system switch ethernet log enable-collection
+----
 +
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> system switch ethernet log setup-password
+cluster1::*> *system switch ethernet log setup-password*
 Enter the switch name: <return>
 The switch name entered is not recognized.
 Choose from the following list:
-cs1
-cs2
+*cs1*
+*cs2*
 
-cluster1::*> system switch ethernet log setup-password
+cluster1::*> *system switch ethernet log setup-password*
 
-Enter the switch name: cs1
+Enter the switch name: *cs1*
 RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] y
+Do you want to continue? {y|n}::[n] *y*
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> system switch ethernet log setup-password
+cluster1::*> *system switch ethernet log setup-password*
 
 Enter the switch name: cs2
 RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] y
+Do you want to continue? {y|n}:: [n] *y*
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> system  switch ethernet log enable-collection
+cluster1::*> *system switch ethernet log enable-collection*
 
 Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] y
+{y|n}: [n] *y*
 
 Enabling cluster switch log collection.
 
@@ -221,43 +237,46 @@ NOTE: これらのコマンドのいずれかでエラーが返される場合�
 
 . ONTAP リリース 9.5P16 、 9.6P12 、および 9.7P10 以降のパッチリリースでは、次のコマンドを使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能を有効にします。
 +
-'system cluster-switch log setup-password ' および 'system cluster-switch log enable-collection
-
+[source, cli]
+----
+system cluster-switch log setup-password
+system cluster-switch log enable-collection
+----
 +
 .例を示します
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
-cluster1::*> system cluster-switch log setup-password
+cluster1::*> *system cluster-switch log setup-password*
 Enter the switch name: <return>
 The switch name entered is not recognized.
 Choose from the following list:
-cs1
-cs2
+*cs1*
+*cs2*
 
-cluster1::*> system cluster-switch log setup-password
+cluster1::*> *system cluster-switch log setup-password*
 
-Enter the switch name: cs1
+Enter the switch name: *cs1*
 RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] y
+Do you want to continue? {y|n}::[n] *y*
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> system cluster-switch log setup-password
+cluster1::*> *system cluster-switch log setup-password*
 
-Enter the switch name: cs2
+Enter the switch name: *cs2*
 RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] y
+Do you want to continue? {y|n}:: [n] *y*
 
 Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 
-cluster1::*> system cluster-switch log enable-collection
+cluster1::*> *system cluster-switch log enable-collection*
 
 Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] y
+{y|n}: [n] *y*
 
 Enabling cluster switch log collection.
 
