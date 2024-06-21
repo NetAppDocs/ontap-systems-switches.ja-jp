@@ -1407,7 +1407,6 @@
   <block id="f22797e59a4f9df1be6a7bd93495674d" category="paragraph">Cisco コマンドの詳細については、『』の該当するガイドを参照してください<block ref="f93981dab484b88c422e924c27565997" category="inline-link-rx"></block> ガイド。</block>
   <block id="3e671871acf365e09e492c2fd833d14f" category="list-text">「 show banner motd 」コマンドのバナー出力を確認します。スイッチの設定と操作を適切に行うには、「重要な注意事項」に記載されている手順をよく読んで実行する必要があります。</block>
   <block id="0bdc52e912f1ecc312522eb07e5f2cbb" category="list-text">RCF ファイルが正しい新しいバージョンであることを確認します。</block>
-  <block id="f1e487b54b162363f351d5d209fc59ac" category="paragraph">Cisco コマンドの詳細については、『』の該当するガイドを参照してください<block ref="a793a8dbe6bab2f66743aaacba3b8ce6" category="inline-link-rx"></block> ガイド。</block>
   <block id="b1d94c7c371efbe2b9e14f1fcde6d912" category="list-text">スイッチ cs2 をリブートします。スイッチのリブート中にノードに対して報告された「クラスタポートが停止している」イベントは無視してかまいません。</block>
   <block id="50f3bfc2fb822fc9657969a594a33322" category="list-text">クラスタ LIF がスイッチ cs2 でホストされているポートに移行されたことを確認します。これには数秒かかることがあります。</block>
   <block id="ed34b4f07dbb9044c4aec48959bb5c98" category="list-text">cs1 と cs2 間の ISL が機能していることを確認します。</block>
@@ -4325,7 +4324,6 @@
   <block id="0f2a4526602865cc9158a56028bf97de" category="summary">ONTAPクラスタのNetApp CN1610クラスタスイッチは、無停止でCisco Nexus 9336C-FX2クラスタネットワークスイッチに移行できます。</block>
   <block id="4732368f30b7afd2065dc4cc0c57584f" category="doc">NetApp CN1610クラスタスイッチからCisco 9336C-FX2クラスタスイッチに移行します</block>
   <block id="c8fc8239bd9ec37b7c36847589d5c8a0" category="paragraph">ONTAPクラスタのNetApp CN1610クラスタスイッチは、Cisco 9336C-FX2クラスタスイッチに移行できます。これは無停止の手順です。</block>
-  <block id="b6bd832f0692f49d1480e52df106a51f" category="paragraph">NetApp CN1610クラスタスイッチをCisco 9336C-FX2クラスタスイッチに交換する場合は、特定の構成情報、ポート接続、およびケーブル接続の要件に注意する必要があります。</block>
   <block id="059d31543d448499bd1a9c454a8d1ebb" category="list-text">Cisco 9336C-FX2</block>
   <block id="3cb2d5707cdf5f5290ac6608ce8b5278" category="paragraph">構成が次の要件を満たしていることを確認します。</block>
   <block id="6195676dbe2277e0d3edb2d8c3a50b2e" category="list-text">Cisco 9336C-FX2クラスタスイッチは、リファレンス構成ファイル（RCF）を適用してインストールされた正しいバージョンのNX-OSで構成および動作しています。</block>
@@ -4931,8 +4929,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="f35806549fff4250f43cb0acde28b920" category="list-text">スイッチをリブートし、実行中の設定が正しいことを確認します。</block>
   <block id="7271f66e0cb527adb71302d7377910b7" category="list-text">[[step21]スイッチcs1で手順1~20を繰り返します。</block>
   <block id="9b241cba96d2cafd3c0f5c9f7bf12560" category="list-text">。クラスタ LIF がホームポートにリバートされたことを確認します。</block>
-  <block id="de4042aa676f131e04bcf7d15edc5af9" category="list-text">RCFのインストール時に必要なスイッチへのコンソール接続ナレッジベースの記事を使用したことがある場合、この要件はオプションです<block ref="f179a3654c26841201eb04f568431742" category="inline-link-rx"></block> 事前に設定をクリアしておく必要があります。</block>
-  <block id="ced0e2e58f0a61a7676c9c092295acb0" category="admonition">新しい RCF を更新または適用する場合は、スイッチ設定を消去し、基本的な設定を実行する必要があります。スイッチを再度セットアップするには、スイッチのシリアルコンソールポートに接続する必要があります。ナレッジベースの記事を使用したことがある場合、この要件はオプションです<block ref="f179a3654c26841201eb04f568431742" category="inline-link-rx"></block> 事前に設定をクリアしておく必要があります。</block>
   <block id="ae0a7918183889538c2a432f5a54afa6" category="sidebar">スイッチのアップグレード</block>
   <block id="6bdce5afe823363897535ce22aa832a0" category="sidebar">EFOSバージョンのアップグレード</block>
   <block id="4dc6f468164162b89152d6960a79b9d0" category="sidebar">RCFバージョンのアップグレード</block>
@@ -4955,4 +4951,10 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="3ee80345befd8ba67ee5e3200beb2fd8" category="list-text">スイッチに追加のポートライセンスがインストールされている場合は、RCFを変更して追加のライセンスポートを設定する必要があります。を参照してください <block ref="029ce138066352981401c2da3f4be7ea" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="febb316f33bb4f57154038c792c90fc0" category="list-text">以前のRCFで行ったカスタマイズをすべて記録し、新しいRCFに適用します。たとえば、ポート速度やハードコーディングFECモードの設定などです。</block>
   <block id="888174b5389281588448ee75f7ac8835" category="sidebar">NX-OSソフトウェアのインストールまたはアップグレード</block>
+  <block id="a8294f2ff72d57253432505426ab555f" category="list-text">スイッチのシリアル番号を確認し、正しいスイッチが移行されていることを確認しておきます。</block>
+  <block id="f4212fffa5e0c42b93f12013fbeaaa93" category="paragraph">NetApp CN1610クラスタスイッチをCisco 9336C-FX2クラスタスイッチに交換する場合は、特定の構成情報、ポート接続、およびケーブル接続の要件に注意する必要があります。また、スイッチのシリアル番号を確認して、正しいスイッチが移行されていることを確認します。</block>
+  <block id="87a5e94476d6bdcbe9c972165d34090a" category="list-text">スイッチのシリアル番号を確認し、正しいスイッチが交換されていることを確認しておきます。</block>
+  <block id="2d6eb81058fa2415eb5247e2c14c5452" category="inline-link">リモート接続を維持したままCiscoインターコネクトスイッチの設定をクリアする方法</block>
+  <block id="9fa76c217cee95f26808d0c64f43dcda" category="list-text">RCFをインストールするには、スイッチへのコンソール接続が必要です。ナレッジベースの記事を使用したことがある場合、この要件はオプションです<block ref="3e8c2406d6e0211f305d1081c755846f" category="inline-link-rx"></block> 事前に設定をクリアしておく必要があります。</block>
+  <block id="83ad3b6efa173a2560e396a36d6ac2f0" category="admonition">新しい RCF を更新または適用する場合は、スイッチ設定を消去し、基本的な設定を実行する必要があります。スイッチを再度セットアップするには、スイッチのシリアルコンソールポートに接続する必要があります。ただし、ナレッジベースの記事を使用したことがある場合は、この要件はオプションです。<block ref="3e8c2406d6e0211f305d1081c755846f" category="inline-link-rx"></block> 事前に設定をクリアしておく必要があります。</block>
 </blocks>
