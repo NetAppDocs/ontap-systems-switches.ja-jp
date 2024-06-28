@@ -51,7 +51,7 @@ entries:
   entries:
   - title: 要件を交換
     url: "/switch-cisco-3132q-v/switch-requirements.html"
-  - title: CN3132Q-Vスイッチを交換します
+  - title: 3132Q-Vスイッチの交換
     url: "/switch-cisco-3132q-v/replace-cisco-nexus-3132q-v.html"
   - title: クラスタスイッチをスイッチレス接続に交換します
     url: "/switch-cisco-3132q-v/migrate-to-switchless-cluster-interconnect.html"

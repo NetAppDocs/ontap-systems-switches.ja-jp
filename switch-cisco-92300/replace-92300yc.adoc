@@ -45,6 +45,17 @@ STP、SNMP、SSHなどの以前のサイトのカスタマイズは、すべて�
 
 
 
+== コンソールログを有効にする
+
+NetAppでは、使用しているデバイスでコンソールロギングをイネーブルにし、スイッチを交換するときに次のアクションを実行することを強く推奨します。
+
+* メンテナンス中はAutoSupportを有効のままにします。
+* メンテナンスの前後にメンテナンスAutoSupportをトリガーして、メンテナンス中のケースの作成を無効にします。このナレッジベースの記事を参照 https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92:スケジュールされたメンテナンス時間中にケースが自動作成されないようにする方法"^] を参照してください。
+* CLIセッションのセッションロギングをイネーブルにします。セッションログを有効にする方法については、このナレッジベースの記事の「セッション出力のログ」セクションを参照してください。 https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["ONTAPシステムへの接続を最適化するためのPuTTYの設定方法"^]。
+
+
+
+
 == スイッチを交換します
 
 .例について

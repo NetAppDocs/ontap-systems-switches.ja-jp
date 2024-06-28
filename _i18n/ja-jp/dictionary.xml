@@ -3921,7 +3921,6 @@
   <block id="ce140d6d1921435e3df40a72b6d032f4" category="sidebar">CN1610スイッチからの移行</block>
   <block id="ac0586dfb2126d95d9be6378c5f70512" category="sidebar">スイッチレスクラスタからスイッチクラスタに移行する</block>
   <block id="703c0fedc12db69e340d7c2f3de0d764" category="sidebar">スイッチを交換します</block>
-  <block id="4e8b0737e5a683e7ada812ad2005b768" category="sidebar">CN3132Q-Vスイッチを交換します</block>
   <block id="88af8e6a19edbffd16db05ce4d139e3f" category="sidebar">CN1610クラスタスイッチから移行します</block>
   <block id="c40e2faa3e9cd894cbecfcf038ffe999" category="sidebar">Cisco Nexus 5596クラスタスイッチから移行する</block>
   <block id="ae5073b7cedbbc7111f9e806343efc7e" category="sidebar">2ノードスイッチレスクラスタから移行する</block>
@@ -4957,4 +4956,16 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="2d6eb81058fa2415eb5247e2c14c5452" category="inline-link">リモート接続を維持したままCiscoインターコネクトスイッチの設定をクリアする方法</block>
   <block id="9fa76c217cee95f26808d0c64f43dcda" category="list-text">RCFをインストールするには、スイッチへのコンソール接続が必要です。ナレッジベースの記事を使用したことがある場合、この要件はオプションです<block ref="3e8c2406d6e0211f305d1081c755846f" category="inline-link-rx"></block> 事前に設定をクリアしておく必要があります。</block>
   <block id="83ad3b6efa173a2560e396a36d6ac2f0" category="admonition">新しい RCF を更新または適用する場合は、スイッチ設定を消去し、基本的な設定を実行する必要があります。スイッチを再度セットアップするには、スイッチのシリアルコンソールポートに接続する必要があります。ただし、ナレッジベースの記事を使用したことがある場合は、この要件はオプションです。<block ref="3e8c2406d6e0211f305d1081c755846f" category="inline-link-rx"></block> 事前に設定をクリアしておく必要があります。</block>
+  <block id="bf2e41df1fe93346157f93aa59a48dd6" category="section-title">コンソールログを有効にする</block>
+  <block id="a1f2e4cbaec8fa16860e427a059b89aa" category="paragraph">NetAppでは、使用しているデバイスでコンソールロギングをイネーブルにし、スイッチを交換するときに次のアクションを実行することを強く推奨します。</block>
+  <block id="7a15fb36e18a42514f358533c9af4dae" category="list-text">メンテナンス中はAutoSupportを有効のままにします。</block>
+  <block id="c0aa3599fdcfc9e5e35fab592ea612f0" category="inline-link">SU92:スケジュールされたメンテナンス時間中にケースが自動作成されないようにする方法</block>
+  <block id="5c0d62310efa13f4e4c4ae41a7330f95" category="list-text">メンテナンスの前後にメンテナンスAutoSupportをトリガーして、メンテナンス中のケースの作成を無効にします。このナレッジベースの記事を参照<block ref="9889375293ffeecac54c58b8cad125b2" category="inline-link-rx"></block> を参照してください。</block>
+  <block id="fb42fce84a1f5a648367e2e027a6c941" category="inline-link">ONTAPシステムへの接続を最適化するためのPuTTYの設定方法</block>
+  <block id="1d01c6e5d28fb955441f4f9d1b4678b7" category="list-text">CLIセッションのセッションロギングをイネーブルにします。セッションログを有効にする方法については、このナレッジベースの記事の「セッション出力のログ」セクションを参照してください。<block ref="969f6e4e41456399a13556dea44fc607" category="inline-link-rx"></block>。</block>
+  <block id="05e512c6037fe1bb54e099238cc8ce62" category="section-title">TCAMリソースが原因でポートがリンクアップしていない</block>
+  <block id="f45e0e2e020e174164fe5413760ef4e4" category="paragraph">9336C-FX2スイッチでは、スイッチが使用する設定に設定されているTernary Content Addressable Memory（TCAM）リソースが不足しています。</block>
+  <block id="50c3c6ae36d53e402b88d9a6222029a0" category="inline-link">TCAMリソースが原因でCisco Nexus 9336C-FX2でポートがリンクアップしない</block>
+  <block id="293da448e2520766812e980a00821699" category="paragraph">サポート技術情報の記事を参照してください<block ref="882efca0483fcef9d53236590b1d74e9" category="inline-link-rx"></block> この問題を解決する方法の詳細については、を参照してください。</block>
+  <block id="73f7e96895a0ddf72a3e199ac5ae2247" category="sidebar">3132Q-Vスイッチの交換</block>
 </blocks>

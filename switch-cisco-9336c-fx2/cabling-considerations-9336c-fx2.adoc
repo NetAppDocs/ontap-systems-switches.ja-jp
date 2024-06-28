@@ -54,3 +54,10 @@ FAS2820のe0aポートとe0bポートで9336C-FX2スイッチポートとのリ�
 *Save the changes:*
 (cs1)# *copy running-config startup-config*
 ----
+
+
+== TCAMリソースが原因でポートがリンクアップしていない
+
+9336C-FX2スイッチでは、スイッチが使用する設定に設定されているTernary Content Addressable Memory（TCAM）リソースが不足しています。
+
+サポート技術情報の記事を参照してください https://kb.netapp.com/on-prem/Switches/Cisco-KBs/Ports_do_not_link_up_on_Cisco_Nexus_9336C-FX2_due_to_TCAM_resources["TCAMリソースが原因でCisco Nexus 9336C-FX2でポートがリンクアップしない"^] この問題を解決する方法の詳細については、を参照してください。
