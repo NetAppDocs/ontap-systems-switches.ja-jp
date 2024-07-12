@@ -4124,7 +4124,6 @@
   <block id="bd399ae0cf713e575ca26baedc0a896c" category="paragraph">NVIDIA SN2100スイッチ（X190006）は、スイッチに付属の標準ブラケットを使用して、NVIDIAデュアル/シングルスイッチキャビネットに設置します。</block>
   <block id="1e247ada2e98c5879849d746a52a4241" category="paragraph">NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10 / 25 / 40 / 100GbEスイッチです。スイッチは以下をサポートしています。</block>
   <block id="c19b9518d51b517376f0fe9109f66e90" category="paragraph">40 / 100GbEクラスタポートノード</block>
-  <block id="45a21206fd2396fdd6a59132a2a6d3a7" category="paragraph">40 / 100GbEスイッチ間リンク（ISL）ポート</block>
   <block id="509e4d6df8b93cb5deb86271a6326df2" category="section-title">光接続でのリンクアップ遅延</block>
   <block id="50137c9f3120823f7ba1d1983c48e011" category="paragraph">5秒以上のリンクアップ遅延が発生している場合は、Cumulus Linux 5.4以降で高速リンクアップがサポートされます。を使用してリンクを設定できます<block ref="0c14f6e7a82b0926c666f7fac383436a" prefix=" " category="inline-code"></block> 次のコマンドを実行します。</block>
   <block id="68a8de419a9558e300d05a15cc5b2aec" category="section-title">銅線接続のサポート</block>
@@ -4968,4 +4967,37 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="50c3c6ae36d53e402b88d9a6222029a0" category="inline-link">TCAMリソースが原因でCisco Nexus 9336C-FX2でポートがリンクアップしない</block>
   <block id="293da448e2520766812e980a00821699" category="paragraph">サポート技術情報の記事を参照してください<block ref="882efca0483fcef9d53236590b1d74e9" category="inline-link-rx"></block> この問題を解決する方法の詳細については、を参照してください。</block>
   <block id="73f7e96895a0ddf72a3e199ac5ae2247" category="sidebar">3132Q-Vスイッチの交換</block>
+  <block id="dd821578b18dec3b3c49fbc2a36950e0" category="paragraph">100GbEスイッチ間リンク（ISL）ポート</block>
+  <block id="c2f363b557f11042735dbadbfbd534d3" category="summary">この手順を使用して、NVIDIA SN2100クラスタスイッチのクラスタスイッチヘルスモニタ用の構成ファイルをインストールできます。</block>
+  <block id="1972298f5ec1d5e6b5fe96dd4ba6f4d3" category="doc">イーサネットスイッチヘルスモニタ構成ファイルのインストール</block>
+  <block id="65c65b976cfab8bcc3a5fa282181ca5b" category="paragraph">次の手順に従って、NVIDIAクラスタスイッチのイーサネットスイッチヘルス監視用の構成ファイルをインストールします。サポート対象モデルは次のとおりです。</block>
+  <block id="164a0cea1831b06a7fa67aab2e9a5d98" category="admonition">このインストール手順は、ONTAP 9.10.1以降に該当します。</block>
+  <block id="dd7fa1380804217cf2f3af00bb585752" category="list-text">を実行し、モデルに* other *が表示されているかどうかを確認して、構成ファイルをダウンロードする必要があることを確認し<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block> ます。</block>
+  <block id="3953f2c946249817a198b9dd2d604aa4" category="paragraph">構成ファイルを適用してもモデルに*その他*が表示される場合は、NetAppサポートにお問い合わせください。</block>
+  <block id="294206f940bbd4f3ec7f79996b76c616" category="list-text">ONTAP クラスタが起動し、実行中であることを確認します。</block>
+  <block id="c2c0a6bc429d35a2d508307c899f4398" category="list-text">CSHMで使用可能なすべての機能を使用するには、SSHを有効にします。</block>
+  <block id="0cfea6e2910f570cd17c24fb74c90378" category="inline-link">NVIDIAイーサネットスイッチ</block>
+  <block id="363c0c7cf08dfd2752b66f1fc2506a0a" category="list-text">対応するONTAPリリースバージョンに基づいて、イーサネットスイッチヘルスモニタ構成のzipファイルをダウンロードします。このファイルは、ページから入手でき<block ref="308b26f7678235b6ac179b42eaa22162" category="inline-link-rx"></block> ます。</block>
+  <block id="68de66680b1bf357acb893d8dfe0f0bc" category="list-text">NVIDIA SN2100ソフトウェアのダウンロードページで、* Nvidia CSHMファイル*を選択します。</block>
+  <block id="6b98b47c20b7ca9e9919fa3a77bf7814" category="list-text">[注意/必ずお読みください]ページで、同意するチェックボックスをオンにします。</block>
+  <block id="c36caaf00f9a67804cb39871b93b4fb1" category="list-text">[End User License Agreement]ページで、同意するチェックボックスを選択し、*[Accept &amp; Continue]*をクリックします。</block>
+  <block id="e5e0b87b73538c14eb1223ba2685b479" category="list-text">Nvidia CSHM File - Download（Nvidia CSHMファイル-ダウンロード）ページで、適切な設定ファイルを選択します。次のファイルを使用できます。</block>
+  <block id="4b96de8aec25594d2021f91d86aa38cb" category="open-title">ONTAP 9.15.1以降</block>
+  <block id="b834fb250d0f1e06556ff2af9ce370ff" category="list-text">X190006-PE.zip</block>
+  <block id="33ab7322815a985fdb6cbba64b9ffda9" category="list-text">X190006-PI.zip</block>
+  <block id="9fc9e8ea7a5cdfe68b4528fb16936bf1" category="open-title">ONTAP 9.11.1~9.14.1</block>
+  <block id="00032ac6acd20eb8310604aa0ac6a200" category="list-text">X190006-PE_PRIOR_9.15.1.zip</block>
+  <block id="6a9e7f50780a2f2b4e2b5999c1b1ae2b" category="list-text">X190006-PI_PRIOR_9.15.1.zip</block>
+  <block id="3e5315d19591c6790a6c062127cf9a8e" category="list-text">[[step2]]該当するzipファイルを内部Webサーバにアップロードします。</block>
+  <block id="e319ecf1cb942a0710da7d0d525af1db" category="list-text">クラスタ内のいずれかのONTAPシステムからadvancedモード設定にアクセスします。</block>
+  <block id="4072831dc74599297a173c0e1d86b538" category="list-text">switch health monitor configureコマンドを実行します。</block>
+  <block id="bdfd509ce621aa984c1f0a9cdf92ae88" category="list-text">使用しているONTAPのバージョンに応じて、コマンド出力の末尾が次のテキストになっていることを確認します。</block>
+  <block id="ff62e28086747c31b6e4bbd897aaaf54" category="paragraph">イーサネットスイッチヘルスモニタに構成ファイルがインストールされました。</block>
+  <block id="3f54ec95c3fc7563a38988f9c2a7a823" category="paragraph">SHMは設定ファイルをインストールしました。</block>
+  <block id="ab8296c5ef7a7b056b384680f89a9379" category="open-title">ONTAP 9.10.1</block>
+  <block id="74d14036e96594d67869316b84c6d566" category="paragraph">CSHMダウンロードパッケージが正常に処理されました。</block>
+  <block id="89c6b3e5f896b8d329ae4e4fe91cc812" category="paragraph">エラーが発生した場合は、NetAppサポートにお問い合わせください。</block>
+  <block id="a6fd16052b19595c024aa4e5bcb0b366" category="list-text">[[step6]]を実行すると検出されたイーサネットスイッチヘルスモニタのポーリング間隔が最大2倍になるまで待って<block ref="c9e6cd6140c9d8677df821c7cce2aac1" prefix=" " category="inline-code"></block>から、次の手順を完了します。</block>
+  <block id="c947c5faccdddd0a9a87be7895f50511" category="list-text">ONTAPシステムでコマンドを実行し<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block> 、監視対象フィールドが* True *に設定され、シリアル番号フィールドに* Unknown *が表示されていないクラスタスイッチが検出されていることを確認します。</block>
+  <block id="b954609be582bc6760c67ae6e58cd7a9" category="sidebar">CSHM構成ファイルのインストール</block>
 </blocks>

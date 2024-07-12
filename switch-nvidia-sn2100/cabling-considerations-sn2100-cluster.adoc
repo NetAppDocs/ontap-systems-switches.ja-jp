@@ -47,7 +47,7 @@ swp3-14
  a| 
 swp15-16
  a| 
-40 / 100GbEスイッチ間リンク（ISL）ポート
+100GbEスイッチ間リンク（ISL）ポート
 
 |===
 を参照してください https://hwu.netapp.com/Switch/Index["Hardware Universe"^] スイッチポートの詳細については、を参照してください。

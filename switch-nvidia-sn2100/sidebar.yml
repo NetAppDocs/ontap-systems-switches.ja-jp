@@ -36,6 +36,8 @@ entries:
     url: "/switch-nvidia-sn2100/install-onie-mode-sn2100-cluster.html"
   - title: RCFスクリプトをインストールする
     url: "/switch-nvidia-sn2100/install-rcf-sn2100-cluster.html"
+  - title: CSHM構成ファイルのインストール
+    url: "/switch-nvidia-sn2100/setup-install-cshm-file.html"
   - title: ログ収集を有効にします
     url: "/switch-nvidia-sn2100/CSHM_log_collection.html"
   - title: 監視のためのSNMPv3の設定
