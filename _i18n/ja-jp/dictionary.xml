@@ -5000,4 +5000,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="a6fd16052b19595c024aa4e5bcb0b366" category="list-text">[[step6]]を実行すると検出されたイーサネットスイッチヘルスモニタのポーリング間隔が最大2倍になるまで待って<block ref="c9e6cd6140c9d8677df821c7cce2aac1" prefix=" " category="inline-code"></block>から、次の手順を完了します。</block>
   <block id="c947c5faccdddd0a9a87be7895f50511" category="list-text">ONTAPシステムでコマンドを実行し<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block> 、監視対象フィールドが* True *に設定され、シリアル番号フィールドに* Unknown *が表示されていないクラスタスイッチが検出されていることを確認します。</block>
   <block id="b954609be582bc6760c67ae6e58cd7a9" category="sidebar">CSHM構成ファイルのインストール</block>
+  <block id="31c020d11cc321faf9c0793a662d1e53" category="list-text">スイッチcs2をリブートします。スイッチのリブート中にノードで報告される「cluster ports down」イベントとエラー出力はどちらも無視してかまいません<block ref="a9e34a08c2be7359540cbf7337dc5ce9" prefix=" " category="inline-code"></block> 。</block>
+  <block id="db82c22b5434946b4bc226a3b9b7888a" category="list-text">同じRCFを適用し、実行中の設定をもう一度保存します。これはRCFがQoSを利用するために必要であり、その間にスイッチをリブートしてRCFを2回ロードするTCAMの再設定が必要であるためです。</block>
 </blocks>
