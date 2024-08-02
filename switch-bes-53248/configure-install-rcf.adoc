@@ -1068,4 +1068,4 @@ system node autosupport invoke -node * -type all -message MAINT=END
 
 
 .次の手順
-link:configure-ssh.html["ログ収集のSSHを有効にする"]。
+link:configure-ssh.html["SSH を有効にします。"]です。

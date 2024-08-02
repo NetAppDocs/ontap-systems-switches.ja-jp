@@ -1,5 +1,5 @@
 ---
-permalink: switch-nvidia-sn2100/migrate-cisco-storage-switch-sn2100-storage.html 
+permalink: switch-nvidia-sn2100-storage/migrate-cisco-storage-switch-sn2100-storage.html 
 sidebar: sidebar 
 keywords: migrating to a storage switch with NVIDIA SN2100 storage switches, how to migrate 
 summary: ONTAP クラスタの古いCiscoスイッチは、無停止でNVIDIA SN2100ストレージスイッチに移行できます。 
@@ -332,6 +332,12 @@ node2      /lldp
             e5b    sw2  (b8:ce:f6:19:1a:7e)  swp2            -
 ----
 ====
+
+
+
+
+=== 手順3：構成を確認します
+
 . 最終的な構成を確認します。
 +
 `storage port show`
@@ -425,100 +431,6 @@ swp6       100G   Trunk/L2  SHFFG1826000102        e0b
 ====
 
 
-
-
-=== 手順3：手順 を完了します
-
-. 次の2つのコマンドを使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能を有効にします。
-+
-'system switch ethernet log setup-password 'および'system switch ethernet log enable-colion
-
-+
-「 system switch ethernet log setup -password 」と入力します
-
-+
-.例を示します
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log setup-password*
-Enter the switch name: <return>
-The switch name entered is not recognized.
-Choose from the following list:
-*sw1*
-*sw2*
-
-cluster1::*> *system switch ethernet log setup-password*
-
-Enter the switch name: *sw1*
-RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] *y*
-
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
-
-cluster1::*> *system switch ethernet log setup-password*
-
-Enter the switch name: *sw2*
-RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] *y*
-
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
-----
-====
-+
-その後に次のコマンドを入力
-
-+
-「システムスイッチのイーサネットログの有効化」
-
-+
-.例を示します
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *system  switch ethernet log enable-collection*
-
-Do you want to enable cluster log collection for all nodes in the cluster?
-{y|n}: [n] *y*
-
-Enabling cluster switch log collection.
-
-cluster1::*>
-----
-====
-+
-
-NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
-
-. スイッチログ収集機能を開始します。
-+
-`system switch ethernet log collect -device *`
-
-+
-10分待ってから、次のコマンドを使用してログ収集が成功したことを確認します。
-
-+
-`system switch ethernet log show`
-
-+
-.例を示します
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log show*
-Log Collection Enabled: true
-
-Index  Switch                       Log Timestamp        Status
------- ---------------------------- -------------------  ---------    
-1      sw1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
-2      sw2 (b8:ce:f6:19:1b:96)      4/29/2022 03:07:42   complete
-----
-====
 . 権限レベルを admin に戻します。
 +
 「特権管理者」
@@ -528,3 +440,6 @@ Index  Switch                       Log Timestamp        Status
 「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
 
 
+
+.次の手順
+link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。

@@ -614,4 +614,4 @@ cluster1::*> system node autosupport invoke -node \* -type all -message MAINT=EN
 
 
 .次の手順
-移行が完了したら、BES-53248クラスタスイッチのイーサネットスイッチヘルスモニタ（CSHM）をサポートするために必要な構成ファイルのインストールが必要になる場合があります。を参照してください link:CSHM_log_collection.html["ログ収集を有効にします"]。
+link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。

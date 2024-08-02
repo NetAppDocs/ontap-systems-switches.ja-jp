@@ -19,13 +19,38 @@ Cisco Nexus 9336C-FX2クラスタスイッチは、Cisco Nexus 9000プラット�
 
 ONTAP を実行しているシステムでCisco Nexus 9336C-FX2スイッチを初期設定するには、次の手順を実行します。
 
-. link:setup-worksheet-9336c-cluster.html["Cisco Nexus 9336C-FX2ケーブル接続ワークシートに記入します"]。ケーブル接続ワークシートの例には、スイッチからコントローラへの推奨されるポート割り当ての例が示されています。空白のワークシートには、クラスタのセットアップに使用できるテンプレートが用意されています。
-. link:install-switch-9336c-cluster.html["スイッチを設置します"]。スイッチハードウェアをセットアップします。
-. link:setup-switch-9336c-cluster.html["9336C-FX2クラスタスイッチを設定します"]。Cisco Nexus 9336C-FX2スイッチをセットアップします。
-. link:install-switch-and-passthrough-panel-9336c-cluster.html["Cisco Nexus 9336C-FX2スイッチをネットアップキャビネットに設置します"]。構成に応じて、Cisco Nexus 9336C-FX2スイッチとパススルーパネルは、スイッチに付属の標準ブラケットを使用してネットアップキャビネットに設置できます。
-. link:install-nxos-overview-9336c-cluster.html["NX-OSソフトウェアとRCFをインストールするための準備をします"]。準備手順に従って、Cisco NX-OSソフトウェアおよびリファレンス構成ファイル（RCF）をインストールします。
-. link:install-nxos-software-9336c-cluster.html["NX-OS ソフトウェアをインストールします"]。Nexus 9336C-FX2クラスタスイッチにNX-OSソフトウェアをインストールします。
-. link:install-nxos-rcf-9336c-cluster.html["リファレンス構成ファイル（ RCF ）のインストール"]。Nexus 9336C-FX2スイッチを初めてセットアップしたあとに、RCFをインストールします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
+. link:setup-worksheet-9336c-cluster.html["Cisco Nexus 9336C-FX2ケーブル接続ワークシートに記入します"]です。
++
+ケーブル接続ワークシートの例には、スイッチからコントローラへの推奨されるポート割り当ての例が示されています。空白のワークシートには、クラスタのセットアップに使用できるテンプレートが用意されています。
+
+. link:install-switch-9336c-cluster.html["スイッチを設置します"]です。
++
+スイッチハードウェアをセットアップします。
+
+. link:setup-switch-9336c-cluster.html["9336C-FX2クラスタスイッチを設定します"]です。
++
+Cisco Nexus 9336C-FX2スイッチをセットアップします。
+
+. link:install-switch-and-passthrough-panel-9336c-cluster.html["Cisco Nexus 9336C-FX2スイッチをネットアップキャビネットに設置します"]です。
++
+構成に応じて、Cisco Nexus 9336C-FX2スイッチとパススルーパネルは、スイッチに付属の標準ブラケットを使用してネットアップキャビネットに設置できます。
+
+. link:install-nxos-overview-9336c-cluster.html["NX-OSソフトウェアとRCFのインストールの準備"]です。
++
+準備手順に従って、Cisco NX-OSソフトウェアおよびリファレンス構成ファイル（RCF）をインストールします。
+
+. link:install-nxos-software-9336c-cluster.html["NX-OSソフトウェアのインストールまたはアップグレード"]です。
++
+Nexus 9336C-FX2クラスタスイッチで、NX-OSソフトウェアをインストールまたはアップグレードします。
+
+. link:install-nxos-rcf-9336c-cluster.html["RCFのインストールまたはアップグレード"]です。
++
+Nexus 9336C-FX2スイッチの初回セットアップ後にRCFをインストールまたはアップグレードします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
+
+. link:configure-ssh.html["Nexus 9336C-FX2クラスタスイッチでのSSHの有効化"]です。
++
+イーサネットスイッチヘルスモニタ（CSHM）およびログ収集機能を使用する場合は、スイッチでSSHを有効にします。
+
 
 
 

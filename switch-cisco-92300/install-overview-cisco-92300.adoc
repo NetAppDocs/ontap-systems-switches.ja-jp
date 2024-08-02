@@ -20,7 +20,6 @@ ONTAP を実行しているシステムでCisco Nexus 92300YCスイッチを初�
 . link:install-nxos-overview.html["NX-OSソフトウェアとRCFのインストールの準備"]。NX-OSソフトウェアおよびRCFをインストールするための準備をします。
 . link:install-nxos-software.html["NX-OS ソフトウェアをインストールします"]。Nexus 92300YCスイッチにNX-OSソフトウェアをインストールします。NX-OS は、 Cisco Systems が提供する Nexus シリーズイーサネットスイッチおよび MDS シリーズ Fibre Channel （ FC ）ストレージエリアネットワークスイッチのネットワークオペレーティングシステムです。
 . link:install-the-rcf-file.html["リファレンス構成ファイル（ RCF ）のインストール"]。RCFは、Nexus 92300YCスイッチを初めてセットアップしたあとにインストールします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
-. link:setup-install-cshm-file.html["クラスタスイッチヘルスモニタ（ CSHM ）構成ファイルをインストールします"]。Nexus 92300YCクラスタスイッチのクラスタスイッチヘルスモニタに適用可能な構成ファイルをインストールします。
 
 
 

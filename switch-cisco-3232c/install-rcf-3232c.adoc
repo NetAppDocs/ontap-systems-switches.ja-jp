@@ -758,3 +758,6 @@ RPC status:
 ----
 ====
 
+
+.次の手順
+link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]

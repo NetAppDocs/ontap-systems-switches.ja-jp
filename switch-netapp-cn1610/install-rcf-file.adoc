@@ -472,3 +472,6 @@ Configuration Saved!
 ====
 . 同じ手順を繰り返して、もう1つのスイッチcs1にRCFをインストールします。
 
+
+.次の手順
+link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]

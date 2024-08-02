@@ -21,17 +21,12 @@ ONTAP を実行しているシステムでCisco Nexus 9336C-FX2スイッチを�
 
 . link:setup-worksheet-9336c-storage.html["ケーブル接続ワークシートに記入"]。
 . link:install-9336c-storage.html["スイッチを設置します"]。
-. link:setup-switch-9336c-storage.html["スイッチを設定します"]。
-. link:install-switch-and-passthrough-panel-9336c-storage.html["ネットアップキャビネットにスイッチを設置"]。
-+
-構成に応じて、Cisco Nexus 9336C-FX2スイッチとパススルーパネルは、スイッチに付属の標準ブラケットを使用してネットアップキャビネットに設置できます。
-
+. link:setup-switch-9336c-storage.html["スイッチを設定します"]です。
+. link:install-switch-and-passthrough-panel-9336c-storage.html["NetAppキャビネットへのスイッチの設置"]です。
 . link:install-nxos-overview-9336c-storage.html["NX-OSおよびRCFのインストールを準備します"]。
 . link:install-nxos-software-9336c-storage.html["NX-OS ソフトウェアをインストールします"]。
 . link:install-nxos-rcf-9336c-storage.html["RCF構成ファイルをインストールします"]。
-+
-Nexus 9336C-FX2スイッチを初めてセットアップしたあとに、RCFをインストールします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
-
+. link:configure-ssh.html["SSH を有効にします。"]です。
 
 
 

@@ -42,10 +42,6 @@ entries:
     url: "/switch-cisco-9336c-fx2/install-nxos-rcf-9336c-cluster.html"
   - title: SSH を有効にします。
     url: "/switch-cisco-9336c-fx2/configure-ssh.html"
-  - title: ログ収集を有効にします
-    url: "/switch-cisco-9336c-fx2/CSHM_log_collection.html"
-  - title: 監視のためのSNMPv3の設定
-    url: "/switch-cisco-9336c-fx2/CSHM_snmpv3.html"
 - title: スイッチを移行
   pdf-filename: MIGRATE_SWITCHES_9336c-FX2
   entries:

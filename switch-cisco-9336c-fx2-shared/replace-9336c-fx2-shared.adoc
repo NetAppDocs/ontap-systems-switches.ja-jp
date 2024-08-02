@@ -506,48 +506,7 @@ Total entries displayed: 4
 ====
 
 
-. [[step15]] 次のコマンドを使用して、スイッチ関連のログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能を有効にします。
-+
-** 「システムスイッチイーサネットログセットアップパスワード」
-** 「システムスイッチのイーサネットログの有効化」
-+
-.例を示します
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log setup-password*
-Enter the switch name: <return>
-The switch name entered is not recognized.
-Choose from the following list:
-*sh1*
-*sh2*
-cluster1::*> *system switch ethernet log setup-password*
-Enter the switch name: *sh1*
-RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] *y*
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
-cluster1::*> *system switch ethernet log setup-password*
-Enter the switch name: *sh2*
-RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] *y*
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
-cluster1::*> system  switch ethernet log enable-collection
-Do you want to enable cluster log collection for all nodes in the cluster? y|n}: [n] *y*
-Enabling cluster switch log collection.
-cluster1::*>
-----
-====
-
-
-
-
-
-NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
-
-. [[step16]] 古いスイッチ sh2 のストレージポートを新しいスイッチ newsh2 に移動します。
+. [[step15]] 古いスイッチ sh2 のストレージポートを新しいスイッチ newsh2 に移動します。
 . HA ペア 1 の共有スイッチ newsh2 に接続されたストレージが正常であることを確認します。
 . HAペア2の共有スイッチnewsh2に接続されたストレージが正常であることを確認します。
 +
@@ -578,7 +537,7 @@ node2
 ====
 
 
-. [[step19]]シェルフが正しくケーブル接続されていることを確認します。
+. [[step18]]シェルフが正しくケーブル接続されていることを確認します。
 +
 `storage shelf port show -fields remote- device,remote-port`
 
@@ -604,10 +563,13 @@ shelf id remote-port  remote-device
 ====
 
 
-. [[step20]] 古いスイッチ sh2 を削除します。
+. [[step19]] 古いスイッチ sh2 を削除します。
 . スイッチ sh1 と新しいスイッチ newsh1 について、上記の手順を繰り返します。
 . ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
 +
 「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
 
 
+
+.次の手順
+link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。

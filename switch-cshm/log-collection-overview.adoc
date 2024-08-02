@@ -1,0 +1,16 @@
+---
+permalink: switch-cshm/log-collection-overview.html 
+sidebar: sidebar 
+keywords: cshm, cluster, storage, switch logs, debugging, collection 
+summary: 提供されているコマンドを使用できます。 
+---
+= ログ収集の概要
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ログ収集を設定すると、AutoSupportで収集される定期的なデータを1時間ごとに収集できるようになり、詳細なサポートログを要求できます。
+
+詳細については、を参照してください link:config-log-collection.html["ログ収集の設定"] 。

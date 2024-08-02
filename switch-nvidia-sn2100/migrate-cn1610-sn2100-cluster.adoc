@@ -495,7 +495,7 @@ swp16      100G   BondMember  sw1                 swp16
 
 
 
-=== 手順3：手順 を完了します
+=== 手順3：構成を確認します
 
 . クラスタ LIF で自動リバートを有効にします。
 +
@@ -523,88 +523,6 @@ Cluster
             node2_clus2  up/up    169.254.19.183/16  node2         e3b     true
 ----
 ====
-. ログ収集を設定するには、スイッチごとに次のコマンドを実行します。ログ収集用のスイッチ名、ユーザ名、およびパスワードの入力を求められます。
-+
-「システムスイッチイーサネットログセットアップ - パスワード」
-
-+
-.例を示します
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log setup-password*
-Enter the switch name: *<return>*
-The switch name entered is not recognized.
-Choose from the following list:
-*sw1*
-*sw2*
-
-cluster1::*> *system switch ethernet log setup-password*
-
-Enter the switch name: *sw1*
-Would you like to specify a user other than admin for log collection? {y|n}: *n*
-
-Enter the password: *<enter switch password>*
-Enter the password again: *<enter switch password>*
-
-cluster1::*> *system switch ethernet log setup-password*
-
-Enter the switch name: *sw2*
-Would you like to specify a user other than admin for log collection? {y|n}: *n*
-
-Enter the password: *<enter switch password>*
-Enter the password again: *<enter switch password>*
-----
-====
-. ログ収集を開始するには、次のコマンドを実行し、deviceを前のコマンドで使用したスイッチに置き換えます。両方のタイプのログ収集が開始されます。詳細な*サポート*ログと*定期的な*データの1時間ごとの収集です。
-+
-`system switch ethernet log modify -device _<switch-name>_ -log-request true`
-
-+
-.例を示します
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log modify -device cs1 -log-request true*
-
-Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
-
-Enabling cluster switch log collection.
-
-cluster1::*> *system switch ethernet log modify -device cs2 -log-request true*
-
-Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
-
-Enabling cluster switch log collection.
-----
-====
-+
-10分待ってから、ログ収集が完了したことを確認します。
-
-+
-`system switch ethernet log show`
-
-+
-.例を示します
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log show*
-Log Collection Enabled: true
-
-Index  Switch                       Log Timestamp        Status
------- ---------------------------- -------------------  ---------    
-1      cs1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
-2      cs2 (b8:ce:f6:19:1b:96)      4/29/2022 03:07:42   complete
-----
-====
-+
-
-CAUTION: これらのコマンドのいずれかでエラーが返された場合、またはログの収集が完了しない場合は、NetAppサポートにお問い合わせください。
-
 . 権限レベルを admin に戻します。
 +
 「特権管理者」
@@ -614,3 +532,6 @@ CAUTION: これらのコマンドのいずれかでエラーが返された場�
 「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
 
 
+
+.次の手順
+link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。

@@ -11,7 +11,7 @@ summary: クラスタスイッチヘルスモニタ（ CSHM ）およびログ�
 
 
 [role="lead"]
-クラスタスイッチヘルスモニタ（CSHM）およびログ収集機能を使用する場合は、SSHキーを生成してからクラスタスイッチでSSHを有効にする必要があります。
+イーサネットスイッチヘルスモニタ（CSHM）機能とログ収集機能を使用する場合は、SSHキーを生成してから、クラスタスイッチでSSHを有効にする必要があります。
 
 .手順
 . SSHが無効になっていることを確認します。
@@ -119,4 +119,4 @@ SCP server Administrative Mode: ............... Enabled
 
 
 .次の手順
-link:CSHM_log_collection.html["ログ収集を有効にします"]。
+link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。

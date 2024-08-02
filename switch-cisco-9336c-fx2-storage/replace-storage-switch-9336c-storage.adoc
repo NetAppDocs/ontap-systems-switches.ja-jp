@@ -265,3 +265,6 @@ storage::*>
 「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
 
 
+
+.次の手順
+link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。

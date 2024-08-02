@@ -1,0 +1,57 @@
+---
+permalink: switch-cshm/log-collection-troubleshoot.html 
+sidebar: sidebar 
+keywords: cshm, cluster, storage, switch logs, debugging, collection 
+summary: ここで提供されているコマンドを使用することができます。 
+---
+= ログ収集のトラブルシューティング
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ログ収集機能によって次のいずれかのエラーステータスが報告された場合（コマンドの出力に表示され `system switch ethernet log show` ます）は、対応するデバッグ手順を実行してください。
+
+|===
+
+
+| *ログ収集エラーステータス* | *解像度* 
+
+
+ a| 
+* RSAキーがありません*
+ a| 
+ONTAP SSHキーを再生成します。
+
+
+
+ a| 
+*パスワードの切り替えエラー*
+ a| 
+クレデンシャルを検証し、SSH接続をテストし、ONTAP SSHキーを再生成します。手順については、スイッチのマニュアルを確認するか、NetAppサポートにお問い合わせください。
+
+
+
+ a| 
+* FIPSにECDSAキーがありません*
+ a| 
+FIPSモードが有効になっている場合は、再試行する前にスイッチでECDSAキーを生成する必要があります。
+
+
+
+ a| 
+*既存のログが見つかりました*
+ a| 
+スイッチ上の以前のログ収集ファイルを削除します。
+
+
+
+ a| 
+*スイッチダンプログエラー*
+ a| 
+スイッチユーザにログ収集権限があることを確認します。上記の前提条件を参照してください。
+
+|===
+
+NOTE: 解決策の詳細が機能しない場合は、NetAppサポートにお問い合わせください。

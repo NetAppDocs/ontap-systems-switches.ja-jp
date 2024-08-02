@@ -34,16 +34,10 @@ entries:
     url: "/switch-nvidia-sn2100/install-cumulus-mode-sn2100-cluster.html"
   - title: Cumulus LinuxをONIEモードでインストールします
     url: "/switch-nvidia-sn2100/install-onie-mode-sn2100-cluster.html"
-  - title: RCFスクリプトをインストールする
-    url: "/switch-nvidia-sn2100/install-rcf-sn2100-cluster.html"
-  - title: CSHM構成ファイルのインストール
-    url: "/switch-nvidia-sn2100/setup-install-cshm-file.html"
-  - title: ログ収集を有効にします
-    url: "/switch-nvidia-sn2100/CSHM_log_collection.html"
-  - title: 監視のためのSNMPv3の設定
-    url: "/switch-nvidia-sn2100/CSHM_snmpv3.html"
   - title: Cumulus Linuxバージョンをアップグレードします
     url: "/switch-nvidia-sn2100/upgrade-cl-version.html"
+  - title: RCFスクリプトをインストールする
+    url: "/switch-nvidia-sn2100/install-rcf-sn2100-cluster.html"
 - title: スイッチを移行
   pdf-filename: migrate_switches_sn2100
   entries:

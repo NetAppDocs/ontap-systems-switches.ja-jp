@@ -479,7 +479,7 @@ node2      /cdp
 
 
 
-=== 手順3：手順 を完了します
+=== 手順3：構成を確認します
 
 . クラスタ LIF で自動リバートを有効にします。
 +
@@ -507,76 +507,6 @@ Cluster
             node2_clus2  up/up    169.254.19.183/16  node2         e3b     true
 ----
 ====
-. ログ収集を設定するには、スイッチごとに次のコマンドを実行します。ログ収集用のスイッチ名、ユーザ名、およびパスワードの入力を求められます。
-+
-「システムスイッチイーサネットログセットアップ - パスワード」
-
-+
-.例を示します
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log setup-password*
-Enter the switch name: <return>
-The switch name entered is not recognized.
-Choose from the following list:
-*cs1*
-*cs2*
-
-cluster1::*> *system switch ethernet log setup-password*
-
-Enter the switch name: *cs1*
-RSA key fingerprint is e5:8b:c6:dc:e2:18:18:09:36:63:d9:63:dd:03:d9:cc
-Do you want to continue? {y|n}::[n] *y*
-
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
-
-cluster1::*> *system switch ethernet log setup-password*
-
-Enter the switch name: *cs2*
-RSA key fingerprint is 57:49:86:a1:b9:80:6a:61:9a:86:8e:3c:e3:b7:1f:b1
-Do you want to continue? {y|n}:: [n] *y*
-
-Enter the password: <enter switch password>
-Enter the password again: <enter switch password>
-----
-====
-. ログ収集を開始するには、次のコマンドを実行し、deviceを前のコマンドで使用したスイッチに置き換えます。両方のタイプのログ収集が開始されます。詳細な*サポート*ログと*定期的な*データの1時間ごとの収集です。
-+
-`system switch ethernet log modify -device _<switch-name>_ -log-request true`
-
-+
-.例を示します
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log modify -device cs1 -log-request true*
-
-Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
-
-Enabling cluster switch log collection.
-
-cluster1::*> *system switch ethernet log modify -device cs2 -log-request true*
-
-Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
-
-Enabling cluster switch log collection.
-cluster1::*>
-----
-====
-+
-10分待ってから、次のコマンドを使用してログ収集が成功したことを確認します。
-
-+
-`system switch ethernet log show`
-
-+
-
-NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
-
 . 権限レベルを admin に戻します。
 +
 「特権管理者」
@@ -586,3 +516,6 @@ NOTE: これらのコマンドのいずれかでエラーが返される場合�
 「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
 
 
+
+.次の手順
+link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。

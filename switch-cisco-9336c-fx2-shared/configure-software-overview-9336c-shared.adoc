@@ -11,12 +11,10 @@ summary: Cisco Nexus 9336C-FX2共有スイッチのソフトウェア設定の�
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2スイッチのソフトウェアをインストールおよび設定するには、次の手順を実行します。
+Cisco Nexus 9336C-FX2共有スイッチのソフトウェアをインストールおよび設定する手順は、次のとおりです。
 
 . link:prepare-nxos-rcf-9336c-shared.html["NX-OSおよびRCFのインストールを準備します"]。
 . link:install-nxos-software-9336c-shared.html["NX-OS ソフトウェアをインストールします"]。
 . link:install-nxos-rcf-9336c-shared.html["RCFをインストールします"]。
-+
-Nexus 9336C-FX2スイッチを初めてセットアップしたあとに、RCFをインストールします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
-
+. link:configure-ssh.html["SSH を有効にします。"]です。
 

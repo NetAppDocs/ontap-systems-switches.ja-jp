@@ -356,3 +356,6 @@ NetAppでは、System Managerを使用して新しいクラスタをセットア
 System Managerでは、ノード管理IPアドレスの割り当て、クラスタの初期化、ローカル階層の作成、プロトコルの設定、初期ストレージのプロビジョニングなど、クラスタのセットアップと設定のワークフローをシンプルかつ簡単に実行できます。
 
 に進みます https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["System Managerを使用して新しいクラスタにONTAPを設定します"] を参照してください。
+
+.次の手順
+link:../switch-cisco-9336c-fx2-storage/configure-ssh.html["SSH を有効にします。"]です。

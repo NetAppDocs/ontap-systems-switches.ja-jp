@@ -1,0 +1,20 @@
+---
+permalink: switch-cshm/monitor-troubleshoot.html 
+sidebar: sidebar 
+keywords: cshm, cluster, storage, switch logs, debugging, collection 
+summary: 使用できるコマンドは次のとおりです。 
+---
+= アラートのトラブルシューティング
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスタ内のイーサネットスイッチで障害、リスク、または重大な状態が検出された場合にアラートが生成されます。
+
+アラートが生成された場合は、クラスタのヘルスステータスがデグレードと報告されます。生成されるアラートには、デグレード状態のシステムヘルスへの対応に必要な情報が含まれます。
+
+使用可能なイーサネットスイッチヘルスモニタアラートを表示するには、次のコマンドを実行します。 `system health alert definition show -monitor ethernet-switch`
+
+アラートの詳細な解決方法については、ナレッジベースの記事を参照して https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Cluster_Switch_Health_Monitor_CSHM_Alert_Resolution_Guide["スイッチヘルスモニタアラート解決ガイド"^] ください。

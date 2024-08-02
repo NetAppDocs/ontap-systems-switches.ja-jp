@@ -1,0 +1,14 @@
+---
+permalink: switch-cshm/cshm-overview.html 
+sidebar: sidebar 
+keywords: cshm, cluster, storage, switch logs, debugging, collection 
+summary: イーサネットスイッチヘルスモニタ（CSHM）は、クラスタネットワークスイッチとストレージネットワークスイッチの動作の健全性を確認し、デバッグ用にスイッチのログを収集します。 
+---
+= スイツチヘルスモニタノカイヨウ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+イーサネットスイッチヘルスモニタ（CSHM）は、クラスタネットワークスイッチとストレージネットワークスイッチの動作の健全性を確認し、デバッグ用にスイッチのログを収集します。
