@@ -5053,4 +5053,12 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="114c27cb863250ce041d62daae03a69e" category="sidebar">スイッチヘルスの監視</block>
   <block id="d4a8473f83e1246e0b3ab08e2034db7c" category="sidebar">ログ収集</block>
   <block id="75d763e21c6a88838d01217650c14bcb" category="sidebar">ログ収集スイッチヘルス</block>
+  <block id="d9566e63378c0ff8504c903128e5c6f6" category="inline-link-macro">SNMPv3の設定（オプション）</block>
+  <block id="e2101619626dc7b8ea25749787797515" category="paragraph"><block ref="a294afff18b68f8c1e4f78aeef5ef294" category="inline-link-macro-rx"></block>です。</block>
+  <block id="96a5ba855b4ee3dba60ecf722a706b29" category="inline-link-macro">CSHMファイルをインストールする</block>
+  <block id="54f593b53357d530cce6870c293a0379" category="list-text"><block ref="bc8e6b3d8a605e692bda90d2d873314b" category="inline-link-macro-rx"></block>です。</block>
+  <block id="446a9723b131c4606a1b6d581fef9f10" category="paragraph">NVIDIAクラスタスイッチのイーサネットスイッチヘルスモニタ用の構成ファイルをインストールできます。</block>
+  <block id="2cd1b70f79d5acd7ffb2c204f4069175" category="summary">この手順を使用して、NVIDIA SN2100ストレージスイッチのクラスタスイッチヘルスモニタ用の構成ファイルをインストールできます。</block>
+  <block id="d57382f230671f8cd52f47dc80838934" category="paragraph">構成ファイルを適用してもモデルに*その他*が表示される場合は、NetAppサポートにお問い合わせください。</block>
+  <block id="762421c7b0a81d02d689a9f2e22ee18d" category="sidebar">CSHMファイルのインストール</block>
 </blocks>

@@ -234,5 +234,5 @@ cluster1::*> *system switch ethernet log show -instance*
 
 CAUTION: ログ収集機能によってエラーステータスが報告された場合（の出力に表示され `system switch ethernet log show`ます）、詳細については、を参照してください link:log-collection-troubleshoot.html["ログ収集のトラブルシューティング"] 。
 
-|===
-|===
+.次の手順
+link:config-snmpv3.html["SNMPv3の設定（オプション）"]です。

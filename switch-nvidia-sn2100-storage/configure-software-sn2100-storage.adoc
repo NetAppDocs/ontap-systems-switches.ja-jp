@@ -21,4 +21,8 @@ Cumulus Linux（CL）OSは、スイッチがCumulus LinuxまたはONIEを実行�
 +
 クラスタリングアプリケーションとストレージアプリケーション用に2つのRCFスクリプトが用意されています。
 
+. link:setup-install-cshm-file.html["CSHMファイルをインストールする"]です。
++
+NVIDIAクラスタスイッチのイーサネットスイッチヘルスモニタ用の構成ファイルをインストールできます。
+
 
