@@ -336,6 +336,7 @@ NOTE: RCF を初めて適用するときは、「 Error ： Failed to write VSH 
 
 
 
+. 以前のカスタマイズをスイッチの設定に再適用します。link:cabling-considerations-92300.html["ケーブル接続と構成に関する考慮事項を確認"]必要なその他の変更の詳細については、を参照してください。
 . RCF のバージョンとスイッチの設定が正しいことを確認したら、 running-config ファイルを startup-config ファイルにコピーします。
 +
 Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズスイッチ"^] ガイド。

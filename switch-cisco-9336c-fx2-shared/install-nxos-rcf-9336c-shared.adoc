@@ -123,6 +123,7 @@ g mode:
 
 
 
+. 以前のカスタマイズをスイッチの設定に再適用します。link:cabling-considerations-9336c-fx2.html["ケーブル接続と構成に関する考慮事項を確認"]必要なその他の変更の詳細については、を参照してください。
 . RCF のバージョンとスイッチの設定が正しいことを確認したら、 running-config ファイルを startup-config ファイルにコピーします。
 +
 `copy running-config startup-config`
@@ -371,4 +372,4 @@ System Managerでは、ノード管理IPアドレスの割り当て、クラス�
 に進みます https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["System Managerを使用して新しいクラスタにONTAPを設定します"] を参照してください。
 
 .次の手順
-link:../switch-cisco-9336c-fx2-storage/configure-ssh.html["SSH を有効にします。"]です。
+link:configure-ssh.html["SSH を有効にします。"]です。

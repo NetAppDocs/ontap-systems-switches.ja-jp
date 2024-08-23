@@ -2282,7 +2282,6 @@
   <block id="d35d5ab77a6267b38526b184dcfce0af" category="list-text">ポートe0aとe0b上のAFF A800</block>
   <block id="b9017574c175e97b1d6c5e950a79e4c7" category="list-text">ポートe0gとe0hにAFF A320を追加します</block>
   <block id="b1e03e9ce1f7041c2da53fa42cd21af3" category="paragraph">この問題 を解決するには、次の手順を実行します。</block>
-  <block id="ee42c1d9d1520c3cdd715411436b7999" category="admonition">10G / 25G QSAを使用して、ブレークアウト以外の40 / 100Gポートを使用します。ブレークアウト用に設定されたポートにはQSAアダプタを挿入しないでください。</block>
   <block id="2e48063923d7005a1d5b4c086c0a902a" category="summary">NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10/25/40/100GbEイーサネットスイッチです。SN2100スイッチは、ONTAP 9.10.1のクラスタおよびストレージアプリケーションに、異なるスイッチペアを介して対応します。</block>
   <block id="736869e2dc47a4e8d50ebe15f7663677" category="doc">NVIDIA SN2100スイッチをセットアップして設定します</block>
   <block id="1a29ca4be6c9125e8ac9fccfa8df289c" category="summary">障害のあるNVIDIA SN2100ストレージスイッチを無停止手順 \（NDU \）で交換します。</block>
@@ -2568,20 +2567,8 @@
   <block id="c564f12ef0efbf127f3858fd51aa1bfb" category="cell">*スイッチポート*</block>
   <block id="3b5190029401dfe23a0a72a90e01a255" category="cell">*ポートの使用状況*</block>
   <block id="5fd6f50ffed943141f031543ab15c5c3" category="paragraph">swp1s0-3</block>
-  <block id="38c08a7df2ddfcda1cd914c471b45a0d" category="paragraph">10/40クラスタポートノード</block>
   <block id="3226294083a7703912d2bb83f5ed65bd" category="paragraph">swp2s0-3</block>
-  <block id="39924b64204be181666ab697dc299202" category="paragraph">25：100クラスタポートノード</block>
-  <block id="6877c07b3e2d6db48f28f32420bc2010" category="paragraph">swp3-14 40/100クラスタポートノード</block>
-  <block id="92a2157c968b6a4a7631b737b57c1d35" category="paragraph">swp15-16 40/100 Inter-Switch Link（ISL；スイッチ間リンク）ポート</block>
   <block id="a8b3385461e026cd59cbc121f290ce13" category="paragraph">を参照してください<block ref="ba81a2074219dbc1e842c96a03d02ea8" category="inline-link-rx"></block> スイッチポートの詳細については、を参照してください。</block>
-  <block id="431e14f4180345b196683a41e85d8768" category="section-title">光接続</block>
-  <block id="ca7682f7c04d00e4194019da895757c8" category="paragraph">SN2100スイッチでは、X1151A NIC、X1146A NIC、またはオンボード100GbEポートを使用した場合にのみ、光接続がサポートされます。例：</block>
-  <block id="d8143a2f74ed0aaddb9c42f8329343b5" category="section-title">QSAアダプタ</block>
-  <block id="9800eac46011eb652a03229615cb7394" category="paragraph">QSAアダプタを使用してプラットフォーム上のオンボードインテルクラスタポートに接続した場合、すべてのリンクが表示されるわけではありません。FAS2750、AFF A300、FAS8200（オール10G）、AFF A250（25G）などのプラットフォームが該当します。</block>
-  <block id="96860f68dd00843c4cb56864a29f5c87" category="list-text">Intel 10Gの場合、swp1s0-3リンク速度を10000に手動で設定し、オートネゴシエーションをオフに設定します。</block>
-  <block id="12a7ab6e6b950f63d80a4a310e02bd1e" category="list-text">Chelsio 25Gの場合、swp2s0～3リンク速度を25000に手動で設定し、オートネゴシエーションをオフに設定します。</block>
-  <block id="88bef4a61889e60ab41863d981d73b86" category="section-title">スイッチポートの速度</block>
-  <block id="e137cd6adbf4837405bfdfa337a0793f" category="paragraph">スイッチポートのトランシーバによっては、スイッチポートの速度を固定の速度に設定しなければならない場合があります。10Gおよび25Gブレークアウトポートを使用する場合は、自動ネゴシエーションがオフになっていて、スイッチのポート速度をハードセットしていることを確認してください。例：</block>
   <block id="106f56409094e8675dc6d648c4e5ab5d" category="paragraph"><block ref="9a00636def01671b999a7c1df59762ff" category="inline-link-macro-rx"></block>。</block>
   <block id="efeb406865c5500553bf0ee6711eb714" category="summary">NVIDIA SN2100スイッチのインストールとメンテナンスについては、すべての要件と推奨されるドキュメントを確認してください。</block>
   <block id="b6b0d0194b5b5cf69cccbe4389837b3e" category="doc">NVIDIA SN2100スイッチの概要と要件</block>
@@ -3451,7 +3438,6 @@
   <block id="14c23670b212054fdcfb3f366efd9cbb" category="paragraph">「フロントエンド」スイッチはホストストレージへの接続を提供し、「バックエンド」クラスタスイッチは2台以上のネットアップコントローラ間の接続を提供します。</block>
   <block id="ac8e8cb9a1b4a8efd50c977ead82d20b" category="paragraph">クラスタスイッチでは、3つ以上のノードでONTAP クラスタを構築できます。ネットアップがサポートしているクラスタスイッチは次のとおりです。</block>
   <block id="4dd13a124f96d89e0fd6c36f6d82e131" category="list-text">Broadcom BES-53248 の場合</block>
-  <block id="b7d78f68022187a2bd65e5a79d764891" category="paragraph">ストレージスイッチを使用すると、SAN（ストレージエリアネットワーク）内のサーバとストレージアレイの間でデータをルーティングできます。ネットアップがサポートしているクラスタスイッチは次のとおりです。</block>
   <block id="e5de2aac752edf0c07f6f662681a46cf" category="paragraph">共有スイッチを使用すると、クラスタとストレージの機能を共有スイッチ構成に組み合わせることができ、共有クラスタとストレージのRCFを使用できます。ネットアップがサポートする共有スイッチは次のとおりです。</block>
   <block id="453eb2af9200692fdb39bb88f6f41545" category="paragraph">次のストレージスイッチは、購入できなくなりましたが、引き続きサポートされます。</block>
   <block id="2027518664727205d8bb71d3a3948f25" category="doc">クラスタスイッチ、ストレージスイッチ、共有スイッチを導入して運用を開始できます</block>
@@ -4083,8 +4069,6 @@
   <block id="4db57c36adcedbf3d48c546b8a964490" category="list-text"><block ref="4d9dc029304fd2614ef7b9bca43ee36d" prefix="" category="inline-code"></block></block>
   <block id="6d882d10695e4f3595987a4c3fc3b0d4" category="list-text"><block ref="2aa6f22da2ac5e9b2e1e6d3643ea273e" prefix="" category="inline-code"></block></block>
   <block id="9c1398e0fe6bc7229e870295da6e50f0" category="list-text">をリロードします<block ref="b0df6da856b1d2d594adfbdfe27a1336" prefix=" " category="inline-code"></block> サービス</block>
-  <block id="1892645d2782c9bf9dc34851d08c3fc0" category="inline-link">こちらの技術情報</block>
-  <block id="3415ad7957144776adc29fe727ecd053" category="paragraph">を参照してください<block ref="5f1cba074f9c9f92027bd9e16fc96408" category="inline-link-rx"></block> を参照してください。</block>
   <block id="45ac1916de26f6f51168dd562a7dfba5" category="paragraph">Cumulus Linux 4.4.2では、X1151A NIC、X1146A NIC、またはオンボード100GbEポートを搭載したSN2100スイッチで銅線接続はサポートされません。例：</block>
   <block id="4038c0e6561afda23a992fb3c5771bed" category="paragraph">プラットフォームの10GbE / 25GbEクラスタポートへのQSAアダプタを使用して接続すると、リンクが稼働しないことがあります。</block>
   <block id="65a7722b91e57b456663ad9dfbce3756" category="list-text">10GbEの場合は、swp1s0-3リンク速度を手動で10000に設定し、自動ネゴシエーションをoffに設定します。</block>
@@ -4130,7 +4114,6 @@
   <block id="b70d80924ca5c08e45b9b84343687a46" category="section-title">レガシーライセンス</block>
   <block id="e6459831eff3ab73436a3472b543daed" category="paragraph">次の表に、BES-53248クラスタスイッチで使用できる従来のライセンスを示します。</block>
   <block id="5c60227e684a42ed2c4295981335965a" category="list-text">SSHが無効になっていることを確認します。</block>
-  <block id="810bc3d02021061ba2b8f87b703a66dd" category="paragraph">ログ収集機能を使用して、ONTAP でスイッチ関連のログファイルを収集できます。</block>
   <block id="fecbf70623c5c07c3f3c4c8793d5061b" category="list-text">現在のRCFファイル（から入手可能）<block ref="b4c2fb45a290e6214474529bd84dd3bc" category="inline-link-rx"></block> ページ</block>
   <block id="23c89511c80ceef00a8d3343b5f08569" category="list-text">EFOSのみをインストールして現在のRCFバージョンを維持する場合は、目的のブートイメージが反映されたRCFのブート設定が必要です。現在のブートイメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。</block>
   <block id="3a6a9877fc8c73a9267914b786517ca9" category="inline-link">リモート接続を維持したままBroadcomインターコネクトスイッチの設定をクリアする方法</block>
@@ -4416,7 +4399,6 @@
   <block id="242513ff76ac739e35a8e7e168d947bd" category="list-text">switch health monitor configureコマンドを実行する<block ref="0477ef599648fe2dbbf01945805f0e88" prefix=" " category="inline-code"></block>：</block>
   <block id="174ee6e9c9130ef3e6ceab7f0ab7356c" category="list-text">コマンドを実行します<block ref="694b56ad85eb627acc97ea9295f39018" prefix=" " category="inline-code"></block> ONTAPシステムで、[Monitored]フィールドが[True]に設定されているクラスタスイッチが検出されていることを確認します。</block>
   <block id="c94eee10204c293e476c9b772d10ddfe" category="admonition">以前のバージョンのONTAPにリバートする場合は、9336C-FX2クラスタスイッチのSHMを有効にするために、SHM構成ファイルを再度インストールする必要があります。</block>
-  <block id="669c1a3fa77bc8a049e5cd4a16e5cff8" category="paragraph">9336C-FX2クラスタスイッチ* CLI *を使用して環境がセットアップされていることを確認します。</block>
   <block id="680284a2e0d6a86aafc85099ca58d7af" category="list-text">イーサネットスイッチヘルスモニタのログ収集機能のパスワードを作成します。</block>
   <block id="3fc74bed2ec666d227e966120d5c4160" category="inline-link">バグ1570339</block>
   <block id="a9881d2bc89c135aee3c1490acc55259" category="inline-link">40GbEから100GbEへの変換後のT6ポートのCRCエラー</block>
@@ -4498,7 +4480,6 @@
   <block id="8d36506446d5ad8477c75d9150e6528f" category="list-text">スイッチのヘルスモニタが有効になっている必要があります。これを確認するには、<block ref="83bb5774e6e4dc96959b12bfa4334f18" prefix=" " category="inline-code"></block> フィールドは、<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block> コマンドを実行します</block>
   <block id="09a5c8e72e479c23dfcdb0045312203a" category="list-text">ログ収集を設定するには、スイッチごとに次のコマンドを実行します。ログ収集用のスイッチ名、ユーザ名、およびパスワードの入力を求められます。</block>
   <block id="51e57b530a227b04924d2803cdc52930" category="list-text">ログ収集を開始するには、次のコマンドを実行し、deviceを前のコマンドで使用したスイッチに置き換えます。両方のタイプのログ収集が開始されます。詳細な*サポート*ログと*定期的な*データの1時間ごとの収集です。</block>
-  <block id="231cf4c70d866b616c21baddaeed0696" category="paragraph-title">トラブルシューティング</block>
   <block id="37c0786b751e8b6bed2adbf850ab884e" category="paragraph">ログ収集機能によって次のいずれかのエラーステータスが報告された場合（の出力に表示されます）<block ref="88354d538ba5d4e1746193ec5949ab4b" prefix=" " category="inline-code"></block>)で、対応するデバッグ手順を試します。</block>
   <block id="f766c25c90ea3bb9aa3798d25e0a5087" category="cell">*ログ収集エラーステータス*</block>
   <block id="2d424e5dd89f6819ff42231c7a18b118" category="cell">*解像度*</block>
@@ -4520,11 +4501,6 @@
   <block id="7645c6b839b29d79d56508ac59b17a0f" category="paragraph"><block ref="e455ca07bfb78eb821e00f72366d7972" prefix="" category="inline-code"></block></block>
   <block id="d4d693d9dd779d0daf149c2e448b60b2" category="list-text">新しく作成したSNMPv3ユーザで照会するシリアル番号が、CSHMポーリング期間の完了後に前の手順で説明したものと同じであることを確認します。</block>
   <block id="28444591fb832d5dcae593ad2a8f56da" category="admonition">ログ収集専用に使用するユーザを（adminユーザに加えて）RCFで指定する必要があります。</block>
-  <block id="f2a9c66f4943798b57467021b65ab75a" category="list-text">リファレンス構成ファイル（RCF）を適用する場合は、ログ収集用のユーザを指定する必要があります。デフォルトでは、このユーザは「admin」に設定されています。別のユーザを使用する場合は、RCFの*# SHM User * sセクションで指定する必要があります。</block>
-  <block id="41418696440702a63005a485c96de621" category="list-text">ユーザは* nv show *コマンドにアクセスできる必要があります。追加するには、次のコマンドを実行します。<block ref="d019363df09b88c795c1354553c6fe8f" prefix=" " category="inline-code"></block> ユーザをユーザに置き換えてログ収集を行います。</block>
-  <block id="f9659d3e6fcf03c716c20b733c8e68fc" category="list-text">ログ収集を開始するには、次のコマンドを実行し、deviceを前のコマンドで使用したスイッチに置き換えます。これにより、両方のタイプのログ収集が開始されます。<block ref="db5eb84117d06047c97c9a0191b5fffe" prefix=" " category="inline-code"></block> ログと時間単位の収集<block ref="cdcc32a064503184053bd2018d1c0e7e" prefix=" " category="inline-code"></block> データ：</block>
-  <block id="b9c519617ddb8983725afb0a6830a2f9" category="paragraph">以前のログ収集ディレクトリとにある「.tar」ファイルを削除します。<block ref="0793027f48f71fa4fc10baf29d75e685" prefix=" " category="inline-code"></block> スイッチ上。</block>
-  <block id="c2d06740bdd189b6a9e5c66037c2fca6" category="list-text">CSHMポーリング期間が完了したら、新しく作成したSNMPv3ユーザに照会するシリアル番号が前の手順で説明したものと同じであることを確認します。</block>
   <block id="d185f7c4f8a7ee7fcc5143d7f639a45b" category="sidebar">監視のためのSNMPv3の設定</block>
   <block id="c7afd9396f393d27ad260ca9f7d80ada" category="open-title">Cumulus Linux 4.4.x</block>
   <block id="bac0749492396eefc62e79ed342a7d3e" category="paragraph">次のコマンドは、スイッチsw1およびsw2でISLポートがupになっていることを示しています。</block>
@@ -4543,15 +4519,6 @@
   <block id="3d49c6a8040af00423280443bbe5d05f" category="paragraph"><block ref="913a5e09220539ba22f04cc8f2d2fe80" prefix="" category="inline-code"></block></block>
   <block id="9d6600c74c6f65eef63f8fe8e301ffef" category="paragraph">次の例は、スイッチsw1とsw2の両方に該当する結果を示しています。</block>
   <block id="3510e8dd2306d7a2623d6253e5ee079b" category="list-text">[[step17]]クラスタ内で検出されたネットワークデバイスに関する情報を表示します。</block>
-  <block id="85ec13bf5591b128daa3a54ae368ba3c" category="paragraph">次のコマンドは、Cisco 3232CスイッチにSNMPv3ユーザ名を設定します。</block>
-  <block id="5293a7c2493b5e9fa8261d30e6343464" category="list-text">認証なし*の場合：<block ref="4de90a5f2562588942e54211db55bbc8" prefix=" " category="inline-code"></block></block>
-  <block id="5ca43733e44b3aa36045aae712118a0c" category="list-text">MD5/SHA認証の場合*：<block ref="8de8efe8209f40424b2f8182df3e0711" prefix=" " category="inline-code"></block></block>
-  <block id="5bdf8576a82b897f01268b182b208da7" category="list-text">AES/DES暗号化を使用した* MD5/SHA認証の場合*：<block ref="7021d4581846b898d8f652c016aef25f" prefix=" " category="inline-code"></block></block>
-  <block id="3634ec349fe0ac8ede01e576a2ea0f9c" category="paragraph"><block ref="e13e2f89a8f9ef3b183db91662b40273" prefix="" category="inline-code"></block></block>
-  <block id="627d56d1b7897f4dcfcbb018bce61116" category="summary">クラスタスイッチヘルスモニタログ収集機能は、 ONTAP でスイッチ関連のログファイルを収集するために使用します。ここで説明するように、9336c-FX2クラスタスイッチCLIを使用して環境をセットアップしておく必要があります。</block>
-  <block id="33bdcda7e2a546866442177b5bcf615d" category="paragraph">ログ収集機能を使用して、ONTAP でスイッチ関連のログファイルを収集できます。
-イーサネットスイッチヘルスモニタ（CSHM）は、クラスタネットワークスイッチとストレージネットワークスイッチの動作の健全性を確認し、デバッグ用にスイッチのログを収集します。この手順では、スイッチからの詳細な*サポート*ログの収集を設定および開始するプロセスをガイドし、AutoSupportによって収集された*定期的な*データの1時間ごとの収集を開始します。</block>
-  <block id="7e1ba7c75d78333c2b0d49c9ac24ef12" category="list-text">Cisco 3232Cクラスタスイッチ* CLI*を使用して環境がセットアップされていることを確認します。</block>
   <block id="c48ae1736b44dafa44df6c91e234967b" category="paragraph">クレデンシャルを検証し、SSH接続をテストし、ONTAP SSHキーを再生成します。手順については、スイッチのマニュアルを確認するか、NetAppサポートにお問い合わせください。</block>
   <block id="1837f24cc84dcee4cf147fd1cb89460b" category="list-text">最初にスイッチC2をスイッチSW2に置き換えます。</block>
   <block id="d74d5bfd992e4f32cce751a7efe7675a" category="list-text">クラスタノードのポートをシャットダウンします。クラスタが不安定にならないように、すべてのポートを同時にシャットダウンする必要があります。</block>
@@ -4577,10 +4544,6 @@
   <block id="9d24a408b8a659b2d9a8bb0df05e2629" category="paragraph">すべてのクラスタLIFがcs2スイッチにフェイルオーバーされます。</block>
   <block id="ca485f2dd68e04b01569b761e6e09728" category="list-text">スイッチcs2でホストされているポートにクラスタLIFがフェイルオーバーしたことを確認します。この処理には数秒かかることがあります。</block>
   <block id="b724af2fef6af61e0edab3f426d0cddd" category="list-text">スイッチcs1から見て、スイッチポートの接続が正常であることを確認します。</block>
-  <block id="b9ab24854008adedc57cca2a0bf2e4f8" category="paragraph">次のコマンドは、Cisco 3132Q-VスイッチにSNMPv3ユーザ名を設定します。</block>
-  <block id="dd6639b00fbb4becd05c71735c5944af" category="list-text">Cisco 3132Q-Vクラスタスイッチ* CLI*を使用して環境がセットアップされていることを確認します。</block>
-  <block id="91863ff015a5297c5c27e15dd6e5e916" category="paragraph">10分待ってから、ログ収集が完了したことを確認します。</block>
-  <block id="03d991029fc10722afd68a8300e08fbf" category="paragraph">次のコマンドは、Cisco 9336C-FX2スイッチにSNMPv3ユーザ名を設定します。</block>
   <block id="e9505b73caa990829220fedbb878ef68" category="list-text">最初にスイッチc2をスイッチcs2に置き換えます。</block>
   <block id="39bba2bddb2bf527b701828442a18b5e" category="list-text">次に、ノードとc2間のケーブルをc2から外し、cs2に再接続します。</block>
   <block id="6fa86324fabffaee853e6eeee2824329" category="list-text">スイッチC1をスイッチcs1に置き換えます。</block>
@@ -4596,8 +4559,6 @@
   <block id="00a862cbf647531bcc4b5bf9faba74e4" category="list-text">MD5/SHA認証の場合*：<block ref="31b98def7e9f7bb02cdfd9ac87afcda4" prefix=" " category="inline-code"></block></block>
   <block id="7286c151c11606a97b24bba616cce292" category="list-text">AES/DES暗号化を使用した* MD5/SHA認証の場合*：<block ref="6a48e8cc740517cd540e6de4c0a5585b" prefix=" " category="inline-code"></block></block>
   <block id="e7d18f4dea6cb0b4877fd6a9e25a2411" category="paragraph"><block ref="e3949fbf38af37f5381ecfa4e157ffa8" prefix="" category="inline-code"></block></block>
-  <block id="7733a6a16b4fa24d09c107d2b3eefb78" category="summary">クラスタスイッチヘルスモニタログ収集機能は、 ONTAP でスイッチ関連のログファイルを収集するために使用します。ここで説明するように、92300YCクラスタスイッチCLIを使用して環境をセットアップしておく必要があります。</block>
-  <block id="e7c823ebcf9c688c2043749093639ce5" category="paragraph">次のコマンドは、Cisco 92300YCスイッチにSNMPv3ユーザ名を設定します。</block>
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="paragraph-title">トラブルシューティングを行う</block>
   <block id="3e7c0049318f1d54d121bd59293ae3f8" category="summary">Cisco 9336C-FX2スイッチを設定する前に、次の情報を確認してください。</block>
   <block id="6f46a467644090d99e7affb0172248d7" category="paragraph">Cisco 9336C-FX2スイッチを設定する前に、次の考慮事項を確認してください。</block>
@@ -4651,9 +4612,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="3947ff32e82f86e7176dc28b3ee33db0" category="list-text">クラスタスイッチcs2で、クラスタLIFをフェイルオーバーするために、*すべての*ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
   <block id="022c00ee7f7e6672d82cc079623d6e22" category="list-text">クラスタスイッチcs1で、クラスタLIFをフェイルオーバーするために、*すべての*ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
   <block id="e6eb1709bc8131372d63990293ab75f8" category="paragraph">すべてのクラスタLIFがcs2-newスイッチにフェイルオーバーされます。</block>
-  <block id="af7a19b4dbadf7641102bf88598cfd8b" category="paragraph">[+]
-イーサネットスイッチヘルスモニタ（CSHM）は、クラスタネットワークスイッチとストレージネットワークスイッチの動作の健全性を確認し、デバッグ用にスイッチのログを収集します。この手順では、スイッチからの詳細な*サポート*ログの収集を設定および開始するプロセスをガイドし、AutoSupportによって収集された*定期的な*データの1時間ごとの収集を開始します。</block>
-  <block id="a13c9d4c750715a8b993a3fec916189f" category="list-text">リファレンス構成ファイル（RCF）を適用する場合は、ログ収集用のユーザを指定する必要があります。デフォルトでは、このユーザは_admin_に設定されています。別のユーザを使用する場合は、RCFの*# SHM User * sセクションで指定する必要があります。</block>
   <block id="69a3b5b5b3e87ce1bcae2811d815d9de" category="paragraph"><block ref="69a3b5b5b3e87ce1bcae2811d815d9de" category="inline-link-macro-rx"></block></block>
   <block id="7091e2c750a185300a6b16e37ae123f6" category="paragraph">手順はNVIDIAのマニュアルに記載されています。</block>
   <block id="894989f86e54fb4105389f59b2f248db" category="list-text"><block ref="c4cd7ec23f215e2259f91b6eb6e7cbc1" category="inline-link-macro-rx"></block>。</block>
@@ -4702,7 +4660,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="cd05c6b0946147cbb3f39299b8dcdeed" category="paragraph"><block ref="320348c7039a92322f8ae8aa6b9548b3" prefix="" category="inline-code"></block></block>
   <block id="e90414dab5eca6b338b4136c697db6b5" category="list-text">管理IPアドレスに再びアクセスできるようになったら、SSHを使用してスイッチにログインします。</block>
   <block id="c91e8b7706844bcabdc205a7e43be636" category="paragraph">SSHキーに関連するホストファイルエントリの更新が必要になる場合があります。</block>
-  <block id="22ce77808f11e6ab0287a2c388f17c20" category="list-text">以前に特定したカスタムの追加機能をスイッチ構成に再度適用します。</block>
   <block id="75d60e24abda3d2be5719b222283e4ab" category="list-text">RCFのバージョン、カスタム追加、およびスイッチの設定が正しいことを確認したら、running-configファイルをstartup-configファイルにコピーします。</block>
   <block id="59a8406e97bc3122bcc4f9fec1cab7c9" category="paragraph"><block ref="e1e291973b667f98a077e4eb6f5aa9ac" prefix="" category="inline-code"></block></block>
   <block id="a899bc4bde195885d1d8f64046805509" category="paragraph"><block ref="f09b6decdfbfa4d8cb5b241722b9a9e6" prefix="" category="inline-code"></block></block>
@@ -5061,4 +5018,14 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="2cd1b70f79d5acd7ffb2c204f4069175" category="summary">この手順を使用して、NVIDIA SN2100ストレージスイッチのクラスタスイッチヘルスモニタ用の構成ファイルをインストールできます。</block>
   <block id="d57382f230671f8cd52f47dc80838934" category="paragraph">構成ファイルを適用してもモデルに*その他*が表示される場合は、NetAppサポートにお問い合わせください。</block>
   <block id="762421c7b0a81d02d689a9f2e22ee18d" category="sidebar">CSHMファイルのインストール</block>
+  <block id="e019eb42e4f42756266b23abef92e1dd" category="list-text">以前のカスタマイズをスイッチの設定に再適用します。<block ref="45429bb8a97f1efddbc53c789578d613" category="inline-link-macro-rx"></block>必要なその他の変更の詳細については、を参照してください。</block>
+  <block id="dd59ffc29dc202728192a95abe6178f9" category="paragraph">ストレージスイッチを使用すると、SAN（ストレージエリアネットワーク）内のサーバとストレージアレイの間でデータをルーティングできます。NetAppでサポートされるストレージスイッチは次のとおりです。</block>
+  <block id="57b022aa023a23cddb03c6191daffa4f" category="list-text">以前のカスタマイズをスイッチの設定に再適用します。<block ref="1d9551648f2ada4f38f23191d61ca885" category="inline-link-macro-rx"></block>必要なその他の変更の詳細については、を参照してください。</block>
+  <block id="5a389651a2b073f3c60a3a61d9470776" category="list-text">以前のカスタマイズをスイッチの設定に再適用します。<block ref="80cb17023e08ea29d449df7367413559" category="inline-link-macro-rx"></block>必要なその他の変更の詳細については、を参照してください。</block>
+  <block id="7a6b9b7eb5a2b3055f09f44911fb2bc5" category="list-text">以前のカスタマイズをスイッチの設定に再適用します。<block ref="a181f167f0e6d024e95ed78a8f44bff6" category="inline-link-macro-rx"></block>必要なその他の変更の詳細については、を参照してください。</block>
+  <block id="b1a89b5446a31892e94db79afbb0de42" category="inline-link">SN2100スイッチが40 / 100GbE銅線ケーブルを使用して接続できない</block>
+  <block id="bea2f90298678b2195d0c6fdc1b17566" category="paragraph"><block ref="8462b48cb4d4d2778ecd09578b163838" category="inline-link-rx"></block>詳細については、ナレッジベースの記事を参照してください。</block>
+  <block id="4af7c647d1c04eb805c9ecbc772595d1" category="list-text">以前のカスタマイズをスイッチの設定に再適用します。<block ref="81e27480a79c2bb77194c038c9737157" category="inline-link-macro-rx"></block>必要なその他の変更の詳細については、を参照してください。</block>
+  <block id="e51054318a8dcf9b707bc011338e9665" category="section-title">ブレークアウトポートでのインターフェイス速度の設定</block>
+  <block id="e4da4813fef5b96a216a043d594bf245" category="list-text">以前のカスタマイズをスイッチの設定に再適用します。<block ref="75ce5666fba6992a0719935651dd5b1b" category="inline-link-macro-rx"></block>必要なその他の変更の詳細については、を参照してください。</block>
 </blocks>

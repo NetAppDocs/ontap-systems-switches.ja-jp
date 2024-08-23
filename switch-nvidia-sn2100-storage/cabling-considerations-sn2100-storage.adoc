@@ -26,30 +26,173 @@ NVIDIA SN2100スイッチを設定する前に、次の考慮事項を確認し�
  a| 
 swp1s0-3
  a| 
-10/40クラスタポートノード
+10GbEブレークアウトクラスタポートノード×4
 
 
 
  a| 
 swp2s0-3
  a| 
-25：100クラスタポートノード
+25GbEブレークアウトクラスタポートノード×4
 
 
 
  a| 
-swp3-14 40/100クラスタポートノード
+swp3-14
  a| 
-swp15-16 40/100 Inter-Switch Link（ISL；スイッチ間リンク）ポート
+40 / 100GbEクラスタポートノード
+
+
+
+ a| 
+swp15-16
+ a| 
+100GbEスイッチ間リンク（ISL）ポート
 
 |===
-を参照してください https://hwu.netapp.com/Switch/Index["Hardware Universe"] スイッチポートの詳細については、を参照してください。
+を参照してください https://hwu.netapp.com/Switch/Index["Hardware Universe"^] スイッチポートの詳細については、を参照してください。
 
 
 
-== 光接続
+== 光接続でのリンクアップ遅延
 
-SN2100スイッチでは、X1151A NIC、X1146A NIC、またはオンボード100GbEポートを使用した場合にのみ、光接続がサポートされます。例：
+5秒以上のリンクアップ遅延が発生している場合は、Cumulus Linux 5.4以降で高速リンクアップがサポートされます。を使用してリンクを設定できます `nv set` 次のコマンドを実行します。
+
+[listing, subs="+quotes"]
+----
+*nv set interface <interface-id> link fast-linkup on*
+*nv config apply*
+*reload the switchd*
+----
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cumulus@cumulus-cs13:mgmt:~$ *nv set interface swp5 link fast-linkup on*
+cumulus@cumulus-cs13:mgmt:~$ *nv config apply*
+*switchd need to reload on this config change*
+
+Are you sure? [y/N] *y*
+applied [rev_id: 22]
+
+Only switchd reload required
+----
+====
+
+
+== 銅線接続のサポート
+
+この問題 を修正するには、次の設定変更が必要です。
+
+[role="tabbed-block"]
+====
+.Cumulus Linux 4.4.3.
+--
+. 40GbE / 100GbE銅線ケーブルを使用して、各インターフェイスの名前を確認します。
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *net show interface pluggables*
+
+Interface  Identifier     Vendor Name     Vendor PN    Vendor SN      Vendor Rev
+---------  -------------  --------------  -----------  -------------  ----------
+swp3       0x11 (QSFP28)  Molex           112-00576    93A2229911111  B0
+swp4       0x11 (QSFP28)  Molex           112-00576    93A2229922222  B0
+----
+. に次の2行を追加します `/etc/cumulus/switchd.conf` 40GbE / 100GbE銅線ケーブルを使用するすべてのポート（SWP <n> ）のファイル：
++
+** `interface.swp<n>.enable_media_depended_linkup_flow=TRUE`
+** `interface.swp<n>.enable_short_tuning=TRUE`
++
+例：
+
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *sudo nano /etc/cumulus/switchd.conf*
+.
+.
+interface.swp3.enable_media_depended_linkup_flow=TRUE
+interface.swp3.enable_short_tuning=TRUE
+interface.swp4.enable_media_depended_linkup_flow=TRUE
+interface.swp4.enable_short_tuning=TRUE
+----
+
+
+. を再起動します `switchd` サービス：
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *sudo systemctl restart switchd.service*
+----
+. ポートが動作していることを確認します。
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *net show interface all*
+
+State  Name      Spd   MTU    Mode       LLDP              Summary
+-----  --------- ----  -----  ---------- ----------------- --------
+UP     swp3      100G  9216   Trunk/L2                     Master: bridge(UP)
+UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
+----
+
+
+--
+.Cumulus Linux 5.x
+--
+. 40GbE / 100GbE銅線ケーブルを使用して、各インターフェイスの名前を確認します。
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv show interface pluggables*
+
+Interface  Identifier     Vendor Name     Vendor PN    Vendor SN      Vendor Rev
+---------  -------------  --------------  -----------  -------------  ----------
+swp3       0x11 (QSFP28)  Molex           112-00576    93A2229911111  B0
+swp4       0x11 (QSFP28)  Molex           112-00576    93A2229922222  B0
+----
+. を使用してリンクを設定します `nv set` 次のコマンドを実行します。
++
+** `nv set interface <interface-id> link fast-linkup on`
+** `nv config apply`
+** をリロードします `switchd` サービス
++
+例：
+
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv set interface swp5 link fast-linkup on*
+cumulus@cumulus:mgmt:~$ *nv config apply*
+switchd need to reload on this config change
+
+Are you sure? [y/N] *y*
+applied [rev_id: 22]
+
+Only switchd reload required
+----
+
+
+. ポートが動作していることを確認します。
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *net show interface all*
+
+State  Name      Spd   MTU    Mode       LLDP              Summary
+-----  --------- ----  -----  ---------- ----------------- --------
+UP     swp3      100G  9216   Trunk/L2                     Master: bridge(UP)
+UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
+----
+
+
+--
+====
+ https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric_Interconnect_and_Management_Switches/NVIDIA_SN2100_switch_fails_to_connect_using_40_100GbE_copper_cable["SN2100スイッチが40 / 100GbE銅線ケーブルを使用して接続できない"^]詳細については、ナレッジベースの記事を参照してください。
+
+Cumulus Linux 4.4.2では、X1151A NIC、X1146A NIC、またはオンボード100GbEポートを搭載したSN2100スイッチで銅線接続はサポートされません。例：
 
 * ポートe0aとe0b上のAFF A800
 * ポートe0gとe0hにAFF A320を追加します
@@ -59,26 +202,32 @@ SN2100スイッチでは、X1151A NIC、X1146A NIC、またはオンボード100
 
 == QSAアダプタ
 
-QSAアダプタを使用してプラットフォーム上のオンボードインテルクラスタポートに接続した場合、すべてのリンクが表示されるわけではありません。FAS2750、AFF A300、FAS8200（オール10G）、AFF A250（25G）などのプラットフォームが該当します。
+プラットフォームの10GbE / 25GbEクラスタポートへのQSAアダプタを使用して接続すると、リンクが稼働しないことがあります。
 
 この問題 を解決するには、次の手順を実行します。
 
-. Intel 10Gの場合、swp1s0-3リンク速度を10000に手動で設定し、オートネゴシエーションをオフに設定します。
-. Chelsio 25Gの場合、swp2s0～3リンク速度を25000に手動で設定し、オートネゴシエーションをオフに設定します。
+* 10GbEの場合は、swp1s0-3リンク速度を手動で10000に設定し、自動ネゴシエーションをoffに設定します。
+* 25GbEの場合は、swp2s0-3のリンク速度を手動で25000に設定し、自動ネゴシエーションをoffに設定します。
 
 
 
-NOTE: 10G / 25G QSAを使用して、ブレークアウト以外の40 / 100Gポートを使用します。ブレークアウト用に設定されたポートにはQSAアダプタを挿入しないでください。
+NOTE: 10GbE / 25GbE QSAアダプタを使用する場合は、ブレークアウトされていない40GbE / 100GbEポート（swp3-swp14）に挿入します。ブレークアウト用に設定されたポートにQSAアダプタを挿入しないでください。
 
 
 
-== スイッチポートの速度
+== ブレークアウトポートでのインターフェイス速度の設定
 
-スイッチポートのトランシーバによっては、スイッチポートの速度を固定の速度に設定しなければならない場合があります。10Gおよび25Gブレークアウトポートを使用する場合は、自動ネゴシエーションがオフになっていて、スイッチのポート速度をハードセットしていることを確認してください。例：
+スイッチポートのトランシーバによっては、スイッチインターフェイスの速度を固定速度に設定する必要があります。10GbEおよび25GbEブレークアウトポートを使用している場合は、自動ネゴシエーションがオフになっていることを確認し、スイッチのインターフェイス速度を設定します。
+
+[role="tabbed-block"]
+====
+.Cumulus Linux 4.4.3.
+--
+例：
 
 [listing, subs="+quotes"]
 ----
-cumulus@cumulus:mgmt:~$ net add int swp1s3 link autoneg off && net com
+cumulus@cumulus:mgmt:~$ *net add int swp1s3 link autoneg off && net com*
 --- /etc/network/interfaces     2019-11-17 00:17:13.470687027 +0000
 +++ /run/nclu/ifupdown2/interfaces.tmp  2019-11-24 00:09:19.435226258 +0000
 @@ -37,21 +37,21 @@
@@ -105,5 +254,83 @@ iface swp2s0
      link-autoneg off
      link-speed 25000 *<---- port speed set*
 ----
+インターフェイスとポートのステータスを調べて、設定が適用されていることを確認します。
+
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *net show interface*
+
+State  Name      Spd    MTU    Mode        LLDP             Summary
+-----  --------  -----  -----  ----------  ---------------  --------------------------------------
+.
+.
+UP     swp1s0     10G   9216   Trunk/L2    cs07 (e4c)       Master: br_default(UP)
+UP     swp1s1     10G   9216   Trunk/L2    cs07 (e4d)       Master: br_default(UP)
+UP     swp1s2     10G   9216   Trunk/L2    cs08 (e4c)       Master: br_default(UP)
+UP     swp1s3     10G   9216   Trunk/L2    cs08 (e4d)       Master: br_default(UP)
+.
+.
+UP     swp3       40G   9216   Trunk/L2    cs03 (e4e)       Master: br_default(UP)
+UP     swp4       40G   9216   Trunk/L2    cs04 (e4e)       Master: br_default(UP)
+DN     swp5       N/A   9216   Trunk/L2                     Master: br_default(UP)
+DN     swp6       N/A   9216   Trunk/L2                     Master: br_default(UP)
+DN     swp7       N/A   9216   Trunk/L2                     Master: br_default(UP)
+.
+.
+UP     swp15      100G  9216   BondMember  cs01 (swp15)     Master: cluster_isl(UP)
+UP     swp16      100G  9216   BondMember  cs01 (swp16)     Master: cluster_isl(UP)
+.
+.
+----
+--
+.Cumulus Linux 5.x
+--
+例：
+
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv set interface swp1s3 link auto-negotiate off*
+cumulus@cumulus:mgmt:~$ *nv set interface swp1s3 link speed 10G*
+cumulus@cumulus:mgmt:~$ *nv show interface swp1s3*
+
+link                                                                                            
+  auto-negotiate        off                     off                     off                   
+  duplex                full                    full                    full                  
+  speed                 10G                     10G                     10G                   
+  fec                   auto                    auto                    auto                  
+  mtu                   9216                    9216                    9216                  
+[breakout]                                                                                    
+  state                 up                      up                      up
+----
+インターフェイスとポートのステータスを調べて、設定が適用されていることを確認します。
+
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv show interface*
+
+State  Name      Spd    MTU    Mode        LLDP             Summary
+-----  --------  -----  -----  ----------  ---------------  --------------------------------------
+.
+.
+UP     swp1s0     10G   9216   Trunk/L2    cs07 (e4c)       Master: br_default(UP)
+UP     swp1s1     10G   9216   Trunk/L2    cs07 (e4d)       Master: br_default(UP)
+UP     swp1s2     10G   9216   Trunk/L2    cs08 (e4c)       Master: br_default(UP)
+UP     swp1s3     10G   9216   Trunk/L2    cs08 (e4d)       Master: br_default(UP)
+.
+.
+UP     swp3       40G   9216   Trunk/L2    cs03 (e4e)       Master: br_default(UP)
+UP     swp4       40G   9216   Trunk/L2    cs04 (e4e)       Master: br_default(UP)
+DN     swp5       N/A   9216   Trunk/L2                     Master: br_default(UP)
+DN     swp6       N/A   9216   Trunk/L2                     Master: br_default(UP)
+DN     swp7       N/A   9216   Trunk/L2                     Master: br_default(UP)
+.
+.
+UP     swp15      100G  9216   BondMember  cs01 (swp15)     Master: cluster_isl(UP)
+UP     swp16      100G  9216   BondMember  cs01 (swp16)     Master: cluster_isl(UP)
+.
+.
+----
+--
+====
 .次の手順
 link:install-cable-shelves-sn2100-storage.html["NS224シェルフをスイッチ接続型ストレージとしてケーブル接続します"]。

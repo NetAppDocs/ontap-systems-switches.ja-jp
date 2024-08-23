@@ -106,6 +106,7 @@ RCFスクリプトで上記の手順を完了します。
 
 NOTE: 修正できないRCF Pythonスクリプトの問題については、にお問い合わせください https://mysupport.netapp.com/["ネットアップサポート"^] を参照してください。
 
+. 以前のカスタマイズをスイッチの設定に再適用します。link:cabling-considerations-sn2100-storage.html["ケーブル接続と構成に関する考慮事項を確認"]必要なその他の変更の詳細については、を参照してください。
 . リブート後に設定を確認します。
 +
 `net show interface all`
