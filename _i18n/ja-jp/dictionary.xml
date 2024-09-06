@@ -4381,8 +4381,6 @@
   <block id="2bc32577d8d84ba98d84472c4916dd0f" category="admonition">ネットアップが検証したバックエンドスイッチ（NetAppから発注）のみがサポートされます。</block>
   <block id="d69d8c23518c3e983c5799321eb27404" category="list-text">スイッチcs2の設定を消去し、スイッチをリブートします。</block>
   <block id="a3d5cbedb318ff78ae8c3f9bced7661b" category="list-text">スイッチの基本設定を実行します。を参照してください <block ref="ab35665c267fa570f19ad0ebf8386ab4" category="inline-link-macro-rx"></block> を参照してください。</block>
-  <block id="6ab23d04af2dab64aaf06d089d134151" category="summary">クラスタスイッチヘルスモニタ（ CSHM ）およびログ収集機能を使用する場合、 SSH は要件です。Cisco 9336C-FX2クラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。</block>
-  <block id="f213e7d15465742733b22d11eff1d4ac" category="doc">Cisco 9336C-FX2クラスタスイッチでのSSHの有効化</block>
   <block id="a8d8d025a84c64f53b535b4e606fd65a" category="summary">この手順を使用して、Nexus 92300YCクラスタスイッチのクラスタスイッチヘルスモニタ用の構成ファイルをインストールできます。</block>
   <block id="0bf9f283c6d4cf639f7438f8d69e8f4f" category="doc">クラスタスイッチヘルスモニタ（SHM）構成ファイルをインストールする</block>
   <block id="5a70ef3971f7a5956d9f9f829efc730c" category="paragraph">次の手順に従って、Nexus 9336C-FX2クラスタスイッチのクラスタスイッチヘルスモニタ（SHM）用の構成ファイルをインストールします。</block>
@@ -4675,7 +4673,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="7e857aa8a0b068cc27d4b48a1e11e878" category="list-text"><block ref="7e857aa8a0b068cc27d4b48a1e11e878" category="inline-link-macro-rx"></block></block>
   <block id="32559ee483b61b36141f9b9e0f4bbfff" category="paragraph">NetApp Support SiteでサポートされているONTAPとRCFのバージョンについては、スイッチの互換性の表を参照してください。RCFのコマンド構文と特定のバージョンのNX-OSの構文との間には、コマンドの依存関係が存在することに注意してください。</block>
   <block id="ad0d19783ccfa19f931108b838e4b7e4" category="list-text"><block ref="ad0d19783ccfa19f931108b838e4b7e4" category="inline-link-macro-rx"></block></block>
-  <block id="8fa9b99093c5cdfb4cebad0008ba3e8d" category="paragraph">この手順 の例では 4 ノードを使用します。これらのノードは、 2 つの 10GbE クラスタインターコネクトポート e0a と e0b を使用します。を参照してください<block ref="e98f5e4074ae8b028a5791870586403d" category="inline-link-rx"></block> をクリックして、プラットフォームのクラスタポートが正しいことを確認します。</block>
   <block id="79509ba15c2970f327dd8610e3b4628c" category="paragraph-title">使用するコマンド</block>
   <block id="1ad593dd61af4356ce9ba12d276c4336" category="section-title">オプション1：新しいスイッチにRCFファイルをインストールする</block>
   <block id="d061b4842fee7f503446ba29253d182f" category="paragraph">Reference Configuration File（RCF；リファレンス構成ファイル）は、Nexus 9336C-FX2スイッチの初回セットアップ後にインストールします。</block>
@@ -4890,7 +4887,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="c947c5faccdddd0a9a87be7895f50511" category="list-text">ONTAPシステムでコマンドを実行し<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block> 、監視対象フィールドが* True *に設定され、シリアル番号フィールドに* Unknown *が表示されていないクラスタスイッチが検出されていることを確認します。</block>
   <block id="31c020d11cc321faf9c0793a662d1e53" category="list-text">スイッチcs2をリブートします。スイッチのリブート中にノードで報告される「cluster ports down」イベントとエラー出力はどちらも無視してかまいません<block ref="a9e34a08c2be7359540cbf7337dc5ce9" prefix=" " category="inline-code"></block> 。</block>
   <block id="db82c22b5434946b4bc226a3b9b7888a" category="list-text">同じRCFを適用し、実行中の設定をもう一度保存します。これはRCFがQoSを利用するために必要であり、その間にスイッチをリブートしてRCFを2回ロードするTCAMの再設定が必要であるためです。</block>
-  <block id="5fdb34220ba0015ed7039c3f92044588" category="paragraph"><block ref="e28073c74a510a495bd318aad6ec05d2" category="inline-link-macro-rx"></block>です。</block>
   <block id="c7ca49e9f550dc9b18f2402f13ad9430" category="list-text">[[step5]]ケースの自動作成を抑制した場合は、AutoSupportメッセージを呼び出して再度有効にします。<block ref="9ac424c0d7b432975df36a19daf50c9c" prefix=" " category="inline-code"></block></block>
   <block id="58a19c530e54f6364edd838f35b1830e" category="inline-link-macro">スイッチヘルス監視の設定</block>
   <block id="d21243682bbd31fa9c0d32d291135394" category="paragraph"><block ref="5b8b393a675dcaaee97c02828356657c" category="inline-link-macro-rx"></block>です。</block>
@@ -4923,7 +4919,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="ec348def7634a5754cf9d62e8bca7f24" category="list-text"><block ref="853bcb6b647712eac9646e8ede049d7b" category="inline-link-macro-rx"></block>です。</block>
   <block id="5f7b61b5cf8ee335e4fdf4eb2e2191b2" category="paragraph">ポートは、クラスタ+ HAでは40 / 100GbE、クラスタでは4×10GbEブレークアウト、クラスタ+ HAでは4×25GbEブレークアウト、ストレージHAペアごとに100GbE用に構成されます。</block>
   <block id="d30ea82d7096609f0aea87ef848f7ebd" category="paragraph">Cisco Nexus 9336C-FX2共有スイッチのソフトウェアをインストールおよび設定する手順は、次のとおりです。</block>
-  <block id="332339bcd9f462ab40cbf756a81eb021" category="doc">Cisco 9336C-FX2共有スイッチでのSSHの有効化</block>
   <block id="e495f3ec8dabfce7925d7c5053f55cbb" category="inline-link-macro">NetAppキャビネットへのスイッチの設置</block>
   <block id="343d8858c5eef7adcd6fc983a90c4848" category="list-text"><block ref="cad0a32a1376b86b466dd6cf29c7e620" category="inline-link-macro-rx"></block>です。</block>
   <block id="d136348fb812c17c0d3c68bd85d3987f" category="inline-link-macro">NX-OSおよびRCFのインストールの準備</block>
@@ -4932,7 +4927,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="bc2fac09fdd528e5067568b7be4074db" category="list-text">[[step18]]シェルフが正しくケーブル接続されていることを確認します。</block>
   <block id="783733d2f76fb1513a44bb7144679e76" category="list-text">[[step19]] 古いスイッチ sh2 を削除します。</block>
   <block id="3e6dc141a56ffa03ce5afc78a5bbbef1" category="paragraph">Cisco Nexus 9336C-FX2ストレージスイッチのソフトウェアをインストールおよび設定する手順は、次のとおりです。</block>
-  <block id="d60d1714728d79a415d0da5a4975ae8f" category="doc">Cisco 9336C-FX2ストレージスイッチでのSSHの有効化</block>
   <block id="e9c6db9ee4edb08184a082916cf1f56f" category="list-text"><block ref="c49772a60328b39d671da109a076acd4" category="inline-link-macro-rx"></block>です。</block>
   <block id="5537a63af1d3d4f5a6ffcc2a8619a2f8" category="list-text"><block ref="d43bf43861b014b2f70de1c12cff1c76" category="inline-link-macro-rx"></block>です。</block>
   <block id="cb037476ec4486d51b86d5dbeede8008" category="doc">ログ収集の設定</block>
@@ -5028,4 +5022,7 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="4af7c647d1c04eb805c9ecbc772595d1" category="list-text">以前のカスタマイズをスイッチの設定に再適用します。<block ref="81e27480a79c2bb77194c038c9737157" category="inline-link-macro-rx"></block>必要なその他の変更の詳細については、を参照してください。</block>
   <block id="e51054318a8dcf9b707bc011338e9665" category="section-title">ブレークアウトポートでのインターフェイス速度の設定</block>
   <block id="e4da4813fef5b96a216a043d594bf245" category="list-text">以前のカスタマイズをスイッチの設定に再適用します。<block ref="75ce5666fba6992a0719935651dd5b1b" category="inline-link-macro-rx"></block>必要なその他の変更の詳細については、を参照してください。</block>
+  <block id="bdbcf1c0d7f9cba19eb12819b953fbf1" category="inline-link">スイッチOSのアップグレード時にクラスタLIFを移行する際にノードがクォーラムのメンバーでない</block>
+  <block id="e6ab3c0f7886a69b4cd4dc70d1d4afa9" category="admonition">ネットワーク接続の問題が発生しないように、接続されている*すべてのクラスタポートをシャットダウンしてください。<block ref="c9b140831402716d03d51afcd09ff177" category="inline-link-rx"></block>詳細については、ナレッジベースの記事を参照してください。</block>
+  <block id="263b9f10fe7e073e656b08a5b6da7e5a" category="paragraph">この手順 の例では 4 ノードを使用します。これらのノードは、 2 つの 10GbE クラスタインターコネクトポート e0a と e0b を使用します。を参照し<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block>て、プラットフォームのクラスタポートが正しいことを確認します。</block>
 </blocks>

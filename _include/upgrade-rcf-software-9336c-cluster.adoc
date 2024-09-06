@@ -162,6 +162,10 @@ cluster1::*>
 +
 `cs1(config-if-range)# *shutdown*`
 
++
+
+CAUTION: ネットワーク接続の問題が発生しないように、接続されている*すべてのクラスタポートをシャットダウンしてください。 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["スイッチOSのアップグレード時にクラスタLIFを移行する際にノードがクォーラムのメンバーでない"^]詳細については、ナレッジベースの記事を参照してください。
+
 . クラスタスイッチcs1でホストされているポートにクラスタLIFがフェイルオーバーされたことを確認します。これには数秒かかることがあります。
 +
 「 network interface show -role cluster 」のように表示されます
@@ -842,4 +846,4 @@ RPC status:
 
 
 .次の手順
-link:../switch-cisco-9336c-fx2-storage/configure-ssh.html["SSH を有効にします。"]です。
+link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
