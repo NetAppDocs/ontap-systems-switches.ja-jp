@@ -761,4 +761,4 @@ RPC status:
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]
+link:configure-ssh-keys.html["SSH の設定を確認"]です。

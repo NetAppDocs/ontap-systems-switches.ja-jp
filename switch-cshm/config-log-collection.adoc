@@ -18,8 +18,8 @@ summary: イーサネットスイッチヘルスモニタ（CSHM）のログ収�
 [NOTE]
 ====
 . ベンダーの指示に従って、スイッチでSSHキーを再生成します。
-. を使用して、ONTAP側のsshキーを再生成します。 `debug system regenerate-systemshell-key-pair`
-. を使用して、ログ収集セットアップルーチンを再実行します。 `system switch ethernet log setup-password`
+. を使用したONTAPでのSSHキーの再生成 `debug system regenerate-systemshell-key-pair`
+.  `system switch ethernet log setup-password`コマンドを使用してログ収集セットアップルーチンを再実行します。
 
 
 ====
@@ -29,8 +29,10 @@ summary: イーサネットスイッチヘルスモニタ（CSHM）のログ収�
 
 * ユーザはスイッチコマンドにアクセスできる必要があります `show` 。これらが使用できない場合は、新しいユーザを作成し、必要な権限をユーザに付与します。
 * スイッチのヘルスモニタが有効になっている必要があります。これを確認するには、 `Is Monitored:` フィールドは、 `system switch ethernet show` コマンドを実行します
-* NVIDIAスイッチの場合、ログ収集のユーザがパスワードプロンプトを表示せずにログ収集コマンドを実行できるようにする必要があります。この使用を許可するには、次のコマンドを実行します。
-`echo '<username> ALL = NOPASSWD: /usr/cumulus/bin/cl-support, /usr/sbin/csmgrctl' | sudo EDITOR='tee -a' visudo -f /etc/sudoers.d/cumulus`
+* NVIDIAスイッチを使用したログ収集をサポートするには、 `cl-support`パスワードを入力せずにコマンドを実行できる_user_forログ収集を許可する必要があります。この使用を許可するには、次のコマンドを実行します。
++
+`echo '_<user>_ ALL = NOPASSWD: /usr/cumulus/bin/cl-support' | sudo EDITOR='tee -a' visudo -f /etc/sudoers.d/cumulus`
+
 
 
 

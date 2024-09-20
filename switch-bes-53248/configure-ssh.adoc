@@ -86,6 +86,54 @@ Configuration Saved!
 
 WARNING: キーを変更する前にSSHが無効になっていることを確認してください。無効になっていると、スイッチに警告が表示されます。
 
+. SSHキーを暗号化します（* FIPSモードのみ*）。
++
+
+CAUTION: FIPSモードでは、セキュリティを確保するために、キーをパスフレーズで暗号化する必要があります。暗号化されたキーがない場合、アプリケーションは起動できません。キーは、次のコマンドを使用して作成および暗号化されます。
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(switch) *configure*
+(switch) (Config)# *crypto key encrypt write rsa passphrase _<passphase>_*
+
+The key will be encrypted and saved on NVRAM.
+This will result in saving all existing configuration also.
+Do you want to continue? (y/n): *y*
+
+Config file 'startup-config' created successfully.
+
+(switch) (Config)# *crypto key encrypt write dsa passphrase _<passphase>_*
+
+The key will be encrypted and saved on NVRAM.
+This will result in saving all existing configuration also.
+Do you want to continue? (y/n): *y*
+
+Config file 'startup-config' created successfully.
+
+(switch)(Config)# *crypto key encrypt write ecdsa passphrase _<passphase>_*
+
+The key will be encrypted and saved on NVRAM.
+This will result in saving all existing configuration also.
+Do you want to continue? (y/n): *y*
+
+Config file 'startup-config' created successfully.
+
+(switch) (Config)# end
+(switch)# write memory
+
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+Are you sure you want to save? (y/n) *y*
+
+Config file 'startup-config' created successfully.
+
+Configuration Saved!
+----
+====
 . スイッチをリブートします。
 +
 「再ロード」

@@ -2489,7 +2489,6 @@
   <block id="26579e78de73f5546f69f3f79a7b8f48" category="paragraph"><block ref="d639995fde516a3ba2e60963b02aecc1" category="inline-link-macro-rx"></block>。</block>
   <block id="005ec29dde0262dd01b006d4e9c03abf" category="summary">NVIDIA SN2100スイッチを設定する前に、手順 の概要を確認してください。</block>
   <block id="9aec7a1df32bc7a3da0beba803646322" category="doc">NVIDIA SN2100ストレージスイッチの設定プロセスの概要</block>
-  <block id="12e75289f74531c2e9239c05b88eb32e" category="paragraph">NVIDIA SN2100はストレージスイッチで、SAN（ストレージエリアネットワーク）内のサーバとストレージアレイの間でデータをルーティングできます。</block>
   <block id="aac9f267bacea6f425f8665241d6901e" category="section-title">初期設定の概要</block>
   <block id="2ef7b00479266befed2783905ed9725e" category="paragraph">ONTAP を実行しているシステムでNVIDIA SN2100スイッチを設定する手順は、次のとおりです。</block>
   <block id="a194a4ea8dc4dc236627221cad9344d4" category="inline-link-macro">ケーブル接続と構成に関する考慮事項を確認</block>
@@ -2751,7 +2750,6 @@
   <block id="d334b073010dc4ca86957c663631fa0b" category="paragraph">には、各クラスタLIFにtrueと表示されます<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block> には、があります<block ref="4f21ee5a18672b60f4c01e94e6be9c79" prefix=" " category="inline-code"></block> の<block ref="fc7c1443e5c7b6439706b6132a4c0829" prefix=" " category="inline-code"></block>。</block>
   <block id="9a82d0edb58bbaaf806da2f174490820" category="list-text">クラスタネットワークが完全に接続されていることを確認します。</block>
   <block id="e64b06ebdf8146ea2bc17ff7d5457eef" category="summary">Cisco Nexus 9336C-FX2ストレージスイッチのインストールと設定の概要</block>
-  <block id="9907ba6708c9ebadda3cca4eb234f091" category="paragraph">Cisco Nexus 9336C-FX2ストレージスイッチは、Cisco Nexus 9000プラットフォームの一部であり、ネットアップシステムキャビネットに設置できます。ストレージスイッチを使用すると、SAN（ストレージエリアネットワーク）内のサーバとストレージアレイの間でデータをルーティングできます。</block>
   <block id="be4cd7f1969695f8e6e1f2c8040abcd4" category="paragraph">ONTAP を実行しているシステムでCisco Nexus 9336C-FX2スイッチを初期設定するには、次の手順を実行します。</block>
   <block id="5ac09e984471f320b2e8920ece32b03d" category="inline-link-macro">ケーブル接続ワークシートに記入</block>
   <block id="ef44963f41cab6cd9db7a1c9e6197076" category="inline-link-macro">スイッチを設置します</block>
@@ -4932,11 +4930,7 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="cb037476ec4486d51b86d5dbeede8008" category="doc">ログ収集の設定</block>
   <block id="8ac20e3719b6b58e94e5a4385e87b52e" category="paragraph">イーサネットスイッチヘルスモニタ（CSHM）は、クラスタネットワークスイッチとストレージネットワークスイッチの動作の健全性を確認し、デバッグ用にスイッチのログを収集します。この手順では、収集を設定し、詳細な*サポート*ログを要求し、AutoSupportによって収集される*定期的*データの1時間ごとの収集を有効にするプロセスをガイドします。</block>
   <block id="2ded3ff3862adfc6f54d2a2f3ebf1147" category="paragraph">*注：* FIPSモードを有効にする場合は、次の手順を実行する必要があります。</block>
-  <block id="4d3c86b44351ffae1eca9baf52af2d5a" category="list-text">ベンダーの指示に従って、スイッチでSSHキーを再生成します。</block>
-  <block id="64e9182ec64ec70301b0218941a9ebd8" category="list-text">を使用して、ONTAP側のsshキーを再生成します。<block ref="c079360670e0f4f9441a54ac1d262788" prefix=" " category="inline-code"></block></block>
-  <block id="6cf5d6e9f6afd78a09fd1d4215def7c4" category="list-text">を使用して、ログ収集セットアップルーチンを再実行します。<block ref="36ac3c1f3bae8142b5d110fb906ba03e" prefix=" " category="inline-code"></block></block>
   <block id="ca243f374acfb56a77236e0d30935f7f" category="list-text">ユーザはスイッチコマンドにアクセスできる必要があります<block ref="a7dd12b1dab17d25467b0b0a4c8d4a92" prefix=" " category="inline-code"></block> 。これらが使用できない場合は、新しいユーザを作成し、必要な権限をユーザに付与します。</block>
-  <block id="428fd3f400671ac494fc78009abe0ff1" category="list-text">NVIDIAスイッチの場合、ログ収集のユーザがパスワードプロンプトを表示せずにログ収集コマンドを実行できるようにする必要があります。この使用を許可するには、次のコマンドを実行します。<block ref="35faf9d034bd3280f6d0a63cbb93f5e1" prefix=" " category="inline-code"></block></block>
   <block id="098a6be90d7d0f41999537981c29585d" category="open-title">ONTAP 9.14.1以前</block>
   <block id="bec82052a92013a93a38547be5743fc2" category="list-text">サポートログ収集を要求し、定期収集を有効にするには、次のコマンドを実行します。これにより、詳細なログと1時間ごとのデータ収集の両方のタイプのログ収集が開始されます。<block ref="db5eb84117d06047c97c9a0191b5fffe" prefix=" " category="inline-code"></block><block ref="cdcc32a064503184053bd2018d1c0e7e" prefix=" " category="inline-code"></block></block>
   <block id="d35634a11eab667045ca1f93a9aae3e4" category="list-text">定期的なログ収集を有効にします。</block>
@@ -5025,4 +5019,26 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="bdbcf1c0d7f9cba19eb12819b953fbf1" category="inline-link">スイッチOSのアップグレード時にクラスタLIFを移行する際にノードがクォーラムのメンバーでない</block>
   <block id="e6ab3c0f7886a69b4cd4dc70d1d4afa9" category="admonition">ネットワーク接続の問題が発生しないように、接続されている*すべてのクラスタポートをシャットダウンしてください。<block ref="c9b140831402716d03d51afcd09ff177" category="inline-link-rx"></block>詳細については、ナレッジベースの記事を参照してください。</block>
   <block id="263b9f10fe7e073e656b08a5b6da7e5a" category="paragraph">この手順 の例では 4 ノードを使用します。これらのノードは、 2 つの 10GbE クラスタインターコネクトポート e0a と e0b を使用します。を参照し<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block>て、プラットフォームのクラスタポートが正しいことを確認します。</block>
+  <block id="fc9b57bfb616bf5697d55f4dc656cead" category="inline-link-macro">SSH の設定を確認</block>
+  <block id="1046b0a81eea5dae9091290036b99362" category="paragraph"><block ref="4767a0bcf3ab94aeda87c79dd4096ef4" category="inline-link-macro-rx"></block>です。</block>
+  <block id="95baf91c437105360687405b916b57fa" category="list-text">SSHキーを暗号化します（* FIPSモードのみ*）。</block>
+  <block id="50a89ea25c124abad381209f29dd1817" category="admonition">FIPSモードでは、セキュリティを確保するために、キーをパスフレーズで暗号化する必要があります。暗号化されたキーがない場合、アプリケーションは起動できません。キーは、次のコマンドを使用して作成および暗号化されます。</block>
+  <block id="f68db63213e90f13582fcc01c68930b3" category="summary">クラスタスイッチヘルスモニタ（ CSHM ）およびログ収集機能を使用する場合、 SSH は要件です。Cisco 3132Q-VクラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。</block>
+  <block id="48c63e1d1783b7749854be6c0e2a3b98" category="doc">SSH設定の確認</block>
+  <block id="a75620832d0a69ff51b8f472fb723fc0" category="paragraph">イーサネットスイッチヘルスモニタ（CSHM）機能とログ収集機能を使用している場合は、クラスタスイッチでSSHキーとSSHキーが有効になっていることを確認します。</block>
+  <block id="8b5fc97efb2c8cf5fdcb75b300be917a" category="list-text">SSHキーが有効になっていることを確認します。</block>
+  <block id="720c3ddeb84772ef2bbfeba7b1d17a28" category="paragraph"><block ref="df8bbc4b7a2a07f02d567d56129471ab" prefix="" category="inline-code"></block></block>
+  <block id="3a88a5741f799dc33a61b15c6f06ef77" category="summary">クラスタスイッチヘルスモニタ（ CSHM ）およびログ収集機能を使用する場合、 SSH は要件です。Cisco 3232CクラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。</block>
+  <block id="1ea468ba4330d1b99a20149c0e78b4ed" category="summary">クラスタスイッチヘルスモニタ（ CSHM ）およびログ収集機能を使用する場合、 SSH は要件です。Cisco 92300YCクラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。</block>
+  <block id="6740010e0f06e1b4faea70ce1b3a4a76" category="inline-link-macro">SSHキーの生成</block>
+  <block id="c49d0af5a081eb64111a489cb2120d97" category="list-text"><block ref="52338aab140ac2dbc56c2c83d6349939" category="inline-link-macro-rx"></block>です。</block>
+  <block id="f12f5027a3dbb2bbb22c5b1ca34d79d7" category="paragraph">イーサネットスイッチヘルスモニタ（CSHM）およびログ収集機能を使用する場合は、スイッチでSSHキーを生成します。</block>
+  <block id="2e3301a364286013b9b29237fa347bb1" category="summary">クラスタスイッチヘルスモニタ（ CSHM ）およびログ収集機能を使用する場合、 SSH は要件です。Cisco 9336c-FX2クラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。</block>
+  <block id="243847a87ff7e0cb67ee578c74d8ad1c" category="paragraph">Cisco Nexus 9336C-FX2スイッチはCisco Nexus 9000プラットフォームの一部であり、NetAppシステムキャビネットに設置できます。Nexus 9336C-FX2は、コントローラとディスクシェルフ間でデータを切り替えることができるイーサネットスイッチです。</block>
+  <block id="81f0d5b127adfd87f50ce10bc85e1e65" category="list-text">ベンダーの指示に従って、スイッチでSSHキーを再生成します。</block>
+  <block id="a60a00967db7342947b326a8f7618f52" category="list-text">を使用したONTAPでのSSHキーの再生成<block ref="c079360670e0f4f9441a54ac1d262788" prefix=" " category="inline-code"></block></block>
+  <block id="fe85427bc017f31f0f2b913e65e8d888" category="list-text"><block ref="36ac3c1f3bae8142b5d110fb906ba03e" prefix=" " category="inline-code"></block>コマンドを使用してログ収集セットアップルーチンを再実行します。</block>
+  <block id="c1433b541d8d99faed86a93460cb0bad" category="list-text">NVIDIAスイッチを使用したログ収集をサポートするには、<block ref="c85737d6a0d20328583b59ea7320a5ef" prefix=" " category="inline-code"></block>パスワードを入力せずにコマンドを実行できる_user_forログ収集を許可する必要があります。この使用を許可するには、次のコマンドを実行します。</block>
+  <block id="a0379ee208b1ca86b0ce11e60c0e73eb" category="paragraph"><block ref="83e3f80a08612b0113ac48e3b9a3432e" prefix="" category="inline-code"></block></block>
+  <block id="d97cf4e1b3c59ab22fc281643864890d" category="paragraph">NVIDIA SN2100は、コントローラとディスクシェルフ間でデータを切り替えることができるイーサネットスイッチです。</block>
 </blocks>

@@ -464,7 +464,7 @@ System Managerでは、ノード管理IPアドレスの割り当て、クラス�
 に進みます https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["System Managerを使用して新しいクラスタにONTAPを設定します"] を参照してください。
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:configure-ssh-keys.html["SSH の設定を確認"]です。
 
 
 
@@ -1334,4 +1334,4 @@ RPC status:
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:configure-ssh-keys.html["SSH の設定を確認"]です。
