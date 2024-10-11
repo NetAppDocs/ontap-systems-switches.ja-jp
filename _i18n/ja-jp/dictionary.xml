@@ -5043,4 +5043,10 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="d97cf4e1b3c59ab22fc281643864890d" category="paragraph">NVIDIA SN2100は、コントローラとディスクシェルフ間でデータを切り替えることができるイーサネットスイッチです。</block>
   <block id="68cbc1ccd652f8f281a11d07040f5054" category="inline-link">FIPS を使用してネットワークセキュリティを設定する</block>
   <block id="ee73a5b7bde1ac3826492824ed56415e" category="admonition">FIPSをイネーブルにする場合は、コマンドを使用してスイッチのビット数を256に変更する必要があります<block ref="e945b32dfeddd45c02f47f82f234232f" prefix=" " category="inline-code"></block>。詳細については、を参照してください<block ref="4ed77aafc2157fac88ce3125b253884f" category="inline-link-rx"></block>。</block>
+  <block id="7a43f267b45d16f3e9b7113b1665a8ef" category="list-text">すべてのクラスタLIFが新しいスイッチcs2-newにフェイルオーバーされます。</block>
+  <block id="a200958f285bc9634331308217aef6e8" category="list-text">すべてのクラスタLIFが新しいスイッチcs1-newにフェイルオーバーされます。</block>
+  <block id="866e23be3750652ebc7235f85b035f6b" category="admonition">この手順 では、動作可能なInter-Switch Link（ISL；スイッチ間リンク）は必要ありません。RCFのバージョンを変更するとISL接続に一時的に影響する可能性があるため、これは設計上の変更です。クラスタのノンストップオペレーションを実現するために、次の手順では、ターゲットスイッチで手順を実行しながら、動作中のパートナースイッチにすべてのクラスタLIFをフェイルオーバーします。</block>
+  <block id="936b3180f1af844d99a2935c0f8f1407" category="paragraph">この手順で自動リバートを無効にしても、クラスタLIFはホームポートに自動的に戻りません。これらは現在のポートで稼働している間も維持されます。</block>
+  <block id="8cfe0e3d8ad280ac0655595fef97d183" category="list-text">すべてのクラスタLIFが新しいスイッチcs2にフェイルオーバーされます。</block>
+  <block id="7f59c84a99e8340f8584b604b173e044" category="list-text">すべてのクラスタLIFが新しいスイッチcs1にフェイルオーバーされます。</block>
 </blocks>
