@@ -795,14 +795,43 @@ cluster1-04          true    true          false
 cluster1::*>
 ----
 ====
-. リモートクラスタインターフェイスに ping を実行して接続を確認します。
-+
-「 cluster ping-cluster -node local 」を参照してください
+. リモートクラスタインターフェイスの接続を確認します。
 
-+
-.例を示します
-[%collapsible]
+
+[role="tabbed-block"]
 ====
+.ONTAP 9.9.1以降
+--
+を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+
+`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source               Destination         Packet
+Node   Date                       LIF                  LIF                 Loss
+------ -------------------------- -------------------- ------------------- -----------
+node1
+       3/5/2022 19:21:18 -06:00   cluster1-01_clus2    cluster1-02-clus1   none
+       3/5/2022 19:21:20 -06:00   cluster1-01_clus2    cluster1-02_clus2   none
+node2
+       3/5/2022 19:21:18 -06:00   cluster1-02_clus2    cluster1-01_clus1   none
+       3/5/2022 19:21:20 -06:00   cluster1-02_clus2    cluster1-01_clus2   none
+----
+--
+.すべてのONTAPリリース
+--
+すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+
+`cluster ping-cluster -node <name>`
+
 [listing, subs="+quotes"]
 ----
 cluster1::*> *cluster ping-cluster -node local*
@@ -842,8 +871,7 @@ RPC status:
 6 paths up, 0 paths down (tcp check)
 6 paths up, 0 paths down (udp check)
 ----
+--
 ====
-
-
 .次の手順
 link:configure-ssh-keys.html["SSH の設定を確認"]です。

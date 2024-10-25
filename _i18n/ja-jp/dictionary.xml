@@ -148,9 +148,6 @@
   <block id="5c68722501def32a551a736611dc6d8d" category="list-text">各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。</block>
   <block id="2e729d790188b76f9ff137fba89a9db0" category="list-text">クラスタネットワークポートの属性を表示します。</block>
   <block id="52e7ec4aaac1e1a0a07e63f3d7eb9c16" category="list-text">論理インターフェイスに関する情報を表示します。</block>
-  <block id="35f01ed40b6310feec062211ce126c2d" category="paragraph">cluster ping-cluster -node node-name</block>
-  <block id="85c96d16aebcae293f2d70dbbf9cb1d0" category="paragraph">次に、リモートクラスタインターフェイスに ping を実行する例を示します。</block>
-  <block id="82214ffaae0abeffe761517344159444" category="list-text">アクティブな CN1610 スイッチ CL1 の ISL ポート 13~16 をシャットダウンします。</block>
   <block id="1136531f8e26fab6ed3aa68ddd63c6cf" category="paragraph">「ダウンタイム」</block>
   <block id="20fca188f9df647063b0798615526c99" category="paragraph">次の例は、 CN1610 スイッチ CL1 の ISL ポート 13~16 をシャットダウンします。</block>
   <block id="3fe7956fd750714f32d9b6e932832821" category="list-text">すべてのノードで、 CN1610 スイッチ CL2 に接続されているケーブルを外します。</block>
@@ -158,10 +155,8 @@
   <block id="44f09f8a90367de97a8162e8b26612c2" category="paragraph">'how port-channel</block>
   <block id="210c72bbad8c8bc1c0de6bc95f64dff9" category="list-text">すべてのクラスタインターコネクトポートがホームポートにリバートされていることを確認します。</block>
   <block id="f9d6a6a75483c0ffe08b0dea9565ef0c" category="list-text">すべてのクラスタポートが接続されていることを確認します。</block>
-  <block id="c08886eaed359b5e123b95c056c6e19b" category="paragraph">'cluster ping-cluster -node-node-name-'</block>
   <block id="02e93bb0f25246e056d6a7dc767926d0" category="list-text">クラスタノードポートのステータスを確認します。</block>
   <block id="48080b25b0f8ce17d4598aea7dbbc6cb" category="list-text">インターフェイスがホームになったことを確認します。</block>
-  <block id="c88bbeb32e8a86a6536b0c77fe7f1ec8" category="list-text">リモートクラスタインターフェイスに ping を実行してから、リモート手順コールサーバチェックを実行します。</block>
   <block id="25ea268f832f9b1eec50e6576dee1fa5" category="list-text">構成に含まれるデバイスに関する情報を表示します。</block>
   <block id="7600489ac65e7f2d69df5731f63b9999" category="list-text">交換した CN1610 スイッチが自動的に削除されていない場合は、これらを削除します。</block>
   <block id="7e742ccdfe23c1184022b4bc3a971881" category="paragraph">次に、 CN1610 スイッチを削除する例を示します。</block>
@@ -629,8 +624,6 @@
   <block id="f523377f3be90c9c99ffba49f8f2ce16" category="list-text">新しいスイッチに admin としてログインし、ノードクラスタインターフェイス（ポート 1/1~1/34 ）に接続するすべてのポートをシャットダウンします。</block>
   <block id="65b12adbef5ea1ca868cfd0f85c4ee86" category="paragraph">交換するスイッチが機能せず、電源がオフになっている場合は、手順 4 に進みます。クラスタノードの LIF は、各ノードのもう一方のクラスタポートにすでにフェイルオーバーされている必要があります。</block>
   <block id="7b5239f3a5575bedd1afcb0d613f5b2d" category="list-text">すべてのクラスタ LIF で自動リバートが有効になっていることを確認します。「 network interface show -vserver Cluster -fields auto-revert</block>
-  <block id="b20219b8e5862f90d99ed9d31b9cbaf4" category="list-text">すべてのクラスタ LIF が通信できることを確認します。「 cluster ping-cluster 」</block>
-  <block id="2956a3c58e1e9e09d89c37630ad846c1" category="list-text">Nexus 9336C-FX2 スイッチ cs1 の ISL ポート 1/35 および 1/36 をシャットダウンします。</block>
   <block id="2afc75d42480841e27d9b05235e39cde" category="list-text">すべてのケーブルを Nexus 9336C-FX2 cs2 スイッチから取り外し、 Nexus C9336C-FX2 newcs2 スイッチの同じポートに接続します。</block>
   <block id="78a32e32770c5475ef123676ee445f74" category="list-text">cs1 スイッチと newcs2 スイッチ間で ISL ポート 1/35 と 1/36 を起動し、ポートチャネルの動作ステータスを確認します。</block>
   <block id="9976ce3dd89716631075e314d8369a88" category="paragraph">ポートチャネルは Po1 （ SU ）を示し、メンバーポートは Eth1/35 （ P ）および Eth1/36 （ P ）を示している必要があります。</block>
@@ -641,7 +634,6 @@
   <block id="f33c1f43ae94bca5556a5612cebb3895" category="paragraph">次のコマンドは、 node1 上の LIF 'node1_clus2' をホームポート e0a に返し、両方のノード上の LIF に関する情報を表示します。両方のクラスタ・インターフェイスで Is Home 列が true で、ノード 1 の「 e0a' 」と「 e0b 」のように正しいポート割り当てが表示されている場合、最初のノードの起動は成功します。</block>
   <block id="08ceb55af9899d85ad284fdb01eb8069" category="paragraph">次の例では、このクラスタのノード node1 と node2 のノードの健常性が true であることを示します。</block>
   <block id="99a5618d4e7c61c63f6a59744fda19b6" category="list-text">すべての物理クラスタ・ポートが動作していることを確認します「 network port show ipspace Cluster</block>
-  <block id="b8fcfd0b86837de6abae197ea7ce1e77" category="list-text">次のクラスタ・ネットワーク構成を確認します「 network port show</block>
   <block id="d921e67200afe4871cf4670f84d9ecd6" category="list-text">ケースの自動作成を抑制した場合は、 AutoSupport メッセージ「 system node AutoSupport invoke -node * -type all -message MAINT=end 」を呼び出して作成を再度有効にします</block>
   <block id="fa21628888ded01ed57a85731476a1fb" category="summary">サポート対象のプラットフォームを文書化する場合は、入力済みのケーブル接続ワークシートの例を参考にして、空白のケーブル接続ワークシートに記入する必要があります。各スイッチは、単一の 40GbE ポートまたは 4 × 10GbE ポートとして設定できます。</block>
   <block id="2fab7c7cfe6456a33108d2cdd5b1004a" category="paragraph">4x10G / 40G ノード</block>
@@ -1113,7 +1105,6 @@
   <block id="a5ba084a16f4288f9dbb11676c16a481" category="list-text">ノード 2 のクラスタポート e0b からケーブルを外し、 92300YC スイッチでサポートされているケーブル接続に従って、クラスタスイッチ cs2 のポート 2 に接続します。</block>
   <block id="5092d42ca2315a935e2e3c56036b8a27" category="paragraph">次の例は、スイッチ cs2 でポート 1/1~1/64 が有効になっていることを示しています。</block>
   <block id="9b9b4790983afce9ab4bf2e1e67e9766" category="list-text">すべてのインターフェイスに Is Home に true が表示されていることを確認します。</block>
-  <block id="cd21dfc849bb9ea2aa764a739849b964" category="list-text">クラスタネットワークが完全に接続されていることを確認します。</block>
   <block id="0087b0de389e5b9f017430f157337f28" category="summary">ONTAP クラスタの古い Cisco クラスタスイッチは、無停止で Cisco Nexus 92300YC クラスタネットワークスイッチに移行できます。</block>
   <block id="bbe48fb854ea022537208eeeff822f91" category="list-title">このタスクについて</block>
   <block id="ee9f18fe03ee9b0dd7c1625d630104b6" category="list-text">クラスタ LIF がすべて up 状態でホームポートにあること。</block>
@@ -1154,8 +1145,6 @@
   <block id="29b5c9f7c3e370b92a6acd04f777cd76" category="paragraph">この手順の例では、 2 つのノードを使用します。これらのノードは 'e0a' と 'e0b' の 2 つの 10GbE クラスタ・インターコネクト・ポートを使用します</block>
   <block id="ae51aab75debd2e4f744aa3423ddf6cf" category="list-text">クラスタ LIF 名は、 node1 の場合は「 node1_clus1' 」、ノード 1 の場合は「 node1_clus1' 」、 node2 の場合は「 node2 _ clus2 」です。</block>
   <block id="4910851fa218a8942f3c3f40e877fda8" category="paragraph">ここで、 _ x _ はメンテナンス時間の長さ（時間）です。</block>
-  <block id="e73ca78de91a85725d7897c5caaeeb3e" category="list-text">リモートクラスタ LIF に ping を実行します。</block>
-  <block id="f640804165fe8b3014b443db071bd7c2" category="list-text">すべてのクラスタ LIF で auto-revert コマンドが有効になっていることを確認します。</block>
   <block id="c3fefe6517671336a8a9051770e62e39" category="summary">この手順を使用して、 Nexus 92300YC スイッチに NX-OS ソフトウェアをインストールできます。</block>
   <block id="8c26396db8d0080e37691f8d80525fd2" category="list-text">「 ping 」コマンドを使用して、 NX-OS ソフトウェアおよび RCF をホストするサーバへの接続を確認します。</block>
   <block id="dfd32790423f16dd03c31199222c75e8" category="list-text">NX-OS ソフトウェアおよび EPLD イメージを Nexus 92300YC スイッチにコピーします。</block>
@@ -1179,8 +1168,6 @@
   <block id="843e8bce6b1f5f343fc75f65042e3608" category="list-text">ブラウザの戻る矢印をクリックして、 * 概要 * ページに戻り、 * continue * をクリックしてライセンス契約に同意し、 * Download * ページに移動します。</block>
   <block id="110c695d96cf5ad96f14ba25bfd860f2" category="list-text">新しいスイッチに admin としてログインし、ノードクラスタインターフェイス（ポート 1/1~1/64 ）に接続するすべてのポートをシャットダウンします。</block>
   <block id="09f3237a21e153d832b3546f85186cbc" category="list-text">すべてのクラスタ LIF で自動リバートが有効になっていることを確認します。</block>
-  <block id="eb7580a8ac3bae2040e96931950a989f" category="list-text">すべてのクラスタ LIF が通信できることを確認します。</block>
-  <block id="0c93dd1c3bc740b534dc19a4612c4120" category="paragraph">「 cluster ping-cluster 」を参照してください</block>
   <block id="566992671ef338b9a51fdc8643a29803" category="list-text">Nexus 92300YC スイッチ cs1 の ISL ポート 1/65 および 1/66 をシャットダウンします。</block>
   <block id="bcdc1c149628bee1646511fc29cd7407" category="list-text">すべてのケーブルを Nexus 92300YC cs2 スイッチから取り外し、 Nexus 92300YC newcs2 スイッチの同じポートに接続します。</block>
   <block id="2975370bf83bdfdcc1f7c7bc49f1e4a2" category="list-text">cs1 スイッチと newcs2 スイッチ間で ISL ポート 1/65 と 1/66 を起動し、ポートチャネルの動作ステータスを確認します。</block>
@@ -1288,8 +1275,6 @@
   <block id="3bf33ab1d6946b3f24d2516e6072bbfb" category="list-text">クラスタインターフェイスの移行を確認します。</block>
   <block id="e43adf663d10e04de01cdb70dba1ea3f" category="list-text">両方のノードでクラスタポート clus1 LIF をシャットダウンします。</block>
   <block id="b1dfc19976d0fe683db7ddf19294007c" category="paragraph">「 network port modify 」を参照してください</block>
-  <block id="6a7c10099f41c6e223cef671ebb76146" category="list-text">リモートクラスタインターフェイスに ping を実行し、 RPC サーバチェックを実行します。</block>
-  <block id="df920baf118cae8ed08bc0e67c930632" category="list-text">ノード n1 の e4A からケーブルを外します。</block>
   <block id="656098cc9fb2598274636e89bfda9deb" category="paragraph">実行コンフィギュレーションを参照し、 Nexus 3132Q-V でサポートされているケーブル接続を使用して、スイッチ C1 （この例ではポート 1/7 ）の最初の 40 GbE ポートを n1 の e4A に接続します</block>
   <block id="916b11220f3f30d08ed357610e9a0f88" category="paragraph">新しい Cisco クラスタスイッチにケーブルを再接続する場合は、使用するケーブルがシスコによってサポートされているファイバまたはケーブルである必要があります。</block>
   <block id="1cd2a4b2269a32389e020110b6c528c4" category="list-text">ノード n2 の e4A からケーブルを外します。</block>
@@ -1376,7 +1361,6 @@
   <block id="8fd12ba18f621197ae2f1f7203080e73" category="paragraph">次の例では、新しい 3132Q-V スイッチ C1 の n1 と n2 上のすべてのクラスタインターコネクトポートが「 up 」になっていることを確認します。</block>
   <block id="42f427229de718255616b52d13a2ec50" category="paragraph">次の例は、移行したクラスタ LIF をホームポートにリバートする方法を示しています。</block>
   <block id="9fff40b9c7a12070faa3809a040494f9" category="paragraph">次の例は 'n1 と n2 のクラスタ・インターコネクト・インターフェイスのステータスを 'up' および is home であることを示しています</block>
-  <block id="9337d28b60d4b0252c3592ab024c6fc9" category="list-text">Nexus 3132Q-V クラスタスイッチにノードを追加してクラスタを拡張します。</block>
   <block id="1998c6d3154f5a2c373da0aeca0fd3ff" category="list-text">「 network port show -role cluster 」のように表示されます</block>
   <block id="a2d27af8ce0592e36b8a208c0cb93d3e" category="list-text">「 network interface show -role cluster 」のように表示されます</block>
   <block id="d06b10417bc355c0e14c53d8eae6e76e" category="paragraph">次の例は、 40 GbE クラスタポートがポート e1/7 および e1/8 に接続されたノード n3 および n4 を Nexus 3132Q-V クラスタスイッチと両方のノードがクラスタに参加していることを示しています。使用する 40GbE クラスタインターコネクトポートは、 e4A および e4e です。</block>
@@ -1412,7 +1396,6 @@
   <block id="071e695f268cd49293774c00613abb17" category="list-text">クラスタインターコネクトスイッチごとに、各ノードに設定されているクラスタインターコネクトインターフェイスの数を表示します。</block>
   <block id="a06f69669c864cc0902a5e544ee247bc" category="paragraph">network port show – ipspace Cluster</block>
   <block id="8eaf3d59876911ccca6dc5bdc347ee06" category="list-text">LIF に関する情報を表示します。</block>
-  <block id="b28871024a61db436088d8a57f04935d" category="list-text">すべてのクラスタ LIF で「 auto-revert 」コマンドが有効になっていることを確認します。</block>
   <block id="280107a5f53cc09efecfd6d30a3b7ebc" category="list-text">NetApp CN1610</block>
   <block id="1d8bdbbecd2a7992d9b2c5314cbc8da8" category="list-text">Cisco Nexus 3132Q-V の 2 つのポートを設定します</block>
   <block id="246b4f4943a9ef7d81b1ecb7d14db012" category="list-text">Cisco Nexus 3132Q-V ：ポート e1/1~30 （ 40/100GbE ）</block>
@@ -1464,7 +1447,6 @@
   <block id="f5532c44fa87b73888e57560b15f09ab" category="paragraph">次の例は、 n1 と n2 ですが、すべてのノードで LIF の移行を実行する必要があります。</block>
   <block id="4dcbeb6667fd808ff27ae4150e7a8909" category="list-text">クラスタの健常性を確認します。</block>
   <block id="acd1d1d2ce5a2970e1b46fb53b75ad44" category="list-text">スイッチ CL2 に物理的に接続されているクラスタインターコネクトポートをシャットダウンします。</block>
-  <block id="3deecfe62c85f26f915232658c689130" category="list-text">アクティブな Nexus 5596 スイッチ CL1 で ISL ポート 41~48 をシャットダウンします。</block>
   <block id="609bda8dbabe0a84f343b546e3d7a65a" category="paragraph">次の例は、 Nexus 5596 スイッチ CL1 で ISL ポート 41~48 をシャットダウンする方法を示しています。</block>
   <block id="74bb8188e949e71bcfef0fd8d38fa91b" category="list-text">CL1 と C2 の間に一時的な ISL を構築します。</block>
   <block id="621728c29c88ed3282a78eafc103c550" category="paragraph">次の例は、 CL1 と C2 の間に一時的な ISL をセットアップしています。</block>
@@ -1487,7 +1469,6 @@
   <block id="9e34505e95067067c4258419479733a1" category="paragraph">次の例は、 clus2 の LIF がそれぞれのホームポートにリバートされたことを示しています。「 Is Home 」列の「 Current Port 」列のポートのステータスが「 true 」の場合、 LIF が正常にリバートされたことを示しています。Is Home の値が false の場合、 LIF はリバートされていません。</block>
   <block id="b0522263b2b188ed6c32b8d81c7f9286" category="list-text">クラスタポートが接続されたことを確認します。</block>
   <block id="14860c40af5b70801e3ca603e17cb1ae" category="paragraph">次の例は ' 前の network port modify コマンドの結果を示しており ' すべてのクラスタ・インターコネクトが up であることを確認しています</block>
-  <block id="f4df801f902ead90a2bade04e26cac42" category="list-text">クラスタ内の各ノードで、交換する最初の Nexus 5596 スイッチ CL1 に関連付けられているインターフェイスを移行します。</block>
   <block id="0559fa6d8467bdb0870358a693b8fb6a" category="list-text">クラスタのステータスを確認します。</block>
   <block id="29d3d66101e62951d378ea2e5a755eef" category="paragraph">次の例は、必要なクラスタ LIF が、クラスタスイッチ C2 でホストされている適切なクラスタポートに移行されたことを示しています。</block>
   <block id="b7504e51bec148bae865f23a95894f3d" category="list-text">すべてのノードで、 CL1 に接続されているノードポートをシャットダウンします。</block>
@@ -1568,7 +1549,6 @@
   <block id="7fd77ba3dd5e636631a1eb65009f8b8d" category="paragraph">次の例では、すべてのノードで LIF の移行が実行されています。</block>
   <block id="43708903ed29a6b8f36b2d2012c5cd07" category="list-text">クラスタの健全性を確認します。</block>
   <block id="74d7543cdff44d4d4d6b9c31a44929fd" category="paragraph">次の例は、指定したポートをすべてのノードでシャットダウンしています。</block>
-  <block id="4547e743de7a4493e60ec5a14011f213" category="list-text">CL1 のポート 1/31 と 1/32 、アクティブな Nexus 3132Q-V スイッチをシャットダウンします。</block>
   <block id="7ed6ad166541eaeed2eb44050a4369b4" category="paragraph">次の例は、スイッチ CL1 で ISL ポート 1/31 と 1/32 をシャットダウンしていることを示しています。</block>
   <block id="4ce7327540877b4c9bb108e79d7ec741" category="list-text">Nexus 3132Q-V スイッチ CL2 に接続されているすべてのケーブルを取り外し、すべてのノードの交換用スイッチ C2 に再接続します。</block>
   <block id="e3005fa5d118a1b001d70e796207020b" category="list-text">CL2 のポート e1/31 と e1/32 から ISL ケーブルを取り外し、交換用スイッチ C2 の同じポートに再接続します。</block>
@@ -1623,7 +1603,6 @@
   <block id="20fb8dfa050d34e66fdcb88cde52cd39" category="paragraph">各クラスタ LIF の列には 'Is Home` が表示されます</block>
   <block id="a04a550528162e05ce99957d8bcaedf1" category="paragraph">手順 10~13 の変更コマンドと移行コマンドはローカルノードで実行する必要があります。</block>
   <block id="e46a14518d3f20a82a8ea86aa3e1a91b" category="paragraph">リリース 8.3 以降では、次のコマンドを使用します。 network interface modify -vserver Cluster -lif * -auto-giveback false</block>
-  <block id="1506e8a32c89125ba0188cab7beb0fb3" category="paragraph">コマンドの出力には、すべてのクラスタポート間の接続が表示されます。</block>
   <block id="159ba467749aba2dcf746508bf149877" category="paragraph">次の例は、 node1 と node2 のポート e2a に clus1 を移行するプロセスを示しています。</block>
   <block id="a06d76059f0a519a64519b90a1dc32fa" category="paragraph">リリース 8.3 以降では、次のコマンドを使用します。 network interface migrate -vserver Cluster -lif clus1 -destination-node node1 -destination-port e2a</block>
   <block id="90df6f76d556f5c6f67ea48d18403467" category="paragraph">次の例は、 clus1 が node1 と node2 のポート e2a に移行されていることを確認します。</block>
@@ -1678,7 +1657,6 @@
   <block id="03785619d55d01a3d9de759db10a42c2" category="list-text">スイッチに接続されている 10GbE クラスタポートが同じ VLAN に含まれるように設定されていることを確認してください。</block>
   <block id="1935a529661750cc36f5da03c0214edf" category="paragraph">各コントローラモジュールのクラスタポートを異なるスイッチに接続する場合は、クラスタポートが各スイッチで接続されているポートが同じ VLAN に設定されていて、両方のスイッチでトランキングが適切に設定されていることを確認する必要があります。</block>
   <block id="ad2c2b5612ae219cdefade565a2878a4" category="paragraph">次の例では、 LIF がノード 1 とノード 2 で「 up 」になっていて、「 Is Home 」列の結果が「 true 」であることを示します。</block>
-  <block id="a1f783c83c4d98e6eb5a7c79625862d7" category="paragraph">コマンドの出力には、すべてのクラスタポート間の接続が表示されます。</block>
   <block id="2f22a515e333c7902fee7e2dd01783af" category="summary">NetApp CN1610 クラスタスイッチに FastPath ソフトウェアとリファレンス構成ファイル（ RCF ）をインストールする必要があります。</block>
   <block id="031c2af541d8a8eb91a65a87dbae782f" category="list-text">クラスタが完全に機能している必要があります。</block>
   <block id="a968ac7024ff03437db257f2510e1999" category="list-text">クラスタネットワークインターフェイスカード（ NIC ）に欠陥がないこと、およびクラスタスイッチで接続されているすべてのポートが機能していることが必要です。</block>
@@ -1790,7 +1768,6 @@
   <block id="0f717d9f0cdccd54283a68290db5a062" category="list-text">手順 9 で移行した n1_clus1 LIF と n2_clus1 LIF のクラスタポートをシャットダウンします。</block>
   <block id="e95612c7ef671203cc282ce38a48bdb4" category="paragraph">'network port modify -node node_name --port_port-name_up-admin false</block>
   <block id="c2c05b7104e31c97ee9d11ccf7ac3b14" category="paragraph">次の例に示すように、各ポートに対してコマンドを実行する必要があります。</block>
-  <block id="9868b1da05b1c2bf12a9e340575945d0" category="paragraph">次の例は、ノード n1 への ping の実行後、 RPC のステータスがと表示されています。</block>
   <block id="cfc28d2866c14653d52dc05e54775304" category="paragraph">実行コンフィギュレーションを参照して、スイッチ C1 （この例ではポート 1/7 ）の最初の 40 GbE ポートを n1 の e4A に接続します（ Nexus 3232C スイッチでサポートされているケーブル接続を使用）。</block>
   <block id="4eb5af7feefb21a309fba1c5f8786fbb" category="paragraph">次の例は、 RCF 「 NX3232_RCF_v1_24p10g_26p100g.txt 」でサポートされている設定を使用して、 Nexus 3232C クラスタスイッチ C1 および C2 でポート 1~30 を有効にします。</block>
   <block id="be56b8565c3ff7246400103b874f9821" category="paragraph">'network port modify -node node_name --port_port-name_up-admin true</block>
@@ -1816,8 +1793,6 @@
   <block id="bd8bc538541d81e289ef66a8873145af" category="paragraph">この時点で両方のスイッチを準備する必要があります。RCF およびイメージをアップグレードする必要がある場合は、次の手順 を実行する必要があります。</block>
   <block id="98eb99fcc0ed94997a2ab2be00fd87f8" category="paragraph">次の例に示すように、各 LIF を個別に移行する必要があります。</block>
   <block id="58e4c812934a7909bf27428e713ee5c1" category="paragraph">次の例は、ノード n1 とノード n2 の 4 つのクラスタインターコネクトポートがシャットダウンされていることを示しています。</block>
-  <block id="1951e47d1525c6b1dfbe9f52df91cc7f" category="list-text">リモートクラスタインターフェイスに ping を実行してから、リモート手順 コールサーバチェックを実行します。</block>
-  <block id="105dcee6d5ae30eca10110db38214b1e" category="list-text">適切なコマンドを使用して、アクティブな CN1610 スイッチ CL1 の ISL ポート 13~16 をシャットダウンします。</block>
   <block id="06b942f634ce75ef69a38ebe9aa1d02c" category="paragraph">次の例は、 CN1610 スイッチ CL1 で ISL ポート 13~16 をシャットダウンします。</block>
   <block id="8b3c83619e5433d40fb01f0c00687515" category="paragraph">次の例は、 Cisco`switchport mode trunk` コマンドを使用して CL1 （ポート 13~16 ）と C2 （ポート e1/24/1/4 ）の間に一時的な ISL を構築しています。</block>
   <block id="1c0cc14668f0cbe36098daedda716952" category="list-text">すべてのノードで、 CN1610 スイッチ CL2 に接続されているケーブルを外します。</block>
@@ -1850,7 +1825,6 @@
   <block id="38eb81980361ccffbcf933498afb8e35" category="paragraph">次の例は、新しい 3232C スイッチ C1 に接続されているすべてのクラスタインターコネクトポートを起動します。</block>
   <block id="647a3a17ca458bfb396ec8a44651ddec" category="paragraph">次の例は、新しい 3232C スイッチ C1 のノード n1 とノード n2 のクラスタインターコネクトポートが「 up 」になっていることを確認する出力を示しています。</block>
   <block id="7bfca154df7416f9baa3531ebe91c06a" category="paragraph">次の例は、ノード n1 および n2 のクラスタインターコネクトインターフェイスのステータスが「 up 」で、「 Is Home 」であることを示しています。</block>
-  <block id="684b2e790316879de4577bb080c72bf3" category="list-text">Nexus 3232C クラスタスイッチにノードを追加してクラスタを拡張します。</block>
   <block id="00145d7363dbe1c988b2f36e4a46e418" category="paragraph">次の例に示すように、両方のデバイスを個別に削除する必要があります。</block>
   <block id="f3a80053e3cfef55fa0b842eef2e42b2" category="paragraph">次の例は、クラスタスイッチ C1 と C2 を監視していることを示しています。</block>
   <block id="63990467755c5a4c3727faca4f024adb" category="summary">CN1610 クラスタスイッチを Cisco Nexus 3232C クラスタスイッチに交換する場合は、特定の設定情報、ポート接続、およびケーブル接続要件に注意する必要があります。</block>
@@ -1884,7 +1858,6 @@
   <block id="1e59f27afab544486b3444c5591d4f53" category="paragraph">RCF およびイメージをアップグレードする必要がある場合は、次の手順を実行する必要があります。</block>
   <block id="23cd51d657266665ae8f8c9d2a2ae14f" category="paragraph">次の例は、ノード n1 とノード n2 の LIF を移行していることを示しています。すべてのノードで LIF の移行が完了している必要があります。</block>
   <block id="fb0f753ded9498a080196f8272f79423" category="paragraph">次の例は、各クラスタの現在のステータスを表示します。</block>
-  <block id="72611877ce7fbffb44381c1c62a69cd8" category="list-text">Cisco'shutdown' コマンドを使用して、アクティブな Nexus 5596 スイッチ CL1 で ISL 41 ～ 48 をシャットダウンします。</block>
   <block id="df3b3a025572a660a134a45b54c2ec44" category="paragraph">Cisco コマンドの詳細については、『』の該当するガイドを参照してください<block ref="ea38293a052c78dce084d149b79f50b3" category="inline-link-rx"></block>。</block>
   <block id="c66e3aa8ea0ac093e4c0a3cf3a2362e7" category="paragraph">次の例は、 Nexus 5596 スイッチ CL1 で ISL 41~48 をシャットダウンしている状態を示しています。</block>
   <block id="e611d5576e653114c65a96a266ece602" category="list-text">適切な Cisco コマンドを使用して、 CL1 と C2 の間に一時的な ISL を構築します。</block>
@@ -1954,7 +1927,6 @@
   <block id="bec2d779818d6e0e0e9ff7a66a88bdcf" category="paragraph">次の例は、スイッチ cs2 に RCF ファイル「 Nexus_32323_RCF v1.6 -Cluster-HA-Breakout .txt 」をインストールする方法を示しています。</block>
   <block id="4b45f9c3c89c6b4fd380706244fef39d" category="paragraph">スイッチにロードした RCF バージョンによっては、 cs1 スイッチコンソールで次の出力が表示されることがあります</block>
   <block id="de5961cc4ba4008f669b392dba74a8da" category="list-text">CS1 と CS2 の間の ISL が機能していることを確認します show port-channel summary</block>
-  <block id="0ecc223c2f66f6abde60759dd3185d04" category="list-text">リモートクラスタインターフェイスに ping を実行して接続を確認します。「 cluster ping-cluster -node local 」</block>
   <block id="dd70194aaae821572e701e183663363b" category="summary">クラスタ内の障害のある Cisco Nexus 3232C スイッチは、特定の順序でタスクを実行することで、無停止で交換できます。</block>
   <block id="0e3368a8363270e1b5da6c7ff6b307df" category="list-text">4 つのノードは、 n1 、 n2 、 n3 、 n4 です。</block>
   <block id="7e38d5b2f5b87fc1a22bd8f75f99a2f1" category="list-text">n1_clus2 は、ノード n1 について、クラスタスイッチ CL2 または C2 に接続された最初のクラスタ LIF です。</block>
@@ -1990,8 +1962,6 @@
   <block id="f163f843faddde93ed2caa19f8e0f9fe" category="paragraph">次の例は ' が監視されている状態が TRUE であるため ' クラスタ・スイッチを監視する方法を示しています</block>
   <block id="f435abab4c17d94cf8603815dbd871f9" category="summary">Cisco NX-OS ソフトウェアおよびリファレンス構成ファイル（ RCF ）を Cisco Nexus 3232C クラスタスイッチにインストールする必要があります。</block>
   <block id="4abcd2a6fe57e9f246dd326cae0ddb1b" category="list-text">LIF に関する情報を表示します。「 network interface show -vserver Cluster</block>
-  <block id="8e7dcc2f49cf13de0316cb76b4708706" category="list-text">リモートクラスタ LIF に ping を実行します。 cluster ping-cluster -node -node-name _</block>
-  <block id="916ba5b1774eaf295926db30f3bad132" category="list-text">すべてのクラスタ LIF で「 auto-revert 」コマンドが有効になっていることを確認します。「 network interface show -vserver Cluster -fields auto-revert</block>
   <block id="9aa8a0ae2c0c1e8fae620818f15e5745" category="sidebar">『 CN1601 Switch Administrator's Guide 』</block>
   <block id="0dbd44ca48760058c465f203895f8233" category="summary">Cisco 9336-FX2` スイッチ</block>
   <block id="cc02bee3f16f9cf028c930e3ae85fb8f" category="list-text"><block ref="3ddccd8b1e06c6aa2ada1397d17562ec" category="inline-link-macro-rx"></block> FastPath ソフトウェアのインストール方法について説明します。</block>
@@ -2165,7 +2135,6 @@
   <block id="b1046cdb57cd97fe9c20f711ba08bed8" category="paragraph">network interface modify -vserver Cluster -lif *-auto-revert false</block>
   <block id="5509fa38d3415bf6dfbd28918cf766f3" category="list-text">前の手順で確認したすべてのポートがネットワークスイッチに接続されていることを確認します。</block>
   <block id="101ead84905a0da72281347a2d3e5846" category="paragraph">「network device-discovery show -port_cluster_port_」というコマンドを実行します</block>
-  <block id="fad8bc8bd6f8c2ecbc098cd96431ebde" category="list-text">クラスタの接続を確認します。</block>
   <block id="e477c0774c6014b5173ffa6810d512ab" category="paragraph">「 cluster ring show 」を参照してください</block>
   <block id="c992f99b79e71a5eb5127e5f190fab4e" category="paragraph">すべてのユニットはマスタまたはセカンダリのいずれかでなければなりません。</block>
   <block id="048592cc00af171e1fa6348b090a6c78" category="list-text">グループ1のポートにスイッチレス構成を設定します。</block>
@@ -2178,8 +2147,6 @@
   <block id="cad47f7ffe7579e68a294494fa25af17" category="image-alt">ポート「e0a」間の直接接続</block>
   <block id="e9ec4835d23694aed9844bcf9e7e87ea" category="list-text">スイッチレス・クラスタ・ネットワーク・オプションは'false'からtrue'に移行しますこの処理には最大45秒かかることがあります。スイッチレス・オプションが「true」に設定されていることを確認します。</block>
   <block id="c412aebcb1566f8e5e0323f2afe60d0e" category="paragraph">次の例は、スイッチレスクラスタを有効にします。</block>
-  <block id="6d1b5eebdb14196ce07c51c623533431" category="list-text">クラスタネットワークが中断しないことを確認します。</block>
-  <block id="f643d26da1df28bcffc5c5067726246b" category="list-text">グループ2のポートにスイッチレス構成を設定します。</block>
   <block id="863e48e1ab590a3004febd635c0c772c" category="admonition">ネットワークの潜在的な問題を回避するには、ポートをgroup2から切断して、できるだけ速やかに元に戻す必要があります。たとえば、20秒以内に*と入力します。</block>
   <block id="29f9df63556e07a416ddabb7ae9e6ad1" category="list-text">group2のポートからすべてのケーブルを同時に外します。</block>
   <block id="f7107cbf076f0517cc09ef7864ab4721" category="paragraph">次の例では、各ノードのポート「e0b」からケーブルが切断され、クラスタトラフィックは「e0a」ポート間の直接接続を経由して続行されます。</block>
@@ -2194,8 +2161,6 @@
   <block id="31d2e20cefb76721dace23dfd9a35896" category="paragraph">「network interface revert -vserver Cluster -lif LIF_name」のようになります</block>
   <block id="aeb90980ffc18e4c949766c382d409d4" category="list-text">いずれかのノードのシステムコンソールで、ノードのクラスタステータスを確認します。</block>
   <block id="90d334e25f499d80506823cb341c39d7" category="paragraph">次の例では'両方のノードのイプシロンをfalseに設定しています</block>
-  <block id="26ba805ccb9566fb36369f48374b79c8" category="list-text">クラスタポート間の接続を確認します。</block>
-  <block id="a76aa36cc43767185eb24bf3e6381bdb" category="paragraph">「cluster ping-cluster local」と入力します</block>
   <block id="749e4fff30fa6550a6b7216922e76856" category="paragraph">次の例では、node1の「e0a」がnode2の「e0a」に接続され、node1の「e0b」がnode2の「e0b」に接続されています。</block>
   <block id="f9c5b146fb6da165b4c98f09374af2ac" category="doc">古いCiscoスイッチからCisco Nexus 9336C-FX2クラスタスイッチへの移行</block>
   <block id="82aa1ff47d80bf012e412296f6a53469" category="inline-link">Nexus 9000シリーズスイッチ</block>
@@ -2323,7 +2288,6 @@
   <block id="3c23423d82deff2c49b1f5a675affe46" category="list-text">論理インターフェイスとそのホームノードに関する情報を表示します。「 network interface show -vserver Cluster</block>
   <block id="3dc587636ea58bb39b951053c233b58b" category="list-text">各ノードのクラスタポートは、（ノードから見て）次のように既存のクラスタスイッチに接続されています：「network device-discovery show -protocol lldp</block>
   <block id="866e9195c3f1e53c818cc1513b132bbc" category="list-text">クラスタポートとスイッチは、（スイッチから見て）次のように接続されています。 'How CDP neighbors'</block>
-  <block id="9e23ccbda503c8dd0fa60d4057a41702" category="list-text">スイッチC2で、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
   <block id="aba8d89ac417a82d843ceaf3c6ac2faa" category="list-text">NVIDIA SN2100でサポートされている適切なケーブル配線を使用して、ノードのクラスタポートを古いスイッチC2から新しいスイッチSW2に移動します。</block>
   <block id="203a7f618c9b080eaa78a5e38ccd907d" category="list-text">スイッチSW2で、すべてのノードクラスタポートが稼働していることを確認します。「net show interface」</block>
   <block id="fb04bba6a926fcde1b4b8e9928fc6c8c" category="list-text">スイッチc1で、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
@@ -2648,7 +2612,6 @@
   <block id="4d76f023f4fff5f776ba26426c03d7a6" category="doc">NVIDIA SN2100スイッチのコンポーネントとパーツ番号</block>
   <block id="3f9c12e1d0acbeca7bc410db81110a76" category="section-title">キャビネットの詳細</block>
   <block id="2fca9b848223ad314bfc0417bb307186" category="section-title">レールキットの詳細</block>
-  <block id="d897cc0b3682ab01fb074cad614e3d87" category="list-text">コマンドを使用して、クラスタネットワークが完全に接続されていることを確認します。<block ref="67b370e4ed014395d701d60f8f886608" prefix=" " category="inline-code"></block></block>
   <block id="0fa2182996c829479a17f20108650375" category="admonition">Cumulus Linux（CL）OSは、スイッチでONIEまたはCumulus Linuxを実行している場合にインストールできます（を参照） <block ref="31c7752379437c6abd98c0b1cf8b984b" category="inline-link-macro-rx"></block>）。</block>
   <block id="2a7caab78aad5f1306f0e841c8cc7233" category="paragraph">Open Network Install Environment（ONIE）を使用してCumulus Linuxをインストールすると、ネットワークインストーライメージを自動的に検出できます。これにより、Cumulus Linuxなどのオペレーティングシステムの選択により、スイッチをセキュリティ保護するシステムモデルが容易になります。ONIEでCumulus Linuxをインストールする最も簡単な方法は、ローカルHTTP検出です。</block>
   <block id="86f9e7e4dc0c337b97f8769ea5f62452" category="list-text">Cumulus LinuxインストールファイルをWebサーバーのルートディレクトリにダウンロードします。このファイルの名前をに変更します。<block ref="ad3b7e04b0013d13df088435d2fc4760" prefix=" " category="inline-code"></block>。</block>
@@ -2748,7 +2711,6 @@
   <block id="9284b77324fc2073740e195aa4d8c7bc" category="admonition">を参照してください <block ref="81e27480a79c2bb77194c038c9737157" category="inline-link-macro-rx"></block> 警告および詳細については、を参照してください。。<block ref="fc1c96ca1130118b28ccd7598f63fe21" category="inline-link-rx"></block> ケーブル接続の詳細についても説明しています。</block>
   <block id="73150a01363aed5257939f818ac56b3b" category="list-text">リファレンス構成ファイル（RCF）がスイッチに適用されます</block>
   <block id="d334b073010dc4ca86957c663631fa0b" category="paragraph">には、各クラスタLIFにtrueと表示されます<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block> には、があります<block ref="4f21ee5a18672b60f4c01e94e6be9c79" prefix=" " category="inline-code"></block> の<block ref="fc7c1443e5c7b6439706b6132a4c0829" prefix=" " category="inline-code"></block>。</block>
-  <block id="9a82d0edb58bbaaf806da2f174490820" category="list-text">クラスタネットワークが完全に接続されていることを確認します。</block>
   <block id="e64b06ebdf8146ea2bc17ff7d5457eef" category="summary">Cisco Nexus 9336C-FX2ストレージスイッチのインストールと設定の概要</block>
   <block id="be4cd7f1969695f8e6e1f2c8040abcd4" category="paragraph">ONTAP を実行しているシステムでCisco Nexus 9336C-FX2スイッチを初期設定するには、次の手順を実行します。</block>
   <block id="5ac09e984471f320b2e8920ece32b03d" category="inline-link-macro">ケーブル接続ワークシートに記入</block>
@@ -3029,7 +2991,6 @@
   <block id="1665ddb906f550f2db99dc8dd8ac07cf" category="list-text">ISLがであることを確認します<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block> CN1610スイッチCL1：</block>
   <block id="63a080ea10d13b471f345736a9e24da5" category="list-text">すべてのノードの3132Q-VスイッチC2に接続されているすべてのクラスタインターコネクトポートを起動します。</block>
   <block id="23fff82d9fb02c285b1502faee4ae332" category="list-text">すべてのノードのC2に接続されている、移行されたクラスタインターコネクトLIFをすべてリバートします。</block>
-  <block id="00327de917059c9e935218cad8596953" category="list-text">クラスタ内の各ノードで、交換する最初のCN1610スイッチCL1に関連付けられているインターフェイスを移行します。</block>
   <block id="0a8253221b50cf222a53851a6ddbed1c" category="list-text">すべてのノードのCL1に接続されているノードポートをシャットダウンします。</block>
   <block id="f5733555ddee6a45ef7d77727a730c77" category="list-text">アクティブな3132Q-VスイッチC2のISLポート24、31、32をシャットダウンします。</block>
   <block id="23e226519bad1264ff6720a663714b83" category="list-text">ポート24の設定を復元し、C2上の一時ポートチャネル2を削除します。これを行うには、をコピーします<block ref="8ed2595e258fdd418e60bc54fb8390c0" prefix=" " category="inline-code"></block> ファイルをに追加します<block ref="811ed34e3f89e27ea59dac8cdeb3c7a1" prefix=" " category="inline-code"></block> ファイル。</block>
@@ -3076,13 +3037,11 @@
   <block id="a2d66052febf9deb949f7d7e35df53a5" category="paragraph">この設定は、両方のスイッチでISLが起動されたときに、3232CスイッチC2のISL設定と一致します。</block>
   <block id="0cc66efb5c8a511b569cd814c99c92d4" category="list-text">ISLがであることを確認します<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block> 3232CスイッチC2で次の手順を実行します。</block>
   <block id="b16c844dd0cab45182a4d3eae43625b0" category="list-text">すべてのノードの3232CスイッチC2に接続されているすべてのクラスタインターコネクトポートを起動します。</block>
-  <block id="f8d208c1f437dafdcc22eba9eebccb38" category="list-text">最初のCN1610スイッチCL1に関連付けられているLIFを移行します。</block>
   <block id="502a7ea7de47db18cb4d391cdc1c745e" category="paragraph"><block ref="e3b59667988659c950426714ec77861c" prefix="" category="inline-code"></block></block>
   <block id="80ba2298ea2e8bd12acd9eb6839d255c" category="section-title">手順3：クラスタスイッチCL1をC1に交換します</block>
   <block id="e750586a88360e325f160a338984da3a" category="list-text">すべてのノードの新しい3232CスイッチC1に接続されているすべてのクラスタインターコネクトポートを起動します。</block>
   <block id="a200c052ea88ce45ca5da5c961c95cd2" category="section-title">手順4：手順 を完了します</block>
   <block id="53df53d4b9649d9b2a5ab348bc614229" category="paragraph"><block ref="fa6e1d1bde7406e301eb5451453f52d0" prefix="" category="inline-code"></block></block>
-  <block id="c8cd62d32eeff74bd4e4085156642109" category="paragraph"><block ref="9e1fb31e56a5a6b23a53159fb353b6be" prefix="" category="inline-code"></block></block>
   <block id="212c45c6e98833f0aea3bc1164020ecf" category="paragraph">次の例は、両方のNexus 3232Cクラスタスイッチのポートe1/7およびe1/8にそれぞれ接続された40GbEクラスタポートを搭載したノードn3およびn4を示しています。両方のノードがクラスタに参加している。使用する 40GbE クラスタインターコネクトポートは、 e4A および e4e です。</block>
   <block id="26f6491fcc908bd549c7f4064a11e2b0" category="paragraph"><block ref="fa49d5ecd63dc0afeae5cdf40805aaa2" prefix="" category="inline-code"></block></block>
   <block id="8a83614e560d59c264d55e32972bc26c" category="paragraph">2ノードのswitchless-clusterを使用している場合は、Cisco Nexus 3232Cクラスタネットワークスイッチを含む2ノードのswitched_clusterに移行します。これは無停止の手順です。</block>
@@ -3296,7 +3255,6 @@
   <block id="f0b02a6a42b62e57a146137078a39635" category="section-title">クラスタ環境に移行する</block>
   <block id="09a5fb271719ecae04d6c0f573fa3099" category="paragraph">次の例は、スイッチcs1のISLポートが* up *になっていることを示しています。</block>
   <block id="f9431300de8d1a48bf2e554ad1605071" category="paragraph">次の例は、スイッチcs2上のISLポートが* up *になっていることを示しています。</block>
-  <block id="99905a9acf063a85c4bbaa70f4455984" category="list-text">コマンドを使用して、クラスタネットワークが完全に接続されていることを確認します。</block>
   <block id="1e44ccea9f1ae385026deb840bc9b5f4" category="paragraph">詳細については、を参照してください<block ref="780f810d0519883e7efdd6ef45cf51ed" category="inline-link-rx"></block></block>
   <block id="77d285017f370185656b54b03d5b5a16" category="paragraph">BES-53248 クラスタスイッチの基本モデルには、 16 個の 10GbE ポートまたは 25GbE ポートと 2 個の 100GbE ポートがライセンスされています。ライセンスを追加購入すると、新しいポートを追加できます。</block>
   <block id="f95b7ecd3b114623b8699a07a36fd860" category="section-title">使用可能なライセンスを確認します</block>
@@ -3508,12 +3466,9 @@
   <block id="6f48ab02f85ba15c8881b13dfb743c1f" category="list-text">ポート1/35および1/36では、すべてのスイッチ間リンク（ISL）ポートが無効になっています。</block>
   <block id="2400f4c6ea942e602ee72f34c92149fb" category="list-text">[[step4]] すべてのクラスタ LIF で自動リバートが有効になっていることを確認します。</block>
   <block id="77c477176f23eee3a054860c86ade8ee" category="paragraph"><block ref="3dc4656499b962a12e176f61ea51ff38" prefix="" category="inline-code"></block></block>
-  <block id="351f5135225bc1aa8573399c24aaee63" category="list-text">[[step5]すべてのクラスタLIFが通信できることを確認します。</block>
-  <block id="9a240210c2eead6e36900d78bed7eef4" category="paragraph"><block ref="6719f40a90253c4646383ef86ccea791" prefix="" category="inline-code"></block></block>
   <block id="cdfcdd135ec181475270de06d4e5f91e" category="list-text">[[step9]すべてのノードでポートe3bが稼働していることを確認します。</block>
   <block id="1d559f001e58c1d63e11be4f19b5484b" category="list-text">[[step11]]クラスタ内のノードに関する情報を表示します。</block>
   <block id="53c275e60a3964cc951d091cfc9d800d" category="list-text">[[step12]]すべての物理クラスタポートが稼働していることを確認します。</block>
-  <block id="d9c7fb52065c9f285a012f315313eb5e" category="list-text">[[step13]]すべてのクラスタLIFが通信できることを確認します。</block>
   <block id="9354d16e8675ab0de41f89b86b5aae21" category="list-text">[[step14]]次のクラスタネットワーク構成を確認します。</block>
   <block id="c11677f97d3ee2a98d058ccf0190a185" category="list-text">HAペア2の共有スイッチnewsh2に接続されたストレージが正常であることを確認します。</block>
   <block id="31fa17eadf22890247f9b117b5591678" category="paragraph"><block ref="2a56be163fc199ace3546fc94a295c05" prefix="" category="inline-code"></block></block>
@@ -3602,8 +3557,6 @@
   <block id="58665a6b8c7ef44525f1c47106f6a5f7" category="list-text">[[step21] HAペア1（およびHAペア2）のストレージ構成が正しいこととエラーがないことを確認します。</block>
   <block id="13982e86db6e34f25fefc25b6bdc9157" category="list-text">[[step22]]設定が無効になっていることを確認します。</block>
   <block id="fc62df36a7229b3d62a69029133e4bad" category="list-text">[[step23]]クラスタ内のノードメンバーのステータスを確認します。</block>
-  <block id="424f5bb3c0f9a5e7519b727f4bbfec8a" category="list-text">[[step24]]クラスタネットワークが完全に接続されていることを確認します。</block>
-  <block id="57cbdf7660ff8108b68333b5cdd82f80" category="list-text">[[step25]]権限レベルをadminに戻します。</block>
   <block id="8e2930bcf2c872a7120bbe73b8779424" category="section-title">手順2：共有スイッチをセットアップします</block>
   <block id="cee31e17ff4073484e137ee2159131bd" category="list-text">ストレージノードポートが正常で動作していることを確認します。</block>
   <block id="c7f29a8717b9bbffee0430b5ba54c983" category="list-text">HAペア1のNSM224パスBポートを、sh2ポート範囲11-22に移動します。</block>
@@ -3678,7 +3631,6 @@
   <block id="d9bc9e589852186d0d0f7ee5549d5002" category="list-text">ギブバック処理が完了したら、HAペアが正常でテイクオーバーが可能であることを確認します。</block>
   <block id="751035e5db88d172e881299c202d9b13" category="paragraph"><block ref="ddf400f1cb6b8b9330ed6c79c508123c" prefix="" category="inline-code"></block></block>
   <block id="7585f91db102237924371a7e706740ac" category="list-text">クラスタポートLIFが正しく動作していることを確認します。</block>
-  <block id="975034487eab4a8e96e8e6d1c65f8552" category="list-text">クラスタポートにpingを実行してクラスタ接続を確認します。</block>
   <block id="d70fd89df8aeadfc5b92548ac7980d1a" category="doc">ONTAP 8.3.1以降には、FastPathソフトウェアとRCFをインストールします</block>
   <block id="834cc0a95f99fae146baeb2e09562fa9" category="paragraph">この手順 に従って、ONTAP 8.3.1以降用のFastPathソフトウェアとRCFをインストールします。</block>
   <block id="ef07b7e35e16571ab7d77ce32508e689" category="list-text">サポートされているFastPath、RCF、およびONTAP のバージョン。</block>
@@ -3702,7 +3654,6 @@
   <block id="e358220f8af8ba071a86497546e7cc33" category="list-text">各クラスタポートがパートナークラスタノードの対応するポートに接続されていることを確認します。</block>
   <block id="19f96b9a58e58f1d934e5d8f924b7319" category="paragraph"><block ref="f4dd3947e6c3117e547b63d0f46346d0" prefix="" category="inline-code"></block></block>
   <block id="1437945719c1644405e8d8d8dc10b2fe" category="list-text">すべてのクラスタLIFがであることを確認します<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block> 運用面のメリット：</block>
-  <block id="a9fdf49653825d5a49c2d40f6431dcad" category="list-text">各ノードのコンソールで、clus1をポートe2aに移行します。</block>
   <block id="17c163c5f3cf27f9ab7909ef8b7a260f" category="list-text">移行が実行されたことを確認します。</block>
   <block id="6eb5b9b1a64f0c90925b30b2539544ff" category="list-text">両方のノードのクラスタポートe1aをシャットダウンします。</block>
   <block id="142949c61ce1a054812f0cd4f16acd78" category="list-text">ポートのステータスを確認します。</block>
@@ -3715,7 +3666,6 @@
   <block id="2c7197850ace220e695ad5d7c75a398c" category="list-text">clus2（以前に移行されたもの）を両方のノードのe2aにリバートします。</block>
   <block id="7a8f791edf07ab23985fcd68cfdd3ed6" category="section-title">手順3：設定を完了します</block>
   <block id="0f6a263c930f026250dc80aee9d05738" category="list-text">すべてのインターフェイスが表示されていることを確認します<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> Is Home列で、次の手順を実行します。</block>
-  <block id="0f8ff5228b430fcf43b89da43ffa7d18" category="list-text">両方のノードから各スイッチに2つの接続があることを確認します。</block>
   <block id="7d510ed73956b5df449722fc30f548c8" category="paragraph"><block ref="5300819d7d7e3d6993508c34b25e015b" prefix="" category="inline-code"></block></block>
   <block id="4ea8faad6b3f550eb586fe8a6e127d47" category="list-text">advanced権限のコマンドを使用して、両方のノードで2ノードスイッチレス構成の設定を無効にします。</block>
   <block id="f3bfe82b35272b9d6cd5e99a1930d66a" category="paragraph"><block ref="f4c4b4bcf8fade11f2bb6f27f2086ed6" prefix="" category="inline-code"></block></block>
@@ -4366,7 +4316,6 @@
   <block id="111cada5d22121a7e11aef39f4aca355" category="list-text">クラスタスイッチcs2で、ノードのクラスタポートに接続されているポートを起動します。</block>
   <block id="427c15bca394e9d3b5f203c35b96c743" category="inline-link">Cisco 3132Qクラスタスイッチの10GbEポートがオンラインにならない</block>
   <block id="20f0f9c709341c54050214259fc6c790" category="admonition">RCFのアップグレード後に10GbEポートをオンラインにする手順については、ナレッジベースの記事を参照してください。<block ref="917fe6fdad3ed920883f4190398d0805" category="inline-link-rx"></block>。</block>
-  <block id="bc2be245d88ec44ff572954ca52f5e47" category="list-text">スイッチcs1で手順7 ~ 15を繰り返します。</block>
   <block id="756f5b45c94a8929404edacf08b1bf8c" category="paragraph">いずれかのクラスタLIFがホームポートに戻っていない場合は、手動でリバートします。<block ref="af44897f72b682aae5fc0db1bf98e52d" prefix=" " category="inline-code"></block></block>
   <block id="e459e50e2d5bebb928139aa0e4ce09ac" category="list-text">ストレージノードポートの健全性ステータスを確認します。</block>
   <block id="266daf0ca11ec57d9d3cb7598fd930b3" category="paragraph"><block ref="d14f00174ffa33ec8f559ffde7a52484" prefix="" category="inline-code"></block></block>
@@ -4521,7 +4470,6 @@
   <block id="64ea4acdf8f09e3b62f8764dea1b5bf4" category="list-text">次に、ノードとc2間のケーブルをc2から外し、SW2に再接続します。</block>
   <block id="5f115706079e667394e9c5fb609142bb" category="list-text">スイッチc1はスイッチsw1に置き換えられます。</block>
   <block id="1b42870c5bc0619ec4b57583bfec41e7" category="list-text">次に、ノードとc1の間のケーブルをc1から外し、sw1に再接続します。</block>
-  <block id="9c4f6f5aa4e55eb8ce92eee32e66b7cd" category="list-text">スイッチC2で、クラスタLIFをフェイルオーバーするために、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
   <block id="670028f02a4239fb83dfde9087341e1c" category="list-text">スイッチc1で、クラスタLIFをフェイルオーバーするために、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
   <block id="3e10fab2ffa4ef18685db0df5ee45e84" category="list-text">各ノードのクラスタポートは、（ノードから見て）次の方法で既存のクラスタスイッチに接続されます。</block>
   <block id="c51f636604f29f6f814bde48e4fd4671" category="list-text">クラスタポートとスイッチは、（スイッチから見て）次のように接続されています。</block>
@@ -4543,7 +4491,6 @@
   <block id="e9505b73caa990829220fedbb878ef68" category="list-text">最初にスイッチc2をスイッチcs2に置き換えます。</block>
   <block id="39bba2bddb2bf527b701828442a18b5e" category="list-text">次に、ノードとc2間のケーブルをc2から外し、cs2に再接続します。</block>
   <block id="6fa86324fabffaee853e6eeee2824329" category="list-text">スイッチC1をスイッチcs1に置き換えます。</block>
-  <block id="9f4f9b4efa8b2eb74b227e6e2a18f872" category="list-text">スイッチC2で、クラスタLIFをフェイルオーバーするために、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
   <block id="54c071b600d8be038e07b18d66329aa7" category="list-text">スイッチC1で、クラスタLIFをフェイルオーバーするために、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
   <block id="5965a3db7e52c18148f117f0240c1e3f" category="paragraph"><block ref="5965a3db7e52c18148f117f0240c1e3f" category="inline-image-macro-rx" type="image"></block></block>
   <block id="6a5dd15f930e244dadfd412b53dd1ac0" category="paragraph">ストレージスイッチを再利用することで、 HA ペア 1 のストレージスイッチが共有スイッチになります。
@@ -4913,8 +4860,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="0ca3ca41c2905b8f6347613ad99abeda" category="paragraph">準備手順に従って、Cisco NX-OSソフトウェアおよびリファレンス構成ファイル（RCF）をインストールします。</block>
   <block id="146fe7ba55f154a00f7fdd5bc0bc3b7f" category="paragraph">Nexus 9336C-FX2クラスタスイッチで、NX-OSソフトウェアをインストールまたはアップグレードします。</block>
   <block id="c2682a02fa235bb20233662aeba236ad" category="paragraph">Nexus 9336C-FX2スイッチの初回セットアップ後にRCFをインストールまたはアップグレードします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。</block>
-  <block id="b98c51d6f722172518f1e38267bc1da4" category="inline-link-macro">Nexus 9336C-FX2クラスタスイッチでのSSHの有効化</block>
-  <block id="ec348def7634a5754cf9d62e8bca7f24" category="list-text"><block ref="853bcb6b647712eac9646e8ede049d7b" category="inline-link-macro-rx"></block>です。</block>
   <block id="5f7b61b5cf8ee335e4fdf4eb2e2191b2" category="paragraph">ポートは、クラスタ+ HAでは40 / 100GbE、クラスタでは4×10GbEブレークアウト、クラスタ+ HAでは4×25GbEブレークアウト、ストレージHAペアごとに100GbE用に構成されます。</block>
   <block id="d30ea82d7096609f0aea87ef848f7ebd" category="paragraph">Cisco Nexus 9336C-FX2共有スイッチのソフトウェアをインストールおよび設定する手順は、次のとおりです。</block>
   <block id="e495f3ec8dabfce7925d7c5053f55cbb" category="inline-link-macro">NetAppキャビネットへのスイッチの設置</block>
@@ -5030,9 +4975,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="720c3ddeb84772ef2bbfeba7b1d17a28" category="paragraph"><block ref="df8bbc4b7a2a07f02d567d56129471ab" prefix="" category="inline-code"></block></block>
   <block id="3a88a5741f799dc33a61b15c6f06ef77" category="summary">クラスタスイッチヘルスモニタ（ CSHM ）およびログ収集機能を使用する場合、 SSH は要件です。Cisco 3232CクラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。</block>
   <block id="1ea468ba4330d1b99a20149c0e78b4ed" category="summary">クラスタスイッチヘルスモニタ（ CSHM ）およびログ収集機能を使用する場合、 SSH は要件です。Cisco 92300YCクラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。</block>
-  <block id="6740010e0f06e1b4faea70ce1b3a4a76" category="inline-link-macro">SSHキーの生成</block>
-  <block id="c49d0af5a081eb64111a489cb2120d97" category="list-text"><block ref="52338aab140ac2dbc56c2c83d6349939" category="inline-link-macro-rx"></block>です。</block>
-  <block id="f12f5027a3dbb2bbb22c5b1ca34d79d7" category="paragraph">イーサネットスイッチヘルスモニタ（CSHM）およびログ収集機能を使用する場合は、スイッチでSSHキーを生成します。</block>
   <block id="2e3301a364286013b9b29237fa347bb1" category="summary">クラスタスイッチヘルスモニタ（ CSHM ）およびログ収集機能を使用する場合、 SSH は要件です。Cisco 9336c-FX2クラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。</block>
   <block id="243847a87ff7e0cb67ee578c74d8ad1c" category="paragraph">Cisco Nexus 9336C-FX2スイッチはCisco Nexus 9000プラットフォームの一部であり、NetAppシステムキャビネットに設置できます。Nexus 9336C-FX2は、コントローラとディスクシェルフ間でデータを切り替えることができるイーサネットスイッチです。</block>
   <block id="81f0d5b127adfd87f50ce10bc85e1e65" category="list-text">ベンダーの指示に従って、スイッチでSSHキーを再生成します。</block>
@@ -5049,4 +4991,51 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="936b3180f1af844d99a2935c0f8f1407" category="paragraph">この手順で自動リバートを無効にしても、クラスタLIFはホームポートに自動的に戻りません。これらは現在のポートで稼働している間も維持されます。</block>
   <block id="8cfe0e3d8ad280ac0655595fef97d183" category="list-text">すべてのクラスタLIFが新しいスイッチcs2にフェイルオーバーされます。</block>
   <block id="7f59c84a99e8340f8584b604b173e044" category="list-text">すべてのクラスタLIFが新しいスイッチcs1にフェイルオーバーされます。</block>
+  <block id="450c144a370eb64ad7b2fb87b5e08ccd" category="paragraph">*注：*数秒待ってからコマンドを実行して<block ref="a7dd12b1dab17d25467b0b0a4c8d4a92" prefix=" " category="inline-code"></block>詳細を表示してください。</block>
+  <block id="1abee7895e26b219393999144625cf43" category="list-text">[[step7]]権限レベルをadminに戻します。</block>
+  <block id="7a073ea5ec2a763ddf5a0385781ed626" category="list-text">[[step6]]すべてのクラスタLIFでauto-revertコマンドが有効になっていることを確認します。</block>
+  <block id="2d7cd36455daea92f172ede16d765aae" category="list-text">[[step7]]クラスタが正常であることを確認します。</block>
+  <block id="acdfe379cf0ed5868b119418e7d41b82" category="list-text">[[step11]]グループ2のポートにスイッチレス構成を設定します。</block>
+  <block id="a2f7ec2dd8feebc2c1e30e5f859d4497" category="list-text">[[step6]]ケースの自動作成を抑制した場合は、AutoSupportメッセージを呼び出して再度有効にします。</block>
+  <block id="2f3040f570b3d77425ad0bf50fc7985c" category="list-text">[[step6]]権限レベルをadminに戻します。</block>
+  <block id="4e4f70ba52e8cb595faa069991c5a9f4" category="list-text">[[step5]]ケースの自動作成を抑制した場合は、AutoSupport メッセージを呼び出して再度有効にします。</block>
+  <block id="c97fddef37af781b99f2bb564a90861d" category="list-text">[[step9]]権限レベルをadminに戻します。</block>
+  <block id="991d705309210a9623a3f1d994c15150" category="list-text">[[step10]]アクティブなNexus 5596スイッチCL1のISLポート41~48をシャットダウンします。</block>
+  <block id="86134d7d31c06aa0711aee6c64ddd4f3" category="list-text">[[step12]]クラスタ内の各ノードで、交換する最初のNexus 5596スイッチCL1に関連付けられているインターフェイスを移行します。</block>
+  <block id="bbb276c46604db63ed55340efd9fdca4" category="list-text">[[step7]] Nexus 3132Q-Vクラスタスイッチにノードを追加して、クラスタを拡張します。</block>
+  <block id="5a941b8418c4fe0b34b15c50aa26a877" category="list-text">[[step10]]ノードn1のE4Aからケーブルを外します。</block>
+  <block id="654e3d51643a619895e470f1d55bc3ba" category="list-text">[[step2]]ケースの自動作成を抑制した場合は、AutoSupport メッセージを呼び出して再度有効にします。</block>
+  <block id="8b7a1c5ca569b4edf87d12744a873c02" category="list-text">[[step6]]すべてのクラスタLIFでコマンドが有効になっていることを確認し<block ref="9f1b7141f09f19c4e33409646aef43cf" prefix=" " category="inline-code"></block>ます。</block>
+  <block id="2599d5f1ece8078590877d15b717f346" category="list-text">[[step9]CL1のポート1/31と1/32、およびアクティブなNexus 3132Q-Vスイッチをシャットダウンします。</block>
+  <block id="e24c0f89ee0b0fb577ecce66e38a9e4d" category="list-text">[[step10]]アクティブなCN1610スイッチCL1のISLポート13~16をシャットダウンします。</block>
+  <block id="8401a156e54d36682ab941dd51ed3e9d" category="list-text">[[step12]]クラスタ内の各ノードで、交換する最初のCN1610スイッチCL1に関連付けられているインターフェイスを移行します。</block>
+  <block id="a1362b00e7776e62ab541ebf090bf150" category="list-text">スイッチcs1で手順7 ~ 17を繰り返します。</block>
+  <block id="09c97f0f4f7a646915b2abf749bc1d6f" category="list-text">[[step3]]適切なコマンドを使用して、アクティブなCN1610スイッチCL1のISLポート13~16をシャットダウンします。</block>
+  <block id="e2ad2b2cb346f8abd448d557881c7dd5" category="list-text">[[step16]]最初のCN1610スイッチCL1に関連付けられているLIFを移行します。</block>
+  <block id="e542ca85e220af35c4b3a82c0642077a" category="list-text">[[step4]] Nexus 3232Cクラスタスイッチにノードを追加して、クラスタを拡張します。</block>
+  <block id="0dee5df137b8161e82554818a557ccc2" category="list-text">[[step3]] Ciscoコマンドを使用して、アクティブなNexus 5596スイッチであるCL1のISL 41~48をシャットダウンし<block ref="5924f03a95ee6f7277e5bdd1e81b8fdc" prefix=" " category="inline-code"></block>ます。</block>
+  <block id="36cdf08b85e5feb55a70e6066970eb64" category="list-text">[[step15]]クラスタ内の各ノードで、交換する最初のNexus 5596スイッチCL1に関連付けられているインターフェイスを移行します。</block>
+  <block id="5744be7d661c6ac9679e21ca3f4dfaeb" category="list-text">[[step29]] Nexus 3232Cクラスタスイッチにノードを追加して、クラスタを拡張します。</block>
+  <block id="d05ecee4a6b0d861bcd1b9258b8245ca" category="list-text">[[step4]]ノードn1のE4Aからケーブルを外します。</block>
+  <block id="cc5ebab0ee641c8983f3228b4974ade1" category="list-text">[[step16]]ケースの自動作成を抑制した場合は、AutoSupportメッセージを呼び出して再度有効にします。</block>
+  <block id="b18c2181f3eba90bca1c7f88f8586e11" category="list-text">[[step6]]すべてのクラスタLIFでコマンドが有効になっていることを確認し<block ref="9f1b7141f09f19c4e33409646aef43cf" prefix=" " category="inline-code"></block>ます。<block ref="d268e7bf124a9f74e2dbe2e0127d951b" prefix=" " category="inline-code"></block></block>
+  <block id="2ddf49eb6c3fafb7644444a8f6985876" category="list-text">[[step8]]ケースの自動作成を抑制した場合は、AutoSupportメッセージを呼び出して再度有効にします。</block>
+  <block id="22265ef643cb758bbeafeae6b9005960" category="list-text">[[step3]]ケースの自動作成を抑制した場合は、AutoSupportメッセージを呼び出して再度有効にします。</block>
+  <block id="f7e86b0278da2d0f23dfd04e64f68478" category="list-text">[[step2]]次のクラスタネットワーク構成を確認します。</block>
+  <block id="cb9e3eca5ee8f7c34a9beb30eb78e80e" category="inline-link-macro">Nexus 9336C-FX2クラスタスイッチのSSH設定の確認</block>
+  <block id="9d35e90712940df4e7dd724e3a99eb05" category="list-text"><block ref="174530f10d1b6584efbd4bb64a5325d0" category="inline-link-macro-rx"></block>です。</block>
+  <block id="1de33421daf77940fdd8929e277ba937" category="paragraph">イーサネットスイッチヘルスモニタ（CSHM）およびログ収集機能を使用する場合は、スイッチでSSHが有効になっていることを確認します。</block>
+  <block id="51ad33f87e9af3baac880cb70771fe46" category="list-text">[[step5]]スイッチC2で、クラスタLIFをフェイルオーバーするために、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
+  <block id="09b863ebe2485d0260db2694f545c132" category="doc">古いCiscoスイッチからCisco Nexus 9336C-FX2スイッチへの移行</block>
+  <block id="52f52fe5595841a94d975238199fecfa" category="list-text">[[step25]]権限レベルをadminに戻します。</block>
+  <block id="0804eaf4e04da57f4e0f01d9ed605047" category="list-text">[[step5]]リモートクラスタインターフェイスの接続を確認します。</block>
+  <block id="1113f8069f1bf162e58048e7da3b5e76" category="list-text">[[step13]]リモートクラスタインターフェイスの接続を確認します。</block>
+  <block id="8024b8439487d862ebc200f269b3fd06" category="list-text">[[step6]Nexus 9336C-FX2スイッチcs1のISLポート1/35および1/36をシャットダウンします。</block>
+  <block id="179cedfc35b7060884a77fceb9fb4188" category="list-text">[[step14]]次のクラスタネットワーク構成を確認します。<block ref="838c4deb1e9c47dcd4c44b6e40276467" prefix=" " category="inline-code"></block></block>
+  <block id="ed6ec01ef9cf24a0e109957a15ef2abc" category="list-text">[[step10]] clus1を各ノードのコンソールのポートe2aに移行します。</block>
+  <block id="8454a3a0cd1d8a969c0433bdbb3e8b5f" category="list-text">[[step3]]両方のノードが各スイッチに2つの接続を持っていることを確認します。</block>
+  <block id="0e18e00d28d8ccbabfbea2b32f607774" category="list-text">[[step6]]権限レベルをadminに戻します。</block>
+  <block id="ff518749d3663227de48008bfca511bb" category="list-text">[[step5]]スイッチC2で、クラスタLIFをフェイルオーバーするために、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
+  <block id="c47f8dc188da37844fcf13bca92e64bd" category="list-text">[[step8]]次のコマンドを使用して、スイッチに関連するログファイルを収集するためのイーサネットスイッチヘルスモニタログ収集機能を有効にします。</block>
+  <block id="d2370f0d6957d5e8b2747d5a02f35221" category="list-text">[[step8]]スイッチC2で、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
 </blocks>

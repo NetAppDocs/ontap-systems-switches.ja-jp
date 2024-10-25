@@ -51,8 +51,6 @@ entries:
   entries:
   - title: クラスタスイッチを交換します
     url: "/switch-cisco-3232c/replace-cluster-switch.html"
-  - title: ストレージスイッチを交換します
-    url: "/switch-cisco-3232c/replace-storage-switch.html"
   - title: クラスタスイッチをスイッチレス接続に交換します
     url: "/switch-cisco-3232c/migrate-to-switchless-cluster-interconnect.html"
 - title: スイッチをアップグレードします

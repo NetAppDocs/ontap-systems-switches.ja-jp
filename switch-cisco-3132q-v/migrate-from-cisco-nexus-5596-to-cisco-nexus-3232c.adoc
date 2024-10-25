@@ -316,19 +316,47 @@ cluster::*> network port modify -node n2 -port e0b -up-admin false
 cluster::*> network port modify -node n2 -port e0c -up-admin false
 ----
 ====
-. リモートクラスタインターフェイスに ping を実行し、 RPC サーバチェックを実行します。
-+
-「 cluster ping-cluster 」を参照してください
+. リモートクラスタインターフェイスの接続を確認します。
 
-+
-.例を示します
-[%collapsible]
+
+[role="tabbed-block"]
 ====
-次に、リモートクラスタインターフェイスに ping を実行する例を示します。
+.ONTAP 9.9.1以降
+--
+を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
 
-[listing]
+`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
 ----
-cluster::*> cluster ping-cluster -node n1
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注：* showコマンドを実行して詳細を表示する前に、数秒待ってください。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source          Destination       Packet
+Node   Date                       LIF             LIF               Loss
+------ -------------------------- --------------- ----------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2        n2_clus1      none
+       3/5/2022 19:21:20 -06:00   n1_clus2        n2_clus2      none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2        n1_clus1      none
+       3/5/2022 19:21:20 -06:00   n2_clus2        n1_clus2      none
+----
+--
+.すべてのONTAPリリース
+--
+すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster ping-cluster -node n1*
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1		e0a	10.10.0.1
@@ -368,10 +396,11 @@ Detected 1500 byte MTU on 16 path(s):
 Larger than PMTU communication succeeds on 16 path(s)
 RPC status:
 4 paths up, 0 paths down (tcp check)
-4 paths up, 0 paths down (udp check
+4 paths up, 0 paths down (udp check)
 ----
+--
 ====
-. アクティブな Nexus 5596 スイッチ CL1 で ISL ポート 41~48 をシャットダウンします。
+. [[step10]]アクティブなNexus 5596スイッチCL1のISLポート41~48をシャットダウンします。
 +
 .例を示します
 [%collapsible]
@@ -604,19 +633,47 @@ e0d       Cluster      Cluster          up   9000  auto/10000 -        -
 8 entries were displayed.
 ----
 ====
-. リモートクラスタインターフェイスに ping を実行し、 RPC サーバチェックを実行します。
-+
-「 cluster ping-cluster 」を参照してください
+. リモートクラスタインターフェイスの接続を確認します。
 
-+
-.例を示します
-[%collapsible]
+
+[role="tabbed-block"]
 ====
-次に、リモートクラスタインターフェイスに ping を実行する例を示します。
+.ONTAP 9.9.1以降
+--
+を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
 
-[listing]
+`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
 ----
-cluster::*> cluster ping-cluster -node n1
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注：* showコマンドを実行して詳細を表示する前に、数秒待ってください。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source          Destination       Packet
+Node   Date                       LIF             LIF               Loss
+------ -------------------------- --------------- ----------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2        n2_clus1      none
+       3/5/2022 19:21:20 -06:00   n1_clus2        n2_clus2      none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2        n1_clus1      none
+       3/5/2022 19:21:20 -06:00   n2_clus2        n1_clus2      none
+----
+--
+.すべてのONTAPリリース
+--
+すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster ping-cluster -node n1*
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1		e0a	10.10.0.1
@@ -658,8 +715,9 @@ RPC status:
 4 paths up, 0 paths down (tcp check)
 4 paths up, 0 paths down (udp check)
 ----
+--
 ====
-. クラスタ内の各ノードで、交換する最初の Nexus 5596 スイッチ CL1 に関連付けられているインターフェイスを移行します。
+. [[step12]]クラスタ内の各ノードで、交換する最初のNexus 5596スイッチCL1に関連付けられているインターフェイスを移行します。
 +
 「ネットワーク・インターフェイス移行」
 
@@ -859,7 +917,7 @@ cluster::*> network port modify -node n2 -port e0d -up-admin true
 
 [listing]
 ----
-cluster::*> network port show –role cluster
+cluster::*> network port show -role cluster
   (network port show)
 Node: n1
                                                                        Ignore
@@ -930,19 +988,47 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. リモートクラスタインターフェイスに ping を実行してから、リモート手順コールサーバチェックを実行します。
-+
-「 cluster ping-cluster 」を参照してください
+. リモートクラスタインターフェイスの接続を確認します。
 
-+
-.例を示します
-[%collapsible]
+
+[role="tabbed-block"]
 ====
-次に、リモートクラスタインターフェイスに ping を実行する例を示します。
+.ONTAP 9.9.1以降
+--
+を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
 
-[listing]
+`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
 ----
-cluster::*> cluster ping-cluster -node n1
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注：* showコマンドを実行して詳細を表示する前に、数秒待ってください。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source          Destination       Packet
+Node   Date                       LIF             LIF               Loss
+------ -------------------------- --------------- ----------------- -----------
+n1
+       3/5/2022 19:21:18 -06:00   n1_clus2        n2_clus1      none
+       3/5/2022 19:21:20 -06:00   n1_clus2        n2_clus2      none
+
+n2
+       3/5/2022 19:21:18 -06:00   n2_clus2        n1_clus1      none
+       3/5/2022 19:21:20 -06:00   n2_clus2        n1_clus2      none
+----
+--
+.すべてのONTAPリリース
+--
+すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster ping-cluster -node n1*
 Host is n1
 Getting addresses from network interface table...
 Cluster n1_clus1 n1		e0a	10.10.0.1
@@ -984,8 +1070,9 @@ RPC status:
 4 paths up, 0 paths down (tcp check)
 4 paths up, 0 paths down (udp check)
 ----
+--
 ====
-. Nexus 3132Q-V クラスタスイッチにノードを追加してクラスタを拡張します。
+. [[step7]] Nexus 3132Q-Vクラスタスイッチにノードを追加して、クラスタを拡張します。
 . 構成に含まれるデバイスに関する情報を表示します。
 +
 ** 「 network device-discovery show 」のように表示されます
@@ -1024,7 +1111,7 @@ n4         /cdp
 ----
 [listing]
 ----
-cluster::*> network port show –role cluster
+cluster::*> network port show -role cluster
   (network port show)
 Node: n1
                                                                        Ignore
@@ -1140,8 +1227,8 @@ CL2                           cluster-network    10.10.1.102     NX5596
 
 [listing]
 ----
-cluster::> system cluster-switch delete –device CL1
-cluster::> system cluster-switch delete –device CL2
+cluster::> system cluster-switch delete -device CL1
+cluster::> system cluster-switch delete -device CL2
 ----
 ====
 . 各ノードでクラスタclus1とclus2を自動リバートするように設定し、確認します。

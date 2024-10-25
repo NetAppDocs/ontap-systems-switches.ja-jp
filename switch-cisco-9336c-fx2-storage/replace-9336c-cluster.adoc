@@ -187,12 +187,46 @@ Cluster      node2_clus2   true
 
 4 entries were displayed.
 ----
-. すべてのクラスタ LIF が通信できることを確認します。「 cluster ping-cluster 」
-+
-[listing]
-----
-cluster1::*> cluster ping-cluster node1
+. リモートクラスタインターフェイスの接続を確認します。
 
+
+[role="tabbed-block"]
+====
+.ONTAP 9.9.1以降
+--
+を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+
+`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source           Destination      Packet
+Node   Date                       LIF              LIF              Loss
+------ -------------------------- ---------------- ---------------- -----------
+node1
+       3/5/2022 19:21:18 -06:00   node1_clus2      node2-clus1      none
+       3/5/2022 19:21:20 -06:00   node1_clus2      node2_clus2      none
+node2
+       3/5/2022 19:21:18 -06:00   node2_clus2      node1_clus1      none
+       3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
+----
+--
+.すべてのONTAPリリース
+--
+すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster ping-cluster -node local*
 Host is node2
 Getting addresses from network interface table...
 Cluster node1_clus1 169.254.209.69 node1 e0a
@@ -217,7 +251,9 @@ RPC status:
 2 paths up, 0 paths down (tcp check)
 2 paths up, 0 paths down (udp check)
 ----
-. Nexus 9336C-FX2 スイッチ cs1 の ISL ポート 1/35 および 1/36 をシャットダウンします。
+--
+====
+. [[step6]Nexus 9336C-FX2スイッチcs1のISLポート1/35および1/36をシャットダウンします。
 +
 [listing]
 ----
@@ -347,11 +383,46 @@ e0b       Cluster      Cluster          up    9000  auto/10000  healthy  false
 
 4 entries were displayed.
 ----
-. すべてのクラスタ LIF が通信できることを確認します。「 cluster ping-cluster 」
-+
-[listing]
+. リモートクラスタインターフェイスの接続を確認します。
+
+
+[role="tabbed-block"]
+====
+.ONTAP 9.9.1以降
+--
+を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+
+`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
 ----
-cluster1::*> cluster ping-cluster -node node2
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source           Destination      Packet
+Node   Date                       LIF              LIF              Loss
+------ -------------------------- ---------------- ---------------- -----------
+node1
+       3/5/2022 19:21:18 -06:00   node1_clus2      node2-clus1      none
+       3/5/2022 19:21:20 -06:00   node1_clus2      node2_clus2      none
+node2
+       3/5/2022 19:21:18 -06:00   node2_clus2      node1_clus1      none
+       3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
+----
+--
+.すべてのONTAPリリース
+--
+すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster ping-cluster -node local*
 Host is node2
 Getting addresses from network interface table...
 Cluster node1_clus1 169.254.209.69 node1 e0a
@@ -376,7 +447,9 @@ RPC status:
 2 paths up, 0 paths down (tcp check)
 2 paths up, 0 paths down (udp check)
 ----
-. 次のクラスタ・ネットワーク構成を確認します「 network port show
+--
+====
+. [[step14]]次のクラスタネットワーク構成を確認します。 `network port show`
 +
 [listing]
 ----

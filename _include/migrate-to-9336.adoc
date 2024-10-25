@@ -581,7 +581,7 @@ network interface revert -vserver Cluster -lif *
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：* showコマンドを実行して詳細を表示する前に、数秒待ってください。
+*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
 
 [listing, subs="+quotes"]
 ----
