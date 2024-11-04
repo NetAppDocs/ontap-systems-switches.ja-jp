@@ -8,7 +8,16 @@
 
 
  a| 
-https://hwu.netapp.com/Switch/Index["36 ポート 100GbE Cisco スイッチ（ X190200 ）"]
+16ポート100GbE NVIDIAスイッチ（X190006-PEおよびX190006-PI）
+ a| 
+NVIDIA SN2100クラスタインターコネクトスイッチとストレージスイッチのサポート（MetroCluster IP構成のサポートを含む）。
+ a| 
+ONTAP 9.10.1
+
+
+
+ a| 
+36ポート100GbE Ciscoスイッチ（X190200-CS-PEおよびX190200-CS-PI）
  a| 
 MetroCluster IP 構成のサポートを含め、同じ Cisco Nexus 9336C-FX2 スイッチペアで共有インフラ（クラスタ、 HA 、およびスイッチ接続ストレージ）をサポートします。
  a| 
@@ -17,27 +26,27 @@ ONTAP 9.9.1
 
 
  a| 
-https://hwu.netapp.com/Switch/Index["36 ポート 100GbE Cisco スイッチ（ X190200 および X190210 ）"]
+36ポート100GbE Ciscoスイッチ（X190200-CS-PEおよびX190200-CS-PI）、（X190210-FE-PEおよびX190210-FE-PI）
  a| 
-Cisco Nexus 9336C-FX2 クラスタインターコネクトスイッチと、 AFF / FAS コントローラのストレージスイッチのサポート、およびフロントエンドのデータ接続。
- a| 
-ONTAP 9.8
-
-
-
- a| 
-https://hwu.netapp.com/Switch/Index["Broadcom BES-53248 スイッチ（ X190005 および X190005R ）"]
- a| 
-Broadcom BES-53248 クラスタインターコネクトスイッチは、 40 / 100GbE ポートを搭載した AFF / FAS コントローラに対応しています。
+Cisco Nexus 9336C-FX2クラスタインターコネクトスイッチとストレージスイッチは、AFFおよびASAストレージシステム、およびフロントエンドデータ接続に対応しています。
  a| 
 ONTAP 9.8
 
 
 
  a| 
-https://hwu.netapp.com/Switch/Index["36 ポート 100GbE Cisco スイッチ（ X190200 ）"] https://hwu.netapp.com/Switch/Index["32 ポート 100GbE Cisco スイッチ（ X190100 と X190100R ）"]
+Broadcom BES-53248 スイッチ（ X190005 および X190005R ）
  a| 
-Cisco Nexus 100GbE スイッチを専用ストレージスイッチとして使用し、 NS224 NVMe ドライブシェルフを次のプラットフォームに接続できます。
+10 / 25GbEおよび40 / 100GbEポートを搭載したAFF / FASコントローラで、Broadcom BES-53248クラスタインターコネクトスイッチがサポートされます。
+ a| 
+ONTAP 9.8
+
+
+
+ a| 
+36ポート100GbE Ciscoスイッチ（X190200）および32ポート100GbE Ciscoスイッチ（X190100およびX190100R）
+ a| 
+Cisco Nexus 3232Cストレージスイッチをサポートし、NS224 NVMeドライブシェルフAFFおよびASAストレージシステムを接続します。
 
 * AFF A800/AFF ASA A800
 * AFF A700 / AFF ASA A700
@@ -46,14 +55,5 @@ Cisco Nexus 100GbE スイッチを専用ストレージスイッチとして使�
 
  a| 
 ONTAP 9.8
-
-
-
- a| 
-https://hwu.netapp.com/Switch/Index["Broadcom BES-53248 スイッチ（ X190005 および X190005R ）"]
- a| 
-10 / 25GbE ポートを備えた AFF / FAS コントローラでの Broadcom BES-53248 クラスタインターコネクトスイッチのサポート。
- a| 
-ONTAP 9.5P8.
 
 |===
