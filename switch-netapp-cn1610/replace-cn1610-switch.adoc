@@ -63,9 +63,9 @@ NetAppでは、使用しているデバイスでコンソールロギングを�
 ====
 [listing, subs="+quotes"]
 ----
-(old_cs1) *>enable*
-(old_cs1) *#show running-config*
-(old_cs1) *#show startup-config*
+(old_cs1)> *enable*
+(old_cs1)# *show running-config*
+(old_cs1)# *show startup-config*
 ----
 ====
 . 実行コンフィギュレーションファイルのコピーを作成します。
@@ -78,7 +78,7 @@ NetAppでは、使用しているデバイスでコンソールロギングを�
 ====
 [listing, subs="+quotes"]
 ----
-(old_cs1) *#show running-config filename.scr*
+(old_cs1)# *show running-config filename.scr*
 Config script created successfully.
 ----
 ====
@@ -94,7 +94,7 @@ NOTE: 以外の任意のファイル名を使用できます `CN1610_CS_RCF_v1.2
 ====
 [listing, subs="+quotes"]
 ----
-(old_cs1) #*copy nvram:script filename.scr scp://<Username>@<remote_IP_address>/path_to_file/filename.scr*
+(old_cs1)# *copy nvram:script filename.scr scp://<Username>@<remote_IP_address>/path_to_file/filename.scr*
 ----
 ====
 . スイッチとONTAPのバージョンが互換性マトリックスで一致していることを確認します。を参照してください https://mysupport.netapp.com/site/info/netapp-cluster-switch["NetApp CN1601 / CN1610 スイッチ"^] ページを参照してください。
@@ -124,7 +124,7 @@ Dynamic Host Configuration Protocol（DHCP；動的ホスト構成プロトコ�
 ====
 [listing, subs="+quotes"]
 ----
-(new_cs1) #*serviceport ip <ipaddr> <netmask> <gateway>*
+(new_cs1)# *serviceport ip <ipaddr> <netmask> <gateway>*
 ----
 ====
 . 必要に応じて、TFTPサーバがラップトップ上にある場合は、標準のイーサネットケーブルを使用してCN1610スイッチをラップトップに接続し、別のIPアドレスを使用して同じネットワーク内のネットワークポートを設定します。
@@ -140,8 +140,8 @@ Dynamic Host Configuration Protocol（DHCP；動的ホスト構成プロトコ�
 ====
 [listing, subs="+quotes"]
 ----
-(new_cs1) >*enable*
-(new_cs1) #*show version*
+(new_cs1)> *enable*
+(new_cs1)# *show version*
 ----
 ====
 .. RCFを新しいスイッチにダウンロードします。
@@ -151,7 +151,7 @@ Dynamic Host Configuration Protocol（DHCP；動的ホスト構成プロトコ�
 ====
 [listing, subs="+quotes"]
 ----
-(new_cs1) #*copy tftp://<server_ip_address>/CN1610_CS_RCF_v1.2.txt nvram:script CN1610_CS_RCF_v1.2.scr*
+(new_cs1)# *copy tftp://<server_ip_address>/CN1610_CS_RCF_v1.2.txt nvram:script CN1610_CS_RCF_v1.2.scr*
 Mode.	TFTP
 Set Server IP.	172.22.201.50
 Path.	/
@@ -180,7 +180,7 @@ File transfer operation completed successfully.
 ====
 [listing, subs="+quotes"]
 ----
-(new_cs1) #*script list*
+(new_cs1)# *script list*
 Configuration Script Nam   Size(Bytes)
 -------------------------- -----------
 CN1610_CS_RCF_v1.1.scr            2191
@@ -200,7 +200,7 @@ latest_config.scr                 2356
 ====
 [listing, subs="+quotes"]
 ----
-(new_cs1) #*script apply CN1610_CS_RCF_v1.2.scr*
+(new_cs1)# *script apply CN1610_CS_RCF_v1.2.scr*
 Are you sure you want to apply the configuration script? (y/n) *y*
 ...
 (the entire script is displayed line by line)
@@ -219,7 +219,7 @@ After the script is applied, those settings will be active in the running-config
 ====
 [listing, subs="+quotes"]
 ----
-(new_cs1) #*write memory*
+(new_cs1)# *write memory*
 This operation may take a few minutes.
 Management interfaces will not be available during this time.
 
@@ -237,7 +237,7 @@ Configuration Saved!
 ====
 [listing, subs="+quotes"]
 ----
-(new_cs1) #*copy tftp://<server_ip_address>/NetApp_CN1610_1.2.0.7.stk active*
+(new_cs1)# *copy tftp://<server_ip_address>/NetApp_CN1610_1.2.0.7.stk active*
 Mode.	TFTP
 Set Server IP.	tftp_server_ip_address
 Path.	/
@@ -264,7 +264,7 @@ File transfer operation completed successfully.
 ====
 [listing, subs="+quotes"]
 ----
-(new_cs1) #*reload*
+(new_cs1)# *reload*
 The system has unsaved changes.
 Would you like to save them now? (y/n) *y*
 
@@ -286,7 +286,7 @@ User:admin Password: (new_cs1) >*enable*
 ====
 [listing, subs="+quotes"]
 ----
-(new_cs1) #*copy tftp://<server_ip_address>/<filename>.scr nvram:script <filename>.scr*
+(new_cs1)# *copy tftp://<server_ip_address>/<filename>.scr nvram:script <filename>.scr*
 ----
 ====
 .. 以前に保存した設定を新しいスイッチに適用します。
@@ -296,7 +296,7 @@ User:admin Password: (new_cs1) >*enable*
 ====
 [listing, subs="+quotes"]
 ----
-(new_cs1) #*script apply <filename>.scr*
+(new_cs1)# *script apply <filename>.scr*
 Are you sure you want to apply the configuration script? (y/n) *y*
 
 The system has unsaved changes.
@@ -314,7 +314,7 @@ Configuration Saved!
 ====
 [listing, subs="+quotes"]
 ----
-(new_cs1) #*write memory*
+(new_cs1)# *write memory*
 ----
 ====
 
@@ -338,14 +338,13 @@ AutoSupport メッセージはテクニカルサポートにこのメンテナ�
 ----
 User:*admin*
 Password:
-(new_cs1) >*enable*
-(new_cs1) #
-
-(new_cs1) #*config*
-(new_cs1)(config)#*interface 0/1-0/12*
-(new_cs1)(interface 0/1-0/12)#*shutdown*
-(new_cs1)(interface 0/1-0/12)#*exit*
-(new_cs1) #*write memory*
+(new_cs1)> *enable*
+(new_cs1)#
+(new_cs1)# *config*
+(new_cs1)(config)# *interface 0/1-0/12*
+(new_cs1)(interface 0/1-0/12)# *shutdown*
+(new_cs1)(interface 0/1-0/12)# *exit*
+(new_cs1)# *write memory*
 ----
 ====
 . old_cs1スイッチに接続されているポートからクラスタLIFを移行します。
@@ -409,10 +408,10 @@ cluster::*> *cluster ping-cluster -node <node_name>*
 ====
 [listing, subs="+quotes"]
 ----
-(cs2) #*config*
-(cs2)(config)#*interface 0/13-0/16*
-(cs2)(interface 0/13-0/16)#*shutdown*
-(cs2) #*show port-channel 3/1*
+(cs2)# *config*
+(cs2)(config)# *interface 0/13-0/16*
+(cs2)(interface 0/13-0/16)# *shutdown*
+(cs2)# *show port-channel 3/1*
 ----
 ====
 . ストレージ管理者がスイッチを交換する準備ができているかどうかを確認します。
@@ -424,9 +423,9 @@ cluster::*> *cluster ping-cluster -node <node_name>*
 ====
 [listing, subs="+quotes"]
 ----
-(cs2) #*config*
-(cs2)(config)#*interface 0/13-0/16*
-(cs2)(interface 0/13-0/16)#*no shutdown*
+(cs2)# *config*
+(cs2)(config)# *interface 0/13-0/16*
+(cs2)(interface 0/13-0/16)# *no shutdown*
 ----
 ====
 . クラスタノードに関連付けられた新しいスイッチのポートを起動します。
@@ -436,9 +435,9 @@ cluster::*> *cluster ping-cluster -node <node_name>*
 ====
 [listing, subs="+quotes"]
 ----
-(cs2) #*config*
-(cs2)(config)#*interface 0/1-0/12*
-(cs2)(interface 0/13-0/16)#*no shutdown*
+(new_cs1)# *config*
+(new_cs1)(config)# *interface 0/1-0/12*
+(new_cs1)(interface 0/13-0/16)# *no shutdown*
 ----
 ====
 . 単一のノードで、交換したスイッチに接続されているクラスタノードポートを起動し、リンクが稼働していることを確認します。
@@ -484,9 +483,9 @@ cluster::*> *cluster show*
 ====
 [listing, subs="+quotes"]
 ----
-(new_cs1) >*enable*
-(new_cs1) #*show running-config*
-(new_cs1) #*show startup-config*
+(new_cs1)> *enable*
+(new_cs1)# *show running-config*
+(new_cs1)# *show startup-config*
 ----
 ====
 . ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。

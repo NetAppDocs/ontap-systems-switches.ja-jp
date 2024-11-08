@@ -4076,7 +4076,6 @@
   <block id="b211f67e6e9195c32683368a53542802" category="paragraph">次の例は、SFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーする方法を示しています。</block>
   <block id="c77174e35b7f7fc235a87561809ad614" category="list-text">からのバナー出力を確認します<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block> コマンドを実行しますスイッチの設定と動作を適切に行うには、次の手順を参照して実行する必要があります。</block>
   <block id="420b545896cb1c9b03dbccd44bf33f86" category="list-text">RCFを適用したあとにスイッチで、ライセンスが追加されたポートが表示されていることを確認します。</block>
-  <block id="e23c199f14d9e7bf9dbb9da03bf726a2" category="list-text">スイッチ cs1 をリブートします。これは、クラスタ LIF のホームポートへのリバートをトリガーする際に行います。スイッチのリブート中にノードで報告される「クラスタポートが停止している」イベントは無視してかまいません。</block>
   <block id="6285269d7b8b003aed53cad1f3d13717" category="list-text">すべてのクラスタノード接続ケーブルを古いcs2スイッチから新しいcs2-newスイッチに移動します。</block>
   <block id="f8e1e48a80ce2fac4d53a95f1f1ffd18" category="paragraph">*クラスタノード接続ケーブルをcs2-newスイッチに移動*</block>
   <block id="e07ca5d2322ee212c9dcb668e9db443a" category="image-alt">クラスタノードの接続ケーブルをcs2-newスイッチに移動しました</block>
@@ -5059,4 +5058,21 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="c509ae209503be0a774ac204f0f2dc91" category="paragraph">100GbE ノード 4 台 35</block>
   <block id="f992d2e7f110147780c9ce8e305e4981" category="paragraph">100GbE ノード 4 台 36</block>
   <block id="cb02ea2e8f595e77e5e6585ac0421c1a" category="paragraph">FAS システムとAFF システムの新しいスイッチについて説明します。スイッチの詳細については、を参照して<block ref="341c1c8afc925d24c41903215e7d4958" category="inline-link-rx"></block>ください。</block>
+  <block id="d217db6e5c9fe01778df762ef953150e" category="inline-link-macro">リファレンス構成ファイル（RCF）とライセンスファイルのインストール</block>
+  <block id="6503ea0189c5cfc2f7fbdef509813892" category="admonition">EFOS 3.12以降の場合は、のインストール手順に従います<block ref="2875012234c5bc616da894d0cc04d2b5" category="inline-link-macro-rx"></block>。</block>
+  <block id="138707357e50e83ca9a6f1bf487a4c4b" category="paragraph">次の条件が満たされていることを確認します。</block>
+  <block id="f3f5793bcca1ebb5ebbd53986eeb7aa2" category="admonition">新しいバージョンのスイッチソフトウェアとRCFをインストールする前に、Knowledge Baseの記事を参照して<block ref="18b4271d2bf70dbfb01e42cb4850cea6" category="inline-link-rx"></block>ください。スイッチ設定を完全に消去する必要がある場合は、基本設定を再度実行する必要があります。設定を完全に消去すると管理ネットワークの設定がリセットされるため、シリアルコンソールを使用してスイッチに接続する必要があります。</block>
+  <block id="760a43dbe67e92dafc9be460c7ec7a71" category="open-title">EFOSバージョン3.12.x以降</block>
+  <block id="b901c25333441ff036da53fab081d9f0" category="list-text">スクリプトがダウンロードされ、指定したファイル名で保存されたことを確認します。</block>
+  <block id="c996550fa25e7bc14821abd9c8d23ed7" category="open-title">その他すべての EFOS バージョン</block>
+  <block id="cbaf87b69b101c8da09eb66a7e118196" category="list-text">コマンドのバナー出力を確認します<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block>。スイッチの設定と動作を確認するには、次の手順を読んで従う必要があります。</block>
+  <block id="d8b62ff42020df981e759bfaae3ea683" category="list-text">スイッチcs1をリブートします。これにより、クラスタLIFがホームポートにリバートされます。スイッチのリブート中にノードで報告される「cluster ports down」イベントは無視してかまいません。</block>
+  <block id="44b28482ab8476e86718a1ca5ff60e37" category="paragraph">EFOS 3.12.0.1以降では、BES-53248クラスタスイッチの設定後にリファレンス構成ファイル（RCF）とライセンスファイルをインストールできます。</block>
+  <block id="9a155684dd1562ffdaa25731d825bbe9" category="admonition">SallポートはRCFのインストール時に設定されますが、設定したポートをアクティブ化するにはライセンスをインストールする必要があります。</block>
+  <block id="fbec2ebb075cb19757cff7017cb93af5" category="list-text">ページからアクセスできる最新のRCF。<block ref="b4c2fb45a290e6214474529bd84dd3bc" category="inline-link-rx"></block></block>
+  <block id="4456b97c43334b2054b59141ede95e7a" category="list-text">FTP、HTTP、TFTP、SFTP、またはSCPのいずれかの転送プロトコルを使用して、スイッチcs2のブートフラッシュにRCFをコピーします。</block>
+  <block id="f33dd0ad3ffde0d7eeaba1d3a85f7205" category="paragraph">この例では、HTTPを使用してスイッチcs2のブートフラッシュにRCFをコピーしています。</block>
+  <block id="7bbcf8e324817b180739b7f7d821945a" category="list-text">スイッチで、変更が行われたことを確認します。</block>
+  <block id="a84263d893b250f940f2cfa8e599b7e2" category="list-text">[[step21]]クラスタスイッチcs1で、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
+  <block id="5bd6c874b20210387cbc3fd552b0e8bc" category="sidebar">EFOS 3.12以降のRCFとライセンスファイルのインストール</block>
 </blocks>
