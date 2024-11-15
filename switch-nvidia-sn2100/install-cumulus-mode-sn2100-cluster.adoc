@@ -124,17 +124,67 @@ unreachable default metric 4278198272
 10.233.204.0/23 dev eth0 proto kernel scope link src 10.233.204.71
 127.0.0.0/8 dev mgmt proto kernel scope link src 127.0.0.1
 ----
-. NTPインタラクティブモードを使用してタイムゾーンを設定します。
+. スイッチの日付、時刻、タイムゾーン、およびNTPサーバを設定します。
 +
-.. 端末で次のコマンドを実行します。
+.. 現在のタイムゾーンを確認します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *cat /etc/timezone*
+----
+.. 新しいタイムゾーンに更新します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *sudo dpkg-reconfigure --frontend noninteractive tzdata*
+----
+.. 現在のタイムゾーンを確認します。
++
+[listing, subs="+quotes"]
+----
+cumulus@switch:~$ *date +%Z*
+----
+.. ガイド付きウィザードを使用してタイムゾーンを設定するには、次のコマンドを実行します。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *sudo dpkg-reconfigure tzdata*
 ----
-.. 画面上のメニューオプションに従って、地理的エリアと地域を選択します。
-.. すべてのサービスおよびデーモンのタイムゾーンを設定するには、スイッチをリブートします。
-.. スイッチの日付と時刻が正しいことを確認し、必要に応じて更新します。
+.. 設定されたタイムゾーンに従ってソフトウェアクロックを設定します。
++
+[listing, subs="+quotes"]
+----
+cumulus@switch:~$ *sudo date -s "Tue Oct 28 00:37:13 2023"*
+----
+.. ソフトウェアクロックの現在の値をハードウェアクロックに設定します。
++
+[listing, subs="+quotes"]
+----
+cumulus@switch:~$ *sudo hwclock -w*
+----
+.. 必要に応じてNTPサーバを追加します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net add time ntp server _<cumulus.network.ntp.org>_ iburst*
+cumulus@sw1:~$ *net pending*
+cumulus@sw1:~$ *net commit*
+----
+.. がシステムで実行されていることを確認し `ntpd`ます。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *ps -ef | grep ntp*
+ntp       4074     1  0 Jun20 ?        00:00:33 /usr/sbin/ntpd -p /var/run/ntpd.pid -g -u 101:102
+----
+.. NTPソースインターフェイスを指定します。デフォルトでは、NTPが使用するソースインターフェイスはです `eth0`。次のように、別のNTPソースインターフェイスを設定できます。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *net add time ntp source _<src_int>_*
+cumulus@sw1:~$ *net pending*
+cumulus@sw1:~$ *net commit*
+----
 
 
 . Cumulus Linux 4.4.3をインストールします。
@@ -290,17 +340,61 @@ unreachable default metric 4278198272
 10.233.204.0/23 dev eth0 proto kernel scope link src 10.233.204.71
 127.0.0.0/8 dev mgmt proto kernel scope link src 127.0.0.1
 ----
-. NTPインタラクティブモードを使用してタイムゾーンを設定します。
+. スイッチのタイムゾーン、日付、時刻、およびNTPサーバを設定します。
 +
-.. 端末で次のコマンドを実行します。
+.. タイムゾーンを設定します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv set system timezone US/Eastern*
+cumulus@sw1:~$ *nv config apply*
+----
+.. 現在のタイムゾーンを確認します。
++
+[listing, subs="+quotes"]
+----
+cumulus@switch:~$ *date +%Z*
+----
+.. ガイド付きウィザードを使用してタイムゾーンを設定するには、次のコマンドを実行します。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *sudo dpkg-reconfigure tzdata*
 ----
-.. 画面上のメニューオプションに従って、地理的エリアと地域を選択します。
-.. すべてのサービスおよびデーモンのタイムゾーンを設定するには、スイッチをリブートします。
-.. スイッチの日付と時刻が正しいことを確認し、必要に応じて更新します。
+.. 設定されたタイムゾーンに従ってソフトウェアクロックを設定します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *sudo date -s "Tue Oct 28 00:37:13 2023"*
+----
+.. ソフトウェアクロックの現在の値をハードウェアクロックに設定します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *sudo hwclock -w*
+----
+.. 必要に応じてNTPサーバを追加します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv set service ntp default server _<cumulus.network.ntp.org>_ iburst on*
+cumulus@sw1:~$ *nv config apply*
+cumulus@sw1:~$ *nv config save*
+----
+.. がシステムで実行されていることを確認し `ntpd`ます。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *ps -ef | grep ntp*
+ntp       4074     1  0 Jun20 ?        00:00:33 /usr/sbin/ntpd -p /var/run/ntpd.pid -g -u 101:102
+----
+.. NTPソースインターフェイスを指定します。デフォルトでは、NTPが使用するソースインターフェイスはです `eth0`。次のように、別のNTPソースインターフェイスを設定できます。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv set service ntp default listen _<src_int>_*
+cumulus@sw1:~$ *nv config apply*
+----
 
 
 . Cumulus Linux 5.4をインストールします。

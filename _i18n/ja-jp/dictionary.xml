@@ -3982,7 +3982,6 @@
   <block id="b6a9bacb15977dcaaa1e05f20cc4d13b" category="paragraph">クラスタアプリケーションとストレージアプリケーションには、2つのRCFスクリプトを使用できます。からRCFをダウンロードします<block ref="89efcd657168a1e707caf54da1923871" category="inline-link-rx"></block>。各の手順 は同じです。</block>
   <block id="54d4022f2a747cb4974fcf06961bdb21" category="list-text">クラスタ：* MSN2100-rcf-v1._x_- Cluster-HA - Breakout-LLDP *</block>
   <block id="eac7436c884133e6b945a51430510a32" category="list-text">ストレージ：* MSN2100-rcf-v1._x_-ストレージ*</block>
-  <block id="196428336c87b3c0c9bf24432335bd6f" category="list-text">RCF Pythonスクリプト* MSN2100-rcf-v1.x-Cluster-HA-Breakout-LLDP *を適用します。</block>
   <block id="b9dfe38b5e91454220a6cd1f3cfb9ac8" category="admonition">上記の手順3 * MOTDファイルの更新*で、コマンドを実行します<block ref="900d965bd90d181d344d976a0e3093d8" prefix=" " category="inline-code"></block> を実行します。これにより、RCFのファイル名、RCFのバージョン、使用するポート、およびその他の重要な情報をRCFバナーで確認できます。</block>
   <block id="0440c59cc67785ca7939ff4e3eba86ed" category="admonition">上記の手順3 * MOTDファイルの更新*で、コマンドを実行します<block ref="79a5f2bb850da898bd092e3a61bda06c" prefix=" " category="inline-code"></block> を実行します。これにより、RCFのファイル名、RCFのバージョン、使用するポート、およびその他の重要な情報をRCFバナーで確認できます。</block>
   <block id="506c2c0c7f5b70af3df68c45c46f45a7" category="paragraph">例：</block>
@@ -4016,7 +4015,6 @@
   <block id="0d151e82f107d3039ec4952c010d46c4" category="admonition">cumulusユーザーアカウントのデフォルトパスワードは*cumulus *です。Cumulus Linuxに初めてログインするときは、このデフォルトのパスワードを変更する必要があります。新しいイメージをインストールする前に、自動スクリプトを更新する必要があります。Cumulus Linuxには、インストールプロセス中にデフォルトのパスワードを自動的に変更するためのコマンドラインオプションが用意されています。</block>
   <block id="324fe5adbd1d84e1635133b2f3572f6d" category="open-title">Cumulus Linux 4.4.xからCumulus Linux 5.xへ</block>
   <block id="6e86c333c0b662bb6dee3495ec26ec21" category="list-text">Cumulus Linuxの現在のバージョンと接続されているポートを確認します。</block>
-  <block id="698eeac576f2a03927debdd14725ba5e" category="list-text">Cumulux Linux 5.xイメージをダウンロードします。</block>
   <block id="a034a19ca9c1623f94c8f52b386d5a41" category="list-text">パスワードを変更します。</block>
   <block id="d853eef2a857cbfcf5b1ef1abe8db17e" category="list-text">Cumulus Linuxのバージョンを確認します。<block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix=" " category="inline-code"></block></block>
   <block id="985599684d8f5a06353d35110138f1b2" category="list-text">ホスト名を変更します。</block>
@@ -5068,11 +5066,27 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="cbaf87b69b101c8da09eb66a7e118196" category="list-text">コマンドのバナー出力を確認します<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block>。スイッチの設定と動作を確認するには、次の手順を読んで従う必要があります。</block>
   <block id="d8b62ff42020df981e759bfaae3ea683" category="list-text">スイッチcs1をリブートします。これにより、クラスタLIFがホームポートにリバートされます。スイッチのリブート中にノードで報告される「cluster ports down」イベントは無視してかまいません。</block>
   <block id="44b28482ab8476e86718a1ca5ff60e37" category="paragraph">EFOS 3.12.0.1以降では、BES-53248クラスタスイッチの設定後にリファレンス構成ファイル（RCF）とライセンスファイルをインストールできます。</block>
-  <block id="9a155684dd1562ffdaa25731d825bbe9" category="admonition">SallポートはRCFのインストール時に設定されますが、設定したポートをアクティブ化するにはライセンスをインストールする必要があります。</block>
   <block id="fbec2ebb075cb19757cff7017cb93af5" category="list-text">ページからアクセスできる最新のRCF。<block ref="b4c2fb45a290e6214474529bd84dd3bc" category="inline-link-rx"></block></block>
   <block id="4456b97c43334b2054b59141ede95e7a" category="list-text">FTP、HTTP、TFTP、SFTP、またはSCPのいずれかの転送プロトコルを使用して、スイッチcs2のブートフラッシュにRCFをコピーします。</block>
   <block id="f33dd0ad3ffde0d7eeaba1d3a85f7205" category="paragraph">この例では、HTTPを使用してスイッチcs2のブートフラッシュにRCFをコピーしています。</block>
   <block id="7bbcf8e324817b180739b7f7d821945a" category="list-text">スイッチで、変更が行われたことを確認します。</block>
   <block id="a84263d893b250f940f2cfa8e599b7e2" category="list-text">[[step21]]クラスタスイッチcs1で、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
   <block id="5bd6c874b20210387cbc3fd552b0e8bc" category="sidebar">EFOS 3.12以降のRCFとライセンスファイルのインストール</block>
+  <block id="939b4bb2ac041f54295eebf712381c6e" category="admonition">RCFのインストール時にすべてのポートが設定されますが、設定したポートをアクティブ化するにはライセンスをインストールする必要があります。</block>
+  <block id="95a409c28581e60b63d6744a63cec56e" category="list-text">スイッチの日付、時刻、タイムゾーン、およびNTPサーバを設定します。</block>
+  <block id="506fa9ce3fedb50c852bedfbf3a7cdd3" category="list-text">現在のタイムゾーンを確認します。</block>
+  <block id="a50a0e5cb483409f1fab325fb98837b7" category="list-text">新しいタイムゾーンに更新します。</block>
+  <block id="6da016a8d1ac9135eb58f58229421640" category="list-text">現在のタイムゾーンを確認します。</block>
+  <block id="f7831e2ba83d46ea1e5fff4e74fc5fa7" category="list-text">ガイド付きウィザードを使用してタイムゾーンを設定するには、次のコマンドを実行します。</block>
+  <block id="73780f50cf375867a0588e7492720e92" category="list-text">設定されたタイムゾーンに従ってソフトウェアクロックを設定します。</block>
+  <block id="79f42127edb075c94bf534a70bd9670a" category="list-text">ソフトウェアクロックの現在の値をハードウェアクロックに設定します。</block>
+  <block id="cc4d69e34240960e74993e23c384c9dd" category="list-text">必要に応じてNTPサーバを追加します。</block>
+  <block id="f24cc7b4e9b9029f28ce1ca2f70cdf80" category="list-text">がシステムで実行されていることを確認し<block ref="0453ce67cb028d800c9476a4d09364c9" prefix=" " category="inline-code"></block>ます。</block>
+  <block id="5f71b9c43a90b0d5c1da4caaf97582b9" category="list-text">NTPソースインターフェイスを指定します。デフォルトでは、NTPが使用するソースインターフェイスはです<block ref="a1a5b3d22e82bbd6f878d26feacc2c7d" prefix=" " category="inline-code"></block>。次のように、別のNTPソースインターフェイスを設定できます。</block>
+  <block id="49a81a8314008caafc812f9c76617125" category="list-text">スイッチのタイムゾーン、日付、時刻、およびNTPサーバを設定します。</block>
+  <block id="2747cbba0e5a031af50361e087bd59bb" category="list-text">タイムゾーンを設定します。</block>
+  <block id="7db58b1ced05f0a1e8e0257017cd6c5b" category="list-text">RCF Pythonスクリプト* MSN2100-rcf-v1._x_-Cluster-HA-Breakout-LLDP *を適用します。</block>
+  <block id="11b037d97237564e7d301df86420a468" category="inline-link">新しいCumulus Linuxイメージのインストール</block>
+  <block id="ab12f4d1e56479a81a361f6109b978de" category="paragraph">詳細については、を参照してください<block ref="63da15f7ab7ce2a7550fdbf1e5e5d879" category="inline-link-rx"></block>。</block>
+  <block id="43622a7160f0cabed379e73776c14454" category="list-text">Cumulux Linux 5.xイメージのダウンロード：tmp</block>
 </blocks>
