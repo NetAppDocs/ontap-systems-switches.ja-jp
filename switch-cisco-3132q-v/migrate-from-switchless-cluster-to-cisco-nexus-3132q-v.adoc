@@ -24,13 +24,13 @@ Cisco Nexus 3132Q-Vクラスタスイッチを使用する2ノードスイッチ
 * 。 link:https://hwu.netapp.com/["Hardware Universe"^] Nexus 3132Q-V スイッチでサポートされているケーブル接続に関する情報が含まれています。
 +
 ** 10GbE クラスタ接続のノードには、ブレークアウト光ケーブルを備えた QSFP 光モジュールまたは QSFP-SFP+ 銅線ブレークアウトケーブルが必要です。
-** 40/100GbE クラスタ接続が確立されているノードには、サポートされている QSFP/QSFP28 光モジュール（ファイバケーブルまたは QSFP/QSFP28 銅線直接接続ケーブル）が必要です。
+** 40GbEクラスタ接続を使用するノードには、ファイバケーブルまたはQSFP / QSFP28銅線直接接続ケーブルを備えた、サポートされているQSFP / QSFP28光モジュールが必要です。
 ** クラスタスイッチでは、適切な ISL ケーブルを使用します。 QSFP28 ファイバケーブルまたは銅線直接接続ケーブル × 2
 
 
-* Nexus 3132Q-V では、 QSFP ポートは 40/100Gb イーサネットモードまたは 4 × 10Gb イーサネットモードのどちらかとして動作できます。
+* Nexus 3132Q-Vでは、QSFPポートを40 Gbイーサネットモードまたは4 x 10 Gbイーサネットモードのいずれかとして動作できます。
 +
-デフォルトでは、 40/100Gb イーサネットモードには 32 個のポートがあります。これらの 40 Gb イーサネットポートには、 2 タプルの命名規則で番号が付けられます。たとえば、 2 番目の 40 Gb イーサネットポートには、 1/2 という番号が付けられます。構成を 40 Gb イーサネットから 10 Gb イーサネットに変更するプロセスは _ ブレークアウト _ と呼ばれ、構成を 10 Gb イーサネットから 40 Gb イーサネットに変更するプロセスは _ ブレークイン _ と呼ばれます。40/100Gb イーサネットポートを 10Gb イーサネットポートに分割すると、結果として生成されるポートには 3 組の命名規則に従って番号が付けられます。たとえば、 2 番目の 40/100Gb イーサネットポートのブレークアウトポートには、 1/2/1 、 1/2 、 1/2/3 、 1/2/4 の番号が付けられます。
+デフォルトでは、40 Gbイーサネットモードには32個のポートがあります。これらの 40 Gb イーサネットポートには、 2 タプルの命名規則で番号が付けられます。たとえば、 2 番目の 40 Gb イーサネットポートには、 1/2 という番号が付けられます。構成を 40 Gb イーサネットから 10 Gb イーサネットに変更するプロセスは _ ブレークアウト _ と呼ばれ、構成を 10 Gb イーサネットから 40 Gb イーサネットに変更するプロセスは _ ブレークイン _ と呼ばれます。40Gbイーサネットポートを10Gbイーサネットポートに分割すると、作成されたポートに3タプルの命名規則を使用して番号が付けられます。たとえば、 2 番目の 40 Gb イーサネットポートのブレークアウトポートには、 1/2/1 、 1/2/2 、 1/2/3 、および 1/2/4 の番号が付けられます。
 
 * Nexus 3132Q-V の左側には、 4 つの SFP+ ポートが 1 つ目の QSFP ポートに多重化されたセットがあります。
 +
@@ -39,11 +39,11 @@ Cisco Nexus 3132Q-Vクラスタスイッチを使用する2ノードスイッチ
 +
 Nexus 3132Q-V の QSFP ポートの代わりに 4 つの SFP+ ポートをアクティブにするには、「 hardware profile front portmode sf-plus 」コマンドを使用します。同様に、「 hardware profile front portmode QSFP 」コマンドを使用すると、 Nexus 3132Q-V をリセットして、 4 つの SFP+ ポートの代わりに QSFP ポートを使用できます。
 
-* Nexus 3132Q-V上の一部のポートを10GbEまたは40/100GbEで実行するように設定していることを確認します。
+* Nexus 3132Q-Vの一部のポートが10GbEまたは40GbEで動作するように設定されていることを確認します。
 +
 最初の 6 つのポートを 4x10 GbE モードに分割するには、「 interface breakout module 1 port 1-6 map 10g-4x 」コマンドを使用します。同様に、 no interface breakout module 1 port 1-6 map 10g-4x コマンドを使用して、ブレークアウト構成から最初の 6 つの QSFP+ ポートをグループ化し直すことができます。
 
-* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
+* 10GbEポートと40GbEポートの数は、ページで入手できるリファレンス構成ファイル（RCF）で定義し https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^]ます。
 
 
 .必要なもの
@@ -67,7 +67,7 @@ Nexus 3132Q-V の QSFP ポートの代わりに 4 つの SFP+ ポートをアク
 
 
 
-また、ノードからNexus 3132Q-Vクラスタスイッチへの10GbEおよび40/100GbE接続に必要なドキュメントを計画、移行、および読み取る必要があります。
+また、ノードからNexus 3132Q-Vクラスタスイッチへの10GbEおよび40GbE接続について計画し、必要なドキュメントを移行して読む必要があります。
 
 
 
@@ -82,7 +82,7 @@ Nexus 3132Q-V の QSFP ポートの代わりに 4 つの SFP+ ポートをアク
 
 [NOTE]
 ====
-この手順 の例では、 2 つのノードを使用し、それぞれ 40/100GbE クラスタインターコネクトポート e4A と e4e を使用しています。。 link:https://hwu.netapp.com/["Hardware Universe"^] プラットフォームのクラスタポートに関する詳細が表示されます。
+この手順の例では、2つのノードを使用し、それぞれに2つの40GbEクラスタインターコネクトポートe4aとe4eを使用しています。にlink:https://hwu.netapp.com/["Hardware Universe"^]は、プラットフォームのクラスタポートに関する詳細が記載されています。
 
 ====
 .このタスクについて
@@ -92,7 +92,7 @@ Nexus 3132Q-V の QSFP ポートの代わりに 4 つの SFP+ ポートをアク
 * n1_clus2 は、ノード n1 のクラスタスイッチ C2 に接続する最初のクラスタ LIF です。
 * n2_clus1 は、ノード n2 のクラスタスイッチ C1 に接続する最初のクラスタ LIF です。
 * n2_clus2 は、ノード n2 のクラスタスイッチ C2 に接続する 2 番目のクラスタ LIF です。
-* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
+* 10GbEポートと40GbEポートの数は、ページで入手できるリファレンス構成ファイル（RCF）で定義し https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^]ます。
 
 
 [NOTE]

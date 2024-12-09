@@ -1249,7 +1249,6 @@
   <block id="622a8e6dbefe6751d8f689c24a2b3649" category="list-text">n2_clus1 は、ノード n2 のクラスタスイッチ C1 に接続する最初のクラスタ LIF です。</block>
   <block id="cbae7e4732af3199f41bd171fdae91a7" category="list-text">n2_clus2 は、ノード n2 のクラスタスイッチ C2 に接続する 2 番目のクラスタ LIF です。</block>
   <block id="c69cfd9e3ba37b533e64498443964744" category="inline-link">Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード</block>
-  <block id="797c65f427eb3fe0e8ba459583050be1" category="list-text">10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています<block ref="9bcfbf4ecbfa5f01b0fe987094e3d8a3" category="inline-link-rx"></block> ページ</block>
   <block id="7f66bc04b2dfdeb5c9e1ad66b46c6cc7" category="paragraph">手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。</block>
   <block id="7664236fe12ec0638eff103041560e12" category="list-text">2 ノードスイッチレスクラスタ設定で、 2 つのノードが接続されて機能している状態からクラスタを開始します。</block>
   <block id="e0c459ee022d3d4ac187fbf896f3a3de" category="paragraph">'system node AutoSupport invoke -node * -type all -message MAINT=xh`</block>
@@ -1398,24 +1397,16 @@
   <block id="8eaf3d59876911ccca6dc5bdc347ee06" category="list-text">LIF に関する情報を表示します。</block>
   <block id="280107a5f53cc09efecfd6d30a3b7ebc" category="list-text">NetApp CN1610</block>
   <block id="1d8bdbbecd2a7992d9b2c5314cbc8da8" category="list-text">Cisco Nexus 3132Q-V の 2 つのポートを設定します</block>
-  <block id="246b4f4943a9ef7d81b1ecb7d14db012" category="list-text">Cisco Nexus 3132Q-V ：ポート e1/1~30 （ 40/100GbE ）</block>
-  <block id="57d3034f2867f54843c59eacb52d62bf" category="list-text">Cisco Nexus 3132Q-V ：ポート e1/31~32 （ 40/100GbE ）</block>
   <block id="472bbef967b4ae7a0b29aff643bee169" category="list-text">10GbE クラスタ接続のノードには、 QSFP-SFP+ 光ファイバブレークアウトケーブルまたは QSFP+ 銅線ブレークアウトケーブルが必要です</block>
-  <block id="409f985ef1bffdcbe3bc46fc059d909f" category="list-text">40 / 100GbE クラスタ接続に対応した QSFP / QSFP28 光モジュールには、光ファイバケーブルまたは QSFP / QSFP28 銅線直接接続ケーブルが必要です</block>
   <block id="7b5781881fa8326227e58e694e97198c" category="list-text">初期： CN1610 から CN1610 （ SFP+ から SFP+ ）の場合は、 SFP+ 光ファイバケーブルまたは銅線直接接続ケーブル 4 本</block>
   <block id="277ee11ec93d0d5d7bb265959cfadb18" category="list-text">中間： CN1610 から Nexus 3132Q-V （ QSFP から 4 SFP+ ブレークアウト）の場合は、 QSFP から SFP+ 光ファイバまたは銅線ブレークアウトケーブル × 1</block>
   <block id="21e8ded62a39d44e1afa6aaee348bd88" category="list-text">最終： Nexus 3132Q-V から Nexus 3132Q-V （ QSFP28 から QSFP28 ）の場合は、 QSFP28 光ファイバケーブルまたは銅線直接接続ケーブル 2 本</block>
   <block id="d129b7927c768a17882184f936cb7a36" category="list-text">NetApp Twinax ケーブルは、 Cisco Nexus 3132Q-V スイッチには対応していません。</block>
   <block id="9781497a027920a312b9c4cd217b3956" category="paragraph">現在の CN1610 構成で、クラスタノード間の接続または ISL 接続に NetApp Twinax ケーブルを使用しており、ご使用の環境で Twinax を引き続き使用する場合は、 Cisco Twinax ケーブルを使用する必要があります。または、 ISL 接続とクラスタノード / スイッチ間の接続に光ファイバケーブルを使用することもできます。</block>
-  <block id="3d8baabccb49d3044f14c0f5b022686f" category="list-text">Nexus 3132Q-V スイッチでは、 QSFP/QSFP28 ポートを 40/100Gb イーサネットモードまたは 10Gb イーサネットモード × 4 として使用できます。</block>
-  <block id="d443959501e56c10729109864777b8bb" category="paragraph">デフォルトでは、 40/100Gb イーサネットモードには 32 個のポートがあります。これらの 40 Gb イーサネットポートには、 2 タプルの命名規則で番号が付けられます。たとえば、 2 番目の 40 Gb イーサネットポートには、 1/2 という番号が付けられます。構成を 40 Gb イーサネットから 10 Gb イーサネットに変更するプロセスは _ ブレークアウト _ と呼ばれ、構成を 10 Gb イーサネットから 40 Gb イーサネットに変更するプロセスは _ ブレークイン _ と呼ばれます。40/100Gb イーサネットポートを 10Gb イーサネットポートに分割すると、結果として生成されるポートには 3 組の命名規則に従って番号が付けられます。たとえば、 2 番目の 40 Gb イーサネットポートのブレークアウトポートには、 1/2/1 、 1/2/2 、 1/2/3 、および 1/2/4 の番号が付けられます。</block>
   <block id="96c63e9512f3230bf1f86bdd048e8470" category="list-text">Nexus 3132Q-V スイッチの左側には、 4 つの SFP+ ポートが 1 つ目の QSFP ポートに多重化されています。</block>
   <block id="68f609cf0d26657ca331984cb655e187" category="paragraph">デフォルトでは、 Reference Configuration File （ RCF ；リファレンス構成ファイル）は最初の QSFP ポートを使用するように構成されています。</block>
   <block id="93b0e80a036070a07fd0baf72e679cd3" category="paragraph">「 hardware profile front portmode sf-plus 」コマンドを使用すると、 Nexus 3132Q-V スイッチの QSFP ポートの代わりに 4 つの SFP+ ポートをアクティブにできます。同様に、「 hardware profile front portmode QSFP 」コマンドを使用すると、 Nexus 3132Q-V スイッチをリセットして、 4 つの SFP+ ポートではなく QSFP ポートを使用できます。</block>
   <block id="62773ff807cea7c5201a77e34fd71617" category="paragraph">最初の 4 つの SFP+ ポートを使用すると、最初の 40GbE QSFP ポートは無効になります。</block>
-  <block id="f03907e32ba4bc1e0430f00b6e896a20" category="list-text">10GbE または 40/100GbE で実行するために、 Nexus 3132Q-V スイッチの一部のポートを設定しておく必要があります。</block>
-  <block id="4769f2909f072141c447ee3c862e9f8d" category="paragraph">最初の 6 つのポートを 4 つの 10 GbE モードに分割するには、「 interface breakout module 1 port 1-6 map 10g-4x 」コマンドを使用します。同様に 'no interface breakout module 1 port 1-6 map 10g-4x コマンドを使用して '_breakout 構成の最初の 6 つの QSFP+ ポートをグループ化し直すことができます</block>
-  <block id="7369c77472e2b3190b3567e209220672" category="list-text">ノードから Nexus 3132Q-V クラスタスイッチへの 10GbE および 40/100GbE 接続に関する必要なドキュメントを計画、移行しておく必要があります。</block>
   <block id="caa7a1b509ffae6e49682160486b956b" category="inline-link">NetApp CN1601 / CN1610 スイッチ</block>
   <block id="6de42699e499fd1e22f3dba2b9245b8b" category="summary">既存の Nexus 5596 クラスタスイッチを Nexus 3132Q-V クラスタスイッチに交換するには、特定の順序でタスクを実行する必要があります。</block>
   <block id="ba0aeff0757e53b1be2f02ce22967fe1" category="list-text">交換する Nexus 5596 スイッチは CL1 と CL2 です。</block>
@@ -1489,21 +1480,14 @@
   <block id="9330abbaaa76e6624badc34f8f4a32ea" category="paragraph">次に、 Nexus 5596 を削除する例を示します。</block>
   <block id="dd21090e5d1cd428ffa6730ee85b51b9" category="list-text">クラスタスイッチは、 Inter-Switch Link （ ISL ；スイッチ間リンク）ポート e1/31~32 を使用します。</block>
   <block id="0e170ece3637f1f6dfe129d6cce580e6" category="list-text">10GbE クラスタ接続のノードには、ブレークアウト光ケーブルを備えた QSFP 光モジュールまたは QSFP-SFP+ 銅線ブレークアウトケーブルが必要です。</block>
-  <block id="f37b6623746594c6564087d8bf2a354e" category="list-text">40/100GbE クラスタ接続が確立されているノードには、サポートされている QSFP/QSFP28 光モジュール（ファイバケーブルまたは QSFP/QSFP28 銅線直接接続ケーブル）が必要です。</block>
   <block id="cc577eea5612ed5d434ed2aed6a86680" category="list-text">クラスタスイッチでは、適切な ISL ケーブルを使用します。 QSFP28 ファイバケーブルまたは銅線直接接続ケーブル × 2</block>
-  <block id="e9674399843595f1253f9d09c103dc33" category="list-text">Nexus 3132Q-V では、 QSFP ポートは 40/100Gb イーサネットモードまたは 4 × 10Gb イーサネットモードのどちらかとして動作できます。</block>
-  <block id="2c75f2d9aba6763d779b9037d7bbb84e" category="paragraph">デフォルトでは、 40/100Gb イーサネットモードには 32 個のポートがあります。これらの 40 Gb イーサネットポートには、 2 タプルの命名規則で番号が付けられます。たとえば、 2 番目の 40 Gb イーサネットポートには、 1/2 という番号が付けられます。構成を 40 Gb イーサネットから 10 Gb イーサネットに変更するプロセスは _ ブレークアウト _ と呼ばれ、構成を 10 Gb イーサネットから 40 Gb イーサネットに変更するプロセスは _ ブレークイン _ と呼ばれます。40/100Gb イーサネットポートを 10Gb イーサネットポートに分割すると、結果として生成されるポートには 3 組の命名規則に従って番号が付けられます。たとえば、 2 番目の 40/100Gb イーサネットポートのブレークアウトポートには、 1/2/1 、 1/2 、 1/2/3 、 1/2/4 の番号が付けられます。</block>
   <block id="1d6565e31007c3df75b7f570d335cc62" category="list-text">Nexus 3132Q-V の左側には、 4 つの SFP+ ポートが 1 つ目の QSFP ポートに多重化されたセットがあります。</block>
   <block id="5434677a69f7a86fa7d41a0731389cc7" category="paragraph">デフォルトでは、 RCF は最初の QSFP ポートを使用するように構成されています。</block>
   <block id="ed5676888d1e4bdc96d6718b15a728bd" category="paragraph">Nexus 3132Q-V の QSFP ポートの代わりに 4 つの SFP+ ポートをアクティブにするには、「 hardware profile front portmode sf-plus 」コマンドを使用します。同様に、「 hardware profile front portmode QSFP 」コマンドを使用すると、 Nexus 3132Q-V をリセットして、 4 つの SFP+ ポートの代わりに QSFP ポートを使用できます。</block>
-  <block id="d749dda1ba6b167863e217ed8100c048" category="list-text">10GbE または 40/100GbE で実行するように Nexus 3132Q-V のポートを設定しておく必要があります。</block>
   <block id="436a67b06e6704883d8320cda2928548" category="paragraph">最初の 6 つのポートを 4x10 GbE モードに分割するには、「 interface breakout module 1 port 1-6 map 10g-4x 」コマンドを使用します。同様に、 no interface breakout module 1 port 1-6 map 10g-4x コマンドを使用して、ブレークアウト構成から最初の 6 つの QSFP+ ポートをグループ化し直すことができます。</block>
   <block id="c2f18641e43de285dd6439d822155502" category="list-text">ポート e1/1~40 （ 10GbE ）： Nexus 5596</block>
-  <block id="bb6ae6b16e1b6cf9dee571c6b226e823" category="list-text">ポート e1/1~30 （ 40/100GbE ）： Nexus 3132Q-V</block>
   <block id="b7989549a527f7e48aee50c95bd1de89" category="list-text">ポート e1/41~48 （ 10GbE ）： Nexus 5596</block>
-  <block id="85fd74fc8657ee1a6bc8030bab203ea4" category="list-text">ポート e1/31~32 （ 40/100GbE ）： Nexus 3132Q-V</block>
   <block id="8ad5621547abb5f398de647f01ee8992" category="list-text">10GbE クラスタ接続のノードには、 QSFP-SFP+ 光ファイバブレークアウトケーブルまたは QSFP+ 銅線ブレークアウトケーブルが必要です。</block>
-  <block id="b9ca3537419b43c4c252e96426d68d33" category="list-text">40 / 100GbE クラスタ接続を使用するノードには、サポートされている QSFP / QSFP 28 光モジュールとファイバケーブルまたは QSFP / QSFP28 銅線直接接続ケーブルが必要です。</block>
   <block id="f6d943be4fed7a73b2b20c6cca1c0cb1" category="list-text">クラスタスイッチは、適切な ISL ケーブル接続を使用します。</block>
   <block id="f684f26bc5b9998c8f656cc25dc42d81" category="list-text">開始： Nexus 5596 から Nexus 5596 （ SFP+ から SFP+ ）</block>
   <block id="e5b4cd0654ee56f4927678ab6792d941" category="list-text">SFP+ ファイバケーブルまたは銅線直接接続ケーブル × 8</block>
@@ -1511,14 +1495,10 @@
   <block id="ff844f64ec493dced35fea3af41734fa" category="list-text">QSFP / SFP+ ファイバブレークアウトケーブルまたは銅線ブレークアウトケーブル × 1</block>
   <block id="50f94cbc4cf0a33ff4f99b9553620925" category="list-text">最終： Nexus 3132Q-V から Nexus 3132Q-V （ QSFP28 から QSFP28 ）</block>
   <block id="9dac3929f5f08b4f7ea27d4b985ed09c" category="list-text">QSFP28 ファイバケーブルまたは銅線直接接続ケーブル × 2</block>
-  <block id="400199f305ffb36a587767aa7ea9bd26" category="list-text">Nexus 3132Q-V スイッチでは、 QSFP/QSFP28 ポートを 40/100 ギガビットイーサネットモードまたは 4 × 10 ギガビットイーサネットモードで動作できます。</block>
-  <block id="de179381d5dfc05e0a80e7052f0f7086" category="paragraph">デフォルトでは、 40/100 ギガビットイーサネットモードには 32 個のポートがあります。これらの 40 ギガビットイーサネットポートには、 2 タプルの命名規則で番号が付けられます。たとえば、 2 番目の 40 ギガビットイーサネットポートには、 1/2 という番号が付けられます。設定を 40 ギガビットイーサネットから 10 ギガビットイーサネットに変更するプロセスは _ ブレークアウト _ と呼ばれ、設定を 10 ギガビットイーサネットから 40 ギガビットイーサネットに変更するプロセスは _ ブレークイン _ と呼ばれます。40/100 ギガビットイーサネットポートを 10 ギガビットイーサネットポートに分割すると、 3 タプルの命名規則に従ってポート番号が付けられます。たとえば、 2 番めの 40 ギガビットイーサネットポートのブレークアウトポートには、 1/2/1 、 1/2/2 、 1/2/3 、および 1/2/4 の番号が付けられます。</block>
   <block id="4506e9d2fdc343c121f39bdf66de09fd" category="list-text">Nexus 3132Q-V スイッチの左側には、 4 つの SFP+ ポートがこの QSFP28 ポートに多重化されています。</block>
   <block id="6c28101de4bc69c38814cc5f0a5cdcb4" category="paragraph">デフォルトでは、 RCF は QSFP28 ポートを使用するように構成されています。</block>
   <block id="5e51bdc54f5dd33d30418aa5b91af8ad" category="paragraph">Nexus 3132Q-V スイッチの QSFP ポートの代わりに 4 個の SFP+ ポートをアクティブにするには、「 hardware profile front portmode sf-plus 」コマンドを使用します。同様に、「 hardware profile front portmode QSFP 」コマンドを使用すると、 Nexus 3132Q-V スイッチをリセットして、 SFP+ ポートを 4 個ではなく QSFP ポートを使用できます。</block>
-  <block id="361c24584ea413c01856408e97a40411" category="list-text">Nexus 3132Q-V スイッチの一部のポートを 10GbE または 40/100GbE で実行するように設定しておく必要があります。</block>
   <block id="9043114d5258d60e49a6ff62966f1f4d" category="paragraph">最初の 6 つのポートを 4x10 GbE モードに分割するには、「 interface breakout module 1 port 1-6 map 10g-4x 」コマンドを使用します。同様に、 no interface breakout module 1 port 1-6 map 10g-4x コマンドを使用して、ブレークアウト構成から最初の 6 つの QSFP+ ポートをグループ化し直すことができます。</block>
-  <block id="b56d0aacb2956c32c453bd556e641731" category="list-text">ノードから Nexus 3132Q-V クラスタスイッチへの 10GbE および 40/100GbE 接続に関する必要なドキュメントを計画、移行、および確認しておきます。</block>
   <block id="7899d4f691aaa93027bcd88691483be1" category="summary">Cisco Nexus 3132Q-V スイッチとパススルーパネルは、スイッチに付属の標準ブラケットを使用してネットアップキャビネットに設置できます。</block>
   <block id="f7ad0a2648b0185763a6a88e903a53ac" category="list-text">Nexus 3132Q-V スイッチシャーシにラックマウントブラケットを設置します。</block>
   <block id="cb5d7fc87f5f11235e261bd3eb5a7274" category="list-text">スイッチの反対側にあるもう一方の前面ラックマウントブラケットで手順 2a を繰り返します。</block>
@@ -1981,14 +1961,12 @@
   <block id="bc01d49ccd216cbb296208344af71590" category="list-text">CN1610 スイッチを交換する Nexus 3132Q-V スイッチは C1 と C2 です。</block>
   <block id="5f6af1e958a3701a7602a4d2261afe6d" category="list-text">を参照してください <block ref="bea6a113c7846200412c9ca0694f7009" category="inline-link-macro-rx"></block> ネットアップサポートサイトのページ</block>
   <block id="d472e6c72465c08732a77102922a611d" category="paragraph">を参照してください <block ref="34774b6dc875898cd8aa59f7081c068c" category="inline-link-macro-rx"></block> をクリックして、プラットフォームのクラスタポートが正しいことを確認します。</block>
-  <block id="3085acabfffd08789d3274c0ba8c2a88" category="list-text">この手順 の例では 4 つのノードを使用しています。 2 つのノードは、 e0a 、 e0b 、 e0c 、 e0d という 4 つの 10GbE クラスタインターコネクトポートを使用します。他の 2 つのノードは、 40 / 100GbE のクラスタインターコネクトポートを 2 つ使用します。 e4a 、 e4e。 <block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block> に、プラットフォームの実際のクラスタポートを示します。</block>
   <block id="34de640daae00968b964a68033ca6358" category="inline-xref">手順 1.</block>
   <block id="e86ea01e700780ea92b3789d44f4c23c" category="list-text">c2 （で置き換えられるクラスタスイッチ CL2<block ref="55f08534725327744dab814bb2ce3ba4" category="inline-xref-macro-rx"></block> - <block ref="758db5a2604e6f852c33eb0fa872c37e" category="inline-xref-macro-rx"></block>)</block>
   <block id="199c448280caf4b3d38b86cfdc4d67e9" category="list-text">にアクセスします <block ref="bea6a113c7846200412c9ca0694f7009" category="inline-link-macro-rx"></block> ネットアップサポートサイトのページを参照してください。</block>
   <block id="dd91c3681cdde4bc7616a4b3ec5f7e72" category="list-text">。 <block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block> Nexus 3132Q-V スイッチでサポートされているケーブル接続に関する情報が含まれています。</block>
   <block id="82638f9455b90aac4ecd3473c4abd282" category="list-text">この手順 でサポートされている ONTAP と NX-OS のバージョンをに示します <block ref="bea6a113c7846200412c9ca0694f7009" category="inline-link-macro-rx"></block> ページ</block>
   <block id="a002527eadfaaff725e2967fe87378fd" category="list-text">この手順 でサポートされている ONTAP および FastPath のバージョンをに示します <block ref="02204714444b8dc050a0e8cdbf247292" category="inline-link-macro-rx"></block> ページ</block>
-  <block id="615f0ddf4939c2d755829bfd3d0dc075" category="list-text">10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています <block ref="fbe8362ccb2da62f365822f496fddba9" category="inline-link-macro-rx"></block> ページ</block>
   <block id="20c20e24dfa0ee82d11432c0c1d13fa6" category="list-text">。 <block ref="9c839fcdfb8699a63c787254d7b1ae03" category="inline-link-macro-rx"></block> Nexus 3132Q-V スイッチでサポートされているケーブル接続に関する情報が含まれています。</block>
   <block id="2b6f3ab875b845c218e00770e3512d7b" category="paragraph">。 <block ref="bd4121ea0586524602af8d06c17dcfca" category="inline-link-macro-rx"></block> この手順 でサポートされている ONTAP および NX-OS のバージョンについては、ページを参照してください。</block>
   <block id="0097132bac5d6c6b5abee712913401fa" category="paragraph">RCF は、 Nexus 3132Q-V スイッチを初めて設定したあとにインストールできます。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。</block>
@@ -1997,7 +1975,6 @@
   <block id="1a814209dc9d61786687170c6f1e1090" category="list-text">ネットアップサポートサイトで、にアクセスします <block ref="9695fe01247a31a02b295ce8d21e5fd0" category="inline-link-macro-rx"></block> ページ</block>
   <block id="f31feccfa3205f46547d83274bdfbcbd" category="list-text">この手順 でサポートされている ONTAP と NX-OS のバージョンはにあります <block ref="bea6a113c7846200412c9ca0694f7009" category="inline-link-macro-rx"></block> ページ</block>
   <block id="4dd112d6804b4f82a4602d3778c99cdb" category="list-text">両方のスイッチで冗長性があり、完全に機能する Nexus 3132 クラスタインフラ。</block>
-  <block id="10a697cf363bb941514e8b7cd31c91c7" category="paragraph">この手順 の例では、 2 つのノードを使用し、それぞれ 40/100GbE クラスタインターコネクトポート e4A と e4e を使用しています。。 <block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block> プラットフォームのクラスタポートに関する詳細が表示されます。</block>
   <block id="67dbd130b7f97be2f3adeeb97692aa5d" category="list-text">を参照してください <block ref="03c4e3201f2c647c804c56964354a408" category="inline-link-macro-rx"></block> ネットアップサポートサイトのページを参照してください。</block>
   <block id="ef84127d5ef060917ce0f8f8ec03bf82" category="list-text">適切なバージョンのイメージソフトウェアをからダウンロードします <block ref="a1b5971027192ba8f103906f3e0c5af3" category="inline-link-macro-rx"></block>。</block>
   <block id="0bb71d16588bbda61c53d6705fca9dd9" category="inline-link-macro">Cisco Ethernet Switches のページ</block>
@@ -2893,12 +2870,10 @@
   <block id="d77976c37f0905ead2cec6b14a961b3d" category="paragraph">2ノードのスイッチレスクラスタを使用している場合は、この手順 に従って、Cisco Nexus 3132Q-Vクラスタネットワークスイッチを含む2ノードのスイッチクラスタに移行できます。交換用手順 は、無停止手順 （NDO；ノンストップオペレーション）です。</block>
   <block id="d864686a9a8c19574f54bab270afc92e" category="paragraph-title">ポートとノードの接続</block>
   <block id="1e7adbcd77a17bde5f2f970332192c58" category="paragraph">Cisco Nexus 3132Q-Vクラスタスイッチを使用する2ノードスイッチクラスタに移行する場合は、ポートとノードの接続とケーブル接続の要件を確認しておく必要があります。</block>
-  <block id="0470593181facbe8abb9e3758645ad23" category="list-text">Nexus 3132Q-V上の一部のポートを10GbEまたは40/100GbEで実行するように設定していることを確認します。</block>
   <block id="2127399e74c64848c33d8818562b72ca" category="list-text">構成が適切にセットアップされ、機能している。</block>
   <block id="8c3cbbc54611a910c53d17d08355f3e0" category="list-text">ONTAP 9.4以降を実行しているノード。</block>
   <block id="c39d86e7c435537e2a5a4864517893b6" category="list-text">のすべてのクラスタポート<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block> 状態。</block>
   <block id="8bd7a2e2adba3a2891e30cfe6cd673be" category="list-text">既存のクラスタネットワーク構成には次のものがあります。</block>
-  <block id="d83854356a024169fc6ac96627d8763c" category="paragraph">また、ノードからNexus 3132Q-Vクラスタスイッチへの10GbEおよび40/100GbE接続に必要なドキュメントを計画、移行、および読み取る必要があります。</block>
   <block id="63eab37cfcf6a2b62e0f76932eb79809" category="list-text">最初のクラスタポートはC1に移動する。</block>
   <block id="dd353d2ba6b926b08835d3c60dd7ce88" category="list-text">2番目のクラスタポートはC2に移動されます。</block>
   <block id="55b7e748bf261410178deee3a2012270" category="list-text">2ノードスイッチレスクラスタオプションは無効になっています。</block>
@@ -2979,7 +2954,6 @@
   <block id="c6adba6217951ed0e1a8ae3a9a50e632" category="paragraph">詳細については、を参照してください</block>
   <block id="599e429de04ef19f05e05c80158f2130" category="paragraph">この手順 の例では、4つのノードを使用しています。</block>
   <block id="2e5f4bd73780ee0d4f1673a1a4718af2" category="list-text">2つのノードは、e0a、e0b、e0c、e0dという4つの10GbEクラスタインターコネクトポートを使用します。</block>
-  <block id="d07ea0336757dc6c738f1426bdf8deba" category="list-text">他の 2 つのノードは、 40 / 100GbE クラスタインターコネクトファイバケーブル 2 本（ e4A と e4e ）を使用します。</block>
   <block id="c5996a9ce6852df92e273664ad819c84" category="paragraph">。 <block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block> プラットフォームのクラスタ光ファイバケーブルに関する情報が表示されます。</block>
   <block id="149b4d7bd84f0ce5c4d69945fa307e44" category="list-text">C2に置き換えるクラスタスイッチCL2</block>
   <block id="2c0d653bc3a1aa00fd3687625ec3bd27" category="list-text">クラスタスイッチCL1をC1に交換します</block>
@@ -5089,4 +5063,33 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="11b037d97237564e7d301df86420a468" category="inline-link">新しいCumulus Linuxイメージのインストール</block>
   <block id="ab12f4d1e56479a81a361f6109b978de" category="paragraph">詳細については、を参照してください<block ref="63da15f7ab7ce2a7550fdbf1e5e5d879" category="inline-link-rx"></block>。</block>
   <block id="43622a7160f0cabed379e73776c14454" category="list-text">Cumulux Linux 5.xイメージのダウンロード：tmp</block>
+  <block id="855b205ca9b9bd2b02453dbd19fc65b7" category="list-text">この手順 の例では 4 つのノードを使用しています。 2 つのノードは、 e0a 、 e0b 、 e0c 、 e0d という 4 つの 10GbE クラスタインターコネクトポートを使用します。他の 2 つのノードは、 e4A 、 e4e の 2 つの 40GbE クラスタ・インターコネクト・ポートを使用します。には<block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block>、プラットフォームの実際のクラスタポートが表示されます。</block>
+  <block id="66f3f703ef307f85603b46a4acbb712b" category="list-text">10GbEポートと40GbEポートの数は、ページで入手できるリファレンス構成ファイル（RCF）で定義し<block ref="cce23acfce4c9bc9bb74fd35873aedf2" category="inline-link-rx"></block>ます。</block>
+  <block id="9f71b0536f9236a6977f9a70d6395a33" category="list-text">40GbEクラスタ接続を使用するノードには、ファイバケーブルまたはQSFP / QSFP28銅線直接接続ケーブルを備えた、サポートされているQSFP / QSFP28光モジュールが必要です。</block>
+  <block id="61f02de546275159b6eba3b5376756d8" category="list-text">Nexus 3132Q-Vでは、QSFPポートを40 Gbイーサネットモードまたは4 x 10 Gbイーサネットモードのいずれかとして動作できます。</block>
+  <block id="e29b2f868e1044896b5cc6d476634b57" category="paragraph">デフォルトでは、40 Gbイーサネットモードには32個のポートがあります。これらの 40 Gb イーサネットポートには、 2 タプルの命名規則で番号が付けられます。たとえば、 2 番目の 40 Gb イーサネットポートには、 1/2 という番号が付けられます。構成を 40 Gb イーサネットから 10 Gb イーサネットに変更するプロセスは _ ブレークアウト _ と呼ばれ、構成を 10 Gb イーサネットから 40 Gb イーサネットに変更するプロセスは _ ブレークイン _ と呼ばれます。40Gbイーサネットポートを10Gbイーサネットポートに分割すると、作成されたポートに3タプルの命名規則を使用して番号が付けられます。たとえば、 2 番目の 40 Gb イーサネットポートのブレークアウトポートには、 1/2/1 、 1/2/2 、 1/2/3 、および 1/2/4 の番号が付けられます。</block>
+  <block id="ce8d64c62fe7d0d80ad6a4b2e1744516" category="list-text">Nexus 3132Q-Vの一部のポートが10GbEまたは40GbEで動作するように設定されていることを確認します。</block>
+  <block id="24b704dc9930f98145e6a041e122d90b" category="list-text">10GbEポートと40GbEポートの数は、ページで入手できるリファレンス構成ファイル（RCF）で定義し<block ref="9bcfbf4ecbfa5f01b0fe987094e3d8a3" category="inline-link-rx"></block>ます。</block>
+  <block id="64e3923ed88357b9e310c9d354f23200" category="paragraph">また、ノードからNexus 3132Q-Vクラスタスイッチへの10GbEおよび40GbE接続について計画し、必要なドキュメントを移行して読む必要があります。</block>
+  <block id="16f501807c40fcc074813b8de98881be" category="paragraph">この手順の例では、2つのノードを使用し、それぞれに2つの40GbEクラスタインターコネクトポートe4aとe4eを使用しています。に<block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block>は、プラットフォームのクラスタポートに関する詳細が記載されています。</block>
+  <block id="e1ef80ee500d089193b647b456525328" category="list-text">10GbEポートと40GbEポートの数は、ページで入手できるリファレンス構成ファイル（RCF）で定義し<block ref="fbe8362ccb2da62f365822f496fddba9" category="inline-link-macro-rx"></block>ます。</block>
+  <block id="adb2312231ae10781221ca6f85f1468b" category="list-text">他の 2 つのノードでは、 4 つの 40GbE クラスタインターコネクトファイバケーブルを使用します： e4a と e4e 。</block>
+  <block id="4a1ae240823f0b9cf20cc4dcd3987a7d" category="list-text">Nexus 3132Q-Vでは、QSFPポートを40 Gbイーサネットモードまたは4×10 Gbイーサネットモードとして動作できます。</block>
+  <block id="ecfce3e51258080e9887731dcb939198" category="list-text">Nexus 3132Q-Vの一部のポートを10GbEまたは40GbEで実行するように設定しておく必要があります。</block>
+  <block id="8121786d2f761f3520658cbd44c0086b" category="list-text">ノードからNexus 3132Q-Vクラスタスイッチへの10GbEおよび40GbE接続について、計画、移行を完了し、必要なドキュメントを読んでおく必要があります。</block>
+  <block id="9e85131d818cad8d6273559977450f37" category="list-text">ポートe1/1~30（40GbE）：Nexus 3132Q-V</block>
+  <block id="6d979896855cb90ebff1fc64d16543df" category="list-text">ポートe1/31~32（40GbE）：Nexus 3132Q-V</block>
+  <block id="154b6c893ed6c16744f390b9180e6725" category="list-text">40GbEクラスタ接続を使用するノードには、ファイバケーブルまたはQSFP / QSFP28銅線直接接続ケーブルを備えた、サポートされているQSFP / QSFP28光モジュールが必要です。</block>
+  <block id="5f6325e48e650901740731047024b139" category="list-text">Nexus 3132Q-Vスイッチでは、QSFP / QSFP28ポートを40ギガビットイーサネットモードまたは4×10ギガビットイーサネットモードのいずれかとして動作できます。</block>
+  <block id="f348114fb6d1345ea6d8a657d9c00763" category="paragraph">デフォルトでは、40ギガビットイーサネットモードには32個のポートがあります。これらの 40 ギガビットイーサネットポートには、 2 タプルの命名規則で番号が付けられます。たとえば、 2 番目の 40 ギガビットイーサネットポートには、 1/2 という番号が付けられます。設定を 40 ギガビットイーサネットから 10 ギガビットイーサネットに変更するプロセスは _ ブレークアウト _ と呼ばれ、設定を 10 ギガビットイーサネットから 40 ギガビットイーサネットに変更するプロセスは _ ブレークイン _ と呼ばれます。40ギガビットイーサネットポートを10ギガビットイーサネットポートに分割すると、作成されたポートに3タプルの命名規則を使用して番号が付けられます。たとえば、 2 番めの 40 ギガビットイーサネットポートのブレークアウトポートには、 1/2/1 、 1/2/2 、 1/2/3 、および 1/2/4 の番号が付けられます。</block>
+  <block id="0440c6eaf862ee4cfd547f551d9a0cb9" category="list-text">Nexus 3132Q-Vスイッチの一部のポートを10GbEまたは40GbEで動作するように設定しておきます。</block>
+  <block id="f202ba5b511e5de6a9e03a15d32b3543" category="list-text">ノードからNexus 3132Q-Vクラスタスイッチへの10GbEおよび40GbE接続について、計画、移行を完了し、必要なドキュメントをお読みください。</block>
+  <block id="ea6a4753b32f7dc99b61788ca92c3192" category="list-text">Cisco Nexus 3132Q-V：ポートe1/1~30（40GbE）</block>
+  <block id="41d2c2931dc62eed6aecb954de74c42c" category="list-text">Cisco Nexus 3132Q-V：ポートe1/31-32（40GbE）</block>
+  <block id="902ca5e80a753adb8c809d46ffd2a177" category="list-text">40GbEクラスタ接続を使用するノードには、光ファイバケーブルまたはQSFP / QSFP28銅線直接接続ケーブルを備えたサポート対象のQSFP / QSFP28光モジュールが必要です。</block>
+  <block id="a79e81ac0a0322d06f217ec1313f9c2b" category="list-text">Nexus 3132Q-Vスイッチでは、QSFP / QSFP28ポートを40Gbイーサネットモードまたは4x10Gbイーサネットモードとして運用できます。</block>
+  <block id="427172b130a849e724ec686d49e97727" category="list-text">Nexus 3132Q-Vスイッチの一部のポートを10GbEまたは40GbEで実行するように設定しておく必要があります。</block>
+  <block id="57d432809175e2b2a95b3c3c1aeaabb9" category="paragraph">コマンドを使用すると、最初の6つのポートを4x10GbEモードに分割できます<block ref="08aac397a11274cd898dfbb3a635cf19" prefix=" " category="inline-code"></block>。同様に、コマンドを使用して、_breakout_configurationから最初の6つのQSFP+ポートを再グループ化できます<block ref="9437e02f9ec4a8d602d396abd2c360b4" prefix=" " category="inline-code"></block>。</block>
+  <block id="c66ba47352d59b54f3a4b52ed5c4acb4" category="paragraph">*注：*ユーザー指定プロンプトに応答する場合は<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block>、で説明されているように、ユーザーに必要な権限があることを確認してください<block ref="c36e4b8d8c2789dd7986c4af4bd3d942" category="inline-xref-macro-rx"></block>。</block>
+  <block id="921a23933bb7a508423ca6a0ad00bfd3" category="paragraph">*注：*ユーザー指定プロンプトに応答する場合は<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block>、で説明されているように、ユーザーに必要な権限があることを確認してください<block ref="c36e4b8d8c2789dd7986c4af4bd3d942" category="inline-xref-macro-rx"></block>。</block>
 </blocks>
