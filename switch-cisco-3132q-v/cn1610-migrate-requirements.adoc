@@ -1,0 +1,91 @@
+---
+permalink: switch-cisco-3132q-v/cn1610-migrate-requirements.html 
+sidebar: sidebar 
+keywords: install, cisco nexus 3132q-v switch, 
+summary: Cisco Nexus 3132q-Vスイッチを設定する前に、プロセスの概要と命名法を確認してください。 
+---
+= 移行の要件
+:allow-uri-read: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+AFF またはFAS クラスタでは、Cisco Nexus 3132Q-Vスイッチをクラスタスイッチとして使用できます。クラスタスイッチでは、3つ以上のノードでONTAP クラスタを構築できます。
+
+[NOTE]
+====
+手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
+
+====
+詳細については、を参照してください
+
+* http://support.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 の概要 ページ"^]
+* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco Ethernet Switch 概要 ページ"^]
+* http://hwu.netapp.com["Hardware Universe"^]
+
+
+
+
+== CN1610の要件
+
+次のクラスタスイッチがサポートされます。
+
+* NetApp CN1610
+* Cisco Nexus 3132Q-V の 2 つのポートを設定します
+
+
+クラスタスイッチは、次のノード接続をサポートします。
+
+* NetApp CN1610 ：ポート 0/1~0/12 （ 10GbE ）
+* Cisco Nexus 3132Q-V ：ポート e1/1~30 （ 40/100GbE ）
+
+
+クラスタスイッチは、次のスイッチ間リンク（ ISL ）ポートを使用します。
+
+* NetApp CN1610 ：ポート 0/13~0/16 （ 10GbE ）
+* Cisco Nexus 3132Q-V ：ポート e1/31~32 （ 40/100GbE ）
++
+。 link:https://hwu.netapp.com/["Hardware Universe"^] Nexus 3132Q-V スイッチでサポートされているケーブル接続に関する情報が含まれています。
+
+* 10GbE クラスタ接続のノードには、 QSFP-SFP+ 光ファイバブレークアウトケーブルまたは QSFP+ 銅線ブレークアウトケーブルが必要です
+* 40 / 100GbE クラスタ接続に対応した QSFP / QSFP28 光モジュールには、光ファイバケーブルまたは QSFP / QSFP28 銅線直接接続ケーブルが必要です
+
+
+適切な ISL ケーブル接続は次のとおりです。
+
+* 初期： CN1610 から CN1610 （ SFP+ から SFP+ ）の場合は、 SFP+ 光ファイバケーブルまたは銅線直接接続ケーブル 4 本
+* 中間： CN1610 から Nexus 3132Q-V （ QSFP から 4 SFP+ ブレークアウト）の場合は、 QSFP から SFP+ 光ファイバまたは銅線ブレークアウトケーブル × 1
+* 最終： Nexus 3132Q-V から Nexus 3132Q-V （ QSFP28 から QSFP28 ）の場合は、 QSFP28 光ファイバケーブルまたは銅線直接接続ケーブル 2 本
+
+
+NetApp Twinax ケーブルは、 Cisco Nexus 3132Q-V スイッチには対応していません。
+
+現在の CN1610 構成で、クラスタノード間の接続または ISL 接続に NetApp Twinax ケーブルを使用しており、ご使用の環境で Twinax を引き続き使用する場合は、 Cisco Twinax ケーブルを使用する必要があります。または、 ISL 接続とクラスタノード / スイッチ間の接続に光ファイバケーブルを使用することもできます。
+
+.使用例について
+この手順の例では、CN1610スイッチをCisco Nexus 3132Q-Vスイッチに交換する方法について説明します。この手順は、他の古いCiscoスイッチにも（変更を加えて）使用できます。
+
+手順 では、スイッチとノードで次の命名法も使用されています。
+
+* コマンド出力は、 ONTAP のリリースによって異なる場合があります。
+* 交換するCN1610スイッチは* CL1 *および* CL2 *です。
+* CN1610スイッチに代わるNexus 3132Q-Vスイッチは、* c1 *および* c2 *です。
+* * n1_clus1 *は、ノード* n1 *のクラスタスイッチ1（CL1またはC1）に接続された最初のクラスタ論理インターフェイス（LIF）です。
+* * n1_clus2 *は、ノード* n1 *のクラスタスイッチ2（CL2またはC2）に接続された最初のクラスタLIFです。
+* * n1_clus3 *は、ノード* n1 *のクラスタスイッチ2（CL2またはC2）に接続されている2番目のLIFです。
+* * n1_clus4 *は、ノード* n1 *のクラスタスイッチ1（CL1またはC1）に接続されている2番目のLIFです。
+* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
+* ノードは* n1 *、* n2 *、* n3 *、および* n4 *です。
+
+
+この手順 の例では、4つのノードを使用しています。
+
+* 2つのノードで4つの10GbEクラスタインターコネクトポート（* e0a *、* e0b *、* e0c *、* e0d *）を使用します。
+* 他の2つのノードは、* e4a *と* e4e *の2つの40GbEクラスタインターコネクトポートを使用します。
++
+にはlink:https://hwu.netapp.com/["Hardware Universe"^]、プラットフォームの実際のクラスタポートが表示されます。
+
+
+
+.次の手順
+link:cn5596-prepare-to-migrate.html["移行を準備"]です。

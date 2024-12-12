@@ -1,0 +1,249 @@
+---
+permalink: switch-cisco-3232c/migrate-from-switchless-prepare-to-migrate.html 
+sidebar: sidebar 
+keywords: cisco 3232c, cluster switches 
+summary: AFF または FAS クラスタでは、 Cisco Nexus 3232C スイッチをクラスタスイッチとして使用できます。 
+---
+= 2ノードスイッチレスクラスタから2ノードスイッチクラスタへの移行を準備
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 3232Cクラスタネットワークスイッチを含む2ノードスイッチクラスタに移行するための準備手順は、次のとおりです。
+
+.手順
+. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
++
+'system node AutoSupport invoke -node * -type all -message MAINT=xh`
+
++
+_x_ は、メンテナンス時間の長さ（時間単位）です。
+
++
+[NOTE]
+====
+AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+
+====
+. 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
++
+.. ネットワークポートの属性を表示します。
++
+「 network port show -role cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *network port show -role cluster*
+  (network port show)
+Node: n1
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- -----
+e4a       Cluster      Cluster          up   9000 auto/40000  -
+e4e       Cluster      Cluster          up   9000 auto/40000  -        -
+Node: n2
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- -----
+e4a       Cluster      Cluster          up   9000 auto/40000  -
+e4e       Cluster      Cluster          up   9000 auto/40000  -
+4 entries were displayed.
+----
+====
+.. 論理インターフェイスとそのホームノードに関する情報を表示します。
++
+「 network interface show -role cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface show -role cluster*
+ (network interface show)
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ---
+Cluster
+            n1_clus1   up/up      10.10.0.1/24       n1            e4a     true
+            n1_clus2   up/up      10.10.0.2/24       n1            e4e     true
+            n2_clus1   up/up      10.10.0.3/24       n2            e4a     true
+            n2_clus2   up/up      10.10.0.4/24       n2            e4e     true
+
+4 entries were displayed.
+----
+====
+.. advanced 権限のコマンドを使用して、スイッチレスクラスタの検出が有効になっていることを確認します。
++
+network options detect-switchless -cluster show `
+
++
+.例を示します
+[%collapsible]
+====
+次の例の出力は、スイッチレスクラスタの検出が有効であることを示しています。
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network options detect-switchless-cluster show*
+Enable Switchless Cluster Detection: true
+----
+====
+
+
+. 新しい 3232C スイッチに適切な RCF とイメージがインストールされていることを確認し、ユーザ、パスワード、ネットワークアドレスの追加など、必要なサイトのカスタマイズを行います。
++
+この時点で両方のスイッチを準備する必要があります。RCF とイメージソフトウェアをアップグレードする必要がある場合は、次の手順を実行する必要があります。
+
++
+.. ネットアップサポートサイトの _Cisco イーサネットスイッチ _ ページにアクセスします。
++
+http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]
+
+.. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
+.. 適切なバージョンの RCF をダウンロードします。
+.. [Description]ページで[continue]*を選択し、ライセンス契約に同意して、*[Download]*ページの指示に従ってRCFをダウンロードします。
+.. 適切なバージョンのイメージソフトウェアをダウンロードします。
++
+https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco Cluster and Management Network Switch Reference Configuration File のダウンロードページ"^]
+
+
+
+. [Description]ページで[continue]*を選択し、ライセンス契約に同意して、*[Download]*ページの指示に従ってRCFをダウンロードします。
+. Nexus 3232C スイッチ C1 および C2 では、ノードに接続されているすべてのポート C1 と C2 を無効にします。ただし、 ISL ポート e1/31~32 は無効にしないでください。
++
+Ciscoコマンドの詳細については、の次のリストを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、 RCF 「 NX3232_RCF_v1_24p10g_24p100g.txt 」でサポートされている設定を使用して、 Nexus 3232C クラスタスイッチ C1 および C2 のポート 1 ～ 30 を無効にする方法を示しています。
+
+[listing, subs="+quotes"]
+----
+C1# copy running-config startup-config
+[########################################] 100% Copy complete.
+C1# configure
+C1(config)# int e1/1/1-4,e1/2/1-4,e1/3/1-4,e1/4/1-4,e1/5/1-4,e1/6/1-4,e1/7-30
+C1(config-if-range)# shutdown
+C1(config-if-range)# exit
+C1(config)# exit
+C2# copy running-config startup-config
+[########################################] 100% Copy complete.
+C2# configure
+C2(config)# int e1/1/1-4,e1/2/1-4,e1/3/1-4,e1/4/1-4,e1/5/1-4,e1/6/1-4,e1/7-30
+C2(config-if-range)# shutdown
+C2(config-if-range)# exit
+C2(config)# exit
+----
+====
+. サポートされているケーブル配線を使用して、 C1 のポート 1/31 および 1/32 を C2 の同じポートに接続します。
+. C1 と C2 で ISL ポートが動作していることを確認します。
++
+「ポートチャネルの概要」
+
++
+Ciscoコマンドの詳細については、の次のリストを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次に、 ISL ポートが C1 および C2 で動作していることを確認するために使用される Cisco`show port-channel summary` コマンドの例を示します。
+
+[listing, subs="+quotes"]
+----
+C1# *show port-channel summary*
+Flags: D - Down         P - Up in port-channel (members)
+       I - Individual   H - Hot-standby (LACP only)        s - Suspended    r - Module-removed
+       S - Switched     R - Routed
+       U - Up (port-channel)
+       M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+      Port-
+Group Channel      Type   Protocol  Member Ports
+-------------------------------------------------------------------------------
+1     Po1(SU)      Eth    LACP      Eth1/31(P)   Eth1/32(P)
+
+C2# show port-channel summary
+Flags: D - Down         P - Up in port-channel (members)
+       I - Individual   H - Hot-standby (LACP only)        s - Suspended    r - Module-removed
+       S - Switched     R - Routed
+       U - Up (port-channel)
+       M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+
+Group Port-        Type   Protocol  Member Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)      Eth    LACP      Eth1/31(P)   Eth1/32(P)
+----
+====
+. スイッチ上の隣接デバイスのリストを表示します。
++
+Ciscoコマンドの詳細については、の次のリストを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次に、スイッチ上の隣接デバイスを表示するために使用される Cisco コマンド「 show cdp neighbors 」の例を示します。
+
+[listing, subs="+quotes"]
+----
+C1# *show cdp neighbors*
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,                   s - Supports-STP-Dispute
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+C2                 Eth1/31        174    R S I s     N3K-C3232C  Eth1/31
+C2                 Eth1/32        174    R S I s     N3K-C3232C  Eth1/32
+Total entries displayed: 2
+C2# show cdp neighbors
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,                   s - Supports-STP-Dispute
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+C1                 Eth1/31        178    R S I s     N3K-C3232C  Eth1/31
+C1                 Eth1/32        178    R S I s     N3K-C3232C  Eth1/32
+Total entries displayed: 2
+----
+====
+. 各ノードのクラスタポート接続を表示します。
++
+「 network device-discovery show 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、 2 ノードスイッチレスクラスタ構成のクラスタポート接続を示しています。
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network device-discovery show*
+            Local  Discovered
+Node        Port   Device              Interface        Platform
+----------- ------ ------------------- ---------------- ----------------
+n1         /cdp
+            e4a    n2                  e4a              FAS9000
+            e4e    n2                  e4e              FAS9000
+n2         /cdp
+            e4a    n1                  e4a              FAS9000
+            e4e    n1                  e4e              FAS9000
+----
+====
+
+
+.次の手順
+link:migrate-from-switchless-configure-ports.html["ポートの設定"]です。

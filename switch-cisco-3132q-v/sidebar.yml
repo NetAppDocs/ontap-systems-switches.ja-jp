@@ -38,12 +38,45 @@ entries:
 - title: スイッチを移行
   pdf-filename: migrate_switches_3132q-v
   entries:
-  - title: CN5596スイッチから移行
-    url: "/switch-cisco-3132q-v/migrate-from-cisco-nexus-5596-to-cisco-nexus-3232c.html"
-  - title: CN1610スイッチからの移行
-    url: "/switch-cisco-3132q-v/replace-cn1610-with-cisco-nexus-3232c.html"
-  - title: スイッチレスクラスタからスイッチクラスタに移行する
-    url: "/switch-cisco-3132q-v/migrate-from-switchless-cluster-to-cisco-nexus-3132q-v.html"
+  - title: CN1610スイッチの移行
+    pdf-filename: CN1610_switch_migration
+    entries:
+    - title: CN1610スイッチの移行ワークフロー
+      url: "/switch-cisco-3132q-v/cn1610-migrate-workflow.html"
+    - title: 移行の要件
+      url: "/switch-cisco-3132q-v/cn1610-migrate-requirements.html"
+    - title: 移行を準備
+      url: "/switch-cisco-3132q-v/cn1610-prepare-to-migrate.html"
+    - title: ポートの設定
+      url: "/switch-cisco-3132q-v/cn1610-configure-ports.html"
+    - title: 移行の完了
+      url: "/switch-cisco-3132q-v/cn1610-complete-migration.html"
+  - title: Cisco Nexus 5596スイッチの移行
+    pdf-filename: CN5596_switch_migration
+    entries:
+    - title: Cisco Nexus 5596スイッチの移行ワークフロー
+      url: "/switch-cisco-3132q-v/cn5596-migrate-workflow.html"
+    - title: 移行の要件
+      url: "/switch-cisco-3132q-v/cn5596-migrate-requirements.html"
+    - title: 移行を準備
+      url: "/switch-cisco-3132q-v/cn5596-prepare-to-migrate.html"
+    - title: ポートの設定
+      url: "/switch-cisco-3132q-v/cn5596-configure-ports.html"
+    - title: 移行の完了
+      url: "/switch-cisco-3132q-v/cn5596-complete-migration.html"
+  - title: スイッチレスクラスタから2ノードスイッチクラスタへの移行
+    pdf-filename: スイッチレスクラスタからスイッチクラスタへの移行
+    entries:
+    - title: スイッチレスから2ノードスイッチを使用したワークフローへの移行
+      url: "/switch-cisco-3132q-v/migrate-switchless-to-switched-workflow.html"
+    - title: 移行の要件
+      url: "/switch-cisco-3132q-v/migrate-switchless-to-switched-requirements.html"
+    - title: 移行を準備
+      url: "/switch-cisco-3132q-v/migrate-switchless-prepare-to-migrate.html"
+    - title: ポートの設定
+      url: "/switch-cisco-3132q-v/migrate-switchless-configure-ports.html"
+    - title: 移行の完了
+      url: "/switch-cisco-3132q-v/migrate-switchless-complete-migration.html"
 - title: スイッチを交換します
   pdf-filename: replace_switches_3132q-v
   entries:

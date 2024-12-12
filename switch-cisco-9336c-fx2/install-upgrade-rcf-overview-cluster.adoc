@@ -1,10 +1,10 @@
 ---
-permalink: switch-cisco-9336c-fx2/install-nxos-rcf-9336c-cluster.html 
+permalink: switch-cisco-9336c-fx2/install-upgrade-rcf-overview-cluster.html 
 sidebar: sidebar 
-keywords: install rcf, cisco switches 
-summary: RCF は、 Nexus 9336C-FX2 スイッチを初めてセットアップしたあとにインストールできます。また、この手順を使用して RCF のバージョンをアップグレードすることもできます。 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
+summary: クラスタスイッチヘルスモニタ（ CSHM ）およびログ収集機能を使用する場合、 SSH は要件です。Cisco 9336c-FX2クラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。 
 ---
-= リファレンス構成ファイル（RCF）のインストールまたはアップグレード
+= リファレンス構成ファイル（RCF）のインストールまたはアップグレードの概要
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -85,13 +85,13 @@ Ciscoスイッチのアップグレードおよびダウングレード手順の
 .例について
 この手順の例では、スイッチとノードで次の命名法を使用しています。
 
-* 2 つの Cisco スイッチの名前は cs1 と cs2 です。
-* ノード名はcluster1-01、cluster1-02、cluster1-02、およびcluster1-02です。
-* クラスタ LIF の名前は、 cluster1-01 _ clus1 、 cluster1-01 _ clus2 、 cluster1-02 _ clus1 、 cluster1-02 _ clus2 、 cluster1-03_clus1 です。 cluster1-03_clus2 、 cluster1-04_clus1 、および cluster1-04_clus2 。
+* 2つのCiscoスイッチの名前は* CS1 *および* CS2 *です。
+* ノード名は* cluster1-01 *、* cluster1-02 *、* cluster1-03 *、および* cluster1-04 *です。
+* クラスタLIFの名前は、* cluster1-01_clus1 *、* cluster1-01_clus2 *、* cluster1-02_clus1 *、* cluster1-02_clus2 *、* cluster1-03_clus2 *、* cluster1-03_clus2 *、* cluster1-04_clus1 *、および* cluster1-04_clus2 *です。
 * 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
 
 
-この手順 の例では 4 ノードを使用します。これらのノードは、 2 つの 10GbE クラスタインターコネクトポート e0a と e0b を使用します。を参照し https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]て、プラットフォームのクラスタポートが正しいことを確認します。
+この手順 の例では 4 ノードを使用します。これらのノードは、2つの10GbEクラスタインターコネクトポート* e0a *と* e0b *を使用します。を参照し https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]て、プラットフォームのクラスタポートが正しいことを確認します。
 
 
 NOTE: コマンド出力は、 ONTAP のリリースによって異なる場合があります。
@@ -101,36 +101,5 @@ NOTE: コマンド出力は、 ONTAP のリリースによって異なる場合�
 .使用するコマンド
 手順では、 ONTAP コマンドと Cisco Nexus 9000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
 
-
-
-== オプション1：新しいスイッチにRCFファイルをインストールする
-
-Reference Configuration File（RCF；リファレンス構成ファイル）は、Nexus 9336C-FX2スイッチの初回セットアップ後にインストールします。
-
-<stdin>の未解決のディレクティブ-include::../_include/install-rcf-software-9336c-cluster.adoc[]
-
-
-
-== オプション2：既存のスイッチを新しいバージョンのRCFにアップグレードする
-
-運用中のスイッチに既存のバージョンのRCFファイルがインストールされている場合は、RCFのバージョンをアップグレードします。
-
-.作業を開始する前に
-次のものがあることを確認します。
-
-* スイッチ設定の現在のバックアップ。
-* クラスタが完全に機能している（ログにエラーがない、または同様の問題が発生している）。
-* 現在のRCFファイル。
-* RCFのバージョンを更新する場合は、目的のブートイメージが反映されたブート設定がRCFに必要です。
-+
-現在のブートイメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。
-
-
-
-
-NOTE: この手順 では、動作可能なInter-Switch Link（ISL；スイッチ間リンク）は必要ありません。RCFのバージョンを変更するとISL接続に一時的に影響する可能性があるため、これは設計上の変更です。クラスタのノンストップオペレーションを実現するために、次の手順 は、ターゲットスイッチでの手順の実行中に、すべてのクラスタLIFを動作しているパートナースイッチに移行します。
-
-
-CAUTION: 新しいバージョンのスイッチソフトウェアと RCF をインストールする前に、スイッチの設定を消去し、基本的な設定を完了する必要があります。スイッチ設定を消去する前に、シリアルコンソールを使用してスイッチに接続するか、基本的な設定情報を保持しておく必要があります。
-
-<stdin>の未解決のディレクティブ-include：：../_include/upgrade-rcf-software-9336c-cluster.adoc[]
+.次の手順
+link:install-rcf-software-9336c-cluster.html["RCFをインストールします"] または link:upgrade-rcf-software-9336c-cluster.html["RCFのアップグレード"]。

@@ -1,0 +1,243 @@
+---
+permalink: switch-cisco-3232c/cn5596-prepare-to-migrate.html 
+sidebar: sidebar 
+keywords: cisco 3232c, cluster switches 
+summary: AFF または FAS クラスタでは、 Cisco Nexus 3232C スイッチをクラスタスイッチとして使用できます。 
+---
+= Nexus 5596スイッチからNexus 3232Cスイッチへの移行準備
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 5596スイッチをCisco Nexus 3232Cスイッチに移行できるように準備する手順は、次のとおりです。
+
+.手順
+. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
++
+'system node AutoSupport invoke -node * -type all -message MAINT=xh`
+
++
+_x_ は、メンテナンス時間の長さ（時間単位）です。
+
++
+[NOTE]
+====
+AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+
+====
+. 構成に含まれるデバイスに関する情報を表示します。
++
+「 network device-discovery show 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、各クラスタインターコネクトスイッチの各ノードに設定されているクラスタインターコネクトインターフェイスの数を示しています。
+
+[listing, subs="+quotes"]
+----
+cluster::> *network device-discovery show*
+            Local  Discovered
+Node        Port   Device              Interface        Platform
+----------- ------ ------------------- ---------------- ----------------
+n1         /cdp
+            e0a    CL1                 Ethernet1/1      N5K-C5596UP
+            e0b    CL2                 Ethernet1/1      N5K-C5596UP
+            e0c    CL2                 Ethernet1/2      N5K-C5596UP
+            e0d    CL1                 Ethernet1/2      N5K-C5596UP
+n2         /cdp
+            e0a    CL1                 Ethernet1/3      N5K-C5596UP
+            e0b    CL2                 Ethernet1/3      N5K-C5596UP
+            e0c    CL2                 Ethernet1/4      N5K-C5596UP
+            e0d    CL1                 Ethernet1/4      N5K-C5596UP
+8 entries were displayed.
+----
+====
+. 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
++
+.. ネットワークポートの属性を表示します。
++
+「 network port show -role cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、ノード n1 および n2 のネットワークポート属性を表示します。
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network port show –role cluster*
+  (network port show)
+Node: n1
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000 auto/10000  -        -
+e0b       Cluster      Cluster          up   9000 auto/10000  -        -
+e0c       Cluster      Cluster          up   9000 auto/10000  -        -
+e0d       Cluster      Cluster          up   9000 auto/10000  -        -
+
+Node: n2
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 -        -
+e0b       Cluster      Cluster          up   9000  auto/10000 -        -
+e0c       Cluster      Cluster          up   9000  auto/10000 -        -
+e0d       Cluster      Cluster          up   9000  auto/10000 -        -
+8 entries were displayed.
+----
+====
+.. 論理インターフェイスに関する情報を表示します。
++
+「 network interface show -role cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、現在のポートを含む、クラスタ上のすべての LIF に関する一般的な情報を表示します。
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface show -role cluster*
+ (network interface show)
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            n1_clus1   up/up      10.10.0.1/24       n1            e0a     true
+            n1_clus2   up/up      10.10.0.2/24       n1            e0b     true
+            n1_clus3   up/up      10.10.0.3/24       n1            e0c     true
+            n1_clus4   up/up      10.10.0.4/24       n1            e0d     true
+            n2_clus1   up/up      10.10.0.5/24       n2            e0a     true
+            n2_clus2   up/up      10.10.0.6/24       n2            e0b     true
+            n2_clus3   up/up      10.10.0.7/24       n2            e0c     true
+            n2_clus4   up/up      10.10.0.8/24       n2            e0d     true
+8 entries were displayed.
+----
+====
+.. 検出されたクラスタスイッチに関する情報を表示します。
++
+「 system cluster-switch show
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、アクティブなクラスタスイッチを示しています。
+
+[listing, subs="+quotes"]
+----
+cluster::*> *system cluster-switch show*
+
+Switch                        Type               Address         Model
+----------------------------- ------------------ --------------- ---------------
+CL1                           cluster-network    10.10.1.101     NX5596
+     Serial Number: 01234567
+      Is Monitored: true
+            Reason:
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    7.1(1)N1(1)
+    Version Source: CDP
+CL2                           cluster-network    10.10.1.102     NX5596
+     Serial Number: 01234568
+      Is Monitored: true
+            Reason:
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    7.1(1)N1(1)
+    Version Source: CDP
+
+2 entries were displayed.
+----
+====
+
+
+. 必要に応じて新しい 3232C スイッチに適切な RCF とイメージがインストールされていることを確認し、ユーザとパスワード、ネットワークアドレス、その他のカスタマイズなどの基本的なサイトのカスタマイズを行います。
++
+[NOTE]
+====
+この時点で両方のスイッチを準備する必要があります。
+
+====
++
+RCF およびイメージをアップグレードする必要がある場合は、次の手順を実行する必要があります。
+
++
+.. ネットアップサポートサイトの _Cisco イーサネットスイッチ _ ページにアクセスします。
++
+http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]
+
+.. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
+.. 該当するバージョンの RCF をダウンロードします。
+.. [Description]ページで[continue]*を選択し、ライセンス契約に同意して、*[Download]*ページの指示に従ってRCFをダウンロードします。
+.. 適切なバージョンのイメージソフトウェアをダウンロードします。
++
+ONTAP 8.x以降のクラスタおよび管理ネットワークスイッチリファレンス構成ファイル__Downloadページを参照し、適切なバージョンを選択します。
+
++
+正しいバージョンを確認するには、 ONTAP 8.x 以降のクラスタネットワークスイッチのダウンロードページを参照してください。
+
+
+
+. 交換する 2 番目の Nexus 5596 スイッチに関連付けられている LIF を移行します。
++
+`network interface migrate -vserver _vserver-name_ -lif _lif-name_ -source-node _source-node-name_ - destination-node _node-name_ -destination-port _destination-port-name_`
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、ノード n1 とノード n2 の LIF を移行していることを示しています。すべてのノードで LIF の移行が完了している必要があります。
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface migrate -vserver Cluster -lif n1_clus2 -source-node n1 -
+destination-node n1 -destination-port e0a*
+cluster::*> *network interface migrate -vserver Cluster -lif n1_clus3 -source-node n1 -
+destination-node n1 -destination-port e0d*
+cluster::*> *network interface migrate -vserver Cluster -lif n2_clus2 -source-node n2 -
+destination-node n2 -destination-port e0a*
+cluster::*> *network interface migrate -vserver Cluster -lif n2_clus3 -source-node n2 -
+destination-node n2 -destination-port e0d*
+----
+====
+. クラスタの健常性を確認します。
++
+「 network interface show -role cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、各クラスタの現在のステータスを表示します。
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface show -role cluster*
+ (network interface show)
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+Cluster
+            n1_clus1   up/up      10.10.0.1/24       n1            e0a     true
+            n1_clus2   up/up      10.10.0.2/24       n1            e0a     false
+            n1_clus3   up/up      10.10.0.3/24       n1            e0d     false
+            n1_clus4   up/up      10.10.0.4/24       n1            e0d     true
+            n2_clus1   up/up      10.10.0.5/24       n2            e0a     true
+            n2_clus2   up/up      10.10.0.6/24       n2            e0a     false
+            n2_clus3   up/up      10.10.0.7/24       n2            e0d     false
+            n2_clus4   up/up      10.10.0.8/24       n2            e0d     true
+8 entries were displayed.
+----
+====
+
+
+.次の手順
+link:cn5596-configure-ports.html["ポートの設定"]です。

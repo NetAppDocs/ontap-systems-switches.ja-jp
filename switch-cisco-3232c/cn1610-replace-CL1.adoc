@@ -1,0 +1,249 @@
+---
+permalink: switch-cisco-3232c/cn1610-replace-CL1.html 
+sidebar: sidebar 
+keywords: cisco 3232c, cluster switches 
+summary: AFF または FAS クラスタでは、 Cisco Nexus 3232C スイッチをクラスタスイッチとして使用できます。 
+---
+= CN1610スイッチCL1を3232CスイッチC1に交換
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+CN1610（CL1）スイッチをNexus 3232C（C1）スイッチに交換する手順は、次のとおりです。
+
+.手順
+. クラスタのステータスを確認します。
++
+「 network interface show -role cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、必要なクラスタ LIF が、クラスタスイッチ C2 でホストされている適切なクラスタポートに移行されたことを示しています。
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface show -role cluster*
+(network interface show)
+         Logical    Status      Network        Current  Current  Is
+Vserver  Interface  Admin/Oper  Address/Mask   Node     Port     Home
+-------- ---------- ----------- -------------- -------- -------- -----
+Cluster
+         n1_clus1   up/up       10.10.0.1/24   n1       e0b      false
+         n1_clus2   up/up       10.10.0.2/24   n1       e0b      true
+         n1_clus3   up/up       10.10.0.3/24   n1       e0c      true
+         n1_clus4   up/up       10.10.0.4/24   n1       e0c      false
+         n2_clus1   up/up       10.10.0.5/24   n2       e0b      false
+         n2_clus2   up/up       10.10.0.6/24   n2       e0b      true
+         n2_clus3   up/up       10.10.0.7/24   n2       e0c      true
+         n2_clus4   up/up       10.10.0.8/24   n2       e0c      false
+
+8 entries were displayed.
+----
+====
+. すべてのノードのCL1に接続されているノードポートをシャットダウンします。
++
+'network port modify -node node_name --port_port-name_up-admin false
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、ノード n1 および n2 で特定のポートがシャットダウンされていることを示しています。
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network port modify -node n1 -port e0a -up-admin false*
+cluster::*> *network port modify -node n1 -port e0d -up-admin false*
+cluster::*> *network port modify -node n2 -port e0a -up-admin false*
+cluster::*> *network port modify -node n2 -port e0d -up-admin false*
+----
+====
+. アクティブ 3232C スイッチ C2 の ISL ポート 24 、 31 、 32 をシャットダウンします。
++
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、アクティブ 3232C スイッチ C2 で ISL 24 、 31 、および 32 をシャットダウンする方法を示しています。
+
+[listing, subs="+quotes"]
+----
+C2# *configure*
+C2(config)# *interface ethernet 1/24/1-4*
+C2(config-if-range)# *shutdown*
+C2(config-if-range)# *exit*
+C2(config)# *interface ethernet 1/31-32*
+C2(config-if-range)# *shutdown*
+C2(config-if-range)# *exit*
+C2(config)# *exit*
+C2#
+----
+====
+. すべてのノードの CN1610 スイッチ CL1 に接続されているケーブルを取り外します。
++
+適切なケーブル接続を使用して、すべてのノードの切断されたポートを Nexus 3232C スイッチ C1 に再接続する必要があります。
+
+. QSFP28 ケーブルを Nexus 3232C C2 ポート e1/24 から取り外します。
++
+サポートされている Cisco QSFP28 光ファイバケーブルまたは直接接続ケーブルを使用して、 C1 のポート e1/31 および e1/32 を c2 のポート e1/31 および e1/32 に接続する必要があります。
+
+. ポート 24 の設定をリストアし、 C2 の一時ポートチャネル 2 を削除します。
++
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次に 'running-configuration' ファイルを 'startup-configuration' ファイルにコピーする例を示します
+
+[listing, subs="+quotes"]
+----
+C2# configure
+C2(config)# *no interface breakout module 1 port 24 map 10g-4x*
+C2(config)# *no interface port-channel 2*
+C2(config-if)# *interface e1/24*
+C2(config-if)# *description 100GbE/40GbE Node Port*
+C2(config-if)# *spanning-tree port type edge*
+Edge port type (portfast) should only be enabled on ports connected to a single
+host. Connecting hubs, concentrators, switches, bridges, etc...  to this
+interface when edge port type (portfast) is enabled, can cause temporary bridging loops.
+Use with CAUTION
+
+Edge Port Type (Portfast) has been configured on Ethernet 1/24 but will only
+have effect when the interface is in a non-trunking mode.
+
+C2(config-if)# *spanning-tree bpduguard enable*
+C2(config-if)# *mtu 9216*
+C2(config-if-range)# *exit*
+C2(config)# *exit*
+C2# copy running-config startup-config
+[########################################] 100%
+Copy Complete.
+----
+====
+. アクティブな 3232C スイッチの c2 の ISL ポート 31 と 32 を起動します。
++
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、 3232C スイッチ c2 に ISL 31 と 32 を配置します。
+
+[listing, subs="+quotes"]
+----
+C2# *configure*
+C2(config)# *interface ethernet 1/31-32*
+C2(config-if-range)# *no shutdown*
+C2(config-if-range)# *exit*
+C2(config)# *exit*
+C2# copy running-config startup-config
+[########################################] 100%
+Copy Complete.
+----
+====
+. 3232C スイッチ C2 の ISL 接続が「 up 」になっていることを確認します。
++
+Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、検証する ISL 接続を示しています。ポート Eth1/31 および Eth1/32 は「（ P ）」を示します。これは、ポートチャネル内の ISL ポートが「 up 」であることを意味します。
+
+[listing, subs="+quotes"]
+----
+C1# *show port-channel summary*
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        M - Not in use. Min-links not met
+------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+-----------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
+
+C2# *show port-channel summary*
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        M - Not in use. Min-links not met
+------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
+----
+====
+. すべてのノードの新しい3232CスイッチC1に接続されているすべてのクラスタインターコネクトポートを起動します。
++
+'network port modify -node node_name --port_port-name_up-admin true
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、新しい 3232C スイッチ C1 に接続されているすべてのクラスタインターコネクトポートを起動します。
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network port modify -node n1 -port e0a -up-admin true*
+cluster::*> *network port modify -node n1 -port e0d -up-admin true*
+cluster::*> *network port modify -node n2 -port e0a -up-admin true*
+cluster::*> *network port modify -node n2 -port e0d -up-admin true*
+----
+====
+. クラスタノードポートのステータスを確認します。
++
+「 network port show -role cluster 」のように表示されます
+
++
+.例を示します
+[%collapsible]
+====
+次の例は、新しい 3232C スイッチ C1 のノード n1 とノード n2 のクラスタインターコネクトポートが「 up 」になっていることを確認する出力を示しています。
+
+[listing, subs="+quotes"]
+----
+cluster::*> *network port show -role cluster*
+       (network port show)
+
+Node: n1
+                Broadcast              Speed (Mbps) Health   Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status   Health Status
+----- --------- ---------- ----- ----- ------------ -------- -------------
+e0a   cluster   cluster    up    9000  auto/10000     -
+e0b   cluster   cluster    up    9000  auto/10000     -
+e0c   cluster   cluster    up    9000  auto/10000     -        -
+e0d   cluster   cluster    up    9000  auto/10000     -        -
+
+Node: n2
+                Broadcast              Speed (Mbps) Health   Ignore
+Port  IPspace   Domain     Link  MTU   Admin/Open   Status   Health Status
+----- --------- ---------- ----- ----- ------------ -------- -------------
+e0a   cluster   cluster    up    9000  auto/10000     -
+e0b   cluster   cluster    up    9000  auto/10000     -
+e0c   cluster   cluster    up    9000  auto/10000     -
+e0d   cluster   cluster    up    9000  auto/10000     -
+
+8 entries were displayed.
+----
+====
+
+
+.次の手順
+link:cn1610-complete-migration.html["移行の完了"]です。
