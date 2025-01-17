@@ -694,4 +694,4 @@ cluster1::*>
 
 
 .次の手順
-link:install-nxos-rcf-9336c-storage.html["RCF構成ファイルをインストールします"]。
+link:install-rcf-software-9336c-storage.html["RCFのインストール"]です。

@@ -2631,7 +2631,6 @@
   <block id="feb8e402dbfa149a080f8f87ee22069f" category="list-text">ノード名はcluster1-01、cluster1-02、cluster1-02、およびcluster1-02です。</block>
   <block id="1a4c52cc090c463e0a3949fd93af9ca2" category="section-title">ソフトウェアをインストールします</block>
   <block id="ec8855627efbb26afaa912164ff82dbd" category="inline-link-macro">RCF構成ファイルをインストールします</block>
-  <block id="afe6bd84cf9f314186e891843eba49cc" category="paragraph"><block ref="41aae7f405e62aa01d791efeede3f9c2" category="inline-link-macro-rx"></block>。</block>
   <block id="2563a96fdb66dda5382058af89e8a58c" category="paragraph-title">スイッチとノードで命名されています</block>
   <block id="a2d07f4e7a36ed872e60c08cdcc73771" category="doc">2ノードスイッチクラスタに移行する</block>
   <block id="5b1bedb3dd2208af0449bbbfcc022136" category="paragraph">既存の2ノードスイッチレスクラスタ環境を使用している場合は、Cisco Nexus 9336C-FX2スイッチを使用して2ノードスイッチクラスタ環境に移行し、3ノード以上にクラスタを拡張できます。</block>
@@ -2818,7 +2817,6 @@
   <block id="c35204e874fcafc94c7c67e31162e966" category="paragraph">このコマンドの実行後は、自動リバートが無効になっていることを確認してください。</block>
   <block id="d08074ca4afc3cad1b1b41c1134b3f1e" category="section-title">手順2：セットアップを設定して確認します</block>
   <block id="b6ec5ccd50e4a92a636c1dc432c89581" category="admonition">クラスタノードが正常であると報告されるまでに最大5分かかることがあります。</block>
-  <block id="442f3bc68fd4ab1c760b482d02f7ca71" category="list-text">スイッチcs1で手順1~10を繰り返します。</block>
   <block id="af4d9c4c765c5c1d9c279c35191c82da" category="paragraph"><block ref="e39b44798f52b1532971ab295180e1b0" prefix="" category="inline-code"></block></block>
   <block id="a96967612c6864aa22be45f265f4c533" category="paragraph">クラスタネットワーク内の障害のあるCisco Nexus 3132Q-Vスイッチを交換するには、この手順 に従います。交換用手順 は、無停止手順 （NDO；ノンストップオペレーション）です。</block>
   <block id="f3f6fdd1ea886344c6b4f8b4ee91d661" category="paragraph-title">スイッチの要件</block>
@@ -5185,4 +5183,15 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="6697bf1c75a0d4d8868afeab04858bc3" category="sidebar">Upgrade_switches_3232C</block>
   <block id="253d101ba7a8a0f1e24c1a3b13a1b5b5" category="sidebar">インストールアップグレードRCF</block>
   <block id="2b8efdb0e77054ffe22b4bfb75564155" category="sidebar">RCFのインストールまたはアップグレードの概要</block>
+  <block id="b6503bc6a2e6ede86368a60473711626" category="list-text">スイッチcs1で手順1~11を繰り返します。</block>
+  <block id="604f0b8e46b056f4f2f05bb3ea87a5a7" category="inline-link-macro">RCFのインストール</block>
+  <block id="f398a91a8a2500b4ebd90095482c2638" category="paragraph"><block ref="032b77b792344ea711cbb6f8f0bfe3cc" category="inline-link-macro-rx"></block>です。</block>
+  <block id="ea6719e8ba4a5a7aea0b4185afc5408b" category="summary">RCFは、Nexus 9336C-FX2ストレージスイッチの初回セットアップ後にインストールできます。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。</block>
+  <block id="fc3ebe0c41be566a2062e99eee81c6ba" category="paragraph">Reference Configuration File（RCF；リファレンス構成ファイル）は、Nexus 9336C-FX2ストレージスイッチの初回セットアップ後にインストールします。</block>
+  <block id="0d54a8a99337a48199414ba38d122135" category="list-text">スイッチcs1とスイッチcs2の電源がオンになっており、スイッチの初期セットアップが完了しています（管理IPアドレスとSSHのセットアップが完了しています）。</block>
+  <block id="f1de50ac922202c9581e806906499ae8" category="paragraph">次の例では、スイッチcs1にRCF<block ref="fcd688c0fb8c0256c7fc0b5ca2fd673d" prefix=" " category="inline-code"></block>をインストールしています。</block>
+  <block id="a697c9a980376d3a62210b2b53d5b0b8" category="list-text">コマンドのバナー出力を確認します<block ref="6d53824b9996e36fd31937e922967215" prefix=" " category="inline-code"></block>。スイッチの設定と動作が正しいことを確認するには、次の手順を読んで従う必要があります。</block>
+  <block id="b0d1465a243b273a8f71d6084fd2c12c" category="list-text">RCFが正しい新しいバージョンであることを確認します。</block>
+  <block id="7fd5f97719ed93b62ce57a2401ebb179" category="list-text">RCFのバージョンとスイッチの設定が正しいことを確認したら、running-configファイルをstartup-configファイルにコピーします。</block>
+  <block id="f7b017d791fb57f4bbb1b2ce01659ed8" category="paragraph">System Managerでは、ノード管理IPアドレスの割り当て、クラスタの初期化、ローカル階層の作成、プロトコルの設定、初期ストレージのプロビジョニングなど、クラスタのセットアップと設定のワークフローをシンプルかつ簡単に実行できます。</block>
 </blocks>

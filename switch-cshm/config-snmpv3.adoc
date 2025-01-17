@@ -330,19 +330,19 @@ CLI 5.4を実行しているNVIDIA SN2100スイッチでSNMPv3ユーザ名SNMPv3
 +
 [source, cli]
 ----
-net add snmp-server username SNMPv3_USER auth-none
+nv set service snmp-server username SNMPv3_USER auth-none
 ----
 * MD5/SHA認証の場合*：
 +
 [source, cli]
 ----
-net add snmp-server username SNMPv3_USER [auth-md5|auth-sha] AUTH-PASSWORD
+nv set service snmp-server username SNMPv3_USER [auth-md5|auth-sha] AUTH-PASSWORD
 ----
 * AES/DES暗号化を使用した* MD5/SHA認証の場合*：
 +
 [source, cli]
 ----
-net add snmp-server username SNMPv3_USER [auth-md5|auth-sha] AUTH-PASSWORD [encrypt-aes|encrypt-des] PRIV-PASSWORD
+nv set service snmp-server username SNMPv3_USER [auth-md5|auth-sha] AUTH-PASSWORD [encrypt-aes|encrypt-des] PRIV-PASSWORD
 ----
 
 

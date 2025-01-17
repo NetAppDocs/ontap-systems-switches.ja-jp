@@ -1,0 +1,453 @@
+---
+permalink: switch-cisco-9336c-fx2-storage/install-rcf-software-9336c-storage.html 
+sidebar: sidebar 
+keywords: install rcf, cisco switches, storage 
+summary: RCFは、Nexus 9336C-FX2ストレージスイッチの初回セットアップ後にインストールできます。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。 
+---
+= リファレンス構成ファイルをインストールします
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Reference Configuration File（RCF；リファレンス構成ファイル）は、Nexus 9336C-FX2ストレージスイッチの初回セットアップ後にインストールします。
+
+.作業を開始する前に
+次のインストールと接続を確認します。
+
+* スイッチへのコンソール接続。スイッチへのリモートアクセスがある場合、コンソール接続はオプションです。
+* スイッチcs1とスイッチcs2の電源がオンになっており、スイッチの初期セットアップが完了しています（管理IPアドレスとSSHのセットアップが完了しています）。
+* 目的のバージョンのNX-OSがインストールされている。
+* ONTAPノードのクラスタポートが接続されていません。
+
+
+
+
+== 手順1：スイッチにRCFをインストールする
+
+. SSHまたはシリアルコンソールを使用して、スイッチcs1にログインします。
+. FTP、TFTP、SFTP、またはSCPのいずれかの転送プロトコルを使用して、スイッチcs1のブートフラッシュにRCFをコピーします。
++
+Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次に、TFTPを使用してスイッチcs1のブートフラッシュにRCFをコピーする例を示します。
+
+[listing, subs="+quotes"]
+----
+cs1# *copy tftp: bootflash: vrf management*
+Enter source filename: *Nexus_9336C_RCF_v1.6-Storage.txt*
+Enter hostname for the tftp server: *172.22.201.50*
+Trying to connect to tftp server......Connection to Server Established.
+TFTP get operation was successful
+Copy complete, now saving to disk (please wait)...
+----
+====
+. ブートフラッシュに前にダウンロードした RCF を適用します。
++
+Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^]。
+
++
+.例を示します
+[%collapsible]
+====
+次の例では、スイッチcs1にRCF `Nexus_9336C_RCF_v1.6-Storage.txt`をインストールしています。
+
+[listing]
+----
+cs1# copy NNexus_9336C_RCF_v1.6-Storage.txt running-config echo-commands
+----
+====
+. コマンドのバナー出力を確認します `show banner motd`。スイッチの設定と動作が正しいことを確認するには、次の手順を読んで従う必要があります。
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cs1# show banner motd
+
+******************************************************************************
+* NetApp Reference Configuration File (RCF)
+*
+* Switch    : Nexus N9K-C9336C-FX2
+* Filename  : Nexus_9336C_RCF_v1.6-Storage.txt
+* Date      : 10-23-2020
+* Version   : v1.6
+*
+* Port Usage : Storage configuration
+* Ports  1-36: 100GbE Controller and Shelf Storage Ports
+******************************************************************************
+----
+====
+. RCFが正しい新しいバージョンであることを確認します。
++
+'how running-config'
+
++
+出力をチェックして正しい RCF があることを確認する場合は、次の情報が正しいことを確認してください。
+
++
+** RCF バナー
+** ノードとポートの設定
+** カスタマイズ
++
+出力内容はサイトの構成によって異なります。ポートの設定を確認し、インストールした RCF に固有の変更がないかリリースノートを参照してください。
+
+
+
+. 以前のカスタマイズをスイッチの設定に再適用します。link:cabling-considerations-9336c-fx2.html["ケーブル接続と構成に関する考慮事項を確認"]必要なその他の変更の詳細については、を参照してください。
+. RCFのバージョンとスイッチの設定が正しいことを確認したら、running-configファイルをstartup-configファイルにコピーします。
++
+`copy running-config startup-config`
+
++
+.例を示します
+[%collapsible]
+====
+[listing]
+----
+cs1# copy running-config startup-config [########################################] 100% Copy complete
+----
+====
++
+Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^]。
+
+. スイッチcs1をリブートします。
++
+`cs1# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
+
+. スイッチcs2で手順1~7を繰り返します。
+. ONTAPクラスタ内のすべてのノードのクラスタポートをスイッチcs1とcs2に接続します。
+
+
+
+
+== 手順2：スイッチの接続を確認する
+
+. クラスタポートに接続されているスイッチポートが*up*であることを確認します。
++
+`show interface brief`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1# *show interface brief | grep up*
+mgmt0  --           up     _<mgmt ip address>_                       1000    1500
+Eth1/11         1       eth  trunk  up      none                     100G(D) --
+Eth1/12         1       eth  trunk  up      none                     100G(D) --
+Eth1/13         1       eth  trunk  up      none                     100G(D) --
+Eth1/14         1       eth  trunk  up      none                     100G(D) --
+Eth1/15         1       eth  trunk  up      none                     100G(D) --
+Eth1/16         1       eth  trunk  up      none                     100G(D) --
+Eth1/17         1       eth  trunk  up      none                     100G(D) --
+Eth1/18         1       eth  trunk  up      none                     100G(D) --
+Eth1/23         1       eth  trunk  up      none                     100G(D) --
+Eth1/24         1       eth  trunk  up      none                     100G(D) --
+Eth1/25         1       eth  trunk  up      none                     100G(D) --
+Eth1/26         1       eth  trunk  up      none                     100G(D) --
+Eth1/27         1       eth  trunk  up      none                     100G(D) --
+Eth1/28         1       eth  trunk  up      none                     100G(D) --
+Eth1/29         1       eth  trunk  up      none                     100G(D) --
+Eth1/30         1       eth  trunk  up      none                     100G(D) --
+----
+====
+. 次のコマンドを使用して、クラスタノードが正しいクラスタVLANに含まれていることを確認します。
++
+`show vlan brief`
+
++
+`show interface trunk`
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1# *show vlan brief*
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Po999
+30   VLAN0030                         active    Eth1/1, Eth1/2, Eth1/3, Eth1/4
+                                                Eth1/5, Eth1/6, Eth1/7, Eth1/8
+                                                Eth1/9, Eth1/10, Eth1/11
+                                                Eth1/12, Eth1/13, Eth1/14
+                                                Eth1/15, Eth1/16, Eth1/17
+                                                Eth1/18, Eth1/19, Eth1/20
+                                                Eth1/21, Eth1/22, Eth1/23
+                                                Eth1/24, Eth1/25, Eth1/26
+                                                Eth1/27, Eth1/28, Eth1/29
+                                                Eth1/30, Eth1/31, Eth1/32
+                                                Eth1/33, Eth1/34, Eth1/35
+                                                Eth1/36
+
+cs1# *show interface trunk*
+
+-----------------------------------------------------
+Port          Native  Status        Port
+              Vlan                  Channel
+-----------------------------------------------------
+Eth1/1        1       trunking      --
+Eth1/2        1       trunking      --
+Eth1/3        1       trunking      --
+Eth1/4        1       trunking      --
+Eth1/5        1       trunking      --
+Eth1/6        1       trunking      --
+Eth1/7        1       trunking      --
+Eth1/8        1       trunking      --
+Eth1/9        1       trunking      --
+Eth1/10       1       trunking      --
+Eth1/11       1       trunking      --
+Eth1/12       1       trunking      --
+Eth1/13       1       trunking      --
+Eth1/14       1       trunking      --
+Eth1/15       1       trunking      --
+Eth1/16       1       trunking      --
+Eth1/17       1       trunking      --
+Eth1/18       1       trunking      --
+Eth1/19       1       trunking      --
+Eth1/20       1       trunking      --
+Eth1/21       1       trunking      --
+Eth1/22       1       trunking      --
+Eth1/23       1       trunking      --
+Eth1/24       1       trunking      --
+Eth1/25       1       trunking      --
+Eth1/26       1       trunking      --
+Eth1/27       1       trunking      --
+Eth1/28       1       trunking      --
+Eth1/29       1       trunking      --
+Eth1/30       1       trunking      --
+Eth1/31       1       trunking      --
+Eth1/32       1       trunking      --
+Eth1/33       1       trunking      --
+Eth1/34       1       trunking      --
+Eth1/35       1       trunking      --
+Eth1/36       1       trunking      --
+
+--------------------------------------------------------------------------------
+Port          Vlans Allowed on Trunk
+--------------------------------------------------------------------------------
+Eth1/1        30
+Eth1/2        30
+Eth1/3        30
+Eth1/4        30
+Eth1/5        30
+Eth1/6        30
+Eth1/7        30
+Eth1/8        30
+Eth1/9        30
+Eth1/10       30
+Eth1/11       30
+Eth1/12       30
+Eth1/13       30
+Eth1/14       30
+Eth1/15       30
+Eth1/16       30
+Eth1/17       30
+Eth1/18       30
+Eth1/19       30
+Eth1/20       30
+Eth1/21       30
+Eth1/22       30
+Eth1/23       30
+Eth1/24       30
+Eth1/25       30
+Eth1/26       30
+Eth1/27       30
+Eth1/28       30
+Eth1/29       30
+Eth1/30       30
+Eth1/31       30
+Eth1/32       30
+Eth1/33       30
+Eth1/34       30
+Eth1/35       30
+Eth1/36       30
+
+--------------------------------------------------------------------------------
+Port          Vlans Err-disabled on Trunk
+--------------------------------------------------------------------------------
+Eth1/1        none
+Eth1/2        none
+Eth1/3        none
+Eth1/4        none
+Eth1/5        none
+Eth1/6        none
+Eth1/7        none
+Eth1/8        none
+Eth1/9        none
+Eth1/10       none
+Eth1/11       none
+Eth1/12       none
+Eth1/13       none
+Eth1/14       none
+Eth1/15       none
+Eth1/16       none
+Eth1/17       none
+Eth1/18       none
+Eth1/19       none
+Eth1/20       none
+Eth1/21       none
+Eth1/22       none
+Eth1/23       none
+Eth1/24       none
+Eth1/25       none
+Eth1/26       none
+Eth1/27       none
+Eth1/28       none
+Eth1/29       none
+Eth1/30       none
+Eth1/31       none
+Eth1/32       none
+Eth1/33       none
+Eth1/34       none
+Eth1/35       none
+Eth1/36       none
+
+--------------------------------------------------------------------------------
+Port          STP Forwarding
+--------------------------------------------------------------------------------
+Eth1/1        none
+Eth1/2        none
+Eth1/3        none
+Eth1/4        none
+Eth1/5        none
+Eth1/6        none
+Eth1/7        none
+Eth1/8        none
+Eth1/9        none
+Eth1/10       none
+Eth1/11       30
+Eth1/12       30
+Eth1/13       30
+Eth1/14       30
+Eth1/15       30
+Eth1/16       30
+Eth1/17       30
+Eth1/18       30
+Eth1/19       none
+Eth1/20       none
+Eth1/21       none
+Eth1/22       none
+Eth1/23       30
+Eth1/24       30
+Eth1/25       30
+Eth1/26       30
+Eth1/27       30
+Eth1/28       30
+Eth1/29       30
+Eth1/30       30
+Eth1/31       none
+Eth1/32       none
+Eth1/33       none
+Eth1/34       none
+Eth1/35       none
+Eth1/36       none
+
+--------------------------------------------------------------------------------
+Port          Vlans in spanning tree forwarding state and not pruned
+--------------------------------------------------------------------------------
+Eth1/1        Feature VTP is not enabled
+none
+Eth1/2        Feature VTP is not enabled
+none
+Eth1/3        Feature VTP is not enabled
+none
+Eth1/4        Feature VTP is not enabled
+none
+Eth1/5        Feature VTP is not enabled
+none
+Eth1/6        Feature VTP is not enabled
+none
+Eth1/7        Feature VTP is not enabled
+none
+Eth1/8        Feature VTP is not enabled
+none
+Eth1/9        Feature VTP is not enabled
+none
+Eth1/10       Feature VTP is not enabled
+none
+Eth1/11       Feature VTP is not enabled
+30
+Eth1/12       Feature VTP is not enabled
+30
+Eth1/13       Feature VTP is not enabled
+30
+Eth1/14       Feature VTP is not enabled
+30
+Eth1/15       Feature VTP is not enabled
+30
+Eth1/16       Feature VTP is not enabled
+30
+Eth1/17       Feature VTP is not enabled
+30
+Eth1/18       Feature VTP is not enabled
+30
+Eth1/19       Feature VTP is not enabled
+none
+Eth1/20       Feature VTP is not enabled
+none
+Eth1/21       Feature VTP is not enabled
+none
+Eth1/22       Feature VTP is not enabled
+none
+Eth1/23       Feature VTP is not enabled
+30
+Eth1/24       Feature VTP is not enabled
+30
+Eth1/25       Feature VTP is not enabled
+30
+Eth1/26       Feature VTP is not enabled
+30
+Eth1/27       Feature VTP is not enabled
+30
+Eth1/28       Feature VTP is not enabled
+30
+Eth1/29       Feature VTP is not enabled
+30
+Eth1/30       Feature VTP is not enabled
+30
+Eth1/31       Feature VTP is not enabled
+none
+Eth1/32       Feature VTP is not enabled
+none
+Eth1/33       Feature VTP is not enabled
+none
+Eth1/34       Feature VTP is not enabled
+none
+Eth1/35       Feature VTP is not enabled
+none
+Eth1/36       Feature VTP is not enabled
+none
+----
+====
++
+
+NOTE: 特定のポートおよびVLANの使用方法の詳細については、RCFのバナーおよび重要な注意事項のセクションを参照してください。
+
+
+
+
+
+== 手順3：ONTAPクラスタをセットアップする
+
+NetAppでは、System Managerを使用して新しいクラスタをセットアップすることを推奨しています。
+
+System Managerでは、ノード管理IPアドレスの割り当て、クラスタの初期化、ローカル階層の作成、プロトコルの設定、初期ストレージのプロビジョニングなど、クラスタのセットアップと設定のワークフローをシンプルかつ簡単に実行できます。
+
+に進みます https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["System Managerを使用して新しいクラスタにONTAPを設定します"] を参照してください。
+
+.次の手順
+link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。

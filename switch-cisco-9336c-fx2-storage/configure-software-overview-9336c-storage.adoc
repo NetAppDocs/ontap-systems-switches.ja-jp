@@ -16,5 +16,4 @@ Cisco Nexus 9336C-FX2ストレージスイッチのソフトウェアをイン�
 . link:install-nxos-overview-9336c-storage.html["NX-OSおよびRCFのインストールを準備します"]。
 . link:install-nxos-software-9336c-storage.html["NX-OS ソフトウェアをインストールします"]。
 . link:install-nxos-rcf-9336c-storage.html["RCF構成ファイルをインストールします"]。
-. link:configure-ssh.html["SSH を有効にします。"]です。
 
