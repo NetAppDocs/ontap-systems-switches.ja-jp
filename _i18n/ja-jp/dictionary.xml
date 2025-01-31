@@ -179,9 +179,7 @@
   <block id="d5fbb9cb1715ba5a21b66c0aa1b67707" category="paragraph">この例では、「 -vserver 」パラメータは、クラスタポートに関連付けられている LIF に関する情報を表示します。'tatus Admin/Oper' は up であり 'Is Home' は true である必要があります</block>
   <block id="5898eff5c659f32cf3b2f42bd746d0c5" category="doc">EFOS ソフトウェアをインストールします</block>
   <block id="ba9e418ff064efca86945643e9b87680" category="list-text">BES-53248 クラスタスイッチを管理ネットワークに接続します。</block>
-  <block id="c95aaaacb482fe42dce56ee7cd8615a6" category="list-text">cs2 で現在アクティブなイメージをバックアップします。</block>
   <block id="2ab6a6c6e3efa9ded96d007db3c8ddd6" category="paragraph">'How bootvar'</block>
-  <block id="19cb75d1f662e01942f8d897534baeb7" category="list-text">実行中の EFOS ソフトウェアのバージョンを確認します。</block>
   <block id="7c68cb6d1d2efbce76002169b10f787d" category="paragraph">'how version （バージョンの表示） '</block>
   <block id="6c3f6a049adc76db29ca1df525b7c235" category="list-text">スイッチにイメージファイルをダウンロードします。</block>
   <block id="9f5a2906a0e63ca6b46604a272791779" category="paragraph">イメージファイルをアクティブイメージにコピーすると、リブート時にそのイメージによって実行中の EFOS バージョンが確立されます。以前のイメージはバックアップとして使用できます。</block>
@@ -2698,7 +2696,6 @@
   <block id="f8a26b1330fe6b7b741993630dd932e2" category="list-text">クラスタLIFがホームポートにリバートされたことを確認します（数分かかる場合があります）。</block>
   <block id="65201dcfc7c620613613b15eb161d307" category="paragraph">クラスタLIFがホームポートにリバートされていない場合は、手動でリバートします。</block>
   <block id="88fb2189d22d2886ab33f16fdca0bb5b" category="paragraph"><block ref="7eaac8e45910aa8bf3a06f6966ab0656" prefix="" category="inline-code"></block></block>
-  <block id="ea4cd01e183524e8bbb487095fe3c5d9" category="list-text">現在のRCFファイル。</block>
   <block id="03c93e08ed4f9a68f6b404202d454262" category="list-text">NX-OSだけをインストールして現在のRCFバージョンをそのまま使用する場合に必要な、目的のブートイメージを反映したRCFでのブート設定。現在のブートイメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。</block>
   <block id="a0f6e8eb6b5f6a47b9079727da7ff23a" category="list-text">RCFのインストール時に必要なスイッチへのコンソール接続</block>
   <block id="adbc02a7e46081db3727786cb62cdc0f" category="list-title">推奨されるドキュメント</block>
@@ -3200,7 +3197,6 @@
   <block id="5e13628627abec712f77b1d757bfe59f" category="list-text">EFOSバージョンに関する次の注意事項を確認します。</block>
   <block id="9b2d3fb1dc09edda79dfe09e637f9716" category="list-text">EFOS バージョン 3.7.x.x 以降では、 FIPS に準拠していないバージョンと FIPS に準拠したバージョンが提供されています。FIPSに準拠していないバージョンからFIPSに準拠したバージョンに移行する場合とFIPSに準拠していないバージョンからFIPSに準拠したバージョンに移行する場合は、EFOS を FIPS 非準拠バージョンから FIPS 準拠バージョンに変更するか、その逆に変更すると、スイッチが工場出荷時のデフォルトにリセットされます。この手順には、シリアルコンソールポート経由でアクセスする必要があります。</block>
   <block id="7f824481c3b83fffcad8abfa0af8b312" category="inline-link">BES-53248クラスタスイッチNDUをEFOS 3.7.0.4以降にアップグレードできませんでした</block>
-  <block id="cec6ec2be042120b7ff4b5d0f1e40dee" category="admonition">BES-53248 クラスタスイッチを EFOS 3.x.x または 3.4.x.x から EFOS 3.7.0.4 または 3.8.0.2 にアップグレードしたあと、 Inter-Switch Link （ ISL ；スイッチ間リンク）とポートチャネルが * Down * 状態でマークされていることに注意してください。こちらの技術情報アーティクル：<block ref="eb6085a70a8e8bb2aba905d5e75797ab" category="inline-link-rx"></block> を参照してください。</block>
   <block id="0fa8ca6cfd731f93388f2f318c1fb1d3" category="paragraph">次のいずれかの方法を使用します。</block>
   <block id="420b291d479da153c96fd1143e9d0e2f" category="list-text"><block ref="c306cecb30107650b346d91b7d7c74b6" category="inline-xref-macro-rx"></block>。一方のEFOSバージョンがFIPSに準拠しており、もう一方のEFOSバージョンがFIPSに準拠していない場合に使用します。</block>
   <block id="fa6c2d2a92519a714fe25ca830427ee1" category="section-title">方法1：EFOSをインストールする</block>
@@ -3757,7 +3753,6 @@
   <block id="73cb4c03f2757beb35ad69fd322003be" category="list-text">[[step16]] スイッチレスクラスタからスイッチ使用のクラスタへの HA ペア 1 の変換。共有 RCF で定義されているクラスタポートの割り当てを使用します。を参照してください <block ref="e0b55f136d815f7a36c41fd7fe28e0fd" category="inline-link-macro-rx"></block>を参照してください。</block>
   <block id="12bc639206c2ca12e8a65041a697e4fc" category="paragraph">に進みます<block ref="c686ee523547302c3fa5199eafd95753" category="inline-link-rx"></block>。</block>
   <block id="6446fc62a2115815d4bdbe55f18815c1" category="list-text"><block ref="47109c7943148b2a9617cfcb4b49a79f" category="inline-link-macro-rx"></block>。</block>
-  <block id="22eb01d1e7d6584a0da20f490dc5af77" category="paragraph"><block ref="22eb01d1e7d6584a0da20f490dc5af77" category="inline-link-macro-rx"></block></block>
   <block id="6f773061a9b11739f4b04a8b170f8f8e" category="paragraph">構成に応じて、を実行できます <block ref="bd7e5f56c6474a1d0a59eeac0ce681d7" category="inline-link-macro-rx"></block>。それ以外の場合は、に進みます <block ref="cd3d2c6d0c8a0c43f0a0e10375ad6bbc" category="inline-link-macro-rx"></block>。</block>
   <block id="7f81bc06b8e7a4bfd515767a4b4385fe" category="list-text">[[step6] 共有スイッチ A のストレージ RCF を共有 RCF ファイルに置き換えます。を参照してください <block ref="2f595b9f03c1eca7e988cc615d685264" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="2b888f1fbb1010b5a426f7a2a88e0914" category="list-text">[[step12]] 共有スイッチ B のストレージ RCF ファイルを共有 RCF ファイルで置き換えます。を参照してください <block ref="2f595b9f03c1eca7e988cc615d685264" category="inline-link-macro-rx"></block> を参照してください。</block>
@@ -4441,9 +4436,7 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="32559ee483b61b36141f9b9e0f4bbfff" category="paragraph">NetApp Support SiteでサポートされているONTAPとRCFのバージョンについては、スイッチの互換性の表を参照してください。RCFのコマンド構文と特定のバージョンのNX-OSの構文との間には、コマンドの依存関係が存在することに注意してください。</block>
   <block id="ad0d19783ccfa19f931108b838e4b7e4" category="list-text"><block ref="ad0d19783ccfa19f931108b838e4b7e4" category="inline-link-macro-rx"></block></block>
   <block id="79509ba15c2970f327dd8610e3b4628c" category="paragraph-title">使用するコマンド</block>
-  <block id="1ad593dd61af4356ce9ba12d276c4336" category="section-title">オプション1：新しいスイッチにRCFファイルをインストールする</block>
   <block id="d061b4842fee7f503446ba29253d182f" category="paragraph">Reference Configuration File（RCF；リファレンス構成ファイル）は、Nexus 9336C-FX2スイッチの初回セットアップ後にインストールします。</block>
-  <block id="121f18688d36f2438eb17eb52e61e7e8" category="section-title">オプション2：既存のスイッチを新しいバージョンのRCFにアップグレードする</block>
   <block id="eba0713505eba2aab08d4d6fa9ca2cf7" category="paragraph">運用中のスイッチに既存のバージョンのRCFファイルがインストールされている場合は、RCFのバージョンをアップグレードします。</block>
   <block id="ddd0020a0684c14dbd50622f84d8917a" category="paragraph">次のものがあることを確認します。</block>
   <block id="28dbd722b252673fdce3f809670e34b8" category="list-text">RCFのバージョンを更新する場合は、目的のブートイメージが反映されたブート設定がRCFに必要です。</block>
@@ -4549,8 +4542,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="56e7024dc2e812be7449228dc66597d9" category="admonition">クラスタネットワークの運用を継続するには、一度に1つのスイッチでEFOSをアップグレードしてください。</block>
   <block id="c3e2e765c3744c1b19452b2f233fdd15" category="section-title">方法1：EFOSをアップグレードする</block>
   <block id="c117ec58c236a456904edaa76f1cc5a9" category="paragraph">EFOSソフトウェアをアップグレードするには、次の手順を実行します。</block>
-  <block id="061be1b61be0d3e5b21e6a5912639344" category="admonition">ライセンスがインストールされている場合は、そのステータスを確認してください。</block>
-  <block id="84d3d1386241334d40a809878bbb05d9" category="list-text">スイッチcs1で手順5~10を繰り返します。</block>
   <block id="83b8a0042e3650c5af884c9601f53043" category="inline-link-macro">LIF をホームポートにリバートする</block>
   <block id="870c6c263570c51afc056f510d552e1f" category="paragraph">詳細については、を参照してください <block ref="b9ea844d3dd5520c7767de46f1c99a2b" category="inline-link-macro-rx"></block>。</block>
   <block id="d0dc5dfd4c3b3be079653b7f0ac8d844" category="paragraph">一方の EFOS バージョンが FIPS に準拠していて、もう一方の EFOS バージョンが FIPS に準拠していない場合は、次の手順を実行できます。スイッチをブートできない場合は、次の手順を使用して、FIPSまたはFIPSに準拠していないEFOS 3.7.x.xイメージをONIEからアップグレードできます。</block>
@@ -4784,7 +4775,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="e4da4813fef5b96a216a043d594bf245" category="list-text">以前のカスタマイズをスイッチの設定に再適用します。<block ref="75ce5666fba6992a0719935651dd5b1b" category="inline-link-macro-rx"></block>必要なその他の変更の詳細については、を参照してください。</block>
   <block id="bdbcf1c0d7f9cba19eb12819b953fbf1" category="inline-link">スイッチOSのアップグレード時にクラスタLIFを移行する際にノードがクォーラムのメンバーでない</block>
   <block id="e6ab3c0f7886a69b4cd4dc70d1d4afa9" category="admonition">ネットワーク接続の問題が発生しないように、接続されている*すべてのクラスタポートをシャットダウンしてください。<block ref="c9b140831402716d03d51afcd09ff177" category="inline-link-rx"></block>詳細については、ナレッジベースの記事を参照してください。</block>
-  <block id="263b9f10fe7e073e656b08a5b6da7e5a" category="paragraph">この手順 の例では 4 ノードを使用します。これらのノードは、 2 つの 10GbE クラスタインターコネクトポート e0a と e0b を使用します。を参照し<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block>て、プラットフォームのクラスタポートが正しいことを確認します。</block>
   <block id="fc9b57bfb616bf5697d55f4dc656cead" category="inline-link-macro">SSH の設定を確認</block>
   <block id="1046b0a81eea5dae9091290036b99362" category="paragraph"><block ref="4767a0bcf3ab94aeda87c79dd4096ef4" category="inline-link-macro-rx"></block>です。</block>
   <block id="95baf91c437105360687405b916b57fa" category="list-text">SSHキーを暗号化します（* FIPSモードのみ*）。</block>
@@ -5142,7 +5132,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="5f9610f3409d9abe96cc344156486c5e" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="4c0a19683ab4dd37cd0517d25639fa78" category="inline-link-macro-rx"></block></block>
   <block id="e796841df950e342f76a5b538574f5f6" category="paragraph">2ノードスイッチクラスタへの移行が完了しました。</block>
   <block id="e4ff582cba38e556dc88b3e74baf1ec1" category="paragraph">&lt;stdin&gt;の未解決のディレクティブ-include::../_include/install-rcf-software-9336c-cluster.adoc[]</block>
-  <block id="688523fe289426758745102b5d3ea37f" category="paragraph">&lt;stdin&gt;の未解決のディレクティブ-include：：../_include/upgrade-rcf-software-9336c-cluster.adoc[]</block>
   <block id="1ececed2a569720ced41e9cd50d7b238" category="list-text">スイッチcs1とスイッチcs2の電源がオンになっており、スイッチの初期セットアップが完了しています（管理IPアドレスとSSHがセットアップされています）。</block>
   <block id="c3109b36f2c8edda93835ccefa0e4dc3" category="doc">リファレンス構成ファイル（RCF）のインストールまたはアップグレードの概要</block>
   <block id="6d7b8066e6c7166408cb61e68a705e7f" category="list-text">2つのCiscoスイッチの名前は* CS1 *および* CS2 *です。</block>
@@ -5151,7 +5140,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="1c319a6cce094508e045c5bb62d6664e" category="paragraph">この手順 の例では 4 ノードを使用します。これらのノードは、2つの10GbEクラスタインターコネクトポート* e0a *と* e0b *を使用します。を参照し<block ref="cd25cbe53f0a314145c84729c6ce2c78" category="inline-link-rx"></block>て、プラットフォームのクラスタポートが正しいことを確認します。</block>
   <block id="88870df2dabeaf8bc50daf8d504498e0" category="inline-link-macro">RCFのアップグレード</block>
   <block id="d1d882c0929e664f5d3052ad227ecec9" category="paragraph"><block ref="51640e6af8359470cbd047034716b7ac" category="inline-link-macro-rx"></block> または <block ref="d9cc2c4eec198e8f90466b5b89bfc33e" category="inline-link-macro-rx"></block>。</block>
-  <block id="fd7fe8bcb397a94d6c1c59e351072eac" category="doc">リファレンス構成ファイル（RCF）のアップグレード</block>
   <block id="df73b0f89510f793b71a90bf50d82c10" category="list-text">現在のRCF。</block>
   <block id="85e086d364dc39fb9a01f1b57e7afc52" category="list-text">ONTAP 9.10.1P3以降</block>
   <block id="e6645191453a89d37ca94dbd791a1499" category="paragraph">SN2100スイッチは、ONTAP 9.10.1P3以降のクラスタアプリケーションとストレージアプリケーションに、別 々 のスイッチペアで対応します。</block>
@@ -5194,4 +5182,15 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="b0d1465a243b273a8f71d6084fd2c12c" category="list-text">RCFが正しい新しいバージョンであることを確認します。</block>
   <block id="7fd5f97719ed93b62ce57a2401ebb179" category="list-text">RCFのバージョンとスイッチの設定が正しいことを確認したら、running-configファイルをstartup-configファイルにコピーします。</block>
   <block id="f7b017d791fb57f4bbb1b2ce01659ed8" category="paragraph">System Managerでは、ノード管理IPアドレスの割り当て、クラスタの初期化、ローカル階層の作成、プロトコルの設定、初期ストレージのプロビジョニングなど、クラスタのセットアップと設定のワークフローをシンプルかつ簡単に実行できます。</block>
+  <block id="7ff4d12d3e81fb159ea571275dbbb3fd" category="admonition">BES-53248 クラスタスイッチを EFOS 3.x.x または 3.4.x.x から EFOS 3.7.0.4 または 3.8.0.2 にアップグレードしたあと、 Inter-Switch Link （ ISL ；スイッチ間リンク）とポートチャネルが「 Down 」状態でマークされることに注意してください。これは想定された動作であり、自動リバートLIFで問題がないかぎりアップグレードを続行しても問題ありません。詳細については、ナレッジベースの記事を参照してください<block ref="eb6085a70a8e8bb2aba905d5e75797ab" category="inline-link-rx"></block>。</block>
+  <block id="4624388fca013386d1c7314566aa1510" category="list-text">バックアップ構成からシステムをブートします。</block>
+  <block id="ae791522c9f7834f0edc56277ffe2340" category="paragraph"><block ref="f2210f21804aee53def01718125f3f18" prefix="" category="inline-code"></block></block>
+  <block id="892854a85c10d8b7b832a094d0b2b95e" category="list-text">スイッチcs1で手順5~11を繰り返します。</block>
+  <block id="b0411eb90c7d5ca211940fcb5d8f219a" category="doc">リファレンス構成ファイル（RCF）のアップグレード</block>
+  <block id="657454366cb4a451c5905310b7f4d2cc" category="paragraph">Nexus 9336C-FX2スイッチの初回セットアップ後にリファレンス構成ファイル（RCF）をインストールできます。</block>
+  <block id="34b61fdbe20d7b5fdf2f4d5655d2dc71" category="list-text">スイッチ間のInter-Switch Link（ISL；スイッチ間リンク）接続が接続されている。</block>
+  <block id="5e9fc634461251750aac2012c638665a" category="doc">リファレンス構成ファイル（RCF）をアップグレードする</block>
+  <block id="9129459f5b5477d59e1fbb13abc9bbd4" category="admonition">新しいバージョンのスイッチソフトウェアと RCF をインストールする前に、スイッチの設定を消去し、基本的な設定を完了する必要があります。スイッチ設定を消去する前に、シリアルコンソールを使用してスイッチに接続するか、基本的な設定情報を保持しておく必要があります。</block>
+  <block id="4c4876d5d981da2e6943a052d93bb189" category="list-text">NX-OS 10.2以降では、コマンドを使用し<block ref="9c370f72db0e0d920841657ac5268365" prefix=" " category="inline-code"></block>て、ブートフラッシュに保存されているRCFファイルと比較します。それ以外の場合は、サードパーティの差分ツールまたは比較ツールを使用してください。</block>
+  <block id="0a306731a6993e7a08026ab2d7ca2d97" category="paragraph">SSHキーに関連するホストファイルのエントリの更新が必要になる場合があります。</block>
 </blocks>

@@ -16,5 +16,4 @@ Cisco Nexus 9336C-FX2共有スイッチのソフトウェアをインストー�
 . link:prepare-nxos-rcf-9336c-shared.html["NX-OSおよびRCFのインストールを準備します"]。
 . link:install-nxos-software-9336c-shared.html["NX-OS ソフトウェアをインストールします"]。
 . link:install-nxos-rcf-9336c-shared.html["RCFをインストールします"]。
-. link:configure-ssh.html["SSH を有効にします。"]です。
 
