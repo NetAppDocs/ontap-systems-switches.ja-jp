@@ -4707,7 +4707,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="c76d1ab1bab3f2bc0c89856d8d6e3d40" category="paragraph">CSHMをサポートする特定のスイッチにSNMPv3を設定する手順は、次のとおりです。</block>
   <block id="5fb3828593766d454e79a0dcf52fed9d" category="paragraph">Broadcom *、Cisco *、および* NVIDIA *スイッチでSNMPv3ユーザ名を設定するには、次のコマンドを使用します。</block>
   <block id="77f3beca20fcd78f77236507e8d9b4af" category="open-title">Broadcomスイッチ</block>
-  <block id="89fe808c6ef5fe301085b5abe4406d35" category="paragraph">Broadcom BES-53248スイッチでSNMPv3ユーザ名network-operatorを設定します。</block>
   <block id="c59df2c71925eefec8dc03aa685125c8" category="list-text">認証なし*の場合：</block>
   <block id="4c58055d9b16c25c354c591188cb27ae" category="list-text">MD5/SHA認証の場合*：</block>
   <block id="b00500f501ccb5c8ab2313d810b6ff29" category="list-text">AES/DES暗号化を使用した* MD5/SHA認証の場合*：</block>
@@ -5193,4 +5192,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="9129459f5b5477d59e1fbb13abc9bbd4" category="admonition">新しいバージョンのスイッチソフトウェアと RCF をインストールする前に、スイッチの設定を消去し、基本的な設定を完了する必要があります。スイッチ設定を消去する前に、シリアルコンソールを使用してスイッチに接続するか、基本的な設定情報を保持しておく必要があります。</block>
   <block id="4c4876d5d981da2e6943a052d93bb189" category="list-text">NX-OS 10.2以降では、コマンドを使用し<block ref="9c370f72db0e0d920841657ac5268365" prefix=" " category="inline-code"></block>て、ブートフラッシュに保存されているRCFファイルと比較します。それ以外の場合は、サードパーティの差分ツールまたは比較ツールを使用してください。</block>
   <block id="0a306731a6993e7a08026ab2d7ca2d97" category="paragraph">SSHキーに関連するホストファイルのエントリの更新が必要になる場合があります。</block>
+  <block id="8b4a2ab0394283209f67c0b0e8ca9f94" category="list-text">BroadcomスイッチおよびCiscoスイッチでログを収集する場合は、ログ収集を有効にしてセットアップごとに新しいユーザをスイッチに作成する必要があります。これらのスイッチは、同じユーザに対して複数のSSHキーをサポートしません。追加のログ収集設定を実行すると、そのユーザの既存のSSHキーが上書きされます。</block>
+  <block id="1d768064a88b1cd8a98efaa14d7f9949" category="paragraph">Broadcom BES-53248スイッチでSNMPv3ユーザ名SNMPv3_userを設定します。</block>
 </blocks>
