@@ -21,7 +21,7 @@ Cisco NX-OSソフトウェアとリファレンス構成ファイル（RCF）を
 +
 Cisco Nexus 9336C-FX2クラスタスイッチでNX-OSソフトウェアをダウンロードし、インストールまたはアップグレードします。
 
-. link:install-nxos-rcf-9336c-cluster.html["RCFのインストールまたはアップグレード"]です。
+. link:install-upgrade-rcf-overview-cluster.html["RCFのインストールまたはアップグレード"]です。
 +
 Cisco Nexus 9336C-FX2スイッチの初回セットアップ後にRCFをインストールまたはアップグレードします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
 

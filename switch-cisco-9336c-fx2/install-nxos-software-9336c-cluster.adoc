@@ -694,4 +694,4 @@ cluster1::*>
 
 
 .次の手順
-link:install-nxos-rcf-9336c-cluster.html["リファレンス構成ファイル（RCF）のインストールまたはアップグレード"]
+link:install-upgrade-rcf-overview-cluster.html["リファレンス構成ファイル（RCF）のインストールまたはアップグレード"]
