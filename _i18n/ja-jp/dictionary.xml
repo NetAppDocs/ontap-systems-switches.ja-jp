@@ -3000,7 +3000,6 @@
   <block id="19183173bd336c4a7349920f4bc23f03" category="list-text"><block ref="19183173bd336c4a7349920f4bc23f03" category="inline-link-macro-rx"></block></block>
   <block id="7845322ccf047d30291b050b118b43f2" category="list-text"><block ref="7845322ccf047d30291b050b118b43f2" category="inline-link-macro-rx"></block></block>
   <block id="696ff70e4b2816b3772c8643552d89de" category="paragraph">Smart Call Home機能を使用するには、次のガイドラインを確認してください。</block>
-  <block id="8d8cdf27c4804b6dda144a3406af3d6f" category="doc">Cisco Nexus 9336C-FX2クラスタスイッチのコンポーネントと部品番号</block>
   <block id="fc8b273ce2a3b27b90b600bb90d3f6a1" category="paragraph">クラスタネットワーク内の故障したNexus 9336C-FX2スイッチを交換するには、次の手順を実行します。これは、無停止の手順 （NDU；非停止アップグレード）です。</block>
   <block id="e1d51624c9462dce3c8cb21ee2541c35" category="paragraph">スイッチの交換を実行する前に、次の点を確認してください。</block>
   <block id="e27994329a256d12f62765df177ff9a8" category="list-text">既存のクラスタとネットワークインフラ：</block>
@@ -3330,7 +3329,6 @@
   <block id="e7019c875b1e7fa7851e5b2570ff1637" category="list-text">記入済みのケーブル接続ワークシートを参照してください <block ref="8e79e8ba8c95547bae4fb86f4526b4fe" category="inline-link-macro-rx"></block>。ケーブル接続の詳細については、を参照してください<block ref="e8018b6e740a667345f4bcc94e4023fc" category="inline-link-rx"></block>。</block>
   <block id="94f31b898786bbf285eb3f1766d2b846" category="list-text">スイッチ、コントローラ、および NS224 NVMe ストレージシェルフをラックに配置します。</block>
   <block id="f1d2082f6b7e2fe0bd21c264b34b1db0" category="inline-link">ラックへの設置手順</block>
-  <block id="85fdb4a8732610c4c52e8f55737378a6" category="paragraph">を参照してください<block ref="bbb1ee507d7be4aaba439496ffdc6801" category="inline-link-rx"></block> スイッチをネットアップキャビネットに設置する方法について説明します。</block>
   <block id="d2fa93779a0f6b07d1717e02308c2fa6" category="inline-link-macro">Cisco Nexus 9336C-FX2共有スイッチを設定します</block>
   <block id="c5ad5ecc479e35c7979fd57a0ebbe702" category="doc">Cisco Nexus 9336C-FX2共有スイッチを設定します</block>
   <block id="a241f03e92a7f9be7881ccbebc3c49c1" category="list-text">[[step3]]スイッチの初期設定を実行します。</block>
@@ -4424,7 +4422,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="5640915560bc663196a684ebfc6fa2ec" category="admonition">新しいバージョンのスイッチソフトウェアと RCF をインストールする前に、スイッチの設定を消去し、基本的な設定を完了する必要があります。スイッチ設定を消去する前に、シリアルコンソールを使用してスイッチに接続するか、基本的な設定情報を保持しておく必要があります。</block>
   <block id="1b49e113d2db8aa6503efc6ca4257925" category="paragraph">Cisco Nexus 9336C-FX2スイッチ用のソフトウェアをインストールおよび設定し、リファレンス構成ファイル（RCF）をインストールまたはアップグレードする手順は、次のとおりです。</block>
   <block id="2d667925d48008850336e0d43e4d4306" category="sidebar">クラスタスイッチ- Broadcom BES-53248</block>
-  <block id="9013a0f95a05b68811cef544c6eea37b" category="sidebar">クラスタスイッチ- Cisco Nexus 9336C-FX2</block>
   <block id="fc01f4074d379d0722eb2fa3b21e6af4" category="sidebar">ストレージスイッチ- Cisco Nexus 9336C-FX2</block>
   <block id="caf5170cbc1f4850f6d380c982fa61f9" category="sidebar">ストレージスイッチ- NVIDIA SN2100</block>
   <block id="6f738209e5071a9c22c8d336c6dec7a1" category="sidebar">共有スイッチ- Cisco Nexus 9336C-FX2</block>
@@ -4715,7 +4712,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="11f32682abba2115ff437faec8512d84" category="paragraph">アラートが生成された場合は、クラスタのヘルスステータスがデグレードと報告されます。生成されるアラートには、デグレード状態のシステムヘルスへの対応に必要な情報が含まれます。</block>
   <block id="b16485fd5118936281137dbf7e67a0d1" category="inline-link">スイッチヘルスモニタアラート解決ガイド</block>
   <block id="4f6ad2ff8706dcda764fc65056aa35bb" category="paragraph">アラートの詳細な解決方法については、ナレッジベースの記事を参照して<block ref="fa3450ee0f59ff4c6ed811d38ddb851b" category="inline-link-rx"></block> ください。</block>
-  <block id="71740cccf1b838f9289aa8a38d080323" category="sidebar">クラスタスイッチ- NVIDIA SN2100</block>
   <block id="43d4629723093f676e7670fc1bb175cc" category="sidebar">クラスタスイッチ- Cisco Nexus 92300YC</block>
   <block id="1838d8ee27b09ea75fadf392eed76c41" category="sidebar">クラスタスイッチ- NetApp CN1610</block>
   <block id="be00341ff3fed2bc4bc077b28c34bb91" category="sidebar">イーサネットスイッチヘルスの監視</block>
@@ -5199,10 +5195,7 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="04f8c8c881d9c66c4b51ab93a42ab746" category="paragraph"><block ref="37c965129cc09840500d7671b0accef3" prefix="" category="inline-code"></block></block>
   <block id="771d6c6c56d83746eaa82bd62e11363c" category="list-text">ディレクトリ内の構成ファイルを一覧表示します<block ref="e4b3e6938bc5f3e3c811cf46ae8b7d53" prefix=" " category="inline-code"></block>。ディレクトリが存在し、構成ファイルが含まれている場合は、ファイル名がリストされます。</block>
   <block id="6e89d35fb8a737baae7064c5ba2d6485" category="paragraph"><block ref="47f0187f585158fcdf3257a96c5d4bab" prefix="" category="inline-code"></block></block>
-  <block id="804c8f34f92745eacda3674d93c6ede1" category="list-text">接続されているスイッチモデルに対応するNODファイルをすべて削除します。</block>
-  <block id="f938cfce39fe890a9f9b521c87a02106" category="paragraph">不明な場合は、上記のサポートされているモデルのNODファイルをすべて削除してから、それらの同じモデルの最新のNODファイルをダウンロードしてインストールしてください。</block>
   <block id="ff9495347e1ccb9f937f04b4bbdd58bb" category="paragraph"><block ref="529be1cf6940ca38f1fda287a22c9fda" prefix="" category="inline-code"></block></block>
-  <block id="410e37690b6661c1eaeb818d9bed27c0" category="list-text">削除したNODファイルがディレクトリにないことを確認します。</block>
   <block id="76bde9294ef84452f21b2745228ae290" category="list-text">MSN2100-CB2FC-v1.4.zip</block>
   <block id="85c07a49f236d7b33a2e8b48d076ed48" category="list-text">MSN2100-CB2RC-v1.4.zip</block>
   <block id="ae5e87300b042b85bdd2853f386265e7" category="list-text">X190006-PE-v1.4.zip</block>
@@ -5211,4 +5204,56 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="11ef8d241b319efa4a76430a0c6a78dd" category="list-text">MSN2100-CB2RC_PRIOR_R9.15.1-v1.4.zip</block>
   <block id="0179c8f8dd0b9cba4199d46bd95ddd3b" category="list-text">X190006-PE_PRIOR_9.15.1-v1.4.zip</block>
   <block id="3dd005cf004a39e1cb3e400094afa4c6" category="list-text">X190006-PI_PRIOR_9.15.1-v1.4.zip</block>
+  <block id="b9af6f54ffccbe5a5964a27a139b0b7a" category="list-text">LIFを新しいスイッチに移行する前に、リファレンス構成ファイル（RCF）が新しいスイッチに完全に適用されていることを確認します。</block>
+  <block id="aab86cc7815bb8b75af6eb99f491f1ac" category="list-text">ネットワークトラフィックをシフトする前に、両方のスイッチの実行コンフィギュレーションとスタートアップコンフィギュレーションを確認してください。</block>
+  <block id="eab4beb6dced72a3b30ce6135ee5d1d4" category="section-title">販売終了とサポート終了のお知らせ</block>
+  <block id="80a2f0887f61bb70c1929561266361c5" category="inline-link-macro">Cisco Nexus 3232Cの販売終了および販売終了のお知らせ</block>
+  <block id="8f8980c9777dd0d346146e4dbfc23192" category="list-text"><block ref="8f8980c9777dd0d346146e4dbfc23192" category="inline-link-macro-rx"></block></block>
+  <block id="6133f717054b1b5c1c4e711ce691fbab" category="inline-link-macro">Cisco Nexus 31108PC-V、31108TC-V、Nexus 3132Q-Vの販売終了および販売終了のお知らせ</block>
+  <block id="5f7e5f0b624d50336e8ca3bdbc07934f" category="list-text"><block ref="5f7e5f0b624d50336e8ca3bdbc07934f" category="inline-link-macro-rx"></block></block>
+  <block id="375f5e28ce989611bc4b141db2a793ec" category="inline-link-macro">Cisco N9K-C93120TX、N9K-C92300YCの販売終了およびサポート終了のお知らせ</block>
+  <block id="807c256ae9bedd9909bcb61b645dc7f6" category="list-text"><block ref="807c256ae9bedd9909bcb61b645dc7f6" category="inline-link-macro-rx"></block></block>
+  <block id="093490b8b7832b189936bc485586c659" category="inline-link-macro">Cisco Nexus 5500シリーズスイッチの販売終了および販売終了のお知らせ</block>
+  <block id="9a5f500ffaccd0b3009efe64697ec210" category="list-text"><block ref="9a5f500ffaccd0b3009efe64697ec210" category="inline-link-macro-rx"></block></block>
+  <block id="b28b35ae2bb0ba008baa07b20e30cb9b" category="inline-link-macro">販売終了：NetApp CN1610クラスタインターコネクトSKU</block>
+  <block id="3f802670007b812ad08c750c46d02d46" category="list-text"><block ref="3f802670007b812ad08c750c46d02d46" category="inline-link-macro-rx"></block></block>
+  <block id="fece371d4cb2229fdd5038868ac1dd4d" category="doc">Cisco Nexus 9336C-FX2および9336C-FX2-Tクラスタスイッチのコンポーネントとパーツ番号</block>
+  <block id="e1041d2eebd055ab991b4e5acb893a64" category="paragraph">Cisco Nexus 9336C-FX2および9336C-FX2-Tスイッチの設置とメンテナンスについては、コンポーネントとパーツ番号のリストを確認してください。</block>
+  <block id="0c535bea0ccf81dfb11cf214834c4fd6" category="section-title">パーツ番号の詳細</block>
+  <block id="c3c8898e3b8cf1bf9262fb0d9feefa54" category="paragraph">次の表に、9336C-FX2および9336C-FX2-Tスイッチ、ファン、および電源装置のパーツ番号と説明を示します。</block>
+  <block id="06af6b2e91e8e98299954591bddb5f62" category="paragraph">クラスタスイッチ、N9336C 36Pt PTSX 10/25/40/100G</block>
+  <block id="8d6ba99f0f19dfe29b2c66cd39563652" category="paragraph">クラスタスイッチ、N9336C 36Pt PSIN 10/25/40/100G</block>
+  <block id="0c025108047bff9c58978c87a86c7811" category="paragraph">X190212-CS-PE</block>
+  <block id="bd8408b657119da69686e286d6b7bcaa" category="paragraph">クラスタスイッチ、N9336C 12pt（9336C-FX2-T）PTSX 10/25/40/100G</block>
+  <block id="9ffd7de811cde03246db3a4665fac7b6" category="paragraph">X190212-CS-PI</block>
+  <block id="58a95daabfad4a2b64ff90749a4a3be9" category="paragraph">クラスタスイッチ、N9336C 12pt（9336C-FX2-T）PSIN 10/25/40/100G</block>
+  <block id="624a10db1af0d919eadbc61a37d3d1b9" category="paragraph">SW-N9K-FX2-24P-UPG</block>
+  <block id="66d6f96d0da80f49ed578ebd202f51eb" category="paragraph">SW、Cisco 9336CFX2 24ポートPODライセンス</block>
+  <block id="9bbde79a2adc27dd0834674a54511852" category="paragraph">N9K-9336C、FTE、PTSX、36PT 10/25/40/100GQSFP28</block>
+  <block id="237dcc725007511d9264805769526146" category="paragraph">N9K-9336C、FTE、PSIN、36PT 10/25/40/100GQSFP28</block>
+  <block id="583b0c4bec1745b4b73603decad8c614" category="section-title">Cisco SMARTライセンス</block>
+  <block id="fe08e509b48ab8777447aae93b7c5a8f" category="paragraph">Cisco Nexus 9336C-FX-Tクラスタスイッチで12個を超えるポートをアクティブ化するには、Cisco Smartライセンスを購入する必要があります。Ciscoスマートライセンスは、Ciscoスマートアカウントを介して管理されます。</block>
+  <block id="7fe41b91378917f0081357562fc713a8" category="inline-link">新しいSMARTアカウントを作成する</block>
+  <block id="3cc71bb7c9c2b539e2bc7922ec688b44" category="list-text">必要に応じて、新しいSMARTアカウントを作成します。詳細は、を参照してください<block ref="c236b6c467e9323cbdd95c549d9def1f" category="inline-link-rx"></block>。</block>
+  <block id="120b6b80efeef7ca672a0b274b256083" category="inline-link">既存のSMARTアカウントへのアクセスをリクエストする</block>
+  <block id="8fbba80df6dcbd4d547347fd146e1b83" category="list-text">既存のSMARTアカウントへのアクセスをリクエストします。詳細は、を参照してください<block ref="f4476a827230258a80e0d6788d3c661e" category="inline-link-rx"></block>。</block>
+  <block id="4363ac02ed8f94606b748a9c8093f0d1" category="admonition">SMARTライセンスを購入したら、適切なRCFをインストールして、使用可能な36個のポートをすべて有効にして設定します。</block>
+  <block id="20d4dc5b26b66af5b87062c8cb66e702" category="doc">Cisco Nexus 9336C-FX2または9336C-FX2-Tケーブル接続ワークシートに記入</block>
+  <block id="d34235ce3b8eeb56732eac003a8b80f5" category="list-text"><block ref="5f7d0a649ff80997d8ca88905c993bff" category="inline-xref-macro-rx"></block></block>
+  <block id="ade6c0cb61106114d61bca7ca65fe64c" category="list-text"><block ref="5e883d5b3902e61fee96d087a27d3028" category="inline-xref-macro-rx"></block></block>
+  <block id="2587e0d23b930dd34376e94aa18b04a3" category="list-text"><block ref="89e3d6d4f88a65d2e49a3b6dad3c2afd" category="inline-xref-macro-rx"></block></block>
+  <block id="4906e48b462c42127652c969091a3013" category="list-text"><block ref="d25614f5ce8d526a0a67b4e405554080" category="inline-xref-macro-rx"></block></block>
+  <block id="2dbed8ef9f0e291a4f3e95571e489dfa" category="section-title">9336C-FX2ケーブル接続ワークシートの例</block>
+  <block id="0acd5880e2a4dde041c61de67d25683f" category="section-title">9336C-FX2クウハクノケエフルセツソクワアクシイト</block>
+  <block id="084af706c38c7c432697d09f104163cb" category="section-title">9336C-FX2-Tケーブル接続ワークシートの例（12ポート）</block>
+  <block id="afcd5a2ec740515181747b7e9f4cfd93" category="paragraph">11～34</block>
+  <block id="17c2de625275ee631aeeb131bcf75439" category="paragraph">ライセンスが必要</block>
+  <block id="811b4b7fb3b0d037ae140fe004831efe" category="section-title">9336C-FX2-Tブランクケーブル接続ワークシート（12ポート）</block>
+  <block id="7348f30fbfa4e5b2b4f9c3cdb9b9c7c7" category="paragraph">NetAppキャビネットにスイッチを設置する方法については、を参照してください<block ref="9ad94c677d9e1ab0aaffa9991490e940" category="inline-link-macro-rx"></block>。</block>
+  <block id="cefefc2081d40fa592f23faffcb8f1e0" category="list-text">接続されているスイッチモデルに対応する構成ファイルをすべて削除します。</block>
+  <block id="90842b83190886e90bf2403d6e93be1b" category="paragraph">不明な場合は、上記のサポートされているモデルのすべての構成ファイルを削除してから、それらの同じモデルの最新の構成ファイルをダウンロードしてインストールしてください。</block>
+  <block id="77dab6429e3fe4aca5fa3d7f0cd46d71" category="list-text">削除した構成ファイルがディレクトリに存在しないことを確認します。</block>
+  <block id="a9fc37ffea4ac5fbd75f369d96c903f6" category="sidebar">クラスタスイッチ- Cisco Nexus 9336C-FX2または9336C-FX2-T</block>
+  <block id="ed3dd7f516f69cf573ae79a1781bbcbf" category="sidebar">クラスタスイッチ- NVIDIA SN2100クラスタスイッチ</block>
+  <block id="49e57b2c31c8feba776b7a2916673678" category="sidebar">Cisco Nexus 9336C-FX2または9336C-FX2-T</block>
 </blocks>

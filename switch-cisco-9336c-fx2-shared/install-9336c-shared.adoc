@@ -25,7 +25,7 @@ Cisco Nexus 9336C-FX2共有スイッチを設定するには、次の手順に�
 .手順
 . スイッチ、コントローラ、および NS224 NVMe ストレージシェルフをラックに配置します。
 +
-を参照してください https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-sw-9336c-install-cabinet/GUID-92287262-E7A6-4A62-B159-7F148097B33B.html["ラックへの設置手順"] スイッチをネットアップキャビネットに設置する方法について説明します。
+NetAppキャビネットにスイッチを設置する方法については、を参照してくださいlink:../switch-cisco-9336c-fx2/install-switch-and-passthrough-panel-9336c-cluster.html["ラックへの設置手順"]。
 
 . スイッチ、コントローラ、および NS224 NVMe ストレージシェルフの電源をオンにします。
 
