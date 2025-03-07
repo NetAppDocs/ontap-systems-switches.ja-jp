@@ -426,6 +426,7 @@ Configuration Saved!
 (cs2)# *reload*
 Are you sure you would like to reset the system? (y/n) *y*
 ----
+.. SSHを使用してスイッチに再度ログインし、RCFのインストールを完了します。
 
 
 . 次の点に注意してください。
@@ -434,11 +435,78 @@ Are you sure you would like to reset the system? (y/n) *y*
 .. 以前のRCFで行ったカスタマイズをすべて記録し、新しいRCFに適用します。たとえば、ポート速度やハードコーディングFECモードの設定などです。
 
 
+
+
+[role="tabbed-block"]
+====
+.EFOSバージョン3.12.x以降
+--
 . FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。
 +
 次の例は、SFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーする方法を示しています。
 
+
+
+[listing, subs="+quotes"]
+----
+(cs2)# *copy sftp://172.19.2.1/BES-53248-RCF-v1.9-Cluster-HA.txt
+nvram:reference-config*
+Remote Password:**
+Mode........................................... TFTP
+Set Server IP.................................. 172.19.2.1
+Path........................................... //tmp/
+Filename....................................... BES-53248_RCF_v1.9-Cluster-HA.txt
+Data Type...................................... Config Script
+Destination Filename........................... BES-53248_RCF_v1.9-Cluster-HA.scr
+Management access will be blocked for the duration of the transfer
+Are you sure you want to start? (y/n) *y*
+TFTP Code transfer starting...
+File transfer operation completed successfully.
+----
+. スクリプトがダウンロードされ、指定したファイル名で保存されたことを確認します。
 +
+「原稿リスト」
+
++
+[listing, subs="+quotes"]
+----
+(cs2)# *script list*
+
+Configuration Script Name                  Size(Bytes)  Date of Modification
+-----------------------------------------  -----------  --------------------
+Reference-config.scr                       2680         2024 05 31 21:54:22
+2 configuration script(s) found.
+2042 Kbytes free.
+----
+. スクリプトをスイッチに適用します。
++
+「原稿」が適用されます
+
++
+[listing, subs="+quotes"]
+----
+(cs2)# *script apply reference-config.scr*
+
+Are you sure you want to apply the configuration script? (y/n) *y*
+
+The system has unsaved changes.
+Would you like to save them now? (y/n) *y*
+Config file 'startup-config' created successfully.
+Configuration Saved!
+
+Configuration script 'BES-53248_RCF_v1.9-Cluster-HA.scr' applied.
+----
+
+
+--
+.その他すべての EFOS バージョン
+--
+. FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。
++
+次の例は、SFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーする方法を示しています。
+
+
+
 [listing, subs="+quotes"]
 ----
 (cs2)# *copy sftp://172.19.2.1/tmp/BES-53248_RCF_v1.9-Cluster-HA.txt
@@ -460,9 +528,6 @@ File transfer operation completed successfully.
 「原稿リスト」
 
 +
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 (cs2)# *script list*
@@ -473,15 +538,11 @@ BES-53248_RCF_v1.9-Cluster-HA.scr          2241         2020 09 30 05:41:00
 
 1 configuration script(s) found.
 ----
-====
 . スクリプトをスイッチに適用します。
 +
 「原稿」が適用されます
 
 +
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 (cs2)# *script apply BES-53248_RCF_v1.9-Cluster-HA.scr*
@@ -495,8 +556,11 @@ Configuration Saved!
 
 Configuration script 'BES-53248_RCF_v1.9-Cluster-HA.scr' applied.
 ----
+
+
+--
 ====
-. からのバナー出力を確認します `show clibanner` コマンドを実行しますスイッチの設定と動作を適切に行うには、次の手順を参照して実行する必要があります。
+. [[step11]]コマンドからのバナー出力を確認し `show clibanner`ます。スイッチの設定と動作を適切に行うには、次の手順を読んで従う必要があります。
 +
 `show clibanner`
 
@@ -1042,7 +1106,7 @@ RPC status:
 ----
 --
 ====
-. [[step6]]権限レベルをadminに戻します。
+. 権限レベルを admin に戻します。
 +
 [source, cli]
 ----

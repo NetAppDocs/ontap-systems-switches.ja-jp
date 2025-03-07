@@ -19,7 +19,7 @@ Cisco Nexus 9336C-FX2クラスタスイッチは、Cisco Nexus 9000プラット�
 
 ONTAP を実行しているシステムでCisco Nexus 9336C-FX2スイッチを初期設定するには、次の手順を実行します。
 
-. link:setup-worksheet-9336c-cluster.html["Cisco Nexus 9336C-FX2ケーブル接続ワークシートに記入します"]です。
+. link:setup-worksheet-9336c-cluster.html["Cisco Nexus 9336C-FX2または9336C-FX2-Tケーブル接続ワークシートに記入"]です。
 +
 ケーブル接続ワークシートの例には、スイッチからコントローラへの推奨されるポート割り当ての例が示されています。空白のワークシートには、クラスタのセットアップに使用できるテンプレートが用意されています。
 
@@ -43,7 +43,7 @@ Cisco Nexus 9336C-FX2スイッチをセットアップします。
 +
 Nexus 9336C-FX2クラスタスイッチで、NX-OSソフトウェアをインストールまたはアップグレードします。
 
-. link:install-nxos-rcf-9336c-cluster.html["RCFのインストールまたはアップグレード"]です。
+. link:install-upgrade-rcf-overview-cluster.html["RCFのインストールまたはアップグレード"]です。
 +
 Nexus 9336C-FX2スイッチの初回セットアップ後にRCFをインストールまたはアップグレードします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
 

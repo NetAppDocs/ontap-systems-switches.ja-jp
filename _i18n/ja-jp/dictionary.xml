@@ -3635,7 +3635,6 @@
   <block id="ce140d6d1921435e3df40a72b6d032f4" category="sidebar">CN1610スイッチからの移行</block>
   <block id="ac0586dfb2126d95d9be6378c5f70512" category="sidebar">スイッチレスクラスタからスイッチクラスタに移行する</block>
   <block id="703c0fedc12db69e340d7c2f3de0d764" category="sidebar">スイッチを交換します</block>
-  <block id="742d7720a6bdc19b4810641f0c74ddd3" category="sidebar">スイッチをアップグレードします</block>
   <block id="5990fb757a59a934aeb2786bac162e97" category="sidebar">EFOSソフトウェアをインストールします</block>
   <block id="e7d694813a2146a3ab31b4b907988620" category="sidebar">SSH を有効にします。</block>
   <block id="037fd3285f5414c76c57c401fbc5603c" category="sidebar">ログ収集を有効にします</block>
@@ -3901,7 +3900,6 @@
   <block id="d03fee12ab01ee4f556908abcba26347" category="list-text">SSHを使用してスイッチに再度ログインし、RCFのインストールを完了します。</block>
   <block id="63f7338fc9ee539e34242e8d03110038" category="list-text">FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。</block>
   <block id="b211f67e6e9195c32683368a53542802" category="paragraph">次の例は、SFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーする方法を示しています。</block>
-  <block id="c77174e35b7f7fc235a87561809ad614" category="list-text">からのバナー出力を確認します<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block> コマンドを実行しますスイッチの設定と動作を適切に行うには、次の手順を参照して実行する必要があります。</block>
   <block id="420b545896cb1c9b03dbccd44bf33f86" category="list-text">RCFを適用したあとにスイッチで、ライセンスが追加されたポートが表示されていることを確認します。</block>
   <block id="f8e1e48a80ce2fac4d53a95f1f1ffd18" category="paragraph">*クラスタノード接続ケーブルをcs2-newスイッチに移動*</block>
   <block id="e07ca5d2322ee212c9dcb668e9db443a" category="image-alt">クラスタノードの接続ケーブルをcs2-newスイッチに移動しました</block>
@@ -4634,9 +4632,7 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="e1ef2bf589b36ef4fe890c1ce3f4414e" category="list-text"><block ref="0a41823d2a109b5dbd6f2fa1f8fe6689" category="inline-link-macro-rx"></block>です。</block>
   <block id="629075dbdb9eff0fb95f99ab0fcd1967" category="paragraph">Cisco Nexus 9336C-FX2クラスタスイッチでNX-OSソフトウェアをダウンロードし、インストールまたはアップグレードします。</block>
   <block id="11106314fe1d4dd5bee639afb348b915" category="inline-link-macro">RCFのインストールまたはアップグレード</block>
-  <block id="c04285e0007809b2644676a723882b00" category="list-text"><block ref="1fe309bd8e626375dc4971f4edf77d2d" category="inline-link-macro-rx"></block>です。</block>
   <block id="01a618717f01c55d9b54bedd7307a43f" category="paragraph">Cisco Nexus 9336C-FX2スイッチの初回セットアップ後にRCFをインストールまたはアップグレードします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。</block>
-  <block id="b002a5cd7db32a3dea22b0992712b264" category="list-text"><block ref="56a03b023ba50fb49738eaf20203f57a" category="inline-link-macro-rx"></block>です。</block>
   <block id="959598166d06ebc7f87da7525f293a91" category="list-text"><block ref="0bc8e83d3cd2eebf0c2c5d2a7b54cc6c" category="inline-link-macro-rx"></block>です。</block>
   <block id="df7bc1c04ccb094d3b474fc08a97d272" category="paragraph">スイッチハードウェアをセットアップします。</block>
   <block id="a7682f7ee72405f79f40850a1dea900c" category="list-text"><block ref="93d08ab8d6c80a25299648349a7a616c" category="inline-link-macro-rx"></block>です。</block>
@@ -4779,7 +4775,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="2d7cd36455daea92f172ede16d765aae" category="list-text">[[step7]]クラスタが正常であることを確認します。</block>
   <block id="acdfe379cf0ed5868b119418e7d41b82" category="list-text">[[step11]]グループ2のポートにスイッチレス構成を設定します。</block>
   <block id="a2f7ec2dd8feebc2c1e30e5f859d4497" category="list-text">[[step6]]ケースの自動作成を抑制した場合は、AutoSupportメッセージを呼び出して再度有効にします。</block>
-  <block id="2f3040f570b3d77425ad0bf50fc7985c" category="list-text">[[step6]]権限レベルをadminに戻します。</block>
   <block id="4e4f70ba52e8cb595faa069991c5a9f4" category="list-text">[[step5]]ケースの自動作成を抑制した場合は、AutoSupport メッセージを呼び出して再度有効にします。</block>
   <block id="c97fddef37af781b99f2bb564a90861d" category="list-text">[[step9]]権限レベルをadminに戻します。</block>
   <block id="991d705309210a9623a3f1d994c15150" category="list-text">[[step10]]アクティブなNexus 5596スイッチCL1のISLポート41~48をシャットダウンします。</block>
@@ -5139,7 +5134,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="f36aa89aee5a55633ce25b54c9a779d3" category="sidebar">スイッチレスクラスタからの移行</block>
   <block id="c32aa48aa3b92b64c3a5ea6a1b2e9a1f" category="sidebar">2ノードスイッチレスクラスタからの移行ワークフロー</block>
   <block id="df8a9198280d88db538535b2609f0f83" category="sidebar">Replace_switches_3232C</block>
-  <block id="6697bf1c75a0d4d8868afeab04858bc3" category="sidebar">Upgrade_switches_3232C</block>
   <block id="253d101ba7a8a0f1e24c1a3b13a1b5b5" category="sidebar">インストールアップグレードRCF</block>
   <block id="2b8efdb0e77054ffe22b4bfb75564155" category="sidebar">RCFのインストールまたはアップグレードの概要</block>
   <block id="b6503bc6a2e6ede86368a60473711626" category="list-text">スイッチcs1で手順1~11を繰り返します。</block>
@@ -5256,4 +5250,6 @@ image::../media/FEC_copper_table.jpg[25G銅ケーブル付きポート]</block>
   <block id="a9fc37ffea4ac5fbd75f369d96c903f6" category="sidebar">クラスタスイッチ- Cisco Nexus 9336C-FX2または9336C-FX2-T</block>
   <block id="ed3dd7f516f69cf573ae79a1781bbcbf" category="sidebar">クラスタスイッチ- NVIDIA SN2100クラスタスイッチ</block>
   <block id="49e57b2c31c8feba776b7a2916673678" category="sidebar">Cisco Nexus 9336C-FX2または9336C-FX2-T</block>
+  <block id="c66ea64be71d87967746ef74fac6ec75" category="list-text">[[step11]]コマンドからのバナー出力を確認し<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block>ます。スイッチの設定と動作を適切に行うには、次の手順を読んで従う必要があります。</block>
+  <block id="8b084baecf96a692280d1a024d86081d" category="list-text"><block ref="cf3a409f8782a7944244632e6a1adb8e" category="inline-link-macro-rx"></block>です。</block>
 </blocks>
