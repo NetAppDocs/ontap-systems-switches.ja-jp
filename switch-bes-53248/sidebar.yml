@@ -20,6 +20,8 @@ entries:
     url: "/switch-bes-53248/install-hardware-bes53248.html"
   - title: スイッチを設定します
     url: "/switch-bes-53248/configure-install-initial.html"
+  - title: ケーブル接続と構成を確認
+    url: "/switch-bes-53248/cabling-considerations-bes-53248.html"
 - title: ソフトウェアを設定します
   pdf-filename: configure_software_bes53248
   entries:

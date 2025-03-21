@@ -1,16 +1,7 @@
----
-permalink: switch-cshm/config-log-collection.html 
-sidebar: sidebar 
-keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation 
-summary: イーサネットスイッチヘルスモニタ（CSHM）のログ収集機能は、ONTAPのクラスタまたはストレージネットワークスイッチからログを収集するために使用します。 
----
-= ログ収集の設定
+= 作業を開始する前に
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
 
-[role="lead"]
 イーサネットスイッチヘルスモニタ（CSHM）は、クラスタネットワークスイッチとストレージネットワークスイッチの動作の健全性を確認し、デバッグ用にスイッチのログを収集します。この手順では、収集を設定し、詳細な*サポート*ログを要求し、AutoSupportによって収集される*定期的*データの1時間ごとの収集を有効にするプロセスをガイドします。
 
 *注：* FIPSモードを有効にする場合は、次の手順を実行する必要があります。
@@ -240,8 +231,3 @@ cluster1::*> *system switch ethernet log show -instance*
 
 --
 ====
-
-CAUTION: ログ収集機能によってエラーステータスが報告された場合（の出力に表示され `system switch ethernet log show`ます）、詳細については、を参照してください link:log-collection-troubleshoot.html["ログ収集のトラブルシューティング"] 。
-
-.次の手順
-link:config-snmpv3.html["SNMPv3の設定（オプション）"]です。
