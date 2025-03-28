@@ -2061,12 +2061,9 @@
   <block id="b366aa7d44d5ae24af827fa423f8a2f2" category="list-text">スイッチに関連するログファイルを収集するためのEthernetスイッチのヘルスモニタログ収集機能を有効にしますこれには'system switch ethernet log setup-password'およびsystem switch ethernet log enable-collection'の2つのコマンドを使用します</block>
   <block id="6d5256d36c2629c07d67ddb2fc78e95c" category="list-text">スイッチ・ログ収集機能を開始します：system switch ethernet log collect-device *</block>
   <block id="676b4f116c6b65afc97655131da52093" category="paragraph">10分間待ってから'次のコマンドを使用してログ収集が成功したことを確認しますsystem switch ethernet log show</block>
-  <block id="3722090c5c0b0496759b23b1db5566cd" category="doc">RCFスクリプトをインストールします</block>
   <block id="90bd80eefde443be8809a3edf64f7ef2" category="list-text">IPアドレス、サブネットマスク、およびデフォルトゲートウェイは、DHCPを使用して定義するか、手動で設定します。</block>
   <block id="1d9152605063cf1b257a36675cece81c" category="inline-link-macro">ケーブル接続と構成に関する考慮事項</block>
   <block id="526990b43ff7cafabc1a3c5dda4e8c9b" category="paragraph">クラスタリングアプリケーションとストレージアプリケーション用に2つのRCFスクリプトが用意されています。各の手順 は同じです。</block>
-  <block id="d43ffd29b9c1918eacb74ce61ab9c93d" category="list-text">クラスタリング：* MSN2100-RCF v1.8 - Cluster *</block>
-  <block id="85948408e24eaebde36ef1a070afa259" category="list-text">ストレージ：* MSN2100-RCF v1.8 -ストレージ*</block>
   <block id="47a90a8bc6531c96684b95f438b570ff" category="admonition">次の手順 の例は、クラスタスイッチ用のRCFスクリプトをダウンロードして適用する方法を示しています。</block>
   <block id="8e7538255f1b89e8cb901d939793795e" category="admonition">コマンド出力の例では、スイッチ管理IPアドレス10.233.204.71、ネットマスク255.255.254.0、およびデフォルトゲートウェイ10.233.204.1を使用しています。</block>
   <block id="cba289d19a283a01be4ec7d5598b25e8" category="list-text">SN2100スイッチで使用可能なインターフェイスを表示します。</block>
@@ -2370,7 +2367,6 @@
   <block id="e0ab29823a477894018f5c53cfabeece" category="summary">NVIDIA SN2100スイッチのインストールとメンテナンスについては、推奨されるすべてのマニュアルを確認してください。</block>
   <block id="7ec5693d2c180df872f5e23364ecd351" category="doc">NVIDIA SN2100スイッチのマニュアル要件</block>
   <block id="5a5096484954db754c9fdc1d20f50720" category="summary">RCFスクリプトをインストールするには、次の手順 に従います。</block>
-  <block id="2123b47f46a6b2a44de513e0c343098f" category="paragraph">RCFスクリプトをインストールする前に、スイッチに次のものがあることを確認してください。</block>
   <block id="6b05439cc5176e82c5cfdc0d918624ea" category="paragraph"><block ref="e82a1249d31ab6e6d4064390013e6c55" prefix="" category="inline-code"></block></block>
   <block id="458ab89f862895d8f5ce855c654868d6" category="paragraph">RCFスクリプトで上記の手順を完了します。</block>
   <block id="8d64daaea35553b232a39d8de9b07201" category="list-text">インターフェイス内のトランシーバの情報を確認します。</block>
@@ -5231,4 +5227,15 @@
   <block id="1422bf436bfd810c807aacf3aab99615" category="paragraph">スイッチを設定して必要なソフトウェアをインストールしたら、ONTAPシステムプラットフォームモデルのインストールとセットアップの手順にアクセスしてシステムのセットアップを完了します。</block>
   <block id="ce85a54726781b89fe08c28de38285c0" category="paragraph">ONTAPシステムのコントローラとスイッチを設置してセットアップしたら、ONTAPでストレージの設定を完了する必要があります。導入環境の設定に応じて、次の手順を参照してください。</block>
   <block id="674426100287eb3a5e16cf5705c524ea" category="image-alt">25Gポートと銅線ケーブル</block>
+  <block id="ec65012ad6ac37ed9d5b425acfa4cdea" category="doc">リファレンス構成ファイル（RCF）スクリプトのインストールまたはアップグレード</block>
+  <block id="60db3c5b6db09c40831f96fad7f5b5c4" category="paragraph">RCFスクリプトをインストールまたはアップグレードする手順は、次のとおりです。</block>
+  <block id="a26beebaedce14e4e55b90d7a8d895f4" category="paragraph">RCFスクリプトをインストールまたはアップグレードする前に、スイッチに次の項目があることを確認してください。</block>
+  <block id="3a0aebe04bfa1f6aaf965b9c027512bc" category="open-title">Cumulus Linux 5.4.0.</block>
+  <block id="9ec751f6f6fe23e217638410987b5aab" category="open-title">Cumulus Linux 5.11.0.</block>
+  <block id="2340bc2649383727b40f4420d1b47844" category="doc">リファレンス構成ファイル（RCF）スクリプトのアップグレード</block>
+  <block id="8ab41648ed191efe1d9524e2535c7f4d" category="paragraph">RCFスクリプトをアップグレードする手順は、次のとおりです。</block>
+  <block id="b3be7362d2d8f250dc5fcbfaf784efd0" category="paragraph">RCFスクリプトをアップグレードする前に、スイッチに次のものがあることを確認してください。</block>
+  <block id="997f5023d76908d72d993d6b09390a5e" category="doc">RCFスクリプトのインストールまたはアップグレード</block>
+  <block id="7baa7758ed49797651dc1e276762ae15" category="list-text">クラスタリング：* MSN2100-rcf-v1._x_-クラスタ*</block>
+  <block id="dd584ffba0b7534139645967bf24df84" category="sidebar">RCFスクリプトのインストールまたはアップグレード</block>
 </blocks>
