@@ -13,6 +13,8 @@ summary: クラスタスイッチヘルスモニタ（ CSHM ）およびログ�
 [role="lead"]
 Reference Configuration File（RCF；リファレンス構成ファイル）は、Nexus 9336C-FX2スイッチの初回セットアップ後にインストールします。スイッチに既存のバージョンのRCFファイルがインストールされている場合は、RCFのバージョンをアップグレードします。
 
+RCFをインストールまたはアップグレードする場合の詳細については、技術情報アーティクルを参照してlink:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままCiscoインターコネクトスイッチの設定をクリアする方法"^]ください。
+
 .使用可能なRCF構成
 次の表に、さまざまな構成で使用できるRCFを示します。使用している構成に該当するRCFを選択します。
 

@@ -13,6 +13,8 @@ summary: RCF は、 Nexus 92300YC スイッチを初めてセットアップし�
 [role="lead"]
 RCF は、 Nexus 92300YC スイッチを初めてセットアップしたあとにインストールできます。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
 
+RCFをインストールまたはアップグレードする場合の詳細については、技術情報アーティクルを参照してlink:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままCiscoインターコネクトスイッチの設定をクリアする方法"^]ください。
+
 .このタスクについて
 この手順の例では、スイッチとノードで次の命名法を使用しています。
 

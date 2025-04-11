@@ -5213,7 +5213,6 @@
   <block id="49e57b2c31c8feba776b7a2916673678" category="sidebar">Cisco Nexus 9336C-FX2または9336C-FX2-T</block>
   <block id="c66ea64be71d87967746ef74fac6ec75" category="list-text">[[step11]]コマンドからのバナー出力を確認し<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block>ます。スイッチの設定と動作を適切に行うには、次の手順を読んで従う必要があります。</block>
   <block id="8b084baecf96a692280d1a024d86081d" category="list-text"><block ref="cf3a409f8782a7944244632e6a1adb8e" category="inline-link-macro-rx"></block>です。</block>
-  <block id="a0483532706ba341300191e20cafc42e" category="list-text">BroadcomスイッチおよびCiscoスイッチでログを収集する場合は、ログ収集を有効にしたクラスタセットアップごとに、スイッチに新しいユーザを作成する必要があります。これらのスイッチは、同じユーザに対して複数のSSHキーをサポートしません。追加のログ収集設定を実行すると、そのユーザの既存のSSHキーが上書きされます。</block>
   <block id="1fcbc8802637b04b8fe9a86ac3d545c9" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block>スイッチハードウェアの設置</block>
   <block id="b11226c776ec1b74f6a42f871e3194c9" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block>ストレージシステムとストレージシェルフの設置</block>
   <block id="130792cb3edc8d0afffb557e50b218c3" category="paragraph">ストレージシステムとストレージシェルフをキャビネットまたはラックに設置します。使用しているプラットフォームモデルのインストールとセットアップの手順にアクセスします。</block>
@@ -5238,4 +5237,9 @@
   <block id="997f5023d76908d72d993d6b09390a5e" category="doc">RCFスクリプトのインストールまたはアップグレード</block>
   <block id="7baa7758ed49797651dc1e276762ae15" category="list-text">クラスタリング：* MSN2100-rcf-v1._x_-クラスタ*</block>
   <block id="dd584ffba0b7534139645967bf24df84" category="sidebar">RCFスクリプトのインストールまたはアップグレード</block>
+  <block id="40b03f9635c63b20aade0ff8145eafb8" category="list-text">BroadcomおよびCiscoスイッチを使用したログ収集の場合：</block>
+  <block id="89f1dd995a5c07ea1e13abc5993d9d59" category="list-text">ユーザにはネットワーク管理Privilegesが必要です。</block>
+  <block id="60f743043272b873831b17c5e7290445" category="list-text">ログ収集を有効にして、クラスタセットアップごとにスイッチに新しいユーザを作成する必要があります。これらのスイッチは、同じユーザに対して複数のSSHキーをサポートしません。追加のログ収集設定を実行すると、そのユーザの既存のSSHキーが上書きされます。</block>
+  <block id="63229fc9218a5e1a57243ce033e91a3b" category="paragraph">RCFをインストールまたはアップグレードする場合の詳細については、技術情報アーティクルを参照して<block ref="862bab57a4acfb616afcae48c16f2cfe" category="inline-link-macro-rx"></block>ください。</block>
+  <block id="26552c2532e5b34c96d8cef5f736c6ff" category="paragraph">RCFをインストールする際の詳細については、技術情報アーティクルを参照して<block ref="862bab57a4acfb616afcae48c16f2cfe" category="inline-link-macro-rx"></block>ください。</block>
 </blocks>

@@ -13,6 +13,8 @@ summary: RCFは、Nexus 9336C-FX2ストレージスイッチの初回セット�
 [role="lead"]
 Reference Configuration File（RCF；リファレンス構成ファイル）は、Nexus 9336C-FX2ストレージスイッチの初回セットアップ後にインストールします。
 
+RCFをインストールする際の詳細については、技術情報アーティクルを参照してlink:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままCiscoインターコネクトスイッチの設定をクリアする方法"^]ください。
+
 .作業を開始する前に
 次のインストールと接続を確認します。
 
