@@ -19,6 +19,10 @@ entries:
   entries:
   - title: 健全性チェックの概要
     url: "/switch-cshm/monitor-overview.html"
+  - title: スイッチ監視を管理します。
+    url: "/switch-cshm/monitor-manage.html"
+  - title: スイッチの監視を確認
+    url: "/switch-cshm/monitor-verify.html"
   - title: アラートのトラブルシューティング
     url: "/switch-cshm/monitor-troubleshoot.html"
 - title: ログ収集

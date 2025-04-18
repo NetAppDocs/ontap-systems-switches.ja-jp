@@ -5242,4 +5242,37 @@
   <block id="60f743043272b873831b17c5e7290445" category="list-text">ログ収集を有効にして、クラスタセットアップごとにスイッチに新しいユーザを作成する必要があります。これらのスイッチは、同じユーザに対して複数のSSHキーをサポートしません。追加のログ収集設定を実行すると、そのユーザの既存のSSHキーが上書きされます。</block>
   <block id="63229fc9218a5e1a57243ce033e91a3b" category="paragraph">RCFをインストールまたはアップグレードする場合の詳細については、技術情報アーティクルを参照して<block ref="862bab57a4acfb616afcae48c16f2cfe" category="inline-link-macro-rx"></block>ください。</block>
   <block id="26552c2532e5b34c96d8cef5f736c6ff" category="paragraph">RCFをインストールする際の詳細については、技術情報アーティクルを参照して<block ref="862bab57a4acfb616afcae48c16f2cfe" category="inline-link-macro-rx"></block>ください。</block>
+  <block id="2b77bb88cf2794536ac9c658ce053c6b" category="doc">ONTAPで監視できるようにスイッチエントリを作成します。</block>
+  <block id="4aa02798c2feea1f87e6fb5301e10d30" category="paragraph">指定したイーサネットスイッチの監視を手動で設定してイネーブルにするには、コマンドを使用し<block ref="e59cde6e921a1b23eb9bf8c1c9068aca" prefix=" " category="inline-code"></block>ます。これは、ONTAPでスイッチが自動的に追加されない場合、または以前にスイッチを削除してから再度追加する場合に役立ちます。</block>
+  <block id="82b694a75e07a035b8cd3b7aae86fdb8" category="paragraph">典型的な例としては、IPアドレスが1.2.3.4、SNMPv2cクレデンシャルが*cshm1!*に設定された[DeviceName]という名前のスイッチを追加します。ストレージスイッチを設定する場合は、の代わりにを<block ref="0f3e90baa25250f9896e5ad67dd9d1f6" prefix=" " category="inline-code"></block>使用し<block ref="0fa5a8d20ad4f199ce4bb17e333f0a4a" prefix=" " category="inline-code"></block>ます。</block>
+  <block id="9e2f728fd093bf40641895bd7ab81ffc" category="section-title">スイッチを削除せずに監視を無効にする</block>
+  <block id="71ea82a6a71bd6b5e0857ef4469e6824" category="paragraph">特定のスイッチの監視を一時停止または停止し、今後の監視用に残しておく場合は、パラメータを削除するのではなく変更します<block ref="a95032ab49a61ccce65cbef4bf991ebd" prefix=" " category="inline-code"></block>。</block>
+  <block id="254dbd09c58880fcc321f2394e42803d" category="paragraph">これにより、新しいアラートを生成したり再検出したりすることなく、スイッチの詳細と設定を保持できます。</block>
+  <block id="5c87ebc68b8545e621c4293650f66e8e" category="section-title">不要になったスイッチを削除</block>
+  <block id="c68359f3f21922e686e683f2b1fb2d69" category="paragraph">切断されたスイッチまたは不要になったスイッチを削除する場合に使用し<block ref="72fd318795f4bf274ff150d0a09106e1" prefix=" " category="inline-code"></block>ます。</block>
+  <block id="0dcda35c85e27aa3498fa4ab30cb7dae" category="paragraph">デフォルトでは、このコマンドが成功するのは、ONTAPがCDPまたはLLDPを介して現在スイッチを検出していない場合だけです。検出されたスイッチを削除するには、パラメータを使用し<block ref="02e554f8f135bc49b80e8fc45a341757" prefix=" " category="inline-code"></block>ます。</block>
+  <block id="6625e054d05a0ea2ca1ae3049f75717e" category="paragraph">を使用している場合、<block ref="02e554f8f135bc49b80e8fc45a341757" prefix=" " category="inline-code"></block>ONTAPがスイッチを再度検出すると、スイッチが自動的に再追加されることがあります。</block>
+  <block id="25784bbce13fd0c509a0fd1c5f248f3d" category="doc">接続されているイーサネットスイッチの監視を確認する</block>
+  <block id="570122e6553f3a17e7188a6ca23d70d9" category="paragraph">接続されたイーサネットスイッチが監視されていることを確認するには、次のコマンドを実行します。</block>
+  <block id="7eaabdc7d2364e9a43feeb5cf07593dc" category="paragraph">列に「* other *」と表示されているか、<block ref="7a19db03ac26c54be196969b77d657a6" prefix=" " category="inline-code"></block>フィールドに「* false *」と表示されている場合<block ref="a559b87068921eec05086ce5485e9784" prefix=" " category="inline-code"></block>、ONTAPはスイッチを監視できません。通常、値* other *は、ONTAPがヘルスモニタでそのスイッチをサポートしていないことを示します。</block>
+  <block id="8d86e89da688f620dafbc70269059388" category="paragraph"><block ref="7a19db03ac26c54be196969b77d657a6" prefix=" " category="inline-code"></block>フィールドに指定された理由により、フィールドは* false *に設定されます<block ref="fffcb4d1e12c96b2f571f77ad25878b8" prefix=" " category="inline-code"></block>。</block>
+  <block id="f9f5c952edf43434e02a625f00102b19" category="inline-link-macro">イーサネットスイッチの監視を管理します。</block>
+  <block id="f6ec6bfa57123a9616038a55e7f332a5" category="paragraph">コマンド出力にスイッチが表示されない場合は、ONTAPで検出されていない可能性があります。スイッチが正しくケーブル接続されていることを確認します。必要に応じて、スイッチを手動で追加できます。詳細については、を参照してください <block ref="ee7db2a0a5f0654c3c81941bc38adb11" category="inline-link-macro-rx"></block> 。</block>
+  <block id="ed7061b9b8f8c50684797c64a5576941" category="section-title">ファームウェアとRCFのバージョンが最新であることを確認する</block>
+  <block id="43558d02214bf83729998ce237b6cdea" category="inline-link">ネットアップサポートのダウンロードページ</block>
+  <block id="9be0ccf5f4aae992d69ea7f079f6d048" category="paragraph">スイッチがサポートされている最新のファームウェアを実行しており、互換性があるリファレンス構成ファイル（RCF）が適用されていることを確認してください。詳細については、を参照して<block ref="49046ae6b122d9765935bb9b378618a5" category="inline-link-rx"></block>ください。</block>
+  <block id="14bb00b56dfdaad98ccaf9d2ff1c1eb5" category="paragraph">デフォルトでは、ヘルスモニタはコミュニティストリング* cshm1！*を含むSNMPv2cを監視に使用しますが、SNMPv3も設定できます。</block>
+  <block id="35011d870229aa144aa6a66350d2279e" category="paragraph">デフォルトのSNMPv2cコミュニティストリングを変更する必要がある場合は、スイッチに適切なSNMPv2cコミュニティストリングが設定されていることを確認してください。</block>
+  <block id="3d8bd273ce46782520a3a188e037f316" category="admonition">SNMPv3を使用するための設定の詳細については、を参照してください<block ref="ec5440e4cc2d261dc76dac84e641c0ab" category="inline-link-macro-rx"></block>。</block>
+  <block id="f97512ee27e4fc37982423d301b8b2cd" category="section-title">管理ネットワーク接続の確認</block>
+  <block id="4c3dc933dd2f14499a5b966f0d0f1242" category="paragraph">スイッチの管理ポートが管理ネットワークに接続されていることを確認します。</block>
+  <block id="7be780b96e93a50316d019e9c7358c89" category="paragraph">ONTAPでSNMPクエリとログ収集を実行するには、適切な管理ポート接続が必要です。</block>
+  <block id="6022c2f82411bbd57493d91e903ce8aa" category="admonition">クラスタLIFは手動で移行しないでください。</block>
+  <block id="a9b506398d4ccf6e53d71af16370c8e6" category="summary">手動での作成、デフォルトの監視設定の変更、および監視対象からのイーサネットスイッチの削除の方法について説明します。</block>
+  <block id="a1c2fc220383716c158399e227f0b34f" category="paragraph">ほとんどの場合、イーサネットスイッチはONTAPによって自動的に検出され、CSHMによって監視されます。スイッチに適用されるリファレンス構成ファイル（RCF）では、特にCisco検出プロトコル（CDP）やリンク層検出プロトコル（LLDP）が有効になります。ただし、検出されなかったスイッチを手動で追加したり、使用されなくなったスイッチを削除したりしなければならない場合があります。また、メンテナンス中など、スイッチを構成内に残したまま、アクティブな監視を停止することもできます。</block>
+  <block id="586ef722188ebd1147c5005705cba276" category="summary">イーサネットスイッチの監視が機能していることを確認する方法について説明します。</block>
+  <block id="73938029de1874ad71500c396fa836b1" category="doc">イーサネットスイッチの監視を確認する</block>
+  <block id="7d446387be9f1d7a1583327a693c81a1" category="paragraph">イーサネットスイッチヘルスモニタ（CSHM）は、検出したスイッチの監視を自動的に試みます。ただし、スイッチが正しく設定されていないと、監視が自動的に行われないことがあります。ヘルスモニタが使用中のスイッチを監視するように適切に設定されていることを確認してください。</block>
+  <block id="a6227aae637a0baad0de1335f2d71396" category="sidebar">スイッチ監視を管理します。</block>
+  <block id="5c46a4758dcc5f666eee202daef67af4" category="sidebar">スイッチの監視を確認</block>
 </blocks>
