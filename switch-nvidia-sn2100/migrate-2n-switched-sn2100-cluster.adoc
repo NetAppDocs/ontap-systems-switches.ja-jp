@@ -151,11 +151,11 @@ ISL ポートを無効にしないでください。
 ----
 cumulus@sw1:~$ *nv set interface swp1s0-3,swp2s0-3,swp3-14 link state down*
 cumulus@sw1:~$ *nv config apply*
-cumulus@sw1:~$ *nv save*
+cumulus@sw1:~$ *nv config save*
 
 cumulus@sw2:~$ *nv set interface swp1s0-3,swp2s0-3,swp3-14 link state down*
 cumulus@sw2:~$ *nv config apply*
-cumulus@sw2:~$ *nv save*
+cumulus@sw2:~$ *nv config save*
 ----
 . 2つのSN2100スイッチsw1とSW2間のISL上のISLポートと物理ポートが、ポートswp15とswp16上で動作していることを確認します。
 +

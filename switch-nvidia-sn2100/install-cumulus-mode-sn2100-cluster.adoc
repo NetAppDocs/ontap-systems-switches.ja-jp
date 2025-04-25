@@ -269,7 +269,7 @@ admin@sw1:mgmt:~$
 
 
 --
-.Cumulus Linux 5.x
+.Cumulus Linux 5.4.0.
 --
 . スイッチにログインします。
 +
@@ -397,7 +397,7 @@ cumulus@sw1:~$ *nv config apply*
 ----
 
 
-. Cumulus Linux 5.4をインストールします。
+. Cumulus Linux 5.4.0をインストールします。
 +
 [listing, subs="+quotes"]
 ----
@@ -421,7 +421,7 @@ cumulus@sw1:mgmt:~$ *sudo reboot*
 
 
 . ログインするには、手順1~4を繰り返します。
-. Cumulus Linuxのバージョンが5.4であることを確認します。 `nv show system`
+. Cumulus Linuxのバージョンが5.4.0であることを確認します。 `nv show system`
 +
 [listing, subs="+quotes"]
 ----
@@ -505,6 +505,210 @@ cumulus@sw1:mgmt:~$ *sudo adduser admin nvshow*
 を参照してください https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^] を参照してください。
 
 
+
+--
+.Cumulus Linux 5.11.0.
+--
+. スイッチにログインします。
++
+スイッチに初めてログインするときは、Privilegesで* cumulus */* cumulus *というユーザ名/パスワードが必要です `sudo`。
+
++
+[listing, subs="+quotes"]
+----
+cumulus login: *cumulus*
+Password: *cumulus*
+You are required to change your password immediately (administrator enforced)
+Changing password for cumulus.
+Current password: *cumulus*
+New password: *<new_password>*
+Retype new password: *<new_password>*
+----
+. Cumulus Linuxのバージョンを確認します。 `nv show system`
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv show system*
+operational         applied              description
+------------------- -------------------- ---------------------
+hostname            cumulus              cumulus
+build               Cumulus Linux 5.4.0  system build version
+uptime              6 days, 8:37:36      system uptime
+timezone            Etc/UTC              system time zone
+----
+. ホスト名、IPアドレス、サブネットマスク、およびデフォルトゲートウェイを設定します。新しいホスト名が有効になるのは、コンソール/SSHセッションを再起動した後だけです。
++
+
+NOTE: Cumulus Linuxスイッチには、「eth0」という専用イーサネット管理ポートが少なくとも1つあります。このインターフェイスは、アウトオブバンド管理専用です。デフォルトでは、管理インターフェイスはアドレス指定にDHCPv4を使用します。
+
++
+
+CAUTION: ホスト名には、アンダースコア（_）、アポストロフィ（'）、非ASCII文字を使用しないでください。
+
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv unset interface eth0 ip address dhcp*
+cumulus@cumulus:mgmt:~$ *nv set interface eth0 ip address 10.233.204.71/24*
+cumulus@cumulus:mgmt:~$ *nv set interface eth0 ip gateway 10.233.204.1*
+cumulus@cumulus:mgmt:~$ *nv config apply*
+cumulus@cumulus:mgmt:~$ *nv config save*
+----
++
+このコマンドは'/etc/hostname'ファイルと/etc/hostsファイルの両方を変更します
+
+. ホスト名、IPアドレス、サブネットマスク、およびデフォルトゲートウェイが更新されたことを確認します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:mgmt:~$ *hostname sw1*
+cumulus@sw1:mgmt:~$ *ifconfig eth0*
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+inet 10.233.204.71  netmask 255.255.254.0  broadcast 10.233.205.255
+inet6 fe80::bace:f6ff:fe19:1df6  prefixlen 64  scopeid 0x20<link>
+ether b8:ce:f6:19:1d:f6  txqueuelen 1000  (Ethernet)
+RX packets 75364  bytes 23013528 (21.9 MiB)
+RX errors 0  dropped 7  overruns 0  frame 0
+TX packets 4053  bytes 827280 (807.8 KiB)
+TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0 device memory 0xdfc00000-dfc1ffff
+
+cumulus@sw1::mgmt:~$ *ip route show vrf mgmt*
+default via 10.233.204.1 dev eth0
+unreachable default metric 4278198272
+10.233.204.0/23 dev eth0 proto kernel scope link src 10.233.204.71
+127.0.0.0/8 dev mgmt proto kernel scope link src 127.0.0.1
+----
+. スイッチのタイムゾーン、日付、時刻、およびNTPサーバを設定します。
++
+.. タイムゾーンを設定します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv set system timezone US/Eastern*
+cumulus@sw1:~$ *nv config apply*
+----
+.. 現在のタイムゾーンを確認します。
++
+[listing, subs="+quotes"]
+----
+cumulus@switch:~$ *date +%Z*
+----
+.. ガイド付きウィザードを使用してタイムゾーンを設定するには、次のコマンドを実行します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *sudo dpkg-reconfigure tzdata*
+----
+.. 設定されたタイムゾーンに従ってソフトウェアクロックを設定します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *sudo date -s "Tue Oct 28 00:37:13 2023"*
+----
+.. ソフトウェアクロックの現在の値をハードウェアクロックに設定します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *sudo hwclock -w*
+----
+.. 必要に応じてNTPサーバを追加します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv set service ntp default server _<cumulus.network.ntp.org>_ iburst on*
+cumulus@sw1:~$ *nv config apply*
+cumulus@sw1:~$ *nv config save*
+----
+.. がシステムで実行されていることを確認し `ntpd`ます。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *ps -ef | grep ntp*
+ntp       4074     1  0 Jun20 ?        00:00:33 /usr/sbin/ntpd -p /var/run/ntpd.pid -g -u 101:102
+----
+.. NTPソースインターフェイスを指定します。デフォルトでは、NTPが使用するソースインターフェイスはです `eth0`。次のように、別のNTPソースインターフェイスを設定できます。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:~$ *nv set service ntp default listen _<src_int>_*
+cumulus@sw1:~$ *nv config apply*
+----
+
+
+. Cumulus Linux 5.11.0をインストールします。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:mgmt:~$ *sudo onie-install -a -i http://_<web-server>/<path>_/cumulus-linux-5.11.0-mlx-amd64.bin*
+----
++
+インストーラがダウンロードを開始します。プロンプトが表示されたら「* y *」と入力します
+
+. NVIDIA SN2100スイッチをリブートします。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:mgmt:~$ *sudo reboot*
+----
+. インストールが自動的に開始され'次のGRUB画面の選択肢が表示されますDo * not *（実行しない）を選択します。
++
+** Cumulus - Linux GNU/Linux
+** ONIE: OSのインストール
+** クムルス-インストール
+** Cumulus - Linux GNU/Linux
+
+
+. ログインするには、手順1~4を繰り返します。
+. Cumulus Linuxのバージョンが5.11.0であることを確認します。
++
+`nv show system`
+
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv show system*
+operational         applied                description
+------------------- ---------------------- ---------------------
+build               Cumulus Linux 5.11.0
+uptime              153 days, 2:44:16
+hostname            cumulus                cumulus
+product-name        Cumulus Linux
+product-release     5.11.0
+platform            x86_64-mlnx_x86-r0
+system-memory       2.76 GB used / 2.28 GB free / 7.47 GB total
+swap-memory         0 Bytes used / 0 Bytes free / 0 Bytes total
+health-status       not OK
+date-time           2025-04-23 09:55:24
+status              N/A
+timezone            Etc/UTC
+maintenance
+  mode              disabled
+  ports             enabled
+version
+  kernel            6.1.0-cl-1-amd64
+  build-date        Thu Nov 14 13:06:38 UTC 2024
+  image             5.11.0
+  onie              2019.11-5.2.0020-115200
+----
+. 各ノードが各スイッチに接続されていることを確認します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:mgmt:~$ *nv show interface lldp*
+
+LocalPort  Speed  Mode        RemoteHost                          RemotePort
+---------  -----  ----------  ----------------------------------  -----------
+eth0       100M   eth   mgmt-sw1                                  Eth110/1/14
+swp2s1     25G    Trunk/L2    node1                               e0a
+swp1s1     10G    swp   sw2                                       e0a
+swp9       100G   swp   sw3                                       e4a
+swp10      100G   swp   sw4                                       e4a
+swp15      100G   swp   sw5                                       swp15
+swp16      100G   swp   sw6                                       swp16
+----
+
+
+詳細については、を参照してください https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-511/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^] 。
 
 --
 ====

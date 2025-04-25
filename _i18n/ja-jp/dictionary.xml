@@ -3835,7 +3835,6 @@
   <block id="5e7f834bb6ce37fe7786c30951681705" category="list-text">Cumulus Linuxのバージョンが4.4.3であることを確認します。<block ref="98f5dff8534e8c39673b544f567273e7" prefix=" " category="inline-code"></block></block>
   <block id="d3197ab8aed6376fa7796149e9bb5d76" category="paragraph">インストーラがダウンロードを開始します。プロンプトが表示されたら「* y *」と入力します</block>
   <block id="0d5b4669d0f67490dffe38df0a47c207" category="list-text">インストールが自動的に開始され'次のGRUB画面の選択肢が表示されますDo * not *（実行しない）を選択します。</block>
-  <block id="caf789a40cb327fa8f64258a010c13e0" category="list-text">Cumulus Linuxのバージョンが5.4であることを確認します。<block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix=" " category="inline-code"></block></block>
   <block id="ebf243f9c791c52799ecfef9dba7e609" category="doc">NetApp CN1610クラスタスイッチをスイッチレス接続に置き換えます</block>
   <block id="261de3e636d4ab259e73f4993ea87a6a" category="sidebar">Cumulus Linuxバージョンをアップグレードします</block>
   <block id="f854d13ce34c20dd774e2f26c0bcbec7" category="paragraph">EFOSのバージョンがFIPSに準拠しているかどうかを確認するには、を使用します<block ref="861d2504fbcbe4985de13f1d87bfc483" prefix=" " category="inline-code"></block> コマンドを実行します次の例では、* IP_switch_a1 *はFIPS準拠のEFOSを使用し、* IP_switch_a2 *はFIPS非準拠のEFOSを使用しています。</block>
@@ -5275,4 +5274,12 @@
   <block id="7d446387be9f1d7a1583327a693c81a1" category="paragraph">イーサネットスイッチヘルスモニタ（CSHM）は、検出したスイッチの監視を自動的に試みます。ただし、スイッチが正しく設定されていないと、監視が自動的に行われないことがあります。ヘルスモニタが使用中のスイッチを監視するように適切に設定されていることを確認してください。</block>
   <block id="a6227aae637a0baad0de1335f2d71396" category="sidebar">スイッチ監視を管理します。</block>
   <block id="5c46a4758dcc5f666eee202daef67af4" category="sidebar">スイッチの監視を確認</block>
+  <block id="41cda86775eebf53199061928eb39a74" category="list-text">Cumulus Linux 5.4.0をインストールします。</block>
+  <block id="a731c9953cb3178b61fd688f2c10ea64" category="list-text">Cumulus Linuxのバージョンが5.4.0であることを確認します。<block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix=" " category="inline-code"></block></block>
+  <block id="7fe163201519200ade1c23cd052b6611" category="paragraph">スイッチに初めてログインするときは、Privilegesで* cumulus */* cumulus *というユーザ名/パスワードが必要です<block ref="d338b3f0f405eb5e51c8cc1e5ca66f02" prefix=" " category="inline-code"></block>。</block>
+  <block id="b133f5ec9f6f691880079c684d878177" category="list-text">Cumulus Linux 5.11.0をインストールします。</block>
+  <block id="528379fa0d040e8e6455094df07828d8" category="list-text">Cumulus Linuxのバージョンが5.11.0であることを確認します。</block>
+  <block id="f90f747e373fe6ad78e15dd0d320ce66" category="paragraph"><block ref="9fcc1ae85aac3dbd490f575cf5eb3d52" prefix="" category="inline-code"></block></block>
+  <block id="fd5f0f669932a550ea7400efc749cfc5" category="list-text">各ノードが各スイッチに接続されていることを確認します。</block>
+  <block id="2d3e15002e9f668635d184afe49a634e" category="paragraph">詳細については、を参照してください<block ref="9fa647797c0e0305f4f3b2116b6db003" category="inline-link-rx"></block> 。</block>
 </blocks>
