@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install rcf, cisco switches, storage 
 summary: RCFは、Nexus 9336C-FX2ストレージスイッチの初回セットアップ後にインストールできます。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。 
 ---
-= リファレンス構成ファイルをインストールします
+= リファレンス構成ファイルのインストールまたはアップグレード
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

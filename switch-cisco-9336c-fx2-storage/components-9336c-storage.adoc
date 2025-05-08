@@ -4,7 +4,7 @@ permalink: switch-cisco-9336c-fx2-storage/components-9336c-storage.html
 keywords: shared storage cluster switch 
 summary: ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチシナリオに結合できます。 
 ---
-= Cisco Nexus 9336C-FX2ストレージスイッチのコンポーネントとパーツ番号
+= Cisco Nexus 9336C-FX2および9336C-FX2-Tストレージスイッチのコンポーネントとパーツ番号
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,9 +14,9 @@ summary: ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用し
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2スイッチの設置とメンテナンスについては、コンポーネントと部品番号のリストを確認してください。
+Cisco Nexus 9336C-FX2および9336C-FX2-Tストレージスイッチの設置とメンテナンスについては、コンポーネントとパーツ番号のリストを確認してください。
 
-次の表に、 9336C-FX2 スイッチ、ファン、および電源装置の部品番号と概要を示します。
+次の表に、9336C-FX2および9336C-FX2-Tストレージスイッチ、ファン、および電源装置のパーツ番号と説明を示します。
 
 [cols="1,2"]
 |===
@@ -26,28 +26,49 @@ Cisco Nexus 9336C-FX2スイッチの設置とメンテナンスについては�
  a| 
 X190200-CS-PE
  a| 
-N9K-9336C-FX2 、 CS 、 PTSX 、 36PT10/25/40/100GQSFP28
+クラスタスイッチ、N9336C 36Pt PTSX 10/25/40/100G
 
 
 
  a| 
 X190200-CS-PI
  a| 
-N9K-9336C-FX2 、 CS 、 PSIN 、 36PT10/25/40/100GQSFP28
+クラスタスイッチ、N9336C 36Pt PSIN 10/25/40/100G
+
+
+
+ a| 
+X190212-CS-PE
+ a| 
+クラスタスイッチ、N9336C 12pt（9336C-FX2-T）PTSX 10/25/40/100G
+
+
+
+ a| 
+X190212-CS-PI
+ a| 
+クラスタスイッチ、N9336C 12pt（9336C-FX2-T）PSIN 10/25/40/100G
+
+
+
+ a| 
+SW-N9K-FX2-24P-UPG
+ a| 
+SW、Cisco 9336CFX2 24ポートPODライセンス
 
 
 
  a| 
 X190210-FE-PE のこと
  a| 
-N9K-9336C 、 FTE 、 PTSX 、 36PT10/25/40/100GQSFP28
+N9K-9336C、FTE、PTSX、36PT 10/25/40/100GQSFP28
 
 
 
  a| 
 X190210-FE-PI
  a| 
-N9K-9336C 、 FTE 、 PSIN 、 36PT10/25/40/100GQSFP28
+N9K-9336C、FTE、PSIN、36PT 10/25/40/100GQSFP28
 
 
 
@@ -85,3 +106,15 @@ X-NXA-FAN-65CFM-pi
 N9K-9336C 65CFM 、ポート側吸気
 
 |===
+
+
+== Cisco SMARTライセンス
+
+Cisco Nexus 9336C-FX-Tストレージスイッチで12個を超えるポートをアクティブ化するには、Cisco Smartライセンスを購入する必要があります。Ciscoスマートライセンスは、Ciscoスマートアカウントを介して管理されます。
+
+. 必要に応じて、新しいSMARTアカウントを作成します。詳細は、を参照してください https://id.cisco.com/signin/register["新しいSMARTアカウントを作成する"^]。
+. 既存のSMARTアカウントへのアクセスをリクエストします。詳細は、を参照してください https://id.cisco.com/oauth2/default/v1/authorize?response_type=code&scope=openid%20profile%20address%20offline_access%20cci_coimemberOf%20email&client_id=cae-okta-web-gslb-01&state=s2wvKDiBja__7ylXonWrq8w-FAA&redirect_uri=https%3A%2F%2Frpfa.cloudapps.cisco.com%2Fcb%2Fsso&nonce=qO6s3cZE5ZdhC8UKMEfgE6fbu3mvDJ8PTw5jYOp6z30["既存のSMARTアカウントへのアクセスをリクエストする"^]。
+
+
+
+NOTE: SMARTライセンスを購入したら、適切なRCFをインストールして、使用可能な36個のポートをすべて有効にして設定します。

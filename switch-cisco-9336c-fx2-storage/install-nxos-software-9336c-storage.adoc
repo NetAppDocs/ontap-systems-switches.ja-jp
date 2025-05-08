@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: procedure, install, nx-os, software, nexus, cluster, switch, install the nx-os software - cisco nexus 9336c-fx2 
 summary: この手順を使用して、 Nexus 9336C-FX2 クラスタスイッチに NX-OS ソフトウェアをインストールできます。 
 ---
-= NX-OS ソフトウェアをインストールします
+= NX-OSソフトウェアのインストールまたはアップグレード
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -694,4 +694,4 @@ cluster1::*>
 
 
 .次の手順
-link:install-rcf-software-9336c-storage.html["RCFのインストール"]です。
+link:install-rcf-software-9336c-storage.html["RCFのインストールまたはアップグレード"]です。
