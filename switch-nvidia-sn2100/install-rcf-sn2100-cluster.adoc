@@ -40,6 +40,41 @@ NOTE: ログ収集専用に使用するユーザを（adminユーザに加えて
 ====
 .Cumulus Linux 4.4.3.
 --
+. クラスタスイッチを管理ネットワークに接続します。
+. 使用 `ping` Cumulus Linux と RCF をホストしているサーバーへの接続を確認するコマンド。
+. クラスタスイッチに接続されている各ノードのクラスタポートを表示します。
++
+「 network device-discovery show 」のように表示されます
+
+. 各クラスタポートの管理ステータスと動作ステータスを確認します。
++
+.. すべてのクラスタポートが正常な状態であることを確認します。
++
+「 network port show -role cluster 」のように表示されます
+
+.. すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。
++
+「 network interface show -role cluster 」のように表示されます
+
+.. クラスタが両方のクラスタスイッチの情報を表示していることを確認します。
++
+system cluster-switch show -is-monitoring enabled-operational true を使用します
+
+
+
+. クラスタLIFで自動リバートを無効にします。クラスタLIFはパートナークラスタスイッチにフェイルオーバーし、ターゲットスイッチでアップグレード手順を実行してもそのまま残ります。
++
+network interface modify -vserver Cluster -lif *-auto-revert false
+
++
+[NOTE]
+.次の点に注意してください。
+====
+** RCF をアップグレードする場合は、この手順で自動復帰を無効にする必要があります。
+** Cumulus Linux のバージョンをアップグレードしたばかりの場合は、自動復帰はすでに無効になっているため、この手順で無効にする必要はありません。
+
+
+====
 . SN2100スイッチで使用可能なインターフェイスを表示します。
 +
 [listing, subs="+quotes"]
@@ -264,11 +299,55 @@ sw2                         cluster-network    10.233.205.91    MSN2100-CB2RC
 ----
 
 
+. クラスタが正常であることを確認します。
++
+「 cluster show 」を参照してください
+
+. 2 番目のスイッチで手順 1 ～ 14 を繰り返します。
+. クラスタ LIF で自動リバートを有効にします。
++
+network interface modify -vserver Cluster -lif *-auto-revert trueを指定します
+
 
 
 --
 .Cumulus Linux 5.4.0.
 --
+. クラスタスイッチを管理ネットワークに接続します。
+. 使用 `ping` Cumulus Linux と RCF をホストしているサーバーへの接続を確認するコマンド。
+. クラスタスイッチに接続されている各ノードのクラスタポートを表示します。
++
+「 network device-discovery show 」のように表示されます
+
+. 各クラスタポートの管理ステータスと動作ステータスを確認します。
++
+.. すべてのクラスタポートが正常な状態であることを確認します。
++
+「 network port show -role cluster 」のように表示されます
+
+.. すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。
++
+「 network interface show -role cluster 」のように表示されます
+
+.. クラスタが両方のクラスタスイッチの情報を表示していることを確認します。
++
+system cluster-switch show -is-monitoring enabled-operational true を使用します
+
+
+
+. クラスタLIFで自動リバートを無効にします。クラスタLIFはパートナークラスタスイッチにフェイルオーバーし、ターゲットスイッチでアップグレード手順を実行してもそのまま残ります。
++
+network interface modify -vserver Cluster -lif *-auto-revert false
+
++
+[NOTE]
+.次の点に注意してください。
+====
+** RCF をアップグレードする場合は、この手順で自動復帰を無効にする必要があります。
+** Cumulus Linux のバージョンをアップグレードしたばかりの場合は、自動復帰はすでに無効になっているため、この手順で無効にする必要はありません。
+
+
+====
 . SN2100スイッチで使用可能なインターフェイスを表示します。
 +
 [listing, subs="+quotes"]
@@ -586,11 +665,55 @@ sw2                         cluster-network    10.233.205.91    MSN2100-CB2RC
 ----
 
 
+. クラスタが正常であることを確認します。
++
+「 cluster show 」を参照してください
+
+. 2 番目のスイッチで手順 1 ～ 14 を繰り返します。
+. クラスタ LIF で自動リバートを有効にします。
++
+network interface modify -vserver Cluster -lif *-auto-revert trueを指定します
+
 
 
 --
 .Cumulus Linux 5.11.0.
 --
+. クラスタスイッチを管理ネットワークに接続します。
+. 使用 `ping` Cumulus Linux と RCF をホストしているサーバーへの接続を確認するコマンド。
+. クラスタスイッチに接続されている各ノードのクラスタポートを表示します。
++
+「 network device-discovery show 」のように表示されます
+
+. 各クラスタポートの管理ステータスと動作ステータスを確認します。
++
+.. すべてのクラスタポートが正常な状態であることを確認します。
++
+「 network port show -role cluster 」のように表示されます
+
+.. すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。
++
+「 network interface show -role cluster 」のように表示されます
+
+.. クラスタが両方のクラスタスイッチの情報を表示していることを確認します。
++
+system cluster-switch show -is-monitoring enabled-operational true を使用します
+
+
+
+. クラスタLIFで自動リバートを無効にします。クラスタLIFはパートナークラスタスイッチにフェイルオーバーし、ターゲットスイッチでアップグレード手順を実行してもそのまま残ります。
++
+network interface modify -vserver Cluster -lif *-auto-revert false
+
++
+[NOTE]
+.次の点に注意してください。
+====
+** RCF をアップグレードする場合は、この手順で自動復帰を無効にする必要があります。
+** Cumulus Linux のバージョンをアップグレードしたばかりの場合は、自動復帰はすでに無効になっているため、この手順で無効にする必要はありません。
+
+
+====
 . SN2100スイッチで使用可能なインターフェイスを表示します。
 +
 [listing, subs="+quotes"]
@@ -907,6 +1030,15 @@ sw2                         cluster-network    10.233.205.91    MSN2100-CB2RC
     Version Source: LLDP
 ----
 
+
+. クラスタが正常であることを確認します。
++
+「 cluster show 」を参照してください
+
+. 2 番目のスイッチで手順 1 ～ 14 を繰り返します。
+. クラスタ LIF で自動リバートを有効にします。
++
+network interface modify -vserver Cluster -lif *-auto-revert trueを指定します
 
 
 

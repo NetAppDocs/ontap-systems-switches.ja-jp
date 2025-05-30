@@ -16,6 +16,24 @@ summary:
 [role="lead"]
 NX-OSソフトウェアとRCFをインストールする前に、次の手順 を実行してください。
 
+.推奨されるドキュメント
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco Ethernet Switch のページ"^]
++
+サポートされるONTAP とNX-OSのバージョンについては、スイッチの互換性の表を参照してください。
+
+* link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-guides-list.html["ソフトウェアアップグレードおよびダウングレードガイド"^]
++
+Ciscoスイッチのアップグレードおよびダウングレード手順の完全なマニュアルについては、シスコのWebサイトで入手可能な該当するソフトウェアおよびアップグレードガイドを参照してください。
+
+* link:https://www.cisco.com/c/dam/en/us/td/docs/dcn/tools/nexus-9k3k-issu-matrix/index.html["Cisco Nexus 9000および3000のアップグレードとISSUのマトリックス"^]
++
+現在のリリースとターゲット リリースに基づいて、Nexus 9000 シリーズ スイッチ上の Cisco NX-OS ソフトウェアの中断を伴うアップグレード/ダウングレードに関する情報を提供します。
+
++
+ページで、*[Disruptive Upgrade]*を選択し、ドロップダウンリストから現在のリリースとターゲットリリースを選択します。
+
+
+
 .例について
 この手順の例では、スイッチとノードで次の命名法を使用しています。
 
@@ -216,7 +234,7 @@ cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
 
           Logical
 Vserver   Interface           Auto-revert
---------- ––––––-------------- ------------
+--------- ------------------- ------------
 Cluster
           cluster1-01_clus1   true
           cluster1-01_clus2   true

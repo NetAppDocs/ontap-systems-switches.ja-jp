@@ -11,15 +11,22 @@ summary: この手順を使用して、イーサネットスイッチヘルス�
 
 
 [role="lead"]
-SNMPはスイッチの監視に使用されます。イーサネットスイッチヘルスモニタ（CSHM）は、SNMPを使用してクラスタスイッチとストレージスイッチのヘルスとパフォーマンスを監視します。デフォルトでは、SNMPv2cはリファレンス構成ファイル（RCF）を使用して自動的に設定されます。
+SNMPはスイッチの監視に使用されます。SNMPv3 による監視は、次の手順に従って設定します。
 
-SNMPv3は、認証、暗号化、メッセージ整合性などの堅牢なセキュリティ機能を備えているため、SNMPv2よりも安全です。これにより、不正アクセスから保護し、転送中のデータの機密性と整合性を確保できます。
+イーサネットスイッチヘルスモニタ（CSHM）は、SNMPを使用してクラスタスイッチとストレージスイッチのヘルスとパフォーマンスを監視します。デフォルトでは、SNMPv2cはリファレンス構成ファイル（RCF）を使用して自動的に設定されます。SNMPv3は、認証、暗号化、メッセージ整合性などの堅牢なセキュリティ機能を備えているため、SNMPv2よりも安全です。これにより、不正アクセスから保護し、転送中のデータの機密性と整合性を確保できます。
+
+[NOTE]
+====
+* SNMPv3は、ONTAP 9.12.1以降でのみサポートされます。
+* ONTAP 9.13.1P12、9.14.1P9、9.15.1P5、9.16.1 以降のバージョンでは、次の 2 つの問題が修正されています。
++
+** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-Issues/CONTAP-82891["CiscoスイッチのONTAPヘルスモニタリングでは、モニタリングをSNMPv3に切り替えた後でもSNMPv2トラフィックが引き続き表示されることがあります。"^]
+** link:https://kb.netapp.com/on-prem/ontap/OHW/OHW-Issues/CONTAP-119131["SNMP障害発生時にスイッチファンと電源の誤検知アラートを通知"^]
 
 
-NOTE: SNMPv3は、ONTAP 9.12.1以降でのみサポートされます。
 
-CSHMをサポートする特定のスイッチにSNMPv3を設定する手順は、次のとおりです。
 
+====
 .このタスクについて
 Broadcom *、Cisco *、および* NVIDIA *スイッチでSNMPv3ユーザ名を設定するには、次のコマンドを使用します。
 
@@ -134,7 +141,7 @@ DEPRECATED-Community String or SNMPv3 Username: -
 cluster1::*>
 cluster1::*> *system switch ethernet modify -device "sw1" -snmp-version SNMPv3 -community-or-username <username>*
 ----
-. 新しく作成したSNMPv3ユーザで照会するシリアル番号が、CSHMポーリング期間の完了後に前の手順で説明したものと同じであることを確認します。
+. CSHM ポーリング期間を待った後、イーサネット スイッチのシリアル番号が入力されていることを確認します。
 +
 [source, cli]
 ----
@@ -322,9 +329,9 @@ cluster1::*>
 
 
 --
-.NVIDIA - CLI 5.4
+.NVIDIA - CL 5.4.0
 --
-CLI 5.4を実行しているNVIDIA SN2100スイッチでSNMPv3ユーザ名SNMPv3_userを設定します。
+CLI 5.4.0 を実行している NVIDIA SN2100 スイッチで SNMPv3 ユーザー名 SNMPv3_USER を設定します。
 
 * 認証なし*の場合：
 +
@@ -518,9 +525,9 @@ DEPRECATED-Community String or SNMPv3 Username: -
 
 
 --
-.NVIDIA - CLI 5.11
+.NVIDIA - CL 5.11.0
 --
-CLI 5.11を実行しているNVIDIA SN2100スイッチでSNMPv3ユーザ名SNMPv3_userを設定します。
+CLI 5.11.0 を実行している NVIDIA SN2100 スイッチで SNMPv3 ユーザー名 SNMPv3_USER を設定します。
 
 * 認証なし*の場合：
 +

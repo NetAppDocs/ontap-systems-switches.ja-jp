@@ -47,81 +47,11 @@ summary: イーサネットスイッチヘルスモニタ（CSHM）のログ収�
 
 [role="tabbed-block"]
 ====
-.ONTAP 9.14.1以前
---
-. ログ収集を設定するには、スイッチごとに次のコマンドを実行します。ログ収集用のスイッチ名、ユーザ名、およびパスワードの入力を求められます。
-+
-*注：*ユーザー指定プロンプトに応答する場合は `y`、で説明されているように、ユーザーに必要な権限があることを確認してください<<作業を開始する前に>>。
-
-+
-[source, cli]
-----
-system switch ethernet log setup-password
-----
-+
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log setup-password*
-Enter the switch name: <return>
-The switch name entered is not recognized.
-Choose from the following list:
-*cs1*
-*cs2*
-
-cluster1::*> *system switch ethernet log setup-password*
-
-Enter the switch name: *cs1*
-Would you like to specify a user other than admin for log collection? {y|n}: *n*
-
-Enter the password: *<enter switch password>*
-Enter the password again: *<enter switch password>*
-
-cluster1::*> *system switch ethernet log setup-password*
-
-Enter the switch name: *cs2*
-
-Would you like to specify a user other than admin for log collection? {y|n}: *n*
-
-Enter the password: *<enter switch password>*
-Enter the password again: *<enter switch password>*
-----
-. サポートログ収集を要求し、定期収集を有効にするには、次のコマンドを実行します。これにより、詳細なログと1時間ごとのデータ収集の両方のタイプのログ収集が開始されます。 `Support` `Periodic`
-+
-[source, cli]
-----
-system switch ethernet log modify -device <switch-name> -log-request true
-----
-+
-[listing, subs="+quotes"]
-----
-cluster1::*> *system switch ethernet log modify -device cs1 -log-request true*
-
-Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
-
-Enabling cluster switch log collection.
-
-cluster1::*> *system switch ethernet log modify -device cs2 -log-request true*
-
-Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
-
-Enabling cluster switch log collection.
-----
-+
-10分待ってから、ログ収集が完了したことを確認します。
-
-+
-[source, cli]
-----
-system switch ethernet log show
-----
-
-
---
 .ONTAP 9.15.1以降
 --
 . ログ収集を設定するには、スイッチごとに次のコマンドを実行します。ログ収集用のスイッチ名、ユーザ名、およびパスワードの入力を求められます。
 +
-*注：*ユーザー指定プロンプトに応答する場合は `y`、で説明されているように、ユーザーに必要な権限があることを確認してください<<作業を開始する前に>>。
+*注意:* ユーザー指定プロンプトに「y」と答える場合は、ユーザーが以下の必要な権限を持っていることを確認してください。 <<作業を開始する前に>> 。
 
 +
 [source, cli]
@@ -155,7 +85,12 @@ Would you like to specify a user other than admin for log collection? {y|n}: *n*
 Enter the password: *<enter switch password>*
 Enter the password again: *<enter switch password>*
 ----
-. 定期的なログ収集を有効にします。
+
+
+
+NOTE: CL 5.11.1 の場合、ユーザー *cumulus* を作成し、次のプロンプトに *y* と応答します: ログ収集に admin 以外のユーザーを指定しますか? {y|n}: *y*
+
+. [[step2]]定期的なログ収集を有効にする:
 +
 [source, cli]
 ----
@@ -240,6 +175,81 @@ cluster1::*> *system switch ethernet log show -instance*
      Last Support Log Timestamp: 3/11/2024 11:18:54
            Support Log Filename: cluster1:/mroot/etc/log/shm-cluster-log.tgz
 2 entries were displayed.
+----
+
+
+--
+.ONTAP 9.14.1以前
+--
+. ログ収集を設定するには、スイッチごとに次のコマンドを実行します。ログ収集用のスイッチ名、ユーザ名、およびパスワードの入力を求められます。
++
+*注：*ユーザー指定プロンプトに応答する場合は `y`、で説明されているように、ユーザーに必要な権限があることを確認してください<<作業を開始する前に>>。
+
++
+[source, cli]
+----
+system switch ethernet log setup-password
+----
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet log setup-password*
+Enter the switch name: <return>
+The switch name entered is not recognized.
+Choose from the following list:
+*cs1*
+*cs2*
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *cs1*
+Would you like to specify a user other than admin for log collection? {y|n}: *n*
+
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
+
+cluster1::*> *system switch ethernet log setup-password*
+
+Enter the switch name: *cs2*
+
+Would you like to specify a user other than admin for log collection? {y|n}: *n*
+
+Enter the password: *<enter switch password>*
+Enter the password again: *<enter switch password>*
+----
+
+
+
+NOTE: CL 5.11.1 の場合、ユーザー *cumulus* を作成し、次のプロンプトに *y* と応答します: ログ収集に admin 以外のユーザーを指定しますか? {y|n}: *y*
+
+. [[step2]] サポートログの収集を要求し、定期的な収集を有効にするには、次のコマンドを実行します。これにより、詳細なログと1時間ごとのデータ収集の両方のタイプのログ収集が開始されます。 `Support` `Periodic`
++
+[source, cli]
+----
+system switch ethernet log modify -device <switch-name> -log-request true
+----
++
+[listing, subs="+quotes"]
+----
+cluster1::*> *system switch ethernet log modify -device cs1 -log-request true*
+
+Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
+
+Enabling cluster switch log collection.
+
+cluster1::*> *system switch ethernet log modify -device cs2 -log-request true*
+
+Do you want to modify the cluster switch log collection configuration? {y|n}: [n] *y*
+
+Enabling cluster switch log collection.
+----
++
+10分待ってから、ログ収集が完了したことを確認します。
+
++
+[source, cli]
+----
+system switch ethernet log show
 ----
 
 

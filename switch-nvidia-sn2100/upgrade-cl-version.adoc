@@ -42,8 +42,34 @@ CAUTION: cumulusユーザーアカウントのデフォルトパスワードは*
 .手順
 [role="tabbed-block"]
 ====
-.Cumulus Linux 4.4.xからCumulus Linux 5.xへ
+.Cumulus Linux 4.4.x から Cumulus Linux 5.4.0
 --
+. クラスタスイッチを管理ネットワークに接続します。
+. ping コマンドを使用して、Cumulus Linux と RCF をホストしているサーバーへの接続を確認します。
+. クラスタスイッチに接続されている各ノードのクラスタポートを表示します。
++
+「 network device-discovery show 」のように表示されます
+
+. 各クラスタポートの管理ステータスと動作ステータスを確認します。
++
+.. すべてのクラスタポートが正常な状態であることを確認します。
++
+「 network port show -role cluster 」のように表示されます
+
+.. すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。
++
+「 network interface show -role cluster 」のように表示されます
+
+.. クラスタが両方のクラスタスイッチの情報を表示していることを確認します。
++
+system cluster-switch show -is-monitoring enabled-operational true を使用します
+
+
+
+. クラスタLIFで自動リバートを無効にします。クラスタLIFはパートナークラスタスイッチにフェイルオーバーし、ターゲットスイッチでアップグレード手順を実行してもそのまま残ります。
++
+network interface modify -vserver Cluster -lif *-auto-revert false
+
 . Cumulus Linuxの現在のバージョンと接続されているポートを確認します。
 +
 [listing, subs="+quotes"]
@@ -81,7 +107,7 @@ UP     swp6    100G  9216   Trunk/L2    SHFFG1826000102 (e0b)   Master: bridge(U
 .
 .
 ----
-. Cumulux Linux 5.xイメージのダウンロード：tmp
+. Cumulux Linux 5.4.0イメージをダウンロードします。
 +
 [listing, subs="+quotes"]
 ----
@@ -250,8 +276,34 @@ cumulus@sw1:mgmt:~$ *sudo adduser admin nvshow*
 
 
 --
-.Cumulus Linux 5.xからCumulus Linux 5.xへ
+.Cumulus Linux 5.x から Cumulus Linux 5.4.0 へ
 --
+. クラスタスイッチを管理ネットワークに接続します。
+. ping コマンドを使用して、Cumulus Linux と RCF をホストしているサーバーへの接続を確認します。
+. クラスタスイッチに接続されている各ノードのクラスタポートを表示します。
++
+「 network device-discovery show 」のように表示されます
+
+. 各クラスタポートの管理ステータスと動作ステータスを確認します。
++
+.. すべてのクラスタポートが正常な状態であることを確認します。
++
+「 network port show -role cluster 」のように表示されます
+
+.. すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。
++
+「 network interface show -role cluster 」のように表示されます
+
+.. クラスタが両方のクラスタスイッチの情報を表示していることを確認します。
++
+system cluster-switch show -is-monitoring enabled-operational true を使用します
+
+
+
+. クラスタLIFで自動リバートを無効にします。クラスタLIFはパートナークラスタスイッチにフェイルオーバーし、ターゲットスイッチでアップグレード手順を実行してもそのまま残ります。
++
+network interface modify -vserver Cluster -lif *-auto-revert false
+
 . Cumulus Linuxの現在のバージョンと接続されているポートを確認します。
 +
 [listing, subs="+quotes"]
@@ -449,6 +501,173 @@ cumulus@sw1:mgmt:~$ *sudo adduser admin nvshow*
 
 
 --
+.Cumulus Linux 5.4.0 から Cumulus Linux 5.11.0
+--
+. クラスタスイッチを管理ネットワークに接続します。
+. ping コマンドを使用して、Cumulus Linux と RCF をホストしているサーバーへの接続を確認します。
+. クラスタスイッチに接続されている各ノードのクラスタポートを表示します。
++
+「 network device-discovery show 」のように表示されます
+
+. 各クラスタポートの管理ステータスと動作ステータスを確認します。
++
+.. すべてのクラスタポートが正常な状態であることを確認します。
++
+「 network port show -role cluster 」のように表示されます
+
+.. すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。
++
+「 network interface show -role cluster 」のように表示されます
+
+.. クラスタが両方のクラスタスイッチの情報を表示していることを確認します。
++
+system cluster-switch show -is-monitoring enabled-operational true を使用します
+
+
+
+. クラスタLIFで自動リバートを無効にします。クラスタLIFはパートナークラスタスイッチにフェイルオーバーし、ターゲットスイッチでアップグレード手順を実行してもそのまま残ります。
++
+network interface modify -vserver Cluster -lif *-auto-revert false
+
+. Cumulus Linuxの現在のバージョンと接続されているポートを確認します。
++
+[listing, subs="+quotes"]
+----
+admin@sw1:mgmt:~$ *nv show system*
+                    operational          applied
+------------------- -------------------- -----------------
+hostname            cumulus              cumulus
+build               Cumulus Linux 5.4.0
+uptime              6 days, 8:37:36
+timezone            Etc/UTC
+
+admin@sw1:mgmt:~$ *nv show interface*
+Interface     MTU   Speed State Remote Host         Remote Port- Type      Summary
+------------- ----- ----- ----- ------------------- ------------ --------- -------------
++ cluster_isl 9216  200G  up                                      bond
++ eth0        1500  100M  up    mgmt-sw1            Eth105/1/14   eth       IP Address: 10.231.80 206/22
+  eth0                                                                      IP Address: fd20:8b1e:f6ff:fe31:4a0e/64
++ lo          65536       up                                      loopback  IP Address: 127.0.0.1/8
+  lo                                                                        IP Address: ::1/128
++ swp1s0      9216 10G    up cluster01                e0b         swp
+.
+.
+.
++ swp15      9216 100G    up sw2                      swp15       swp
++ swp16      9216 100G    up sw2                      swp16       swp
+----
+. Cumulux Linux 5.11.0イメージをダウンロードします。
++
+[listing, subs="+quotes"]
+----
+admin@sw1:mgmt:~$ *sudo onie-install -a -i http://_<ip-to-webserver>_/path/to/cumulus-linux-5.11.0-mlx-amd64.bin*
+[sudo] password for cumulus:
+Fetching installer: http://_<ip-to-webserver>_/path/to/cumulus-linux-5.11.0-mlx-amd64.bin
+Downloading URL: http://_<ip-to-webserver>_/path/to/cumulus-linux-5.11.0-mlx-amd64.bin
+######################################################################### 100.0%
+Success: HTTP download complete.
+EFI variables are not supported on this system
+Warning: SecureBoot is not available.
+Image is signed.
+.
+.
+.
+Staging installer image...done.
+WARNING:
+WARNING: Activating staged installer requested.
+WARNING: This action will wipe out all system data.
+WARNING: Make sure to back up your data.
+WARNING:
+Are you sure (y/N)? *y*
+Activating staged installer...done.
+Reboot required to take effect.
+----
+. スイッチをリブートします。
++
+[listing, subs="+quotes"]
+----
+admin@sw1:mgmt:~$ *sudo reboot*
+----
+. パスワードを変更します。
++
+[listing, subs="+quotes"]
+----
+cumulus login: *cumulus*
+Password:
+You are required to change your password immediately (administrator enforced)
+Changing password for cumulus.
+Current password: *cumulus*
+New password: *<new_password>*
+Retype new password: *<new_password>*
+Linux cumulus 5.11.0-cl-1-amd64 #1 SMP Debian 5.10.162-1+cl5.4.0u1 (2023-01-20) x86_64
+
+Welcome to NVIDIA Cumulus (R) Linux (R)
+
+ZTP in progress. To disable, do 'ztp -d'
+----
+. Cumulus Linuxのバージョンを確認します。 `nv show system`
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv show system*
+operational    applied
+-------------- ----------------
+hostname       cumulus cumulus
+build          Cumulus Linux 5.11.0
+uptime         14:07:08
+timezone       Etc/UTC
+----
+. ホスト名を変更します。
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *nv set system hostname sw1*
+cumulus@cumulus:mgmt:~$ *nv config apply*
+Warning: The following files have been changed since the last save, and they WILL be overwritten.
+- /etc/nsswitch.conf
+- /etc/synced/synced.conf
+.
+.
+----
+. ログアウトして再度スイッチにログインすると、プロンプトに更新されたスイッチ名が表示されます。
++
+[listing, subs="+quotes"]
+----
+cumulus@cumulus:mgmt:~$ *exit*
+logout
+
+Debian GNU/Linux 10 cumulus ttyS0
+
+cumulus login: *cumulus*
+Password:
+Last login: Tue Dec 15 21:43:13 UTC 2020 on ttyS0
+Linux cumulus 5.11.0-cl-1-amd64 #1 SMP Debian 5.10.162-1+cl5.4.0u1 (2023-01-20) x86_64
+
+Welcome to NVIDIA Cumulus (R) Linux (R)
+
+
+ZTP in progress. To disable, do 'ztp -d'
+
+cumulus@sw1:mgmt:~$
+----
+. IPアドレスを設定します。
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:mgmt:~$ *nv unset interface eth0 ip address dhcp*
+cumulus@sw1:mgmt:~$ *nv set interface eth0 ip address 10.231.80.206/22*
+cumulus@sw1:mgmt:~$ *nv set interface eth0 ip gateway 10.231.80.1*
+cumulus@sw1:mgmt:~$ *nv config apply*
+applied [rev_id: 2]
+cumulus@sw1:mgmt:~$ *ip route show vrf mgmt*
+default via 10.231.80.1 dev eth0 proto kernel
+unreachable default metric 4278198272
+10.231.80.0/22 dev eth0 proto kernel scope link src 10.231.80.206
+127.0.0.0/8 dev mgmt proto kernel scope link src 127.0.0.1
+----
+
+
+--
 ====
 .次の手順
-link:install-rcf-sn2100-cluster.html["リファレンス構成ファイル（RCF）スクリプトをインストールします"]。
+link:install-rcf-sn2100-cluster.html["RCFスクリプトのインストールまたはアップグレード"]です。

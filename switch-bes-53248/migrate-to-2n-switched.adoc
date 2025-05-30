@@ -97,7 +97,7 @@ NOTE: AutoSupport メッセージはテクニカルサポートにこのメン�
 +
 [listing]
 ----
-cluster1::*> system node autosupport invoke -node \* -type all -message MAINT=2h
+cluster1::*> system node autosupport invoke -node * -type all -message MAINT=2h
 ----
 . 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 * y * 」と入力します。
 +
@@ -635,7 +635,7 @@ RPC status:
 ====
 [listing]
 ----
-cluster1::*> system node autosupport invoke -node \* -type all -message MAINT=END
+cluster1::*> system node autosupport invoke -node * -type all -message MAINT=END
 ----
 ====
 +
