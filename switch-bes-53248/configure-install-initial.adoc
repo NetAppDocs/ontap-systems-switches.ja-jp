@@ -66,25 +66,40 @@ Password:
 (Routing)# *hostname cs2*
 (cs2)#
 ----
-. 静的 IP アドレスを設定するには、例に示すように、「サービスポートプロトコル」、「ネットワークプロトコル」、および「サービスポート IP 」コマンドを使用します。
-+
+. スイッチのサービス ポートに静的 IPv4 または IPv6 管理アドレスを設定するには、次の手順を実行します。
+
+
+[role="tabbed-block"]
+====
+.IPv4
+--
 デフォルトでは、サービスポートは DHCP を使用するように設定されています。IP アドレス、サブネットマスク、およびデフォルトゲートウェイアドレスが自動的に割り当てられます。
 
-+
 [listing, subs="+quotes"]
 ----
 (cs2)# *serviceport protocol none*
 (cs2)# *network protocol none*
-(cs2)# *serviceport ip ipaddr netmask gateway*
+(cs2)# *serviceport ip <ip-address> <netmask> <gateway>*
 ----
-. 次のコマンドを使用して結果を確認します。
+--
+.IPv6
+--
+デフォルトでは、サービスポートは DHCP を使用するように設定されています。IP アドレス、サブネットマスク、およびデフォルトゲートウェイアドレスが自動的に割り当てられます。
+
+[listing, subs="+quotes"]
+----
+(cs2)# *serviceport protocol none*
+(cs2)# *network protocol none*
+(cs2)# *serviceport ipv6 <address>*
+(cs2)# *serviceport ipv6 <gateway>*
+----
+--
+====
+. [[step7]]次のコマンドを使用して結果を確認します。
 +
 'How serviceport
 
 +
-.例を示します
-[%collapsible]
-====
 [listing, subs="+quotes"]
 ----
 (cs2)# *show serviceport*
@@ -100,7 +115,6 @@ Configured IPv6 Protocol....................... None
 IPv6 AutoConfig Mode........................... Disabled
 Burned In MAC Address.......................... D8:C4:97:71:12:3C
 ----
-====
 . ドメインとネームサーバを設定します。
 +
 [source, cli]

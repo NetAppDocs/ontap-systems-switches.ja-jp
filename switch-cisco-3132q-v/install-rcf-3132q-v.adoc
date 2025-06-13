@@ -206,9 +206,17 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert fals
 +
 [listing, subs="+quotes"]
 ----
+cs2> *enable*
+cs2# *configure*
 cs2(config)# *interface eth1/1/1-2,eth1/7-8*
 cs2(config-if-range)# *shutdown*
+cs2(config-if-range)# *exit*
+cs2# *exit*
 ----
++
+
+NOTE: 表示されるポートの数は、クラスター内のノードの数によって異なります。
+
 . クラスタポートがクラスタスイッチ cs1 でホストされているポートに移行されていることを確認します。これには数秒かかることがあります。
 +
 「 network interface show -vserver Cluster 」のように表示されます
@@ -570,10 +578,18 @@ NOTE: クラスタノードが正常であると報告されるまでに最大5�
 ====
 [listing, subs="+quotes"]
 ----
+cs1> *enable*
+cs1# *configure*
 cs1(config)# *interface eth1/1/1-2,eth1/7-8*
 cs1(config-if-range)# *shutdown*
+cs1(config-if-range)# *exit*
+cs1# *exit*
 ----
 ====
++
+
+NOTE: 表示されるポートの数は、クラスター内のノードの数によって異なります。
+
 . クラスタ LIF がスイッチ cs2 でホストされているポートに移行されたことを確認します。これには数秒かかることがあります。
 +
 「 network interface show -vserver Cluster 」のように表示されます
