@@ -5320,4 +5320,11 @@
   <block id="fdb7cb8f657426e7c409bfd6d1a36ce4" category="open-title">IPv6</block>
   <block id="eac292441a720b0a0f4b67dcb9db6398" category="list-text">[[step7]]次のコマンドを使用して結果を確認します。</block>
   <block id="c946088bdd01d4ceb54099911c69adbe" category="admonition">表示されるポートの数は、クラスター内のノードの数によって異なります。</block>
+  <block id="bfa3caeccd381a6edc0d03bcf593415d" category="paragraph">ONTAP 9.3 以降では、スイッチ クラスタ ネットワークを持つクラスタから、2 つのノードが直接接続されたクラスタに移行できます。</block>
+  <block id="c9a6054069261a928a7c1dab82eb88fe" category="paragraph">NetApp では、Cisco Nexus 3132Q-V スイッチのスイッチド クラスタからスイッチレス クラスタへの操作を進める前に、ONTAP バージョンを更新することをお勧めします。</block>
+  <block id="144a250e90b7036b16f6df3cfd1f5f99" category="paragraph">詳細については、次を参照してください。</block>
+  <block id="87f018a0abede0248ff577d1557531c0" category="inline-link-macro">SU540: 40Gから100Gネットワークスイッチにアップグレードすると、Chelsio T6 NICエラーによりシステムがシャットダウンする</block>
+  <block id="de7ffa00f75520afd4312c03db0da03c" category="list-text"><block ref="de7ffa00f75520afd4312c03db0da03c" category="inline-link-macro-rx"></block></block>
+  <block id="c409f8a3c1a31991297c71a6ef92dff2" category="inline-link-macro">スイッチドクラスタからスイッチレスクラスタへの移行後のノードパニック</block>
+  <block id="55f49c71e99a86d3514c015252eee468" category="list-text"><block ref="55f49c71e99a86d3514c015252eee468" category="inline-link-macro-rx"></block></block>
 </blocks>
