@@ -407,7 +407,7 @@ Step 13: Reboot the switch
 
 +
 
-NOTE: 上記の手順3 * MOTDファイルの更新*で、コマンドを実行します `cat /etc/issue` を実行します。これにより、RCFのファイル名、RCFのバージョン、使用するポート、およびその他の重要な情報をRCFバナーで確認できます。
+NOTE: 上記の手順3 *MOTDファイルの更新*では、コマンド `cat /etc/issue.net`が実行されます。これにより、RCFのファイル名、RCFのバージョン、使用するポート、およびその他の重要な情報をRCFバナーで確認できます。
 
 +
 例：
@@ -415,7 +415,7 @@ NOTE: 上記の手順3 * MOTDファイルの更新*で、コマンドを実行�
 +
 [listing]
 ----
-admin@sw1:mgmt:~$ cat /etc/issue
+admin@sw1:mgmt:~$ cat /etc/issue.net
 ******************************************************************************
 *
 * NetApp Reference Configuration File (RCF)
@@ -773,7 +773,7 @@ Step 13: Reboot the switch
 
 +
 
-NOTE: 上記の手順3 * MOTDファイルの更新*で、コマンドを実行します `cat /etc/issue` を実行します。これにより、RCFのファイル名、RCFのバージョン、使用するポート、およびその他の重要な情報をRCFバナーで確認できます。
+NOTE: 上記のステップ 3 *MOTD ファイルの更新* では、コマンド `cat /etc/issue.net が実行されます。これにより、RCFのファイル名、RCFのバージョン、使用するポート、およびその他の重要な情報をRCFバナーで確認できます。
 
 +
 例：
@@ -781,7 +781,7 @@ NOTE: 上記の手順3 * MOTDファイルの更新*で、コマンドを実行�
 +
 [listing]
 ----
-admin@sw1:mgmt:~$ cat /etc/issue
+admin@sw1:mgmt:~$ cat /etc/issue.net
 ******************************************************************************
 *
 * NetApp Reference Configuration File (RCF)

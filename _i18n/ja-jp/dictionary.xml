@@ -4149,7 +4149,6 @@
   <block id="88948f2b657a3c9e5eec3736dcca6cdf" category="paragraph">100GbE ISL経由でスイッチAポート35</block>
   <block id="56299051abd1af0cbe5dbee773fed3d5" category="paragraph">100GbE ISL経由でスイッチBポート36</block>
   <block id="5e596a6e5f0ffe0604d651cde90e34f0" category="paragraph">100GbE ISL経由でスイッチAポート36</block>
-  <block id="b6deba442a3eaadb05f02285eb6e8113" category="admonition">キーを変更する前にSSHが無効になっていることを確認してください。無効になっていると、スイッチに警告が表示されます。</block>
   <block id="19d577c8c5ac871bd4528e45b94e3215" category="paragraph">40 / 100GbEノード7</block>
   <block id="6eabf22260c7ae80ec5e2274e9c4f09e" category="paragraph">40 / 100GbEノード8</block>
   <block id="bea5a6b9eaf26fd0f9b528724d800b60" category="paragraph">40 / 100GbEノード9</block>
@@ -5327,4 +5326,8 @@
   <block id="de7ffa00f75520afd4312c03db0da03c" category="list-text"><block ref="de7ffa00f75520afd4312c03db0da03c" category="inline-link-macro-rx"></block></block>
   <block id="c409f8a3c1a31991297c71a6ef92dff2" category="inline-link-macro">スイッチドクラスタからスイッチレスクラスタへの移行後のノードパニック</block>
   <block id="55f49c71e99a86d3514c015252eee468" category="list-text"><block ref="55f49c71e99a86d3514c015252eee468" category="inline-link-macro-rx"></block></block>
+  <block id="a9a5bde505ea573688279b9aed85b83d" category="paragraph">SSH が無効になっていない場合は、次のように無効にします。</block>
+  <block id="1991f73b95765ab4d1861d2717ed45f2" category="admonition">キーを変更する前に必ず SSH を無効にしてください。そうしないと、スイッチで警告が報告されます。</block>
+  <block id="5046b85a70c9d571be19e2a0283d236b" category="admonition">上記の手順3 *MOTDファイルの更新*では、コマンド<block ref="633fe61df4a2e20028fd063d6108557f" prefix=" " category="inline-code"></block>が実行されます。これにより、RCFのファイル名、RCFのバージョン、使用するポート、およびその他の重要な情報をRCFバナーで確認できます。</block>
+  <block id="1767f5d7b100e3d4d6c5fea66216a39c" category="admonition">上記のステップ 3 *MOTD ファイルの更新* では、コマンド `cat /etc/issue.net が実行されます。これにより、RCFのファイル名、RCFのバージョン、使用するポート、およびその他の重要な情報をRCFバナーで確認できます。</block>
 </blocks>

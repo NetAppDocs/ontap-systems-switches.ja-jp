@@ -40,6 +40,23 @@ SSH Public Key Authentication Mode: ........... Disabled
 SCP server Administrative Mode: ............... Disabled
 ----
 ====
++
+SSH が無効になっていない場合は、次のように無効にします。
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(switch)# *ip ssh server disable*
+(switch)# *ip scp server disable*
+----
+====
++
+
+WARNING: キーを変更する前に必ず SSH を無効にしてください。そうしないと、スイッチで警告が報告されます。
+
 . SSH キーを生成します。
 +
 `crypto key generate`
@@ -82,10 +99,6 @@ Config file 'startup-config' created successfully.
 Configuration Saved!
 ----
 ====
-+
-
-WARNING: キーを変更する前にSSHが無効になっていることを確認してください。無効になっていると、スイッチに警告が表示されます。
-
 . SSHキーを暗号化します（* FIPSモードのみ*）。
 +
 
@@ -167,4 +180,4 @@ SCP server Administrative Mode: ............... Enabled
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]
