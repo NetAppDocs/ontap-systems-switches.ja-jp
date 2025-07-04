@@ -5330,4 +5330,6 @@
   <block id="1991f73b95765ab4d1861d2717ed45f2" category="admonition">キーを変更する前に必ず SSH を無効にしてください。そうしないと、スイッチで警告が報告されます。</block>
   <block id="5046b85a70c9d571be19e2a0283d236b" category="admonition">上記の手順3 *MOTDファイルの更新*では、コマンド<block ref="633fe61df4a2e20028fd063d6108557f" prefix=" " category="inline-code"></block>が実行されます。これにより、RCFのファイル名、RCFのバージョン、使用するポート、およびその他の重要な情報をRCFバナーで確認できます。</block>
   <block id="1767f5d7b100e3d4d6c5fea66216a39c" category="admonition">上記のステップ 3 *MOTD ファイルの更新* では、コマンド `cat /etc/issue.net が実行されます。これにより、RCFのファイル名、RCFのバージョン、使用するポート、およびその他の重要な情報をRCFバナーで確認できます。</block>
+  <block id="86f7f66cb381cc46fe300e0c2c8f0499" category="inline-link-macro">NTPサーバーの構成がNVIDIA SN2100スイッチで機能しない</block>
+  <block id="c77e68e056a1f231532a65076ed213f7" category="paragraph">ナレッジベースの記事を参照してください<block ref="54a4a8d8880601232d1c62bd5f55e05a" category="inline-link-macro-rx"></block>詳細についてはこちらをご覧ください。</block>
 </blocks>

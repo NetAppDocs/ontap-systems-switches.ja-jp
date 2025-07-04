@@ -377,10 +377,14 @@ cumulus@sw1:~$ *sudo hwclock -w*
 +
 [listing, subs="+quotes"]
 ----
-cumulus@sw1:~$ *nv set service ntp default server _<cumulus.network.ntp.org>_ iburst on*
+cumulus@sw1:~$ *nv set service ntp mgmt listen eth0*
+cumulus@sw1:~$ *nv set service ntp mgmt server <server> iburst on*
 cumulus@sw1:~$ *nv config apply*
 cumulus@sw1:~$ *nv config save*
 ----
++
+ナレッジベースの記事を参照してくださいlink:https://kb.netapp.com/on-prem/Switches/Nvidia-KBs/NTP_Server_configuration_is_not_working_with_NVIDIA_SN2100_Switches["NTPサーバーの構成がNVIDIA SN2100スイッチで機能しない"^]詳細についてはこちらをご覧ください。
+
 .. がシステムで実行されていることを確認し `ntpd`ます。
 +
 [listing, subs="+quotes"]
@@ -615,10 +619,14 @@ cumulus@sw1:~$ *sudo hwclock -w*
 +
 [listing, subs="+quotes"]
 ----
-cumulus@sw1:~$ *nv set service ntp default server _<cumulus.network.ntp.org>_ iburst on*
+cumulus@sw1:~$ *nv set service ntp mgmt listen eth0*
+cumulus@sw1:~$ *nv set service ntp mgmt server <server> iburst on*
 cumulus@sw1:~$ *nv config apply*
 cumulus@sw1:~$ *nv config save*
 ----
++
+ナレッジベースの記事を参照してくださいlink:https://kb.netapp.com/on-prem/Switches/Nvidia-KBs/NTP_Server_configuration_is_not_working_with_NVIDIA_SN2100_Switches["NTPサーバーの構成がNVIDIA SN2100スイッチで機能しない"^]詳細についてはこちらをご覧ください。
+
 .. がシステムで実行されていることを確認し `ntpd`ます。
 +
 [listing, subs="+quotes"]
