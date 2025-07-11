@@ -265,6 +265,20 @@ cluster1::*>
 +
 `switch# show run | section "switchname" >> bootflash:write_erase.cfg`
 
+. RCF バージョン 1.12 以降の場合は、次のコマンドを実行します。
++
+`switch# echo "hardware access-list tcam region ing-racl 1024" >> bootflash:write_erase.cfg`
+
++
+`switch# echo "hardware access-list tcam region egr-racl 1024" >> bootflash:write_erase.cfg`
+
++
+`switch# echo "hardware access-list tcam region ing-l2-qos 1280" >> bootflash:write_erase.cfg`
+
+. write_erase.cfg ファイルが期待どおりに入力されていることを確認します。
++
+`show file bootflash:write_erase.cfg`
+
 . 問題write eraseコマンドを使用して、現在保存されている設定を消去します。
 +
 `switch# write erase`
@@ -529,7 +543,7 @@ cluster1-04          true     true          false
 cluster1::*>
 ----
 ====
-. スイッチcs2で手順1~18を繰り返します。
+. スイッチcs2で手順1 ~ 20を繰り返します。
 . クラスタ LIF で自動リバートを有効にします。
 +
 `cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True*`

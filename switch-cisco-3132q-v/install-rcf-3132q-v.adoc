@@ -417,7 +417,6 @@ NOTE: RCFのアップグレード後に10GbEポートをオンラインにする
 
 
 
-. 以前のカスタマイズをスイッチの設定に再適用します。link:cabling-considerations-3132q-v.html["ケーブル接続と構成に関する考慮事項を確認"]必要なその他の変更の詳細については、を参照してください。
 . RCF のバージョンとスイッチの設定が正しいことを確認したら、 running-config ファイルを startup-config ファイルにコピーします。
 +
 Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
@@ -453,6 +452,7 @@ cs2# copy Nexus_3132QV_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-comm
 cs2# copy running-config startup-config [########################################] 100% Copy complete
 ----
 ====
+. 以前のカスタマイズをスイッチの設定に再適用します。link:cabling-considerations-3132q-v.html["ケーブル接続と構成に関する考慮事項を確認"]必要なその他の変更の詳細については、を参照してください。
 . クラスタのクラスタポートの健常性を確認します。
 +
 .. クラスタポートが起動しており、クラスタ内のすべてのノードで正常に動作していることを確認します。
