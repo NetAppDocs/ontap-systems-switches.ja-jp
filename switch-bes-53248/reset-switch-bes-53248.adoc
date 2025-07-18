@@ -1,0 +1,59 @@
+---
+permalink: switch-bes-53248/reset-switch-bes-53248.html 
+sidebar: sidebar 
+keywords: BES-53248 reset switch to factory defaults, BES-53248 switches configuration, efos 
+summary: Broadcom BES-53248スイッチを設定する前に、次の情報を確認してください。 
+---
+= BES-53248クラスタスイッチを工場出荷時のデフォルトにリセットします
+:allow-uri-read: 
+
+
+[role="lead"]
+BES-53248 クラスタ スイッチを工場出荷時のデフォルトにリセットするには、BES-53248 スイッチの設定を消去する必要があります。
+
+.このタスクについて
+* シリアル コンソールを使用してスイッチに接続する必要があります。
+* このタスクでは、管理ネットワークの設定をリセットします。
+
+
+.手順
+. 管理者特権のコマンド プロンプトに変更します。
++
+[listing, subs="+quotes"]
+----
+(cs2)> *enable*
+(cs2)#
+----
+. スタートアップ コンフィギュレーションを消去します。
++
+`erase startup-config`
+
++
+[listing, subs="+quotes"]
+----
+(cs2)# *erase startup-config*
+
+Are you sure you want to clear the configuration? (y/n) *y*
+----
+. スイッチをリブートします。
++
+[listing, subs="+quotes"]
+----
+(cs2)# *reload*
+Are you sure you would like to reset the system? (y/n) *y*
+----
+
+
+
+NOTE: スイッチをリロードする前に、未保存または変更された設定を保存するかどうかを確認するメッセージが表示された場合は、 *No* を選択します。
+
+. [[step4]] スイッチがリロードされるのを待ってから、スイッチにログインします。
++
+デフォルトのユーザーは「admin」で、パスワードは設定されていません。次のようなプロンプトが表示されます。
+
++
+[listing]
+----
+(Routing)>
+----
+

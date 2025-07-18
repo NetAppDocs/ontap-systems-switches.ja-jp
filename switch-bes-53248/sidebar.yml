@@ -37,6 +37,8 @@ entries:
     url: "/switch-bes-53248/configure-install-rcf.html"
   - title: ログ収集のSSHを有効にする
     url: "/switch-bes-53248/configure-ssh.html"
+  - title: スイッチを工場出荷時の状態にリセットする
+    url: "/switch-bes-53248/reset-switch-bes-53248.html"
 - title: スイッチのアップグレード
   pdf-filename: upgrade_switches_bes53248
   entries:
