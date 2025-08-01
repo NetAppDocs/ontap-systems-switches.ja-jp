@@ -122,3 +122,6 @@ Cisco Nexus 9336C-FX-Tクラスタスイッチで12個を超えるポートを�
 
 
 NOTE: SMARTライセンスを購入したら、適切なRCFをインストールして、使用可能な36個のポートをすべて有効にして設定します。
+
+.次の手順
+link:required-documentation-9336c-cluster.html["必要なドキュメント"] 。

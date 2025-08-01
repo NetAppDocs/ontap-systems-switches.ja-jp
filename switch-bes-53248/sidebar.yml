@@ -5,7 +5,7 @@ entries:
 - title: 概要
   pdf-filename: 概要_bes53248
   entries:
-  - title: 設定の概要
+  - title: クイックスタート
     url: "/switch-bes-53248/configure-new-switch-overview.html"
   - title: 設定要件
     url: "/switch-bes-53248/configure-reqs-bes53248.html"
@@ -16,18 +16,20 @@ entries:
 - title: ハードウェアを設置
   pdf-filename: install_hardware_bes53248
   entries:
-  - title: スイッチを取り付けます
+  - title: ハードウェアインストールワークフロー
+    url: "/switch-bes-53248/install-hardware-workflow.html"
+  - title: スイッチを設置します
     url: "/switch-bes-53248/install-hardware-bes53248.html"
-  - title: スイッチを設定します
-    url: "/switch-bes-53248/configure-install-initial.html"
   - title: ケーブル接続と構成を確認
     url: "/switch-bes-53248/cabling-considerations-bes-53248.html"
-- title: ソフトウェアを設定します
+- title: ソフトウェアの設定
   pdf-filename: configure_software_bes53248
   entries:
   - title: ソフトウェアのインストールワークフロー
     url: "/switch-bes-53248/configure-software-overview-bes53248.html"
-  - title: EFOSソフトウェアをインストールします
+  - title: スイッチを設定します
+    url: "/switch-bes-53248/configure-install-initial.html"
+  - title: EFOS ソフトウェアをインストールします
     url: "/switch-bes-53248/configure-efos-software.html"
   - title: EFOS 3.12以降のRCFとライセンスファイルのインストール
     url: "/switch-bes-53248/efos-install-rcf-license-file.html"
@@ -39,10 +41,10 @@ entries:
     url: "/switch-bes-53248/configure-ssh.html"
   - title: スイッチを工場出荷時の状態にリセットする
     url: "/switch-bes-53248/reset-switch-bes-53248.html"
-- title: スイッチのアップグレード
+- title: スイッチをアップグレードする
   pdf-filename: upgrade_switches_bes53248
   entries:
-  - title: アップグレードの概要
+  - title: アップグレード ワークフロー
     url: "/switch-bes-53248/upgrade-switch-overview.html"
   - title: EFOSバージョンのアップグレード
     url: "/switch-bes-53248/upgrade-efos-software.html"
@@ -50,14 +52,14 @@ entries:
     url: "/switch-bes-53248/upgrade-rcf.html"
   - title: アップグレードゴノクラスタノカクニン
     url: "/switch-bes-53248/replace-verify.html"
-- title: スイッチを移行
+- title: スイッチを移行します
   pdf-filename: migrate_switches_bes53248
   entries:
   - title: CN1610スイッチからの移行
     url: "/switch-bes-53248/migrate-cn1610.html"
   - title: 2ノードスイッチへの移行
     url: "/switch-bes-53248/migrate-to-2n-switched.html"
-- title: スイッチを交換します
+- title: スイッチを交換する
   pdf-filename: replace_switches_bes53248
   entries:
   - title: 交換に際しての要件

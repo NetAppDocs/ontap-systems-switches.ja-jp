@@ -5,7 +5,7 @@ entries:
 - title: 概要
   pdf-filename: 概要_3132q-v
   entries:
-  - title: 設定の概要
+  - title: クイックスタート
     url: "/switch-cisco-3132q-v/install-overview-cisco-3132qv.html"
   - title: 設定要件
     url: "/switch-cisco-3132q-v/configure-reqs-3132q.html"
@@ -16,10 +16,12 @@ entries:
 - title: ハードウェアを設置
   pdf-filename: INSTALL_HARDWARE_3132q -v
   entries:
+  - title: ハードウェアインストールワークフロー
+    url: "/switch-cisco-3132q-v/install-hardware-workflow.html"
   - title: ケーブル接続ワークシートに記入
     url: "/switch-cisco-3132q-v/setup_worksheet_3132q.html"
-  - title: スイッチを設定します
-    url: "/switch-cisco-3132q-v/setup-switch.html"
+  - title: スイッチを設置します
+    url: "/switch-cisco-3132q-v/install-switch-3132qv.html"
   - title: ネットアップキャビネットにスイッチを設置
     url: "/switch-cisco-3132q-v/install-cisco-nexus-3132qv.html"
   - title: ケーブル接続と構成を確認
@@ -27,6 +29,10 @@ entries:
 - title: ソフトウェアを設定します
   pdf-filename: configure_software_3132q -v
   entries:
+  - title: ソフトウェアのインストールワークフロー
+    url: "/switch-cisco-3132q-v/configure-software-overview-3132q-v-cluster.html"
+  - title: スイッチを設定します
+    url: "/switch-cisco-3132q-v/setup-switch.html"
   - title: NX-OSおよびRCFのインストールを準備します
     url: "/switch-cisco-3132q-v/prepare-install-cisco-nexus-3132q.html"
   - title: NX-OSソフトウェアをインストールします

@@ -16,7 +16,9 @@ summary: Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIE�
 
 NOTE: Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます（を参照） link:install-onie-mode-sn2100-storage.html["ONIEモードでインストールします"]）。
 
-.必要なもの
+.作業を開始する前に
+以下のものが利用可能であることを確認してください。
+
 * Linuxに関する中級レベルの知識
 * 基本的なテキスト編集、UNIXファイル権限、およびプロセスの監視に精通していること。など、さまざまなテキストエディタが事前にインストールされています `vi` および `nano`。
 * LinuxまたはUNIXシェルへのアクセス。Windowsを実行している場合は、Linux環境をコマンドラインツールとして使用して、クムルスLinuxと対話します。
@@ -245,4 +247,4 @@ admin@sw1:mgmt:~$
 
 
 .次の手順
-link:install-rcf-sn2100-storage.html["RCFスクリプトをインストールする"]。
+link:install-rcf-sn2100-storage.html["RCFスクリプトのインストールまたはアップグレード"] 。

@@ -424,3 +424,6 @@ unit 	active 	    backup   current-active  next-active
 
 . パートナースイッチで手順1~8を繰り返します。
 
+
+.次の手順
+link:configure-licenses.html["ライセンスをインストール"] 。

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install, cisco nexus 3232c switch, 
 summary: Cisco Nexus 3232cスイッチを設定する前に、プロセスの概要と命名法を確認してください。 
 ---
-= Cisco Nexus 32cスイッチのインストールと設定の概要
+= Cisco Nexus 3232Cスイッチのインストールとセットアップのワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,27 +13,24 @@ summary: Cisco Nexus 3232cスイッチを設定する前に、プロセスの概
 [role="lead"]
 Cisco Nexus 3232Cスイッチは、AFF またはFAS クラスタのクラスタスイッチとして使用できます。クラスタスイッチでは、3つ以上のノードでONTAP クラスタを構築できます。
 
+Cisco Nexus 3232C スイッチをインストールしてセットアップするには、次のワークフロー手順に従ってください。
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:configure-reqs-3232c.html["設定要件"]
+[role="quick-margin-para"]
+3232C クラスタ スイッチの構成要件を確認します。
 
-== 初期設定の概要
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:required-documentation-3232c.html["必要なドキュメント"]
+[role="quick-margin-para"]
+3232C スイッチとONTAPクラスタをセットアップするには、特定のスイッチおよびコントローラのドキュメントを確認してください。
 
-ONTAP を実行しているシステムでCisco Nexus 32cスイッチを最初に設定する手順は、次のとおりです。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:smart-call-home-3232c.html["Smart Call Homeの要件"]
+[role="quick-margin-para"]
+ネットワーク上のハードウェアおよびソフトウェア コンポーネントを監視するために使用されるCisco Smart Call Home 機能の要件を確認します。
 
-. link:setup_worksheet_3232c.html["Cisco Nexus 3232Cケーブル接続ワークシートに記入"]。ケーブル接続ワークシートの例には、スイッチからコントローラへの推奨されるポート割り当ての例が示されています。空白のワークシートには、クラスタのセットアップに使用できるテンプレートが用意されています。
-. link:install-cisco-nexus-3232c.html["Cisco Nexus 3232Cクラスタスイッチをネットアップキャビネットに設置"]。Cisco Nexus 3232Cクラスタスイッチとパススルーパネルを、スイッチに付属の標準ブラケットを使用してネットアップキャビネットに設置します。
-. link:setup-switch.html["3232Cクラスタスイッチを設定します"]。Cisco Nexus 3232Cスイッチをセットアップおよび設定する
-. link:prepare-install-cisco-nexus-3232c.html["NX-OSソフトウェアおよびリファレンス構成ファイルをインストールする準備をします"]。NX-OSソフトウェアとRCFをインストールするための準備をします。
-. link:install-nx-os-software-3232c.html["NX-OS ソフトウェアをインストールします"]。Nexus 3232CクラスタスイッチにNX-OSソフトウェアをインストールします。
-. link:install-rcf-3232c.html["リファレンス構成ファイル（ RCF ）のインストール"]。Nexus 3232Cスイッチを初めてセットアップしたあとにRCFをインストールします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:install-hardware-workflow.html["ハードウェアを設置"]
+[role="quick-margin-para"]
+スイッチのハードウェアをインストールします。
 
-
-
-
-== 追加情報
-
-インストールまたはメンテナンスを開始する前に、次の点を確認してください。
-
-* link:configure-reqs-3232c.html["設定要件"]
-* link:required-documentation-3232c.html["必要なドキュメント"]
-* link:smart-call-home-3232c.html["Smart Call Homeの要件"]
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"]link:configure-software-overview-3232c-cluster.html["ソフトウェアの設定"]
+[role="quick-margin-para"]
+スイッチ ソフトウェアを構成します。

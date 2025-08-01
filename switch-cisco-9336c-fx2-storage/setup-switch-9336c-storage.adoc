@@ -13,7 +13,9 @@ summary: 必要な設定情報とドキュメントをまだ入手していな�
 [role="lead"]
 Cisco Nexus 9336C-FX2スイッチを設定するには、次の手順 に従います。
 
-.必要なもの
+.作業を開始する前に
+次のものがあることを確認します。
+
 * インストールサイトでHTTP、FTP、またはTFTPサーバにアクセスし、該当するNX-OSおよびリファレンス構成ファイル（RCF）リリースをダウンロードします。
 * 該当するNX-OSバージョン（からダウンロード） https://software.cisco.com/download/home["シスコソフトウェアのダウンロード"^] ページ
 * 該当するライセンス、ネットワークおよび設定情報、ケーブル。
@@ -190,4 +192,4 @@ NOTE: この段階で設定を保存しないと、次回スイッチをリブ�
 
 
 .次の手順
-必要に応じて、を実行できます link:install-switch-and-passthrough-panel-9336c-storage.html["Cisco Nexus 9336C-FX2スイッチをネットアップキャビネットに設置します"]。それ以外の場合は、に進みます link:install-nxos-overview-9336c-storage.html["NX-OSおよびRCFのインストールを準備します"]。
+link:install-nxos-overview-9336c-storage.html["NX-OSおよびRCFのインストールを準備します"] 。

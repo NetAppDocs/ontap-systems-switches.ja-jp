@@ -1,0 +1,26 @@
+---
+permalink: switch-nvidia-sn2100/install-hardware-workflow.html 
+sidebar: sidebar 
+keywords: switches, initial installation, configure switch-nvidia-sn2100 switch 
+summary: NVIDIA SN2100 クラスター スイッチを構成する前に、構成の概要を確認してください。 
+---
+= NVIDIA SN2100スイッチのハードウェアインストールワークフロー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SN2100 クラスタ スイッチのハードウェアをインストールして構成するには、次の手順に従います。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:install-hardware-sn2100-cluster.html["ハードウェアを設置"]
+[role="quick-margin-para"]
+スイッチのハードウェアをインストールします。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:cabling-considerations-sn2100-cluster.html["ケーブル接続と構成に関する考慮事項を確認"]
+[role="quick-margin-para"]
+光接続、QSAアダプタ、およびスイッチポート速度の要件を確認します。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:install-cable-shelves-sn2100-cluster.html["NS224シェルフをケーブル接続します"]
+[role="quick-margin-para"]
+NS224ドライブシェルフをスイッチ接続型ストレージ（直接接続型ストレージではない）としてケーブル接続する必要があるシステムの場合は、ケーブル接続手順に従ってください。

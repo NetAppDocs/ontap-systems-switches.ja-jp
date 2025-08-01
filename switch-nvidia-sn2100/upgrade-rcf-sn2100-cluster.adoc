@@ -13,7 +13,7 @@ summary: RCFスクリプトをインストールする前に、スイッチに�
 [role="lead"]
 RCFスクリプトをアップグレードする手順は、次のとおりです。
 
-.必要なもの
+.作業を開始する前に
 RCFスクリプトをアップグレードする前に、スイッチに次のものがあることを確認してください。
 
 * Cumulus Linuxがインストールされています。を参照してください https://hwu.netapp.com/Switch/Index["Hardware Universe"^] を参照してください。

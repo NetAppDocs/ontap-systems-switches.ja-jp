@@ -13,7 +13,9 @@ summary: BES-53248クラスタスイッチを設定したあと、新しいラ�
 [role="lead"]
 リファレンス構成ファイル（RCF）は、BES-53248クラスタスイッチのEFOSをアップグレードしたあと、新しいライセンスを適用したあとにアップグレードできます。
 
-.必要なもの
+.作業を開始する前に
+次のものがあることを確認します。
+
 * スイッチ設定の現在のバックアップ。
 * クラスタが完全に機能している（ログにエラーがない、または同様の問題が発生している）。
 * 現在のRCFファイル（から入手可能） https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom クラスタスイッチ"^] ページ

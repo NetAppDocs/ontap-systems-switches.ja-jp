@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: sn2100 SN2100 switches setup, sn2100 SN2100 switches install, cumulus linux 
 summary: NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10/25/40/100GbEイーサネットスイッチです。SN2100スイッチは、ONTAP 9.10.1のクラスタおよびストレージアプリケーションに、異なるスイッチペアを介して対応します。 
 ---
-= NVIDIA SN2100スイッチのインストールと設定の概要
+= NVIDIA SN2100スイッチのインストールとセットアップのワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,50 +13,24 @@ summary: NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10/25/40/100
 [role="lead"]
 NVIDIA SN2100はクラスタスイッチで、3ノード以上のONTAP クラスタを構築できます。
 
+NVIDIA SN2100 スイッチをインストールしてセットアップするには、次のワークフロー手順に従ってください。
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:configure-reqs-sn2100-cluster.html["構成要件を確認する"]
+[role="quick-margin-para"]
+SN2100 クラスタ スイッチの構成要件を確認します。
 
-== 初期設定の概要
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:components-sn2100-cluster.html["コンポーネントと部品番号を確認する"]
+[role="quick-margin-para"]
+SN2100 クラスタ スイッチのコンポーネントと部品番号を確認します。
 
-ONTAP を実行しているシステムでNVIDIA SN2100スイッチを設定する手順は、次のとおりです。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:required-documentation-sn2100-cluster.html["必要な書類を確認する"]
+[role="quick-margin-para"]
+SN2100 スイッチとONTAPクラスタをセットアップするには、特定のスイッチおよびコントローラのドキュメントを確認してください。
 
-. link:install-hardware-sn2100-cluster.html["NVIDIA SN2100スイッチのハードウェアを取り付けます"]。
-+
-手順については、「NVIDIA Switch Installation Guide」を参照してください。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:install-hardware-workflow.html["ハードウェアを設置"]
+[role="quick-margin-para"]
+スイッチのハードウェアをインストールします。
 
-. link:configure-sn2100-cluster.html["スイッチを設定します"]。
-+
-手順はNVIDIAのマニュアルに記載されています。
-
-. link:cabling-considerations-sn2100-cluster.html["ケーブル接続と構成に関する考慮事項を確認"]。
-+
-光接続、QSAアダプタ、およびスイッチポート速度の要件を確認します。
-
-. link:install-cable-shelves-sn2100-cluster.html["NS224シェルフをスイッチ接続ストレージとしてケーブル接続します"]。
-+
-NS224ドライブシェルフをスイッチ接続型ストレージ（直接接続型ストレージではない）としてケーブル接続する必要があるシステムの場合は、ケーブル接続手順に従ってください。
-
-. link:install-cumulus-mode-sn2100-cluster.html["Cumulus LinuxをCumulusモードでインストールします"] または link:install-onie-mode-sn2100-cluster.html["Cumulus LinuxをONIEモードでインストールします"]。
-+
-Cumulus Linux（CL）OSは、スイッチがCumulus LinuxまたはONIEを実行している場合にインストールできます。
-
-. link:install-rcf-sn2100-cluster.html["リファレンス構成ファイル（RCF）スクリプトをインストールします"]。
-+
-クラスタリングアプリケーションとストレージアプリケーション用に2つのRCFスクリプトが用意されています。各の手順 は同じです。
-
-. link:setup-install-cshm-file.html["CSHMファイルをインストールする"]です。
-+
-NVIDIAクラスタスイッチのイーサネットスイッチヘルスモニタ用の構成ファイルをインストールできます。
-
-
-
-
-
-== 追加情報
-
-インストールまたはメンテナンスを開始する前に、次の点を確認してください。
-
-* link:configure-reqs-sn2100-cluster.html["設定要件"]
-* link:components-sn2100-cluster.html["コンポーネントとパーツ番号"]
-* link:required-documentation-sn2100-cluster.html["必要なドキュメント"]
-* https://hwu.netapp.com["Hardware Universe"^] サポートされているすべてのONTAP バージョン。
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"]link:configure-software-overview-sn2100-cluster.html["ソフトウェアの設定"]
+[role="quick-margin-para"]
+スイッチ ソフトウェアを構成します。

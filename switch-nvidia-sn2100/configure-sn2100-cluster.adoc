@@ -19,4 +19,4 @@ SN2100スイッチを設定するには、NVIDIAのマニュアルを参照し�
 
 
 .次の手順
-link:cabling-considerations-sn2100-cluster.html["ケーブル接続と構成に関する考慮事項を確認"]。
+link:install-cumulus-mode-sn2100-cluster.html["Cumulus LinuxをCumulusモードでインストールします"]またはlink:install-onie-mode-sn2100-cluster.html["Cumulus LinuxをONIEモードでインストールします"]。

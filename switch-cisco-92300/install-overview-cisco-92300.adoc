@@ -4,32 +4,33 @@ sidebar: sidebar
 keywords: install, cisco nexus 92300 switch, 
 summary: Cisco Nexus 92300スイッチを設定する前に、プロセスの概要と名称を確認してください。 
 ---
-= Cisco Nexus 92300YCスイッチの設置と設定の概要
+= Cisco Nexus 92300YCスイッチのインストールとセットアップのワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 92300YCスイッチを設定する前に、手順 の概要を確認してください。
+Cisco Nexus 92300YC スイッチは、 AFFまたはFASクラスタ内のクラスタ スイッチとして使用できます。クラスタ スイッチを使用すると、2 つ以上のノードを持つONTAPクラスタを構築できます。
 
-ONTAP を実行しているシステムでCisco Nexus 92300YCスイッチを初期設定する手順は、次のとおりです。
+Cisco Nexus 92300YC スイッチをインストールしてセットアップするには、次のワークフロー手順に従ってください。
 
-. link:setup-worksheet-92300yc.html["Cisco Nexus 92300YCケーブル接続ワークシートに記入します"]。ケーブル接続ワークシートの例には、スイッチからコントローラへの推奨されるポート割り当ての例が示されています。空白のワークシートには、クラスタのセットアップに使用できるテンプレートが用意されています。
-. link:configure-install-initial.html["Cisco Nexus 92300YCスイッチを構成します"]。Cisco Nexus 92300YCスイッチをセットアップして構成します。
-. link:install-nxos-overview.html["NX-OSソフトウェアとRCFのインストールの準備"]。NX-OSソフトウェアおよびRCFをインストールするための準備をします。
-. link:install-nxos-software.html["NX-OS ソフトウェアをインストールします"]。Nexus 92300YCスイッチにNX-OSソフトウェアをインストールします。NX-OS は、 Cisco Systems が提供する Nexus シリーズイーサネットスイッチおよび MDS シリーズ Fibre Channel （ FC ）ストレージエリアネットワークスイッチのネットワークオペレーティングシステムです。
-. link:install-the-rcf-file.html["リファレンス構成ファイル（ RCF ）のインストール"]。RCFは、Nexus 92300YCスイッチを初めてセットアップしたあとにインストールします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:configure-reqs-92300.html["設定要件"]
+[role="quick-margin-para"]
+92300YC クラスタ スイッチの構成要件を確認します。
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:required-documentation-92300.html["必要なドキュメント"]
+[role="quick-margin-para"]
+92300YC スイッチとONTAPクラスタを設定するには、特定のスイッチおよびコントローラのドキュメントを確認してください。
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:smart-call-home-92300.html["Smart Call Homeの要件"]
+[role="quick-margin-para"]
+ネットワーク上のハードウェアおよびソフトウェア コンポーネントを監視するために使用されるCisco Smart Call Home 機能の要件を確認します。
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:install-hardware-workflow.html["ハードウェアを設置"]
+[role="quick-margin-para"]
+スイッチのハードウェアをインストールします。
 
-== 追加情報
-
-インストールまたはメンテナンスを開始する前に、次の点を確認してください。
-
-* link:configure-reqs-92300.html["設定要件"]
-* link:components-92300.html["コンポーネントとパーツ番号"]
-* link:required-documentation-92300.html["必要なドキュメント"]
-* link:smart-call-home-92300.html["Smart Call Homeの要件"]
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"]link:configure-software-overview-92300-cluster.html["ソフトウェアの設定"]
+[role="quick-margin-para"]
+スイッチ ソフトウェアを構成します。

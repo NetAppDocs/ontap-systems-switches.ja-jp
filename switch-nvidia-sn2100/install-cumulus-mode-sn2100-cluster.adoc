@@ -16,7 +16,9 @@ summary: Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIE�
 
 NOTE: Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます（を参照） link:install-onie-mode-sn2100-cluster.html["ONIEモードでインストールします"]）。
 
-.必要なもの
+.作業を開始する前に
+次のものがあることを確認します。
+
 * Linuxに関する中級レベルの知識
 * 基本的なテキスト編集、UNIXファイル権限、およびプロセスの監視に精通していること。など、さまざまなテキストエディタが事前にインストールされています `vi` および `nano`。
 * LinuxまたはUNIXシェルへのアクセス。Windowsを実行している場合は、Linux環境をコマンドラインツールとして使用して、クムルスLinuxと対話します。

@@ -6,7 +6,7 @@ entries:
 - title: 概要
   pdf-filename: 概要_9336c-FX2-shared
   entries:
-  - title: 設定の概要
+  - title: クイックスタート
     url: "/switch-cisco-9336c-fx2-shared/configure-switch-overview-9336c-shared.html"
   - title: 設定要件
     url: "/switch-cisco-9336c-fx2-shared/configure-reqs-9336c-shared.html"
@@ -17,19 +17,21 @@ entries:
 - title: ハードウェアを設置
   pdf-filename: INSTALL_HARDWARE_9336c-FX2-shared
   entries:
+  - title: ハードウェアインストールワークフロー
+    url: "/switch-cisco-9336c-fx2-shared/install-hardware-workflow.html"
   - title: ケーブル接続ワークシートに記入
     url: "/switch-cisco-9336c-fx2-shared/cable-9336c-shared.html"
-  - title: スイッチを取り付けます
+  - title: スイッチを設置します
     url: "/switch-cisco-9336c-fx2-shared/install-9336c-shared.html"
-  - title: スイッチを設定します
-    url: "/switch-cisco-9336c-fx2-shared/setup-and-configure-9336c-shared.html"
   - title: ネットアップキャビネットにスイッチを設置
     url: "/switch-cisco-9336c-fx2-shared/install-switch-and-passthrough-panel-9336c-shared.html"
-- title: ソフトウェアを設定します
+- title: ソフトウェアの設定
   pdf-filename: configure_software_9336c-FX2-shared
   entries:
   - title: ソフトウェアのインストールワークフロー
     url: "/switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html"
+  - title: スイッチを設定します
+    url: "/switch-cisco-9336c-fx2-shared/setup-and-configure-9336c-shared.html"
   - title: NX-OSソフトウェアとRCFをインストールするための準備をします
     url: "/switch-cisco-9336c-fx2-shared/prepare-nxos-rcf-9336c-shared.html"
   - title: NX-OSソフトウェアをインストールします

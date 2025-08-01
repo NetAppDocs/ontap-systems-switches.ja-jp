@@ -43,3 +43,6 @@ SN2100スイッチは、ONTAP 9.10.1P3以降のクラスタアプリケーショ
 
 * Cumulus Linuxは、スイッチがCumulus LinuxまたはONIEを実行しているときにインストールできます。
 
+
+.次の手順
+link:components-sn2100-cluster.html["コンポーネントとパーツ番号"] 。

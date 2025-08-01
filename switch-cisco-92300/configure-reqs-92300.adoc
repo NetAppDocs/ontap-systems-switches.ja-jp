@@ -33,3 +33,6 @@ Cisco Nexus 92300YCスイッチの設置とメンテナンスについては、�
 
 
 を参照してください https://hwu.netapp.com["Hardware Universe"^] 最新情報については、
+
+.次の手順
+link:components-92300.html["コンポーネントとパーツ番号"] 。

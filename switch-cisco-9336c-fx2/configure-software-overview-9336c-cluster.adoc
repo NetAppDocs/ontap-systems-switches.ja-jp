@@ -13,20 +13,22 @@ summary: Cisco Nexus 9336C-FX2クラスタスイッチのソフトウェア設�
 [role="lead"]
 Cisco Nexus 9336C-FX2スイッチ用のソフトウェアをインストールおよび設定し、リファレンス構成ファイル（RCF）をインストールまたはアップグレードする手順は、次のとおりです。
 
-. link:install-nxos-overview-9336c-cluster.html["NX-OSソフトウェアとRCFのインストールの準備"]です。
-+
-Cisco NX-OSソフトウェアとリファレンス構成ファイル（RCF）をCisco Nexus 9336C-FX2クラスタスイッチにインストールする必要があります。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:setup-switch-9336c-cluster.html["スイッチを設定します"]
+[role="quick-margin-para"]
+9336C-FX2 クラスタ スイッチを構成します。
 
-. link:install-nxos-software-9336c-cluster.html["NX-OSソフトウェアのインストールまたはアップグレード"]です。
-+
-Cisco Nexus 9336C-FX2クラスタスイッチでNX-OSソフトウェアをダウンロードし、インストールまたはアップグレードします。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:install-nxos-overview-9336c-cluster.html["NX-OSソフトウェアとRCFのインストールの準備"]
+[role="quick-margin-para"]
+Cisco NX-OS ソフトウェアおよびリファレンス コンフィギュレーション ファイル (RCF) をCisco 9336C-FX2 クラスタ スイッチにインストールする必要があります。
 
-. link:install-upgrade-rcf-overview-cluster.html["RCFのインストールまたはアップグレード"]です。
-+
-Cisco Nexus 9336C-FX2スイッチの初回セットアップ後にRCFをインストールまたはアップグレードします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:install-nxos-software-9336c-cluster.html["NX-OSソフトウェアのインストールまたはアップグレード"]
+[role="quick-margin-para"]
+Cisco 9336C-FX2 クラスタ スイッチに NX-OS ソフトウェアをダウンロードしてインストールまたはアップグレードします。
 
-. link:configure-ssh-keys.html["Nexus 9336C-FX2クラスタスイッチのSSH設定の確認"]です。
-+
-イーサネットスイッチヘルスモニタ（CSHM）およびログ収集機能を使用する場合は、スイッチでSSHが有効になっていることを確認します。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:install-upgrade-rcf-overview-cluster.html["RCFのインストールまたはアップグレード"]
+[role="quick-margin-para"]
+Cisco 9336C-FX2 スイッチを初めてセットアップした後、RCF をインストールまたはアップグレードします。この手順を使用して、RCF バージョンをアップグレードすることもできます。
 
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"]link:configure-ssh-keys.html["SSH の設定を確認"]
+[role="quick-margin-para"]
+イーサネット スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用するには、スイッチで SSH が有効になっていることを確認します。

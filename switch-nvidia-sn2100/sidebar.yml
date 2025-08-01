@@ -6,7 +6,7 @@ entries:
 - title: 概要
   pdf-filename: 概要_sn2100
   entries:
-  - title: 設定の概要
+  - title: クイックスタート
     url: "/switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
   - title: 設定要件
     url: "/switch-nvidia-sn2100/configure-reqs-sn2100-cluster.html"
@@ -17,19 +17,21 @@ entries:
 - title: ハードウェアを設置
   pdf-filename: install_hardware_sn2100
   entries:
-  - title: スイッチを取り付けます
+  - title: ハードウェアインストールワークフロー
+    url: "/switch-nvidia-sn2100/install-hardware-workflow.html"
+  - title: スイッチを設置します
     url: "/switch-nvidia-sn2100/install-hardware-sn2100-cluster.html"
-  - title: スイッチを設定します
-    url: "/switch-nvidia-sn2100/configure-sn2100-cluster.html"
   - title: ケーブル接続と構成を確認
     url: "/switch-nvidia-sn2100/cabling-considerations-sn2100-cluster.html"
   - title: NS224シェルフをケーブル接続します
     url: "/switch-nvidia-sn2100/install-cable-shelves-sn2100-cluster.html"
-- title: ソフトウェアを設定します
+- title: ソフトウェアの設定
   pdf-filename: software_sn2100の設定
   entries:
   - title: ソフトウェアのインストールワークフロー
     url: "/switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html"
+  - title: スイッチを設定します
+    url: "/switch-nvidia-sn2100/configure-sn2100-cluster.html"
   - title: Cumulus LinuxをCumulusモードでインストールします
     url: "/switch-nvidia-sn2100/install-cumulus-mode-sn2100-cluster.html"
   - title: Cumulus LinuxをONIEモードでインストールします
@@ -38,9 +40,9 @@ entries:
     url: "/switch-nvidia-sn2100/upgrade-cl-version.html"
   - title: RCFスクリプトのインストールまたはアップグレード
     url: "/switch-nvidia-sn2100/install-rcf-sn2100-cluster.html"
-  - title: CSHMファイルのインストール
+  - title: CSHMファイルをインストールする
     url: "/switch-nvidia-sn2100/setup-install-cshm-file.html"
-- title: スイッチを移行
+- title: スイッチを移行します
   pdf-filename: migrate_switches_sn2100
   entries:
   - title: CN1610クラスタスイッチから移行します
@@ -49,7 +51,7 @@ entries:
     url: "/switch-nvidia-sn2100/migrate-cisco-sn2100-cluster-switch.html"
   - title: 2ノードスイッチクラスタに移行する
     url: "/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html"
-- title: スイッチを交換します
+- title: スイッチを交換する
   pdf-filename: replace_switches_sn2100
   entries:
   - title: クラスタスイッチを交換します

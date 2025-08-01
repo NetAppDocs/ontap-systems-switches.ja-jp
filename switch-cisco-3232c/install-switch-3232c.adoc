@@ -1,0 +1,53 @@
+---
+permalink: switch-cisco-3232c/install-switch-3232c.html 
+sidebar: sidebar 
+keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 3232c 
+summary: Cisco Nexus 3232C スイッチをインストールするには、次の手順に従ってください。 
+---
+= 3232Cクラスタスイッチをインストールする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 3232Cスイッチをセットアップおよび設定するには、次の手順 に従います。
+
+.作業を開始する前に
+次のものがあることを確認します。
+
+* インストールサイトのHTTPサーバ、FTPサーバ、またはTFTPサーバにアクセスし、該当するNX-OSおよびRCFリリースをダウンロードします。
+* 該当するNX-OSバージョン（からダウンロード） https://software.cisco.com/download/home["シスコソフトウェアのダウンロード"^] ページ
+* 該当するライセンス、ネットワークおよび設定情報、ケーブル。
+* 完了link:setup-worksheet-3232c.html["ケーブル接続ワークシート"]。
+* 該当するネットアップクラスタネットワークと管理ネットワークのRCFをNetApp Support Site からダウンロードしました http://mysupport.netapp.com/["mysupport.netapp.com"^]。すべての Cisco クラスタネットワークスイッチおよび管理ネットワークスイッチは、シスコの工場出荷時のデフォルト設定で出荷されます。これらのスイッチには、 NX-OS ソフトウェアの最新バージョンもありますが、 RCF はロードされていません。
+* link:required-documentation-3232c.html["必要なスイッチとONTAP のドキュメント"] 。
+
+
+.手順
+. クラスタネットワークと管理ネットワークのスイッチとコントローラをラックに設置します。
++
+[cols="1,2"]
+|===
+| インストール対象 | 作業 
+
+
+ a| 
+Cisco Nexus 3232C をネットアップシステムキャビネットに設置
+ a| 
+スイッチをネットアップキャビネットに設置する手順については、 _ Cisco Nexus 3232C クラスタスイッチの設置と NetApp cabinet guide のパススルーパネルを参照してください。
+
+
+
+ a| 
+Telco ラック内の機器
+ a| 
+スイッチのハードウェア設置ガイド、およびネットアップのセットアップガイドに記載されている手順を参照してください。
+
+|===
+. 入力済みのケーブル接続ワークシートを使用して、クラスタネットワークスイッチと管理ネットワークスイッチをコントローラにケーブル接続します。
+. クラスタネットワークと管理ネットワークのスイッチとコントローラの電源をオンにします。
+
+
+.次の手順
+オプションとして、link:install-cisco-nexus-3232c.html["NetAppキャビネットにCisco Nexus 3223Cスイッチをインストールする"] 。それ以外の場合は、link:cabling-considerations-3232c.html["ケーブル接続と構成を確認"] 。

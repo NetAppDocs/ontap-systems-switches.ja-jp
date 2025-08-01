@@ -6,7 +6,7 @@ entries:
 - title: 概要
   pdf-filename: 概要_sn2100 -ストレージ
   entries:
-  - title: 設定の概要
+  - title: クイックスタート
     url: "/switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html"
   - title: 設定要件
     url: "/switch-nvidia-sn2100-storage/configure-reqs-sn2100-storage.html"
@@ -17,10 +17,10 @@ entries:
 - title: ハードウェアを設置
   pdf-filename: install_hardware_sn2100-storage
   entries:
-  - title: スイッチを取り付けます
+  - title: ハードウェアインストールワークフロー
+    url: "/switch-nvidia-sn2100-storage/install-hardware-workflow.html"
+  - title: スイッチを設置します
     url: "/switch-nvidia-sn2100-storage/install-hardware-sn2100-storage.html"
-  - title: スイッチを設定します
-    url: "/switch-nvidia-sn2100-storage/configure-sn2100-storage.html"
   - title: ケーブル接続と構成を確認
     url: "/switch-nvidia-sn2100-storage/cabling-considerations-sn2100-storage.html"
   - title: NS224シェルフをケーブル接続します
@@ -30,6 +30,8 @@ entries:
   entries:
   - title: ソフトウェアのインストールワークフロー
     url: "/switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html"
+  - title: スイッチを設定します
+    url: "/switch-nvidia-sn2100-storage/configure-sn2100-storage.html"
   - title: Cumulus LinuxをCumulusモードでインストールします
     url: "/switch-nvidia-sn2100-storage/install-cumulus-mode-sn2100-storage.html"
   - title: Cumulus LinuxをONIEモードでインストールします

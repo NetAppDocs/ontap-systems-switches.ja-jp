@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: switches, initial installation, configure switch-cisco-9336c-fx2 switch 
 summary: Cisco Nexus 9336C-FX2クラスタスイッチのインストールと設定の概要 
 ---
-= Cisco Nexus 9336C-FX2クラスタスイッチのインストールと設定の概要
+= Cisco Nexus 9336C-FX2 クラスタ スイッチのインストールとセットアップのワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,54 +13,28 @@ summary: Cisco Nexus 9336C-FX2クラスタスイッチのインストールと�
 [role="lead"]
 Cisco Nexus 9336C-FX2クラスタスイッチは、Cisco Nexus 9000プラットフォームの一部であり、ネットアップシステムキャビネットに設置できます。クラスタスイッチでは、3つ以上のノードでONTAP クラスタを構築できます。
 
+Cisco 9336C-FX2 スイッチをインストールしてセットアップするには、次のワークフロー手順に従ってください。
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:configure-reqs-9336c-cluster.html["構成要件を確認する"]
+[role="quick-margin-para"]
+9336C-FX2 クラスタ スイッチの構成要件を確認します。
 
-== 初期設定の概要
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:components-9336c-cluster.html["コンポーネントと部品番号を確認する"]
+[role="quick-margin-para"]
+9336C-FX2 クラスタ スイッチのコンポーネントと部品番号を確認します。
 
-ONTAP を実行しているシステムでCisco Nexus 9336C-FX2スイッチを初期設定するには、次の手順を実行します。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:required-documentation-9336c-cluster.html["必要な書類を確認する"]
+[role="quick-margin-para"]
+9336C-FX2 スイッチとONTAPクラスタをセットアップするには、特定のスイッチおよびコントローラのドキュメントを確認してください。
 
-. link:setup-worksheet-9336c-cluster.html["Cisco Nexus 9336C-FX2または9336C-FX2-Tケーブル接続ワークシートに記入"]です。
-+
-ケーブル接続ワークシートの例には、スイッチからコントローラへの推奨されるポート割り当ての例が示されています。空白のワークシートには、クラスタのセットアップに使用できるテンプレートが用意されています。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:smart-call-9336c-cluster.html["Smart Call Homeの要件を確認する"]
+[role="quick-margin-para"]
+ネットワーク上のハードウェアおよびソフトウェア コンポーネントを監視するために使用されるCisco Smart Call Home 機能の要件を確認します。
 
-. link:install-switch-9336c-cluster.html["スイッチを設置します"]です。
-+
-スイッチハードウェアをセットアップします。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"]link:install-hardware-workflow.html["ハードウェアを設置"]
+[role="quick-margin-para"]
+スイッチのハードウェアをインストールします。
 
-. link:setup-switch-9336c-cluster.html["9336C-FX2クラスタスイッチを設定します"]です。
-+
-Cisco Nexus 9336C-FX2スイッチをセットアップします。
-
-. link:install-switch-and-passthrough-panel-9336c-cluster.html["Cisco Nexus 9336C-FX2スイッチをネットアップキャビネットに設置します"]です。
-+
-構成に応じて、Cisco Nexus 9336C-FX2スイッチとパススルーパネルは、スイッチに付属の標準ブラケットを使用してネットアップキャビネットに設置できます。
-
-. link:install-nxos-overview-9336c-cluster.html["NX-OSソフトウェアとRCFのインストールの準備"]です。
-+
-準備手順に従って、Cisco NX-OSソフトウェアおよびリファレンス構成ファイル（RCF）をインストールします。
-
-. link:install-nxos-software-9336c-cluster.html["NX-OSソフトウェアのインストールまたはアップグレード"]です。
-+
-Nexus 9336C-FX2クラスタスイッチで、NX-OSソフトウェアをインストールまたはアップグレードします。
-
-. link:install-upgrade-rcf-overview-cluster.html["RCFのインストールまたはアップグレード"]です。
-+
-Nexus 9336C-FX2スイッチの初回セットアップ後にRCFをインストールまたはアップグレードします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
-
-. link:configure-ssh-keys.html["Nexus 9336C-FX2クラスタスイッチのSSH設定の確認"]です。
-+
-イーサネットスイッチヘルスモニタ（CSHM）およびログ収集機能を使用する場合は、スイッチでSSHが有効になっていることを確認します。
-
-
-
-
-
-== 追加情報
-
-インストールまたはメンテナンスを開始する前に、次の点を確認してください。
-
-* link:configure-reqs-9336c-cluster.html["設定要件"]
-* link:components-9336c-cluster.html["コンポーネントとパーツ番号"]
-* link:required-documentation-9336c-cluster.html["必要なドキュメント"]
-* link:smart-call-9336c-cluster.html["Smart Call Homeの要件"]
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["6"]link:configure-software-overview-9336c-cluster.html["ソフトウェアの設定"]
+[role="quick-margin-para"]
+スイッチ ソフトウェアを構成します。

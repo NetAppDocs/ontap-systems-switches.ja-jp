@@ -13,16 +13,26 @@ summary: ソフトウェア構成またはNVIDIA SN2100スイッチの概要。
 [role="lead"]
 NVIDIA SN2100スイッチのソフトウェアをインストールして設定するには、次の手順に従います。
 
-. link:install-cumulus-mode-sn2100-cluster.html["Cumulus LinuxをCumulusモードでインストールします"] または link:install-onie-mode-sn2100-cluster.html["Cumulus LinuxをONIEモードでインストールします"]。
-+
-Cumulus Linux（CL）OSは、スイッチがCumulus LinuxまたはONIEを実行している場合にインストールできます。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:configure-sn2100-cluster.html["スイッチを設定します"]
+[role="quick-margin-para"]
+NVIDIA SN2100 スイッチを構成します。
 
-. link:install-rcf-sn2100-cluster.html["リファレンス構成ファイル（RCF）スクリプトをインストールします"]。
-+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:install-cumulus-mode-sn2100-cluster.html["Cumulus LinuxをCumulusモードでインストールします"]
+[role="quick-margin-para"]
+スイッチが Cumulus Linux を実行している場合は、Cumulus Linux (CL) OS をインストールできます。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:install-onie-mode-sn2100-cluster.html["Cumulus LinuxをONIEモードでインストールします"]
+[role="quick-margin-para"]
+あるいは、スイッチが ONIE モードで Cumulus Linux を実行している場合は、Cumulus Linux (CL) OS をインストールすることもできます。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:upgrade-cl-version.html["必要に応じてCumulus Linuxのバージョンをアップグレードしてください"]
+[role="quick-margin-para"]
+必要に応じて、Cumulus Linux (CL) OS をアップグレードできます。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"]link:install-rcf-sn2100-cluster.html["リファレンス構成ファイル（RCF）スクリプトのインストールまたはアップグレード"]
+[role="quick-margin-para"]
 クラスタリングアプリケーションとストレージアプリケーション用に2つのRCFスクリプトが用意されています。各の手順 は同じです。
 
-. link:setup-install-cshm-file.html["CSHMファイルをインストールする"]です。
-+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["6"]link:setup-install-cshm-file.html["CSHMファイルをインストールする"]
+[role="quick-margin-para"]
 NVIDIAクラスタスイッチのイーサネットスイッチヘルスモニタ用の構成ファイルをインストールできます。
-
-

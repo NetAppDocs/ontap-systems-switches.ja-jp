@@ -31,3 +31,6 @@ Cisco Nexus 3232Cスイッチの設置とメンテナンスについては、設
 
 
 を参照してください https://hwu.netapp.com["Hardware Universe"^] 最新情報については、
+
+.次の手順
+link:required-documentation-3232c.html["必要なドキュメント"] 。

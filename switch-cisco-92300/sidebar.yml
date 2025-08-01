@@ -5,7 +5,7 @@ entries:
 - title: 概要
   pdf-filename: 概要_92300yc
   entries:
-  - title: 設定の概要
+  - title: クイックスタート
     url: "/switch-cisco-92300/install-overview-cisco-92300.html"
   - title: 設定要件
     url: "/switch-cisco-92300/configure-reqs-92300.html"
@@ -18,15 +18,23 @@ entries:
 - title: ハードウェアを設置
   pdf-filename: ハードウェアのインストール_92300yc
   entries:
+  - title: ハードウェアインストールワークフロー
+    url: "/switch-cisco-92300/install-hardware-workflow.html"
   - title: ケーブル接続ワークシートに記入
     url: "/switch-cisco-92300/setup-worksheet-92300yc.html"
-  - title: スイッチを設定します
-    url: "/switch-cisco-92300/configure-install-initial.html"
+  - title: スイッチを設置します
+    url: "/switch-cisco-92300/install-switch-92300yc.html"
+  - title: ネットアップキャビネットにスイッチを設置
+    url: "/switch-cisco-92300/install-switch-netapp-cabinet-92300yc.html"
   - title: ケーブル接続と構成を確認
     url: "/switch-cisco-92300/cabling-considerations-92300.html"
-- title: ソフトウェアを設定します
+- title: ソフトウェアの設定
   pdf-filename: configure_software_92300yc
   entries:
+  - title: ソフトウェアのインストールワークフロー
+    url: "/switch-cisco-92300/configure-software-overview-92300-cluster.html"
+  - title: スイッチを設定します
+    url: "/switch-cisco-92300/configure-install-initial.html"
   - title: NX-OSおよびRCFのインストールを準備します
     url: "/switch-cisco-92300/install-nxos-overview.html"
   - title: NX-OSをインストールします

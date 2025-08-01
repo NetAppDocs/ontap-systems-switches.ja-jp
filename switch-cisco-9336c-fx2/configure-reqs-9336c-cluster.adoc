@@ -50,3 +50,6 @@ NOTE: イーサネットスイッチヘルスモニタは、ONTAP 9.13.1P8以前
 
 
 スイッチの初期設定の詳細については、次のガイドを参照してください。 https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9336c-fx2-e/cisco-nexus-9336c-fx2-e-nx-os-mode-switch-hardware-installation-guide.html["『 Cisco Nexus 9336C-FX2 Installation and Upgrade Guide 』"^]。
+
+.次の手順
+link:components-9336c-cluster.html["コンポーネントとパーツ番号"] 。

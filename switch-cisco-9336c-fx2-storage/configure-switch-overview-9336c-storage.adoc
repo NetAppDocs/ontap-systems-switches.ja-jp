@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: BES-53248 switches, initial installation, configure switch-cisco-9336c-fx2 switch 
 summary: Cisco Nexus 9336C-FX2ストレージスイッチのインストールと設定の概要 
 ---
-= Cisco Nexus 9336C-FX2ストレージスイッチのインストールと設定の概要
+= Cisco Nexus 9336C-FX2 ストレージ スイッチのインストールとセットアップのワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,50 +13,28 @@ summary: Cisco Nexus 9336C-FX2ストレージスイッチのインストール�
 [role="lead"]
 Cisco Nexus 9336C-FX2スイッチはCisco Nexus 9000プラットフォームの一部であり、NetAppシステムキャビネットに設置できます。Nexus 9336C-FX2は、コントローラとディスクシェルフ間でデータを切り替えることができるイーサネットスイッチです。
 
+Cisco 9336C-FX2 スイッチをインストールしてセットアップするには、次のワークフロー手順に従ってください。
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:configure-reqs-9336c-storage.html["構成要件を確認する"]
+[role="quick-margin-para"]
+9336C-FX2 ストレージ スイッチの構成要件を確認します。
 
-== 初期設定の概要
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:components-9336c-storage.html["コンポーネントと部品番号を確認する"]
+[role="quick-margin-para"]
+9336C-FX2 ストレージ スイッチのコンポーネントと部品番号を確認します。
 
-ONTAP を実行しているシステムでCisco Nexus 9336C-FX2スイッチを初期設定するには、次の手順を実行します。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:required-documentation-9336c-storage.html["必要な書類を確認する"]
+[role="quick-margin-para"]
+9336C-FX2 スイッチとONTAPクラスタをセットアップするには、特定のスイッチおよびコントローラのドキュメントを確認してください。
 
-. link:setup-worksheet-9336c-storage.html["ケーブル接続ワークシートに記入"]。
-+
-ケーブル接続ワークシートの例には、スイッチからコントローラへの推奨されるポート割り当ての例が示されています。空白のワークシートには、クラスタのセットアップに使用できるテンプレートが用意されています。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:smart-call-9336c-storage.html["Smart Call Homeの要件を確認する"]
+[role="quick-margin-para"]
+ネットワーク上のハードウェアおよびソフトウェア コンポーネントを監視するために使用されるCisco Smart Call Home 機能の要件を確認します。
 
-. link:install-9336c-storage.html["スイッチを設置します"]。
-+
-スイッチハードウェアをセットアップします。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"]link:install-9336c-storage.html["ハードウェアを設置"]
+[role="quick-margin-para"]
+スイッチのハードウェアをインストールします。
 
-. link:setup-switch-9336c-storage.html["スイッチを設定します"]です。
-+
-Cisco Nexus 9336C-FX2ストレージスイッチをセットアップします。
-
-. link:install-switch-and-passthrough-panel-9336c-storage.html["NetAppキャビネットへのスイッチの設置"]です。
-+
-構成に応じて、Cisco Nexus 9336C-FX2スイッチとパススルーパネルは、スイッチに付属の標準ブラケットを使用してネットアップキャビネットに設置できます。
-
-. link:install-nxos-overview-9336c-storage.html["NX-OSおよびRCFのインストールまたはアップグレードの準備"]です。
-+
-準備手順に従って、Cisco NX-OSソフトウェアおよびリファレンス構成ファイル（RCF）をインストールします。
-
-. link:install-nxos-software-9336c-storage.html["NX-OSソフトウェアのインストールまたはアップグレード"]です。
-+
-Nexus 9336C-FX2ストレージスイッチで、NX-OSソフトウェアをインストールまたはアップグレードします。
-
-. link:install-rcf-software-9336c-storage.html["RCF構成ファイルをインストールまたはアップグレードする"]です。
-+
-Nexus 9336C-FX2スイッチの初回セットアップ後にRCFをインストールまたはアップグレードします。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。
-
-
-
-
-
-== 追加情報
-
-インストールまたはメンテナンスを開始する前に、次の点を確認してください。
-
-* link:configure-reqs-9336c-storage.html["設定要件"]
-* link:components-9336c-storage.html["コンポーネントとパーツ番号"]
-* link:required-documentation-9336c-storage.html["必要なドキュメント"]
-* link:smart-call-9336c-storage.html["Smart Call Homeの要件"]
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["6"]link:configure-software-overview-9336c-storage.html["ソフトウェアの設定"]
+[role="quick-margin-para"]
+スイッチ ソフトウェアを構成します。

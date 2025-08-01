@@ -13,24 +13,26 @@ summary: ソフトウェアの概要を確認します。
 [role="lead"]
 BES-53248 クラスタ スイッチのソフトウェアをインストールして構成するには、次の手順に従います。
 
-. link:configure-efos-software.html["EFOS ソフトウェアをインストールします"]。
-+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:configure-install-initial.html["スイッチを設定します"]
+[role="quick-margin-para"]
+BES-53248 クラスタ スイッチを構成します。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:configure-efos-software.html["EFOS ソフトウェアをインストールします"]
+[role="quick-margin-para"]
 イーサネットファブリックOS（EFOS）ソフトウェアをBES-53248クラスタスイッチにダウンロードしてインストールします。
 
-. link:configure-licenses.html["BES-53248 クラスタスイッチのライセンスをインストールします"]。
-+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:configure-licenses.html["BES-53248 クラスタスイッチのライセンスをインストールします"]
+[role="quick-margin-para"]
 必要に応じて、ライセンスを購入してインストールすることで新しいポートを追加します。スイッチベースモデルには、16個の10GbEまたは25GbEポートと2個の100GbEポートがライセンスされています。
 
-. link:configure-install-rcf.html["リファレンス構成ファイル（ RCF ）のインストール"]。
-+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:configure-install-rcf.html["リファレンス構成ファイル（ RCF ）のインストール"]
+[role="quick-margin-para"]
 BES-53248クラスタスイッチにRCFをインストールまたはアップグレードし、RCFを適用したあとに追加ライセンスのポートを確認します。
 
-. link:configure-ssh.html["BES-53248 クラスタスイッチで SSH を有効にします"]。
-+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"]link:configure-ssh.html["BES-53248 クラスタスイッチで SSH を有効にします"]
+[role="quick-margin-para"]
 イーサネットスイッチヘルスモニタ（CSHM）およびログ収集機能を使用する場合は、スイッチでSSHを有効にします。
 
-. link:reset-switch-bes-53248.html["スイッチを工場出荷時の状態にリセットする"]です。
-+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["6"]link:reset-switch-bes-53248.html["スイッチを工場出荷時の状態にリセットする"]
+[role="quick-margin-para"]
 BES-53248 クラスタ スイッチの設定を消去します。
-
-

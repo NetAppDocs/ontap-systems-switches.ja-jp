@@ -69,3 +69,6 @@ image:blank_cabling_worksheet.jpg["空白のケーブル接続ワークシート
 * 100G ISL 経由でスイッチ B ポート 35
 * 100G ISL 経由でスイッチ B ポート 36
 
+
+.次の手順
+link:install-9336c-shared.html["スイッチを設置します"]。

@@ -6,7 +6,7 @@ entries:
 - title: 概要
   pdf-filename: 概要_9336c-FX2
   entries:
-  - title: 設定の概要
+  - title: クイックスタート
     url: "/switch-cisco-9336c-fx2/configure-switch-overview-9336c-cluster.html"
   - title: 設定要件
     url: "/switch-cisco-9336c-fx2/configure-reqs-9336c-cluster.html"
@@ -19,21 +19,23 @@ entries:
 - title: ハードウェアを設置
   pdf-filename: INSTALL_HARDWARE_9336c-FX2
   entries:
+  - title: ハードウェアインストールワークフロー
+    url: "/switch-cisco-9336c-fx2/install-hardware-workflow.html"
   - title: ケーブル接続ワークシートに記入
     url: "/switch-cisco-9336c-fx2/setup-worksheet-9336c-cluster.html"
-  - title: スイッチを取り付けます
+  - title: スイッチを設置します
     url: "/switch-cisco-9336c-fx2/install-switch-9336c-cluster.html"
-  - title: スイッチを設定します
-    url: "/switch-cisco-9336c-fx2/setup-switch-9336c-cluster.html"
-  - title: ネットアップキャビネットにスイッチを設置
+  - title: NetAppキャビネットにスイッチを設置する
     url: "/switch-cisco-9336c-fx2/install-switch-and-passthrough-panel-9336c-cluster.html"
   - title: ケーブル接続と構成を確認
     url: "/switch-cisco-9336c-fx2/cabling-considerations-9336c-fx2.html"
-- title: ソフトウェアを設定します
+- title: ソフトウェアの設定
   pdf-filename: configure_software_9336c-FX2
   entries:
   - title: ソフトウェアのインストールワークフロー
     url: "/switch-cisco-9336c-fx2/configure-software-overview-9336c-cluster.html"
+  - title: スイッチを設定します
+    url: "/switch-cisco-9336c-fx2/setup-switch-9336c-cluster.html"
   - title: NX-OSおよびRCFのインストールを準備します
     url: "/switch-cisco-9336c-fx2/install-nxos-overview-9336c-cluster.html"
   - title: NX-OSソフトウェアのインストールまたはアップグレード
@@ -49,7 +51,7 @@ entries:
       url: "/switch-cisco-9336c-fx2/upgrade-rcf-software-9336c-cluster.html"
   - title: SSH の設定を確認
     url: "/switch-cisco-9336c-fx2/configure-ssh-keys.html"
-- title: スイッチを移行
+- title: スイッチを移行します
   pdf-filename: MIGRATE_SWITCHES_9336c-FX2
   entries:
   - title: CN1610クラスタスイッチから移行します
@@ -58,7 +60,7 @@ entries:
     url: "/switch-cisco-9336c-fx2/migrate-to-9336-cluster.html"
   - title: 2ノードスイッチクラスタに移行する
     url: "/switch-cisco-9336c-fx2/migrate-to-2n-switched-9336-cluster.html"
-- title: スイッチを交換します
+- title: スイッチを交換する
   pdf-filename: replace_switches_9336c-FX2
   entries:
   - title: クラスタスイッチを交換します

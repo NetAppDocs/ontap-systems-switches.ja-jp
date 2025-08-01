@@ -19,4 +19,4 @@ BES-53248ハードウェアの設置については、Broadcomのドキュメン
 
 
 .次の手順
-link:configure-install-initial.html["スイッチを設定します"]。
+link:cabling-considerations-bes-53248.html["ケーブル接続と構成を確認"] 。

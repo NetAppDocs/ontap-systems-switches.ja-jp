@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: BES-53248 switches, initial installation, configure new bes-53248 switch 
 summary: BES-53248クラスタスイッチを設定する前に、構成の概要を確認します。 
 ---
-= BES-53248スイッチの設置と設定の概要
+= BES-53248スイッチのインストールとセットアップのワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,45 +13,24 @@ summary: BES-53248クラスタスイッチを設定する前に、構成の概�
 [role="lead"]
 BES-53248は、2~24ノードのONTAP クラスタで動作するように設計されたベアメタルスイッチです。
 
+次のワークフロー手順に従って、BES-53248 スイッチをインストールしてセットアップします。
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:configure-reqs-bes53248.html["構成要件を確認する"]
+[role="quick-margin-para"]
+BES-53248 クラスタ スイッチの構成要件を確認します。
 
-== 初期設定の概要
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:components-bes53248.html["コンポーネントと部品番号を確認する"]
+[role="quick-margin-para"]
+BES-53248 クラスタ スイッチのコンポーネントと部品番号を確認します。
 
-ONTAP を実行しているシステムでBES-53248クラスタスイッチを初期設定するには、次の手順を実行します。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:required-documentation-bes53248.html["必要な書類を確認する"]
+[role="quick-margin-para"]
+BES-53248 スイッチとONTAPクラスタをセットアップするには、特定のスイッチとコントローラのドキュメントを確認してください。
 
-. link:install-hardware-bes53248.html["BES-53248クラスタスイッチのハードウェアを設置します"]。
-+
-手順については、_Broadcom対応BES-53248クラスタスイッチインストールガイド_を参照してください。
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:install-hardware-workflow.html["ハードウェアを設置"]
+[role="quick-margin-para"]
+スイッチのハードウェアをインストールします。
 
-. link:configure-install-initial.html["BES-53248クラスタスイッチを設定します"]。
-+
-BES-53248クラスタスイッチの初期セットアップを実行します。
-
-. link:configure-efos-software.html["EFOS ソフトウェアをインストールします"]。
-+
-イーサネットファブリックOS（EFOS）ソフトウェアをBES-53248クラスタスイッチにダウンロードしてインストールします。
-
-. link:configure-licenses.html["BES-53248 クラスタスイッチのライセンスをインストールします"]。
-+
-必要に応じて、ライセンスを購入してインストールすることで新しいポートを追加します。スイッチベースモデルには、16個の10GbEまたは25GbEポートと2個の100GbEポートがライセンスされています。
-
-. link:configure-install-rcf.html["リファレンス構成ファイル（ RCF ）のインストール"]。
-+
-BES-53248クラスタスイッチにRCFをインストールまたはアップグレードし、RCFを適用したあとに追加ライセンスのポートを確認します。
-
-. link:configure-ssh.html["BES-53248 クラスタスイッチで SSH を有効にします"]。
-+
-イーサネットスイッチヘルスモニタ（CSHM）およびログ収集機能を使用する場合は、スイッチでSSHを有効にします。
-
-
-
-
-
-== 追加情報
-
-インストールまたはメンテナンスを開始する前に、次の点を確認してください。
-
-* link:configure-reqs-bes53248.html["設定要件"]
-* link:components-bes53248.html["コンポーネントとパーツ番号"]
-* link:required-documentation-bes53248.html["必要なドキュメント"]
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"]link:configure-software-overview-bes53248.html["ソフトウェアの設定"]
+[role="quick-margin-para"]
+スイッチ ソフトウェアを構成します。

@@ -33,3 +33,6 @@ NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10/25/40/100Gbイー�
 * Cumulus Linux（CL）OSバージョン4.4.3。最新の互換性情報については、を参照してください https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIAイーサネットスイッチ"^] 情報ページ。
 * Cumulus Linuxは、スイッチがCumulus LinuxまたはONIEを実行しているときにインストールできます。
 
+
+.次の手順
+link:components-sn2100-storage.html["コンポーネントとパーツ番号"] 。
