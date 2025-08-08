@@ -41,6 +41,8 @@ entries:
     url: "/switch-cisco-3232c/install-rcf-3232c.html"
   - title: SSH の設定を確認
     url: "/switch-cisco-3232c/configure-ssh-keys.html"
+  - title: スイッチを工場出荷時の状態にリセットする
+    url: "/switch-cisco-3232c/reset-switch-3232c.html"
 - title: スイッチを移行
   pdf-filename: Migrate_switches_3232C
   entries:

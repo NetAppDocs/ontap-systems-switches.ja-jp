@@ -32,3 +32,7 @@ Cisco 3232C スイッチを初めてセットアップした後、RCF をイン�
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"]link:configure-ssh-keys.html["SSH の設定を確認"]
 [role="quick-margin-para"]
 イーサネット スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用するには、スイッチで SSH が有効になっていることを確認します。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["6"]link:reset-switch-3232c.html["スイッチを工場出荷時の状態にリセットする"]
+[role="quick-margin-para"]
+3232C クラスタ スイッチの設定を消去します。

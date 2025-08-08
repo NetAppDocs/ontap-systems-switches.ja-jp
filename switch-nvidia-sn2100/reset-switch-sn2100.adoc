@@ -1,0 +1,78 @@
+---
+permalink: switch-nvidia-sn2100/reset-switch-sn2100.html 
+sidebar: sidebar 
+keywords: SN2100 reset switch to factory defaults, SN2100 switches configuration, efos 
+summary: Cisco Nexus SN2100 スイッチを設定する前に、次の情報を確認してください。 
+---
+= SN2100クラスタスイッチを工場出荷時のデフォルトにリセットします
+:allow-uri-read: 
+
+
+[role="lead"]
+SN2100 クラスタ スイッチを工場出荷時のデフォルトにリセットするには:
+
+* Cumulus Linux 5.10 以前の場合は、Cumulus イメージを適用します。
+* Cumulus Linux 5.11以降では、 `nv action reset system factory-default`指示。
+
+
+.このタスクについて
+* シリアル コンソールを使用してスイッチに接続する必要があります。
+* コマンドへの sudo アクセスには root パスワードが必要です。
+
+
+
+NOTE: Cumulus Linuxのインストールの詳細については、link:configure-software-overview-sn2100-cluster.html["NVIDIA SN2100スイッチのソフトウェアインストールワークフロー"] 。
+
+.手順
+[role="tabbed-block"]
+====
+.Cumulus Linux 5.10 以前
+--
+. Cumulusコンソールから、次のコマンドでスイッチソフトウェアのインストールをダウンロードしてキューに追加します。 `onie-install -a -i`スイッチ ソフトウェアへのファイル パスが続きます。例:
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:mgmt:~$ *sudo onie-install -a -i http://<web-server>/<path>/cumulus-linux-5.10.0-mlx-amd64.bin*
+----
+. インストーラーがダウンロードを開始します。イメージがダウンロードされ検証されたときにインストールを確認するプロンプトが表示されたら、*y* と入力します。
+. 新しいソフトウェアをインストールするには、スイッチを再起動します。
++
+`sudo reboot`
+
++
+[listing, subs="+quotes"]
+----
+cumulus@sw1:mgmt:~$ *sudo reboot*
+----
++
+
+NOTE: スイッチがリブートされ、スイッチ ソフトウェアのインストールが開始されます。この処理には時間がかかります。インストールが完了すると、スイッチは再起動し、 `log-in`プロンプト。
+
+
+
+--
+.Cumulus Linux 5.11以降
+--
+. スイッチを工場出荷時の状態にリセットし、すべての構成、システム ファイル、およびログ ファイルを削除するには、次のコマンドを実行します。
++
+`nv action reset system factory-default`
+
++
+例：
+
++
+[listing, subs="+quotes"]
+----
+cumulus@switch:~$ *nv action reset system factory-default*
+
+This operation will reset the system configuration, delete the log files and reboot the switch.
+Type [y] continue.
+Type [n] to abort.
+Do you want to continue? [y/n] *y*
+----
+
+
+NVIDIAの https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-511/Installation-Management/Factory-Reset/["工場出荷時設定へのリセット"^]詳細についてはドキュメントを参照してください。
+
+--
+====

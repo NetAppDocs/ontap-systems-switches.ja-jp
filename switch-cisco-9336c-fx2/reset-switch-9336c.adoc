@@ -1,0 +1,46 @@
+---
+permalink: switch-cisco-9336c-fx2/reset-switch-9336c.html 
+sidebar: sidebar 
+keywords: 9336C-FX2 reset switch to factory defaults, 9336C-FX2 switches configuration, efos 
+summary: Cisco Nexus 9336C-FX2 スイッチを設定する前に、次の情報を確認してください。 
+---
+= 9336C-FX2クラスタスイッチを工場出荷時のデフォルトにリセットします
+:allow-uri-read: 
+
+
+[role="lead"]
+9336C-FX2 クラスタ スイッチを工場出荷時のデフォルトにリセットするには、9336C-FX2 スイッチの設定を消去する必要があります。
+
+.このタスクについて
+* シリアル コンソールを使用してスイッチに接続する必要があります。
+* このタスクでは、管理ネットワークの設定をリセットします。
+
+
+.手順
+. 既存の設定を消去します。
++
+`write erase`
+
++
+[listing, subs="+quotes"]
+----
+(cs2)# *write erase*
+
+Warning: This command will erase the startup-configuration.
+Do you wish to proceed anyway? (y/n) [n] *y*
+----
+. スイッチ ソフトウェアをリロードします。
++
+「再ロード」
+
++
+[listing, subs="+quotes"]
+----
+(cs2)# *reload*
+
+This command will reboot the system. (y/n)? [n] *y*
+----
++
+システムがリブートし、設定ウィザードが起動します。起動中に、「自動プロビジョニングを中止して通常のセットアップを続行しますか?」というプロンプトが表示された場合は、  (はい/いいえ)[n]"の場合、続行するには「*はい*」と答える必要があります。
+
+

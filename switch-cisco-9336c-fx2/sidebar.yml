@@ -51,6 +51,8 @@ entries:
       url: "/switch-cisco-9336c-fx2/upgrade-rcf-software-9336c-cluster.html"
   - title: SSH の設定を確認
     url: "/switch-cisco-9336c-fx2/configure-ssh-keys.html"
+  - title: スイッチを工場出荷時の状態にリセットする
+    url: "/switch-cisco-9336c-fx2/reset-switch-9336c.html"
 - title: スイッチを移行します
   pdf-filename: MIGRATE_SWITCHES_9336c-FX2
   entries:
