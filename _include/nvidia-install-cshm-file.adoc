@@ -123,3 +123,5 @@ cluster1::> *system switch ethernet show*
 
 
 NOTE: 構成ファイルを適用してもモデルに*その他*が表示される場合は、NetAppサポートにお問い合わせください。
+
+参照 https://docs.netapp.com/us-en/ontap-cli/system-switch-ethernet-configure-health-monitor.html["システムスイッチイーサネットヘルスモニターの設定"^]詳細についてはコマンドを参照してください。
