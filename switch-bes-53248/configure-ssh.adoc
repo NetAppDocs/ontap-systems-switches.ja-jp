@@ -41,8 +41,7 @@ SCP server Administrative Mode: ............... Disabled
 ----
 ====
 +
-SSH が無効になっていない場合は、次のように無効にします。
-
+** SSH が無効になっていない場合は、次のように無効にします。
 +
 .例を示します
 [%collapsible]
@@ -57,7 +56,9 @@ SSH が無効になっていない場合は、次のように無効にします�
 
 WARNING: キーを変更する前に必ず SSH を無効にしてください。そうしないと、スイッチで警告が報告されます。
 
-. SSH キーを生成します。
+
+
+. 設定モードで、SSH キーを生成します。
 +
 `crypto key generate`
 
@@ -82,13 +83,45 @@ Do you want to overwrite the existing DSA keys? (y/n): *y*
 (switch) (Config)# *crypto key generate ecdsa 521*
 
 Do you want to overwrite the existing ECDSA keys? (y/n): *y*
+----
+====
+. 設定モードで、 ONTAPログ収集の AAA 認証を設定します。
++
+`aaa authorization commands "noCmdAuthList" none`
 
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
 (switch) (Config)# *aaa authorization commands "noCmdAuthList" none*
 (switch) (Config)# *exit*
+----
+====
+. SSH/SCP を再度有効にします。
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
 (switch)# *ip ssh server enable*
 (switch)# *ip scp server enable*
 (switch)# *ip ssh pubkey-auth*
-(switch)# *write mem*
+----
+====
+. これらの変更をスタートアップ コンフィギュレーションに保存します。
++
+「メモリの書き込み」
+
++
+.例を示します
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(switch)# *write memory*
 
 This operation may take a few minutes.
 Management interfaces will not be available during this time.
@@ -135,8 +168,8 @@ Do you want to continue? (y/n): *y*
 
 Config file 'startup-config' created successfully.
 
-(switch) (Config)# end
-(switch)# write memory
+(switch) (Config)# *end*
+(switch)# *write memory*
 
 This operation may take a few minutes.
 Management interfaces will not be available during this time.

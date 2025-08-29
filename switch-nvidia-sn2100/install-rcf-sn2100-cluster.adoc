@@ -129,7 +129,7 @@ MSN2100-RCF-v1._x_-Cluster-HA-Breakout-LLDP         100% 8607   111.2KB/s       
 ----
 +
 
-NOTE: 間 `scp` はこの例で使用されていますが、お好みのファイル転送方法を使用できます。
+NOTE: その間 `scp`この例では が使用されていますが、SFTP、HTTPS、FTP など、好みのファイル転送方法を使用できます。
 
 . RCF Pythonスクリプト* MSN2100-rcf-v1._x_-Cluster-HA-Breakout-LLDP *を適用します。
 +
@@ -394,7 +394,7 @@ MSN2100-RCF-v1.x-Cluster-HA-Breakout-LLDP          100% 8607   111.2KB/s        
 ----
 +
 
-NOTE: 間 `scp` はこの例で使用されていますが、お好みのファイル転送方法を使用できます。
+NOTE: その間 `scp`この例では が使用されていますが、SFTP、HTTPS、FTP など、好みのファイル転送方法を使用できます。
 
 . RCF Pythonスクリプト* MSN2100-rcf-v1._x_-Cluster-HA-Breakout-LLDP *を適用します。
 +
@@ -760,7 +760,7 @@ MSN2100-RCF-v1.x-Cluster-HA-Breakout-LLDP          100% 8607   111.2KB/s        
 ----
 +
 
-NOTE: この例ではが使用されていますが `scp`、任意のファイル転送方法を使用できます。
+NOTE: それでも `scp`この例では が使用されていますが、SFTP、HTTPS、FTP など、好みのファイル転送方法を使用できます。
 
 . RCF Pythonスクリプト* MSN2100-rcf-v1._x_-Cluster-HA-Breakout-LLDP *を適用します。
 +

@@ -65,7 +65,6 @@
   <block id="09b8dd35e8fef3e8e5d41f09345fb4d1" category="list-text">ping コマンドを使用して、 EFOS 、ライセンス、 RCF をホストするサーバへの接続を確認します。</block>
   <block id="e90d5ac1532bae79aa9f467efd13168c" category="summary">クラスタスイッチヘルスモニタ（ CSHM ）およびログ収集機能を使用する場合、 SSH は要件です。BES-53248 クラスタスイッチで SSH を有効にするには、まず SSH キーを生成してから、 SSH を有効にします。</block>
   <block id="850f5123d6e90a3f43933cb2bcb88fe1" category="doc">BES-53248 クラスタスイッチで SSH を有効にします</block>
-  <block id="59ed8d797343a87748211be365bd1d90" category="list-text">SSH キーを生成します。</block>
   <block id="3bb5f52e05a05dc888185ec616dd0442" category="paragraph">ほとんどのシステムでは、各コントローラに 2 つの専用クラスタネットワークポートが必要です。</block>
   <block id="56901ba0364771cc3907ec9a30481dd8" category="summary">クラスタネットワーク内での、障害のある Broadcom 対応 BES-53248 クラスタスイッチの交換は、無停止手順（ NDU ）です。</block>
   <block id="c4ceb27b488ee8c76dddf465a267e6fb" category="paragraph">現在の環境および交換用スイッチでスイッチの交換を実行する前に、次の条件が満たされている必要があります。</block>
@@ -2074,19 +2073,12 @@
   <block id="815792b56cadfb802621ba5d3728c768" category="admonition">Cumulus Linuxをインストールするたびに、ファイルシステム構造全体が消去され、再構築されます。</block>
   <block id="6ae4d8bf3ebde7936b05c2fe894d7ada" category="admonition">cumulusユーザーアカウントのデフォルトパスワードは*cumulus *です。Cumulus Linuxに初めてログインするときは、このデフォルトのパスワードを変更する必要があります。新しいイメージをインストールする前に、必ず自動化スクリプトを更新してください。Cumulus Linuxには、インストールプロセス中にデフォルトのパスワードを自動的に変更するためのコマンドラインオプションが用意されています。</block>
   <block id="06c2ede7dabacb6c8f4f628bf6b1de39" category="paragraph">NVIDIA SN2100スイッチのコンソールアクセスでは、シリアルコンソールスイッチでボーレート要件を115200に設定する必要があります。</block>
-  <block id="9e6b336700c1d2e767e05525b2b57ef3" category="list-text">Cumulus Linuxのバージョンを確認します。</block>
   <block id="2667c65a518ae8fb280dc9f6a61de3c5" category="list-text">ホスト名、IPアドレス、サブネットマスク、およびデフォルトゲートウェイを設定します。新しいホスト名が有効になるのは、コンソール/SSHセッションを再起動した後だけです。</block>
   <block id="62b623b92c382746efee9767d590d86c" category="admonition">Cumulus Linuxスイッチには、「eth0」という専用イーサネット管理ポートが少なくとも1つあります。このインターフェイスは、アウトオブバンド管理専用です。デフォルトでは、管理インターフェイスはアドレス指定にDHCPv4を使用します。</block>
   <block id="91dcca4278a428afbccb2f118d523e13" category="admonition">ホスト名には、アンダースコア（_）、アポストロフィ（'）、非ASCII文字を使用しないでください。</block>
   <block id="5e82a0b4b15e3bfeac2a57b4a294a39c" category="paragraph">このコマンドは'/etc/hostname'ファイルと/etc/hostsファイルの両方を変更します</block>
-  <block id="6c42fa7e4c3302fb56f4374e70b97fc2" category="list-text">NTPインタラクティブモードを使用してタイムゾーンを設定します。</block>
-  <block id="3f13db29081af25b57d3e76ea324a03b" category="list-text">端末で次のコマンドを実行します。</block>
-  <block id="83d1563d45527134091bdab8d6e5072d" category="list-text">画面上のメニューオプションに従って、地理的エリアと地域を選択します。</block>
-  <block id="fe0f6a5f9b992c1eea817100a2c1c148" category="list-text">すべてのサービスおよびデーモンのタイムゾーンを設定するには、スイッチをリブートします。</block>
-  <block id="61d6aab01fc093c66c1e769d05c39812" category="list-text">スイッチの日付と時刻が正しいことを確認し、必要に応じて更新します。</block>
   <block id="9a828cf107e0b55e82b0e52b871aa982" category="paragraph">インストーラがダウンロードを開始します。プロンプトが表示されたら「* y *」と入力します</block>
   <block id="b64202cf747d1cf1ed877a2b16051b9b" category="list-text">NVIDIA SN2100スイッチをリブートします。</block>
-  <block id="9f4f33c5c40ac522549c3e58d187e0a0" category="list-text">インストールが自動的に開始され、次のGRUB画面が表示されます。Do * not *（実行しない）を選択します。</block>
   <block id="0356af5b3daf1c5f334184d547ba7462" category="list-text">Cumulus - Linux GNU/Linux</block>
   <block id="a64ef5ea949c8d49f35a27151295f942" category="list-text">ONIE: OSのインストール</block>
   <block id="e0fb005ad468c2c6da5d94ae5ee83311" category="list-text">クムルス-インストール</block>
@@ -2379,7 +2371,6 @@
   <block id="8e64ad5c6fa8e624c5e3a0540ce81b15" category="paragraph">次の点に注意してください。</block>
   <block id="ed4bb13420682d03565e592a54ec52c0" category="list-text">スイッチにログインします。</block>
   <block id="0dc40761c6c698e59be5abb0f871de2e" category="paragraph">スイッチへの初回ログインには、ユーザ名/パスワードとして「* cumulus */* cumulus * with」が必要です<block ref="d338b3f0f405eb5e51c8cc1e5ca66f02" prefix=" " category="inline-code"></block> 権限：</block>
-  <block id="cbb09f555687650b38fcf6ac05ce4978" category="paragraph"><block ref="518227d11c3d0b4ad2468e4272be661a" prefix="" category="inline-code"></block></block>
   <block id="81ed2a4b4b4f78c31401892f676d00f6" category="list-text">ホスト名、IPアドレス、サブネットマスク、およびデフォルトゲートウェイが更新されたことを確認します。</block>
   <block id="d592f003299c9790cf6b7880991e4552" category="list-text">新しいユーザを作成し、に追加します<block ref="d338b3f0f405eb5e51c8cc1e5ca66f02" prefix=" " category="inline-code"></block> グループ：このユーザが有効になるのは、コンソール/SSHセッションが再起動された後だけです。</block>
   <block id="d006305baa198ce937fb8d7cec588b7e" category="paragraph"><block ref="5f3d789fda71670b944a623edd4613a5" prefix="" category="inline-code"></block></block>
@@ -3565,7 +3556,6 @@
   <block id="6bb3008abc00d2a0fe4d634f0b89831e" category="list-text">Cumulus Linuxは、スイッチがCumulus LinuxまたはONIEを実行しているときにインストールできます。</block>
   <block id="8f77c20cd9bd8afa1521eb15ea44a8ef" category="list-text">Cumulus Linux 4.4.3がインストールされています。</block>
   <block id="2da5e3ee5bdcbc1a5443b42db962c1bb" category="list-text">Cumulus Linux 4.4.3をインストールします。</block>
-  <block id="d639f69fd7b303cd7aefe025e7d76848" category="list-text">Cumulus Linuxのバージョンが4.4.3であることを確認します。</block>
   <block id="4a4b6084f06cc45c6f17ae2aa9bd4dc4" category="inline-link">シスコソフトウェアのダウンロード</block>
   <block id="0a6aaed7ba5c231511f7822eac6c4607" category="list-text">該当するNX-OSバージョン（からダウンロード）<block ref="f823faeecc1cbb37f2d732cc29c07d86" category="inline-link-rx"></block> ページ</block>
   <block id="b27df45c7b9d2b8ac8126550ac4038eb" category="list-text">クラスタネットワークスイッチのバージョンを確認し、必要に応じてからネットアップ対応バージョンのソフトウェアをスイッチにダウンロードします<block ref="f823faeecc1cbb37f2d732cc29c07d86" category="inline-link-rx"></block> ページ</block>
@@ -5588,4 +5578,12 @@
   <block id="bc19795a1e2342c4b6ced06c4d40bf1f" category="paragraph"><block ref="06ea8c0ad9680ca72f21fb9acf4190a7" prefix="" category="inline-code"></block></block>
   <block id="c0203a2fdd4f105bd33b18aba6317c1b" category="paragraph"><block ref="13a92d9b51e90b702df63253eaabc9ad" prefix="" category="inline-code"></block></block>
   <block id="473d16af00e46c61faa5f7ae956e2c65" category="paragraph"><block ref="02a3315103301dc60f71538670f8e63e" prefix="" category="inline-code"></block></block>
+  <block id="a857d7fbcfec4b7266d8ae96e74feaff" category="list-text">設定モードで、SSH キーを生成します。</block>
+  <block id="e7a2f981aa0484adea9bedbd78c1087b" category="list-text">設定モードで、 ONTAPログ収集の AAA 認証を設定します。</block>
+  <block id="4f4336771d0733889f26dc02ed32b5b4" category="paragraph"><block ref="160edba9b79d23472e05dab56e0f0cfa" prefix="" category="inline-code"></block></block>
+  <block id="558547888dbf1ed9cea97d962f5a635c" category="list-text">SSH/SCP を再度有効にします。</block>
+  <block id="a2c7fa8f383a047f3591230c9b0234c9" category="list-text">これらの変更をスタートアップ コンフィギュレーションに保存します。</block>
+  <block id="7411e9f163d9baab36b5ebc3f80bda73" category="admonition">その間<block ref="8a444a43bdf534c0c6338bb7809659b3" prefix=" " category="inline-code"></block>この例では が使用されていますが、SFTP、HTTPS、FTP など、好みのファイル転送方法を使用できます。</block>
+  <block id="5b9b8dea15de063806f0306fe78872c8" category="admonition">それでも<block ref="8a444a43bdf534c0c6338bb7809659b3" prefix=" " category="inline-code"></block>この例では が使用されていますが、SFTP、HTTPS、FTP など、好みのファイル転送方法を使用できます。</block>
+  <block id="bea4eb9c3f61f6fc9076a215ac1173fe" category="paragraph"><block ref="c1b3921cc8c2b4b51a888d2dc803623c" category="inline-link-macro-rx"></block> 。</block>
 </blocks>
