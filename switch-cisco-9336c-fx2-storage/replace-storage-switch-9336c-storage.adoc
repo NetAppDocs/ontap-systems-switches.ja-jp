@@ -4,19 +4,19 @@ sidebar: sidebar
 keywords: replacing, replace, defective, nexus, switch, cluster, network, nondisruptive, procedure, ndu, replace a cisco nexus 9336c-fx2 cluster switch - cisco nexus 9336c-fx2 
 summary: クラスタネットワーク内の障害のある Nexus 9336C-FX2 スイッチの交換は、無停止手順（ NDU ）です。 
 ---
-= Cisco Nexus 9336C-FX2 ストレージスイッチを交換します
+= Cisco Nexus 9336C-FX2および9336C-FX2-Tストレージスイッチの交換
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-クラスタネットワーク内の故障したNexus 9336C-FX2スイッチは交換できます。これは無停止の手順です。
+クラスタ ネットワーク内の故障した Nexus 9336C-FX2 および 9336C-FX2-T スイッチを交換できます。この手順は無停止で実行されます。
 
 .作業を開始する前に
-Cisco Nexus 9336C-FX2ストレージスイッチにNX-OSソフトウェアとRCFをインストールする前に、次の点を確認します。
+Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチに NX-OS ソフトウェアと RCF をインストールする前に、次の点を確認してください。
 
-* ご使用のシステムでは、 Cisco Nexus 9336C-FX2 ストレージスイッチをサポートできます。
+* システムは、 Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチをサポートできます。
 * サポートされているONTAP 、NX-OS、およびRCFのバージョンについては、Ciscoイーサネットスイッチのページにあるスイッチ互換性の表を参照してください。
 * シスコのWebサイトで入手可能な適切なソフトウェアおよびアップグレードガイドを参照しておきます。
 
@@ -267,4 +267,4 @@ storage::*>
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+スイッチを交換したら、link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"] 。

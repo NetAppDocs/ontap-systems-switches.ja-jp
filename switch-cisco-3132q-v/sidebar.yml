@@ -2,7 +2,7 @@
 section: switch-cisco-3132q-v
 title: Cisco Nexus 3132Q-V の 2 つのポートを設定します
 entries:
-- title: 概要
+- title: はじめに
   pdf-filename: 概要_3132q-v
   entries:
   - title: クイックスタート

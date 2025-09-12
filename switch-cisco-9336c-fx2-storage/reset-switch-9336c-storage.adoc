@@ -4,12 +4,12 @@ sidebar: sidebar
 keywords: 9336C-FX2 reset switch to factory defaults, 9336C-FX2 switches configuration, efos 
 summary: Cisco Nexus 9336C-FX2 スイッチを設定する前に、次の情報を確認してください。 
 ---
-= 9336C-FX2ストレージスイッチを工場出荷時のデフォルトにリセットします
+= 9336C-FX2および9336C-FX2-Tストレージスイッチを工場出荷時のデフォルトにリセットします。
 :allow-uri-read: 
 
 
 [role="lead"]
-9336C-FX2 ストレージ スイッチを工場出荷時のデフォルトにリセットするには、9336C-FX2 スイッチの設定を消去する必要があります。
+9336C-FX2 および 9336C-FX2-T ストレージ スイッチを工場出荷時のデフォルトにリセットするには、9336C-FX2 および 9336C-FX2-T スイッチの設定を消去する必要があります。
 
 .このタスクについて
 * シリアル コンソールを使用してスイッチに接続する必要があります。

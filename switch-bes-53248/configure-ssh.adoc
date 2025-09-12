@@ -43,14 +43,18 @@ SCP server Administrative Mode: ............... Disabled
 +
 ** SSH が無効になっていない場合は、次のように無効にします。
 +
-.例を示します
-[%collapsible]
+`no ip ssh server enable`
+
++
+`no ip scp server enable`
+
++
+[NOTE]
 ====
-[listing, subs="+quotes"]
-----
-(switch)# *ip ssh server disable*
-(switch)# *ip scp server disable*
-----
+*** EFOS 3.12 以降では、SSH が無効になっているとアクティブな SSH セッションが失われるため、コンソール アクセスが必要になります。
+*** EFOS 3.11 以前では、SSH サーバーを無効にした後も現在の SSH セッションは開いたままになります。
+
+
 ====
 +
 

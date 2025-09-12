@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: witches, initial installation, configure switch-cisco-9336c-fx2 switch 
 summary: Cisco Nexus 9336C-FX2 クラスタ スイッチを構成する前に、構成の概要を確認してください。 
 ---
-= Cisco Nexus 9336C-FX2スイッチのハードウェアインストールワークフロー
+= Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチのハードウェア インストール ワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-9336C-FX2 クラスタ スイッチのハードウェアをインストールして構成するには、次の手順に従います。
+9336C-FX2 および 9336C-FX2-T クラスタ スイッチのハードウェアをインストールして構成するには、次の手順に従います。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:setup-worksheet-9336c-cluster.html["配線ワークシートを完成させる"]
 [role="quick-margin-para"]
@@ -19,11 +19,11 @@ summary: Cisco Nexus 9336C-FX2 クラスタ スイッチを構成する前に、
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:install-switch-9336c-cluster.html["スイッチを設置します"]
 [role="quick-margin-para"]
-9336C-FX2 スイッチをインストールします。
+9336C-FX2 および 9336C-FX2-T スイッチをインストールします。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:install-switch-and-passthrough-panel-9336c-cluster.html["NetAppキャビネットへのスイッチの設置"]
 [role="quick-margin-para"]
-必要に応じて、9336C-FX2 スイッチとパススルー パネルをNetAppキャビネットにインストールします。
+必要に応じて、9336C-FX2 および 9336C-FX2-T スイッチとパススルー パネルをNetAppキャビネットにインストールします。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:install-switch-and-passthrough-panel-9336c-cluster.html["ケーブル接続と構成を確認"]
 [role="quick-margin-para"]

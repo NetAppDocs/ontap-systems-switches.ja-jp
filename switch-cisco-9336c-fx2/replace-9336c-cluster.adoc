@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: replacing, replace, defective, nexus, switch, cluster, network, nondisruptive, procedure, ndu, replace a cisco nexus 9336c-fx2 cluster switch - cisco nexus 9336c-fx2 
 summary: クラスタネットワーク内の障害のある Nexus 9336C-FX2 スイッチの交換は、無停止手順（ NDU ）です。 
 ---
-= Cisco Nexus 9336C-FX2 クラスタスイッチを交換します
+= Cisco Nexus 9336C-FX2および9336C-FX2-Tクラスタスイッチの交換
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-クラスタネットワーク内の故障したNexus 9336C-FX2スイッチを交換するには、次の手順を実行します。これは、無停止の手順 （NDU；非停止アップグレード）です。
+クラスタ ネットワーク内の故障した Nexus 9336C-FX2 および 9336C-FX2-T スイッチを交換するには、次の手順に従います。これは非中断手順 (NDU) です。
 
 
 
@@ -618,4 +618,4 @@ Total entries displayed: 4
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+スイッチを交換したら、link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"] 。

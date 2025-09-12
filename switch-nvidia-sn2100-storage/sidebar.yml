@@ -3,7 +3,7 @@ section: switch-nvidia-sn2100-storage
 title: NVIDIA SN2100
 pdf-filename: スイッチ-nvidia-sn2100-storage
 entries:
-- title: 概要
+- title: はじめに
   pdf-filename: 概要_sn2100 -ストレージ
   entries:
   - title: クイックスタート

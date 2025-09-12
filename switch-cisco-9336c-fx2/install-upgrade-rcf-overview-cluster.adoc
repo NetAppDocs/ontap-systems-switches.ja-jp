@@ -11,7 +11,7 @@ summary: クラスタスイッチヘルスモニタ（ CSHM ）およびログ�
 
 
 [role="lead"]
-Reference Configuration File（RCF；リファレンス構成ファイル）は、Nexus 9336C-FX2スイッチの初回セットアップ後にインストールします。スイッチに既存のバージョンのRCFファイルがインストールされている場合は、RCFのバージョンをアップグレードします。
+Nexus 9336C-FX2 および 9336C-FX2-T スイッチを初めてセットアップした後、リファレンス コンフィギュレーション ファイル (RCF) をインストールします。スイッチに既存のバージョンの RCF ファイルがインストールされている場合は、RCF バージョンをアップグレードします。
 
 RCFをインストールまたはアップグレードする場合の詳細については、技術情報アーティクルを参照してlink:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままCiscoインターコネクトスイッチの設定をクリアする方法"^]ください。
 
@@ -104,4 +104,4 @@ NOTE: コマンド出力は、 ONTAP のリリースによって異なる場合�
 手順では、 ONTAP コマンドと Cisco Nexus 9000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
 
 .次の手順
-link:install-rcf-software-9336c-cluster.html["RCFをインストールします"] または link:upgrade-rcf-software-9336c-cluster.html["RCFのアップグレード"]。
+RCFのインストールまたはRCFのアップグレード手順を確認した後、link:install-rcf-software-9336c-cluster.html["RCFをインストールする"]またはlink:upgrade-rcf-software-9336c-cluster.html["RCFをアップグレードする"]必要に応じて。

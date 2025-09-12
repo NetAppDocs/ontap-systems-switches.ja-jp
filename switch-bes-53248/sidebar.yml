@@ -2,7 +2,7 @@
 section: switch-bes-53248
 title: Broadcom 対応 BES-53248 の場合
 entries:
-- title: 概要
+- title: はじめに
   pdf-filename: 概要_bes53248
   entries:
   - title: クイックスタート

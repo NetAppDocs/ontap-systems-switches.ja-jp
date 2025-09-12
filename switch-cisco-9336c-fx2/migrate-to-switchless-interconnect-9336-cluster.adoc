@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: migrate, switchless cluster interconnect, cisco nexus switch 9336C-FX2 
 summary: ONTAP 9.3以降では、スイッチクラスタネットワークを使用するクラスタから2つのノードが直接接続されたクラスタに移行できます。 
 ---
-= Cisco Nexus 9336C-FX2クラスタスイッチをスイッチレス接続に置き換えます
+= Cisco Nexus 9336C-FX2および9336C-FX2-Tクラスタスイッチをスイッチレス接続に置き換える
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

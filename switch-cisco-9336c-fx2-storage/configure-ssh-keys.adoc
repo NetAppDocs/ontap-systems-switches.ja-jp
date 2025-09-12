@@ -64,4 +64,4 @@ sshServer              1          enabled
 IMPORTANT: FIPSをイネーブルにする場合は、コマンドを使用してスイッチのビット数を256に変更する必要があります `ssh key ecdsa 256 force`。詳細については、を参照してください https://docs.netapp.com/us-en/ontap/networking/configure_network_security_using_federal_information_processing_standards_@fips@.html#enable-fips["FIPS を使用してネットワークセキュリティを設定する"^]。
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+SSH設定を確認したら、link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"] 。

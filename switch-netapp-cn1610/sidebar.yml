@@ -2,7 +2,7 @@
 section: switch-netapp-cn1610
 title: NetApp CN1610
 entries:
-- title: 概要
+- title: はじめに
   pdf-filename: 概要_cn1610
   url: "/switch-netapp-cn1610/switch-overview-cn1610.html"
 - title: インストールと設定のワークフロー

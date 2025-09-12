@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: install, cisco, nexus, switch, pass-through, panel, netapp, cabinet, bracket, switch, install a cisco nexus 9336c-fx2 switch and pass-through panel in a netapp cabinet - cisco nexus 9336c-fx2 
 summary: Cisco Nexus 9336C-FX2 スイッチとパススルーパネルは、スイッチに付属の標準ブラケットを使用してネットアップキャビネットに設置できます。 
 ---
-= Cisco Nexus 9336C-FX2スイッチをネットアップキャビネットに設置します
+= Cisco Nexus 9336C-FX2および9336C-FX2-TスイッチをNetAppキャビネットに設置する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-構成によっては、Cisco Nexus 9336C-FX2スイッチとパススルーパネルをネットアップキャビネットに設置する必要がある場合があります。スイッチには標準ブラケットが付属しています。
+構成によっては、 Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチとパススルー パネルをNetAppキャビネットにインストールする必要がある場合があります。スイッチには標準ブラケットが付属しています。
 
 .作業を開始する前に
 次のものがあることを確認します。
@@ -70,7 +70,7 @@ image::../media/3132q_front_bracket.gif[フロントブラケット]
 image::../media/ru_locations_for_3132q_v.gif[3 、 242 V の RU 所在地]
 
 +
-2つの9336C-FX2スイッチは、常にキャビネットRU41および42の上部2Uに取り付けられています。
+2 つの 9336C-FX2 および 9336C-FX2-T スイッチは、常にキャビネット RU41 および 42 の上部 2U に取り付けられます。
 
 . キャビネットにスライダレールを取り付けます。
 +
@@ -125,11 +125,11 @@ NOTE: 完全に取り付けられたスイッチをサポートとして使用�
 
 NOTE: 冗長性を確保するには、 2 本のコードを別々の PDU に接続する必要があります。
 
-. 各 9336C-FX2 スイッチの管理ポートをいずれかの管理スイッチ（発注した場合）に接続するか、または管理ネットワークに直接接続します。
+. 各 9336C-FX2 および 9336C-FX2-T スイッチの管理ポートをいずれかの管理スイッチ (注文した場合) に接続するか、管理ネットワークに直接接続します。
 +
 管理ポートは、スイッチの PSU 側にある右上のポートです。スイッチを設置して管理スイッチまたは管理ネットワークに接続した後、各スイッチの CAT6 ケーブルをパススルーパネル経由で配線する必要があります。
 
 
 
 .次の手順
-link:setup-switch-9336c-cluster.html["Cisco Nexus 9336C-FX2スイッチを設定します"]。
+NetAppキャビネットにスイッチを設置したら、link:setup-switch-9336c-cluster.html["Cisco Nexus 9336C-FX2および9336C-FX2-Tスイッチの設定"] 。

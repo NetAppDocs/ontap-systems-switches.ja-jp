@@ -882,4 +882,4 @@ summary: サポート対象のプラットフォームを文書化する場合�
 を参照してください https://hwu.netapp.com/Switch/Index["Hardware Universe"] スイッチポートの詳細については、を参照してください。
 
 .次の手順
-link:install-switch-9336c-cluster.html["スイッチを設置します"]です。
+配線ワークシートを完了したら、link:install-switch-9336c-cluster.html["スイッチをインストールする"] 。

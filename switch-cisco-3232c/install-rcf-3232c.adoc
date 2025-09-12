@@ -285,7 +285,7 @@ NOTE: アップグレードまたは新しい RCF を適用する場合は、ス
 
 . RCF バージョン 1.12 以降の場合は、次のコマンドを実行します。
 +
-`cs2# echo "hardware access-list tcam region racl-lite 512" > bootflash:write_erase.cfg`
+`cs2# echo "hardware access-list tcam region racl-lite 512" >> bootflash:write_erase.cfg`
 
 +
 `cs2# echo "hardware access-list tcam region qos 256" >> bootflash:write_erase.cfg`

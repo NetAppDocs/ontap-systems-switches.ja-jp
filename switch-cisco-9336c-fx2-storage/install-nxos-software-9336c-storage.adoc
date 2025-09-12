@@ -11,7 +11,7 @@ summary: この手順を使用して、 Nexus 9336C-FX2 クラスタスイッチ
 
 
 [role="lead"]
-Nexus 9336C-FX2クラスタスイッチにNX-OSソフトウェアをインストールするには、次の手順 に従います。
+Nexus 9336C-FX2 および 9336C-FX2-T スイッチに NX-OS ソフトウェアをインストールするには、次の手順に従います。
 
 作業を開始する前に、の手順 を完了します link:install-nxos-overview-9336c-storage.html["NX-OSおよびRCFのインストールを準備します"]。
 
@@ -696,4 +696,4 @@ cluster1::*>
 
 
 .次の手順
-link:install-rcf-software-9336c-storage.html["RCFのインストールまたはアップグレード"]です。
+NX-OSソフトウェアをインストールまたはアップグレードした後は、link:install-rcf-software-9336c-storage.html["RCFをインストールまたはアップグレードする"] 。

@@ -241,4 +241,4 @@ Cluster
 
 
 .次の手順
-link:install-nxos-software-9336c-cluster.html["NX-OSソフトウェアのインストールまたはアップグレード"]です。
+NX-OSソフトウェアとRCFをインストールする準備ができたら、link:install-nxos-software-9336c-cluster.html["NX-OSソフトウェアをインストールまたはアップグレードする"] 。

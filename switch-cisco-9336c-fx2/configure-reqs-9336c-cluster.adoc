@@ -4,7 +4,7 @@ permalink: /switch-cisco-9336c-fx2/configure-reqs-9336c-cluster.html
 keywords: shared storage cluster switch 
 summary: ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチシナリオに結合できます。 
 ---
-= Cisco Nexus 9336C-FX2クラスタスイッチの設定要件
+= Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタ スイッチの構成要件
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,12 +14,16 @@ summary: ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用し
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2スイッチの設置とメンテナンスについては、設定とネットワークの要件を確認してください。
+Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチのインストールとメンテナンスについては、構成とネットワーク要件を必ず確認してください。
 
 
 
 == ONTAP のサポート
 
+[role="tabbed-block"]
+====
+.ONTAP 9.9.1以降
+--
 ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチ構成に組み合わせることができます。
 
 3 つ以上のノードで ONTAP クラスタを構築する場合は、サポートされている 2 つのネットワークスイッチが必要です。
@@ -27,6 +31,15 @@ ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ス
 
 NOTE: イーサネットスイッチヘルスモニタは、ONTAP 9.13.1P8以前および9.14.1P3以前またはNX-OSバージョン10.3（4a）（M）をサポートしていません。
 
+--
+.ONTAP 9.10.1以降
+--
+さらに、 ONTAP 9.10.1 以降では、 Cisco Nexus 9336C-FX2-T スイッチを使用して、ストレージとクラスタ機能を共有スイッチ構成に統合できます。
+
+3 つ以上のノードで ONTAP クラスタを構築する場合は、サポートされている 2 つのネットワークスイッチが必要です。
+
+--
+====
 
 
 == 設定要件
@@ -52,4 +65,4 @@ NOTE: イーサネットスイッチヘルスモニタは、ONTAP 9.13.1P8以前
 スイッチの初期設定の詳細については、次のガイドを参照してください。 https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9336c-fx2-e/cisco-nexus-9336c-fx2-e-nx-os-mode-switch-hardware-installation-guide.html["『 Cisco Nexus 9336C-FX2 Installation and Upgrade Guide 』"^]。
 
 .次の手順
-link:components-9336c-cluster.html["コンポーネントとパーツ番号"] 。
+構成要件を確認した後、link:components-9336c-cluster.html["コンポーネントと部品番号"] 。

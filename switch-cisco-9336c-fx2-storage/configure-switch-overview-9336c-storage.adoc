@@ -4,28 +4,30 @@ sidebar: sidebar
 keywords: BES-53248 switches, initial installation, configure switch-cisco-9336c-fx2 switch 
 summary: Cisco Nexus 9336C-FX2ストレージスイッチのインストールと設定の概要 
 ---
-= Cisco Nexus 9336C-FX2 ストレージ スイッチのインストールとセットアップのワークフロー
+= Cisco Nexus 9336C-FX2 9336C-FX2-T ストレージスイッチのインストールとセットアップのワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2スイッチはCisco Nexus 9000プラットフォームの一部であり、NetAppシステムキャビネットに設置できます。Nexus 9336C-FX2は、コントローラとディスクシェルフ間でデータを切り替えることができるイーサネットスイッチです。
+Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチは、 Cisco Nexus 9000 プラットフォームの一部であり、 NetAppシステム キャビネットに設置できます。
 
-Cisco 9336C-FX2 スイッチをインストールしてセットアップするには、次のワークフロー手順に従ってください。
+Cisco Nexus 9336C-FX2 (36 ポート) は、高ポート密度のクラスタ/ストレージ/データ スイッチです。Cisco Nexus 9336C-FX2-T (12 ポート) は、10/25/40/100GbE 構成をサポートする、ポート密度が低い高性能スイッチです。
+
+Cisco 9336C-FX2 および 9336C-FX2-T スイッチをインストールしてセットアップするには、次のワークフロー手順に従ってください。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:configure-reqs-9336c-storage.html["構成要件を確認する"]
 [role="quick-margin-para"]
-9336C-FX2 ストレージ スイッチの構成要件を確認します。
+9336C-FX2 および 9336C-FX2-T ストレージ スイッチの構成要件を確認します。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:components-9336c-storage.html["コンポーネントと部品番号を確認する"]
 [role="quick-margin-para"]
-9336C-FX2 ストレージ スイッチのコンポーネントと部品番号を確認します。
+9336C-FX2 および 9336C-FX2-T ストレージ スイッチのコンポーネントと部品番号を確認します。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:required-documentation-9336c-storage.html["必要な書類を確認する"]
 [role="quick-margin-para"]
-9336C-FX2 スイッチとONTAPクラスタをセットアップするには、特定のスイッチおよびコントローラのドキュメントを確認してください。
+9336C-FX2 および 9336C-FX2-T スイッチとONTAPクラスタをセットアップするには、特定のスイッチおよびコントローラのドキュメントを確認してください。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:smart-call-9336c-storage.html["Smart Call Homeの要件を確認する"]
 [role="quick-margin-para"]

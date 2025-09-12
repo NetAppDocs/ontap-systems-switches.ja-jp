@@ -2,7 +2,7 @@
 section: switch-cisco-3232c
 title: Cisco Nexus 3232C
 entries:
-- title: 概要
+- title: はじめに
   pdf-filename: Overview_3232C
   entries:
   - title: クイックスタート

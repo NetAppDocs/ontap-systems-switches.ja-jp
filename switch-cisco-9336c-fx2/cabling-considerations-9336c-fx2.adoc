@@ -11,7 +11,7 @@ summary: Cisco 9336C-FX2スイッチを設定する前に、次の情報を確�
 
 
 [role="lead"]
-Cisco 9336C-FX2スイッチを設定する前に、次の考慮事項を確認してください。
+9336C-FX2 および 9336C-FX2-T スイッチを構成する前に、次の考慮事項を確認してください。
 
 
 
@@ -42,8 +42,7 @@ NVIDIA ConnectX-6（CX6）、ConnectX-6 Dx（CX6-DX）、またはConnectX-7（C
 
 === FAS2820のe0a / e0bポート
 
-FAS2820のe0aポートとe0bポートで9336C-FX2スイッチポートとのリンクをupにするには、FECの設定を変更する必要があります。
-スイッチポートe0aとe0bの場合、FEC設定はに設定されます。 `rs-cons16`。
+FAS2820 e0a および e0b ポートでは、9336C-FX2 および 9336C-FX2-T スイッチ ポートとリンクするには FEC 構成の変更が必要です。スイッチポートe0aとe0bの場合、FEC設定は次のように設定されます。 `rs-cons16` 。
 
 [listing, subs="+quotes"]
 ----
@@ -58,6 +57,6 @@ FAS2820のe0aポートとe0bポートで9336C-FX2スイッチポートとのリ�
 
 == TCAMリソースが原因でポートがリンクアップしていない
 
-9336C-FX2スイッチでは、スイッチが使用する設定に設定されているTernary Content Addressable Memory（TCAM）リソースが不足しています。
+9336C-FX2 および 9336C-FX2-T スイッチでは、スイッチが使用する設定で設定されている Ternary Content Addressable Memory (TCAM) リソースが使い果たされています。
 
 サポート技術情報の記事を参照してください https://kb.netapp.com/on-prem/Switches/Cisco-KBs/Ports_do_not_link_up_on_Cisco_Nexus_9336C-FX2_due_to_TCAM_resources["TCAMリソースが原因でCisco Nexus 9336C-FX2でポートがリンクアップしない"^] この問題を解決する方法の詳細については、を参照してください。
