@@ -21,7 +21,7 @@ SN2100 ストレージ スイッチを工場出荷時のデフォルトにリセ
 
 
 
-NOTE: Cumulus Linuxのインストールの詳細については、link:configure-software-overview-sn2100-cluster.html["NVIDIA SN2100スイッチのソフトウェアインストールワークフロー"] 。
+NOTE: Cumulus Linuxのインストールの詳細については、link:configure-software-sn2100-storage.html["NVIDIA SN2100スイッチのソフトウェアインストールワークフロー"] 。
 
 .手順
 [role="tabbed-block"]

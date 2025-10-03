@@ -7,7 +7,7 @@ summary: FAS およびAFF システム用EODスイッチ。
 = 販売終了
 :allow-uri-read: 
 :icons: font
-:imagesdir: ../media/
+:imagesdir: ./media/
 
 
 [role="lead"]

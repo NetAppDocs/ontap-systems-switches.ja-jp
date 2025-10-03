@@ -35,13 +35,6 @@ Ciscoクラスタスイッチを使用する環境からNVIDIA SN2100クラス�
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrate-cisco-storage-switch-sn2100-storage.html["_ CiscoストレージスイッチからNVIDIAストレージスイッチへの移行_"^]
- a| 
-Ciscoストレージスイッチを使用する環境からNVIDIA SN2100ストレージスイッチを使用する環境に移行する方法について説明します。
-
-
-
- a| 
 https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html["NVIDIA SN2100クラスタスイッチを使用する2ノードスイッチクラスタへの移行_"^]
  a| 
 NVIDIA SN2100クラスタスイッチを使用して2ノードスイッチ環境に移行する方法について説明します。

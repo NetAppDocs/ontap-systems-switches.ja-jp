@@ -1,5 +1,5 @@
 ---
-permalink: switch-cisco-3132q-v/setup_worksheet_3132q.html 
+permalink: switch-cisco-3132q-v/setup-worksheet-3132q.html 
 sidebar: sidebar 
 keywords: cable worksheet, Cisco NX 3132Q-V 
 summary: サポート対象のプラットフォームを文書化する場合は、入力済みのケーブル接続ワークシートの例を参考にして、空白のケーブル接続ワークシートに記入する必要があります。各スイッチは、単一の 40GbE ポートまたは 4 × 10GbE ポートとして設定できます。 

@@ -46,6 +46,6 @@ NOTE: RCF バージョン 1.2 では、セキュリティ上の理由から、 T
 
 この手順 には 2 つの部分があります。
 
-* link:task-install-fastpath-software.html["FastPath ソフトウェアをインストールします"] FastPath ソフトウェアのインストール方法について説明します。
-* link:task-install-an-rcf-on-a-cn1610-switch.html["RCF を CN1610 スイッチにインストールします"] RCF のインストール方法について説明します。
+* link:install-fastpath-software.html["FastPath ソフトウェアをインストールします"]FASTPATH ソフトウェアのインストール方法について説明します。
+* link:install-rcf-file.html["RCF を CN1610 スイッチにインストールします"]RCF のインストール方法について説明します。
 

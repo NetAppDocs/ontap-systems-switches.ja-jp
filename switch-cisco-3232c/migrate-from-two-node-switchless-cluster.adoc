@@ -60,7 +60,7 @@ summary: 2 ノードスイッチレスクラスタを使用している場合は
 * n1_clus2 は、ノード n1 のクラスタスイッチ C2 に接続する最初のクラスタ LIF です。
 * n2_clus1 は、ノード n2 のクラスタスイッチ C1 に接続する最初のクラスタ LIF です。
 * n2_clus2 は、ノード n2 のクラスタスイッチ C2 に接続する 2 番目のクラスタ LIF です。
-* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
+* 10 GbEおよび40/100 GbEポートの数は、次のURLで入手可能なリファレンス構成ファイル（RCF）で定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] 。
 
 
 [NOTE]
@@ -165,14 +165,14 @@ Enable Switchless Cluster Detection: true
 +
 .. ネットアップサポートサイトの _Cisco イーサネットスイッチ _ ページにアクセスします。
 +
-http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]
+link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]
 
 .. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
 .. 適切なバージョンの RCF をダウンロードします。
 .. 概要 * ページで * continue * をクリックし、ライセンス契約に同意して、 * Download * ページの手順に従ってをダウンロードします。
 .. 適切なバージョンのイメージソフトウェアをダウンロードします。
 +
-https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco Cluster and Management Network Switch Reference Configuration File のダウンロードページ"^]
+link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Ciscoクラスタおよび管理ネットワーク スイッチのリファレンス設定ファイルのダウンロード"^] 。
 
 
 

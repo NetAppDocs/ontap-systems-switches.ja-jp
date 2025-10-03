@@ -18,7 +18,7 @@ summary: Cisco Nexus 3132Q-V クラスタスイッチを交換する場合は、
 == Cisco Nexus 3132Q-Vの要件
 
 * Cisco Nexus 3132Q-V クラスタスイッチがサポートされています。
-* 10GbEポートと40GbEポートの数は、ページで入手できるリファレンス構成ファイル（RCF）で定義しlink:https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^]ます。
+* 10 GbEおよび40 GbEポートの数は、次のURLで入手可能なリファレンス構成ファイル（RCF）で定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] 。
 * クラスタスイッチは、 Inter-Switch Link （ ISL ；スイッチ間リンク）ポート e1/31~32 を使用します。
 * 。 link:https://hwu.netapp.com["Hardware Universe"^] Nexus 3132Q-V スイッチでサポートされているケーブル接続に関する情報が含まれています。
 +
@@ -44,7 +44,7 @@ Nexus 3132Q-V の QSFP ポートの代わりに 4 つの SFP+ ポートをアク
 
 * ノードからNexus 3132Q-Vクラスタスイッチへの10GbEおよび40GbE接続について、計画、移行を完了し、必要なドキュメントを読んでおく必要があります。
 +
-。 link:http://mysupport.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^] この手順 でサポートされている ONTAP および NX-OS のバージョンについては、ページを参照してください。
+link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]この手順でサポートされているONTAPおよび NX-OS のバージョンに関する情報が記載されています。
 
 
 
@@ -58,7 +58,7 @@ Nexus 3132Q-V の QSFP ポートの代わりに 4 つの SFP+ ポートをアク
 ** Nexus3132Q-V
 
 
-* 10GbEポートと40GbEポートの数は、ページで入手できるリファレンス構成ファイル（RCF）で定義し https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^]ます。
+* 10 GbEおよび40 GbEポートの数は、次のURLで入手可能なリファレンス構成ファイル（RCF）で定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] 。
 * クラスタスイッチは、ノードへの接続に次のポートを使用します。
 +
 ** ポート e1/1~40 （ 10GbE ）： Nexus 5596
@@ -114,7 +114,7 @@ NOTE: Nexus 3132Q-V スイッチの QSFP ポートの代わりに 4 個の SFP+ 
 NOTE: 最初の 6 つのポートを 4x10 GbE モードに分割するには、「 interface breakout module 1 port 1-6 map 10g-4x 」コマンドを使用します。同様に、 no interface breakout module 1 port 1-6 map 10g-4x コマンドを使用して、ブレークアウト構成から最初の 6 つの QSFP+ ポートをグループ化し直すことができます。
 
 * ノードからNexus 3132Q-Vクラスタスイッチへの10GbEおよび40GbE接続について、計画、移行を完了し、必要なドキュメントをお読みください。
-* この手順 でサポートされている ONTAP と NX-OS のバージョンはにあります link:http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^] ページ
+* この手順でサポートされているONTAPおよびNX-OSのバージョンは次のとおりです。link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^] 。
 
 
 
@@ -176,6 +176,6 @@ NOTE: 最初の 4 つの SFP+ ポートを使用すると、最初の 40GbE QSFP
 コマンドを使用すると、最初の6つのポートを4x10GbEモードに分割できます `interface breakout module 1 port 1-6 map 10g-4x`。同様に、コマンドを使用して、_breakout_configurationから最初の6つのQSFP+ポートを再グループ化できます `no interface breakout module 1 port 1-6 map 10g-4x`。
 
 * ノードからNexus 3132Q-Vクラスタスイッチへの10GbEおよび40GbE接続について、計画、移行を完了し、必要なドキュメントを読んでおく必要があります。
-* この手順 でサポートされている ONTAP と NX-OS のバージョンをに示します link:http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^] ページ
-* この手順 でサポートされている ONTAP および FastPath のバージョンをに示します link:http://support.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^] ページ
+* この手順でサポートされているONTAPおよびNX-OSのバージョンは、link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^] 。
+* この手順でサポートされているONTAPおよびFASTPATHのバージョンは、link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 / CN1610 スイッチ"^] 。
 

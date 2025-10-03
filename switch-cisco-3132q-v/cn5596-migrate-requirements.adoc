@@ -19,8 +19,8 @@ AFF またはFAS クラスタでは、Cisco Nexus 3132Q-Vスイッチをクラ�
 ====
 詳細については、を参照してください
 
-* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco Ethernet Switch 概要 ページ"^]
-* http://hwu.netapp.com["Hardware Universe"^]
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]
+* link:http://hwu.netapp.com["Hardware Universe"^]
 
 
 
@@ -81,7 +81,7 @@ Nexus 3132Q-Vスイッチへのサポートされるケーブル接続につい�
 
 ====
 * ノードから Nexus 3132Q-V クラスタスイッチへの 10GbE および 40/100GbE 接続に関する必要なドキュメントの計画、移行、および確認が完了している。
-* この手順 でサポートされている ONTAP と NX-OS のバージョンはにあります link:http://support.netapp.com/NOW/download/software/cm_switches/.html["Cisco Ethernet Switches のページ"^]。
+* この手順でサポートされているONTAPおよび NX-OS のバージョンは次のとおりです。link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^] 。
 
 
 .使用例について
@@ -96,7 +96,7 @@ Nexus 3132Q-Vスイッチへのサポートされるケーブル接続につい�
 * * n1_clus2 *は、ノード* n1 *のクラスタスイッチ2（CL2またはC2）に接続された最初のクラスタLIFです。
 * * n1_clus3 *は、ノード* n1 *のクラスタスイッチ2（CL2またはC2）に接続されている2番目のLIFです。
 * * n1_clus4 *は、ノード* n1 *のクラスタスイッチ1（CL1またはC1）に接続されている2番目のLIFです。
-* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
+* 10 GbEおよび40/100 GbEポートの数は、以下の場所で入手可能なリファレンス構成ファイル（RCF）で定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] 。
 * ノードは* n1 *、* n2 *、* n3 *、および* n4 *です。
 
 

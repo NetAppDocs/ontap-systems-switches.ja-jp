@@ -17,7 +17,7 @@ Cisco Nexus 92300YCスイッチの設置とメンテナンスについては、�
 
 == スイッチのドキュメント
 
-Cisco Nexus 92300YCスイッチを設定するには、から次のドキュメントを入手する必要があります https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズスイッチのサポート"^] ページ
+Cisco Nexus 92300YCスイッチをセットアップするには、次のドキュメントが必要です。 https://www.cisco.com/site/us/en/products/networking/cloud-networking-switches/nexus-9200-series-switches/index.html["Cisco Nexus 9000 シリーズスイッチのサポート"^]ページ：
 
 [cols="1,2"]
 |===
@@ -129,7 +129,7 @@ https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["『 42U System Cab
 
 
  a| 
-link:install-cisco-nexus-3132qv.html["[Cisco Nexus 92300YCスイッチをネットアップキャビネットに設置します"]
+link:install-switch-netapp-cabinet-92300yc.html["NetAppキャビネットにCisco Nexus 92300YCスイッチをインストールする"]
  a| 
 Cisco Nexus 92300YCスイッチを4ポストネットアップキャビネットに設置する方法について説明します。
 

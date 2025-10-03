@@ -172,7 +172,7 @@ RCF およびイメージをアップグレードする必要がある場合は�
 +
 .. ネットアップサポートサイトの _Cisco イーサネットスイッチ _ ページにアクセスします。
 +
-http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^]
+link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]
 
 .. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
 .. 該当するバージョンの RCF をダウンロードします。

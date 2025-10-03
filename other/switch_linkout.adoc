@@ -1,5 +1,5 @@
 ---
-permalink: other/switch-linkout.html 
+permalink: other/switch_linkout.html 
 sidebar: sidebar 
 keywords: cisco, Nexus 5596, CN1601 
 summary: 他のスイッチモデルにも使用できます。 
@@ -10,7 +10,8 @@ summary: 他のスイッチモデルにも使用できます。
 :imagesdir: ../media/
 
 
-これらのリンクから、以前のモデルのクラスタスイッチおよびstprageスイッチのドキュメントを参照できます。リンクをクリックすると、別のドキュメントサイトにアクセスできます。
+[role="lead"]
+これらのリンクを使用して、クラスターおよびストレージ スイッチの以前のモデルのドキュメントを見つけることができます。リンクをクリックすると、別のドキュメント サイトに移動します。
 
 * https://mysupport.netapp.com/documentation/docweb/index.html?productID=62376&language=en-US["Cisco Nexus 5596"]
 * https://mysupport.netapp.com/documentation/docweb/index.html?productID=62373&language=en-USNetApp["CN1601"]

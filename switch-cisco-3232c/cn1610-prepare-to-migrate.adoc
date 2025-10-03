@@ -159,11 +159,11 @@ CL2                           cluster-network  10.10.1.102   CN1610
 この時点で両方のスイッチを準備する必要があります。RCF およびイメージをアップグレードする必要がある場合は、次の手順 を実行する必要があります。
 
 +
-.. を参照してください link:http://support.netapp.com/NOW/download/software/cm_switches/.html["Cisco イーサネットスイッチ"^] ネットアップサポートサイトのページを参照してください。
+.. 見るlink:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]NetAppサポート サイトをご覧ください。
 .. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
 .. 該当するバージョンの RCF をダウンロードします。
 .. [Description]ページで[continue]*を選択し、ライセンス契約に同意して、*[Download]*ページの指示に従ってRCFをダウンロードします。
-.. 適切なバージョンのイメージソフトウェアをからダウンロードします link:http://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.html["Cisco ® Cluster and Management Network Switch Reference Configuration File Download （ Cisco ® クラスタおよび管理ネットワークスイッチリファレンス構成ファイルのダウンロード"^]。
+.. 適切なバージョンのイメージソフトウェアをダウンロードしてください。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® Cluster and Management Network Switch Reference Configuration File Download （ Cisco ® クラスタおよび管理ネットワークスイッチリファレンス構成ファイルのダウンロード"^] 。
 
 
 . 交換する2つ目のCN1610スイッチに関連付けられているLIFを移行します。

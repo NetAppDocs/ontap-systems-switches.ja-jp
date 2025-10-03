@@ -75,4 +75,4 @@ X-MTEFキット-E
 NOTE: 詳細については、NVIDIAのドキュメントを参照してください https://docs.nvidia.com/networking/display/sn2000pub/Installation["SN2100スイッチとレールキットの取り付け"^]。
 
 .次の手順
-link:required-documentation-sn2100-storage.html["必要なドキュメント"]
+link:required-documentation-sn2100-storage.html["必要なドキュメント"] 。

@@ -30,7 +30,7 @@ Nexus 9336C-FX2 および 9336C-FX2-T スイッチを初めてセットアップ
 . SSHまたはシリアルコンソールを使用して、スイッチcs1にログインします。
 . FTP、TFTP、SFTP、またはSCPのいずれかの転送プロトコルを使用して、スイッチcs1のブートフラッシュにRCFをコピーします。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^]ガイド。
 
 +
 .例を示します
@@ -50,7 +50,7 @@ Copy complete, now saving to disk (please wait)...
 ====
 . ブートフラッシュに前にダウンロードした RCF を適用します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^]ガイド。
 
 +
 .例を示します
@@ -121,8 +121,14 @@ g mode:
 
 
 
-. 以前のカスタマイズをスイッチの設定に再適用します。link:cabling-considerations-9336c-fx2.html["ケーブル接続と構成に関する考慮事項を確認"]必要なその他の変更の詳細については、を参照してください。
-. 基本設定の詳細をブートフラッシュのwrite_erase.cfgファイルに保存します。
+. 現在のカスタム追加を記録します `running-config`ファイルと使用中の RCF ファイル。
+. RCFのバージョンとスイッチの設定が正しいことを確認したら、 `running-config`ファイルに `startup-config`ファイル。
++
+[listing]
+----
+cs1# copy running-config startup-config [########################################] 100% Copy complete
+----
+. 基本的な設定の詳細を `write_erase.cfg`ブートフラッシュ上のファイル。
 +
 `cs1# show run | i "username admin password" > bootflash:write_erase.cfg`
 
@@ -146,9 +152,9 @@ g mode:
 `cs1# echo "hardware access-list tcam region ing-l2-qos 1280" >> bootflash:write_erase.cfg`
 
 +
-ナレッジベースの記事を参照してください https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細についてはこちらをご覧ください。
+ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細については、こちらをご覧ください。
 
-. write_erase.cfg ファイルが期待どおりに入力されていることを確認します。
+. 確認するには `write_erase.cfg`ファイルは期待どおりに入力されます。
 +
 `show file bootflash:write_erase.cfg`
 
@@ -173,7 +179,7 @@ g mode:
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
 
-. スイッチ cs2 で手順 1 ～ 12 を繰り返します。
+. スイッチ cs2 で手順 1 ～ 13 を繰り返します。
 . ONTAPクラスタ内のすべてのノードのクラスタポートをスイッチcs1とcs2に接続します。
 
 

@@ -1,10 +1,8 @@
 ---
 section: switch-cisco-9336c-fx2-storage
 title: Cisco Nexus 9336C-FX2または9336C-FX2-T
-pdf-filename: スイッチ- CISCO-9336c-FX2-storage
 entries:
 - title: はじめに
-  pdf-filename: 概要_9336c-FX2-storage
   entries:
   - title: クイックスタート
     url: "/switch-cisco-9336c-fx2-storage/configure-switch-overview-9336c-storage.html"

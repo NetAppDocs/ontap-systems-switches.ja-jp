@@ -89,7 +89,7 @@ Cluster
 この時点で両方のスイッチを準備する必要があります。RCF とイメージソフトウェアをアップグレードする必要がある場合は、次の手順を実行する必要があります。
 
 +
-.. にアクセスします link:http://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^] ネットアップサポートサイトのページを参照してください。
+.. へ移動link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]NetAppサポート サイトをご覧ください。
 .. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
 .. 適切なバージョンの RCF をダウンロードします。
 .. [Description]ページで[continue]*を選択し、ライセンス契約に同意して、*[Download]*ページの指示に従ってRCFをダウンロードします。

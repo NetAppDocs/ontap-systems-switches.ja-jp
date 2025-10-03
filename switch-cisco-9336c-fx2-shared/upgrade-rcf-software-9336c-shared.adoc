@@ -400,7 +400,9 @@ g mode:
 
 
 
-. 以前のカスタマイズをスイッチの設定に再適用します。link:cabling-considerations-9336c-fx2.html["ケーブル接続と構成に関する考慮事項を確認"]必要なその他の変更の詳細については、を参照してください。
+. 以前のカスタマイズをスイッチ構成に再適用します。
+
+
 . RCFのバージョン、カスタム追加、およびスイッチの設定が正しいことを確認したら、running-configファイルをstartup-configファイルにコピーします。
 +
 Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^] ガイド。

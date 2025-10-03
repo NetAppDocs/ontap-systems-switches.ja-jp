@@ -17,9 +17,9 @@ NOTE: 手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイ
 
 必要に応じて、詳細については次を参照してください。
 
-* http://support.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 の概要 ページ"^]
-* http://support.netapp.com/NOW/download/software/cm_switches/["Cisco Ethernet Switch 概要 ページ"^]
-* http://hwu.netapp.com["Hardware Universe"^]
+* link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 および CN1610"^]
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]
+* link:http://hwu.netapp.com["Hardware Universe"^]
 
 
 
@@ -75,11 +75,11 @@ QSFP ケーブル × 1 、 SFP+ 光ファイバケーブル × 4 、銅線ブレ
 QSFP 光ファイバケーブルまたは銅線直接接続ケーブル × 2
 
 |===
-該当するリファレンス構成ファイル（ RCF ）をダウンロードしておく必要があります。10GbE ポートと 40/100GbE ポートの数は、で使用可能な RCF に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
+該当する参照構成ファイル (RCF) をダウンロードしておく必要があります。  10 GbEおよび40/100 GbEポートの数は、以下のRCFで定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] 。
 
-この手順 でサポートされている ONTAP と NX-OS のバージョンをに示します link:https://mysupport.netapp.com/NOW/download/software/cm_switches/.html["Cisco Ethernet Switches のページ"^]。
+この手順でサポートされているONTAPおよびNX-OSのバージョンは、次のとおりです。link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^] 。
 
-この手順 でサポートされている ONTAP および FastPath のバージョンをに示します link:http://support.netapp.com/NOW/download/software/cm_switches_ntap/.html["NetApp CN1601 / CN1610 スイッチのページ"^]。
+この手順でサポートされているONTAPおよびFASTPATHのバージョンは、次のとおりです。link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 / CN1610 スイッチ"^] 。
 
 .使用例について
 移行手順の例では、4つのノードを使用します。
@@ -101,7 +101,7 @@ QSFP 光ファイバケーブルまたは銅線直接接続ケーブル × 2
 * * n1_clus2 *は、ノード* n1 *のクラスタスイッチ2（CL2またはC2）に接続された最初のクラスタLIFです。
 * * n1_clus3 *は、ノード* n1 *のクラスタスイッチ2（CL2またはC2）に接続されている2番目のLIFです。
 * * n1_clus4 *は、ノード* n1 *のクラスタスイッチ1（CL1またはC1）に接続されている2番目のLIFです。
-* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/NOW/download/software/sanswitch/fcp/Cisco/netapp_cnmn/download.shtml["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] ページ
+* 10 GbEおよび40/100 GbEポートの数は、次のURLで入手可能なリファレンス構成ファイル（RCF）で定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] 。
 
 
 .次の手順

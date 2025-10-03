@@ -10,7 +10,7 @@ summary: Cisco Nexus 9336C-FX2スイッチの設置とメンテナンスにつ�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

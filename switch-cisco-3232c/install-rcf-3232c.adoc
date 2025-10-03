@@ -262,8 +262,8 @@ cluster1::*>
 +
 'how running-config'
 
-. 現在実行中の構成と使用中の RCF ファイル間のカスタム追加を記録します。
-. 基本設定の詳細をブートフラッシュのwrite_erase.cfgファイルに保存します。
+. 現在のカスタム追加を記録します `running-config`使用中の RCF ファイル。
+. 基本的な設定の詳細を `write_erase.cfg`ブートフラッシュ上のファイル。
 +
 
 NOTE: アップグレードまたは新しい RCF を適用する場合は、スイッチの設定を消去して基本設定を実行する必要があります。スイッチを再度セットアップするには、スイッチのシリアル コンソール ポートに接続する必要があります。
@@ -291,9 +291,9 @@ NOTE: アップグレードまたは新しい RCF を適用する場合は、ス
 `cs2# echo "hardware access-list tcam region qos 256" >> bootflash:write_erase.cfg`
 
 +
-ナレッジベースの記事を参照してください https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細についてはこちらをご覧ください。
+ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細については、こちらをご覧ください。
 
-. write_erase.cfg ファイルが期待どおりに入力されていることを確認します。
+. 確認するには `write_erase.cfg`ファイルは期待どおりに入力されます。
 +
 `show file bootflash:write_erase.cfg`
 
@@ -309,7 +309,7 @@ NOTE: アップグレードまたは新しい RCF を適用する場合は、ス
 
 . 以前に保存した基本設定をスタートアップコンフィギュレーションにコピーします。
 +
-`cs2# *copy write_erase.cfg startup-config*`
+`cs2# *copy bootflash:write_erase.cfg startup-config*`
 
 . スイッチをリブートします。
 +
@@ -318,7 +318,7 @@ NOTE: アップグレードまたは新しい RCF を適用する場合は、ス
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
 
-. FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs2のブートフラッシュにRCFをコピーします。Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^]ガイド。
 +
 .例を示します
 [%collapsible]
@@ -337,7 +337,7 @@ Copy complete, now saving to disk (please wait)...
 ====
 . ブートフラッシュに前にダウンロードした RCF を適用します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS Command Reference 』を参照してください"^]ガイド。
 
 +
 .例を示します
@@ -619,7 +619,7 @@ cluster1-04          true     true          false
 cluster1::*>
 ----
 ====
-. スイッチcs1について、手順7～20を繰り返します。
+. スイッチcs1について、手順7～23を繰り返します。
 . クラスタ LIF で自動リバートを有効にします。
 +
 [listing, subs="+quotes"]
