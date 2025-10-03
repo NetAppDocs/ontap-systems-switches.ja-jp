@@ -1,96 +1,96 @@
 ---
 section: switch-cisco-3132q-v
-title: Cisco Nexus 3132Q-V の 2 つのポートを設定します
+title: Cisco Nexus 3132Q-V
 entries:
-- title: はじめに
+- title: 始めましょう
   pdf-filename: 概要_3132q-v
   entries:
-  - title: クイックスタート
+  - title: クイック スタート
     url: "/switch-cisco-3132q-v/install-overview-cisco-3132qv.html"
-  - title: 設定要件
+  - title: 構成要件
     url: "/switch-cisco-3132q-v/configure-reqs-3132q.html"
-  - title: 必要なドキュメント
+  - title: 必要な書類
     url: "/switch-cisco-3132q-v/required-documentation-3132q.html"
   - title: Smart Call Homeの要件
     url: "/switch-cisco-3132q-v/smart-call-home-3132q.html"
 - title: ハードウェアを設置
-  pdf-filename: INSTALL_HARDWARE_3132q -v
+  pdf-filename: インストールハードウェア_3132q-v
   entries:
   - title: ハードウェアインストールワークフロー
     url: "/switch-cisco-3132q-v/install-hardware-workflow.html"
-  - title: ケーブル接続ワークシートに記入
+  - title: 完全な配線ワークシート
     url: "/switch-cisco-3132q-v/setup_worksheet_3132q.html"
-  - title: スイッチを設置します
+  - title: スイッチをインストールする
     url: "/switch-cisco-3132q-v/install-switch-3132qv.html"
-  - title: ネットアップキャビネットにスイッチを設置
+  - title: NetAppキャビネットにスイッチをインストールする
     url: "/switch-cisco-3132q-v/install-cisco-nexus-3132qv.html"
-  - title: ケーブル接続と構成を確認
+  - title: ケーブル配線と構成を確認する
     url: "/switch-cisco-3132q-v/cabling-considerations-3132q-v.html"
-- title: ソフトウェアを設定します
-  pdf-filename: configure_software_3132q -v
+- title: ソフトウェアを構成する
+  pdf-filename: 構成ソフトウェア_3132q-v
   entries:
-  - title: ソフトウェアのインストールワークフロー
+  - title: ソフトウェアインストールワークフロー
     url: "/switch-cisco-3132q-v/configure-software-overview-3132q-v-cluster.html"
-  - title: スイッチを設定します
+  - title: スイッチの設定
     url: "/switch-cisco-3132q-v/setup-switch.html"
-  - title: NX-OSおよびRCFのインストールを準備します
+  - title: NX-OSとRCFのインストール準備
     url: "/switch-cisco-3132q-v/prepare-install-cisco-nexus-3132q.html"
-  - title: NX-OSソフトウェアをインストールします
+  - title: NX-OSソフトウェアをインストールする
     url: "/switch-cisco-3132q-v/install-nx-os-software-3132q-v.html"
-  - title: RCFのインストールまたはアップグレード
+  - title: RCFをインストールまたはアップグレードする
     url: "/switch-cisco-3132q-v/install-rcf-3132q-v.html"
-  - title: SSH の設定を確認
+  - title: SSH設定を確認する
     url: "/switch-cisco-3132q-v/configure-ssh-keys.html"
   - title: スイッチを工場出荷時の状態にリセットする
     url: "/switch-cisco-3132q-v/reset-switch-3132q-v.html"
-- title: スイッチを移行
-  pdf-filename: migrate_switches_3132q-v
+- title: スイッチの移行
+  pdf-filename: 移行スイッチ_3132q-v
   entries:
   - title: CN1610スイッチの移行
-    pdf-filename: CN1610_switch_migration
+    pdf-filename: CN1610_スイッチ移行
     entries:
-    - title: CN1610スイッチの移行ワークフロー
+    - title: CN1610スイッチ移行ワークフロー
       url: "/switch-cisco-3132q-v/cn1610-migrate-workflow.html"
-    - title: 移行の要件
+    - title: 移行要件
       url: "/switch-cisco-3132q-v/cn1610-migrate-requirements.html"
-    - title: 移行を準備
+    - title: 移行の準備
       url: "/switch-cisco-3132q-v/cn1610-prepare-to-migrate.html"
-    - title: ポートの設定
+    - title: ポートを設定する
       url: "/switch-cisco-3132q-v/cn1610-configure-ports.html"
-    - title: 移行の完了
+    - title: 移行を完了する
       url: "/switch-cisco-3132q-v/cn1610-complete-migration.html"
   - title: Cisco Nexus 5596スイッチの移行
-    pdf-filename: CN5596_switch_migration
+    pdf-filename: CN5596_スイッチ移行
     entries:
-    - title: Cisco Nexus 5596スイッチの移行ワークフロー
+    - title: Cisco Nexus 5596 スイッチの移行ワークフロー
       url: "/switch-cisco-3132q-v/cn5596-migrate-workflow.html"
-    - title: 移行の要件
+    - title: 移行要件
       url: "/switch-cisco-3132q-v/cn5596-migrate-requirements.html"
-    - title: 移行を準備
+    - title: 移行の準備
       url: "/switch-cisco-3132q-v/cn5596-prepare-to-migrate.html"
-    - title: ポートの設定
+    - title: ポートを設定する
       url: "/switch-cisco-3132q-v/cn5596-configure-ports.html"
-    - title: 移行の完了
+    - title: 移行を完了する
       url: "/switch-cisco-3132q-v/cn5596-complete-migration.html"
-  - title: スイッチレスクラスタから2ノードスイッチクラスタへの移行
-    pdf-filename: スイッチレスクラスタからスイッチクラスタへの移行
+  - title: スイッチレス クラスタから 2 ノード スイッチ クラスタへの移行
+    pdf-filename: スイッチレスからスイッチドクラスタへの移行
     entries:
-    - title: スイッチレスから2ノードスイッチを使用したワークフローへの移行
+    - title: スイッチレスから2ノードスイッチのワークフローへの移行
       url: "/switch-cisco-3132q-v/migrate-switchless-to-switched-workflow.html"
-    - title: 移行の要件
+    - title: 移行要件
       url: "/switch-cisco-3132q-v/migrate-switchless-to-switched-requirements.html"
-    - title: 移行を準備
+    - title: 移行の準備
       url: "/switch-cisco-3132q-v/migrate-switchless-prepare-to-migrate.html"
-    - title: ポートの設定
+    - title: ポートを設定する
       url: "/switch-cisco-3132q-v/migrate-switchless-configure-ports.html"
-    - title: 移行の完了
+    - title: 移行を完了する
       url: "/switch-cisco-3132q-v/migrate-switchless-complete-migration.html"
-- title: スイッチを交換します
-  pdf-filename: replace_switches_3132q-v
+- title: スイッチを交換する
+  pdf-filename: スイッチの交換_3132q-v
   entries:
-  - title: 要件を交換
+  - title: 要件を置き換える
     url: "/switch-cisco-3132q-v/switch-requirements.html"
   - title: 3132Q-Vスイッチの交換
     url: "/switch-cisco-3132q-v/replace-cisco-nexus-3132q-v.html"
-  - title: クラスタスイッチをスイッチレス接続に交換します
+  - title: クラスタスイッチをスイッチレス接続に置き換える
     url: "/switch-cisco-3132q-v/migrate-to-switchless-cluster-interconnect.html"

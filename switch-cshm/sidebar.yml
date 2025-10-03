@@ -1,27 +1,27 @@
 ---
 section: switch-cshm
-title: スイッチヘルスの監視
+title: スイッチの状態を監視する
 entries:
-- title: スイツチヘルスカンシノカイヨウ
+- title: スイッチヘルスモニタリングの概要
   url: "/switch-cshm/cshm-overview.html"
-  pdf-filename: switch_health_cshm
-- title: スイッチヘルス監視の設定
+  pdf-filename: スイッチヘルスcshm
+- title: スイッチのヘルスモニタリングを構成する
   pdf-filename: スイッチヘルスの設定
   entries:
   - title: 設定の概要
     url: "/switch-cshm/config-overview.html"
-  - title: ログ収集の設定
+  - title: ログ収集を構成する
     url: "/switch-cshm/config-log-collection.html"
-  - title: オプション- SNMPv3を設定する
+  - title: オプション - SNMPv3 を構成する
     url: "/switch-cshm/config-snmpv3.html"
-- title: スイッチの健全性の確認
-  pdf-filename: スイッチヘルスの監視
+- title: スイッチの状態を確認する
+  pdf-filename: スイッチのヘルスを監視する
   entries:
-  - title: 健全性チェックの概要
+  - title: ヘルスチェックの概要
     url: "/switch-cshm/monitor-overview.html"
-  - title: スイッチ監視を管理します。
+  - title: スイッチ監視を管理する
     url: "/switch-cshm/monitor-manage.html"
-  - title: スイッチの監視を確認
+  - title: スイッチ監視を確認する
     url: "/switch-cshm/monitor-verify.html"
   - title: アラートのトラブルシューティング
     url: "/switch-cshm/monitor-troubleshoot.html"
@@ -30,5 +30,5 @@ entries:
   entries:
   - title: ログ収集の概要
     url: "/switch-cshm/log-collection-overview.html"
-  - title: トラブルシューティングを行う
+  - title: トラブルシューティング
     url: "/switch-cshm/log-collection-troubleshoot.html"

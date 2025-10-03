@@ -2,53 +2,53 @@
 permalink: switch-bes-53248/configure-efos-software.html 
 sidebar: sidebar 
 keywords: BES-53248 cluster switches,installing EFOS software 
-summary: 次の手順に従って、BES-53248クラスタスイッチにイーサネットファブリックOS（EFOS）ソフトウェアをインストールします。 
+summary: 'BES-53248 クラスタ スイッチに Ethernet Fabric OS (EFOS) ソフトウェアをインストールするには、次の手順に従います。' 
 ---
-= EFOS ソフトウェアをインストールします
+= EFOSソフトウェアをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-次の手順に従って、BES-53248クラスタスイッチにイーサネットファブリックOS（EFOS）ソフトウェアをインストールします。
+BES-53248 クラスタ スイッチに Ethernet Fabric OS (EFOS) ソフトウェアをインストールするには、次の手順に従います。
 
-EFOSソフトウェアには、イーサネットシステムおよびIPインフラシステムを開発するための高度なネットワーク機能とプロトコルのセットが含まれています。このソフトウェアアーキテクチャは、パケットの検査や分離を完全に行う必要があるアプリケーションを使用するあらゆるネットワーク組織のデバイスに適しています。
+EFOS ソフトウェアには、イーサネットおよび IP インフラストラクチャ システムを開発するための高度なネットワーク機能とプロトコルのセットが含まれています。このソフトウェア アーキテクチャは、徹底したパケット検査または分離を必要とするアプリケーションを使用するあらゆるネットワーク組織デバイスに適しています。
 
 
 
 == 設置を準備
 
-.作業を開始する前に
+.開始する前に
 * この手順は新規インストールにのみ適しています。
-* クラスタスイッチに対応するBroadcom EFOSソフトウェアをからダウンロードします https://www.broadcom.com/support/bes-switch["Broadcom Ethernet Switch のサポート"^] サイト
-* を確認します。 link:configure-install-initial.html["BES-53248クラスタスイッチが設定されている"]。
+* クラスタスイッチに適したBroadcom EFOSソフトウェアを以下のサイトからダウンロードしてください。 https://www.broadcom.com/support/bes-switch["Broadcomイーサネット スイッチのサポート"^]サイト。
+* 確実にlink:configure-install-initial.html["BES-53248クラスタスイッチが構成されている"]。
 
 
 
 
-== ソフトウェアをインストールします
+== ソフトウェアをインストールする
 
-次のいずれかの方法を使用してEFOSソフトウェアをインストールします。
+EFOS ソフトウェアをインストールするには、次のいずれかの方法を使用します。
 
-* <<方法1：EFOSをインストールする>>。ほとんどの場合に使用します。
-* <<方法2：ONIEモードでEFOSをインストールする>>。一方のEFOSバージョンがFIPSに準拠しており、もう一方のEFOSバージョンがFIPSに準拠していない場合に使用します。
-
-
+* <<方法1: EFOSをインストールする>> 。ほとんどの場合に使用します。
+* <<方法2: EFOSをONIEモードでインストールする>> 。一方の EFOS バージョンが FIPS 準拠であり、もう一方の EFOS バージョンが FIPS 非準拠である場合に使用します。
 
 
-=== 方法1：EFOSをインストールする
 
-EFOSソフトウェアをインストールするには、次の手順を実行します。
+
+=== 方法1: EFOSをインストールする
+
+EFOS ソフトウェアをインストールするには、次の手順を実行します。
 
 .手順
-. スイッチのシリアルコンソールポートにログインするか、SSHで接続します。
-. 「 ping 」コマンドを使用して、 EFOS 、ライセンス、 RCF ファイルをホストするサーバへの接続を確認します。
+. スイッチのシリアル コンソール ポートにログインするか、SSH で接続します。
+. 使用 `ping`EFOS、ライセンス、および RCF ファイルをホストしているサーバーへの接続を確認するコマンド。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例では、スイッチが IP アドレス 172.19.2.1 のサーバに接続されていることを確認します。
+次の例では、スイッチがIPアドレス172.19.2.1のサーバに接続されていることを確認します。
 
 [listing, subs="+quotes"]
 ----
@@ -58,9 +58,9 @@ Pinging 172.19.2.1 with 0 bytes of data:
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
 ====
-. スイッチにイメージファイルをダウンロードします。
+. スイッチにイメージ ファイルをダウンロードします。
 +
-サポートされているコピープロトコルについては、次の表を参照してください。
+サポートされているコピー プロトコルの詳細については、次の表を確認してください。
 
 +
 |===
@@ -70,28 +70,28 @@ Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 
 
  a| 
-Trivial File Transfer Protocol（TFTP；簡易ファイル転送プロトコル）
+簡易ファイル転送プロトコル (TFTP)
  a| 
 なし
 
 
 
  a| 
-SSH File Transfer Protocol（SFTP；ファイル転送プロトコル）
+SSH ファイル転送プロトコル (SFTP)
  a| 
-ソフトウェアパッケージがセキュアな管理をサポートしている必要がある
+ソフトウェアパッケージは安全な管理をサポートする必要があります
 
 
 
  a| 
 FTP
  a| 
-パスワードは必須です
+パスワードが必要です
 
 
 
  a| 
-Xmodem
+Xモデム
  a| 
 なし
 
@@ -105,37 +105,37 @@ Yモデム
 
 
  a| 
-Zmodem
+Zモデム
  a| 
 なし
 
 
 
  a| 
-Secure Copy Protocol（SCP）
+セキュア コピー プロトコル (SCP)
  a| 
-ソフトウェアパッケージがセキュアな管理をサポートしている必要がある
+ソフトウェアパッケージは安全な管理をサポートする必要があります
 
 
 
  a| 
 HTTP
  a| 
-ネイティブのwgetユーティリティが使用可能な場合、選択したプラットフォームでCLIベースのファイル転送がサポートされる
+ネイティブ WGET ユーティリティが利用可能な場合、選択されたプラットフォームで CLI ベースのファイル転送がサポートされます。
 
 
 
  a| 
 HTTPS
  a| 
-ネイティブのwgetユーティリティが使用可能な場合、選択したプラットフォームでCLIベースのファイル転送がサポートされる
+ネイティブ WGET ユーティリティが利用可能な場合、選択されたプラットフォームで CLI ベースのファイル転送がサポートされます。
 
 |===
 +
-イメージファイルをアクティブイメージにコピーすると、リブート時にそのイメージによって実行中の EFOS バージョンが確立されます。以前のイメージはバックアップとして使用できます。
+イメージ ファイルをアクティブ イメージにコピーすると、再起動時にそのイメージによって実行中の EFOS バージョンが確立されます。以前のイメージはバックアップとして使用できます。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -158,12 +158,12 @@ SFTP Code transfer starting...
 File transfer operation completed successfully.
 ----
 ====
-. アクティブ構成とバックアップ構成のブートイメージを表示します。
+. アクティブ構成とバックアップ構成のブート イメージを表示します。
 +
-'How bootvar'
+`show bootvar`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -184,10 +184,10 @@ Image Descriptions
 ====
 . スイッチをリブートします。
 +
-「再ロード」
+`reload`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -202,12 +202,12 @@ Configuration Saved!
 System will now restart!
 ----
 ====
-. 再度ログインして、新しいバージョンの EFOS ソフトウェアを確認します。
+. 再度ログインし、EFOS ソフトウェアの新しいバージョンを確認します。
 +
-'how version （バージョンの表示） '
+`show version`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -238,33 +238,32 @@ Additional Packages............................ BGP-4
 ............................................... Prototype Open API
 ----
 ====
-. インストールを完了します。
-スイッチを再設定するには、次の5つの手順を実行します。
+. インストールを完了します。スイッチを再構成するには、次の 5 つの手順に従います。
 +
-.. link:configure-licenses.html["ライセンスをインストール"]
+.. link:configure-licenses.html["ライセンスをインストールする"]
 .. link:configure-install-rcf.html["RCFファイルをインストールする"]
-.. link:configure-ssh.html["SSH を有効にします。"]
-.. link:CSHM_log_collection.html["ログ収集を有効にします"]
-.. link:CSHM_snmpv3.html["監視のためのSNMPv3の設定"]
+.. link:configure-ssh.html["SSH を有効にする"]
+.. link:CSHM_log_collection.html["ログ収集を有効にする"]
+.. link:CSHM_snmpv3.html["監視用にSNMPv3を構成する"]
 
 
-. パートナースイッチで手順1~7を繰り返します。
+. パートナー スイッチで手順 1 ～ 7 を繰り返します。
 
 
 
 
-=== 方法2：ONIEモードでEFOSをインストールする
+=== 方法2: EFOSをONIEモードでインストールする
 
-一方の EFOS バージョンが FIPS に準拠していて、もう一方の EFOS バージョンが FIPS に準拠していない場合は、次の手順を実行できます。次の手順は、スイッチがブートに失敗した場合に、 ONIE から FIPS 非準拠または FIPS 準拠の EFOS 3.x.x イメージをインストールするために使用できます。
+次の手順は、一方のEFOSバージョンがFIPS準拠で、もう一方のEFOSバージョンがFIPS非準拠の場合に実行できます。これらの手順は、スイッチをブートできない場合に、FIPS非準拠またはFIPS準拠のEFOS 3.7.x.xイメージをONIEからインストールするためにも使用できます。
 
 .手順
-. スイッチのシリアルポートに接続されているコンソールに接続します。
-. スイッチを ONIE インストールモードで起動します。
+. スイッチのシリアル ポートに接続されているコンソールに接続します。
+. スイッチをONIEインストール モードで起動します。
 +
-起動中に、プロンプトが表示されたらONIEを選択します。
+起動中にプロンプトが表示されたら ONIE を選択します。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -286,10 +285,10 @@ Additional Packages............................ BGP-4
 ----
 ====
 +
-*ONIE*を選択すると、スイッチがロードされ、いくつかの選択肢が表示されます。「OSのインストール」を選択します。
+*ONIE* を選択すると、スイッチが読み込まれ、いくつかの選択肢が表示されます。  *OSのインストール*を選択します。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -311,11 +310,11 @@ Additional Packages............................ BGP-4
 ----
 ====
 +
-スイッチがONIEインストールモードで起動します。
+スイッチは ONIE インストール モードで起動します。
 
-. ONIE の検出を停止し、イーサネットインターフェイスを設定します。
+. ONIE 検出を停止し、イーサネット インターフェイスを構成します。
 +
-次のメッセージが表示されたら、*Enter*キーを押してONIEコンソールを起動します。
+次のメッセージが表示されたら、*Enter* を押して ONIE コンソールを起動します。
 
 +
 [listing]
@@ -325,7 +324,7 @@ Please press Enter to activate this console. Info: eth0:  Checking link... up.
 ----
 +
 
-NOTE: ONIEの検出が続行され、メッセージがコンソールに出力されます。
+NOTE: ONIE 検出が続行され、メッセージがコンソールに出力されます。
 
 +
 [listing]
@@ -336,19 +335,19 @@ discover: installer mode detected.
 Stopping: discover... done.
 ONIE:/ #
 ----
-. スイッチ管理ポートのイーサネットインターフェイスを設定し、次のコマンドを使用してルートを追加します。 `ifconfig eth0 <ipAddress> netmask <netmask> up` および `route add default gw <gatewayAddress>`
+. スイッチ管理ポートのイーサネットインターフェースを設定し、ルートを追加します。 `ifconfig eth0 <ipAddress> netmask <netmask> up`そして `route add default gw <gatewayAddress>`
 +
 [listing]
 ----
 ONIE:/ # ifconfig eth0 10.10.10.10 netmask 255.255.255.0 up
 ONIE:/ # route add default gw 10.10.10.1
 ----
-. ONIE インストールファイルをホストしているサーバにアクセスできることを確認します。
+. ONIEインストール ファイルをホストしているサーバにアクセスできることを確認します。
 +
 `ping`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -365,12 +364,12 @@ round-trip min/avg/max = 0.369/0.464/0.595 ms
 ONIE:/ #
 ----
 ====
-. 新しいスイッチソフトウェアをインストールします。
+. 新しいスイッチ ソフトウェアをインストールします。
 +
 `ONIE:/ # onie-nos-install http://50.50.50.50/Software/onie-installer-x86_64`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -387,14 +386,14 @@ Preparing image archive ... OK.
 ----
 ====
 +
-ソフトウェアがインストールされ、スイッチがリブートされます。スイッチを通常どおりにリブートして新しい EFOS バージョンにします。
+ソフトウェアがインストールされ、スイッチが再起動します。スイッチが新しいEFOSバージョンで正常にリブートするのを待ちます。
 
-. ログインし、新しいスイッチソフトウェアがインストールされたことを確認します。
+. ログインして、新しいスイッチ ソフトウェアがインストールされていることを確認します。
 +
-'How bootvar'
+`show bootvar`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -411,19 +410,18 @@ unit 	active 	    backup   current-active  next-active
 (cs2) #
 ----
 ====
-. インストールを完了します。
-設定を適用せずにスイッチがリブートし、工場出荷時のデフォルトにリセットされます。スイッチを再設定するには、次の6つの手順を実行します。
+. インストールを完了します。スイッチは設定が適用されずに再起動し、工場出荷時のデフォルトにリセットされます。スイッチを再構成するには、次の 6 つの手順に従います。
 +
-.. link:configure-install-initial.html["スイッチを設定します"]
-.. link:configure-licenses.html["ライセンスをインストール"]
+.. link:configure-install-initial.html["スイッチの設定"]
+.. link:configure-licenses.html["ライセンスをインストールする"]
 .. link:configure-install-rcf.html["RCFファイルをインストールする"]
-.. link:configure-ssh.html["SSH を有効にします。"]
-.. link:CSHM_log_collection.html["ログ収集を有効にします"]
-.. link:CSHM_snmpv3.html["監視のためのSNMPv3の設定"]
+.. link:configure-ssh.html["SSH を有効にする"]
+.. link:CSHM_log_collection.html["ログ収集を有効にする"]
+.. link:CSHM_snmpv3.html["監視用にSNMPv3を構成する"]
 
 
-. パートナースイッチで手順1~8を繰り返します。
+. パートナー スイッチで手順 1 ～ 8 を繰り返します。
 
 
 .次の手順
-link:configure-licenses.html["ライセンスをインストール"] 。
+link:configure-licenses.html["ライセンスをインストールする"] 。

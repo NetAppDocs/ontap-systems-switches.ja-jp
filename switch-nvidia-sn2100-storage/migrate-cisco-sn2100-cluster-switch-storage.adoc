@@ -2,77 +2,77 @@
 permalink: switch-nvidia-sn2100-storage/migrate-cisco-sn2100-cluster-switch-storage.html 
 sidebar: sidebar 
 keywords: migrating to a cluster with NVIDIA SN2100 cluster switches, how to migrate 
-summary: ONTAP クラスタの古いCiscoクラスタスイッチは、無停止でNVIDIA SN2100クラスタネットワークスイッチに移行できます。 
+summary: ONTAPクラスタ用の古いCiscoクラスタ スイッチを、 NVIDIA SN2100 クラスタ ネットワーク スイッチに無停止で移行できます。 
 ---
-= CiscoクラスタスイッチからNVIDIA SN2100クラスタスイッチに移行します
+= Ciscoクラスタ スイッチからNVIDIA SN2100 クラスタ スイッチへの移行
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-ONTAP クラスタのCiscoクラスタスイッチは、無停止でNVIDIA SN2100クラスタスイッチに移行できます。一部の古いCiscoクラスタスイッチをNVIDIA SN2100クラスタスイッチに交換する場合は、特定の設定情報、ポート接続、およびケーブル接続要件に注意する必要があります。
+ONTAPクラスタ用のCiscoクラスタ スイッチをNVIDIA SN2100 クラスタ スイッチに無停止で移行できます。一部の古いCiscoクラスタ スイッチをNVIDIA SN2100 クラスタ スイッチに置き換える場合は、特定の構成情報、ポート接続、およびケーブル接続の要件に注意する必要があります。
 
-次のCiscoクラスタスイッチがサポートされます。
+次のCiscoクラスタ スイッチがサポートされています。
 
 * Nexus 9336C-FX2
 * Nexus 92300YC
 * Nexus 5596UP
 * Nexus 3232C
-* Nexus3132Q-V
+* Nexus 3132Q-V
 
 
-.作業を開始する前に
-ONTAP クラスタの古いCiscoクラスタスイッチは、無停止でNVIDIA SN2100クラスタスイッチに移行できます。
+.開始する前に
+ONTAPクラスタ用の古いCiscoクラスタ スイッチを、 NVIDIA SN2100 クラスタ スイッチに無停止で移行できます。
 
 * 既存のクラスタが適切にセットアップされ、機能している必要があります。
-* ノンストップオペレーションを実現するには、すべてのクラスタポートが up の状態になっている必要があります。
-* NVIDIA SN2100クラスタスイッチは、リファレンス構成ファイル（RCF）を適用した適切なバージョンのCumulus Linuxで構成および動作している必要があります。
-* 既存のクラスタネットワーク構成には、次のものが必要です。
+* 中断のない操作を確保するには、すべてのクラスタ ポートがアップ状態である必要があります。
+* NVIDIA SN2100 クラスタ スイッチは、参照構成ファイル (RCF) が適用された適切なバージョンの Cumulus Linux がインストールされた状態で構成され、動作している必要があります。
+* 既存のクラスタ ネットワーク構成には、次のものが必要です。
 +
-** 両方の古い Cisco スイッチを使用する、完全に機能している冗長なネットアップクラスタ。
-** 古い Cisco スイッチと新しいスイッチの両方への管理接続とコンソールアクセス。
-** クラスタ LIF がすべて up 状態でホームポートにあること。
-** ISL ポートが有効で、古い Cisco スイッチ間および新しいスイッチ間でケーブル接続されている。
+** どちらも古いCiscoスイッチを両方使用する、完全に機能している冗長なNetAppクラスタ。
+** 古いCiscoスイッチと新しいスイッチ両方への管理接続とコンソール アクセス。
+** クラスタ LIF がすべてアップ状態にあり、クラスタ LIF がホーム ポート上にある。
+** ISLポートが有効で、古いCiscoスイッチ間および新しいスイッチ間でケーブル接続されている。
 
 
-* を参照してください https://hwu.netapp.com/["Hardware Universe"^] サポートされるポートとその構成の詳細については、を参照してください。
-* NVIDIA SN2100スイッチの一部のポートを40GbEまたは100GbEで実行するように設定しておきます。
-* ノードからNVIDIA SN2100クラスタスイッチへの40GbEおよび100GbE接続を計画、移行、文書化済みである。
+* 参照 https://hwu.netapp.com/["Hardware Universe"^]サポートされているポートとその構成の詳細については、こちらをご覧ください。
+* NVIDIA SN2100 スイッチの一部のポートを 40 GbE または 100 GbE で実行するように構成しました。
+* ノードからNVIDIA SN2100 クラスター スイッチへの 40 GbE および 100 GbE 接続を計画、移行、および文書化しました。
 +
 
-NOTE: この手順 では、コマンドや出力の例にCisco Nexus 3232Cクラスタスイッチを使用します。
+NOTE: この手順では、コマンドと出力の例としてCisco Nexus 3232C クラスタ スイッチを使用します。
 
 
 
-.このタスクについて
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+.タスク概要
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 既存の Cisco Nexus 3232C クラスタスイッチは、 _c1_AND _c2_ です。
-* 新しいNVIDIA SN2100クラスタスイッチは、_sw1_and _sw2_です。
-* ノードは、 _ node1 _ と _ node2 _ です。
-* クラスタ LIF は、ノード 1 では _node1_clus1_AND _node1_clus2_on 、ノード 2 では _node2_clus1_and _node2_clus2_on です。
-* 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
-* この手順 で使用されているクラスタポートは_e3aおよび_e3bです。
-* ブレークアウトポートの形式は、SWP[ポート] s [ブレークアウトポート0-3]です。たとえば'swp1の4つのブレークアウトポートは'_swp1s0'_swp1s1_'_swp1s2s'_swp1s3_です
+* 既存のCisco Nexus 3232C クラスタ スイッチは _c1_ と _c2_ です。
+* 新しいNVIDIA SN2100 クラスター スイッチは _sw1_ と _sw2_ です。
+* ノードは _node1_ と _node2_ です。
+* クラスター LIF は、ノード 1 ではそれぞれ _node1_clus1_ と _node1_clus2_、ノード 2 では _node2_clus1_ と _node2_clus2_ です。
+* その `cluster1::*>`プロンプトはクラスターの名前を示します。
+* この手順で使用されるクラスター ポートは _e3a_ と _e3b_ です。
+* ブレイクアウト ポートの形式は、swp[ポート]s[ブレイクアウト ポート 0-3] です。たとえば、swp1 の 4 つのブレークアウト ポートは、_swp1s0_、_swp1s1_、_swp1s2_、および _swp1s3_ です。
 * 最初にスイッチc2をスイッチsw2に交換し、次にスイッチc1をスイッチsw1に交換します。
 +
-** 次に、ノードとC2間のケーブル接続がC2から切断され、SW2に再接続されます。
-** その後、ノードとc1間のケーブルをc1から切断し、sw1に再接続しました。
+** 次にノードとc2の間のケーブルをc2から外し、sw2に再接続します。
+** 次にノードとc1の間のケーブルをc1から外し、sw1に再接続します。
 
 
 
 
 .手順
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= xh
+. このクラスタでAutoSupportが有効になっている場合は、 AutoSupportメッセージを呼び出して自動ケース作成を抑制します。 `system node autosupport invoke -node * -type all -message MAINT=xh`
 +
-ここで、 _ x _ はメンテナンス時間の長さ（時間）です。
+ここで、_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
 
-. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 * y * 」と入力します。「 set -privilege advanced 」
+. 続行するかどうかを尋ねられたら *y* と入力して、権限レベルを「advanced」に変更します。 `set -privilege advanced`
 +
-advanced のプロンプト（ * > ）が表示されます。
+advancedのプロンプト（*>）が表示されます。
 
-. クラスタLIFで自動リバートを無効にします。「network interface modify -vserver Cluster -lif *-auto-giveback false」
+. クラスタ LIF の自動復帰を無効にします。 `network interface modify -vserver Cluster -lif * -auto-revert false`
 +
 [listing, subs="+quotes"]
 ----
@@ -80,12 +80,12 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert fals
 
 Warning: Disabling the auto-revert feature of the cluster logical interface may effect the availability of your cluster network. Are you sure you want to continue? {y|n}: *y*
 ----
-. 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
+. 各クラスタ インターフェイスの管理ステータスまたは動作ステータスを確認します。
 +
-各ポートは 'Link' のために表示され 'Health Status' のために正常である必要があります
+各ポートは `Link`そして健康的 `Health Status`。
 
 +
-.. ネットワークポートの属性を表示します。「 network port show -ipspace Cluster 」
+.. ネットワーク ポートの属性を表示します。 `network port show -ipspace Cluster`
 +
 [listing, subs="+quotes"]
 ----
@@ -107,9 +107,9 @@ Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
 e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
 e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
 ----
-.. 論理インターフェイスとそのホームノードに関する情報を表示します。「 network interface show -vserver Cluster
+.. 論理インターフェイスとそれに指定されたホーム ノードに関する情報を表示します。 `network interface show -vserver Cluster`
 +
-それぞれの LIF で、「 Status Admin/Op' 」には up/up 、「 Is Home 」には true と表示される必要があります。
+各LIFはup/upと表示されるはずです `Status Admin/Oper`そして、 `Is Home` 。
 
 +
 [listing, subs="+quotes"]
@@ -128,7 +128,7 @@ Cluster
 ----
 
 
-. 各ノードのクラスタポートは、（ノードから見て）次のように既存のクラスタスイッチに接続されています：「network device-discovery show -protocol lldp
+. 各ノード上のクラスター ポートは、次のコマンドを使用して、既存のクラスター スイッチに次のように (ノードの観点から) 接続されます。 `network device-discovery show -protocol lldp`
 +
 [listing, subs="+quotes"]
 ----
@@ -143,7 +143,7 @@ node2      /lldp
             e3a    c1 (6a:ad:4f:98:3b:3f)    Eth1/2            -
             e3b    c2 (6a:ad:4f:98:4c:a4)    Eth1/2            -
 ----
-. クラスタポートとスイッチは、（スイッチから見て）次のように接続されています。 'How CDP neighbors'
+. クラスタ ポートとスイッチは、次のコマンドを使用して、スイッチの観点から次のように接続されます。 `show cdp neighbors`
 +
 [listing, subs="+quotes"]
 ----
@@ -174,22 +174,22 @@ node2                 Eth1/2        124    H           AFF-A400         e3b
 c1                    Eth1/31       175    S I s       N3K-C3232C       Eth1/31
 c1                    Eth1/32       175    S I s       N3K-C3232C       Eth1/32
 ----
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -205,9 +205,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -239,7 +239,7 @@ RPC status:
 ----
 --
 ====
-. [[step8]]スイッチC2で、ノードのクラスタポートに接続されているポートをシャットダウンします。
+. [[step8]] スイッチc2で、ノードのクラスタポートに接続されているポートをシャットダウンします。
 +
 [listing, subs="+quotes"]
 ----
@@ -252,8 +252,8 @@ Enter configuration commands, one per line. End with CNTL/Z.
 (c2)(Config)# *exit*
 (c2)#
 ----
-. NVIDIA SN2100でサポートされている適切なケーブル配線を使用して、ノードのクラスタポートを古いスイッチC2から新しいスイッチSW2に移動します。
-. ネットワークポートの属性を表示します。「 network port show -ipspace Cluster 」
+. NVIDIA SN2100 でサポートされている適切なケーブルを使用して、ノード クラスター ポートを古いスイッチ c2 から新しいスイッチ sw2 に移動します。
+. ネットワーク ポートの属性を表示します。 `network port show -ipspace Cluster`
 +
 [listing, subs="+quotes"]
 ----
@@ -275,7 +275,7 @@ Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
 e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
 e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
 ----
-. これで、各ノードのクラスタポートは、ノードから見て次のようにクラスタスイッチに接続されました。
+. 各ノード上のクラスター ポートは、ノードの観点から見ると、次のようにクラスター スイッチに接続されます。
 +
 [listing, subs="+quotes"]
 ----
@@ -291,7 +291,7 @@ node2      /lldp
             e3a    c1  (6a:ad:4f:98:3b:3f)   Eth1/2            -
             e3b    sw2 (b8:ce:f6:19:1b:96)   swp4              -
 ----
-. スイッチSW2で、すべてのノードクラスタポートが稼働していることを確認します。「net show interface」
+. スイッチ sw2 で、すべてのノード クラスタ ポートが稼働していることを確認します。 `net show interface`
 +
 [listing, subs="+quotes"]
 ----
@@ -306,7 +306,7 @@ UP     swp4         100G  9216   Trunk/L2    e3b               Master: bridge(UP
 UP     swp15        100G  9216   BondMember  sw1 (swp15)       Master: cluster_isl(UP)
 UP     swp16        100G  9216   BondMember  sw1 (swp16)       Master: cluster_isl(UP)
 ----
-. スイッチc1で、ノードのクラスタポートに接続されているポートをシャットダウンします。
+. スイッチ c1 で、ノードのクラスター ポートに接続されているポートをシャットダウンします。
 +
 [listing, subs="+quotes"]
 ----
@@ -319,10 +319,10 @@ Enter configuration commands, one per line. End with CNTL/Z.
 (c1)(Config)# *exit*
 (c1)#
 ----
-. NVIDIA SN2100でサポートされている適切なケーブルを使用して、ノードのクラスタポートを古いスイッチc1から新しいスイッチsw1に移動します。
-. クラスタの最後の設定を確認します「 network port show -ipspace Cluster 」
+. NVIDIA SN2100 でサポートされている適切なケーブルを使用して、ノード クラスター ポートを古いスイッチ c1 から新しいスイッチ sw1 に移動します。
+. クラスターの最終構成を確認します。 `network port show -ipspace Cluster`
 +
-各ポートは 'Link' のために表示され 'Health Status' のために正常である必要があります
+各ポートは `Link`そして健康的 `Health Status`。
 
 +
 [listing, subs="+quotes"]
@@ -345,7 +345,7 @@ Port      IPspace    Broadcast Domain Link MTU   Admin/Oper   Status   Status
 e3a       Cluster    Cluster          up   9000  auto/100000  healthy  false
 e3b       Cluster    Cluster          up   9000  auto/100000  healthy  false
 ----
-. これで、各ノードのクラスタポートは、ノードから見て次のようにクラスタスイッチに接続されました。
+. 各ノード上のクラスター ポートは、ノードの観点から見ると、次のようにクラスター スイッチに接続されます。
 +
 [listing, subs="+quotes"]
 ----
@@ -361,7 +361,7 @@ node2      /lldp
             e3a    sw1 (b8:ce:f6:19:1a:7e)   swp4            -
             e3b    sw2 (b8:ce:f6:19:1b:96)   swp4            -
 ----
-. スイッチsw1およびSW2で、すべてのノードクラスタポートが動作していることを確認します。「net show interface」
+. スイッチ sw1 および sw2 で、すべてのノード クラスタ ポートが稼働していることを確認します。 `net show interface`
 +
 [listing, subs="+quotes"]
 ----
@@ -388,9 +388,9 @@ UP     swp4         100G  9216   Trunk/L2    e3b               Master: bridge(UP
 UP     swp15        100G  9216   BondMember  sw1 (swp15)       Master: cluster_isl(UP)
 UP     swp16        100G  9216   BondMember  sw1 (swp16)       Master: cluster_isl(UP)
 ----
-. 両方のノードがそれぞれ1つのスイッチに接続されていることを確認します。net show lldp
+. 両方のノードが各スイッチにそれぞれ 1 つの接続を持っていることを確認します。 `net show lldp`
 +
-次の例は、両方のスイッチの該当する結果を示しています。
+次の例は、両方のスイッチの適切な結果を示しています。
 
 +
 [listing, subs="+quotes"]
@@ -413,8 +413,8 @@ swp4       100G   Trunk/L2    node2               e3b
 swp15      100G   BondMember  sw1                 swp15
 swp16      100G   BondMember  sw1                 swp16
 ----
-. クラスタLIFで自動リバートを有効にします。cluster1：：*> network interface modify -vserver Cluster -lif *-auto-revert true
-. すべてのクラスタネットワークLIFがホームポートに戻っていることを確認します。「network interface show」
+. クラスタ LIF で自動復帰を有効にします。 `cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert true`
+. すべてのクラスタ ネットワーク LIF がホーム ポートに戻っていることを確認します。 `network interface show`
 +
 [listing, subs="+quotes"]
 ----
@@ -429,9 +429,9 @@ Cluster
             node2_clus1  up/up    169.254.47.194/16  node2         e3a     true
             node2_clus2  up/up    169.254.19.183/16  node2         e3b     true
 ----
-. スイッチに関連するログファイルを収集するためのEthernetスイッチのヘルスモニタログ収集機能を有効にしますこれには'system switch ethernet log setup-password'およびsystem switch ethernet log enable-collection'の2つのコマンドを使用します
+. 次の 2 つのコマンドを使用して、スイッチ関連のログ ファイルを収集するためのイーサネット スイッチ ヘルス モニタ ログ収集機能を有効にします。 `system switch ethernet log setup-password`そして `system switch ethernet log enable-collection`
 +
-「 system switch ethernet log setup -password 」と入力します
+入力： `system switch ethernet log setup-password`
 
 +
 [listing, subs="+quotes"]
@@ -462,7 +462,7 @@ Enter the password: <enter switch password>
 Enter the password again: <enter switch password>
 ----
 +
-次に 'system switch ethernet log enable-colion' を実行します
+に続く： `system switch ethernet log enable-collection`
 
 +
 [listing, subs="+quotes"]
@@ -478,11 +478,11 @@ cluster1::*>
 ----
 +
 
-NOTE: これらのコマンドのいずれかでエラーが返される場合は、ネットアップサポートにお問い合わせください。
+NOTE: 上記のコマンドからエラーが返される場合は、NetAppサポートにお問い合わせください。
 
-. スイッチ・ログ収集機能を開始します：system switch ethernet log collect-device *
+. スイッチ ログ収集機能を開始します。 `system switch ethernet log collect -device *`
 +
-10分間待ってから'次のコマンドを使用してログ収集が成功したことを確認しますsystem switch ethernet log show
+10 分待ってから、次のコマンドを使用してログ収集が成功したことを確認します。 `system switch ethernet log show`
 
 +
 [listing, subs="+quotes"]
@@ -495,6 +495,6 @@ Index  Switch                       Log Timestamp        Status
 1      sw1 (b8:ce:f6:19:1b:42)      4/29/2022 03:05:25   complete   
 2      sw2 (b8:ce:f6:19:1b:96)      4/29/2022 03:07:42   complete
 ----
-. 特権レベルを admin に戻します。 'et -privilege admin'
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して再度有効にします。「 system node AutoSupport invoke -node * -type all -message MAINT=end
+. 権限レベルを管理者に戻します。 `set -privilege admin`
+. 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。 `system node autosupport invoke -node * -type all -message MAINT=END`
 

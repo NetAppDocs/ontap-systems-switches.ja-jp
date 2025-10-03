@@ -2,26 +2,26 @@
 permalink: switch-nvidia-sn2100/install-rcf-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: install rcf script, python script, sn2100 SN2100 switches, cumulus 
-summary: RCFスクリプトをインストールする前に、スイッチに次のものがあることを確認してください 
+summary: RCFスクリプトをインストールする前に、スイッチで次のものが利用可能であることを確認してください。 
 ---
-= リファレンス構成ファイル（RCF）スクリプトのインストールまたはアップグレード
+= 参照構成ファイル (RCF) スクリプトをインストールまたはアップグレードします
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-RCFスクリプトをインストールまたはアップグレードする手順は、次のとおりです。
+RCF スクリプトをインストールまたはアップグレードするには、次の手順に従ってください。
 
-.作業を開始する前に
-RCFスクリプトをインストールまたはアップグレードする前に、スイッチに次の項目があることを確認してください。
+.開始する前に
+RCF スクリプトをインストールまたはアップグレードする前に、スイッチで次のものが使用可能であることを確認してください。
 
-* Cumulus Linuxがインストールされています。を参照してください https://hwu.netapp.com/Switch/Index["Hardware Universe"^] を参照してください。
-* IPアドレス、サブネットマスク、およびデフォルトゲートウェイは、DHCPを使用して定義するか、手動で設定します。
+* Cumulus Linuxがインストールされています。参照 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]サポートされているバージョンの場合。
+* IP アドレス、サブネット マスク、およびデフォルト ゲートウェイは DHCP 経由で定義されるか、手動で設定されます。
 
 
 
-NOTE: ログ収集専用に使用するユーザを（adminユーザに加えて）RCFで指定する必要があります。
+NOTE: ログ収集専用に使用するユーザーを RCF に指定する必要があります (管理者ユーザーに加えて)。
 
 .顧客構成
 次の参照構成カテゴリが利用可能です。
@@ -39,48 +39,48 @@ NOTE: ログ収集専用に使用するユーザを（adminユーザに加えて
 すべてのポートは 100GbE NVMe ストレージ接続用に構成されています。
 
 |===
-.現在のRCFスクリプトバージョン
-クラスタアプリケーションとストレージアプリケーションには、2つのRCFスクリプトを使用できます。ページからRCFをダウンロードし https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIA SN2100ソフトウェアのダウンロード"^]ます。各の手順 は同じです。
+.現在のRCFスクリプトのバージョン
+クラスタおよびストレージ アプリケーションに使用できる RCF スクリプトは 2 つあります。 RCFをダウンロードするには https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIA SN2100 ソフトウェアのダウンロード"^]ページ。それぞれの手順は同じです。
 
-* クラスタ：* MSN2100-rcf-v1._x_- Cluster-HA - Breakout-LLDP *
-* ストレージ：* MSN2100-rcf-v1._x_-ストレージ*
+* クラスター: *MSN2100-RCF-v1._x_-Cluster-HA-Breakout-LLDP*
+* ストレージ: *MSN2100-RCF-v1._x_-Storage*
 
 
 .例について
-次の手順 の例は、クラスタスイッチ用のRCFスクリプトをダウンロードして適用する方法を示しています。
+次の手順例は、クラスタ スイッチ用の RCF スクリプトをダウンロードして適用する方法を示しています。
 
-コマンド出力の例では、スイッチ管理IPアドレス10.233.204.71、ネットマスク255.255.254.0、およびデフォルトゲートウェイ10.233.204.1を使用しています。
+サンプルコマンド出力では、スイッチ管理 IP アドレス 10.233.204.71、ネットマスク 255.255.254.0、デフォルトゲートウェイ 10.233.204.1 を使用しています。
 
 .手順
 [role="tabbed-block"]
 ====
-.Cumulus Linux 4.4.3.
+.キュムラス・リナックス 4.4.3
 --
-. クラスタスイッチを管理ネットワークに接続します。
-. 使用 `ping` Cumulus Linux と RCF をホストしているサーバーへの接続を確認するコマンド。
-. クラスタスイッチに接続されている各ノードのクラスタポートを表示します。
+. クラスタ スイッチを管理ネットワークに接続します。
+. 使用 `ping`Cumulus Linux と RCF をホストしているサーバーへの接続を確認するコマンド。
+. クラスター スイッチに接続されている各ノード上のクラスター ポートを表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
-. 各クラスタポートの管理ステータスと動作ステータスを確認します。
+. 各クラスタ ポートの管理ステータスと動作ステータスを確認します。
 +
-.. すべてのクラスタポートが正常な状態であることを確認します。
+.. すべてのクラスター ポートが正常な状態で稼働していることを確認します。
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
-.. すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。
+.. すべてのクラスタ インターフェイス (LIF) がホーム ポート上にあることを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
-.. クラスタが両方のクラスタスイッチの情報を表示していることを確認します。
+.. クラスターが両方のクラスター スイッチの情報を表示することを確認します。
 +
-system cluster-switch show -is-monitoring enabled-operational true を使用します
+`system cluster-switch show -is-monitoring-enabled-operational true`
 
 
 
-. クラスタLIFで自動リバートを無効にします。クラスタLIFはパートナークラスタスイッチにフェイルオーバーし、ターゲットスイッチでアップグレード手順を実行してもそのまま残ります。
+. クラスタLIFで自動リバートを無効にします。クラスタ LIF はパートナー クラスタ スイッチにフェイルオーバーし、対象スイッチでアップグレード手順を実行する間、そこに残ります。
 +
-network interface modify -vserver Cluster -lif *-auto-revert false
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
 +
 [NOTE]
@@ -91,7 +91,7 @@ network interface modify -vserver Cluster -lif *-auto-revert false
 
 
 ====
-. SN2100スイッチで使用可能なインターフェイスを表示します。
+. SN2100 スイッチで使用可能なインターフェースを表示します。
 +
 [listing, subs="+quotes"]
 ----
@@ -118,7 +118,7 @@ ADMDN  swp14  N/A  9216   NotConfigured
 ADMDN  swp15  N/A  9216   NotConfigured
 ADMDN  swp16  N/A  9216   NotConfigured
 ----
-. RCF Pythonスクリプトをスイッチにコピーします。
+. RCF Python スクリプトをスイッチにコピーします。
 +
 [listing, subs="+quotes"]
 ----
@@ -131,7 +131,7 @@ MSN2100-RCF-v1._x_-Cluster-HA-Breakout-LLDP         100% 8607   111.2KB/s       
 
 NOTE: その間 `scp`この例では が使用されていますが、SFTP、HTTPS、FTP など、好みのファイル転送方法を使用できます。
 
-. RCF Pythonスクリプト* MSN2100-rcf-v1._x_-Cluster-HA-Breakout-LLDP *を適用します。
+. RCF Python スクリプト *MSN2100-RCF-v1._x_-Cluster-HA-Breakout-LLDP* を適用します。
 +
 [listing, subs="+quotes"]
 ----
@@ -153,18 +153,18 @@ Step 12: Configure SNMP
 Step 13: Reboot the switch
 ----
 +
-この例では、RCFスクリプトで手順を完了しています。
+RCF スクリプトは、上記の例にリストされている手順を完了します。
 
 +
 
-NOTE: 上記の手順3 * MOTDファイルの更新*で、コマンドを実行します `cat /etc/motd` を実行します。これにより、RCFのファイル名、RCFのバージョン、使用するポート、およびその他の重要な情報をRCFバナーで確認できます。
+NOTE: 上記の手順3 *MOTDファイルの更新*では、コマンド `cat /etc/motd`実行されます。これにより、RCF ファイル名、RCF バージョン、使用するポート、および RCF バナー内のその他の重要な情報を確認できます。
 
 +
 
-NOTE: 修正できないRCF Pythonスクリプトの問題については、にお問い合わせください https://mysupport.netapp.com/["ネットアップサポート"^] を参照してください。
+NOTE: 修正できないRCF Pythonスクリプトの問題については、 https://mysupport.netapp.com/["NetAppサポート"^]援助をお願いします。
 
-. 以前のカスタマイズをスイッチの設定に再適用します。link:cabling-considerations-sn2100-cluster.html["ケーブル接続と構成に関する考慮事項を確認"]必要なその他の変更の詳細については、を参照してください。
-. リブート後に設定を確認します。
+. 以前のカスタマイズをスイッチ構成に再適用します。参照link:cabling-considerations-sn2100-cluster.html["ケーブル配線と構成の考慮事項を確認する"]今後必要な変更の詳細については、以下を参照してください。
+. 再起動後に構成を確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -228,7 +228,7 @@ switch-priority  TC  ETS
 2                 2  DWRR 28%
 5                 5  DWRR 43%
 ----
-. インターフェイス内のトランシーバの情報を確認します。
+. インターフェイス内のトランシーバーの情報を確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -253,9 +253,9 @@ swp4       100G   Trunk/L2    sw2                     e3b
 swp15      100G   BondMember  sw13                    swp15
 swp16      100G   BondMember  sw14                    swp16
 ----
-. クラスタのクラスタポートの健常性を確認します。
+. クラスタ ポートの健全性を確認します。
 +
-.. クラスタポートが起動しており、クラスタ内のすべてのノードで正常に動作していることを確認します。
+.. クラスター内のすべてのノードでクラスター ポートが稼働しており正常であることを確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -277,7 +277,7 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 e3a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e3b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
-.. クラスタのスイッチの健常性を確認します（LIFはe0dにホーム設定されていないため、スイッチSW2が表示されない場合があります）。
+.. クラスタからスイッチの健全性を確認します（LIFのホームがe0dでないため、スイッチsw2は表示されない可能性があります）。
 +
 [listing, subs="+quotes"]
 ----
@@ -315,45 +315,45 @@ sw2                         cluster-network    10.233.205.91    MSN2100-CB2RC
 ----
 
 
-. クラスタが正常であることを確認します。
+. クラスタが正常に動作していることを確認します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 . 2 番目のスイッチで手順 1 ～ 14 を繰り返します。
-. クラスタ LIF で自動リバートを有効にします。
+. クラスタLIFで自動リバートを有効にします。
 +
-network interface modify -vserver Cluster -lif *-auto-revert trueを指定します
+`network interface modify -vserver Cluster -lif * -auto-revert true`
 
 
 
 --
-.Cumulus Linux 5.4.0.
+.キュムラス・リナックス 5.4.0
 --
-. クラスタスイッチを管理ネットワークに接続します。
-. 使用 `ping` Cumulus Linux と RCF をホストしているサーバーへの接続を確認するコマンド。
-. クラスタスイッチに接続されている各ノードのクラスタポートを表示します。
+. クラスタ スイッチを管理ネットワークに接続します。
+. 使用 `ping`Cumulus Linux と RCF をホストしているサーバーへの接続を確認するコマンド。
+. クラスター スイッチに接続されている各ノード上のクラスター ポートを表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
-. 各クラスタポートの管理ステータスと動作ステータスを確認します。
+. 各クラスタ ポートの管理ステータスと動作ステータスを確認します。
 +
-.. すべてのクラスタポートが正常な状態であることを確認します。
+.. すべてのクラスター ポートが正常な状態で稼働していることを確認します。
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
-.. すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。
+.. すべてのクラスタ インターフェイス (LIF) がホーム ポート上にあることを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
-.. クラスタが両方のクラスタスイッチの情報を表示していることを確認します。
+.. クラスターが両方のクラスター スイッチの情報を表示することを確認します。
 +
-system cluster-switch show -is-monitoring enabled-operational true を使用します
+`system cluster-switch show -is-monitoring-enabled-operational true`
 
 
 
-. クラスタLIFで自動リバートを無効にします。クラスタLIFはパートナークラスタスイッチにフェイルオーバーし、ターゲットスイッチでアップグレード手順を実行してもそのまま残ります。
+. クラスタLIFで自動リバートを無効にします。クラスタ LIF はパートナー クラスタ スイッチにフェイルオーバーし、対象スイッチでアップグレード手順を実行する間、そこに残ります。
 +
-network interface modify -vserver Cluster -lif *-auto-revert false
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
 +
 [NOTE]
@@ -364,7 +364,7 @@ network interface modify -vserver Cluster -lif *-auto-revert false
 
 
 ====
-. SN2100スイッチで使用可能なインターフェイスを表示します。
+. SN2100 スイッチで使用可能なインターフェースを表示します。
 +
 [listing, subs="+quotes"]
 ----
@@ -383,7 +383,7 @@ Interface     MTU   Speed State Remote Host         Remote Port- Type      Summa
 + swp15      9216 100G    up sw2                      swp15       swp
 + swp16      9216 100G    up sw2                      swp16       swp
 ----
-. RCF Pythonスクリプトをスイッチにコピーします。
+. RCF Python スクリプトをスイッチにコピーします。
 +
 [listing, subs="+quotes"]
 ----
@@ -396,7 +396,7 @@ MSN2100-RCF-v1.x-Cluster-HA-Breakout-LLDP          100% 8607   111.2KB/s        
 
 NOTE: その間 `scp`この例では が使用されていますが、SFTP、HTTPS、FTP など、好みのファイル転送方法を使用できます。
 
-. RCF Pythonスクリプト* MSN2100-rcf-v1._x_-Cluster-HA-Breakout-LLDP *を適用します。
+. RCF Python スクリプト *MSN2100-RCF-v1._x_-Cluster-HA-Breakout-LLDP* を適用します。
 +
 [listing, subs="+quotes"]
 ----
@@ -419,14 +419,14 @@ Step 12: Configure SNMP
 Step 13: Reboot the switch
 ----
 +
-この例では、RCFスクリプトで手順を完了しています。
+RCF スクリプトは、上記の例にリストされている手順を完了します。
 
 +
 
-NOTE: 上記の手順3 *MOTDファイルの更新*では、コマンド `cat /etc/issue.net`が実行されます。これにより、RCFのファイル名、RCFのバージョン、使用するポート、およびその他の重要な情報をRCFバナーで確認できます。
+NOTE: 上記の手順3 *MOTDファイルの更新*では、コマンド `cat /etc/issue.net`実行されます。これにより、RCF ファイル名、RCF バージョン、使用するポート、および RCF バナー内のその他の重要な情報を確認できます。
 
 +
-例：
+例えば：
 
 +
 [listing]
@@ -462,10 +462,10 @@ admin@sw1:mgmt:~$ cat /etc/issue.net
 ----
 +
 
-NOTE: 修正できないRCF Pythonスクリプトの問題については、にお問い合わせください https://mysupport.netapp.com/["ネットアップサポート"^] を参照してください。
+NOTE: 修正できないRCF Pythonスクリプトの問題については、 https://mysupport.netapp.com/["NetAppサポート"^]援助をお願いします。
 
-. 以前のカスタマイズをスイッチの設定に再適用します。link:cabling-considerations-sn2100-cluster.html["ケーブル接続と構成に関する考慮事項を確認"]必要なその他の変更の詳細については、を参照してください。
-. リブート後に設定を確認します。
+. 以前のカスタマイズをスイッチ構成に再適用します。参照link:cabling-considerations-sn2100-cluster.html["ケーブル配線と構成の考慮事項を確認する"]今後必要な変更の詳細については、以下を参照してください。
+. 再起動後に構成を確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -579,9 +579,9 @@ Incomplete Command: set interface swp3-16 link fast-linkupp3-16 link fast-linkup
 ----
 +
 
-NOTE: 表示されている例外はパフォーマンスに影響しないため、無視しても問題ありません。
+NOTE: リストされている例外はパフォーマンスに影響を与えないので、無視しても問題ありません。
 
-. インターフェイス内のトランシーバの情報を確認します。
+. インターフェイス内のトランシーバーの情報を確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -619,9 +619,9 @@ swp2s1     25G    Trunk/L2    node1                 �
 swp15      100G   BondMember  sw2                      swp15
 swp16      100G   BondMember  sw2                      swp16
 ----
-. クラスタのクラスタポートの健常性を確認します。
+. クラスタ ポートの健全性を確認します。
 +
-.. クラスタポートが起動しており、クラスタ内のすべてのノードで正常に動作していることを確認します。
+.. クラスター内のすべてのノードでクラスター ポートが稼働しており正常であることを確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -643,7 +643,7 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 e3a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e3b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
-.. クラスタのスイッチの健常性を確認します（LIFはe0dにホーム設定されていないため、スイッチSW2が表示されない場合があります）。
+.. クラスタからスイッチの健全性を確認します（LIFのホームがe0dでないため、スイッチsw2は表示されない可能性があります）。
 +
 [listing, subs="+quotes"]
 ----
@@ -681,45 +681,45 @@ sw2                         cluster-network    10.233.205.91    MSN2100-CB2RC
 ----
 
 
-. クラスタが正常であることを確認します。
+. クラスタが正常に動作していることを確認します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 . 2 番目のスイッチで手順 1 ～ 14 を繰り返します。
-. クラスタ LIF で自動リバートを有効にします。
+. クラスタLIFで自動リバートを有効にします。
 +
-network interface modify -vserver Cluster -lif *-auto-revert trueを指定します
+`network interface modify -vserver Cluster -lif * -auto-revert true`
 
 
 
 --
-.Cumulus Linux 5.11.0.
+.キュムラス・リナックス 5.11.0
 --
-. クラスタスイッチを管理ネットワークに接続します。
-. 使用 `ping` Cumulus Linux と RCF をホストしているサーバーへの接続を確認するコマンド。
-. クラスタスイッチに接続されている各ノードのクラスタポートを表示します。
+. クラスタ スイッチを管理ネットワークに接続します。
+. 使用 `ping`Cumulus Linux と RCF をホストしているサーバーへの接続を確認するコマンド。
+. クラスター スイッチに接続されている各ノード上のクラスター ポートを表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
-. 各クラスタポートの管理ステータスと動作ステータスを確認します。
+. 各クラスタ ポートの管理ステータスと動作ステータスを確認します。
 +
-.. すべてのクラスタポートが正常な状態であることを確認します。
+.. すべてのクラスター ポートが正常な状態で稼働していることを確認します。
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
-.. すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。
+.. すべてのクラスタ インターフェイス (LIF) がホーム ポート上にあることを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
-.. クラスタが両方のクラスタスイッチの情報を表示していることを確認します。
+.. クラスターが両方のクラスター スイッチの情報を表示することを確認します。
 +
-system cluster-switch show -is-monitoring enabled-operational true を使用します
+`system cluster-switch show -is-monitoring-enabled-operational true`
 
 
 
-. クラスタLIFで自動リバートを無効にします。クラスタLIFはパートナークラスタスイッチにフェイルオーバーし、ターゲットスイッチでアップグレード手順を実行してもそのまま残ります。
+. クラスタLIFで自動リバートを無効にします。クラスタ LIF はパートナー クラスタ スイッチにフェイルオーバーし、対象スイッチでアップグレード手順を実行する間、そこに残ります。
 +
-network interface modify -vserver Cluster -lif *-auto-revert false
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
 +
 [NOTE]
@@ -730,7 +730,7 @@ network interface modify -vserver Cluster -lif *-auto-revert false
 
 
 ====
-. SN2100スイッチで使用可能なインターフェイスを表示します。
+. SN2100 スイッチで使用可能なインターフェースを表示します。
 +
 [listing, subs="+quotes"]
 ----
@@ -749,7 +749,7 @@ Interface     MTU   Speed State Remote Host         Remote Port- Type      Summa
 + swp15      9216 100G    up sw2                      swp15       swp
 + swp16      9216 100G    up sw2                      swp16       swp
 ----
-. RCF Pythonスクリプトをスイッチにコピーします。
+. RCF Python スクリプトをスイッチにコピーします。
 +
 [listing, subs="+quotes"]
 ----
@@ -762,7 +762,7 @@ MSN2100-RCF-v1.x-Cluster-HA-Breakout-LLDP          100% 8607   111.2KB/s        
 
 NOTE: それでも `scp`この例では が使用されていますが、SFTP、HTTPS、FTP など、好みのファイル転送方法を使用できます。
 
-. RCF Pythonスクリプト* MSN2100-rcf-v1._x_-Cluster-HA-Breakout-LLDP *を適用します。
+. RCF Python スクリプト *MSN2100-RCF-v1._x_-Cluster-HA-Breakout-LLDP* を適用します。
 +
 [listing, subs="+quotes"]
 ----
@@ -785,14 +785,14 @@ Step 12: Configure SNMP
 Step 13: Reboot the switch
 ----
 +
-この例では、RCFスクリプトで手順を完了しています。
+RCF スクリプトは、上記の例にリストされている手順を完了します。
 
 +
 
-NOTE: 上記のステップ 3 *MOTD ファイルの更新* では、コマンド `cat /etc/issue.net が実行されます。これにより、RCFのファイル名、RCFのバージョン、使用するポート、およびその他の重要な情報をRCFバナーで確認できます。
+NOTE: 上記のステップ 3 *MOTD ファイルの更新* では、コマンド `cat /etc/issue.net が実行されます。これにより、RCF ファイル名、RCF バージョン、使用するポート、および RCF バナー内のその他の重要な情報を確認できます。
 
 +
-例：
+例えば：
 
 +
 [listing]
@@ -828,10 +828,10 @@ admin@sw1:mgmt:~$ cat /etc/issue.net
 ----
 +
 
-NOTE: 修正できないRCF Pythonスクリプトの問題については、にお問い合わせください https://mysupport.netapp.com/["ネットアップサポート"^] を参照してください。
+NOTE: 修正できないRCF Pythonスクリプトの問題については、 https://mysupport.netapp.com/["NetAppサポート"^]援助をお願いします。
 
-. 以前のカスタマイズをスイッチの設定に再適用します。link:cabling-considerations-sn2100-cluster.html["ケーブル接続と構成に関する考慮事項を確認"]必要なその他の変更の詳細については、を参照してください。
-. リブート後に設定を確認します。
+. 以前のカスタマイズをスイッチ構成に再適用します。参照link:cabling-considerations-sn2100-cluster.html["ケーブル配線と構成の考慮事項を確認する"]今後必要な変更の詳細については、以下を参照してください。
+. 再起動後に構成を確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -945,9 +945,9 @@ Incomplete Command: set interface swp3-16 link fast-linkupp3-16 link fast-linkup
 ----
 +
 
-NOTE: 表示されている例外はパフォーマンスに影響しないため、無視しても問題ありません。
+NOTE: リストされている例外はパフォーマンスに影響を与えないので、無視しても問題ありません。
 
-. インターフェイス内のトランシーバの情報を確認します。
+. インターフェイス内のトランシーバーの情報を確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -985,9 +985,9 @@ swp2s1     25G    Trunk/L2    node1                 �
 swp15      100G   BondMember  sw2                      swp15
 swp16      100G   BondMember  sw2                      swp16
 ----
-. クラスタのクラスタポートの健常性を確認します。
+. クラスタ ポートの健全性を確認します。
 +
-.. クラスタポートが起動しており、クラスタ内のすべてのノードで正常に動作していることを確認します。
+.. クラスター内のすべてのノードでクラスター ポートが稼働しており正常であることを確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -1009,7 +1009,7 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 e3a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e3b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
-.. クラスタのスイッチの健常性を確認します（LIFはe0dにホーム設定されていないため、スイッチSW2が表示されない場合があります）。
+.. クラスタからスイッチの健全性を確認します（LIFのホームがe0dでないため、スイッチsw2は表示されない可能性があります）。
 +
 [listing, subs="+quotes"]
 ----
@@ -1047,18 +1047,18 @@ sw2                         cluster-network    10.233.205.91    MSN2100-CB2RC
 ----
 
 
-. クラスタが正常であることを確認します。
+. クラスタが正常に動作していることを確認します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 . 2 番目のスイッチで手順 1 ～ 14 を繰り返します。
-. クラスタ LIF で自動リバートを有効にします。
+. クラスタLIFで自動リバートを有効にします。
 +
-network interface modify -vserver Cluster -lif *-auto-revert trueを指定します
+`network interface modify -vserver Cluster -lif * -auto-revert true`
 
 
 
 --
 ====
 .次の手順
-link:setup-install-cshm-file.html["CSHMファイルをインストールする"]です。
+link:setup-install-cshm-file.html["CSHMファイルをインストールする"] 。

@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-storage/components-9336c-storage.html 
 keywords: shared storage cluster switch 
-summary: ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチシナリオに結合できます。 
+summary: ONTAP 9.9.1 以降では、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタ機能を共有スイッチ シナリオに組み合わせることができます。 
 ---
-= Cisco Nexus 9336C-FX2および9336C-FX2-Tストレージスイッチのコンポーネントとパーツ番号
+= Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチのコンポーネントと部品番号
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,13 +14,13 @@ summary: ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用し
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2および9336C-FX2-Tストレージスイッチの設置とメンテナンスについては、コンポーネントとパーツ番号のリストを確認してください。
+Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチのインストールとメンテナンスについては、必ずコンポーネントと部品番号のリストを確認してください。
 
-次の表に、9336C-FX2および9336C-FX2-Tストレージスイッチ、ファン、および電源装置のパーツ番号と説明を示します。
+次の表に、9336C-FX2 および 9336C-FX2-T ストレージ スイッチ、ファン、および電源装置の部品番号と説明を示します。
 
 [cols="1,2"]
 |===
-| パーツ番号 | 説明 
+| 部品番号 | 説明 
 
 
  a| 
@@ -40,26 +40,26 @@ X190200-CS-PI
  a| 
 X190212-CS-PE
  a| 
-クラスタスイッチ、N9336C 12pt（9336C-FX2-T）PTSX 10/25/40/100G
+クラスタスイッチ、N9336C 12Pt (9336C-FX2-T) PTSX 10/25/40/100G
 
 
 
  a| 
 X190212-CS-PI
  a| 
-クラスタスイッチ、N9336C 12pt（9336C-FX2-T）PSIN 10/25/40/100G
+クラスタスイッチ、N9336C 12Pt (9336C-FX2-T) PSIN 10/25/40/100G
 
 
 
  a| 
 SW-N9K-FX2-24P-UPG
  a| 
-SW、Cisco 9336CFX2 24ポートPODライセンス
+SW、 Cisco 9336CFX2 24ポートPODライセンス
 
 
 
  a| 
-X190210-FE-PE のこと
+X190210-FE-PE
  a| 
 N9K-9336C、FTE、PTSX、36PT 10/25/40/100GQSFP28
 
@@ -75,49 +75,49 @@ N9K-9336C、FTE、PSIN、36PT 10/25/40/100GQSFP28
  a| 
 X190002
  a| 
-アクセサリキット X190001/X190003
+アクセサリーキット X190001/X190003
 
 
 
  a| 
-X-NXA-PAC1100W-PE2
+X-NXA-PAC-1100W-PE2
  a| 
-N9K-9336C AC 1100W PSU - ポート側排気
+N9K-9336C AC 1100W PSU - ポート側排気エアフロー
 
 
 
  a| 
-X-NXA-PAC1100W-PI2
+X-NXA-PAC-1100W-PI2
  a| 
 N9K-9336C AC 1100W PSU - ポート側吸気
 
 
 
  a| 
-X-NXA-FAN-65CFM-pe
+X-NXA-ファン-65CFM-PE
  a| 
-N9K-9336C 65CFM 、ポート側排気
+N9K-9336C 65CFM、ポート側排気流量
 
 
 
  a| 
-X-NXA-FAN-65CFM-pi
+X-NXA-ファン-65CFM-PI
  a| 
-N9K-9336C 65CFM 、ポート側吸気
+N9K-9336C 65CFM、ポート側吸気流量
 
 |===
 
 
 == 9336C-FX2-T ポートのみのCisco Smart ライセンス
 
-Cisco Nexus 9336C-FX-Tストレージスイッチで12個を超えるポートをアクティブ化するには、Cisco Smartライセンスを購入する必要があります。Ciscoスマートライセンスは、Ciscoスマートアカウントを介して管理されます。
+Cisco Nexus 9336C-FX-T ストレージ スイッチで 12 個を超えるポートをアクティブ化するには、 Cisco Smart ライセンスを購入する必要があります。  Cisco Smart ライセンスは、 Cisco Smart アカウントを通じて管理されます。
 
-. 必要に応じて、新しいSMARTアカウントを作成します。詳細は、を参照してください https://id.cisco.com/signin/register["新しいSMARTアカウントを作成する"^]。
-. 既存のSMARTアカウントへのアクセスをリクエストします。詳細は、を参照してください https://id.cisco.com/oauth2/default/v1/authorize?response_type=code&scope=openid%20profile%20address%20offline_access%20cci_coimemberOf%20email&client_id=cae-okta-web-gslb-01&state=s2wvKDiBja__7ylXonWrq8w-FAA&redirect_uri=https%3A%2F%2Frpfa.cloudapps.cisco.com%2Fcb%2Fsso&nonce=qO6s3cZE5ZdhC8UKMEfgE6fbu3mvDJ8PTw5jYOp6z30["既存のSMARTアカウントへのアクセスをリクエストする"^]。
+. 必要に応じて、新しいスマート アカウントを作成します。見る https://id.cisco.com/signin/register["新しいスマートアカウントを作成する"^]詳細については。
+. 既存のスマート アカウントへのアクセスをリクエストします。見る https://id.cisco.com/oauth2/default/v1/authorize?response_type=code&scope=openid%20profile%20address%20offline_access%20cci_coimemberOf%20email&client_id=cae-okta-web-gslb-01&state=s2wvKDiBja__7ylXonWrq8w-FAA&redirect_uri=https%3A%2F%2Frpfa.cloudapps.cisco.com%2Fcb%2Fsso&nonce=qO6s3cZE5ZdhC8UKMEfgE6fbu3mvDJ8PTw5jYOp6z30["既存のスマートアカウントへのアクセスをリクエストする"^]詳細については。
 
 
 
-NOTE: SMARTライセンスを購入したら、適切なRCFをインストールして、使用可能な36個のポートをすべて有効にして設定します。
+NOTE: スマート ライセンスを購入したら、適切な RCF をインストールして、使用可能な 36 個のポートすべてを有効にして構成します。
 
 .次の手順
 コンポーネントと部品番号を確認したら、link:required-documentation-9336c-storage.html["必要な書類"] 。

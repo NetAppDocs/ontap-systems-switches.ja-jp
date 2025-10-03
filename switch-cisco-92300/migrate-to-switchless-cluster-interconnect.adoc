@@ -2,71 +2,71 @@
 permalink: switch-cisco-92300/migrate-to-switchless-cluster-interconnect.html 
 sidebar: sidebar 
 keywords: migrate, switchless cluster interconnect, cisco nexus switch 92300YC 
-summary: ONTAP 9.3以降では、スイッチクラスタネットワークを使用するクラスタから2つのノードが直接接続されたクラスタに移行できます。 
+summary: ONTAP 9.3 以降では、スイッチ クラスタ ネットワークを持つクラスタから、2 つのノードが直接接続されたクラスタに移行できます。 
 ---
-= Cisco Nexus 92300YCクラスタスイッチをスイッチレス接続に置き換えます
+= Cisco Nexus 92300YC クラスタスイッチをスイッチレス接続に置き換える
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-ONTAP 9.3以降では、スイッチクラスタネットワークを使用するクラスタから2つのノードが直接接続されたクラスタに移行できます。
+ONTAP 9.3 以降では、スイッチ クラスタ ネットワークを持つクラスタから、2 つのノードが直接接続されたクラスタに移行できます。
 
 
 
-== 要件を確認
+== 要件の確認
 
 .ガイドライン
 次のガイドラインを確認してください。
 
-* 2ノードスイッチレスクラスタ構成への移行は無停止で実行できます。ほとんどのシステムでは、各ノードに2つの専用クラスタインターコネクトポートがありますが、4、6、8など、各ノードに多数の専用クラスタインターコネクトポートがあるシステムでもこの手順 を使用できます。
-* 3ノード以上のスイッチレスクラスタインターコネクト機能は使用できません。
-* クラスタインターコネクトスイッチを使用する既存の2ノードクラスタがONTAP 9.3以降を実行している場合は、スイッチをノード間の直接のバックツーバック接続に交換できます。
+* 2 ノードのスイッチレス クラスタ構成への移行は、中断を伴わない操作です。ほとんどのシステムでは、各ノードに 2 つの専用クラスタ相互接続ポートがありますが、各ノードに 4 つ、6 つ、または 8 つなど、より多数の専用クラスタ相互接続ポートがあるシステムでもこの手順を使用できます。
+* スイッチレス クラスタ相互接続機能は 2 つ以上のノードでは使用できません。
+* クラスタ相互接続スイッチを使用し、 ONTAP 9.3 以降を実行している既存の 2 ノード クラスタがある場合は、ノード間の直接のバックツーバック接続でスイッチを置き換えることができます。
 
 
-.作業を開始する前に
-次のものがあることを確認します。
+.開始する前に
+以下のものがあることを確認してください。
 
-* クラスタスイッチで接続された2つのノードで構成された正常なクラスタ。ノードで同じONTAP リリースが実行されている必要があります。
-* 各ノードに必要な数の専用クラスタポートが装備され、システム構成に対応するための冗長なクラスタインターコネクト接続が提供されます。たとえば、1つのシステムに2つの冗長ポートがあり、各ノードに2つの専用クラスタインターコネクトポートがあるとします。
-
-
+* クラスター スイッチによって接続された 2 つのノードで構成される正常なクラスター。ノードは同じONTAPリリースを実行している必要があります。
+* 各ノードには必要な数の専用クラスタ ポートがあり、システム構成をサポートするために冗長クラスタ相互接続を提供します。たとえば、各ノードに 2 つの専用クラスタ相互接続ポートがあるシステムには、2 つの冗長ポートがあります。
 
 
-== スイッチを移行します
 
-.このタスクについて
-次の手順 は、2ノードクラスタ内のクラスタスイッチを削除し、スイッチへの各接続をパートナーノードへの直接接続に置き換えます。
 
-image::../media/tnsc_clusterswitches_and_direct_connections.PNG[クラスタスイッチを直接接続に置き換えます]
+== スイッチを移行する
+
+.タスク概要
+次の手順では、2 ノード クラスター内のクラスター スイッチを削除し、スイッチへの各接続をパートナー ノードへの直接接続に置き換えます。
+
+image::../media/tnsc_clusterswitches_and_direct_connections.PNG[クラスタスイッチを直接接続に置き換え]
 
 .例について
-次の手順 の例は、「e0a」と「e0b」をクラスタポートとして使用しているノードを示しています。システムによって異なるクラスタポートがノードによって使用されている場合があります。
+次の手順の例では、クラスター ポートとして「e0a」と「e0b」を使用しているノードを示しています。システムによって異なるため、ノードは異なるクラスター ポートを使用している可能性があります。
 
 
 
-=== 手順1：移行の準備
+=== ステップ1: 移行の準備
 
-. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 y 」と入力します。
+. 権限レベルを上級に変更するには、次のように入力します。 `y`続行するように求められたら:
 +
-「 advanced 」の権限が必要です
-
-+
-アドバンス・プロンプトが表示されます
-
-. ONTAP 9.3以降では、スイッチレスクラスタの自動検出がサポートされます。このクラスタはデフォルトで有効になっています。
-+
-スイッチレスクラスタの検出が有効になっていることを確認するには、advanced権限のコマンドを実行します。
+`set -privilege advanced`
 
 +
-「network options detect-switchless -cluster show」を参照してください
+高度なプロンプト `*>`が表示されます。
+
+. ONTAP 9.3 以降では、スイッチレス クラスタの自動検出がサポートされており、デフォルトで有効になっています。
++
+高度な権限コマンドを実行すると、スイッチレス クラスターの検出が有効になっていることを確認できます。
 
 +
-.例を示します
+`network options detect-switchless-cluster show`
+
++
+.例を表示
 [%collapsible]
 ====
-オプションが有効になっている場合の出力例を次に示します。
+次の出力例は、オプションが有効になっているかどうかを示しています。
 
 [listing]
 ----
@@ -76,20 +76,20 @@ Enable Switchless Cluster Detection: true
 ----
 ====
 +
-「Enable Switchless Cluster Detection」がの場合 `false`ネットアップサポートにお問い合わせください。
+「スイッチレスクラスタ検出を有効にする」が `false`NetAppサポートにお問い合わせください。
 
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
 +
-「system node AutoSupport invoke -node *-type all -message MAINT=<number_OF_hours >」の形式で指定します
-
-+
-ここで'h'は'メンテナンス時間の長さを時間単位で表したものですこのメンテナンスタスクについてテクニカルサポートに通知し、メンテナンス時間中にケースの自動作成を停止できるようにします。
+`system node autosupport invoke -node * -type all -message MAINT=<number_of_hours>h`
 
 +
-次の例は、ケースの自動作成を2時間停止します。
+どこ `h`メンテナンス ウィンドウの期間 (時間単位) です。このメッセージは、このメンテナンス タスクをテクニカル サポートに通知し、メンテナンス ウィンドウ中の自動ケース作成を抑制できるようにします。
 
 +
-.例を示します
+次の例では、コマンドは自動ケース作成を 2 時間抑制します。
+
++
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -101,24 +101,24 @@ cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
 
 
 
-=== 手順2：ポートとケーブルを設定する
+=== ステップ2: ポートとケーブルを構成する
 
-. グループ1のクラスタポートがクラスタスイッチ1に、グループ2のクラスタポートがクラスタスイッチ2になるように、各スイッチのクラスタポートをグループにまとめます。これらのグループは、手順 の後半で必要になります。
-. クラスタポートを特定し、リンクのステータスと健全性を確認します。
+. 各スイッチのクラスター ポートをグループに編成し、グループ 1 のクラスター ポートがクラスター スイッチ 1 に接続され、グループ 2 のクラスター ポートがクラスター スイッチ 2 に接続されるようにします。これらのグループは、手順の後半で必要になります。
+. クラスター ポートを識別し、リンクのステータスと正常性を確認します。
 +
-「 network port show -ipspace cluster 」のように表示されます
-
-+
-次の例では、クラスタポート「e0a」と「e0b」を持つノードについて、1つのグループは「node1：e0a」と「node2：e0a」、もう1つのグループは「node1：e0b」と「node2：e0b」と識別されます。使用するクラスタポートはシステムによって異なるため、ノードによって異なるクラスタポートが使用されている場合があります。
+`network port show -ipspace Cluster`
 
 +
-image::../media/tnsc_clusterswitch_connections.PNG[ノード1とノード2の間のクラスタスイッチ接続]
+次の例では、クラスター ポートが「e0a」および「e0b」であるノードの場合、1 つのグループは「node1:e0a」および「node2:e0a」として識別され、もう 1 つのグループは「node1:e0b」および「node2:e0b」として識別されます。クラスター ポートはシステムによって異なるため、ノードは異なるクラスター ポートを使用している可能性があります。
 
 +
-ポートの値がになっていることを確認します `up` をクリックします `healthy` をクリックします。
+image::../media/tnsc_clusterswitch_connections.PNG[ノード1とノード2間のクラスタスイッチ接続]
 
 +
-.例を示します
+ポートの値が `up`「リンク」列の値は `healthy`「健康状態」列に表示されます。
+
++
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -142,15 +142,15 @@ e0b   Cluster   Cluster          up    9000  auto/10000  healthy false
 4 entries were displayed.
 ----
 ====
-. すべてのクラスタLIFがそれぞれのホームポートにあることを確認します。
+. すべてのクラスタ LIF がホーム ポート上にあることを確認します。
 +
-各クラスタLIFの「is-home」列が「true」になっていることを確認します。
+「is-home」列が `true`各クラスタLIFについて：
 
 +
-network interface show -vserver Cluster -fields is-fehome」というコマンドを入力します
+`network interface show -vserver Cluster -fields is-home`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -167,27 +167,27 @@ Cluster  node2_clus2  true
 ----
 ====
 +
-ホームポートにないクラスタLIFがある場合は、それらのLIFをホームポートにリバートします。
+ホーム ポート上にないクラスタ LIF がある場合は、それらの LIF をホーム ポートに戻します。
 
 +
-network interface revert -vserver Cluster -lif *
+`network interface revert -vserver Cluster -lif *`
 
-. クラスタLIFの自動リバートを無効にします。
+. クラスタ LIF の自動復帰を無効にします。
 +
-network interface modify -vserver Cluster -lif *-auto-revert false
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
-. 前の手順で確認したすべてのポートがネットワークスイッチに接続されていることを確認します。
+. 前の手順でリストされたすべてのポートがネットワーク スイッチに接続されていることを確認します。
 +
-「network device-discovery show -port_cluster_port_」というコマンドを実行します
-
-+
-[Discovered Device]列には、ポートが接続されているクラスタスイッチの名前を指定します。
+`network device-discovery show -port _cluster_port_`
 
 +
-.例を示します
+「検出されたデバイス」列には、ポートが接続されているクラスター スイッチの名前が表示されます。
+
++
+.例を表示
 [%collapsible]
 ====
-次の例は、クラスタポート「e0a」と「e0b」がクラスタスイッチ「cs1」と「cs2」に正しく接続されていることを示しています。
+次の例は、クラスター ポート「e0a」と「e0b」がクラスター スイッチ「cs1」と「cs2」に正しく接続されていることを示しています。
 
 [listing]
 ----
@@ -205,22 +205,22 @@ node2/cdp
 4 entries were displayed.
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -236,9 +236,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -271,41 +271,41 @@ RPC status:
 ----
 --
 ====
-. [[step7]]クラスタが正常であることを確認します。
+. [[step7]] クラスターが正常であることを確認します。
 +
-「 cluster ring show 」を参照してください
+`cluster ring show`
 
 +
-すべてのユニットはマスタまたはセカンダリのいずれかでなければなりません。
+すべてのユニットはマスターまたはセカンダリのいずれかである必要があります。
 
-. グループ1のポートにスイッチレス構成を設定します。
+. グループ 1 のポートに対してスイッチレス構成を設定します。
 +
 
-IMPORTANT: ネットワークの潜在的な問題を回避するには、group1からポートを切断し、できるだけ速やかに元に戻します。たとえば、20秒未満の*の場合は、「*」のようにします。
+IMPORTANT: 潜在的なネットワークの問題を回避するには、グループ 1 からポートを切断し、できるだけ早く (たとえば、*20 秒未満*) 連続して再接続する必要があります。
 
 +
-.. group1内のポートからすべてのケーブルを同時に外します。
+.. グループ1のポートからすべてのケーブルを同時に取り外します。
 +
-次の例では、各ノードのポート「e0a」からケーブルが切断され、クラスタトラフィックがスイッチとポート「e0b」を経由して各ノードで続行されています。
+次の例では、各ノードのポート「e0a」からケーブルが切断され、クラスター トラフィックは各ノードのスイッチとポート「e0b」を介して継続されます。
 
 +
-image::../media/tnsc_clusterswitch1_disconnected.PNG[ClusterSwitch1が切断された]
+image::../media/tnsc_clusterswitch1_disconnected.PNG[ClusterSwitch1が切断されました]
 
-.. group1内のポートを背面にケーブル接続します。
+.. グループ 1 のポート同士を背中合わせにケーブル接続します。
 +
-次の例では、node1の「e0a」がnode2の「e0a」に接続されています。
+次の例では、ノード 1 の「e0a」がノード 2 の「e0a」に接続されています。
 
 +
 image::../media/tnsc_ports_e0a_direct_connection.PNG[ポート「e0a」間の直接接続]
 
 
 
-. スイッチレス・クラスタ・ネットワーク・オプションは'false'からtrue'に移行しますこの処理には最大45秒かかることがあります。スイッチレス・オプションが「true」に設定されていることを確認します。
+. スイッチレスクラスタネットワークオプションは、 `false`に `true`。これには最大 45 秒かかる場合があります。スイッチレスオプションが設定されていることを確認します `true`:
 +
-network options switchless-cluster show
+`network options switchless-cluster show`
 
 +
-次の例は、スイッチレスクラスタを有効にします。
+次の例は、スイッチレス クラスターが有効になっていることを示しています。
 
 +
 [listing]
@@ -313,22 +313,22 @@ network options switchless-cluster show
 cluster::*> network options switchless-cluster show
 Enable Switchless Cluster: true
 ----
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -344,9 +344,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -380,27 +380,27 @@ RPC status:
 --
 ====
 
-IMPORTANT: 次の手順に進む前に、少なくとも2分待ってグループ1でバックツーバック接続が機能していることを確認する必要があります。
+IMPORTANT: 次の手順に進む前に、グループ 1 でバックツーバック接続が機能していることを確認するために少なくとも 2 分間待つ必要があります。
 
-. [[step11]]グループ2のポートにスイッチレス構成を設定します。
+. [[step11]] グループ2のポートにスイッチレス構成を設定します。
 +
 
-IMPORTANT: ネットワークの潜在的な問題を回避するには、ポートをgroup2から切断して、できるだけ速やかに元に戻す必要があります。たとえば、20秒以内に*と入力します。
+IMPORTANT: 潜在的なネットワークの問題を回避するには、グループ 2 からポートを切断し、できるだけ早く (たとえば、*20 秒未満*) 連続して再接続する必要があります。
 
 +
-.. group2のポートからすべてのケーブルを同時に外します。
+.. グループ2のポートからすべてのケーブルを同時に取り外します。
 +
-次の例では、各ノードのポート「e0b」からケーブルが切断され、クラスタトラフィックは「e0a」ポート間の直接接続を経由して続行されます。
-
-+
-image::../media/tnsc_clusterswitch2_disconnected.PNG[クラスタスイッチ2が切断されました]
-
-.. group2のポートを背面にケーブル接続します。
-+
-次の例では、node1の「e0a」がnode2の「e0a」に接続され、node1の「e0b」がnode2の「e0b」に接続されています。
+次の例では、各ノードのポート「e0b」からケーブルが切断され、クラスター トラフィックは「e0a」ポート間の直接接続を通じて継続されます。
 
 +
-image::../media/tnsc_node1_and_node2_direct_connection.PNG[ノード1のポートとノード2のポート間で直接接続します]
+image::../media/tnsc_clusterswitch2_disconnected.PNG[ClusterSwitch2が切断されました]
+
+.. グループ2のポート同士を背中合わせにケーブル接続します。
++
+次の例では、ノード 1 の「e0a」はノード 2 の「e0a」に接続され、ノード 1 の「e0b」はノード 2 の「e0b」に接続されます。
+
++
+image::../media/tnsc_node1_and_node2_direct_connection.PNG[ノード1とノード2のポート間の直接接続]
 
 
 
@@ -408,17 +408,17 @@ image::../media/tnsc_node1_and_node2_direct_connection.PNG[ノード1のポー�
 
 
 
-=== 手順3：構成を確認します
+=== ステップ3: 構成を確認する
 
 . 両方のノードのポートが正しく接続されていることを確認します。
 +
-「network device-discovery show -port_cluster_port_」というコマンドを実行します
+`network device-discovery show -port _cluster_port_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、クラスタポート「e0a」と「e0b」がクラスタパートナーの対応するポートに正しく接続されていることを示しています。
+次の例は、クラスター ポート「e0a」と「e0b」がクラスター パートナーの対応するポートに正しく接続されていることを示しています。
 
 [listing]
 ----
@@ -442,19 +442,19 @@ node2/lldp
 8 entries were displayed.
 ----
 ====
-. クラスタLIFの自動リバートを再度有効にします。
+. クラスタ LIF の自動復帰を再度有効にします。
 +
-network interface modify -vserver Cluster -lif *-auto-revert trueを指定します
+`network interface modify -vserver Cluster -lif * -auto-revert true`
 
-. すべてのLIFがホームにあることを確認する。これには数秒かかることがあります。
+. すべての LIF がホームであることを確認します。数秒かかる場合があります。
 +
-network interface show -vserver Cluster -lif LIF_nameです
+`network interface show -vserver Cluster -lif _lif_name_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例では、「Is Home」列が「true」の場合、LIFはリバートされています。
+「Is Home」列が `true`、のように `node1_clus2`そして `node2_clus2`次の例では:
 
 [listing]
 ----
@@ -469,20 +469,20 @@ Cluster  node2_clus2   e0b       true
 ----
 ====
 +
-いずれかのクラスタLIFがホームポートに戻っていない場合は、ローカルノードから手動でリバートします。
+クラスタ LIFS がホーム ポートに戻っていない場合は、ローカル ノードから手動で元に戻します。
 
 +
-「network interface revert -vserver Cluster -lif LIF_name」のようになります
+`network interface revert -vserver Cluster -lif _lif_name_`
 
-. いずれかのノードのシステムコンソールで、ノードのクラスタステータスを確認します。
+. いずれかのノードのシステム コンソールからノードのクラスター ステータスを確認します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例では'両方のノードのイプシロンをfalseに設定しています
+次の例では、両方のノードのイプシロンが `false`:
 
 [listing]
 ----
@@ -493,22 +493,22 @@ node2 true    true        false
 2 entries were displayed.
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -524,9 +524,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -559,15 +559,15 @@ RPC status:
 ----
 --
 ====
-. [[step6]]ケースの自動作成を抑制した場合は、AutoSupportメッセージを呼び出して再度有効にします。
+. [[step6]] 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 +
-詳細については、を参照してください link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows_-_ONTAP_9["ネットアップの技術情報アーティクル 1010449 ：「 How to suppress automatic case creation during scheduled maintenance windows"^]。
+詳細については、以下を参照してください。 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows_-_ONTAP_9["NetAppの技術情報アーティクル1010449：「How to suppress automatic case creation during scheduled maintenance windows」"^] 。
 
-. 権限レベルを admin に戻します。
+. 権限レベルを管理者に戻します。
 +
-「特権管理者」
+`set -privilege admin`
 
 

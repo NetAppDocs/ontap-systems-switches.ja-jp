@@ -2,71 +2,71 @@
 permalink: switch-cisco-9336c-fx2/install-nxos-overview-9336c-cluster.html 
 sidebar: sidebar 
 keywords: cisco, nx-os, software, reference, configuration, file, rcf, install, fx2, cluster, switch, install nx-os software and rcfs on cisco nexus 9336-fx2 cluster switches - cisco nexus 9336x-fx2 
-summary: Cisco NX-OS ソフトウェアおよびリファレンス構成ファイル（ RCF ）は、 Cisco Nexus 9336C-FX2 クラスタスイッチにインストールする必要があります。 
+summary: 'Cisco NX-OS ソフトウェアとリファレンス コンフィギュレーション ファイル (RCF) をCisco Nexus 9336C-FX2 クラスタ スイッチにインストールする必要があります。' 
 ---
-= NX-OSソフトウェアとRCFをインストールするための準備をします
+= NX-OSソフトウェアとRCFのインストール準備
 :allow-uri-read: 
 
 
 [role="lead"]
-NX-OSソフトウェアとRCFをインストールする前に、次の手順 を実行してください。
+NX-OS ソフトウェアとリファレンス コンフィギュレーション ファイル (RCF) をインストールする前に、次の手順に従ってください。
 
-.推奨されるドキュメント
-* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco Ethernet Switch のページ"^]
+.推奨ドキュメント
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ ページ"^]
 +
-サポートされるONTAP とNX-OSのバージョンについては、スイッチの互換性の表を参照してください。
+サポートされているONTAPおよび NX-OS バージョンについては、スイッチ互換性表を参照してください。
 
-* link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-guides-list.html["ソフトウェアアップグレードおよびダウングレードガイド"^]
+* link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-guides-list.html["ソフトウェアのアップグレードとダウングレードのガイド"^]
 +
-Ciscoスイッチのアップグレードおよびダウングレード手順の完全なマニュアルについては、シスコのWebサイトで入手可能な該当するソフトウェアおよびアップグレードガイドを参照してください。
+Ciscoスイッチのアップグレードおよびダウングレード手順の完全なドキュメントについては、 Cisco Web サイトで入手可能な適切なソフトウェアおよびアップグレード ガイドを参照してください。
 
-* link:https://www.cisco.com/c/dam/en/us/td/docs/dcn/tools/nexus-9k3k-issu-matrix/index.html["Cisco Nexus 9000および3000のアップグレードとISSUのマトリックス"^]
+* link:https://www.cisco.com/c/dam/en/us/td/docs/dcn/tools/nexus-9k3k-issu-matrix/index.html["Cisco Nexus 9000 および 3000 のアップグレードと ISSU マトリックス"^]
 +
-現在のリリースとターゲット リリースに基づいて、Nexus 9000 シリーズ スイッチ上の Cisco NX-OS ソフトウェアの中断を伴うアップグレード/ダウングレードに関する情報を提供します。
+現在のリリースとターゲット リリースに基づいて、Nexus 9000 シリーズ スイッチ上のCisco NX-OS ソフトウェアの中断を伴うアップグレード/ダウングレードに関する情報を提供します。
 
 +
-ページで、*[Disruptive Upgrade]*を選択し、ドロップダウンリストから現在のリリースとターゲットリリースを選択します。
+このページで、「*Disruptive Upgrade*」を選択し、ドロップダウン リストから現在のリリースとターゲット リリースを選択します。
 
 
 
 .例について
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 2 つの Cisco スイッチの名前は cs1 と cs2 です。
-* ノード名は cluster1-01 と cluster1-02 です。
-* クラスタ LIF の名前は、 cluster1-01 と cluster1-02_clus1 および cluster1-01_clus2 （ cluster1-01 と cluster1-02 にそれぞれ 1 ）、 cluster1-02 にそれぞれ異なります。
-* 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
+* 2 つのCiscoスイッチの名前は cs1 と cs2 です。
+* ノード名はcluster1-01とcluster1-02です。
+* クラスタ LIF 名は、cluster1-01 の場合は cluster1-01_clus1 と cluster1-01_clus2、cluster1-02 の場合は cluster1-02_clus1 と cluster1-02_clus2 です。
+* その `cluster1::*>`プロンプトはクラスターの名前を示します。
 
 
-.このタスクについて
-手順では、 ONTAP コマンドと Cisco Nexus 9000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
+.タスク概要
+この手順では、ONTAPコマンドとCisco Nexus 9000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
 
 .手順
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= x h
+. このクラスタでAutoSupportが有効になっている場合は、 AutoSupportメッセージを呼び出して自動ケース作成を抑制します。 `system node autosupport invoke -node * -type all -message MAINT=x h`
 +
-x は、メンテナンス時間の長さ（時間単位）です。
+ここで、x はメンテナンス ウィンドウの期間 (時間単位) です。
 
 +
 
-NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+NOTE: AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
-. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 * y * 」と入力します。
+. 続行するかどうかを尋ねられたら *y* と入力して、権限レベルを「advanced」に変更します。
 +
 [source, cli]
 ----
 set -privilege advanced
 ----
 +
-詳細プロンプト (`*>') が表示されます
+高度なプロンプト(`*>`）が表示されます。
 
-. クラスタインターコネクトスイッチごとに、各ノードに設定されているクラスタインターコネクトインターフェイスの数を表示します。
+. 各クラスタ相互接続スイッチの各ノードに設定されているクラスタ相互接続インターフェイスの数を表示します。
 +
 [source, cli]
 ----
 network device-discovery show -protocol cdp
 ----
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -86,16 +86,16 @@ cluster1-01/cdp
 4 entries were displayed.
 ----
 ====
-. 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
+. 各クラスタ インターフェイスの管理ステータスまたは動作ステータスを確認します。
 +
-.. ネットワークポートの属性を表示します。
+.. ネットワーク ポートの属性を表示します。
 +
 [source, cli]
 ----
 network port show -ipspace Cluster
 ----
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -126,7 +126,7 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy
 network interface show -vserver Cluster
 ----
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -147,22 +147,22 @@ Cluster
 ====
 
 
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -178,9 +178,9 @@ node2
        3/5/2022 19:21:20 -06:00   cluster1-02_clus2    cluster1-01_clus2   none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -213,14 +213,14 @@ RPC status:
 ----
 --
 ====
-. [[step6]]すべてのクラスタLIFでauto-revertコマンドが有効になっていることを確認します。
+. [[step6]] すべてのクラスタLIFでauto-revertコマンドが有効になっていることを確認します。
 +
 [source, cli]
 ----
 network interface show -vserver Cluster -fields auto-revert
 ----
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]

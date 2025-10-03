@@ -12,31 +12,31 @@ settings:
   langs: ja-jp,us-en,de-de,es-es,fr-fr,it-it,pt-br,ko-kr,zh-cn,zh-tw
 sidebar:
   entries:
-  - title: ONTAPハードウェア用のスイッチドキュメント
+  - title: ONTAPハードウェアのスイッチドキュメント
     url: "/index.html"
-  - title: はじめに
+  - title: 始めましょう
     entries:
     - title: 新機能
       url: "/whats-new.html"
-    - title: ONTAP システムスイッチについて説明します
+    - title: ONTAPシステムスイッチについて学ぶ
       url: "/get-started/learn-switch-concept.html"
-    - title: 運用を開始
+    - title: 立ち上がって走り出す
       url: "/get-started/get-up-and-running.html"
-  - title: クラスタスイッチ
+  - title: クラスタースイッチ
     entries:
     - section: switch-bes-53248
     - section: switch-cisco-9336c-fx2
     - section: switch-nvidia-sn2100
-  - title: ストレージスイッチ
+  - title: ストレージ スイッチ
     entries:
     - section: switch-cisco-9336c-fx2-storage
     - section: switch-nvidia-sn2100-storage
   - title: 共有スイッチ
     entries:
     - section: switch-cisco-9336c-fx2-shared
-      pdf-filename: スイッチ- CISCO-9336c-FX2-storage
+      pdf-filename: スイッチ-cisco-9336c-fx2-ストレージ
   - section: switch-cshm
-  - title: 可用性が終了したスイッチ
+  - title: 販売終了スイッチ
     entries:
     - title: 概要
       url: "/overview-eod.html"
@@ -44,7 +44,7 @@ sidebar:
     - section: switch-cisco-3132q-v
     - section: switch-cisco-92300
     - section: switch-netapp-cn1610
-  - title: 法的通知
+  - title: 法律上の表示
     url: "/legal-notices.html"
 product-family:
   name: ONTAP hardware systems

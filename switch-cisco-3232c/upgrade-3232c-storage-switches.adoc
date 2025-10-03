@@ -2,68 +2,68 @@
 permalink: switch-cisco-3232c/upgrade-3232c-storage-switches.html 
 sidebar: sidebar 
 keywords: upgrade, cisco nexus, 3232c storage switch 
-summary: Cisco NX-OS ソフトウェアおよびリファレンス構成ファイル（ RCF ）は、 Cisco Nexus 3232C ストレージスイッチでアップグレードできます。 
+summary: 'Cisco Nexus 3232C ストレージ スイッチでは、 Cisco NX-OS ソフトウェアおよびリファレンス コンフィギュレーション ファイル (RCF) をアップグレードできます。' 
 ---
-= Cisco Nexus 3232C ストレージスイッチをアップグレードする
+= Cisco Nexus 3232C ストレージ スイッチのアップグレード
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3232CスイッチでCisco NX-OSソフトウェアとリファレンス構成ファイル（RCF）をアップグレードするには、次の手順を実行します。
+Cisco Nexus 3232C スイッチでCisco NX-OS ソフトウェアと参照コンフィギュレーション ファイル (RCF) をアップグレードするには、次の手順に従います。
 
 
 
-== 要件を確認
+== 要件の確認
 
-.作業を開始する前に
-ストレージスイッチでNX-OSソフトウェアとRCFをアップグレードする前に、次の条件が満たされていることを確認してください。
+.開始する前に
+ストレージ スイッチ上の NX-OS ソフトウェアと RCF をアップグレードする前に、次の条件が満たされていることを確認してください。
 
-* スイッチは完全に機能しています（ログにエラーがないか、または同様の問題が発生していないか）。
-* NX-OSだけをインストールして現在のRCFバージョンをそのまま使用する場合は、目的のブートイメージを反映するように、RCFで必要なブート変数を確認または設定しておきます。
+* スイッチは完全に機能しています (ログにエラーや同様の問題は発生しないはずです)。
+* NX-OS のみをインストールし、現在の RCF バージョンを維持する場合は、必要なブート イメージを反映するように、RCF で必要なブート変数をチェックまたは設定しておきます。
 +
-現在のブートイメージを反映するようにブート変数を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。
+現在のブート イメージを反映するようにブート変数を変更する必要がある場合は、将来の再起動時に正しいバージョンがインスタンス化されるように、RCF を再適用する前に変更する必要があります。
 
-* で提供されているソフトウェアとアップグレードのガイドを参照しておきます http://www.cisco.com/en/US/products/ps9670/prod_installation_guides_list.html["Cisco Nexus 3000 シリーズスイッチ"^] Cisco ストレージのアップグレードおよびダウングレード手順の詳細なドキュメントについては、ページを参照してください。
-* 10GbE ポートと 40 / 100GbE ポートの数は、で使用可能なリファレンス構成ファイル（ RCF ）に定義されています https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco ® イーサネットスイッチ"^] ページ
-
-
+* 適切なソフトウェアおよびアップグレードガイドを参照しました。 http://www.cisco.com/en/US/products/ps9670/prod_installation_guides_list.html["Cisco Nexus 3000 シリーズ スイッチ"^] Ciscoストレージのアップグレードおよびダウングレード手順に関する完全なドキュメントについては、このページをご覧ください。
+* 10 GbEおよび40/100 GbEポートの数は、 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco® イーサネットスイッチ"^]ページ。
 
 
-== スイッチを交換します
+
+
+== スイッチを交換する
 
 .例について
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 2 つのストレージスイッチの名前は S1 と S2 です。
-* ノードは node1 と node2 になります。
-
-
-この手順 の例では、 2 つのノードを使用します。 node1 には 2 つのストレージポート、 node2 には 2 つのストレージポートがあります。を参照してください link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^] をクリックして、プラットフォームの正しいストレージポートを確認します。
+* 2 つのストレージ スイッチの名前は S1 と S2 です。
+* ノードは node1 と node2 です。
 
 
-NOTE: 手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。コマンド出力は、 ONTAP のリリースによって異なる場合があります。
+この手順の例では、2 つのノード (2 つのストレージ ポートを持つ node1 と 2 つのストレージ ポートを持つ node2) を使用します。参照link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]プラットフォーム上の正しいストレージ ポートを確認します。
+
+
+NOTE: この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。コマンド出力は、ONTAPのリリースによって異なる場合があります。
 
 
 
-=== 手順1：スイッチとポートのヘルスステータスを確認する
+=== ステップ1: スイッチとポートのヘルスステータスを確認する
 
-. AutoSupport が有効になっている場合は、AutoSupport メッセージを呼び出してケースの自動作成を停止します。
+. AutoSupportが有効になっている場合は、 AutoSupportメッセージを呼び出して自動ケース作成を抑制します。
 `system node autosupport invoke -node * -type all - message MAINT=xh`
 +
-_x_ は、メンテナンス時間の長さ（時間単位）です。
+_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
 
 +
 
-NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+NOTE: AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
-. ストレージスイッチが使用可能であることを確認します。
+. ストレージ スイッチが使用可能であることを確認します。
 +
 `system switch ethernet show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -93,12 +93,12 @@ S2
 storage::*>
 ----
 ====
-. ノードポートが正常で動作していることを確認します。
+. ノード ポートが正常で動作していることを確認します。
 +
-storage port show -port-type enet
+`storage port show -port-type ENET`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -119,12 +119,12 @@ node2
                    e7b  ENET  storage    100 enabled  online        30
 ----
 ====
-. ストレージスイッチやケーブル接続に問題がないことを確認します。
+. ストレージ スイッチまたはケーブル接続に問題がないことを確認します。
 +
 `system health alert show -instance`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -137,17 +137,17 @@ There are no entries matching your query.
 
 
 
-=== 手順2：RCFをCiscoスイッチS2にコピーします
+=== ステップ2: RCFをCiscoスイッチS2にコピーする
 
-. FTP 、 HTTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ S2 上の RCF をスイッチのブートフラッシュにコピーします。
+. FTP、HTTP、TFTP、SFTP、または SCP のいずれかの転送プロトコルを使用して、スイッチ S2 上の RCF をスイッチのブートフラッシュにコピーします。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次に、 HTTP を使用して、 RCF をスイッチ S2 上のブートフラッシュにコピーする例を示します。
+次の例は、HTTP を使用して RCF をスイッチ S2 のブートフラッシュにコピーする方法を示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -160,15 +160,15 @@ Copy complete.
 S2#
 ----
 ====
-. ブートフラッシュに前にダウンロードしたRCFを適用します。
+. 以前にダウンロードした RCF をブートフラッシュに適用します。
 +
 `copy bootflash:`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、スイッチ S2 にインストールされている RCF ファイル「 Nexus_32323_RCF v1.6 -Storage.txt 」を示しています。
+次の例はRCFファイルを示しています `Nexus_3232C_RCF_v1.6-Storage.txt`スイッチS2にインストールされます:
 
 [listing, subs="+quotes"]
 ----
@@ -177,26 +177,26 @@ S2# *copy Nexus_3232C_RCF_v1.6-Storage.txt running-config echo-commands*
 ====
 . RCF ファイルが正しい新しいバージョンであることを確認します。
 +
-'how running-config'
+`show running-config`
 
 +
-出力をチェックして正しい RCF があることを確認する場合は、次の情報が正しいことを確認してください。
+次の情報が正しいことを確認してください。
 
 +
-** RCF バナー
+** RCFのバナー
 ** ノードとポートの設定
 ** カスタマイズ
 +
-出力内容はサイトの構成によって異なります。ポートの設定を確認し、インストールした RCF に固有の変更がないかリリースノートを参照してください。
+出力内容はサイトの構成によって異なります。ポートの設定を確認し、インストールしたRCFに固有の変更がないかリリース ノートを参照してください。
 
 +
 [NOTE]
 ====
-で出力されるバナーの情報を確認します `show banner motd` コマンドを使用して、「重要事項」セクションの指示に従って、スイッチを正しく設定し、操作する必要があります。
+バナー出力では、 `show banner motd`コマンドを実行する前に、スイッチの適切な構成と動作を確認するために、*重要な注意事項* セクションの指示を読んで従う必要があります。
 
 ====
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -239,19 +239,19 @@ S2#
 ====
 +
 
-NOTE: RCF を初めて適用するときは、「 Error ： Failed to write VSH commands * 」というメッセージが表示されるため、無視してかまいません。
+NOTE: RCF を初めて適用する場合、「*エラー: VSH コマンドの書き込みに失敗しました*」というメッセージが表示されることがありますが、これは無視できます。
 
 
 
-. ソフトウェアのバージョンとスイッチの設定が正しいことを確認したら、をコピーします `running-config` ファイルをに追加します `startup-config` スイッチS2上のファイル。
+. ソフトウェアのバージョンとスイッチの設定が正しいことを確認したら、 `running-config`ファイルに `startup-config`スイッチ S2 上のファイル。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次に 'running-config' ファイルが 'artup-config ファイルに正常にコピーされた例を示します
+次の例は、 `running-config`ファイルは正常にコピーされました `startup-config`ファイル：
 
 [listing]
 ----
@@ -263,11 +263,11 @@ S2# copy running-config startup-config
 
 
 
-=== 手順3：NX-OSイメージをCiscoスイッチS2にコピーし、リブートします
+=== ステップ3: NX-OSイメージをCiscoスイッチS2にコピーして再起動する
 
-. NX-OSイメージをスイッチS2にコピーします。
+. NX-OS イメージをスイッチ S2 にコピーします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -305,12 +305,12 @@ Copy complete, now saving to disk (please wait)...
 Copy complete.
 ----
 ====
-. システムイメージをインストールして、次回スイッチ S2 をリブートするときに新しいバージョンがロードされるようにします。
+. スイッチ S2 が次に再起動されたときに新しいバージョンがロードされるように、システム イメージをインストールします。
 +
-次の出力に示すように、スイッチは 10 秒後に新しいイメージでリブートされます。
+次の出力に示すように、スイッチは 10 秒以内に新しいイメージで再起動します。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -378,13 +378,13 @@ S2#
 ====
 . 設定を保存します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-システムをリブートするように求められます。
+システムを再起動するように求められます。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -395,9 +395,9 @@ S2# *reload*
 This command will reboot the system. (y/n)?  [n] *y*
 ----
 ====
-. 新しい NX-OS バージョン番号がスイッチにあることを確認します。
+. 新しい NX-OS バージョン番号がスイッチ上にあることを確認します。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -457,14 +457,14 @@ S2#
 
 
 
-=== 手順4：スイッチとポートのヘルスステータスを再確認する
+=== ステップ4: スイッチとポートのヘルスステータスを再確認する
 
-. リブート後にストレージスイッチを使用できることを再確認します。
+. 再起動後にストレージ スイッチが使用可能であることを再確認します。
 +
 `system switch ethernet show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -494,12 +494,12 @@ S2
 storage::*>
 ----
 ====
-. リブート後にスイッチポートが正常に機能していることを確認します。
+. 再起動後にスイッチ ポートが正常に動作していることを確認します。
 +
-storage port show -port-type enet
+`storage port show -port-type ENET`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -520,12 +520,12 @@ node2
                    e7b  ENET  storage    100 enabled  online        30
 ----
 ====
-. クラスタにストレージスイッチやケーブル接続の問題がないことを再確認します。
+. クラスターにストレージ スイッチまたはケーブル接続の問題がないことを再度確認します。
 +
 `system health alert show -instance`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -534,9 +534,9 @@ storage::*> *system health alert show -instance*
 There are no entries matching your query.
 ----
 ====
-. 手順 を繰り返して、スイッチ S1 の NX-OS ソフトウェアと RCF をアップグレードします。
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
+. 手順を繰り返して、スイッチ S1 の NX-OS ソフトウェアと RCF をアップグレードします。
+. 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 

@@ -2,38 +2,38 @@
 permalink: switch-cisco-3132q-v/cn1610-prepare-to-migrate.html 
 sidebar: sidebar 
 keywords: cisco 3132q-v, cluster switches 
-summary: Cisco Nexus 3132q-Vスイッチは、AFFまたはFASクラスタのクラスタスイッチとして使用できます。 
+summary: Cisco Nexus 3132q-v スイッチを、 AFFまたはFASクラスタ内のクラスタ スイッチとして使用できます。 
 ---
-= CN1610スイッチから3132Q-Vスイッチへの移行準備
+= CN1610スイッチから3132Q-Vスイッチへの移行の準備
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-CN1610スイッチをCisco Nexus 3132Q-Vスイッチに移行できるように準備する手順は、次のとおりです。
+CN1610 スイッチをCisco Nexus 3132Q-V スイッチに移行する準備をするには、次の手順に従います。
 
 .手順
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
 +
-'system node AutoSupport invoke -node * -type all -message MAINT=xh`
+`system node autosupport invoke -node * -type all - message MAINT=xh`
 
 +
-_x_ は、メンテナンス時間の長さ（時間単位）です。
+_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
 
 +
 
-NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+NOTE: AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
-. 構成に含まれるデバイスに関する情報を表示します。
+. 構成内のデバイスに関する情報を表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、各クラスタインターコネクトスイッチの各ノードに設定されているクラスタインターコネクトインターフェイスの数を示しています。
+次の例では、各クラスタ相互接続スイッチの各ノードに設定されているクラスタ相互接続インターフェイスの数を表示します。
 
 [listing]
 ----
@@ -56,17 +56,17 @@ n2     /cdp
 8 entries were displayed.
 ----
 ====
-. 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
+. 各クラスタ インターフェイスの管理ステータスまたは動作ステータスを決定します。
 +
-.. クラスタネットワークポートの属性を表示します。
+.. クラスター ネットワーク ポート属性を表示します。
 +
-「 network port show 」のように表示されます
+`network port show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、システムのネットワークポートの属性を表示します。
+次の例では、システム上のネットワーク ポート属性を表示します。
 
 [listing]
 ----
@@ -94,13 +94,13 @@ e0d   cluster   cluster    up    9000  auto/10000     -        -
 8 entries were displayed.
 ----
 ====
-.. 論理インターフェイスに関する情報を表示します：+
+.. 論理インターフェースに関する情報を表示します: +
 `network interface show`
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、システム上のすべての LIF に関する一般的な情報を表示します。
+次の例では、システム上のすべての LIF に関する一般情報を表示します。
 
 [listing]
 ----
@@ -123,15 +123,15 @@ Cluster
 8 entries were displayed.
 ----
 ====
-.. 検出されたクラスタスイッチに関する情報を表示します。
+.. 検出されたクラスター スイッチに関する情報を表示します。
 +
-「 system cluster-switch show
+`system cluster-switch show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、クラスタで認識されているクラスタスイッチとその管理 IP アドレスを表示します。
+次の例では、クラスターに認識されているクラスター スイッチとその管理 IP アドレスを表示します。
 
 [listing]
 ----
@@ -158,12 +158,12 @@ CL2                           cluster-network  10.10.1.102   CN1610
 ====
 
 
-. を設定します `-auto-revert` 両方のノードのクラスタLIF clus1およびclus4のパラメータをfalseに設定します。
+. 設定する `-auto-revert`両ノードのクラスタ LIF clus1 および clus4 でパラメータを false に設定します。
 +
-「 network interface modify 」を参照してください
+`network interface modify`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -174,36 +174,36 @@ cluster::*> network interface modify -vserver node2 -lif clus1 -auto-revert fals
 cluster::*> network interface modify -vserver node2 -lif clus4 -auto-revert false
 ----
 ====
-. 必要に応じて、新しい 3132Q-V スイッチに適切な RCF とイメージがインストールされていることを確認し、ユーザとパスワード、ネットワークアドレスなどの基本的なサイトのカスタマイズを行います。
+. 要件に応じて適切な RCF とイメージが新しい 3132Q-V スイッチにインストールされていることを確認し、ユーザーとパスワード、ネットワーク アドレスなどの重要なサイトのカスタマイズを行います。
 +
-この時点で両方のスイッチを準備する必要があります。RCF およびイメージをアップグレードする必要がある場合は、次の手順を実行します。
+この時点で両方のスイッチを準備する必要があります。  RCF とイメージをアップグレードする必要がある場合は、次の手順に従います。
 
 +
-.. 見るlink:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]NetAppサポート サイトをご覧ください。
-.. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
-.. 該当するバージョンの RCF をダウンロードします。
-.. [Description]ページで[continue]*を選択し、ライセンス契約に同意して、*[Download]*ページの指示に従ってRCFをダウンロードします。
-.. 適切なバージョンのイメージソフトウェアをダウンロードします。
+.. 見るlink:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]NetAppサポート サイトをご覧ください。
+.. そのページの表で、スイッチと必要なソフトウェア バージョンを書き留めてください。
+.. 適切なバージョンの RCF をダウンロードします。
+.. *説明*ページで*続行*を選択し、ライセンス契約に同意してから、*ダウンロード*ページの指示に従ってRCFをダウンロードします。
+.. 適切なバージョンのイメージ ソフトウェアをダウンロードします。
 +
-https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® Cluster and Management Network Switch Reference Configuration File Download （ Cisco ® クラスタおよび管理ネットワークスイッチリファレンス構成ファイルのダウンロード"^]
+https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco® クラスタおよび管理ネットワーク スイッチ リファレンス コンフィギュレーション ファイルのダウンロード"^]
 
 
 
-. 交換する2つ目のCN1610スイッチに関連付けられているLIFを移行します。
+. 交換する 2 番目の CN1610 スイッチに関連付けられている LIF を移行します。
 +
-「ネットワーク・インターフェイス移行」
+`network interface migrate`
 
 +
 [NOTE]
 ====
-移行するクラスタ LIF を所有するサービスプロセッサまたはノード管理インターフェイスを介して、接続からノードにクラスタ LIF を移行する必要があります。
+移行するクラスタ LIF を所有するサービス プロセッサまたはノード管理インターフェイスを介して、ノードへの接続からクラスタ LIF を移行する必要があります。
 
 ====
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 n1 と n2 ですが、すべてのノードで LIF の移行を実行する必要があります。
+次の例では n1 と n2 を示していますが、LIF の移行はすべてのノードで実行する必要があります。
 
 [listing]
 ----
@@ -214,15 +214,15 @@ cluster::*> network interface migrate -vserver Cluster -lif n2_clus2 -destinatio
 cluster::*> network interface migrate -vserver Cluster -lif n2_clus3 -destination-node  n2  -destination-port  e0d
 ----
 ====
-. クラスタの健常性を確認します。
+. クラスターの健全性を確認します。
 +
-「 network interface show 」を参照してください
+`network interface show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は ' 前の network interface migrate コマンドの結果を示しています
+次の例は、前の例の結果を示しています。 `network interface migrate`指示：
 
 [listing]
 ----
@@ -245,15 +245,15 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. スイッチ CL2 に物理的に接続されているクラスタインターコネクトポートをシャットダウンします。
+. スイッチ CL2 に物理的に接続されているクラスタ相互接続ポートをシャットダウンします。
 +
-「 network port modify 」を参照してください
+`network port modify`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次のコマンドは、 n1 と n2 で指定されたポートをシャットダウンしますが、すべてのノードでポートをシャットダウンする必要があります。
+次のコマンドは、n1 および n2 上の指定されたポートをシャットダウンしますが、すべてのノード上のポートをシャットダウンする必要があります。
 
 [listing]
 ----
@@ -263,22 +263,22 @@ cluster::*> network port modify -node n2 -port e0b -up-admin false
 cluster::*> network port modify -node n2 -port e0c -up-admin false
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：* showコマンドを実行して詳細を表示する前に、数秒待ってください。
+*注意:* 詳細を表示するには、show コマンドを実行する前に数秒待ってください。
 
 [listing, subs="+quotes"]
 ----
@@ -295,9 +295,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2   n1_clus2       none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -347,15 +347,15 @@ RPC status:
 ----
 --
 ====
-. [[step10]]アクティブなCN1610スイッチCL1のISLポート13~16をシャットダウンします。
+. [[step10]] アクティブCN1610スイッチCL1のISLポート13～16をシャットダウンします。
 +
-「ダウンタイム」
+`shutdown`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 CN1610 スイッチ CL1 の ISL ポート 13~16 をシャットダウンします。
+次の例は、CN1610 スイッチ CL1 の ISL ポート 13 ～ 16 をシャットダウンする方法を示しています。
 
 [listing]
 ----
@@ -369,10 +369,10 @@ RPC status:
 ====
 . CL1 と C2 の間に一時的な ISL を構築します。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 CL1 （ポート 13~16 ）と C2 （ポート e1/24/1-4 ）の間に一時的な ISL を構築します。
+次の例では、CL1 (ポート 13 ～ 16) と C2 (ポート e1/24/1 ～ 4) の間に一時的な ISL を構築します。
 
 [listing]
 ----
@@ -393,4 +393,4 @@ C2(config-if)# exit
 
 
 .次の手順
-link:cn1610-configure-ports.html["ポートの設定"]です。
+link:cn1610-configure-ports.html["ポートを設定する"] 。

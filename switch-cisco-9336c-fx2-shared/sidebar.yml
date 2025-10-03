@@ -2,55 +2,55 @@
 section: switch-cisco-9336c-fx2-shared
 title: Cisco Nexus 9336C-FX2
 entries:
-- title: はじめに
+- title: 始めましょう
   entries:
-  - title: クイックスタート
+  - title: クイック スタート
     url: "/switch-cisco-9336c-fx2-shared/configure-switch-overview-9336c-shared.html"
-  - title: 設定要件
+  - title: 構成要件
     url: "/switch-cisco-9336c-fx2-shared/configure-reqs-9336c-shared.html"
-  - title: コンポーネントとパーツ番号
+  - title: コンポーネントと部品番号
     url: "/switch-cisco-9336c-fx2-shared/components-9336c-shared.html"
-  - title: 必要なドキュメント
+  - title: 必要な書類
     url: "/switch-cisco-9336c-fx2-shared/required-documentation-9336c-shared.html"
-- title: ハードウェアを設置
-  pdf-filename: INSTALL_HARDWARE_9336c-FX2-shared
+- title: ハードウェアをインストールする
+  pdf-filename: インストールハードウェア_9336c-fx2-共有
   entries:
   - title: ハードウェアインストールワークフロー
     url: "/switch-cisco-9336c-fx2-shared/install-hardware-workflow.html"
-  - title: ケーブル接続ワークシートに記入
+  - title: 完全な配線ワークシート
     url: "/switch-cisco-9336c-fx2-shared/cable-9336c-shared.html"
-  - title: スイッチを設置します
+  - title: スイッチをインストールする
     url: "/switch-cisco-9336c-fx2-shared/install-9336c-shared.html"
-  - title: ネットアップキャビネットにスイッチを設置
+  - title: NetAppキャビネットにスイッチをインストールする
     url: "/switch-cisco-9336c-fx2-shared/install-switch-and-passthrough-panel-9336c-shared.html"
 - title: ソフトウェアの設定
-  pdf-filename: configure_software_9336c-FX2-shared
+  pdf-filename: 設定_ソフトウェア_9336c-fx2-shared
   entries:
-  - title: ソフトウェアのインストールワークフロー
+  - title: ソフトウェアインストールワークフロー
     url: "/switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html"
-  - title: スイッチを設定します
+  - title: スイッチを設定する
     url: "/switch-cisco-9336c-fx2-shared/setup-and-configure-9336c-shared.html"
-  - title: NX-OSソフトウェアとRCFをインストールするための準備をします
+  - title: NX-OSソフトウェアとRCFのインストール準備
     url: "/switch-cisco-9336c-fx2-shared/prepare-nxos-rcf-9336c-shared.html"
-  - title: NX-OSソフトウェアをインストールします
+  - title: NX-OSソフトウェアをインストールする
     url: "/switch-cisco-9336c-fx2-shared/install-nxos-software-9336c-shared.html"
-  - title: RCFをインストールします
+  - title: RCFのインストール
     url: "/switch-cisco-9336c-fx2-shared/install-nxos-rcf-9336c-shared.html"
-  - title: RCFバージョンのアップグレード
+  - title: RCFバージョンをアップグレードする
     url: "/switch-cisco-9336c-fx2-shared/upgrade-rcf-software-9336c-shared.html"
   - title: スイッチを工場出荷時の状態にリセットする
     url: "/switch-cisco-9336c-fx2-shared/reset-switch-9336c-shared.html"
-- title: スイッチを移行
-  pdf-filename: migrate_switches_9336c-FX2-shared
+- title: スイッチの移行
+  pdf-filename: 移行スイッチ_9336c-fx2-共有
   entries:
-  - title: スイッチレスDASクラスタから移行
+  - title: スイッチレスDASクラスタからの移行
     url: "/switch-cisco-9336c-fx2-shared/migrate-from-switchless-cluster-dat-storage.html"
-  - title: スイッチドDAS構成から移行します
+  - title: スイッチドDAS構成からの移行
     url: "/switch-cisco-9336c-fx2-shared/migrate-from-switched-configuration-dat-storage.html"
-  - title: スイッチレスSAT設定から移行します
+  - title: スイッチレスSAT構成からの移行
     url: "/switch-cisco-9336c-fx2-shared/migrate-from-switchless-configuration-sat-storage.html"
   - title: スイッチドSATクラスタからの移行
     url: "/switch-cisco-9336c-fx2-shared/migrate-from-switched-cluster-sat-storage.html"
-- title: スイッチを交換します
-  pdf-filename: replace_switches_9336c-FX2-shared
+- title: スイッチを交換する
+  pdf-filename: スイッチ9336c-fx2共有の交換
   url: "/switch-cisco-9336c-fx2-shared/replace-9336c-fx2-shared.html"

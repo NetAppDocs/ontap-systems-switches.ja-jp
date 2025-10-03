@@ -2,9 +2,9 @@
 permalink: other/switch_linkout.html 
 sidebar: sidebar 
 keywords: cisco, Nexus 5596, CN1601 
-summary: 他のスイッチモデルにも使用できます。 
+summary: これらのリンクは他のスイッチ モデルにも使用できます。 
 ---
-= それよりも前のモデル
+= 以前のモデル
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -18,6 +18,6 @@ summary: 他のスイッチモデルにも使用できます。
 
 
 
-NOTE: Nexus 5596UP / 5596Tクラスタスイッチは、ネットアップからは提供されなくなりましたが、Ciscoでは期間限定のTimとしてサポートされます。
+NOTE: Nexus 5596UP/5596T クラスタ スイッチはNetAppからは入手できなくなりましたが、 Ciscoによって一定期間サポートされます。
 
-ハードウェアのサポートが終了したAFF スイッチモデルとFAS スイッチモデルのドキュメントは、でお客様に提供しています https://mysupport.netapp.com/documentation/productsatoz/index.html?archive=true["Archive サービスの略"]。
+ハードウェアサポートが終了したAFFおよびFASスイッチモデルのドキュメントは、以下のサイトでお客様にご利用いただけます。 https://mysupport.netapp.com/documentation/productsatoz/index.html?archive=true["アーカイブ"] 。

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2/required-documentation-9336c-cluster.html 
 keywords: shared storage cluster switch 
-summary: Cisco Nexus 9336C-FX2スイッチの設置とメンテナンスについては、特定のスイッチとコントローラのマニュアルを参照して、Cisco 9336-FX2スイッチとONTAP クラスタをセットアップしてください。 
+summary: Cisco Nexus 9336C-FX2 スイッチのインストールとメンテナンスについては、特定のスイッチおよびコントローラのドキュメントを参照して、 Cisco 9336-FX2 スイッチとONTAPクラスタをセットアップしてください。 
 ---
 = Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチのドキュメント要件
 :hardbreaks:
@@ -20,119 +20,119 @@ Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチのインストールと
 
 == スイッチのドキュメント
 
-Cisco Nexus 9336C-FX2および9336C-FX2-Tスイッチをセットアップするには、次のドキュメントが必要です。 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズスイッチのサポート"^]ページ：
+Cisco Nexus 9336C-FX2および9336C-FX2-Tスイッチをセットアップするには、次のドキュメントが必要です。 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズ スイッチのサポート"^]ページ：
 
 [cols="1,2"]
 |===
-| ドキュメントタイトル | 説明 
+| ドキュメント タイトル | 説明 
 
 
  a| 
-_ Nexus 9000 Series Hardware Installation Guide _
+_Nexus 9000 シリーズ ハードウェア インストール ガイド_
  a| 
-サイト要件、スイッチハードウェアの詳細、およびインストールオプションに関する詳細情報を提供します。
-
-
-
- a| 
-_Cisco Nexus 9000 Series Switch Software Configuration Guides _ （スイッチにインストールされている NX-OS リリースのガイドを選択）
- a| 
-スイッチを ONTAP 動作用に設定する前に必要なスイッチの初期設定に関する情報を提供します。
+サイト要件、スイッチ ハードウェアの詳細、およびインストール オプションに関する詳細情報を提供します。
 
 
 
  a| 
-_Cisco Nexus 9000 シリーズ NX-OS ソフトウェアアップグレードおよびダウングレードガイド _ （スイッチにインストールされている NX-OS リリースのガイドを選択）
+_Cisco Nexus 9000 シリーズ スイッチ ソフトウェア コンフィギュレーション ガイド_ (スイッチにインストールされている NX-OS リリースのガイドを選択してください)
  a| 
-必要に応じてスイッチを ONTAP 対応スイッチソフトウェアにダウングレードする方法について説明します。
-
-
-
- a| 
-_Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンスマスターインデックス _
- a| 
-シスコが提供するさまざまなコマンドリファレンスへのリンクを示します。
+ONTAP操作用にスイッチを構成する前に必要な初期スイッチ構成情報を提供します。
 
 
 
  a| 
-_Cisco Nexus 9000 MIB リファレンス _
+_Cisco Nexus 9000 シリーズ NX-OS ソフトウェア アップグレードおよびダウングレード ガイド_ (スイッチにインストールされている NX-OS リリースのガイドを選択してください)
  a| 
-Nexus 9000 スイッチの管理情報ベース（ MIB ）ファイルについて説明します。
-
-
-
- a| 
-_Nexus 9000 シリーズ NX-OS システムメッセージリファレンス _
- a| 
-Cisco Nexus 9000 シリーズスイッチのシステムメッセージ、情報メッセージ、およびリンク、内部ハードウェア、またはシステムソフトウェアの問題の診断に役立つその他のメッセージについて説明します。
+必要に応じて、スイッチをONTAP対応スイッチ ソフトウェアにダウングレードする方法に関する情報を提供します。
 
 
 
  a| 
-_Cisco Nexus 9000 Series NX-OS Release Notes （スイッチにインストールされている NX-OS リリースのノートを選択） _
+_Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンス マスターインデックス_
  a| 
-Cisco Nexus 9000 シリーズの機能、バグ、および制限事項について説明します。
+Ciscoが提供するさまざまなコマンド リファレンスへのリンクを提供します。
 
 
 
  a| 
-Cisco Nexus 9000 シリーズの適合規格および安全性に関する情報
+_Cisco Nexus 9000 MIB リファレンス_
  a| 
-Nexus 9000 シリーズスイッチの国際的な適合規格、安全性、および法令に関する情報を提供します。
+Nexus 9000 スイッチの管理情報ベース (MIB) ファイルについて説明します。
+
+
+
+ a| 
+_Nexus 9000 シリーズ NX-OS システム メッセージ リファレンス_
+ a| 
+Cisco Nexus 9000 シリーズ スイッチのシステム メッセージについて説明します。システム メッセージには情報メッセージと、リンク、内部ハードウェア、またはシステム ソフトウェアの問題の診断に役立つメッセージが含まれます。
+
+
+
+ a| 
+_Cisco Nexus 9000 シリーズ NX-OS リリース ノート (スイッチにインストールされている NX-OS リリースのノートを選択してください)_
+ a| 
+Cisco Nexus 9000 シリーズの機能、バグ、および制限について説明します。
+
+
+
+ a| 
+Cisco Nexus 9000 シリーズの規制コンプライアンスおよび安全性に関する情報
+ a| 
+Nexus 9000 シリーズ スイッチに関する国際機関のコンプライアンス、安全性、および法定情報を提供します。
 
 |===
 
 
-== ONTAP システムのドキュメント
+== ONTAPシステムのドキュメント
 
-ONTAPシステムをセットアップするには、オペレーティングシステムのバージョンに応じて次のドキュメントが必要です。  https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9"^] 。
+ONTAPシステムをセットアップするには、オペレーティングシステムのバージョンに応じて次のドキュメントが必要です。 https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9"^] 。
 
 [cols="1,2"]
 |===
-| 名前 | 説明 
+| Name | 説明 
 
 
  a| 
-コントローラ固有の設置およびセットアップ手順 _
+コントローラ固有の_インストールおよびセットアップ手順_
  a| 
-ネットアップハードウェアの設置方法について説明します。
+NetAppハードウェアのインストール方法について説明します。
 
 
 
  a| 
-ONTAP のドキュメント
+ONTAPのドキュメント
  a| 
-ONTAP リリースのすべての側面に関する詳細情報を提供します。
+ONTAPリリースのあらゆる側面に関する詳細情報を提供します。
 
 
 
  a| 
 https://hwu.netapp.com["Hardware Universe"^]
  a| 
-ネットアップハードウェアの構成と互換性に関する情報を提供します。
+NetApp のハードウェア構成と互換性に関する情報を提供します。
 
 |===
 
 
-== レールキットおよびキャビネットのドキュメント
+== レールキットとキャビネットのドキュメント
 
-Cisco 9336-FX2スイッチをネットアップキャビネットに設置するには、次のハードウェアマニュアルを参照してください。
+Cisco 9336-FX2 スイッチをNetAppキャビネットにインストールするには、次のハードウェア ドキュメントを参照してください。
 
 [cols="1,2"]
 |===
-| 名前 | 説明 
+| Name | 説明 
 
 
  a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["『 42U System Cabinet 、 Deep Guide 』を参照してください"^]
+https://library.netapp.com/ecm/ecm_download_file/ECMM1280394["42U システムキャビネット、ディープガイド"^]
  a| 
-42U システムキャビネットに関連する FRU について説明し、メンテナンスおよび FRU の交換手順を示します。
+42U システム キャビネットに関連する FRU について説明し、メンテナンスおよび FRU 交換の手順を示します。
 
 
 
  a| 
-link:install-switch-and-passthrough-panel-9336c-cluster.html["NetAppキャビネットにCisco 9336-FX2スイッチを設置します"^]
+link:install-switch-and-passthrough-panel-9336c-cluster.html["NetAppキャビネットにCisco 9336-FX2スイッチをインストールする"^]
  a| 
 Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチを 4 ポストNetAppキャビネットにインストールする方法について説明します。
 

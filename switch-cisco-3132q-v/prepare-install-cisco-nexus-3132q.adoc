@@ -2,61 +2,61 @@
 permalink: switch-cisco-3132q-v/prepare-install-cisco-nexus-3132q.html 
 sidebar: sidebar 
 keywords: install, nx-os software, rcfs, cisco nexus 3132q-v, cluster switches 
-summary: Cisco NX-OS ソフトウェアおよびリファレンス構成ファイル（ RCF ）を Cisco Nexus 3132Q-V クラスタスイッチにインストールする必要があります。 
+summary: Cisco NX-OSソフトウェアおよびリファレンス構成ファイル（RCF）をCisco Nexus 3132Q-Vクラスタ スイッチにインストールする必要があります。 
 ---
-= NX-OSソフトウェアおよびリファレンス構成ファイルをインストールする準備をします
+= NX-OSソフトウェアとリファレンス構成ファイルのインストール準備
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NX-OSソフトウェアとRCFをインストールする前に、次の手順 を実行してください。
+NX-OS ソフトウェアとリファレンス コンフィギュレーション ファイル (RCF) をインストールする前に、次の手順に従ってください。
 
 .例について
-この手順の例では、 2 つのノードを使用します。これらのノードは 'e0a' と 'e0b' の 2 つの 10GbE クラスタ・インターコネクト・ポートを使用します
+この手順の例では、2つのノードを使用します。これらのノードは2つの10GbEクラスタ相互接続ポートを使用します `e0a`そして `e0b`。
 
-を参照してください link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^] をクリックして、プラットフォームのクラスタポートが正しいことを確認します。
-
-
-NOTE: コマンド出力は、 ONTAP のリリースによって異なる場合があります。
-
-この手順の例では、スイッチとノードで次の命名法を使用しています。
-
-* 2 つの Cisco スイッチの名前は 'CS1' および CS2' です
-* ノード名は「 cluster1-01 」と「 cluster1-02 」です。
-* クラスタ LIF の名前は、 cluster1-01 には「 cluster1-01 」、 cluster1-02 には「 cluster1-02 」、 cluster1-02 には「 cluster1-02 」、 cluster1-02 には「 cluster1-02 」をそれぞれ指定します。
-* 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
+参照link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]プラットフォーム上の正しいクラスター ポートを確認します。
 
 
-.このタスクについて
-手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
+NOTE: コマンド出力は、ONTAPのリリースによって異なる場合があります。
+
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
+
+* 2つのCiscoスイッチの名前は `cs1`そして `cs2`。
+* ノード名は `cluster1-01`そして `cluster1-02`。
+* クラスタLIF名は `cluster1-01_clus1`そして `cluster1-01_clus2`クラスター1-01および `cluster1-02_clus1`そして `cluster1-02_clus2`クラスター1-02用。
+* その `cluster1::*>`プロンプトはクラスターの名前を示します。
+
+
+.タスク概要
+この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
 
 .手順
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= xh 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-ここで、 _ x _ はメンテナンス時間の長さ（時間）です。
+ここで、_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
 
 +
 
-NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+NOTE: AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
-. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 * y * 」と入力します。
+. 続行するかどうかを尋ねられたら *y* と入力して、権限レベルを「advanced」に変更します。
 +
-「 advanced 」の権限が必要です
-
-+
-詳細プロンプト (`*>') が表示されます
-
-. クラスタインターコネクトスイッチごとに、各ノードに設定されているクラスタインターコネクトインターフェイスの数を表示します。
-+
-「 network device-discovery show -protocol cdp 」と入力します
+`set -privilege advanced`
 
 +
-.例を示します
+高度なプロンプト(`*>`）が表示されます。
+
+. 各クラスタ相互接続スイッチの各ノードに設定されているクラスタ相互接続インターフェイスの数を表示します。
++
+`network device-discovery show -protocol cdp`
+
++
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -74,14 +74,14 @@ cluster1-01/cdp
             e0b    cs2                       Eth1/1            N3K-C3132Q-V
 ----
 ====
-. 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
+. 各クラスタ インターフェイスの管理ステータスまたは動作ステータスを確認します。
 +
-.. ネットワークポートの属性を表示します。
+.. ネットワーク ポートの属性を表示します。
 +
-network port show – ipspace Cluster
+`network port show –ipspace Cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -105,10 +105,10 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy
 ====
 .. LIF に関する情報を表示します。
 +
-「 network interface show -vserver Cluster 」のように表示されます
+`network interface show -vserver Cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -127,22 +127,22 @@ Cluster
 ====
 
 
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：* showコマンドを実行して詳細を表示する前に、数秒待ってください。
+*注意:* 詳細を表示するには、show コマンドを実行する前に数秒待ってください。
 
 [listing, subs="+quotes"]
 ----
@@ -159,9 +159,9 @@ cluster1-02
        3/5/2022 19:21:20 -06:00   cluster1-02_clus2   cluster1-01_clus2   none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -193,12 +193,12 @@ RPC status:
 ----
 --
 ====
-. [[step6]]すべてのクラスタLIFでコマンドが有効になっていることを確認し `auto-revert`ます。
+. [[step6]]次のことを確認します `auto-revert`コマンドはすべてのクラスタ LIF で有効になっています。
 +
-network interface show -vserver Cluster -fields auto-revert を実行します
+`network interface show -vserver Cluster -fields auto-revert`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -218,4 +218,4 @@ Cluster
 
 
 .次の手順
-link:install-nx-os-software-3132q-v.html["NX-OSソフトウェアをインストールします"]。
+link:install-nx-os-software-3132q-v.html["NX-OSソフトウェアをインストールする"] 。

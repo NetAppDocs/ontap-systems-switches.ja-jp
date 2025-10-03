@@ -1,47 +1,47 @@
 ---
 section: switch-cisco-9336c-fx2-storage
-title: Cisco Nexus 9336C-FX2または9336C-FX2-T
+title: Cisco Nexus 9336C-FX2 または 9336C-FX2-T
 entries:
-- title: はじめに
+- title: 始めましょう
   entries:
-  - title: クイックスタート
+  - title: クイック スタート
     url: "/switch-cisco-9336c-fx2-storage/configure-switch-overview-9336c-storage.html"
-  - title: 設定要件
+  - title: 構成要件
     url: "/switch-cisco-9336c-fx2-storage/configure-reqs-9336c-storage.html"
-  - title: コンポーネントとパーツ番号
+  - title: コンポーネントと部品番号
     url: "/switch-cisco-9336c-fx2-storage/components-9336c-storage.html"
-  - title: 必要なドキュメント
+  - title: 必要な書類
     url: "/switch-cisco-9336c-fx2-storage/required-documentation-9336c-storage.html"
   - title: Smart Call Homeの要件
     url: "/switch-cisco-9336c-fx2-storage/smart-call-9336c-storage.html"
-- title: ハードウェアを設置
-  pdf-filename: INSTALL_HARDWARE_9336c-FX2-STORAGE
+- title: ハードウェアをインストールする
+  pdf-filename: インストールハードウェア_9336c-fx2-ストレージ
   entries:
   - title: ハードウェアインストールワークフロー
     url: "/switch-cisco-9336c-fx2-storage/install-hardware-workflow.html"
-  - title: ケーブル接続ワークシートに記入
+  - title: 完全な配線ワークシート
     url: "/switch-cisco-9336c-fx2-storage/setup-worksheet-9336c-storage.html"
-  - title: スイッチを設置します
+  - title: スイッチをインストールする
     url: "/switch-cisco-9336c-fx2-storage/install-9336c-storage.html"
   - title: NetAppキャビネットにスイッチを設置する
     url: "/switch-cisco-9336c-fx2-storage/install-switch-and-passthrough-panel-9336c-storage.html"
 - title: ソフトウェアの設定
-  pdf-filename: configure_software_9336c-FX2-storage
+  pdf-filename: ソフトウェア9336c-fx2ストレージの構成
   entries:
-  - title: ソフトウェアのインストールワークフロー
+  - title: ソフトウェアインストールワークフロー
     url: "/switch-cisco-9336c-fx2-storage/configure-software-overview-9336c-storage.html"
-  - title: スイッチを設定します
+  - title: スイッチを設定する
     url: "/switch-cisco-9336c-fx2-storage/setup-switch-9336c-storage.html"
-  - title: NX-OSおよびRCFのインストールを準備します
+  - title: NX-OSとRCFのインストール準備
     url: "/switch-cisco-9336c-fx2-storage/install-nxos-overview-9336c-storage.html"
-  - title: NX-OSソフトウェアのインストールまたはアップグレード
+  - title: NX-OSソフトウェアをインストールまたはアップグレードする
     url: "/switch-cisco-9336c-fx2-storage/install-nxos-software-9336c-storage.html"
-  - title: RCFのインストールまたはアップグレード
+  - title: RCFをインストールまたはアップグレードする
     url: "/switch-cisco-9336c-fx2-storage/install-rcf-software-9336c-storage.html"
-  - title: SSH の設定を確認
+  - title: SSH設定を確認する
     url: "/switch-cisco-9336c-fx2-storage/configure-ssh-keys.html"
   - title: スイッチを工場出荷時の状態にリセットする
     url: "/switch-cisco-9336c-fx2-storage/reset-switch-9336c-storage.html"
 - title: ストレージスイッチを交換する
-  pdf-filename: replace_switch_9336c-FX2-storage
+  pdf-filename: Replace_switch_9336c-fx2-storage
   url: "/switch-cisco-9336c-fx2-storage/replace-storage-switch-9336c-storage.html"

@@ -2,7 +2,7 @@
 permalink: switch-cshm/config-overview.html 
 sidebar: sidebar 
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
-summary: イーサネットスイッチヘルスモニタ（CSHM）は、クラスタネットワークスイッチとストレージネットワークスイッチの動作の健全性を確認し、デバッグ用にスイッチのログを収集します。 
+summary: 'イーサネット スイッチ ヘルス モニター (CSHM) は、クラスターおよびストレージ ネットワーク スイッチの動作の正常性を確認し、デバッグのためにスイッチ ログを収集する役割を担います。' 
 ---
 = 設定の概要
 :allow-uri-read: 
@@ -11,8 +11,8 @@ summary: イーサネットスイッチヘルスモニタ（CSHM）は、クラ�
 
 
 [role="lead"]
-イーサネットスイッチヘルスモニタ（CSHM）は、クラスタネットワークスイッチとストレージネットワークスイッチの動作の健全性を確認し、デバッグ用にスイッチのログを収集します。
+イーサネット スイッチ ヘルス モニター (CSHM) は、クラスターおよびストレージ ネットワーク スイッチの動作の正常性を確認し、デバッグのためにスイッチ ログを収集する役割を担います。
 
-* link:config-log-collection.html["ログ収集の設定"]
-* link:config-snmpv3.html["オプション：SNMPv3を設定する"]
+* link:config-log-collection.html["ログ収集を構成する"]
+* link:config-snmpv3.html["オプション: SNMPv3 を構成する"]
 

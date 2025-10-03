@@ -13,14 +13,14 @@ summary: Cisco Nexus 9336C-FX2 クラスタ スイッチを構成する前に、
 [role="lead"]
 9336C-FX2 および 9336C-FX2-T ストレージ スイッチのハードウェアをインストールして構成するには、次の手順に従います。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:setup-worksheet-9336c-storage.html["配線ワークシートを完成させる"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:setup-worksheet-9336c-storage.html["配線ワークシートを完成させる"]
 [role="quick-margin-para"]
-ケーブル接続ワークシートの例には、スイッチからコントローラへの推奨されるポート割り当ての例が示されています。空白のワークシートには、クラスタのセットアップに使用できるテンプレートが用意されています。
+サンプル配線ワークシートには、スイッチからコントローラへの推奨ポート割り当ての例が示されています。空白のワークシートには、クラスターの設定に使用できるテンプレートが用意されています。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:install-9336c-storage.html["スイッチを設置します"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:install-9336c-storage.html["スイッチをインストールする"]
 [role="quick-margin-para"]
 9336C-FX2 および 9336C-FX2-T ストレージ スイッチをインストールします。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:install-switch-and-passthrough-panel-9336c-storage.html["NetAppキャビネットへのスイッチの設置"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:install-switch-and-passthrough-panel-9336c-storage.html["NetAppキャビネットにスイッチを設置する"]
 [role="quick-margin-para"]
 必要に応じて、9336C-FX2 および 9336C-FX2-T スイッチとパススルー パネルをNetAppキャビネットにインストールします。

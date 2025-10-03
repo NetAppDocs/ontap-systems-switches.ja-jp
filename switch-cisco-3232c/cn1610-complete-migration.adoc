@@ -2,24 +2,24 @@
 permalink: switch-cisco-3232c/cn1610-complete-migration.html 
 sidebar: sidebar 
 keywords: cisco 3232c, cluster switches 
-summary: AFF または FAS クラスタでは、 Cisco Nexus 3232C スイッチをクラスタスイッチとして使用できます。 
+summary: Cisco Nexus 3232C スイッチを、 AFFまたはFASクラスタ内のクラスタ スイッチとして使用できます。 
 ---
-= CN1610スイッチから3232Cスイッチへの移行の完了
+= CN1610スイッチから3232Cスイッチへの移行を完了します
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Nexus 3232CスイッチへのCN1610スイッチの移行を完了するには、次の手順を実行します。
+CN1610 スイッチから Nexus 3232C スイッチへの移行を完了するには、次の手順を実行します。
 
 .手順
-. すべてのノードのC1に接続されていた、移行されたクラスタインターコネクトLIFをすべてリバートします。
+. すべてのノードで、元々 C1 に接続されていた移行されたクラスタ相互接続 LIF をすべて元に戻します。
 +
 `network interface revert -server cluster -lif _lif-name_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 次の例に示すように、各 LIF を個別に移行する必要があります。
@@ -32,15 +32,15 @@ cluster::*> *network interface revert -vserver cluster -lif n2_clus1*
 cluster::*> *network interface revert -vserver cluster -lif n2_clus4*
 ----
 ====
-. インターフェイスがホームになったことを確認します。
+. インターフェイスがホームになっていることを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、ノード n1 および n2 のクラスタインターコネクトインターフェイスのステータスが「 up 」で、「 Is Home 」であることを示しています。
+次の例は、クラスタ相互接続インターフェースのステータスを示しています。 `up`ノードn1とn2は「Is Home」です。
 
 [listing, subs="+quotes"]
 ----
@@ -62,22 +62,22 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -94,9 +94,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2         n1_clus2         none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -145,18 +145,18 @@ RPC status:
 ----
 --
 ====
-. [[step4]] Nexus 3232Cクラスタスイッチにノードを追加して、クラスタを拡張します。
-. 構成に含まれるデバイスに関する情報を表示します。
+. [[step4]] Nexus 3232C クラスタ スイッチにノードを追加してクラスタを拡張します。
+. 構成内のデバイスに関する情報を表示します。
 +
-** 「 network device-discovery show 」のように表示されます
-** 「 network port show -role cluster 」のように表示されます
-** 「 network interface show -role cluster 」のように表示されます
-** 「 system cluster-switch show
+** `network device-discovery show`
+** `network port show -role cluster`
+** `network interface show -role cluster`
+** `system cluster-switch show`
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、両方のNexus 3232Cクラスタスイッチのポートe1/7およびe1/8にそれぞれ接続された40GbEクラスタポートを搭載したノードn3およびn4を示しています。両方のノードがクラスタに参加している。使用する 40GbE クラスタインターコネクトポートは、 e4A および e4e です。
+次の例は、両方の Nexus 3232C クラスタ スイッチで、それぞれポート e1/7 と e1/8 に接続された 40 GbE クラスタ ポートを持つノード n3 と n4 を示しています。両方のノードがクラスターに参加しています。使用される 40 GbE クラスタ相互接続ポートは e4a と e4e です。
 
 [listing, subs="+quotes"]
 ----
@@ -282,12 +282,12 @@ CL2                         cluster-network  10.10.1.102    CN1610
 ====
 
 
-. 交換した CN1610 スイッチが自動的に削除されていない場合は、これらを削除します。
+. 交換したCN1610スイッチが自動的に削除されていない場合は、これらを削除します。
 +
 `system cluster-switch delete -device _switch-name_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 次の例に示すように、両方のデバイスを個別に削除する必要があります。
@@ -298,15 +298,15 @@ cluster::> *system cluster-switch delete –device CL1*
 cluster::> *system cluster-switch delete –device CL2*
 ----
 ====
-. 適切なクラスタスイッチが監視されていることを確認します。
+. 適切なクラスタ スイッチが監視されていることを確認します。
 +
-「 system cluster-switch show
+`system cluster-switch show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、クラスタスイッチ C1 と C2 を監視していることを示しています。
+次の例は、クラスタ スイッチ C1 と C2 が監視されていることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -334,11 +334,11 @@ C2                          cluster-network    10.10.1.104      NX3232C
 2 entries were displayed.
 ----
 ====
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
+. 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。

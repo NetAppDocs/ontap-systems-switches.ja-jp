@@ -2,39 +2,39 @@
 permalink: switch-cisco-3132q-v/cn1610-configure-ports.html 
 sidebar: sidebar 
 keywords: cisco 3132q-v, cluster switches 
-summary: Cisco Nexus 3132q-Vスイッチは、AFFまたはFASクラスタのクラスタスイッチとして使用できます。 
+summary: Cisco Nexus 3132q-v スイッチを、 AFFまたはFASクラスタ内のクラスタ スイッチとして使用できます。 
 ---
-= CN1610スイッチから3132Q-Vスイッチに移行するためのポートの設定
+= CN1610スイッチから3132Q-Vスイッチへの移行用にポートを構成する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-CN1610スイッチから新しいNexus 3132Q-Vスイッチに移行するようにポートを設定する手順は、次のとおりです。
+CN1610 スイッチから新しい Nexus 3132Q-V スイッチへの移行用にポートを構成するには、次の手順に従います。
 
 .手順
-. すべてのノードで、 CN1610 スイッチ CL2 に接続されているケーブルを外します。
+. すべてのノードで、CN1610 スイッチ CL2 に接続されているケーブルを取り外します。
 +
-サポートされているケーブル接続を使用して、すべてのノード上の切断されているポートを Nexus 3132Q-V スイッチ C2 に再接続する必要があります。
+サポートされているケーブル接続を使用して、すべてのノード上の切断されたポートを Nexus 3132Q-V スイッチ C2 に再接続する必要があります。
 
-. CN1610 スイッチ CL1 のポート 13~16 から、 4 本の ISL ケーブルを取り外します。
+. CN1610 スイッチ CL1 のポート 13 ～ 16 から 4 本の ISL ケーブルを取り外します。
 +
-新しい Cisco 3132Q-V スイッチ C2 のポート 1/24 を既存の CN1610 スイッチ CL1 のポート 13~16 に接続する、適切な Cisco QSFP / SFP+ ブレークアウトケーブルを接続する必要があります。
-
-+
-
-NOTE: 新しい Cisco 3132Q-V スイッチにケーブルを再接続する場合は、光ファイバケーブルまたは Cisco Twinax ケーブルのいずれかを使用する必要があります。
-
-. ISL を動的にするには、アクティブ CN1610 スイッチの ISL インターフェイス 3/1 を構成し、スタティックモード「 no port-channel static 」をディセーブルにします
-+
-この設定は、手順11で両方のスイッチでISLが起動された場合、3132Q-Vスイッチc2のISL設定と同じです。
+新しいCisco 3132Q-V スイッチ C2 のポート 1/24 を既存の CN1610 スイッチ CL1 のポート 13 ～ 16 に接続する適切なCisco QSFP から SFP+ ブレークアウト ケーブルを接続する必要があります。
 
 +
-.例を示します
+
+NOTE: 新しいCisco 3132Q-V スイッチにケーブルを再接続する場合は、光ファイバ ケーブルまたはCisco Twinax ケーブルのいずれかを使用する必要があります。
+
+. ISL を動的にするには、アクティブ CN1610 スイッチの ISL インターフェイス 3/1 を設定して、静的モードを無効にします。 `no port-channel static`
++
+この設定は、手順 11 で両方のスイッチで ISL が起動されたときに、3132Q-V スイッチ C2 の ISL 設定と一致します。
+
++
+.例を表示
 [%collapsible]
 ====
-次に、 ISL インターフェイス 3/1 の設定例を示します。この例では、 no port-channel static コマンドを使用して、 ISL をダイナミックにします。
+次の例は、ISLインターフェース3/1の設定を示しています。 `no port-channel static` ISL を動的にするコマンド:
 
 [listing]
 ----
@@ -46,12 +46,12 @@ NOTE: 新しい Cisco 3132Q-V スイッチにケーブルを再接続する場�
 (CL1)#
 ----
 ====
-. アクティブな CN1610 スイッチ CL1 で ISL 13~16 を起動します。
+. アクティブ CN1610 スイッチ CL1 で ISL 13 ～ 16 を起動します。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、ポートチャネルインターフェイス 3/1 で ISL ポート 13~16 を起動するプロセスを示しています。
+次の例は、ポート チャネル インターフェイス 3/1 上の ISL ポート 13 ～ 16 を起動するプロセスを示しています。
 
 [listing]
 ----
@@ -63,15 +63,15 @@ NOTE: 新しい Cisco 3132Q-V スイッチにケーブルを再接続する場�
 (CL1)#
 ----
 ====
-. ISLがであることを確認します `up` CN1610スイッチCL1：
+. ISLが `up`CN1610スイッチCL1の場合：
 +
-'how port-channel
+`show port-channel`
 
 +
-「 Link State 」は「 Up 」に、「 Type 」は「 Dynamic 」にする必要があります。また、「 Port Active 」列は「 True 」にしてポート 0/13 ～ 0/16 を指定する必要があります。
+「リンク状態」は `Up`「タイプ」は `Dynamic`「ポートアクティブ」列は `True`ポート0/13～0/16の場合:
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -98,15 +98,15 @@ Ports  Timeout       Speed       Active
        partner/long
 ----
 ====
-. 3132Q-V スイッチ C2 上の ISL が「 up 」であることを確認します。
+. ISLが `up`3132Q-VスイッチC2の場合:
 +
-「ポートチャネルの概要」
+`show port-channel summary`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-ポート Eth1/24/1 ～ Eth1/24/4 は '(P)' を示していなければなりませんつまり '4 つの ISL ポートはすべてポートチャネル内でアップしていますEth1/31 および Eth1/32 は ' 接続されていないので '(D) を示している必要があります
+ポートEth1/24/1からEth1/24/4は次のように表示される。 `(P)`つまり、ポート チャネル内の 4 つの ISL ポートすべてがアップ状態になります。  Eth1/31とEth1/32は `(D)`接続されていないため:
 
 [listing]
 ----
@@ -127,15 +127,15 @@ Group Port-       Type     Protocol  Member Ports
                                      Eth1/24/4(P)
 ----
 ====
-. すべてのノードの3132Q-VスイッチC2に接続されているすべてのクラスタインターコネクトポートを起動します。
+. すべてのノード上の 3132Q-V スイッチ C2 に接続されているすべてのクラスタ相互接続ポートを起動します。
 +
-「 network port modify 」を参照してください
+`network port modify`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 3132Q-V スイッチ C2 に接続されたクラスタインターコネクトポートを up にする方法を示しています。
+次の例は、3132Q-V スイッチ C2 に接続されたクラスタ相互接続ポートを起動する方法を示しています。
 
 [listing]
 ----
@@ -145,12 +145,12 @@ cluster::*> network port modify -node n2 -port e0b -up-admin true
 cluster::*> network port modify -node n2 -port e0c -up-admin true
 ----
 ====
-. すべてのノードのC2に接続されている、移行されたクラスタインターコネクトLIFをすべてリバートします。
+. すべてのノードの C2 に接続されている、移行されたすべてのクラスタ相互接続 LIF を元に戻します。
 +
-「 network interface revert 」の略
+`network interface revert`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -161,15 +161,15 @@ cluster::*> network interface revert -vserver Cluster -lif n2_clus2
 cluster::*> network interface revert -vserver Cluster -lif n2_clus3
 ----
 ====
-. すべてのクラスタインターコネクトポートがホームポートにリバートされていることを確認します。
+. すべてのクラスタ相互接続ポートがホーム ポートに戻されていることを確認します。
 +
-「 network interface show 」を参照してください
+`network interface show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 clus2 の LIF がホームポートにリバートされていることを示しています。「 Current Port 」列のポートのステータスが「 Is Home 」列に「 true 」になっている場合は、 LIF が正常にリバートされていることを示しています。Is Home の値が「 false 」の場合、 LIF はリバートされません。
+次の例は、clus2のLIFがホームポートに戻されたことを示し、「現在のポート」列のポートのステータスが `true`「ホーム」列に表示されます。  Is Home値が `false`の場合、LIF は元に戻りません。
 
 [listing]
 ----
@@ -192,15 +192,15 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. すべてのクラスタポートが接続されていることを確認します。
+. すべてのクラスター ポートが接続されていることを確認します。
 +
-「 network port show 」のように表示されます
+`network port show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は ' 前の network port modify コマンドの結果を示しており ' すべてのクラスタ・インターコネクトが up であることを確認しています
+次の例は、前の例の結果を示しています。 `network port modify`コマンドを実行して、すべてのクラスタインターコネクトが `up`:
 
 [listing]
 ----
@@ -228,22 +228,22 @@ e0d   cluster   cluster     up    9000  auto/10000     -        -
 8 entries were displayed.
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：* showコマンドを実行して詳細を表示する前に、数秒待ってください。
+*注意:* 詳細を表示するには、show コマンドを実行する前に数秒待ってください。
 
 [listing, subs="+quotes"]
 ----
@@ -260,9 +260,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2   n1_clus2       none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -312,15 +312,15 @@ RPC status:
 ----
 --
 ====
-. [[step12]]クラスタ内の各ノードで、交換する最初のCN1610スイッチCL1に関連付けられているインターフェイスを移行します。
+. [[step12]] クラスタ内の各ノードで、交換する最初のCN1610スイッチCL1に関連付けられているインターフェースを移行します。
 +
-「ネットワーク・インターフェイス移行」
+`network interface migrate`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、ノード n1 および n2 で移行するポートまたは LIF を示しています。
+次の例は、ノード n1 および n2 で移行されるポートまたは LIF を示しています。
 
 [listing]
 ----
@@ -330,15 +330,15 @@ cluster::*> network interface migrate -vserver Cluster -lif n2_clus1 -destinatio
 cluster::*> network interface migrate -vserver Cluster -lif n2_clus4 -destination-node n2 -destination-port e0c
 ----
 ====
-. クラスタのステータスを確認します。
+. クラスターのステータスを確認します。
 +
-「 network interface show 」を参照してください
+`network interface show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、必要なクラスタ LIF が、クラスタスイッチ C2 でホストされている適切なクラスタポートに移行されたことを示しています。
+次の例は、必要なクラスタ LIF がクラスタ スイッチ C2 でホストされている適切なクラスタ ポートに移行されたことを示しています。
 
 [listing]
 ----
@@ -361,15 +361,15 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. すべてのノードのCL1に接続されているノードポートをシャットダウンします。
+. すべてのノードで CL1 に接続されているノード ポートをシャットダウンします。
 +
-「 network port modify 」を参照してください
+`network port modify`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、ノード n1 および n2 の指定されたポートをシャットダウンする方法を示しています。
+次の例は、ノード n1 および n2 上の指定されたポートをシャットダウンする方法を示しています。
 
 [listing]
 ----
@@ -379,15 +379,15 @@ cluster::*> network port modify -node n2 -port e0a -up-admin false
 cluster::*> network port modify -node n2 -port e0d -up-admin false
 ----
 ====
-. アクティブな3132Q-VスイッチC2のISLポート24、31、32をシャットダウンします。
+. アクティブ 3132Q-V スイッチ C2 の ISL ポート 24、31、および 32 をシャットダウンします。
 +
-「ダウンタイム」
+`shutdown`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、アクティブな 3132Q-V スイッチ C2 上の ISL 24 、 31 、および 32 をシャットダウンする方法を示しています。
+次の例は、アクティブな 3132Q-V スイッチ C2 上の ISL 24、31、および 32 をシャットダウンする方法を示しています。
 
 [listing]
 ----
@@ -404,18 +404,18 @@ C2#
 ====
 . すべてのノードの CN1610 スイッチ CL1 に接続されているケーブルを取り外します。
 +
-サポートされているケーブル接続を使用して、すべてのノード上の切断されているポートを Nexus 3132Q-V スイッチ C1 に再接続する必要があります。
+サポートされているケーブル接続を使用して、すべてのノード上の切断されたポートを Nexus 3132Q-V スイッチ C1 に再接続する必要があります。
 
 . Nexus 3132Q-V C2 ポート e1/24 から QSFP ケーブルを取り外します。
 +
-サポートされている Cisco QSFP 光ファイバケーブルまたは直接接続ケーブルを使用して、 C1 のポート e1/31 および e1/32 を c2 のポート e1/31 および e1/32 に接続する必要があります。
+サポートされているCisco QSFP 光ファイバ ケーブルまたは直接接続ケーブルを使用して、C1 のポート e1/31 および e1/32 を C2 のポート e1/31 および e1/32 に接続する必要があります。
 
-. ポート24の設定を復元し、C2上の一時ポートチャネル2を削除します。これを行うには、をコピーします `running-configuration` ファイルをに追加します `startup-configuration` ファイル。
+. ポート24の設定を復元し、C2の一時的なポートチャネル2を削除します。 `running-configuration`ファイルに `startup-configuration`ファイル。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次に 'running-configuration' ファイルを 'startup-configuration' ファイルにコピーする例を示します
+次の例では、 `running-configuration`ファイルに `startup-configuration`ファイル：
 
 [listing]
 ----
@@ -434,15 +434,15 @@ C2# copy running-config startup-config
 Copy Complete.
 ----
 ====
-. アクティブな3132Q-Vスイッチc2のISLポート31と32を起動します。
+. アクティブな 3132Q-V スイッチである C2 の ISL ポート 31 と 32 を起動します。
 +
 `no shutdown`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 3132Q-V スイッチ C2 の ISL 31 と 32 を up にする方法を示しています。
+次の例は、3132Q-V スイッチ C2 で ISL 31 と 32 を起動する方法を示しています。
 
 [listing]
 ----
@@ -460,4 +460,4 @@ Copy Complete.
 
 
 .次の手順
-link:cn1610-complete-migration.html["移行の完了"]です。
+link:cn1610-complete-migration.html["移行を完了する"] 。

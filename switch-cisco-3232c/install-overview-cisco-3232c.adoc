@@ -2,7 +2,7 @@
 permalink: switch-cisco-3232c/install-overview-cisco-3232c.html 
 sidebar: sidebar 
 keywords: install, cisco nexus 3232c switch, 
-summary: Cisco Nexus 3232cスイッチを設定する前に、プロセスの概要と命名法を確認してください。 
+summary: Cisco Nexus 3232c スイッチを構成する前に、プロセスと命名法の概要を確認してください。 
 ---
 = Cisco Nexus 3232Cスイッチのインストールとセットアップのワークフロー
 :allow-uri-read: 
@@ -11,26 +11,26 @@ summary: Cisco Nexus 3232cスイッチを設定する前に、プロセスの概
 
 
 [role="lead"]
-Cisco Nexus 3232Cスイッチは、AFF またはFAS クラスタのクラスタスイッチとして使用できます。クラスタスイッチでは、3つ以上のノードでONTAP クラスタを構築できます。
+Cisco Nexus 3232C スイッチは、 AFFまたはFASクラスタ内のクラスタ スイッチとして使用できます。クラスタ スイッチを使用すると、2 つ以上のノードを持つONTAPクラスタを構築できます。
 
 Cisco Nexus 3232C スイッチをインストールしてセットアップするには、次のワークフロー手順に従ってください。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:configure-reqs-3232c.html["設定要件"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:configure-reqs-3232c.html["構成要件"]
 [role="quick-margin-para"]
 3232C クラスタ スイッチの構成要件を確認します。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:required-documentation-3232c.html["必要なドキュメント"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:required-documentation-3232c.html["必要な書類"]
 [role="quick-margin-para"]
 3232C スイッチとONTAPクラスタをセットアップするには、特定のスイッチおよびコントローラのドキュメントを確認してください。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:smart-call-home-3232c.html["Smart Call Homeの要件"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:smart-call-home-3232c.html["Smart Call Homeの要件"]
 [role="quick-margin-para"]
 ネットワーク上のハードウェアおよびソフトウェア コンポーネントを監視するために使用されるCisco Smart Call Home 機能の要件を確認します。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:install-hardware-workflow.html["ハードウェアを設置"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:install-hardware-workflow.html["ハードウェアをインストールする"]
 [role="quick-margin-para"]
 スイッチのハードウェアをインストールします。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"]link:configure-software-overview-3232c-cluster.html["ソフトウェアの設定"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-software-overview-3232c-cluster.html["ソフトウェアの設定"]
 [role="quick-margin-para"]
 スイッチ ソフトウェアを構成します。

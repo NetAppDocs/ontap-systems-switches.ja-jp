@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100-storage/setup-install-cshm-file.html 
 sidebar: sidebar 
 keywords: 'install, applicable, configuration, file, cluster, switch, health, monitor, ontap, install the cluster switch health monitor (csm) configuration file for sn2100 switches' 
-summary: この手順を使用して、NVIDIA SN2100ストレージスイッチのクラスタスイッチヘルスモニタ用の構成ファイルをインストールできます。 
+summary: この手順を使用して、 NVIDIA SN2100 ストレージ スイッチのクラスター スイッチ ヘルス モニタリングに適した構成ファイルをインストールできます。 
 ---
-= イーサネットスイッチヘルスモニタ構成ファイルのインストール
+= イーサネットスイッチヘルスモニタ構成ファイルをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-次の手順に従って、NVIDIAクラスタスイッチのイーサネットスイッチヘルス監視用の構成ファイルをインストールします。サポート対象モデルは次のとおりです。
+NVIDIAクラスタ スイッチの Ethernet スイッチ ヘルス モニタリングに適した構成ファイルをインストールするには、次の手順に従います。サポートされているモデルは次のとおりです。
 
 * MSN2100-CB2FC
 * MSN2100-CB2RC
@@ -20,37 +20,37 @@ summary: この手順を使用して、NVIDIA SN2100ストレージスイッチ�
 
 
 
-NOTE: このインストール手順は、ONTAP 9.10.1以降に該当します。
+NOTE: このインストール手順は、 ONTAP 9.10.1 以降に適用されます。
 
-.作業を開始する前に
-* を実行し、モデルに* other *が表示されているかどうかを確認して、構成ファイルをダウンロードする必要があることを確認し `system switch ethernet show` ます。
+.開始する前に
+* 実行して構成ファイルをダウンロードする必要があることを確認します。 `system switch ethernet show`モデルに *OTHER* が表示されているかどうかを確認します。
 +
-構成ファイルを適用してもモデルに*その他*が表示される場合は、NetAppサポートにお問い合わせください。
+構成ファイルを適用した後もモデルに *OTHER* が表示される場合は、 NetAppサポートにお問い合わせください。
 
-* ONTAP クラスタが起動し、実行中であることを確認します。
-* CSHMで使用可能なすべての機能を使用するには、SSHを有効にします。
-* すべてのノードでディレクトリをクリアし `/mroot/etc/cshm_nod/nod_sign/`ます。
+* ONTAPクラスタが起動して実行されていることを確認します。
+* CSHM で利用可能なすべての機能を使用するには、SSH を有効にします。
+* クリア `/mroot/etc/cshm_nod/nod_sign/`すべてのノード上のディレクトリ:
 +
-.. ノードシェルに切り替えます。
+.. ノードシェルに入ります:
 +
 `system node run -node <name>`
 
-.. advanced権限に切り替えます。
+.. 高度な権限に変更:
 +
 `priv set advanced`
 
-.. ディレクトリ内の構成ファイルを一覧表示します `/etc/cshm_nod/nod_sign`。ディレクトリが存在し、構成ファイルが含まれている場合は、ファイル名がリストされます。
+.. 設定ファイルを一覧表示する `/etc/cshm_nod/nod_sign`ディレクトリ。ディレクトリが存在し、そこに設定ファイルが含まれている場合は、ファイル名が一覧表示されます。
 +
 `ls /etc/cshm_nod/nod_sign`
 
-.. 接続されているスイッチモデルに対応する構成ファイルをすべて削除します。
+.. 接続されているスイッチ モデルに対応するすべての構成ファイルを削除します。
 +
-不明な場合は、上記のサポートされているモデルのすべての構成ファイルを削除してから、それらの同じモデルの最新の構成ファイルをダウンロードしてインストールしてください。
+不明な場合は、上記のサポート対象モデルのすべての構成ファイルを削除してから、同じモデルの最新の構成ファイルをダウンロードしてインストールしてください。
 
 +
 `rm /etc/cshm_nod/nod_sign/<filename>`
 
-.. 削除した構成ファイルがディレクトリに存在しないことを確認します。
+.. 削除された構成ファイルがディレクトリ内に存在しないことを確認します。
 +
 `ls /etc/cshm_nod/nod_sign`
 
@@ -59,12 +59,12 @@ NOTE: このインストール手順は、ONTAP 9.10.1以降に該当します�
 
 
 .手順
-. 対応するONTAPリリースバージョンに基づいて、イーサネットスイッチヘルスモニタ構成のzipファイルをダウンロードします。このファイルは、ページから入手でき https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIAイーサネットスイッチ"^] ます。
+. 対応するONTAPリリース バージョンに基づいて、イーサネット スイッチ ヘルス モニタ構成の zip ファイルをダウンロードします。このファイルは、 https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIAイーサネットスイッチ"^]ページ。
 +
-.. NVIDIA SN2100ソフトウェアのダウンロードページで、* Nvidia CSHMファイル*を選択します。
-.. [注意/必ずお読みください]ページで、同意するチェックボックスをオンにします。
-.. [End User License Agreement]ページで、同意するチェックボックスを選択し、*[Accept & Continue]*をクリックします。
-.. Nvidia CSHM File - Download（Nvidia CSHMファイル-ダウンロード）ページで、適切な設定ファイルを選択します。次のファイルを使用できます。
+.. NVIDIA SN2100 ソフトウェアのダウンロード ページで、*Nvidia CSHM ファイル* を選択します。
+.. 「注意/必読」ページでチェックボックスを選択して同意します。
+.. エンド ユーザー ライセンス契約ページで、同意するチェック ボックスをオンにして、[同意して続行] をクリックします。
+.. Nvidia CSHM ファイル - ダウンロード ページで、該当する構成ファイルを選択します。利用可能なファイルは次のとおりです。
 
 
 
@@ -80,7 +80,7 @@ NOTE: このインストール手順は、ONTAP 9.10.1以降に該当します�
 
 
 --
-.ONTAP 9.11.1~9.14.1
+.ONTAP 9.11.1 から 9.14.1
 --
 * MSN2100-CB2FC_PRIOR_R9.15.1-v1.4.zip
 * MSN2100-CB2RC_PRIOR_R9.15.1-v1.4.zip
@@ -90,42 +90,42 @@ NOTE: このインストール手順は、ONTAP 9.10.1以降に該当します�
 
 --
 ====
-. [[step2]]該当するzipファイルを内部Webサーバにアップロードします。
-. クラスタ内のいずれかのONTAPシステムからadvancedモード設定にアクセスします。
+. [[step2]]該当するzipファイルを社内のWebサーバーにアップロードします。
+. クラスタ内のいずれかのONTAPシステムから詳細モード設定にアクセスします。
 +
-「 advanced 」の権限が必要です
+`set -privilege advanced`
 
-. switch health monitor configureコマンドを実行します。
+. スイッチ ヘルス モニター構成コマンドを実行します。
 +
 [listing, subs="+quotes"]
 ----
 cluster1::> *system cluster-switch configure-health-monitor -node * -package-url http://192.168.2.20/usr/download/_[filename.zip]_*
 ----
-. 使用しているONTAPのバージョンに応じて、コマンド出力の末尾が次のテキストになっていることを確認します。
+. コマンド出力が、使用しているONTAPバージョンに応じて次のテキストで終了していることを確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.15.1以降
 --
-イーサネットスイッチヘルスモニタに構成ファイルがインストールされました。
+イーサネット スイッチのヘルス モニタリング構成ファイルがインストールされました。
 
 --
-.ONTAP 9.11.1~9.14.1
+.ONTAP 9.11.1 から 9.14.1
 --
-SHMは設定ファイルをインストールしました。
+SHM は構成ファイルをインストールしました。
 
 --
 .ONTAP 9.10.1
 --
-CSHMダウンロードパッケージが正常に処理されました。
+CSHM ダウンロード パッケージが正常に処理されました。
 
 --
 ====
 エラーが発生した場合は、NetAppサポートにお問い合わせください。
 
-. [[step6]]を実行すると検出されたイーサネットスイッチヘルスモニタのポーリング間隔が最大2倍になるまで待って `system switch ethernet polling-interval show`から、次の手順を完了します。
-. ONTAPシステムでコマンドを実行し `system switch ethernet show` 、監視対象フィールドが* True *に設定され、シリアル番号フィールドに* Unknown *が表示されていないクラスタスイッチが検出されていることを確認します。
+. [[step6]]イーサネットスイッチヘルスモニターのポーリング間隔の2倍まで待機します。 `system switch ethernet polling-interval show`次のステップを完了する前に、 をクリックしてください。
+. コマンドを実行する `system switch ethernet show`ONTAPシステムで、監視対象フィールドが *True* に設定され、シリアル番号フィールドに *Unknown* が表示されていない状態でクラスタ スイッチが検出されていることを確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -134,4 +134,4 @@ cluster1::> *system switch ethernet show*
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。

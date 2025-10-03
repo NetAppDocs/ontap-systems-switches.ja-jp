@@ -2,74 +2,74 @@
 permalink: switch-netapp-cn1610/install-fastpath-rcf-831.html 
 sidebar: sidebar 
 keywords: fastpath, software, install, netapp cluster switches, rcfs, ontap 
-summary: インストール手順は、 NetApp CN1601 管理スイッチと、 ONTAP 8.3.1 以降を実行する CN1610 クラスタスイッチのどちらについても同じです。ただし、この 2 つのモデルには、異なるソフトウェアと RCF が必要です。 
+summary: インストール手順は、 ONTAP 8.3.1 以降を実行しているNetApp CN1601 管理スイッチと CN1610 クラスタ スイッチの両方で同じです。ただし、2 つのモデルには異なるソフトウェアと RCF が必要です。 
 ---
-= ONTAP 8.3.1以降には、FastPathソフトウェアとRCFをインストールします
+= ONTAP 8.3.1以降用のFASTPATHソフトウェアとRCFをインストールします
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-この手順 に従って、ONTAP 8.3.1以降用のFastPathソフトウェアとRCFをインストールします。
+ONTAP 8.3.1 以降の FASTPATH ソフトウェアと RCF をインストールするには、次の手順に従ってください。
 
-インストール手順は、 NetApp CN1601 管理スイッチと、 ONTAP 8.3.1 以降を実行する CN1610 クラスタスイッチのどちらについても同じです。ただし、この 2 つのモデルには、異なるソフトウェアと RCF が必要です。
+インストール手順は、 ONTAP 8.3.1 以降を実行しているNetApp CN1601 管理スイッチと CN1610 クラスタ スイッチの両方で同じです。ただし、2 つのモデルには異なるソフトウェアと RCF が必要です。
 
 
 
-== 要件を確認
+== 要件の確認
 
-.作業を開始する前に
-次のものがあることを確認します。
+.開始する前に
+以下のものがあることを確認してください。
 
-* スイッチ設定の現在のバックアップ。
-* クラスタが完全に機能している（ログにエラーは記録されず、クラスタネットワークインターフェイスカード（NIC）の欠陥や同様の問題はない）。
-* クラスタスイッチ上の完全に機能するポート接続。
-* すべてのクラスタポートが設定されています。
-* すべてのクラスタ論理インターフェイス（LIF）がセットアップされている（移行されていない）。
-* 通信パスが成功した場合：ONTAP （権限：advanced） `cluster ping-cluster -node node1` コマンドは、を示す必要があります `larger than PMTU communication` はすべてのパスで成功しています。
-* サポートされているFastPath、RCF、およびONTAP のバージョン。
+* スイッチ構成の現在のバックアップ。
+* 完全に機能しているクラスター (ログにエラーがなく、クラスター ネットワーク インターフェイス カード (NIC) に欠陥がなく、同様の問題もありません)。
+* クラスター スイッチ上の完全に機能するポート接続。
+* すべてのクラスター ポートが設定されました。
+* すべてのクラスタ論理インターフェイス (LIF) がセットアップされている (移行されていないこと)。
+* 成功した通信パス: ONTAP (権限: 上級) `cluster ping-cluster -node node1`コマンドは以下を示す必要があります `larger than PMTU communication`すべてのパスで成功します。
+* サポートされている FASTPATH、RCF、およびONTAPのバージョン。
 +
-のスイッチ互換性の表を参照してください http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^] サポートされている FastPath 、 RCF 、および ONTAP のバージョンについては、ページを参照してください。
+スイッチの互換性表を必ず参照してください。 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601およびCN1610スイッチ"^]サポートされている FASTPATH、RCF、およびONTAPバージョンについては、こちらのページをご覧ください。
 
 
 
 
 
-== FastPathソフトウェアをインストールします
+== FASTPATHソフトウェアをインストールする
 
-次の手順 では、clustered Data ONTAP 8.2の構文を使用します。そのため、クラスタSVM、LIF名、CLIの出力がData ONTAP 8.3の出力と異なります。
+次の手順では、clustered Data ONTAP 8.2 構文を使用します。その結果、クラスタ Vserver、LIF 名、および CLI 出力は、 Data ONTAP 8.3 のものとは異なります。
 
-RCF バージョンと FastPath バージョンでは、コマンド構文間にコマンドの依存関係が存在する場合があります。
+RCF バージョンと FASTPATH バージョンのコマンド構文間にはコマンド依存関係が存在する場合があります。
 
 
-NOTE: RCF バージョン 1.2 では、セキュリティ上の理由から、 Telnet のサポートが明示的に無効になっています。RCF 1.2のインストール時の接続の問題を回避するには、Secure Shell（SSH）が有効になっていることを確認してください。。 https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp CN1610 Switch Administrator's Guide"^] SSH の詳細については、を参照してください。
+NOTE: RCF バージョン 1.2 では、セキュリティ上の懸念から、Telnet のサポートが明示的に無効になっています。 RCF 1.2 のインストール中に接続の問題を回避するには、Secure Shell (SSH) が有効になっていることを確認してください。その https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp CN1610 スイッチ管理者ガイド"^]SSH に関する詳細情報は、こちらを参照してください。
 
 .例について
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 2 つのネットアップスイッチ名は cs1 と cs2 です。
-* クラスタの論理インターフェイス（ LIF ）の名前は、ノード 1 では node1_clus1 と node1_clus2 、ノード 2 では node2_clus1 と node2_clus2 です。（1つのクラスタには最大24個のノードを含めることができます）。
-* Storage Virtual Machine （ SVM ）名は Cluster です。
-* 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
-* 各ノードのクラスタポートの名前は e0a および e0b です。
+* 2 つのNetAppスイッチ名は cs1 と cs2 です。
+* クラスタ論理インターフェイス (LIF) 名は、node1 の場合は node1_clus1 と node1_clus2、node2 の場合は node2_clus1 と node2_clus2 です。  (クラスターには最大 24 個のノードを含めることができます。)
+* ストレージ仮想マシン (SVM) の名前は Cluster です。
+* その `cluster1::*>`プロンプトはクラスターの名前を示します。
+* 各ノードのクラスタ ポートの名前はe0aおよびe0bです。
 +
-https://hwu.netapp.com/["Hardware Universe"^] 使用しているプラットフォームでサポートされている実際のクラスタポートに関する詳細情報が表示されます。
+https://hwu.netapp.com/["Hardware Universe"^]プラットフォームでサポートされている実際のクラスター ポートに関する詳細情報は、こちらをご覧ください。
 
-* サポートされているスイッチ間リンク（ISL）は、ポート0/13~0/16です。
-* サポートされるノード接続はポート0/1~0/12です。
-
-
+* サポートされているスイッチ間リンク (ISL) は、ポート 0/13 ～ 0/16 です。
+* サポートされるノード接続はポート 0/1 ～ 0/12 です。
 
 
-=== 手順1：クラスタを移行する
 
-. クラスタのネットワークポートに関する情報を表示します。
+
+=== ステップ1: クラスターの移行
+
+. クラスター上のネットワーク ポートに関する情報を表示します。
 +
-'network port show --_ipspace cluster_`
+`network port show -_ipspace cluster_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 次の例は、コマンドからの出力のタイプを示しています。
@@ -91,13 +91,13 @@ node2
 ====
 . クラスタ上の LIF に関する情報を表示します。
 +
-'network interface show --_role cluster_`
+`network interface show -_role cluster_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、クラスタ上の論理インターフェイスを示しています。次の例では、「 -role 」パラメータで、クラスタポートに関連付けられた LIF に関する情報を表示します。
+次の例は、クラスター上の論理インターフェイスを示しています。この例では、 `-role`パラメータは、クラスタ ポートに関連付けられている LIF に関する情報を表示します。
 
 [listing]
 ----
@@ -114,15 +114,15 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. それぞれのノードで、ノード管理 LIF を使用して、 node1 の e0a に node1_clus2 を、 node2 の e0a に node2 を移行します。
+. 各ノードで、ノード管理 LIF を使用して、node1 の node1_clus2 を e0a に移行し、node2 の node2_clus2 を e0a に移行します。
 +
-「ネットワーク・インターフェイス移行」
+`network interface migrate`
 
 +
-それぞれのクラスタ LIF を所有しているコントローラコンソールでコマンドを入力する必要があります。
+それぞれのクラスタ LIF を所有するコントローラ コンソールでコマンドを入力する必要があります。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -133,14 +133,14 @@ cluster1::> network interface migrate -vserver Cluster -lif node2_clus2 -destina
 ====
 +
 
-NOTE: このコマンドでは、クラスタの名前で大文字と小文字が区別され、各ノードでコマンドを実行する必要があります。一般的なクラスタ LIF ではこのコマンドを実行できません。
+NOTE: このコマンドでは、クラスターの名前の大文字と小文字が区別され、各ノードでコマンドを実行する必要があります。このコマンドを一般的なクラスタ LIF で実行することはできません。
 
-. ノードで network interface show コマンドを使用して、移行が実行されたことを確認します。
+. 移行が行われたことを確認するには、 `network interface show`ノード上のコマンド。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 clus2 がノード node1 とノード node2 のポート e0a に移行したことを示しています。
+次の例は、clus2 がノード node1 および node2 のポート e0a に移行したことを示しています。
 
 [listing]
 ----
@@ -156,25 +156,25 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 y 」と入力します。
+. 権限レベルを「advanced」に変更し、続行するかどうかを尋ねられたら y を入力します。
 +
-「 advanced 」の権限が必要です
+`set -privilege advanced`
 
 +
-advanced のプロンプト（ * > ）が表示されます。
+advancedのプロンプト（*>）が表示されます。
 
-. 両方のノードでクラスタポート e0b をシャットダウンします。
+. 両方のノードでクラスター ポート e0b をシャットダウンします。
 +
-'network port modify -node node_name --port_port_name_up-admin false
-
-+
-それぞれのクラスタ LIF を所有しているコントローラコンソールでコマンドを入力する必要があります。
+`network port modify -node _node_name_ -port _port_name_ -up-admin false`
 
 +
-.例を示します
+それぞれのクラスタ LIF を所有するコントローラ コンソールでコマンドを入力する必要があります。
+
++
+.例を表示
 [%collapsible]
 ====
-次の例は、すべてのノードでポート e0b をシャットダウンするコマンドを示しています。
+次の例は、すべてのノードのポート e0b をシャットダウンするコマンドを示しています。
 
 [listing]
 ----
@@ -184,10 +184,10 @@ cluster1::*> network port modify -node node2 -port e0b -up-admin false
 ====
 . 両方のノードでポート e0b がシャットダウンされていることを確認します。
 +
-「 network port show 」のように表示されます
+`network port show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -206,9 +206,9 @@ node2
 4 entries were displayed.
 ----
 ====
-. cs1 のスイッチ間リンク（ ISL ）ポートをシャットダウンします。
+. cs1 の Inter-Switch Link (ISL) ポートをシャットダウンします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -220,9 +220,9 @@ node2
 (cs1) (Config)#exit
 ----
 ====
-. cs2 で現在アクティブなイメージをバックアップします。
+. cs2 上の現在のアクティブ イメージをバックアップします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -252,11 +252,11 @@ Copy operation successful
 
 
 
-=== 手順2：FastPathソフトウェアとRCFをインストールします
+=== ステップ2: FASTPATHソフトウェアとRCFをインストールする
 
-. FastPath ソフトウェアの実行中のバージョンを確認します。
+. 実行中の FASTPATH ソフトウェアのバージョンを確認します。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -283,12 +283,12 @@ Additional Packages............................ FASTPATH QOS
                                                 FASTPATH IPv6 Management
 ----
 ====
-. スイッチにイメージファイルをダウンロードします。
+. スイッチにイメージ ファイルをダウンロードします。
 +
-イメージファイルをアクティブイメージにコピーすると、リブート時にそのイメージによって FastPath バージョンが確立されます。以前のイメージはバックアップとして使用できます。
+イメージ ファイルをアクティブ イメージにコピーすると、再起動時にそのイメージによって実行中の FASTPATH バージョンが確立されます。以前のイメージはバックアップとして使用できます。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -311,12 +311,12 @@ SFTP Code transfer starting...
 File transfer operation completed successfully.
 ----
 ====
-. 現在のブートイメージと次のアクティブイメージのバージョンを確認します。
+. 現在のアクティブ ブート イメージ バージョンと次にアクティブなブート イメージ バージョンを確認します。
 +
-'How bootvar'
+`show bootvar`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -338,12 +338,12 @@ Image Descriptions
     1     1.1.0.8     1.1.0.8            1.1.0.8            1.2.0.7
 ----
 ====
-. スイッチに新しいイメージバージョン用の互換性のある RCF をインストールします。
+. 新しいイメージ バージョンと互換性のある RCF をスイッチにインストールします。
 +
-RCFのバージョンがすでに正しい場合は、ISLポートを稼働させます。
+RCF バージョンがすでに正しい場合は、ISL ポートを起動します。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -374,14 +374,14 @@ File transfer operation completed successfully.
 ====
 +
 
-NOTE: スクリプトを呼び出す前に '.scr 拡張子をファイル名の一部として設定する必要がありますこの拡張機能は、 FastPath オペレーティングシステム用です。
+NOTE: その `.scr`スクリプトを呼び出す前に、ファイル名の一部として拡張子を設定する必要があります。この拡張機能は、FASTPATH オペレーティング システム用です。
 
 +
-スイッチは、スクリプトがスイッチにダウンロードされると、スクリプトを自動的に検証します。コンソールに出力が表示されます。
+スイッチは、スクリプトがスイッチにダウンロードされると自動的にそれを検証します。出力はコンソールに送られます。
 
-. スクリプトがダウンロードされ、指定したファイル名で保存されていることを確認します。
+. スクリプトがダウンロードされ、指定したファイル名で保存されたことを確認します。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -398,7 +398,7 @@ CN1610_CS_RCF_v1.2.scr                  2191
 ====
 . スクリプトをスイッチに適用します。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -413,10 +413,10 @@ Configuration script 'CN1610_CS_RCF_v1.2.scr' applied.
 ====
 . 変更がスイッチに適用されたことを確認し、保存します。
 +
-'how running-config'
+`show running-config`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -424,9 +424,9 @@ Configuration script 'CN1610_CS_RCF_v1.2.scr' applied.
 (cs2) #show running-config
 ----
 ====
-. スイッチをリブートしたときにスタートアップコンフィギュレーションになるように、実行コンフィギュレーションを保存します。
+. 実行中のコンフィギュレーションを保存して、スイッチを再起動したときにそれがスタートアップ コンフィギュレーションになるようにします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -444,7 +444,7 @@ Configuration Saved!
 ====
 . スイッチをリブートします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -463,11 +463,11 @@ System will now restart!
 
 
 
-=== 手順3：インストールを検証する
+=== ステップ3: インストールの検証
 
-. 再度ログインし、スイッチが FastPath ソフトウェアの新しいバージョンを実行していることを確認します。
+. 再度ログインし、スイッチが新しいバージョンの FASTPATH ソフトウェアを実行していることを確認します。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -494,11 +494,11 @@ Additional Packages............................ FASTPATH QOS
 ----
 ====
 +
-リブートが完了したら、ログインしてイメージのバージョンを確認し、実行中の設定を確認し、 RCF のバージョンラベルであるインターフェイス 3/64 の概要 を探します。
+再起動が完了したら、ログインしてイメージのバージョンを確認し、実行中の設定を表示し、RCF のバージョン ラベルであるインターフェイス 3/64 の説明を探す必要があります。
 
-. アクティブなスイッチ cs1 の ISL ポートを起動します。
+. アクティブ スイッチである cs1 の ISL ポートを起動します。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -512,13 +512,13 @@ Additional Packages............................ FASTPATH QOS
 ====
 . ISL が動作していることを確認します。
 +
-「 show port-channel 3/1 」
+`show port-channel 3/1`
 
 +
-Link State フィールドには 'up' と表示されます
+リンク状態フィールドは以下を示す必要があります `Up`。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -546,18 +546,18 @@ Ports  Timeout       Speed     Active
        partner/long
 ----
 ====
-. すべてのノードでクラスタポート e0b を起動します。
+. すべてのノードでクラスター ポート e0b を起動します。
 +
-「 network port modify 」を参照してください
+`network port modify`
 
 +
-それぞれのクラスタ LIF を所有しているコントローラコンソールでコマンドを入力する必要があります。
+それぞれのクラスタ LIF を所有するコントローラ コンソールでコマンドを入力する必要があります。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、ノード 1 とノード 2 でポート e0b を起動しています。
+次の例は、ノード 1 とノード 2 でポート e0b が起動されることを示しています。
 
 [listing]
 ----
@@ -565,12 +565,12 @@ cluster1::*> network port modify -node node1 -port e0b -up-admin true
 cluster1::*> network port modify -node node2 -port e0b -up-admin true
 ----
 ====
-. すべてのノードでポート e0b が up になっていることを確認します。
+. すべてのノードでポート e0b が稼働していることを確認します。
 +
-「 network port show -ipspace cluster 」のように表示されます
+`network port show -ipspace cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -589,12 +589,12 @@ node2
 4 entries were displayed.
 ----
 ====
-. 両方のノードで LIF がホームになったことを確認します（「 true 」）。
+. LIFがホームになっていることを確認する(`true`) を両方のノードで実行します。
 +
-'network interface show --_role cluster_`
+`network interface show -_role cluster_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -612,12 +612,12 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. ノードメンバーのステータスを表示します。
+. ノード メンバーのステータスを表示します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -631,9 +631,9 @@ node2                true    true          false
 2 entries were displayed.
 ----
 ====
-. admin 権限レベルに戻ります。
+. admin権限レベルに戻ります。
 +
-「特権管理者」
+`set -privilege admin`
 
-. 同じ手順を繰り返して、もう1つのスイッチcs1にFastPathソフトウェアとRCFをインストールします。
+. 前の手順を繰り返して、他のスイッチ cs1 に FASTPATH ソフトウェアと RCF をインストールします。
 

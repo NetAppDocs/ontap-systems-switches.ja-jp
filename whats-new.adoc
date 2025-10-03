@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: whats-new.html 
 keywords: new, switches, fas, aff systems 
-summary: FAS システムとAFF システムの新しいスイッチについて説明します。 
+summary: FASおよびAFFシステム用の新しいスイッチについて学びます。 
 ---
 = スイッチの新機能
 :allow-uri-read: 
@@ -11,15 +11,15 @@ summary: FAS システムとAFF システムの新しいスイッチについて
 
 
 [role="lead"]
-FAS システムとAFF システムの新しいスイッチについて説明します。スイッチの詳細については、を参照して https://hwu.netapp.com/Switch/Index["NetApp Hardware Universe の略"^]ください。
+FASおよびAFFシステム用の新しいスイッチについて学びます。スイッチに関する追加情報については、 https://hwu.netapp.com/Switch/Index["NetApp Hardware Universe"^] 。
 
 
 
-== 新たにサポートされるスイッチ
+== 新しいスイッチのサポート
 
 [cols="25h,~,~"]
 |===
-| スイッチ | 説明 | 最初から利用可能です 
+| スイッチ | 説明 | 提供が開始されたリリース 
 
 
  a| 
@@ -32,50 +32,50 @@ ONTAP 9.10.1
 
 
  a| 
-16ポート100GbE NVIDIAスイッチ（X190006-PEおよびX190006-PI）
+16 ポート 100GbE NVIDIAスイッチ (X190006-PE および X190006-PI)
  a| 
-NVIDIA SN2100クラスタインターコネクトスイッチとストレージスイッチのサポート（MetroCluster IP構成のサポートを含む）。
+NVIDIA SN2100 クラスタ相互接続スイッチおよびストレージ スイッチのサポート ( MetroCluster IP 構成のサポートを含む)。
  a| 
 ONTAP 9.10.1
 
 
 
  a| 
-36ポート100GbE Ciscoスイッチ（X190200-CS-PEおよびX190200-CS-PI）
+36 ポート 100GbE Ciscoスイッチ (X190200-CS-PE および X190200-CS-PI)
  a| 
-MetroCluster IP 構成のサポートを含め、同じ Cisco Nexus 9336C-FX2 スイッチペアで共有インフラ（クラスタ、 HA 、およびスイッチ接続ストレージ）をサポートします。
+MetroCluster IP 構成のサポートを含む、同じCisco Nexus 9336C-FX2 スイッチのペア上の共有インフラストラクチャ (クラスタ、HA、およびスイッチ接続ストレージ) をサポートします。
  a| 
 ONTAP 9.9.1
 
 
 
  a| 
-36ポート100GbE Ciscoスイッチ（X190200-CS-PEおよびX190200-CS-PI）、（X190210-FE-PEおよびX190210-FE-PI）
+36 ポート 100GbE Ciscoスイッチ (X190200-CS-PE および X190200-CS-PI)、(X190210-FE-PE および X190210-FE-PI)
  a| 
-Cisco Nexus 9336C-FX2クラスタインターコネクトスイッチとストレージスイッチは、AFFおよびASAストレージシステム、およびフロントエンドデータ接続に対応しています。
- a| 
-ONTAP 9.8
-
-
-
- a| 
-Broadcom BES-53248 スイッチ（ X190005 および X190005R ）
- a| 
-10 / 25GbEおよび40 / 100GbEポートを搭載したAFF / FASコントローラで、Broadcom BES-53248クラスタインターコネクトスイッチがサポートされます。
+Cisco Nexus 9336C-FX2 クラスタ相互接続スイッチおよびストレージ スイッチは、 AFFおよびASAストレージ システム、およびフロントエンド データ接続をサポートします。
  a| 
 ONTAP 9.8
 
 
 
  a| 
-36ポート100GbE Ciscoスイッチ（X190200）および32ポート100GbE Ciscoスイッチ（X190100およびX190100R）
+Broadcom BES-53248 スイッチ (X190005 および X190005R)
  a| 
-Cisco Nexus 3232Cストレージスイッチをサポートし、NS224 NVMeドライブシェルフAFFおよびASAストレージシステムを接続します。
+10/25GbE および 40/100GbE ポートを備えたAFF/ FASコントローラ向けの Broadcom BES-53248 クラスタ相互接続スイッチ サポート。
+ a| 
+ONTAP 9.8
 
-* AFF A800/AFF ASA A800
-* AFF A700 / AFF ASA A700
-* AFF A400 / AFF ASA A400 を選択します
-* AFF A320
+
+
+ a| 
+36 ポート 100GbE Ciscoスイッチ (X190200) および 32 ポート 100GbE Ciscoスイッチ (X190100 および X190100R)
+ a| 
+Cisco Nexus 3232C ストレージ スイッチは、NS224 NVMe ドライブ シェルフAFFおよびASAストレージ システムに接続するためのサポートを提供します。
+
+* AFF A800/ AFF ASA A800
+* AFF A700/ AFF ASA A700
+* AFF A400/ AFF ASA A400
+* AFF A320用
 
  a| 
 ONTAP 9.8

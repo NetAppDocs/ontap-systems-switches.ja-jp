@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100-storage/cabling-considerations-sn2100-storage.html 
 sidebar: sidebar 
 keywords: sn2100 SN2100 cabling setup, sn2100 switches configuration, cumulus linux os 
-summary: NVIDIA SN2100スイッチを設定する前に、次の情報を確認してください。 
+summary: NVIDIA SN2100 スイッチを構成する前に、次の情報を確認してください。 
 ---
-= ケーブル接続と構成に関する考慮事項を確認
+= ケーブル配線と構成の考慮事項を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NVIDIA SN2100スイッチを設定する前に、次の考慮事項を確認してください。
+NVIDIA SN2100 スイッチを構成する前に、次の考慮事項を確認してください。
 
 
 
@@ -20,43 +20,43 @@ NVIDIA SN2100スイッチを設定する前に、次の考慮事項を確認し�
 |===
 
 
-| *スイッチポート* | *ポートの使用状況* 
+| *スイッチポート* | *ポートの使用* 
 
 
  a| 
 swp1s0-3
  a| 
-10GbEブレークアウトクラスタポートノード×4
+4x10GbEブレイクアウトクラスタポートノード
 
 
 
  a| 
 swp2s0-3
  a| 
-25GbEブレークアウトクラスタポートノード×4
+4x25GbEブレイクアウトクラスタポートノード
 
 
 
  a| 
 swp3-14
  a| 
-40 / 100GbEクラスタポートノード
+40/100GbE クラスターポートノード
 
 
 
  a| 
 swp15-16
  a| 
-100GbEスイッチ間リンク（ISL）ポート
+100GbE スイッチ間リンク (ISL) ポート
 
 |===
-を参照してください https://hwu.netapp.com/Switch/Index["Hardware Universe"^] スイッチポートの詳細については、を参照してください。
+参照 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]スイッチ ポートの詳細については、こちらをご覧ください。
 
 
 
-== 光接続でのリンクアップ遅延
+== 光接続によるリンクアップ遅延
 
-5秒以上のリンクアップ遅延が発生している場合は、Cumulus Linux 5.4以降で高速リンクアップがサポートされます。を使用してリンクを設定できます `nv set` 次のコマンドを実行します。
+リンクアップの遅延が 5 秒を超える場合、Cumulus Linux 5.4 以降では高速リンクアップがサポートされます。リンクを設定するには、 `nv set`次のようにコマンドを実行します。
 
 [listing, subs="+quotes"]
 ----
@@ -64,7 +64,7 @@ swp15-16
 *nv config apply*
 *reload the switchd*
 ----
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -83,13 +83,13 @@ Only switchd reload required
 
 == 銅線接続のサポート
 
-この問題 を修正するには、次の設定変更が必要です。
+この問題を解決するには、次の構成変更が必要です。
 
 [role="tabbed-block"]
 ====
-.Cumulus Linux 4.4.3.
+.キュムラス・リナックス 4.4.3
 --
-. 40GbE / 100GbE銅線ケーブルを使用して、各インターフェイスの名前を確認します。
+. 40GbE/100GbE 銅線ケーブルを使用して各インターフェースの名前を識別します。
 +
 [listing, subs="+quotes"]
 ----
@@ -100,12 +100,12 @@ Interface  Identifier     Vendor Name     Vendor PN    Vendor SN      Vendor Rev
 swp3       0x11 (QSFP28)  Molex           112-00576    93A2229911111  B0
 swp4       0x11 (QSFP28)  Molex           112-00576    93A2229922222  B0
 ----
-. に次の2行を追加します `/etc/cumulus/switchd.conf` 40GbE / 100GbE銅線ケーブルを使用するすべてのポート（SWP <n> ）のファイル：
+. 次の2行を `/etc/cumulus/switchd.conf`40GbE/100GbE 銅線ケーブルを使用しているすべてのポート (swp<n>) のファイル:
 +
 ** `interface.swp<n>.enable_media_depended_linkup_flow=TRUE`
 ** `interface.swp<n>.enable_short_tuning=TRUE`
 +
-例：
+例えば：
 
 +
 [listing, subs="+quotes"]
@@ -120,13 +120,13 @@ interface.swp4.enable_short_tuning=TRUE
 ----
 
 
-. を再起動します `switchd` サービス：
+. 再起動する `switchd`サービス：
 +
 [listing, subs="+quotes"]
 ----
 cumulus@cumulus:mgmt:~$ *sudo systemctl restart switchd.service*
 ----
-. ポートが動作していることを確認します。
+. ポートが稼働していることを確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -140,9 +140,9 @@ UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
 
 
 --
-.Cumulus Linux 5.x
+.キュムラス Linux 5.x
 --
-. 40GbE / 100GbE銅線ケーブルを使用して、各インターフェイスの名前を確認します。
+. 40GbE/100GbE 銅線ケーブルを使用して各インターフェースの名前を識別します。
 +
 [listing, subs="+quotes"]
 ----
@@ -153,13 +153,13 @@ Interface  Identifier     Vendor Name     Vendor PN    Vendor SN      Vendor Rev
 swp3       0x11 (QSFP28)  Molex           112-00576    93A2229911111  B0
 swp4       0x11 (QSFP28)  Molex           112-00576    93A2229922222  B0
 ----
-. を使用してリンクを設定します `nv set` 次のコマンドを実行します。
+. リンクを設定するには、 `nv set`次のようにコマンドを実行します。
 +
 ** `nv set interface <interface-id> link fast-linkup on`
 ** `nv config apply`
-** をリロードします `switchd` サービス
+** リロード `switchd`サービス
 +
-例：
+例えば：
 
 +
 [listing, subs="+quotes"]
@@ -175,7 +175,7 @@ Only switchd reload required
 ----
 
 
-. ポートが動作していることを確認します。
+. ポートが稼働していることを確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -190,40 +190,40 @@ UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
 
 --
 ====
- https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric_Interconnect_and_Management_Switches/NVIDIA_SN2100_switch_fails_to_connect_using_40_100GbE_copper_cable["SN2100スイッチが40 / 100GbE銅線ケーブルを使用して接続できない"^]詳細については、ナレッジベースの記事を参照してください。
+ナレッジベースの記事を参照してください https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric_Interconnect_and_Management_Switches/NVIDIA_SN2100_switch_fails_to_connect_using_40_100GbE_copper_cable["SN2100スイッチが40/100GbE銅線ケーブルを使用して接続できない"^]詳細についてはこちらをご覧ください。
 
-Cumulus Linux 4.4.2では、X1151A NIC、X1146A NIC、またはオンボード100GbEポートを搭載したSN2100スイッチで銅線接続はサポートされません。例：
+Cumulus Linux 4.4.2 では、X1151A NIC、X1146A NIC、またはオンボード 100GbE ポートを備えた SN2100 スイッチでは銅線接続はサポートされません。例えば：
 
-* ポートe0aとe0b上のAFF A800
-* ポートe0gとe0hにAFF A320を追加します
-
-
-
-
-== QSAアダプタ
-
-プラットフォームの10GbE / 25GbEクラスタポートへのQSAアダプタを使用して接続すると、リンクが稼働しないことがあります。
-
-この問題 を解決するには、次の手順を実行します。
-
-* 10GbEの場合は、swp1s0-3リンク速度を手動で10000に設定し、自動ネゴシエーションをoffに設定します。
-* 25GbEの場合は、swp2s0-3のリンク速度を手動で25000に設定し、自動ネゴシエーションをoffに設定します。
+* ポートe0aおよびe0b上のAFF A800
+* ポートe0gとe0hのAFF A320
 
 
 
-NOTE: 10GbE / 25GbE QSAアダプタを使用する場合は、ブレークアウトされていない40GbE / 100GbEポート（swp3-swp14）に挿入します。ブレークアウト用に設定されたポートにQSAアダプタを挿入しないでください。
+
+== QSAアダプター
+
+QSA アダプターを使用してプラットフォーム上の 10GbE/25GbE クラスター ポートに接続すると、リンクが起動しない可能性があります。
+
+この問題を解決するには、次の手順を実行します。
+
+* 10GbE の場合、swp1s0-3 リンク速度を手動で 10000 に設定し、自動ネゴシエーションをオフに設定します。
+* 25GbE の場合、swp2s0-3 リンク速度を手動で 25000 に設定し、自動ネゴシエーションをオフに設定します。
 
 
 
-== ブレークアウトポートでのインターフェイス速度の設定
+NOTE: 10GbE/25GbE QSA アダプターを使用する場合は、非ブレイクアウト 40GbE/100GbE ポート (swp3-swp14) に挿入します。ブレークアウト用に設定されているポートに QSA アダプタを挿入しないでください。
 
-スイッチポートのトランシーバによっては、スイッチインターフェイスの速度を固定速度に設定する必要があります。10GbEおよび25GbEブレークアウトポートを使用している場合は、自動ネゴシエーションがオフになっていることを確認し、スイッチのインターフェイス速度を設定します。
+
+
+== ブレイクアウトポートのインターフェース速度を設定する
+
+スイッチ ポートのトランシーバーによっては、スイッチ インターフェイスの速度を固定速度に設定する必要がある場合があります。  10GbE および 25GbE ブレークアウト ポートを使用する場合は、自動ネゴシエーションがオフになっていることを確認し、スイッチのインターフェイス速度を設定します。
 
 [role="tabbed-block"]
 ====
-.Cumulus Linux 4.4.3.
+.キュムラス・リナックス 4.4.3
 --
-例：
+例えば：
 
 [listing, subs="+quotes"]
 ----
@@ -254,7 +254,7 @@ iface swp2s0
      link-autoneg off
      link-speed 25000 *<---- port speed set*
 ----
-インターフェイスとポートのステータスを調べて、設定が適用されていることを確認します。
+インターフェースとポートのステータスをチェックして、設定が適用されていることを確認します。
 
 [listing, subs="+quotes"]
 ----
@@ -283,9 +283,9 @@ UP     swp16      100G  9216   BondMember  cs01 (swp16)     Master: cl
 .
 ----
 --
-.Cumulus Linux 5.x
+.キュムラス Linux 5.x
 --
-例：
+例えば：
 
 [listing, subs="+quotes"]
 ----
@@ -302,7 +302,7 @@ link                                                   
 [breakout]                                                                                    
   state                 up                      up                      up
 ----
-インターフェイスとポートのステータスを調べて、設定が適用されていることを確認します。
+インターフェースとポートのステータスをチェックして、設定が適用されていることを確認します。
 
 [listing, subs="+quotes"]
 ----
@@ -333,4 +333,4 @@ UP     swp16      100G  9216   BondMember  cs01 (swp16)     Master: cl
 --
 ====
 .次の手順
-link:install-cable-shelves-sn2100-storage.html["NS224シェルフをスイッチ接続型ストレージとしてケーブル接続します"]。
+link:install-cable-shelves-sn2100-storage.html["NS224シェルフをスイッチ接続ストレージとしてケーブル接続"] 。

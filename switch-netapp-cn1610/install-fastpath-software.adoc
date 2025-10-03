@@ -2,77 +2,77 @@
 permalink: switch-netapp-cn1610/install-fastpath-software.html 
 sidebar: sidebar 
 keywords: install, fastpath, software 
-summary: ネットアップのスイッチに FastPath ソフトウェアをインストールするときは、 2 つ目のスイッチ cs2 でアップグレードを開始する必要があります。 
+summary: NetAppスイッチに FASTPATH ソフトウェアをインストールする場合は、2 番目のスイッチ cs2 からアップグレードを開始する必要があります。 
 ---
-= FastPath ソフトウェアをインストールします
+= FASTPATHソフトウェアをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-ネットアップのスイッチに FastPath ソフトウェアをインストールするときは、 2 番目のスイッチである _CS2_へ のアップグレードを開始する必要があります。
+NetAppスイッチに FASTPATH ソフトウェアをインストールする場合は、2 番目のスイッチ _cs2_ からアップグレードを開始する必要があります。
 
 
 
-== 要件を確認
+== 要件の確認
 
-.作業を開始する前に
-次のものがあることを確認します。
+.開始する前に
+以下のものがあることを確認してください。
 
-* スイッチ設定の現在のバックアップ。
-* クラスタが完全に機能している（ログにエラーは記録されず、クラスタネットワークインターフェイスカード（NIC）の欠陥や同様の問題はない）。
-* クラスタスイッチ上の完全に機能するポート接続。
-* すべてのクラスタポートが設定されています。
-* すべてのクラスタ論理インターフェイス（LIF）がセットアップされている（移行されていない）。
-* 通信パスが成功した場合：ONTAP （権限：advanced） `cluster ping-cluster -node node1` コマンドは、を示す必要があります `larger than PMTU communication` はすべてのパスで成功しています。
-* FastPathおよびONTAP のサポートされているバージョン。
+* スイッチ構成の現在のバックアップ。
+* 完全に機能しているクラスター (ログにエラーがなく、クラスター ネットワーク インターフェイス カード (NIC) に欠陥がなく、同様の問題もありません)。
+* クラスター スイッチ上の完全に機能するポート接続。
+* すべてのクラスター ポートが設定されました。
+* すべてのクラスタ論理インターフェイス (LIF) がセットアップされている (移行されていないこと)。
+* 成功した通信パス: ONTAP (権限: 上級) `cluster ping-cluster -node node1`コマンドは以下を示す必要があります `larger than PMTU communication`すべてのパスで成功します。
+* サポートされている FASTPATH およびONTAPのバージョン。
 +
-のスイッチ互換性の表を参照してください http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^] サポートされているFastPathおよびONTAP のバージョンについては、ページを参照してください。
+スイッチの互換性表を必ず参照してください。 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601およびCN1610スイッチ"^]サポートされている FASTPATH およびONTAPバージョンについては、こちらのページをご覧ください。
 
 
 
 
 
-== FastPathをインストールします
+== FASTPATHをインストールする
 
-次の手順 では、clustered Data ONTAP 8.2の構文を使用します。そのため、クラスタSVM、LIF名、CLIの出力がData ONTAP 8.3の出力と異なります。
+次の手順では、clustered Data ONTAP 8.2 構文を使用します。その結果、クラスタ Vserver、LIF 名、および CLI 出力は、 Data ONTAP 8.3 のものとは異なります。
 
-RCF バージョンと FastPath バージョンでは、コマンド構文間にコマンドの依存関係が存在する場合があります。
+RCF バージョンと FASTPATH バージョンのコマンド構文間にはコマンド依存関係が存在する場合があります。
 
 .例について
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 2 つのネットアップスイッチは cs1 と cs2 です。
-* 2 つのクラスタ LIF は clus1 と clus2 です。
-* SVM は vs1 および vs2 です。
-* 'cluster::*>' プロンプトは ' クラスタの名前を示します
-* 各ノードのクラスタポートには、 e1a および e2a という名前が付けられます。
+* 2 つのNetAppスイッチは cs1 と cs2 です。
+* 2 つのクラスター LIF は clus1 と clus2 です。
+* Vserver は vs1 と vs2 です。
+* その `cluster::*>`プロンプトはクラスターの名前を示します。
+* 各ノードのクラスタ ポートの名前はe1aおよびe2aです。
 +
-https://hwu.netapp.com/["Hardware Universe"^] 使用しているプラットフォームでサポートされている実際のクラスタポートに関する詳細情報が表示されます。
+https://hwu.netapp.com/["Hardware Universe"^]プラットフォームでサポートされている実際のクラスター ポートに関する詳細情報は、こちらをご覧ください。
 
-* サポートされているスイッチ間リンク（ISL）は、ポート0/13~0/16です。
-* サポートされるノード接続はポート0/1~0/12です。
-
-
+* サポートされているスイッチ間リンク (ISL) は、ポート 0/13 ～ 0/16 です。
+* サポートされるノード接続はポート 0/1 ～ 0/12 です。
 
 
-=== 手順1：クラスタを移行する
 
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+
+=== ステップ1: クラスターの移行
+
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
 +
-'system node AutoSupport invoke -node * -type all -message MAINT=xh`
-
-+
-_x_ は、メンテナンス時間の長さ（時間単位）です。
+`system node autosupport invoke -node * -type all - message MAINT=xh`
 
 +
+_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
 
-NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
-
-. スイッチに admin としてログインします。デフォルトではパスワードはありません。'(CS2)#' プロンプトで 'enable` コマンドを入力しますここでも、デフォルトではパスワードはありません。これにより、ネットワークインターフェイスを設定できる特権 EXEC モードにアクセスできます。
 +
-.例を示します
+
+NOTE: AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+
+. スイッチに管理者としてログインします。デフォルトではパスワードはありません。で `(cs2) #`プロンプトに入力してください `enable`指示。繰り返しますが、デフォルトではパスワードはありません。これにより、特権 EXEC モードにアクセスして、ネットワーク インターフェイスを設定できるようになります。
++
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -82,12 +82,12 @@ Password (Enter)
 (cs2) #
 ----
 ====
-. 各ノードのコンソールで、clus2をポートe1aに移行します。
+. 各ノードのコンソールで、clus2 をポート e1a に移行します。
 +
-「ネットワーク・インターフェイス移行」
+`network interface migrate`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -96,15 +96,15 @@ cluster::*> network interface migrate -vserver vs1 -lif clus2 -destnode node1 -d
 cluster::*> network interface migrate -vserver vs2 -lif clus2 -destnode node2 -dest-port e1a
 ----
 ====
-. 各ノードのコンソールで、移行が実行されたことを確認します。
+. 各ノードのコンソールで、移行が行われたことを確認します。
 +
-「 network interface show 」を参照してください
+`network interface show`
 
 +
-次の例では、 clus2 が両方のノードのポート e1a に移行されています。
+次の例は、clus2 が両方のノードのポート e1a に移行したことを示しています。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -126,17 +126,17 @@ vs2
 
 
 
-=== 手順2：FastPathソフトウェアをインストールします
+=== ステップ2: FASTPATHソフトウェアをインストールする
 
-. 両方のノードで、クラスタポートe2aをシャットダウンします。
+. 両方のノードでクラスター ポート e2a をシャットダウンします。
 +
-「 network port modify 」を参照してください
+`network port modify`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、両方のノードでポート e2a がシャットダウンされていることを示しています。
+次の例では、両方のノードでポート e2a がシャットダウンされています。
 
 [listing]
 ----
@@ -144,12 +144,12 @@ cluster::*> network port modify -node node1 -port e2a -up-admin false
 cluster::*> network port modify -node node2 -port e2a -up-admin false
 ----
 ====
-. 両方のノードでポートe2aがシャットダウンされていることを確認します。
+. 両方のノードでポート e2a がシャットダウンされていることを確認します。
 +
-「 network port show 」のように表示されます
+`network port show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -167,9 +167,9 @@ node2
        e2a  cluster  down 9000   true/true   full/full   auto/10000
 ----
 ====
-. アクティブなネットアップスイッチ cs1 のスイッチ間リンク（ ISL ）ポートをシャットダウンします。
+. アクティブなNetAppスイッチである cs1 の Inter-Switch Link (ISL) ポートをシャットダウンします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -181,9 +181,9 @@ node2
 (cs1)(config) # exit
 ----
 ====
-. cs2 で現在アクティブなイメージをバックアップします。
+. cs2 上の現在のアクティブ イメージをバックアップします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -210,12 +210,12 @@ Copy operation successful
 (cs2) #
 ----
 ====
-. スイッチにイメージファイルをダウンロードします。
+. スイッチにイメージ ファイルをダウンロードします。
 +
-イメージファイルをアクティブイメージにコピーすると、リブート時にそのイメージによって FastPath バージョンが確立されます。以前のイメージはバックアップとして使用できます。
+イメージ ファイルをアクティブ イメージにコピーすると、再起動時にそのイメージによって実行中の FASTPATH バージョンが確立されます。以前のイメージはバックアップとして使用できます。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -238,12 +238,12 @@ TFTP Code transfer starting...
 File transfer operation completed successfully.
 ----
 ====
-. FastPath ソフトウェアの実行中のバージョンを確認します。
+. 実行中の FASTPATH ソフトウェアのバージョンを確認します。
 +
-'how version （バージョンの表示） '
+`show version`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -271,12 +271,12 @@ Additional Packages................. FASTPATH QOS
                                      FASTPATH IPv6 Management
 ----
 ====
-. アクティブ構成とバックアップ構成のブートイメージを表示します。
+. アクティブ構成とバックアップ構成のブート イメージを表示します。
 +
-'How bootvar'
+`show bootvar`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -299,10 +299,10 @@ Image Descriptions
 ====
 . スイッチをリブートします。
 +
-「再ロード」
+`reload`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -318,14 +318,14 @@ System will now restart!
 
 
 
-=== 手順3：インストールを検証する
+=== ステップ3: インストールの検証
 
-. もう一度ログインし、 FastPath ソフトウェアの新しいバージョンを確認します。
+. 再度ログインし、FASTPATH ソフトウェアの新しいバージョンを確認します。
 +
-'how version （バージョンの表示） '
+`show version`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -353,12 +353,12 @@ Additional Packages.................. FASTPATH QOS
                                       FASTPATH IPv6 Management
 ----
 ====
-. アクティブなスイッチ cs1 の ISL ポートを起動します。
+. アクティブ スイッチである cs1 の ISL ポートを起動します。
 +
-「 configure 」を実行します
+`configure`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -372,13 +372,13 @@ Additional Packages.................. FASTPATH QOS
 ====
 . ISL が動作していることを確認します。
 +
-「 show port-channel 3/1 」
+`show port-channel 3/1`
 
 +
-Link State フィールドには 'up' と表示されます
+リンク状態フィールドは以下を示す必要があります `Up`。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -406,9 +406,9 @@ Ports  Timeout       Speed     Active
        partner/long
 ----
 ====
-. ソフトウェアのバージョンとスイッチの設定に問題がなければ 'running-config ファイルを 'startup-config ファイルにコピーします
+. コピー `running-config`ファイルに `startup-config`ソフトウェアのバージョンとスイッチの設定に満足したら、ファイルを保存します。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -425,12 +425,12 @@ Config file 'startup-config' created successfully .
 Configuration Saved!
 ----
 ====
-. 各ノードで2つ目のクラスタポートe2aを有効にします。
+. 各ノードで 2 番目のクラスター ポート e2a を有効にします。
 +
-「 network port modify 」を参照してください
+`network port modify`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -439,15 +439,15 @@ cluster::*> network port modify -node node1 -port e2a -up-admin true
 cluster::*> **network port modify -node node2 -port e2a -up-admin true**
 ----
 ====
-. ポートe2aに関連付けられているclus2をリバートします。
+. ポート e2a に関連付けられている clus2 を元に戻します。
 +
-「 network interface revert 」の略
+`network interface revert`
 
 +
-ONTAP ソフトウェアのバージョンによっては、 LIF が自動的にリバートされる場合があります。
+ONTAPソフトウェアのバージョンによっては、LIF が自動的に元に戻る場合があります。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -456,12 +456,12 @@ cluster::*> network interface revert -vserver Cluster -lif n1_clus2
 cluster::*> network interface revert -vserver Cluster -lif n2_clus2
 ----
 ====
-. 両方のノードで LIF がホームになったことを確認します（「 true 」）。
+. LIFがホームになっていることを確認する(`true`) を両方のノードで実行します。
 +
-'network interface show --_role cluster_`
+`network interface show -_role cluster_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -481,10 +481,10 @@ vs2
 ====
 . ノードのステータスを表示します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -497,9 +497,9 @@ node1                true    true
 node2                true    true
 ----
 ====
-. 上記の手順を繰り返して、もう一方のスイッチcs1にFastPathソフトウェアをインストールします。
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
+. 前の手順を繰り返して、他のスイッチ cs1 に FASTPATH ソフトウェアをインストールします。
+. 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 

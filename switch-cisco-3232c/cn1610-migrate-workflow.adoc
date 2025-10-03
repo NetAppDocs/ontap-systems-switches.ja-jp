@@ -2,7 +2,7 @@
 permalink: switch-cisco-3232c/cn1610-migrate-workflow.html 
 sidebar: sidebar 
 keywords: 3232c cabling setup, 3232c switches configuration, nx-os 
-summary: Cisco 3232Cスイッチを設定する前に、次の情報を確認してください。 
+summary: Cisco 3232C スイッチを構成する前に、次の情報を確認してください。 
 ---
 = CN1610スイッチからNexus 3232Cスイッチへの移行ワークフロー
 :allow-uri-read: 
@@ -11,24 +11,24 @@ summary: Cisco 3232Cスイッチを設定する前に、次の情報を確認し
 
 
 [role="lead"]
-CN1610スイッチをCisco Nexus 3232Cスイッチに移行するには、次のワークフロー手順を実行します。
+CN1610 スイッチをCisco Nexus 3232C スイッチに移行するには、次のワークフロー手順に従います。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:cn1610-migrate-to-3232c-overview.html["移行の要件"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:cn1610-migrate-to-3232c-overview.html["移行要件"]
 [role="quick-margin-para"]
-移行プロセスのスイッチ情報の例を確認します。
+移行プロセスの例のスイッチ情報を確認します。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:cn1610-prepare-to-migrate.html["移行を準備"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:cn1610-prepare-to-migrate.html["移行の準備"]
 [role="quick-margin-para"]
-CN1610スイッチをNexus 3232Cスイッチに移行する準備をします。
+CN1610 スイッチを Nexus 3232C スイッチに移行する準備をします。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:cn1610-replace-CL2.html["クラスタスイッチCL2の交換"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:cn1610-replace-CL2.html["クラスタスイッチCL2を交換する"]
 [role="quick-margin-para"]
-クラスタスイッチCL2を新しいNexus 3232CスイッチC2に交換します。
+クラスタ スイッチ CL2 を新しい Nexus 3232C スイッチ C2 に置き換えます。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:cn1610-replace-CL1.html["クラスタスイッチCL1の交換"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:cn1610-replace-CL1.html["クラスタスイッチCL1を交換する"]
 [role="quick-margin-para"]
-クラスタスイッチCL1を新しいNexus 3232CスイッチC1に交換します。
+クラスタ スイッチ CL1 を新しい Nexus 3232C スイッチ C1 に置き換えます。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"]link:cn1610-complete-migration.html["移行の完了"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:cn1610-complete-migration.html["移行を完了する"]
 [role="quick-margin-para"]
-新しいNexus 3232Cスイッチへの移行が完了しました。
+新しい Nexus 3232C スイッチへの移行を完了します。

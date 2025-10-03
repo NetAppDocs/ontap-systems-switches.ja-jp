@@ -2,113 +2,109 @@
 permalink: switch-bes-53248/upgrade-efos-software.html 
 sidebar: sidebar 
 keywords: BES-53248 cluster switches,upgrading EFOS software 
-summary: BES-53248クラスタスイッチのイーサネットファブリックOS（EFOS）ソフトウェアをアップグレードする手順は、次のとおりです。 
+summary: 'BES-53248 クラスタ スイッチ上の Ethernet Fabric OS (EFOS) ソフトウェアをアップグレードするには、次の手順に従います。' 
 ---
-= EFOSソフトウェアのアップグレード
+= EFOSソフトウェアをアップグレードします。
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248クラスタスイッチのEFOSソフトウェアをアップグレードする手順は、次のとおりです。
+BES-53248 クラスター スイッチ上の EFOS ソフトウェアをアップグレードするには、次の手順に従います。
 
-EFOSソフトウェアには、イーサネットシステムおよびIPインフラシステムを開発するための高度なネットワーク機能とプロトコルのセットが含まれています。このソフトウェアアーキテクチャは、パケットの検査や分離を完全に行う必要があるアプリケーションを使用するあらゆるネットワーク組織のデバイスに適しています。
+EFOS ソフトウェアには、イーサネットおよび IP インフラストラクチャ システムを開発するための高度なネットワーク機能とプロトコルのセットが含まれています。このソフトウェア アーキテクチャは、徹底したパケット検査または分離を必要とするアプリケーションを使用するあらゆるネットワーク組織デバイスに適しています。
 
 
 
-== アップグレードを準備
+== アップグレードの準備
 
-.作業を開始する前に
-* クラスタスイッチに対応するBroadcom EFOSソフトウェアをからダウンロードします https://www.broadcom.com/support/bes-switch["Broadcom Ethernet Switch のサポート"^] サイト
-* EFOSバージョンに関する次の注意事項を確認します。
+.開始する前に
+* クラスタスイッチに適したBroadcom EFOSソフトウェアを以下のサイトからダウンロードしてください。 https://www.broadcom.com/support/bes-switch["Broadcomイーサネット スイッチのサポート"^]サイト。
+* EFOS バージョンに関する次の注意事項を確認してください。
 
 
 []
 ====
-* 次の点に注意してください。 *
+*以下の点にご注意ください:*
 
-* EFOS 3.x.x から EFOS 3.x.x 以降にアップグレードするときは、スイッチが EFOS 3.4.4.6 （または 3.4.x.x 以降のリリース）を実行している必要があります。それよりも前のリリースを実行している場合は、まずスイッチを EFOS 3.4.4.6 （または 3.4.x.x 以降のリリース）にアップグレードしてから、スイッチを EFOS 3.x.x 以降にアップグレードします。
-* EFOS 3.x.x と 3.7.x.x 以降の設定は異なります。EFOS バージョンを 3.4.x.x から 3.7.x.x 以降、またはその逆に変更する場合は、スイッチを工場出荷時のデフォルトにリセットする必要があり、対応する EFOS バージョンの RCF ファイルが適用される（再適用される）必要があります。この手順には、シリアルコンソールポート経由でアクセスする必要があります。
-* EFOS バージョン 3.7.x.x 以降では、 FIPS に準拠していないバージョンと FIPS に準拠したバージョンが提供されています。FIPSに準拠していないバージョンからFIPSに準拠したバージョンに移行する場合とFIPSに準拠していないバージョンからFIPSに準拠したバージョンに移行する場合は、EFOS を FIPS 非準拠バージョンから FIPS 準拠バージョンに変更するか、その逆に変更すると、スイッチが工場出荷時のデフォルトにリセットされます。この手順には、シリアルコンソールポート経由でアクセスする必要があります。
+* EFOS 3.4.x.xからEFOS 3.7.x.x以降にアップグレードする場合は、スイッチでEFOS 3.4.4.6（またはそれ以降の3.4.x.xリリース）が実行されている必要があります。それよりも前のリリースが実行されている場合は、まずスイッチをEFOS 3.4.4.6（またはそれ以降の3.4.x.xリリース）にアップグレードしてから、スイッチをEFOS 3.7.x.x以降にアップグレードします。
+* EFOS 3.4.x.xと3.7.x.x以降では、設定が異なります。EFOSバージョンを3.4.x.xから3.7.x.x以降（またはその逆）に変更するには、スイッチを工場出荷時のデフォルトにリセットし、そのEFOSのバージョンに対応するRCFファイルを（再）適用する必要があります。この手順は、シリアル コンソール ポート経由でアクセスして実行する必要があります。
+* EFOSバージョン3.7.x.x以降では、FIPS非準拠バージョンとFIPS準拠バージョンを使用できます。FIPS 非準拠バージョンから FIPS 準拠バージョンに移行する場合、またはその逆の場合、異なる手順が適用されます。EFOSをFIPS非準拠バージョンからFIPS準拠バージョン（またはその逆）に変更すると、スイッチは工場出荷時のデフォルトにリセットされます。この手順は、シリアル コンソール ポート経由でアクセスして実行する必要があります。
 
 
 ====
 |===
 
 
-| * 手順 * | * 現在の EFOS バージョン * | * 新しい EFOS バージョン * | * 高レベルステップ * 
+| *手順* | *現在のEFOSバージョン* | *新しいEFOSバージョン* | *大まかな手順* 
 
 
  a| 
-FIPS に準拠している 2 つのバージョン間で EFOS をアップグレードする手順
+2つの（非）FIPS準拠バージョン間でEFOSをアップグレードする手順
  a| 
-3.4.x.x
+3.4.xx
  a| 
-3.4.x.x
+3.4.xx
  a| 
-次を使用して新しいEFOSイメージをアップグレードします： <<方法1：EFOSをアップグレードする>>。
-構成とライセンスの情報は保持されます。
-
-
-
- a| 
-3.4.4.6 （または 3.4.x.x 以降）
- a| 
-3.7.x.x 以降の非 FIPS 準拠
- a| 
-を使用してEFOSをアップグレードする <<方法1：EFOSをアップグレードする>>。
-スイッチを工場出荷時のデフォルトにリセットして、EFOS 3.x.x以降のRCFファイルを適用します。
-
-
-
-.2+| 3.7.x.x 以降の非 FIPS 準拠  a| 
-3.4.4.6 （または 3.4.x.x 以降）
- a| 
-を使用してEFOSをダウングレードし <<方法1：EFOSをアップグレードする>>。
-スイッチを工場出荷時のデフォルトにリセットして、 EFOS 3.x.x の RCF ファイルを適用します
+新しいEFOSイメージをアップグレードするには<<方法1: EFOSをアップグレードする>>。構成とライセンス情報は保持されます。
 
 
 
  a| 
-3.7.x.x 以降の非 FIPS 準拠
+3.4.4.6 (または 3.4.xx 以降)
  a| 
-次を使用して新しいEFOSイメージをアップグレードします： <<方法1：EFOSをアップグレードする>>。構成とライセンスの情報は保持されます。
+3.7.xx 以降は FIPS 非準拠
+ a| 
+EFOSをアップグレードするには<<方法1: EFOSをアップグレードする>>。スイッチを工場出荷時の設定にリセットし、EFOS 3.7.xx 以降の RCF ファイルを適用します。
+
+
+
+.2+| 3.7.xx 以降は FIPS 非準拠  a| 
+3.4.4.6 (または 3.4.xx 以降)
+ a| 
+EFOSをダウングレードするには<<方法1: EFOSをアップグレードする>>。スイッチを工場出荷時のデフォルトにリセットし、EFOS 3.4.x.xのRCFファイルを適用します。
 
 
 
  a| 
-3.7.x.x 以降の FIPS に準拠しています
+3.7.xx 以降は FIPS 非準拠
  a| 
-3.7.x.x 以降の FIPS に準拠しています
- a| 
-次を使用して新しいEFOSイメージをアップグレードします： <<方法1：EFOSをアップグレードする>>。
-構成とライセンスの情報は保持されます。
+新しいEFOSイメージをアップグレードするには<<方法1: EFOSをアップグレードする>>。構成とライセンス情報は保持されます。
 
 
 
  a| 
-FIPS 準拠の EFOS バージョンへのアップグレード手順
+3.7.xx以降 FIPS準拠
  a| 
-FIPS に準拠していません
+3.7.xx以降 FIPS準拠
  a| 
-FIPS に準拠している
- a| 
-次を使用したEFOSイメージのアップグレード： <<方法2：ONIE OSインストールを使用してEFOSをアップグレードします>>。スイッチの設定とライセンス情報が失われます。
+新しいEFOSイメージをアップグレードするには<<方法1: EFOSをアップグレードする>>。構成とライセンス情報は保持されます。
 
 
 
  a| 
-FIPS に準拠している
+FIPS準拠のEFOSバージョンへのアップグレード手順
  a| 
-FIPS に準拠していません
+FIPS非準拠
+ a| 
+FIPS準拠
+ a| 
+EFOSイメージのアップグレード<<方法2: ONIE OSインストールを使用してEFOSをアップグレードする>>。スイッチの設定とライセンス情報は失われます。
+
+
+
+ a| 
+FIPS準拠
+ a| 
+FIPS非準拠
 
 |===
 [IMPORTANT]
 ====
-EFOSのバージョンがFIPSに準拠しているかどうかを確認するには、を使用します `show fips status` コマンドを実行します次の例では、* IP_switch_a1 *はFIPS準拠のEFOSを使用し、* IP_switch_a2 *はFIPS非準拠のEFOSを使用しています。
+EFOSのバージョンがFIPS準拠か非準拠かを確認するには、 `show fips status`指示。次の例では、*IP_switch_a1* は FIPS 準拠の EFOS を使用し、*IP_switch_a2* は FIPS 非準拠の EFOS を使用しています。
 
-* スイッチIP_switch_A1（FIPS準拠のEFOS）：
+* スイッチ IP_switch_a1 (FIPS 準拠 EFOS) の場合:
 +
 [listing, subs="+quotes"]
 ----
@@ -116,7 +112,7 @@ IP_switch_a1 # *show fips status*
 
 System running in FIPS mode
 ----
-* スイッチIP_switch_A2（FIPS非準拠EFOS）：
+* スイッチ IP_switch_a2 (FIPS 非準拠 EFOS) の場合:
 +
 [listing, subs="+quotes"]
 ----
@@ -129,31 +125,31 @@ IP_switch_a2 # *show fips status*
 ====
 
 
-== ソフトウェアのアップグレード
+== ソフトウェアをアップグレードする
 
 次のいずれかの方法を使用します。
 
-* <<方法1：EFOSをアップグレードする>>。ほとんどの場合に使用します（上の表を参照）。
-* <<方法2：ONIE OSインストールを使用してEFOSをアップグレードします>>。一方のEFOSバージョンがFIPSに準拠しており、もう一方のEFOSバージョンがFIPSに準拠していない場合に使用します。
+* <<方法1: EFOSをアップグレードする>> 。ほとんどの場合に使用します (上記の表を参照)。
+* <<方法2: ONIE OSインストールを使用してEFOSをアップグレードする>> 。一方の EFOS バージョンが FIPS 準拠であり、もう一方の EFOS バージョンが FIPS 非準拠である場合に使用します。
 
 
 
-NOTE: クラスタネットワークの運用を継続するには、一度に1つのスイッチでEFOSをアップグレードしてください。
+NOTE: クラスター ネットワークの継続的な運用を確保するには、一度に 1 つのスイッチで EFOS をアップグレードします。
 
 
 
-=== 方法1：EFOSをアップグレードする
+=== 方法1: EFOSをアップグレードする
 
-EFOSソフトウェアをアップグレードするには、次の手順を実行します。
+EFOS ソフトウェアをアップグレードするには、次の手順を実行します。
 
 
-IMPORTANT: BES-53248 クラスタスイッチを EFOS 3.x.x または 3.4.x.x から EFOS 3.7.0.4 または 3.8.0.2 にアップグレードしたあと、 Inter-Switch Link （ ISL ；スイッチ間リンク）とポートチャネルが「 Down 」状態でマークされることに注意してください。これは想定された動作であり、自動リバートLIFで問題がないかぎりアップグレードを続行しても問題ありません。詳細については、ナレッジベースの記事を参照してください https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric%2C_Interconnect_and_Management_Switches/BES-53248_Cluster_Switch_NDU_failed_upgrade_to_EFOS_3.7.0.4_and_later["BES-53248クラスタスイッチNDUをEFOS 3.7.0.4以降にアップグレードできませんでした"^]。
+IMPORTANT: BES-53248 クラスター スイッチを EFOS 3.3.xx または 3.4.xx から EFOS 3.7.0.4 または 3.8.0.2 にアップグレードすると、スイッチ間リンク (ISL) とポート チャネルが *ダウン* 状態にマークされることに注意してください。これは想定された動作であり、LIF の自動復元に関する問題が発生していない限り、アップグレードを続行しても安全です。ナレッジベースの記事を参照してください: https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric%2C_Interconnect_and_Management_Switches/BES-53248_Cluster_Switch_NDU_failed_upgrade_to_EFOS_3.7.0.4_and_later["BES-53248 クラスタスイッチNDUがEFOS 3.7.0.4以降へのアップグレードに失敗しました"^]詳細については、こちらをご覧ください。
 
 .手順
-. BES-53248 クラスタスイッチを管理ネットワークに接続します。
-. 「 ping 」コマンドを使用して、 EFOS 、ライセンス、 RCF ファイルをホストするサーバへの接続を確認します。
+. BES-53248クラスタ スイッチを管理ネットワークに接続します。
+. 使用 `ping`EFOS、ライセンス、および RCF ファイルをホストしているサーバーへの接続を確認するコマンド。
 +
-次の例では、スイッチが IP アドレス 172.19.2.1 のサーバに接続されていることを確認します。
+次の例では、スイッチがIPアドレス172.19.2.1のサーバに接続されていることを確認します。
 
 +
 [listing, subs="+quotes"]
@@ -163,18 +159,18 @@ Pinging 172.19.2.1 with 0 bytes of data:
 
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
-. クラスタ LIF で自動リバートを無効にします。
+. クラスタLIFで自動リバートを無効にします。
 +
 [source, cli]
 ----
 network interface modify -vserver Cluster -lif * -auto-revert false
 ----
-. アクティブ構成とバックアップ構成のブートイメージを表示します。
+. アクティブ構成とバックアップ構成のブート イメージを表示します。
 +
-'How bootvar'
+`show bootvar`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -194,7 +190,7 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 
 ----
 ====
-. スイッチにイメージファイルをダウンロードします。
+. スイッチにイメージ ファイルをダウンロードします。
 +
 イメージ ファイルをバックアップ イメージにコピーすると、再起動時にそのイメージによって実行中の EFOS バージョンが確立され、更新が完了します。
 
@@ -218,12 +214,12 @@ SFTP Code transfer starting...
 
 File transfer operation completed successfully.
 ----
-. アクティブ構成とバックアップ構成のブートイメージを表示します。
+. アクティブ構成とバックアップ構成のブート イメージを表示します。
 +
-'How bootvar'
+`show bootvar`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -242,7 +238,7 @@ Image Descriptions
     1      3.7.0.4    3.7.0.4             3.7.0.4       3.10.0.3
 ----
 ====
-. バックアップ構成からシステムをブートします。
+. バックアップ構成からシステムを起動します。
 +
 `boot system backup`
 
@@ -252,12 +248,12 @@ Image Descriptions
 (cs2)# *boot system backup*
 Activating image backup ..
 ----
-. アクティブ構成とバックアップ構成のブートイメージを表示します。
+. アクティブ構成とバックアップ構成のブート イメージを表示します。
 +
-'How bootvar'
+`show bootvar`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -276,12 +272,12 @@ Image Descriptions
     1    3.10.0.3    3.10.0.3            3.10.0.3       3.10.0.3
 ----
 ====
-. 実行コンフィギュレーションをスタートアップコンフィギュレーションに保存します。
+. 実行中の設定をスタートアップ コンフィギュレーションに保存します。
 +
-「メモリの書き込み」
+`write memory`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -299,10 +295,10 @@ Configuration Saved!
 ====
 . スイッチをリブートします。
 +
-「再ロード」
+`reload`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -317,12 +313,12 @@ Configuration Saved!
 System will now restart!
 ----
 ====
-. 再度ログインして、新しいバージョンの EFOS ソフトウェアを確認します。
+. 再度ログインし、EFOS ソフトウェアの新しいバージョンを確認します。
 +
-'how version （バージョンの表示） '
+`show version`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -353,46 +349,46 @@ Additional Packages............................ BGP-4
 ............................................... Prototype Open API
 ----
 ====
-. スイッチcs1で手順5~11を繰り返します。
-. クラスタ LIF で自動リバートを有効にします。
+. スイッチ cs1 で手順 5 から 11 を繰り返します。
+. クラスタLIFで自動リバートを有効にします。
 +
 [source, cli]
 ----
 network interface modify -vserver Cluster -lif * -auto-revert true
 ----
-. クラスタ LIF がホームポートにリバートされたことを確認します。
+. クラスタ LIF がホーム ポートに戻ったことを確認します。
 +
 [source, cli]
 ----
 network interface show -role Cluster
 ----
 +
-詳細については、を参照してください link:https://docs.netapp.com/us-en/ontap/networking/revert_a_lif_to_its_home_port.html["LIF をホームポートにリバートする"]。
+詳細については、link:https://docs.netapp.com/us-en/ontap/networking/revert_a_lif_to_its_home_port.html["ホーム ポートへのLIFのリバート"] 。
 
 
 
 
 
-=== 方法2：ONIE OSインストールを使用してEFOSをアップグレードします
+=== 方法2: ONIE OSインストールを使用してEFOSをアップグレードする
 
-一方の EFOS バージョンが FIPS に準拠していて、もう一方の EFOS バージョンが FIPS に準拠していない場合は、次の手順を実行できます。スイッチをブートできない場合は、次の手順を使用して、FIPSまたはFIPSに準拠していないEFOS 3.7.x.xイメージをONIEからアップグレードできます。
-
-
-NOTE: この機能は、 EFOS 3.x.x 以降の非 FIPS 準拠に対してのみ使用できます。
+次の手順は、一方のEFOSバージョンがFIPS準拠で、もう一方のEFOSバージョンがFIPS非準拠の場合に実行できます。スイッチの起動に失敗した場合は、次の手順を使用して、ONIE から FIPS 非準拠または FIPS 準拠の EFOS 3.7.xx イメージをアップグレードできます。
 
 
-CAUTION: ONIE OSインストールを使用してEFOSをアップグレードすると、設定が工場出荷時のデフォルトにリセットされ、ライセンスが削除されます。スイッチを通常動作に戻すには、スイッチをセットアップし、ライセンスとサポートされているRCFをインストールする必要があります。
+NOTE: この機能は、FIPS 非準拠の EFOS 3.7.xx 以降でのみ使用できます。
+
+
+CAUTION: ONIE OS インストールを使用して EFOS をアップグレードすると、構成は工場出荷時のデフォルトにリセットされ、ライセンスは削除されます。スイッチを通常の動作に戻すには、スイッチをセットアップし、ライセンスとサポートされている RCF をインストールする必要があります。
 
 .手順
-. クラスタ LIF で自動リバートを無効にします。
+. クラスタLIFで自動リバートを無効にします。
 +
 [source, cli]
 ----
 network interface modify -vserver Cluster -lif * -auto-revert false
 ----
-. スイッチを ONIE インストールモードで起動します。
+. スイッチをONIEインストール モードで起動します。
 +
-ブート中に次のプロンプトが表示されたら、ONIEを選択します。
+起動中にプロンプトが表示されたら、ONIE を選択します。
 
 +
 [listing]
@@ -413,7 +409,7 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 +--------------------------------------------------------------------+
 ----
 +
-*ONIE*を選択すると、スイッチがロードされ、いくつかの選択肢が表示されます。「OSのインストール」を選択します。
+*ONIE* を選択すると、スイッチが読み込まれ、いくつかの選択肢が表示されます。  *OSのインストール*を選択します。
 
 +
 [listing]
@@ -434,11 +430,11 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 +--------------------------------------------------------------------+
 ----
 +
-スイッチがONIEインストールモードで起動します。
+スイッチは ONIE インストール モードで起動します。
 
-. ONIE の検出を停止し、イーサネットインターフェイスを設定します。
+. ONIE 検出を停止し、イーサネット インターフェイスを構成します。
 +
-次のメッセージが表示されたら、*Enter*キーを押してONIEコンソールを起動します。
+次のメッセージが表示されたら、*Enter* を押して ONIE コンソールを起動します。
 
 +
 [listing]
@@ -448,7 +444,7 @@ Please press Enter to activate this console. Info: eth0:  Checking link... up.
 ----
 +
 
-NOTE: ONIEの検出が続行され、メッセージがコンソールに出力されます。
+NOTE: ONIE 検出が続行され、メッセージがコンソールに出力されます。
 
 +
 [listing]
@@ -459,19 +455,19 @@ discover: installer mode detected.
 Stopping: discover... done.
 ONIE:/ #
 ----
-. イーサネットインターフェイスを設定し、「 ifconfig eth0 <ipAddress> netmask <netmask> up 」および「 route add default gw <gatewayAddress> 」を使用してルートを追加します
+. イーサネットインターフェースを設定し、ルートを追加します。 `ifconfig eth0 <ipAddress> netmask <netmask> up`そして `route add default gw <gatewayAddress>`
 +
 [listing]
 ----
 ONIE:/ # ifconfig eth0 10.10.10.10 netmask 255.255.255.0 up
 ONIE:/ # route add default gw 10.10.10.1
 ----
-. ONIE インストールファイルをホストしているサーバにアクセスできることを確認します。
+. ONIEインストール ファイルをホストしているサーバにアクセスできることを確認します。
 +
 `ping`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -488,12 +484,12 @@ round-trip min/avg/max = 0.369/0.464/0.595 ms
 ONIE:/ #
 ----
 ====
-. 新しいスイッチソフトウェアをインストールします。
+. 新しいスイッチ ソフトウェアをインストールします。
 +
 `ONIE:/ # onie-nos-install http://50.50.50.50/Software/onie-installer-x86_64`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -510,14 +506,14 @@ Preparing image archive ... OK.
 ----
 ====
 +
-ソフトウェアがインストールされ、スイッチがリブートされます。スイッチを通常どおりにリブートして新しい EFOS バージョンにします。
+ソフトウェアがインストールされ、スイッチが再起動します。スイッチが新しいEFOSバージョンで正常にリブートするのを待ちます。
 
-. 新しいスイッチソフトウェアがインストールされたことを確認します。
+. 新しいスイッチ ソフトウェアがインストールされていることを確認します。
 +
-'How bootvar'
+`show bootvar`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -534,29 +530,29 @@ unit 	active 	    backup   current-active  next-active
 (cs2) #
 ----
 ====
-. インストールを完了します。設定を適用せずにスイッチがリブートし、工場出荷時のデフォルトにリセットされます。スイッチを再設定するには、次の手順を実行します。
+. インストールを完了します。スイッチは設定が適用されずに再起動し、工場出荷時のデフォルトにリセットされます。スイッチを再構成するには、次の手順を実行します。
 +
-.. link:configure-licenses.html["ライセンスをインストール"]
-.. link:configure-install-rcf.html["RCFをインストールします"]
-.. link:configure-ssh.html["SSH を有効にします。"]
-.. link:CSHM_log_collection.html["ログ収集を有効にします"]
-.. link:CSHM_snmpv3.html["監視のためのSNMPv3の設定"]
+.. link:configure-licenses.html["ライセンスをインストールする"]
+.. link:configure-install-rcf.html["RCFのインストール"]
+.. link:configure-ssh.html["SSH を有効にする"]
+.. link:CSHM_log_collection.html["ログ収集を有効にする"]
+.. link:CSHM_snmpv3.html["監視用にSNMPv3を構成する"]
 
 
-. スイッチcs1で手順2~8を繰り返します。
-. クラスタ LIF で自動リバートを有効にします。
+. スイッチ cs1 で手順 2 から 8 を繰り返します。
+. クラスタLIFで自動リバートを有効にします。
 +
 [source, cli]
 ----
 network interface modify -vserver Cluster -lif * -auto-revert true
 ----
-. クラスタ LIF がホームポートにリバートされたことを確認します。
+. クラスタ LIF がホーム ポートに戻ったことを確認します。
 +
 [source, cli]
 ----
 network interface show -role Cluster
 ----
 +
-詳細については、を参照してください link:https://docs.netapp.com/us-en/ontap/networking/revert_a_lif_to_its_home_port.html["LIF をホームポートにリバートする"]。
+詳細については、link:https://docs.netapp.com/us-en/ontap/networking/revert_a_lif_to_its_home_port.html["ホーム ポートへのLIFのリバート"] 。
 
 

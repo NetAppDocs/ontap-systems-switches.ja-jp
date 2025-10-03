@@ -2,147 +2,147 @@
 permalink: switch-bes-53248/configure-licenses.html 
 sidebar: sidebar 
 keywords: bes, cluster, switch, base, model, license, 10gbe, 25gbe, 100gbe, port, add, purchasing, purchase, install licenses for bes-53248 cluster switches - bes-53248 switches 
-summary: BES-53248 クラスタスイッチの基本モデルには、 16 個の 10GbE ポートまたは 25GbE ポートと 2 個の 100GbE ポートがライセンスされています。ライセンスを追加購入すると、新しいポートを追加できます。 
+summary: BES-53248クラスタ スイッチ ベース モデルは、16個の10GbEまたは25GbEポートと、2個の100GbEポートに対してライセンスされています。ライセンスを新たに購入すると、新しいポートを追加できます。 
 ---
-= BES-53248 クラスタスイッチのライセンスをインストールします
+= BES-53248 クラスタスイッチのライセンスをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248 クラスタスイッチの基本モデルには、 16 個の 10GbE ポートまたは 25GbE ポートと 2 個の 100GbE ポートがライセンスされています。ライセンスを追加購入すると、新しいポートを追加できます。
+BES-53248クラスタ スイッチ ベース モデルは、16個の10GbEまたは25GbEポートと、2個の100GbEポートに対してライセンスされています。ライセンスを追加購入することで、新しいポートを追加できます。
 
 
-CAUTION: EFOS 3.12以降の場合は、のインストール手順に従いますlink:efos-install-rcf-license-file.html["リファレンス構成ファイル（RCF）とライセンスファイルのインストール"]。
+CAUTION: EFOS 3.12以降の場合は、link:efos-install-rcf-license-file.html["リファレンス構成ファイル（RCF）とライセンスファイルをインストールする"] 。
 
 
 
-== 使用可能なライセンスを確認します
+== 利用可能なライセンスを確認する
 
-BES-53248 クラスタスイッチでは次のライセンスを使用できます。
+BES-53248クラスタ スイッチでは、以下のライセンスを使用できます。
 
 [cols="1,2,3"]
 |===
-| ライセンスタイプ | ライセンスの詳細 | サポートされているファームウェアバージョン 
+| ライセンス タイプ | ライセンスの詳細 | サポート対象のファームウェア バージョン 
 
 
  a| 
 SW-BES-53248A2-8P-2P
  a| 
-Broadcom 8PT-10G25G+2PT-40G100Gライセンスキー、X190005/R
+Broadcom 8PT-10G25G + 2PT-40G100G ライセンスキー、X190005/R
  a| 
-EFOS 3.4.4.6 以降
+EFOS 3.4.4.6以降
 
 
 
  a| 
 SW-BES-53248A2-8P-1025G
  a| 
-Broadcom 8ポート10G25Gライセンスキー、X190005/R
+Broadcom 8 ポート 10G25G ライセンスキー、X190005/R
  a| 
-EFOS 3.4.4.6 以降
+EFOS 3.4.4.6以降
 
 
 
  a| 
 SW-BES53248A2-6P-40-100G
  a| 
-Broadcom 6ポート40G100Gライセンスキー、X190005/R
+Broadcom 6 ポート 40G100G ライセンスキー、X190005/R
  a| 
-EFOS 3.4.4.6 以降
+EFOS 3.4.4.6以降
 
 |===
 
 
 == レガシーライセンス
 
-次の表に、BES-53248クラスタスイッチで使用できる従来のライセンスを示します。
+次の表は、BES-53248 クラスタ スイッチで使用できたレガシー ライセンスの一覧です。
 
 [cols="1,2,3"]
 |===
-| ライセンスタイプ | ライセンスの詳細 | サポートされているファームウェアバージョン 
+| ライセンス タイプ | ライセンスの詳細 | サポート対象のファームウェア バージョン 
 
 
  a| 
-sw-BES - 53248A1-G1-8P-LIC
+SW-BES-53248A1-G1-8P-LIC
  a| 
-Broadcom 8P 10/252P40-100 ライセンスキー、 X190005/R
+Broadcom 8P 10-25、2P40-100ライセンス キー、X190005/R
  a| 
-EFOS 3.4.3.3 以降
-
-
-
- a| 
-sw-BES - 53248A1-G1-16P-LIC
- a| 
-Broadcom 16P 10-M254P40-100 ライセンスキー、 X190005/R
- a| 
-EFOS 3.4.3.3 以降
+EFOS 3.4.3.3以降
 
 
 
  a| 
-sw-BES - 53248A1-G1-24P-LIC
+SW-BES-53248A1-G1-16P-LIC
  a| 
-Broadcom 24P 10-M256P40-100 ライセンスキー、 X190005/R
+Broadcom 16P 10-25、4P40-100ライセンス キー、X190005/R
  a| 
-EFOS 3.4.3.3 以降
+EFOS 3.4.3.3以降
+
+
+
+ a| 
+SW-BES-53248A1-G1-24P-LIC
+ a| 
+Broadcom 24P 10-25、6P40-100ライセンス キー、X190005/R
+ a| 
+EFOS 3.4.3.3以降
 
 
 
  a| 
 SW-BES54248-40-100G-LIC
  a| 
-Broadcom 6Port 40G100G ライセンスキー、 X190005/R
+Broadcom 6ポート40G100Gライセンス キー、X190005/R
  a| 
-EFOS 3.4.4.6 以降
+EFOS 3.4.4.6以降
 
 
 
  a| 
-SW-BESG538-8P-10G25G-LIC
+SW-BES53248-8P-10G25G-LIC
  a| 
-Broadcom 8 ポート 10G25G ライセンスキー、 X190005/R
+Broadcom 8ポート10G25Gライセンス キー、X190005/R
  a| 
-EFOS 3.4.4.6 以降
+EFOS 3.4.4.6以降
 
 
 
  a| 
-SW-BESBES-53248 16P-1025G - LIC
+SW-BES53248-16P-1025G-LIC
  a| 
-Broadcom 16Port 10G25G ライセンスキー、 X190005/R
+Broadcom 16ポート10G25Gライセンス キー、X190005/R
  a| 
-EFOS 3.4.4.6 以降
+EFOS 3.4.4.6以降
 
 
 
  a| 
-SW-BESG5-24P-1025G-LIC
+SW-BES53248-24P-1025G-LIC
  a| 
-Broadcom 24Port 10G25G ライセンスキー、 X190005/R
+Broadcom 24ポート10G25Gライセンス キー、X190005/R
  a| 
-EFOS 3.4.4.6 以降
+EFOS 3.4.4.6以降
 
 |===
 
-NOTE: 基本構成にライセンスは必要ありません。
+NOTE: 基本構成ではライセンスは必要ありません。
 
 
 
-== ライセンスファイルをインストール
+== ライセンスファイルをインストールする
 
-BES-53248クラスタスイッチのライセンスをインストールするには、次の手順を実行します。
+BES-53248 クラスタ スイッチのライセンスをインストールするには、次の手順に従います。
 
 .手順
-. クラスタスイッチを管理ネットワークに接続します。
-. 「 ping 」コマンドを使用して、 EFOS 、ライセンス、 RCF ファイルをホストするサーバへの接続を確認します。
+. クラスタ スイッチを管理ネットワークに接続します。
+. 使用 `ping`EFOS、ライセンス、および RCF ファイルをホストしているサーバーへの接続を確認するコマンド。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例では、スイッチが IP アドレス 172.19.2.1 のサーバに接続されていることを確認します。
+次の例では、スイッチがIPアドレス172.19.2.1のサーバに接続されていることを確認します。
 
 [listing, subs="+quotes"]
 ----
@@ -154,10 +154,10 @@ Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ====
 . スイッチ cs2 の現在のライセンス使用状況を確認します。
 +
-'How license'
+`show license`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -172,15 +172,15 @@ License Index  License Type     Status
 No license file found.
 ----
 ====
-. ライセンスファイルをインストールします。
+. ライセンス ファイルをインストールします。
 +
-この手順を繰り返して、ライセンスを追加ロードし、異なるキーインデックス番号を使用します。
+さらにライセンスをロードし、異なるキーインデックス番号を使用するには、この手順を繰り返します。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例では、 SFTP を使用してライセンスファイルをキーインデックス 1 にコピーします。
+次の例では、SFTP を使用してライセンス ファイルをキー インデックス 1 にコピーします。
 
 [listing, subs="+quotes"]
 ----
@@ -202,12 +202,12 @@ File transfer in progress. Management access will be blocked for the duration of
 License Key transfer operation completed successfully. System reboot is required.
 ----
 ====
-. スイッチ cs2 をリブートする前に、現在のライセンス情報をすべて表示し、ライセンスのステータスをメモします。
+. スイッチ cs2 を再起動する前に、現在のライセンス情報をすべて表示し、ライセンス ステータスをメモします。
 +
-'How license'
+`show license`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -223,15 +223,15 @@ License Index  License Type      Status
 1              Port              License valid but not applied
 ----
 ====
-. すべてのライセンスポートを表示します。
+. ライセンスされているすべてのポートを表示します。
 +
-'How port All | exclude Detach'
+`show port all | exclude Detach`
 
 +
-追加のライセンスファイルのポートは、スイッチをリブートするまで表示されません。
+追加のライセンス ファイルのポートは、スイッチが再起動されるまで表示されません。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -263,10 +263,10 @@ Intf      Type   Mode      Mode       Status     Status Trap    Mode   Timeout
 ====
 . スイッチをリブートします。
 +
-「再ロード」
+`reload`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -282,12 +282,12 @@ Configuration Saved!
 Are you sure you would like to reset the system? (y/n) *y*
 ----
 ====
-. 新しいライセンスがアクティブになっていること、およびライセンスが適用されていることを確認します。
+. 新しいライセンスがアクティブであることを確認し、ライセンスが適用されていることを確認します。
 +
-'How license'
+`show license`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -304,12 +304,12 @@ License Index  License Type              Status
 1              Port                      License applied
 ----
 ====
-. 新しいポートがすべて使用可能であることを確認します。
+. すべての新しいポートが利用可能であることを確認します。
 +
-'How port All | exclude Detach'
+`show port all | exclude Detach`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -348,17 +348,17 @@ Intf      Type   Mode      Mode       Status     Status Trap    Mode   Timeout
 
 
 
-CAUTION: 追加ライセンスをインストールする場合は、新しいインターフェイスを手動で設定する必要があります。稼働中の既存の本番用スイッチにRCFを再適用しないでください。
+CAUTION: 追加のライセンスをインストールする場合は、新しいインターフェイスを手動で構成する必要があります。動作中の既存の本番スイッチに RCF を再適用しないでください。
 
 
 
-== インストールに関する問題のトラブルシューティングを行う
+== インストールの問題のトラブルシューティング
 
-ライセンスのインストール時に問題が発生した場合は、を実行する前に、次のdebugコマンドを実行してください `copy` コマンドをもう一度実行します。
+ライセンスのインストール時に問題が発生した場合は、次のデバッグコマンドを実行してから、 `copy`再度コマンドを実行します。
 
-使用するデバッグコマンド: debug transferおよびdebug license(ライセンスのデバッグ
+使用するデバッグ コマンド: `debug transfer`そして `debug license`
 
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -369,9 +369,9 @@ Debug transfer output is enabled.
 Enabled capability licensing debugging.
 ----
 ====
-を実行すると `copy` コマンドにを指定します `debug transfer` および `debug license` 有効なオプションを指定すると、ログ出力が返されます。
+実行すると `copy`コマンドを `debug transfer`そして `debug license`オプションを有効にすると、ログ出力が返されます。
 
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -399,34 +399,34 @@ CAPABILITY LICENSING : Fri Sep 11 13:41:32 2020: Feature not found in license fi
 CAPABILITY LICENSING : Fri Sep 11 13:41:32 2020: Applying license file 1.
 ----
 ====
-デバッグ出力で、次の点を確認します。
+デバッグ出力で以下の項目を確認します。
 
-* シリアル番号が「シリアル番号 QTFCU38290012 が一致していることを確認してください。
-* スイッチのモデルが「 M odel BES-53248 matched 」であることを確認します
-* 指定したライセンスインデックスが以前に使用されていないことを確認します。ライセンス・インデックスがすでに使用されている場合 ' 次のエラーが返されます License file /mnt/download/ license.dat.1 already exists.`
-* ポートライセンスは機能ライセンスではありません。したがって ' 次の文が想定されています 'Feature not found in license file with index=1 .
+* シリアル番号が一致していることを確認します: `Serial number QTFCU38290012 matched.`
+* スイッチモデルが一致していることを確認します。 `Model BES-53248 matched.`
+* 指定したライセンス インデックスが以前に使用されていないこと。ライセンス インデックスがすでに使用されている場合は、次のエラーが返されます。 `License file /mnt/download//license.dat.1 already exists.`
+* ポート ライセンスが機能ライセンスではないこと。したがって、次のステートメントが予想されます。 `Feature not found in license file with index = 1.`
 
 
-を使用します `copy` ポートライセンスをサーバにバックアップするコマンド：
+使用 `copy`ポートライセンスをサーバーにバックアップするコマンド:
 
 [listing, subs="+quotes"]
 ----
 (cs2)# *copy nvram:license-key 1 scp://<UserName>@<IP_address>/saved_license_1.dat*
 ----
 
-CAUTION: スイッチソフトウェアをバージョン 3.4.4.6 からダウングレードする必要がある場合は、ライセンスが削除されます。これは想定される動作です。
+CAUTION: スイッチ ソフトウェアをバージョン3.4.4.6からダウングレードする必要がある場合、ライセンスは削除されます。これは想定される動作です。
 
-以前のバージョンのソフトウェアにリバートする前に、適切な古いライセンスをインストールする必要があります。
+古いバージョンのソフトウェアにリバートする前に、対応する古いライセンスをインストールしておく必要があります。
 
 
 
-== 新たにライセンスされたポートをアクティブにし
+== 新しくライセンスされたポートをアクティブ化する
 
-新しくライセンスされたポートをアクティブ化するには、RCFの最新バージョンを編集し、該当するポートの詳細をコメント解除する必要があります。
+新しくライセンスされたポートをアクティブ化するには、RCF の最新バージョンを編集し、該当するポートの詳細のコメントを解除する必要があります。
 
-デフォルトライセンスは、ポート 0/1~0/16 および 0/55 ～ 0/56 をアクティブにします。また、新しくライセンスされたポートは、使用可能なライセンスのタイプと数に応じて、ポート 0/17 ～ 0/54 の間になります。たとえば、SW-BES54248-40-100G-LICライセンスをアクティブにするには、RCFの次のセクションのコメントを解除する必要があります。
+デフォルト ライセンスはポート0/1～0/16および0/55～0/56をアクティブ化しますが、新しくライセンスされたポートは使用可能なライセンスのタイプと数に応じてポート0/17～0/54のいずれかです。たとえば、SW-BES54248-40-100G-LIC ライセンスをアクティブ化するには、RCF の次のセクションのコメントを解除する必要があります。
 
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -531,7 +531,7 @@ exit
 ----
 ====
 
-NOTE: 0/49～0/54以上の高速ポートの場合は、各ポートのコメントを解除しますが、次の例に示すように、各ポートのRCFでは1つの* speed *行のみコメントを解除します。* speed 100G full-duplex *または* speed 40G full-duplex *のいずれかです。0/17 ～ 0/48 以上の低速ポートの場合は、適切なライセンスがアクティブ化されているときに 8 ポートセクション全体のコメントを解除します。
+NOTE: 0/49 から 0/54 までの高速ポートについては、各ポートのコメントを解除しますが、例に示すように、各ポートの RCF で 1 つの *speed* 行のみをコメント解除します (例に示すように、*speed 100G full-duplex* または *speed 40G full-duplex*)。0/17～0/48の低速ポートについては、適切なライセンスがアクティブ化されていれば、8ポート セクション全体のコメントを解除します。
 
 .次の手順
-link:configure-install-rcf.html["リファレンス構成ファイル（ RCF ）のインストール"] または link:upgrade-rcf.html["RCFのアップグレード"]。
+link:configure-install-rcf.html["参照構成ファイル（RCF）をインストールする"]またはlink:upgrade-rcf.html["RCFをアップグレードする"]。

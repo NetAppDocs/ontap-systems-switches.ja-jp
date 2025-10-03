@@ -2,39 +2,39 @@
 permalink: switch-cisco-3132q-v/migrate-switchless-prepare-to-migrate.html 
 sidebar: sidebar 
 keywords: cisco 3132q-v, cluster switches 
-summary: Cisco Nexus 3132q-Vスイッチは、AFFまたはFASクラスタのクラスタスイッチとして使用できます。 
+summary: Cisco Nexus 3132q-v スイッチを、 AFFまたはFASクラスタ内のクラスタ スイッチとして使用できます。 
 ---
-= スイッチレスクラスタからスイッチクラスタへの移行を準備
+= スイッチレス クラスタからスイッチ クラスタへの移行の準備
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-次の手順に従って、2ノードスイッチクラスタに移行するためのスイッチレスクラスタを準備します。
+スイッチレス クラスターを 2 ノード スイッチ クラスターに移行する準備をするには、次の手順に従います。
 
 .手順
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
 +
-'system node AutoSupport invoke -node * -type all -message MAINT=xh`
+`system node autosupport invoke -node * -type all - message MAINT=xh`
 
 +
-_x_ は、メンテナンス時間の長さ（時間単位）です。
+_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
 
 +
 [NOTE]
 ====
-AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
 ====
-. 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
+. 各クラスタ インターフェイスの管理ステータスまたは動作ステータスを確認します。
 +
-.. ネットワークポートの属性を表示します。
+.. ネットワーク ポートの属性を表示します。
 +
-「 network port show 」のように表示されます
+`network port show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -59,12 +59,12 @@ e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 4 entries were displayed.
 ----
 ====
-.. 論理インターフェイスに関する情報を表示します。
+.. 論理インターフェースに関する情報を表示します。
 +
-「 network interface show 」を参照してください
+`network interface show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -84,20 +84,20 @@ Cluster
 ====
 
 
-. 必要に応じて、新しい 3132Q-V スイッチに適切な RCF とイメージがインストールされていることを確認し、ユーザとパスワード、ネットワークアドレスなどの基本的なサイトのカスタマイズを行います。
+. 必要に応じて、新しい 3132Q-V スイッチに適切な RCF とイメージがインストールされていることを確認し、ユーザーとパスワード、ネットワーク アドレスなどの重要なサイトのカスタマイズを行います。
 +
-この時点で両方のスイッチを準備する必要があります。RCF とイメージソフトウェアをアップグレードする必要がある場合は、次の手順を実行する必要があります。
+この時点で両方のスイッチを準備する必要があります。  RCF およびイメージ ソフトウェアをアップグレードする必要がある場合は、次の手順に従う必要があります。
 
 +
-.. へ移動link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]NetAppサポート サイトをご覧ください。
-.. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
+.. へ移動link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]NetAppサポート サイトをご覧ください。
+.. そのページの表で、スイッチと必要なソフトウェア バージョンを書き留めてください。
 .. 適切なバージョンの RCF をダウンロードします。
-.. [Description]ページで[continue]*を選択し、ライセンス契約に同意して、*[Download]*ページの指示に従ってRCFをダウンロードします。
-.. 適切なバージョンのイメージソフトウェアをダウンロードします。
+.. *説明*ページで*続行*を選択し、ライセンス契約に同意してから、*ダウンロード*ページの指示に従ってRCFをダウンロードします。
+.. 適切なバージョンのイメージ ソフトウェアをダウンロードします。
 
 
-. [Description]ページで[continue]*を選択し、ライセンス契約に同意して、*[Download]*ページの指示に従ってRCFをダウンロードします。
+. *説明*ページで*続行*を選択し、ライセンス契約に同意してから、*ダウンロード*ページの指示に従ってRCFをダウンロードします。
 
 
 .次の手順
-link:migrate-switchless-configure-ports.html["ポートの設定"]です。
+link:migrate-switchless-configure-ports.html["ポートを設定する"] 。

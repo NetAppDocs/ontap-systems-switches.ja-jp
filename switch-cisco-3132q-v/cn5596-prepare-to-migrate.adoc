@@ -2,35 +2,35 @@
 permalink: switch-cisco-3132q-v/cn5596-prepare-to-migrate.html 
 sidebar: sidebar 
 keywords: cisco 3132q-v, cluster switches 
-summary: Cisco Nexus 3132q-Vスイッチは、AFFまたはFASクラスタのクラスタスイッチとして使用できます。 
+summary: Cisco Nexus 3132q-v スイッチを、 AFFまたはFASクラスタ内のクラスタ スイッチとして使用できます。 
 ---
-= Nexus 5596スイッチからNexus 3132Q-Vスイッチへの移行準備
+= Nexus 5596スイッチからNexus 3132Q-Vスイッチへの移行の準備
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 5596スイッチをCisco Nexus 3132Q-Vスイッチに移行できるように準備する手順は、次のとおりです。
+Cisco Nexus 5596 スイッチをCisco Nexus 3132Q-V スイッチに移行する準備をするには、次の手順に従います。
 
 .手順
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= xh
+. このクラスタでAutoSupportが有効になっている場合は、 AutoSupportメッセージを呼び出して自動ケース作成を抑制します。 `system node autosupport invoke -node * -type all -message MAINT=xh`
 +
-_x_ は、メンテナンス時間の長さ（時間単位）です。
+_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
 
 +
 
-NOTE: このメンテナンスタスクについてテクニカルサポートに通知し、メンテナンス時間中はケースの自動作成が停止されます。
+NOTE: このメッセージは、このメンテナンス タスクをテクニカル サポートに通知し、メンテナンス ウィンドウ中の自動ケース作成を抑制します。
 
-. 構成に含まれるデバイスに関する情報を表示します。
+. 構成内のデバイスに関する情報を表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、各クラスタインターコネクトスイッチの各ノードに設定されているクラスタインターコネクトインターフェイスの数を示しています。
+次の例は、各クラスタ相互接続スイッチの各ノードに設定されているクラスタ相互接続インターフェイスの数を示しています。
 
 [listing]
 ----
@@ -51,17 +51,17 @@ n2         /cdp
 8 entries were displayed.
 ----
 ====
-. 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
+. 各クラスタ インターフェイスの管理ステータスまたは動作ステータスを確認します。
 +
-.. ネットワークポートの属性を表示します。
+.. ネットワーク ポートの属性を表示します。
 +
-「 network port show 」のように表示されます
+`network port show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、システムのネットワークポートの属性を表示します。
+次の例では、システム上のネットワーク ポート属性を表示します。
 
 [listing]
 ----
@@ -89,12 +89,13 @@ e0d       Cluster      Cluster          up   9000  auto/10000 -        -
 8 entries were displayed.
 ----
 ====
-.. 論理インターフェイスに関する情報を表示します。 +`network interface show`
+.. 論理インターフェースに関する情報を表示します: +
+`network interface show`
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、システム上のすべての LIF に関する一般的な情報を表示します。
+次の例では、システム上のすべての LIF に関する一般情報を表示します。
 
 [listing]
 ----
@@ -115,12 +116,13 @@ Cluster
 8 entries were displayed.
 ----
 ====
-.. 検出されたクラスタスイッチに関する情報を表示します。 +`system cluster-switch show`
+.. 検出されたクラスタスイッチに関する情報を表示します: +
+`system cluster-switch show`
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、クラスタで認識されているクラスタスイッチとその管理 IP アドレスを表示します。
+次の例では、クラスターに認識されているクラスター スイッチとその管理 IP アドレスを表示します。
 
 [listing]
 ----
@@ -148,12 +150,12 @@ CL2                           cluster-network    10.10.1.102     NX5596
 ====
 
 
-. 両方のノードで、クラスタ LIF clus1 および clus2 の「 -auto-revert 」パラメータを「 false 」に設定します。
+. 設定する `-auto-revert`パラメータに `false`両ノードのクラスタ LIF clus1 および clus2 で:
 +
-「 network interface modify 」を参照してください
+`network interface modify`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -164,33 +166,33 @@ cluster::*> network interface modify -vserver node2 -lif clus1 -auto-revert fals
 cluster::*> network interface modify -vserver node2 -lif clus2 -auto-revert false
 ----
 ====
-. 必要に応じて、新しい 3132Q-V スイッチに適切な RCF とイメージがインストールされていることを確認し、ユーザとパスワード、ネットワークアドレスなどの基本的なサイトのカスタマイズを行います。
+. 要件に応じて適切な RCF とイメージが新しい 3132Q-V スイッチにインストールされていることを確認し、ユーザーとパスワード、ネットワーク アドレスなどの重要なサイトのカスタマイズを行います。
 +
-この時点で両方のスイッチを準備する必要があります。RCF およびイメージをアップグレードする必要がある場合は、次の手順を実行します。
+この時点で両方のスイッチを準備する必要があります。  RCF とイメージをアップグレードする必要がある場合は、次の手順に従います。
 
 +
-.. へ移動link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]NetAppサポート サイトをご覧ください。
-.. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
-.. 該当するバージョンの RCF をダウンロードします。
-.. [Description]ページで[continue]*を選択し、ライセンス契約に同意して、*[Download]*ページの指示に従ってRCFをダウンロードします。
-.. 適切なバージョンのイメージソフトウェアをダウンロードします。
+.. へ移動link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]NetAppサポート サイトをご覧ください。
+.. そのページの表で、スイッチと必要なソフトウェア バージョンを書き留めてください。
+.. 適切なバージョンの RCF をダウンロードします。
+.. *説明*ページで*続行*を選択し、ライセンス契約に同意してから、*ダウンロード*ページの指示に従ってRCFをダウンロードします。
+.. 適切なバージョンのイメージ ソフトウェアをダウンロードします。
 +
-ONTAP 8.x以降のクラスタおよび管理ネットワークスイッチリファレンス構成ファイル__Downloadページを参照し、適切なバージョンを選択します。
+__ONTAP 8.x 以降のクラスタおよび管理ネットワーク スイッチのリファレンス構成ファイル__ダウンロード ページを参照し、適切なバージョンを選択してください。
 
 +
-正しいバージョンを確認するには、 ONTAP 8.x 以降のクラスタネットワークスイッチのダウンロードページを参照してください。
+正しいバージョンを見つけるには、_ONTAP 8.x 以降の Cluster Network Switch のダウンロード ページ_ を参照してください。
 
 
 
 . 交換する 2 番目の Nexus 5596 スイッチに関連付けられている LIF を移行します。
 +
-「ネットワーク・インターフェイス移行」
+`network interface migrate`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 n1 と n2 ですが、すべてのノードで LIF の移行を実行する必要があります。
+次の例では n1 と n2 を示していますが、LIF の移行はすべてのノードで実行する必要があります。
 
 [listing]
 ----
@@ -204,15 +206,15 @@ cluster::*> network interface migrate -vserver Cluster -lif n2_clus3 -source-nod
 destination-node n2 -destination-port e0d
 ----
 ====
-. クラスタの健常性を確認します。
+. クラスターの健全性を確認します。
 +
-「 network interface show 」を参照してください
+`network interface show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は ' 前の network interface migrate コマンドの結果を示しています
+次の例は、前の例の結果を示しています。 `network interface migrate`指示：
 
 [listing]
 ----
@@ -233,15 +235,15 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. スイッチ CL2 に物理的に接続されているクラスタインターコネクトポートをシャットダウンします。
+. スイッチ CL2 に物理的に接続されているクラスタ相互接続ポートをシャットダウンします。
 +
-「 network port modify 」を参照してください
+`network port modify`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次のコマンドは、 n1 と n2 で指定されたポートをシャットダウンしますが、すべてのノードでポートをシャットダウンする必要があります。
+次のコマンドは、n1 および n2 上の指定されたポートをシャットダウンしますが、すべてのノード上のポートをシャットダウンする必要があります。
 
 [listing]
 ----
@@ -251,22 +253,22 @@ cluster::*> network port modify -node n2 -port e0b -up-admin false
 cluster::*> network port modify -node n2 -port e0c -up-admin false
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：* showコマンドを実行して詳細を表示する前に、数秒待ってください。
+*注意:* 詳細を表示するには、show コマンドを実行する前に数秒待ってください。
 
 [listing, subs="+quotes"]
 ----
@@ -283,9 +285,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2        n1_clus2      none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -334,12 +336,12 @@ RPC status:
 ----
 --
 ====
-. [[step10]]アクティブなNexus 5596スイッチCL1のISLポート41~48をシャットダウンします。
+. [[step10]]アクティブ Nexus 5596 スイッチ CL1 の ISL ポート 41 ～ 48 をシャットダウンします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 Nexus 5596 スイッチ CL1 で ISL ポート 41~48 をシャットダウンする方法を示しています。
+次の例は、Nexus 5596 スイッチ CL1 の ISL ポート 41 ～ 48 をシャットダウンする方法を示しています。
 
 [listing]
 ----
@@ -352,14 +354,14 @@ RPC status:
 ----
 ====
 +
-Nexus 5010または5020を交換する場合は、ISLに適したポート番号を指定します。
+Nexus 5010 または 5020 を交換する場合は、ISL に適切なポート番号を指定します。
 
 . CL1 と C2 の間に一時的な ISL を構築します。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 CL1 と C2 の間に一時的な ISL をセットアップしています。
+次の例は、CL1 と C2 の間に一時的な ISL が設定されていることを示しています。
 
 [listing]
 ----
@@ -380,4 +382,4 @@ C2(config-if)# exit
 
 
 .次の手順
-link:cn5596-configure-ports.html["ポートの設定"]です。
+link:cn5596-configure-ports.html["ポートを設定する"] 。

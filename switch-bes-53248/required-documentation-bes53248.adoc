@@ -2,118 +2,118 @@
 permalink: switch-bes-53248/required-documentation-bes53248.html 
 sidebar: sidebar 
 keywords: documentation requirements, BES-53248 switches,cluster switches 
-summary: clustered Data ONTAP 構成をセットアップするには、特定のスイッチとコントローラに関するドキュメントが必要です。 
+summary: clustered Data ONTAP構成をセットアップするには、特定のスイッチとコントローラに関するドキュメントが必要です。 
 ---
-= BES-53248クラスタスイッチのドキュメント要件
+= BES-53248 クラスタスイッチのドキュメント要件
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248スイッチの設置とメンテナンスについては、特定のスイッチとコントローラのドキュメントを確認してください。
+BES-53248 スイッチのインストールとメンテナンスについては、特定のスイッチとコントローラーのドキュメントを必ず確認してください。
 
 
 
-== Broadcomのドキュメント
+== Broadcom のドキュメント
 
-BES-53248 クラスタスイッチをセットアップするには、 Broadcom サポートサイトから次のドキュメントを入手する必要があります。 https://www.broadcom.com/support/bes-switch["Broadcom Ethernet Switch 製品ライン"^]
-
-[cols="1,2"]
-|===
-| ドキュメントタイトル | 説明 
-
-
- a| 
-_ EFOS 管理者ガイド v3.4.3_
- a| 
-一般的なネットワークで BES-53248 スイッチを使用する方法の例を示します。
-
-
-
- a| 
-_ EFOS CLI コマンドリファレンス v3.4.3_
- a| 
-BES-53248 ソフトウェアの表示と設定に使用するコマンドラインインターフェイス（ CLI ）コマンドについて説明します。
-
-
-
- a| 
-_ EFOS セットアップガイド v3.4.3_
- a| 
-BES-53248 スイッチの詳細情報を提供します。
-
-
-
- a| 
-_ EFOS SNMP リファレンスガイド v3.4.3_
- a| 
-一般的なネットワークで BES-53248 スイッチを使用する方法の例を示します。
-
-
-
- a| 
-_ EFOS スケーリングパラメータと値 v3.4.3_
- a| 
-EFOS ソフトウェアと一緒に提供され、サポート対象プラットフォームで検証済みのデフォルトのスケールパラメータについて説明します。
-
-
-
- a| 
-_ EFOS 機能仕様 v3.4.3_
- a| 
-サポート対象プラットフォームでの EFOS ソフトウェアの仕様を示します。
-
-
-
- a| 
-_ EFOS リリースノート v3.4.3_
- a| 
-BES-53248 ソフトウェアに関するリリース固有の情報を示します。
-
-
-
- a| 
-_クラスタネットワークおよび管理ネットワーク互換性マトリックス_
- a| 
-ネットワークの互換性に関する情報を提供します。マトリックスは、BES-53248スイッチのダウンロードサイトから入手できます https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom クラスタスイッチ"^]。
-
-|===
-
-
-== ONTAP システムのドキュメントおよび技術情報
-
-ONTAP システムをセットアップするには、NetApp Support Siteから次のドキュメントを入手する必要があります http://mysupport.netapp.com/["mysupport.netapp.com"^] またはKnowledgebase（KB）サイト（）を参照してください https://kb.netapp.com/["kb.netapp.com"^]。
+BES-53248 クラスタ スイッチをセットアップするには、Broadcom サポート サイトから入手できる次のドキュメントが必要です。 https://www.broadcom.com/support/bes-switch["Broadcom イーサネットスイッチ製品ライン"^]
 
 [cols="1,2"]
 |===
-| 名前 | 説明 
+| ドキュメント タイトル | 説明 
 
 
  a| 
-https://hwu.netapp.com/Home/Index["NetApp Hardware Universe の略"^]
+_EFOS 管理者ガイド v3.4.3_
  a| 
-システムキャビネットを含むすべてのネットアップハードウェアの電源要件とサイト要件について説明し、関連するコネクタおよびケーブルオプションの情報とパーツ番号を記載します。
+一般的なネットワークでのBES-53248スイッチの使用方法の例を示します。
 
 
 
  a| 
-コントローラ固有の設置およびセットアップ手順 _
+_EFOS CLI コマンドリファレンス v3.4.3_
  a| 
-ネットアップハードウェアの設置方法について説明します。
+BES-53248ソフトウェアの表示と設定に使用するコマンドライン インターフェイス（CLI）コマンドについて説明します。
+
+
+
+ a| 
+_EFOS スタートガイド v3.4.3_
+ a| 
+BES-53248スイッチの詳細情報を提供します。
+
+
+
+ a| 
+_EFOS SNMPリファレンスガイドv3.4.3_
+ a| 
+一般的なネットワークでのBES-53248スイッチの使用方法の例を示します。
+
+
+
+ a| 
+_EFOS スケーリングパラメータと値 v3.4.3_
+ a| 
+EFOSソフトウェアと一緒に提供され、サポート対象プラットフォームで検証済みのデフォルトのスケール パラメータについて説明します。
+
+
+
+ a| 
+_EFOS 機能仕様 v3.4.3_
+ a| 
+サポート対象プラットフォームでのEFOSソフトウェアの仕様を示します。
+
+
+
+ a| 
+_EFOS リリースノート v3.4.3_
+ a| 
+BES-53248ソフトウェアに関するリリース固有の情報を示します。
+
+
+
+ a| 
+_クラスタネットワークと管理ネットワークの互換性マトリックス_
+ a| 
+ネットワークの互換性に関する情報を提供します。マトリックスは、BES-53248スイッチのダウンロードサイトから入手できます。 https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom クラスタスイッチ"^] 。
+
+|===
+
+
+== ONTAPシステムのドキュメントと KB 記事
+
+ONTAPシステムをセットアップするには、 NetAppサポートサイトから次のドキュメントを入手する必要があります。 http://mysupport.netapp.com/["mysupport.netapp.com"^]またはナレッジベース（KB）サイト https://kb.netapp.com/["kb.netapp.com"^]。
+
+[cols="1,2"]
+|===
+| Name | 説明 
+
+
+ a| 
+https://hwu.netapp.com/Home/Index["NetApp Hardware Universe"^]
+ a| 
+システム キャビネットを含むすべてのNetAppハードウェアの電源とサイトの要件について説明し、使用する関連コネクタとケーブル オプションとその部品番号に関する情報を提供します。
+
+
+
+ a| 
+コントローラ固有の_インストールおよびセットアップ手順_
+ a| 
+NetAppハードウェアのインストール方法について説明します。
 
 
 
  a| 
 ONTAP 9
  a| 
-ONTAP 9 リリースのすべての側面に関する詳細情報を提供します。
+ONTAP 9 リリースのあらゆる側面に関する詳細情報を提供します。
 
 
 
  a| 
-Broadcom対応BES-53248スイッチ_のポートライセンスを追加する方法
+_Broadcom 対応 BES-53248 スイッチに追加ポートライセンスを追加する方法_
  a| 
-ポートライセンスの追加に関する詳細情報を提供します。にアクセスします https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_add_Additional_Port_Licensing_for_the_Broadcom-Supported_BES-53248_Switch["こちらの技術情報アーティクル"^]。
+ポート ライセンスの追加に関する詳細情報を提供します。に行く https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_add_Additional_Port_Licensing_for_the_Broadcom-Supported_BES-53248_Switch["技術情報"^]。
 
 |===

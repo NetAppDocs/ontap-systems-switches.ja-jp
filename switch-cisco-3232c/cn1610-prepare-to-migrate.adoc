@@ -2,40 +2,40 @@
 permalink: switch-cisco-3232c/cn1610-prepare-to-migrate.html 
 sidebar: sidebar 
 keywords: cisco 3232c, cluster switches 
-summary: AFF または FAS クラスタでは、 Cisco Nexus 3232C スイッチをクラスタスイッチとして使用できます。 
+summary: Cisco Nexus 3232C スイッチを、 AFFまたはFASクラスタ内のクラスタ スイッチとして使用できます。 
 ---
-= CN1610スイッチ3232Cスイッチからの移行準備
+= CN1610スイッチから3232Cスイッチへの移行の準備
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-CN1610スイッチをCisco Nexus 3232Cスイッチに移行する準備をするには、次の手順を実行します。
+CN1610 スイッチをCisco Nexus 3232C スイッチに移行する準備をするには、次の手順に従います。
 
 .手順
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= xh 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-_x_ は、メンテナンス時間の長さ（時間単位）です。
+_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
 
 +
 [NOTE]
 ====
-このメンテナンスタスクについてテクニカルサポートに通知し、メンテナンス時間中はケースの自動作成が停止されます。
+このメッセージは、このメンテナンス タスクをテクニカル サポートに通知し、メンテナンス ウィンドウ中の自動ケース作成を抑制します。
 
 ====
-. 構成に含まれるデバイスに関する情報を表示します。
+. 構成内のデバイスに関する情報を表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、各クラスタインターコネクトスイッチの各ノードに設定されているクラスタインターコネクトインターフェイスの数を示しています。
+次の例では、各クラスタ相互接続スイッチの各ノードに設定されているクラスタ相互接続インターフェイスの数を表示します。
 
 [listing, subs="+quotes"]
 ----
@@ -58,14 +58,14 @@ n2     /cdp
 8 entries were displayed.
 ----
 ====
-. 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
+. 各クラスタ インターフェイスの管理ステータスまたは動作ステータスを決定します。
 +
-.. クラスタネットワークポートの属性を表示します。
+.. クラスター ネットワーク ポート属性を表示します。
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -93,12 +93,12 @@ e0d   cluster   cluster    up    9000  auto/10000     -
 8 entries were displayed.
 ----
 ====
-.. 論理インターフェイスに関する情報を表示します。
+.. 論理インターフェースに関する情報を表示します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -121,15 +121,15 @@ Cluster
  8 entries were displayed.
 ----
 ====
-.. 検出されたクラスタスイッチに関する情報を表示します。
+.. 検出されたクラスター スイッチに関する情報を表示します。
 +
-「 system cluster-switch show
+`system cluster-switch show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、クラスタで認識されているクラスタスイッチとその管理 IP アドレスを表示します。
+次の例では、クラスタに認識されているクラスタ スイッチとその管理 IP アドレスを表示します。
 
 [listing, subs="+quotes"]
 ----
@@ -154,24 +154,24 @@ CL2                           cluster-network  10.10.1.102   CN1610
 ====
 
 
-. 必要に応じて、新しい 3232C スイッチに適切な RCF とイメージがインストールされていることを確認し、必要なサイトのカスタマイズを行います。
+. 要件に応じて適切な RCF とイメージが新しい 3232C スイッチにインストールされていることを確認し、必要なサイトのカスタマイズを行います。
 +
-この時点で両方のスイッチを準備する必要があります。RCF およびイメージをアップグレードする必要がある場合は、次の手順 を実行する必要があります。
+この時点で両方のスイッチを準備する必要があります。  RCF とイメージをアップグレードする必要がある場合は、次の手順を実行する必要があります。
 
 +
-.. 見るlink:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]NetAppサポート サイトをご覧ください。
-.. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
-.. 該当するバージョンの RCF をダウンロードします。
-.. [Description]ページで[continue]*を選択し、ライセンス契約に同意して、*[Download]*ページの指示に従ってRCFをダウンロードします。
-.. 適切なバージョンのイメージソフトウェアをダウンロードしてください。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® Cluster and Management Network Switch Reference Configuration File Download （ Cisco ® クラスタおよび管理ネットワークスイッチリファレンス構成ファイルのダウンロード"^] 。
+.. 見るlink:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]NetAppサポート サイトをご覧ください。
+.. そのページの表で、スイッチと必要なソフトウェア バージョンを書き留めてください。
+.. 適切なバージョンの RCF をダウンロードします。
+.. *説明*ページで*続行*を選択し、ライセンス契約に同意してから、*ダウンロード*ページの指示に従ってRCFをダウンロードします。
+.. 適切なバージョンのイメージソフトウェアをダウンロードしてください。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco® クラスタおよび管理ネットワーク スイッチ リファレンス コンフィギュレーション ファイルのダウンロード"^] 。
 
 
-. 交換する2つ目のCN1610スイッチに関連付けられているLIFを移行します。
+. 交換する予定の 2 番目の CN1610 スイッチに関連付けられている LIF を移行します。
 +
 `network interface migrate -vserver _vserver-name_ -lif _lif-name_ -source-node _source-node-name_ destination-node _destination-node-name_ -destination-port _destination-port-name_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 次の例に示すように、各 LIF を個別に移行する必要があります。
@@ -188,12 +188,12 @@ cluster::*> *network interface migrate -vserver cluster -lif n2_clus3 -source-no
 -destination-node  n2  -destination-port  e0d*
 ----
 ====
-. クラスタの健常性を確認します。
+. クラスターの健全性を確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -219,4 +219,4 @@ Cluster
 
 
 .次の手順
-link:cn1610-replace-CL2.html["CN1610スイッチCL2を3232CスイッチC2に交換"]です。
+link:cn1610-replace-CL2.html["CN1610スイッチCL2を3232CスイッチC2に交換する"] 。

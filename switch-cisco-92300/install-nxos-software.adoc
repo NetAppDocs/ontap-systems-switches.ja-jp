@@ -2,64 +2,64 @@
 permalink: switch-cisco-92300/install-nxos-software.html 
 sidebar: sidebar 
 keywords: install nx-os,nx-os configure 
-summary: この手順を使用して、 Nexus 92300YC スイッチに NX-OS ソフトウェアをインストールできます。 
+summary: この手順を使用して、Nexus 92300YCスイッチにNX-OSソフトウェアをインストールできます。 
 ---
-= NX-OS ソフトウェアをインストールします
+= NX-OSソフトウェアをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-この手順 に従って、Nexus 92300YCスイッチにNX-OSソフトウェアをインストールします。
+Nexus 92300YC スイッチに NX-OS ソフトウェアをインストールするには、次の手順に従います。
 
-NX-OS は、 Cisco Systems が提供する Nexus シリーズイーサネットスイッチおよび MDS シリーズ Fibre Channel （ FC ）ストレージエリアネットワークスイッチのネットワークオペレーティングシステムです。
-
-
-
-== 要件を確認
-
-.サポートされるポートとノード接続
-* Nexus 92300YC スイッチでサポートされているスイッチ間リンク（ ISL ）は、ポート 1/65 と 1/66 です。
-* Nexus 92300YC スイッチでサポートされているノード接続は、ポート 1/1~1/66 です。
-
-
-.作業を開始する前に
-次のものがあることを確認します。
-
-* 使用しているスイッチに該当するネットアップのCisco NX-OSソフトウェアをNetApp Support Site から入手できます。入手方法は、を参照してください http://mysupport.netapp.com/["mysupport.netapp.com"]
-* クラスタが完全に機能している（ログにエラーがない、または同様の問題が発生している）。
-* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco Ethernet Switch のページ"^]。サポートされるONTAP とNX-OSのバージョンについては、スイッチの互換性の表を参照してください。
+NX-OSは、Cisco Systemsが提供するNexusシリーズ イーサネット スイッチおよびMDSシリーズFibre Channel（FC）ストレージ エリア ネットワーク スイッチのネットワーク オペレーティング システムです。
 
 
 
+== 要件の確認
 
-== ソフトウェアをインストールします
+.サポートされているポートとノード接続
+* Nexus 92300YCスイッチでサポートされているスイッチ間リンク（ISL）は、ポート1/65と1/66です。
+* Nexus 92300YCスイッチでサポートされているノード接続は、ポート1/1～1/66です。
 
-この手順の例では 2 つのノードを使用していますが、 1 つのクラスタには最大 24 のノードを含めることができます。
+
+.開始する前に
+以下のものがあることを確認してください。
+
+* お使いのスイッチに適したNetApp Cisco NX-OSソフトウェアは、 NetAppサポートサイトから入手できます。 http://mysupport.netapp.com/["mysupport.netapp.com"]
+* 完全に機能するクラスター (ログにエラーや同様の問題がない)。
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ ページ"^] 。サポートされているONTAPおよび NX-OS バージョンについては、スイッチ互換性表を参照してください。
+
+
+
+
+== ソフトウェアをインストールする
+
+この手順の例では2つのノードを使用していますが、1つのクラスタには最大24のノードを含めることができます。
 
 .例について
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* Nexus 92300YC スイッチ名は「 cs1 」と「 cs2 」です。
-* この手順で使用している例では、 2 番目のスイッチ _cs2 * 。 _ でアップグレードが開始されます
-* クラスタ LIF 名は、 node1 の場合は「 node1_clus1' 」、ノード 1 の場合は「 node1_clus1' 」、 node2 の場合は「 node2 _ clus2 」です。
-* IPspace 名は「 Cluster 」です。
-* 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
-* 各ノードのクラスタ・ポートの名前は 'e0a' および e0b です
+* Nexus 92300YCスイッチの名前は `cs1`そして `cs2`。
+* この手順で使用される例では、2 番目のスイッチ _*cs2*_ でアップグレードを開始します。
+* クラスタLIF名は `node1_clus1`そして `node1_clus2`ノード1の場合、 `node2_clus1`そして `node2_clus2`ノード2用。
+* IPspace名は `Cluster`。
+* その `cluster1::*>`プロンプトはクラスターの名前を示します。
+* 各ノードのクラスタポートの名前は `e0a`そして `e0b`。
 +
-を参照してください link:https://hwu.netapp.com/Home/Index["_ Hardware Universe ^_"] をクリックします。
+参照link:https://hwu.netapp.com/Home/Index["_ハードウェアユニバース^_"]プラットフォームでサポートされている実際のクラスター ポート。
 
 
 
 .手順
-. クラスタスイッチを管理ネットワークに接続します。
-. 「 ping 」コマンドを使用して、 NX-OS ソフトウェアおよび RCF をホストするサーバへの接続を確認します。
+. クラスタ スイッチを管理ネットワークに接続します。
+. 使用 `ping`NX-OS ソフトウェアと RCF をホストするサーバーへの接続を確認するコマンド。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例では、スイッチが IP アドレス 172.19.2.1 のサーバに接続できることを確認します。
+次の例では、スイッチがIPアドレス172.19.2.1のサーバに接続できることを確認します。
 
 [listing, subs="+quotes"]
 ----
@@ -69,9 +69,9 @@ Pinging 172.19.2.1 with 0 bytes of data:
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
 ====
-. NX-OS ソフトウェアおよび EPLD イメージを Nexus 92300YC スイッチにコピーします。
+. NX-OSソフトウェアおよびEPLDイメージをNexus 92300YCスイッチにコピーします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -110,12 +110,12 @@ Copy complete, now saving to disk (please wait)...
 Copy complete.
 ----
 ====
-. NX-OS ソフトウェアの実行中のバージョンを確認します。
+. NX-OSソフトウェアの実行中のバージョンを確認します。
 +
-'how version （バージョンの表示） '
+`show version`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -171,12 +171,12 @@ Active Package(s):
 cs2#
 ----
 ====
-. NX-OS イメージをインストールします。
+. NX-OSイメージをインストールします。
 +
-イメージファイルをインストールすると、スイッチをリブートするたびにロードされます。
+イメージ ファイルをインストールすると、スイッチをリブートするたびにこのファイルがロードされます。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -244,12 +244,12 @@ Warning: please do not remove or power off the module at this time.
 Finishing the upgrade, switch will reboot in 10 seconds.
 ----
 ====
-. スイッチのリブート後に、 NX-OS ソフトウェアの新しいバージョンを確認します。
+. スイッチを再起動した後、NX-OS ソフトウェアの新しいバージョンを確認します。
 +
-'how version （バージョンの表示） '
+`show version`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -304,9 +304,9 @@ plugin
 Active Package(s):
 ----
 ====
-. EPLD イメージをアップグレードし、スイッチをリブートします。
+. EPLDイメージをアップグレードし、スイッチをリブートします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -356,9 +356,9 @@ EPLDs upgraded.
 Module 1 EPLD upgrade is successful.
 ----
 ====
-. スイッチのリブート後に再度ログインし、新しいバージョンの EPLD が正常にロードされたことを確認します。
+. スイッチのリブート後に再度ログインし、新しいバージョンのEPLDが正常にロードされたことを確認します。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -379,4 +379,4 @@ GEM FPGA                         0x2
 
 
 .次の手順
-link:install-the-rcf-file.html["リファレンス構成ファイルをインストールします"]
+link:install-the-rcf-file.html["参照設定ファイルをインストールする"]

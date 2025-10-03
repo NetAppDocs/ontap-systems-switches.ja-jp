@@ -1,47 +1,47 @@
-= ONTAPで監視できるようにスイッチエントリを作成します。
+= ONTAPが監視できるようにスイッチエントリを作成します
 :allow-uri-read: 
 
 
 
 
-== ONTAPで監視できるようにスイッチエントリを作成します。
+== ONTAPが監視できるようにスイッチエントリを作成します
 
-指定したイーサネットスイッチの監視を手動で設定してイネーブルにするには、コマンドを使用し `system switch ethernet create`ます。これは、ONTAPでスイッチが自動的に追加されない場合、または以前にスイッチを削除してから再度追加する場合に役立ちます。
+使用 `system switch ethernet create`指定されたイーサネット スイッチの監視を手動で構成し、有効にするコマンド。これは、 ONTAP がスイッチを自動的に追加しない場合、または以前にスイッチを削除して再度追加する場合に役立ちます。
 
 [source, cli]
 ----
 system switch ethernet create -device DeviceName -address 1.2.3.4 -snmp-version SNMPv2c -community-or-username cshm1! -model NX3132V -type cluster-network
 ----
-典型的な例としては、IPアドレスが1.2.3.4、SNMPv2cクレデンシャルが*cshm1!*に設定された[DeviceName]という名前のスイッチを追加します。ストレージスイッチを設定する場合は、の代わりにを `-type cluster-network`使用し `-type storage-network`ます。
+典型的な例としては、[DeviceName] という名前のスイッチを追加し、IP アドレスを 1.2.3.4 にし、SNMPv2c 資格情報を *cshm1!* に設定します。使用 `-type storage-network`の代わりに `-type cluster-network`ストレージ スイッチを構成する場合。
 
 
 
 == スイッチを削除せずに監視を無効にする
 
-特定のスイッチの監視を一時停止または停止し、今後の監視用に残しておく場合は、パラメータを削除するのではなく変更します `is-monitoring-enabled-admim`。
+特定のスイッチの監視を一時停止または停止したいが、将来の監視のために保持したい場合は、そのスイッチの `is-monitoring-enabled-admim`パラメータを削除するのではなく、そのまま残します。
 
-例：
+例えば：
 
 [source, cli]
 ----
 system switch ethernet modify -device DeviceName -is-monitoring-enabled-admin false
 ----
-これにより、新しいアラートを生成したり再検出したりすることなく、スイッチの詳細と設定を保持できます。
+これにより、新しいアラートや再検出を生成せずに、スイッチの詳細と構成を保持できます。
 
 
 
-== 不要になったスイッチを削除
+== 不要になったスイッチを削除する
 
-切断されたスイッチまたは不要になったスイッチを削除する場合に使用し `system switch ethernet delete`ます。
+使用 `system switch ethernet delete`切断されたスイッチや不要になったスイッチを削除するには:
 
 [source, cli]
 ----
 system switch ethernet delete -device DeviceName
 ----
-デフォルトでは、このコマンドが成功するのは、ONTAPがCDPまたはLLDPを介して現在スイッチを検出していない場合だけです。検出されたスイッチを削除するには、パラメータを使用し `-force`ます。
+デフォルトでは、このコマンドは、 ONTAP が現在 CDP または LLDP を介してスイッチを検出していない場合にのみ成功します。検出されたスイッチを削除するには、 `-force`パラメータ:
 
 [source, cli]
 ----
 system switch ethernet delete -device DeviceName -force
 ----
-を使用している場合、 `-force`ONTAPがスイッチを再度検出すると、スイッチが自動的に再追加されることがあります。
+いつ `-force`が使用されている場合、 ONTAP が再度検出すると、スイッチが自動的に再追加される可能性があります。

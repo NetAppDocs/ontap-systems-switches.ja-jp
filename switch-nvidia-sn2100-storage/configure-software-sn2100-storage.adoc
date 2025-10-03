@@ -2,37 +2,37 @@
 permalink: switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html 
 sidebar: sidebar 
 keywords: sn2100 SN2100 switches setup, sn2100 SN2100 switches install, cumulus linux 
-summary: NVIDIA SN2100ストレージスイッチのソフトウェア設定プロセスの概要。 
+summary: NVIDIA SN2100 ストレージ スイッチのソフトウェア構成プロセスの概要。 
 ---
-= NVIDIA SN2100ストレージスイッチのソフトウェアインストールワークフロー
+= NVIDIA SN2100 ストレージスイッチのソフトウェアインストールワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NVIDIA SN2100スイッチのソフトウェアをインストールして設定するには、次の手順に従います。
+NVIDIA SN2100 スイッチのソフトウェアをインストールして構成するには、次の手順に従います。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:configure-sn2100-storage.html["スイッチを設定します"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:configure-sn2100-storage.html["スイッチを設定する"]
 [role="quick-margin-para"]
 NVIDIA SN2100 スイッチを構成します。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:install-cumulus-mode-sn2100-storage.html["Cumulus LinuxをCumulusモードでインストールします"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:install-cumulus-mode-sn2100-storage.html["Cumulus LinuxをCumulusモードでインストールする"]
 [role="quick-margin-para"]
 スイッチが Cumulus Linux を実行している場合は、Cumulus Linux (CL) OS をインストールできます。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:install-onie-mode-sn2100-storage.html["Cumulus LinuxをONIEモードでインストールします"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:install-onie-mode-sn2100-storage.html["ONIEモードでCumulus Linuxをインストールする"]
 [role="quick-margin-para"]
 あるいは、スイッチが ONIE モードで Cumulus Linux を実行している場合は、Cumulus Linux (CL) OS をインストールすることもできます。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:install-rcf-sn2100-storage.html["リファレンス構成ファイル（RCF）スクリプトをインストールします"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:install-rcf-sn2100-storage.html["参照構成ファイル（RCF）スクリプトをインストールする"]
 [role="quick-margin-para"]
-クラスタリングアプリケーションとストレージアプリケーション用に2つのRCFスクリプトが用意されています。各の手順 は同じです。
+クラスタリングおよびストレージ アプリケーションに使用できる RCF スクリプトが 2 つあります。それぞれの手順は同じです。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"]link:setup-install-cshm-file.html["CSHMファイルをインストールする"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:setup-install-cshm-file.html["CSHMファイルをインストールする"]
 [role="quick-margin-para"]
-NVIDIAクラスタスイッチのイーサネットスイッチヘルスモニタ用の構成ファイルをインストールできます。
+NVIDIAクラスター スイッチの Ethernet スイッチ ヘルス監視に適した構成ファイルをインストールできます。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["6"]link:reset-switch-sn2100-storage.html["スイッチを工場出荷時の状態にリセットする"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:reset-switch-sn2100-storage.html["スイッチを工場出荷時の状態にリセットする"]
 [role="quick-margin-para"]
 SN2100 ストレージ スイッチの設定を消去します。

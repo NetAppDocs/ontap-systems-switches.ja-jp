@@ -2,7 +2,7 @@
 permalink: switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html 
 sidebar: sidebar 
 keywords: sn2100 SN2100 switches setup, sn2100 SN2100 switches install, cumulus linux 
-summary: NVIDIA SN2100スイッチを設定する前に、手順 の概要を確認してください。 
+summary: NVIDIA SN2100 スイッチを構成する前に、手順の概要を確認してください。 
 ---
 = NVIDIA SN2100スイッチのインストールとセットアップのワークフロー
 :allow-uri-read: 
@@ -11,26 +11,26 @@ summary: NVIDIA SN2100スイッチを設定する前に、手順 の概要を確
 
 
 [role="lead"]
-NVIDIA SN2100は、コントローラとディスクシェルフ間でデータを切り替えることができるイーサネットスイッチです。
+NVIDIA SN2100 は、コントローラとディスク シェルフ間でデータを切り替えることができるイーサネット スイッチです。
 
 SN2100 スイッチをインストールしてセットアップするには、次のワークフロー手順に従ってください。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:configure-reqs-sn2100-storage.html["構成要件を確認する"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:configure-reqs-sn2100-storage.html["構成要件を確認する"]
 [role="quick-margin-para"]
 SN2100 ストレージ スイッチの構成要件を確認します。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:components-sn2100-storage.html["コンポーネントと部品番号を確認する"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:components-sn2100-storage.html["コンポーネントと部品番号を確認する"]
 [role="quick-margin-para"]
 SN2100 ストレージ スイッチのコンポーネントと部品番号を確認します。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:required-documentation-sn2100-storage.html["必要な書類を確認する"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:required-documentation-sn2100-storage.html["必要な書類を確認する"]
 [role="quick-margin-para"]
 SN2100 スイッチとONTAPクラスタをセットアップするには、特定のスイッチおよびコントローラのドキュメントを確認してください。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:install-hardware-workflow.html["ハードウェアを設置"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:install-hardware-workflow.html["ハードウェアをインストールする"]
 [role="quick-margin-para"]
 スイッチのハードウェアをインストールします。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"]link:configure-software-sn2100-storage.html["ソフトウェアの設定"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-software-sn2100-storage.html["ソフトウェアの設定"]
 [role="quick-margin-para"]
 スイッチ ソフトウェアを構成します。

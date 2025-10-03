@@ -2,7 +2,7 @@
 permalink: switch-cisco-9336c-fx2-storage/migrate-to-9336-storage.html 
 sidebar: sidebar 
 keywords: migrating to a cluster with Cisco Nexus 9336C-FX2 cluster switches, how to migrate 
-summary: ONTAP クラスタの古い Cisco クラスタスイッチは、無停止で Cisco Nexus 9336C-FX2 クラスタネットワークスイッチに移行できます。 
+summary: ONTAPクラスタの古いCiscoクラスタ スイッチは、無停止でCisco Nexus 9336C-FX2クラスタ ネットワーク スイッチに移行できます。 
 ---
 = 古いCiscoスイッチからCisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチに移行する
 :allow-uri-read: 
@@ -15,113 +15,113 @@ ONTAPクラスタの古いCiscoスイッチをCisco Nexus 9336C-FX2 および 93
 
 
 
-== 要件を確認
+== 要件の確認
 
-次の点を確認します
+次のことを確認してください。
 
-* スイッチのシリアル番号を確認し、正しいスイッチが移行されていることを確認しておきます。
-* Nexus 9336C-FX2スイッチの一部のポートは、10GbEまたは40GbEで動作するように設定されています。
-* ノードからNexus 9336C-FX2クラスタスイッチへの10GbEおよび40GbE接続については、計画、移行、文書化が完了しています。
-* クラスタは完全に機能しています（ログにエラーがないか、または同様の問題が発生していない必要があります）。
-* Cisco Nexus 9336C-FX2スイッチの初期カスタマイズは完了しています。これにより、次のことが可能になります。
+* 正しいスイッチが移行されたことを確認するために、スイッチのシリアル番号を確認しました。
+* Nexus 9336C-FX2 スイッチの一部のポートは、10GbE または 40GbE で動作するように構成されています。
+* ノードから Nexus 9336C-FX2 クラスタ スイッチへの 10GbE および 40GbE 接続が計画、移行、および文書化されました。
+* クラスターは完全に機能しています (ログにエラーや同様の問題が記録されていない必要があります)。
+* Cisco Nexus 9336C-FX2 スイッチの初期カスタマイズが完了し、次のようになりました。
 +
-** 9336C-FX2スイッチは、最新の推奨バージョンのソフトウェアを実行しています。
-** LIFを新しいスイッチに移行する前に、リファレンス構成ファイル（RCF）が新しいスイッチに完全に適用されていることを確認します。
-** ネットワークトラフィックをシフトする前に、両方のスイッチの実行コンフィギュレーションとスタートアップコンフィギュレーションを確認してください。
-** DNS、NTP、SMTP、SNMPなどのサイトのカスタマイズSSHは新しいスイッチに設定します。
+** 9336C-FX2 スイッチは最新の推奨バージョンのソフトウェアを実行しています。
+** LIF を新しいスイッチに移行する前に、リファレンス コンフィギュレーション ファイル (RCF) が新しいスイッチに完全に適用されていることを確認します。
+** ネットワーク トラフィックを移行する前に、両方のスイッチの実行構成と起動構成を確認してください。
+** DNS、NTP、SMTP、SNMP、SSH などのサイトのカスタマイズはすべて新しいスイッチで構成されます。
 
 
-* のスイッチ互換性の表を参照できるようにしておきます https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^] サポートされている ONTAP 、 NX-OS 、および RCF のバージョンに対応したページです。
-* Ciscoスイッチのアップグレードおよびダウングレード手順については、CiscoのWebサイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを確認しておく必要があります https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズスイッチのサポート"^] ページ
-
-
-
-NOTE: AFF A800またはAFF C800システムでクラスタポートe0aおよびe1aのポート速度を変更すると、速度変換後に不正な形式のパケットを受信することがあります。を参照してください  https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1570339["バグ1570339"^] およびナレッジベースの記事 https://kb.netapp.com/onprem/ontap/hardware/CRC_errors_on_T6_ports_after_converting_from_40GbE_to_100GbE["40GbEから100GbEへの変換後のT6ポートのCRCエラー"^] を参照してください。
+* スイッチの互換性表は、 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]サポートされているONTAP、NX-OS、および RCF バージョンについては、ページをご覧ください。
+* Ciscoスイッチのアップグレードおよびダウングレード手順については、 Cisco Webサイトで入手可能な適切なソフトウェアおよびアップグレードガイドを確認してください。 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズ スイッチのサポート"^]ページ。
 
 
 
-== スイッチを移行します
+NOTE: AFF A800またはAFF C800システムで e0a および e1a クラスタ ポートのポート速度を変更する場合、速度変換後に不正なパケットが受信されることがあります。見る https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1570339["バグ1570339"^]ナレッジベースの記事 https://kb.netapp.com/onprem/ontap/hardware/CRC_errors_on_T6_ports_after_converting_from_40GbE_to_100GbE["40GbEから100GbEへの変換後のT6ポートのCRCエラー"^]ガイダンスのため。
+
+
+
+== スイッチを移行する
 
 .例について
-この手順の例では、 2 つのノードを使用します。これらのノードは、 2 つの 10GbE クラスタインターコネクトポート e0a と e0b を使用します。を参照してください https://hwu.netapp.com/["Hardware Universe"^] をクリックして、プラットフォームのクラスタポートが正しいことを確認します。
+この手順の例では、2つのノードを使用します。これらのノードは、2 つの 10GbE クラスター相互接続ポート e0a と e0b を使用します。参照 https://hwu.netapp.com/["Hardware Universe"^]プラットフォーム上の正しいクラスター ポートを確認します。
 
 
-NOTE: コマンド出力は、ONTAP のリリースによって異なる場合があります。
+NOTE: コマンド出力は、 ONTAPのリリースによって異なる場合があります。
 
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 既存の2つのCiscoスイッチの名前は、* cs1 *と* cs2 *です
-* 新しいNexus 9336C-FX2クラスタスイッチは、* CS1-NEW *および* CS2-NEW *です。
-* ノード名は* node1 *および* node2 *です。
-* クラスタLIFの名前は、ノード1の場合は* node1_clus1 *と* node1_clus2 *、ノード2の場合は* node2_clus1 *と* node2_clus2 *です。
-* cluster1：：*>*プロンプトは、クラスタの名前を示します。
+* 既存の2つのCiscoスイッチの名前は*cs1*と*cs2*です。
+* 新しい Nexus 9336C-FX2 クラスタ スイッチは *cs1-new* と *cs2-new* です。
+* ノード名は *node1* と *node2* です。
+* クラスター LIF 名は、ノード 1 の場合は *node1_clus1* と *node1_clus2*、ノード 2 の場合は *node2_clus1* と *node2_clus2* です。
+* *cluster1::*>* プロンプトはクラスターの名前を示します。
 
 
-この手順 では、次の例を参照してください。
+この手順では、次の例を参照してください。
 
-image::../media/Initial_setup.png[スイッチの初期セットアップ]
+image::../media/Initial_setup.png[スイッチの初期設定]
 
-.このタスクについて
-手順 では、ONTAP コマンドとの両方を使用する必要があります https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Nexus 9000シリーズスイッチ"^] コマンド。特に指定がないかぎり、ONTAP コマンドが使用されます。
+.タスク概要
+この手順では、 ONTAPコマンドと https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Nexus 9000 シリーズ スイッチ"^]コマンド。特に明記されていない限り、 ONTAPコマンドが使用されます。
 
 この手順では、次のシナリオについて説明します。
 
-* スイッチcs2をスイッチcs2-newに置き換えます。
+* まず、スイッチ cs2 をスイッチ cs2-new に置き換えます。
 +
-** クラスタノードのポートをシャットダウンします。クラスタが不安定にならないように、すべてのポートを同時にシャットダウンする必要があります。
+** クラスター ノードへのポートをシャットダウンします。クラスターの不安定性を回避するには、すべてのポートを同時にシャットダウンする必要があります。
 +
-*** すべてのクラスタLIFが新しいスイッチcs2-newにフェイルオーバーされます。
+*** すべてのクラスタ LIF は新しいスイッチ cs2-new にフェイルオーバーします。
 
 
-** 次に、ノードとcs2間のケーブルをcs2から切断し、cs2-newに再接続します。
+** 次に、ノードと cs2 間のケーブルが cs2 から切断され、cs2-new に再接続されます。
 
 
-* スイッチcs1はスイッチcs1-newに置き換えられます。
+* スイッチ cs1 はスイッチ cs1-new に置き換えられます。
 +
-** クラスタノードのポートをシャットダウンします。クラスタが不安定にならないように、すべてのポートを同時にシャットダウンする必要があります。
+** クラスター ノードへのポートをシャットダウンします。クラスターの不安定性を回避するには、すべてのポートを同時にシャットダウンする必要があります。
 +
-*** すべてのクラスタLIFが新しいスイッチcs1-newにフェイルオーバーされます。
+*** すべてのクラスタ LIF が新しいスイッチ cs1-new にフェイルオーバーします。
 
 
-** 次に、ノードとcs1間のケーブルをcs1から切断し、cs1-newに再接続します。
-
-
-
-
-
-NOTE: この手順 では、動作可能なInter-Switch Link（ISL；スイッチ間リンク）は必要ありません。RCFのバージョンを変更するとISL接続に一時的に影響する可能性があるため、これは設計上の変更です。クラスタのノンストップオペレーションを実現するために、次の手順では、ターゲットスイッチで手順を実行しながら、動作中のパートナースイッチにすべてのクラスタLIFをフェイルオーバーします。
+** 次に、ノードと cs1 間のケーブルが cs1 から切断され、cs1-new に再接続されます。
 
 
 
-=== 手順1：移行の準備
 
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= xh
+
+NOTE: この手順では、動作中のスイッチ間リンク (ISL) は必要ありません。これは、RCF バージョンの変更によって ISL 接続が一時的に影響を受ける可能性があるため、設計によるものです。クラスタ操作が中断されないようにするには、次の手順で、ターゲット スイッチで手順を実行しながら、すべてのクラスタ LIF を動作中のパートナー スイッチにフェイルオーバーします。
+
+
+
+=== ステップ1: 移行の準備
+
+. このクラスタでAutoSupportが有効になっている場合は、 AutoSupportメッセージを呼び出して自動ケース作成を抑制します。 `system node autosupport invoke -node * -type all -message MAINT=xh`
 +
-ここで、 _ x _ はメンテナンス時間の長さ（時間）です。
-
-+
-
-NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
-
-. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 * y * 」と入力します。
-+
-「 advanced 」の権限が必要です
+ここで、_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
 
 +
-advanced のプロンプト（ * > ）が表示されます。
 
+NOTE: AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
-
-
-
-=== 手順2：ポートとケーブルを設定する
-
-. 新しいスイッチで、ISLがケーブル接続され、スイッチcs1 -新規とcs2 -新規で正常に動作していることを確認します。
+. 続行するかどうかを尋ねられたら *y* と入力して、権限レベルを「advanced」に変更します。
 +
-「ポートチャネルの概要」
+`set -privilege advanced`
 
 +
-.例を示します
+advancedのプロンプト（*>）が表示されます。
+
+
+
+
+
+=== ステップ2: ポートとケーブルを構成する
+
+. 新しいスイッチで、スイッチ cs1-new と cs2-new 間の ISL がケーブル接続され、正常であることを確認します。
++
+`show port-channel summary`
+
++
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -157,12 +157,12 @@ Group Port-       Type     Protocol  Member Ports
 1     Po1(SU)     Eth      LACP      Eth1/35(P)   Eth1/36(P)
 ----
 ====
-. 既存のクラスタスイッチに接続されている各ノードのクラスタポートを表示します。
+. 既存のクラスター スイッチに接続されている各ノード上のクラスター ポートを表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -179,14 +179,14 @@ node2      /cdp
             e0b    cs2                       Ethernet1/2        N5K-C5596UP
 ----
 ====
-. 各クラスタポートの管理ステータスまたは動作ステータスを確認します。
+. 各クラスタ ポートの管理ステータスまたは動作ステータスを決定します。
 +
-.. すべてのクラスタポートが正常な状態であることを確認します。
+.. すべてのクラスター ポートが正常な状態で稼働していることを確認します。
 +
-「 network port show -ipspace cluster 」のように表示されます
+`network port show -ipspace Cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -210,12 +210,12 @@ e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
 ====
-.. すべてのクラスタインターフェイス（LIF）がそれぞれのホームポートにあることを確認します。
+.. すべてのクラスタ インターフェイス (LIF) がホーム ポート上にあることを確認します。
 +
-「 network interface show -vserver Cluster 」のように表示されます
+`network interface show -vserver Cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -232,12 +232,12 @@ Cluster
             node2_clus2  up/up      169.254.19.183/16  node2       e0b     true
 ----
 ====
-.. クラスタが両方のクラスタスイッチの情報を表示していることを確認します。
+.. クラスターが両方のクラスター スイッチの情報を表示することを確認します。
 +
-system cluster-switch show -is-monitoring enabled-operational true を使用します
+`system cluster-switch show -is-monitoring-enabled-operational true`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -264,18 +264,18 @@ cs2                         cluster-network     10.233.205.93   N5K-C5596UP
 ====
 
 
-. [[step_4]]クラスタLIFで自動リバートを無効にします。
+. [[step_4]]クラスターLIFの自動復帰を無効にします。
 +
-この手順で自動リバートを無効にしても、クラスタLIFはホームポートに自動的に戻りません。これらは現在のポートで稼働している間も維持されます。
-
-+
-network interface modify -vserver Cluster -lif *-auto-revert false
+この手順の自動復帰を無効にすると、クラスター LIF は自動的にホーム ポートに戻りません。現在のポートが稼働し続けている限り、それらは現在のポート上に残ります。
 
 +
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
-NOTE: 自動リバートを無効にすると、あとでスイッチポートがシャットダウンされた場合にのみ、ONTAPがクラスタLIFをフェイルオーバーします。
++
 
-. クラスタスイッチcs2で、クラスタLIFをフェイルオーバーするために、*すべての*ノードのクラスタポートに接続されているポートをシャットダウンします。
+NOTE: 自動リバートを無効にすると、後でスイッチ ポートがシャットダウンされたときに、 ONTAP はクラスタ LIF のみをフェイルオーバーするようになります。
+
+. クラスタ スイッチ cs2 で、クラスタ LIF をフェイルオーバーするために、すべてのノードのクラスタ ポートに接続されているポートをシャットダウンします。
 +
 [listing, subs="+quotes"]
 ----
@@ -286,12 +286,12 @@ cs2(config-if-range)# *exit*
 cs2(config)# *exit*
 cs2#
 ----
-. クラスタスイッチcs1でホストされているポートにクラスタLIFがフェイルオーバーされたことを確認します。これには数秒かかることがあります。
+. クラスタ LIF がクラスタ スイッチ cs1 でホストされているポートにフェイルオーバーされたことを確認します。数秒かかる場合があります。
 +
-「 network interface show -vserver Cluster 」のように表示されます
+`network interface show -vserver Cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -307,12 +307,12 @@ Cluster
             node2_clus2   up/up      169.254.3.9/16     node2      e0a     false
 ----
 ====
-. クラスタが正常であることを確認します。
+. クラスタが正常に動作していることを確認します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -324,9 +324,9 @@ node1      true    true          false
 node2      true    true          false
 ----
 ====
-. クラスタLIFがスイッチcs1にフェイルオーバーされ、クラスタが正常に稼働している場合は、に進みます<<step_10,ステップ。10>>。一部のクラスタLIFが正常でない場合やクラスタが正常でない場合は、次の手順でスイッチcs2への接続をロールバックできます。
+. クラスタLIFがスイッチcs1にフェイルオーバーし、クラスタが正常である場合は、<<step_10,ステップ。10>> 。一部のクラスタ LIF が正常でないか、クラスタが正常でない場合は、次のようにスイッチ cs2 への接続をロールバックできます。
 +
-.. すべてのノード*のクラスタポートに接続されているポートを起動します。
+.. すべてのノードのクラスター ポートに接続されているポートを起動します。
 +
 [listing, subs="+quotes"]
 ----
@@ -337,12 +337,12 @@ cs2(config-if-range)# *exit*
 cs2(config)# *exit*
 cs2#
 ----
-.. クラスタスイッチcs1でホストされているポートにクラスタLIFがフェイルオーバーされたことを確認します。これには数秒かかることがあります。
+.. クラスタ LIF がクラスタ スイッチ cs1 でホストされているポートにフェイルオーバーされたことを確認します。数秒かかる場合があります。
 +
-「 network interface show -vserver Cluster 」のように表示されます
+`network interface show -vserver Cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -358,12 +358,12 @@ Cluster
             node2_clus2   up/up      169.254.3.9/16     node2      e0a     false
 ----
 ====
-.. クラスタが正常であることを確認します。
+.. クラスタが正常に動作していることを確認します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -377,20 +377,20 @@ node2      true    true          false
 ====
 
 
-. LIFとクラスタの健常性を回復したら、からプロセスを再起動します<<step_4,ステップ。4>>。
-. [[STEP_10]]すべてのクラスタノード接続ケーブルを古いcs2スイッチから新しいcs2-newスイッチに移動します。
+. LIFとクラスタのヘルスを回復したら、プロセスを再開します。<<step_4,ステップ。4>> 。
+. [[step_10]]すべてのクラスタノード接続ケーブルを古い cs2 スイッチから新しい cs2-new スイッチに移動します。
 +
 *クラスタノード接続ケーブルをcs2-newスイッチに移動*
 
 +
-image::../media/new_switch_cs1.png[クラスタノードの接続ケーブルをcs2-newスイッチに移動しました]
+image::../media/new_switch_cs1.png[クラスタノード接続ケーブルをcs2-newスイッチに移動しました]
 
-. ネットワーク接続のヘルスがcs2に移動されたことを確認します。
+. cs2-new に移動されたネットワーク接続の健全性を確認します。
 +
-「 network port show -ipspace cluster 」のように表示されます
+`network port show -ipspace Cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -415,14 +415,14 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
 ====
 +
-移動されたすべてのクラスタポートが稼働している必要があります。
+移動されたすべてのクラスター ポートが稼働している必要があります。
 
-. クラスタポートのネイバー情報を確認します。
+. クラスター ポートのネイバー情報を確認します。
 +
-「 network device-discovery show -protocol cdp 」と入力します
+`network device-discovery show -protocol cdp`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -442,16 +442,16 @@ node2      /cdp
 ----
 ====
 +
-移動したクラスタポートがcs2新しいスイッチをネイバーとして認識していることを確認します。
+移動したクラスタ ポートが cs2-new スイッチをネイバーとして認識していることを確認します。
 
-. スイッチcs2-newから見たスイッチポート接続を確認します。
+. スイッチ cs2-new の観点からスイッチ ポートの接続を確認します。
 +
 [listing, subs="+quotes"]
 ----
 cs2-new# *show interface brief*
 cs2-new# *show cdp neighbors*
 ----
-. クラスタスイッチcs1で、クラスタLIFをフェイルオーバーするために、*すべての*ノードのクラスタポートに接続されているポートをシャットダウンします。
+. クラスタ スイッチ cs1 で、クラスタ LIF をフェイルオーバーするために、すべてのノードのクラスタ ポートに接続されているポートをシャットダウンします。
 +
 [listing, subs="+quotes"]
 ----
@@ -463,14 +463,14 @@ cs1(config)# *exit*
 cs1#
 ----
 +
-すべてのクラスタLIFがcs2-newスイッチにフェイルオーバーされます。
+すべてのクラスタ LIF は cs2-new スイッチにフェイルオーバーします。
 
-. スイッチcs2-newでホストされているポートにクラスタLIFがフェイルオーバーしたことを確認します。この処理には数秒かかることがあります。
+. クラスタ LIF がスイッチ cs2-new でホストされているポートにフェイルオーバーされたことを確認します。これには数秒かかる場合があります。
 +
-「 network interface show -vserver Cluster 」のように表示されます
+`network interface show -vserver Cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -486,12 +486,12 @@ Cluster
             node2_clus2  up/up      169.254.3.9/16     node2       e0b     true
 ----
 ====
-. クラスタが正常であることを確認します。
+. クラスタが正常に動作していることを確認します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -503,19 +503,19 @@ node1      true    true          false
 node2      true    true          false
 ----
 ====
-. クラスタノード接続ケーブルをcs1から新しいcs1-newスイッチに移動します。
+. クラスタ ノード接続ケーブルを cs1 から新しい cs1-new スイッチに移動します。
 +
 *クラスタノード接続ケーブルをcs1-newスイッチに移動*
 
 +
-image::../media/new_switch_cs2.png[クラスタノードの接続ケーブルをcs1-newスイッチに移動しました]
+image::../media/new_switch_cs2.png[クラスタノード接続ケーブルをcs1-newスイッチに移動しました]
 
-. ネットワーク接続のヘルスがcs1に移動されていることを確認します。NEW：
+. cs1-new に移動されたネットワーク接続の健全性を確認します。
 +
-「 network port show -ipspace cluster 」のように表示されます
+`network port show -ipspace Cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -540,14 +540,14 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
 ====
 +
-移動されたすべてのクラスタポートが稼働している必要があります。
+移動されたすべてのクラスター ポートが稼働している必要があります。
 
-. クラスタポートのネイバー情報を確認します。
+. クラスター ポートのネイバー情報を確認します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -566,21 +566,21 @@ node2      /cdp
 ----
 ====
 +
-移動したクラスタポートがcs1新しいスイッチをネイバーとして認識していることを確認します。
+移動したクラスタ ポートが cs1-new スイッチをネイバーとして認識していることを確認します。
 
-. スイッチcs1-newから見たスイッチポート接続を確認します。
+. スイッチ cs1-new の観点からスイッチ ポートの接続を確認します。
 +
 [listing, subs="+quotes"]
 ----
 cs1-new# *show interface brief*
 cs1-new# *show cdp neighbors*
 ----
-. cs1 -新規とcs2 -新規の間のISLがまだ動作していることを確認します。
+. cs1-new と cs2-new 間の ISL がまだ動作していることを確認します。
 +
-「ポートチャネルの概要」
+`show port-channel summary`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -620,36 +620,36 @@ Group Port-       Type     Protocol  Member Ports
 
 
 
-=== 手順3：構成を確認します
+=== ステップ3: 構成を確認する
 
-. クラスタ LIF で自動リバートを有効にします。
+. クラスタLIFで自動リバートを有効にします。
 +
-network interface modify -vserver Cluster -lif *-auto-revert trueを指定します
+`network interface modify -vserver Cluster -lif * -auto-revert true`
 
-. クラスタLIFがホームポートにリバートされたことを確認します（数分かかる場合があります）。
+. クラスタ LIF がホーム ポートに戻ったことを確認します (これには 1 分ほどかかる場合があります)。
 +
-「 network interface show -vserver Cluster 」のように表示されます
-
-+
-クラスタLIFがホームポートにリバートされていない場合は、手動でリバートします。
+`network interface show -vserver Cluster`
 
 +
-network interface revert -vserver Cluster -lif *
+クラスタ LIF がホーム ポートに戻っていない場合は、手動で戻します。
 
-. クラスタが正常であることを確認します。
 +
-「 cluster show 」を参照してください
+`network interface revert -vserver Cluster -lif *`
 
-. リモートクラスタインターフェイスの接続を確認します。
+. クラスタが正常に動作していることを確認します。
++
+`cluster show`
+
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
@@ -673,9 +673,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -707,7 +707,7 @@ RPC status:
 ----
 --
 ====
-. [[step5]]ケースの自動作成を抑制した場合は、AutoSupportメッセージを呼び出して再度有効にします。 `system node autosupport invoke -node * -type all -message MAINT=END`
+. [[step5]]自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。 `system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 .次の手順

@@ -2,18 +2,18 @@
 permalink: switch-nvidia-sn2100-storage/required-documentation-sn2100-storage.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: NVIDIA SN2100スイッチのインストールとメンテナンスについては、推奨されるすべてのマニュアルを確認してください。 
+summary: NVIDIA SN2100 スイッチのインストールとメンテナンスについては、推奨されるすべてのドキュメントを必ず確認してください。 
 ---
-= NVIDIA SN2100スイッチのマニュアル要件
+= NVIDIA SN2100スイッチのドキュメント要件
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NVIDIA SN2100スイッチのインストールとメンテナンスについては、推奨されるすべてのマニュアルを確認してください。
+NVIDIA SN2100 スイッチのインストールとメンテナンスについては、推奨されるすべてのドキュメントを必ず確認してください。
 
-次の表に、NVIDIA SN2100スイッチで使用可能なマニュアルを示します。
+次の表は、 NVIDIA SN2100 スイッチに関するドキュメントの一覧です。
 
 [cols="1,2"]
 |===
@@ -21,36 +21,36 @@ NVIDIA SN2100スイッチのインストールとメンテナンスについて�
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/install-hardware-sn2100-cluster.html["NVIDIA SN2100スイッチをセットアップして設定します_"^]
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/install-hardware-sn2100-cluster.html["NVIDIA SN2100スイッチのセットアップと構成_"^]
  a| 
-Cumulus Linuxおよび該当するRCFのインストールなど、NVIDIA SN2100スイッチのセットアップおよび設定方法について説明します。
-
-
-
- a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrate-cisco-sn2100-cluster-switch.html["_ CiscoクラスタスイッチからNVIDIA SN2100クラスタスイッチへの移行_"^]
- a| 
-Ciscoクラスタスイッチを使用する環境からNVIDIA SN2100クラスタスイッチを使用する環境に移行する方法について説明します。
+Cumulus Linux および該当する RCF のインストールを含む、 NVIDIA SN2100 スイッチのセットアップと構成の方法について説明します。
 
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html["NVIDIA SN2100クラスタスイッチを使用する2ノードスイッチクラスタへの移行_"^]
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrate-cisco-sn2100-cluster-switch.html["Ciscoクラスタ スイッチからNVIDIA SN2100 クラスタ スイッチへの移行_"^]
  a| 
-NVIDIA SN2100クラスタスイッチを使用して2ノードスイッチ環境に移行する方法について説明します。
-
-
-
- a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/replace-sn2100-switch-cluster.html["NVIDIA SN2100クラスタスイッチを交換してください_"^]
- a| 
-クラスタ内の故障したNVIDIA SN2100スイッチを交換し、Cumulus Linuxおよびリファレンス構成ファイルをダウンロードする手順 について説明します。
+Ciscoクラスタ スイッチを使用する環境からNVIDIA SN2100 クラスタ スイッチを使用する環境に移行する方法について説明します。
 
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/replace-sn2100-switch-storage.html["NVIDIA SN2100ストレージスイッチを交換してください_"^]
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html["NVIDIA SN2100 クラスタ スイッチを使用した 2 ノード スイッチ クラスタへの移行_"^]
  a| 
-欠陥のあるNVIDIA SN2100ストレージスイッチを交換し、Cumulus Linuxおよびリファレンス構成ファイルをダウンロードする手順 について説明します。
+NVIDIA SN2100 クラスタ スイッチを使用して 2 ノード スイッチ環境に移行する方法について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/replace-sn2100-switch-cluster.html["NVIDIA SN2100 クラスタスイッチの交換_"^]
+ a| 
+クラスター内の故障したNVIDIA SN2100 スイッチを交換し、Cumulus Linux と参照構成ファイルをダウンロードする手順について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/replace-sn2100-switch-storage.html["NVIDIA SN2100 ストレージ スイッチの交換_"^]
+ a| 
+故障したNVIDIA SN2100 ストレージ スイッチを交換し、Cumulus Linux と参照構成ファイルをダウンロードする手順について説明します。
 
 |===

@@ -2,29 +2,29 @@
 permalink: switch-bes-53248/replace-verify.html 
 sidebar: sidebar 
 keywords: command, verify, operational, bes, cluster, switch, upgrade, verify the configuration after a cluster switch upgrade - bes-53428 switches 
-summary: ここに示すコマンドを使用して、 BES-53248 クラスタスイッチのアップグレード後にすべてが動作していることを確認できます。 
+summary: ここで提供されるコマンドを使用して、BES-53248 クラスタ スイッチのアップグレード後にすべてが動作していることを確認できます。 
 ---
-= BES-53248クラスタスイッチのEFOSソフトウェアまたはRCFアップグレード後のONTAPクラスタネットワークの確認
+= BES-53248クラスタスイッチのEFOSソフトウェアまたはRCFアップグレード後のONTAPクラスタネットワークを検証します。
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-EFOSソフトウェアまたはBES-53248クラスタスイッチのRCFをアップグレードしたあとに、次のコマンドを使用してONTAPクラスタネットワークの健全性を確認できます。
+EFOS ソフトウェアまたは BES-53248 クラスタ スイッチの RCF をアップグレードした後、次のコマンドを使用してONTAPクラスタ ネットワークの健全性を確認できます。
 
 .手順
-. コマンドを使用して、クラスタのネットワークポートに関する情報を表示します。
+. 次のコマンドを使用して、クラスター上のネットワーク ポートに関する情報を表示します。
 +
 [source, cli]
 ----
 network port show -ipspace Cluster
 ----
 +
-「 Link 」の値は「 up 」で、「 Health Status 」の値は「 healthy 」である必要があります。
+`Link`価値を持たなければならない `up`そして `Health Status`でなければなりません `healthy`。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 次の例は、コマンドからの出力例を示しています。
@@ -50,14 +50,14 @@ e0a    Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b    Cluster      Cluster          up   9000  auto/10000 healthy  false
 ----
 ====
-. それぞれのLIFについて、を確認します `Is Home` はです `true` および `Status Admin/Oper` はです `up` 両方のノードで、コマンドを使用します。
+. 各LIFについて、次の点を確認します。 `Is Home`は `true`そして `Status Admin/Oper`は `up`両方のノードで次のコマンドを使用します。
 +
 [source, cli]
 ----
 network interface show -vserver Cluster
 ----
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -74,12 +74,12 @@ Cluster
             node2_clus2  up/up    169.254.110.131/16 node2         e0b     true
 ----
 ====
-. を確認します `Health Status` 各ノードのはです `true` コマンドを使用します。
+. 確認するには `Health Status`各ノードは `true`次のコマンドを使用します:
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -95,4 +95,4 @@ node2                true    true          false
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。

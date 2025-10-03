@@ -2,17 +2,17 @@
 permalink: switch-cshm/monitor-overview.html 
 sidebar: sidebar 
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
-summary: 次のコマンドを使用できます。 
+summary: 以下のコマンドが使えます。 
 ---
-= 健全性チェックの概要
+= ヘルスチェックの概要
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-ヘルスモニタは、クラスタ内の特定の重大な状態をプロアクティブに監視し、障害やリスクを検出した場合にアラートを生成します。
+ヘルスモニタは、クラスタ内の特定のクリティカルな状態をプロアクティブに監視します。
 
-現在発生しているイーサネットスイッチヘルスモニタアラートを表示するには、次のコマンドを実行します。 `system health alert show -monitor ethernet-switch`
+現在発生しているイーサネット スイッチ ヘルス モニターのアラートを表示するには、次のコマンドを実行します。 `system health alert show -monitor ethernet-switch`
 
-使用可能なイーサネットスイッチヘルスモニタアラートを表示するには、次のコマンドを実行します。 `system health alert definition show -monitor ethernet-switch`
+利用可能なイーサネット スイッチ ヘルス モニターのアラートを表示するには、次のコマンドを実行します。 `system health alert definition show -monitor ethernet-switch`

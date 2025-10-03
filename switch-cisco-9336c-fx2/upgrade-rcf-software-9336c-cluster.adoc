@@ -2,45 +2,45 @@
 permalink: switch-cisco-9336c-fx2/upgrade-rcf-software-9336c-cluster.html 
 sidebar: sidebar 
 keywords: install rcf, cisco switches 
-summary: RCF は、 Nexus 9336C-FX2 スイッチを初めてセットアップしたあとにインストールできます。また、この手順を使用して RCF のバージョンをアップグレードすることもできます。 
+summary: RCFは、Nexus 9336C-FX2スイッチの初回セットアップ後にインストールできます。また、同じ手順を使用してRCFのバージョンをアップグレードすることもできます。 
 ---
-= リファレンス構成ファイル（RCF）のアップグレード
+= 参照構成ファイル (RCF) をアップグレードする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-運用中のスイッチに既存のバージョンのRCFファイルがインストールされている場合は、RCFのバージョンをアップグレードします。
+運用スイッチに既存のバージョンの RCF ファイルがインストールされている場合は、RCF バージョンをアップグレードします。
 
-.作業を開始する前に
-次のものがあることを確認します。
+.開始する前に
+以下のものがあることを確認してください。
 
-* スイッチ設定の現在のバックアップ。
-* クラスタが完全に機能している（ログにエラーがない、または同様の問題が発生している）。
+* スイッチ構成の現在のバックアップ。
+* 完全に機能するクラスター (ログにエラーや同様の問題がない)。
 * 現在のRCF。
-* RCFのバージョンを更新する場合は、目的のブートイメージが反映されたブート設定がRCFに必要です。
+* RCF バージョンを更新する場合は、必要なブート イメージを反映したブート構成が RCF 内に必要です。
 +
-現在のブートイメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。
+現在のブート イメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、RCFを再適用する前に変更する必要があります。
 
 
 
 
-NOTE: この手順 では、動作可能なInter-Switch Link（ISL；スイッチ間リンク）は必要ありません。RCFのバージョンを変更するとISL接続に一時的に影響する可能性があるため、これは設計上の変更です。クラスタのノンストップオペレーションを実現するために、次の手順 は、ターゲットスイッチでの手順の実行中に、すべてのクラスタLIFを動作しているパートナースイッチに移行します。
+NOTE: この手順では、動作中のスイッチ間リンク (ISL) は必要ありません。これは、RCF バージョンの変更によって ISL 接続が一時的に影響を受ける可能性があるため、設計によるものです。クラスタ操作を中断せずに実行するために、次の手順では、ターゲット スイッチで手順を実行しながら、すべてのクラスタ LIF を動作中のパートナー スイッチに移行します。
 
 
-CAUTION: 新しいバージョンのスイッチソフトウェアと RCF をインストールする前に、スイッチの設定を消去し、基本的な設定を完了する必要があります。スイッチ設定を消去する前に、シリアルコンソールを使用してスイッチに接続するか、基本的な設定情報を保持しておく必要があります。
+CAUTION: 新しいスイッチ ソフトウェア バージョンと RCF をインストールする前に、スイッチの設定を消去し、基本設定を実行する必要があります。スイッチ設定を消去する前に、シリアル コンソールを使用してスイッチに接続するか、基本的な構成情報を保存しておく必要があります。
 
 
 
-== 手順1：アップグレードの準備
+== ステップ1: アップグレードの準備
 
-. クラスタスイッチに接続されている各ノードのクラスタポートを表示します。
+. クラスター スイッチに接続されている各ノード上のクラスター ポートを表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -64,14 +64,14 @@ cluster1-04/cdp
 cluster1::*>
 ----
 ====
-. 各クラスタポートの管理ステータスと動作ステータスを確認します。
+. 各クラスタ ポートの管理ステータスと動作ステータスを確認します。
 +
-.. すべてのクラスタポートが正常な状態で稼働していることを確認します。
+.. すべてのクラスター ポートが正常な状態で *up* していることを確認します。
 +
 `network port show –role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -114,12 +114,12 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 cluster1::*>
 ----
 ====
-.. すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。
+.. すべてのクラスタ インターフェイス (LIF) がホーム ポート上にあることを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -141,12 +141,12 @@ Cluster
 cluster1::*>
 ----
 ====
-.. クラスタが両方のクラスタスイッチの情報を表示していることを確認します。
+.. クラスターが両方のクラスター スイッチの情報を表示することを確認します。
 +
-system cluster-switch show -is-monitoring enabled-operational true を使用します
+`system cluster-switch show -is-monitoring-enabled-operational true`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -174,7 +174,7 @@ cluster1::*>
 ====
 
 
-. クラスタ LIF で自動リバートを無効にします。
+. クラスタLIFで自動リバートを無効にします。
 +
 `cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*`
 
@@ -182,9 +182,9 @@ cluster1::*>
 
 
 
-== 手順2：ポートを設定する
+== ステップ2: ポートを構成する
 
-. クラスタスイッチ cs1 で、ノードのクラスタポートに接続されているポートをシャットダウンします。
+. クラスタ スイッチcs1で、ノードのクラスタ ポートに接続されているポートをシャットダウンします。
 +
 `cs1(config)# *interface eth1/1/1-2,eth1/7-8*`
 
@@ -193,14 +193,14 @@ cluster1::*>
 
 +
 
-CAUTION: ネットワーク接続の問題が発生しないように、接続されている*すべてのクラスタポートをシャットダウンしてください。 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["スイッチOSのアップグレード時にクラスタLIFを移行する際にノードがクォーラムのメンバーでない"^]詳細については、ナレッジベースの記事を参照してください。
+CAUTION: ネットワーク接続の問題を回避するために、接続されているすべてのクラスター ポートをシャットダウンしてください。ナレッジベースの記事を参照してください https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["スイッチ OS のアップグレード中にクラスタ LIF を移行するとノードがクォーラム外になる"^]詳細についてはこちらをご覧ください。
 
-. クラスタスイッチcs1でホストされているポートにクラスタLIFがフェイルオーバーされたことを確認します。これには数秒かかることがあります。
+. クラスタ LIF がクラスタ スイッチ cs1 でホストされているポートにフェイルオーバーされたことを確認します。数秒かかる場合があります。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -222,12 +222,12 @@ Cluster
 cluster1::*>
 ----
 ====
-. クラスタが正常であることを確認します。
+. クラスタが正常に動作していることを確認します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -243,9 +243,9 @@ cluster1-04          true    true          false
 cluster1::*>
 ----
 ====
-. 現在のスイッチ設定のコピーをまだ保存していない場合は、次のコマンドの出力をテキストファイルにコピーして保存します。
+. まだ行っていない場合は、次のコマンドの出力をテキスト ファイルにコピーして、現在のスイッチ構成のコピーを保存します。
 +
-'how running-config'
+`show running-config`
 
 +
 .. 現在のカスタム追加を記録します `running-config`使用中の RCF ファイル (組織の SNMP 構成など)。
@@ -276,13 +276,13 @@ cluster1::*>
 `cs1# echo "hardware access-list tcam region ing-l2-qos 1280" >> bootflash:write_erase.cfg`
 
 +
-ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細については、こちらをご覧ください。
+ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細については、こちらをご覧ください。
 
 . 確認するには `write_erase.cfg`ファイルは期待どおりに入力されます。
 +
 `show file bootflash:write_erase.cfg`
 
-. 問題write eraseコマンドを使用して、現在保存されている設定を消去します。
+. 現在保存されている設定を消去するには、write erase コマンドを発行します。
 +
 `cs1# *write erase*`
 
@@ -292,30 +292,30 @@ cluster1::*>
 +
 `Do you wish to proceed anyway? (y/n)  [n] *y*`
 
-. 以前に保存した基本設定をスタートアップコンフィギュレーションにコピーします。
+. 以前に保存した基本設定をスタートアップ設定にコピーします。
 +
 `cs1# copy bootflash:write_erase.cfg startup-config`
 
-. スイッチをリブートします。
+. スイッチを再起動します。
 +
 `switch# *reload*`
 
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
 
-. 管理IPアドレスに再びアクセスできるようになったら、SSHを使用してスイッチにログインします。
+. 管理 IP アドレスに再度アクセスできるようになったら、SSH 経由でスイッチにログインします。
 +
-SSHキーに関連するホストファイルエントリの更新が必要になる場合があります。
+SSH キーに関連するホスト ファイル エントリを更新する必要がある場合があります。
 
-. FTP、TFTP、SFTP、またはSCPのいずれかの転送プロトコルを使用して、スイッチcs1のブートフラッシュにRCFをコピーします。
+. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs1のブートフラッシュにRCFをコピーします。
 +
-Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^]ガイド。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]ガイド。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次に、TFTPを使用してスイッチcs1のブートフラッシュにRCFをコピーする例を示します。
+この例では、TFTPを使用してスイッチcs1のブートフラッシュにRCFをコピーしています。
 
 [listing, subs="+quotes"]
 ----
@@ -327,24 +327,24 @@ TFTP get operation was successful
 Copy complete, now saving to disk (please wait)...
 ----
 ====
-. ブートフラッシュに前にダウンロードした RCF を適用します。
+. 前の手順でブートフラッシュにダウンロードしたRCFを適用します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]ガイド。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-この例は、RCFファイルを示しています `Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt` スイッチcs1にインストールする手順は次のとおりです。
+この例ではRCFファイルを示します `Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt`スイッチ cs1 にインストールされます:
 
 [listing]
 ----
 cs1# copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
 ----
 ====
-. 「 show banner motd 」コマンドのバナー出力を確認します。スイッチの設定と動作を適切に行うには、次の手順を参照して実行する必要があります。
+. バナー出力を調べる `show banner motd`指示。スイッチが正しく動作するように設定するためには、出力を確認し、その指示に従う必要があります。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -386,24 +386,24 @@ g mode:
 ====
 . RCF ファイルが正しい新しいバージョンであることを確認します。
 +
-'how running-config'
+`show running-config`
 
 +
-出力をチェックして正しい RCF があることを確認する場合は、次の情報が正しいことを確認してください。
+次の情報が正しいことを確認してください。
 
 +
-** RCF バナー
+** RCFのバナー
 ** ノードとポートの設定
 ** カスタマイズ
 +
-出力内容はサイトの構成によって異なります。ポートの設定を確認し、インストールした RCF に固有の変更がないかリリースノートを参照してください。
+出力内容はサイトの構成によって異なります。ポートの設定を確認し、インストールしたRCFに固有の変更がないかリリース ノートを参照してください。
 
 
 
-. 以前のカスタマイズをスイッチの設定に再適用します。link:cabling-considerations-9336c-fx2.html["ケーブル接続と構成に関する考慮事項を確認"]必要なその他の変更の詳細については、を参照してください。
-. RCFのバージョン、カスタム追加、およびスイッチの設定が正しいことを確認したら、running-configファイルをstartup-configファイルにコピーします。
+. 以前のカスタマイズをスイッチ構成に再適用します。参照link:cabling-considerations-9336c-fx2.html["ケーブル配線と構成の考慮事項を確認する"]今後必要な変更の詳細については、以下を参照してください。
+. RCF バージョン、カスタム追加、およびスイッチ設定が正しいことを確認したら、running-config ファイルを startup-config ファイルにコピーします。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^] ガイド。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]ガイド。
 
 +
 `cs1# copy running-config startup-config`
@@ -411,21 +411,21 @@ Cisco コマンドの詳細については、『』の該当するガイドを�
 +
 `[########################################] 100% Copy complete`
 
-. スイッチcs1をリブートします。スイッチのリブート中にノードで報告される「cluster switch health monitor」アラートおよび「cluster ports down」イベントは無視してかまいません。
+. スイッチcs1をリブートします。スイッチの再起動中にノードで報告される「`cluster switch health monitor`」アラートと「`cluster ports down`」イベントは無視できます。
 +
 `cs1# *reload*`
 
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
 
-. クラスタのクラスタポートの健常性を確認します。
+. クラスタ ポートの健全性を確認します。
 +
-.. クラスタポートが起動しており、クラスタ内のすべてのノードで正常に動作していることを確認します。
+.. クラスター内のすべてのノードでクラスター ポートが稼働しており正常であることを確認します。
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -466,12 +466,12 @@ e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
 8 entries were displayed.
 ----
 ====
-.. クラスタからスイッチの健常性を確認します。
+.. クラスターからスイッチの健全性を確認します。
 +
-「 network device-discovery show -protocol cdp 」と入力します
+`network device-discovery show -protocol cdp`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -514,7 +514,7 @@ cs2                         cluster-network    10.233.205.91    NX9-C9336C
 
 2 entries were displayed.
 ----
-スイッチにロードした RCF バージョンによっては、 cs1 スイッチコンソールで次の出力が表示されることがあります。
+前の手順でスイッチにロードしたRCFのバージョンによっては、cs1スイッチのコンソールに次の出力が表示されることがあります。
 
 [listing]
 ----
@@ -525,12 +525,12 @@ cs2                         cluster-network    10.233.205.91    NX9-C9336C
 ====
 
 
-. クラスタが正常であることを確認します。
+. クラスタが正常に動作していることを確認します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -546,8 +546,8 @@ cluster1-04          true     true          false
 cluster1::*>
 ----
 ====
-. スイッチcs2で手順1 ~ 20を繰り返します。
-. クラスタ LIF で自動リバートを有効にします。
+. スイッチ cs2 で手順 1 ～ 20 を繰り返します。
+. クラスタLIFで自動リバートを有効にします。
 +
 `cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True*`
 
@@ -555,14 +555,14 @@ cluster1::*>
 
 
 
-== 手順3：クラスタのネットワーク構成とクラスタの健全性を確認する
+== ステップ3: クラスターネットワーク構成とクラスターの健全性を確認する
 
-. クラスタポートに接続されているスイッチポートが*up*であることを確認します。
+. クラスター ポートに接続されているスイッチ ポートが *稼働中* であることを確認します。
 +
 `show interface brief`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -578,12 +578,12 @@ Eth1/8        1       eth  trunk  up      none                   100G(D) --
 .
 ----
 ====
-. 想定したノードが接続されていることを確認します。
+. 期待されるノードがまだ接続されていることを確認します。
 +
-'How CDP Neighbors' を参照してください
+`show cdp neighbors`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -604,7 +604,7 @@ cs1                Eth1/36        175    R S I s     N9K-C9336C    Eth1/36
 Total entries displayed: 4
 ----
 ====
-. 次のコマンドを使用して、クラスタノードが正しいクラスタVLANに含まれていることを確認します。
+. 次のコマンドを使用して、クラスタ ノードが正しいクラスタ VLAN 内にあることを確認します。
 +
 `show vlan brief`
 
@@ -612,7 +612,7 @@ Total entries displayed: 4
 `show interface trunk`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -759,14 +759,14 @@ Po1           1
 ====
 +
 
-NOTE: 特定のポートおよびVLANの使用方法の詳細については、RCFのバナーおよび重要な注意事項のセクションを参照してください。
+NOTE: 特定のポートと VLAN の使用法の詳細については、RCF のバナーと重要な注意事項のセクションを参照してください。
 
 . cs1 と cs2 間の ISL が機能していることを確認します。
 +
-「ポートチャネルの概要」
+`show port-channel summary`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -787,12 +787,12 @@ Group Port-       Type     Protocol  Member Ports      Channel
 cs1#
 ----
 ====
-. クラスタ LIF がホームポートにリバートされたことを確認します。
+. クラスタ LIF がホーム ポートに戻ったことを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -815,17 +815,17 @@ cluster1::*>
 ----
 ====
 +
-いずれかのクラスタLIFがホームポートに戻っていない場合は、ローカルノードから手動でリバートします。
+クラスタ LIF がホーム ポートに戻っていない場合は、ローカル ノードから手動で元に戻します。
 
 +
 `network interface revert -vserver vserver_name -lif lif_name`
 
-. クラスタが正常であることを確認します。
+. クラスタが正常に動作していることを確認します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -841,22 +841,22 @@ cluster1-04          true    true          false
 cluster1::*>
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -872,9 +872,9 @@ node2
        3/5/2022 19:21:20 -06:00   cluster1-02_clus2    cluster1-01_clus2   none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 

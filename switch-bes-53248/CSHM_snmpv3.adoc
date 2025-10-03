@@ -2,7 +2,7 @@
 permalink: switch-bes-53248/CSHM_snmpv3.html 
 sidebar: sidebar 
 keywords: SNMP,SNMPv3,SNMPv3 setup,BES-53248 Broadcom setup,BES-3248 switches configuration,EFOS 
-summary: SNMPv3は、イーサネットスイッチヘルスモニタ（CSHM）で使用できます。 
+summary: 'SNMPv3 は、イーサネット スイッチ ヘルス モニター (CSHM) で使用できます。' 
 ---
 = SNMPv3の設定
 :allow-uri-read: 
@@ -11,31 +11,32 @@ summary: SNMPv3は、イーサネットスイッチヘルスモニタ（CSHM）�
 
 
 [role="lead"]
-イーサネットスイッチヘルスモニタリング（CSHM）をサポートするSNMPv3を設定するには、次の手順に従ってください。
+イーサネット スイッチ ヘルス モニタリング (CSHM) をサポートする SNMPv3 を構成するには、次の手順に従ってください。
 
-.このタスクについて
-次のコマンドは、Broadcom BES-53248スイッチでSNMPv3ユーザ名を設定します。
+.タスク概要
+次のコマンドは、Broadcom BES-53248 スイッチで SNMPv3 ユーザー名を設定します。
 
-* 認証なし*の場合：
+* *認証なし*の場合:
 `snmp-server user SNMPv3UserNoAuth NETWORK-OPERATOR noauth`
-* MD5/SHA認証の場合*：
+* *MD5/SHA認証*の場合:
 `snmp-server user SNMPv3UserAuth NETWORK-OPERATOR [auth-md5|auth-sha]`
-* AES/DES暗号化を使用した* MD5/SHA認証の場合*：
+* *AES/DES暗号化によるMD5/SHA認証*の場合:
 `snmp-server user SNMPv3UserAuthEncrypt NETWORK-OPERATOR [auth-md5|auth-sha] [priv-aes128|priv-des]`
 
 
-ONTAP 側でSNMPv3ユーザ名を設定するコマンドは次のとおりです。cluster1：*> security login create -user-or -group-name_snmp3_user_-application snmp-authentication-method usm -remote-switch-ipaddress _address_`
+次のコマンドは、 ONTAP側で SNMPv3 ユーザー名を設定します。
+`cluster1::*> security login create -user-or-group-name _SNMPv3_USER_ -application snmp -authentication-method usm -remote-switch-ipaddress _ADDRESS_`
 
-次のコマンドは、CSHMでSNMPv3ユーザ名を確立します。
+次のコマンドは、CSHM を使用して SNMPv3 ユーザー名を確立します。
 `cluster1::*> system switch ethernet modify -device _DEVICE_ -snmp-version SNMPv3 -community-or-username _SNMPv3_USER_`
 
 .手順
-. 認証と暗号化を使用するようにスイッチのSNMPv3ユーザを設定します。
+. 認証と暗号化を使用するために、スイッチ上の SNMPv3 ユーザーを設定します。
 +
 `show snmp status`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -50,12 +51,12 @@ ONTAP 側でSNMPv3ユーザ名を設定するコマンドは次のとおりで�
 <username>        network-admin      MD5  AES128 8000113d03d8c497710bee
 ----
 ====
-. ONTAP 側でSNMPv3ユーザをセットアップします。
+. ONTAP側で SNMPv3 ユーザーを設定します。
 +
 `security login create -user-or-group-name <username> -application snmp -authentication-method usm -remote-switch-ipaddress 10.231.80.212`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -77,12 +78,12 @@ Enter privacy protocol password (minimum 8 characters long):
 Enter privacy protocol password again:
 ----
 ====
-. 新しいSNMPv3ユーザで監視するようにCSHMを設定します。
+. 新しい SNMPv3 ユーザーで監視するように CSHM を構成します。
 +
 `system switch ethernet show-all -device "sw1" -instance`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -108,12 +109,12 @@ cluster1::*>
 cluster1::*> *system switch ethernet modify -device "sw1" -snmp-version SNMPv3 -community-or-username <username>*
 ----
 ====
-. 新しく作成したSNMPv3ユーザで照会するシリアル番号が、CSHMポーリング期間の完了後に前の手順で説明したものと同じであることを確認します。
+. CSHM ポーリング期間が完了した後、新しく作成された SNMPv3 ユーザーで照会されるシリアル番号が前の手順で詳細に説明したものと同じであることを確認します。
 +
 `system switch ethernet polling-interval show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]

@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-shared/components-9336c-shared.html 
 keywords: shared storage cluster switch 
-summary: ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタの機能を共有スイッチシナリオに結合できます。 
+summary: ONTAP 9.9.1 以降では、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタ機能を共有スイッチ シナリオに組み合わせることができます。 
 ---
-= Cisco Nexus 9336C-FX2共有スイッチのコンポーネントとパーツ番号
+= Cisco Nexus 9336C-FX2 共有スイッチのコンポーネントと部品番号
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,33 +14,33 @@ summary: ONTAP 9.9.9..1 から、 Cisco Nexus 9336C-FX2 スイッチを使用し
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2スイッチの設置とメンテナンスについては、コンポーネントと部品番号のリストを確認してください。
+Cisco Nexus 9336C-FX2 スイッチのインストールとメンテナンスについては、必ずコンポーネントと部品番号のリストを確認してください。
 
-次の表に、 9336C-FX2 スイッチ、ファン、および電源装置の部品番号と概要を示します。
+次の表に、9336C-FX2 スイッチ、ファン、および電源装置の部品番号と説明を示します。
 
 |===
-| パーツ番号 | 説明 
+| 部品番号 | 説明 
 
 
-| X190200-CS-PE | N9K-9336C-FX2 、 CS 、 PTSX 、 36PT10/25/40/100GQSFP28 
+| X190200-CS-PE | N9K-9336C-FX2、CS、PTSX、36PT10/25/40/100GQSFP28 
 
 
-| X190200-CS-PI | N9K-9336C-FX2 、 CS 、 PSIN 、 36PT10/25/40/100GQSFP28 
+| X190200-CS-PI | N9K-9336C-FX2、CS、PSIN、36PT10/25/40/100GQSFP28 
 
 
-| X190002 | アクセサリキット X190001/X190003 
+| X190002 | アクセサリーキット X190001/X190003 
 
 
-| X-NXA-PAC1100W-PE2 | N9K-9336C AC 1100W PSU - ポート側排気 
+| X-NXA-PAC-1100W-PE2 | N9K-9336C AC 1100W PSU - ポート側排気エアフロー 
 
 
-| X-NXA-PAC1100W-PI2 | N9K-9336C AC 1100W PSU - ポート側吸気 
+| X-NXA-PAC-1100W-PI2 | N9K-9336C AC 1100W PSU - ポート側吸気 
 
 
-| X-NXA-FAN-65CFM-pe | N9K-9336C 65CFM 、ポート側排気 
+| X-NXA-ファン-65CFM-PE | N9K-9336C 65CFM、ポート側排気流量 
 
 
-| X-NXA-FAN-65CFM-pi | N9K-9336C 65CFM 、ポート側吸気 
+| X-NXA-ファン-65CFM-PI | N9K-9336C 65CFM、ポート側吸気流量 
 |===
 .次の手順
-link:required-documentation-9336c-shared.html["必要なドキュメント"] 。
+link:required-documentation-9336c-shared.html["必要な書類"] 。

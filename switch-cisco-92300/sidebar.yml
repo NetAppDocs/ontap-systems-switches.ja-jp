@@ -2,58 +2,58 @@
 section: switch-cisco-92300
 title: Cisco Nexus 92300YC
 entries:
-- title: はじめに
+- title: 始めましょう
   pdf-filename: 概要_92300yc
   entries:
-  - title: クイックスタート
+  - title: クイック スタート
     url: "/switch-cisco-92300/install-overview-cisco-92300.html"
-  - title: 設定要件
+  - title: 構成要件
     url: "/switch-cisco-92300/configure-reqs-92300.html"
-  - title: コンポーネントとパーツ番号
+  - title: コンポーネントと部品番号
     url: "/switch-cisco-92300/components-92300.html"
-  - title: 必要なドキュメント
+  - title: 必要な書類
     url: "/switch-cisco-92300/required-documentation-92300.html"
   - title: Smart Call Homeの要件
     url: "/switch-cisco-92300/smart-call-home-92300.html"
 - title: ハードウェアを設置
-  pdf-filename: ハードウェアのインストール_92300yc
+  pdf-filename: インストールハードウェア_92300yc
   entries:
   - title: ハードウェアインストールワークフロー
     url: "/switch-cisco-92300/install-hardware-workflow.html"
-  - title: ケーブル接続ワークシートに記入
+  - title: 完全な配線ワークシート
     url: "/switch-cisco-92300/setup-worksheet-92300yc.html"
-  - title: スイッチを設置します
+  - title: スイッチをインストールする
     url: "/switch-cisco-92300/install-switch-92300yc.html"
-  - title: ネットアップキャビネットにスイッチを設置
+  - title: NetAppキャビネットにスイッチをインストールする
     url: "/switch-cisco-92300/install-switch-netapp-cabinet-92300yc.html"
-  - title: ケーブル接続と構成を確認
+  - title: ケーブル配線と構成を確認する
     url: "/switch-cisco-92300/cabling-considerations-92300.html"
 - title: ソフトウェアの設定
-  pdf-filename: configure_software_92300yc
+  pdf-filename: 構成ソフトウェア_92300yc
   entries:
-  - title: ソフトウェアのインストールワークフロー
+  - title: ソフトウェアインストールワークフロー
     url: "/switch-cisco-92300/configure-software-overview-92300-cluster.html"
-  - title: スイッチを設定します
+  - title: スイッチを設定する
     url: "/switch-cisco-92300/configure-install-initial.html"
-  - title: NX-OSおよびRCFのインストールを準備します
+  - title: NX-OSとRCFのインストール準備
     url: "/switch-cisco-92300/install-nxos-overview.html"
-  - title: NX-OSをインストールします
+  - title: NX-OSをインストールする
     url: "/switch-cisco-92300/install-nxos-software.html"
-  - title: RCF構成ファイルをインストールします
+  - title: RCF設定ファイルをインストールする
     url: "/switch-cisco-92300/install-the-rcf-file.html"
-  - title: SSH の設定を確認
+  - title: SSH設定を確認する
     url: "/switch-cisco-92300/configure-ssh-keys.html"
-- title: スイッチを移行
+- title: スイッチの移行
   pdf-filename: 移行スイッチ_92300yc
   entries:
-  - title: 2ノードスイッチクラスタに移行する
+  - title: 2ノードスイッチクラスタへの移行
     url: "/switch-cisco-92300/migrate-to-2n-switched.html"
   - title: 古いCiscoスイッチからの移行
     url: "/switch-cisco-92300/migrate-to-92300yc.html"
-- title: スイッチを交換します
-  pdf-filename: スイッチを交換_92300yc
+- title: スイッチを交換する
+  pdf-filename: スイッチ交換_92300yc
   entries:
-  - title: スイッチを交換します
+  - title: スイッチを交換する
     url: "/switch-cisco-92300/replace-92300yc.html"
-  - title: クラスタスイッチをスイッチレス接続に交換します
+  - title: クラスタスイッチをスイッチレス接続に置き換える
     url: "/switch-cisco-92300/migrate-to-switchless-cluster-interconnect.html"

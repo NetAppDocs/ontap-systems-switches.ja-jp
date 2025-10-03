@@ -2,7 +2,7 @@
 permalink: switch-nvidia-sn2100/configure-reqs-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: NVIDIA SN2100スイッチのインストールとメンテナンスについては、すべての要件と推奨されるドキュメントを確認してください。 
+summary: NVIDIA SN2100 スイッチのインストールとメンテナンスについては、すべての要件と推奨ドキュメントを必ず確認してください。 
 ---
 = NVIDIA SN2100スイッチの構成要件
 :allow-uri-read: 
@@ -11,38 +11,38 @@ summary: NVIDIA SN2100スイッチのインストールとメンテナンスに�
 
 
 [role="lead"]
-NVIDIA SN2100スイッチのインストールとメンテナンスについては、すべての設定要件を確認してください。
+NVIDIA SN2100 スイッチのインストールとメンテナンスについては、すべての構成要件を必ず確認してください。
 
 
 
 == インストールの要件
 
-3 つ以上のノードで ONTAP クラスタを構築する場合は、サポートされている 2 つのクラスタネットワークスイッチが必要です。オプションとして、追加の管理スイッチを使用できます。
+2 つ以上のノードを持つONTAPクラスターを構築する場合は、サポートされているクラスター ネットワーク スイッチが 2 つ必要です。オプションとして追加の管理スイッチを使用することもできます。
 
-NVIDIA SN2100スイッチ（X190006）は、スイッチに付属の標準ブラケットを使用して、NVIDIAデュアル/シングルスイッチキャビネットに設置します。
+NVIDIA SN2100 スイッチ (X190006) は、スイッチに付属の標準ブラケットを使用してNVIDIAデュアル/シングル スイッチ キャビネットに取り付けます。
 
-ケーブル配線のガイドラインについては、を参照してください link:cabling-considerations-sn2100-cluster.html["ケーブル接続と構成に関する考慮事項を確認"]。
+ケーブル配線のガイドラインについては、link:cabling-considerations-sn2100-cluster.html["ケーブル配線と構成の考慮事項を確認する"] 。
 
 
 
-== ONTAP およびLinuxのサポート
+== ONTAPとLinuxのサポート
 
-NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10 / 25 / 40 / 100GbEスイッチです。スイッチは以下をサポートしています。
+NVIDIA SN2100 スイッチは、Cumulus Linux を実行する 10/25/40/100GbE スイッチです。スイッチは以下をサポートします。
 
 * ONTAP 9.10.1P3以降
 +
-SN2100スイッチは、ONTAP 9.10.1P3以降のクラスタアプリケーションとストレージアプリケーションに、別 々 のスイッチペアで対応します。
+SN2100 スイッチは、異なるスイッチ ペアを介してONTAP 9.10.1P3 以降のクラスタおよびストレージ アプリケーションにサービスを提供します。
 
-* Cumulus Linux（CL）OSバージョン
+* Cumulus Linux (CL) OS バージョン
 +
-** 特定のCLバージョンは、NetAppによって認定およびサポートされています。最新の互換性情報については、またはを参照してlink:https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIAイーサネットスイッチの情報"^]link:https://hwu.netapp.com["NetApp Hardware Universe の略"^]ください。
-** NVIDIAからSN2100 Cumulusソフトウェアをダウンロードするには、NVIDIAのエンタープライズサポートポータルにアクセスするためのログイン資格情報が必要です。ナレッジベースの記事を参照してください https://kb.netapp.com/onprem/Switches/Nvidia/How_To_Register_With_NVIDIA_For_Enterprise_Support_Portal_Access["エンタープライズサポートポータルアクセスのためのNVIDIAへの登録方法"^]。
+** 特定の CL バージョンはNetAppによって認定およびサポートされています。現在の互換性情報については、link:https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIAイーサネットスイッチの情報"^]ページまたはlink:https://hwu.netapp.com["NetApp Hardware Universe"^]。
+** NVIDIAから SN2100 Cumulus ソフトウェアをダウンロードするには、NVIDIA のエンタープライズ サポート ポータルにアクセスするためのログイン資格情報が必要です。ナレッジベースの記事を参照 https://kb.netapp.com/onprem/Switches/Nvidia/How_To_Register_With_NVIDIA_For_Enterprise_Support_Portal_Access["NVIDIAエンタープライズ サポート ポータルへのアクセス登録方法"^]。
 
 
 
 
-* Cumulus Linuxは、スイッチがCumulus LinuxまたはONIEを実行しているときにインストールできます。
+* スイッチが Cumulus Linux または ONIE を実行している場合は、Cumulus Linux をインストールできます。
 
 
 .次の手順
-link:components-sn2100-cluster.html["コンポーネントとパーツ番号"] 。
+link:components-sn2100-cluster.html["コンポーネントと部品番号"] 。

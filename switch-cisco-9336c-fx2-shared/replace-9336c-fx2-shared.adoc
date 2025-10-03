@@ -4,7 +4,7 @@ permalink: switch-cisco-9336c-fx2-shared/replace-9336c-fx2-shared.html
 keywords:  
 summary:  
 ---
-= Cisco Nexus 9336C-FX2 共有スイッチを交換します
+= Cisco Nexus 9336C-FX2共有スイッチの交換
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,49 +14,49 @@ summary:
 
 
 [role="lead"]
-故障したNexus 9336C-FX2共有スイッチは交換できます。これは、無停止の手順 （NDU；非停止アップグレード）です。
+故障した Nexus 9336C-FX2 共有スイッチを交換できます。これは非中断手順 (NDU) です。
 
-.作業を開始する前に
+.開始する前に
 スイッチの交換を実行する前に、次の点を確認してください。
 
-* 既存のクラスタとネットワークインフラ：
+* 既存のクラスターおよびネットワーク インフラストラクチャの場合:
 +
-** 既存のクラスタは、少なくとも1つのクラスタスイッチが完全に接続された状態で、完全に機能することが検証されています。
-** すべてのクラスタポートが*稼働しています。
-** クラスタのすべての論理インターフェイス（LIF）の状態が* upで、ホームポートにあることを確認します。
-** ONTAP cluster ping-cluster -node node1 コマンドは、すべてのパスで基本的な接続と larger than PMTU communication が成功したことを示す必要があります。
+** 既存のクラスターは、少なくとも 1 つの完全接続されたクラスター スイッチを備え、完全に機能していることが検証されます。
+** すべてのクラスター ポートが *稼働* しています。
+** すべてのクラスタ論理インターフェイス (LIF) は *稼働* しており、ホーム ポート上にあります。
+** ONTAP のcluster ping-cluster -node node1 コマンドは、すべてのパスで基本接続と PMTU より大きい通信が成功していることを示す必要があります。
 
 
-* Nexus 9336C-FX2交換スイッチの場合：
+* Nexus 9336C-FX2 交換スイッチの場合:
 +
-** 交換用スイッチの管理ネットワーク接続は機能しています。
-** 交換用スイッチへのコンソールアクセスが確立されています。
-** ノード接続はポート 1/1~1/34 です。
-** ポート1/35および1/36では、すべてのスイッチ間リンク（ISL）ポートが無効になっています。
-** 目的のリファレンス構成ファイル（RCF）とNX-OSオペレーティングシステムのイメージスイッチがスイッチにロードされます。
-** STP 、 SNMP 、 SSH などの以前のサイトのカスタマイズは、すべて新しいスイッチにコピーする必要があります。
+** 交換スイッチ上の管理ネットワーク接続は機能しています。
+** 交換用スイッチへのコンソール アクセスが確立されています。
+** ノード接続はポート 1/1 ～ 1/34 です。
+** ポート 1/35 および 1/36 のすべての Inter-Switch Link (ISL) ポートが無効になっています。
+** 必要な参照構成ファイル (RCF) と NX-OS オペレーティング システム イメージ スイッチがスイッチにロードされます。
+** STP、SNMP、SSHなどの、以前に実施されたすべてのサイト カスタマイズを、新しいスイッチにコピーする必要があります。
 
 
 
 
 .例について
-クラスタ LIF を移行するコマンドは、そのクラスタ LIF がホストされているノードで実行する必要があります。
+クラスタLIFを移行するコマンドは、そのクラスタLIFがホストされているノードで実行する必要があります。
 
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 既存の Nexus 9336C-FX2 スイッチの名前は、 _sh1_and _sh2__ です。
-* 新しい Nexus 9336C-FX2 スイッチの名前は _newsh1_and _newsh2_です 。
-* ノード名は _node1_AND _node2 _ です。
-* 各ノードのクラスタポートの名前は _e3a および _e3b _ です。
-* クラスタ LIF 名は、 node1 の場合は「 node1_clus1' 」、ノード 1 の場合は「 node1_clus1' 」、 node2 の場合は「 node2 _ clus2 」です。
-* すべてのクラスタノードへの変更を求めるプロンプトは、 cluster1 ： * > です。
+* 既存の Nexus 9336C-FX2 スイッチの名前は _sh1_ と _sh2_ です。
+* 新しい Nexus 9336C-FX2 スイッチの名前は _newsh1_ と _newsh2_ です。
+* ノード名は _node1_ と _node2_ です。
+* 各ノードのクラスター ポートの名前は _e3a_ と _e3b_ です。
+* クラスタLIF名は `node1_clus1`そして `node1_clus2`ノード1の場合、 `node2_clus1`そして `node2_clus2`ノード2用。
+* すべてのクラスター ノードへの変更のプロンプトは cluster1::*> です。
 +
 
-NOTE: 次の手順は、次のネットワークトポロジに基づいています。
+NOTE: 次の手順は、次のネットワーク トポロジに基づいています。
 
 
 
-.トポロジの例を表示します
+.トポロジ例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -131,25 +131,25 @@ Total entries displayed: 4
 ----
 ====
 .手順
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= xh 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-x は、メンテナンス時間の長さ（時間単位）です。
+ここで、x はメンテナンス ウィンドウの期間 (時間単位) です。
 
-. オプション：スイッチ newsh2 に適切な RCF とイメージをインストールし、必要なサイトの準備を行います。
+. オプション: スイッチ newsh2 に適切な RCF とイメージをインストールし、必要なサイトの準備を行います。
 +
-.. 必要に応じて、新しいスイッチ用に、 RCF および NX-OS ソフトウェアの適切なバージョンを確認、ダウンロード、およびインストールします。新しいスイッチが正しくセットアップされており、 RCF および NX-OS ソフトウェアの更新が不要であることを確認した場合は、に進みます <<step3,手順 3>>。
-.. ネットアップサポートサイトのネットアップクラスタおよび管理ネットワークスイッチリファレンス構成ファイルの概要ページにアクセスします。
-.. Cluster Network and Management Network Compatibility Matrix のリンクをクリックし、必要なスイッチソフトウェアのバージョンを確認します。
-.. ブラウザの戻る矢印をクリックして概要ページに戻り、 [ 続行 ] をクリックしてライセンス契約に同意し、 [ ダウンロード ] ページに移動します。
-.. ダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応した正しい RCF ファイルと NX-OS ファイルをダウンロードします。
+.. 必要に応じて、新しいスイッチ用に、RCFおよびNX-OSソフトウェアの適切なバージョンを確認、ダウンロード、およびインストールします。新しいスイッチが正しくセットアップされ、RCFおよびNX-OSソフトウェアのアップデートが必要ないことを確認した場合は、<<step3,ステップ3>> 。
+.. NetAppサポート サイトのNetAppクラスタおよび管理ネットワーク スイッチのリファレンス構成ファイルの説明ページにアクセスします。
+.. クラスタ ネットワークと管理ネットワークの互換性マトリックスのリンクをクリックし、必要なスイッチ ソフトウェアのバージョンをメモします。
+.. ブラウザの戻る矢印をクリックして説明ページに戻り、「続行」をクリックしてライセンス契約に同意し、ダウンロード ページに進みます。
+.. ダウンロード ページの手順に従って、インストールするONTAPソフトウェアのバージョンに適した RCF および NX-OS ファイルをダウンロードします。
 
 
-. [[step3]] 新しいスイッチで admin としてログインし、ノードクラスタインターフェイス（ポート 1/1~1/34 ）に接続するすべてのポートをシャットダウンします。交換するスイッチが機能せず、電源がオフになっている場合は、に進みます <<step4,手順 4>>。クラスタノードの LIF は、各ノードのもう一方のクラスタポートにすでにフェイルオーバーされている必要があります。
+. [[step3]]新しいスイッチで管理者としてログインし、ノード クラスタ インターフェイスに接続されるすべてのポート (ポート 1/1 ～ 1/34) をシャットダウンします。交換するスイッチが機能せず、電源がオフになっている場合は、<<step4,ステップ4>> 。クラスタ ノードのLIFは、各ノードのもう一方のクラスタ ポートにすでにフェイルオーバーされている必要があります。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -162,12 +162,12 @@ newsh2(config-if-range)# *shutdown*
 ====
 
 
-. [[step4]] すべてのクラスタ LIF で自動リバートが有効になっていることを確認します。
+. [[step4]]すべてのクラスタLIFで自動復帰が有効になっていることを確認します。
 +
 `network interface show - vserver Cluster -fields auto-revert`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -185,22 +185,22 @@ Cluster      node2_clus2   true
 ====
 
 
-. [[step5]]リモートクラスタインターフェイスの接続を確認します。
+. [[step5]] リモートクラスタインターフェースの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -216,9 +216,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -251,9 +251,9 @@ RPC status:
 ----
 --
 ====
-. [[step6] Nexus 9336C-FX2 スイッチ sh1 の ISL ポート 1/35 および 1/36 をシャットダウンします。
+. [[step6]]Nexus 9336C-FX2スイッチsh1のISLポート1/35と1/36をシャットダウンします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -266,16 +266,16 @@ sh1(config-if-range)# *shutdown*
 ====
 
 
-. [[step7] すべてのケーブルを Nexus 9336C-FX2 sh2 スイッチから取り外し、 Nexus C9336C-FX2 newsh2 スイッチの同じポートに接続します。
-. sh1 スイッチと newsh2 スイッチの間で ISL ポート 1/35 と 1/36 を起動し、ポートチャネルの動作ステータスを確認します。
+. [[step7]]Nexus 9336C-FX2 sh2 スイッチからすべてのケーブルを取り外し、Nexus C9336C-FX2 sh2 スイッチの同じポートに接続します。
+. sh1スイッチとnewsh2スイッチ間でISLポート1/35と1/36を起動し、ポート チャネルの動作ステータスを確認します。
 +
-ポートチャネルは Po1 （ SU ）を示し、メンバーポートは Eth1/35 （ P ）および Eth1/36 （ P ）を示している必要があります。
+ポートチャネルはPo1（SU）を示し、メンバー ポートはEth1/35（P）およびEth1/36（P）を示している必要があります。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例では、 ISL ポート 1/35 および 1/36 をイネーブルにし、スイッチ sh1 のポートチャネルの概要を表示します。
+この例では、ISL ポート 1/35 および 1/36 を有効にし、スイッチ sh1 のポート チャネルの概要を表示します。
 
 [listing, subs="+quotes"]
 ----
@@ -303,12 +303,12 @@ sh1 (config-if-range)#
 ====
 
 
-. [[step9]すべてのノードでポートe3bが稼働していることを確認します。
+. [[step9]]すべてのノードでポートe3bが稼働していることを確認します。
 +
-「 network port show -ipspace cluster 」のように表示されます
+`network port show ipspace Cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 出力は次のようになります。
@@ -337,15 +337,15 @@ e3b       Cluster      Cluster          up   9000  auto/auto    -        false
 ====
 
 
-. [[step10]] 前の手順で使用したノードで、 network interface revert コマンドを使用して、前の手順でポートに関連付けられているクラスタ LIF をリバートします。
+. [[step10]]前の手順で使用したのと同じノードで、network interface revert コマンドを使用して、前の手順でポートに関連付けられたクラスタ LIF を元に戻します。
 +
-この例では、 Home の値が true でポート番号が e3b である場合、ノード 1 の LIF node1_clus2 は正常にリバートされています。
+この例では、Home 値が true でポートが e3b の場合、node1 上の LIF node1_clus2 は正常に元に戻されます。
 
 +
-次のコマンドは、 node1 の LIF node1_clus2 をホームポート e3a に返し、両方のノードの LIF に関する情報を表示します。両方のクラスタインターフェイスの Is Home 列が * true であり、この例では e3a および node1 の e3b で正しいポート割り当てが示されている場合、最初のノードの起動は成功します。
+次のコマンドは、ノード 1 の LIF node1_clus2 をホーム ポート e3a に返し、両方のノードの LIF に関する情報を表示します。両方のクラスター インターフェイスの Is Home 列が *true* であり、正しいポート割り当て (この例ではノード 1 の e3a と e3b) が表示されている場合、最初のノードの起動は成功です。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -365,15 +365,15 @@ Cluster
 ====
 
 
-. [[step11]]クラスタ内のノードに関する情報を表示します。
+. [[step11]]クラスター内のノードに関する情報を表示します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例では、このクラスタのノード node1 と node2 のノードの健常性が true であることを示します。
+この例では、このクラスター内の node1 と node2 のノード ヘルスが true であることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -388,10 +388,10 @@ node2         true    true
 
 . [[step12]]すべての物理クラスタポートが稼働していることを確認します。
 +
-「 network port show -ipspace cluster 」のように表示されます
+`network port show ipspace Cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -417,22 +417,22 @@ e3b       Cluster      Cluster          up    9000  auto/100000  healthy  false
 ====
 
 
-. [[step13]]リモートクラスタインターフェイスの接続を確認します。
+. [[step13]] リモートクラスタインターフェースの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -448,9 +448,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -483,12 +483,12 @@ RPC status:
 ----
 --
 ====
-. [[step14]]次のクラスタネットワーク構成を確認します。
+. [[step14]]次のクラスターネットワーク構成を確認します。
 +
-「 network port show 」のように表示されます
+`network port show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -562,14 +562,14 @@ Total entries displayed: 4
 ====
 
 
-. [[step15]] 古いスイッチ sh2 のストレージポートを新しいスイッチ newsh2 に移動します。
-. HA ペア 1 の共有スイッチ newsh2 に接続されたストレージが正常であることを確認します。
-. HAペア2の共有スイッチnewsh2に接続されたストレージが正常であることを確認します。
+. [[step15]]ストレージ ポートを古いスイッチ sh2 から新しいスイッチ newsh2 に移動します。
+. HA ペア 1、共有スイッチ newsh2 に接続されているストレージが正常であることを確認します。
+. HA ペア 2 に接続されているストレージ、共有スイッチ newsh2 が正常であることを確認します。
 +
-storage port show -port-type enet
+`storage port show -port-type ENET`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -593,12 +593,12 @@ node2
 ====
 
 
-. [[step18]]シェルフが正しくケーブル接続されていることを確認します。
+. [[step18]]棚が正しくケーブル接続されていることを確認します。
 +
 `storage shelf port show -fields remote- device,remote-port`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -619,13 +619,13 @@ shelf id remote-port  remote-device
 ====
 
 
-. [[step19]] 古いスイッチ sh2 を削除します。
-. スイッチ sh1 と新しいスイッチ newsh1 について、上記の手順を繰り返します。
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
+. [[step19]]古いスイッチsh2を取り外します。
+. スイッチ sh1 と新しいスイッチ newsh1 に対してこれらの手順を繰り返します。
+. 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。

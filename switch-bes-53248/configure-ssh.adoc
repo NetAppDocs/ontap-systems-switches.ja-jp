@@ -2,24 +2,24 @@
 permalink: switch-bes-53248/configure-ssh.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, bes, enable ssh on bes-53248 cluster switches - bes-53248 switches 
-summary: クラスタスイッチヘルスモニタ（ CSHM ）およびログ収集機能を使用する場合、 SSH は要件です。BES-53248 クラスタスイッチで SSH を有効にするには、まず SSH キーを生成してから、 SSH を有効にします。 
+summary: 'クラスタ スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用する場合は、SSH が必須です。BES-53248クラスタ スイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。' 
 ---
-= BES-53248 クラスタスイッチで SSH を有効にします
+= BES-53248 クラスタスイッチで SSH を有効にする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-イーサネットスイッチヘルスモニタ（CSHM）機能とログ収集機能を使用する場合は、SSHキーを生成してから、クラスタスイッチでSSHを有効にする必要があります。
+イーサネット スイッチ ヘルス モニタ (CSHM) とログ収集機能を使用している場合は、SSH キーを生成し、クラスタ スイッチで SSH を有効にする必要があります。
 
 .手順
-. SSHが無効になっていることを確認します。
+. SSH が無効になっていることを確認します。
 +
 `show ip ssh`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -67,7 +67,7 @@ WARNING: キーを変更する前に必ず SSH を無効にしてください。
 `crypto key generate`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -94,7 +94,7 @@ Do you want to overwrite the existing ECDSA keys? (y/n): *y*
 `aaa authorization commands "noCmdAuthList" none`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -105,7 +105,7 @@ Do you want to overwrite the existing ECDSA keys? (y/n): *y*
 ====
 . SSH/SCP を再度有効にします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -117,10 +117,10 @@ Do you want to overwrite the existing ECDSA keys? (y/n): *y*
 ====
 . これらの変更をスタートアップ コンフィギュレーションに保存します。
 +
-「メモリの書き込み」
+`write memory`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -136,13 +136,13 @@ Config file 'startup-config' created successfully.
 Configuration Saved!
 ----
 ====
-. SSHキーを暗号化します（* FIPSモードのみ*）。
+. SSH キーを暗号化します (FIPS モードのみ)。
 +
 
-CAUTION: FIPSモードでは、セキュリティを確保するために、キーをパスフレーズで暗号化する必要があります。暗号化されたキーがない場合、アプリケーションは起動できません。キーは、次のコマンドを使用して作成および暗号化されます。
+CAUTION: FIPS モードでは、セキュリティのためにキーをパスフレーズで暗号化する必要があります。暗号化されたキーがない場合、アプリケーションは起動に失敗します。キーは次のコマンドを使用して作成および暗号化されます。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -186,14 +186,14 @@ Configuration Saved!
 ====
 . スイッチをリブートします。
 +
-「再ロード」
+`reload`
 
 . SSH が有効になっていることを確認します。
 +
 `show ip ssh`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -217,4 +217,4 @@ SCP server Administrative Mode: ............... Enabled
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。

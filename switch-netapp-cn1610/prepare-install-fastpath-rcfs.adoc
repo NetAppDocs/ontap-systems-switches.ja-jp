@@ -2,50 +2,50 @@
 permalink: switch-netapp-cn1610/prepare-install-fastpath-rcfs.html 
 sidebar: sidebar 
 keywords: install, fastpath, software, rcfs, netapp cluster switch 
-summary: NetApp CN1610 クラスタスイッチに FastPath ソフトウェアとリファレンス構成ファイル（ RCF ）をインストールする必要があります。 
+summary: 'NetApp CN1610 クラスタ スイッチに FASTPATH ソフトウェアと参照構成ファイル (RCF) をインストールする必要があります。' 
 ---
-= ネットアップクラスタスイッチにFastPathソフトウェアとRCFをインストールする準備をします
+= NetAppクラスタ スイッチに FASTPATH ソフトウェアと RCF をインストールする準備
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NetApp CN1610 クラスタスイッチに FastPath ソフトウェアとリファレンス構成ファイル（ RCF ）をインストールする必要があります。
+NetApp CN1610 クラスタ スイッチに FASTPATH ソフトウェアと参照構成ファイル (RCF) をインストールする必要があります。
 
-.作業を開始する前に
-* クラスタが完全に機能している必要があります。
-* クラスタネットワークインターフェイスカード（ NIC ）に欠陥がないこと、およびクラスタスイッチで接続されているすべてのポートが機能していることが必要です。
-* すべてのクラスタポートが稼働している必要があります。
-* クラスタのすべての論理インターフェイス（ LIF ）が稼働していて、移行されていない必要があります。
-* ONTAP (privilege ： advanced ） 'cluster ping-cluster -node node1 コマンドは 'larger than PMTU communication がすべてのパスで成功したことを示す必要があります
-* のスイッチ互換性の表を参照する必要があります http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601 / CN1610 スイッチ"^] サポートされている FastPath 、 RCF 、および ONTAP のバージョンについては、ページを参照してください。
+.開始する前に
+* クラスターは完全に機能するクラスターである必要があります。
+* クラスター ネットワーク インターフェイス カード (NIC) に欠陥がないこと、およびクラスター スイッチ上の接続されたすべてのポートが機能していることが必要です。
+* すべてのクラスタ ポートが稼働している必要があります。
+* すべてのクラスタ論理インターフェイス (LIF) が起動しており、移行されていないことが必要です。
+* ONTAP （権限：上級） `cluster ping-cluster -node node1`コマンドは以下を示す必要があります `larger than PMTU communication`すべてのパスで成功します。
+* スイッチの互換性表を参照する必要があります。 http://mysupport.netapp.com/NOW/download/software/cm_switches_ntap/["NetApp CN1601およびCN1610スイッチ"^]サポートされている FASTPATH、RCF、およびONTAPバージョンについては、こちらのページをご覧ください。
 +
-RCF バージョンと FastPath バージョンでは、コマンド構文間にコマンドの依存関係が存在する場合があります。
+RCF バージョンと FASTPATH バージョンのコマンド構文間にはコマンド依存関係が存在する場合があります。
 
 
 
 
-NOTE: RCF バージョン 1.2 では、セキュリティ上の理由から、 Telnet のサポートが明示的に無効になっています。RCF 1.2 のインストール時の接続の問題を回避するには、 Secure Shell （ SSH ）が有効になっていることを確認する必要があります。。 https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["『 NetApp ® CN1610 Switch Administrator's Guide 』"^] SSH の詳細については、を参照してください。
+NOTE: RCF バージョン 1.2 では、セキュリティ上の懸念から、Telnet のサポートは明示的に無効になっています。 RCF 1.2 のインストール中に接続の問題を回避するには、Secure Shell (SSH) が有効になっていることを確認する必要があります。その https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp® CN1610 スイッチ管理者ガイド"^]SSH に関する詳細情報は、こちらを参照してください。
 
-.このタスクについて
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+.タスク概要
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* このドキュメントの手順では、 clustered Data ONTAP 8.2 の構文を使用しています。そのため、クラスタ SVM 、 LIF 名、および CLI 出力は Data ONTAP 8.3 の出力とは異なります。
-* 2 つのネットアップスイッチは cs1 と cs2 です。
-* 2 つのクラスタ LIF は clus1 と clus2 です。
-* SVM は vs1 および vs2 です。
-* 'cluster::*>' プロンプトは ' クラスタの名前を示します
-* 各ノードのクラスタポートには、 e1a および e2a という名前が付けられます。
+* このドキュメントの手順では、clustered Data ONTAP 8.2 構文を使用します。その結果、クラスタ Vserver、LIF 名、および CLI 出力は、Data ONTAP 8.3 のものとは異なります。
+* 2 つのNetAppスイッチは cs1 と cs2 です。
+* 2 つのクラスター LIF は clus1 と clus2 です。
+* Vserver は vs1 と vs2 です。
+* その `cluster::*>`プロンプトはクラスターの名前を示します。
+* 各ノードのクラスタ ポートの名前はe1aおよびe2aです。
 +
-。 https://hwu.netapp.com/["Hardware Universe"^] 使用しているプラットフォームでサポートされている実際のクラスタポートに関する詳細情報が表示されます。
+その https://hwu.netapp.com/["Hardware Universe"^]プラットフォームでサポートされている実際のクラスター ポートに関する詳細情報は、こちらをご覧ください。
 
-* ネットアップクラスタスイッチでサポートされているスイッチ間リンク（ ISL ）は、ポート 0/13~0/16 です。
-* ネットアップクラスタスイッチでサポートされるノード接続は、ポート 0/1~0/12 です。
+* NetAppクラスタ スイッチでサポートされているスイッチ間リンク (ISL) は、ポート 0/13 ～ 0/16 です。
+* NetAppクラスタ スイッチでサポートされるノード接続は、ポート 0/1 ～ 0/12 です。
 
 
-この手順 には 2 つの部分があります。
+この手順には 2 つの部分があります。
 
-* link:install-fastpath-software.html["FastPath ソフトウェアをインストールします"]FASTPATH ソフトウェアのインストール方法について説明します。
-* link:install-rcf-file.html["RCF を CN1610 スイッチにインストールします"]RCF のインストール方法について説明します。
+* link:install-fastpath-software.html["FASTPATHソフトウェアをインストールする"]FASTPATH ソフトウェアのインストール方法について説明します。
+* link:install-rcf-file.html["CN1610スイッチにRCFをインストールする"]RCF のインストール方法について説明します。
 

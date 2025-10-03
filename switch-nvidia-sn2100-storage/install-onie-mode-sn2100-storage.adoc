@@ -2,46 +2,46 @@
 permalink: switch-nvidia-sn2100-storage/install-onie-mode-sn2100-storage.html 
 sidebar: sidebar 
 keywords: install cumulus onie mode, sn2100 SN2100 switches setup, cumulus linux, onie mode 
-summary: Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます。 
+summary: 'Cumulus Linux (CL) OS は、スイッチが Cumulus Linux または ONIE を実行しているときにインストールできます。' 
 ---
-= Cumulus LinuxをONIEモードでインストールします
+= ONIEモードでCumulus Linuxをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-スイッチがONIEモードで動作している場合、この手順 に従ってCumulus Linux（CL）OSをインストールします。
+スイッチが ONIE モードで実行されているときに Cumulus Linux (CL) OS をインストールするには、次の手順に従ってください。
 
 
-NOTE: Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます（を参照） link:install-cumulus-mode-sn2100-storage.html["クムルスモードでインストールします"]）。
+NOTE: Cumulus Linux (CL) OSは、スイッチがCumulus LinuxまたはONIEを実行しているときにインストールできます（link:install-cumulus-mode-sn2100-storage.html["Cumulusモードでインストール"] ）。
 
-.このタスクについて
-クムルスLinuxは、ネットワークインストーライメージの自動検出を可能にするOpen Network Install Environment（ONIE）を使用してインストールできます。これにより、Cumulus Linuxなどのオペレーティングシステムの選択により、スイッチをセキュリティ保護するシステムモデルが容易になります。ONIEでCumulus Linuxをインストールする最も簡単な方法は、ローカルHTTP検出です。
+.タスク概要
+ネットワーク インストーラ イメージの自動検出を可能にする Open Network Install Environment (ONIE) を使用して、Cumulus Linux をインストールできます。これにより、Cumulus Linux などのオペレーティング システムを選択してスイッチを保護するシステム モデルが容易になります。  ONIE を使用して Cumulus Linux をインストールする最も簡単な方法は、ローカル HTTP 検出を使用することです。
 
 
-NOTE: ホストがIPv6対応の場合は、Webサーバを実行していることを確認します。ホストがIPv4対応の場合は、Webサーバに加えてDHCPも実行されていることを確認します。
+NOTE: ホストが IPv6 対応である場合は、Web サーバーが実行されていることを確認してください。ホストが IPv4 対応の場合は、Web サーバーに加えて DHCP も実行されていることを確認してください。
 
-この手順 では、管理者がONIEで起動した後にCumulus Linuxをアップグレードする方法を説明します。
+この手順では、管理者が ONIE で起動した後に Cumulus Linux をアップグレードする方法を示します。
 
 .手順
-. Cumulus LinuxインストールファイルをWebサーバーのルートディレクトリにダウンロードします。このファイル名を「ONIE-installer」に変更します。
-. イーサネットケーブルを使用して、スイッチの管理イーサネットポートにホストを接続します。
-. スイッチの電源をオンにします。スイッチはONIEイメージインストーラをダウンロードして起動します。インストールが完了すると、ターミナルウィンドウにCumulus Linuxログインプロンプトが表示されます。
+. Cumulus Linux インストール ファイルを Web サーバーのルート ディレクトリにダウンロードします。このファイルの名前を変更する `onie-installer`。
+. イーサネット ケーブルを使用して、ホストをスイッチの管理イーサネット ポートに接続します。
+. スイッチの電源を入れます。スイッチは ONIE イメージ インストーラをダウンロードして起動します。インストールが完了すると、ターミナル ウィンドウに Cumulus Linux ログイン プロンプトが表示されます。
 +
 
-NOTE: Cumulus Linuxをインストールするたびに、ファイルシステム構造全体が消去され、再構築されます。
+NOTE: Cumulus Linux がインストールされるたびに、ファイル システム構造全体が消去され、再構築されます。
 
-. SN2100スイッチをリブートします。
+. SN2100スイッチを再起動します。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@cumulus:mgmt:~$ *sudo reboot*
 ----
-. GNU GRUB画面で*Esc*キーを押して通常の起動プロセスを中断し、*ONIE*を選択して*Enter*を押します。
-. 表示された次の画面で、*ONIE: Install OS*を選択します。
-. ONIEインストーラの検出処理が実行され、自動インストールが検索されます。Enter *を押して、プロセスを一時的に停止します。
-. 検出プロセスが停止したら、次の手順を実行します。
+. GNU GRUB 画面で *Esc* キーを押して通常のブート プロセスを中断し、*ONIE* を選択して *Enter* を押します。
+. 次に表示される画面で、*ONIE: OS のインストール*を選択します。
+. ONIE インストーラー検出プロセスが自動インストールの検索を実行します。プロセスを一時的に停止するには、*Enter* を押します。
+. 検出プロセスが停止した場合:
 +
 [listing, subs="+quotes"]
 ----
@@ -50,12 +50,12 @@ discover: installer mode detected.
 Stopping: discover...start-stop-daemon: warning: killing process 427:
 No such process done.
 ----
-. ネットワークでDHCPサービスが実行されている場合は、IPアドレス、サブネットマスク、およびデフォルトゲートウェイが正しく割り当てられていることを確認します。
+. ネットワーク上で DHCP サービスが実行されている場合は、IP アドレス、サブネット マスク、およびデフォルト ゲートウェイが正しく割り当てられていることを確認します。
 +
 `ifconfig eth0`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -79,15 +79,15 @@ default         10.233.204.1    0.0.0.0         UG    0      0      0   eth0
 10.233.204.0    *               255.255.254.0   U     0      0      0   eth0
 ----
 ====
-. IPアドレッシング方式が手動で定義されている場合は、次の手順を実行します。
+. IP アドレス指定スキームを手動で定義する場合は、次の手順を実行します。
 +
 [listing, subs="+quotes"]
 ----
 ONIE:/ # *ifconfig eth0 10.233.204.71 netmask 255.255.254.0*
 ONIE:/ # *route add default gw 10.233.204.1*
 ----
-. 手順9を繰り返して、静的情報が正しく入力されていることを確認します。
-. Cumulus Linuxのインストール：
+. 手順 9 を繰り返して、静的情報が正しく入力されていることを確認します。
+. Cumulus Linux をインストールします。
 +
 [listing, subs="+quotes"]
 ----
@@ -106,7 +106,7 @@ ONIE:/ # *route*
 ----
 . インストールが完了したら、スイッチにログインします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -120,12 +120,12 @@ New password: *<new_password>*
 Retype new password: *<new_password>*
 ----
 ====
-. Cumulus Linuxのバージョンを確認します。
+. Cumulus Linux のバージョンを確認します。
 +
 `net show version`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -140,4 +140,4 @@ DISTRIB_DESCRIPTION=*"Cumulus Linux 4.4.3”*
 
 
 .次の手順
-link:install-rcf-sn2100-storage.html["RCFスクリプトのインストールまたはアップグレード"] 。
+link:install-rcf-sn2100-storage.html["RCFスクリプトをインストールまたはアップグレードする"] 。

@@ -2,7 +2,7 @@
 permalink: switch-bes-53248/upgrade-switch-overview.html 
 sidebar: sidebar 
 keywords: BES-53248 switches, initial installation, configure new bes-53248 switch 
-summary: BES-53248クラスタスイッチを設定する前に、プロセスの概要と命名法を確認してください。 
+summary: BES-53248 クラスタ スイッチを構成する前に、プロセスと命名法の概要を確認してください。 
 ---
 = BES-53248 クラスタスイッチのアップグレードワークフロー
 :allow-uri-read: 
@@ -11,16 +11,16 @@ summary: BES-53248クラスタスイッチを設定する前に、プロセス�
 
 
 [role="lead"]
-Broadcom BES-54328クラスタスイッチでEFOSソフトウェアとリファレンス構成ファイル（RCF）をアップグレードする手順は、次のとおりです。
+該当する場合は、Broadcom BES-54328 クラスタ スイッチ上の EFOS ソフトウェアと参照構成ファイル (RCF) をアップグレードするには、次の手順に従います。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:upgrade-efos-software.html["EFOSバージョンのアップグレード"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:upgrade-efos-software.html["EFOSバージョンをアップグレードする"]
 [role="quick-margin-para"]
-イーサネットファブリックOS（EFOS）ソフトウェアをBES-53248クラスタスイッチにダウンロードしてインストールします。
+BES-53248 クラスタ スイッチに Ethernet Fabric OS (EFOS) ソフトウェアをダウンロードしてインストールします。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:upgrade-rcf.html["RCFバージョンのアップグレード"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:upgrade-rcf.html["RCFバージョンをアップグレードする"]
 [role="quick-margin-para"]
-BES-53248クラスタスイッチのRCFをアップグレードし、RCFを適用したあとにポートで追加ライセンスの有無を確認します。
+BES-53248 クラスタ スイッチ上の RCF をアップグレードし、RCF の適用後にポートで追加ライセンスを確認します。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:replace-verify.html["アップグレード後のONTAPクラスタネットワークの確認"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:replace-verify.html["アップグレード後のONTAPクラスタネットワークを確認する"]
 [role="quick-margin-para"]
-BES-53248クラスタスイッチのEFOSソフトウェアまたはRCFをアップグレードしたあとに、ONTAPクラスタネットワークの健全性を確認します。
+BES-53248 クラスタ スイッチの EFOS ソフトウェアまたは RCF をアップグレードした後、 ONTAPクラスタ ネットワークの健全性を確認します。

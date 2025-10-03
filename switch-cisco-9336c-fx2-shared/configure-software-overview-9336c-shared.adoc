@@ -2,37 +2,37 @@
 permalink: switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html 
 sidebar: sidebar 
 keywords: BES-53248 switches, initial installation, configure switch-cisco-9336c-fx2 switch 
-summary: Cisco Nexus 9336C-FX2共有スイッチのソフトウェア設定の概要 
+summary: Cisco Nexus 9336C-FX2 共有スイッチのソフトウェア構成の概要 
 ---
-= Cisco Nexus 9336C-FX2共有スイッチのソフトウェアインストールワークフロー
+= Cisco Nexus 9336C-FX2 共有スイッチのソフトウェアインストールワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2共有スイッチのソフトウェアをインストールおよび設定する手順は、次のとおりです。
+Cisco Nexus 9336C-FX2 共有スイッチのソフトウェアをインストールして設定するには、次の手順に従います。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:setup-and-configure-9336c-shared.html["スイッチを設定します"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:setup-and-configure-9336c-shared.html["スイッチを設定する"]
 [role="quick-margin-para"]
 9336C-FX2 共有スイッチを設定します。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:prepare-nxos-rcf-9336c-shared.html["NX-OSソフトウェアとRCFのインストールの準備"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:prepare-nxos-rcf-9336c-shared.html["NX-OSソフトウェアとRCFのインストールの準備"]
 [role="quick-margin-para"]
 Cisco NX-OS ソフトウェアとリファレンス コンフィギュレーション ファイル (RCF) をCisco 9336C-FX2 共有スイッチにインストールする必要があります。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:install-nxos-software-9336c-shared.html["NX-OSソフトウェアのインストールまたはアップグレード"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:install-nxos-software-9336c-shared.html["NX-OSソフトウェアをインストールまたはアップグレードする"]
 [role="quick-margin-para"]
 Cisco 9336C-FX2 共有スイッチに NX-OS ソフトウェアをダウンロードしてインストールまたはアップグレードします。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:install-nxos-rcf-9336c-shared.html["RCFをインストールします"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:install-nxos-rcf-9336c-shared.html["RCFのインストール"]
 [role="quick-margin-para"]
 Cisco 9336C-FX2 共有スイッチを初めてセットアップした後、RCF をインストールします。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"]link:upgrade-rcf-software-9336c-shared.html["RCFのアップグレード"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:upgrade-rcf-software-9336c-shared.html["RCFをアップグレードする"]
 [role="quick-margin-para"]
 運用スイッチに既存のバージョンの RCF ファイルがインストールされている場合は、RCF バージョンをアップグレードします。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["6"]link:reset-switch-9336c-shared.html["スイッチを工場出荷時の状態にリセットする"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:reset-switch-9336c-shared.html["スイッチを工場出荷時の状態にリセットする"]
 [role="quick-margin-para"]
 9336C-FX2 共有スイッチの設定を消去します。

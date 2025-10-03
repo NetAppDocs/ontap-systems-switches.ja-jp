@@ -2,119 +2,119 @@
 permalink: switch-cisco-92300/migrate-to-92300yc.html 
 sidebar: sidebar 
 keywords: migration steps for cisco nexus 92300yc cluster switch 
-summary: ONTAP クラスタの古い Cisco クラスタスイッチは、無停止で Cisco Nexus 92300YC クラスタネットワークスイッチに移行できます。 
+summary: ONTAPクラスタの古いCiscoクラスタ スイッチは、無停止でCisco Nexus 92300YCクラスタ ネットワーク スイッチに移行できます。 
 ---
-= Cisco スイッチから Cisco Nexus 92300YC スイッチに移行する
+= CiscoスイッチからCisco Nexus 92300YC スイッチへの移行
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-ONTAP クラスタの古い Cisco クラスタスイッチは、無停止で Cisco Nexus 92300YC クラスタネットワークスイッチに移行できます。
+ONTAPクラスタの古いCiscoクラスタ スイッチは、無停止でCisco Nexus 92300YCクラスタ ネットワーク スイッチに移行できます。
 
 
 NOTE: 移行が完了したら、92300YC クラスタ スイッチの Cluster Switch Health Monitor (CSHM) をサポートするために必要な構成ファイルをインストールする必要がある場合があります。見るlink:../switch-cshm/cshm-overview.html["スイッチヘルスモニタリング（CSHM）"] 。
 
 
 
-== 要件を確認
+== 要件の確認
 
-.作業を開始する前に
-次のものがあることを確認します。
+.開始する前に
+以下のものがあることを確認してください。
 
-* 既存のクラスタは完全に機能する。
-* ノードからNexus 92300YCクラスタスイッチへの10GbEおよび40GbE接続。
-* ノンストップオペレーションを実現するために、すべてのクラスタポートがup状態になっています。
-* Nexus 92300YCクラスタスイッチに適切なバージョンのNX-OSとリファレンス構成ファイル（RCF）がインストールされている必要があります。
-* 両方の古い Cisco スイッチを使用する、完全に機能している冗長なネットアップクラスタ。
-* 古い Cisco スイッチと新しいスイッチの両方への管理接続とコンソールアクセス。
-* クラスタ LIF がすべて up 状態でホームポートにあること。
-* ISL ポートが有効で、古い Cisco スイッチ間および新しいスイッチ間でケーブル接続されている。
-
-
+* 完全に機能する既存のクラスター。
+* ノードから Nexus 92300YC クラスタ スイッチへの 10 GbE および 40 GbE 接続。
+* 中断のない操作を保証するために、すべてのクラスター ポートはアップ状態になっています。
+* Nexus 92300YC クラスタ スイッチに適切なバージョンの NX-OS と参照構成ファイル (RCF) がインストールされています。
+* どちらも古いCiscoスイッチを両方使用する、完全に機能している冗長なNetAppクラスタ。
+* 古いCiscoスイッチと新しいスイッチ両方への管理接続とコンソール アクセス。
+* クラスタ LIF がすべてアップ状態にあり、クラスタ LIF がホーム ポート上にある。
+* ISLポートが有効で、古いCiscoスイッチ間および新しいスイッチ間でケーブル接続されている。
 
 
-== スイッチを移行します
+
+
+== スイッチを移行する
 
 .例について
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 既存の Cisco Nexus 5596UP クラスタスイッチは、 c1 と c2 です。
-* 新しい Nexus 92300YC クラスタスイッチは cs1 と cs2 です。
-* ノードは node1 と node2 になります。
-* クラスタ LIF は、ノード 1 では node1_clus1 と node1_clus2 、ノード 2 では node2_clus1 と node2_clus2 です。
-* 最初にスイッチ c2 をスイッチ cs2 に交換し、次にスイッチ c1 をスイッチ cs1 に交換します。
+* 既存のCisco Nexus 5596UP クラスタ スイッチは c1 と c2 です。
+* 新しい Nexus 92300YC クラスタ スイッチは cs1 と cs2 です。
+* ノードは node1 と node2 です。
+* クラスター LIF は、ノード 1 ではそれぞれ node1_clus1 と node1_clus2、ノード 2 では node2_clus1 と node2_clus2 です。
+* 最初にスイッチc2をスイッチcs2に交換し、次にスイッチc1をスイッチcs1に交換します。
 +
-** 一時的な ISL を cs1 上に構築し、 c1 を cs1 に接続します。
-** 次にノードと c2 の間のケーブルを c2 から外し、 cs2 に再接続します。
-** その後、ノードと c1 間のケーブルを c1 から切断し、 cs1 に再接続します。
-** その後、 c1 と cs1 の間の一時的な ISL を削除します。
+** 一時的なISLをcs1上に構築し、c1をcs1に接続します。
+** 次にノードとc2の間のケーブルをc2から外し、cs2に再接続します。
+** 次にノードとc1の間のケーブルをc1から外し、cs1に再接続します。
+** その後、c1とcs1の間の一時的なISLを削除します。
 
 
 
 
 .接続に使用されるポート
-* 一部のポートは、Nexus 92300YCスイッチで10GbEまたは40GbEで実行するように構成されています。
-* クラスタスイッチは、ノードへの接続に次のポートを使用します。
+* Nexus 92300YC スイッチの一部のポートは、10 GbE または 40 GbE で動作するように構成されています。
+* クラスタ スイッチは、ノードへの接続に次のポートを使用します。
 +
-** ポート e1/1~48 （ 10/25GbE ）、 e1/49~64 （ 40/100GbE ）： Nexus 92300YC
-** ポート e1/1~40 （ 10GbE ）： Nexus 5596UP
-** ポート e1/1~32 （ 10GbE ）： Nexus 5020
-** ポート e1/1~12 、 e2/1~6 （ 10GbE ）： Nexus 5010 （拡張モジュール
+** ポートe1/1～48（10/25GbE）、e1/49～64（40/100GbE）：Nexus 92300YC
+** ポート e1/1-40 (10 GbE): Nexus 5596UP
+** ポート e1/1-32 (10 GbE): Nexus 5020
+** ポート e1/1-12、e2/1-6 (10 GbE): 拡張モジュール付き Nexus 5010
 
 
-* クラスタスイッチは、次のスイッチ間リンク（ ISL ）ポートを使用します。
+* クラスタ スイッチは、次のスイッチ間リンク（ISL）ポートを使用します。
 +
-** ポート e1/65~66 （ 100GbE ）： Nexus 92300YC
-** ポート e1/41~48 （ 10GbE ）： Nexus 5596UP
-** ポート e1/33~40 （ 10GbE ）： Nexus 5020
-** ポート e1/13~20 （ 10GbE ）： Nexus 5010
+** ポートe1/65～66（100GbE）：Nexus 92300YC
+** ポート e1/41-48 (10 GbE): Nexus 5596UP
+** ポート e1/33-40 (10 GbE): Nexus 5020
+** ポート e1/13-20 (10 GbE): Nexus 5010
 
 
-* https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe - スイッチ"^] すべてのクラスタスイッチでサポートされているケーブル接続について説明します。
-* この手順 でサポートされている ONTAP と NX-OS のバージョンはにあります https://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^] ページ
+* https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- スイッチ"^]すべてのクラスタ スイッチでサポートされているケーブル接続に関する情報が含まれています。
+* この手順でサポートされているONTAPおよびNX-OSのバージョンは、 https://support.netapp.com/NOW/download/software/cm_switches/["Ciscoイーサネット スイッチ"^]ページ。
 
 
 
 
-=== 手順1：移行の準備
+=== ステップ1: 移行の準備
 
-. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 * y * 」と入力します。
+. 続行するかどうかを尋ねられたら *y* と入力して、権限レベルを「advanced」に変更します。
 +
-「 advanced 」の権限が必要です
-
-+
-advanced のプロンプト（ * > ）が表示されます。
-
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
-+
-「 system node AutoSupport invoke -node * -type all -message MAINT= xh 」というメッセージが表示されます
+`set -privilege advanced`
 
 +
-x は、メンテナンス時間の長さ（時間単位）です。
+advancedのプロンプト（*>）が表示されます。
+
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
++
+`system node autosupport invoke -node * -type all -message MAINT=xh`
+
++
+ここで、x はメンテナンス ウィンドウの期間 (時間単位) です。
 
 +
 
-NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+NOTE: AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次のコマンドは、ケースの自動作成を 2 時間停止します。
+次のコマンドは、自動ケース作成を 2 時間抑制します。
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *system node autosupport invoke -node * -type all -message MAINT=2h*
 ----
 ====
-. すべてのクラスタ LIF で自動リバートが有効になっていることを確認します。
+. すべてのクラスタLIFで自動リバートが有効になっていることを確認します。
 +
-network interface show -vserver Cluster -fields auto-revert を実行します
+`network interface show -vserver Cluster -fields auto-revert`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -133,17 +133,17 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
+. 各クラスタ インターフェイスの管理ステータスまたは動作ステータスを確認します。
 +
-各ポートは 'Link' のために表示され 'Health Status' のために正常である必要があります
+各ポートは `Link`そして健康的 `Health Status`。
 
 +
-.. ネットワークポートの属性を表示します。
+.. ネットワーク ポートの属性を表示します。
 +
-「 network port show -ipspace cluster 」のように表示されます
+`network port show -ipspace Cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -169,15 +169,15 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 4 entries were displayed.
 ----
 ====
-.. 論理インターフェイスとそのホームノードに関する情報を表示します。
+.. 論理インターフェイスとそれに指定されたホーム ノードに関する情報を表示します。
 +
-「 network interface show -vserver Cluster 」のように表示されます
+`network interface show -vserver Cluster`
 
 +
-それぞれの LIF で、「 Status Admin/Op' 」には up/up 、「 Is Home 」には true と表示される必要があります。
+各LIFはup/upと表示されるはずです `Status Admin/Oper`そして、 `Is Home` 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -198,12 +198,12 @@ Cluster
 ====
 
 
-. コマンドを使用して、各ノードのクラスタポートが既存のクラスタスイッチに（ノードから見て）次のように接続されていることを確認します。
+. 次のコマンドを使用して、各ノード上のクラスター ポートが既存のクラスター スイッチに次のように (ノードの観点から) 接続されていることを確認します。
 +
-「 network device-discovery show -protocol cdp 」と入力します
+`network device-discovery show -protocol cdp`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -222,12 +222,12 @@ node1      /cdp
 4 entries were displayed.
 ----
 ====
-. コマンドを使用して、クラスタポートとスイッチが（スイッチから見て）次のように接続されていることを確認します。
+. 次のコマンドを使用して、クラスタ ポートとスイッチが次のように (スイッチの観点から) 接続されていることを確認します。
 +
-'How CDP Neighbors' を参照してください
+`show cdp neighbors`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -290,22 +290,22 @@ c1(FOX2025GEEX)     Eth1/47        176    S I s     N5K-C5596UP        Eth1/47
 c1(FOX2025GEEX)     Eth1/48        176    S I s     N5K-C5596UP        Eth1/48
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -321,9 +321,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -358,14 +358,14 @@ RPC status:
 ====
 
 
-=== 手順2：ケーブルとポートを設定する
+=== ステップ2: ケーブルとポートを構成する
 
-. ポート e1/41~48 の cs1 上に、 c1 と cs1 の間の一時的な ISL を設定します。
+. ポートe1/41～48のcs1上に、c1とcs1の間の一時的なISLを設定します。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、新しい ISL を c1 と cs1 に設定する方法を示しています。
+次の例は、新しいISLをc1とcs1に設定する方法を示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -386,16 +386,16 @@ cs1(config-if)# *exit*
 cs1(config)# *exit*
 ----
 ====
-. c2 のポート e1/41~48 から ISL ケーブルを取り外し、 cs1 のポート e1/41~48 にケーブルを接続します。
-. c1 と cs1 を接続する ISL ポートとポートチャネルが動作していることを確認します。
+. c2のポートe1/41～48からISLケーブルを取り外し、cs1のポートe1/41～48にケーブルを接続します。
+. c1 と cs1 を接続する ISL ポートとポート チャネルが動作していることを確認します。
 +
-「ポートチャネルの概要」
+`show port-channel summary`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 Cisco の show port-channel summary コマンドを使用して、 ISL ポートが c1 および cs1 で動作していることを確認します。
+次の例は、c1 および cs1 で ISL ポートが動作していることを確認するために使用されているCisco show port-channel summary コマンドを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -436,14 +436,14 @@ Group Port-       Type     Protocol  Member Ports
                                      Eth1/47(P)   Eth1/48(P)
 ----
 ====
-. ノード 1 について、 c2 の e1/1 からケーブルを外し、 Nexus 92300YC でサポートされているケーブル接続に従って cs2 の e1/1 に接続します。
-. ノード 2 について、 c2 の e1/2 からケーブルを外し、 Nexus 92300YC でサポートされているケーブル接続に従って cs2 の e1/2 に接続します。
-. これで、各ノードのクラスタポートは、ノードから見て次のようにクラスタスイッチに接続されました。
+. ノード1について、c2のe1/1からケーブルを外し、Nexus 92300YCでサポートされている適切なケーブル接続に従ってcs2のe1/1に接続します。
+. ノード2について、c2のe1/2からケーブルを外し、Nexus 92300YCでサポートされている適切なケーブル接続に従ってcs2のe1/2に接続します。
+. 各ノード上のクラスター ポートは、ノードの観点から見ると、次のようにクラスター スイッチに接続されます。
 +
-「 network device-discovery show -protocol cdp 」と入力します
+`network device-discovery show -protocol cdp`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -463,14 +463,14 @@ node1      /cdp
 4 entries were displayed.
 ----
 ====
-. ノード 1 について、 c1 の e1/1 からケーブルを外し、 Nexus 92300YC でサポートされている適切なケーブル接続を使用して cs1 の e1/1 に接続します。
-. ノード 2 について、 c1 の e1/2 からケーブルを外し、 Nexus 92300YC でサポートされている適切なケーブル接続を使用して cs1 の e1/2 に接続します。
-. これで、各ノードのクラスタポートは、ノードから見て次のようにクラスタスイッチに接続されました。
+. ノード1について、c1のe1/1からケーブルを外し、Nexus 92300YCでサポートされている適切なケーブル接続に従ってcs1のe1/1に接続します。
+. ノード2について、c1のe1/2からケーブルを外し、Nexus 92300YCでサポートされている適切なケーブル接続に従ってcs1のe1/2に接続します。
+. 各ノード上のクラスター ポートは、ノードの観点から見ると、次のようにクラスター スイッチに接続されます。
 +
-「 network device-discovery show -protocol cdp 」と入力します
+`network device-discovery show -protocol cdp`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -488,9 +488,9 @@ node1      /cdp
 4 entries were displayed.
 ----
 ====
-. cs1 と c1 間の一時的な ISL を削除します。
+. cs1とc1間の一時的なISLを削除します。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -511,17 +511,17 @@ cs1(config)# *exit*
 
 
 
-=== 手順3：移行を完了します
+=== ステップ3: 移行を完了する
 
-. クラスタの最終的な構成を確認します。
+. クラスターの最終構成を確認します。
 +
-「 network port show -ipspace cluster 」のように表示されます
-
-+
-各ポートは 'Link' のために表示され 'Health Status' のために正常である必要があります
+`network port show -ipspace Cluster`
 
 +
-.例を示します
+各ポートは `Link`そして健康的 `Health Status`。
+
++
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -608,22 +608,22 @@ cs1(FDO220329KU)
 Total entries displayed: 4
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -639,9 +639,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -674,12 +674,12 @@ RPC status:
 ----
 --
 ====
-. [[step3]]ケースの自動作成を抑制した場合は、AutoSupportメッセージを呼び出して再度有効にします。
+. [[step3]] 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -687,11 +687,11 @@ RPC status:
 cluster1::*> *system node autosupport invoke -node * -type all -message MAINT=END*
 ----
 ====
-. 権限レベルを admin に戻します。
+. 権限レベルを管理者に戻します。
 +
-「特権管理者」
+`set -privilege admin`
 
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。

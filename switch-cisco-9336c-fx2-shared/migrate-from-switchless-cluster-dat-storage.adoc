@@ -4,7 +4,7 @@ permalink: switch-cisco-9336c-fx2-shared/migrate-from-switchless-cluster-dat-sto
 keywords:  
 summary:  
 ---
-= 直接接続型ストレージを使用するスイッチレスクラスタから移行する
+= 直接接続ストレージを備えたスイッチレス クラスタからの移行
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,86 +14,86 @@ summary:
 
 
 [role="lead"]
-2つの新しい共有スイッチを追加することで、直接接続ストレージを使用するスイッチレスクラスタから移行できます。
+2 つの新しい共有スイッチを追加することで、直接接続ストレージを備えたスイッチレス クラスターから移行できます。
 
-使用する手順は、各コントローラに 2 つの専用クラスタネットワークポートがあるか、 1 つのクラスタポートがあるかによって異なります。ここで説明するプロセスは、すべてのノードで光ポートまたはTwinaxポートを使用しているものの、ノードでクラスタネットワークポートにオンボード10Gb BASE-T RJ45ポートが使用されている場合は、このスイッチではサポートされません。
+使用する手順は、各コントローラに2つの専用クラスタネットワーク ポートがあるか、1つのクラスタ ポートがあるかによって異なります。記載されているプロセスは、光ポートまたは Twinax ポートを使用するすべてのノードで機能しますが、ノードがクラスタ ネットワーク ポートにオンボード 10Gb BASE-T RJ45 ポートを使用している場合、このスイッチではサポートされません。
 
-ほとんどのシステムでは、各コントローラに 2 つの専用クラスタネットワークポートが必要です。を参照してください https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"] を参照してください。
+ほとんどのシステムでは、各コントローラに2つの専用クラスタネットワーク ポートが必要です。見る https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"]詳細についてはこちらをご覧ください。
 
-既存の 2 ノードスイッチレスクラスタ環境を使用している場合は、 Cisco Nexus 9336C-FX2 スイッチを使用して 2 ノードスイッチクラスタ環境に移行し、 3 ノード以上にクラスタを拡張できます。
+既存の2ノード スイッチレス クラスタ環境を使用している場合は、Cisco Nexus 9336C-FX2スイッチを使用して2ノード スイッチ クラスタ環境に移行し、3ノード以上にクラスタを拡張できます。
 
 
 
-== 要件を確認
+== 要件の確認
 
-次の点を確認します
+次のことを確認してください。
 
-* 2ノードスイッチレス構成の場合：
+* 2 ノードのスイッチレス構成の場合:
 +
-** 2ノードスイッチレス構成が適切にセットアップされて機能しています。
-** ノードでONTAP 9.8以降を実行している。
-** すべてのクラスタポートが「稼働」状態です。
-** すべてのクラスタLIF（論理インターフェイス）の状態が* up *になっていて、ホーム*ポートにあることを確認します。
+** 2 ノードのスイッチレス構成が適切にセットアップされ、機能しています。
+** ノードはONTAP 9.8 以降を実行しています。
+** すべてのクラスター ポートは *up* 状態です。
+** すべてのクラスタ論理インターフェイス (LIF) は *up* 状態であり、*home* ポート上にあります。
 
 
-* Cisco Nexus 9336C-FX2スイッチの構成の場合：
+* Cisco Nexus 9336C-FX2 スイッチ構成の場合:
 +
-** 両方のスイッチに管理ネットワーク接続があります。
-** クラスタスイッチへのコンソールアクセスがあります。
-** Nexus 9336C-FX2ノード間スイッチおよびスイッチ間接続には、Twinaxケーブルまたはファイバケーブルを使用します。
-** ネットアップ https://hwu.netapp.com["Hardware Universe"] ケーブル接続の詳細については、を参照してください。
-** スイッチ間リンク（ISL）ケーブルは、9336C-FX2スイッチのポート1/35および1/36に接続されています。
+** 両方のスイッチには管理ネットワーク接続があります。
+** クラスター スイッチへのコンソール アクセスがあります。
+** Nexus 9336C-FX2 のノード間スイッチおよびスイッチ間接続には、Twinax ケーブルまたは光ファイバー ケーブルが使用されます。
+** NetApp https://hwu.netapp.com["Hardware Universe"]ケーブル接続に関する詳細情報が記載されています。
+** 両方の 9336C-FX2 スイッチのポート 1/35 と 1/36 に Inter-Switch Link (ISL) ケーブルが接続されています。
 
 
-* 9336C-FX2スイッチの初期カスタマイズが完了しました。次のようにします。
+* 9336C-FX2 スイッチの初期カスタマイズが完了しました。次の状況を確認します。
 +
-** 9336C-FX2 スイッチは最新バージョンのソフトウェアを実行しています
-** リファレンス構成ファイル（ RCF ）がスイッチに適用されている場合
-** SMTP、SNMP、SSHなどのサイトのカスタマイズは、新しいスイッチで設定されます。
+** 9336C-FX2スイッチは最新バージョンのソフトウェアを実行しています
+** リファレンス構成ファイル（RCF）がスイッチに適用されている
+** SMTP、SNMP、SSH などのサイトのカスタマイズはすべて新しいスイッチで構成されます。
 
 
 
 
 
 
-== スイッチを移行します
+== スイッチを移行する
 
 .例について
-この手順の例では、クラスタスイッチとノードで次の命名法を使用しています。
+この手順の例では、クラスタ スイッチとノードで次の命名法を使用しています。
 
-* 9336C-FX2 スイッチの名前は、 _CS1_および CS2__ です。
-* クラスタ SVM の名前は、 _node1 と _node2 _ です。
-* LIF の名前は、ノード 1 では _node1_clus1_AND _node1_clus2_on 、ノード 2 では _node2_clus1_and _node2_clus2_on です。
-* cluster1 ： * > プロンプトは、クラスタの名前を示します。
-* この手順で使用されているクラスタポートは、 AFF A400 コントローラに準拠した _e3a および _e3b です。。 https://hwu.netapp.com["Hardware Universe"] プラットフォームの実際のクラスタポートに関する最新情報が含まれます。
-
-
+* 9336C-FX2 スイッチの名前は _cs1_ と _cs2_ です。
+* クラスター SVM の名前は _node1_ と _node2_ です。
+* LIF の名前は、ノード 1 ではそれぞれ _node1_clus1_ と _node1_clus2_、ノード 2 ではそれぞれ _node2_clus1_ と _node2_clus2_ です。
+* cluster1::*> プロンプトはクラスターの名前を示します。
+* この手順で使用されるクラスタ ポートは、 AFF A400コントローラに応じて、_e3a_ と _e3b_ です。その https://hwu.netapp.com["Hardware Universe"]プラットフォームの実際のクラスター ポートに関する最新情報が含まれています。
 
 
-=== 手順1：直接接続型のスイッチレスクラスタから移行する
 
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= xh 」
+
+=== ステップ1: 直接接続されたスイッチレスクラスタから移行する
+
+. このクラスタでAutoSupportが有効になっている場合は、 AutoSupportメッセージを呼び出して自動ケース作成を抑制します。 `system node autosupport invoke -node * -type all -message MAINT=xh` 。
 +
-x は、メンテナンス時間の長さ（時間単位）です。
+ここで、x はメンテナンス ウィンドウの期間 (時間単位) です。
 
 
 
 
-NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+NOTE: AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
-. [step2]権限レベルをadvancedに変更します。続行するかどうかを尋ねられたら、「y」と入力します。
+. [[step2]]権限レベルを「advanced」に変更し、続行するかどうかを尋ねられたら「y」と入力します。
 +
-「 advanced 」の権限が必要です
+`set -privilege advanced`
 
 +
-advanced のプロンプト（ * > ）が表示されます。
+advancedのプロンプト（*>）が表示されます。
 
-. 新しいクラスタスイッチ cs1 と cs2 の両方で、すべてのノード側ポート（ ISL ポートではない）を無効にします。ISL ポートを無効にしないでください。
+. 新しいクラスタ スイッチcs1とcs2の両方で、すべてのノード側ポート（ISLポートではない）を無効にします。ISLポートを無効にしないでください。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、スイッチ cs1 でノードに接続されたポート 1~34 が無効になっていることを示しています。
+次の例は、スイッチcs1でノード側のポート1～34が無効になっていることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -105,15 +105,15 @@ cs1(config-if-range)# *shutdown*
 ====
 
 
-. [[step4] 2つの9336C-FX2スイッチcs1とcs2間のISLでISLポートと物理ポートがポート1/35および1/36で動作していることを確認します。
+. [[step4]]2つの9336C-FX2スイッチcs1とcs2間のISLとISL上の物理ポートがポート1/35と1/36で起動していることを確認します。
 +
-「ポートチャネルの概要」
+`show port-channel summary`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、スイッチ cs1 上の ISL ポートが up になっていることを示しています。
+次の例は、スイッチ cs1 で ISL ポートが起動していることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -132,7 +132,7 @@ Group Port-       Type     Protocol  Member Ports
 --------------------------------------------------------------------------------
 1     Po1(SU)     Eth      LACP      Eth1/35(P)   Eth1/36(P)
 ----
-次の例は、スイッチ cs2 上の ISL ポートが up になっていることを示しています。
+次の例は、スイッチ cs2 で ISL ポートが起動していることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -154,18 +154,18 @@ Group Port-       Type     Protocol  Member Ports
 ====
 
 
-. [[step5]隣接デバイスのリストを表示します。
+. [[step5]]近隣デバイスのリストを表示します。
 +
-'How CDP Neighbors' を参照してください
+`show cdp neighbors`
 
 +
 このコマンドは、システムに接続されているデバイスに関する情報を提供します。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、スイッチ cs1 上の隣接デバイスを示しています。
+次の例は、スイッチcs1上の隣接デバイスを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -179,7 +179,7 @@ cs2                Eth1/35        175    R S I s     N9K-C9336C    Eth1/35
 cs2                Eth1/36        175    R S I s     N9K-C9336C    Eth1/36
 Total entries displayed: 2
 ----
-次の例は、スイッチ cs2 上の隣接デバイスを表示します。
+次の例は、スイッチcs2上の隣接デバイスを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -197,15 +197,15 @@ Total entries displayed: 2
 ====
 
 
-. [[step6]すべてのクラスタポートが稼働していることを確認します。
+. [[step6]]すべてのクラスターポートが稼働していることを確認します。
 +
 `network port show - ipspace Cluster`
 
 +
-各ポートで、Linkにはup、Health Statusにはhealthyと表示されるはずです。
+各ポートのリンクは「アップ」、ヘルスステータスは「正常」と表示されます。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -230,15 +230,15 @@ e3b       Cluster      Cluster          up   9000  auto/100000 healthy
 ====
 
 
-. [[step7]すべてのクラスタLIFが稼働していることを確認します。
+. [[step7]]すべてのクラスタLIFが稼働していることを確認します。
 +
 `network interface show - vserver Cluster`
 
 +
-各クラスタ LIF は 'Is Home' に true を表示し 'Status Admin/Oper は up/up と表示する必要があります
+各クラスタLIFは、 `Is Home`管理者/オペレーターのステータスが up/up であること。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -257,12 +257,12 @@ Cluster
 ====
 
 
-. [[step8]すべてのクラスタLIFで自動リバートが有効になっていることを確認します。
+. [[step8]]すべてのクラスタLIFで自動復帰が有効になっていることを確認します。
 +
 `network interface show - vserver Cluster -fields auto-revert`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -281,17 +281,17 @@ Cluster
 ====
 
 
-. [[step9] ：ノード 1 のクラスタポート e3a からケーブルを外し、クラスタスイッチ cs1 のポート 1 に e3a に接続します。これには、 9336C-FX2 スイッチでサポートされている適切なケーブル接続を使用します。
+. [[step9]]ノード1のクラスタポートe3aからケーブルを外し、9336C-FX2スイッチでサポートされている適切なケーブルを使用して、e3aをクラスタスイッチcs1のポート1に接続します。
 +
-ネットアップ https://hwu.netapp.com["Hardware Universe"] ケーブル接続の詳細については、を参照してください。
+NetApp https://hwu.netapp.com["Hardware Universe"]ケーブル接続に関する詳細情報が記載されています。
 
-. 9336C-FX2 スイッチでサポートされている適切なケーブル接続を使用して、ノード 2 のクラスタポート e3a からケーブルを外し、クラスタスイッチ cs1 のポート 2 に e3a を接続します。
-. クラスタスイッチ cs1 のすべてのノード側ポートを有効にします。
+. ノード 2 のクラスター ポート e3a からケーブルを外し、9336C-FX2 スイッチでサポートされている適切なケーブルを使用して、e3a をクラスター スイッチ cs1 のポート 2 に接続します。
+. クラスタ スイッチcs1のすべてのノード側ポートを有効にします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、スイッチ cs1 でポート 1/1~1/34 が有効になっていることを示しています。
+次の例は、スイッチcs1でポート1/1～1/34が有効になっていることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -303,15 +303,15 @@ cs1(config-if-range)# *no shutdown*
 ====
 
 
-. [[step12]]すべてのクラスタLIFが* up *、Operational、およびdisplay as true forであることを確認します `Is Home`：
+. [[step12]]すべてのクラスタLIFが*up*、動作可能であり、trueと表示されていることを確認します。 `Is Home` :
 +
 `network interface show - vserver Cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、ノード 1 とノード 2 のすべての LIF が * up * で、 Is Home の結果が * true であることを示しています。
+次の例は、ノード1とノード2のすべてのLIFが*up*であり、 `Is Home`結果は*真*です:
 
 [listing, subs="+quotes"]
 ----
@@ -329,12 +329,12 @@ Cluster
 ====
 
 
-. [[step13]]クラスタ内のノードのステータスに関する情報を表示します。
+. [[step13]]クラスター内のノードのステータスに関する情報を表示します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 次の例は、クラスタ内のノードの健全性と参加資格に関する情報を表示します。
@@ -351,14 +351,14 @@ node2                true    true          false
 ====
 
 
-. [[step14]] ノード 1 のクラスタポート e3b からケーブルを外し、 9336C-FX2 スイッチでサポートされている適切なケーブルを使用して、クラスタスイッチ cs2 のポート 1 に e3b を接続します。
-. ノード 2 のクラスタポート e3b からケーブルを外し、 9336C-FX2 スイッチでサポートされている適切なケーブルを使用して、クラスタスイッチ cs2 のポート 2 に e3b を接続します。
-. クラスタスイッチ cs2 のすべてのノード側ポートを有効にします。
+. [[step14]]ノード1のクラスタポートe3bからケーブルを外し、9336C-FX2スイッチでサポートされている適切なケーブルを使用して、e3bをクラスタスイッチcs2のポート1に接続します。
+. ノード 2 のクラスター ポート e3b からケーブルを外し、9336C-FX2 スイッチでサポートされている適切なケーブルを使用して、e3b をクラスター スイッチ cs2 のポート 2 に接続します。
+. クラスタ スイッチcs2のすべてのノード側ポートを有効にします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、スイッチ cs2 でポート 1/1~1/34 が有効になっていることを示しています。
+次の例は、スイッチcs2でポート1/1～1/34が有効になっていることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -370,15 +370,15 @@ cs2(config-if-range)# *no shutdown*
 ====
 
 
-. [[step17]]すべてのクラスタポートが稼働していることを確認します。
+. [[step17]]すべてのクラスターポートが稼働していることを確認します。
 +
 `network port show - ipspace Cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、ノード 1 とノード 2 のすべてのクラスタポートが up になっていることを示しています。
+次の例は、ノード 1 とノード 2 のすべてのクラスター ポートが稼働していることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -404,19 +404,19 @@ e3b       Cluster      Cluster          up   9000  auto/100000 healthy  false
 ====
 
 
-. [[step18]]すべてのインターフェイスでtrueが表示されることを確認します `Is Home`：
+. [[step18]]すべてのインターフェースがtrueになっていることを確認します。 `Is Home` :
 +
 `network interface show - vserver Cluster`
 
 +
 
-NOTE: この処理が完了するまでに数分かかることがあります。
+NOTE: 完了するまでに数分かかる場合があります。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、ノード 1 とノード 2 のすべての LIF が * up * であり、 Is Home の結果が true であることを示しています。
+次の例は、ノード1とノード2のすべてのLIFが*up*であり、 `Is Home`結果は真です:
 
 [listing, subs="+quotes"]
 ----
@@ -434,15 +434,15 @@ Cluster
 ====
 
 
-. [[step19]]両方のノードに各スイッチへの接続が1つあることを確認します。
+. [[step19]]両方のノードが各スイッチに1つずつ接続されていることを確認します。
 +
-'How CDP Neighbors' を参照してください
+`show cdp neighbors`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、両方のスイッチの該当する結果を示しています。
+次の例は、両方のスイッチの適切な結果を示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -472,12 +472,12 @@ Total entries displayed: 4
 ====
 
 
-. [[step20]]クラスタ内で検出されたネットワークデバイスに関する情報を表示します。
+. [[step20]]クラスター内で検出されたネットワークデバイスに関する情報を表示します。
 +
-「 network device-discovery show -protocol cdp 」と入力します
+`network device-discovery show -protocol cdp`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -498,12 +498,12 @@ node1       /cdp
 ====
 
 
-. [[step21] HAペア1（およびHAペア2）のストレージ構成が正しいこととエラーがないことを確認します。
+. [[step21]]HAペア1（およびHAペア2）のストレージ構成が正しく、エラーがないことを確認します。
 +
 `system switch ethernet show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -536,17 +536,17 @@ storage::*>
 
 . [[step22]]設定が無効になっていることを確認します。
 +
-network options switchless-cluster show
+`network options switchless-cluster show`
 
 +
 
-NOTE: コマンドが完了するまでに数分かかることがあります。3 分間の有効期間が終了することを通知するアナウンスが表示されるまで待ちます。
+NOTE: コマンドが完了するまでに数分かかる場合があります。「3 分間の有効期限が切れます」というアナウンスを待ちます。
 
 +
-次の例では 'false' の出力は ' 構成設定が無効になっていることを示しています
+その `false`次の例の出力は、構成設定が無効になっていることを示しています。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -559,13 +559,13 @@ Enable Switchless Cluster: false
 
 . [[step23]]クラスタ内のノードメンバーのステータスを確認します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、クラスタ内のノードの健全性と参加資格に関する情報を表示します。
+次の例は、クラスタ内のノードの正常性と適格性に関する情報を示します。
 
 [listing, subs="+quotes"]
 ----
@@ -576,22 +576,22 @@ node1                true    true          false
 node2                true    true          false
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -607,9 +607,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -641,31 +641,31 @@ RPC status:
 ----
 --
 ====
-. [[step25]]権限レベルをadminに戻します。
+. [[step25]] 権限レベルを管理者に戻します。
 +
-「特権管理者」
+`set -privilege admin`
 
 
 
 
 
-=== 手順2：共有スイッチをセットアップします
+=== ステップ2: 共有スイッチを設定する
 
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 2 つの共有スイッチの名前は、 _sh1_AND _sh2__ です。
-* ノードは、 _ node1 _ と _ node2 _ です。
+* 2 つの共有スイッチの名前は _sh1_ と _sh2_ です。
+* ノードは _node1_ と _node2_ です。
 
 
 
-NOTE: 手順 ONTAP では、特に記載がない限り、 ONTAP コマンドと Cisco Nexus 9000 シリーズスイッチコマンドの両方を使用する必要があります。
+NOTE: この手順では、 ONTAPコマンドとCisco Nexus 9000 シリーズ スイッチ コマンドの両方を使用する必要がありますが、特に明記されていない限り、 ONTAPコマンドが使用されます。
 
-. HAペア1（およびHAペア2）のストレージ構成が正しいこと、およびエラーがないことを確認します。
+. HA ペア 1 (および HA ペア 2) のストレージ構成が正しく、エラーがないことを確認します。
 +
 `system switch ethernet show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -694,12 +694,12 @@ sh2
 storage::*>
 ----
 ====
-. ストレージノードポートが正常で動作していることを確認します。
+. ストレージ ノードのポートが正常で動作していることを確認します。
 +
-storage port show -port-type enet
+`storage port show -port-type ENET`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -723,15 +723,15 @@ node2
 ====
 
 
-. [[step3]] HA ペア 1 、 NSM224 パス A のポートを sh1 ポート範囲 11-22 に移動します。
-. HA ペア 1 の node1 のパス A から sh1 のポート範囲 11-22 にケーブルを接続します。たとえば、 AFF A400 のパス A のストレージポートは e0c です。
-. HA ペア 1 、 node2 、パス A から sh1 のポート範囲 11-22 へケーブルを接続します。
-. ノードポートが正常で動作していることを確認します。
+. [[step3]]HAペア1、NSM224パスAポートをsh1ポート範囲11〜22に移動します。
+. HA ペア 1、ノード 1、パス A から sh1 ポート範囲 11 ～ 22 にケーブルを接続します。たとえば、 AFF A400のパスの A ストレージ ポートは e0c です。
+. HA ペア 1、ノード 2、パス A から sh1 ポート範囲 11 ～ 22 にケーブルを接続します。
+. ノード ポートが正常で動作していることを確認します。
 +
-storage port show -port-type enet
+`storage port show -port-type ENET`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -753,12 +753,12 @@ node2
         e5b     ENET  storage           100      enabled  online        30
 ----
 ====
-. クラスタにストレージスイッチやケーブル接続の問題がないことを確認します。
+. クラスターにストレージ スイッチまたはケーブル接続の問題がないことを確認します。
 +
 `system health alert show -instance`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -767,15 +767,15 @@ storage::*> *system health alert show -instance*
 There are no entries matching your query.
 ----
 ====
-. HAペア1のNSM224パスBポートを、sh2ポート範囲11-22に移動します。
-. HA ペア 1 、 node1 、パス B から sh2 のポート範囲 11-22 にケーブルを接続します。たとえば、 AFF A400 のパス B ストレージポートは e5b になります。
-. HA ペア 1 、 node2 、パス B から sh2 のポート範囲 11-22 にケーブルを接続します。
-. ノードポートが正常で動作していることを確認します。
+. HA ペア 1、NSM224 パス B ポートを sh2 ポート範囲 11 ～ 22 に移動します。
+. HA ペア 1、ノード 1、パス B から sh2 ポート範囲 11 ～ 22 にケーブルをインストールします。たとえば、 AFF A400のパス B ストレージ ポートは e5b です。
+. HA ペア 1、ノード 2、パス B から sh2 ポート範囲 11 ～ 22 にケーブルをインストールします。
+. ノード ポートが正常で動作していることを確認します。
 +
-storage port show -port-type enet
+`storage port show -port-type ENET`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -797,12 +797,12 @@ node2
         e5b     ENET  storage           100      enabled  online        30
 ----
 ====
-. HAペア1のストレージ構成が正しいこと、およびエラーがないことを確認します。
+. HA ペア 1 のストレージ構成が正しく、エラーがないことを確認します。
 +
 `system switch ethernet show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -831,9 +831,9 @@ sh2
 storage::*>
 ----
 ====
-. HAペア1の未使用の（コントローラ）セカンダリストレージポートをストレージからネットワークに再設定します。複数の NS224 が直接接続されている場合は、ポートを再設定する必要があります。
+. HA ペア 1 上の未使用の (コントローラ) セカンダリ ストレージ ポートをストレージからネットワークに再構成します。複数の NS224 が直接接続されていた場合、再構成する必要があるポートが存在します。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -842,18 +842,18 @@ storage port modify –node [node name] –port [port name] –mode network
 ----
 ====
 +
-ストレージポートをブロードキャストドメインに配置するには、次の手順を実行します。
+ストレージ ポートをブロードキャスト ドメインに配置するには、次の手順を実行します。
 
 +
-** 「 network port broadcast-domain create 」（必要に応じて新しいドメインを作成）
-** 「 network port broadcast-domain add-ports 」（既存のドメインにポートを追加する）
+** `network port broadcast-domain create`（必要に応じて新しいドメインを作成する）
+** `network port broadcast-domain add-ports`（既存のドメインにポートを追加する）
 
 
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
+. 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。

@@ -2,73 +2,73 @@
 permalink: switch-nvidia-sn2100-storage/replace-sn2100-switch-storage.html 
 sidebar: sidebar 
 keywords: replacing, replace, defective, nvidia, switch, cluster, network, nondisruptive, procedure, ndu, replace a nvidia sn2100 cluster switch - nvidia SN2100 
-summary: 障害のあるNVIDIA SN2100ストレージスイッチを無停止手順 \（NDU \）で交換します。 
+summary: '故障したNVIDIA SN2100 ストレージ スイッチを非中断手順 (NDU) で交換します。' 
 ---
-= NVIDIA SN2100ストレージスイッチを交換してください
+= NVIDIA SN2100ストレージスイッチを交換する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-障害のあるNVIDIA SN2100ストレージスイッチを交換できます。これは無停止の手順です。
+故障したNVIDIA SN2100 ストレージ スイッチを交換できます。この手順は無停止で実行されます。
 
-.作業を開始する前に
-NVIDIA SN2100ストレージスイッチにCumulusソフトウェアとRCFをインストールする前に、次の点を確認してください。
+.開始する前に
+NVIDIA SN2100 ストレージ スイッチに Cumulus ソフトウェアと RCF をインストールする前に、次の点を確認してください。
 
-* お使いのシステムではNVIDIA SN2100ストレージスイッチをサポートできます。
-* 該当するRCFをダウンロードしておきます。
+* システムはNVIDIA SN2100 ストレージ スイッチをサポートできます。
+* 該当する RCF をダウンロードしました。
 
 
-。 http://hwu.netapp.com["Hardware Universe"^] サポートされているポートとその構成の詳細が表示されます。
+その http://hwu.netapp.com["Hardware Universe"^]サポートされているポートとその構成の完全な詳細を提供します。
 
-既存のネットワーク構成には、次のような特徴があります。
+既存のネットワーク構成には、次の特性が必要です。
 
 * すべてのトラブルシューティング手順を完了して、スイッチを交換する必要があることを確認します。
 * 両方のスイッチに管理接続が存在することを確認します。
 +
 
-NOTE: スイッチの交換が必要かどうかを確認するために、すべてのトラブルシューティング手順が完了していることを確認します。
+NOTE: すべてのトラブルシューティング手順が完了していることを確認して、スイッチを交換する必要があるかどうかを確認してください。
 
 
 
-交換用NVIDIA SN2100スイッチには次の特性が必要です。
+交換用NVIDIA SN2100 スイッチには、次の特性が必要です。
 
 * 管理ネットワーク接続は機能しています。
 * コンソールを使用して交換用スイッチにアクセスできます。
-* 適切なRCFおよびCumulusオペレーティングシステムイメージがスイッチにロードされます。
+* 適切な RCF および Cumulus オペレーティング システム イメージがスイッチにロードされます。
 * スイッチの初期カスタマイズが完了しました。
 
 
-.手順のまとめ
-この手順 は、2台目のNVIDIA SN2100ストレージスイッチSW2を新しいNVIDIA SN2100スイッチnsw2に置き換えます。2 つのノードは node1 と node2 になります。
+.手順の概要
+この手順では、2 番目のNVIDIA SN2100 ストレージ スイッチ sw2 を新しいNVIDIA SN2100 スイッチ nsw2 に置き換えます。  2 つのノードは node1 と node2 です。
 
-完了する手順：
+完了するための手順:
 
-* 交換するスイッチがSW2であることを確認します。
-* スイッチSW2からケーブルを外します。
-* スイッチnsw2にケーブルを再接続します。
-* スイッチnsw2のすべてのデバイス設定を確認します。
+* 交換するスイッチがsw2であることを確認します。
+* スイッチ sw2 からケーブルを外します。
+* ケーブルをスイッチ nsw2 に再接続します。
+* スイッチ nsw2 上のすべてのデバイス構成を確認します。
 
 
 .手順
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
 +
-'system node AutoSupport invoke -node * -type all -message MAINT=xh`
+`system node autosupport invoke -node * -type all - message MAINT=xh`
 
 +
-_x_ は、メンテナンス時間の長さ（時間単位）です。
+_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
 
-. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 * y * 」と入力します。
+. 続行するかどうかを尋ねられたら *y* と入力して、権限レベルを「advanced」に変更します。
 +
-「 advanced 」の権限が必要です
+`set -privilege advanced`
 
 . ストレージ ノード ポートのヘルス ステータスをチェックして、ストレージ スイッチ S1 への接続を確認します。
 +
-storage port show -port-type enet
+`storage port show -port-type ENET`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -90,12 +90,12 @@ node2
 cluster1::*>
 ----
 ====
-. ストレージスイッチsw1が使用可能であることを確認します。
+. ストレージ スイッチ sw1 が使用可能であることを確認します。
 +
 `network device-discovery show -protocol lldp`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -121,12 +121,12 @@ Press <space> to page down, <return> for next line, or 'q' to quit...
 10 entries were displayed.
 ----
 ====
-. を実行します `net show interface` 動作中のスイッチに対してコマンドを実行し、ノードとすべてのシェルフの両方が表示されることを確認します。
+. 実行 `net show interface`動作中のスイッチでコマンドを実行して、両方のノードとすべてのシェルフが表示されることを確認します。
 +
 `net show interface`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -148,12 +148,12 @@ UP     swp6    100G  9216   Trunk/L2   SHFFG1826000102 (e0b)   Master: bridge(UP
 ...
 ----
 ====
-. ストレージシステムのシェルフポートを確認します。
+. ストレージ システムのシェルフ ポートを確認します。
 +
 `storage shelf port show -fields remote-device, remote-port`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -172,14 +172,14 @@ shelf   id  remote-port   remote-device
 cluster1::*>
 ----
 ====
-. ストレージスイッチSW2に接続されているすべてのケーブルを取り外します。
-. 交換用スイッチnsw2にすべてのケーブルを再接続します。
-. ストレージノードポートのヘルスステータスを再確認します。
+. ストレージ スイッチ sw2 に接続されているすべてのケーブルを取り外します。
+. すべてのケーブルを交換用スイッチ nsw2 に再接続します。
+. ストレージ ノード ポートのヘルス ステータスを再確認します。
 +
-storage port show -port-type enet
+`storage port show -port-type ENET`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -206,7 +206,7 @@ cluster1::*>
 `net device-discovery show -protocol lldp`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -233,12 +233,12 @@ Press <space> to page down, <return> for next line, or 'q' to quit...
 10 entries were displayed.
 ----
 ====
-. ストレージシステムのシェルフポートを確認します。
+. ストレージ システムのシェルフ ポートを確認します。
 +
 `storage shelf port show -fields remote-device, remote-port`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -257,15 +257,15 @@ shelf   id    remote-port     remote-device
 cluster1::*>
 ----
 ====
-. 権限レベルを admin に戻します。
+. 権限レベルを管理者に戻します。
 +
-「特権管理者」
+`set -privilege admin`
 
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
+. 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。

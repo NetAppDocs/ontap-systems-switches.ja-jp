@@ -2,27 +2,27 @@
 permalink: switch-cisco-3132q-v/cn1610-complete-migration.html 
 sidebar: sidebar 
 keywords: cisco 3132q-v, cluster switches 
-summary: Cisco Nexus 3132q-Vスイッチは、AFFまたはFASクラスタのクラスタスイッチとして使用できます。 
+summary: Cisco Nexus 3132q-v スイッチを、 AFFまたはFASクラスタ内のクラスタ スイッチとして使用できます。 
 ---
-= CN1610スイッチからNexus 3132Q-Vスイッチへの移行の完了
+= CN1610スイッチからNexus 3132Q-Vスイッチへの移行を完了します
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Nexus 3132Q-VスイッチへのCN1610スイッチの移行を完了するには、次の手順を実行します。
+CN1610 スイッチから Nexus 3132Q-V スイッチへの移行を完了するには、次の手順を実行します。
 
 .手順
-. ISL接続がであることを確認します `up` 3132Q-VスイッチC2上で次の手順を実行します。
+. ISL接続が `up`3132Q-V スイッチ C2:
 +
-「ポートチャネルの概要」
+`show port-channel summary`
 
 +
-ポート Eth1/31 および Eth1/32 は「（ P ）」を示している必要があります。これは、両方の ISL ポートがポートチャネル内で「 up 」であることを意味します。
+ポートEth1/31とEth1/32は `(P)`つまり、両方のISLポートが `up`ポートチャネル内。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -42,15 +42,15 @@ Group Port-       Type     Protocol  Member Ports
 1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
 ----
 ====
-. すべてのノードの新しい3132Q-VスイッチC1に接続されているすべてのクラスタインターコネクトポートを起動します。
+. すべてのノードで、新しい 3132Q-V スイッチ C1 に接続されているすべてのクラスタ相互接続ポートを起動します。
 +
-「 network port modify 」を参照してください
+`network port modify`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、新しい 3132Q-V スイッチ C1 に接続されているすべてのクラスタインターコネクトポートを up にする方法を示しています。
+次の例は、新しい 3132Q-V スイッチ C1 に接続されているすべてのクラスタ相互接続ポートを起動する方法を示しています。
 
 [listing]
 ----
@@ -60,15 +60,15 @@ cluster::*> network port modify -node n2 -port e0a -up-admin true
 cluster::*> network port modify -node n2 -port e0d -up-admin true
 ----
 ====
-. クラスタノードポートのステータスを確認します。
+. クラスター ノード ポートのステータスを確認します。
 +
-「 network port show 」のように表示されます
+`network port show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例では、新しい 3132Q-V スイッチ C1 の n1 と n2 上のすべてのクラスタインターコネクトポートが「 up 」になっていることを確認します。
+次の例では、新しい3132Q-VスイッチC1のn1とn2のすべてのクラスタ相互接続ポートが `up`:
 
 [listing]
 ----
@@ -96,15 +96,15 @@ e0d   cluster   cluster    up    9000  auto/10000     -        -
 8 entries were displayed.
 ----
 ====
-. すべてのノードのC1に接続されていた、移行されたクラスタインターコネクトLIFをすべてリバートします。
+. すべてのノードで、元々 C1 に接続されていた移行されたクラスタ相互接続 LIF をすべて元に戻します。
 +
-「 network interface revert 」の略
+`network interface revert`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、移行したクラスタ LIF をホームポートにリバートする方法を示しています。
+次の例は、移行されたクラスタ LIF をホーム ポートに戻す方法を示しています。
 
 [listing]
 ----
@@ -114,15 +114,15 @@ cluster::*> network interface revert -vserver Cluster -lif n2_clus1
 cluster::*> network interface revert -vserver Cluster -lif n2_clus4
 ----
 ====
-. インターフェイスがホームになったことを確認します。
+. インターフェイスがホームになっていることを確認します。
 +
-「 network interface show 」を参照してください
+`network interface show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は 'n1 と n2 のクラスタ・インターコネクト・インターフェイスのステータスを 'up' および is home であることを示しています
+次の例は、クラスタ相互接続インターフェースのステータスを示しています。 `up`そして `Is home`n1とn2の場合:
 
 [listing]
 ----
@@ -145,22 +145,22 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：* showコマンドを実行して詳細を表示する前に、数秒待ってください。
+*注意:* 詳細を表示するには、show コマンドを実行する前に数秒待ってください。
 
 [listing, subs="+quotes"]
 ----
@@ -177,9 +177,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2   n1_clus2       none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -229,18 +229,18 @@ RPC status:
 ----
 --
 ====
-. [[step7]] Nexus 3132Q-Vクラスタスイッチにノードを追加して、クラスタを拡張します。
-. 構成に含まれるデバイスに関する情報を表示します。
+. [[step7]]Nexus 3132Q-V クラスタ スイッチにノードを追加してクラスタを拡張します。
+. 構成内のデバイスに関する情報を表示します。
 +
-** 「 network device-discovery show 」のように表示されます
-** 「 network port show -role cluster 」のように表示されます
-** 「 network interface show -role cluster 」のように表示されます
-** 「 system cluster-switch show
+** `network device-discovery show`
+** `network port show -role cluster`
+** `network interface show -role cluster`
+** `system cluster-switch show`
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 40 GbE クラスタポートがポート e1/7 および e1/8 に接続されたノード n3 および n4 を Nexus 3132Q-V クラスタスイッチと両方のノードがクラスタに参加していることを示しています。使用する 40GbE クラスタインターコネクトポートは、 e4A および e4e です。
+次の例は、両方の Nexus 3132Q-V クラスタ スイッチで、それぞれポート e1/7 と e1/8 に接続された 40 GbE クラスタ ポートを持つノード n3 と n4 を示しており、両方のノードがクラスタに参加しています。使用される 40 GbE クラスタ相互接続ポートは e4a と e4e です。
 
 [listing]
 ----
@@ -372,15 +372,15 @@ CL2                         cluster-network  10.10.1.102    CN1610
 ====
 
 
-. 交換した CN1610 スイッチが自動的に削除されていない場合は、これらを削除します。
+. 交換したCN1610スイッチが自動的に削除されていない場合は、これらを削除します。
 +
-「 system cluster - switch delete 」というコマンドを入力します
+`system cluster-switch delete`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次に、 CN1610 スイッチを削除する例を示します。
+次の例は、CN1610 スイッチを削除する方法を示しています。
 
 [listing]
 ----
@@ -389,9 +389,9 @@ cluster::> system cluster-switch delete -device CL1
 cluster::> system cluster-switch delete -device CL2
 ----
 ====
-. 各ノードでクラスタ clus1 と clus4 を「 -auto-revert 」に設定し、次の点を確認します。
+. クラスタclus1とclus4を次のように構成します。 `-auto-revert`各ノードで確認します。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -402,12 +402,12 @@ cluster::*> network interface modify -vserver node2 -lif clus1 -auto-revert true
 cluster::*> network interface modify -vserver node2 -lif clus4 -auto-revert true
 ----
 ====
-. 適切なクラスタスイッチが監視されていることを確認します。
+. 適切なクラスタ スイッチが監視されていることを確認します。
 +
-「 system cluster-switch show
+`system cluster-switch show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -435,11 +435,11 @@ C2                          cluster-network    10.10.1.104      NX3132V
 2 entries were displayed.
 ----
 ====
-. [[step43_replaceecn1610]]ケースの自動作成を抑制した場合は、AutoSupport メッセージを呼び出して作成を再度有効にします。
+. [[step43_replacecn1610]]自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。

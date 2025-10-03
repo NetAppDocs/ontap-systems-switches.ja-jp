@@ -2,21 +2,21 @@
 permalink: switch-bes-53248/install-hardware-bes53248.html 
 sidebar: sidebar 
 keywords: switches hardware installation 
-summary: BES-53248ハードウェアを取り付けるには、Broadcomのマニュアルを参照してください。 
+summary: BES-53248 ハードウェアをインストールするには、Broadcom のドキュメントを参照してください。 
 ---
-= BES-53248クラスタスイッチのハードウェアを設置します
+= BES-53248クラスタスイッチのハードウェアをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248ハードウェアの設置については、Broadcomのドキュメントを参照してください。
+BES-53248 ハードウェアをインストールするには、Broadcom のドキュメントを参照してください。
 
 .手順
-. を確認します link:configure-reqs-bes53248.html["設定要件"]。
-. の手順に従います https://library.netapp.com/ecm/ecm_download_file/ECMLP2864537["Broadcom対応BES-53248クラスタスイッチインストールガイド"^]。
+. レビューlink:configure-reqs-bes53248.html["構成要件"]。
+. の指示に従ってください https://library.netapp.com/ecm/ecm_download_file/ECMLP2864537["Broadcom 対応 BES-53248 クラスタ スイッチ インストール ガイド"^]。
 
 
 .次の手順
-link:cabling-considerations-bes-53248.html["ケーブル接続と構成を確認"] 。
+link:cabling-considerations-bes-53248.html["ケーブル配線と構成を確認する"] 。

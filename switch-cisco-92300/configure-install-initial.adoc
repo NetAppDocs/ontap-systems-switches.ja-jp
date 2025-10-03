@@ -2,35 +2,35 @@
 permalink: switch-cisco-92300/configure-install-initial.html 
 sidebar: sidebar 
 keywords: install cisco 92300YC cluster switch, cisco nx 92300yc 
-summary: この手順を使用して、 Cisco Nexus 92300YC スイッチの初期取り付けを実行できます。 
+summary: この手順を使用して、Cisco Nexus 92300YCスイッチの初期取り付けを実行できます。 
 ---
-= Cisco Nexus 92300YCスイッチを構成します
+= Cisco Nexus 92300YCスイッチを構成する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-この手順 に従って、Cisco Nexus 92300YCスイッチをセットアップおよび設定します。
+Cisco Nexus 92300YC スイッチをセットアップおよび構成するには、次の手順に従ってください。
 
 .手順
-. シリアルポートをホストまたはシリアルポートに接続します。
-. 管理ポート（スイッチのポートの反対側にある）を、 SFTP サーバが配置されているネットワークと同じネットワークに接続します。
+. シリアル ポートをホストまたはシリアル ポートに接続します。
+. 管理ポート（スイッチのポートの反対側にある）を、SFTPサーバが配置されているネットワークと同じネットワークに接続します。
 . コンソールで、ホスト側のシリアル設定を行います。
 +
-** 9600 ボー
-** 8 データビット
-** 1 ストップビット
+** 9600ボー
+** 8データ ビット
+** 1ストップ ビット
 ** パリティ：なし
 ** フロー制御：なし
 
 
-. 初めてブートしたとき、または実行中の設定を消去してリブートしたときに、Nexus 92300YCスイッチはブートサイクルでループします。「 * yes * 」と入力してこのサイクルを中断し、 PowerOn Auto Provisioning を中止します。
+. 初めて起動する場合、または実行中の設定を消去した後に再起動する場合、Nexus 92300YC スイッチは起動サイクルをループします。パワーオン自動プロビジョニングを中止するには、「*yes*」と入力してこのサイクルを中断します。
 +
 システム管理者アカウントの設定が表示されます。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -44,22 +44,22 @@ Disabling POAP.......Disabling POAP
 Do you want to enforce secure password standard (yes/no) [y]:
 ----
 ====
-. 「 * y * 」と入力して、セキュアなパスワード標準を適用します。
+. 安全なパスワード標準を強制するには *y* と入力します。
 +
 [listing, subs="+quotes"]
 ----
 Do you want to enforce secure password standard (yes/no) [y]: *y*
 ----
-. ユーザ admin のパスワードを入力して確定します。
+. ユーザadminのパスワードを入力して確定します。
 +
 [listing]
 ----
 Enter the password for "admin":
 Confirm the password for "admin":
 ----
-. 「* yes *」と入力して、「Basic System Configuration」ダイアログを表示します。
+. *yes* と入力して、基本システム構成ダイアログに入ります。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -79,13 +79,13 @@ to skip the remaining dialogs.
 Would you like to enter the basic configuration dialog (yes/no):
 ----
 ====
-. 別のログインアカウントを作成しますか？
+. 別のログイン アカウントを作成します。
 +
 [listing]
 ----
 Create another login account (yes/no) [n]:
 ----
-. 読み取り専用および読み取り / 書き込みの SNMP コミュニティストリングを設定します。
+. 読み取り専用および読み取り/ 書き込みのSNMPコミュニティ ストリングを設定します。
 +
 [listing]
 ----
@@ -93,7 +93,7 @@ Configure read-only SNMP community string (yes/no) [n]:
 
 Configure read-write SNMP community string (yes/no) [n]:
 ----
-. クラスタスイッチ名を設定します。
+. クラスタ スイッチ名を設定します。
 +
 [listing, subs="+quotes"]
 ----
@@ -113,19 +113,19 @@ Configure the default gateway? (yes/no) [y]: *y*
 
 IPv4 address of the default gateway : 172.22.128.1
 ----
-. IP の詳細オプションを設定しますか？
+. 高度なIPオプションを設定します。
 +
 [listing, subs="+quotes"]
 ----
 Configure advanced IP options? (yes/no) [n]: *n*
 ----
-. Telnet サービスを設定します。
+. Telnetサービスを設定します。
 +
 [listing, subs="+quotes"]
 ----
 Enable the telnet service? (yes/no) [n]: *n*
 ----
-. SSH サービスと SSH キーを設定します。
+. SSHサービスとSSHキーを設定します。
 +
 [listing, subs="+quotes"]
 ----
@@ -147,7 +147,7 @@ Configure the ntp server? (yes/no) [n]: *n*
 
   Configure CoPP system profile (strict/moderate/lenient/dense) [strict]: *strict*
 ----
-. スイッチの情報を確認し、設定を保存します。
+. スイッチ情報を確認し、設定を保存します。
 +
 [listing, subs="+quotes"]
 ----
@@ -162,4 +162,4 @@ Copy complete.
 
 
 .次の手順
-link:install-nxos-overview.html["NX-OSソフトウェアとRCFをインストールするための準備をします"]。
+link:install-nxos-overview.html["NX-OSソフトウェアとRCFのインストール準備"] 。

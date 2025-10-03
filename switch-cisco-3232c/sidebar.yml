@@ -2,95 +2,95 @@
 section: switch-cisco-3232c
 title: Cisco Nexus 3232C
 entries:
-- title: はじめに
-  pdf-filename: Overview_3232C
+- title: 始めましょう
+  pdf-filename: 概要_3232C
   entries:
-  - title: クイックスタート
+  - title: クイック スタート
     url: "/switch-cisco-3232c/install-overview-cisco-3232c.html"
-  - title: 設定要件
+  - title: 構成要件
     url: "/switch-cisco-3232c/configure-reqs-3232c.html"
-  - title: 必要なドキュメント
+  - title: 必要な書類
     url: "/switch-cisco-3232c/required-documentation-3232c.html"
   - title: Smart Call Homeの要件
     url: "/switch-cisco-3232c/smart-call-home-3232c.html"
 - title: ハードウェアを設置
-  pdf-filename: Install_hardware_3232C
+  pdf-filename: インストールハードウェア_3232C
   entries:
   - title: ハードウェアインストールワークフロー
     url: "/switch-cisco-3232c/install-hardware-workflow.html"
-  - title: ケーブル接続ワークシートに記入
+  - title: 完全な配線ワークシート
     url: "/switch-cisco-3232c/setup_worksheet_3232c.html"
-  - title: スイッチを設置します
+  - title: スイッチをインストールする
     url: "/switch-cisco-3232c/install-switch-3232c.html"
-  - title: ネットアップキャビネットにスイッチを設置
+  - title: NetAppキャビネットにスイッチをインストールする
     url: "/switch-cisco-3232c/install-cisco-nexus-3232c.html"
-  - title: ケーブル接続と構成を確認
+  - title: ケーブル配線と構成を確認する
     url: "/switch-cisco-3232c/cabling-considerations-3232c.html"
-- title: ソフトウェアを設定します
-  pdf-filename: Configure_software_3232C
+- title: ソフトウェアを構成する
+  pdf-filename: 構成ソフトウェア_3232C
   entries:
-  - title: ソフトウェアのインストールワークフロー
+  - title: ソフトウェアインストールワークフロー
     url: "/switch-cisco-3232c/configure-software-overview-3232c-cluster.html"
-  - title: スイッチを設定します
+  - title: スイッチを設定する
     url: "/switch-cisco-3232c/setup-switch.html"
-  - title: NX-OSおよびRCFのインストールを準備します
+  - title: NX-OSとRCFのインストール準備
     url: "/switch-cisco-3232c/prepare-install-cisco-nexus-3232c.html"
-  - title: NX-OSソフトウェアをインストールします
+  - title: NX-OSソフトウェアをインストールする
     url: "/switch-cisco-3232c/install-nx-os-software-3232c.html"
-  - title: RCFのインストールまたはアップグレード
+  - title: RCFをインストールまたはアップグレードする
     url: "/switch-cisco-3232c/install-rcf-3232c.html"
-  - title: SSH の設定を確認
+  - title: SSH設定を確認する
     url: "/switch-cisco-3232c/configure-ssh-keys.html"
   - title: スイッチを工場出荷時の状態にリセットする
     url: "/switch-cisco-3232c/reset-switch-3232c.html"
-- title: スイッチを移行
-  pdf-filename: Migrate_switches_3232C
+- title: スイッチの移行
+  pdf-filename: 移行スイッチ_3232C
   entries:
   - title: CN1610スイッチの移行
-    pdf-filename: CN1610_switch_migration
+    pdf-filename: CN1610_スイッチ移行
     entries:
     - title: CN1610スイッチからの移行ワークフロー
       url: "/switch-cisco-3232c/cn1610-migrate-workflow.html"
-    - title: 移行の要件
+    - title: 移行要件
       url: "/switch-cisco-3232c/cn1610-migrate-to-3232c-overview.html"
-    - title: 移行を準備
+    - title: 移行の準備
       url: "/switch-cisco-3232c/cn1610-prepare-to-migrate.html"
-    - title: クラスタスイッチCL2の交換
+    - title: クラスタスイッチCL2を交換する
       url: "/switch-cisco-3232c/cn1610-replace-CL2.html"
-    - title: クラスタスイッチCL1の交換
+    - title: クラスタスイッチCL1を交換する
       url: "/switch-cisco-3232c/cn1610-replace-CL1.html"
-    - title: 移行の完了
+    - title: 移行を完了する
       url: "/switch-cisco-3232c/cn1610-complete-migration.html"
   - title: Nexus 5596スイッチの移行
-    pdf-filename: CN5596_switch_migration
+    pdf-filename: CN5596_スイッチ移行
     entries:
     - title: Cisco Nexus 5596スイッチからの移行ワークフロー
       url: "/switch-cisco-3232c/cn5596-migrate-workflow.html"
-    - title: 移行の要件
+    - title: 移行要件
       url: "/switch-cisco-3232c/cn5596-migrate-requirements.html"
-    - title: 移行を準備
+    - title: 移行の準備
       url: "/switch-cisco-3232c/cn5596-prepare-to-migrate.html"
-    - title: ポートの設定
+    - title: ポートを設定する
       url: "/switch-cisco-3232c/cn5596-configure-ports.html"
-    - title: 移行の完了
+    - title: 移行を完了する
       url: "/switch-cisco-3232c/cn5596-complete-migration.html"
-  - title: 2ノオトスイツチレスクラスタカラノイコウ
+  - title: 2ノードのスイッチレスクラスタからの移行
     pdf-filename: スイッチレスクラスタからの移行
     entries:
     - title: 2ノードスイッチレスクラスタからの移行ワークフロー
       url: "/switch-cisco-3232c/migrate-from-switchless-workflow.html"
-    - title: 移行の要件
+    - title: 移行要件
       url: "/switch-cisco-3232c/migrate-from-switchless-migrate-requirements.html"
-    - title: 移行を準備
+    - title: 移行の準備
       url: "/switch-cisco-3232c/migrate-from-switchless-prepare-to-migrate.html"
-    - title: ポートの設定
+    - title: ポートを設定する
       url: "/switch-cisco-3232c/migrate-from-switchless-configure-ports.html"
-    - title: 移行の完了
+    - title: 移行を完了する
       url: "/switch-cisco-3232c/migrate-from-switchless-complete-migration.html"
-- title: スイッチを交換します
-  pdf-filename: Replace_switches_3232C
+- title: スイッチを交換する
+  pdf-filename: スイッチ3232Cの交換
   entries:
-  - title: クラスタスイッチを交換します
+  - title: クラスタスイッチを交換する
     url: "/switch-cisco-3232c/replace-cluster-switch.html"
-  - title: クラスタスイッチをスイッチレス接続に交換します
+  - title: クラスタスイッチをスイッチレス接続に置き換える
     url: "/switch-cisco-3232c/migrate-to-switchless-cluster-interconnect.html"

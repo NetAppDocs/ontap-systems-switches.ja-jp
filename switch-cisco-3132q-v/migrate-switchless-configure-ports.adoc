@@ -2,24 +2,24 @@
 permalink: switch-cisco-3132q-v/migrate-switchless-configure-ports.html 
 sidebar: sidebar 
 keywords: cisco 3132q-v, cluster switches 
-summary: Cisco Nexus 3132q-Vスイッチは、AFFまたはFASクラスタのクラスタスイッチとして使用できます。 
+summary: Cisco Nexus 3132q-v スイッチを、 AFFまたはFASクラスタ内のクラスタ スイッチとして使用できます。 
 ---
-= スイッチレスクラスタからスイッチクラスタへ移行するためのポートの設定
+= スイッチレス クラスタからスイッチ クラスタへの移行用にポートを構成する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-2ノードスイッチレスクラスタから2ノードスイッチクラスタに移行するためにポートを設定するには、次の手順を実行します。
+2 ノード スイッチレス クラスターから 2 ノード スイッチ クラスターへの移行用にポートを構成するには、次の手順に従います。
 
 .手順
-. Nexus 3132Q-V スイッチ C1 および C2 では、ノードに接続されたすべてのポート C1 と C2 を無効にするが、 ISL ポートは無効にしない。
+. Nexus 3132Q-V スイッチ C1 および C2 で、ノード側のポート C1 および C2 をすべて無効にしますが、ISL ポートは無効にしないでください。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 RCF でサポートされている設定を使用して Nexus 3132Q-V クラスタスイッチ C1 と C2 のポート 1~30 を無効にします `NX3132_RCF_v1.1_24p10g_26p40g.txt`：
+次の例は、RCFでサポートされている設定を使用して、Nexus 3132Q-VクラスタスイッチC1とC2のポート1～30が無効になっていることを示しています。 `NX3132_RCF_v1.1_24p10g_26p40g.txt` :
 
 [listing]
 ----
@@ -42,13 +42,13 @@ C2(config-if-range)# exit
 C2(config)# exit
 ----
 ====
-. サポートされているケーブル配線を使用して、 C1 のポート 1/31 および 1/32 を C2 の同じポートに接続します。
-. C1 と C2 で ISL ポートが動作していることを確認します。
+. サポートされているケーブルを使用して、C1 のポート 1/31 と 1/32 を C2 の同じポートに接続します。
+. C1 および C2 で ISL ポートが動作していることを確認します。
 +
-「ポートチャネルの概要」
+`show port-channel summary`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -82,10 +82,10 @@ Group Port-        Type   Protocol  Member Ports
 ====
 . スイッチ上の隣接デバイスのリストを表示します。
 +
-'How CDP Neighbors' を参照してください
+`show cdp neighbors`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -115,15 +115,15 @@ C1                 Eth1/32        178    R S I s     N3K-C3132Q-V  Eth1/32
 Total entries displayed: 2
 ----
 ====
-. 各ノードのクラスタポート接続を表示します。
+. 各ノードのクラスター ポートの接続を表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 2 ノードスイッチレスクラスタ構成を示しています。
+次の例は、2 ノードのスイッチレス クラスター構成を示しています。
 
 [listing]
 ----
@@ -139,15 +139,15 @@ n2         /cdp
             e4e    n1                  e4e              FAS9000
 ----
 ====
-. clus1 インターフェイスを、 clus2 をホストする物理ポートに移行します。
+. clus1 インターフェイスを clus2 をホストする物理ポートに移行します。
 +
-「ネットワーク・インターフェイス移行」
+`network interface migrate`
 
 +
-このコマンドは各ローカルノードから実行します。
+各ローカルノードからこのコマンドを実行します。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -158,12 +158,12 @@ cluster::*> network interface migrate -vserver Cluster -lif n2_clus1 -source-nod
 -destination-node n2 -destination-port e4e
 ----
 ====
-. クラスタインターフェイスの移行を確認します。
+. クラスタ インターフェースの移行を確認します。
 +
-「 network interface show 」を参照してください
+`network interface show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -182,9 +182,9 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. 両方のノードでクラスタポート clus1 LIF をシャットダウンします。
+. 両方のノードでクラスタ ポート clus1 LIF をシャットダウンします。
 +
-「 network port modify 」を参照してください
+`network port modify`
 
 +
 [listing]
@@ -192,22 +192,22 @@ Cluster
 cluster::*> network port modify -node n1 -port e4a -up-admin false
 cluster::*> network port modify -node n2 -port e4a -up-admin false
 ----
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：* showコマンドを実行して詳細を表示する前に、数秒待ってください。
+*注意:* 詳細を表示するには、show コマンドを実行する前に数秒待ってください。
 
 [listing, subs="+quotes"]
 ----
@@ -224,9 +224,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2        n1_clus2      none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -259,24 +259,24 @@ RPC status:
 ----
 --
 ====
-. [[step10]]ノードn1のE4Aからケーブルを外します。
+. [[step10]]ノードn1のe4aからケーブルを外します。
 +
-実行コンフィギュレーションを参照し、 Nexus 3132Q-V でサポートされているケーブル接続を使用して、スイッチ C1 （この例ではポート 1/7 ）の最初の 40 GbE ポートを n1 の e4A に接続します
+実行中の設定を参照し、Nexus 3132Q-V でサポートされているケーブルを使用して、スイッチ C1 の最初の 40 GbE ポート (この例ではポート 1/7) を n1 の e4a に接続できます。
 
 +
 
-NOTE: 新しい Cisco クラスタスイッチにケーブルを再接続する場合は、使用するケーブルがシスコによってサポートされているファイバまたはケーブルである必要があります。
+NOTE: 新しいCiscoクラスタ スイッチにケーブルを再接続する場合、使用するケーブルは、 Ciscoがサポートする光ファイバーまたはケーブルである必要があります。
 
-. ノード n2 の e4A からケーブルを外します。
+. ノード n2 の e4a からケーブルを外します。
 +
-サポートされているケーブルを使用して、実行構成を参照し、 C1 のポート 1/8 で使用可能な次の 40GbE ポートに e4A を接続します。
+実行中の設定を参照し、サポートされているケーブルを使用して、e4a を C1 の次の使用可能な 40 GbE ポート (ポート 1/8) に接続できます。
 
-. C1 ですべてのノード側ポートを有効にします。
+. C1 上のすべてのノード向けポートを有効にします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 RCF でサポートされている設定を使用して、 Nexus 3132Q-V クラスタスイッチ C1 と C2 でポート 1~30 を有効にします `NX3132_RCF_v1.1_24p10g_26p40g.txt`：
+次の例は、RCFでサポートされている設定を使用して、Nexus 3132Q-VクラスタスイッチC1とC2でポート1～30が有効になっていることを示しています。 `NX3132_RCF_v1.1_24p10g_26p40g.txt` :
 
 [listing]
 ----
@@ -287,12 +287,12 @@ C1(config-if-range)# exit
 C1(config)# exit
 ----
 ====
-. 各ノードで、最初のクラスタポート e4A を有効にします。
+. 各ノードで最初のクラスター ポート e4a を有効にします。
 +
-「 network port modify 」を参照してください
+`network port modify`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -301,12 +301,12 @@ cluster::*> network port modify -node n1 -port e4a -up-admin true
 cluster::*> network port modify -node n2 -port e4a -up-admin true
 ----
 ====
-. 両方のノードでクラスタが動作していることを確認します。
+. 両方のノードでクラスターが起動していることを確認します。
 +
-「 network port show 」のように表示されます
+`network port show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -331,15 +331,15 @@ e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 4 entries were displayed.
 ----
 ====
-. 各ノードについて、移行したすべてのクラスタインターコネクト LIF をリバートします。
+. 各ノードについて、移行されたすべてのクラスタ相互接続 LIF を元に戻します。
 +
-「 network interface revert 」の略
+`network interface revert`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、移行された LIF をホームポートにリバートする方法を示しています。
+次の例は、移行された LIF がホーム ポートに戻されることを示しています。
 
 [listing]
 ----
@@ -347,15 +347,15 @@ cluster::*> network interface revert -vserver Cluster -lif n1_clus1
 cluster::*> network interface revert -vserver Cluster -lif n2_clus1
 ----
 ====
-. すべてのクラスタインターコネクトポートがホームポートにリバートされたことを確認します。
+. すべてのクラスタ相互接続ポートがホーム ポートに戻っていることを確認します。
 +
-「 network interface show 」を参照してください
+`network interface show`
 
 +
-Is Home カラムには ' Current Port カラムに一覧表示されているすべてのポートの値 'true' が表示されます表示された値が「 false 」の場合、ポートはリバートされていません。
+その `Is Home`列には次の値が表示されます `true`に記載されているすべてのポートについて `Current Port`カラム。表示されている値が `false`ポートは元に戻されていません。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -373,12 +373,12 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. 各ノードのクラスタポート接続を表示します。
+. 各ノードのクラスター ポートの接続を表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -395,12 +395,12 @@ n2         /cdp
             e4e    n1                  e4e              FAS9000
 ----
 ====
-. 各ノードのコンソールで、 clus2 をポート e4A に移行します。
+. 各ノードのコンソールで、clus2 をポート e4a に移行します。
 +
-「ネットワーク・インターフェイス移行」
+`network interface migrate`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -411,12 +411,12 @@ cluster::*> network interface migrate -vserver Cluster -lif n2_clus2 -source-nod
 -destination-node n2 -destination-port e4a
 ----
 ====
-. 両方のノードでクラスタポート clus2 LIF をシャットダウンします。
+. 両方のノードでクラスター ポート clus2 LIF をシャットダウンします。
 +
-「 network port modify 」を参照してください
+`network port modify`
 
 +
-次の例は、指定したポートを両方のノードでシャットダウンしています。
+次の例では、両方のノードで指定されたポートがシャットダウンされています。
 
 +
 [listing]
@@ -424,12 +424,12 @@ cluster::*> network interface migrate -vserver Cluster -lif n2_clus2 -source-nod
 cluster::*> network port modify -node n1 -port e4e -up-admin false
 cluster::*> network port modify -node n2 -port e4e -up-admin false
 ----
-. クラスタの LIF のステータスを確認します。
+. クラスタ LIF のステータスを確認します。
 +
-「 network interface show 」を参照してください
+`network interface show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -449,18 +449,18 @@ Cluster
 ====
 . ノード n1 の e4e からケーブルを外します。
 +
-Nexus 3132Q-V でサポートされているケーブル接続を使用して、スイッチ c2 の最初の 40GbE ポート（この例ではポート 1/7 ）を e4e に接続します
+実行中の設定を参照し、Nexus 3132Q-V でサポートされているケーブルを使用して、スイッチ C2 の最初の 40 GbE ポート (この例ではポート 1/7) を n1 の e4e に接続できます。
 
 . ノード n2 の e4e からケーブルを外します。
 +
-サポートされているケーブル接続を使用して、実行構成を参照し、 c2 のポート 1 / 8 に次に使用可能な 40GbE ポートに e4e を接続します。
+実行中の設定を参照し、サポートされているケーブルを使用して、e4e を C2 の次の使用可能な 40 GbE ポート (ポート 1/8) に接続できます。
 
-. C2 のすべてのノード側ポートを有効にします。
+. C2 上のすべてのノード向けポートを有効にします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 RCF でサポートされている設定を使用して Nexus 3132Q-V クラスタスイッチ C1 と C2 のポート 1~30 を有効にします `NX3132_RCF_v1.1_24p10g_26p40g.txt`：
+次の例は、RCFでサポートされている設定を使用して、Nexus 3132Q-VクラスタスイッチC1とC2でポート1～30が有効になっていることを示しています。 `NX3132_RCF_v1.1_24p10g_26p40g.txt` :
 
 [listing]
 ----
@@ -471,12 +471,12 @@ C2(config-if-range)# exit
 C2(config)# exit
 ----
 ====
-. 各ノードで 2 つ目のクラスタポート e4e を有効にします。
+. 各ノードで 2 番目のクラスター ポート e4e を有効にします。
 +
-「 network port modify 」を参照してください
+`network port modify`
 
 +
-次の例は、指定したポートを起動します。
+次の例では、指定されたポートが起動される様子を示しています。
 
 +
 [listing]
@@ -484,12 +484,12 @@ C2(config)# exit
 cluster::*> network port modify -node n1 -port e4e -up-admin true
 cluster::*> network port modify -node n2 -port e4e -up-admin true
 ----
-. 各ノードについて、移行したすべてのクラスタインターコネクト LIF をリバートします。
+. 各ノードについて、移行されたすべてのクラスタ相互接続 LIF を元に戻します。
 +
-「 network interface revert 」の略
+`network interface revert`
 
 +
-次の例は、移行された LIF をホームポートにリバートする方法を示しています。
+次の例は、移行された LIF がホーム ポートに戻されることを示しています。
 
 +
 [listing]
@@ -497,15 +497,15 @@ cluster::*> network port modify -node n2 -port e4e -up-admin true
 cluster::*> network interface revert -vserver Cluster -lif n1_clus2
 cluster::*> network interface revert -vserver Cluster -lif n2_clus2
 ----
-. すべてのクラスタインターコネクトポートがホームポートにリバートされたことを確認します。
+. すべてのクラスタ相互接続ポートがホーム ポートに戻っていることを確認します。
 +
-「 network interface show 」を参照してください
+`network interface show`
 
 +
-Is Home カラムには ' Current Port カラムに一覧表示されているすべてのポートの値 'true' が表示されます表示された値が「 false 」の場合、ポートはリバートされていません。
+その `Is Home`列には次の値が表示されます `true`に記載されているすべてのポートについて `Current Port`カラム。表示されている値が `false`ポートは元に戻されていません。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -523,12 +523,12 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. すべてのクラスタ・インターコネクト・ポートが up 状態になっていることを確認します。
+. すべてのクラスタ相互接続ポートが `up`州。
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -556,4 +556,4 @@ e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 
 
 .次の手順
-link:migrate-switchless-complete-migration.html["移行の完了"]です。
+link:migrate-switchless-complete-migration.html["移行を完了する"] 。

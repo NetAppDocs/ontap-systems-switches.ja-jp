@@ -1,48 +1,48 @@
 ---
 section: switch-bes-53248
-title: Broadcom 対応 BES-53248 の場合
+title: Broadcom対応BES-53248
 entries:
-- title: はじめに
+- title: 始めましょう
   pdf-filename: 概要_bes53248
   entries:
-  - title: クイックスタート
+  - title: クイック スタート
     url: "/switch-bes-53248/configure-new-switch-overview.html"
-  - title: 設定要件
+  - title: 構成要件
     url: "/switch-bes-53248/configure-reqs-bes53248.html"
-  - title: コンポーネントとパーツ番号
+  - title: コンポーネントと部品番号
     url: "/switch-bes-53248/components-bes53248.html"
-  - title: 必要なドキュメント
+  - title: 必要な書類
     url: "/switch-bes-53248/required-documentation-bes53248.html"
-- title: ハードウェアを設置
-  pdf-filename: install_hardware_bes53248
+- title: ハードウェアをインストールする
+  pdf-filename: インストールハードウェアbes53248
   entries:
   - title: ハードウェアインストールワークフロー
     url: "/switch-bes-53248/install-hardware-workflow.html"
-  - title: スイッチを設置します
+  - title: スイッチをインストールする
     url: "/switch-bes-53248/install-hardware-bes53248.html"
-  - title: ケーブル接続と構成を確認
+  - title: ケーブル配線と構成を確認する
     url: "/switch-bes-53248/cabling-considerations-bes53248.html"
 - title: ソフトウェアの設定
-  pdf-filename: configure_software_bes53248
+  pdf-filename: 構成_ソフトウェア_bes53248
   entries:
-  - title: ソフトウェアのインストールワークフロー
+  - title: ソフトウェアインストールワークフロー
     url: "/switch-bes-53248/configure-software-overview-bes53248.html"
-  - title: スイッチを設定します
+  - title: スイッチを設定する
     url: "/switch-bes-53248/configure-install-initial.html"
-  - title: EFOS ソフトウェアをインストールします
+  - title: EFOSソフトウェアをインストールする
     url: "/switch-bes-53248/configure-efos-software.html"
-  - title: EFOS 3.12以降のRCFとライセンスファイルのインストール
+  - title: EFOS 3.12以降のRCFとライセンスファイルをインストールします
     url: "/switch-bes-53248/efos-install-rcf-license-file.html"
-  - title: ライセンスをインストール
+  - title: ライセンスをインストールする
     url: "/switch-bes-53248/configure-licenses.html"
-  - title: RCF構成ファイルをインストールします
+  - title: RCF設定ファイルをインストールする
     url: "/switch-bes-53248/configure-install-rcf.html"
-  - title: ログ収集のSSHを有効にする
+  - title: ログ収集のためにSSHを有効にする
     url: "/switch-bes-53248/configure-ssh.html"
   - title: スイッチを工場出荷時の状態にリセットする
     url: "/switch-bes-53248/reset-switch-bes-53248.html"
 - title: スイッチをアップグレードする
-  pdf-filename: upgrade_switches_bes53248
+  pdf-filename: アップグレードスイッチbes53248
   entries:
   - title: アップグレード ワークフロー
     url: "/switch-bes-53248/upgrade-switch-overview.html"
@@ -50,21 +50,21 @@ entries:
     url: "/switch-bes-53248/upgrade-efos-software.html"
   - title: RCFバージョンのアップグレード
     url: "/switch-bes-53248/upgrade-rcf.html"
-  - title: アップグレードゴノクラスタノカクニン
+  - title: アップグレード後のクラスタの検証
     url: "/switch-bes-53248/replace-verify.html"
-- title: スイッチを移行します
-  pdf-filename: migrate_switches_bes53248
+- title: スイッチを移行する
+  pdf-filename: 移行スイッチbes53248
   entries:
   - title: CN1610スイッチからの移行
     url: "/switch-bes-53248/migrate-cn1610.html"
   - title: 2ノードスイッチへの移行
     url: "/switch-bes-53248/migrate-to-2n-switched.html"
 - title: スイッチを交換する
-  pdf-filename: replace_switches_bes53248
+  pdf-filename: スイッチを置き換えるbes53248
   entries:
-  - title: 交換に際しての要件
+  - title: 交換要件
     url: "/switch-bes-53248/replace-switch-reqs.html"
-  - title: BES-53248スイッチを交換します
+  - title: BES-53248スイッチを交換する
     url: "/switch-bes-53248/replace-switch.html"
-  - title: クラスタスイッチをスイッチレス接続に交換します
+  - title: クラスタスイッチをスイッチレス接続に置き換える
     url: "/switch-bes-53248/migrate-to-switchless-interconnect-bes-53248.html"

@@ -2,60 +2,60 @@
 permalink: switch-bes-53248/replace-switch-reqs.html 
 sidebar: sidebar 
 keywords: replace, replacing, defective, broadcom-supported, bes, cluster, switch, network, nondisruptive, procedure, ndu, replace a broadcom-supported bes-53428 cluster switch - bes-53428 switches 
-summary: クラスタネットワーク内での、障害のある Broadcom 対応 BES-53248 クラスタスイッチの交換は、無停止手順（ NDU ）です。 
+summary: 'クラスタ ネットワーク内の障害のある Broadcom 対応 BES-53248 クラスタ スイッチを交換することは、無停止の手順 (NDU) です。' 
 ---
-= 交換に際しての要件
+= 交換要件
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-スイッチを交換する前に、現在の環境と交換用スイッチで次の条件が満たされていることを確認してください。
+スイッチを交換する前に、現在の環境と交換スイッチで次の条件が満たされていることを確認してください。
 
 
 
-== 既存のクラスタとネットワークインフラ
-
-次の点を確認してください。
-
-* 既存のクラスタは、少なくとも1つのクラスタスイッチが完全に接続された状態で、完全に機能することが検証されています。
-* すべてのクラスタポートが*稼働しています。
-* すべてのクラスタLIFが、管理上および運用上の理由で稼働している状態でホームポートにあること。
-* ONTAP `cluster ping-cluster -node node1` コマンドは、設定を示す必要があります。 `basic connectivity` および `larger than PMTU communication`は、すべてのパスで成功しています。
-
-
-
-
-== BES-53248の交換用クラスタスイッチ
+== 既存のクラスタとネットワークインフラストラクチャ
 
 次の点を確認してください。
 
-* 交換用スイッチの管理ネットワーク接続は機能しています。
-* 交換用スイッチへのコンソールアクセスが確立されています。
-* ノード接続は、デフォルトのライセンスを使用したポート 0/1~0/16 です。
-* ポート0/55と0/56では、すべてのスイッチ間リンク（ISL）ポートが無効になっています。
-* 目的のリファレンス構成ファイル（RCF）とEFOSオペレーティングシステムスイッチイメージがスイッチにロードされます。
-* スイッチの初期カスタマイズが完了しました。詳細については、を参照してください link:configure-install-initial.html["BES-53248クラスタスイッチを設定します"]。
+* 既存のクラスターは、少なくとも 1 つの完全接続されたクラスター スイッチを備え、完全に機能していることが検証されます。
+* すべてのクラスター ポートが *稼働* しています。
+* すべてのクラスタ論理インターフェイス (LIF) は、管理上および操作上、起動しており、ホーム ポート上にあります。
+* ONTAP `cluster ping-cluster -node node1`コマンドは設定を示す必要があります。 `basic connectivity`そして `larger than PMTU communication`、すべてのパスで成功します。
 
 
-STP、SNMP、SSHなどの以前のサイトのカスタマイズは、すべて新しいスイッチにコピーされます。
+
+
+== BES-53248 交換用クラスタスイッチ
+
+次の点を確認してください。
+
+* 交換スイッチ上の管理ネットワーク接続は機能しています。
+* 交換用スイッチへのコンソール アクセスが確立されています。
+* ノード接続は、デフォルトのライセンスを持つポート 0/1 ～ 0/16 です。
+* ポート 0/55 および 0/56 のすべての Inter-Switch Link (ISL) ポートが無効になっています。
+* 必要な参照構成ファイル (RCF) と EFOS オペレーティング システム スイッチ イメージがスイッチにロードされます。
+* スイッチの初期カスタマイズは完了しました。詳細はlink:configure-install-initial.html["BES-53248クラスタスイッチを構成する"]。
+
+
+STP、SNMP、SSH などの以前のサイトのカスタマイズは、新しいスイッチにコピーされます。
 
 
 
 == コンソールログを有効にする
 
-NetAppでは、使用しているデバイスでコンソールロギングをイネーブルにし、スイッチを交換するときに次のアクションを実行することを強く推奨します。
+NetApp、使用しているデバイスでコンソール ログを有効にし、スイッチを交換するときに次のアクションを実行することを強くお勧めします。
 
-* メンテナンス中はAutoSupportを有効のままにします。
-* メンテナンスの前後にメンテナンスAutoSupportをトリガーして、メンテナンス中のケースの作成を無効にします。このナレッジベースの記事を参照 https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92:スケジュールされたメンテナンス時間中にケースが自動作成されないようにする方法"^] を参照してください。
-* CLIセッションのセッションロギングをイネーブルにします。セッションログを有効にする方法については、このナレッジベースの記事の「セッション出力のログ」セクションを参照してください。 https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["ONTAPシステムへの接続を最適化するためのPuTTYの設定方法"^]。
-
-
+* メンテナンス中はAutoSupport を有効のままにしておきます。
+* メンテナンスの前後にメンテナンスAutoSupportをトリガーして、メンテナンス期間中のケース作成を無効にします。このナレッジベースの記事を参照してください https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92: スケジュールされたメンテナンス期間中の自動ケース作成を抑制する方法"^]詳細については、こちらをご覧ください。
+* すべての CLI セッションのセッション ログを有効にします。セッションログを有効にする方法については、このナレッジベースの記事の「セッション出力のログ記録」セクションを参照してください。 https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["ONTAPシステムへの最適な接続を実現するための PuTTY の設定方法"^] 。
 
 
-== を参照してください。
 
-* https://mysupport.netapp.com/["ネットアップサポートサイト"^]
-* https://hwu.netapp.com/Home/Index["NetApp Hardware Universe の略"^]
+
+== 詳細情報
+
+* https://mysupport.netapp.com/["NetAppサポート サイト"^]
+* https://hwu.netapp.com/Home/Index["NetApp Hardware Universe"^]
 

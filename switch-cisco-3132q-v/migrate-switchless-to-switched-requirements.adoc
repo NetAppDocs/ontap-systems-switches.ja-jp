@@ -2,111 +2,111 @@
 permalink: switch-cisco-3132q-v/migrate-switchless-to-switched-requirements.html 
 sidebar: sidebar 
 keywords: install, cisco nexus 3132q-v switch, 
-summary: Cisco Nexus 3132q-Vスイッチを設定する前に、プロセスの概要と命名法を確認してください。 
+summary: Cisco Nexus 3132q-v スイッチを構成する前に、プロセスと命名法の概要を確認してください。 
 ---
-= 移行の要件
+= 移行要件
 :allow-uri-read: 
 :imagesdir: ../media/
 
 
 [role="lead"]
-2ノードスイッチレスクラスタの場合は、以下の手順を参照して、2ノードスイッチクラスタに移行するための該当する要件を確認してください。
+2 ノードのスイッチレス クラスターがある場合は、2 ノードのスイッチ クラスターに移行するための適用可能な要件については、この手順を確認してください。
 
 [NOTE]
 ====
-手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
+この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
 
 ====
-詳細については、を参照してください
+詳細については、以下を参照してください。
 
 * link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 および CN1610"^]
-* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]
 * link:http://hwu.netapp.com["Hardware Universe"^]
 
 
 .ポートとノードの接続
-Cisco Nexus 3132Q-Vクラスタスイッチを使用する2ノードスイッチクラスタに移行する場合は、ポートとノードの接続とケーブル接続の要件を確認しておく必要があります。
+Cisco Nexus 3132Q-V クラスタ スイッチを使用した 2 ノード スイッチ クラスタに移行する場合は、ポートとノードの接続およびケーブル接続の要件を理解していることを確認してください。
 
-* クラスタスイッチは、 Inter-Switch Link （ ISL ；スイッチ間リンク）ポート e1/31~32 を使用します。
-* 。 link:https://hwu.netapp.com/["Hardware Universe"^] Nexus 3132Q-V スイッチでサポートされているケーブル接続に関する情報が含まれています。
+* クラスタ スイッチは、スイッチ間リンク (ISL) ポート e1/31-32 を使用します。
+* そのlink:https://hwu.netapp.com/["Hardware Universe"^]Nexus 3132Q-V スイッチへのサポートされているケーブル接続に関する情報が含まれています。
 +
-** 10GbE クラスタ接続のノードには、ブレークアウト光ケーブルを備えた QSFP 光モジュールまたは QSFP-SFP+ 銅線ブレークアウトケーブルが必要です。
-** 40GbEクラスタ接続を使用するノードには、ファイバケーブルまたはQSFP / QSFP28銅線直接接続ケーブルを備えた、サポートされているQSFP / QSFP28光モジュールが必要です。
-** クラスタスイッチでは、適切な ISL ケーブルを使用します。 QSFP28 ファイバケーブルまたは銅線直接接続ケーブル × 2
+** 10 GbE クラスター接続を持つノードには、ブレークアウト ファイバー ケーブル付きの QSFP 光モジュール、または QSFP から SFP+ への銅ブレークアウト ケーブルが必要です。
+** 40 GbE クラスター接続を持つノードには、ファイバー ケーブルまたは QSFP/QSFP28 銅線直接接続ケーブルを備えたサポートされている QSFP/QSFP28 光モジュールが必要です。
+** クラスター スイッチでは、適切な ISL ケーブル (2 本の QSFP28 ファイバー ケーブルまたは銅線直接接続ケーブル) が使用されます。
 
 
-* Nexus 3132Q-Vでは、QSFPポートを40 Gbイーサネットモードまたは4×10 Gbイーサネットモードとして動作できます。
+* Nexus 3132Q-V では、QSFP ポートを 40 Gb イーサネット モードまたは 4x10 Gb イーサネット モードのいずれかで操作できます。
 +
-デフォルトでは、40 Gbイーサネットモードには32個のポートがあります。これらの 40 Gb イーサネットポートには、 2 タプルの命名規則で番号が付けられます。たとえば、 2 番目の 40 Gb イーサネットポートには、 1/2 という番号が付けられます。構成を 40 Gb イーサネットから 10 Gb イーサネットに変更するプロセスは _ ブレークアウト _ と呼ばれ、構成を 10 Gb イーサネットから 40 Gb イーサネットに変更するプロセスは _ ブレークイン _ と呼ばれます。40Gbイーサネットポートを10Gbイーサネットポートに分割すると、作成されたポートに3タプルの命名規則を使用して番号が付けられます。たとえば、 2 番目の 40 Gb イーサネットポートのブレークアウトポートには、 1/2/1 、 1/2/2 、 1/2/3 、および 1/2/4 の番号が付けられます。
+デフォルトでは、40 Gb イーサネット モードには 32 個のポートがあります。これらの 40 Gb イーサネット ポートは、2 タプルの命名規則に従って番号が付けられます。たとえば、2 番目の 40 Gb イーサネット ポートの番号は 1/2 になります。  40 Gb イーサネットから 10 Gb イーサネットに構成を変更するプロセスは _breakout_ と呼ばれ、10 Gb イーサネットから 40 Gb イーサネットに構成を変更するプロセスは _breakin_ と呼ばれます。 40 Gb イーサネット ポートを 10 Gb イーサネット ポートに分割すると、結果のポートは 3 タプルの命名規則を使用して番号が付けられます。たとえば、2 番目の 40 Gb イーサネット ポートのブレークアウト ポートには、1/2/1、1/2/2、1/2/3、1/2/4 という番号が付けられます。
 
-* Nexus 3132Q-V の左側には、 4 つの SFP+ ポートが 1 つ目の QSFP ポートに多重化されたセットがあります。
+* Nexus 3132Q-V の左側には、最初の QSFP ポートに多重化された 4 つの SFP+ ポートのセットがあります。
 +
-デフォルトでは、 RCF は最初の QSFP ポートを使用するように構成されています。
+デフォルトでは、RCF は最初の QSFP ポートを使用するように構成されています。
 
 +
-Nexus 3132Q-V の QSFP ポートの代わりに 4 つの SFP+ ポートをアクティブにするには、「 hardware profile front portmode sf-plus 」コマンドを使用します。同様に、「 hardware profile front portmode QSFP 」コマンドを使用すると、 Nexus 3132Q-V をリセットして、 4 つの SFP+ ポートの代わりに QSFP ポートを使用できます。
+Nexus 3132Q-VのQSFPポートの代わりに4つのSFP+ポートをアクティブにするには、 `hardware profile front portmode sfp-plus`指示。同様に、Nexus 3132Q-Vを4つのSFP+ポートの代わりにQSFPポートを使用するようにリセットすることもできます。 `hardware profile front portmode qsfp`指示。
 
-* Nexus 3132Q-Vの一部のポートが10GbEまたは40GbEで動作するように設定されていることを確認します。
+* Nexus 3132Q-V の一部のポートが 10 GbE または 40 GbE で動作するように設定されていることを確認してください。
 +
-最初の 6 つのポートを 4x10 GbE モードに分割するには、「 interface breakout module 1 port 1-6 map 10g-4x 」コマンドを使用します。同様に、 no interface breakout module 1 port 1-6 map 10g-4x コマンドを使用して、ブレークアウト構成から最初の 6 つの QSFP+ ポートをグループ化し直すことができます。
+最初の6つのポートを4x10 GbEモードにブレークアウトするには、 `interface breakout module 1 port 1-6 map 10g-4x`指示。同様に、最初の6つのQSFP+ポートをブレイクアウト構成から再グループ化するには、 `no interface breakout module 1 port 1-6 map 10g-4x`指示。
 
-* 10 GbEおよび40 GbEポートの数は、次のURLで入手可能なリファレンス構成ファイル（RCF）で定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] 。
+* 10 GbEおよび40 GbEポートの数は、次のURLで入手可能なリファレンス構成ファイル（RCF）で定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® クラスタ ネットワーク スイッチ リファレンス コンフィギュレーション ファイルのダウンロード"^] 。
 
 
-.作業を開始する前に
-* 構成が適切にセットアップされ、機能している。
-* ONTAP 9.4以降を実行しているノード。
-* のすべてのクラスタポート `up` 状態。
-* Cisco Nexus 3132Q-V クラスタスイッチがサポートされています。
-* 既存のクラスタネットワーク構成には次のものがあります。
+.開始する前に
+* 構成が適切に設定され、機能しています。
+* ONTAP 9.4 以降を実行しているノード。
+* すべてのクラスタポート `up`州。
+* Cisco Nexus 3132Q-V クラスタ スイッチがサポートされています。
+* 既存のクラスター ネットワーク構成は次のとおりです。
 +
-** 両方のスイッチで冗長性があり、完全に機能する Nexus 3132 クラスタインフラ。
-** スイッチにインストールされている最新の RCF および NX-OS バージョン
+** 両方のスイッチで冗長化され、完全に機能する Nexus 3132 クラスタ インフラストラクチャ。
+** スイッチ上の最新の RCF および NX-OS バージョン。
 +
-link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]この手順でサポートされているONTAPおよび NX-OS のバージョンに関する情報が記載されています。
+link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]この手順でサポートされているONTAPおよび NX-OS のバージョンに関する情報が記載されています。
 
-** 両方のスイッチで管理接続を使用します。
-** 両方のスイッチへのコンソールアクセス
-** すべてのクラスタ LIF （論理インターフェイス）は、「 up 」状態のまま移行されません。
+** 両方のスイッチでの管理接続。
+** 両方のスイッチへのコンソール アクセス。
+** すべてのクラスタ論理インターフェース（LIF）は、 `up`移行されない状態。
 ** スイッチの初期カスタマイズ。
-** すべての ISL ポートが有効でケーブル接続されている。
+** すべての ISL ポートが有効になり、ケーブル接続されています。
 
 
 
 
-また、ノードからNexus 3132Q-Vクラスタスイッチへの10GbEおよび40GbE接続について計画し、必要なドキュメントを移行して読む必要があります。
+さらに、ノードから Nexus 3132Q-V クラスタ スイッチへの 10 GbE および 40 GbE 接続を計画し、移行し、必要なドキュメントを読む必要があります。
 
-.使用例について
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+.使用された例について
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* Nexus3132Q-V クラスタスイツチ、 C1 ト C2 。
-* ノードが n1 と n2 です。
-
-
-[NOTE]
-====
-この手順の例では、2つのノードを使用し、それぞれに2つの40GbEクラスタインターコネクトポート* e4a *と* e4e *を使用します。にlink:https://hwu.netapp.com/["Hardware Universe"^]は、プラットフォームのクラスタポートに関する詳細が記載されています。
-
-====
-この手順 では、次のシナリオについて説明します。
-
-* * n1_clus1 *は、ノード* n1 *のクラスタスイッチC1に接続される最初のクラスタ論理インターフェイス（LIF）です。
-* * n1_clus2 *は、ノード* n1 *のクラスタスイッチc2に接続される最初のクラスタLIFです。
-* * n2_clus1 *は、ノード* n2 *のクラスタスイッチC1に接続される最初のクラスタLIFです。
-* * n2_clus2 *は、ノード* n2 *のクラスタスイッチc2に接続する2番目のクラスタLIFです。
-* 10 GbEおよび40 GbEポートの数は、次のURLで入手可能なリファレンス構成ファイル（RCF）で定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] 。
+* Nexus 3132Q-V クラスタ スイッチ、C1 および C2。
+* ノードは n1 と n2 です。
 
 
 [NOTE]
 ====
-手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
+この手順の例では、2 つのノードを使用し、各ノードで 2 つの 40 GbE クラスタ相互接続ポート *e4a* と *e4e* を使用します。そのlink:https://hwu.netapp.com/["Hardware Universe"^]プラットフォーム上のクラスター ポートに関する詳細が記載されています。
 
 ====
-* 2 ノードスイッチレスクラスタ設定で、 2 つのノードが接続されて機能している状態からクラスタを開始します。
-* 最初のクラスタポートはC1に移動する。
-* 2番目のクラスタポートはC2に移動されます。
-* 2ノードスイッチレスクラスタオプションは無効になっています。
+この手順では、次のシナリオについて説明します。
+
+* *n1_clus1* は、ノード *n1* のクラスタ スイッチ C1 に接続される最初のクラスタ論理インターフェイス (LIF) です。
+* *n1_clus2* は、ノード *n1* のクラスタ スイッチ C2 に接続される最初のクラスタ LIF です。
+* *n2_clus1* は、ノード *n2* のクラスタ スイッチ C1 に接続される最初のクラスタ LIF です。
+* *n2_clus2* は、ノード *n2* のクラスタ スイッチ C2 に接続される 2 番目のクラスタ LIF です。
+* 10 GbEおよび40 GbEポートの数は、次のURLで入手可能なリファレンス構成ファイル（RCF）で定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® クラスタ ネットワーク スイッチ リファレンス コンフィギュレーション ファイルのダウンロード"^] 。
+
+
+[NOTE]
+====
+この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
+
+====
+* クラスターは、2 つのノードが接続され、2 ノード スイッチレス クラスター設定で機能している状態で起動します。
+* 最初のクラスター ポートは C1 に移動されます。
+* 2 番目のクラスター ポートは C2 に移動されます。
+* 2 ノード スイッチレス クラスター オプションは無効になっています。
 
 
 .次の手順
-link:migrate-switchless-prepare-to-migrate.html["移行を準備"]です。
+link:migrate-switchless-prepare-to-migrate.html["移行の準備"] 。

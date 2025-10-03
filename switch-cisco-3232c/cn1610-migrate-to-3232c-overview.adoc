@@ -2,48 +2,48 @@
 permalink: switch-cisco-3232c/cn1610-migrate-to-3232c-overview.html 
 sidebar: sidebar 
 keywords: install, cisco nexus 3232c switch, 
-summary: Cisco Nexus 3232cスイッチを設定する前に、プロセスの概要と命名法を確認してください。 
+summary: Cisco Nexus 3232c スイッチを構成する前に、プロセスと命名法の概要を確認してください。 
 ---
-= 移行の要件
+= 移行要件
 :allow-uri-read: 
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3232Cスイッチは、AFF またはFAS クラスタのクラスタスイッチとして使用できます。クラスタスイッチでは、3つ以上のノードでONTAP クラスタを構築できます。
+Cisco Nexus 3232C スイッチは、 AFFまたはFASクラスタ内のクラスタ スイッチとして使用できます。クラスタ スイッチを使用すると、2 つ以上のノードを持つONTAPクラスタを構築できます。
 
 
-NOTE: 手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
+NOTE: この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
 
-必要に応じて、詳細については次を参照してください。
+必要に応じて、次の詳細情報を参照してください。
 
 * link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 および CN1610"^]
-* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]
 * link:http://hwu.netapp.com["Hardware Universe"^]
 
 
 
 
-== CN1610の移行要件
+== CN1610 移行要件
 
-クラスタスイッチは、次のノード接続をサポートします。
+クラスター スイッチは次のノード接続をサポートします。
 
-* NetApp CN1610 ：ポート 0/1~0/12 （ 10GbE ）
-* Cisco Nexus 3232C ：ポート e1/1~30 （ 40 または 100 、または 4x10GbE ）
+* NetApp CN1610: ポート 0/1 ～ 0/12 (10 GbE)
+* Cisco Nexus 3232C: ポート e1/1-30 (40 または 100 または 4x10GbE)
 
 
-クラスタスイッチは、次のスイッチ間リンク（ ISL ）ポートを使用します。
+クラスタ スイッチは、次のスイッチ間リンク (ISL) ポートを使用します。
 
-* NetApp CN1610 ：ポート 0/13~0/16 （ 10GbE ）
-* Cisco Nexus 3232C ：ポート 1/31-32 （ 100GbE ）
+* NetApp CN1610: ポート 0/13 ～ 0/16 (10 GbE)
+* Cisco Nexus 3232C: ポート 1/31-32 (100GbE)
 
 
 [NOTE]
 ====
-Cisco Nexus 3232C クラスタスイッチで 10G ブレークアウトケーブルを 4 本使用する必要があります。
+Cisco Nexus 3232C クラスタ スイッチでは、4x10G ブレークアウト ケーブルを使用する必要があります。
 
 ====
-次の表に、ネットアップ CN1610 スイッチから Cisco Nexus 3232C クラスタスイッチへの移行時に各段階で必要となるケーブル接続を示します。
+次の表は、 NetApp CN1610 スイッチからCisco Nexus 3232C クラスタ スイッチに移行する際に各段階で必要なケーブル接続を示しています。
 
 |===
 | 段階 | 説明 | 必要なケーブル 
@@ -52,57 +52,57 @@ Cisco Nexus 3232C クラスタスイッチで 10G ブレークアウトケーブ
  a| 
 初期
  a| 
-CN1610 から CN1610 （ SFP+ から SFP+ ）
+CN1610からCN1610（SFP+からSFP+）
  a| 
-SFP+ 光ファイバケーブルまたは銅線直接接続ケーブル 4 本
+4本のSFP+光ファイバーまたは銅線直接接続ケーブル
 
 
 
  a| 
 移行
  a| 
-CN1610 から 3232C （ QSFP から SFP+ ）
+CN1610から3232C（QSFPからSFP+）
  a| 
-QSFP ケーブル × 1 、 SFP+ 光ファイバケーブル × 4 、銅線ブレークアウトケーブル × 4
+1本のQSFPと4本のSFP+光ファイバーまたは銅線ブレークアウトケーブル
 
 
 
  a| 
-最後に
+ファイナル
  a| 
-3232C から 3232C （ QSFP から QSFP ）
+3232C から 3232C (QSFP から QSFP)
  a| 
-QSFP 光ファイバケーブルまたは銅線直接接続ケーブル × 2
+2本のQSFP光ファイバーまたは銅線直接接続ケーブル
 
 |===
-該当する参照構成ファイル (RCF) をダウンロードしておく必要があります。  10 GbEおよび40/100 GbEポートの数は、以下のRCFで定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] 。
+該当する参照構成ファイル (RCF) をダウンロードしておく必要があります。10 GbEおよび40/100 GbEポートの数は、以下のRCFで定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco® クラスタ ネットワーク スイッチ リファレンス コンフィギュレーション ファイルのダウンロード"^] 。
 
-この手順でサポートされているONTAPおよびNX-OSのバージョンは、次のとおりです。link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^] 。
+この手順でサポートされているONTAPおよびNX-OSのバージョンは、次のとおりです。link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^] 。
 
-この手順でサポートされているONTAPおよびFASTPATHのバージョンは、次のとおりです。link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 / CN1610 スイッチ"^] 。
+この手順でサポートされているONTAPおよびFASTPATHのバージョンは、次のとおりです。link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601およびCN1610スイッチ"^] 。
 
-.使用例について
-移行手順の例では、4つのノードを使用します。
+.使用された例について
+移行手順の例では、次の 4 つのノードを使用します。
 
-* 2つのノードで4つの10GbEクラスタインターコネクトポート（* e0a *、* e0b *、* e0c *、* e0d *）を使用します。
-* 他の2つのノードは、* e4a *および* e4e *という2本の40GbEクラスタインターコネクトファイバケーブルを使用します。
+* 2 つのノードは、4 つの 10 GbE クラスター相互接続ポート *e0a*、*e0b*、*e0c*、および *e0d* を使用します。
+* 他の 2 つのノードは、2 本の 40 GbE クラスター相互接続ファイバー ケーブル *e4a* と *e4e* を使用します。
 +
-にはlink:https://hwu.netapp.com/["_ Hardware Universe _"^]、プラットフォームのクラスタファイバケーブルに関する情報が記載されています。
+そのlink:https://hwu.netapp.com/["_ハードウェアユニバース_"^]プラットフォームのクラスター ファイバー ケーブルに関する情報が記載されています。
 
 
 
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* ノードは* n1 *、* n2 *、* n3 *、および* n4 *です。
-* コマンド出力は、 ONTAP ソフトウェアのリリースによって異なる場合があります。
-* 交換するCN1610スイッチは* CL1 *および* CL2 *です。
-* CN1610スイッチに代わるNexus 3232Cスイッチは、* c1 *および* c2 *です。
-* * n1_clus1 *は、ノード* n1 *のクラスタスイッチ1（CL1またはC1）に接続された最初のクラスタ論理インターフェイス（LIF）です。
-* * n1_clus2 *は、ノード* n1 *のクラスタスイッチ2（CL2またはC2）に接続された最初のクラスタLIFです。
-* * n1_clus3 *は、ノード* n1 *のクラスタスイッチ2（CL2またはC2）に接続されている2番目のLIFです。
-* * n1_clus4 *は、ノード* n1 *のクラスタスイッチ1（CL1またはC1）に接続されている2番目のLIFです。
-* 10 GbEおよび40/100 GbEポートの数は、次のURLで入手可能なリファレンス構成ファイル（RCF）で定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] 。
+* ノードは *n1*、*n2*、*n3*、*n4* です。
+* コマンド出力は、 ONTAPソフトウェアのリリースによって異なる場合があります。
+* 交換する CN1610 スイッチは *CL1* と *CL2* です。
+* CN1610 スイッチを置き換える Nexus 3232C スイッチは *C1* と *C2* です。
+* *n1_clus1* は、ノード *n1* のクラスタ スイッチ 1 (CL1 または C1) に接続されている最初のクラスタ論理インターフェイス (LIF) です。
+* *n1_clus2* は、ノード *n1* のクラスタ スイッチ 2 (CL2 または C2) に接続されている最初のクラスタ LIF です。
+* *n1_clus3* は、ノード *n1* のクラスタ スイッチ 2 (CL2 または C2) に接続されている 2 番目の LIF です。
+* *n1_clus4* は、ノード *n1* のクラスタ スイッチ 1 (CL1 または C1) に接続されている 2 番目の LIF です。
+* 10 GbEおよび40/100 GbEポートの数は、次のURLで入手可能なリファレンス構成ファイル（RCF）で定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco® クラスタ ネットワーク スイッチ リファレンス コンフィギュレーション ファイルのダウンロード"^] 。
 
 
 .次の手順
-link:cn1610-prepare-to-migrate.html["移行を準備"]です。
+link:cn1610-prepare-to-migrate.html["移行の準備"] 。

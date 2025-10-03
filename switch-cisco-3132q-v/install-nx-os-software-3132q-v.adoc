@@ -2,45 +2,45 @@
 permalink: switch-cisco-3132q-v/install-nx-os-software-3132q-v.html 
 sidebar: sidebar 
 keywords: install, nx-os software 
-summary: この手順 を使用して、 Nexus 3132Q-V クラスタスイッチに NX-OS ソフトウェアをインストールできます。 
+summary: この手順を使用して、Nexus 3132Q-Vクラスタ スイッチにNX-OSソフトウェアをインストールできます。 
 ---
-= NX-OS ソフトウェアをインストールします
+= NX-OSソフトウェアをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-この手順 に従って、Nexus 3132Q-VクラスタスイッチにNX-OSソフトウェアをインストールします。
+Nexus 3132Q-V クラスタ スイッチに NX-OS ソフトウェアをインストールするには、次の手順に従います。
 
 
 
-== 要件を確認
+== 要件の確認
 
-.作業を開始する前に
-* スイッチ設定の現在のバックアップ。
-* クラスタが完全に機能している（ログにエラーがない、または同様の問題が発生している）。
-
-
-.推奨されるドキュメント
-* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]。サポートされるONTAP とNX-OSのバージョンについては、スイッチの互換性の表を参照してください。
-* https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズスイッチ"^]。Ciscoスイッチのアップグレードおよびダウングレード手順の詳細については、CiscoのWebサイトで入手可能なソフトウェアおよびアップグレードガイドを参照してください。
+.開始する前に
+* スイッチ構成の現在のバックアップ。
+* 完全に機能するクラスター (ログにエラーや同様の問題がない)。
 
 
+.推奨ドキュメント
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネットスイッチ"^] 。サポートされているONTAPおよび NX-OS バージョンについては、スイッチ互換性表を参照してください。
+* https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズ スイッチ"^] 。Ciscoスイッチのアップグレードおよびダウングレード手順の詳細なドキュメントについては、 Cisco Web サイトで入手可能な適切なソフトウェアおよびアップグレード ガイドを参照してください。
 
 
-== ソフトウェアをインストールします
 
-.このタスクについて
-手順 では、 ONTAP コマンドと Cisco Nexus 3000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
 
-の手順 を完了してください link:prepare-install-cisco-nexus-3132q.html["NX-OSソフトウェアおよびリファレンス構成ファイルをインストールする準備をします"]をクリックし、次の手順を実行します。
+== ソフトウェアをインストールする
+
+.タスク概要
+この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
+
+必ず手続きを完了してくださいlink:prepare-install-cisco-nexus-3132q.html["NX-OSソフトウェアとリファレンス構成ファイルのインストール準備"]、以下の手順に従います。
 
 .手順
-. クラスタスイッチを管理ネットワークに接続します。
-. 「 ping 」コマンドを使用して、 NX-OS ソフトウェアおよび RCF をホストするサーバへの接続を確認します。
+. クラスタ スイッチを管理ネットワークに接続します。
+. 使用 `ping`NX-OS ソフトウェアと RCF をホストするサーバーへの接続を確認するコマンド。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -51,12 +51,12 @@ Pinging 172.19.2.1 with 0 bytes of data:
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
 ====
-. クラスタスイッチに接続されている各ノードのクラスタポートを表示します。
+. クラスター スイッチに接続されている各ノード上のクラスター ポートを表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -80,14 +80,14 @@ cluster1-04/cdp
 cluster1::*>
 ----
 ====
-. 各クラスタポートの管理ステータスと動作ステータスを確認します。
+. 各クラスタ ポートの管理ステータスと動作ステータスを確認します。
 +
-.. すべてのクラスタポートが正常な状態で稼働していることを確認します。
+.. すべてのクラスター ポートが正常な状態で *up* していることを確認します。
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -130,12 +130,12 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 cluster1::*>
 ----
 ====
-.. すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。
+.. すべてのクラスタ インターフェイス (LIF) がホーム ポート上にあることを確認します。
 +
 `network interface show -role Cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -157,12 +157,12 @@ Cluster
 cluster1::*>
 ----
 ====
-.. クラスタが両方のクラスタスイッチの情報を表示していることを確認します。
+.. クラスターが両方のクラスター スイッチの情報を表示することを確認します。
 +
-system cluster-switch show -is-monitoring enabled-operational true を使用します
+`system cluster-switch show -is-monitoring-enabled-operational true`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -190,13 +190,13 @@ cluster1::*>
 ====
 
 
-. クラスタLIFで自動リバートを無効にします。クラスタLIFはパートナークラスタスイッチにフェイルオーバーし、ターゲットスイッチでアップグレード手順を実行してもそのまま残ります。
+. クラスタLIFで自動リバートを無効にします。クラスタ LIF はパートナー クラスタ スイッチにフェイルオーバーし、対象スイッチでアップグレード手順を実行する間、そこに残ります。
 +
-network interface modify -vserver Cluster -lif *-auto-revert false
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
-. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、NX-OSソフトウェアをNexus 3132Q-Vスイッチにコピーします。Ciscoコマンドの詳細については、の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000シリーズNX-OSコマンドリファレンスガイド"^]。
+. FTP、TFTP、SFTP、または SCP のいずれかの転送プロトコルを使用して、NX-OS ソフトウェアを Nexus 3132Q-V スイッチにコピーします。  Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンスガイド"^] 。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -218,12 +218,12 @@ Copy complete, now saving to disk (please wait)...
 Copy complete.
 ----
 ====
-. NX-OS ソフトウェアの実行中のバージョンを確認します。
+. NX-OSソフトウェアの実行中のバージョンを確認します。
 +
-'how version （バージョンの表示） '
+`show version`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -279,12 +279,12 @@ Active Package(s):
 cs2#
 ----
 ====
-. NX-OS イメージをインストールします。
+. NX-OSイメージをインストールします。
 +
-イメージファイルをインストールすると、スイッチをリブートするたびにロードされます。
+イメージ ファイルをインストールすると、スイッチをリブートするたびにこのファイルがロードされます。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -348,12 +348,12 @@ Finishing the upgrade, switch will reboot in 10 seconds.
 cs2#
 ----
 ====
-. スイッチのリブート後に、 NX-OS ソフトウェアの新しいバージョンを確認します。
+. スイッチを再起動した後、NX-OS ソフトウェアの新しいバージョンを確認します。
 +
-'how version （バージョンの表示） '
+`show version`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -411,14 +411,14 @@ Active Package(s):
 cs2#
 ----
 ====
-. クラスタのクラスタポートの健常性を確認します。
+. クラスタ ポートの健全性を確認します。
 +
-.. クラスタポートが起動しており、クラスタ内のすべてのノードで正常に動作していることを確認します。
+.. クラスター内のすべてのノードでクラスター ポートが稼働しており正常であることを確認します。
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -459,12 +459,12 @@ e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
 8 entries were displayed.
 ----
 ====
-.. クラスタからスイッチの健常性を確認します。
+.. クラスターからスイッチの健全性を確認します。
 +
-「 network device-discovery show -protocol cdp 」と入力します
+`network device-discovery show -protocol cdp`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -507,7 +507,7 @@ cs2                         cluster-network    10.233.205.91    N3K-C3132Q-V
 
 2 entries were displayed.
 ----
-スイッチにロードした RCF バージョンによっては、 cs1 スイッチコンソールで次の出力が表示されることがあります。
+前の手順でスイッチにロードしたRCFのバージョンによっては、cs1スイッチのコンソールに次の出力が表示されることがあります。
 
 [listing]
 ----
@@ -518,12 +518,12 @@ cs2                         cluster-network    10.233.205.91    N3K-C3132Q-V
 ====
 
 
-. クラスタが正常であることを確認します。
+. クラスタが正常に動作していることを確認します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -539,17 +539,17 @@ cluster1-04          true     true          false
 cluster1::*>
 ----
 ====
-. スイッチcs1で手順6 ~ 11を繰り返します。
-. クラスタ LIF で自動リバートを有効にします。
+. スイッチ cs1 で手順 6 ～ 11 を繰り返します。
+. クラスタLIFで自動リバートを有効にします。
 +
-network interface modify -vserver Cluster -lif *-auto-revert trueを指定します
+`network interface modify -vserver Cluster -lif * -auto-revert true`
 
-. クラスタ LIF がホームポートにリバートされたことを確認します。
+. クラスタ LIF がホーム ポートに戻ったことを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -572,7 +572,7 @@ cluster1::*>
 ----
 ====
 +
-いずれかのクラスタLIFがホームポートに戻っていない場合は、ローカルノードから手動でリバートします。
+クラスタ LIF がホーム ポートに戻っていない場合は、ローカル ノードから手動で元に戻します。
 
 +
 `network interface revert -vserver Cluster -lif <lif_name>`
@@ -580,4 +580,4 @@ cluster1::*>
 
 
 .次の手順
-link:install-rcf-3132q-v.html["リファレンス構成ファイル（ RCF ）のインストール"]。
+link:install-rcf-3132q-v.html["参照構成ファイル（RCF）をインストールする"] 。

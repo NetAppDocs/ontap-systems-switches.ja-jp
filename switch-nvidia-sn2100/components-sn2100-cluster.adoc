@@ -2,63 +2,63 @@
 permalink: switch-nvidia-sn2100/components-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: 3 つ以上のノードで ONTAP クラスタを構築する場合は、サポートされている 2 つのクラスタネットワークスイッチが必要です。オプションとして、追加の管理スイッチを使用できます。 
+summary: 2 つ以上のノードを持つONTAPクラスターを構築する場合は、サポートされているクラスター ネットワーク スイッチが 2 つ必要です。オプションとして追加の管理スイッチを使用することもできます。 
 ---
-= NVIDIA SN2100スイッチのコンポーネントとパーツ番号
+= NVIDIA SN2100スイッチのコンポーネントと部品番号
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NVIDIA SN2100スイッチの設置とメンテナンスを行う場合は、必ずキャビネットとレールキットのコンポーネントとパーツ番号の一覧を確認してください。
+NVIDIA SN2100 スイッチのインストールとメンテナンスについては、キャビネットとレール キットのコンポーネントと部品番号のリストを必ず確認してください。
 
 
 
 == キャビネットの詳細
 
-NVIDIA SN2100スイッチ（X190006）は、スイッチに付属の標準ブラケットを使用して、NVIDIAデュアル/シングルスイッチキャビネットに設置します。
+NVIDIA SN2100 スイッチ (X190006) は、スイッチに付属の標準ブラケットを使用してNVIDIAデュアル/シングル スイッチ キャビネットに取り付けます。
 
 
 
 == レールキットの詳細
 
-次の表に、SN2100スイッチおよびレールキットの部品番号と概要 を示します。
+次の表に、SN2100 スイッチおよびレール キットの部品番号と説明を示します。
 
 [cols="1,2"]
 |===
-| パーツ番号 | 説明 
+| 部品番号 | 説明 
 
 
  a| 
 X190006-PE
  a| 
-クラスタスイッチ、NVIDIA SN2100、16ポート100GbE、PTSX
+クラスタースイッチ、 NVIDIA SN2100、16PT 100GbE、PTSX
 
 
 
  a| 
 X190006-PI
  a| 
-クラスタスイッチ、NVIDIA SN2100、16pt 100GbE、PSIN
+クラスタースイッチ、 NVIDIA SN2100、16PT 100GbE、PSIN
 
 
 
  a| 
-X-MTEFキット-D
+X-MTEF-KIT-D
  a| 
-レールキット、NVIDIAデュアルスイッチ、サイド
+レールキット、 NVIDIAデュアルスイッチサイドバイサイド
 
 
 
  a| 
-X-MTEFキット-E
+X-MTEF-KIT-E
  a| 
-レールキット、NVIDIAシングルスイッチショート
+レールキット、 NVIDIAシングルスイッチ ショートデプス
 
 |===
 
-NOTE: 詳細については、NVIDIAのドキュメントを参照してください https://docs.nvidia.com/networking/display/sn2000pub/Installation["SN2100スイッチとレールキットの取り付け"^]。
+NOTE: 詳細についてはNVIDIAのドキュメントをご覧ください。 https://docs.nvidia.com/networking/display/sn2000pub/Installation["SN2100スイッチとレールキットのインストール"^] 。
 
 .次の手順
-link:required-documentation-sn2100-cluster.html["必要なドキュメント"] 。
+link:required-documentation-sn2100-cluster.html["必要な書類"] 。

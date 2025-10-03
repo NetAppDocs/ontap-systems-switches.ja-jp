@@ -2,31 +2,31 @@
 permalink: switch-bes-53248/components-bes53248.html 
 sidebar: sidebar 
 keywords: cluster-mode,supported versions,switches supported,cluster network,efos 
-summary: BES-53248スイッチの設置とメンテナンスを行う場合は、コンポーネントとパーツ番号の一覧を確認してください。 
+summary: BES-53248 スイッチのインストールとメンテナンスについては、必ずコンポーネントと部品番号のリストを確認してください。 
 ---
-= BES-53248クラスタスイッチのコンポーネントとパーツ番号
+= BES-53248 クラスタスイッチのコンポーネントと部品番号
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248スイッチの設置とメンテナンスを行う場合は、コンポーネントとパーツ番号の一覧を確認してください。
+BES-53248 スイッチのインストールとメンテナンスについては、必ずコンポーネントと部品番号のリストを確認してください。
 
-次の表に、BES-53248クラスタスイッチコンポーネントのパーツ番号、概要 、および最小EFOSバージョンとONTAP バージョンを示します。これには、ラックマウントレールキットの詳細も含まれます。
+次の表には、ラックマウント レール キットの詳細を含む、BES-53248 クラスタ スイッチ コンポーネントの部品番号、説明、および最小の EFOS およびONTAPバージョンがリストされています。
 
 
-NOTE: パーツ番号* X190005-B *および* X190005R-B *には* 3.10.0.3 *のEFOSバージョンが必要です。
+NOTE: 部品番号 *X190005-B* および *X190005R-B* には、少なくとも EFOS バージョン *3.10.0.3* が必要です。
 
 [cols="20,40,20,20"]
 |===
-| パーツ番号 | 説明 | EFOSの最小バージョン | ONTAP の最小バージョン 
+| 部品番号 | 説明 | EFOSの最小バージョン | 最小ONTAPバージョン 
 
 
  a| 
 X190005-B
  a| 
-BES-53248-B/IX8、CLSW、16PT10/25GB、PTSX（PTSX =ポート側排気）
+BES-53248-B/IX8、CLSW、16PT10/25GB、PTSX（PTSX = 左舷排気）
  a| 
 3.10.0.3
  a| 
@@ -37,7 +37,7 @@ BES-53248-B/IX8、CLSW、16PT10/25GB、PTSX（PTSX =ポート側排気）
  a| 
 X190005R-B
  a| 
-BES-53248-B/IX8、CLSW、16PT10/25GB、PSIN（PSINはポート側吸気）
+BES-53248-B/IX8、CLSW、16PT10/25GB、PSIN (PSIN = ポート側吸気)
  a| 
 3.10.0.3
  a| 
@@ -50,7 +50,7 @@ X190005
  a| 
 BES-53248、CLSW、16Pt10/25GB、PTSX、BRDCM SUPP
  a| 
-3.4.4.6.
+3.4.4.6
  a| 
 9.5P8
 
@@ -61,16 +61,16 @@ X190005R
  a| 
 BES-53248、CLSW、16Pt10/25GB、PSIN、BRDCM SUPP
  a| 
-3.4.4.6.
+3.4.4.6
  a| 
 9.5P8
 
 
 
  a| 
-X-LEray-4POST-190005
+X-RAIL-4POST-190005
  a| 
-ラックマウントレールキット Ozeki 4 ポスト 19 インチ
+ラック マウント レール キットOzeki 4ポスト19インチ
  a| 
 該当なし
  a| 
@@ -78,16 +78,16 @@ X-LEray-4POST-190005
 
 |===
 
-IMPORTANT: マシンタイプに関する次の情報に注意してください。
+IMPORTANT: マシン タイプに関しては、次の情報に注意してください。
 
 [cols="50,50"]
 |===
-| マシンのタイプ | EFOSの最小バージョン 
+| 機械の種類 | EFOSの最小バージョン 
 
 
  a| 
 BES-53248A1
-| 3.4.4.6. 
+| 3.4.4.6 
 
 
  a| 
@@ -99,9 +99,9 @@ BES-53248A2
 BES-53248A3
 | 3.10.0.3 
 |===
-次のコマンドを使用して、特定のマシンタイプを確認できます。 `show version`
+次のコマンドを使用して、特定のマシン タイプを判別できます。 `show version`
 
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -127,4 +127,4 @@ Network Processing Device...................... BCM56873_A0
 ----
 ====
 .次の手順
-link:required-documentation-bes53248.html["必要なドキュメント"] 。
+link:required-documentation-bes53248.html["必要な書類"] 。

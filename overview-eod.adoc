@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: overview-eod.html 
 keywords: switches, fas, aff systems, end of availability, EOD 
-summary: FAS およびAFF システム用EODスイッチ。 
+summary: FASおよびAFFシステム用の EOD スイッチ。 
 ---
 = 販売終了
 :allow-uri-read: 
@@ -11,21 +11,21 @@ summary: FAS およびAFF システム用EODスイッチ。
 
 
 [role="lead"]
-次のスイッチは購入できなくなりましたが、引き続きサポートされています。
+以下のスイッチは購入できなくなりましたが、引き続きサポートされています。
 
 * link:./switch-cisco-3232c/install-overview-cisco-3232c.html["Cisco Nexus 3232C"]
-* link:./switch-cisco-3132q-v/install-overview-cisco-3132qv.html["Cisco Nexus 3132Q-V の 2 つのポートを設定します"]
+* link:./switch-cisco-3132q-v/install-overview-cisco-3132qv.html["Cisco Nexus 3132Q-V"]
 * link:./switch-cisco-92300/install-overview-cisco-92300.html["Cisco Nexus 92300YC"]
 * link:./switch-netapp-cn1610/install-overview-cn1610.html["NetApp CN1610"]
 
 
 
 
-== 販売終了とサポート終了のお知らせ
+== 販売終了およびサポート終了のお知らせ
 
-* link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-3000-series-switches/n3k-c3232c-eol.html["Cisco Nexus 3232Cの販売終了および販売終了のお知らせ"]
-* link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-3000-series-switches/nexus-31108pc-v-31108tc-v-nexus-3132q-v-eol.html["Cisco Nexus 31108PC-V、31108TC-V、Nexus 3132Q-Vの販売終了および販売終了のお知らせ"]
-* link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/eos-eol-notice-c51-742776.html["Cisco N9K-C93120TX、N9K-C92300YCの販売終了およびサポート終了のお知らせ"]
-* link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-5000-series-switches/eos-eol-notice-c51-740720.html["Cisco Nexus 5500シリーズスイッチの販売終了および販売終了のお知らせ"]
-* link:https://mysupport.netapp.com/info/communications/ECMLP2859128.html["販売終了：NetApp CN1610クラスタインターコネクトSKU"]
+* link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-3000-series-switches/n3k-c3232c-eol.html["Cisco Nexus 3232C の販売終了およびサポート終了のお知らせ"]
+* link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-3000-series-switches/nexus-31108pc-v-31108tc-v-nexus-3132q-v-eol.html["Cisco Nexus 31108PC-V、31108TC-V、Nexus 3132Q-V の販売終了およびサポート終了のお知らせ"]
+* link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/eos-eol-notice-c51-742776.html["Cisco N9K-C93120TX、N9K-C92300YC の販売終了およびサポート終了のお知らせ"]
+* link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-5000-series-switches/eos-eol-notice-c51-740720.html["Cisco Nexus 5500 シリーズ スイッチの販売終了およびサポート終了のお知らせ"]
+* link:https://mysupport.netapp.com/info/communications/ECMLP2859128.html["販売終了: NetApp CN1610 クラスタ インターコネクト SKU"]
 

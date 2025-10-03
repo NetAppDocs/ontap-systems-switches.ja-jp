@@ -2,77 +2,77 @@
 permalink: switch-nvidia-sn2100/replace-sn2100-switch-cluster.html 
 sidebar: sidebar 
 keywords: replacing, replace, defective, nvidia, switch, cluster, network, nondisruptive, procedure, ndu, replace a nvidia msn2100 cluster switch - nvidia SN2100 
-summary: クラスタネットワーク内の不良なNVIDIA SN2100スイッチの交換は、無停止手順 （NDNDU）です。 
+summary: 'クラスター ネットワーク内の故障したNVIDIA SN2100 スイッチを交換することは、無停止の手順 (NDU) です。' 
 ---
-= NVIDIA SN2100クラスタスイッチを交換してください
+= NVIDIA SN2100 クラスタスイッチを交換する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-クラスタネットワーク内の不良なNVIDIA SN2100スイッチを交換するには、この手順 に従います。これは、無停止の手順 （NDU；非停止アップグレード）です。
+クラスター ネットワーク内の故障したNVIDIA SN2100 スイッチを交換するには、次の手順に従ってください。これは非中断手順 (NDU) です。
 
 
 
-== 要件を確認
+== 要件の確認
 
-.既存のクラスタとネットワークインフラ
-次の点を確認します
+.既存のクラスタとネットワークインフラストラクチャ
+次のことを確認してください。
 
-* 既存のクラスタは、少なくとも1つのクラスタスイッチが完全に接続された状態で、完全に機能することが確認されています。
-* すべてのクラスタポートが稼働している必要があります
-* すべてのクラスタLIFが、upの状態でホームポートにあることを確認します。
-* ONTAP `cluster ping-cluster -node node1` コマンドは、基本的な接続とPMTU以上の通信がすべてのパスで成功したことを示します。
+* 既存のクラスターは、少なくとも 1 つの完全接続されたクラスター スイッチを備え、完全に機能していることが検証されています。
+* すべてのクラスター ポートが稼働しています。
+* すべてのクラスタ論理インターフェイス (LIF) が起動しており、ホーム ポート上にあります。
+* ONTAP `cluster ping-cluster -node node1`コマンドは、すべてのパスで基本的な接続と PMTU より大きい通信が成功したことを示します。
 
 
-.NVIDIA SN2100交換用スイッチ
-次の点を確認します
+.NVIDIA SN2100 交換スイッチ
+次のことを確認してください。
 
-* 交換用スイッチの管理ネットワーク接続は機能しています。
-* 交換用スイッチへのコンソールアクセスが確立されている。
-* ノード接続は、ポートswp1からswp14です。
-* ポートswp15およびswp16では、すべてのスイッチ間リンク（ISL）ポートが無効になっています。
-* 目的のリファレンス構成ファイル（RCF）とCumulusオペレーティングシステムイメージスイッチがスイッチにロードされます。
+* 交換スイッチ上の管理ネットワーク接続は機能しています。
+* 交換用スイッチへのコンソール アクセスが確立されています。
+* ノード接続はポート swp1 から swp14 です。
+* ポート swp15 および swp16 のすべての Inter-Switch Link (ISL) ポートが無効になっています。
+* 必要な参照構成ファイル (RCF) と Cumulus オペレーティング システム イメージ スイッチがスイッチにロードされます。
 * スイッチの初期カスタマイズが完了しました。
 
 
-また、STP、SNMP、SSHなどの以前のサイトカスタマイズがすべて新しいスイッチにコピーされていることを確認します。
+また、STP、SNMP、SSH などの以前のサイトのカスタマイズが新しいスイッチにコピーされていることを確認します。
 
 
-NOTE: クラスタ LIF を移行するコマンドは、そのクラスタ LIF がホストされているノードで実行する必要があります。
+NOTE: クラスタLIFを移行するコマンドは、そのクラスタLIFがホストされているノードで実行する必要があります。
 
 
 
 == コンソールログを有効にする
 
-NetAppでは、使用しているデバイスでコンソールロギングをイネーブルにし、スイッチを交換するときに次のアクションを実行することを強く推奨します。
+NetApp、使用しているデバイスでコンソール ログを有効にし、スイッチを交換するときに次のアクションを実行することを強くお勧めします。
 
-* メンテナンス中はAutoSupportを有効のままにします。
-* メンテナンスの前後にメンテナンスAutoSupportをトリガーして、メンテナンス中のケースの作成を無効にします。このナレッジベースの記事を参照 https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92:スケジュールされたメンテナンス時間中にケースが自動作成されないようにする方法"^] を参照してください。
-* CLIセッションのセッションロギングをイネーブルにします。セッションログを有効にする方法については、このナレッジベースの記事の「セッション出力のログ」セクションを参照してください。 https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["ONTAPシステムへの接続を最適化するためのPuTTYの設定方法"^]。
-
-
+* メンテナンス中はAutoSupport を有効のままにしておきます。
+* メンテナンスの前後にメンテナンスAutoSupportをトリガーして、メンテナンス期間中のケース作成を無効にします。このナレッジベースの記事を参照してください https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92: スケジュールされたメンテナンス期間中の自動ケース作成を抑制する方法"^]詳細については、こちらをご覧ください。
+* すべての CLI セッションのセッション ログを有効にします。セッションログを有効にする方法については、このナレッジベースの記事の「セッション出力のログ記録」セクションを参照してください。 https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["ONTAPシステムへの最適な接続を実現するための PuTTY の設定方法"^] 。
 
 
-== スイッチを交換します
+
+
+== スイッチを交換する
 
 .例について
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 既存のNVIDIA SN2100スイッチの名前は_sw1_AND _sw2_です。
-* 新しいNVIDIA SN2100スイッチの名前は_nsw2_.
-* ノード名は _node1_AND _node2 _ です。
-* 各ノードのクラスタポートの名前は _e3a および _e3b _ です。
-* クラスタLIFの名前は、ノード1の場合は_node1_clus1_AND _node1_clus2_(1つ)、ノード2の場合は_node2_clus1_and _node2_clus2_(1つ)です。
-* すべてのクラスタ・ノードへの変更を求めるプロンプトは、'cluster1：*>`です
-* ブレークアウトポートの形式は、SWP[ポート] s [ブレークアウトポート0-3]です。たとえば'swp1の4つのブレークアウトポートは'_swp1s0'_swp1s1_'_swp1s2s'_swp1s3_です
+* 既存のNVIDIA SN2100 スイッチの名前は _sw1_ と _sw2_ です。
+* 新しいNVIDIA SN2100 スイッチの名前は _nsw2_ です。
+* ノード名は _node1_ と _node2_ です。
+* 各ノードのクラスター ポートの名前は _e3a_ と _e3b_ です。
+* クラスター LIF 名は、node1 の場合は _node1_clus1_ と _node1_clus2_、node2 の場合は _node2_clus1_ と _node2_clus2_ です。
+* すべてのクラスタノードへの変更を求めるプロンプトは `cluster1::*>`
+* ブレイクアウト ポートの形式は、swp[ポート]s[ブレイクアウト ポート 0-3] です。たとえば、swp1 の 4 つのブレークアウト ポートは、_swp1s0_、_swp1s1_、_swp1s2_、および _swp1s3_ です。
 
 
 .クラスタネットワークトポロジについて
-この手順 は、次のクラスタネットワークトポロジに基づいています。
+この手順は、次のクラスター ネットワーク トポロジに基づいています。
 
-.トポロジの例を表示します
+.トポロジ例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -119,7 +119,7 @@ node2      /lldp
             e3a    sw1 (b8:ce:f6:19:1a:7e)   swp4          -
             e3b    sw2 (b8:ce:f6:19:1b:96)   swp4          -
 ----
-[+]
++
 
 [listing, subs="+quotes"]
 ----
@@ -145,44 +145,44 @@ swp16      100G   BondMember  sw1                swp16
 ====
 
 
-=== 手順1：交換の準備をします
+=== ステップ1: 交換の準備
 
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= xh 」というメッセージが表示されます
-
-+
-ここで、 _ x _ はメンテナンス時間の長さ（時間）です。
-
-. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 * y * 」と入力します。
-+
-「 advanced 」の権限が必要です
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-advanced のプロンプト（ * > ）が表示されます。
+ここで、_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
+
+. 続行するかどうかを尋ねられたら *y* と入力して、権限レベルを「advanced」に変更します。
++
+`set -privilege advanced`
+
++
+advancedのプロンプト（*>）が表示されます。
 
 . 適切なRCFとイメージをスイッチnsw2にインストールし、必要なサイトの準備を行います。
 +
-必要に応じて、新しいスイッチ用のRCFおよびCumulusソフトウェアの適切なバージョンを確認、ダウンロード、およびインストールします。
+必要に応じて、新しいスイッチに適したバージョンの RCF および Cumulus ソフトウェアを確認し、ダウンロードしてインストールします。
 
 +
-.. ご使用のクラスタスイッチに適用可能なCumulusソフトウェアは、_nvidia Support_siteからダウンロードできます。ダウンロードページの手順に従って、インストールするONTAP ソフトウェアのバージョンに対応したCumulus Linuxをダウンロードします。
-.. 適切な RCF はから入手できます link:https://mysupport.netapp.com/site/products/all/details/nvidia-cluster-storage-switch/downloads-tab["NVIDIAクラスタとストレージスイッチ_"^] ページダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応する正しい RCF をダウンロードします。
+.. クラスター スイッチに適した Cumulus ソフトウェアは、_NVIDIA サポート_ サイトからダウンロードできます。ダウンロード ページの手順に従って、インストールするONTAPソフトウェアのバージョンに応じた Cumulus Linux をダウンロードします。
+.. 適切なRCFは、link:https://mysupport.netapp.com/site/products/all/details/nvidia-cluster-storage-switch/downloads-tab["_NVIDIA クラスターおよびストレージ スイッチ_"^]ページ。[Download]ページの手順に従って、インストールするONTAPソフトウェアのバージョンに対応したRCFをダウンロードします。
 
 
 
 
 
 
-=== 手順2：ポートとケーブルを設定する
+=== ステップ2: ポートとケーブルを構成する
 
 [role="tabbed-block"]
 ====
-.Cumulus Linux 4.4.3.
+.キュムラス・リナックス 4.4.3
 --
-. 新しいスイッチnsw2にadminとしてログインし、ノードクラスタインターフェイス（ポートswp1からswp14）に接続するすべてのポートをシャットダウンします。
+. 新しいスイッチ nsw2 で、管理者としてログインし、ノード クラスタ インターフェイスに接続されるすべてのポート (ポート swp1 ～ swp14) をシャットダウンします。
 +
-クラスタノードの LIF は、各ノードのもう一方のクラスタポートにすでにフェイルオーバーされている必要があります。
+クラスタ ノードのLIFは、各ノードのもう一方のクラスタ ポートにすでにフェイルオーバーされている必要があります。
 
 +
 [listing, subs="+quotes"]
@@ -191,9 +191,9 @@ cumulus@nsw2:~$ *net add interface swp1s0-3, swp2s0-3, swp3-14 link down*
 cumulus@nsw2:~$ *net pending*
 cumulus@nsw2:~$ *net commit*
 ----
-. クラスタLIFで自動リバートを無効にします。
+. クラスタ LIF の自動復帰を無効にします。
 +
-network interface modify -vserver Cluster -lif *-auto-revert false
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
 +
 [listing, subs="+quotes"]
@@ -206,7 +206,7 @@ Warning: Disabling the auto-revert feature of the cluster logical interface may 
 +
 `net interface show -vserver Cluster -fields auto-revert`
 
-. SN2100スイッチsw1でISLポートswp15およびswp16をシャットダウンします。
+. SN2100 スイッチ sw1 の ISL ポート swp15 と swp16 をシャットダウンします。
 +
 [listing, subs="+quotes"]
 ----
@@ -214,10 +214,10 @@ cumulus@sw1:~$ *net add interface swp15-16 link down*
 cumulus@sw1:~$ *net pending*
 cumulus@sw1:~$ *net commit*
 ----
-. すべてのケーブルをSN2100 sw1スイッチから取り外し、SN2100 nsw2スイッチの同じポートに接続します。
-. sw1スイッチとnsw2スイッチの間で、ISLポートswp15とswp16を起動します。
+. SN2100 sw1 スイッチからすべてのケーブルを取り外し、それらを SN2100 nsw2 スイッチの同じポートに接続します。
+. sw1 スイッチと nsw2 スイッチ間の ISL ポート swp15 と swp16 を起動します。
 +
-次のコマンドは、スイッチsw1でISLポートswp15およびswp16を有効にします。
+次のコマンドは、スイッチ sw1 上の ISL ポート swp15 と swp16 を有効にします。
 
 +
 [listing, subs="+quotes"]
@@ -227,7 +227,7 @@ cumulus@sw1:~$ *net pending*
 cumulus@sw1:~$ *net commit*
 ----
 +
-次の例は、スイッチsw1のISLポートがupになっていることを示しています。
+次の例は、スイッチ sw1 で ISL ポートが起動していることを示しています。
 
 +
 [listing, subs="+quotes"]
@@ -242,7 +242,7 @@ UP     swp15        100G  9216   BondMember  nsw2 (swp15)   Master: cluster_isl(
 UP     swp16        100G  9216   BondMember  nsw2 (swp16)   Master: cluster_isl(UP)
 ----
 +
-次の例は、スイッチnsw2のISLポートが稼働していることを示しています。
+次の例は、スイッチ nsw2 で ISL ポートが起動していることを示しています。
 
 +
 [listing, subs="+quotes"]
@@ -256,9 +256,9 @@ State  Name         Spd   MTU    Mode        LLDP           Summary
 UP     swp15        100G  9216   BondMember  sw1 (swp15)    Master: cluster_isl(UP)
 UP     swp16        100G  9216   BondMember  sw1 (swp16)    Master: cluster_isl(UP)
 ----
-. ポートを確認します `e3b` すべてのノードで動作：
+. ポートを確認する `e3b`すべてのノードで起動します:
 +
-「 network port show -ipspace cluster 」のように表示されます
+`network port show -ipspace Cluster`
 
 +
 次のような出力が表示されます。
@@ -285,7 +285,7 @@ Port      IPspace      Broadcast Domain Link MTU   Admin/Oper  Status    Status
 e3a       Cluster      Cluster          up   9000  auto/100000  healthy  false
 e3b       Cluster      Cluster          up   9000  auto/100000  healthy  false
 ----
-. これで、各ノードのクラスタポートは、ノードから見て次のようにクラスタスイッチに接続されました。
+. 各ノード上のクラスター ポートは、ノードの観点から見ると、次のようにクラスター スイッチに接続されます。
 +
 [listing, subs="+quotes"]
 ----
@@ -300,7 +300,7 @@ node2      /lldp
             e3a    sw1  (b8:ce:f6:19:1a:7e)   swp4          -
             e3b    nsw2 (b8:ce:f6:19:1b:b6)   swp4          -
 ----
-. すべてのノードクラスタポートが動作していることを確認します。
+. すべてのノード クラスタ ポートが稼働していることを確認します。
 +
 `net show interface`
 
@@ -318,12 +318,12 @@ UP     swp4         100G  9216   Trunk/L2                      Master: bridge(UP
 UP     swp15        100G  9216   BondMember  sw1 (swp15)       Master: cluster_isl(UP)
 UP     swp16        100G  9216   BondMember  sw1 (swp16)       Master: cluster_isl(UP)
 ----
-. 両方のノードのそれぞれで、各スイッチに 1 つの接続があることを確認します。
+. 両方のノードが各スイッチにそれぞれ 1 つの接続を持っていることを確認します。
 +
 `net show lldp`
 
 +
-次の例は、両方のスイッチの該当する結果を示しています。
+次の例は、両方のスイッチの適切な結果を示しています。
 
 +
 [listing, subs="+quotes"]
@@ -347,11 +347,11 @@ swp4       100G   Trunk/L2    node2                e3b
 swp15      100G   BondMember  sw1                swp15
 swp16      100G   BondMember  sw1                swp16
 ----
-. クラスタ LIF で自動リバートを有効にします。
+. クラスタ LIF で自動復帰を有効にします。
 +
 `cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert true`
 
-. スイッチnsw2で、ノードのネットワークポートに接続されているポートを起動します。
+. スイッチ nsw2 で、ノードのネットワーク ポートに接続されているポートを起動します。
 +
 [listing, subs="+quotes"]
 ----
@@ -359,12 +359,12 @@ cumulus@nsw2:~$ *net del interface swp1-14 link down*
 cumulus@nsw2:~$ *net pending*
 cumulus@nsw2:~$ *net commit*
 ----
-. クラスタ内のノードに関する情報を表示します。
+. クラスター内のノードに関する情報を表示します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-次の例では、このクラスタのノード node1 と node2 のノードの健常性が true であることを示します。
+この例では、このクラスター内の node1 と node2 のノード ヘルスが true であることを示しています。
 
 +
 [listing, subs="+quotes"]
@@ -376,9 +376,9 @@ Node          Health  Eligibility
 node1         true    true
 node2         true    true
 ----
-. すべての物理クラスタポートが動作していることを確認します。
+. すべての物理クラスター ポートが稼働していることを確認します。
 +
-「 network port show -ipspace cluster 」のように表示されます
+`network port show ipspace Cluster`
 
 +
 [listing, subs="+quotes"]
@@ -403,11 +403,11 @@ e3b       Cluster      Cluster          up    9000  auto/10000  healthy  false
 
 
 --
-.Cumulus Linux 5.x
+.キュムラス Linux 5.x
 --
-. 新しいスイッチnsw2にadminとしてログインし、ノードクラスタインターフェイス（ポートswp1からswp14）に接続するすべてのポートをシャットダウンします。
+. 新しいスイッチ nsw2 で、管理者としてログインし、ノード クラスタ インターフェイスに接続されるすべてのポート (ポート swp1 ～ swp14) をシャットダウンします。
 +
-クラスタノードの LIF は、各ノードのもう一方のクラスタポートにすでにフェイルオーバーされている必要があります。
+クラスタ ノードのLIFは、各ノードのもう一方のクラスタ ポートにすでにフェイルオーバーされている必要があります。
 
 +
 [listing, subs="+quotes"]
@@ -415,9 +415,9 @@ e3b       Cluster      Cluster          up    9000  auto/10000  healthy  false
 cumulus@nsw2:~$ *nv set interface swp15-16 link state down*
 cumulus@nsw2:~$ *nv config apply*
 ----
-. クラスタLIFで自動リバートを無効にします。
+. クラスタ LIF の自動復帰を無効にします。
 +
-network interface modify -vserver Cluster -lif *-auto-revert false
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
 +
 [listing, subs="+quotes"]
@@ -428,19 +428,19 @@ Warning: Disabling the auto-revert feature of the cluster logical interface may 
 ----
 . すべてのクラスタ LIF で自動復帰が無効になっていることを確認します。
 +
-network interface show -vserver Cluster -fields auto-revert を実行します
+`network interface show -vserver Cluster -fields auto-revert`
 
-. SN2100スイッチsw1でISLポートswp15およびswp16をシャットダウンします。
+. SN2100 スイッチ sw1 の ISL ポート swp15 と swp16 をシャットダウンします。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *nv set interface swp15-16 link state down*
 cumulus@sw1:~$ *nv config apply*
 ----
-. すべてのケーブルをSN2100 sw1スイッチから取り外し、SN2100 nsw2スイッチの同じポートに接続します。
-. sw1スイッチとnsw2スイッチの間で、ISLポートswp15とswp16を起動します。
+. SN2100 sw1 スイッチからすべてのケーブルを取り外し、それらを SN2100 nsw2 スイッチの同じポートに接続します。
+. sw1 スイッチと nsw2 スイッチ間の ISL ポート swp15 と swp16 を起動します。
 +
-次のコマンドは、スイッチsw1でISLポートswp15およびswp16を有効にします。
+次のコマンドは、スイッチ sw1 上の ISL ポート swp15 と swp16 を有効にします。
 
 +
 [listing, subs="+quotes"]
@@ -449,7 +449,7 @@ cumulus@sw1:~$ *nv set interface swp15-16 link state down*
 cumulus@sw1:~$ *nv config apply*
 ----
 +
-次の例は、スイッチsw1のISLポートがupになっていることを示しています。
+次の例は、スイッチ sw1 で ISL ポートが起動していることを示しています。
 
 +
 [listing, subs="+quotes"]
@@ -464,7 +464,7 @@ UP     swp15        100G  9216   BondMember  nsw2 (swp15)   Master: cluster_isl(
 UP     swp16        100G  9216   BondMember  nsw2 (swp16)   Master: cluster_isl(UP)
 ----
 +
-次の例は、スイッチnsw2のISLポートが稼働していることを示しています。
+次の例は、スイッチ nsw2 で ISL ポートが起動していることを示しています。
 
 +
 [listing, subs="+quotes"]
@@ -478,9 +478,9 @@ State  Name         Spd   MTU    Mode        LLDP           Summary
 UP     swp15        100G  9216   BondMember  sw1 (swp15)    Master: cluster_isl(UP)
 UP     swp16        100G  9216   BondMember  sw1 (swp16)    Master: cluster_isl(UP)
 ----
-. ポートを確認します `e3b` すべてのノードで動作：
+. ポートを確認する `e3b`すべてのノードで起動します:
 +
-「 network port show -ipspace cluster 」のように表示されます
+`network port show -ipspace Cluster`
 
 +
 次のような出力が表示されます。
@@ -507,7 +507,7 @@ Port      IPspace      Broadcast Domain Link MTU   Admin/Oper  Status    Status
 e3a       Cluster      Cluster          up   9000  auto/100000  healthy  false
 e3b       Cluster      Cluster          up   9000  auto/100000  healthy  false
 ----
-. これで、各ノードのクラスタポートは、ノードから見て次のようにクラスタスイッチに接続されました。
+. 各ノード上のクラスター ポートは、ノードの観点から見ると、次のようにクラスター スイッチに接続されます。
 +
 [listing, subs="+quotes"]
 ----
@@ -522,7 +522,7 @@ node2      /lldp
             e3a    sw1  (b8:ce:f6:19:1a:7e)   swp4          -
             e3b    nsw2 (b8:ce:f6:19:1b:b6)   swp4          -
 ----
-. すべてのノードクラスタポートが動作していることを確認します。
+. すべてのノード クラスタ ポートが稼働していることを確認します。
 +
 `nv show interface`
 
@@ -540,12 +540,12 @@ UP     swp4         100G  9216   Trunk/L2                      Master: bridge(UP
 UP     swp15        100G  9216   BondMember  sw1 (swp15)       Master: cluster_isl(UP)
 UP     swp16        100G  9216   BondMember  sw1 (swp16)       Master: cluster_isl(UP)
 ----
-. 両方のノードのそれぞれで、各スイッチに 1 つの接続があることを確認します。
+. 両方のノードが各スイッチにそれぞれ 1 つの接続を持っていることを確認します。
 +
 `nv show interface lldp`
 
 +
-次の例は、両方のスイッチの該当する結果を示しています。
+次の例は、両方のスイッチの適切な結果を示しています。
 
 +
 [listing, subs="+quotes"]
@@ -569,23 +569,23 @@ swp4       100G   Trunk/L2    node2                e3b
 swp15      100G   BondMember  sw1                swp15
 swp16      100G   BondMember  sw1                swp16
 ----
-. クラスタ LIF で自動リバートを有効にします。
+. クラスタ LIF で自動復帰を有効にします。
 +
 `cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert true`
 
-. スイッチnsw2で、ノードのネットワークポートに接続されているポートを起動します。
+. スイッチ nsw2 で、ノードのネットワーク ポートに接続されているポートを起動します。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@nsw2:~$ *nv set interface swp1-14 link state up*
 cumulus@nsw2:~$ *nv config apply*
 ----
-. クラスタ内のノードに関する情報を表示します。
+. クラスター内のノードに関する情報を表示します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-次の例では、このクラスタのノード node1 と node2 のノードの健常性が true であることを示します。
+この例では、このクラスター内の node1 と node2 のノード ヘルスが true であることを示しています。
 
 +
 [listing, subs="+quotes"]
@@ -597,9 +597,9 @@ Node          Health  Eligibility
 node1         true    true
 node2         true    true
 ----
-. すべての物理クラスタポートが動作していることを確認します。
+. すべての物理クラスター ポートが稼働していることを確認します。
 +
-「 network port show -ipspace cluster 」のように表示されます
+`network port show ipspace Cluster`
 
 +
 [listing, subs="+quotes"]
@@ -627,13 +627,13 @@ e3b       Cluster      Cluster          up    9000  auto/10000  healthy  false
 ====
 
 
-=== 手順3：構成を確認します
+=== ステップ3: 構成を確認する
 
 [role="tabbed-block"]
 ====
-.Cumulus Linux 4.4.3.
+.キュムラス・リナックス 4.4.3
 --
-. クラスタネットワークが正常であることを確認します。
+. クラスター ネットワークが正常であることを確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -649,9 +649,9 @@ swp16      100G   BondMember  nsw2            swp16
 
 
 --
-.Cumulus Linux 5.x
+.キュムラス Linux 5.x
 --
-. クラスタネットワークが正常であることを確認します。
+. クラスター ネットワークが正常であることを確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -668,15 +668,15 @@ swp16      100G   BondMember  nsw2            swp16
 
 --
 ====
-. [[step2]]権限レベルをadminに戻します。
+. [[step2]] 権限レベルを管理者に戻します。
 +
-「特権管理者」
+`set -privilege admin`
 
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
+. 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。

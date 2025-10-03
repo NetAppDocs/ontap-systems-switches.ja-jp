@@ -2,29 +2,29 @@
 permalink: switch-cisco-3232c/migrate-from-switchless-workflow.html 
 sidebar: sidebar 
 keywords: 3232c cabling setup, 3232c switches configuration, nx-os 
-summary: Cisco 3232Cスイッチを設定する前に、次の情報を確認してください。 
+summary: Cisco 3232C スイッチを構成する前に、次の情報を確認してください。 
 ---
-= 2ノードスイッチレスクラスタからの移行ワークフロー
+= 2ノードのスイッチレスクラスタワークフローからの移行
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-2ノードスイッチレスクラスタからCisco Nexus 3232Cクラスタスイッチを使用したクラスタに移行するワークフロー手順は、次のとおりです。
+2 ノードのスイッチレス クラスタからCisco Nexus 3232C クラスタ スイッチを備えたクラスタに移行するには、次のワークフロー手順に従います。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:migrate-from-switchless-migrate-requirements.html["移行の要件"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:migrate-from-switchless-migrate-requirements.html["移行要件"]
 [role="quick-margin-para"]
-移行プロセスのスイッチ情報の例を確認します。
+移行プロセスの例のスイッチ情報を確認します。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:migrate-from-switchless-prepare-to-migrate.html["移行を準備"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:migrate-from-switchless-prepare-to-migrate.html["移行の準備"]
 [role="quick-margin-para"]
-2ノードスイッチクラスタへの移行に備えて、2ノードスイッチレスクラスタを準備します。
+2 ノード スイッチレス クラスターを 2 ノード スイッチ クラスターに移行する準備をします。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:migrate-from-switchless-configure-ports.html["ポートの設定"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:migrate-from-switchless-configure-ports.html["ポートを設定する"]
 [role="quick-margin-para"]
-2ノードスイッチクラスタへの移行用に2ノードスイッチレスクラスタを構成します。
+2 ノード スイッチレス クラスターを 2 ノード スイッチ クラスターに移行できるように構成します。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:migrate-from-switchless-complete-migration.html["移行の完了"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:migrate-from-switchless-complete-migration.html["移行を完了する"]
 [role="quick-margin-para"]
-2ノードスイッチクラスタへの移行が完了しました。
+2 ノード スイッチ クラスターへの移行を完了します。

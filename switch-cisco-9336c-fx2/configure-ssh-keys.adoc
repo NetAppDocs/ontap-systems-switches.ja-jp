@@ -2,16 +2,16 @@
 permalink: switch-cisco-9336c-fx2/configure-ssh-keys.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
-summary: クラスタスイッチヘルスモニタ（ CSHM ）およびログ収集機能を使用する場合、 SSH は要件です。Cisco 9336c-FX2クラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。 
+summary: 'クラスタ スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用する場合は、SSH が必須です。  Cisco 9336c-fx2 クラスタ スイッチで SSH を有効にするには、まず SSH キーを生成し、次に SSH を有効にします。' 
 ---
-= SSH設定の確認
+= SSH構成を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-イーサネットスイッチヘルスモニタ（CSHM）機能とログ収集機能を使用している場合は、クラスタスイッチでSSHキーとSSHキーが有効になっていることを確認します。
+イーサネット スイッチ ヘルス モニター (CSHM) とログ収集機能を使用している場合は、クラスター スイッチで SSH と SSH キーが有効になっていることを確認します。
 
 .手順
 . SSH が有効になっていることを確認します。
@@ -21,12 +21,12 @@ summary: クラスタスイッチヘルスモニタ（ CSHM ）およびログ�
 (switch) *show ssh server*
 ssh version 2 is enabled
 ----
-. SSHキーが有効になっていることを確認します。
+. SSH キーが有効になっていることを確認します。
 +
 `show ssh key`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -61,7 +61,7 @@ sshServer              1          enabled
 
 
 
-IMPORTANT: FIPSをイネーブルにする場合は、コマンドを使用してスイッチのビット数を256に変更する必要があります `ssh key ecdsa 256 force`。詳細については、を参照してください https://docs.netapp.com/us-en/ontap/networking/configure_network_security_using_federal_information_processing_standards_@fips@.html#enable-fips["FIPS を使用してネットワークセキュリティを設定する"^]。
+IMPORTANT: FIPSを有効にする場合は、次のコマンドを使用してスイッチのビットカウントを256に変更する必要があります。 `ssh key ecdsa 256 force` 。見る https://docs.netapp.com/us-en/ontap/networking/configure_network_security_using_federal_information_processing_standards_@fips@.html#enable-fips["FIPSを使用してネットワークセキュリティを構成する"^]詳細についてはこちらをご覧ください。
 
 .次の手順
 SSH設定を確認したら、link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"] 。

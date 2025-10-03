@@ -2,27 +2,27 @@
 permalink: switch-cisco-3232c/cn5596-configure-ports.html 
 sidebar: sidebar 
 keywords: cisco 3232c, cluster switches 
-summary: AFF または FAS クラスタでは、 Cisco Nexus 3232C スイッチをクラスタスイッチとして使用できます。 
+summary: Cisco Nexus 3232C スイッチを、 AFFまたはFASクラスタ内のクラスタ スイッチとして使用できます。 
 ---
-= Nexus 5596スイッチからNexus 3232Cスイッチへ移行するためのポートの設定
+= Nexus 5596スイッチからNexus 3232Cスイッチへの移行用にポートを構成する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Nexus 5596スイッチから新しいNexus 3232Cスイッチに移行するようにポートを設定する手順は、次のとおりです。
+Nexus 5596 スイッチから新しい Nexus 3232C スイッチへの移行用にポートを設定するには、次の手順に従います。
 
 .手順
-. スイッチ CL2 に物理的に接続されているクラスタインターコネクトポートをシャットダウンします。
+. スイッチ CL2 に物理的に接続されているクラスタ相互接続ポートをシャットダウンします。
 +
-'network port modify -node node_name --port_port-name_up-admin false
+`network port modify -node _node-name_ -port _port-name_ -up-admin false`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次のコマンドは、 n1 と n2 で指定されたポートをシャットダウンしますが、すべてのノードでポートをシャットダウンする必要があります。
+次のコマンドは、n1 および n2 上の指定されたポートをシャットダウンしますが、すべてのノード上のポートをシャットダウンする必要があります。
 
 [listing, subs="+quotes"]
 ----
@@ -32,22 +32,22 @@ cluster::*> *network port modify -node n2 -port e0b -up-admin false*
 cluster::*> *network port modify -node n2 -port e0c -up-admin false*
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：* showコマンドを実行して詳細を表示する前に、数秒待ってください。
+*注意:* 詳細を表示するには、show コマンドを実行する前に数秒待ってください。
 
 [listing, subs="+quotes"]
 ----
@@ -64,9 +64,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2         n1_clus2         none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -115,15 +115,15 @@ RPC status:
 ----
 --
 ====
-. [[step3]] Ciscoコマンドを使用して、アクティブなNexus 5596スイッチであるCL1のISL 41~48をシャットダウンし `shutdown`ます。
+. [[ステップ3]] アクティブNexus 5596スイッチCL1のISL41～48をCiscoを使用してシャットダウンします。 `shutdown`指示。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 Nexus 5596 スイッチ CL1 で ISL 41~48 をシャットダウンしている状態を示しています。
+次の例は、Nexus 5596 スイッチ CL1 で ISL 41 ～ 48 がシャットダウンされていることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -135,15 +135,15 @@ Cisco コマンドの詳細については、『』の該当するガイドを�
 (CL1)#
 ----
 ====
-. 適切な Cisco コマンドを使用して、 CL1 と C2 の間に一時的な ISL を構築します。
+. 適切なCiscoコマンドを使用して、CL1 と C2 の間に一時的な ISL を構築します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 CL1 と C2 の間に一時的な ISL をセットアップしています。
+次の例は、CL1 と C2 の間に一時的な ISL が設定されていることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -161,23 +161,23 @@ C2(config-if-range)# *exit*
 C2(config-if)# *exit*
 ----
 ====
-. すべてのノードで、 Nexus 5596 スイッチ CL2 に接続されているすべてのケーブルを外します。
+. すべてのノードで、Nexus 5596 スイッチ CL2 に接続されているすべてのケーブルを取り外します。
 +
-サポートされているケーブル接続を使用して、すべてのノードの切断されたポートを Nexus 3232C スイッチ C2 に再接続します。
+サポートされているケーブルを使用して、すべてのノード上の切断されたポートを Nexus 3232C スイッチ C2 に再接続します。
 
 . Nexus 5596 スイッチ CL2 からすべてのケーブルを取り外します。
 +
-新しい Cisco 3232C スイッチのポート 1/24 に接続している適切な Cisco QSFP / SFP+ ブレークアウトケーブル C2 を、既存の Nexus 5596 、 CL1 のポート 45 ～ 48 に接続します。
+適切なCisco QSFP から SFP+ へのブレークアウト ケーブルを接続して、新しいCisco 3232C スイッチ (C2) のポート 1/24 を既存の Nexus 5596 (CL1) のポート 45 ～ 48 に接続します。
 
-. アクティブな Nexus 5596 スイッチ CL1 で ISL ポート 45~48 を起動します。
+. アクティブ Nexus 5596 スイッチ CL1 の ISL ポート 45 ～ 48 を起動します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 ISL ポート 45~48 を起動します。
+次の例では、ISL ポート 45 ～ 48 が起動されています。
 
 [listing, subs="+quotes"]
 ----
@@ -189,15 +189,15 @@ Cisco コマンドの詳細については、『』の該当するガイドを�
 (CL1)#
 ----
 ====
-. Nexus 5596 スイッチ CL1 の ISL が「 up 」であることを確認します。
+. ISLが `up`Nexus 5596 スイッチ CL1 上。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、ポート Eth1/45 ～ Eth1/48 を示しています（ P ）。つまり、 ISL ポートはポートチャネル内で「 up 」になっています。
+次の例では、ポートeth1/45からeth1/48が(P)を示しており、これはISLポートが `up`ポートチャネル内。
 
 [listing, subs="+quotes"]
 ----
@@ -217,16 +217,16 @@ Group Port-        Type   Protocol  Member Ports
                                     Eth1/47(P)   Eth1/48(P)
 ----
 ====
-. インターフェイス Eth1/45-48 の実行コンフィギュレーションにすでに「 channel-group 1 mode active 」が含まれていることを確認します。
-. すべてのノードで、 3232C スイッチ C2 に接続されているすべてのクラスタインターコネクトポートを起動します。
+. インターフェイス eth1/45-48 の実行構成ですでに「channel-group 1 mode active」が設定されていることを確認します。
+. すべてのノードで、3232C スイッチ C2 に接続されているすべてのクラスタ相互接続ポートを起動します。
 +
-'network port modify -node node_name --port_port-name_up-admin true
+`network port modify -node _node-name_ -port _port-name_ -up-admin true`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、ノード n1 および n2 で指定されたポートが起動されていることを示しています。
+次の例は、指定されたポートがノード n1 および n2 で起動されることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -236,15 +236,15 @@ cluster::*> *network port modify -node n2 -port e0b -up-admin true*
 cluster::*> *network port modify -node n2 -port e0c -up-admin true*
 ----
 ====
-. すべてのノードで、 C2 に接続されている移行済みのクラスタインターコネクト LIF をすべてリバートします。
+. すべてのノードで、C2 に接続されている移行されたすべてのクラスタ相互接続 LIF を元に戻します。
 +
-network interface revert -vserver Cluster -lif LIF_name です
+`network interface revert -vserver Cluster -lif _lif-name_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、移行されたクラスタ LIF をホームポートにリバートする方法を示しています。
+次の例は、移行されたクラスタ LIF がホーム ポートに戻されることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -254,15 +254,15 @@ cluster::*> *network interface revert -vserver Cluster -lif n2_clus2*
 cluster::*> *network interface revert -vserver Cluster -lif n2_clus3*
 ----
 ====
-. すべてのクラスタインターコネクトポートがホームにリバートされたことを確認します。
+. すべてのクラスタ相互接続ポートがホームに戻っていることを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 clus2 の LIF がそれぞれのホームポートにリバートされたことを示しています。「 Is Home 」列の「 Current Port 」列のポートのステータスが「 true 」の場合、 LIF が正常にリバートされたことを示しています。Is Home の値が false の場合、 LIF はリバートされていません。
+次の例では、clus2のLIFがホームポートに戻ったことを示し、現在のポート列のポートのステータスが `true`の中で `Is Home`カラム。もし `Is Home`価値は `false`LIF は元に戻されていません。
 
 [listing]
 ----
@@ -283,15 +283,15 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. クラスタポートが接続されたことを確認します。
+. クラスター化されたポートが接続されていることを確認します。
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は ' 前の network port modify コマンドの結果を示しており ' すべてのクラスタ・インターコネクトが up であることを確認しています
+次の例は、前の例の結果を示しています。 `network port modify`コマンドを実行して、すべてのクラスタインターコネクトが `up`:
 
 [listing, subs="+quotes"]
 ----
@@ -319,22 +319,22 @@ e0d       Cluster      Cluster          up   9000  auto/10000 -        -
 8 entries were displayed.
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -351,9 +351,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2         n1_clus2         none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -402,16 +402,16 @@ RPC status:
 ----
 --
 ====
-. [[step15]]クラスタ内の各ノードで、交換する最初のNexus 5596スイッチCL1に関連付けられているインターフェイスを移行します。
+. [[step15]] クラスタ内の各ノードで、交換する最初の Nexus 5596 スイッチ CL1 に関連付けられているインターフェイスを移行します。
 +
 `network interface migrate -vserver _vserver-name_ -lif _lif-name_ -source-node _source-node-name_
 -destination-node _destination-node-name_ -destination-port _destination-port-name_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、ノード n1 および n2 で移行するポートまたは LIF を示しています。
+次の例は、ノード n1 および n2 で移行されるポートまたは LIF を示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -425,15 +425,15 @@ cluster::*> *network interface migrate -vserver Cluster -lif n2_clus4 -source-no
 destination-node n2 -destination-port e0c*
 ----
 ====
-. クラスタのステータスを確認します。
+. クラスターのステータスを確認します。
 +
-「 network interface show 」を参照してください
+`network interface show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、必要なクラスタ LIF が、クラスタスイッチ c2 でホストされている適切なクラスタポートに移行されたことを示しています。
+次の例は、必要なクラスタ LIF がクラスタ スイッチ C2 でホストされている適切なクラスタ ポートに移行されたことを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -456,15 +456,15 @@ Cluster
 ----- ------- ----
 ----
 ====
-. すべてのノードで、 CL1 に接続されているノードポートをシャットダウンします。
+. すべてのノードで、CL1 に接続されているノード ポートをシャットダウンします。
 +
-'network port modify -node node_name --port_port-name_up-admin false
+`network port modify -node _node-name_ -port _port-name_ -up-admin false`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、ノード n1 および n2 で指定されたポートをシャットダウンしている状態を示しています。
+次の例では、ノード n1 および n2 で指定されたポートがシャットダウンされています。
 
 [listing, subs="+quotes"]
 ----
@@ -474,15 +474,15 @@ cluster::*> *network port modify -node n2 -port e0a -up-admin false*
 cluster::*> *network port modify -node n2 -port e0d -up-admin false*
 ----
 ====
-. アクティブな 3232C スイッチ C2 の ISL 24 、 31 、および 32 をシャットダウンします。
+. アクティブ 3232C スイッチ C2 の ISL 24、31、および 32 をシャットダウンします。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 ISL をシャットダウンする場合を示しています。
+次の例は、ISL がシャットダウンされていることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -497,23 +497,23 @@ C2(config-if)# *exit*
 C2#
 ----
 ====
-. すべてのノードで、 Nexus 5596 スイッチ CL1 に接続されているすべてのケーブルを取り外します。
+. すべてのノードで、Nexus 5596 スイッチ CL1 に接続されているすべてのケーブルを取り外します。
 +
-サポートされているケーブル接続を使用して、すべてのノードの切断されたポートを Nexus 3232C スイッチ C1 に再接続します。
+サポートされているケーブルを使用して、すべてのノード上の切断されたポートを Nexus 3232C スイッチ C1 に再接続します。
 
-. Nexus 3232C C2 ポート e1/24 から QSFP ブレークアウトケーブルを取り外します。
+. Nexus 3232C C2 ポート e1/24 から QSFP ブレークアウト ケーブルを取り外します。
 +
-サポートされている Cisco QSFP 光ファイバケーブルまたは直接接続ケーブルを使用して、 C1 のポート e1/31 および e1/32 を c2 のポート e1/31 および e1/32 に接続します。
+サポートされているCisco QSFP 光ファイバ ケーブルまたは直接接続ケーブルを使用して、C1 のポート e1/31 および e1/32 を C2 のポート e1/31 および e1/32 に接続します。
 
-. ポート 24 の設定を復元し、 C2 の一時ポートチャネル 2 を削除します。
+. ポート 24 の設定を復元し、C2 の一時ポート チャネル 2 を削除します。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次に、適切な Cisco コマンドを使用して、ポート M24 の設定を復元する例を示します。
+次の例は、適切なCiscoコマンドを使用してポート m24 の設定が復元される様子を示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -532,15 +532,15 @@ C2# copy running-config startup-config
 Copy Complete.
 ----
 ====
-. アクティブな 3232C スイッチである c2 の ISL ポート 31 および 32 を起動するには、次の Cisco コマンドを入力します。 no shutdown
+. 次のCiscoコマンドを入力して、アクティブ 3232C スイッチ C2 の ISL ポート 31 と 32 を起動します。 `no shutdown`
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 3232C スイッチ C2 で起動された Cisco コマンドの switchname configure を示しています。
+次の例はCiscoコマンドを示しています `switchname configure`3232CスイッチC2で起動:
 
 [listing, subs="+quotes"]
 ----
@@ -549,15 +549,15 @@ C2(config)# interface ethernet 1/31-32
 C2(config-if-range)# no shutdown
 ----
 ====
-. 3232C スイッチ C2 の ISL 接続が「 up 」になっていることを確認します。
+. ISL接続が `up`3232C スイッチ C2 で。
 +
-Cisco コマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-ポート Eth1/31 および Eth1/32 は（ P ）を示している必要があります。これは、両方の ISL ポートがポートチャネル内で稼働していることを意味します
+ポートeth1/31とeth1/32は（P）を示し、ポートチャネルの両方のISLポートがアップしていることを意味する。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -577,15 +577,15 @@ Group Port-        Type   Protocol  Member Ports
 1     Po1(SU)      Eth    LACP      Eth1/31(P)   Eth1/32(P)
 ----
 ====
-. すべてのノードで、新しい3232CスイッチC1に接続されているすべてのクラスタインターコネクトポートを起動します。
+. すべてのノードで、新しい 3232C スイッチ C1 に接続されているすべてのクラスタ相互接続ポートを起動します。
 +
-「 network port modify 」を参照してください
+`network port modify`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 3232C スイッチ C1 の n1 および n2 ですべてのクラスタインターコネクトポートを起動していることを示しています。
+次の例は、3232C スイッチ C1 上の n1 および n2 のすべてのクラスタ相互接続ポートが起動されていることを示しています。
 
 [listing]
 ----
@@ -596,15 +596,15 @@ cluster::*> network port modify -node n2 -port e0a -up-admin true
 cluster::*> network port modify -node n2 -port e0d -up-admin true
 ----
 ====
-. クラスタノードポートのステータスを確認します。
+. クラスター ノード ポートのステータスを確認します。
 +
-「 network port show 」のように表示されます
+`network port show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、新しい 3232C スイッチ C1 のすべてのノードのすべてのクラスタインターコネクトポートが稼働していることを確認します。
+次の例では、新しい 3232C スイッチ C1 上のすべてのノード上のすべてのクラスタ相互接続ポートが稼働していることを確認します。
 
 [listing]
 ----
@@ -632,15 +632,15 @@ e0d       Cluster      Cluster          up   9000  auto/10000 -        -
 8 entries were displayed.
 ----
 ====
-. すべてのノードで、特定のクラスタ LIF をそれぞれのホームポートにリバートします。
+. すべてのノードで、特定のクラスタ LIF をホーム ポートに戻します。
 +
-network interface revert -server Cluster -lif LIF_name です
+`network interface revert -server Cluster -lif _lif-name_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、ノード n1 および n2 のホームポートにリバートする特定のクラスタ LIF を示しています。
+次の例は、特定のクラスタ LIF がノード n1 および n2 上のホーム ポートに戻されることを示しています。
 
 [listing]
 ----
@@ -650,15 +650,15 @@ cluster::*> network interface revert -vserver Cluster -lif n2_clus1
 cluster::*> network interface revert -vserver Cluster -lif n2_clus4
 ----
 ====
-. インターフェイスがホームになっていることを確認します。
+. インターフェイスがホームであることを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は 'n1 と n2 のクラスタ・インターコネクト・インターフェイスのステータスを 'Up' および Is Home' に示しています
+次の例は、クラスタ相互接続インターフェースのステータスを示しています。 `up`そして `Is Home`n1とn2の場合:
 
 [listing]
 ----
@@ -679,22 +679,22 @@ Cluster
 8 entries were displayed.
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -711,9 +711,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2         n1_clus2         none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -762,22 +762,22 @@ RPC status:
 ----
 --
 ====
-. [[step29]] Nexus 3232Cクラスタスイッチにノードを追加して、クラスタを拡張します。
+. [[step29]] Nexus 3232C クラスタ スイッチにノードを追加してクラスタを拡張します。
 +
-次の例では、 Nexus 3232C クラスタスイッチの両方で、ノード n3 と n4 のそれぞれのポート e1/7 と e1/8 に 40 GbE クラスタポートが接続され、両方のノードがクラスタに参加しています。使用する 40GbE クラスタインターコネクトポートは、 e4A および e4e です。
+次の例では、ノード n3 と n4 に、両方の Nexus 3232C クラスタ スイッチ上のポート e1/7 と e1/8 にそれぞれ接続された 40 GbE クラスタ ポートがあり、両方のノードがクラスタに参加していることを示しています。使用される 40 GbE クラスタ相互接続ポートは e4a と e4e です。
 
 +
-構成に含まれるデバイスに関する情報を表示します。
+構成内のデバイスに関する情報を表示します。
 
 +
-** 「 network device-discovery show 」のように表示されます
-** 「 network port show -role cluster 」のように表示されます
-** 「 network interface show -role cluster 」のように表示されます
-** 「 system cluster-switch show
+** `network device-discovery show`
+** `network port show -role cluster`
+** `network interface show -role cluster`
+** `system cluster-switch show`
 
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -804,7 +804,7 @@ n4         /cdp
             e4e    C2                 Ethernet1/8      N3K-C3232C
 12 entries were displayed.
 ----
-[+]
++
 
 [listing]
 ----
@@ -847,7 +847,7 @@ e4a       Cluster      Cluster          up   9000 auto/40000  -        -
 e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 12 entries were displayed.
 ----
-[+]
++
 
 [listing]
 ----
@@ -871,7 +871,7 @@ Cluster
             n4_clus2   up/up      10.10.0.12/24      n4            e4e     true
 12 entries were displayed.
 ----
-[+]
++
 
 [listing]
 ----
@@ -913,12 +913,12 @@ CL2                           cluster-network    10.10.1.102     NX5596
 4 entries were displayed.
 ----
 ====
-. 交換したNexus 5596を使用して取り外します `system cluster-switch delete` コマンドが自動的に削除されない場合は、次の手順を実行します。
+. 交換したNexus 5596を取り外します。 `system cluster-switch delete`自動的に削除されない場合は、コマンドを実行します。
 +
 `system cluster-switch delete -device switch-name`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -930,4 +930,4 @@ cluster::> system cluster-switch delete -device CL2
 
 
 .次の手順
-link:cn5596-complete-migration.html["移行の完了"]です。
+link:cn5596-complete-migration.html["移行を完了する"] 。

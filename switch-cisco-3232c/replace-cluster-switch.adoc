@@ -2,45 +2,45 @@
 permalink: switch-cisco-3232c/replace-cluster-switch.html 
 sidebar: sidebar 
 keywords: replace, cisco nexus 3232c, cluster switch 
-summary: クラスタ内の障害のある Cisco Nexus 3232C スイッチは、特定の順序でタスクを実行することで、無停止で交換できます。 
+summary: 特定の一連のタスクを実行することで、クラスタ内の障害のあるCisco Nexus 3232C スイッチを中断せずに交換できます。 
 ---
-= Cisco Nexus 3232C クラスタスイッチを交換します
+= Cisco Nexus 3232Cクラスタスイッチの交換
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-クラスタ内の障害のあるCisco Nexus 3232Cスイッチを交換する手順は、次のとおりです。これは、無停止の手順 です。
+クラスタ内の故障したCisco Nexus 3232C スイッチを交換するには、次の手順に従います。これは中断を伴わない手順です。
 
 
 
-== 要件を確認
+== 要件の確認
 
-.必要なもの
-既存のクラスタとネットワーク構成に次の特徴があることを確認してください。
+.要件
+既存のクラスターとネットワーク構成に次の特性があることを確認します。
 
-* Nexus 3232Cクラスタインフラは、両方のスイッチで冗長性を確保し、完全に機能しています。
+* Nexus 3232C クラスタ インフラストラクチャは冗長化されており、両方のスイッチで完全に機能します。
 +
-Cisco Ethernet Switches のページに、スイッチ上の最新の RCF および NX-OS バージョンが含まれています。
+Ciscoイーサネット スイッチ ページには、スイッチの最新の RCF および NX-OS バージョンが記載されています。
 
-* すべてのクラスタポートが「 up 」状態である必要があります。
-* 両方のスイッチで管理接続が確立されている必要があります。
-* クラスタのすべての論理インターフェイス（LIF）の状態が「up」で、移行されません。
+* すべてのクラスター ポートは *up* 状態である必要があります。
+* 両方のスイッチに管理接続が存在する必要があります。
+* すべてのクラスタ論理インターフェイス (LIF) は *up* 状態であり、移行されません。
 
 
-交換用Cisco Nexus 3232Cスイッチには、次のような特徴があります。
+交換用Cisco Nexus 3232C スイッチには次の特性があります。
 
 * 管理ネットワーク接続は機能しています。
-* 交換用スイッチへのコンソールアクセスが確立されています。
-* 適切なRCFおよびNX-OSオペレーティングシステムイメージがスイッチにロードされます。
+* 交換用スイッチへのコンソール アクセスが確立されています。
+* 適切な RCF および NX-OS オペレーティング システム イメージがスイッチにロードされます。
 * スイッチの初期カスタマイズが完了しました。
 
 
-.を参照してください。
+.詳細情報
 以下を参照してください。
 
-* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]
 * link:http://hwu.netapp.com["Hardware Universe"^]
 
 
@@ -48,69 +48,69 @@ Cisco Ethernet Switches のページに、スイッチ上の最新の RCF およ
 
 == コンソールログを有効にする
 
-NetAppでは、使用しているデバイスでコンソールロギングをイネーブルにし、スイッチを交換するときに次のアクションを実行することを強く推奨します。
+NetApp、使用しているデバイスでコンソール ログを有効にし、スイッチを交換するときに次のアクションを実行することを強くお勧めします。
 
-* メンテナンス中はAutoSupportを有効のままにします。
-* メンテナンスの前後にメンテナンスAutoSupportをトリガーして、メンテナンス期間中のケース作成を無効にします。このナレッジベースの記事を参照してくださいlink:https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92:スケジュールされたメンテナンス時間中にケースが自動作成されないようにする方法"^]詳細については、こちらをご覧ください。
-* すべての CLI セッションのセッション ログを有効にします。セッションログを有効にする方法については、このナレッジベースの記事の「セッション出力のログ記録」セクションを参照してください。link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["ONTAPシステムへの接続を最適化するためのPuTTYの設定方法"^] 。
-
-
+* メンテナンス中はAutoSupport を有効のままにしておきます。
+* メンテナンスの前後にメンテナンスAutoSupportをトリガーして、メンテナンス期間中のケース作成を無効にします。このナレッジベースの記事を参照してくださいlink:https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92: スケジュールされたメンテナンス期間中の自動ケース作成を抑制する方法"^]詳細については、こちらをご覧ください。
+* すべての CLI セッションのセッション ログを有効にします。セッションログを有効にする方法については、このナレッジベースの記事の「セッション出力のログ記録」セクションを参照してください。link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["ONTAPシステムへの最適な接続を実現するための PuTTY の設定方法"^] 。
 
 
-== スイッチを交換します
 
-.このタスクについて
-この交換用手順 では、次のシナリオについて説明します。
 
-* クラスタには、最初に 4 つのノードが 2 つの Nexus 3232C クラスタスイッチ CL1 と CL2 に接続されています。
-* クラスタスイッチ CL2 を C2 に交換するように計画します（手順 1~21 ）。
+== スイッチを交換する
+
+.タスク概要
+この交換手順では、次のシナリオについて説明します。
+
+* クラスタには最初、2 つの Nexus 3232C クラスタ スイッチ (CL1 と CL2) に接続された 4 つのノードがあります。
+* クラスタ スイッチ CL2 を C2 に置き換える予定です (手順 1 ～ 21)。
 +
-** 各ノードで、クラスタスイッチ CL2 に接続されたクラスタ LIF を、クラスタスイッチ CL1 に接続されたクラスタポートに移行します。
-** クラスタスイッチ CL2 のすべてのポートからケーブルを外し、交換用クラスタスイッチ C2 の同じポートにケーブルを再接続します。
-** 移行したクラスタ LIF を各ノードにリバートします。
+** 各ノードで、クラスタ スイッチ CL2 に接続されているクラスタ LIF を、クラスタ スイッチ CL1 に接続されているクラスタ ポートに移行します。
+** クラスター スイッチ CL2 のすべてのポートからケーブルを外し、交換用クラスター スイッチ C2 の同じポートにケーブルを再接続します。
+** 各ノードで移行されたクラスタ LIF を元に戻します。
 
 
 
 
 .例について
-この交換用手順 は、2つ目のNexus 3232CクラスタスイッチCL2を新しい3232Cスイッチc2に置き換えます。
+この交換手順では、2 番目の Nexus 3232C クラスタ スイッチ CL2 を新しい 3232C スイッチ C2 に交換します。
 
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 4 つのノードは、 n1 、 n2 、 n3 、 n4 です。
-* n1_clus1 は、ノード n1 のクラスタスイッチ C1 に接続された最初のクラスタ論理インターフェイス（ LIF ）です。
-* n1_clus2 は、ノード n1 について、クラスタスイッチ CL2 または C2 に接続された最初のクラスタ LIF です。
-* n1_clus3 は、ノード n1 のクラスタスイッチ C2 に接続された 2 つ目の LIF です。
-* n1_clus4 は、ノード n1 について、クラスタスイッチ CL1 に接続されている 2 つ目の LIF です。
-
-
-10 GbEおよび40/100 GbEポートの数は、次のURLで入手可能なリファレンス構成ファイル（RCF）で定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® Cluster Network Switch Reference Configuration File Download （ Cisco ® クラスタネットワークスイッチリファレンス構成ファイルのダウンロード"^] 。
-
-この交換用手順 の例では4ノードを使用します。2 つのノードが 4 つの 10GB クラスタインターコネクトポートを使用します： e0a 、 e0b 、 e0c 、 e0d他の 2 つのノードは、それぞれ 4 GB のクラスタ・インターコネクト・ポートを 2 つ使用します。を参照してください link:https://hwu.netapp.com["Hardware Universe"^] 使用するプラットフォームに適したクラスタポートを確認します。
+* 4 つのノードは n1、n2、n3、n4 です。
+* n1_clus1 は、ノード n1 のクラスタ スイッチ C1 に接続された最初のクラスタ論理インターフェイス (LIF) です。
+* n1_clus2 は、ノード n1 のクラスタ スイッチ CL2 または C2 に接続された最初のクラスタ LIF です。
+* n1_clus3 は、ノード n1 のクラスタ スイッチ C2 に接続された 2 番目の LIF です。
+* n1_clus4 は、ノード n1 のクラスタ スイッチ CL1 に接続された 2 番目の LIF です。
 
 
+10 GbEおよび40/100 GbEポートの数は、次のURLで入手可能なリファレンス構成ファイル（RCF）で定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco® クラスタ ネットワーク スイッチ リファレンス コンフィギュレーション ファイルのダウンロード"^] 。
 
-=== 手順1：クラスタポートを表示してスイッチに移行する
+この置換手順の例では、4 つのノードを使用します。 2 つのノードは、4 つの 10 GB クラスター相互接続ポート (e0a、e0b、e0c、e0d) を使用します。他の 2 つのノードは、2 つの 40 GB クラスター相互接続ポート (e4a と e4e) を使用します。参照link:https://hwu.netapp.com["Hardware Universe"^]プラットフォームの正しいクラスター ポートを確認します。
 
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+
+
+=== ステップ1: クラスタポートを表示してスイッチに移行する
+
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
 +
-'system node AutoSupport invoke -node * -type all -message MAINT=xh`
+`system node autosupport invoke -node * -type all - message MAINT=xh`
 
 +
-_x_ は、メンテナンス時間の長さ（時間単位）です。
+_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
 
 +
 [NOTE]
 ====
-AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
 ====
-. 構成に含まれるデバイスに関する情報を表示します。
+. 構成内のデバイスに関する情報を表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -140,14 +140,14 @@ n4         /cdp
             e4e    CL2                 Ethernet1/8      N3K-C3232C
 ----
 ====
-. 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
+. 各クラスタ インターフェイスの管理ステータスまたは動作ステータスを決定します。
 +
-.. ネットワークポートの属性を表示します。
+.. ネットワーク ポートの属性を表示します。
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -191,12 +191,12 @@ e4a       Cluster      Cluster          up   9000 auto/40000  -
 e4e       Cluster      Cluster          up   9000 auto/40000  -
 ----
 ====
-.. 論理インターフェイス（ LIF ）に関する情報を表示します。
+.. 論理インターフェース (LIF) に関する情報を表示します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -220,15 +220,15 @@ Cluster
             n4_clus2   up/up      10.10.0.12/24      n4            e0e     true
 ----
 ====
-.. 検出されたクラスタスイッチを表示します。
+.. 検出されたクラスター スイッチを表示します。
 +
-「 system cluster-switch show
+`system cluster-switch show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の出力例は、クラスタスイッチを表示します。
+次の出力例では、クラスター スイッチが表示されます。
 
 [listing, subs="+quotes"]
 ----
@@ -254,28 +254,28 @@ CL2                         cluster-network    10.10.1.102      NX3232C
 
 . 新しい Nexus 3232C スイッチに適切な RCF とイメージがインストールされていることを確認し、必要なサイトのカスタマイズを行います。
 +
-.. ネットアップサポートサイトにアクセスします。
+.. NetAppサポート サイトにアクセスします。
 +
 http://mysupport.netapp.com/["mysupport.netapp.com"^]
 
-.. Cisco Ethernet Switches * ページにアクセスして、表に記載されている必要なソフトウェアバージョンを確認します。
+.. * Cisco Ethernet Switches* ページに移動し、表に記載されている必要なソフトウェア バージョンをメモします。
 +
-https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco イーサネットスイッチ"^]
+https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]
 
-.. 該当するバージョンの RCF をダウンロードします。
-.. [* 概要 * （ライセンス契約） ] ページで [* CONTINUE * （続行 * ） ] をクリックし、ライセンス契約に同意して、 [* Download * （ダウンロード * ） ] ページに移動します。
-.. Cisco ® Cluster and Management Network Switch Reference Configuration File Download * ページから、正しいバージョンのイメージソフトウェアをダウンロードします。
+.. 適切なバージョンの RCF をダウンロードします。
+.. *説明* ページで *続行* をクリックし、ライセンス契約に同意して、*ダウンロード* ページに移動します。
+.. * Cisco® クラスタおよび管理ネットワーク スイッチ リファレンス コンフィギュレーション ファイルのダウンロード* ページから正しいバージョンのイメージ ソフトウェアをダウンロードします。
 +
-link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco ® Cluster and Management Network Switch Reference Configuration File Download （ Cisco ® クラスタおよび管理ネットワークスイッチリファレンス構成ファイルのダウンロード"^]
+link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco® クラスタおよび管理ネットワーク スイッチ リファレンス コンフィギュレーション ファイルのダウンロード"^]
 
 
 
-. 交換用スイッチ C2 に接続されている物理ノードポートにクラスタ LIF を移行します。
+. クラスタ LIF を、交換スイッチ C2 に接続された物理ノード ポートに移行します。
 +
 `network interface migrate -vserver _vserver-name_ -lif _lif-name_ -source-node _node-name_ -destination-node _node-name_ -destination-port _port-name_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 次の例に示すように、すべてのクラスタ LIF を個別に移行する必要があります。
@@ -296,12 +296,12 @@ cluster::*> *network interface migrate -vserver Cluster -lif n4_clus2 -source-no
 node n4 -destination-port e4a*
 ----
 ====
-. クラスタポートのステータスとホームの指定を確認します。
+. クラスタ ポートのステータスとホーム指定を確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -326,15 +326,15 @@ Cluster
             n4_clus2   up/up      10.10.0.12/24      n4            e4a     false
 ----
 ====
-. 元のスイッチCL2に物理的に接続されているクラスタインターコネクトポートをシャットダウンします。
+. 元のスイッチ CL2 に物理的に接続されているクラスタ相互接続ポートをシャットダウンします。
 +
-'network port modify -node node_name --port_port-name_up-admin false
+`network port modify -node _node-name_ -port _port-name_ -up-admin false`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、すべてのノードでクラスタインターコネクトポートがシャットダウンされていることを示しています。
+次の例は、すべてのノードでクラスタ相互接続ポートがシャットダウンされていることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -346,22 +346,22 @@ cluster::*> *network port modify -node n3 -port e4e -up-admin false*
 cluster::*> *network port modify -node n4 -port e4e -up-admin false*
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -387,9 +387,9 @@ n3
 .
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -457,14 +457,14 @@ Larger than PMTU communication succeeds on 32 path(s) RPC status:
 ====
 
 
-=== 手順2：ISLをスイッチCL1とC2に移行する
+=== ステップ2: ISLをスイッチCL1とC2に移行する
 
-. クラスタスイッチ CL1 のポート 1/31 と 1/32 をシャットダウンします。
+. クラスタ スイッチ CL1 のポート 1/31 と 1/32 をシャットダウンします。
 +
-Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -477,14 +477,14 @@ Cisco コマンドの詳細については、に記載されているガイド�
 (CL1)#
 ----
 ====
-. クラスタスイッチ CL2 に接続されているすべてのケーブルを外し、すべてのノードの交換用スイッチ C2 に再接続します。
-. クラスタスイッチ CL2 のポート e1/31 と e1/32 からスイッチ間リンク（ ISL ）ケーブルを取り外し、交換用スイッチ c2 の同じポートに再接続します。
-. クラスタスイッチ CL1 の ISL ポート 1/31 と 1/32 を起動します。
+. クラスタ スイッチ CL2 に接続されているすべてのケーブルを取り外し、すべてのノードの交換用スイッチ C2 に再接続します。
+. クラスタ スイッチ CL2 のポート e1/31 および e1/32 からスイッチ間リンク (ISL) ケーブルを取り外し、交換用スイッチ C2 の同じポートに再接続します。
+. クラスタ スイッチ CL1 の ISL ポート 1/31 と 1/32 を起動します。
 +
-Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -497,15 +497,15 @@ Cisco コマンドの詳細については、に記載されているガイド�
 (CL1)#
 ----
 ====
-. ISL が CL1 で稼働していることを確認します。
+. CL1 で ISL が稼働していることを確認します。
 +
-Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-ポート Eth1/31 および Eth1/32 は「（ P ）」を示している必要があります。これは、 ISL ポートがポートチャネル内で稼働していることを意味します。
+ポートEth1/31とEth1/32は `(P)`これは、ポートチャネル内の ISL ポートがアップしていることを意味します。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -524,15 +524,15 @@ Group Port-        Type   Protocol  Member Ports
 1     Po1(SU)      Eth    LACP      Eth1/31(P)   Eth1/32(P)
 ----
 ====
-. クラスタスイッチ C2 で ISL が稼働していることを確認します。
+. クラスタ スイッチ C2 で ISL が起動していることを確認します。
 +
-Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-ポートeth1/31とeth1/32は（P）を示します。これは、両方のISLポートがポートチャネルで稼働していることを意味します。
+ポート Eth1/31 と Eth1/32 は (P) を示しているはずです。これは、ポート チャネルで両方の ISL ポートがアップしていることを意味します。
 
 [listing, subs="+quotes"]
 ----
@@ -549,12 +549,12 @@ Group Port-        Type   Protocol  Member Ports
 1     Po1(SU)      Eth    LACP      Eth1/31(P)   Eth1/32(P)
 ----
 ====
-. すべてのノードで、交換用スイッチC2に接続されているすべてのクラスタインターコネクトポートを起動します。
+. すべてのノードで、交換スイッチ C2 に接続されているすべてのクラスタ相互接続ポートを起動します。
 +
-'network port modify -node node_name --port_port-name_up-admin true
+`network port modify -node _node-name_ -port _port-name_ -up-admin true`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -571,17 +571,17 @@ cluster::*> *network port modify -node n4 -port e4e -up-admin true*
 
 
 
-=== 手順3：元 々 割り当てられていたポートにすべてのLIFをリバートする
+=== ステップ3: すべてのLIFを元のポートに戻す
 
-. すべてのノードで移行されたクラスタインターコネクト LIF をすべてリバートします。
+. すべてのノード上の移行されたクラスタ相互接続 LIF をすべて元に戻します。
 +
-network interface revert -vserver cluster -lif LIF_name です
+`network interface revert -vserver cluster -lif _lif-name_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例に示すように、すべてのクラスタインターコネクト LIF を個別にリバートする必要があります。
+次の例に示すように、すべてのクラスタ相互接続 LIF を個別に元に戻す必要があります。
 
 [listing, subs="+quotes"]
 ----
@@ -593,15 +593,15 @@ Cluster::*> *network interface revert -vserver cluster -lif n3_clus2*
 Cluster::*> *network interface revert -vserver cluster -lif n4_clus2*
 ----
 ====
-. クラスタインターコネクトポートがホームにリバートされたことを確認します。
+. クラスタ相互接続ポートが元の状態に戻っていることを確認します。
 +
-「 network interface show 」を参照してください
+`network interface show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例では、「 Current Port 」列の下に表示されるポートのステータスが「 Is Home 」列の「 true 」であるため、すべての LIF が正常にリバートされています。ポートの値が「 false 」の場合、 LIF はリバートされていません。
+次の例では、以下のポートがリストされているため、すべてのLIFが正常に元に戻されたことを示しています。 `Current Port`列のステータスは `true`の中で `Is Home`カラム。ポートの値が `false`LIF は元に戻されていません。
 
 [listing, subs="+quotes"]
 ----
@@ -625,12 +625,12 @@ Cluster
              n4_clus2   up/up      10.10.0.12/24      n4            e4e     true
 ----
 ====
-. クラスタポートが接続されていることを確認します。
+. クラスター ポートが接続されていることを確認します。
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -672,22 +672,22 @@ e4a       Cluster      Cluster          up   9000 auto/40000  -
 e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -713,9 +713,9 @@ n3
 .
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -783,21 +783,21 @@ Larger than PMTU communication succeeds on 32 path(s) RPC status:
 ====
 
 
-=== 手順4：すべてのポートとLIFが正しく移行されていることを確認する
+=== ステップ4: すべてのポートとLIFが正しく移行されていることを確認する
 
-. 次のコマンドを入力して、構成に含まれるデバイスに関する情報を表示します。
+. 次のコマンドを入力して、構成内のデバイスに関する情報を表示します。
 +
-次のコマンドは、どの順序でも実行できます。
-
-+
-** 「 network device-discovery show 」のように表示されます
-** 「 network port show -role cluster 」のように表示されます
-** 「 network interface show -role cluster 」のように表示されます
-** 「 system cluster-switch show
-
+次のコマンドは任意の順序で実行できます。
 
 +
-.例を示します
+** `network device-discovery show`
+** `network port show -role cluster`
+** `network interface show -role cluster`
+** `system cluster-switch show`
+
+
++
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -905,19 +905,19 @@ C2                          cluster-network    10.10.1.103      NX3232C
             Version Source: CDP 3 entries were displayed.
 ----
 ====
-. 交換したクラスタスイッチ CL2 が自動的に削除されていない場合は、削除します。
+. 交換したクラスタ スイッチ CL2 が自動的に削除されていない場合は削除します。
 +
-'system cluster-switch delete -device cluster-switch-name
+`system cluster-switch delete -device cluster-switch-name`
 
-. 適切なクラスタスイッチが監視されていることを確認します。
+. 適切なクラスタ スイッチが監視されていることを確認します。
 +
-「 system cluster-switch show
+`system cluster-switch show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は ' が監視されている状態が TRUE であるため ' クラスタ・スイッチを監視する方法を示しています
+次の例では、クラスタスイッチが監視されていることを示しています。 `Is Monitored`状態は `true`。
 
 [listing, subs="+quotes"]
 ----
@@ -939,11 +939,11 @@ C2                          cluster-network    10.10.1.103      NX3232C
            Version Source: CDP
 ----
 ====
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
+. 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。

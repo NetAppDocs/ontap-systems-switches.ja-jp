@@ -2,67 +2,68 @@
 permalink: switch-cisco-3232c/replace-storage-switch.html 
 sidebar: sidebar 
 keywords: replace, cisco nexus, 3232c storage switch 
-summary: 障害が発生した Cisco Nexus 3232C ストレージスイッチは、特定の順序でタスクを実行することで、無停止で交換できます。 
+summary: 特定の一連のタスクを実行することで、障害のあるCisco Nexus 3232C ストレージ スイッチを中断せずに交換できます。 
 ---
-= Cisco Nexus 3232C ストレージスイッチを交換します
+= Cisco Nexus 3232Cストレージスイッチを交換する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-障害のあるCisco Nexus 3232Cストレージスイッチを交換する手順は、次のとおりです。これは、無停止の手順 です。
+故障したCisco Nexus 3232C ストレージ スイッチを交換するには、次の手順に従います。これは中断を伴わない手順です。
 
 
 
-== 要件を確認
+== 要件の確認
 
-既存のネットワーク構成には、次のような特徴があります。
+既存のネットワーク構成には、次の特性が必要です。
 
-* Cisco Ethernet Switches のページに、スイッチ上の最新の RCF および NX-OS バージョンが含まれています。
-* 両方のスイッチで管理接続が確立されている必要があります。
+* Ciscoイーサネット スイッチ ページには、スイッチの最新の RCF および NX-OS バージョンが記載されています。
+* 両方のスイッチに管理接続が存在する必要があります。
 +
 [NOTE]
 ====
-スイッチの交換が必要かどうかを確認するために、すべてのトラブルシューティング手順が完了していることを確認します。
+すべてのトラブルシューティング手順が完了していることを確認して、スイッチを交換する必要があるかどうかを確認してください。
 
 ====
 
 
-交換用 Cisco Nexus 3232C スイッチには、次の特性が必要です。
+交換用のCisco Nexus 3232C スイッチには、次の特性が必要です。
 
 * 管理ネットワーク接続が機能している必要があります。
-* 交換用スイッチへのコンソールアクセスが確立されている必要があります。
-* 適切な RCF および NX-OS オペレーティングシステムイメージをスイッチにロードする必要があります。
+* 交換用スイッチへのコンソール アクセスが適切に行われている必要があります。
+* 適切な RCF および NX-OS オペレーティング システム イメージをスイッチにロードする必要があります。
 * スイッチの初期カスタマイズが完了している必要があります。
 
 
 
 
-== スイッチを交換します
+== スイッチを交換する
 
-この手順 は、 2 番目の Nexus 3232C ストレージスイッチ S2 を新しい 3232C スイッチ NS2 に置き換えます。2 つのノードは node1 と node2 になります。
+この手順では、2 番目の Nexus 3232C ストレージ スイッチ S2 を新しい 3232C スイッチ NS2 に置き換えます。  2 つのノードは node1 と node2 です。
 
 
 
-=== 手順1：交換するスイッチがS2であることを確認します
+=== ステップ1: 交換するスイッチがS2であることを確認する
 
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。「 system node AutoSupport invoke -node * -type all -message MAINT= xh
+. このクラスタでAutoSupportが有効になっている場合は、 AutoSupportメッセージを呼び出して自動ケース作成を抑制します。
+`system node autosupport invoke -node * -type all - message MAINT=xh`
 +
-_x_ は、メンテナンス時間の長さ（時間単位）です。
+_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
 
 +
 [NOTE]
 ====
-AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
 ====
-. ストレージノードポートのヘルスステータスをチェックして、ストレージスイッチ S1 に接続されていることを確認します。
+. ストレージ ノード ポートのヘルス ステータスをチェックして、ストレージ スイッチ S1 への接続があることを確認します。
 +
-storage port show -port-type enet
+`storage port show -port-type ENET`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -83,12 +84,12 @@ node2
                    e7b  ENET  storage      0 enabled  offline     30
 ----
 ====
-. ストレージスイッチS1が使用可能であることを確認します。
+. ストレージ スイッチ S1 が使用可能であることを確認します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -115,12 +116,12 @@ node2/lldp
             e4e    node1                     e4e               -
 ----
 ====
-. を実行します `show lldp neighbors` 動作中のスイッチに対してコマンドを実行し、ノードとすべてのシェルフの両方が表示されることを確認します。
+. 実行 `show lldp neighbors`動作中のスイッチでコマンドを実行して、両方のノードとすべてのシェルフが表示されることを確認します。
 +
 `show lldp neighbors`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -142,14 +143,14 @@ SHFGD2008000022         Eth1/8          120        S           e0a
 
 
 
-=== 手順2：ケーブル接続を設定する
+=== ステップ2: ケーブル配線を構成する
 
-. [5]ストレージシステムのシェルフポートを確認します。
+. [[5]]ストレージシステムのシェルフポートを確認します。
 +
 `storage shelf port show -fields remote-device,remote-port`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -168,20 +169,20 @@ shelf  id  remote-port  remote-device
 3.20   3   -            -
 ----
 ====
-. ストレージスイッチ S2 に接続されているすべてのケーブルを取り外します。
-. 交換用スイッチの NS2 にすべてのケーブルを再接続します。
+. ストレージ スイッチ S2 に接続されているすべてのケーブルを取り外します。
+. すべてのケーブルを交換用スイッチ NS2 に再接続します。
 
 
 
 
-=== 手順3：スイッチNS2のすべてのデバイス構成を確認します
+=== ステップ3: スイッチNS2のすべてのデバイス構成を確認する
 
-. ストレージノードポートの健全性ステータスを確認します。
+. ストレージ ノード ポートのヘルス ステータスを確認します。
 +
-storage port show -port-type enet
+`storage port show -port-type ENET`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -204,10 +205,10 @@ node2
 ====
 . 両方のスイッチが使用可能であることを確認します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -238,12 +239,12 @@ node2/lldp
             e7b    NS2                       Ethernet1/2       -
 ----
 ====
-. ストレージシステムのシェルフポートを確認します。
+. ストレージ システムのシェルフ ポートを確認します。
 +
 `storage shelf port show -fields remote-device,remote-port`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -261,11 +262,11 @@ shelf id remote-port remote-device
 3.20  3  Ethernet1/8 NS2
 ----
 ====
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
+. 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"]

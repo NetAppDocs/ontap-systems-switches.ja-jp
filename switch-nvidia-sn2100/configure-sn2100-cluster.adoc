@@ -2,21 +2,21 @@
 permalink: switch-nvidia-sn2100/configure-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: switches hardware installation 
-summary: SN2100ハードウェアを取り付けるには、NVIDIAのマニュアルを参照してください。 
+summary: SN2100 ハードウェアをインストールするには、NVIDIA のドキュメントを参照してください。 
 ---
-= NVIDIA SN2100スイッチを設定します
+= NVIDIA SN2100スイッチを構成する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-SN2100スイッチを設定するには、NVIDIAのマニュアルを参照してください。
+SN2100 スイッチを構成するには、NVIDIA のドキュメントを参照してください。
 
 .手順
-. を確認します link:configure-reqs-sn2100-cluster.html["設定要件"]。
-. の手順に従います https://docs.nvidia.com/networking/display/sn2000pub/System+Bring-Up["NVIDIAシステムが起動します。"^]。
+. レビューlink:configure-reqs-sn2100-cluster.html["構成要件"]。
+. 以下の指示に従ってください https://docs.nvidia.com/networking/display/sn2000pub/System+Bring-Up["NVIDIAシステムの起動。"^]。
 
 
 .次の手順
-link:install-cumulus-mode-sn2100-cluster.html["Cumulus LinuxをCumulusモードでインストールします"]またはlink:install-onie-mode-sn2100-cluster.html["Cumulus LinuxをONIEモードでインストールします"]。
+link:install-cumulus-mode-sn2100-cluster.html["Cumulus LinuxをCumulusモードでインストールする"]またはlink:install-onie-mode-sn2100-cluster.html["ONIEモードでCumulus Linuxをインストールする"]。

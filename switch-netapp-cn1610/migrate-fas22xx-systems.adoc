@@ -2,57 +2,57 @@
 permalink: switch-netapp-cn1610/migrate-fas22xx-systems.html 
 sidebar: sidebar 
 keywords: migrate, two-node switched cluster, fas22xx systems, single, network connection 
-summary: FAS22xx システムが既存の 2 ノードスイッチレスクラスタにある場合、各コントローラモジュールにクラスタ接続用の単一のバックツーバック 10GbE 接続があるときは、スイッチレスクラスタネットワークオプションを使用して、スイッチ接続に直接バックツーバック接続を置き換えることができます。 
+summary: 既存の 2 ノード スイッチレス クラスターに FAS22xx システムがあり、各コントローラー モジュールにクラスター接続用の単一のバックツーバック 10 GbE 接続がある場合は、スイッチレス クラスター ネットワーク オプションを使用して、直接のバックツーバック接続をスイッチ接続に置き換えることができます。 
 ---
-= 単一のクラスタネットワーク接続を使用して、 FAS22xx システムの 2 ノードスイッチクラスタに移行する
+= 単一のクラスタネットワーク接続を持つFAS22xxシステムの2ノードスイッチクラスタに移行します。
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-FAS22xx システムが既存の 2 ノードスイッチレスクラスタにある場合、各コントローラモジュールにクラスタ接続用の単一のバックツーバック 10GbE 接続があるときは、スイッチレスクラスタネットワークオプションを使用して、スイッチ接続に直接バックツーバック接続を置き換えることができます。
+既存の 2 ノード スイッチレス クラスターに FAS22xx システムがあり、各コントローラー モジュールにクラスター接続用の単一のバックツーバック 10 GbE 接続がある場合は、スイッチレス クラスター ネットワーク オプションを使用して、直接のバックツーバック接続をスイッチ接続に置き換えることができます。
 
 
 
-== 要件を確認
+== 要件の確認
 
-.作業を開始する前に
-次のものがあることを確認します。
+.開始する前に
+以下のものがあることを確認してください。
 
-* スイッチレス構成からスイッチ構成への移行に対応した2つのクラスタ接続。
-* クラスタは正常な状態であり、バックツーバック接続で接続された2つのノードで構成されています。
-* ノードでONTAP 8.2以降を実行している。
-* スイッチレスクラスタ機能は、ノードが 3 つ以上の場合は使用できません。
-* すべてのクラスタポートがにあります `up` 状態。
+* スイッチレス構成からスイッチ構成に移行するための 2 つのクラスター接続。
+* クラスターは正常であり、バックツーバック接続で接続された 2 つのノードで構成されています。
+* ノードはONTAP 8.2 以降を実行しています。
+* スイッチレス クラスター機能は、2 つ以上のノードでは使用できません。
+* すべてのクラスタポートは `up`州。
 
 
 .関連情報
-https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows["ネットアップの技術情報アーティクル 1010449 ：「 How to suppress automatic case creation during scheduled maintenance windows"^]
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows["NetAppの技術情報アーティクル1010449：「How to suppress automatic case creation during scheduled maintenance windows」"^]
 
 
 
-== スイッチを移行します
+== スイッチを移行する
 
-この手順 は無停止の手順 であり、スイッチレス環境における直接クラスタ接続を削除し、各スイッチへの接続をパートナーノードへの接続に置き換えます。
+この手順は、スイッチレス環境での直接的なクラスタ接続を削除し、スイッチへの各接続をパートナー ノードへの接続に置き換える、中断を伴わない手順です。
 
 
 
-=== 手順1：移行の準備
+=== ステップ1: 移行の準備
 
-. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 y 」と入力します。
+. 権限レベルを上級に変更するには、次のように入力します。 `y`続行するように求められたら:
 +
-「 advanced 」の権限が必要です
-
-+
-詳細プロンプト (`*>') が表示されます
-
-. いずれかのノードのシステムコンソールで、ノードのクラスタステータスを確認します。
-+
-「 cluster show 」を参照してください
+`set -privilege advanced`
 
 +
-.例を示します
+高度なプロンプト(`*>`）が表示されます。
+
+. いずれかのノードのシステム コンソールでノードのクラスター ステータスを確認します。
++
+`cluster show`
+
++
+.例を表示
 [%collapsible]
 ====
 次の例は、クラスタ内のノードの健全性と参加資格に関する情報を表示します。
@@ -69,12 +69,12 @@ node2                true    true          false
 2 entries were displayed.
 ----
 ====
-. いずれかのノードのシステム・コンソールで HA ペアのステータスを確認します storage failover show
+. どちらかのノードのシステム コンソールで HA ペアのステータスを確認します。 `storage failover show`
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例では、ノード 1 とノード 2 のステータスを表示します。
+次の例は、node1 と node2 のステータスを示しています。
 
 [listing]
 ----
@@ -87,91 +87,91 @@ node2          node1          true      Connected to node1
 2 entries were displayed.
 ----
 ====
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= xh 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-「 x 」は、メンテナンス時間の長さ（時間単位）です。
+`x`メンテナンス ウィンドウの期間 (時間単位) です。
 
 +
 
-NOTE: このメンテナンスタスクについてテクニカルサポートに通知し、メンテナンス時間中はケースの自動作成が停止されます。
+NOTE: このメッセージは、このメンテナンス タスクをテクニカル サポートに通知し、メンテナンス ウィンドウ中の自動ケース作成を抑制します。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次のコマンドは、ケースの自動作成を 2 時間停止します。
+次のコマンドは、自動ケース作成を 2 時間抑制します。
 
 [listing]
 ----
 cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
 ----
 ====
-. スイッチレスクラスタの現在の状態がであることを確認します `true`をクリックし、スイッチレスクラスタモードを無効にします。
+. スイッチレスクラスタの現在の状態を確認します。 `true` 、スイッチレス クラスター モードを無効にします。
 +
 `network options switchless-cluster modify -enabled false`
 
-. ターゲットノードをテイクオーバーします。
+. ターゲットノードを乗っ取ります。
 +
 `storage failover takeover -ofnode _target_node_name_`
 
 +
-どちらのノードがターゲットノードであるかは関係ありません。テイクオーバーされると ' ターゲット・ノードは自動的に再起動し ' Waiting for giveback... というメッセージが表示されます
+どのノードがターゲット ノードであるかは関係ありません。引き継がれると、ターゲットノードは自動的に再起動し、 `Waiting for giveback...`メッセージ。
 
 +
-テイクオーバーされたパートナー（ターゲット）ノードのデータをアクティブノードが提供しています。
+アクティブ ノードは現在、引き継がれたパートナー (ターゲット) ノードにデータを提供しています。
 
-. 障害ノードのテイクオーバー後 2 分待ち、テイクオーバーが完了したことを確認します。
-. ターゲット・ノードに「 Waiting for giveback... 」というメッセージが表示された状態でシャットダウンします。
+. 障害が発生したノードの引き継ぎ後、引き継ぎが正常に完了したことを確認するために 2 分間待ちます。
+. ターゲットノードに `Waiting for giveback...`メッセージが表示されたら、シャットダウンします。
 +
-ノードをシャットダウンする方法は、ノードのサービスプロセッサ（ SP ）を使用したリモート管理を使用するかどうかによって異なります。
+ノードをシャットダウンする方法は、ノードのサービス プロセッサ (SP) を介してリモート管理を使用するかどうかによって異なります。
 
 +
 |===
-| SP の場合 | 作業 
+| SPの場合 | 操作 
 
 
  a| 
-が設定されている
+設定されている
  a| 
-障害のあるノード SP にログインし ' システムの電源をオフにしますシステムの電源はオフにします
+障害が発生したノードSPにログインし、システムの電源をオフにします。 `system power off`
 
 
 
  a| 
-が設定されていません
+設定されていません
  a| 
-障害ノードのプロンプトで 'Ctrl-C を押し 'y と入力してノードを停止します
+障害ノードのプロンプトで、 `Ctrl-C` 、そして応答する `y`ノードを停止します。
 
 |===
 
 
 
 
-=== 手順2：ケーブルとポートを設定する
+=== ステップ2: ケーブルとポートを構成する
 
-. 各コントローラモジュールで、 10GbE クラスタポートをスイッチレスクラスタに接続するケーブルを外します。
-. 10GbE クラスタポートを両方のコントローラモジュールのスイッチに接続します。
-. スイッチに接続されている 10GbE クラスタポートが同じ VLAN に含まれるように設定されていることを確認してください。
+. 各コントローラー モジュールで、10 GbE クラスター ポートをスイッチレス クラスターに接続しているケーブルを外します。
+. 10 GbE クラスター ポートを両方のコントローラー モジュールのスイッチに接続します。
+. スイッチに接続された 10 GbE クラスター ポートが同じ VLAN の一部として構成されていることを確認します。
 +
-各コントローラモジュールのクラスタポートを異なるスイッチに接続する場合は、クラスタポートが各スイッチで接続されているポートが同じ VLAN に設定されていて、両方のスイッチでトランキングが適切に設定されていることを確認する必要があります。
+各コントローラ モジュールのクラスタ ポートを異なるスイッチに接続する予定の場合は、各スイッチ上のクラスタ ポートが接続されているポートが同じ VLAN に設定され、両方のスイッチでトランキングが適切に設定されていることを確認する必要があります。
 
-. ターゲットノードにストレージをギブバックします。
+. ストレージをターゲットノードに戻します。
 +
 `storage failover giveback -ofnode node2`
 
-. ギブバック処理の進捗を監視します。
+. ギブバック操作の進行状況を監視します。
 +
 `storage failover show-giveback`
 
-. ギブバック処理が完了したら、HAペアが正常でテイクオーバーが可能であることを確認します。
+. ギブバック操作が完了したら、HA ペアが正常であり、テイクオーバーが可能であることを確認します。
 +
 `storage failover show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 次のような出力が表示されます。
@@ -187,15 +187,15 @@ node2          node1          true      Connected to node1
 2 entries were displayed.
 ----
 ====
-. クラスタポートLIFが正しく動作していることを確認します。
+. クラスタ ポート LIF が正しく動作していることを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例では、 LIF がノード 1 とノード 2 で「 up 」になっていて、「 Is Home 」列の結果が「 true 」であることを示します。
+次の例は、LIFが `up`ノード1とノード2で「Is Home」列の結果が `true`:
 
 [listing]
 ----
@@ -212,12 +212,12 @@ node2
 2 entries were displayed.
 ----
 ====
-. いずれかのノードのシステムコンソールで、ノードのクラスタステータスを確認します。
+. いずれかのノードのシステム コンソールでノードのクラスター ステータスを確認します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 次の例は、クラスタ内のノードの健全性と参加資格に関する情報を表示します。
@@ -234,22 +234,22 @@ node2                true    true          false
 2 entries were displayed.
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -265,9 +265,9 @@ node2
        3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -301,14 +301,14 @@ RPC status:
 ====
 
 
-=== 手順3：手順 を完了します
+=== ステップ3: 手順を完了する
 
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
+. 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -316,8 +316,8 @@ RPC status:
 cluster::*> system node autosupport invoke -node * -type all -message MAINT=END
 ----
 ====
-. 権限レベルを admin に戻します。
+. 権限レベルを管理者に戻します。
 +
-「特権管理者」
+`set -privilege admin`
 
 

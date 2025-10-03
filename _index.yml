@@ -1,63 +1,64 @@
 ---
 indexpage:
   title: ONTAPシステム用スイッチ
-  summary: このサイトのドキュメントを使用して、クラスタ、共有ストレージ、および MetroCluster スイッチをインストール、アップグレード、および保守します。
+  summary: このサイトのドキュメントを使用して、クラスター、共有ストレージ、およびMetroClusterスイッチをインストール、アップグレード、および保守します。
   keywords: switches
-  lead: NetAppでは、クラスタスイッチ、ストレージスイッチ、共有スイッチを使用してホストストレージと2台以上のNetAppコントローラを接続できるため、ストレージインフラ全体でデータインターフェイスやネットワークインターフェイスを無停止で移動できます。
+  lead: NetApp は、ホスト ストレージと 2 つ以上のNetAppコントローラ間の接続を提供するクラスタ、ストレージ、共有スイッチを提供しており、ストレージ
+    インフラストラクチャ全体でデータとネットワーク インターフェイスを中断なく移動できます。
   tiles:
-  - title: はじめに
+  - title: 始めましょう
     links:
     - title: 新機能
       url: whats-new.html
-    - title: クイックスタート
+    - title: クイック スタート
       url: "/get-started/get-up-and-running.html"
-    - title: ONTAP リリースノート
+    - title: ONTAP Release Notes
       url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508
   - title: サポートされるスイッチ
     links:
-    - title: クラスタスイッチ- Broadcom BES-53248
+    - title: クラスタスイッチ - Broadcom BES-53248
       url: "/switch-bes-53248/configure-new-switch-overview.html"
-    - title: クラスタスイッチ- Cisco Nexus 9336C-FX2または9336C-FX2-T
+    - title: クラスタ スイッチ - Cisco Nexus 9336C-FX2 または 9336C-FX2-T
       url: "/switch-cisco-9336c-fx2/configure-switch-overview-9336c-cluster.html"
-    - title: クラスタスイッチ- NVIDIA SN2100クラスタスイッチ
+    - title: クラスタースイッチ - NVIDIA SN2100 クラスタースイッチ
       url: "/switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
-    - title: ストレージスイッチ- Cisco Nexus 9336C-FX2または9336C-FX2-T
+    - title: ストレージ スイッチ - Cisco Nexus 9336C-FX2 または 9336C-FX2-T
       url: "/switch-cisco-9336c-fx2-storage/configure-switch-overview-9336c-storage.html"
-    - title: ストレージスイッチ- NVIDIA SN2100
+    - title: ストレージスイッチ - NVIDIA SN2100
       url: "/switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html"
-    - title: 共有スイッチ- Cisco Nexus 9336C-FX2
+    - title: 共有スイッチ - Cisco Nexus 9336C-FX2
       url: "/switch-cisco-9336c-fx2-shared/configure-switch-overview-9336c-shared.html"
-  - title: 可用性が終了したスイッチ
+  - title: 販売終了スイッチ
     links:
-    - title: クラスタスイッチ- Cisco Nexus 3232c
+    - title: クラスタスイッチ - Cisco Nexus 3232c
       url: "/switch-cisco-3232c/install-overview-cisco-3232c.html"
-    - title: クラスタスイッチ- Cisco Nexus 3132Q-V
+    - title: クラスタスイッチ - Cisco Nexus 3132Q-V
       url: "/switch-cisco-3132q-v/install-overview-cisco-3132qv.html"
-    - title: クラスタスイッチ- Cisco Nexus 92300YC
+    - title: クラスタスイッチ - Cisco Nexus 92300YC
       url: "/switch-cisco-92300/install-overview-cisco-92300.html"
-    - title: クラスタスイッチ- NetApp CN1610
+    - title: クラスタスイッチ - NetApp CN1610
       url: "/switch-netapp-cn1610/switch-overview-cn1610.html"
-  - title: イーサネットスイッチヘルスの監視
+  - title: イーサネットスイッチのヘルスモニタリング
     links:
-    - title: スイッチヘルス監視の設定
+    - title: スイッチのヘルスモニタリングを構成する
       url: "/switch-cshm/config-overview.html"
-    - title: スイッチの健全性監視を確認
+    - title: スイッチのヘルスモニタリングを確認する
       url: "/switch-cshm/monitor-overview.html"
-    - title: スイッチの健常性監視用のログを収集
+    - title: スイッチのヘルスモニタリングのためのログを収集する
       url: "/switch-cshm/log-collection-overview.html"
-  - title: 関連するONTAP のドキュメント
+  - title: 関連するONTAPドキュメント
     links:
     - title: ONTAPハードウェアシステム
       url: https://docs.netapp.com/us-en/ontap-systems/index.html
-    - title: ONTAP ソフトウェア
+    - title: ONTAPソフトウェア
       url: https://docs.netapp.com/us-en/ontap/index.html
-  - title: ツールのサポート
+  - title: ツールとサポート
     links:
-    - title: NetApp Interoperability Matrix を参照してください
+    - title: NetApp Interoperability Matrix
       url: http://mysupport.netapp.com/matrix/
-    - title: NetApp Hardware Universe の略
+    - title: NetApp Hardware Universe
       url: https://hwu.netapp.com/
-    - title: ネットアップナレッジベース
+    - title: NetAppのナレッジ ベース
       url: https://kb.netapp.com/
-    - title: Active IQ （ログインが必要）
+    - title: Active IQ（ログインが必要）
       url: https://activeiq.netapp.com/?source=aiqnsspages

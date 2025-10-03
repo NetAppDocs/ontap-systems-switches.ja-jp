@@ -2,9 +2,9 @@
 permalink: switch-cisco-9336c-fx2-storage/install-rcf-software-9336c-storage.html 
 sidebar: sidebar 
 keywords: install rcf, cisco switches, storage 
-summary: RCFは、Nexus 9336C-FX2ストレージスイッチの初回セットアップ後にインストールできます。この手順を使用して、 RCF のバージョンをアップグレードすることもできます。 
+summary: Nexus 9336C-FX2 ストレージ スイッチを初めてセットアップした後、RCF をインストールできます。この手順を使用して、RCF バージョンをアップグレードすることもできます。 
 ---
-= リファレンス構成ファイルのインストールまたはアップグレード
+= 参照構成ファイルをインストールまたはアップグレードする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,31 +13,31 @@ summary: RCFは、Nexus 9336C-FX2ストレージスイッチの初回セット�
 [role="lead"]
 Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチを初めてセットアップした後、リファレンス構成ファイル (RCF) をインストールします。
 
-RCFをインストールする際の詳細については、技術情報アーティクルを参照してlink:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままCiscoインターコネクトスイッチの設定をクリアする方法"^]ください。
+ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]RCF をインストールする際の詳細については、こちらをご覧ください。
 
-.作業を開始する前に
+.開始する前に
 次のインストールと接続を確認します。
 
-* スイッチへのコンソール接続。スイッチへのリモートアクセスがある場合、コンソール接続はオプションです。
-* スイッチcs1とスイッチcs2の電源がオンになっており、スイッチの初期セットアップが完了しています（管理IPアドレスとSSHのセットアップが完了しています）。
-* 目的のバージョンのNX-OSがインストールされている。
-* ONTAPノードのクラスタポートが接続されていません。
+* スイッチへのコンソール接続。スイッチにリモートアクセスできる場合、コンソール接続はオプションです。
+* スイッチ cs1 とスイッチ cs2 の電源がオンになり、スイッチの初期セットアップが完了します (管理 IP アドレスと SSH がセットアップされています)。
+* 必要な NX-OS バージョンがインストールされました。
+* ONTAPノード クラスタ ポートが接続されていません。
 
 
 
 
-== 手順1：スイッチにRCFをインストールする
+== ステップ1: スイッチにRCFをインストールする
 
-. SSHまたはシリアルコンソールを使用して、スイッチcs1にログインします。
-. FTP、TFTP、SFTP、またはSCPのいずれかの転送プロトコルを使用して、スイッチcs1のブートフラッシュにRCFをコピーします。
+. SSH またはシリアル コンソールを使用してスイッチ cs1 にログインします。
+. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs1のブートフラッシュにRCFをコピーします。
 +
-Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次に、TFTPを使用してスイッチcs1のブートフラッシュにRCFをコピーする例を示します。
+この例では、TFTPを使用してスイッチcs1のブートフラッシュにRCFをコピーしています。
 
 [listing, subs="+quotes"]
 ----
@@ -49,24 +49,24 @@ TFTP get operation was successful
 Copy complete, now saving to disk (please wait)...
 ----
 ====
-. ブートフラッシュに前にダウンロードした RCF を適用します。
+. 前の手順でブートフラッシュにダウンロードしたRCFを適用します。
 +
-Ciscoコマンドの詳細については、『』の該当するガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 Series NX-OS Command Reference 』を参照してください"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例では、スイッチcs1にRCF `Nexus_9336C_RCF_v1.6-Storage.txt`をインストールしています。
+この例ではRCFを示します `Nexus_9336C_RCF_v1.6-Storage.txt`スイッチ cs1 にインストールされます:
 
 [listing]
 ----
 cs1# copy Nexus_9336C_RCF_v1.6-Storage.txt running-config echo-commands
 ----
 ====
-. コマンドのバナー出力を確認します `show banner motd`。スイッチの設定と動作が正しいことを確認するには、次の手順を読んで従う必要があります。
+. バナー出力を調べる `show banner motd`指示。スイッチを正しく構成し、操作するには、これらの手順を読んで従う必要があります。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -86,19 +86,19 @@ cs1# show banner motd
 ******************************************************************************
 ----
 ====
-. RCFが正しい新しいバージョンであることを確認します。
+. RCF が正しい新しいバージョンであることを確認します。
 +
-'how running-config'
+`show running-config`
 
 +
-出力をチェックして正しい RCF があることを確認する場合は、次の情報が正しいことを確認してください。
+次の情報が正しいことを確認してください。
 
 +
-** RCF バナー
+** RCFのバナー
 ** ノードとポートの設定
 ** カスタマイズ
 +
-出力内容はサイトの構成によって異なります。ポートの設定を確認し、インストールした RCF に固有の変更がないかリリースノートを参照してください。
+出力内容はサイトの構成によって異なります。ポートの設定を確認し、インストールしたRCFに固有の変更がないかリリース ノートを参照してください。
 
 
 
@@ -133,7 +133,7 @@ cs1# copy running-config startup-config [#######################################
 `cs1# echo "hardware access-list tcam region ing-l2-qos 1280" >> bootflash:write_erase.cfg`
 
 +
-ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細については、こちらをご覧ください。
+ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細については、こちらをご覧ください。
 
 . 確認するには `write_erase.cfg`ファイルは期待どおりに入力されます。
 +
@@ -149,7 +149,7 @@ cs1# copy running-config startup-config [#######################################
 +
 `Do you wish to proceed anyway? (y/n)  [n] *y*`
 
-. 以前に保存した基本設定をスタートアップコンフィギュレーションにコピーします。
+. 以前に保存した基本設定をスタートアップ設定にコピーします。
 +
 `cs1# *copy bootflash:write_erase.cfg startup-config*`
 
@@ -161,19 +161,19 @@ cs1# copy running-config startup-config [#######################################
 `This command will reboot the system. (y/n)?  [n] *y*`
 
 . スイッチ cs2 で手順 1 ～ 13 を繰り返します。
-. ONTAPクラスタ内のすべてのノードのクラスタポートをスイッチcs1とcs2に接続します。
+. ONTAPクラスタ内のすべてのノードのクラスタ ポートをスイッチ cs1 および cs2 に接続します。
 
 
 
 
-== 手順2：スイッチの接続を確認する
+== ステップ2: スイッチの接続を確認する
 
-. クラスタポートに接続されているスイッチポートが*up*であることを確認します。
+. クラスター ポートに接続されているスイッチ ポートが *稼働中* であることを確認します。
 +
 `show interface brief`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -198,7 +198,7 @@ Eth1/29         1       eth  trunk  up      none                     100G(D) --
 Eth1/30         1       eth  trunk  up      none                     100G(D) --
 ----
 ====
-. 次のコマンドを使用して、クラスタノードが正しいクラスタVLANに含まれていることを確認します。
+. 次のコマンドを使用して、クラスタ ノードが正しいクラスタ VLAN 内にあることを確認します。
 +
 `show vlan brief`
 
@@ -206,7 +206,7 @@ Eth1/30         1       eth  trunk  up      none                     100G(D) --
 `show interface trunk`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -471,19 +471,19 @@ none
 ====
 +
 
-NOTE: 特定のポートおよびVLANの使用方法の詳細については、RCFのバナーおよび重要な注意事項のセクションを参照してください。
+NOTE: 特定のポートと VLAN の使用法の詳細については、RCF のバナーと重要な注意事項のセクションを参照してください。
 
 
 
 
 
-== 手順3：ONTAPクラスタをセットアップする
+== ステップ3: ONTAPクラスタをセットアップする
 
-NetAppでは、System Managerを使用して新しいクラスタをセットアップすることを推奨しています。
+NetApp、System Manager を使用して新しいクラスタを設定することをお勧めします。
 
-System Managerでは、ノード管理IPアドレスの割り当て、クラスタの初期化、ローカル階層の作成、プロトコルの設定、初期ストレージのプロビジョニングなど、クラスタのセットアップと設定のワークフローをシンプルかつ簡単に実行できます。
+System Manager は、ノード管理 IP アドレスの割り当て、クラスターの初期化、ローカル層の作成、プロトコルの構成、初期ストレージのプロビジョニングなど、クラスターのセットアップと構成のためのシンプルで簡単なワークフローを提供します。
 
-に進みます https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["System Managerを使用して新しいクラスタにONTAPを設定します"] を参照してください。
+へ移動 https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["System Managerを使用した新しいクラスタでのONTAPの設定"]セットアップ手順についてはこちらをご覧ください。
 
 .次の手順
 RCFをインストールまたはアップグレードした後は、link:configure-ssh-keys.html["SSH設定を確認する"]

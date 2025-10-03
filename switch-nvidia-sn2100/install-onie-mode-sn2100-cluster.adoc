@@ -2,53 +2,53 @@
 permalink: switch-nvidia-sn2100/install-onie-mode-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: install cumulus onie mode, sn2100 SN2100 switches setup, cumulus linux, onie mode 
-summary: Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます。 
+summary: 'Cumulus Linux (CL) OS は、スイッチが Cumulus Linux または ONIE を実行しているときにインストールできます。' 
 ---
-= Cumulus LinuxをONIEモードでインストールします
+= ONIEモードでCumulus Linuxをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-スイッチがONIEモードで動作している場合、この手順 に従ってCumulus Linux（CL）OSをインストールします。
+スイッチが ONIE モードで実行されているときに Cumulus Linux (CL) OS をインストールするには、次の手順に従ってください。
 
 
-NOTE: Cumulus Linux（CL）OSは、スイッチでONIEまたはCumulus Linuxを実行している場合にインストールできます（を参照） link:install-cumulus-mode-sn2100-cluster.html["クムルスモードでインストールします"]）。
+NOTE: Cumulus Linux (CL) OSは、スイッチがONIEまたはCumulus Linuxを実行しているときにインストールできます（link:install-cumulus-mode-sn2100-cluster.html["Cumulusモードでインストール"] ）。
 
-.このタスクについて
-Open Network Install Environment（ONIE）を使用してCumulus Linuxをインストールすると、ネットワークインストーライメージを自動的に検出できます。これにより、Cumulus Linuxなどのオペレーティングシステムの選択により、スイッチをセキュリティ保護するシステムモデルが容易になります。ONIEでCumulus Linuxをインストールする最も簡単な方法は、ローカルHTTP検出です。
+.タスク概要
+ネットワーク インストーラ イメージの自動検出を可能にする Open Network Install Environment (ONIE) を使用して Cumulus Linux をインストールできます。これにより、Cumulus Linux などのオペレーティング システムを選択してスイッチを保護するシステム モデルが容易になります。  ONIE を使用して Cumulus Linux をインストールする最も簡単な方法は、ローカル HTTP 検出を使用することです。
 
 
-NOTE: ホストがIPv6対応の場合は、Webサーバを実行していることを確認します。ホストがIPv4対応の場合は、Webサーバに加えてDHCPも実行されていることを確認します。
+NOTE: ホストが IPv6 対応である場合は、Web サーバーが実行されていることを確認してください。ホストが IPv4 対応の場合は、Web サーバーに加えて DHCP も実行されていることを確認してください。
 
-この手順 では、管理者がONIEで起動した後にCumulus Linuxをアップグレードする方法を説明します。
+この手順では、管理者が ONIE で起動した後に Cumulus Linux をアップグレードする方法を示します。
 
 .手順
 [role="tabbed-block"]
 ====
-.Cumulus Linux 4.4.3.
+.キュムラス・リナックス 4.4.3
 --
-. Cumulus LinuxインストールファイルをWebサーバーのルートディレクトリにダウンロードします。このファイルの名前をに変更します。 `onie-installer`。
-. イーサネットケーブルを使用して、スイッチの管理イーサネットポートにホストを接続します。
-. スイッチの電源をオンにします。
+. Cumulus Linux インストール ファイルを Web サーバーのルート ディレクトリにダウンロードします。このファイルの名前を次のように変更します: `onie-installer` 。
+. イーサネット ケーブルを使用して、ホストをスイッチの管理イーサネット ポートに接続します。
+. スイッチの電源を入れます。
 +
-スイッチはONIEイメージインストーラをダウンロードして起動します。インストールが完了すると、ターミナルウィンドウにCumulus Linuxログインプロンプトが表示されます。
+スイッチは ONIE イメージ インストーラをダウンロードして起動します。インストールが完了すると、ターミナル ウィンドウに Cumulus Linux ログイン プロンプトが表示されます。
 
 +
 
-NOTE: Cumulus Linuxをインストールするたびに、ファイルシステム構造全体が消去され、再構築されます。
+NOTE: Cumulus Linux がインストールされるたびに、ファイル システム構造全体が消去され、再構築されます。
 
-. SN2100スイッチをリブートします。
+. SN2100スイッチを再起動します。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@cumulus:mgmt:~$ *sudo reboot*
 ----
-. GNU GRUB画面で*Esc*キーを押して、通常の起動プロセスを中断し、*ONIE*を選択して、*Enter*を押します。
-. 次の画面で「* ONIE: OSのインストール*」を選択します。
-. ONIEインストーラの検出処理が実行され、自動インストールが検索されます。Enter *を押して、プロセスを一時的に停止します。
-. 検出プロセスが停止したら、次の手順を実行します。
+. GNU GRUB 画面で *Esc* キーを押して通常のブート プロセスを中断し、*ONIE* を選択して *Enter* を押します。
+. 次の画面で、*ONIE: OSのインストール*を選択します。
+. ONIE インストーラー検出プロセスが自動インストールの検索を実行します。プロセスを一時的に停止するには、*Enter* を押します。
+. 検出プロセスが停止した場合:
 +
 [listing, subs="+quotes"]
 ----
@@ -57,7 +57,7 @@ discover: installer mode detected.
 Stopping: discover...start-stop-daemon: warning: killing process 427:
 No such process done.
 ----
-. ネットワークでDHCPサービスが実行されている場合は、IPアドレス、サブネットマスク、およびデフォルトゲートウェイが正しく割り当てられていることを確認します。
+. ネットワーク上で DHCP サービスが実行されている場合は、IP アドレス、サブネット マスク、およびデフォルト ゲートウェイが正しく割り当てられていることを確認します。
 +
 `ifconfig eth0`
 
@@ -82,15 +82,15 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 default         10.233.204.1    0.0.0.0         UG    0      0      0   eth0
 10.233.204.0    *               255.255.254.0   U     0      0      0   eth0
 ----
-. IPアドレッシング方式が手動で定義されている場合は、次の手順を実行します。
+. IP アドレス指定スキームを手動で定義する場合は、次の手順を実行します。
 +
 [listing, subs="+quotes"]
 ----
 ONIE:/ # *ifconfig eth0 10.233.204.71 netmask 255.255.254.0*
 ONIE:/ # *route add default gw 10.233.204.1*
 ----
-. 手順9を繰り返して、静的情報が正しく入力されていることを確認します。
-. Cumulus Linuxのインストール：
+. 手順 9 を繰り返して、静的情報が正しく入力されていることを確認します。
+. Cumulus Linux をインストールします。
 +
 [listing]
 ----
@@ -124,7 +124,7 @@ Current password: *cumulus*
 New password: *<new_password>*
 Retype new password: *<new_password>*
 ----
-. Cumulus Linuxのバージョンを確認します。 `net show version`
+. Cumulus Linux のバージョンを確認します。 `net show version`
 +
 [listing, subs="+quotes"]
 ----
@@ -137,19 +137,19 @@ DISTRIB_DESCRIPTION=*"Cumulus Linux 4.4.3”*
 
 
 --
-.Cumulus Linux 5.x
+.キュムラス Linux 5.x
 --
-. Cumulus LinuxインストールファイルをWebサーバーのルートディレクトリにダウンロードします。このファイルの名前をに変更します。 `onie-installer`。
-. イーサネットケーブルを使用して、スイッチの管理イーサネットポートにホストを接続します。
-. スイッチの電源をオンにします。
+. Cumulus Linux インストール ファイルを Web サーバーのルート ディレクトリにダウンロードします。このファイルの名前を次のように変更します: `onie-installer` 。
+. イーサネット ケーブルを使用して、ホストをスイッチの管理イーサネット ポートに接続します。
+. スイッチの電源を入れます。
 +
-スイッチはONIEイメージインストーラをダウンロードして起動します。インストールが完了すると、ターミナルウィンドウにCumulus Linuxログインプロンプトが表示されます。
+スイッチは ONIE イメージ インストーラをダウンロードして起動します。インストールが完了すると、ターミナル ウィンドウに Cumulus Linux ログイン プロンプトが表示されます。
 
 +
 
-NOTE: Cumulus Linuxをインストールするたびに、ファイルシステム構造全体が消去され、再構築されます。
+NOTE: Cumulus Linux がインストールされるたびに、ファイル システム構造全体が消去され、再構築されます。
 
-. SN2100スイッチをリブートします。
+. SN2100スイッチを再起動します。
 +
 [listing]
 ----
@@ -171,7 +171,7 @@ GNU GRUB version 2.06-3
 |                                                                         |
 +-------------------------------------------------------------------------+
 ----
-. GNU GRUB画面でEscキーを押して通常の起動プロセスを中断し、ONIEを選択してEnterキーを押します。
+. GNU GRUB 画面で Esc キーを押して通常のブート プロセスを中断し、ONIE を選択して Enter キーを押します。
 +
 [listing]
 ----
@@ -194,10 +194,10 @@ GNU GRUB version 2.02
 +-------------------------------------------------------------------------+
 ----
 +
-ONIE：* Install OS.*を選択します
+ONIEを選択します: *OSをインストールします。*
 
-. ONIEインストーラの検出処理が実行され、自動インストールが検索されます。Enter *を押して、プロセスを一時的に停止します。
-. 検出プロセスが停止したら、次の手順を実行します。
+. ONIE インストーラー検出プロセスが自動インストールの検索を実行します。プロセスを一時的に停止するには、*Enter* を押します。
+. 検出プロセスが停止した場合:
 +
 [listing, subs="+quotes"]
 ----
@@ -206,7 +206,7 @@ discover: installer mode detected.
 Stopping: discover...start-stop-daemon: warning: killing process 427:
 No such process done.
 ----
-. IPアドレス、サブネットマスク、およびデフォルトゲートウェイを設定します。
+. IP アドレス、サブネット マスク、およびデフォルト ゲートウェイを構成します。
 +
 `ifconfig eth0`
 
@@ -244,7 +244,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 default         10.228.136.1    0.0.0.0         UG    0      0      0   eth0
 10.228.136.1    *               255.255.248.0   U     0      0      0   eth0
 ----
-. Cumulus Linux 5.4をインストールします。
+. Cumulus Linux 5.4 をインストールします。
 +
 `# onie-nos-install http://<web-server>/<path>/cumulus-linux-5.4-mlx-amd64.bin`
 
@@ -276,7 +276,7 @@ Current password: *cumulus*
 New password: *<new_password>*
 Retype new password: *<new_password>*
 ----
-. Cumulus Linuxのバージョンを確認します。 `nv show system`
+. Cumulus Linux のバージョンを確認します。 `nv show system`
 +
 [listing, subs="+quotes"]
 ----
@@ -288,7 +288,7 @@ build               Cumulus Linux 5.4.0  system build version
 uptime              6 days, 13:37:36     system uptime
 timezone            Etc/UTC              system time zone
 ----
-. 新しいユーザを作成し、に追加します `sudo` グループ：このユーザが有効になるのは、コンソール/SSHセッションが再起動された後だけです。
+. 新しいユーザーを作成し、このユーザーを `sudo`グループ。このユーザーは、コンソール/SSH セッションが再起動された後にのみ有効になります。
 +
 `sudo adduser --ingroup netedit admin`
 
@@ -333,7 +333,7 @@ http://www.cumulusnetworks.com/support
 The registered trademark Linux (R) is used pursuant to a sublicense from LMI, the exclusive licensee of Linus Torvalds, owner of the mark on a world-wide basis.
 admin@sw1:mgmt:~$
 ----
-. 管理者ユーザがアクセスできるユーザグループを追加します `nv` コマンド：
+. 管理者ユーザーがアクセスするための追加のユーザーグループを追加する `nv`コマンド:
 +
 [listing, subs="+quotes"]
 ----
@@ -344,11 +344,11 @@ cumulus@cumulus:mgmt:~$ *sudo adduser admin nvshow*
      Done.
 ----
 +
-を参照してください https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^] を参照してください。
+見る https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^]詳細についてはこちらをご覧ください。
 
 
 
 --
 ====
 .次の手順
-link:install-rcf-sn2100-cluster.html["リファレンス構成ファイル（RCF）スクリプトをインストールします"]。
+link:install-rcf-sn2100-cluster.html["参照構成ファイル（RCF）スクリプトをインストールする"] 。

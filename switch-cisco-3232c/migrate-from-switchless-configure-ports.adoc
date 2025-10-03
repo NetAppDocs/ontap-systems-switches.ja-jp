@@ -2,27 +2,27 @@
 permalink: switch-cisco-3232c/migrate-from-switchless-configure-ports.html 
 sidebar: sidebar 
 keywords: cisco 3232c, cluster switches 
-summary: AFF または FAS クラスタでは、 Cisco Nexus 3232C スイッチをクラスタスイッチとして使用できます。 
+summary: Cisco Nexus 3232C スイッチを、 AFFまたはFASクラスタ内のクラスタ スイッチとして使用できます。 
 ---
-= 2ノードスイッチレスクラスタから2ノードスイッチクラスタへ移行するためのポートの設定
+= 2ノードのスイッチレス クラスタから2ノードのスイッチ クラスタへの移行用にポートを構成する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Nexus 3232Cスイッチで、2ノードスイッチレスクラスタから2ノードスイッチクラスタに移行するポートを設定する手順は、次のとおりです。
+Nexus 3232C スイッチ上の 2 ノード スイッチレス クラスタから 2 ノード スイッチ クラスタへの移行用にポートを構成するには、次の手順に従います。
 
 .手順
-. n1_clus1 と n2_clus1 の LIF をデスティネーションノードの物理ポートに移行します。
+. n1_clus1 および n2_clus1 LIF を宛先ノードの物理ポートに移行します。
 +
 `network interface migrate -vserver _vserver-name_ -lif _lif-name_ source-node _source-node-name_ -destination-port _destination-port-name_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例に示すように、各ローカルノードに対してコマンドを実行する必要があります。
+次の例に示すように、各ローカル ノードに対してコマンドを実行する必要があります。
 
 [listing, subs="+quotes"]
 ----
@@ -32,15 +32,15 @@ cluster::*> *network interface migrate -vserver cluster -lif n2_clus1 -source-no
 -destination-node n2 -destination-port e4e*
 ----
 ====
-. クラスタインターフェイスが正常に移行されたことを確認します。
+. クラスター インターフェースが正常に移行されたことを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、移行完了後に n1_clus1 と n2_clus1 の LIF の「 Is Home 」ステータスを「 false 」にしています。
+次の例は、移行が完了した後、n1_clus1 および n2_clus1 LIF の「Is Home」ステータスが「false」になったことを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -57,12 +57,12 @@ Cluster
  4 entries were displayed.
 ----
 ====
-. 手順 9 で移行した n1_clus1 LIF と n2_clus1 LIF のクラスタポートをシャットダウンします。
+. 手順 9 で移行された n1_clus1 および n2_clus1 LIF のクラスタ ポートをシャットダウンします。
 +
-'network port modify -node node_name --port_port-name_up-admin false
+`network port modify -node _node-name_ -port _port-name_ -up-admin false`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 次の例に示すように、各ポートに対してコマンドを実行する必要があります。
@@ -73,22 +73,22 @@ cluster::*> *network port modify -node n1 -port e4a -up-admin false*
 cluster::*> *network port modify -node n2 -port e4a -up-admin false*
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -105,9 +105,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2         n1_clus2         none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -137,23 +137,23 @@ Larger than PMTU communication succeeds on 4 path(s) RPC status:
 ----
 --
 ====
-. [[step5]]ノードn1のE4Aからケーブルを外します。
+. [[step5]] ノードn1のe4aからケーブルを外します。
 +
-実行コンフィギュレーションを参照して、スイッチ C1 （この例ではポート 1/7 ）の最初の 40 GbE ポートを n1 の e4A に接続します（ Nexus 3232C スイッチでサポートされているケーブル接続を使用）。
+実行中の設定を参照し、Nexus 3232C スイッチでサポートされているケーブルを使用して、スイッチ C1 の最初の 40 GbE ポート (この例ではポート 1/7) を n1 の e4a に接続できます。
 
-. ノード n2 の e4A からケーブルを外します。
+. ノード n2 の e4a からケーブルを外します。
 +
-サポートされているケーブルを使用して、実行構成を参照し、 C1 のポート 1/8 で使用可能な次の 40GbE ポートに e4A を接続します。
+実行中の設定を参照し、サポートされているケーブルを使用して、e4a を C1 の次の使用可能な 40 GbE ポート (ポート 1/8) に接続できます。
 
-. C1 ですべてのノード側ポートを有効にします。
+. C1 上のすべてのノード向けポートを有効にします。
 +
-Cisco コマンドの詳細については、に記載されているガイドを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 RCF 「 NX3232_RCF_v1_24p10g_26p100g.txt 」でサポートされている設定を使用して、 Nexus 3232C クラスタスイッチ C1 および C2 でポート 1~30 を有効にします。
+次の例は、RCFでサポートされている設定を使用して、Nexus 3232CクラスタスイッチC1とC2でポート1～30が有効になっていることを示しています。 `NX3232_RCF_v1.0_24p10g_26p100g.txt` :
 
 [listing, subs="+quotes"]
 ----
@@ -164,12 +164,12 @@ C1(config-if-range)# *exit*
 C1(config)# *exit*
 ----
 ====
-. 各ノードで、最初のクラスタポート e4A を有効にします。
+. 各ノードで最初のクラスター ポート e4a を有効にします。
 +
-'network port modify -node node_name --port_port-name_up-admin true
+`network port modify -node _node-name_ -port _port-name_ -up-admin true`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -178,12 +178,12 @@ cluster::*> *network port modify -node n1 -port e4a -up-admin true*
 cluster::*> *network port modify -node n2 -port e4a -up-admin true*
 ----
 ====
-. 両方のノードでクラスタが動作していることを確認します。
+. 両方のノードでクラスターが起動していることを確認します。
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -209,15 +209,15 @@ e4e       Cluster      Cluster          up   9000 auto/40000  -
 4 entries were displayed.
 ----
 ====
-. 各ノードについて、移行したすべてのクラスタインターコネクト LIF をリバートします。
+. 各ノードについて、移行されたすべてのクラスタ相互接続 LIF を元に戻します。
 +
-network interface revert -vserver cluster -lif LIF_name です
+`network interface revert -vserver cluster -lif _lif-name_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例に示すように、各 LIF をそれぞれのホームポートに個別にリバートする必要があります。
+次の例に示すように、各 LIF を個別にホーム ポートに戻す必要があります。
 
 [listing, subs="+quotes"]
 ----
@@ -225,15 +225,15 @@ cluster::*> *network interface revert -vserver cluster -lif n1_clus1*
 cluster::*> *network interface revert -vserver cluster -lif n2_clus1*
 ----
 ====
-. すべての LIF がそれぞれのホームポートにリバートされたことを確認します。
+. すべての LIF がホーム ポートに戻っていることを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
 +
-Is Home カラムには ' Current Port カラムに一覧表示されているすべてのポートの値 'true' が表示されます表示された値が「 false 」の場合、ポートはリバートされていません。
+その `Is Home`列には次の値が表示されます `true`に記載されているすべてのポートについて `Current Port`カラム。表示されている値が `false`ポートは元に戻されていません。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -251,12 +251,12 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. 各ノードのクラスタポート接続を表示します。
+. 各ノードのクラスター ポートの接続を表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -273,15 +273,15 @@ n2         /cdp
             e4e    n1                  e4e              FAS9000
 ----
 ====
-. 各ノードのコンソールで、 clus2 をポート e4A に移行します。
+. 各ノードのコンソールで clus2 をポート e4a に移行します。
 +
-「 network interface migrate cluster-lif_lif-name __ -source-node-source_node-name-destination-node-destination-node-name-destination-port_destination-port_destination-port-name-port_name_`
+`network interface migrate cluster -lif _lif-name_ -source-node _source-node-name_ -destination-node _destination-node-name_ -destination-port _destination-port-name_`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例に示すように、各 LIF をそれぞれのホームポートに個別に移行する必要があります。
+次の例に示すように、各 LIF をホーム ポートに個別に移行する必要があります。
 
 [listing, subs="+quotes"]
 ----
@@ -291,15 +291,15 @@ cluster::*> *network interface migrate -vserver cluster -lif n2_clus2 -source-no
 -destination-node n2 -destination-port e4a*
 ----
 ====
-. 両方のノードでクラスタポート clus2 LIF をシャットダウンします。
+. 両方のノードでクラスター ポート clus2 LIF をシャットダウンします。
 +
-「 network port modify 」を参照してください
+`network port modify`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は ' 指定されたポートを false に設定し ' 両方のノードでポートをシャットダウンする方法を示しています
+次の例では、指定されたポートが次のように設定されていることを示しています。 `false`両方のノードのポートをシャットダウンします。
 
 [listing, subs="+quotes"]
 ----
@@ -307,12 +307,12 @@ cluster::*> *network port modify -node n1 -port e4e -up-admin false*
 cluster::*> *network port modify -node n2 -port e4e -up-admin false*
 ----
 ====
-. クラスタの LIF のステータスを確認します。
+. クラスタ LIF のステータスを確認します。
 +
-「 network interface show 」を参照してください
+`network interface show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -332,18 +332,18 @@ Cluster
 ====
 . ノード n1 の e4e からケーブルを外します。
 +
-実行構成を参照し、スイッチ c2 （この例ではポート 1/7 ）の最初の 40 GbE ポートをノード n1 の e4e に接続します。 Nexus 3232C スイッチモデルに対応するケーブル接続を使用します。
+実行中の設定を参照し、Nexus 3232C スイッチ モデルに適したケーブルを使用して、スイッチ C2 の最初の 40 GbE ポート (この例ではポート 1/7) をノード n1 の e4e に接続できます。
 
 . ノード n2 の e4e からケーブルを外します。
 +
-Nexus 3232C スイッチモデルに適したケーブル接続を使用して、実行構成を参照し、 c2 のポート 1 / 8 の次に使用可能な 40GbE ポートに e4e を接続します。
+実行中の設定を参照し、Nexus 3232C スイッチ モデルに適したケーブルを使用して、e4e を C2 の次の使用可能な 40 GbE ポート (ポート 1/8) に接続できます。
 
-. C2 のすべてのノード側ポートを有効にします。
+. C2 上のすべてのノード向けポートを有効にします。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 RCF 「 NX323_RCF _v1.0.1_24p10g_26p100g.txt 」でサポートされている設定を使用して、 Nexus 3132Q-V クラスタスイッチ C1 と C2 のポート 1~30 を有効にします。
+次の例は、RCFでサポートされている設定を使用して、Nexus 3132Q-VクラスタスイッチC1とC2でポート1～30が有効になっていることを示しています。 `NX3232C_RCF_v1.0_24p10g_26p100g.txt` :
 
 [listing, subs="+quotes"]
 ----
@@ -354,15 +354,15 @@ C2(config-if-range)# *exit*
 C2(config)# *exit*
 ----
 ====
-. 各ノードで 2 つ目のクラスタポート e4e を有効にします。
+. 各ノードで 2 番目のクラスター ポート e4e を有効にします。
 +
-「 network port modify 」を参照してください
+`network port modify`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、各ノードの 2 つ目のクラスタポート e4e を起動した状態を示しています。
+次の例は、各ノードで 2 番目のクラスター ポート e4e が起動されることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -370,15 +370,15 @@ cluster::*> *network port modify -node n1 -port e4e -up-admin true*
 cluster::*> *network port modify -node n2 -port e4e -up-admin true*s
 ----
 ====
-. 各ノードについて、移行したすべてのクラスタインターコネクト LIF をリバートします。
+. 各ノードについて、移行されたすべてのクラスタ相互接続 LIF を元に戻します。
 +
-「 network interface revert 」の略
+`network interface revert`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、移行された LIF をホームポートにリバートする方法を示しています。
+次の例は、移行された LIF がホーム ポートに戻されることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -389,4 +389,4 @@ cluster::*> *network interface revert -vserver Cluster -lif n2_clus2*
 
 
 .次の手順
-link:migrate-from-switchless-complete-migration.html["移行の完了"]です。
+link:migrate-from-switchless-complete-migration.html["移行を完了する"] 。

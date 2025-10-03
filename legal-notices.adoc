@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords:  
 summary:  
 ---
-= 法的通知
+= 法律上の表示
 :allow-uri-read: 
 :icons: font
 :imagesdir: ./media/
 
 
 [role="lead"]
-著作権に関する声明、商標、特許などにアクセスできます。
+法的通知から、著作権情報、商標、特許などを確認できます。
 
 
 
@@ -23,7 +23,7 @@ link:https://www.netapp.com/company/legal/copyright/["https://www.netapp.com/com
 
 == 商標
 
-NetApp 、 NetApp のロゴ、および NetApp の商標ページに記載されているマークは、 NetApp, Inc. の商標です。その他の会社名および製品名は、それぞれの所有者の商標である場合があります。
+NetApp、NetAppのロゴ、NetAppの商標一覧のページに掲載されているマークは、NetApp, Inc.の商標です。その他の会社名と製品名は、それを所有する各社の商標である場合があります。
 
 link:https://www.netapp.com/company/legal/trademarks/["https://www.netapp.com/company/legal/trademarks/"^]
 
@@ -31,12 +31,12 @@ link:https://www.netapp.com/company/legal/trademarks/["https://www.netapp.com/co
 
 == 特許
 
-ネットアップが所有する特許の最新リストは、次のサイトで入手できます。
+現在NetAppが所有する特許の一覧は以下のページから閲覧できます。
 
 link:https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf["https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf"^]
 
 
 
-== プライバシーポリシー
+== プライバシー ポリシー
 
 link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.com/company/legal/privacy-policy/"^]

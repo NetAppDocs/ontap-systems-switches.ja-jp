@@ -2,9 +2,9 @@
 permalink: switch-cisco-9336c-fx2/install-upgrade-rcf-overview-cluster.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
-summary: クラスタスイッチヘルスモニタ（ CSHM ）およびログ収集機能を使用する場合、 SSH は要件です。Cisco 9336c-FX2クラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。 
+summary: 'クラスタ スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用する場合は、SSH が必須です。  Cisco 9336c-fx2 クラスタ スイッチで SSH を有効にするには、まず SSH キーを生成し、次に SSH を有効にします。' 
 ---
-= リファレンス構成ファイル（RCF）のインストールまたはアップグレードの概要
+= 参照構成ファイル（RCF）のインストールまたはアップグレードの概要
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,95 +13,95 @@ summary: クラスタスイッチヘルスモニタ（ CSHM ）およびログ�
 [role="lead"]
 Nexus 9336C-FX2 および 9336C-FX2-T スイッチを初めてセットアップした後、リファレンス コンフィギュレーション ファイル (RCF) をインストールします。スイッチに既存のバージョンの RCF ファイルがインストールされている場合は、RCF バージョンをアップグレードします。
 
-RCFをインストールまたはアップグレードする場合の詳細については、技術情報アーティクルを参照してlink:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままCiscoインターコネクトスイッチの設定をクリアする方法"^]ください。
+ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]RCF をインストールまたはアップグレードする際の詳細については、こちらをご覧ください。
 
-.使用可能なRCF構成
-次の表に、さまざまな構成で使用できるRCFを示します。使用している構成に該当するRCFを選択します。
+.利用可能なRCF構成
+次の表では、さまざまな構成で使用できる RCF について説明します。構成に適した RCF を選択します。
 
-特定のポートおよびVLANの使用方法の詳細については、RCFのバナーおよび重要な注意事項のセクションを参照してください。
+特定のポートと VLAN の使用法の詳細については、RCF のバナーと重要な注意事項のセクションを参照してください。
 
 [cols="1,2"]
 |===
-| RCF名 | 説明 
+| RCF name | 説明 
 
 
  a| 
-2クラスタHA構成-ブレークアウト
+2 クラスター HA ブレイクアウト
  a| 
-は、クラスタとHAの共有ポートを使用するノードを含め、8ノード以上で構成される2つのONTAPクラスタをサポートします。
-
-
-
- a| 
-4クラスタHA構成（ブレークアウト）
- a| 
-クラスタとHAの共有ポートを使用するノードを含め、4つ以上のノードで構成される4つのONTAPクラスタをサポートします。
+共有 Cluster+HA ポートを使用するノードを含む、少なくとも 8 つのノードを持つ 2 つのONTAPクラスタをサポートします。
 
 
 
  a| 
-1-クラスタHA
+4 クラスター HA ブレイクアウト
  a| 
-すべてのポートが40 / 100GbE用に構成されています。ポートで共有クラスタ/ HAトラフィックをサポートします。AFF A320、AFF A250、およびFAS500fシステムに必要です。また、すべてのポートを専用のクラスタポートとして使用できます。
-
-
-
- a| 
-1-クラスタHA構成-ブレークアウト
- a| 
-ポートは、10GbEブレークアウト×4、25GbEブレークアウト×4（100GbEスイッチではRCF 1.6+）、および40 / 100GbE用に構成されています。共有クラスタ/ HAポートを使用するノード（AFF A320、AFF A250、およびFAS500fシステム）のポートでクラスタ/ HAトラフィックの共有をサポートします。また、すべてのポートを専用のクラスタポートとして使用できます。
+共有 Cluster+HA ポートを使用するノードを含む、少なくとも 4 つのノードを持つ 4 つのONTAPクラスタをサポートします。
 
 
 
  a| 
-クラスタHAストレージ
+1クラスターHA
  a| 
-ポートは、クラスタ+ HAでは40 / 100GbE、クラスタでは4×10GbEブレークアウト、クラスタ+ HAでは4×25GbEブレークアウト、ストレージHAペアごとに100GbE用に構成されます。
+すべてのポートは 40/100GbE 用に設定されています。ポート上の共有クラスタ/HA トラフィックをサポートします。 AFF A320、 AFF A250、およびFAS500fシステムに必要です。さらに、すべてのポートを専用のクラスター ポートとして使用できます。
+
+
+
+ a| 
+1 クラスター HA ブレイクアウト
+ a| 
+ポートは、4x10GbE ブレイクアウト、4x25GbE ブレイクアウト (100GbE スイッチ上の RCF 1.6+)、および 40/100GbE 用に設定されています。共有クラスタ/HA ポートを使用するノード(AFF A320、 AFF A250、およびFAS500fシステム) のポートで共有クラスタ/HA トラフィックをサポートします。さらに、すべてのポートを専用のクラスター ポートとして使用できます。
+
+
+
+ a| 
+クラスターHAストレージ
+ a| 
+ポートは、クラスター + HA の場合は 40/100GbE、クラスターの場合は 4x10GbE ブレークアウト、クラスター + HA の場合は 4x25GbE ブレークアウト、各ストレージ HA ペアの場合は 100GbE に設定されています。
 
 
 
  a| 
 クラスタ
  a| 
-4x10GbEポート（ブレークアウト）と40/100GbEポートの割り当てが異なる2種類のRCFAFF A320、AFF A250、FAS500fシステムを除く、すべてのFAS / AFFノードがサポートされます。
+4x10GbE ポート (ブレイクアウト) と 40/100GbE ポートの割り当てが異なる 2 種類の RCF。  AFF A320、 AFF A250、およびFAS500fシステムを除くすべてのFAS/ AFFノードがサポートされています。
 
 
 
  a| 
 ストレージ
  a| 
-すべてのポートが100GbE NVMeストレージ接続用に設定されています。
+すべてのポートは 100GbE NVMe ストレージ接続用に構成されています。
 
 |===
-.推奨されるドキュメント
-* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネットスイッチ（NSS）"^]
+.推奨ドキュメント
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ (NSS)"^]
 +
-NetApp Support SiteでサポートされているONTAPとRCFのバージョンについては、スイッチの互換性の表を参照してください。RCFのコマンド構文と特定のバージョンのNX-OSの構文との間には、コマンドの依存関係が存在することに注意してください。
+サポートされているONTAPおよび RCF バージョンについては、 NetAppサポート サイトのスイッチ互換性表を参照してください。  RCF のコマンド構文と特定のバージョンの NX-OS の構文の間にはコマンド依存関係がある可能性があることに注意してください。
 
-* link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズスイッチ"^]
+* link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズ スイッチ"^]
 +
-Ciscoスイッチのアップグレードおよびダウングレード手順の完全なマニュアルについては、シスコのWebサイトで入手可能な該当するソフトウェアおよびアップグレードガイドを参照してください。
+Ciscoスイッチのアップグレードおよびダウングレード手順の完全なドキュメントについては、 Cisco Web サイトで入手可能な適切なソフトウェアおよびアップグレード ガイドを参照してください。
 
 
 
 .例について
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 2つのCiscoスイッチの名前は* CS1 *および* CS2 *です。
-* ノード名は* cluster1-01 *、* cluster1-02 *、* cluster1-03 *、および* cluster1-04 *です。
-* クラスタLIFの名前は、* cluster1-01_clus1 *、* cluster1-01_clus2 *、* cluster1-02_clus1 *、* cluster1-02_clus2 *、* cluster1-03_clus2 *、* cluster1-03_clus2 *、* cluster1-04_clus1 *、および* cluster1-04_clus2 *です。
-* 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
-
-
-この手順 の例では 4 ノードを使用します。これらのノードは、2つの10GbEクラスタインターコネクトポート* e0a *と* e0b *を使用します。を参照し https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]て、プラットフォームのクラスタポートが正しいことを確認します。
+* 2 つのCiscoスイッチの名前は *cs1* と *cs2* です。
+* ノード名は*cluster1-01*、*cluster1-02*、*cluster1-03*、*cluster1-04*です。
+* クラスタ LIF 名は、*cluster1-01_clus1*、*cluster1-01_clus2*、*cluster1-02_clus1*、*cluster1-02_clus2*、*cluster1-03_clus1*、*cluster1-03_clus2*、*cluster1-04_clus1*、および *cluster1-04_clus2* です。
+* その `cluster1::*>`プロンプトはクラスターの名前を示します。
 
 
-NOTE: コマンド出力は、 ONTAP のリリースによって異なる場合があります。
+この手順の例では、4 つのノードを使用します。これらのノードは、2 つの 10GbE クラスター相互接続ポート *e0a* と *e0b* を使用します。参照 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]プラットフォーム上の正しいクラスター ポートを確認します。
 
-使用可能なRCF構成の詳細については、を参照してください。 link:configure-software-overview-9336c-cluster.html["ソフトウェアのインストールワークフロー"]。
 
-.使用するコマンド
-手順では、 ONTAP コマンドと Cisco Nexus 9000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
+NOTE: コマンド出力は、ONTAPのリリースによって異なる場合があります。
+
+利用可能なRCF構成の詳細については、link:configure-software-overview-9336c-cluster.html["ソフトウェアインストールワークフロー"] 。
+
+.使用されるコマンド
+この手順では、ONTAPコマンドとCisco Nexus 9000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
 
 .次の手順
 RCFのインストールまたはRCFのアップグレード手順を確認した後、link:install-rcf-software-9336c-cluster.html["RCFをインストールする"]またはlink:upgrade-rcf-software-9336c-cluster.html["RCFをアップグレードする"]必要に応じて。

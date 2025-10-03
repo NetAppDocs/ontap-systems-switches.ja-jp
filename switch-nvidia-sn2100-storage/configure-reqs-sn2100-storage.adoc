@@ -2,7 +2,7 @@
 permalink: switch-nvidia-sn2100-storage/configure-reqs-sn2100-storage.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: NVIDIA SN2100スイッチのインストールとメンテナンスについては、すべての要件を確認してください。 
+summary: NVIDIA SN2100 スイッチのインストールとメンテナンスについては、すべての要件を必ず確認してください。 
 ---
 = NVIDIA SN2100スイッチの構成要件
 :allow-uri-read: 
@@ -11,28 +11,28 @@ summary: NVIDIA SN2100スイッチのインストールとメンテナンスに�
 
 
 [role="lead"]
-NVIDIA SN2100スイッチのインストールとメンテナンスについては、すべての要件を確認してください。
+NVIDIA SN2100 スイッチのインストールとメンテナンスについては、すべての要件を必ず確認してください。
 
 
 
 == インストールの要件
 
-3 つ以上のノードで ONTAP クラスタを構築する場合は、サポートされている 2 つのクラスタネットワークスイッチが必要です。オプションとして、追加の管理スイッチを使用できます。
+2 つ以上のノードを持つONTAPクラスターを構築する場合は、サポートされているクラスター ネットワーク スイッチが 2 つ必要です。オプションとして追加の管理スイッチを使用することもできます。
 
-NVIDIA SN2100スイッチ（X190006/X190106）は、スイッチに付属の標準ブラケットを使用して、NVIDIAデュアル/シングルスイッチキャビネットに設置します。
+NVIDIA SN2100 スイッチ (X190006/X190106) は、スイッチに付属の標準ブラケットを使用してNVIDIAデュアル/シングル スイッチ キャビネットに取り付けます。
 
-ケーブル配線のガイドラインについては、link:cabling-considerations-sn2100-storage.html["ケーブル接続と構成に関する考慮事項"] 。
+ケーブル配線のガイドラインについては、link:cabling-considerations-sn2100-storage.html["ケーブル配線と構成に関する考慮事項"] 。
 
 
 
-== ONTAP およびLinuxのサポート
+== ONTAPとLinuxのサポート
 
-NVIDIA SN2100スイッチは、Cumulus Linuxを実行する10/25/40/100Gbイーサネットスイッチです。スイッチは以下をサポートしています。
+NVIDIA SN2100 スイッチは、Cumulus Linux を実行する 10/25/40/100 Gb イーサネット スイッチです。スイッチは以下をサポートします。
 
-* ONTAP 9.10.1P3SN2100スイッチは、ONTAP 9.10.1P3のクラスタおよびストレージアプリケーションに、異なるスイッチペアを提供します。ONTAP 9.10.1P3以降では、NVIDIA SN2100スイッチを使用してストレージとクラスタの機能を共有スイッチ構成に統合できます。
-* Cumulus Linux（CL）OSバージョン4.4.3。最新の互換性情報については、を参照してください https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIAイーサネットスイッチ"^] 情報ページ。
-* Cumulus Linuxは、スイッチがCumulus LinuxまたはONIEを実行しているときにインストールできます。
+* ONTAP 9.10.1P3。  SN2100 スイッチは、異なるスイッチ ペアを介してONTAP 9.10.1P3 のクラスタおよびストレージ アプリケーションにサービスを提供します。  ONTAP 9.10.1P3 以降では、 NVIDIA SN2100 スイッチを使用して、ストレージとクラスタ機能を共有スイッチ構成に統合できます。
+* Cumulus Linux (CL) OS バージョン 4.4.3。現在の互換性情報については、 https://mysupport.netapp.com/site/info/nvidia-cluster-switch["NVIDIAイーサネットスイッチ"^]情報ページ。
+* スイッチが Cumulus Linux または ONIE を実行している場合は、Cumulus Linux をインストールできます。
 
 
 .次の手順
-link:components-sn2100-storage.html["コンポーネントとパーツ番号"] 。
+link:components-sn2100-storage.html["コンポーネントと部品番号"] 。

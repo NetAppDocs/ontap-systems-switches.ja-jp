@@ -2,54 +2,54 @@
 permalink: switch-nvidia-sn2100/install-cumulus-mode-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: install cumulus mode, sn2100 SN2100 switches setup, cumulus linux, cumulus mode 
-summary: Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます。 
+summary: 'Cumulus Linux (CL) OS は、スイッチが Cumulus Linux または ONIE を実行しているときにインストールできます。' 
 ---
-= Cumulus LinuxをCumulusモードでインストールします
+= Cumulus LinuxをCumulusモードでインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-[Cumulus Linux(CL：Cumulus Linux)]モードでスイッチを実行している場合は、この手順 に従ってCumulus Linux（CL）OSをインストールします。
+スイッチが Cumulus モードで実行されているときに Cumulus Linux (CL) OS をインストールするには、次の手順に従ってください。
 
 
-NOTE: Cumulus Linux（CL）OSは、スイッチでCumulus LinuxまたはONIEを実行している場合にインストールできます（を参照） link:install-onie-mode-sn2100-cluster.html["ONIEモードでインストールします"]）。
+NOTE: Cumulus Linux (CL) OSは、スイッチがCumulus LinuxまたはONIEを実行しているときにインストールできます（link:install-onie-mode-sn2100-cluster.html["ONIEモードでインストールする"] ）。
 
-.作業を開始する前に
-次のものがあることを確認します。
+.開始する前に
+以下のものがあることを確認してください。
 
-* Linuxに関する中級レベルの知識
-* 基本的なテキスト編集、UNIXファイル権限、およびプロセスの監視に精通していること。など、さまざまなテキストエディタが事前にインストールされています `vi` および `nano`。
-* LinuxまたはUNIXシェルへのアクセス。Windowsを実行している場合は、Linux環境をコマンドラインツールとして使用して、クムルスLinuxと対話します。
-* NVIDIA SN2100スイッチのコンソールアクセスでは、シリアルコンソールスイッチでボーレート要件が115200に設定されます。
+* 中級レベルの Linux の知識。
+* 基本的なテキスト編集、UNIX ファイル権限、プロセス監視に関する知識。さまざまなテキストエディタがプリインストールされており、 `vi`そして `nano`。
+* Linux または UNIX シェルへのアクセス。  Windows を実行している場合は、Cumulus Linux と対話するためのコマンド ライン ツールとして Linux 環境を使用します。
+* NVIDIA SN2100 スイッチ コンソール アクセス用のシリアル コンソール スイッチのボー レート要件は、次のように 115200 に設定されています。
 +
-** 115200 ボー
-** 8 データビット
-** 1 ストップビット
+** 115200ボー
+** 8データ ビット
+** 1ストップ ビット
 ** パリティ：なし
 ** フロー制御：なし
 
 
 
 
-.このタスクについて
+.タスク概要
 次の点に注意してください。
 
 
-NOTE: Cumulus Linuxをインストールするたびに、ファイルシステム構造全体が消去され、再構築されます。
+NOTE: Cumulus Linux がインストールされるたびに、ファイル システム構造全体が消去され、再構築されます。
 
 
-CAUTION: cumulusユーザーアカウントのデフォルトパスワードは*cumulus *です。Cumulus Linuxに初めてログインするときは、このデフォルトのパスワードを変更する必要があります。新しいイメージをインストールする前に、必ず自動化スクリプトを更新してください。Cumulus Linuxには、インストールプロセス中にデフォルトのパスワードを自動的に変更するためのコマンドラインオプションが用意されています。
+CAUTION: cumulus ユーザー アカウントのデフォルトのパスワードは *cumulus* です。 Cumulus Linux に初めてログインするときは、このデフォルトのパスワードを変更する必要があります。新しいイメージをインストールする前に、自動化スクリプトを必ず更新してください。  Cumulus Linux には、インストール プロセス中にデフォルトのパスワードを自動的に変更するためのコマンド ライン オプションが用意されています。
 
 .手順
 [role="tabbed-block"]
 ====
-.Cumulus Linux 4.4.3.
+.キュムラス・リナックス 4.4.3
 --
 . スイッチにログインします。
 +
-スイッチへの初回ログインには、ユーザ名/パスワードとして「* cumulus */* cumulus * with」が必要です `sudo` 権限：
+スイッチに初めてログインする場合は、*cumulus*/*cumulus*のユーザー名/パスワードが必要です。 `sudo`特権。
 
 +
 [listing, subs="+quotes"]
@@ -62,7 +62,7 @@ Current password: *cumulus*
 New password: *<new_password>*
 Retype new password: *<new_password>*
 ----
-. Cumulus Linuxのバージョンを確認します。 `net show system`
+. Cumulus Linux のバージョンを確認します。 `net show system`
 +
 [listing, subs="+quotes"]
 ----
@@ -84,14 +84,14 @@ ONIE Version..... 2019.11-5.2.0020-115200
 Base MAC Address. 04:3F:72:43:92:80
 Manufacturer..... Mellanox
 ----
-. ホスト名、IPアドレス、サブネットマスク、およびデフォルトゲートウェイを設定します。新しいホスト名が有効になるのは、コンソール/SSHセッションを再起動した後だけです。
+. ホスト名、IP アドレス、サブネット マスク、およびデフォルト ゲートウェイを構成します。新しいホスト名は、コンソール/SSH セッションを再起動した後でのみ有効になります。
 +
 
-NOTE: Cumulus Linuxスイッチには、「eth0」という専用イーサネット管理ポートが少なくとも1つあります。このインターフェイスは、アウトオブバンド管理専用です。デフォルトでは、管理インターフェイスはアドレス指定にDHCPv4を使用します。
+NOTE: Cumulus Linuxスイッチは、少なくとも1つの専用のイーサネット管理ポートを提供します。 `eth0` 。このインターフェースは、アウトオブバンド管理専用です。デフォルトでは、管理インターフェイスはアドレス指定に DHCPv4 を使用します。
 
 +
 
-CAUTION: ホスト名には、アンダースコア（_）、アポストロフィ（'）、非ASCII文字を使用しないでください。
+CAUTION: ホスト名にはアンダースコア (_)、アポストロフィ (')、または非 ASCII 文字を使用しないでください。
 
 +
 [listing, subs="+quotes"]
@@ -103,9 +103,9 @@ cumulus@cumulus:mgmt:~$ *net pending*
 cumulus@cumulus:mgmt:~$ *net commit*
 ----
 +
-このコマンドは'/etc/hostname'ファイルと/etc/hostsファイルの両方を変更します
+このコマンドは、 `/etc/hostname`そして `/etc/hosts`ファイル。
 
-. ホスト名、IPアドレス、サブネットマスク、およびデフォルトゲートウェイが更新されたことを確認します。
+. ホスト名、IP アドレス、サブネット マスク、デフォルト ゲートウェイが更新されていることを確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -126,7 +126,7 @@ unreachable default metric 4278198272
 10.233.204.0/23 dev eth0 proto kernel scope link src 10.233.204.71
 127.0.0.0/8 dev mgmt proto kernel scope link src 127.0.0.1
 ----
-. スイッチの日付、時刻、タイムゾーン、およびNTPサーバを設定します。
+. スイッチの日付、時刻、タイムゾーン、NTP サーバーを設定します。
 +
 .. 現在のタイムゾーンを確認します。
 +
@@ -134,13 +134,13 @@ unreachable default metric 4278198272
 ----
 cumulus@sw1:~$ *cat /etc/timezone*
 ----
-.. 新しいタイムゾーンに更新します。
+.. 新しいタイムゾーンに更新します:
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *sudo dpkg-reconfigure --frontend noninteractive tzdata*
 ----
-.. 現在のタイムゾーンを確認します。
+.. 現在のタイムゾーンを確認してください:
 +
 [listing, subs="+quotes"]
 ----
@@ -152,19 +152,19 @@ cumulus@switch:~$ *date +%Z*
 ----
 cumulus@sw1:~$ *sudo dpkg-reconfigure tzdata*
 ----
-.. 設定されたタイムゾーンに従ってソフトウェアクロックを設定します。
+.. 設定されたタイムゾーンに従ってソフトウェア クロックを設定します。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@switch:~$ *sudo date -s "Tue Oct 28 00:37:13 2023"*
 ----
-.. ソフトウェアクロックの現在の値をハードウェアクロックに設定します。
+.. ソフトウェア クロックの現在の値をハードウェア クロックに設定します。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@switch:~$ *sudo hwclock -w*
 ----
-.. 必要に応じてNTPサーバを追加します。
+.. 必要に応じて NTP サーバーを追加します。
 +
 [listing, subs="+quotes"]
 ----
@@ -172,14 +172,14 @@ cumulus@sw1:~$ *net add time ntp server _<cumulus.network.ntp.org>_ iburst*
 cumulus@sw1:~$ *net pending*
 cumulus@sw1:~$ *net commit*
 ----
-.. がシステムで実行されていることを確認し `ntpd`ます。
+.. 確認する `ntpd`システム上で実行されています:
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *ps -ef | grep ntp*
 ntp       4074     1  0 Jun20 ?        00:00:33 /usr/sbin/ntpd -p /var/run/ntpd.pid -g -u 101:102
 ----
-.. NTPソースインターフェイスを指定します。デフォルトでは、NTPが使用するソースインターフェイスはです `eth0`。次のように、別のNTPソースインターフェイスを設定できます。
+.. NTP ソース インターフェイスを指定します。デフォルトでは、NTPが使用するソースインターフェースは `eth0`。次のようにして、異なる NTP ソース インターフェイスを設定できます。
 +
 [listing, subs="+quotes"]
 ----
@@ -189,31 +189,31 @@ cumulus@sw1:~$ *net commit*
 ----
 
 
-. Cumulus Linux 4.4.3をインストールします。
+. Cumulus Linux 4.4.3 をインストールします。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:mgmt:~$ *sudo onie-install -a -i http://_<web-server>/<path>_/cumulus-linux-4.4.3-mlx-amd64.bin*
 ----
 +
-インストーラがダウンロードを開始します。プロンプトが表示されたら「* y *」と入力します
+インストーラーがダウンロードを開始します。プロンプトが表示されたら「*y*」と入力します。
 
-. NVIDIA SN2100スイッチをリブートします。
+. NVIDIA SN2100 スイッチを再起動します。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:mgmt:~$ *sudo reboot*
 ----
-. インストールが自動的に開始され'次のGRUB画面の選択肢が表示されますDo * not *（実行しない）を選択します。
+. インストールが自動的に開始され、次の GRUB 画面の選択肢が表示されます。何も選択しないでください。
 +
-** Cumulus - Linux GNU/Linux
+** キュムラス・リナックス GNU/Linux
 ** ONIE: OSのインストール
-** クムルス-インストール
-** Cumulus - Linux GNU/Linux
+** CUMULUS-インストール
+** キュムラス・リナックス GNU/Linux
 
 
-. ログインするには、手順1~4を繰り返します。
-. Cumulus Linuxのバージョンが4.4.3であることを確認します。 `net show version`
+. 手順1～4を繰り返してログインします。
+. Cumulus Linux のバージョンが 4.4.3 であることを確認します。 `net show version`
 +
 [listing, subs="+quotes"]
 ----
@@ -223,7 +223,7 @@ DISTRIB_ID="Cumulus Linux"
 DISTRIB_RELEASE=*4.4.3*
 DISTRIB_DESCRIPTION=*"Cumulus Linux 4.4.3"*
 ----
-. 新しいユーザを作成し、に追加します `sudo` グループ：このユーザが有効になるのは、コンソール/SSHセッションが再起動された後だけです。
+. 新しいユーザーを作成し、このユーザーを `sudo`グループ。このユーザーは、コンソール/SSH セッションが再起動された後にのみ有効になります。
 +
 `sudo adduser --ingroup netedit admin`
 
@@ -271,11 +271,11 @@ admin@sw1:mgmt:~$
 
 
 --
-.Cumulus Linux 5.4.0.
+.キュムラス・リナックス 5.4.0
 --
 . スイッチにログインします。
 +
-スイッチへの初回ログインには、ユーザ名/パスワードとして「* cumulus */* cumulus * with」が必要です `sudo` 権限：
+スイッチに初めてログインする場合は、*cumulus*/*cumulus*のユーザー名/パスワードが必要です。 `sudo`特権。
 
 +
 [listing, subs="+quotes"]
@@ -288,7 +288,7 @@ Current password: *cumulus*
 New password: *<new_password>*
 Retype new password: *<new_password>*
 ----
-. Cumulus Linuxのバージョンを確認します。 `nv show system`
+. Cumulus Linux のバージョンを確認します。 `nv show system`
 +
 [listing, subs="+quotes"]
 ----
@@ -300,14 +300,14 @@ build               Cumulus Linux 5.3.0  system build version
 uptime              6 days, 8:37:36      system uptime
 timezone            Etc/UTC              system time zone
 ----
-. ホスト名、IPアドレス、サブネットマスク、およびデフォルトゲートウェイを設定します。新しいホスト名が有効になるのは、コンソール/SSHセッションを再起動した後だけです。
+. ホスト名、IP アドレス、サブネット マスク、およびデフォルト ゲートウェイを構成します。新しいホスト名は、コンソール/SSH セッションを再起動した後でのみ有効になります。
 +
 
-NOTE: Cumulus Linuxスイッチには、「eth0」という専用イーサネット管理ポートが少なくとも1つあります。このインターフェイスは、アウトオブバンド管理専用です。デフォルトでは、管理インターフェイスはアドレス指定にDHCPv4を使用します。
+NOTE: Cumulus Linuxスイッチは、少なくとも1つの専用のイーサネット管理ポートを提供します。 `eth0` 。このインターフェースは、アウトオブバンド管理専用です。デフォルトでは、管理インターフェイスはアドレス指定に DHCPv4 を使用します。
 
 +
 
-CAUTION: ホスト名には、アンダースコア（_）、アポストロフィ（'）、非ASCII文字を使用しないでください。
+CAUTION: ホスト名にはアンダースコア (_)、アポストロフィ (')、または非 ASCII 文字を使用しないでください。
 
 +
 [listing, subs="+quotes"]
@@ -319,9 +319,9 @@ cumulus@cumulus:mgmt:~$ *nv config apply*
 cumulus@cumulus:mgmt:~$ *nv config save*
 ----
 +
-このコマンドは'/etc/hostname'ファイルと/etc/hostsファイルの両方を変更します
+このコマンドは、 `/etc/hostname`そして `/etc/hosts`ファイル。
 
-. ホスト名、IPアドレス、サブネットマスク、およびデフォルトゲートウェイが更新されたことを確認します。
+. ホスト名、IP アドレス、サブネット マスク、デフォルト ゲートウェイが更新されていることを確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -342,16 +342,16 @@ unreachable default metric 4278198272
 10.233.204.0/23 dev eth0 proto kernel scope link src 10.233.204.71
 127.0.0.0/8 dev mgmt proto kernel scope link src 127.0.0.1
 ----
-. スイッチのタイムゾーン、日付、時刻、およびNTPサーバを設定します。
+. スイッチのタイムゾーン、日付、時刻、NTP サーバーを設定します。
 +
-.. タイムゾーンを設定します。
+.. タイムゾーンを設定します:
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *nv set system timezone US/Eastern*
 cumulus@sw1:~$ *nv config apply*
 ----
-.. 現在のタイムゾーンを確認します。
+.. 現在のタイムゾーンを確認してください:
 +
 [listing, subs="+quotes"]
 ----
@@ -363,19 +363,19 @@ cumulus@switch:~$ *date +%Z*
 ----
 cumulus@sw1:~$ *sudo dpkg-reconfigure tzdata*
 ----
-.. 設定されたタイムゾーンに従ってソフトウェアクロックを設定します。
+.. 設定されたタイムゾーンに従ってソフトウェア クロックを設定します。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *sudo date -s "Tue Oct 28 00:37:13 2023"*
 ----
-.. ソフトウェアクロックの現在の値をハードウェアクロックに設定します。
+.. ソフトウェア クロックの現在の値をハードウェア クロックに設定します。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *sudo hwclock -w*
 ----
-.. 必要に応じてNTPサーバを追加します。
+.. 必要に応じて NTP サーバーを追加します。
 +
 [listing, subs="+quotes"]
 ----
@@ -385,16 +385,16 @@ cumulus@sw1:~$ *nv config apply*
 cumulus@sw1:~$ *nv config save*
 ----
 +
-ナレッジベースの記事を参照してくださいlink:https://kb.netapp.com/on-prem/Switches/Nvidia-KBs/NTP_Server_configuration_is_not_working_with_NVIDIA_SN2100_Switches["NTPサーバーの構成がNVIDIA SN2100スイッチで機能しない"^]詳細についてはこちらをご覧ください。
+ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Nvidia-KBs/NTP_Server_configuration_is_not_working_with_NVIDIA_SN2100_Switches["NTPサーバーの構成がNVIDIA SN2100スイッチで機能しない"^]詳細については、こちらをご覧ください。
 
-.. がシステムで実行されていることを確認し `ntpd`ます。
+.. 確認する `ntpd`システム上で実行されています:
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *ps -ef | grep ntp*
 ntp       4074     1  0 Jun20 ?        00:00:33 /usr/sbin/ntpd -p /var/run/ntpd.pid -g -u 101:102
 ----
-.. NTPソースインターフェイスを指定します。デフォルトでは、NTPが使用するソースインターフェイスはです `eth0`。次のように、別のNTPソースインターフェイスを設定できます。
+.. NTP ソース インターフェイスを指定します。デフォルトでは、NTPが使用するソースインターフェースは `eth0`。次のようにして、異なる NTP ソース インターフェイスを設定できます。
 +
 [listing, subs="+quotes"]
 ----
@@ -403,31 +403,31 @@ cumulus@sw1:~$ *nv config apply*
 ----
 
 
-. Cumulus Linux 5.4.0をインストールします。
+. Cumulus Linux 5.4.0 をインストールします。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:mgmt:~$ *sudo onie-install -a -i http://_<web-server>/<path>_/cumulus-linux-5.4-mlx-amd64.bin*
 ----
 +
-インストーラがダウンロードを開始します。プロンプトが表示されたら「* y *」と入力します
+インストーラーがダウンロードを開始します。プロンプトが表示されたら「*y*」と入力します。
 
-. NVIDIA SN2100スイッチをリブートします。
+. NVIDIA SN2100 スイッチを再起動します。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:mgmt:~$ *sudo reboot*
 ----
-. インストールが自動的に開始され'次のGRUB画面の選択肢が表示されますDo * not *（実行しない）を選択します。
+. インストールが自動的に開始され、次の GRUB 画面の選択肢が表示されます。何も選択しないでください。
 +
-** Cumulus - Linux GNU/Linux
+** キュムラス・リナックス GNU/Linux
 ** ONIE: OSのインストール
-** クムルス-インストール
-** Cumulus - Linux GNU/Linux
+** CUMULUS-インストール
+** キュムラス・リナックス GNU/Linux
 
 
-. ログインするには、手順1~4を繰り返します。
-. Cumulus Linuxのバージョンが5.4.0であることを確認します。 `nv show system`
+. 手順1～4を繰り返してログインします。
+. Cumulus Linux のバージョンが 5.4.0 であることを確認します。 `nv show system`
 +
 [listing, subs="+quotes"]
 ----
@@ -452,7 +452,7 @@ swp2s1     25G    Trunk/L2    node1                               e0a
 swp15      100G   BondMember  sw2                                 swp15
 swp16      100G   BondMember  sw2                                 swp16
 ----
-. 新しいユーザを作成し、に追加します `sudo` グループ：このユーザが有効になるのは、コンソール/SSHセッションが再起動された後だけです。
+. 新しいユーザーを作成し、このユーザーを `sudo`グループ。このユーザーは、コンソール/SSH セッションが再起動された後にのみ有効になります。
 +
 `sudo adduser --ingroup netedit admin`
 
@@ -497,7 +497,7 @@ http://www.cumulusnetworks.com/support
 The registered trademark Linux (R) is used pursuant to a sublicense from LMI, the exclusive licensee of Linus Torvalds, owner of the mark on a world-wide basis.
 admin@sw1:mgmt:~$
 ----
-. 管理者ユーザがアクセスできるユーザグループを追加します `nv` コマンド：
+. 管理者ユーザーがアクセスするための追加のユーザーグループを追加する `nv`コマンド:
 +
 [listing, subs="+quotes"]
 ----
@@ -508,16 +508,16 @@ cumulus@sw1:mgmt:~$ *sudo adduser admin nvshow*
      Done.
 ----
 +
-を参照してください https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^] を参照してください。
+見る https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^]詳細についてはこちらをご覧ください。
 
 
 
 --
-.Cumulus Linux 5.11.0.
+.キュムラス・リナックス 5.11.0
 --
 . スイッチにログインします。
 +
-スイッチに初めてログインするときは、Privilegesで* cumulus */* cumulus *というユーザ名/パスワードが必要です `sudo`。
+スイッチに初めてログインするときは、*cumulus*/*cumulus*のユーザー名/パスワードが必要です。 `sudo`特権。
 
 +
 [listing, subs="+quotes"]
@@ -530,7 +530,7 @@ Current password: *cumulus*
 New password: *<new_password>*
 Retype new password: *<new_password>*
 ----
-. Cumulus Linuxのバージョンを確認します。 `nv show system`
+. Cumulus Linux のバージョンを確認します。 `nv show system`
 +
 [listing, subs="+quotes"]
 ----
@@ -542,14 +542,14 @@ build               Cumulus Linux 5.4.0  system build version
 uptime              6 days, 8:37:36      system uptime
 timezone            Etc/UTC              system time zone
 ----
-. ホスト名、IPアドレス、サブネットマスク、およびデフォルトゲートウェイを設定します。新しいホスト名が有効になるのは、コンソール/SSHセッションを再起動した後だけです。
+. ホスト名、IP アドレス、サブネット マスク、およびデフォルト ゲートウェイを構成します。新しいホスト名は、コンソール/SSH セッションを再起動した後でのみ有効になります。
 +
 
-NOTE: Cumulus Linuxスイッチには、「eth0」という専用イーサネット管理ポートが少なくとも1つあります。このインターフェイスは、アウトオブバンド管理専用です。デフォルトでは、管理インターフェイスはアドレス指定にDHCPv4を使用します。
+NOTE: Cumulus Linuxスイッチは、少なくとも1つの専用のイーサネット管理ポートを提供します。 `eth0` 。このインターフェースは、アウトオブバンド管理専用です。デフォルトでは、管理インターフェイスはアドレス指定に DHCPv4 を使用します。
 
 +
 
-CAUTION: ホスト名には、アンダースコア（_）、アポストロフィ（'）、非ASCII文字を使用しないでください。
+CAUTION: ホスト名にはアンダースコア (_)、アポストロフィ (')、または非 ASCII 文字を使用しないでください。
 
 +
 [listing, subs="+quotes"]
@@ -561,9 +561,9 @@ cumulus@cumulus:mgmt:~$ *nv config apply*
 cumulus@cumulus:mgmt:~$ *nv config save*
 ----
 +
-このコマンドは'/etc/hostname'ファイルと/etc/hostsファイルの両方を変更します
+このコマンドは、 `/etc/hostname`そして `/etc/hosts`ファイル。
 
-. ホスト名、IPアドレス、サブネットマスク、およびデフォルトゲートウェイが更新されたことを確認します。
+. ホスト名、IP アドレス、サブネット マスク、デフォルト ゲートウェイが更新されていることを確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -584,16 +584,16 @@ unreachable default metric 4278198272
 10.233.204.0/23 dev eth0 proto kernel scope link src 10.233.204.71
 127.0.0.0/8 dev mgmt proto kernel scope link src 127.0.0.1
 ----
-. スイッチのタイムゾーン、日付、時刻、およびNTPサーバを設定します。
+. スイッチのタイムゾーン、日付、時刻、NTP サーバーを設定します。
 +
-.. タイムゾーンを設定します。
+.. タイムゾーンを設定します:
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *nv set system timezone US/Eastern*
 cumulus@sw1:~$ *nv config apply*
 ----
-.. 現在のタイムゾーンを確認します。
+.. 現在のタイムゾーンを確認してください:
 +
 [listing, subs="+quotes"]
 ----
@@ -605,19 +605,19 @@ cumulus@switch:~$ *date +%Z*
 ----
 cumulus@sw1:~$ *sudo dpkg-reconfigure tzdata*
 ----
-.. 設定されたタイムゾーンに従ってソフトウェアクロックを設定します。
+.. 設定されたタイムゾーンに従ってソフトウェア クロックを設定します。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *sudo date -s "Tue Oct 28 00:37:13 2023"*
 ----
-.. ソフトウェアクロックの現在の値をハードウェアクロックに設定します。
+.. ソフトウェア クロックの現在の値をハードウェア クロックに設定します。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *sudo hwclock -w*
 ----
-.. 必要に応じてNTPサーバを追加します。
+.. 必要に応じて NTP サーバーを追加します。
 +
 [listing, subs="+quotes"]
 ----
@@ -627,16 +627,16 @@ cumulus@sw1:~$ *nv config apply*
 cumulus@sw1:~$ *nv config save*
 ----
 +
-ナレッジベースの記事を参照してくださいlink:https://kb.netapp.com/on-prem/Switches/Nvidia-KBs/NTP_Server_configuration_is_not_working_with_NVIDIA_SN2100_Switches["NTPサーバーの構成がNVIDIA SN2100スイッチで機能しない"^]詳細についてはこちらをご覧ください。
+ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Nvidia-KBs/NTP_Server_configuration_is_not_working_with_NVIDIA_SN2100_Switches["NTPサーバーの構成がNVIDIA SN2100スイッチで機能しない"^]詳細については、こちらをご覧ください。
 
-.. がシステムで実行されていることを確認し `ntpd`ます。
+.. 確認する `ntpd`システム上で実行されています:
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:~$ *ps -ef | grep ntp*
 ntp       4074     1  0 Jun20 ?        00:00:33 /usr/sbin/ntpd -p /var/run/ntpd.pid -g -u 101:102
 ----
-.. NTPソースインターフェイスを指定します。デフォルトでは、NTPが使用するソースインターフェイスはです `eth0`。次のように、別のNTPソースインターフェイスを設定できます。
+.. NTP ソース インターフェイスを指定します。デフォルトでは、NTPが使用するソースインターフェースは `eth0`。次のようにして、異なる NTP ソース インターフェイスを設定できます。
 +
 [listing, subs="+quotes"]
 ----
@@ -645,31 +645,31 @@ cumulus@sw1:~$ *nv config apply*
 ----
 
 
-. Cumulus Linux 5.11.0をインストールします。
+. Cumulus Linux 5.11.0 をインストールします。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:mgmt:~$ *sudo onie-install -a -i http://_<web-server>/<path>_/cumulus-linux-5.11.0-mlx-amd64.bin*
 ----
 +
-インストーラがダウンロードを開始します。プロンプトが表示されたら「* y *」と入力します
+インストーラーがダウンロードを開始します。プロンプトが表示されたら「*y*」と入力します。
 
-. NVIDIA SN2100スイッチをリブートします。
+. NVIDIA SN2100 スイッチを再起動します。
 +
 [listing, subs="+quotes"]
 ----
 cumulus@sw1:mgmt:~$ *sudo reboot*
 ----
-. インストールが自動的に開始され'次のGRUB画面の選択肢が表示されますDo * not *（実行しない）を選択します。
+. インストールが自動的に開始され、次の GRUB 画面の選択肢が表示されます。何も選択しないでください。
 +
-** Cumulus - Linux GNU/Linux
+** キュムラス・リナックス GNU/Linux
 ** ONIE: OSのインストール
-** クムルス-インストール
-** Cumulus - Linux GNU/Linux
+** CUMULUS-インストール
+** キュムラス・リナックス GNU/Linux
 
 
-. ログインするには、手順1~4を繰り返します。
-. Cumulus Linuxのバージョンが5.11.0であることを確認します。
+. 手順1～4を繰り返してログインします。
+. Cumulus Linux のバージョンが 5.11.0 であることを確認します。
 +
 `nv show system`
 
@@ -718,9 +718,9 @@ swp16      100G   swp   sw6                                       swp16
 ----
 
 
-詳細については、を参照してください https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-511/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^] 。
+見る https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-511/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^]詳細についてはこちらをご覧ください。
 
 --
 ====
 .次の手順
-link:install-rcf-sn2100-cluster.html["リファレンス構成ファイル（RCF）スクリプトをインストールします"]。
+link:install-rcf-sn2100-cluster.html["参照構成ファイル（RCF）スクリプトをインストールする"] 。

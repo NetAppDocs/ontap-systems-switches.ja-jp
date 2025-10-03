@@ -2,93 +2,93 @@
 permalink: switch-bes-53248/upgrade-rcf.html 
 sidebar: sidebar 
 keywords: upgrade rcf,setup rcf,rcf file 
-summary: BES-53248クラスタスイッチを設定したあと、新しいライセンスを適用したあとに、リファレンス構成ファイル（RCF）をアップグレードできます。 
+summary: 'BES-53248 クラスタ スイッチを構成し、新しいライセンスを適用した後、リファレンス構成ファイル (RCF) をアップグレードできます。' 
 ---
-= リファレンス構成ファイル（RCF）のアップグレード
+= 参照構成ファイル (RCF) をアップグレードする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-リファレンス構成ファイル（RCF）は、BES-53248クラスタスイッチのEFOSをアップグレードしたあと、新しいライセンスを適用したあとにアップグレードできます。
+BES-53248 クラスター スイッチ EFOS をアップグレードし、新しいライセンスを適用した後、リファレンス構成ファイル (RCF) をアップグレードできます。
 
-.作業を開始する前に
-次のものがあることを確認します。
+.開始する前に
+以下のものがあることを確認してください。
 
-* スイッチ設定の現在のバックアップ。
-* クラスタが完全に機能している（ログにエラーがない、または同様の問題が発生している）。
-* 現在のRCFファイル（から入手可能） https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom クラスタスイッチ"^] ページ
-* EFOSのみをインストールして現在のRCFバージョンを維持する場合は、目的のブートイメージが反映されたRCFのブート設定が必要です。現在のブートイメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。
-* スイッチへのコンソール接続。工場出荷時の状態からRCFをインストールする場合に必要です。ナレッジベースの記事を使用したことがある場合、この要件はオプションです  https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままBroadcomインターコネクトスイッチの設定をクリアする方法"^] 事前に設定をクリアしておく必要があります。
+* スイッチ構成の現在のバックアップ。
+* 完全に機能するクラスター (ログにエラーや同様の問題がない)。
+* 現在のRCFファイルは、 https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom クラスタスイッチ"^]ページ。
+* 必要なブート イメージを反映する RCF 内のブート構成。EFOS のみをインストールし、現在の RCF バージョンを維持する場合に必要です。現在のブート イメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、RCFを再適用する前に変更する必要があります。
+* 工場出荷時のデフォルト状態から RCF をインストールするときに必要な、スイッチへのコンソール接続。この要件は、ナレッジベースの記事を使用した場合にはオプションです。 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらBroadcom相互接続スイッチの設定をクリアする方法"^]事前に設定をクリアしてください。
 
 
-.推奨されるドキュメント
-* サポートされているONTAP とRCFのバージョンについては、スイッチの互換性の表を参照してください。を参照してください https://mysupport.netapp.com/site/info/broadcom-cluster-switch["EFOSソフトウェアのダウンロード"^] ページRCFのコマンド構文とEFOSのバージョンにあるコマンド構文との間には、コマンドの依存関係が存在する可能性があることに注意してください。
-* で入手可能な該当するソフトウェアおよびアップグレードガイドを参照してください https://www.broadcom.com/support/bes-switch["Broadcom"^] BES-53248スイッチのアップグレードおよびダウングレード手順の詳細なドキュメントのサイト。
+.推奨ドキュメント
+* サポートされているONTAPおよび RCF バージョンについては、スイッチ互換性表を参照してください。参照 https://mysupport.netapp.com/site/info/broadcom-cluster-switch["EFOS ソフトウェアのダウンロード"^]ページ。  RCF のコマンド構文と EFOS のバージョンのコマンド構文の間にはコマンド依存関係がある可能性があることに注意してください。
+* 適切なソフトウェアおよびアップグレードガイドを参照してください。 https://www.broadcom.com/support/bes-switch["Broadcom"^] BES-53248 スイッチのアップグレードおよびダウングレード手順に関する完全なドキュメントについては、サイトを参照してください。
 
 
 .例について
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 2つのBES-53248スイッチの名前はcs1とcs2です。
-* ノード名はcluster1-01、cluster1-02、cluster1-02、およびcluster1-02です。
-* クラスタLIFの名前は、cluster1-01_clus1、cluster1-01_clus2、cluster1-02_clus1、cluster1-02_clus2、cluster1-03_clus1、 cluster1-03_clus2、cluster1-04_clus1、およびcluster1-04_clus2。
-* 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
-* この手順 の例では 4 ノードを使用します。これらのノードは、2つの10GbEクラスタインターコネクトポートを使用します `e0a` および `e0b`。を参照してください https://hwu.netapp.com/Home/Index["Hardware Universe"^] をクリックして、プラットフォームのクラスタポートが正しいことを確認します。
-
-
-
-NOTE: コマンド出力は、 ONTAP のリリースによって異なる場合があります。
-
-.このタスクについて
-手順 では、ONTAP コマンドとBroadcomスイッチコマンドの両方を使用する必要があります。特に記載がないかぎり、ONTAP コマンドを使用します。
-
-この手順 では、動作可能なInter-Switch Link（ISL；スイッチ間リンク）は必要ありません。RCFのバージョンを変更するとISL接続に一時的に影響する可能性があるため、これは設計上の変更です。クラスタのノンストップオペレーションを実現するために、次の手順 は、ターゲットスイッチでの手順の実行中に、すべてのクラスタLIFを動作しているパートナースイッチに移行します。
-
-
-CAUTION: 新しいバージョンのスイッチソフトウェアとRCFをインストールする前に、次の記事を参照してください。 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままBroadcomインターコネクトスイッチの設定をクリアする方法"^]。スイッチ設定を完全に消去する必要がある場合は、基本設定を再度実行する必要があります。設定を完全に消去すると管理ネットワークの設定がリセットされるため、スイッチにはシリアルコンソールを使用して接続する必要があります。
+* 2 つの BES-53248 スイッチの名前は cs1 と cs2 です。
+* ノード名はcluster1-01、cluster1-02、cluster1-03、cluster1-04です。
+* クラスタ LIF 名は、cluster1-01_clus1、cluster1-01_clus2、cluster1-02_clus1、cluster1-02_clus2、cluster1-03_clus1、cluster1-03_clus2、cluster1-04_clus1、cluster1-04_clus2 です。
+* その `cluster1::*>`プロンプトはクラスターの名前を示します。
+* この手順の例では、4 つのノードを使用します。これらのノードは2つの10GbEクラスタ相互接続ポートを使用します `e0a`そして `e0b`。参照 https://hwu.netapp.com/Home/Index["Hardware Universe"^]プラットフォーム上の正しいクラスター ポートを確認します。
 
 
 
-== 手順1：アップグレードの準備
+NOTE: コマンド出力は、ONTAPのリリースによって異なる場合があります。
 
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+.タスク概要
+この手順では、 ONTAPコマンドと Broadcom スイッチ コマンドの両方を使用する必要があります。特に指定がない限り、 ONTAPコマンドが使用されます。
+
+この手順では、動作中のスイッチ間リンク (ISL) は必要ありません。これは、RCF バージョンの変更によって ISL 接続が一時的に影響を受ける可能性があるため、設計によるものです。クラスタ操作を中断せずに実行するために、次の手順では、ターゲット スイッチで手順を実行しながら、すべてのクラスタ LIF を動作中のパートナー スイッチに移行します。
+
+
+CAUTION: 新しいスイッチソフトウェアバージョンとRCFをインストールする前に、ナレッジベースの記事を参照してください。 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらBroadcom相互接続スイッチの設定をクリアする方法"^] 。スイッチの設定を完全に消去する必要がある場合は、基本設定を再度実行する必要があります。完全な構成消去を行うと管理ネットワークの構成がリセットされるため、シリアル コンソールを使用してスイッチに接続する必要があります。
+
+
+
+== ステップ1: アップグレードの準備
+
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= xh 」というメッセージが表示されます
-
-+
-ここで、 _ x _ はメンテナンス時間の長さ（時間）です。
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-
-NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+ここで、_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
 
 +
-次のコマンドは、ケースの自動作成を 2 時間停止します。
+
+NOTE: AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+
++
+次のコマンドは、自動ケース作成を 2 時間抑制します。
 
 +
 [source, cli]
 ----
 system node autosupport invoke -node * -type all -message MAINT=2h
 ----
-. 権限レベルを advanced に変更します。続行するかどうかを尋ねられたら、「 * y * 」と入力します。
+. 続行するかどうかを尋ねられたら *y* と入力して、権限レベルを「advanced」に変更します。
 +
 [source, cli]
 ----
 set -privilege advanced
 ----
 +
-advanced のプロンプト（ * > ）が表示されます。
+advancedのプロンプト（*>）が表示されます。
 
-. クラスタスイッチに接続されている各ノードのクラスタポートを表示します。
+. クラスター スイッチに接続されている各ノード上のクラスター ポートを表示します。
 +
 [source, cli]
 ----
 network device-discovery show
 ----
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -112,16 +112,16 @@ cluster1-04/cdp
 cluster1::*>
 ----
 ====
-. 各クラスタポートの管理ステータスと動作ステータスを確認します。
+. 各クラスタ ポートの管理ステータスと動作ステータスを確認します。
 +
-.. すべてのクラスタポートが正常な状態であることを確認します。
+.. すべてのクラスター ポートが正常な状態で稼働していることを確認します。
 +
 [source, cli]
 ----
 network port show -role cluster
 ----
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -164,14 +164,14 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 cluster1::*>
 ----
 ====
-.. すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。
+.. すべてのクラスタ インターフェイス (LIF) がホーム ポート上にあることを確認します。
 +
 [source, cli]
 ----
 network interface show -role cluster
 ----
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -193,14 +193,14 @@ Cluster
 ====
 
 
-. クラスタに両方のクラスタスイッチの情報が表示されることを確認します。
+. クラスターが両方のクラスター スイッチの情報を表示することを確認します。
 
 
 [role="tabbed-block"]
 ====
-.ONTAP 9.8 以降
+.ONTAP 9.8以降
 --
-ONTAP 9.8以降では、次のコマンドを使用します。
+ONTAP 9.8 以降では、次のコマンドを使用します。
 
 [source, cli]
 ----
@@ -227,9 +227,9 @@ cs2                         cluster-network    10.228.143.202   BES-53248
 cluster1::*>
 ----
 --
-.ONTAP 9.7 以前
+.ONTAP 9.7以前
 --
-ONTAP 9.7以前の場合は、次のコマンドを使用します。
+ONTAP 9.7 以前の場合は、次のコマンドを使用します。
 
 [source, cli]
 ----
@@ -257,7 +257,7 @@ cluster1::*>
 ----
 --
 ====
-. [[step6] ] クラスタ LIF での自動リバートを無効にします。
+. [[step6]]クラスタLIFの自動復帰を無効にします。
 +
 [source, cli]
 ----
@@ -267,15 +267,15 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 
 
 
-== 手順2：ポートを設定する
+== ステップ2: ポートを構成する
 
-. スイッチcs2で、クラスタ内のノードに接続されているポートのリストを確認します。
+. スイッチ cs2 で、クラスター内のノードに接続されているポートのリストを確認します。
 +
 [source, cli]
 ----
 show isdp neighbor
 ----
-. スイッチcs2で、ノードのクラスタポートに接続されているポートをシャットダウンします。たとえば、ポート0/1~0/16がONTAPノードに接続されている場合は、次のようになります。
+. スイッチ cs2 で、ノードのクラスター ポートに接続されているポートをシャットダウンします。たとえば、ポート 0/1 ～ 0/16 がONTAPノードに接続されている場合:
 +
 [listing, subs="+quotes"]
 ----
@@ -286,14 +286,14 @@ show isdp neighbor
 (cs2)(Interface 0/1-0/16)# *exit*
 (cs2)(Config)#
 ----
-. クラスタ LIF が、クラスタスイッチ cs1 でホストされているポートに移行されていることを確認します。これには数秒かかることがあります。
+. クラスタ スイッチcs1でホストされているポートにクラスタLIFが移行されたことを確認します。数秒かかる場合があります。
 +
 [source, cli]
 ----
 network interface show -role cluster
 ----
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -314,12 +314,12 @@ Cluster
 cluster1::*>
 ----
 ====
-. クラスタが正常であることを確認します。
+. クラスタが正常に動作していることを確認します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -333,34 +333,34 @@ cluster1-03          true    true          true
 cluster1-04          true    true          false
 ----
 ====
-. 現在のスイッチ設定をまだ保存していない場合は、次のコマンドの出力をログファイルにコピーして保存します。
+. まだ行っていない場合は、次のコマンドの出力をログ ファイルにコピーして、現在のスイッチ構成を保存します。
 +
 [source, cli]
 ----
 show running-config
 ----
-. スイッチ cs2 の構成をクリーンアップし、基本的なセットアップを実行します。
+. スイッチcs2の設定を消去し、基本的なセットアップを実行します。
 +
 
-CAUTION: 新しい RCF を更新または適用する場合は、スイッチ設定を消去し、基本的な設定を実行する必要があります。スイッチ設定を消去するには、シリアルコンソールを使用してスイッチに接続する必要があります。ナレッジベースの記事を使用したことがある場合、この要件はオプションです https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持したままBroadcomインターコネクトスイッチの設定をクリアする方法"] 事前に設定をクリアしておく必要があります。
+CAUTION: RCF を更新または新しいものを適用する場合は、スイッチの設定を消去して基本設定を実行する必要があります。スイッチの設定を消去するには、シリアル コンソールを使用してスイッチに接続する必要があります。この要件は、ナレッジベースの記事を使用した場合にはオプションです。 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらBroadcom相互接続スイッチの設定をクリアする方法"]事前に設定をクリアしてください。
 
 +
 
-NOTE: 設定をクリアしても、ライセンスは削除されません。
+NOTE: 設定をクリアしてもライセンスは削除されません。
 
 +
-.. スイッチにSSH接続します。
+.. スイッチにSSHで接続します。
 +
-この手順は、スイッチのポートからすべてのクラスタLIFを削除し、設定をクリアする準備が整っている場合にのみ実行してください。
+すべてのクラスタ LIF がスイッチのポートから削除され、スイッチの設定をクリアする準備ができている場合にのみ続行してください。
 
-.. 権限モードに切り替えます。
+.. 特権モードに入る:
 +
 [listing]
 ----
 (cs2)> enable
 (cs2)#
 ----
-.. 次のコマンドをコピーして貼り付け、以前のRCF設定を削除します（以前のRCFバージョンによっては、特定の設定がないと一部のコマンドでエラーが生成されることがあります）。
+.. 以前の RCF 構成を削除するには、次のコマンドをコピーして貼り付けます (以前に使用した RCF のバージョンによっては、特定の設定が存在しない場合に一部のコマンドでエラーが発生する可能性があります)。
 +
 [source, cli]
 ----
@@ -413,9 +413,9 @@ no vlan 18
 exit
 show running-config
 ----
-.. 実行コンフィギュレーションをスタートアップコンフィギュレーションに保存します。
+.. 実行中の設定をスタートアップ コンフィギュレーションに保存します。
 +
-「メモリの書き込み」
+`write memory`
 
 +
 [listing, subs="+quotes"]
@@ -430,9 +430,9 @@ Are you sure you want to save? (y/n) *y*
 Config file 'startup-config' created successfully.
 Configuration Saved!
 ----
-.. スイッチをリブートします。
+.. スイッチを再起動します。
 +
-「再ロード」
+`reload`
 
 +
 [listing, subs="+quotes"]
@@ -440,24 +440,24 @@ Configuration Saved!
 (cs2)# *reload*
 Are you sure you would like to reset the system? (y/n) *y*
 ----
-.. SSHを使用してスイッチに再度ログインし、RCFのインストールを完了します。
+.. SSH を使用してスイッチに再度ログインし、RCF のインストールを完了します。
 
 
 . 次の点に注意してください。
 +
-.. スイッチに追加のポートライセンスがインストールされている場合は、RCFを変更して追加のライセンスポートを設定する必要があります。を参照してください link:configure-licenses.html#activate-newly-licensed-ports["新たにライセンスされたポートをアクティブにし"] を参照してください。
-.. 以前のRCFで行ったカスタマイズをすべて記録し、新しいRCFに適用します。たとえば、ポート速度やハードコーディングFECモードの設定などです。
+.. スイッチに追加のポート ライセンスがインストールされている場合は、RCF を変更して、ライセンスされた追加ポートを設定する必要があります。見るlink:configure-licenses.html#activate-newly-licensed-ports["新しくライセンスされたポートをアクティブ化する"]詳細については。
+.. 以前の RCF で行われたカスタマイズを記録し、新しい RCF に適用します。たとえば、ポート速度の設定や FEC モードのハードコーディングなどです。
 
 
 
 
 [role="tabbed-block"]
 ====
-.EFOSバージョン3.12.x以降
+.EFOS バージョン 3.12.x 以降
 --
-. FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。
+. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs2のブートフラッシュにRCFをコピーします。
 +
-次の例は、SFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーする方法を示しています。
+この例では、SFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーしています。
 
 
 
@@ -478,7 +478,7 @@ File transfer operation completed successfully.
 ----
 . スクリプトがダウンロードされ、指定したファイル名で保存されたことを確認します。
 +
-「原稿リスト」
+`script list`
 
 +
 [listing, subs="+quotes"]
@@ -493,7 +493,7 @@ reference-config.scr                       2680         2024 05 31 21:54:22
 ----
 . スクリプトをスイッチに適用します。
 +
-「原稿」が適用されます
+`script apply`
 
 +
 [listing, subs="+quotes"]
@@ -512,11 +512,11 @@ Configuration script 'reference-config.scr' applied.
 
 
 --
-.その他すべての EFOS バージョン
+.その他のEFOSバージョン
 --
-. FTP 、 TFTP 、 SFTP 、 SCP のいずれかの転送プロトコルを使用して、スイッチ cs2 のブートフラッシュに RCF をコピーします。
+. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs2のブートフラッシュにRCFをコピーします。
 +
-次の例は、SFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーする方法を示しています。
+この例では、SFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーしています。
 
 
 
@@ -536,9 +536,9 @@ Are you sure you want to start? (y/n) *y*
 SFTP Code transfer starting...
 File transfer operation completed successfully.
 ----
-. スクリプトがダウンロードされ、指定したファイル名で保存されていることを確認します。
+. スクリプトがダウンロードされ、指定したファイル名に保存されたことを確認します。
 +
-「原稿リスト」
+`script list`
 
 +
 [listing, subs="+quotes"]
@@ -553,7 +553,7 @@ BES-53248_RCF_v1.9-Cluster-HA.scr          2241         2020 09 30 05:41:00
 ----
 . スクリプトをスイッチに適用します。
 +
-「原稿」が適用されます
+`script apply`
 
 +
 [listing, subs="+quotes"]
@@ -573,12 +573,12 @@ Configuration script 'BES-53248_RCF_v1.9-Cluster-HA.scr' applied.
 
 --
 ====
-. [[step11]]コマンドからのバナー出力を確認し `show clibanner`ます。スイッチの設定と動作を適切に行うには、次の手順を読んで従う必要があります。
+. [[step11]]バナー出力を調べる `show clibanner`指示。スイッチが正しく動作するように設定するためには、出力を確認し、その指示に従う必要があります。
 +
 `show clibanner`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -612,14 +612,14 @@ startup-config'
 command has been executed and the switch rebooted
 ----
 ====
-. RCFを適用したあとにスイッチで、ライセンスが追加されたポートが表示されていることを確認します。
+. スイッチで、RCF が適用された後に追加のライセンス ポートが表示されることを確認します。
 +
 [source, cli]
 ----
 show port all | exclude Detach
 ----
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -655,18 +655,18 @@ Intf      Type   Mode      Mode         Status     Status Trap    Mode   Timeout
 0/56             Enable    100G Full               Down   Enable  Enable long
 ----
 ====
-. 変更が行われたことをスイッチで確認します。
+. スイッチ上で変更が行われたことを確認します。
 +
 [source, cli]
 ----
 show running-config
 ----
-. スイッチをリブートしたときにスタートアップコンフィギュレーションになるように、実行コンフィギュレーションを保存します。
+. 実行中の設定を保存して、スイッチを再起動したときにそれがスタートアップ設定になるようにします。
 +
-「メモリの書き込み」
+`write memory`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -681,9 +681,9 @@ Config file 'startup-config' created successfully.
 Configuration Saved!
 ----
 ====
-. スイッチをリブートし、実行中の設定が正しいことを確認します。
+. スイッチを再起動し、実行中の設定が正しいことを確認します。
 +
-「再ロード」
+`reload`
 
 +
 [listing, subs="+quotes"]
@@ -692,7 +692,7 @@ Configuration Saved!
 Are you sure you would like to reset the system? (y/n) *y*
 System will now restart!
 ----
-. クラスタスイッチcs2で、ノードのクラスタポートに接続されているポートを起動します。
+. クラスタ スイッチ cs2 で、ノードのクラスタ ポートに接続されているポートを起動します。
 +
 [listing, subs="+quotes"]
 ----
@@ -702,12 +702,12 @@ System will now restart!
 (cs2)(Interface 0/1-0/16)# *no shutdown*
 (cs2)(Config)# *exit*
 ----
-. 実行コンフィギュレーションをスタートアップコンフィギュレーションに保存します。
+. 実行中の設定をスタートアップ コンフィギュレーションに保存します。
 +
-「メモリの書き込み」
+`write memory`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -723,14 +723,14 @@ Config file 'startup-config' created successfully.
 Configuration Saved!
 ----
 ====
-. スイッチcs2のポートを確認します。
+. スイッチ cs2 のポートを確認します。
 +
 [source, cli]
 ----
 show interfaces status all | exclude Detach
 ----
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -759,16 +759,16 @@ Port       Name                 State   Mode        Status      Type        Cont
 0/56       Cluster   ISL Port   Up      Auto        100G Full   Copper      Inactive    Trunk
 ----
 ====
-. クラスタのクラスタポートの健常性を確認します。
+. クラスタ ポートの健全性を確認します。
 +
-.. クラスタのすべてのノードでe0bポートが正常に稼働していることを確認します。
+.. クラスター内のすべてのノードで e0b ポートが稼働しており正常であることを確認します。
 +
 [source, cli]
 ----
 network port show -role cluster
 ----
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -809,14 +809,14 @@ e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
 e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
 ----
 ====
-.. クラスタからスイッチの健全性を確認します。
+.. クラスターからスイッチの健全性を確認します。
 +
 [source, cli]
 ----
 network device-discovery show
 ----
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -841,14 +841,14 @@ cluster1-04/cdp
 ====
 
 
-. クラスタに両方のクラスタスイッチの情報が表示されることを確認します。
+. クラスターが両方のクラスター スイッチの情報を表示することを確認します。
 
 
 [role="tabbed-block"]
 ====
-.ONTAP 9.8 以降
+.ONTAP 9.8以降
 --
-ONTAP 9.8以降では、次のコマンドを使用します。
+ONTAP 9.8 以降では、次のコマンドを使用します。
 
 [source, cli]
 ----
@@ -875,9 +875,9 @@ cs2                         cluster-network    10.228.143.202   BES-53248
 cluster1::*>
 ----
 --
-.ONTAP 9.7 以前
+.ONTAP 9.7以前
 --
-ONTAP 9.7以前の場合は、次のコマンドを使用します。
+ONTAP 9.7 以前の場合は、次のコマンドを使用します。
 
 [source, cli]
 ----
@@ -905,36 +905,36 @@ cluster1::*>
 ----
 --
 ====
-. [[step21]スイッチcs1で手順1~20を繰り返します。
-. クラスタ LIF で自動リバートを有効にします。
+. [[step21]]スイッチcs1で手順1～20を繰り返します。
+. クラスタ LIF で自動復帰を有効にします。
 +
 [source, cli]
 ----
 network interface modify -vserver Cluster -lif * -auto-revert true
 ----
-. 。クラスタ LIF がホームポートにリバートされたことを確認します。
+. 。クラスタ LIF がホーム ポートに戻ったことを確認します。
 +
 [source, cli]
 ----
 network interface show -role Cluster
 ----
 +
-詳細については、を参照してください link:https://docs.netapp.com/us-en/ontap/networking/revert_a_lif_to_its_home_port.html["LIF をホームポートにリバートする"]。
+詳細については、link:https://docs.netapp.com/us-en/ontap/networking/revert_a_lif_to_its_home_port.html["ホーム ポートへのLIFのリバート"] 。
 
 
 
 
 
-== 手順3：構成を確認します
+== ステップ3: 構成を確認する
 
-. スイッチcs1で、クラスタポートに接続されているスイッチポートが* up *になっていることを確認します。
+. スイッチ cs1 で、クラスタ ポートに接続されているスイッチ ポートが *up* であることを確認します。
 +
 [source, cli]
 ----
 show interfaces status all
 ----
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -963,14 +963,14 @@ Port       Name                 State   Mode        Status      Type        Cont
 0/56       Cluster   ISL Port   Up      Auto        100G Full   Copper      Inactive    Trunk
 ----
 ====
-. スイッチcs1とcs2間のISLが機能していることを確認します。
+. スイッチ cs1 と cs2 間の ISL が機能していることを確認します。
 +
 [source, cli]
 ----
 show port-channel 1/1
 ----
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -993,14 +993,14 @@ Ports   Timeout       Speed     Active
         partner/long
 ----
 ====
-. クラスタ LIF がホームポートにリバートされたことを確認します。
+. クラスタ LIF がホーム ポートに戻ったことを確認します。
 +
 [source, cli]
 ----
 network interface show -role cluster
 ----
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -1020,12 +1020,12 @@ Cluster
             cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
 ----
 ====
-. クラスタが正常であることを確認します。
+. クラスタが正常に動作していることを確認します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -1039,22 +1039,22 @@ cluster1-03          true    true          true
 cluster1-04          true    true          false
 ----
 ====
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -1071,9 +1071,9 @@ cluster1-02
        3/5/2022 19:21:20 -06:00   cluster1-02_clus2   cluster1-02_clus2   none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -1119,13 +1119,13 @@ RPC status:
 ----
 --
 ====
-. 権限レベルを admin に戻します。
+. 権限レベルを管理者に戻します。
 +
 [source, cli]
 ----
 set -privilege admin
 ----
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
+. 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
 [source, cli]
 ----

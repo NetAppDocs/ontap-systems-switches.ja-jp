@@ -2,9 +2,9 @@
 permalink: switch-cisco-3132q-v/configure-software-overview-3132q-v-cluster.html 
 sidebar: sidebar 
 keywords: switches, initial installation, configure switch-cisco-3132q-v switch 
-summary: Cisco Nexus 3132Q-V クラスタ スイッチのソフトウェア構成の概要 
+summary: Cisco Nexus 3132Q-V クラスタスイッチのソフトウェア構成の概要 
 ---
-= Cisco Nexus 3132Q-V クラスタ スイッチのソフトウェア インストール ワークフロー
+= Cisco Nexus 3132Q-V クラスタスイッチのソフトウェアインストールワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,26 +13,26 @@ summary: Cisco Nexus 3132Q-V クラスタ スイッチのソフトウェア構�
 [role="lead"]
 Cisco Nexus 3132Q-V スイッチのソフトウェアをインストールして設定し、リファレンス コンフィギュレーション ファイル (RCF) をインストールまたはアップグレードするには、次の手順に従います。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"]link:setup-switch.html["スイッチを設定します"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:setup-switch.html["スイッチを設定する"]
 [role="quick-margin-para"]
 3132Q-V クラスタ スイッチを構成します。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"]link:prepare-install-cisco-nexus-3132q.html["NX-OSソフトウェアとRCFのインストールの準備"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:prepare-install-cisco-nexus-3132q.html["NX-OSソフトウェアとRCFのインストールの準備"]
 [role="quick-margin-para"]
 Cisco NX-OS ソフトウェアと RCF は、 Cisco 3132Q-V クラスタ スイッチにインストールする必要があります。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"]link:install-nx-os-software-3132q-v.html["NX-OSソフトウェアのインストールまたはアップグレード"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:install-nx-os-software-3132q-v.html["NX-OSソフトウェアをインストールまたはアップグレードする"]
 [role="quick-margin-para"]
 Cisco 3132Q-V クラスタ スイッチに NX-OS ソフトウェアをダウンロードしてインストールまたはアップグレードします。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."]link:install-rcf-3132q-v.html["RCFをインストールします"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:install-rcf-3132q-v.html["RCFのインストール"]
 [role="quick-margin-para"]
 Cisco 3132Q-V スイッチを初めてセットアップした後、RCF をインストールします。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"]link:configure-ssh-keys.html["SSH の設定を確認"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-ssh-keys.html["SSH設定を確認する"]
 [role="quick-margin-para"]
 イーサネット スイッチ ヘルス モニター (CSHM) およびログ収集機能を使用するには、スイッチで SSH が有効になっていることを確認します。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["6"]link:reset-switch-3132q-v.html["スイッチを工場出荷時の状態にリセットする"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:reset-switch-3132q-v.html["スイッチを工場出荷時の状態にリセットする"]
 [role="quick-margin-para"]
 3132Q-V クラスタ スイッチの設定を消去します。

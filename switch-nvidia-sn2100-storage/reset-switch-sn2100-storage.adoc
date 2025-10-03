@@ -15,8 +15,8 @@ SN2100 ストレージ スイッチを工場出荷時のデフォルトにリセ
 * Cumulus Linux 5.11以降では、 `nv action reset system factory-default`指示。
 
 
-.このタスクについて
-* シリアル コンソールを使用してスイッチに接続する必要があります。
+.タスク概要
+* スイッチにシリアル コンソールを使用して接続する必要があります。
 * コマンドへの sudo アクセスには root パスワードが必要です。
 
 
@@ -58,7 +58,7 @@ NOTE: スイッチがリブートされ、スイッチ ソフトウェアのイ�
 `nv action reset system factory-default`
 
 +
-例：
+例えば：
 
 +
 [listing, subs="+quotes"]

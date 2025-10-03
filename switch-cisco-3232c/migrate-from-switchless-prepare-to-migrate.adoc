@@ -2,39 +2,39 @@
 permalink: switch-cisco-3232c/migrate-from-switchless-prepare-to-migrate.html 
 sidebar: sidebar 
 keywords: cisco 3232c, cluster switches 
-summary: AFF または FAS クラスタでは、 Cisco Nexus 3232C スイッチをクラスタスイッチとして使用できます。 
+summary: Cisco Nexus 3232C スイッチを、 AFFまたはFASクラスタ内のクラスタ スイッチとして使用できます。 
 ---
-= 2ノードスイッチレスクラスタから2ノードスイッチクラスタへの移行を準備
+= 2ノード スイッチレス クラスタから 2ノード スイッチ クラスタへの移行の準備
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3232Cクラスタネットワークスイッチを含む2ノードスイッチクラスタに移行するための準備手順は、次のとおりです。
+次の手順に従って、2 ノード スイッチレス クラスタを準備し、 Cisco Nexus 3232C クラスタ ネットワーク スイッチを含む 2 ノード スイッチ クラスタに移行します。
 
 .手順
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
 +
-'system node AutoSupport invoke -node * -type all -message MAINT=xh`
+`system node autosupport invoke -node * -type all - message MAINT=xh`
 
 +
-_x_ は、メンテナンス時間の長さ（時間単位）です。
+_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
 
 +
 [NOTE]
 ====
-AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
 
 ====
-. 各クラスタインターフェイスの管理ステータスまたは動作ステータスを確認します。
+. 各クラスタ インターフェイスの管理ステータスまたは動作ステータスを確認します。
 +
-.. ネットワークポートの属性を表示します。
+.. ネットワーク ポートの属性を表示します。
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -58,12 +58,12 @@ e4e       Cluster      Cluster          up   9000 auto/40000  -
 4 entries were displayed.
 ----
 ====
-.. 論理インターフェイスとそのホームノードに関する情報を表示します。
+.. 論理インターフェイスとそれに指定されたホーム ノードに関する情報を表示します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -82,15 +82,15 @@ Cluster
 4 entries were displayed.
 ----
 ====
-.. advanced 権限のコマンドを使用して、スイッチレスクラスタの検出が有効になっていることを確認します。
+.. 高度な権限コマンドを使用して、スイッチレス クラスタ検出が有効になっていることを確認します。
 +
-network options detect-switchless -cluster show `
+`network options detect-switchless-cluster show``
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例の出力は、スイッチレスクラスタの検出が有効であることを示しています。
+次の例の出力は、スイッチレス クラスタ検出が有効になっていることを示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -100,34 +100,34 @@ Enable Switchless Cluster Detection: true
 ====
 
 
-. 新しい 3232C スイッチに適切な RCF とイメージがインストールされていることを確認し、ユーザ、パスワード、ネットワークアドレスの追加など、必要なサイトのカスタマイズを行います。
+. 新しい 3232C スイッチに適切な RCF とイメージがインストールされていることを確認し、ユーザー、パスワード、ネットワーク アドレスの追加など、必要なサイトのカスタマイズを行います。
 +
-この時点で両方のスイッチを準備する必要があります。RCF とイメージソフトウェアをアップグレードする必要がある場合は、次の手順を実行する必要があります。
+この時点で両方のスイッチを準備する必要があります。  RCF およびイメージ ソフトウェアをアップグレードする必要がある場合は、次の手順に従う必要があります。
 
 +
-.. ネットアップサポートサイトの _Cisco イーサネットスイッチ _ ページにアクセスします。
+.. NetAppサポート サイトの「Cisco Ethernet Switches」ページに移動します。
 +
-link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch/["Cisco イーサネットスイッチ"^]
+link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch/["Ciscoイーサネット スイッチ"^]
 
-.. 使用しているスイッチおよび必要なソフトウェアバージョンを、このページの表に記載します。
+.. そのページの表で、スイッチと必要なソフトウェア バージョンを書き留めてください。
 .. 適切なバージョンの RCF をダウンロードします。
-.. [Description]ページで[continue]*を選択し、ライセンス契約に同意して、*[Download]*ページの指示に従ってRCFをダウンロードします。
-.. 適切なバージョンのイメージソフトウェアをダウンロードします。
+.. *説明*ページで*続行*を選択し、ライセンス契約に同意してから、*ダウンロード*ページの指示に従ってRCFをダウンロードします。
+.. 適切なバージョンのイメージ ソフトウェアをダウンロードします。
 +
 link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Ciscoクラスタおよび管理ネットワーク スイッチのリファレンス設定ファイルのダウンロード"^]
 
 
 
-. [Description]ページで[continue]*を選択し、ライセンス契約に同意して、*[Download]*ページの指示に従ってRCFをダウンロードします。
-. Nexus 3232C スイッチ C1 および C2 では、ノードに接続されているすべてのポート C1 と C2 を無効にします。ただし、 ISL ポート e1/31~32 は無効にしないでください。
+. *説明*ページで*続行*を選択し、ライセンス契約に同意してから、*ダウンロード*ページの指示に従ってRCFをダウンロードします。
+. Nexus 3232C スイッチ C1 および C2 では、ノード側のポート C1 および C2 をすべて無効にしますが、ISL ポート e1/31-32 は無効にしないでください。
 +
-Ciscoコマンドの詳細については、の次のリストを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、次のリストを参照してください。 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 RCF 「 NX3232_RCF_v1_24p10g_24p100g.txt 」でサポートされている設定を使用して、 Nexus 3232C クラスタスイッチ C1 および C2 のポート 1 ～ 30 を無効にする方法を示しています。
+次の例は、RCFでサポートされている設定を使用して、Nexus 3232CクラスタスイッチC1とC2のポート1～30を無効にすることを示しています。 `NX3232_RCF_v1.0_24p10g_24p100g.txt` :
 
 [listing, subs="+quotes"]
 ----
@@ -147,19 +147,19 @@ C2(config-if-range)# exit
 C2(config)# exit
 ----
 ====
-. サポートされているケーブル配線を使用して、 C1 のポート 1/31 および 1/32 を C2 の同じポートに接続します。
-. C1 と C2 で ISL ポートが動作していることを確認します。
+. サポートされているケーブルを使用して、C1 のポート 1/31 と 1/32 を C2 の同じポートに接続します。
+. C1 および C2 で ISL ポートが動作していることを確認します。
 +
-「ポートチャネルの概要」
+`show port-channel summary`
 
 +
-Ciscoコマンドの詳細については、の次のリストを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、次のリストを参照してください。 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次に、 ISL ポートが C1 および C2 で動作していることを確認するために使用される Cisco`show port-channel summary` コマンドの例を示します。
+次の例はCisco `show port-channel summary`C1 および C2 で ISL ポートが動作していることを確認するために使用されているコマンド:
 
 [listing, subs="+quotes"]
 ----
@@ -191,13 +191,13 @@ Group Port-        Type   Protocol  Member Ports
 ====
 . スイッチ上の隣接デバイスのリストを表示します。
 +
-Ciscoコマンドの詳細については、の次のリストを参照してください https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンドリファレンス"^]。
+Ciscoコマンドの詳細については、次のリストを参照してください。 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次に、スイッチ上の隣接デバイスを表示するために使用される Cisco コマンド「 show cdp neighbors 」の例を示します。
+次の例はCiscoコマンドを示しています `show cdp neighbors`スイッチ上の隣接デバイスを表示するために使用されています:
 
 [listing, subs="+quotes"]
 ----
@@ -219,15 +219,15 @@ C1                 Eth1/32        178    R S I s     N3K-C3232C  Eth1/32
 Total entries displayed: 2
 ----
 ====
-. 各ノードのクラスタポート接続を表示します。
+. 各ノードのクラスター ポートの接続を表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例は、 2 ノードスイッチレスクラスタ構成のクラスタポート接続を示しています。
+次の例は、2 ノードのスイッチレス クラスタ構成で表示されるクラスタ ポート接続を示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -246,4 +246,4 @@ n2         /cdp
 
 
 .次の手順
-link:migrate-from-switchless-configure-ports.html["ポートの設定"]です。
+link:migrate-from-switchless-configure-ports.html["ポートを設定する"] 。

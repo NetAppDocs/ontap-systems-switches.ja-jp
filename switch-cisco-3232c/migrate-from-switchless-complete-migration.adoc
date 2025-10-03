@@ -2,27 +2,27 @@
 permalink: switch-cisco-3232c/migrate-from-switchless-complete-migration.html 
 sidebar: sidebar 
 keywords: cisco 3232c, cluster switches 
-summary: AFF または FAS クラスタでは、 Cisco Nexus 3232C スイッチをクラスタスイッチとして使用できます。 
+summary: Cisco Nexus 3232C スイッチを、 AFFまたはFASクラスタ内のクラスタ スイッチとして使用できます。 
 ---
-= 2ノードスイッチレスクラスタから2ノードスイッチクラスタへの移行の完了
+= 2ノードのスイッチレス クラスタから2ノードのスイッチ クラスタへの移行を完了します。
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Nexus 3232Cスイッチで2ノードスイッチクラスタへの2ノードスイッチクラスタの移行を完了するには、次の手順を実行します。
+Nexus 3232C スイッチ上の 2 ノード スイッチレス クラスタから 2 ノード スイッチ クラスタへの移行を完了するには、次の手順を実行します。
 
 .手順
-. すべてのクラスタインターコネクトポートがホームポートにリバートされたことを確認します。
+. すべてのクラスタ相互接続ポートがホーム ポートに戻っていることを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
 +
-Is Home カラムには ' Current Port カラムに一覧表示されているすべてのポートの値 'true' が表示されます表示された値が「 false 」の場合、ポートはリバートされていません。
+その `Is Home`列には次の値が表示されます `true`に記載されているすべてのポートについて `Current Port`カラム。表示されている値が `false`ポートは元に戻されていません。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -40,16 +40,16 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. すべてのクラスタ・インターコネクト・ポートが up 状態になっていることを確認します。
+. すべてのクラスタ相互接続ポートが `up`州：
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
-. 各クラスタポートの各ノードへの接続に使用されているクラスタスイッチポート番号を表示します。
+. 各クラスター ポートが各ノードに接続されているクラスター スイッチ ポート番号を表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -66,12 +66,12 @@ n2          /cdp
             e4e    C2                  Ethernet1/8      N3K-C3232C
 ----
 ====
-. 検出された監視対象のクラスタスイッチを表示します。
+. 検出および監視されたクラスター スイッチを表示します。
 +
-「 system cluster-switch show
+`system cluster-switch show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -95,26 +95,26 @@ Software Version: Cisco Nexus Operating System (NX-OS) Software, Version 7.0(3)I
 Version Source: CDP 2 entries were displayed.
 ----
 ====
-. スイッチレスクラスタの検出によって、スイッチレスクラスタのオプションが disabled に変更されたことを確認します。
+. スイッチレス クラスタ検出によってスイッチレス クラスタ オプションが無効に変更されたことを確認します。
 +
-network options switchless-cluster show
+`network options switchless-cluster show`
 
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：*数秒待ってからコマンドを実行して `show`詳細を表示してください。
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
 
 [listing, subs="+quotes"]
 ----
@@ -131,9 +131,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2         n1_clus2         none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -163,11 +163,11 @@ Larger than PMTU communication succeeds on 4 path(s) RPC status:
 ----
 --
 ====
-. [[step7]]ケースの自動作成を抑制した場合は、AutoSupportメッセージを呼び出して再度有効にします。
+. [[step7]] 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。

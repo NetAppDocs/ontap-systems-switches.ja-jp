@@ -2,49 +2,49 @@
 section: switch-nvidia-sn2100-storage
 title: NVIDIA SN2100
 entries:
-- title: はじめに
+- title: 始めましょう
   entries:
-  - title: クイックスタート
+  - title: クイック スタート
     url: "/switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html"
-  - title: 設定要件
+  - title: 構成要件
     url: "/switch-nvidia-sn2100-storage/configure-reqs-sn2100-storage.html"
-  - title: コンポーネントとパーツ番号
+  - title: コンポーネントと部品番号
     url: "/switch-nvidia-sn2100-storage/components-sn2100-storage.html"
-  - title: 必要なドキュメント
+  - title: 必要な書類
     url: "/switch-nvidia-sn2100-storage/required-documentation-sn2100-storage.html"
 - title: ハードウェアを設置
-  pdf-filename: install_hardware_sn2100-storage
+  pdf-filename: インストールハードウェア_sn2100-ストレージ
   entries:
   - title: ハードウェアインストールワークフロー
     url: "/switch-nvidia-sn2100-storage/install-hardware-workflow.html"
-  - title: スイッチを設置します
+  - title: スイッチをインストールする
     url: "/switch-nvidia-sn2100-storage/install-hardware-sn2100-storage.html"
-  - title: ケーブル接続と構成を確認
+  - title: ケーブル配線と構成を確認する
     url: "/switch-nvidia-sn2100-storage/cabling-considerations-sn2100-storage.html"
-  - title: NS224シェルフをケーブル接続します
+  - title: ケーブルNS224棚
     url: "/switch-nvidia-sn2100-storage/install-cable-shelves-sn2100-storage.html"
-- title: ソフトウェアを設定します
-  pdf-filename: software_sn2100ストレージの設定
+- title: ソフトウェアを構成する
+  pdf-filename: ソフトウェアをSN2100ストレージに設定する
   entries:
-  - title: ソフトウェアのインストールワークフロー
+  - title: ソフトウェアインストールワークフロー
     url: "/switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html"
-  - title: スイッチを設定します
+  - title: スイッチを設定する
     url: "/switch-nvidia-sn2100-storage/configure-sn2100-storage.html"
-  - title: Cumulus LinuxをCumulusモードでインストールします
+  - title: Cumulus LinuxをCumulusモードでインストールする
     url: "/switch-nvidia-sn2100-storage/install-cumulus-mode-sn2100-storage.html"
-  - title: Cumulus LinuxをONIEモードでインストールします
+  - title: ONIEモードでCumulus Linuxをインストールする
     url: "/switch-nvidia-sn2100-storage/install-onie-mode-sn2100-storage.html"
-  - title: RCFスクリプトのインストールまたはアップグレード
+  - title: RCFスクリプトをインストールまたはアップグレードする
     url: "/switch-nvidia-sn2100-storage/install-rcf-sn2100-storage.html"
-  - title: CSHMファイルのインストール
+  - title: CSHMファイルをインストールする
     url: "/switch-nvidia-sn2100-storage/setup-install-cshm-file.html"
   - title: スイッチを工場出荷時の状態にリセットする
     url: "/switch-nvidia-sn2100-storage/reset-switch-sn2100-storage.html"
-- title: スイッチを移行
-  pdf-filename: migrate_switches_sn2100 -ストレージ
+- title: スイッチの移行
+  pdf-filename: 移行スイッチsn2100ストレージ
   entries:
-  - title: Ciscoストレージスイッチから移行
+  - title: Ciscoストレージ スイッチからの移行
     url: "/switch-nvidia-sn2100-storage/migrate-cisco-storage-switch-sn2100-storage.html"
-- title: スイッチを交換します
-  pdf-filename: _switch_sn2100-storageの置き換え
+- title: スイッチを交換する
+  pdf-filename: Replaces_switch_sn2100-storage
   url: "/switch-nvidia-sn2100-storage/replace-sn2100-switch-storage.html"

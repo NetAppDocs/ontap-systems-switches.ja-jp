@@ -2,24 +2,24 @@
 permalink: switch-cisco-3132q-v/migrate-switchless-complete-migration.html 
 sidebar: sidebar 
 keywords: cisco 3132q-v, cluster switches 
-summary: Cisco Nexus 3132q-Vスイッチは、AFFまたはFASクラスタのクラスタスイッチとして使用できます。 
+summary: Cisco Nexus 3132q-v スイッチを、 AFFまたはFASクラスタ内のクラスタ スイッチとして使用できます。 
 ---
-= 2ノードスイッチレスクラスタから2ノードスイッチクラスタへの移行を完了する
+= 2ノードのスイッチレス クラスタから2ノードのスイッチ クラスタへの移行を完了します。
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-次の手順に従って、スイッチレスクラスタから2ノードスイッチクラスタへの移行を完了します。
+スイッチレス クラスターから 2 ノード スイッチ クラスターへの移行を完了するには、次の手順に従います。
 
 .手順
-. 各クラスタポートが各ノードで接続されているクラスタスイッチのポート番号を表示します。
+. 各ノード上の各クラスタ ポートが接続されているクラスタ スイッチ ポート番号を表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -36,12 +36,12 @@ n2         /cdp
             e4e    C2                  Ethernet1/8      N3K-C3132Q-V
 ----
 ====
-. 検出された監視対象のクラスタスイッチを表示します。
+. 検出および監視されたクラスター スイッチを表示します。
 +
-「 system cluster-switch show
+`system cluster-switch show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -69,37 +69,37 @@ C2                          cluster-network      10.10.1.102    NX3132V
 2 entries were displayed.
 ----
 ====
-. 任意のノードで 2 ノードスイッチレス構成を無効にします。
+. 任意のノードで 2 ノード スイッチレス構成設定を無効にします。
 +
-「 network options switchless-cluster 」を参照してください
+`network options switchless-cluster`
 
 +
 [listing]
 ----
 network options switchless-cluster modify -enabled false
 ----
-. を確認します `switchless-cluster` オプションが無効になりました。
+. 確認するには `switchless-cluster`オプションは無効になっています。
 +
 [listing]
 ----
 network options switchless-cluster show
 ----
-. リモートクラスタインターフェイスの接続を確認します。
+. リモート クラスタ インターフェイスの接続を確認します。
 
 
 [role="tabbed-block"]
 ====
 .ONTAP 9.9.1以降
 --
-を使用できます `network interface check cluster-connectivity` コマンドを使用してクラスタ接続のアクセスチェックを開始し、詳細を表示します。
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start` および `network interface check cluster-connectivity show`
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity start*
 ----
-*注：* showコマンドを実行して詳細を表示する前に、数秒待ってください。
+*注意:* 詳細を表示するには、show コマンドを実行する前に数秒待ってください。
 
 [listing, subs="+quotes"]
 ----
@@ -116,9 +116,9 @@ n2
        3/5/2022 19:21:20 -06:00   n2_clus2        n1_clus2      none
 ----
 --
-.すべてのONTAPリリース
+.ONTAPのすべてのリリース
 --
-すべてのONTAPリリースで、 `cluster ping-cluster -node <name>` 接続を確認するコマンド：
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
 
 `cluster ping-cluster -node <name>`
 
@@ -151,11 +151,11 @@ RPC status:
 ----
 --
 ====
-. [[step6]]ケースの自動作成を抑制した場合は、AutoSupport メッセージを呼び出して再度有効にします。
+. [[step6]]自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。

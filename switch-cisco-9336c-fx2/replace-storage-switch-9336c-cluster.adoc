@@ -2,69 +2,69 @@
 permalink: switch-cisco-9336c-fx2/replace-storage-switch-9336c-cluster.html 
 sidebar: sidebar 
 keywords: replacing, replace, defective, nexus, switch, cluster, network, nondisruptive, procedure, ndu, replace a cisco nexus 9336c-fx2 cluster switch - cisco nexus 9336c-fx2 
-summary: クラスタネットワーク内の障害のある Nexus 9336C-FX2 スイッチの交換は、無停止手順（ NDU ）です。 
+summary: 'クラスタ ネットワーク内の故障した Nexus 9336C-FX2 スイッチを交換することは、無停止の手順 (NDU) です。' 
 ---
-= Cisco Nexus 9336C-FX2 ストレージスイッチを交換します
+= Cisco Nexus 9336C-FX2 ストレージスイッチを交換する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2 ストレージスイッチを交換する場合は、特定の設定情報、ポート接続、およびケーブル接続要件に注意する必要があります。
+Cisco Nexus 9336C-FX2 ストレージ スイッチを交換する場合は、特定の構成情報、ポート接続、およびケーブル接続の要件に注意する必要があります。
 
-.必要なもの
-Cisco Nexus 9336C-FX2 ストレージスイッチに NX-OS ソフトウェアと RCF をインストールする前に、次の条件が満たされていることを確認する必要があります。
+.要件
+Cisco Nexus 9336C-FX2 ストレージ スイッチに NX-OS ソフトウェアと RCF をインストールする前に、次の条件が満たされていることを確認する必要があります。
 
-* ご使用のシステムでは、 Cisco Nexus 9336C-FX2 ストレージスイッチをサポートできます。
-* サポートされている ONTAP 、 NX-OS 、および RCF のバージョンについては、 Cisco イーサネットスイッチのページにあるスイッチ互換性の表を参照してください。
-* CiscoのWebサイトで入手可能な、適切なソフトウェアおよびアップグレードガイドを参照しておく必要があります。Cisco Nexus 3000 シリーズスイッチ
+* システムは、 Cisco Nexus 9336C-FX2 ストレージ スイッチをサポートできます。
+* サポートされているONTAP 、NX-OS、および RCF バージョンについては、 Ciscoイーサネット スイッチ ページのスイッチ互換性表を参照する必要があります。
+* Cisco Web サイトで提供されている適切なソフトウェアおよびアップグレード ガイドを参照する必要があります。  Cisco Nexus 3000 シリーズ スイッチ
 * 該当する RCF をダウンロードしておく必要があります。
-* 既存のネットワーク構成には、次のような特徴があります。
+* 既存のネットワーク構成には、次の特性が必要です。
 +
-** Cisco Ethernet Switches のページに、スイッチ上の最新の RCF および NX-OS バージョンが含まれています。
-** 両方のスイッチで管理接続が確立されている必要があります。
+** Ciscoイーサネット スイッチ ページには、スイッチの最新の RCF および NX-OS バージョンが記載されています。
+** 両方のスイッチに管理接続が存在する必要があります。
 
 
-* 交換用 Cisco Nexus 9336C-FX2 スイッチには、次の特性が必要です。
+* 交換用のCisco Nexus 9336C-FX2 スイッチには、次の特性が必要です。
 +
 ** 管理ネットワーク接続が機能している必要があります。
-** 交換用スイッチへのコンソールアクセスが確立されている必要があります。
-** 適切な RCF および NX-OS オペレーティングシステムイメージをスイッチにロードする必要があります。
-** スイッチの初期設定が完了している必要があります。
+** 交換用スイッチへのコンソール アクセスが適切に行われている必要があります。
+** 適切な RCF および NX-OS オペレーティング システム イメージをスイッチにロードする必要があります。
+** スイッチの初期構成が完了している必要があります。
 
 
 
 
-.このタスクについて
-この手順 は、2番目のNexus 9336C-FX2ストレージスイッチS2を新しい9336C-FXスイッチNS2に置き換えます。2 つのノードは node1 と node2 になります。
+.タスク概要
+この手順では、2 番目の Nexus 9336C-FX2 ストレージ スイッチ S2 を新しい 9336C-FX スイッチ NS2 に置き換えます。  2 つのノードは node1 と node2 です。
 
-完了する手順：
+完了するための手順:
 
-* 交換するスイッチが S2 であることを確認します。
-* スイッチ S2 からケーブルを外します。
-* スイッチ NS2 にケーブルを再接続します
-* スイッチ NS2 のすべてのデバイス構成を確認します
+* 交換するスイッチがS2であることを確認します。
+* スイッチS2からケーブルを外します。
+* ケーブルをスイッチ NS2 に再接続します。
+* スイッチ NS2 上のすべてのデバイス構成を確認します。
 +
 
-NOTE: RCFバージョンとNX-OSバージョンのコマンド構文には依存関係がある場合があります。
+NOTE: RCF バージョンと NX-OS バージョンのコマンド構文には依存関係がある場合があります。
 
 
 
 .手順
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
 +
-'system node AutoSupport invoke -node * -type all -message MAINT=xh`
+`system node autosupport invoke -node * -type all - message MAINT=xh`
 
 +
-_x_ は、メンテナンス時間の長さ（時間単位）です。
+_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
 
-. ストレージノードポートのヘルスステータスをチェックして、ストレージスイッチ S1 に接続されていることを確認します。
+. ストレージ ノード ポートのヘルス ステータスをチェックして、ストレージ スイッチ S1 への接続があることを確認します。
 +
-storage port show -port-type enet
+`storage port show -port-type ENET`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -86,12 +86,12 @@ node2
 storage::*>
 ----
 ====
-. ストレージスイッチS1が使用可能であることを確認します。
+. ストレージ スイッチ S1 が使用可能であることを確認します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -119,12 +119,12 @@ node2/lldp
 storage::*>
 ----
 ====
-. showを実行します `lldp neighbors` 動作中のスイッチに対してコマンドを実行し、ノードとすべてのシェルフの両方が表示されることを確認します。
+. ショーを運営する `lldp neighbors`動作中のスイッチでコマンドを実行して、両方のノードとすべてのシェルフが表示されることを確認します。
 +
 `show lldp neighbors`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -142,12 +142,12 @@ SHFGD2008000022  Eth1/7       120          S             e0a
 SHFGD2008000022  Eth1/8       120          S             e0a
 ----
 ====
-. ストレージシステムのシェルフポートを確認します。
+. ストレージ システムのシェルフ ポートを確認します。
 +
 `storage shelf port show -fields remote-device,remote-port`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -166,14 +166,14 @@ shelf   id  remote-port   remote-device
 storage::*>
 ----
 ====
-. ストレージスイッチ S2 に接続されているすべてのケーブルを取り外します。
-. 交換用スイッチの NS2 にすべてのケーブルを再接続します。
-. ストレージノードポートのヘルスステータスを再確認します。
+. ストレージ スイッチ S2 に接続されているすべてのケーブルを取り外します。
+. すべてのケーブルを交換用スイッチ NS2 に再接続します。
+. ストレージ ノード ポートのヘルス ステータスを再確認します。
 +
-storage port show -port-type enet
+`storage port show -port-type ENET`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -197,10 +197,10 @@ storage::*>
 ====
 . 両方のスイッチが使用可能であることを確認します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -232,12 +232,12 @@ node2/lldp
 storage::*>
 ----
 ====
-. ストレージシステムのシェルフポートを確認します。
+. ストレージ システムのシェルフ ポートを確認します。
 +
 `storage shelf port show -fields remote-device,remote-port`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing]
@@ -256,8 +256,8 @@ shelf   id    remote-port     remote-device
 storage::*>
 ----
 ====
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
+. 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 

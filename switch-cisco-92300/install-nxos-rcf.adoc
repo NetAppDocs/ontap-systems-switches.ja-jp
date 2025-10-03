@@ -2,55 +2,55 @@
 permalink: switch-cisco-92300/install-nxos-rcf.html 
 sidebar: sidebar 
 keywords: install rcf,rcf configure 
-summary: RCF は、 Nexus 92300YC スイッチを初めてセットアップしたあとにインストールできます。 
+summary: Nexus 92300YC スイッチを初めてセットアップした後、RCF をインストールできます。 
 ---
-= リファレンス構成ファイル（ RCF ）のインストール
+= 参照構成ファイル（RCF）をインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-RCF は、 Nexus 92300YC スイッチを初めてセットアップしたあとにインストールできます。
+Nexus 92300YC スイッチを初めてセットアップした後、RCF をインストールできます。
 
-.スイッチとノードで命名されています
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+.スイッチとノードの命名法
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 2 つの Cisco スイッチの名前は 'CS1' および CS2' です
-* ノード名は 'node1 と node2 です
-* クラスタ LIF 名は、 node1 の場合は「 node1_clus1' 」、ノード 1 の場合は「 node1_clus1' 」、 node2 の場合は「 node2 _ clus2 」です。
-* 「 cluster1 ：： * > 」プロンプトは、クラスタの名前を示します。
-* 各ノードのクラスタ・ポートの名前は 'e0a' および e0b です
+* 2つのCiscoスイッチの名前は `cs1`そして `cs2`。
+* ノード名は `node1`そして `node2`。
+* クラスタLIF名は `node1_clus1`そして `node1_clus2`ノード1と `node2_clus1`そして `node2_clus2`ノード2用。
+* その `cluster1::*>`プロンプトはクラスターの名前を示します。
+* 各ノードのクラスタポートの名前は `e0a`そして `e0b`。
 +
-を参照してください link:https://hwu.netapp.com/Home/Index["_ Hardware Universe ^_"] をクリックします。
+参照link:https://hwu.netapp.com/Home/Index["_ハードウェアユニバース^_"]プラットフォームでサポートされている実際のクラスター ポート。
 
 
 
-.サポートされるポートとノード接続
-* Nexus 92300YC スイッチでサポートされているスイッチ間リンク（ ISL ）は、ポート 1/65 と 1/66 です。
-* Nexus 92300YC スイッチでサポートされているノード接続は、ポート 1/1~1/66 です。
-* この手順の例では、 2 つのノードを使用します。これらのノードは、2つの10GbEクラスタインターコネクトポートを使用します `e0a` および `e0b`。を参照してください https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^] をクリックして、プラットフォームのクラスタポートが正しいことを確認します。
+.サポートされているポートとノード接続
+* Nexus 92300YCスイッチでサポートされているスイッチ間リンク（ISL）は、ポート1/65と1/66です。
+* Nexus 92300YCスイッチでサポートされているノード接続は、ポート1/1～1/66です。
+* この手順の例では、2つのノードを使用します。これらのノードは2つの10GbEクラスタ相互接続ポートを使用します `e0a`そして `e0b`。参照 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]プラットフォーム上の正しいクラスター ポートを確認します。
 
 
-.作業を開始する前に
-* 最新の RCF が必要です。
+.開始する前に
+* 最新のRCFが必要です。
 * クラスタが完全に機能している必要があります（ログにエラーがあるなどの問題が発生していない）。
-* NX-OS だけをインストールして現在の RCF バージョンをそのまま使用する場合は、目的のブートイメージを反映するように、 RCF で必要なブート設定を確認または設定しておく必要があります。
-* 現在のブートイメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、 RCF を再適用する前に変更する必要があります。
-* のスイッチ互換性の表を参照してください https://support.netapp.com/NOW/download/software/cm_switches/["Cisco イーサネットスイッチ"^] サポートされている ONTAP 、 NX-OS 、および RCF のバージョンに対応したページです。
-* RCF のコマンド構文と、 NX-OS のバージョンにあるコマンド構文との間には、コマンドの依存関係が存在する場合があります。
+* NX-OSだけをインストールして現在のRCFバージョンをそのまま使用する場合は、目的のブート イメージを反映するように、RCFで必要なブート設定を確認または設定しておく必要があります。
+* 現在のブート イメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、RCFを再適用する前に変更する必要があります。
+* スイッチの互換性表を参照する必要があります。 https://support.netapp.com/NOW/download/software/cm_switches/["Ciscoイーサネットスイッチ"^]サポートされているONTAP、NX-OS、および RCF バージョンについては、ページをご覧ください。
+* RCFのコマンド構文と、NX-OSのバージョンにあるコマンド構文との間には、コマンドの依存関係が存在する場合があります。
 
 
-.このタスクについて
-手順では、 ONTAP コマンドと Cisco Nexus 9000 シリーズスイッチコマンドの両方を使用する必要があります。特に明記されていないかぎり、 ONTAP コマンドを使用します。
+.タスク概要
+この手順では、ONTAPコマンドとCisco Nexus 9000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
 
-コマンド出力は、 ONTAP のリリースによって異なる場合があります。
+コマンド出力は、ONTAPのリリースによって異なる場合があります。
 
 .手順
-. クラスタスイッチを管理ネットワークに接続します。
-. ping コマンドを使用して、 RCF をホストするサーバへの接続を確認します。
+. クラスタ スイッチを管理ネットワークに接続します。
+. ping コマンドを使用して、RCF をホストしているサーバーへの接続を確認します。
 +
-次の例では、スイッチが IP アドレス 172.19.2.1 のサーバに接続できることを確認します。
+次の例では、スイッチがIPアドレス172.19.2.1のサーバに接続できることを確認します。
 
 +
 [listing, subs="+quotes"]
@@ -80,7 +80,7 @@ sftp> exit
 Copy complete, now saving to disk (please wait)...
 Copy complete.
 ----
-. RCF をスイッチの実行中の設定とマージします。
+. RCF をスイッチの実行コンフィギュレーションとマージします。
 +
 [listing, subs="+quotes"]
 ----
@@ -108,9 +108,9 @@ Edge Port Type (Portfast) has been configured on Ethernet1/1 but will only
 Copy complete, now saving to disk (please wait)...
 Copy complete.
 ----
-. RCF が正常にマージされたことをスイッチで確認します。
+. スイッチ上で RCF が正常にマージされたことを確認します。
 +
-'how running-config'
+`show running-config`
 
 +
 [listing, subs="+quotes"]
@@ -149,7 +149,7 @@ banner motd #
 *                                                                              *
 ********************************************************************************
 ----
-. スイッチをリブートしたときにスタートアップコンフィギュレーションになるように、実行コンフィギュレーションを保存します。
+. 実行中の設定を保存して、スイッチを再起動したときにそれがスタートアップ設定になるようにします。
 +
 [listing, subs="+quotes"]
 ----
@@ -159,7 +159,7 @@ cs2# *copy running-config startup-config*
 Copy complete, now saving to disk (please wait)...
 Copy complete.
 ----
-. ONTAP 9.6P8 以降の場合は、スイッチ関連のログファイルを収集するために、イーサネットスイッチヘルスモニタのログ収集機能をイネーブルにします。この機能をイネーブルにするには、「 system cluster-switch log setup-password 」および「 system cluster-switch log enable-col関係 」コマンドを使用します
+. ONTAP 9.6P8 以降では、次のコマンドを使用して、スイッチ関連のログ ファイルを収集するためのイーサネット スイッチ ヘルス モニタ ログ収集機能を有効にします。 `system cluster-switch log setup-password`そして `system cluster-switch log enable-collection`
 +
 [listing, subs="+quotes"]
 ----
@@ -197,9 +197,9 @@ Enabling cluster switch log collection.
 
 cluster1::*>
 ----
-. スイッチをリブートし、実行コンフィギュレーションが正しいことを確認します。
+. スイッチを再起動し、実行中の設定が正しいことを確認します。
 +
-「再ロード」
+`reload`
 
 +
 [listing, subs="+quotes"]

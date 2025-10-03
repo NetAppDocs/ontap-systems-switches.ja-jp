@@ -2,32 +2,32 @@
 permalink: switch-bes-53248/replace-switch.html 
 sidebar: sidebar 
 keywords: replace, replacing, defective, broadcom-supported, bes, cluster, switch, network, nondisruptive, procedure, ndu, replace a broadcom-supported bes-53428 cluster switch - bes-53428 switches 
-summary: クラスタネットワーク内での、障害のある Broadcom 対応 BES-53248 クラスタスイッチの交換は、無停止手順（ NDU ）です。 
+summary: 'クラスタ ネットワーク内の障害のある Broadcom 対応 BES-53248 クラスタ スイッチを交換することは、無停止の手順 (NDU) です。' 
 ---
-= Broadcom対応BES-53248クラスタスイッチを交換します
+= Broadcom対応のBES-53248クラスタスイッチを交換する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-クラスタネットワーク内の障害のあるBroadcom対応BES-53248クラスタスイッチを交換するには、次の手順を実行します。これは、無停止の手順 （NDU；非停止アップグレード）です。
+クラスタ ネットワーク内の障害のある Broadcom 対応 BES-53248 クラスタ スイッチを交換するには、次の手順に従います。これは非中断手順 (NDU) です。
 
 .例について
-この手順の例では、スイッチとノードで次の命名法を使用しています。
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 既存の BES-53248 スイッチの名前は「 cs1 」と「 cs2 」です。
-* 新しい BES-53248 スイッチの名前は「 newcs2 」です。
-* ノード名は 'node1 と node2 です
-* 各ノードのクラスタ・ポートの名前は 'e0a' および e0b です
-* クラスタ LIF 名は、 node1 の場合は「 node1_clus1' 」、ノード 1 の場合は「 node1_clus1' 」、 node2 の場合は「 node2 _ clus2 」です。
-* すべてのクラスタ・ノードへの変更を求めるプロンプトは 'cluster1 ： > です
+* 既存のBES-53248スイッチの名前は `cs1`そして `cs2`。
+* 新しいBES-53248スイッチの名前は `newcs2`。
+* ノード名は `node1`そして `node2`。
+* 各ノードのクラスタポートの名前は `e0a`そして `e0b`。
+* クラスタLIF名は `node1_clus1`そして `node1_clus2`ノード1の場合、 `node2_clus1`そして `node2_clus2`ノード2用。
+* すべてのクラスタノードへの変更を求めるプロンプトは `cluster1::>`
 
 
 .トポロジについて
-この手順 は、次のクラスタネットワークトポロジに基づいています。
+この手順は、次のクラスター ネットワーク トポロジに基づいています。
 
-.トポロジの例を表示します
+.トポロジ例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -103,41 +103,41 @@ cs1                      0/56      179       R          BES-53248        0/56
 ----
 ====
 .手順
-. を確認します link:replace-switch-reqs.html["交換に際しての要件"]。
-. このクラスタで AutoSupport が有効になっている場合は、 AutoSupport メッセージを呼び出してケースの自動作成を抑制します。
+. レビューlink:replace-switch-reqs.html["交換要件"]。
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= xh 」というメッセージが表示されます
-
-+
-ここで、 _ x _ はメンテナンス時間の長さ（時間）です。
+`system node autosupport invoke -node * -type all -message MAINT=xh`
 
 +
-
-NOTE: AutoSupport メッセージはテクニカルサポートにこのメンテナンスタスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
-
-. 適切なリファレンス構成ファイル（RCF）とイメージをスイッチnewcs2にインストールし、必要なサイトの準備を行います。
-+
-必要に応じて、新しいスイッチ用に、 RCF および EFOS ソフトウェアの適切なバージョンを確認、ダウンロード、およびインストールします。新しいスイッチが正しくセットアップされており、 RCF および EFOS ソフトウェアのアップデートが不要であることを確認した場合は、手順 2 に進みます。
-
-+
-.. クラスタスイッチに適用可能な Broadcom EFOS ソフトウェアをからダウンロードできます https://www.broadcom.com/support/bes-switch["Broadcom Ethernet Switch のサポート"^] サイトダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応する EFOS ファイルをダウンロードします。
-.. 適切な RCF はから入手できます https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom クラスタスイッチ"^] ページダウンロードページの手順に従って、インストールする ONTAP ソフトウェアのバージョンに対応する正しい RCF をダウンロードします。
-
-
-. 新しいスイッチに、としてログインします `admin` ノードクラスタインターフェイス（ポート1~16）に接続するすべてのポートをシャットダウンします。
-+
-
-NOTE: 追加ポート用の追加ライセンスを購入した場合は、それらのポートもシャットダウンします。
-
-+
-交換するスイッチが機能しておらず、電源がオフになっている場合は、クラスタノードの LIF が、各ノードのもう一方のクラスタポートにすでにフェイルオーバーされている必要があります。
+ここで、_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
 
 +
 
-NOTE: 「 enable 」モードを開始するためにパスワードは必要ありません。
+NOTE: AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+
+. 適切なリファレンス コンフィギュレーション ファイル (RCF) とイメージをスイッチ newcs2 にインストールし、必要なサイトの準備を行います。
++
+必要に応じて、新しいスイッチに適したバージョンの RCF および EFOS ソフトウェアを確認し、ダウンロードしてインストールします。新しいスイッチが正しくセットアップされ、RCF および EFOS ソフトウェアの更新が必要ないことを確認した場合は、手順 2 に進みます。
 
 +
-.例を示します
+.. クラスタスイッチに適したBroadcom EFOSソフトウェアは、次のサイトからダウンロードできます。 https://www.broadcom.com/support/bes-switch["Broadcomイーサネット スイッチのサポート"^]サイト。[Download]ページの手順に従って、インストールするONTAPソフトウェアのバージョンに対応したEFOSファイルをダウンロードします。
+.. 適切なRCFは以下から入手可能です。 https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom クラスタスイッチ"^]ページ。[Download]ページの手順に従って、インストールするONTAPソフトウェアのバージョンに対応したRCFをダウンロードします。
+
+
+. 新しいスイッチで、 `admin`ノード クラスタ インターフェイスに接続されるすべてのポート (ポート 1 ～ 16) をシャットダウンします。
++
+
+NOTE: 追加ポート用のライセンスを購入した場合は、それらのポートもシャットダウンします。
+
++
+交換するスイッチが機能しておらず、電源がオフになっている場合は、各クラスタ ノードのLIFはもう一方のクラスタ ポートにすでにフェイルオーバーされています。
+
++
+
+NOTE: パスワードは必要ありません `enable`モード。
+
++
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -153,12 +153,12 @@ Password:
 (newcs2)#
 ----
 ====
-. すべてのクラスタ LIF で「 auto-revert 」が有効になっていることを確認します。
+. すべてのクラスタLIFが `auto-revert`有効:
 +
-network interface show -vserver Cluster -fields auto-revert を実行します
+`network interface show -vserver Cluster -fields auto-revert`
 
 +
-.トポロジの例を表示します
+.トポロジ例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -176,7 +176,7 @@ Cluster   node2_clus2  true
 ====
 . BES-53248 スイッチ cs1 の ISL ポート 0/55 と 0/56 をシャットダウンします。
 +
-.トポロジの例を表示します
+.トポロジ例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -186,16 +186,16 @@ Cluster   node2_clus2  true
 (cs1)(interface 0/55-0/56)# *shutdown*
 ----
 ====
-. すべてのケーブルを BES-53248 cs2 スイッチから取り外し、 BES-53248 newcs2 スイッチの同じポートに接続します。
-. cs1 スイッチと newcs2 スイッチ間で ISL ポート 0/55 と 0/56 を起動し、ポートチャネルの動作ステータスを確認します。
+. BES-53248 cs2 スイッチからすべてのケーブルを取り外し、それらを BES-53248 newcs2 スイッチの同じポートに接続します。
+. cs1スイッチとnewcs2スイッチ間でISLポート0/55と0/56を起動し、ポート チャネルの動作ステータスを確認します。
 +
-ポートチャネル1/1のリンク状態は* up *になり、すべてのメンバーポートはPort ActiveヘッダーでTrueになるはずです。
+ポート チャネル 1/1 のリンク状態は *up* で、Port Active 見出しの下にあるすべてのメンバー ポートが True になっている必要があります。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次に、 ISL ポート 0/55 および 0/56 を有効にし、スイッチ cs1 のポートチャネル 1/1 のリンク状態を表示する例を示します。
+この例では、ISL ポート 0/55 および 0/56 を有効にし、スイッチ cs1 のポート チャネル 1/1 のリンク状態を表示します。
 
 [listing, subs="+quotes"]
 ----
@@ -223,13 +223,13 @@ Ports  Timeout       Speed      Active
        partner/long
 ----
 ====
-. 新しいスイッチ newcs2 で、ノードクラスタインターフェイス（ポート 1~16 ）に接続されているすべてのポートを再度有効にします。
+. 新しいnewcs2スイッチで、ノード クラスタ インターフェイス（ポート1～16）に接続されているすべてのポートを再度有効にします。
 +
 
-NOTE: 追加ポート用の追加ライセンスを購入した場合は、それらのポートもシャットダウンします。
+NOTE: 追加ポート用のライセンスを購入した場合は、それらのポートもシャットダウンします。
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -244,12 +244,12 @@ Password:
 (newcs2)(config)# *exit*
 ----
 ====
-. ポートe0bが* up *になっていることを確認します。
+. ポート e0b が *up* であることを確認します。
 +
-「 network port show -ipspace cluster 」のように表示されます
+`network port show -ipspace Cluster`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 次のような出力が表示されます。
@@ -275,14 +275,14 @@ e0a       Cluster      Cluster          up   9000  auto/10000  healthy  false
 e0b       Cluster      Cluster          up   9000  auto/auto   -        false
 ----
 ====
-. 前の手順で使用したのと同じノードで、ノード 1 のクラスタ LIF node1_clus2 が自動リバートするまで待ちます。
+. 前の手順で使用したのと同じノードで、node1 のクラスター LIF node1_clus2 が自動的に元に戻るまで待機します。
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-この例では、「 Is Home 」が「 true 」でポートが e0b の場合、ノード 1 の LIF node1_clus2 は正常にリバートされています。
+この例では、ノード1のLIF node1_clus2は、 `Is Home`は `true`ポートは e0b です。
 
-次のコマンドは、両方のノードの LIF に関する情報を表示します。両方のクラスタ・インターフェイスの Is Home が true の場合 ' 最初のノードの起動は成功し ' 正しいポート・アサインメントが表示されますこの例では 'e0a' と node1 の e0b を示します
+次のコマンドは、両方のノードの LIF に関する情報を表示します。最初のノードの起動が成功した場合、 `Is Home`は `true`両方のクラスタインターフェースで正しいポート割り当てが表示されています。この例では `e0a`そして `e0b`ノード1上。
 
 [listing, subs="+quotes"]
 ----
@@ -298,15 +298,15 @@ Cluster
             node2_clus2  up/up      169.254.19.183/16  node2      e0a     false
 ----
 ====
-. クラスタ内のノードに関する情報を表示します。
+. クラスター内のノードに関する情報を表示します。
 +
-「 cluster show 」を参照してください
+`cluster show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
-次の例では ' このクラスタの node1 と node2 のノードの正常性が true であることを示します
+この例では、 `node1`そして `node2`このクラスターでは `true`:
 
 [listing, subs="+quotes"]
 ----
@@ -317,15 +317,15 @@ node1  true     true          true
 node2  true     true          true
 ----
 ====
-. 次のクラスタネットワーク構成を確認します。
+. 次のクラスター ネットワーク構成を確認します。
 +
-「 network port show 」のように表示されます
+`network port show`
 
 +
-「 network interface show 」を参照してください
+`network interface show`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -361,12 +361,12 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. クラスタネットワークが正常であることを確認します。
+. クラスター ネットワークが正常であることを確認します。
 +
-「 isdp 隣人」
+`show isdp neighbors`
 
 +
-.例を示します
+.例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
@@ -393,11 +393,11 @@ cs1          0/55    179         R             BES-53248   0/55
 cs1          0/56    179         R             BES-53248   0/56
 ----
 ====
-. ケースの自動作成を抑制した場合は、 AutoSupport メッセージを呼び出して作成を再度有効にします。
+. 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
-「 system node AutoSupport invoke -node * -type all -message MAINT= end 」というメッセージが表示されます
+`system node autosupport invoke -node * -type all -message MAINT=END`
 
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチヘルス監視の設定"]です。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。

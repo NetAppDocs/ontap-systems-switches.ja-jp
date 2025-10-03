@@ -2,77 +2,77 @@
 permalink: switch-nvidia-sn2100/upgrade-cl-version.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: Cumulus Linuxのバージョンをアップグレードするには、次の手順を実行します。 
+summary: Cumulus Linux バージョンをアップグレードするには、次の手順を実行します。 
 ---
-= Cumulus Linuxのバージョンをアップグレードします
+= Cumulus Linuxのバージョンをアップグレードする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-必要に応じて、次の手順 を実行してCumulus Linuxのバージョンをアップグレードします。
+必要に応じて Cumulus Linux バージョンをアップグレードするには、次の手順を実行します。
 
-.作業を開始する前に
-次のものがあることを確認します。
+.開始する前に
+以下のものがあることを確認してください。
 
-* Linuxに関する中級レベルの知識
-* 基本的なテキスト編集、UNIXファイル権限、およびプロセスの監視に精通していること。など、さまざまなテキストエディタが事前にインストールされています `vi` および `nano`。
-* LinuxまたはUNIXシェルへのアクセス。Windowsを実行している場合は、Linux環境をコマンドラインツールとして使用して、クムルスLinuxと対話します。
-* NVIDIA SN2100スイッチのコンソールアクセスでは、シリアルコンソールスイッチでボーレート要件が115200に設定されます。
+* 中級レベルの Linux の知識。
+* 基本的なテキスト編集、UNIX ファイル権限、プロセス監視に関する知識。さまざまなテキストエディタがプリインストールされており、 `vi`そして `nano`。
+* Linux または UNIX シェルへのアクセス。  Windows を実行している場合は、Cumulus Linux と対話するためのコマンド ライン ツールとして Linux 環境を使用します。
+* NVIDIA SN2100 スイッチ コンソール アクセス用のシリアル コンソール スイッチのボー レート要件は、次のように 115200 に設定されています。
 +
-** 115200 ボー
-** 8 データビット
-** 1 ストップビット
+** 115200ボー
+** 8データ ビット
+** 1ストップ ビット
 ** パリティ：なし
 ** フロー制御：なし
 
 
 
 
-.このタスクについて
+.タスク概要
 次の点に注意してください。
 
 
-NOTE: Cumulus Linuxがアップグレードされるたびに、ファイルシステム構造全体が消去され、再構築されます。既存の設定は消去されます。Cumulus Linuxを更新する前に、スイッチの設定を保存して記録する必要があります。
+NOTE: Cumulus Linux がアップグレードされるたびに、ファイル システム構造全体が消去され、再構築されます。既存の設定は消去されます。  Cumulus Linux を更新する前に、スイッチの設定を保存して記録する必要があります。
 
 
-CAUTION: cumulusユーザーアカウントのデフォルトパスワードは*cumulus *です。Cumulus Linuxに初めてログインするときは、このデフォルトのパスワードを変更する必要があります。新しいイメージをインストールする前に、自動スクリプトを更新する必要があります。Cumulus Linuxには、インストールプロセス中にデフォルトのパスワードを自動的に変更するためのコマンドラインオプションが用意されています。
+CAUTION: cumulus ユーザー アカウントのデフォルトのパスワードは *cumulus* です。 Cumulus Linux に初めてログインするときは、このデフォルトのパスワードを変更する必要があります。新しいイメージをインストールする前に、自動化スクリプトを更新する必要があります。  Cumulus Linux には、インストール プロセス中にデフォルトのパスワードを自動的に変更するためのコマンド ライン オプションが用意されています。
 
-詳細については、を参照してください https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-510/Installation-Management/Installing-a-New-Cumulus-Linux-Image/["新しいCumulus Linuxイメージのインストール"^]。
+見る https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-510/Installation-Management/Installing-a-New-Cumulus-Linux-Image/["新しいCumulus Linuxイメージのインストール"^]詳細については、こちらをご覧ください。
 
 .手順
 [role="tabbed-block"]
 ====
 .Cumulus Linux 4.4.x から Cumulus Linux 5.4.0
 --
-. クラスタスイッチを管理ネットワークに接続します。
+. クラスタ スイッチを管理ネットワークに接続します。
 . ping コマンドを使用して、Cumulus Linux と RCF をホストしているサーバーへの接続を確認します。
-. クラスタスイッチに接続されている各ノードのクラスタポートを表示します。
+. クラスター スイッチに接続されている各ノード上のクラスター ポートを表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
-. 各クラスタポートの管理ステータスと動作ステータスを確認します。
+. 各クラスタ ポートの管理ステータスと動作ステータスを確認します。
 +
-.. すべてのクラスタポートが正常な状態であることを確認します。
+.. すべてのクラスター ポートが正常な状態で稼働していることを確認します。
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
-.. すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。
+.. すべてのクラスタ インターフェイス (LIF) がホーム ポート上にあることを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
-.. クラスタが両方のクラスタスイッチの情報を表示していることを確認します。
+.. クラスターが両方のクラスター スイッチの情報を表示することを確認します。
 +
-system cluster-switch show -is-monitoring enabled-operational true を使用します
+`system cluster-switch show -is-monitoring-enabled-operational true`
 
 
 
-. クラスタLIFで自動リバートを無効にします。クラスタLIFはパートナークラスタスイッチにフェイルオーバーし、ターゲットスイッチでアップグレード手順を実行してもそのまま残ります。
+. クラスタLIFで自動リバートを無効にします。クラスタ LIF はパートナー クラスタ スイッチにフェイルオーバーし、対象スイッチでアップグレード手順を実行する間、そこに残ります。
 +
-network interface modify -vserver Cluster -lif *-auto-revert false
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
-. Cumulus Linuxの現在のバージョンと接続されているポートを確認します。
+. 現在の Cumulus Linux バージョンと接続されているポートを確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -109,7 +109,7 @@ UP     swp6    100G  9216   Trunk/L2    SHFFG1826000102 (e0b)   Master: bridge(U
 .
 .
 ----
-. Cumulux Linux 5.4.0イメージをダウンロードします。
+. Cumulux Linux 5.4.0 イメージをダウンロードします。
 +
 [listing, subs="+quotes"]
 ----
@@ -158,7 +158,7 @@ Welcome to NVIDIA Cumulus (R) Linux (R)
 
 ZTP in progress. To disable, do 'ztp -d'
 ----
-. Cumulus Linuxのバージョンを確認します。 `nv show system`
+. Cumulus Linux のバージョンを確認します。 `nv show system`
 +
 [listing, subs="+quotes"]
 ----
@@ -182,7 +182,7 @@ Warning: The following files have been changed since the last save, and they WIL
 .
 .
 ----
-. スイッチをログアウトして再度ログインすると、プロンプトに更新されたスイッチ名が表示されます。
+. スイッチからログアウトして再度ログインすると、プロンプトに更新されたスイッチ名が表示されます。
 +
 [listing, subs="+quotes"]
 ----
@@ -203,7 +203,7 @@ ZTP in progress. To disable, do 'ztp -d'
 
 cumulus@sw1:mgmt:~$
 ----
-. IPアドレスを設定します。
+. IP アドレスを設定します。
 +
 [listing, subs="+quotes"]
 ----
@@ -217,7 +217,7 @@ unreachable default metric 4278198272
 10.231.80.0/22 dev eth0 proto kernel scope link src 10.231.80.206
 127.0.0.0/8 dev mgmt proto kernel scope link src 127.0.0.1
 ----
-. 新しいユーザを作成し、に追加します `sudo` グループ：このユーザが有効になるのは、コンソール/SSHセッションが再起動された後だけです。
+. 新しいユーザーを作成し、このユーザーを `sudo`グループ。このユーザーは、コンソール/SSH セッションが再起動された後にのみ有効になります。
 +
 `sudo adduser --ingroup netedit admin`
 
@@ -262,7 +262,7 @@ http://www.cumulusnetworks.com/support
 The registered trademark Linux (R) is used pursuant to a sublicense from LMI, the exclusive licensee of Linus Torvalds, owner of the mark on a world-wide basis.
 admin@sw1:mgmt:~$
 ----
-. 管理者ユーザがアクセスできるユーザグループを追加します `nv` コマンド：
+. 管理者ユーザーがアクセスするための追加のユーザーグループを追加する `nv`コマンド:
 +
 [listing, subs="+quotes"]
 ----
@@ -273,40 +273,40 @@ cumulus@sw1:mgmt:~$ *sudo adduser admin nvshow*
      Done.
 ----
 +
-を参照してください https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^] を参照してください。
+見る https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^]詳細についてはこちらをご覧ください。
 
 
 
 --
 .Cumulus Linux 5.x から Cumulus Linux 5.4.0 へ
 --
-. クラスタスイッチを管理ネットワークに接続します。
+. クラスタ スイッチを管理ネットワークに接続します。
 . ping コマンドを使用して、Cumulus Linux と RCF をホストしているサーバーへの接続を確認します。
-. クラスタスイッチに接続されている各ノードのクラスタポートを表示します。
+. クラスター スイッチに接続されている各ノード上のクラスター ポートを表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
-. 各クラスタポートの管理ステータスと動作ステータスを確認します。
+. 各クラスタ ポートの管理ステータスと動作ステータスを確認します。
 +
-.. すべてのクラスタポートが正常な状態であることを確認します。
+.. すべてのクラスター ポートが正常な状態で稼働していることを確認します。
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
-.. すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。
+.. すべてのクラスタ インターフェイス (LIF) がホーム ポート上にあることを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
-.. クラスタが両方のクラスタスイッチの情報を表示していることを確認します。
+.. クラスターが両方のクラスター スイッチの情報を表示することを確認します。
 +
-system cluster-switch show -is-monitoring enabled-operational true を使用します
+`system cluster-switch show -is-monitoring-enabled-operational true`
 
 
 
-. クラスタLIFで自動リバートを無効にします。クラスタLIFはパートナークラスタスイッチにフェイルオーバーし、ターゲットスイッチでアップグレード手順を実行してもそのまま残ります。
+. クラスタLIFで自動リバートを無効にします。クラスタ LIF はパートナー クラスタ スイッチにフェイルオーバーし、対象スイッチでアップグレード手順を実行する間、そこに残ります。
 +
-network interface modify -vserver Cluster -lif *-auto-revert false
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
-. Cumulus Linuxの現在のバージョンと接続されているポートを確認します。
+. 現在の Cumulus Linux バージョンと接続されているポートを確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -333,7 +333,7 @@ Interface     MTU   Speed State Remote Host         Remote Port- Type      Summa
 + swp15      9216 100G    up sw2                      swp15       swp
 + swp16      9216 100G    up sw2                      swp16       swp
 ----
-. Cumulux Linux 5.4.0イメージをダウンロードします。
+. Cumulux Linux 5.4.0 イメージをダウンロードします。
 +
 [listing, subs="+quotes"]
 ----
@@ -382,7 +382,7 @@ Welcome to NVIDIA Cumulus (R) Linux (R)
 
 ZTP in progress. To disable, do 'ztp -d'
 ----
-. Cumulus Linuxのバージョンを確認します。 `nv show system`
+. Cumulus Linux のバージョンを確認します。 `nv show system`
 +
 [listing, subs="+quotes"]
 ----
@@ -406,7 +406,7 @@ Warning: The following files have been changed since the last save, and they WIL
 .
 .
 ----
-. スイッチをログアウトして再度ログインすると、プロンプトに更新されたスイッチ名が表示されます。
+. スイッチからログアウトして再度ログインすると、プロンプトに更新されたスイッチ名が表示されます。
 +
 [listing, subs="+quotes"]
 ----
@@ -427,7 +427,7 @@ ZTP in progress. To disable, do 'ztp -d'
 
 cumulus@sw1:mgmt:~$
 ----
-. IPアドレスを設定します。
+. IP アドレスを設定します。
 +
 [listing, subs="+quotes"]
 ----
@@ -442,7 +442,7 @@ unreachable default metric 4278198272
 10.231.80.0/22 dev eth0 proto kernel scope link src 10.231.80.206
 127.0.0.0/8 dev mgmt proto kernel scope link src 127.0.0.1
 ----
-. 新しいユーザを作成し、に追加します `sudo` グループ：このユーザが有効になるのは、コンソール/SSHセッションが再起動された後だけです。
+. 新しいユーザーを作成し、このユーザーを `sudo`グループ。このユーザーは、コンソール/SSH セッションが再起動された後にのみ有効になります。
 +
 `sudo adduser --ingroup netedit admin`
 
@@ -487,7 +487,7 @@ http://www.cumulusnetworks.com/support
 The registered trademark Linux (R) is used pursuant to a sublicense from LMI, the exclusive licensee of Linus Torvalds, owner of the mark on a world-wide basis.
 admin@sw1:mgmt:~$
 ----
-. 管理者ユーザがアクセスできるユーザグループを追加します `nv` コマンド：
+. 管理者ユーザーがアクセスするための追加のユーザーグループを追加する `nv`コマンド:
 +
 [listing, subs="+quotes"]
 ----
@@ -498,40 +498,40 @@ cumulus@sw1:mgmt:~$ *sudo adduser admin nvshow*
      Done.
 ----
 +
-を参照してください https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^] を参照してください。
+見る https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^]詳細についてはこちらをご覧ください。
 
 
 
 --
 .Cumulus Linux 5.4.0 から Cumulus Linux 5.11.0
 --
-. クラスタスイッチを管理ネットワークに接続します。
+. クラスタ スイッチを管理ネットワークに接続します。
 . ping コマンドを使用して、Cumulus Linux と RCF をホストしているサーバーへの接続を確認します。
-. クラスタスイッチに接続されている各ノードのクラスタポートを表示します。
+. クラスター スイッチに接続されている各ノード上のクラスター ポートを表示します。
 +
-「 network device-discovery show 」のように表示されます
+`network device-discovery show`
 
-. 各クラスタポートの管理ステータスと動作ステータスを確認します。
+. 各クラスタ ポートの管理ステータスと動作ステータスを確認します。
 +
-.. すべてのクラスタポートが正常な状態であることを確認します。
+.. すべてのクラスター ポートが正常な状態で稼働していることを確認します。
 +
-「 network port show -role cluster 」のように表示されます
+`network port show -role cluster`
 
-.. すべてのクラスタインターフェイス（ LIF ）がホームポートにあることを確認します。
+.. すべてのクラスタ インターフェイス (LIF) がホーム ポート上にあることを確認します。
 +
-「 network interface show -role cluster 」のように表示されます
+`network interface show -role cluster`
 
-.. クラスタが両方のクラスタスイッチの情報を表示していることを確認します。
+.. クラスターが両方のクラスター スイッチの情報を表示することを確認します。
 +
-system cluster-switch show -is-monitoring enabled-operational true を使用します
+`system cluster-switch show -is-monitoring-enabled-operational true`
 
 
 
-. クラスタLIFで自動リバートを無効にします。クラスタLIFはパートナークラスタスイッチにフェイルオーバーし、ターゲットスイッチでアップグレード手順を実行してもそのまま残ります。
+. クラスタLIFで自動リバートを無効にします。クラスタ LIF はパートナー クラスタ スイッチにフェイルオーバーし、対象スイッチでアップグレード手順を実行する間、そこに残ります。
 +
-network interface modify -vserver Cluster -lif *-auto-revert false
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
-. Cumulus Linuxの現在のバージョンと接続されているポートを確認します。
+. 現在の Cumulus Linux バージョンと接続されているポートを確認します。
 +
 [listing, subs="+quotes"]
 ----
@@ -558,7 +558,7 @@ Interface     MTU   Speed State Remote Host         Remote Port- Type      Summa
 + swp15      9216 100G    up sw2                      swp15       swp
 + swp16      9216 100G    up sw2                      swp16       swp
 ----
-. Cumulux Linux 5.11.0イメージをダウンロードします。
+. Cumulux Linux 5.11.0 イメージをダウンロードします。
 +
 [listing, subs="+quotes"]
 ----
@@ -607,7 +607,7 @@ Welcome to NVIDIA Cumulus (R) Linux (R)
 
 ZTP in progress. To disable, do 'ztp -d'
 ----
-. Cumulus Linuxのバージョンを確認します。 `nv show system`
+. Cumulus Linux のバージョンを確認します。 `nv show system`
 +
 [listing, subs="+quotes"]
 ----
@@ -631,7 +631,7 @@ Warning: The following files have been changed since the last save, and they WIL
 .
 .
 ----
-. ログアウトして再度スイッチにログインすると、プロンプトに更新されたスイッチ名が表示されます。
+. スイッチからログアウトして再度ログインすると、プロンプトに更新されたスイッチ名が表示されます。
 +
 [listing, subs="+quotes"]
 ----
@@ -652,7 +652,7 @@ ZTP in progress. To disable, do 'ztp -d'
 
 cumulus@sw1:mgmt:~$
 ----
-. IPアドレスを設定します。
+. IP アドレスを設定します。
 +
 [listing, subs="+quotes"]
 ----
@@ -672,4 +672,4 @@ unreachable default metric 4278198272
 --
 ====
 .次の手順
-link:install-rcf-sn2100-cluster.html["RCFスクリプトのインストールまたはアップグレード"]です。
+link:install-rcf-sn2100-cluster.html["RCFスクリプトをインストールまたはアップグレードする"] 。

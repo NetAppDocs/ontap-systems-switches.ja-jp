@@ -2,59 +2,59 @@
 section: switch-nvidia-sn2100
 title: NVIDIA SN2100
 entries:
-- title: はじめに
+- title: 始めましょう
   entries:
-  - title: クイックスタート
+  - title: クイック スタート
     url: "/switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
-  - title: 設定要件
+  - title: 構成要件
     url: "/switch-nvidia-sn2100/configure-reqs-sn2100-cluster.html"
-  - title: コンポーネントとパーツ番号
+  - title: コンポーネントと部品番号
     url: "/switch-nvidia-sn2100/components-sn2100-cluster.html"
-  - title: 必要なドキュメント
+  - title: 必要な書類
     url: "/switch-nvidia-sn2100/required-documentation-sn2100-cluster.html"
-- title: ハードウェアを設置
-  pdf-filename: install_hardware_sn2100
+- title: ハードウェアをインストールする
+  pdf-filename: インストール_ハードウェア_sn2100
   entries:
   - title: ハードウェアインストールワークフロー
     url: "/switch-nvidia-sn2100/install-hardware-workflow.html"
-  - title: スイッチを設置します
+  - title: スイッチをインストールする
     url: "/switch-nvidia-sn2100/install-hardware-sn2100-cluster.html"
-  - title: ケーブル接続と構成を確認
+  - title: ケーブル配線と構成を確認する
     url: "/switch-nvidia-sn2100/cabling-considerations-sn2100-cluster.html"
-  - title: NS224シェルフをケーブル接続します
+  - title: NS224シェルフのケーブル接続
     url: "/switch-nvidia-sn2100/install-cable-shelves-sn2100-cluster.html"
 - title: ソフトウェアの設定
-  pdf-filename: software_sn2100の設定
+  pdf-filename: ソフトウェアsn2100を構成する
   entries:
-  - title: ソフトウェアのインストールワークフロー
+  - title: ソフトウェアインストールワークフロー
     url: "/switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html"
-  - title: スイッチを設定します
+  - title: スイッチを設定する
     url: "/switch-nvidia-sn2100/configure-sn2100-cluster.html"
-  - title: Cumulus LinuxをCumulusモードでインストールします
+  - title: Cumulus LinuxをCumulusモードでインストールする
     url: "/switch-nvidia-sn2100/install-cumulus-mode-sn2100-cluster.html"
-  - title: Cumulus LinuxをONIEモードでインストールします
+  - title: ONIEモードでCumulus Linuxをインストールする
     url: "/switch-nvidia-sn2100/install-onie-mode-sn2100-cluster.html"
-  - title: Cumulus Linuxバージョンをアップグレードします
+  - title: Cumulus Linuxバージョンのアップグレード
     url: "/switch-nvidia-sn2100/upgrade-cl-version.html"
-  - title: RCFスクリプトのインストールまたはアップグレード
+  - title: RCFスクリプトをインストールまたはアップグレードする
     url: "/switch-nvidia-sn2100/install-rcf-sn2100-cluster.html"
   - title: CSHMファイルをインストールする
     url: "/switch-nvidia-sn2100/setup-install-cshm-file.html"
   - title: スイッチを工場出荷時の状態にリセットする
     url: "/switch-nvidia-sn2100/reset-switch-sn2100.html"
-- title: スイッチを移行します
-  pdf-filename: migrate_switches_sn2100
+- title: スイッチを移行する
+  pdf-filename: 移行スイッチsn2100
   entries:
-  - title: CN1610クラスタスイッチから移行します
+  - title: CN1610クラスタスイッチからの移行
     url: "/switch-nvidia-sn2100/migrate-cn1610-sn2100-cluster-switch.html"
-  - title: Ciscoクラスタスイッチから移行
+  - title: Ciscoクラスタ スイッチからの移行
     url: "/switch-nvidia-sn2100/migrate-cisco-sn2100-cluster-switch.html"
-  - title: 2ノードスイッチクラスタに移行する
+  - title: 2ノードスイッチクラスタへの移行
     url: "/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html"
 - title: スイッチを交換する
-  pdf-filename: replace_switches_sn2100
+  pdf-filename: スイッチの交換_sn2100
   entries:
-  - title: クラスタスイッチを交換します
+  - title: クラスタスイッチを交換する
     url: "/switch-nvidia-sn2100/replace-sn2100-switch-cluster.html"
-  - title: クラスタスイッチをスイッチレス接続に交換します
+  - title: クラスタスイッチをスイッチレス接続に置き換える
     url: "/switch-nvidia-sn2100/migrate-to-switchless-interconnect-sn2100-cluster.html"
