@@ -1,0 +1,34 @@
+---
+permalink: switch-cisco-9364d-gx2a/configure-switch-overview-9364d-cluster.html 
+sidebar: sidebar 
+keywords: switches, initial installation, configure 9364d-gx2ab switch 
+summary: Cisco Nexus 9364d-gx2a クラスタ スイッチのインストールとセットアップの概要 
+---
+= Cisco 9364D-GX2Aスイッチのインストールとセットアップのワークフロー
+:allow-uri-read: 
+
+
+[role="lead"]
+Cisco 9364D-GX2A スイッチは、 Cisco Nexus 9000 プラットフォームの一部です。  AFX システム スイッチを使用すると、2 つ以上のノードを持つONTAPクラスターを構築できます。
+
+Cisco 9364D-GX2A スイッチをインストールしてセットアップするには、次のワークフロー手順に従ってください。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:configure-setup-ports-9364d.html["スイッチポートの詳細を確認する"]
+[role="quick-margin-para"]
+Cisco 9364D-GX2A スイッチのポートの詳細を確認します。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:required-documentation-9364d-cluster.html["必要な書類を確認する"]
+[role="quick-margin-para"]
+9364D-GX2A スイッチとONTAPクラスタをセットアップするには、特定のスイッチおよびコントローラのドキュメントを確認してください。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:smart-call-9364d-cluster.html["Smart Call Homeの要件を確認する"]
+[role="quick-margin-para"]
+ネットワーク上のハードウェアおよびソフトウェア コンポーネントを監視するために使用されるCisco Smart Call Home 機能の要件を確認します。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:install-hardware.html["ハードウェアをインストールする"]
+[role="quick-margin-para"]
+スイッチのハードウェアをインストールします。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-software-overview-9364d-cluster.html["ソフトウェアの設定"]
+[role="quick-margin-para"]
+スイッチ ソフトウェアを構成します。

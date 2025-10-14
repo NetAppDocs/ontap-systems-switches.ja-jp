@@ -1,0 +1,37 @@
+---
+sidebar: sidebar 
+permalink: switch-cisco-9332d-gx2b/configure-reqs-9332d-cluster.html 
+keywords: shared storage cluster switch 
+summary: ONTAP 9.9.1 以降では、 Cisco Nexus 9332D-GX2B スイッチを使用して、ストレージとクラスタ機能を共有スイッチ シナリオに組み合わせることができます。 
+---
+= Cisco Nexus 9332D-GX2B スイッチのネットワーク要件
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 9332D-GX2B スイッチのインストールとメンテナンスについては、ケーブル配線とネットワークの要件を必ず確認してください。
+
+
+
+== ネットワーク要件
+
+すべてのスイッチ構成には次のネットワーク情報が必要です。
+
+* 管理ネットワークトラフィック用の IP サブネット
+* 各ストレージ システム コントローラおよび該当するすべてのスイッチのホスト名と IP アドレス
+* ほとんどのストレージ システム コントローラは、イーサネット サービス ポート (レンチ アイコン) に接続して e0M インターフェイスを介して管理されます。
+* 参照 https://hwu.netapp.com["Hardware Universe"^]最新情報についてはこちらをご覧ください。
+
+
+
+
+== ケーブル要件
+
+* スイッチに適した数と種類のケーブルおよびケーブル コネクタがあります。参照 https://hwu.netapp.com["Hardware Universe"^]。
+* 最初に設定するスイッチのタイプに応じて、付属のコンソール ケーブルを使用してスイッチのコンソール ポートに接続する必要があります。
+

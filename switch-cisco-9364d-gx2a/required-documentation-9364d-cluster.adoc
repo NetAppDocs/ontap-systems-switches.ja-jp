@@ -1,0 +1,108 @@
+---
+sidebar: sidebar 
+permalink: switch-cisco-9364d-gx2a/required-documentation-9364d-cluster.html 
+keywords: shared storage cluster switch 
+summary: Cisco Nexus 9364d-gx2a スイッチのインストールとメンテナンスについては、特定のスイッチおよびコントローラのドキュメントを確認して、 Cisco 9364d-gx2a スイッチとONTAPクラスタをセットアップしてください。 
+---
+= Cisco Nexus 9364D-GX2A スイッチのドキュメント要件
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 9364D-GX2A スイッチのインストールとメンテナンスについては、特定のスイッチおよびコントローラのドキュメントを確認して、 Cisco 9364D-GX2A スイッチとONTAPクラスタをセットアップしてください。
+
+
+
+== スイッチのドキュメント
+
+Cisco Nexus 9364D-GX2Aスイッチをセットアップするには、次のドキュメントが必要です。 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズ スイッチのサポート"^]ページ：
+
+[cols="1,2"]
+|===
+| ドキュメント タイトル | 説明 
+
+
+ a| 
+link:https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9364d-gx2a/cisco-nexus-9364d-gx2a-nx-os-mode-switch-hardware-installation-guide/m_installing_chassis_2ru_duvel.html["Cisco Nexus 9364D-GX2A NX-OS モード スイッチ ハードウェア設置ガイド"^]
+ a| 
+サイト要件、スイッチ ハードウェアの詳細、およびインストール オプションに関する詳細情報を提供します。
+
+
+
+ a| 
+link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-and-configuration-guides-list.html["Cisco Nexus 9000 シリーズ スイッチ ソフトウェア コンフィギュレーション ガイド"^](スイッチにインストールされている NX-OS リリースのガイドを選択してください)
+ a| 
+ONTAP操作用にスイッチを構成する前に必要な初期スイッチ構成情報を提供します。
+
+
+
+ a| 
+link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/101x/upgrade/cisco-nexus-9000-nx-os-software-upgrade-downgrade-guide-101x.html["Cisco Nexus 9000 シリーズ NX-OS ソフトウェアのアップグレードおよびダウングレード ガイド"^](スイッチにインストールされている NX-OS リリースのガイドを選択してください)
+ a| 
+必要に応じて、スイッチをONTAP対応スイッチ ソフトウェアにダウングレードする方法に関する情報を提供します。
+
+
+
+ a| 
+link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/102x/command-reference/config/b_n9k_config_commands_1021.html["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]
+ a| 
+Ciscoが提供するさまざまなコマンド リファレンスへのリンクを提供します。
+
+
+
+ a| 
+link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-system-message-guides-list.html["Cisco Nexus 9000 シリーズ NX-OS システム メッセージ リファレンス"^]
+ a| 
+Cisco Nexus 9000 シリーズ スイッチのシステム メッセージについて説明します。システム メッセージには情報メッセージと、リンク、内部ハードウェア、またはシステム ソフトウェアの問題の診断に役立つメッセージが含まれます。
+
+
+
+ a| 
+link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-release-notes-list.html["Cisco Nexus 9000 シリーズ NX-OS リリース ノート"^](スイッチにインストールされている NX-OS リリースの注記を選択してください)
+ a| 
+Cisco Nexus 9000 シリーズの機能、バグ、および制限について説明します。
+
+
+
+ a| 
+link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/mds9000/hw/regulatory/compliance/RCSI.html?dtid=osscdc000283&linkclickid=srch["Cisco Nexus 9000 シリーズの規制コンプライアンスおよび安全性に関する情報"^]
+ a| 
+Nexus 9000 シリーズ スイッチに関する国際機関のコンプライアンス、安全性、および法定情報を提供します。
+
+|===
+
+
+== ONTAPシステムのドキュメント
+
+ONTAPシステムをセットアップするには、以下のオペレーティングシステムのバージョンに対応したドキュメントが必要です。 https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9ドキュメント センター"^] 。
+
+[cols="1,2"]
+|===
+| Name | 説明 
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-afx/index.html["AFXシステムのドキュメント"^]
+ a| 
+NetAppハードウェアのインストール方法について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-family/["ONTAPのドキュメント"^]
+ a| 
+ONTAPリリースのあらゆる側面に関する詳細情報を提供します。
+
+
+
+ a| 
+https://hwu.netapp.com["Hardware Universe"^]
+ a| 
+NetApp のハードウェア構成と互換性に関する情報を提供します。
+
+|===

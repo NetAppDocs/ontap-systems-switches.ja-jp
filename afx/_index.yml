@@ -1,0 +1,42 @@
+---
+indexpage:
+  title: AFXシステムスイッチ
+  summary: このサイトのドキュメントを使用して、 ONTAPクラスタ展開用の AFX システム スイッチをインストール、構成、および保守します。
+  keywords: AFX systems switches, cisco nexus switches, cluster switches, ontap clusters
+  lead: AFX システム スイッチを使用すると、2 つ以上のノードを持つONTAPクラスターを構築できます。これらのCisco Nexus 9000 プラットフォーム
+    スイッチは、 NetApp ONTAP環境におけるスケーラブルなクラスタ相互接続ソリューションの基盤を提供します。
+  tiles:
+  - title: 始めましょう
+    links:
+    - title: Cisco Nexus 9332D-GX2B
+      url: "../switch-cisco-9332d-gx2b/configure-switch-overview-9332d-cluster.html"
+    - title: Cisco Nexus 9364D-GX2A
+      url: "../switch-cisco-9364d-gx2a/configure-switch-overview-9364d-cluster.html"
+  - title: AFXスイッチのインストールと構成
+    links:
+    - title: 9332D-GX2Bスイッチハードウェアをインストールする
+      url: "../switch-cisco-9332d-gx2b/install-hardware.html"
+    - title: 9364D-GX2Aスイッチハードウェアをインストールする
+      url: "../switch-cisco-9364d-gx2a/install-hardware.html"
+    - title: 9332D-GX2Bスイッチソフトウェアを構成する
+      url: "../switch-cisco-9332d-gx2b/configure-software-overview-9332d-cluster.html"
+    - title: 9364D-GX2Aスイッチソフトウェアを構成する
+      url: "../switch-cisco-9364d-gx2a/configure-software-overview-9364d-cluster.html"
+  - title: AFXスイッチのメンテナンス
+    links:
+    - title: 9332D-GX2Bスイッチを交換する
+      url: "../switch-cisco-9332d-gx2b/replace-9332d-cluster.html"
+    - title: 9364D-GX2Aスイッチを交換する
+      url: "../switch-cisco-9364d-gx2a/replace-9364d-cluster.html"
+    - title: 9332D-GX2Bスイッチを工場出荷時のデフォルトにリセットする
+      url: "../switch-cisco-9332d-gx2b/reset-switch-9332d.html"
+    - title: 9364D-GX2Aスイッチを工場出荷時のデフォルトにリセットする
+      url: "../switch-cisco-9364d-gx2a/reset-switch-9364d.html"
+  - title: 関連ドキュメント
+    links:
+    - title: ONTAPハードウェアシステム
+      url: https://docs.netapp.com/us-en/ontap-systems/index.html
+    - title: クラスタスイッチのドキュメント
+      url: "../index.html"
+    - title: スイッチのヘルスモニタリング
+      url: "../switch-cshm/config-overview.html"

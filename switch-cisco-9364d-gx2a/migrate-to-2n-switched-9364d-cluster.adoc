@@ -1,0 +1,632 @@
+---
+permalink: switch-cisco-9364d-gx2a/migrate-to-2n-switched-9364d-cluster.html 
+sidebar: sidebar 
+keywords: two-node switchless cluster environments,migrating to a two-node switched 9364d-gx2a cluster environment,switchless cluster environments,9364d-gx2a switches 
+summary: 既存の 2 ノード スイッチレス クラスタ環境がある場合は、 Cisco Nexus 9364d-gx2a スイッチを使用して 2 ノード スイッチ クラスタ環境に移行し、クラスタ内の 2 ノードを超えて拡張できるようになります。 
+---
+= 2ノードスイッチクラスタへの移行
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+既存の 2 ノードのスイッチレス クラスタ環境がある場合は、 Cisco Nexus 9364D-GX2A スイッチを使用して 2 ノードのスイッチド クラスタ環境に移行できます。
+
+移行プロセスは、光ポートまたは Twinax ポートを使用しているすべてのノードで機能しますが、ノードがクラスタ ネットワーク ポートにオンボード 10Gb BASE-T RJ45 ポートを使用している場合、このスイッチではサポートされません。
+
+
+
+== 要件の確認
+
+.要件
+* 2 ノードのスイッチレス構成の場合:
++
+** 2 ノードのスイッチレス構成が適切にセットアップされ、機能しています。
+** すべてのクラスター ポートは *up* 状態です。
+** すべてのクラスタ論理インターフェイス (LIF) は *up* 状態であり、ホーム ポート上にあります。
+** 見る https://hwu.netapp.com["Hardware Universe"^]サポートされているすべてのONTAPバージョン。
+
+
+* Cisco Nexus 9332D-GX2B スイッチ構成の場合:
++
+** 両方のスイッチには管理ネットワーク接続があります。
+** クラスター スイッチへのコンソール アクセスがあります。
+** Nexus 9332D-GX2B のノード間スイッチおよびスイッチ間接続には、Twinax ケーブルまたは光ファイバー ケーブルを使用します。
++
+見る https://hwu.netapp.com["Hardware Universe"^]ケーブル接続の詳細については、こちらをご覧ください。
+
+
+
+* スイッチ間リンク (ISL) ケーブルは、両方の 9332D-GX2B スイッチのポート 1/35 と 1/36 に接続されています。
+* 両方の 9332D-GX2B スイッチの初期カスタマイズが完了し、次のようになりました。
++
+** 9332D-GX2B スイッチは最新バージョンのソフトウェアを実行しています。
+** 参照構成ファイル (RCF) がスイッチに適用されます。  SMTP、SNMP、SSH などのサイトのカスタマイズはすべて新しいスイッチで構成されます。
+
+
+
+
+.例について
+この手順の例では、クラスタ スイッチとノードで次の命名法を使用しています。
+
+* 9332D-GX2B2 スイッチの名前は cs1 と cs2 です。
+* クラスター SVM の名前は node1 と node2 です。
+* LIF の名前は、ノード 1 ではそれぞれ node1_clus1 と node1_clus2、ノード 2 ではそれぞれ node2_clus1 と node2_clus2 です。
+* その `cluster1::*>`プロンプトはクラスターの名前を示します。
+* この手順で使用されるクラスター ポートは e0a と e0b です。
+
+
+見る https://hwu.netapp.com["Hardware Universe"^]プラットフォームのクラスター ポートに関する情報。
+
+
+
+== スイッチを移行する
+
+
+
+=== ステップ1: 移行の準備
+
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
++
+`system node autosupport invoke -node * -type all -message MAINT=xh`
+
++
+ここで、x はメンテナンス ウィンドウの期間 (時間単位) です。
+
++
+
+NOTE: AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+
+. 権限レベルを上級に変更するには、次のように入力します。 `y`続行するように求められたら:
++
+`set -privilege advanced`
+
++
+高度なプロンプト(`*>`）が表示されます。
+
+
+
+
+
+=== ステップ2: ポートとケーブルを構成する
+
+. 新しいクラスタ スイッチcs1とcs2の両方で、すべてのノード側ポート（ISLポートではない）を無効にします。
++
+ISL ポートを無効にしないでください。
+
++
+.例を表示
+[%collapsible]
+====
+次の例は、スイッチcs1でノード側のポート1～34が無効になっていることを示しています。
+
+[listing]
+----
+cs1# config
+Enter configuration commands, one per line. End with CNTL/Z.
+cs1(config)# interface e1/1/1-4, e1/2/1-4, e1/3/1-4, e1/4/1-4, e1/5/1-4, e1/6/1-4, e1/7-34
+cs1(config-if-range)# shutdown
+----
+====
+. 2 つの 9332D-GX2B スイッチ cs1 と cs2 間の ISL と ISL 上の物理ポートがポート 1/35 と 1/36 で起動していることを確認します。
++
+`show port-channel summary`
+
++
+.例を表示
+[%collapsible]
+====
+次の例は、スイッチ cs1 で ISL ポートが起動していることを示しています。
+
+[listing]
+----
+cs1# show port-channel summary
+
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/35(P)   Eth1/36(P)
+----
+次の例は、スイッチ cs2 で ISL ポートが起動していることを示しています。
+
+[listing]
+----
+(cs2)# show port-channel summary
+
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/35(P)   Eth1/36(P)
+----
+====
+. 近隣デバイスのリストを表示します。
++
+`show cdp neighbors`
+
++
+このコマンドは、システムに接続されているデバイスに関する情報を提供します。
+
++
+.例を表示
+[%collapsible]
+====
+次の例は、スイッチcs1上の隣接デバイスを示しています。
+
+[listing]
+----
+cs1# show cdp neighbors
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+cs2                Eth1/35        175    R S I s     N9K-C9336C    Eth1/35
+cs2                Eth1/36        175    R S I s     N9K-C9336C    Eth1/36
+
+Total entries displayed: 2
+----
+次の例は、スイッチcs2上の隣接デバイスを示しています。
+
+[listing]
+----
+cs2# show cdp neighbors
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+cs1                Eth1/35        177    R S I s     N9K-C9336C    Eth1/35
+cs1                Eth1/36        177    R S I s     N9K-C9336C    Eth1/36
+
+Total entries displayed: 2
+----
+====
+. すべてのクラスタ ポートが動作していることを確認します。
++
+`network port show -ipspace Cluster`
+
++
+各ポートは `Link`そして健康的 `Health Status`。
+
++
+.例を表示
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> network port show -ipspace Cluster
+
+Node: node1
+
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- --------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+Node: node2
+
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- --------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+4 entries were displayed.
+----
+====
+. すべてのクラスタLIFが動作していることを確認します。
++
+`network interface show -vserver Cluster`
+
++
+各クラスタLIFには、 `true`のために `Is Home`そして `Status Admin/Oper`アップ/アップの。
+
++
+.例を表示
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> network interface show -vserver Cluster
+
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- -----
+Cluster
+            node1_clus1  up/up    169.254.209.69/16  node1         e0a     true
+            node1_clus2  up/up    169.254.49.125/16  node1         e0b     true
+            node2_clus1  up/up    169.254.47.194/16  node2         e0a     true
+            node2_clus2  up/up    169.254.19.183/16  node2         e0b     true
+4 entries were displayed.
+----
+====
+. すべてのクラスタLIFで自動リバートが有効になっていることを確認します。
++
+`network interface show -vserver Cluster -fields auto-revert`
+
++
+.例を表示
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> network interface show -vserver Cluster -fields auto-revert
+
+          Logical
+Vserver   Interface     Auto-revert
+--------- ------------- ------------
+Cluster
+          node1_clus1   true
+          node1_clus2   true
+          node2_clus1   true
+          node2_clus2   true
+
+4 entries were displayed.
+----
+====
+. ノード1のクラスタ ポートe0aからケーブルを外し、9332D-GX2Bスイッチでサポートされている適切なケーブル接続に従って、クラスタ スイッチcs1のポート1に接続します。
++
+その https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- スイッチ"^]ケーブル接続に関する詳細情報が記載されています。
+
++
+https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- スイッチ"^]
+
+. ノード2のクラスタ ポートe0aからケーブルを外し、9332D-GX2Bスイッチでサポートされている適切なケーブル接続に従って、クラスタ スイッチcs1のポート2に接続します。
+. クラスタ スイッチcs1のすべてのノード側ポートを有効にします。
++
+.例を表示
+[%collapsible]
+====
+次の例は、スイッチcs1でポート1/1～1/34が有効になっていることを示しています。
+
+[listing]
+----
+cs1# config
+Enter configuration commands, one per line. End with CNTL/Z.
+cs1(config)# interface e1/1/1-4, e1/2/1-4, e1/3/1-4, e1/4/1-4, e1/5/1-4, e1/6/1-4, e1/7-34
+cs1(config-if-range)# no shutdown
+----
+====
+. すべてのクラスタLIFが起動し、動作しており、次のように表示されていることを確認します。 `true`のために `Is Home`:
++
+`network interface show -vserver Cluster`
+
++
+.例を表示
+[%collapsible]
+====
+次の例は、ノード1とノード2のすべてのLIFが起動しており、 `Is Home`結果は真です:
+
+[listing]
+----
+cluster1::*> network interface show -vserver Cluster
+
+         Logical      Status     Network            Current     Current Is
+Vserver  Interface    Admin/Oper Address/Mask       Node        Port    Home
+-------- ------------ ---------- ------------------ ----------- ------- ----
+Cluster
+         node1_clus1  up/up      169.254.209.69/16  node1       e0a     true
+         node1_clus2  up/up      169.254.49.125/16  node1       e0b     true
+         node2_clus1  up/up      169.254.47.194/16  node2       e0a     true
+         node2_clus2  up/up      169.254.19.183/16  node2       e0b     true
+
+4 entries were displayed.
+----
+====
+. クラスター内のノードのステータスに関する情報を表示します。
++
+`cluster show`
+
++
+.例を表示
+[%collapsible]
+====
+次の例は、クラスタ内のノードの健全性と参加資格に関する情報を表示します。
+
+[listing]
+----
+cluster1::*> cluster show
+
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  ------------
+node1                true    true          false
+node2                true    true          false
+
+2 entries were displayed.
+----
+====
+. ノード1のクラスタ ポートe0bからケーブルを外し、9332D-GX2Bスイッチでサポートされている適切なケーブル接続に従って、クラスタ スイッチcs2のポート1に接続します。
+. ノード2のクラスタ ポートe0bからケーブルを外し、9332D-GX2Bスイッチでサポートされている適切なケーブル接続に従って、クラスタ スイッチcs2のポート2に接続します。
+. クラスタ スイッチcs2のすべてのノード側ポートを有効にします。
++
+.例を表示
+[%collapsible]
+====
+次の例は、スイッチcs2でポート1/1～1/34が有効になっていることを示しています。
+
+[listing]
+----
+cs2# config
+Enter configuration commands, one per line. End with CNTL/Z.
+cs2(config)# interface e1/1/1-4, e1/2/1-4, e1/3/1-4, e1/4/1-4, e1/5/1-4, e1/6/1-4, e1/7-34
+cs2(config-if-range)# no shutdown
+----
+====
+. すべてのクラスタ ポートが動作していることを確認します。
++
+`network port show -ipspace Cluster`
+
++
+.例を表示
+[%collapsible]
+====
+次の例は、ノード 1 とノード 2 のすべてのクラスター ポートが稼働していることを示しています。
+
+[listing]
+----
+cluster1::*> network port show -ipspace Cluster
+
+Node: node1
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+
+Node: node2
+                                                                       Ignore
+                                                  Speed(Mbps) Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+
+4 entries were displayed.
+----
+====
+
+
+
+
+=== ステップ3: 構成を確認する
+
+. すべてのインターフェースがtrueと表示されていることを確認します `Is Home`:
++
+`network interface show -vserver Cluster`
+
++
+
+NOTE: 完了するまでに数分かかる場合があります。
+
++
+.例を表示
+[%collapsible]
+====
+次の例は、ノード1とノード2のすべてのLIFが起動しており、 `Is Home`結果は真です:
+
+[listing]
+----
+cluster1::*> network interface show -vserver Cluster
+
+          Logical      Status     Network            Current    Current Is
+Vserver   Interface    Admin/Oper Address/Mask       Node       Port    Home
+--------- ------------ ---------- ------------------ ---------- ------- ----
+Cluster
+          node1_clus1  up/up      169.254.209.69/16  node1      e0a     true
+          node1_clus2  up/up      169.254.49.125/16  node1      e0b     true
+          node2_clus1  up/up      169.254.47.194/16  node2      e0a     true
+          node2_clus2  up/up      169.254.19.183/16  node2      e0b     true
+
+4 entries were displayed.
+----
+====
+. 両方のノードが各スイッチにそれぞれ 1 つの接続を持っていることを確認します。
++
+`show cdp neighbors`
+
++
+.例を表示
+[%collapsible]
+====
+次の例は、両方のスイッチの適切な結果を示しています。
+
+[listing]
+----
+(cs1)# show cdp neighbors
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+node1              Eth1/1         133    H           FAS2980       e0a
+node2              Eth1/2         133    H           FAS2980       e0a
+cs2                Eth1/35        175    R S I s     N9K-C9336C    Eth1/35
+cs2                Eth1/36        175    R S I s     N9K-C9336C    Eth1/36
+
+Total entries displayed: 4
+
+(cs2)# show cdp neighbors
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+node1              Eth1/1         133    H           FAS2980       e0b
+node2              Eth1/2         133    H           FAS2980       e0b
+cs1                Eth1/35        175    R S I s     N9K-C9336C    Eth1/35
+cs1                Eth1/36        175    R S I s     N9K-C9336C    Eth1/36
+
+Total entries displayed: 4
+----
+====
+. クラスター内で検出されたネットワーク デバイスに関する情報を表示します。
++
+`network device-discovery show -protocol cdp`
+
++
+.例を表示
+[%collapsible]
+====
+[listing]
+----
+cluster1::*> network device-discovery show -protocol cdp
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node2      /cdp
+            e0a    cs1                       0/2               N9K-C9336C
+            e0b    cs2                       0/2               N9K-C9336C
+node1      /cdp
+            e0a    cs1                       0/1               N9K-C9336C
+            e0b    cs2                       0/1               N9K-C9336C
+
+4 entries were displayed.
+----
+====
+. 設定が無効になっていることを確認します。
++
+`network options switchless-cluster show`
+
++
+
+NOTE: コマンドが完了するまでに数分かかる場合があります。3分間の有効期間が終了することを通知するアナウンスが表示されるまで待ちます。
+
++
+.例を表示
+[%collapsible]
+====
+次の例の false 出力は、構成設定が無効になっていることを示しています。
+
+[listing]
+----
+cluster1::*> network options switchless-cluster show
+Enable Switchless Cluster: false
+----
+====
+. クラスター内のノード メンバーのステータスを確認します。
++
+`cluster show`
+
++
+.例を表示
+[%collapsible]
+====
+次の例は、クラスタ内のノードの正常性と適格性に関する情報を示します。
+
+[listing]
+----
+cluster1::*> cluster show
+
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  --------
+node1                true    true          false
+node2                true    true          false
+----
+====
+. リモート クラスタ インターフェイスの接続を確認します。
+
+
+[role="tabbed-block"]
+====
+.ONTAP 9.9.1以降
+--
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
+
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source           Destination      Packet
+Node   Date                       LIF              LIF              Loss
+------ -------------------------- ---------------- ---------------- -----------
+node1
+       3/5/2022 19:21:18 -06:00   node1_clus2      node2-clus1      none
+       3/5/2022 19:21:20 -06:00   node1_clus2      node2_clus2      none
+node2
+       3/5/2022 19:21:18 -06:00   node2_clus2      node1_clus1      none
+       3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
+----
+--
+.ONTAPのすべてのリリース
+--
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster ping-cluster -node local*
+Host is node2
+Getting addresses from network interface table...
+Cluster node1_clus1 169.254.209.69 node1 e0a
+Cluster node1_clus2 169.254.49.125 node1 e0b
+Cluster node2_clus1 169.254.47.194 node2 e0a
+Cluster node2_clus2 169.254.19.183 node2 e0b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:
+
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+
+Detected 9000 byte MTU on 4 path(s):
+Local 169.254.47.194 to Remote 169.254.209.69
+Local 169.254.47.194 to Remote 169.254.49.125
+Local 169.254.19.183 to Remote 169.254.209.69
+Local 169.254.19.183 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+----
+--
+====
+. [[step7]] 権限レベルを管理者に戻します。
++
+`set -privilege admin`
+
+. 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
++
+`system node autosupport invoke -node * -type all -message MAINT=END`
+
+
+
+.次の手順
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。

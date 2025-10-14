@@ -1,0 +1,52 @@
+---
+indexpage:
+  title: クラスタースイッチ
+  summary: このサイトのドキュメントを使用して、 ONTAPクラスタの導入用のクラスタ スイッチをインストール、構成、および保守します。
+  keywords: cluster switches, cisco nexus switches, ontap clusters
+  lead: クラスタ スイッチを使用すると、2 つ以上のノードを持つONTAPクラスタを構築できます。これらのCisco Nexus 9000 プラットフォーム
+    スイッチは、 NetApp ONTAP環境におけるスケーラブルなクラスタ相互接続ソリューションの基盤を提供します。
+  tiles:
+  - title: 始めましょう
+    links:
+    - title: Broadcom BES-53248
+      url: "../switch-bes-53248/configure-new-switch-overview.html"
+    - title: Cisco Nexus 9336C-FX2 および 9336C-FX2-T
+      url: "../switch-cisco-9336c-fx2/configure-switch-overview-9336c-cluster.html"
+    - title: NVIDIA SN2100
+      url: "../switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
+  - title: クラスタスイッチのインストールと構成
+    links:
+    - title: Broadcom BES-53248スイッチハードウェアをインストールする
+      url: "../switch-bes-53248/install-hardware-workflow.html"
+    - title: 9336C-FX2および9336C-FX2-Tスイッチハードウェアをインストールする
+      url: "../switch-cisco-9336c-fx2/install-hardware-workflow.html"
+    - title: NVIDIA SN2100スイッチハードウェアをインストールする
+      url: "../switch-nvidia-sn2100/install-hardware-workflow.html"
+    - title: Broadcom BES-53248スイッチソフトウェアを構成する
+      url: "../switch-bes-53248/configure-software-overview-bes53248.html"
+    - title: 9336C-FX2および9336C-FX2-Tスイッチソフトウェアを構成する
+      url: "../switch-cisco-9336c-fx2/configure-software-overview-9336c-cluster.html"
+    - title: NVIDIA SN2100スイッチソフトウェアを構成する
+      url: "../switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html"
+  - title: クラスタスイッチのメンテナンス
+    links:
+    - title: Broadcom BES-53248スイッチを交換する
+      url: "../switch-bes-53248/replace-switch.html"
+    - title: 9336C-FX2および9336C-FX2-Tスイッチを交換する
+      url: "../switch-cisco-9336c-fx2/replace-9336c-cluster.html"
+    - title: NVIDIA SN2100スイッチを交換する
+      url: "../switch-nvidia-sn2100/replace-sn2100-switch-cluster.html"
+    - title: Broadcom BES-53248スイッチを工場出荷時の状態にリセットする
+      url: "../switch-bes-53248/reset-switch-bes-53248.html"
+    - title: 9336C-FX2および9336C-FX2-Tスイッチを工場出荷時のデフォルトにリセットします
+      url: "../switch-cisco-9336c-fx2/reset-switch-9336c.html"
+    - title: NVIDIA SN2100スイッチを工場出荷時の状態にリセットする
+      url: "../switch-nvidia-sn2100/reset-switch-sn2100.html"
+  - title: 関連ドキュメント
+    links:
+    - title: ONTAPハードウェアシステム
+      url: https://docs.netapp.com/us-en/ontap-systems/index.html
+    - title: クラスタスイッチのドキュメント
+      url: "../index.html"
+    - title: スイッチのヘルスモニタリング
+      url: "../switch-cshm/config-overview.html"

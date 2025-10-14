@@ -16,16 +16,12 @@ indexpage:
       url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508
   - title: サポートされるスイッチ
     links:
-    - title: クラスタスイッチ - Broadcom BES-53248
-      url: "/switch-bes-53248/configure-new-switch-overview.html"
-    - title: クラスタ スイッチ - Cisco Nexus 9336C-FX2 または 9336C-FX2-T
-      url: "/switch-cisco-9336c-fx2/configure-switch-overview-9336c-cluster.html"
-    - title: クラスタースイッチ - NVIDIA SN2100 クラスタースイッチ
-      url: "/switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
-    - title: ストレージ スイッチ - Cisco Nexus 9336C-FX2 または 9336C-FX2-T
-      url: "/switch-cisco-9336c-fx2-storage/configure-switch-overview-9336c-storage.html"
-    - title: ストレージスイッチ - NVIDIA SN2100
-      url: "/switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html"
+    - title: AFXシステムスイッチ
+      url: "/afx/index.html"
+    - title: クラスタースイッチ
+      url: "/cluster/index.html"
+    - title: ストレージ スイッチ
+      url: "/storage/index.html"
     - title: 共有スイッチ - Cisco Nexus 9336C-FX2
       url: "/switch-cisco-9336c-fx2-shared/configure-switch-overview-9336c-shared.html"
   - title: 販売終了スイッチ

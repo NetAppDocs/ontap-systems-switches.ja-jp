@@ -1,17 +1,17 @@
 ---
-permalink: switch-cisco-9336c-fx2-storage/migrate-to-9336-storage.html 
+permalink: switch-cisco-9332d-gx2b/migrate-to-9332d-cluster.html 
 sidebar: sidebar 
-keywords: migrating to a cluster with Cisco Nexus 9336C-FX2 cluster switches, how to migrate 
-summary: ONTAPクラスタの古いCiscoクラスタ スイッチは、無停止でCisco Nexus 9336C-FX2クラスタ ネットワーク スイッチに移行できます。 
+keywords: migrating to a cluster with Cisco Nexus 9332D-GX2B cluster switches, how to migrate 
+summary: ONTAPクラスタの古いCiscoクラスタ スイッチは、無停止でCisco Nexus 9332D-GX2Bクラスタ ネットワーク スイッチに移行できます。 
 ---
-= 古いCiscoスイッチからCisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチに移行する
+= 古いCiscoスイッチからCisco Nexus 9332D-GX2B スイッチに移行する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-ONTAPクラスタの古いCiscoスイッチをCisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ ネットワーク スイッチに移行できます。これは中断を伴わない手順です。
+古いCiscoクラスタ スイッチからCisco Nexus 9332D-GX2B クラスタ ネットワーク スイッチへの中断のない移行を実行できます。
 
 
 

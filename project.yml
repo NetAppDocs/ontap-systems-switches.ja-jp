@@ -22,6 +22,10 @@ sidebar:
       url: "/get-started/learn-switch-concept.html"
     - title: 立ち上がって走り出す
       url: "/get-started/get-up-and-running.html"
+  - title: AFXシステムスイッチ
+    entries:
+    - section: switch-cisco-9332d-gx2b
+    - section: switch-cisco-9364d-gx2a
   - title: クラスタースイッチ
     entries:
     - section: switch-bes-53248

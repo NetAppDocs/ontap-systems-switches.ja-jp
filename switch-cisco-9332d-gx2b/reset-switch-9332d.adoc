@@ -1,0 +1,51 @@
+---
+sidebar: sidebar 
+permalink: switch-cisco-9332d-gx2b/reset-switch-9332d.html 
+keywords: reset switch factory defaults 
+summary: 9332D-GX2B スイッチを工場出荷時の設定にリセットします。 
+---
+= 9332D-GX2Bスイッチを工場出荷時のデフォルトにリセットします
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+9332D-GX2B スイッチを工場出荷時の設定にリセットするには、9332D-GX2B スイッチの設定を消去する必要があります。
+
+.タスク概要
+* スイッチにシリアル コンソールを使用して接続する必要があります。
+* このタスクでは、管理ネットワークの設定をリセットします。
+
+
+.手順
+. 既存の設定を消去します。
++
+`write erase`
+
++
+[listing, subs="+quotes"]
+----
+(cs2)# *write erase*
+
+Warning: This command will erase the startup-configuration.
+Do you wish to proceed anyway? (y/n) [n] *y*
+----
+. スイッチ ソフトウェアをリロードします。
++
+`reload`
+
++
+[listing, subs="+quotes"]
+----
+(cs2)# *reload*
+
+This command will reboot the system. (y/n)? [n] *y*
+----
++
+システムがリブートし、設定ウィザードが起動します。起動中に、「自動プロビジョニングを中止して通常のセットアップを続行しますか?」というプロンプトが表示された場合は、(はい/いいえ)[n]"の場合、続行するには「*はい*」と答える必要があります。
+
+

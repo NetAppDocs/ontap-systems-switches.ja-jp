@@ -1,8 +1,8 @@
 ---
-permalink: switch-cisco-3132q-v/smart-call-home-3132q.html 
+permalink: switch-cisco-9332d-gx2b/smart-call-9332d-cluster.html 
 sidebar: sidebar 
-keywords: Cisco, 3132Q-V 
-summary: Smart Call Home 機能を使用するには、次のガイドラインを確認してください。 
+keywords: cisco smart call,small call home 
+summary: Smart Call Home は、ネットワーク上のハードウェアおよびソフトウェア コンポーネントを監視し、重大なシステム状態に関する電子メールベースの通知を生成します。デバイスでイベントが発生すると、Smart Call Home は宛先プロファイルに設定されているすべての受信者にアラートを送信します。 
 ---
 = Smart Call Homeの要件
 :allow-uri-read: 

@@ -1,0 +1,573 @@
+---
+permalink: switch-cisco-9332d-gx2b/migrate-to-switchless-interconnect-9332d-cluster.html 
+sidebar: sidebar 
+keywords: migrate, switchless cluster interconnect, cisco nexus switch 9332D-GX2B2 
+summary: ONTAP 9.3 以降では、スイッチ クラスタ ネットワークを持つクラスタから、2 つのノードが直接接続されたクラスタに移行できます。 
+---
+= Cisco Nexus 9332D-GX2B2 クラスタ スイッチをスイッチレス接続に置き換える
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP 9.3 以降では、スイッチ クラスタ ネットワークを持つクラスタから、2 つのノードが直接接続されたクラスタに移行できます。
+
+
+
+== 要件の確認
+
+.ガイドライン
+次のガイドラインを確認してください。
+
+* 2 ノードのスイッチレス クラスタ構成への移行は、中断を伴わない操作です。ほとんどのシステムでは、各ノードに 2 つの専用クラスタ相互接続ポートがありますが、各ノードに 4 つ、6 つ、または 8 つなど、より多数の専用クラスタ相互接続ポートがあるシステムでもこの手順を使用できます。
+* スイッチレス クラスタ相互接続機能は 2 つ以上のノードでは使用できません。
+* クラスタ相互接続スイッチを使用し、 ONTAP 9.3 以降を実行している既存の 2 ノード クラスタがある場合は、ノード間の直接のバックツーバック接続でスイッチを置き換えることができます。
+
+
+.開始する前に
+以下のものがあることを確認してください。
+
+* クラスター スイッチによって接続された 2 つのノードで構成される正常なクラスター。ノードは同じONTAPリリースを実行している必要があります。
+* 各ノードには必要な数の専用クラスタ ポートがあり、システム構成をサポートするために冗長クラスタ相互接続を提供します。たとえば、各ノードに 2 つの専用クラスタ相互接続ポートがあるシステムには、2 つの冗長ポートがあります。
+
+
+
+
+== スイッチを移行する
+
+.タスク概要
+次の手順では、2 ノード クラスター内のクラスター スイッチを削除し、スイッチへの各接続をパートナー ノードへの直接接続に置き換えます。
+
+image::../media/tnsc_clusterswitches_and_direct_connections.PNG[クラスタスイッチを直接接続に置き換え]
+
+.例について
+次の手順の例では、クラスター ポートとして「e0a」と「e0b」を使用しているノードを示しています。システムによって異なるため、ノードは異なるクラスター ポートを使用している可能性があります。
+
+
+
+=== ステップ1: 移行の準備
+
+. 権限レベルを上級に変更するには、次のように入力します。 `y`続行するように求められたら:
++
+`set -privilege advanced`
+
++
+高度なプロンプト `*>`が表示されます。
+
+. ONTAP 9.3 以降では、スイッチレス クラスタの自動検出がサポートされており、デフォルトで有効になっています。
++
+高度な権限コマンドを実行すると、スイッチレス クラスターの検出が有効になっていることを確認できます。
+
++
+`network options detect-switchless-cluster show`
+
++
+.例を表示
+[%collapsible]
+====
+次の出力例は、オプションが有効になっているかどうかを示しています。
+
+[listing]
+----
+cluster::*> network options detect-switchless-cluster show
+   (network options detect-switchless-cluster show)
+Enable Switchless Cluster Detection: true
+----
+====
++
+「スイッチレスクラスタ検出を有効にする」が `false`NetAppサポートにお問い合わせください。
+
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
++
+`system node autosupport invoke -node * -type all -message MAINT=<number_of_hours>h`
+
++
+どこ `h`メンテナンス ウィンドウの期間 (時間単位) です。このメッセージは、このメンテナンス タスクをテクニカル サポートに通知し、メンテナンス ウィンドウ中の自動ケース作成を抑制できるようにします。
+
++
+次の例では、コマンドは自動ケース作成を 2 時間抑制します。
+
++
+.例を表示
+[%collapsible]
+====
+[listing]
+----
+cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
+----
+====
+
+
+
+
+=== ステップ2: ポートとケーブルを構成する
+
+. 各スイッチのクラスター ポートをグループに編成し、グループ 1 のクラスター ポートがクラスター スイッチ 1 に接続され、グループ 2 のクラスター ポートがクラスター スイッチ 2 に接続されるようにします。これらのグループは、手順の後半で必要になります。
+. クラスター ポートを識別し、リンクのステータスと正常性を確認します。
++
+`network port show -ipspace Cluster`
+
++
+次の例では、クラスター ポートが「e0a」および「e0b」であるノードの場合、1 つのグループは「node1:e0a」および「node2:e0a」として識別され、もう 1 つのグループは「node1:e0b」および「node2:e0b」として識別されます。クラスター ポートはシステムによって異なるため、ノードは異なるクラスター ポートを使用している可能性があります。
+
++
+image::../media/tnsc_clusterswitch_connections.PNG[ノード1とノード2間のクラスタスイッチ接続]
+
++
+ポートの値が `up`「リンク」列の値は `healthy`「健康状態」列に表示されます。
+
++
+.例を表示
+[%collapsible]
+====
+[listing]
+----
+cluster::> network port show -ipspace Cluster
+Node: node1
+                                                                 Ignore
+                                             Speed(Mbps) Health  Health
+Port  IPspace   Broadcast Domain Link  MTU   Admin/Oper	 Status  Status
+----- --------- ---------------- ----- ----- ----------- ------- -------
+e0a   Cluster   Cluster          up    9000  auto/10000  healthy false
+e0b   Cluster   Cluster          up    9000  auto/10000  healthy false
+
+Node: node2
+                                                                 Ignore
+                                             Speed(Mbps) Health  Health
+Port  IPspace   Broadcast Domain Link  MTU   Admin/Oper	 Status  Status
+----- --------- ---------------- ----- ----- ----------- ------- -------
+e0a   Cluster   Cluster          up    9000  auto/10000  healthy false
+e0b   Cluster   Cluster          up    9000  auto/10000  healthy false
+4 entries were displayed.
+----
+====
+. すべてのクラスタ LIF がホーム ポート上にあることを確認します。
++
+「is-home」列が `true`各クラスタLIFについて：
+
++
+`network interface show -vserver Cluster -fields is-home`
+
++
+.例を表示
+[%collapsible]
+====
+[listing]
+----
+cluster::*> net int show -vserver Cluster -fields is-home
+(network interface show)
+vserver  lif          is-home
+-------- ------------ --------
+Cluster  node1_clus1  true
+Cluster  node1_clus2  true
+Cluster  node2_clus1  true
+Cluster  node2_clus2  true
+4 entries were displayed.
+----
+====
++
+ホーム ポート上にないクラスタ LIF がある場合は、それらの LIF をホーム ポートに戻します。
+
++
+`network interface revert -vserver Cluster -lif *`
+
+. クラスタ LIF の自動復帰を無効にします。
++
+`network interface modify -vserver Cluster -lif * -auto-revert false`
+
+. 前の手順でリストされたすべてのポートがネットワーク スイッチに接続されていることを確認します。
++
+`network device-discovery show -port _cluster_port_`
+
++
+「検出されたデバイス」列には、ポートが接続されているクラスター スイッチの名前が表示されます。
+
++
+.例を表示
+[%collapsible]
+====
+次の例は、クラスター ポート「e0a」と「e0b」がクラスター スイッチ「cs1」と「cs2」に正しく接続されていることを示しています。
+
+[listing]
+----
+cluster::> network device-discovery show -port e0a|e0b
+  (network device-discovery show)
+Node/     Local  Discovered
+Protocol  Port   Device (LLDP: ChassisID)  Interface  Platform
+--------- ------ ------------------------- ---------- ----------
+node1/cdp
+          e0a    cs1                       0/11       BES-53248
+          e0b    cs2                       0/12       BES-53248
+node2/cdp
+          e0a    cs1                       0/9        BES-53248
+          e0b    cs2                       0/9        BES-53248
+4 entries were displayed.
+----
+====
+. リモート クラスタ インターフェイスの接続を確認します。
+
+
+[role="tabbed-block"]
+====
+.ONTAP 9.9.1以降
+--
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
+
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source           Destination      Packet
+Node   Date                       LIF              LIF              Loss
+------ -------------------------- ---------------- ---------------- -----------
+node1
+       3/5/2022 19:21:18 -06:00   node1_clus2      node2-clus1      none
+       3/5/2022 19:21:20 -06:00   node1_clus2      node2_clus2      none
+node2
+       3/5/2022 19:21:18 -06:00   node2_clus2      node1_clus1      none
+       3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
+----
+--
+.ONTAPのすべてのリリース
+--
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster ping-cluster -node local*
+Host is node2
+Getting addresses from network interface table...
+Cluster node1_clus1 169.254.209.69 node1 e0a
+Cluster node1_clus2 169.254.49.125 node1 e0b
+Cluster node2_clus1 169.254.47.194 node2 e0a
+Cluster node2_clus2 169.254.19.183 node2 e0b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:
+
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+
+Detected 9000 byte MTU on 4 path(s):
+Local 169.254.47.194 to Remote 169.254.209.69
+Local 169.254.47.194 to Remote 169.254.49.125
+Local 169.254.19.183 to Remote 169.254.209.69
+Local 169.254.19.183 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+----
+--
+====
+. [[step7]] クラスターが正常であることを確認します。
++
+`cluster ring show`
+
++
+すべてのユニットはマスターまたはセカンダリのいずれかである必要があります。
+
+. グループ 1 のポートに対してスイッチレス構成を設定します。
++
+
+IMPORTANT: 潜在的なネットワークの問題を回避するには、グループ 1 からポートを切断し、できるだけ早く (たとえば、*20 秒未満*) 連続して再接続する必要があります。
+
++
+.. グループ1のポートからすべてのケーブルを同時に取り外します。
++
+次の例では、各ノードのポート「e0a」からケーブルが切断され、クラスター トラフィックは各ノードのスイッチとポート「e0b」を介して継続されます。
+
++
+image::../media/tnsc_clusterswitch1_disconnected.PNG[ClusterSwitch1が切断されました]
+
+.. グループ 1 のポート同士を背中合わせにケーブル接続します。
++
+次の例では、ノード 1 の「e0a」がノード 2 の「e0a」に接続されています。
+
++
+image::../media/tnsc_ports_e0a_direct_connection.PNG[ポート「e0a」間の直接接続]
+
+
+
+. スイッチレスクラスタネットワークオプションは、 `false`に `true`。これには最大 45 秒かかる場合があります。スイッチレスオプションが設定されていることを確認します `true`:
++
+`network options switchless-cluster show`
+
++
+次の例は、スイッチレス クラスターが有効になっていることを示しています。
+
++
+[listing]
+----
+cluster::*> network options switchless-cluster show
+Enable Switchless Cluster: true
+----
+. リモート クラスタ インターフェイスの接続を確認します。
+
+
+[role="tabbed-block"]
+====
+.ONTAP 9.9.1以降
+--
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
+
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source           Destination      Packet
+Node   Date                       LIF              LIF              Loss
+------ -------------------------- ---------------- ---------------- -----------
+node1
+       3/5/2022 19:21:18 -06:00   node1_clus2      node2-clus1      none
+       3/5/2022 19:21:20 -06:00   node1_clus2      node2_clus2      none
+node2
+       3/5/2022 19:21:18 -06:00   node2_clus2      node1_clus1      none
+       3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
+----
+--
+.ONTAPのすべてのリリース
+--
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster ping-cluster -node local*
+Host is node2
+Getting addresses from network interface table...
+Cluster node1_clus1 169.254.209.69 node1 e0a
+Cluster node1_clus2 169.254.49.125 node1 e0b
+Cluster node2_clus1 169.254.47.194 node2 e0a
+Cluster node2_clus2 169.254.19.183 node2 e0b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:
+
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+
+Detected 9000 byte MTU on 4 path(s):
+Local 169.254.47.194 to Remote 169.254.209.69
+Local 169.254.47.194 to Remote 169.254.49.125
+Local 169.254.19.183 to Remote 169.254.209.69
+Local 169.254.19.183 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+----
+--
+====
+
+IMPORTANT: 次の手順に進む前に、グループ 1 でバックツーバック接続が機能していることを確認するために少なくとも 2 分間待つ必要があります。
+
+. [[step11]] グループ2のポートにスイッチレス構成を設定します。
++
+
+IMPORTANT: 潜在的なネットワークの問題を回避するには、グループ 2 からポートを切断し、できるだけ早く (たとえば、*20 秒未満*) 連続して再接続する必要があります。
+
++
+.. グループ2のポートからすべてのケーブルを同時に取り外します。
++
+次の例では、各ノードのポート「e0b」からケーブルが切断され、クラスター トラフィックは「e0a」ポート間の直接接続を通じて継続されます。
+
++
+image::../media/tnsc_clusterswitch2_disconnected.PNG[ClusterSwitch2が切断されました]
+
+.. グループ2のポート同士を背中合わせにケーブル接続します。
++
+次の例では、ノード 1 の「e0a」はノード 2 の「e0a」に接続され、ノード 1 の「e0b」はノード 2 の「e0b」に接続されます。
+
++
+image::../media/tnsc_node1_and_node2_direct_connection.PNG[ノード1とノード2のポート間の直接接続]
+
+
+
+
+
+
+
+=== ステップ3: 構成を確認する
+
+. 両方のノードのポートが正しく接続されていることを確認します。
++
+`network device-discovery show -port _cluster_port_`
+
++
+.例を表示
+[%collapsible]
+====
+次の例は、クラスター ポート「e0a」と「e0b」がクラスター パートナーの対応するポートに正しく接続されていることを示しています。
+
+[listing]
+----
+cluster::> net device-discovery show -port e0a|e0b
+  (network device-discovery show)
+Node/      Local  Discovered
+Protocol   Port   Device (LLDP: ChassisID)  Interface  Platform
+---------- ------ ------------------------- ---------- ----------
+node1/cdp
+           e0a    node2                     e0a        AFF-A300
+           e0b    node2                     e0b        AFF-A300
+node1/lldp
+           e0a    node2 (00:a0:98:da:16:44) e0a        -
+           e0b    node2 (00:a0:98:da:16:44) e0b        -
+node2/cdp
+           e0a    node1                     e0a        AFF-A300
+           e0b    node1                     e0b        AFF-A300
+node2/lldp
+           e0a    node1 (00:a0:98:da:87:49) e0a        -
+           e0b    node1 (00:a0:98:da:87:49) e0b        -
+8 entries were displayed.
+----
+====
+. クラスタ LIF の自動復帰を再度有効にします。
++
+`network interface modify -vserver Cluster -lif * -auto-revert true`
+
+. すべての LIF がホームであることを確認します。数秒かかる場合があります。
++
+`network interface show -vserver Cluster -lif _lif_name_`
+
++
+.例を表示
+[%collapsible]
+====
+「Is Home」列が `true`、のように `node1_clus2`そして `node2_clus2`次の例では:
+
+[listing]
+----
+cluster::> network interface show -vserver Cluster -fields curr-port,is-home
+vserver  lif           curr-port is-home
+-------- ------------- --------- -------
+Cluster  node1_clus1   e0a       true
+Cluster  node1_clus2   e0b       true
+Cluster  node2_clus1   e0a       true
+Cluster  node2_clus2   e0b       true
+4 entries were displayed.
+----
+====
++
+クラスタ LIFS がホーム ポートに戻っていない場合は、ローカル ノードから手動で元に戻します。
+
++
+`network interface revert -vserver Cluster -lif _lif_name_`
+
+. いずれかのノードのシステム コンソールからノードのクラスター ステータスを確認します。
++
+`cluster show`
+
++
+.例を表示
+[%collapsible]
+====
+次の例では、両方のノードのイプシロンが `false`:
+
+[listing]
+----
+Node  Health  Eligibility Epsilon
+----- ------- ----------- --------
+node1 true    true        false
+node2 true    true        false
+2 entries were displayed.
+----
+====
+. リモート クラスタ インターフェイスの接続を確認します。
+
+
+[role="tabbed-block"]
+====
+.ONTAP 9.9.1以降
+--
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
+
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source           Destination      Packet
+Node   Date                       LIF              LIF              Loss
+------ -------------------------- ---------------- ---------------- -----------
+node1
+       3/5/2022 19:21:18 -06:00   node1_clus2      node2-clus1      none
+       3/5/2022 19:21:20 -06:00   node1_clus2      node2_clus2      none
+node2
+       3/5/2022 19:21:18 -06:00   node2_clus2      node1_clus1      none
+       3/5/2022 19:21:20 -06:00   node2_clus2      node1_clus2      none
+----
+--
+.ONTAPのすべてのリリース
+--
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster ping-cluster -node local*
+Host is node2
+Getting addresses from network interface table...
+Cluster node1_clus1 169.254.209.69 node1 e0a
+Cluster node1_clus2 169.254.49.125 node1 e0b
+Cluster node2_clus1 169.254.47.194 node2 e0a
+Cluster node2_clus2 169.254.19.183 node2 e0b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:
+
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+
+Detected 9000 byte MTU on 4 path(s):
+Local 169.254.47.194 to Remote 169.254.209.69
+Local 169.254.47.194 to Remote 169.254.49.125
+Local 169.254.19.183 to Remote 169.254.209.69
+Local 169.254.19.183 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+----
+--
+====
+. [[step6]] 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
++
+`system node autosupport invoke -node * -type all -message MAINT=END`
+
++
+詳細については、以下を参照してください。 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows_-_ONTAP_9["NetAppの技術情報アーティクル1010449：「How to suppress automatic case creation during scheduled maintenance windows」"^] 。
+
+. 権限レベルを管理者に戻します。
++
+`set -privilege admin`
+
+

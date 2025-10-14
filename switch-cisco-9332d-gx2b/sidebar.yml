@@ -1,0 +1,45 @@
+---
+section: switch-cisco-9332d-gx2b
+title: Cisco Nexus 9332D-GX2B
+entries:
+- title: 始めましょう
+  pdf-filename: Overview_9332d-gx2b
+  entries:
+  - title: クイック スタート
+    url: "/switch-cisco-9332d-gx2b/configure-switch-overview-9332d-cluster.html"
+  - title: スイッチポートの詳細
+    url: "/switch-cisco-9332d-gx2b/configure-setup-ports-9332d.html"
+  - title: 必要な書類
+    url: "/switch-cisco-9332d-gx2b/required-documentation-9332d-cluster.html"
+  - title: Smart Call Homeの要件
+    url: "/switch-cisco-9332d-gx2b/smart-call-9332d-cluster.html"
+- title: ハードウェアを設置
+  url: "/switch-cisco-9332d-gx2b/install-hardware.html"
+  pdf-filename: Install_hardware_9332d-gx2b
+- title: ソフトウェアを構成する
+  pdf-filename: Configure_software_9332d-gx2b
+  entries:
+  - title: ソフトウェアワークフローを構成する
+    url: "/switch-cisco-9332d-gx2b/configure-software-overview-9332d-cluster.html"
+  - title: スイッチを設定する
+    url: "/switch-cisco-9332d-gx2b/setup-switch-9332d-cluster.html"
+  - title: NX-OSとRCFのインストール準備
+    url: "/switch-cisco-9332d-gx2b/install-nxos-overview-9332d-cluster.html"
+  - title: NX-OSソフトウェアをインストールまたはアップグレードする
+    url: "/switch-cisco-9332d-gx2b/install-nxos-software-9332d-cluster.html"
+  - title: RCFをインストールまたはアップグレードする
+    pdf-filename: インストール_アップグレード_rcf
+    entries:
+    - title: RCF のインストールまたはアップグレードの概要
+      url: "/switch-cisco-9332d-gx2b/install-upgrade-rcf-overview-cluster.html"
+    - title: RCFのインストール
+      url: "/switch-cisco-9332d-gx2b/install-rcf-software-9332d-cluster.html"
+    - title: RCFバージョンをアップグレードする
+      url: "/switch-cisco-9332d-gx2b/upgrade-rcf-software-9332d-cluster.html"
+  - title: SSHが有効になっていることを確認する
+    url: "/switch-cisco-9332d-gx2b/configure-ssh-keys.html"
+  - title: スイッチを工場出荷時の状態にリセットする
+    url: "/switch-cisco-9332d-gx2b/reset-switch-9332d.html"
+- title: 9332D-GX2Bスイッチを交換する
+  pdf-filename: Replace_switches_9332d-gx2b
+  url: "/switch-cisco-9332d-gx2b/replace-9332d-cluster.html"

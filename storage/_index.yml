@@ -1,0 +1,42 @@
+---
+indexpage:
+  title: ストレージ スイッチ
+  summary: このサイトのドキュメントを使用して、 ONTAPクラスタ展開用のストレージ スイッチをインストール、構成、および保守します。
+  keywords: storage switches, cisco nexus switches, cluster switches, ontap clusters
+  lead: ストレージ スイッチを使用すると、2 つ以上のノードを持つONTAPクラスターを構築できます。これらのCisco Nexus 9000 プラットフォーム
+    スイッチは、 NetApp ONTAP環境におけるスケーラブルなクラスタ相互接続ソリューションの基盤を提供します。
+  tiles:
+  - title: 始めましょう
+    links:
+    - title: Cisco Nexus 9336C-FX2 および 9336C-FX2-T
+      url: "../switch-cisco-9336c-fx2-storage/configure-switch-overview-9336c-storage.html"
+    - title: NVIDIA SN2100
+      url: "../switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html"
+  - title: ストレージスイッチのインストールと構成
+    links:
+    - title: 9336C-FX2および9336C-FX2-Tスイッチハードウェアをインストールする
+      url: "../switch-cisco-9336c-fx2-storage/install-hardware-workflow.html"
+    - title: NVIDIA SN2100スイッチハードウェアをインストールする
+      url: "../switch-nvidia-sn2100-storage/install-hardware-workflow.html"
+    - title: 9336C-FX2および9336C-FX2-Tスイッチソフトウェアを構成する
+      url: "../switch-cisco-9336c-fx2-storage/configure-software-overview-9336c-storage.html"
+    - title: NVIDIA SN2100スイッチソフトウェアを構成する
+      url: "../switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html"
+  - title: ストレージスイッチのメンテナンス
+    links:
+    - title: 9336C-FX2および9336C-FX2-Tスイッチを交換する
+      url: "../switch-cisco-9336c-fx2-storage/replace-storage-switch-9336c-storage.html"
+    - title: NVIDIA SN2100スイッチを交換する
+      url: "../switch-nvidia-sn2100-storage/replace-sn2100-switch-storage.html"
+    - title: 9336C-FX2および9336C-FX2-Tスイッチを工場出荷時のデフォルトにリセットします
+      url: "../switch-cisco-9336c-fx2-storage/reset-switch-9336c-storage.html"
+    - title: NVIDIA SN2100スイッチを工場出荷時の状態にリセットする
+      url: "../switch-nvidia-sn2100-storage/reset-switch-sn2100-storage.html"
+  - title: 関連ドキュメント
+    links:
+    - title: ONTAPハードウェアシステム
+      url: https://docs.netapp.com/us-en/ontap-systems/index.html
+    - title: クラスタスイッチのドキュメント
+      url: "../index.html"
+    - title: スイッチのヘルスモニタリング
+      url: "../switch-cshm/config-overview.html"

@@ -100,7 +100,7 @@ https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/configur
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/migrate-to-92300yc-overview.html["_古いCiscoスイッチからCisco Nexus 92300YC スイッチへの移行_"^]
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/migrate-to-92300yc.html["_古いCiscoスイッチからCisco Nexus 92300YC スイッチへの移行_"^]
  a| 
 古いCiscoスイッチをCisco Nexus 92300YC クラスタ スイッチに置き換える手順について説明します。
 

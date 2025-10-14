@@ -1,0 +1,21 @@
+---
+permalink: switch-cisco-9332d-gx2b/install-hardware.html 
+sidebar: sidebar 
+keywords: switches, hardware installation, Cisco Nexus, 9332D-GX2B switches 
+summary: システムにスイッチ ハードウェアとコントローラ ハードウェアをインストールして設定する方法の詳細。 
+---
+= ハードウェアを設置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+に行くlink:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-setup-workflow.html["AFXのインストールとセットアップのワークフロー"^]システムにスイッチ ハードウェアとコントローラ ハードウェアをインストールして設定する方法を学習します。
+
+AFX のインストールおよびセットアップのドキュメントには、次のような情報が含まれています。
+
+* サイトを準備し、箱を開梱して箱の内容を梱包明細書と照合し、サポート特典にアクセスするためにシステムを登録するための手順。
+* NetAppキャビネットまたは Telco ラックにスイッチ、コントローラ、およびストレージ シェルフを取り付ける手順。
+* コントローラ ストレージからスイッチ接続への配線、シェルフからスイッチ接続への配線など、システムの配線手順。
+
