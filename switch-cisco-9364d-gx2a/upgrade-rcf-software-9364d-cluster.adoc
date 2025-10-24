@@ -952,7 +952,7 @@ node1-04          true     true          false
 4 entries were displayed.
 ----
 ====
-. スイッチ cs2 で手順 4 ～ 16 を繰り返します。
+. スイッチ cs2 で手順 4 ～ 18 を繰り返します。
 . クラスタ LIF で自動復帰を有効にします。
 +
 `network interface modify -vserver Cluster -lif  * -auto-revert True`

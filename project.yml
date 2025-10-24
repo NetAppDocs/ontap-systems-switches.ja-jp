@@ -1,6 +1,6 @@
 ---
 settings:
-  name: Cluster and storage switches
+  name: Install and maintain
   internal:
     pdf_enabled: true
   prod:
@@ -12,7 +12,7 @@ settings:
   langs: ja-jp,us-en,de-de,es-es,fr-fr,it-it,pt-br,ko-kr,zh-cn,zh-tw
 sidebar:
   entries:
-  - title: ONTAPハードウェアのスイッチドキュメント
+  - title: ONTAPハードウェア システムのスイッチ ドキュメント
     url: "/index.html"
   - title: 始めましょう
     entries:
@@ -23,19 +23,23 @@ sidebar:
     - title: 立ち上がって走り出す
       url: "/get-started/get-up-and-running.html"
   - title: AFXシステムスイッチ
+    url: "/afx/index.html"
     entries:
     - section: switch-cisco-9332d-gx2b
     - section: switch-cisco-9364d-gx2a
   - title: クラスタースイッチ
+    url: "/cluster/index.html"
     entries:
     - section: switch-bes-53248
     - section: switch-cisco-9336c-fx2
     - section: switch-nvidia-sn2100
   - title: ストレージ スイッチ
+    url: "/storage/index.html"
     entries:
     - section: switch-cisco-9336c-fx2-storage
     - section: switch-nvidia-sn2100-storage
   - title: 共有スイッチ
+    url: "/shared/index.html"
     entries:
     - section: switch-cisco-9336c-fx2-shared
       pdf-filename: スイッチ-cisco-9336c-fx2-ストレージ

@@ -1,0 +1,32 @@
+---
+indexpage:
+  title: 共有スイッチ
+  summary: このサイトのドキュメントを使用して、 ONTAPクラスタ展開用の共有スイッチをインストール、構成、および保守します。
+  keywords: shared switches, cisco nexus switches, cluster switches, ontap clusters
+  lead: 共有スイッチを使用すると、2 つ以上のノードを持つONTAPクラスターを構築できます。これらのCisco Nexus 9000 プラットフォーム スイッチは、
+    NetApp ONTAP環境におけるスケーラブルなクラスタ相互接続ソリューションの基盤を提供します。
+  tiles:
+  - title: 始めましょう
+    links:
+    - title: Cisco Nexus 9336C-FX2
+      url: "../switch-cisco-9336c-fx2-shared/configure-switch-overview-9336c-shared.html"
+  - title: 共有スイッチのインストールと設定
+    links:
+    - title: 9336C-FX2スイッチハードウェアをインストールする
+      url: "../switch-cisco-9336c-fx2-shared/install-hardware-workflow.html"
+    - title: 9336C-FX2スイッチソフトウェアを構成する
+      url: "../switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html"
+  - title: 共有スイッチを維持する
+    links:
+    - title: 9336C-FX2スイッチを交換する
+      url: "../switch-cisco-9336c-fx2-shared/replace-9336c-fx2-shared.html"
+    - title: 9336C-FX2スイッチを工場出荷時のデフォルトにリセットする
+      url: "../switch-cisco-9336c-fx2-shared/reset-switch-9336c-shared.html"
+  - title: 関連ドキュメント
+    links:
+    - title: ONTAPハードウェアシステム
+      url: https://docs.netapp.com/us-en/ontap-systems/index.html
+    - title: クラスタスイッチのドキュメント
+      url: "../index.html"
+    - title: スイッチのヘルスモニタリング
+      url: "../switch-cshm/config-overview.html"

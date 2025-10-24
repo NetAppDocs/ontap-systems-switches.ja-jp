@@ -1,8 +1,8 @@
 ---
-permalink: switch-cisco-9336c-fx2/upgrade-rcf-software-9336c-cluster.html 
+permalink: switch-cisco-3232c/upgrade-rcf-software-3232c.html 
 sidebar: sidebar 
-keywords: install rcf, cisco switches 
-summary: RCFは、Nexus 9336C-FX2スイッチの初回セットアップ後にインストールできます。また、同じ手順を使用してRCFのバージョンをアップグレードすることもできます。 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 3232c 
+summary: 'クラスタ スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用する場合は、SSH が必須です。Cisco 3232c クラスタ スイッチで SSH を有効にするには、まず SSH キーを生成し、次に SSH を有効にします。' 
 ---
 = 参照構成ファイル (RCF) をアップグレードする
 :allow-uri-read: 
@@ -50,25 +50,25 @@ Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  --------
 cluster1-01/cdp
-            e0a    cs1                       Ethernet1/7       N9K-C9336C
-            e0d    cs2                       Ethernet1/7       N9K-C9336C
+            e0a    cs1                       Ethernet1/7       N3K-C3232C
+            e0d    cs2                       Ethernet1/7       N3K-C3232C
 cluster1-02/cdp
-            e0a    cs1                       Ethernet1/8       N9K-C9336C
-            e0d    cs2                       Ethernet1/8       N9K-C9336C
+            e0a    cs1                       Ethernet1/8       N3K-C3232C
+            e0d    cs2                       Ethernet1/8       N3K-C3232C
 cluster1-03/cdp
-            e0a    cs1                       Ethernet1/1/1     N9K-C9336C
-            e0b    cs2                       Ethernet1/1/1     N9K-C9336C
+            e0a    cs1                       Ethernet1/1/1     N3K-C3232C
+            e0b    cs2                       Ethernet1/1/1     N3K-C3232C
 cluster1-04/cdp
-            e0a    cs1                       Ethernet1/1/2     N9K-C9336C
-            e0b    cs2                       Ethernet1/1/2     N9K-C9336C
+            e0a    cs1                       Ethernet1/1/2     N3K-C3232C
+            e0b    cs2                       Ethernet1/1/2     N3K-C3232C
 cluster1::*>
 ----
 ====
 . 各クラスタ ポートの管理ステータスと動作ステータスを確認します。
 +
-.. すべてのクラスター ポートが正常な状態で *up* していることを確認します。
+.. すべてのクラスター ポートが正常な状態で稼働していることを確認します。
 +
-`network port show -role cluster`
+`network port show –role cluster`
 
 +
 .例を表示
@@ -77,7 +77,6 @@ cluster1::*>
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network port show -role cluster*
-
 Node: cluster1-01
                                                                        Ignore
                                                   Speed(Mbps) Health   Health
@@ -85,7 +84,6 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
 e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
-
 Node: cluster1-02
                                                                        Ignore
                                                   Speed(Mbps) Health   Health
@@ -94,16 +92,13 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
 e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
 8 entries were displayed.
-
 Node: cluster1-03
-
    Ignore
                                                   Speed(Mbps) Health   Health
 Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-
 Node: cluster1-04
                                                                        Ignore
                                                   Speed(Mbps) Health   Health
@@ -153,61 +148,54 @@ cluster1::*>
 ----
 cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
 Switch                      Type               Address          Model
---------------------------- ------------------ ---------------- -----
-cs1                         cluster-network    10.233.205.90    N9K-C9336C
-     Serial Number: FOCXXXXXXGD
+--------------------------- ------------------ ---------------- ---------------
+cs1                         cluster-network    10.233.205.92    NX3232C
+     Serial Number: FOXXXXXXXGS
       Is Monitored: true
             Reason: None
   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
+                    9.3(4)
     Version Source: CDP
-
-cs2                         cluster-network    10.233.205.91    N9K-C9336C
-     Serial Number: FOCXXXXXXGS
+cs2                         cluster-network    10.233.205.93    NX3232C
+     Serial Number: FOXXXXXXXGD
       Is Monitored: true
             Reason: None
   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
+                    9.3(4)
     Version Source: CDP
-cluster1::*>
+2 entries were displayed.
 ----
 ====
 
 
 . クラスタLIFで自動リバートを無効にします。
 +
-`cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*`
-
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
+----
 
 
 
 
 == ステップ2: ポートを構成する
 
-. クラスタ スイッチcs1で、ノードのクラスタ ポートに接続されているポートをシャットダウンします。
+. クラスタ スイッチcs2で、ノードのクラスタ ポートに接続されているポートをシャットダウンします。
 +
-`cs1> *enable*`
-
-+
-`cs1# *configure*`
-
-+
-`cs1(config)# *interface eth1/1/1-2,eth1/7-8*`
-
-+
-`cs1(config-if-range)# *shutdown*`
-
-+
-`cs1(config-if-range)# *exit*`
-
-+
-`cs1# *exit*`
-
+[listing, subs="+quotes"]
+----
+cs2> *enable*
+cs2# *configure*
+cs2(config)# *interface eth1/1/1-2,eth1/7-8*
+cs2(config-if-range)# *shutdown*
+cs2(config-if-range)# *exit*
+cs2# *exit*
+----
 +
 
 CAUTION: ネットワーク接続の問題を回避するために、接続されているすべてのクラスター ポートをシャットダウンしてください。ナレッジベースの記事を参照してください https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["スイッチ OS のアップグレード中にクラスタ LIF を移行するとノードがクォーラム外になる"^]詳細についてはこちらをご覧ください。
 
-. クラスタ LIF がクラスタ スイッチ cs1 でホストされているポートにフェイルオーバーされたことを確認します。数秒かかる場合があります。
+. クラスター ポートがクラスター スイッチ cs1 でホストされているポートにフェールオーバーされたことを確認します。数秒かかる場合があります。
 +
 `network interface show -role cluster`
 
@@ -259,56 +247,46 @@ cluster1::*>
 +
 `show running-config`
 
-+
-.. 現在のカスタム追加を記録します `running-config`使用中の RCF ファイル (組織の SNMP 構成など)。
-.. NX-OS 10.2以降では、 `show diff running-config`ブートフラッシュに保存されている RCF ファイルと比較するコマンド。それ以外の場合は、サードパーティの diff/comparative ツールを使用します。
-
-
+. 現在のカスタム追加を記録します `running-config`使用中の RCF ファイル (組織の SNMP 構成など)。
 . 基本的な設定の詳細を `write_erase.cfg`ブートフラッシュ上のファイル。
 +
 [NOTE]
 ====
-必ず以下を設定してください。
-
-** ユーザ名とパスワード
-** 管理IPアドレス
-** デフォルト ゲートウェイ
-** スイッチ名
-
+以下の設定を必ず行ってください: * ユーザー名とパスワード * 管理IPアドレス * デフォルトゲートウェイ * スイッチ名
 
 ====
 +
-`cs1# show run | i "username admin password" > bootflash:write_erase.cfg`
+`cs2# show run | section "switchname" > bootflash:write_erase.cfg`
 
 +
-`cs1# show run | section "vrf context management" >> bootflash:write_erase.cfg`
+`cs2# show run | section "hostname" >> bootflash:write_erase.cfg`
 
 +
-`cs1# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
+`cs2# show run | i "username admin password" >> bootflash:write_erase.cfg`
 
 +
-`cs1# show run | section "switchname" >> bootflash:write_erase.cfg`
+`cs2# show run | section "vrf context management" >> bootflash:write_erase.cfg`
+
++
+`cs2# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
 
 . RCF バージョン 1.12 以降の場合は、次のコマンドを実行します。
 +
-`cs1# echo "hardware access-list tcam region ing-racl 1024" >> bootflash:write_erase.cfg`
+`cs2# echo "hardware access-list tcam region racl-lite 512" >> bootflash:write_erase.cfg`
 
 +
-`cs1# echo "hardware access-list tcam region egr-racl 1024" >> bootflash:write_erase.cfg`
+`cs2# echo "hardware access-list tcam region qos 256" >> bootflash:write_erase.cfg`
 
 +
-`cs1# echo "hardware access-list tcam region ing-l2-qos 1280" >> bootflash:write_erase.cfg`
-
-+
-ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細については、こちらをご覧ください。
+ナレッジベースの記事を参照してください https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細についてはこちらをご覧ください。
 
 . 確認するには `write_erase.cfg`ファイルは期待どおりに入力されます。
 +
 `*show file bootflash:write_erase.cfg*`
 
-. 現在保存されている設定を消去するには、write erase コマンドを発行します。
+. 発行する `write erase`現在保存されている構成を消去するコマンド:
 +
-`cs1# *write erase*`
+`cs2# *write erase*`
 
 +
 `Warning: This command will erase the startup-configuration.`
@@ -318,11 +296,11 @@ cluster1::*>
 
 . 以前に保存した基本設定をスタートアップ設定にコピーします。
 +
-`cs1# *copy bootflash:write_erase.cfg startup-config*`
+`cs2# *copy bootflash:write_erase.cfg startup-config*`
 
-. スイッチを再起動します。
+. スイッチ cs2 を再起動します。
 +
-`switch# *reload*`
+`cs2# *reload*`
 
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
@@ -331,37 +309,40 @@ cluster1::*>
 +
 SSH キーに関連するホスト ファイル エントリを更新する必要がある場合があります。
 
-. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs1のブートフラッシュにRCFをコピーします。
+. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs2のブートフラッシュにRCFをコピーします。Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^]ガイド。
 +
-Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]ガイド。
+.例を表示
+[%collapsible]
+====
+この例では、TFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーしています。
 
-+
-この例では、TFTPを使用してスイッチcs1のブートフラッシュにRCFをコピーしています。
-
-+
 [listing, subs="+quotes"]
 ----
-cs1# *copy tftp: bootflash: vrf management*
-Enter source filename: *Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt*
+cs2# *copy tftp: bootflash: vrf management*
+Enter source filename: *Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt*
 Enter hostname for the tftp server: *172.22.201.50*
 Trying to connect to tftp server......Connection to Server Established.
 TFTP get operation was successful
 Copy complete, now saving to disk (please wait)...
 ----
+====
 . 前の手順でブートフラッシュにダウンロードしたRCFを適用します。
 +
-Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^] 。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^]ガイド。
 
 +
-この例ではRCFファイルを示します `Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt`スイッチ cs1 にインストールされます:
+.例を表示
+[%collapsible]
+====
+この例ではRCFファイルを示します `Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt`スイッチ cs2 にインストールされています:
 
-+
 [listing, subs="+quotes"]
 ----
-cs1# *copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands*
+cs2# *copy Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands*
 ----
+====
 +
-[NOTE]
+[CAUTION]
 ====
 RCF の *インストール ノート*、*重要ノート*、および *バナー* セクションを必ずよくお読みください。スイッチが正しく動作するように設定するためには、出力を確認し、その指示に従う必要があります。
 
@@ -382,27 +363,26 @@ RCF の *インストール ノート*、*重要ノート*、および *バナ�
 
 
 
-. 以前のカスタマイズをスイッチ構成に再適用します。参照link:cabling-considerations-9336c-fx2.html["ケーブル配線と構成の考慮事項を確認する"]今後必要な変更の詳細については、以下を参照してください。
-. RCF バージョン、カスタム追加、およびスイッチ設定が正しいことを確認したら、running-config ファイルを startup-config ファイルにコピーします。
+. 以前のカスタマイズをスイッチ構成に再適用します。参照link:cabling-considerations-3232c.html["ケーブル配線と構成の考慮事項を確認する"]今後必要な変更の詳細については、以下を参照してください。
+. RCFのバージョンとスイッチの設定が正しいことを確認したら、running-configファイルをstartup-configファイルにコピーします。
 +
-Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^] 。
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^]ガイド。
 
 +
-`cs1# copy running-config startup-config`
-
+[listing]
+----
+cs2# copy running-config startup-config [########################################] 100% Copy complete
+----
+. スイッチcs2をリブートします。スイッチの再起動中にノードで報告される「クラスター ポート ダウン」イベントは無視できます。
 +
-`[########################################] 100% Copy complete`
-
-. スイッチcs1をリブートします。スイッチの再起動中にノードで報告される「`cluster switch health monitor`」アラートと「`cluster ports down`」イベントは無視できます。
-+
-`cs1# *reload*`
-
-+
-`This command will reboot the system. (y/n)?  [n] *y*`
-
+[listing, subs="+quotes"]
+----
+cs2# *reload*
+This command will reboot the system. (y/n)?  [n] *y*
+----
 . クラスタ ポートの健全性を確認します。
 +
-.. クラスター内のすべてのノードでクラスター ポートが稼働しており正常であることを確認します。
+.. クラスター内のすべてのノードで e0d ポートが稼働しており正常であることを確認します。
 +
 `network port show -role cluster`
 
@@ -413,7 +393,6 @@ Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/s
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network port show -role cluster*
-
 Node: cluster1-01
                                                                        Ignore
                                                   Speed(Mbps) Health   Health
@@ -421,7 +400,6 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-
 Node: cluster1-02
                                                                        Ignore
                                                   Speed(Mbps) Health   Health
@@ -429,7 +407,6 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
 e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-
 Node: cluster1-03
                                                                        Ignore
                                                   Speed(Mbps) Health   Health
@@ -437,7 +414,6 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
 e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
-
 Node: cluster1-04
                                                                        Ignore
                                                   Speed(Mbps) Health   Health
@@ -448,10 +424,7 @@ e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
 8 entries were displayed.
 ----
 ====
-.. クラスターからスイッチの健全性を確認します。
-+
-`network device-discovery show -protocol cdp`
-
+.. クラスタからスイッチの健全性を確認します（LIFのホームがe0dでないため、スイッチcs2は表示されない可能性があります）。
 +
 .例を表示
 [%collapsible]
@@ -463,50 +436,89 @@ Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------- --------
 cluster1-01/cdp
-            e0a    cs1                       Ethernet1/7       N9K-C9336C
-            e0d    cs2                       Ethernet1/7       N9K-C9336C
+            e0a    cs1                       Ethernet1/7       N3K-C3232C
+            e0d    cs2                       Ethernet1/7       N3K-C3232C
 cluster01-2/cdp
-            e0a    cs1                       Ethernet1/8       N9K-C9336C
-            e0d    cs2                       Ethernet1/8       N9K-C9336C
+            e0a    cs1                       Ethernet1/8       N3K-C3232C
+            e0d    cs2                       Ethernet1/8       N3K-C3232C
 cluster01-3/cdp
-            e0a    cs1                       Ethernet1/1/1     N9K-C9336C
-            e0b    cs2                       Ethernet1/1/1     N9K-C9336C
+            e0a    cs1                       Ethernet1/1/1     N3K-C3232C
+            e0b    cs2                       Ethernet1/1/1     N3K-C3232C
 cluster1-04/cdp
-            e0a    cs1                       Ethernet1/1/2     N9K-C9336C
-            e0b    cs2                       Ethernet1/1/2     N9K-C9336C
-
-cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
+            e0a    cs1                       Ethernet1/1/2     N3K-C3232C
+            e0b    cs2                       Ethernet1/1/2     N3K-C3232C
+cluster1::*> system cluster-switch show -is-monitoring-enabled-operational true
 Switch                      Type               Address          Model
 --------------------------- ------------------ ---------------- -----
-cs1                         cluster-network    10.233.205.90    NX9-C9336C
-     Serial Number: FOCXXXXXXGD
+cs1                         cluster-network    10.233.205.90    N3K-C3232C
+     Serial Number: FOXXXXXXXGD
       Is Monitored: true
             Reason: None
   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
+                    9.3(4)
     Version Source: CDP
-
-cs2                         cluster-network    10.233.205.91    NX9-C9336C
-     Serial Number: FOCXXXXXXGS
+cs2                         cluster-network    10.233.205.91    N3K-C3232C
+     Serial Number: FOXXXXXXXGS
       Is Monitored: true
             Reason: None
   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
+                    9.3(4)
     Version Source: CDP
-
 2 entries were displayed.
 ----
-前の手順でスイッチにロードしたRCFのバージョンによっては、cs1スイッチのコンソールに次の出力が表示されることがあります。
+====
++
+[NOTE]
+====
+スイッチに以前ロードされた RCF のバージョンに応じて、cs1 スイッチ コンソールに次の出力が表示される場合があります。2020 年 11 月 17 日 16:07:18 cs1 %$ VDC-1 %$ %STP-2-UNBLOCK_CONSIST_PORT: VLAN0092 のポート port-channel1 のブロックを解除します。ポートの一貫性が復元されました。 2020年11月17日 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_PEER: VLAN0001のポートチャネル1をブロックしています。ピア VLAN が一致しません。 2020年11月17日 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL: VLAN0092のポートチャネル1をブロックしています。ローカル VLAN が矛盾しています。
 
-[listing]
-----
-2020 Nov 17 16:07:18 cs1 %$ VDC-1 %$ %STP-2-UNBLOCK_CONSIST_PORT: Unblocking port port-channel1 on VLAN0092. Port consistency restored.
-2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_PEER: Blocking port-channel1 on VLAN0001. Inconsistent peer vlan.
-2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL: Blocking port-channel1 on VLAN0092. Inconsistent local vlan.
-----
 ====
 
 
++
+
+NOTE: クラスター ノードが正常であると報告されるまでに最大 5 分かかる場合があります。
+
+. クラスタ スイッチcs1で、ノードのクラスタ ポートに接続されているポートをシャットダウンします。
++
+.例を表示
+[%collapsible]
+====
+次の例では、手順1のインターフェイスの出力例を使用しています。
+
+[listing, subs="+quotes"]
+----
+cs1(config)# *interface eth1/1/1-2,eth1/7-8*
+cs1(config-if-range)# *shutdown*
+----
+====
+. スイッチcs2でホストされているポートにクラスタLIFが移行されたことを確認します。数秒かかる場合があります。
++
+`network interface show -role cluster`
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -role cluster*
+            Logical            Status     Network            Current             Current Is
+Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
+----------- ------------------ ---------- ------------------ ------------------- ------- ----
+Cluster
+            cluster1-01_clus1  up/up      169.254.3.4/23     cluster1-01         e0d     false
+            cluster1-01_clus2  up/up      169.254.3.5/23     cluster1-01         e0d     true
+            cluster1-02_clus1  up/up      169.254.3.8/23     cluster1-02         e0d     false
+            cluster1-02_clus2  up/up      169.254.3.9/23     cluster1-02         e0d     true
+            cluster1-03_clus1  up/up      169.254.1.3/23     cluster1-03         e0b     false
+            cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
+            cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     false
+            cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
+8 entries were displayed.
+cluster1::*>
+----
+====
 . クラスタが正常に動作していることを確認します。
 +
 `cluster show`
@@ -528,11 +540,13 @@ cluster1-04          true     true          false
 cluster1::*>
 ----
 ====
-. スイッチ cs2 で手順 1 ～ 19 を繰り返します。
+. スイッチcs1について、手順4～19を繰り返します。
 . クラスタLIFで自動リバートを有効にします。
 +
-`cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True*`
-
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true*
+----
 
 
 
@@ -541,7 +555,7 @@ cluster1::*>
 
 . クラスター ポートに接続されているスイッチ ポートが *稼働中* であることを確認します。
 +
-`show interface brief`
+`show interface brief | grep up`
 
 +
 .例を表示
@@ -560,189 +574,6 @@ Eth1/8        1       eth  trunk  up      none                   100G(D) --
 .
 ----
 ====
-. 期待されるノードがまだ接続されていることを確認します。
-+
-`show cdp neighbors`
-
-+
-.例を表示
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cs1# *show cdp neighbors*
-
-Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
-                  S - Switch, H - Host, I - IGMP, r - Repeater,
-                  V - VoIP-Phone, D - Remotely-Managed-Device,
-                  s - Supports-STP-Dispute
-
-Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
-node1              Eth1/1         133    H           FAS2980       e0a
-node2              Eth1/2         133    H           FAS2980       e0a
-cs1                Eth1/35        175    R S I s     N9K-C9336C    Eth1/35
-cs1                Eth1/36        175    R S I s     N9K-C9336C    Eth1/36
-
-Total entries displayed: 4
-----
-====
-. 次のコマンドを使用して、クラスタ ノードが正しいクラスタ VLAN 内にあることを確認します。
-+
-`show vlan brief`
-
-+
-`show interface trunk`
-
-+
-.例を表示
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cs1# *show vlan brief*
-
-VLAN Name                             Status    Ports
----- -------------------------------- --------- -------------------------------
-1    default                          active    Po1, Eth1/1, Eth1/2, Eth1/3
-                                                Eth1/4, Eth1/5, Eth1/6, Eth1/7
-                                                Eth1/8, Eth1/35, Eth1/36
-                                                Eth1/9/1, Eth1/9/2, Eth1/9/3
-                                                Eth1/9/4, Eth1/10/1, Eth1/10/2
-                                                Eth1/10/3, Eth1/10/4
-17   VLAN0017                         active    Eth1/1, Eth1/2, Eth1/3, Eth1/4
-                                                Eth1/5, Eth1/6, Eth1/7, Eth1/8
-                                                Eth1/9/1, Eth1/9/2, Eth1/9/3
-                                                Eth1/9/4, Eth1/10/1, Eth1/10/2
-                                                Eth1/10/3, Eth1/10/4
-18   VLAN0018                         active    Eth1/1, Eth1/2, Eth1/3, Eth1/4
-                                                Eth1/5, Eth1/6, Eth1/7, Eth1/8
-                                                Eth1/9/1, Eth1/9/2, Eth1/9/3
-                                                Eth1/9/4, Eth1/10/1, Eth1/10/2
-                                                Eth1/10/3, Eth1/10/4
-31   VLAN0031                         active    Eth1/11, Eth1/12, Eth1/13
-                                                Eth1/14, Eth1/15, Eth1/16
-                                                Eth1/17, Eth1/18, Eth1/19
-                                                Eth1/20, Eth1/21, Eth1/22
-32   VLAN0032                         active    Eth1/23, Eth1/24, Eth1/25
-                                                Eth1/26, Eth1/27, Eth1/28
-                                                Eth1/29, Eth1/30, Eth1/31
-                                                Eth1/32, Eth1/33, Eth1/34
-33   VLAN0033                         active    Eth1/11, Eth1/12, Eth1/13
-                                                Eth1/14, Eth1/15, Eth1/16
-                                                Eth1/17, Eth1/18, Eth1/19
-                                                Eth1/20, Eth1/21, Eth1/22
-34   VLAN0034                         active    Eth1/23, Eth1/24, Eth1/25
-                                                Eth1/26, Eth1/27, Eth1/28
-                                                Eth1/29, Eth1/30, Eth1/31
-                                                Eth1/32, Eth1/33, Eth1/34
-
-cs1# *show interface trunk*
-
------------------------------------------------------
-Port          Native  Status        Port
-              Vlan                  Channel
------------------------------------------------------
-Eth1/1        1       trunking      --
-Eth1/2        1       trunking      --
-Eth1/3        1       trunking      --
-Eth1/4        1       trunking      --
-Eth1/5        1       trunking      --
-Eth1/6        1       trunking      --
-Eth1/7        1       trunking      --
-Eth1/8        1       trunking      --
-Eth1/9/1      1       trunking      --
-Eth1/9/2      1       trunking      --
-Eth1/9/3      1       trunking      --
-Eth1/9/4      1       trunking      --
-Eth1/10/1     1       trunking      --
-Eth1/10/2     1       trunking      --
-Eth1/10/3     1       trunking      --
-Eth1/10/4     1       trunking      --
-Eth1/11       33      trunking      --
-Eth1/12       33      trunking      --
-Eth1/13       33      trunking      --
-Eth1/14       33      trunking      --
-Eth1/15       33      trunking      --
-Eth1/16       33      trunking      --
-Eth1/17       33      trunking      --
-Eth1/18       33      trunking      --
-Eth1/19       33      trunking      --
-Eth1/20       33      trunking      --
-Eth1/21       33      trunking      --
-Eth1/22       33      trunking      --
-Eth1/23       34      trunking      --
-Eth1/24       34      trunking      --
-Eth1/25       34      trunking      --
-Eth1/26       34      trunking      --
-Eth1/27       34      trunking      --
-Eth1/28       34      trunking      --
-Eth1/29       34      trunking      --
-Eth1/30       34      trunking      --
-Eth1/31       34      trunking      --
-Eth1/32       34      trunking      --
-Eth1/33       34      trunking      --
-Eth1/34       34      trunking      --
-Eth1/35       1       trnk-bndl     Po1
-Eth1/36       1       trnk-bndl     Po1
-Po1           1       trunking      --
-
-------------------------------------------------------
-Port          Vlans Allowed on Trunk
-------------------------------------------------------
-Eth1/1        1,17-18
-Eth1/2        1,17-18
-Eth1/3        1,17-18
-Eth1/4        1,17-18
-Eth1/5        1,17-18
-Eth1/6        1,17-18
-Eth1/7        1,17-18
-Eth1/8        1,17-18
-Eth1/9/1      1,17-18
-Eth1/9/2      1,17-18
-Eth1/9/3      1,17-18
-Eth1/9/4      1,17-18
-Eth1/10/1     1,17-18
-Eth1/10/2     1,17-18
-Eth1/10/3     1,17-18
-Eth1/10/4     1,17-18
-Eth1/11       31,33
-Eth1/12       31,33
-Eth1/13       31,33
-Eth1/14       31,33
-Eth1/15       31,33
-Eth1/16       31,33
-Eth1/17       31,33
-Eth1/18       31,33
-Eth1/19       31,33
-Eth1/20       31,33
-Eth1/21       31,33
-Eth1/22       31,33
-Eth1/23       32,34
-Eth1/24       32,34
-Eth1/25       32,34
-Eth1/26       32,34
-Eth1/27       32,34
-Eth1/28       32,34
-Eth1/29       32,34
-Eth1/30       32,34
-Eth1/31       32,34
-Eth1/32       32,34
-Eth1/33       32,34
-Eth1/34       32,34
-Eth1/35       1
-Eth1/36       1
-Po1           1
-..
-..
-..
-..
-..
-----
-====
-+
-
-NOTE: 特定のポートと VLAN の使用法の詳細については、RCF のバナーと重要な注意事項のセクションを参照してください。
-
 . cs1 と cs2 間の ISL が機能していることを確認します。
 +
 `show port-channel summary`
@@ -763,9 +594,10 @@ Flags:  D - Down        P - Up in port-channel (members)
         p - Up in delay-lacp mode (member)
         M - Not in use. Min-links not met
 --------------------------------------------------------------------------------
-Group Port-       Type     Protocol  Member Ports      Channel
+Group Port-       Type     Protocol  Member Ports
+      Channel
 --------------------------------------------------------------------------------
-1     Po1(SU)     Eth      LACP      Eth1/35(P)        Eth1/36(P)
+1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
 cs1#
 ----
 ====
@@ -797,10 +629,8 @@ cluster1::*>
 ----
 ====
 +
-クラスタ LIF がホーム ポートに戻っていない場合は、ローカル ノードから手動で元に戻します。
-
-+
-`network interface revert -vserver vserver_name -lif lif_name`
+クラスタ LIFS がホーム ポートに戻っていない場合は、手動で元に戻します。
+`network interface revert -vserver _vserver_name_ -lif _lif_name_`
 
 . クラスタが正常に動作していることを確認します。
 +
@@ -831,7 +661,6 @@ cluster1::*>
 .ONTAP 9.9.1以降
 --
 使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
-
 `network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
 
 [listing, subs="+quotes"]
@@ -843,21 +672,35 @@ cluster1::*> *network interface check cluster-connectivity start*
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity show*
-                                  Source               Destination         Packet
-Node   Date                       LIF                  LIF                 Loss
------- -------------------------- -------------------- ------------------- -----------
-node1
-       3/5/2022 19:21:18 -06:00   cluster1-01_clus2    cluster1-02-clus1   none
-       3/5/2022 19:21:20 -06:00   cluster1-01_clus2    cluster1-02_clus2   none
-node2
-       3/5/2022 19:21:18 -06:00   cluster1-02_clus2    cluster1-01_clus1   none
-       3/5/2022 19:21:20 -06:00   cluster1-02_clus2    cluster1-01_clus2   none
+                                  Source              Destination         Packet
+Node   Date                       LIF                 LIF                 Loss
+------ -------------------------- ------------------- ------------------- -----------
+cluster1-01
+       3/5/2022 19:21:18 -06:00   cluster1-01_clus2   cluster1-02_clus1   none
+       3/5/2022 19:21:20 -06:00   cluster1-01_clus2   cluster1-02_clus2   none
+.
+.
+cluster1-02
+       3/5/2022 19:21:18 -06:00   cluster1-02_clus2   cluster1-01_clus1   none
+       3/5/2022 19:21:20 -06:00   cluster1-02_clus2   cluster1-01_clus2   none
+.
+.
+cluster1-03
+.
+.
+.
+.
+cluster1-04
+.
+.
+.
+.
 ----
 --
 .ONTAPのすべてのリリース
 --
-すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
-
+すべてのONTAPリリースでは、
+`cluster ping-cluster -node <name>`接続を確認するコマンド:
 `cluster ping-cluster -node <name>`
 
 [listing, subs="+quotes"]

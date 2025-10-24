@@ -859,7 +859,6 @@
   <block id="3ee80345befd8ba67ee5e3200beb2fd8" category="list-text">スイッチに追加のポート ライセンスがインストールされている場合は、RCF を変更して、ライセンスされた追加ポートを設定する必要があります。見る<block ref="029ce138066352981401c2da3f4be7ea" category="inline-link-macro-rx"></block>詳細については。</block>
   <block id="febb316f33bb4f57154038c792c90fc0" category="list-text">以前の RCF で行われたカスタマイズを記録し、新しい RCF に適用します。たとえば、ポート速度の設定や FEC モードのハードコーディングなどです。</block>
   <block id="760a43dbe67e92dafc9be460c7ec7a71" category="open-title">EFOS バージョン 3.12.x 以降</block>
-  <block id="63f7338fc9ee539e34242e8d03110038" category="list-text">FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs2のブートフラッシュにRCFをコピーします。</block>
   <block id="b211f67e6e9195c32683368a53542802" category="paragraph">この例では、SFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーしています。</block>
   <block id="b901c25333441ff036da53fab081d9f0" category="list-text">スクリプトがダウンロードされ、指定したファイル名で保存されたことを確認します。</block>
   <block id="406bb351c55daa6b29920fa6ce644c29" category="paragraph"><block ref="b6bb909f15a4cebed583f578fc5afd2d" prefix="" category="inline-code"></block></block>
@@ -2485,14 +2484,8 @@
   <block id="c324ecc5767379ec38a0b98ea84a392c" category="doc">Cisco Nexus 3232Cスイッチのハードウェアインストールワークフロー</block>
   <block id="c83956f2835dd21c634e3ea9cb076cc8" category="paragraph">3232C クラスタ スイッチのハードウェアをインストールして構成するには、次の手順に従います。</block>
   <block id="488d52fd4e67e3658a2736f4f5baf6a5" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="36c81454c79fb4662d46898f96d8ab42" category="inline-link-macro-rx"></block></block>
-  <block id="54f425ce8d89f4ed6b8a546561af5d60" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="6fb43cd5c831afd08ed62ea7c301589a" category="paragraph"><block ref="6fb43cd5c831afd08ed62ea7c301589a" category="inline-link-macro-rx"></block></block>
   <block id="fc3c6bd26fef194ce2f36e76eb0b1ac7" category="paragraph">3232C スイッチをインストールします。</block>
-  <block id="05b2444faffd66d76e88602ea7dd353f" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="c8a7fd6048c409f4bb8f849cc3de1f18" category="paragraph"><block ref="c8a7fd6048c409f4bb8f849cc3de1f18" category="inline-link-macro-rx"></block></block>
   <block id="ec6f6c215f040a396fd973e7136a812c" category="paragraph">必要に応じて、3232C スイッチとパススルー パネルをNetAppキャビネットにインストールします。</block>
-  <block id="beadfa85a2fdca06b91edc1131c603e6" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="76b532b4ae4cf629b8e1a3ede08fd7ff" category="paragraph"><block ref="76b532b4ae4cf629b8e1a3ede08fd7ff" category="inline-link-macro-rx"></block></block>
   <block id="6077ced278f43e53de7e35b83fc92b34" category="summary">この手順を使用して、Nexus 3232Cクラスタ スイッチにNX-OSソフトウェアをインストールできます。</block>
   <block id="0a444d29f1db9e9c818ae5dc2b30ac82" category="list-text"><block ref="f29158c7335be7b7fe0a46dd82de6ed4" category="inline-link-macro-rx"></block> 。サポートされているONTAPおよび NX-OS バージョンについては、スイッチ互換性表を参照してください。</block>
   <block id="62a6080939e22aeda3281430c2563f03" category="list-text"><block ref="ad0d19783ccfa19f931108b838e4b7e4" category="inline-link-macro-rx"></block> 。Ciscoスイッチのアップグレードおよびダウングレード手順の完全なドキュメントについては、 Cisco Web サイトにある適切なソフトウェアおよびアップグレード ガイドを参照してください。</block>
@@ -3552,27 +3545,6 @@
   <block id="3dd12c3aa965e3c3f02c45cf194e70e1" category="summary">Cisco Nexus 9336C-FX2 スイッチを設定する前に、次の情報を確認してください。</block>
   <block id="2ac598039a79b6ad5e620f9a78f277d9" category="doc">9336C-FX2および9336C-FX2-Tクラスタスイッチを工場出荷時のデフォルトにリセットします</block>
   <block id="627a1a5ca5182fc1268e10944b0d11de" category="paragraph">9336C-FX2 および 9336C-FX2-T クラスタ スイッチを工場出荷時のデフォルトにリセットするには、9336C-FX2 および 9336C-FX2-T スイッチの設定を消去する必要があります。</block>
-  <block id="a8d8d025a84c64f53b535b4e606fd65a" category="summary">この手順を使用して、Nexus 92300YC クラスタ スイッチのクラスタ スイッチ ヘルス モニタリングに適した構成ファイルをインストールできます。</block>
-  <block id="0bf9f283c6d4cf639f7438f8d69e8f4f" category="doc">クラスタスイッチヘルスモニタ（SHM）構成ファイルをインストールする</block>
-  <block id="5a70ef3971f7a5956d9f9f829efc730c" category="paragraph">Nexus 9336C-FX2 クラスタ スイッチのクラスタ スイッチ ヘルス モニタリング (SHM) に適した構成ファイルをインストールするには、次の手順に従います。</block>
-  <block id="f57e4aaddd9c8384a74d025e1d9d52e6" category="paragraph">9336C-FX2 クラスタ スイッチの SHM を設定する前に、 ONTAPクラスタが起動して実行されていることを確認してください。</block>
-  <block id="cd4d857d877848b2146cf2f93a12041d" category="admonition">SHM で利用可能なすべての機能を使用するには、SSH も有効にする必要があります。</block>
-  <block id="f4041989c699a535116c689437df5c7f" category="inline-link">NetAppソフトウェアのダウンロード</block>
-  <block id="a9d9ad7431acc9b1210326b704dc7fb3" category="list-text">対応するONTAPリリース バージョンに基づいて、クラスタ SHM 構成 zip ファイルをダウンロードします。このファイルは、<block ref="cb382f539d8e67a00135c8306b3d74b6" category="inline-link-rx"></block>ページ。</block>
-  <block id="87a71c7310f603842228cb9ab1b19ec2" category="list-text">ソフトウェアダウンロードページで、*スイッチヘルスモニター設定ファイル*を選択します。</block>
-  <block id="470c3e165e39b12d964347208e2a16a1" category="list-text">プラットフォーム = * ONTAP* を選択し、* Go! * を選択します。</block>
-  <block id="037e852f07c16de5553f7bccdaa3a63c" category="list-text">ONTAPのスイッチヘルスモニタ設定ファイルページで、*表示とダウンロード*を選択します。</block>
-  <block id="5a5fb2da99c4622e3d8789a3ac1306ad" category="list-text">ONTAPのスイッチヘルスモニタ設定ファイル &gt; 説明ページで、該当するクラスタスイッチモデルの*ダウンロード*を選択します（例：* Cisco Nexus 9336C-FX2*）。</block>
-  <block id="561743fab903fb6e0d1c67b5908f3af6" category="list-text">エンドユーザー使用許諾契約書ページで、「同意する」を選択します。</block>
-  <block id="b90cace861b20bc63e4a912115ded04e" category="list-text">ONTAPのスイッチヘルスモニタ設定ファイル &gt; ダウンロードページで、該当する設定ファイル（例：*Cisco_Nexus_9336C-FX2.zip*）を選択します。</block>
-  <block id="3a1759e54cb06a13c2c5b9b85a4c5282" category="list-text">該当するzipファイルを、IPアドレスがXXXXである社内Webサーバーにアップロードします。</block>
-  <block id="903944fca05d1da45a504e69ed5609fb" category="paragraph">内部 Web サーバーの IP アドレスが 192.168.2.20 で、/usr/download ディレクトリが存在すると仮定すると、scp を使用して zip ファイルを Web サーバーにアップロードできます。</block>
-  <block id="4f278cd45a027c9d4afd47d2010265aa" category="list-text">クラスタ内のいずれかのONTAPシステムから詳細モード設定にアクセスします。</block>
-  <block id="02e9ffa5a65e7f62f638cd4e28c1dc9f" category="paragraph"><block ref="6b8bc155cdb61a87cc039bea00534962" prefix="" category="inline-code"></block></block>
-  <block id="242513ff76ac739e35a8e7e168d947bd" category="list-text">スイッチヘルスモニターの設定コマンドを実行する<block ref="0477ef599648fe2dbbf01945805f0e88" prefix=" " category="inline-code"></block>:</block>
-  <block id="f4ab3be3915b88f9d23c5faf297e78ff" category="list-text">コマンド出力に「ダウンロードされたパッケージが正常に処理されました」というテキスト文字列が含まれていることを確認します。エラーが発生した場合は、NetAppサポートにお問い合わせください。</block>
-  <block id="174ee6e9c9130ef3e6ceab7f0ab7356c" category="list-text">コマンドを実行する<block ref="694b56ad85eb627acc97ea9295f39018" prefix=" " category="inline-code"></block>ONTAPシステムで、監視対象フィールドが「True」に設定された状態でクラスタ スイッチが検出されていることを確認します。</block>
-  <block id="c94eee10204c293e476c9b772d10ddfe" category="admonition">いつでもONTAPの以前のバージョンに戻す場合は、9336C-FX2 クラスタ スイッチの SHM を有効にするために、SHM 構成ファイルを再度インストールする必要があります。</block>
   <block id="fb7e85c23a22dc9f90f04d9cf46a95e6" category="summary">Cisco Nexus 9336C-FX2 スイッチをセットアップおよび構成するには、次の手順に従ってください。</block>
   <block id="dae8311507e70973aef15b74d2c49647" category="doc">9336C-FX2および9336C-FX2-Tクラスタスイッチを構成する</block>
   <block id="3f5be581cc9dcc706d1626ae6d69f859" category="paragraph">Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチを設定するには、次の手順に従います。</block>
@@ -5233,13 +5205,11 @@
   <block id="cb02ea2e8f595e77e5e6585ac0421c1a" category="paragraph">FASおよびAFFシステム用の新しいスイッチについて学びます。スイッチに関する追加情報については、<block ref="341c1c8afc925d24c41903215e7d4958" category="inline-link-rx"></block> 。</block>
   <block id="925214212b01eccbe569020ac0ec7569" category="section-title">新しいスイッチのサポート</block>
   <block id="25cb4346e07d274b036816fdb6e793af" category="sidebar">NetApp は、ホスト ストレージと 2 つ以上のNetAppコントローラ間の接続を提供するクラスタ、ストレージ、共有スイッチを提供しており、ストレージ インフラストラクチャ全体でデータとネットワーク インターフェイスを中断なく移動できます。</block>
-  <block id="cee5d5761c41be926d640491ba26a759" category="sidebar">ONTAPシステム用スイッチ</block>
   <block id="296d00e3f1c056ceb3df91d743049f0c" category="sidebar">このサイトのドキュメントを使用して、クラスター、共有ストレージ、およびMetroClusterスイッチをインストール、アップグレード、および保守します。</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">始めましょう</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">新機能</block>
   <block id="06ad314b340900d226b1196e1fe289e9" category="sidebar">クイック スタート</block>
   <block id="626a7cbe056796bcb1c158b143866230" category="sidebar">ONTAP Release Notes</block>
-  <block id="6f738209e5071a9c22c8d336c6dec7a1" category="sidebar">共有スイッチ - Cisco Nexus 9336C-FX2</block>
   <block id="6e637bf90c8e52e1b5b8fa7b076594de" category="sidebar">販売終了スイッチ</block>
   <block id="a306bc0f90914bd9715854d664b6505a" category="sidebar">クラスタスイッチ - Cisco Nexus 3232c</block>
   <block id="2dc82baa4aac6df7519361c705672faa" category="sidebar">クラスタスイッチ - Cisco Nexus 3132Q-V</block>
@@ -5255,7 +5225,6 @@
   <block id="bc8be72fdc9d6054f356bb2b7f80fd12" category="sidebar">NetApp Interoperability Matrix</block>
   <block id="668e2078ef1b1722c77cdb5c523a4463" category="sidebar">NetAppのナレッジ ベース</block>
   <block id="2bae42f280067110dfd52cc69a468364" category="sidebar">Active IQ（ログインが必要）</block>
-  <block id="9d07d8327ebc12554e974699f677fdb7" category="sidebar">ONTAPハードウェアのスイッチドキュメント</block>
   <block id="36ce497b37801fafe70bfb196cb463e0" category="sidebar">ONTAPシステムスイッチについて学ぶ</block>
   <block id="b5bfe3d61bf9be292418cb9d21eec19c" category="sidebar">立ち上がって走り出す</block>
   <block id="3ed3b1cc0917edd8fddcdd478bb581fb" category="sidebar">スイッチ-cisco-9336c-fx2-ストレージ</block>
@@ -5614,7 +5583,6 @@
   <block id="c381feb9e35ad6357b56aa385cbf8df4" category="paragraph">RCF の *インストール ノート*、*重要ノート*、および *バナー* セクションを必ずよくお読みください。スイッチが正しく動作するように設定するためには、出力を確認し、その指示に従う必要があります。</block>
   <block id="f2b841e904646043e10710dfe9d1e37a" category="list-text">RCFのバージョン、カスタム追加、スイッチ設定が正しいことを確認したら、<block ref="092a495b03acdb0bf155d8ff2997a8d6" prefix=" " category="inline-code"></block>ファイルに<block ref="35b7dd24bfd716b0553d5e558b8afe97" prefix=" " category="inline-code"></block>ファイル。</block>
   <block id="4344efedc73e6df8e9abcaf5b0aee7eb" category="paragraph"><block ref="d0eae35adde61cce792eadfd9a3848b5" prefix="" category="inline-code"></block></block>
-  <block id="12e872eea692f68038e507bf2825a27c" category="list-text">スイッチ cs2 で手順 4 ～ 17 を繰り返します。</block>
   <block id="919c92b88565abe73b79f95942fbce89" category="paragraph"><block ref="e002d8fd0e250f5b26dcc64d23922af9" prefix="" category="inline-code"></block></block>
   <block id="9c6c3f61af7dff11347a9a97366c4acb" category="summary">Cisco 9364d-gx2a スイッチを設定する前に、次の情報を確認してください。</block>
   <block id="b771416dbd66215d66c0fd3bf739e5a2" category="paragraph">Cisco 9364D-GX2A スイッチを設定する前に、次の考慮事項を確認してください。</block>
@@ -5715,7 +5683,6 @@
   <block id="085ebea59269f171d2893f7c9fd27a56" category="list-text">NX-OS 10.2以降では、<block ref="9c370f72db0e0d920841657ac5268365" prefix=" " category="inline-code"></block>ブートフラッシュに保存されている RCF ファイルと比較するコマンド。それ以外の場合は、サードパーティの diff/comparative ツールを使用します。</block>
   <block id="f3e103ce1d9f1725786017bc3ce6fb97" category="admonition">RCF の *インストール ノート*、*重要ノート*、および *バナー* セクションを必ずよくお読みください。スイッチが正しく動作するように設定するためには、出力を確認し、その指示に従う必要があります。</block>
   <block id="1d83453cdc3e9845f2dd373ab3a4eb9a" category="list-text">クラスター上のポートの正常性を確認します。</block>
-  <block id="9caef6b72d42d5b9b488c14628ec50f1" category="list-text">スイッチ cs2 で手順 4 ～ 16 を繰り返します。</block>
   <block id="dc6df28d41590823cd1a46d26721aa90" category="paragraph"><block ref="7a3ac7d679afae00f79673d5cee23dbd" prefix="" category="inline-code"></block></block>
   <block id="e8030276d8c658d9eaec982502889193" category="paragraph"><block ref="e8030276d8c658d9eaec982502889193" category="inline-link-macro-rx"></block></block>
   <block id="0c456a63d50970f4ea4aa716b1c085bb" category="inline-link-macro">Ciscoストレージ スイッチからNVIDIA SN2100 ストレージ スイッチへの移行_</block>
@@ -5770,4 +5737,61 @@
   <block id="e794d3cef6a4e7ec0816d2e0b3d15391" category="sidebar">Install_hardware_9364d-gx2a</block>
   <block id="21843f0ca65aacac87cb9a404d7ec8c2" category="sidebar">Configure_software_9364d-gx2a</block>
   <block id="6daec6c2b8fbb1afe63ebf51e3d00096" category="sidebar">Replace_switches_9364d-gx2a</block>
+  <block id="39f4b0e38301a0ba8f2a052d53cce479" category="list-text">HTTP、HTTPS、FTP、TFTP、SFTP、または SCP のいずれかの転送プロトコルを使用して、RCF をスイッチ cs2 のブートフラッシュにコピーします。</block>
+  <block id="988b3c94f8e38d6de10d5305c4dd7696" category="summary">クラスタ スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用する場合は、SSH が必須です。Cisco 3132q-v クラスタ スイッチで SSH を有効にするには、まず SSH キーを生成し、次に SSH を有効にします。</block>
+  <block id="cb3f16de867ce1284b9d6fd6671e24e8" category="paragraph">Nexus 3132Q-V スイッチを初めてセットアップした後、リファレンス コンフィギュレーション ファイル (RCF) をインストールします。</block>
+  <block id="dd1dcdff568232584ad0d54ba8eabf6f" category="paragraph">この手順では、動作中のスイッチ間リンク (ISL) は必要ありません。これは、RCF バージョンの変更によって ISL 接続が一時的に影響を受ける可能性があるため、設計によるものです。中断のないクラスタ操作を有効にするには、次の手順で、ターゲット スイッチで手順を実行しながら、すべてのクラスタ LIF を動作中のパートナー スイッチに移行します。</block>
+  <block id="a27da7c112086ff6f74e71e94765bdf8" category="list-text">クラスター ポートがクラスター スイッチ cs1 でホストされているポートにフェールオーバーされたことを確認します。数秒かかる場合があります。</block>
+  <block id="c0f1b2428ed898fe18279f19d05686a8" category="paragraph">以下の設定を必ず行ってください: * ユーザー名とパスワード * 管理IPアドレス * デフォルトゲートウェイ * スイッチ名</block>
+  <block id="33177e7ea9d802a2459c4c696ca9fc50" category="section-title">ステップ3: ONTAPクラスタをセットアップする</block>
+  <block id="967158937f5ed9889c944a8bdc4c5f3c" category="paragraph">System Manager は、ノード管理 IP アドレスの割り当て、クラスターの初期化、ローカル層の作成、プロトコルの構成、初期ストレージのプロビジョニングなど、クラスターのセットアップと構成のためのシンプルで簡単なワークフローを提供します。</block>
+  <block id="5543c3a2f910404565380899dc9aea75" category="paragraph">参照<block ref="5eda5047b59c9b5f59b3190e510f9d84" category="inline-link-macro-rx"></block>セットアップ手順についてはこちらをご覧ください。</block>
+  <block id="ea5eb4efceeb5282f0b40d0425e8b38f" category="paragraph">Nexus 3132Q-V スイッチを初めてセットアップした後、リファレンス コンフィギュレーション ファイル (RCF) をインストールします。スイッチに既存のバージョンの RCF ファイルがインストールされている場合は、RCF バージョンをアップグレードします。</block>
+  <block id="2a917a0a7302e1f65c83202bf07f91ef" category="paragraph">利用可能なRCF構成の詳細については、<block ref="11bb90bc5f1c47010095143f71af2df0" category="inline-link-macro-rx"></block> 。</block>
+  <block id="195c3c96b4091f1b3af3f3de28e1b6c1" category="paragraph">RCFのインストールまたはRCFのアップグレード手順を確認した後、<block ref="843984edd190fa3e3f76595f442f3c54" category="inline-link-macro-rx"></block>または<block ref="07fd345659bc842d65f80bec478d43cc" category="inline-link-macro-rx"></block>必要に応じて。</block>
+  <block id="1baf58b9cdbc82bab1fbe9e031b1814f" category="admonition">RCFのアップグレード後に10GbEポートをオンラインにする方法については、ナレッジベースの記事を参照してください。<block ref="8af1e03135c7f23e3be69339a3c199e2" category="inline-link-macro-rx"></block> 。</block>
+  <block id="da99213210f61725fb1f59afca9c4c0a" category="list-text">RCFのバージョンとスイッチの設定が正しいことを確認したら、<block ref="092a495b03acdb0bf155d8ff2997a8d6" prefix=" " category="inline-code"></block>ファイルに<block ref="35b7dd24bfd716b0553d5e558b8afe97" prefix=" " category="inline-code"></block>ファイル。</block>
+  <block id="684a4c2862f5fef1f6d28303a5df57cb" category="list-text">スイッチcs1について、手順1～19を繰り返します。</block>
+  <block id="2a337cc6f46f4693d67597c0ef1ee846" category="list-text">クラスタ LIF がホーム ポートに戻ったことを確認します。</block>
+  <block id="4762efa89f72255be51c1d0825e428be" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="6fb43cd5c831afd08ed62ea7c301589a" category="inline-link-macro-rx"></block></block>
+  <block id="b909ee9989176f6e840120585c3fea56" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="c8a7fd6048c409f4bb8f849cc3de1f18" category="inline-link-macro-rx"></block></block>
+  <block id="ae93ed58d7575c5c70b27cf4137f8eea" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="76b532b4ae4cf629b8e1a3ede08fd7ff" category="inline-link-macro-rx"></block></block>
+  <block id="d75e350c3cf28f8c449927363dd63c2d" category="summary">クラスタ スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用する場合は、SSH が必須です。Cisco 3232c クラスタ スイッチで SSH を有効にするには、まず SSH キーを生成し、次に SSH を有効にします。</block>
+  <block id="ebdf13bb97bf138835dab6c2a993e949" category="paragraph">Nexus 3232C スイッチを初めてセットアップした後、リファレンス コンフィギュレーション ファイル (RCF) をインストールします。</block>
+  <block id="fe30b32a598525ac96383ad88e17b716" category="list-text">SSH またはシリアル コンソールを使用してスイッチ cs2 にログインします。</block>
+  <block id="2f406b2bd46b9ba5f6666f06bf5e0963" category="list-text">FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs2のブートフラッシュにRCFをコピーします。Ciscoコマンドの詳細については、<block ref="f93981dab484b88c422e924c27565997" category="inline-link-rx"></block> 。</block>
+  <block id="cb777c10f9fb518790486e5ed5aaa726" category="paragraph">Ciscoコマンドの詳細については、<block ref="f93981dab484b88c422e924c27565997" category="inline-link-rx"></block> 。</block>
+  <block id="7c76693fe3a5440ca33fd1c97c9b7d5f" category="list-text">スイッチ cs2 を再起動します。</block>
+  <block id="4024f3f51435c125a23a18c9eb97a8f1" category="list-text">スイッチcs1について、手順1～12を繰り返します。</block>
+  <block id="1959becdb9eb2f2b79f8d0f6a1c3dac5" category="section-title">ステップ2：スイッチの接続を確認する</block>
+  <block id="e584e042106b9f2e3cb1bed1028c54ec" category="paragraph">クラスタ LIFS がホーム ポートに戻っていない場合は、手動で元に戻します。<block ref="fd9372c4352804e1777df0a2cb83a782" prefix=" " category="inline-code"></block></block>
+  <block id="e7d0e521aaef91db12e42096f85621fb" category="paragraph">参照<block ref="76a0ad9e6d9605be893ded0930762dd1" category="inline-link-rx"></block>セットアップ手順についてはこちらをご覧ください。</block>
+  <block id="2412ff6bce69dc4d650edfaf531b0713" category="paragraph">Nexus 3232C スイッチを初めてセットアップした後、リファレンス コンフィギュレーション ファイル (RCF) をインストールします。スイッチに既存のバージョンの RCF ファイルがインストールされている場合は、RCF バージョンをアップグレードします。</block>
+  <block id="3d2afa4ea8ad3376eaf42149ff603bb8" category="paragraph">利用可能なRCF構成の詳細については、<block ref="ae1b7e6502ecb7d7f7a8bedc8a444edf" category="inline-link-macro-rx"></block> 。</block>
+  <block id="859e86b59e029b4d8c6d1da0c4315c5b" category="paragraph">RCFのインストールまたはRCFのアップグレード手順を確認した後、<block ref="7022ba5e5ec6244ac8d3473bbc8c433f" category="inline-link-macro-rx"></block>または<block ref="8a829f0d1f577ca80ad99d80f239a28e" category="inline-link-macro-rx"></block>必要に応じて。</block>
+  <block id="0030df7a82cb9ead737fc3da5e46570b" category="list-text">スイッチ cs2 を再起動します。</block>
+  <block id="8b205e91662e46037aa9052c6d1ff328" category="list-text">FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs2のブートフラッシュにRCFをコピーします。Ciscoコマンドの詳細については、<block ref="f93981dab484b88c422e924c27565997" category="inline-link-rx"></block>ガイド。</block>
+  <block id="b023bb729025ca88fe6c5be17701fc24" category="paragraph">スイッチに以前ロードされた RCF のバージョンに応じて、cs1 スイッチ コンソールに次の出力が表示される場合があります。2020 年 11 月 17 日 16:07:18 cs1 %$ VDC-1 %$ %STP-2-UNBLOCK_CONSIST_PORT: VLAN0092 のポート port-channel1 のブロックを解除します。ポートの一貫性が復元されました。 2020年11月17日 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_PEER: VLAN0001のポートチャネル1をブロックしています。ピア VLAN が一致しません。 2020年11月17日 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL: VLAN0092のポートチャネル1をブロックしています。ローカル VLAN が矛盾しています。</block>
+  <block id="278a6e8b09deddf22df3bc66e8fde4d6" category="list-text">スイッチcs1について、手順4～19を繰り返します。</block>
+  <block id="3ce877113d00b2d2db1bf03284161f16" category="paragraph">使用することができます<block ref="27ef00bd0eeb78214f4636adfe0cfe59" prefix=" " category="inline-code"></block>クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:<block ref="79ca324fd00eadc332828cf274c18782" prefix=" " category="inline-code"></block>そして<block ref="349936611c6519c48a39cbd40f1f907a" prefix=" " category="inline-code"></block></block>
+  <block id="f889f50da345ce88363bb40f1b9c08c7" category="paragraph">すべてのONTAPリリースでは、<block ref="7eaac8e45910aa8bf3a06f6966ab0656" prefix=" " category="inline-code"></block>接続を確認するコマンド:<block ref="7eaac8e45910aa8bf3a06f6966ab0656" prefix=" " category="inline-code"></block></block>
+  <block id="56009d4a3551e4cd8dd286aeb3b995b2" category="list-text">スイッチ cs2 で手順 4 ～ 18 を繰り返します。</block>
+  <block id="ccc0c44906852495d8366985298ade30" category="paragraph"><block ref="8a0cae1eba0d9e7d8585394230633a6a" prefix="" category="inline-code"></block></block>
+  <block id="978b1c1834eeeeb2cd4f5e31b0fcd031" category="paragraph"><block ref="2604b542355ffcabadf719bc679823f5" prefix="" category="inline-code"></block></block>
+  <block id="d3dc05ffb632711e253bcbaf70df3ac1" category="paragraph"><block ref="e5087c379e47889d9cd3b1c58d6a78fc" prefix="" category="inline-code"></block></block>
+  <block id="586d42207828d6f0182104524a563f38" category="paragraph"><block ref="02c3ce8b7cc1fcd04a2b4fdfb66a017a" prefix="" category="inline-code"></block></block>
+  <block id="075ac52ed81c056bfc96abfbf9b92730" category="paragraph">Ciscoコマンドの詳細については、<block ref="83c120250f1359d2a0f3a51d41516558" category="inline-link-macro-rx"></block> 。</block>
+  <block id="cdc07d8ef141a4d566e6de1f333e3f61" category="list-text">スイッチ cs2 で手順 1 ～ 19 を繰り返します。</block>
+  <block id="6015ba5fcef1f3caa77869608d6c2789" category="sidebar">ONTAPハードウェア システムのスイッチ ドキュメント</block>
+  <block id="3cfca170bb40e17157ca40a91be0fc18" category="sidebar">共有スイッチを使用すると、2 つ以上のノードを持つONTAPクラスターを構築できます。これらのCisco Nexus 9000 プラットフォーム スイッチは、 NetApp ONTAP環境におけるスケーラブルなクラスタ相互接続ソリューションの基盤を提供します。</block>
+  <block id="6540ada8c7e3cfaf34a97a9fc18ba533" category="sidebar">このサイトのドキュメントを使用して、 ONTAPクラスタ展開用の共有スイッチをインストール、構成、および保守します。</block>
+  <block id="c69eabfb6733d6d3c9d2ba971bfd15b2" category="sidebar">共有スイッチのインストールと設定</block>
+  <block id="fe39b20bc3fd9de68b9c56c1555eba44" category="sidebar">9336C-FX2スイッチハードウェアをインストールする</block>
+  <block id="292bfbc74faa3c69ea97053b710050e1" category="sidebar">9336C-FX2スイッチソフトウェアを構成する</block>
+  <block id="6d2ac3125800134a281aad252b2e6f7e" category="sidebar">共有スイッチを維持する</block>
+  <block id="e3a2407d2baf9ca6f3a0a7a13bf9ab66" category="sidebar">9336C-FX2スイッチを交換する</block>
+  <block id="9725b453d47042649c1d30716f06297d" category="sidebar">9336C-FX2スイッチを工場出荷時のデフォルトにリセットする</block>
+  <block id="da3536e3f4767ec4860d848c1b36098e" category="sidebar">ONTAPハードウェア システムのスイッチ ドキュメント</block>
+  <block id="d0dfe2145063d5d6960f55dcbfb612c8" category="sidebar">インストールアップグレードrcf</block>
+  <block id="f3b17afc64da773efa83071745456131" category="sidebar">SSH構成を確認する</block>
 </blocks>

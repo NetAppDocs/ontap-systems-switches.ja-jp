@@ -17,20 +17,14 @@ summary: Cisco Nexus 3232C クラスタ スイッチを構成する前に、構�
 [role="quick-margin-para"]
 サンプル配線ワークシートには、スイッチからコントローラへの推奨ポート割り当ての例が示されています。空白のワークシートには、クラスターの設定に使用できるテンプレートが用意されています。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]
-link:install-switch-3232c.html["スイッチをインストールする"]
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:install-switch-3232c.html["スイッチをインストールする"]
 [role="quick-margin-para"]
 3232C スイッチをインストールします。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]
-link:install-cisco-nexus-3232c.html["NetAppキャビネットにスイッチを設置する"]
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:install-cisco-nexus-3232c.html["NetAppキャビネットにスイッチを設置する"]
 [role="quick-margin-para"]
 必要に応じて、3232C スイッチとパススルー パネルをNetAppキャビネットにインストールします。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]
-link:cabling-considerations-3232c.html["ケーブル配線と構成を確認する"]
-
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:cabling-considerations-3232c.html["ケーブル配線と構成を確認する"]
 [role="quick-margin-para"]
 NVIDIAイーサネット ポートのサポートを確認します。

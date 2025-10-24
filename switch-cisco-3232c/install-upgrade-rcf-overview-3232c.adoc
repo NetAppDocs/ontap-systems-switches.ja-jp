@@ -1,0 +1,107 @@
+---
+permalink: switch-cisco-3232c/install-upgrade-rcf-overview-3232c.html 
+sidebar: sidebar 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 3232c 
+summary: 'クラスタ スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用する場合は、SSH が必須です。Cisco 3232c クラスタ スイッチで SSH を有効にするには、まず SSH キーを生成し、次に SSH を有効にします。' 
+---
+= 参照構成ファイル（RCF）のインストールまたはアップグレードの概要
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nexus 3232C スイッチを初めてセットアップした後、リファレンス コンフィギュレーション ファイル (RCF) をインストールします。スイッチに既存のバージョンの RCF ファイルがインストールされている場合は、RCF バージョンをアップグレードします。
+
+ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]RCF をインストールまたはアップグレードする際の詳細については、こちらをご覧ください。
+
+.利用可能なRCF構成
+次の表では、さまざまな構成で使用できる RCF について説明します。構成に適した RCF を選択します。
+
+特定のポートと VLAN の使用法の詳細については、RCF のバナーと重要な注意事項のセクションを参照してください。
+
+[cols="1,2"]
+|===
+| RCF name | 説明 
+
+
+ a| 
+2 クラスター HA ブレイクアウト
+ a| 
+共有 Cluster+HA ポートを使用するノードを含む、少なくとも 8 つのノードを持つ 2 つのONTAPクラスタをサポートします。
+
+
+
+ a| 
+4 クラスター HA ブレイクアウト
+ a| 
+共有 Cluster+HA ポートを使用するノードを含む、少なくとも 4 つのノードを持つ 4 つのONTAPクラスタをサポートします。
+
+
+
+ a| 
+1クラスターHA
+ a| 
+すべてのポートは 40/100GbE 用に設定されています。ポート上の共有クラスタ/HA トラフィックをサポートします。 AFF A320、 AFF A250、およびFAS500fシステムに必要です。さらに、すべてのポートを専用のクラスター ポートとして使用できます。
+
+
+
+ a| 
+1 クラスター HA ブレイクアウト
+ a| 
+ポートは、4x10GbE ブレイクアウト、4x25GbE ブレイクアウト (100GbE スイッチ上の RCF 1.6+)、および 40/100GbE 用に設定されています。共有クラスタ/HA ポートを使用するノード(AFF A320、 AFF A250、およびFAS500fシステム) のポートで共有クラスタ/HA トラフィックをサポートします。さらに、すべてのポートを専用のクラスター ポートとして使用できます。
+
+
+
+ a| 
+クラスターHAストレージ
+ a| 
+ポートは、クラスター + HA の場合は 40/100GbE、クラスターの場合は 4x10GbE ブレークアウト、クラスター + HA の場合は 4x25GbE ブレークアウト、各ストレージ HA ペアの場合は 100GbE に設定されています。
+
+
+
+ a| 
+クラスタ
+ a| 
+4x10GbE ポート (ブレイクアウト) と 40/100GbE ポートの割り当てが異なる 2 種類の RCF。  AFF A320、 AFF A250、およびFAS500fシステムを除くすべてのFAS/ AFFノードがサポートされています。
+
+
+
+ a| 
+ストレージ
+ a| 
+すべてのポートは 100GbE NVMe ストレージ接続用に構成されています。
+
+|===
+.推奨ドキュメント
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ (NSS)"^]
++
+サポートされているONTAPおよび RCF バージョンについては、 NetAppサポート サイトのスイッチ互換性表を参照してください。  RCF のコマンド構文と特定のバージョンの NX-OS の構文の間にはコマンド依存関係がある可能性があることに注意してください。
+
+* link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズ スイッチ"^]
++
+Ciscoスイッチのアップグレードおよびダウングレード手順の完全なドキュメントについては、 Cisco Web サイトで入手可能な適切なソフトウェアおよびアップグレード ガイドを参照してください。
+
+
+
+.例について
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
+
+* 2 つのCiscoスイッチの名前は *cs1* と *cs2* です。
+* ノード名は*cluster1-01*、*cluster1-02*、*cluster1-03*、*cluster1-04*です。
+* クラスタ LIF 名は、*cluster1-01_clus1*、*cluster1-01_clus2*、*cluster1-02_clus1*、*cluster1-02_clus2*、*cluster1-03_clus1*、*cluster1-03_clus2*、*cluster1-04_clus1*、および *cluster1-04_clus2* です。
+* その `cluster1::*>`プロンプトはクラスターの名前を示します。
+
+
+この手順の例では、4 つのノードを使用します。これらのノードは、2 つの 10GbE クラスター相互接続ポート *e0a* と *e0b* を使用します。参照 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]プラットフォーム上の正しいクラスター ポートを確認します。
+
+
+NOTE: コマンド出力は、ONTAPのリリースによって異なる場合があります。
+
+利用可能なRCF構成の詳細については、link:configure-software-overview-3232c-cluster.html["ソフトウェアインストールワークフロー"] 。
+
+.使用されるコマンド
+この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
+
+.次の手順
+RCFのインストールまたはRCFのアップグレード手順を確認した後、link:install-rcf-software-3232c.html["RCFをインストールする"]またはlink:upgrade-rcf-software-3232c.html["RCFをアップグレードする"]必要に応じて。

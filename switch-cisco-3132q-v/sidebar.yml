@@ -31,15 +31,20 @@ entries:
   entries:
   - title: ソフトウェアインストールワークフロー
     url: "/switch-cisco-3132q-v/configure-software-overview-3132q-v-cluster.html"
-  - title: スイッチの設定
+  - title: スイッチを設定する
     url: "/switch-cisco-3132q-v/setup-switch.html"
-  - title: NX-OSとRCFのインストール準備
-    url: "/switch-cisco-3132q-v/prepare-install-cisco-nexus-3132q.html"
   - title: NX-OSソフトウェアをインストールする
     url: "/switch-cisco-3132q-v/install-nx-os-software-3132q-v.html"
   - title: RCFをインストールまたはアップグレードする
-    url: "/switch-cisco-3132q-v/install-rcf-3132q-v.html"
-  - title: SSH設定を確認する
+    pdf-filename: インストールアップグレードrcf
+    entries:
+    - title: RCF のインストールまたはアップグレードの概要
+      url: "/switch-cisco-3132q-v/install-upgrade-rcf-overview-3132q-v.html"
+    - title: RCFのインストール
+      url: "/switch-cisco-3132q-v/install-rcf-software-3132q-v.html"
+    - title: RCFバージョンをアップグレードする
+      url: "/switch-cisco-3132q-v/upgrade-rcf-3132q-v.html"
+  - title: SSH構成を確認する
     url: "/switch-cisco-3132q-v/configure-ssh-keys.html"
   - title: スイッチを工場出荷時の状態にリセットする
     url: "/switch-cisco-3132q-v/reset-switch-3132q-v.html"

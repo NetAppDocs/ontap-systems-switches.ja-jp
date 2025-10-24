@@ -53,16 +53,13 @@ Copy complete, now saving to disk (please wait)...
 Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]ガイド。
 
 +
-.例を表示
-[%collapsible]
-====
 この例ではRCFファイルを示します `Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt`スイッチ cs1 にインストールされます:
 
-[listing]
++
+[listing, subs="+quotes"]
 ----
-cs1# copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands
+cs1# *copy Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands*
 ----
-====
 . バナー出力を調べる `show banner motd`指示。スイッチが正しく動作するように設定するためには、出力を確認し、その指示に従う必要があります。
 +
 .例を表示
@@ -130,6 +127,18 @@ cs1# copy running-config startup-config [#######################################
 ----
 . 基本的な設定の詳細を `write_erase.cfg`ブートフラッシュ上のファイル。
 +
+[NOTE]
+====
+必ず以下を設定してください。
+
+** ユーザ名とパスワード
+** 管理IPアドレス
+** デフォルト ゲートウェイ
+** スイッチ名
+
+
+====
++
 `cs1# show run | i "username admin password" > bootflash:write_erase.cfg`
 
 +
@@ -156,7 +165,7 @@ cs1# copy running-config startup-config [#######################################
 
 . 確認するには `write_erase.cfg`ファイルは期待どおりに入力されます。
 +
-`show file bootflash:write_erase.cfg`
+`*show file bootflash:write_erase.cfg*`
 
 . 発行する `write erase`現在保存されている構成を消去するコマンド:
 +

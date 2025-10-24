@@ -449,7 +449,7 @@ Are you sure you would like to reset the system? (y/n) *y*
 ====
 .EFOS バージョン 3.12.x 以降
 --
-. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs2のブートフラッシュにRCFをコピーします。
+. HTTP、HTTPS、FTP、TFTP、SFTP、または SCP のいずれかの転送プロトコルを使用して、RCF をスイッチ cs2 のブートフラッシュにコピーします。
 +
 この例では、SFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーしています。
 
@@ -508,7 +508,7 @@ Configuration script 'reference-config.scr' applied.
 --
 .その他のEFOSバージョン
 --
-. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs2のブートフラッシュにRCFをコピーします。
+. HTTP、HTTPS、FTP、TFTP、SFTP、または SCP のいずれかの転送プロトコルを使用して、RCF をスイッチ cs2 のブートフラッシュにコピーします。
 +
 この例では、SFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーしています。
 

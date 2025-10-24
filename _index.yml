@@ -1,6 +1,6 @@
 ---
 indexpage:
-  title: ONTAPシステム用スイッチ
+  title: ONTAPハードウェア システムのスイッチ ドキュメント
   summary: このサイトのドキュメントを使用して、クラスター、共有ストレージ、およびMetroClusterスイッチをインストール、アップグレード、および保守します。
   keywords: switches
   lead: NetApp は、ホスト ストレージと 2 つ以上のNetAppコントローラ間の接続を提供するクラスタ、ストレージ、共有スイッチを提供しており、ストレージ
@@ -22,8 +22,8 @@ indexpage:
       url: "/cluster/index.html"
     - title: ストレージ スイッチ
       url: "/storage/index.html"
-    - title: 共有スイッチ - Cisco Nexus 9336C-FX2
-      url: "/switch-cisco-9336c-fx2-shared/configure-switch-overview-9336c-shared.html"
+    - title: 共有スイッチ
+      url: "/shared/index.html"
   - title: 販売終了スイッチ
     links:
     - title: クラスタスイッチ - Cisco Nexus 3232c
