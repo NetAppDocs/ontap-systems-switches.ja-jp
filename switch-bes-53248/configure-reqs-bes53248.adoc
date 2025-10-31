@@ -82,4 +82,4 @@ Broadcom がサポートする BES-53248 クラスタ スイッチのポート�
 
 
 .次の手順
-link:components-bes53248.html["コンポーネントと部品番号"] 。
+構成要件を確認した後、 link:components-bes53248.html["コンポーネントと部品番号"]。

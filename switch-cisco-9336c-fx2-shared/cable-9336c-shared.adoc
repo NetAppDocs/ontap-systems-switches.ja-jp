@@ -71,4 +71,4 @@ image:blank_cabling_worksheet.jpg["空白の配線ワークシート"]
 
 
 .次の手順
-link:install-9336c-shared.html["スイッチをインストールする"] 。
+配線ワークシートを完了したら、 link:install-9336c-shared.html["スイッチをインストールする"]。

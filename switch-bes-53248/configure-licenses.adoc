@@ -534,4 +534,4 @@ exit
 NOTE: 0/49 から 0/54 までの高速ポートについては、各ポートのコメントを解除しますが、例に示すように、各ポートの RCF で 1 つの *speed* 行のみをコメント解除します (例に示すように、*speed 100G full-duplex* または *speed 40G full-duplex*)。0/17～0/48の低速ポートについては、適切なライセンスがアクティブ化されていれば、8ポート セクション全体のコメントを解除します。
 
 .次の手順
-link:configure-install-rcf.html["参照構成ファイル（RCF）をインストールする"]またはlink:upgrade-rcf.html["RCFをアップグレードする"]。
+ライセンスをインストールしたら、 link:configure-install-rcf.html["参照構成ファイル（RCF）をインストールする"] または link:upgrade-rcf.html["RCFをアップグレードする"]。

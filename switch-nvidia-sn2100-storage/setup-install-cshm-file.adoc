@@ -134,4 +134,4 @@ cluster1::> *system switch ethernet show*
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。
+CSHMファイルをインストールしたら、 link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"]。

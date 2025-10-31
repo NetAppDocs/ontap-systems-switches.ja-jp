@@ -50,4 +50,4 @@ NetAppキャビネットにスイッチをインストールする手順につ�
 
 
 .次の手順
-オプションとして、link:install-cisco-nexus-3132qv.html["NetAppキャビネットにCisco Nexus 3132Q-Vスイッチをインストールする"] 。それ以外の場合は、link:cabling-considerations-3132q-v.html["ケーブル配線と構成を確認する"] 。
+オプションとして、 link:install-cisco-nexus-3132qv.html["NetAppキャビネットにCisco Nexus 3132Q-Vスイッチをインストールする"]。そうでなければ、 link:cabling-considerations-3132q-v.html["ケーブル配線と構成を確認する"] 要件。

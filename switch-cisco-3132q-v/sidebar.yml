@@ -19,7 +19,7 @@ entries:
   - title: ハードウェアインストールワークフロー
     url: "/switch-cisco-3132q-v/install-hardware-workflow.html"
   - title: 完全な配線ワークシート
-    url: "/switch-cisco-3132q-v/setup_worksheet_3132q.html"
+    url: "/switch-cisco-3132q-v/setup-worksheet-3132q.html"
   - title: スイッチをインストールする
     url: "/switch-cisco-3132q-v/install-switch-3132qv.html"
   - title: NetAppキャビネットにスイッチをインストールする
@@ -33,6 +33,8 @@ entries:
     url: "/switch-cisco-3132q-v/configure-software-overview-3132q-v-cluster.html"
   - title: スイッチを設定する
     url: "/switch-cisco-3132q-v/setup-switch.html"
+  - title: NX-OSソフトウェアとRCFのインストール準備
+    url: "/switch-cisco-3132q-v/prepare-install-cisco-nexus-3132q.html"
   - title: NX-OSソフトウェアをインストールする
     url: "/switch-cisco-3132q-v/install-nx-os-software-3132q-v.html"
   - title: RCFをインストールまたはアップグレードする

@@ -571,3 +571,6 @@ RPC status:
 `set -privilege admin`
 
 
+
+.次の手順
+スイッチを交換したら、link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"] 。

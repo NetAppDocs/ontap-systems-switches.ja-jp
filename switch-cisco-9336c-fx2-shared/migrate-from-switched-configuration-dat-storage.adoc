@@ -307,3 +307,6 @@ cluster1::*>
 ----
 ====
 
+
+.次の手順
+スイッチを移行した後は、 link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"]。

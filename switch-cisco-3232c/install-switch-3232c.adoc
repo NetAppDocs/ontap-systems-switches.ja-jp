@@ -50,4 +50,4 @@ NetAppキャビネットにスイッチをインストールする手順につ�
 
 
 .次の手順
-オプションとして、link:install-cisco-nexus-3232c.html["NetAppキャビネットにCisco Nexus 3223Cスイッチをインストールする"] 。それ以外の場合は、link:cabling-considerations-3232c.html["ケーブル配線と構成を確認する"] 。
+オプションとして、 link:install-cisco-nexus-3232c.html["NetAppキャビネットにCisco Nexus 3223Cスイッチをインストールする"]。それ以外の場合は、 link:cabling-considerations-3232c.html["ケーブル配線と構成を確認する"]。

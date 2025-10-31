@@ -856,4 +856,4 @@ storage port modify –node [node name] –port [port name] –mode network
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。
+スイッチを移行した後は、 link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"]。

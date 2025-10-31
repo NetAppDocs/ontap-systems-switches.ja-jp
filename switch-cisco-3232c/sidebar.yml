@@ -33,6 +33,8 @@ entries:
     url: "/switch-cisco-3232c/configure-software-overview-3232c-cluster.html"
   - title: スイッチを設定する
     url: "/switch-cisco-3232c/setup-switch.html"
+  - title: NX-OSソフトウェアとRCFのインストール準備
+    url: "/switch-cisco-3232c/prepare-install-cisco-nexus-3232c.html"
   - title: NX-OSソフトウェアをインストールする
     url: "/switch-cisco-3232c/install-nx-os-software-3232c.html"
   - title: RCFをインストールまたはアップグレードする

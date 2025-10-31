@@ -751,4 +751,4 @@ cluster::*> system node autosupport invoke -node * -type all -message MAINT=END
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。
+スイッチを移行した後は、 link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"]。

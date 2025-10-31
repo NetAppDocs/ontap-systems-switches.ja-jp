@@ -400,4 +400,4 @@ cs1          0/56    179         R             BES-53248   0/56
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。
+スイッチを交換したら、 link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"]。

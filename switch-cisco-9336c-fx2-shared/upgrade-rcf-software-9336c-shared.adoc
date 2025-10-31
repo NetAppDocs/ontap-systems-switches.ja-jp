@@ -922,4 +922,4 @@ RPC status:
 --
 ====
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。
+RCFをアップグレードしたら、 link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"]。

@@ -61,4 +61,4 @@ X-MTEF-KIT-E
 NOTE: 詳細についてはNVIDIAのドキュメントをご覧ください。 https://docs.nvidia.com/networking/display/sn2000pub/Installation["SN2100スイッチとレールキットのインストール"^] 。
 
 .次の手順
-link:required-documentation-sn2100-cluster.html["必要な書類"] 。
+コンポーネントと部品番号を確認したら、 link:required-documentation-sn2100-cluster.html["必要な書類"]。

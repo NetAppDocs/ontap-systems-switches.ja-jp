@@ -424,4 +424,4 @@ System Manager は、ノード管理 IP アドレスの割り当て、クラス�
 参照link:https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["System Managerを使用した新しいクラスタでのONTAPの設定"]セットアップ手順についてはこちらをご覧ください。
 
 .次の手順
-RCFをインストールしたら、link:configure-ssh-keys.html["SSH設定を確認する"] 。
+RCFをインストールしたら、 link:configure-ssh-keys.html["SSH設定を確認する"]。

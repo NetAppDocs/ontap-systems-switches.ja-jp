@@ -351,4 +351,4 @@ cumulus@cumulus:mgmt:~$ *sudo adduser admin nvshow*
 --
 ====
 .次の手順
-link:install-rcf-sn2100-cluster.html["参照構成ファイル（RCF）スクリプトをインストールする"] 。
+Cumulus LinuxをONIEモードでインストールしたら、 link:install-rcf-sn2100-cluster.html["参照構成ファイル（RCF）スクリプトをインストールする"]。

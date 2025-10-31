@@ -45,4 +45,4 @@ SN2100 スイッチは、異なるスイッチ ペアを介してONTAP 9.10.1P3 
 
 
 .次の手順
-link:components-sn2100-cluster.html["コンポーネントと部品番号"] 。
+構成要件を確認した後、 link:components-sn2100-cluster.html["コンポーネントと部品番号"]。

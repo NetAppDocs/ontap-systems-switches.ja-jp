@@ -12,7 +12,7 @@ entries:
     url: "/switch-cshm/config-overview.html"
   - title: ログ収集を構成する
     url: "/switch-cshm/config-log-collection.html"
-  - title: オプション - SNMPv3 を構成する
+  - title: SNMPv3 を構成する (オプション)
     url: "/switch-cshm/config-snmpv3.html"
 - title: スイッチの状態を確認する
   pdf-filename: スイッチのヘルスを監視する

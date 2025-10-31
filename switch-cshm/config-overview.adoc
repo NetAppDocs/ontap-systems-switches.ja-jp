@@ -14,5 +14,5 @@ summary: 'イーサネット スイッチ ヘルス モニター (CSHM) は、�
 イーサネット スイッチ ヘルス モニター (CSHM) は、クラスターおよびストレージ ネットワーク スイッチの動作の正常性を確認し、デバッグのためにスイッチ ログを収集する役割を担います。
 
 * link:config-log-collection.html["ログ収集を構成する"]
-* link:config-snmpv3.html["オプション: SNMPv3 を構成する"]
+* link:config-snmpv3.html["SNMPv3 を構成する (オプション)"]
 

@@ -249,4 +249,4 @@ Configuration Saved!
 
 
 .次の手順
-link:configure-efos-software.html["EFOSソフトウェアをインストールする"] 。
+スイッチの設定が完了したら、 link:configure-efos-software.html["EFOSソフトウェアをインストールする"]。

@@ -212,4 +212,4 @@ NOTE: この段階で設定を保存しないと、次回スイッチを再起�
 
 
 .次の手順
-link:prepare-install-cisco-nexus-3132q.html["NX-OSとRCFのインストール準備"] 。
+スイッチの設定が完了したら、 link:prepare-install-cisco-nexus-3132q.html["NX-OSとRCFのインストールの準備"]。

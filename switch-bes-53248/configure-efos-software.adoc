@@ -424,4 +424,4 @@ unit 	active 	    backup   current-active  next-active
 
 
 .次の手順
-link:configure-licenses.html["ライセンスをインストールする"] 。
+EFOSソフトウェアをインストールしたら、 link:configure-licenses.html["ライセンスをインストールする"]。

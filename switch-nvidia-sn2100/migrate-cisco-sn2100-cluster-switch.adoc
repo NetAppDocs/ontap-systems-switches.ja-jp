@@ -561,4 +561,4 @@ Cluster
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。
+スイッチを移行したら、link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"] 。

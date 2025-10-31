@@ -24,4 +24,4 @@ https://hwu.netapp.com/["NetApp Hardware Universe"^]
 
 
 .次の手順
-link:configure-sn2100-cluster.html["スイッチを設定する"] 。
+棚にケーブルを配線したら、 link:configure-sn2100-cluster.html["スイッチを設定する"]。

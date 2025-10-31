@@ -580,4 +580,4 @@ cluster1::*>
 
 
 .次の手順
-link:install-rcf-3132q-v.html["参照構成ファイル（RCF）をインストールする"] 。
+NX-OSソフトウェアをインストールしたら、 link:install-upgrade-rcf-overview-3132q-v.html["参照構成ファイル (RCF) をインストールまたはアップグレードする"]。

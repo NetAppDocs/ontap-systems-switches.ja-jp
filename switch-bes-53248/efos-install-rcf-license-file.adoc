@@ -1158,4 +1158,4 @@ system node autosupport invoke -node * -type all -message MAINT=END
 
 
 .次の手順
-link:configure-ssh.html["SSH を有効にする"] 。
+RCFとライセンスファイルをインストールしたら、 link:configure-ssh.html["SSHを有効にする"]。
