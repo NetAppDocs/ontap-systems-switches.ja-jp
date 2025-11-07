@@ -162,4 +162,4 @@ Copy complete.
 
 
 .次の手順
-link:install-nxos-overview.html["NX-OSソフトウェアとRCFのインストール準備"] 。
+link:install-nxos-overview.html["NX-OSソフトウェアとRCFのインストール準備"]。

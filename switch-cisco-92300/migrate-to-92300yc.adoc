@@ -14,7 +14,7 @@ summary: ONTAPクラスタの古いCiscoクラスタ スイッチは、無停止
 ONTAPクラスタの古いCiscoクラスタ スイッチは、無停止でCisco Nexus 92300YCクラスタ ネットワーク スイッチに移行できます。
 
 
-NOTE: 移行が完了したら、92300YC クラスタ スイッチの Cluster Switch Health Monitor (CSHM) をサポートするために必要な構成ファイルをインストールする必要がある場合があります。見るlink:../switch-cshm/cshm-overview.html["スイッチヘルスモニタリング（CSHM）"] 。
+NOTE: 移行が完了したら、92300YC クラスタ スイッチの Cluster Switch Health Monitor (CSHM) をサポートするために必要な構成ファイルをインストールする必要がある場合があります。見るlink:../switch-cshm/cshm-overview.html["スイッチヘルスモニタリング（CSHM）"]。
 
 
 
@@ -694,4 +694,4 @@ cluster1::*> *system node autosupport invoke -node * -type all -message MAINT=EN
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"]。

@@ -34,7 +34,7 @@ Cisco Nexus 9336C-FX2 スイッチのインストールとメンテナンスに�
 | X-NXA-PAC-1100W-PE2 | N9K-9336C AC 1100W PSU - ポート側排気エアフロー 
 
 
-| X-NXA-PAC-1100W-PI2 | N9K-9336C AC 1100W PSU - ポート側吸気 
+| X-NXA-PAC-1100W-PI2 | N9K-9336C AC 1100W PSU - ポート側吸気エアフロー 
 
 
 | X-NXA-ファン-65CFM-PE | N9K-9336C 65CFM、ポート側排気流量 

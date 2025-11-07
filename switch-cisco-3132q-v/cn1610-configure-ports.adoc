@@ -98,7 +98,7 @@ Ports  Timeout       Speed       Active
        partner/long
 ----
 ====
-. ISLが `up`3132Q-VスイッチC2の場合:
+. ISLが `up`3132Q-V スイッチ C2:
 +
 `show port-channel summary`
 
@@ -106,7 +106,7 @@ Ports  Timeout       Speed       Active
 .例を表示
 [%collapsible]
 ====
-ポートEth1/24/1からEth1/24/4は次のように表示される。 `(P)`つまり、ポート チャネル内の 4 つの ISL ポートすべてがアップ状態になります。  Eth1/31とEth1/32は `(D)`接続されていないため:
+ポートEth1/24/1からEth1/24/4は次のように表示される。 `(P)`つまり、ポート チャネル内の 4 つの ISL ポートすべてがアップ状態になります。  Eth1/31とEth1/32は `(D)`これらは接続されていないため:
 
 [listing]
 ----
@@ -460,4 +460,4 @@ Copy Complete.
 
 
 .次の手順
-link:cn1610-complete-migration.html["移行を完了する"] 。
+link:cn1610-complete-migration.html["移行を完了する"]。

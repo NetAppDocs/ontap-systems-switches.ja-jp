@@ -243,7 +243,7 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy
 `network interface show -vserver Cluster`
 
 +
-各クラスタLIFには、 `true`のために `Is Home`そして `Status Admin/Oper`アップ/アップの。
+各クラスタLIFには `true`のために `Is Home`そして `Status Admin/Oper`アップ/アップの。
 
 +
 .例を表示
@@ -629,4 +629,4 @@ RPC status:
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"]。

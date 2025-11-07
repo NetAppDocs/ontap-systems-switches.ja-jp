@@ -105,7 +105,7 @@ There are no entries matching your query.
 ====
 
 
-. [[step7]]共有スイッチAのストレージRCFを共有RCFファイルに置き換えます。。 link:install-nxos-rcf-9336c-shared.html["Cisco Nexus 9336C-FX2共有スイッチにRCFをインストールする"]詳細についてはこちらをご覧ください。
+. [[step7]]共有スイッチAのストレージRCFを共有RCFファイルに置き換えます。見るlink:install-nxos-rcf-9336c-shared.html["Cisco Nexus 9336C-FX2共有スイッチにRCFをインストールする"]詳細については、こちらをご覧ください。
 . HA ペア 1 に接続されているストレージ、ストレージ スイッチ B が正常であることを確認します。
 +
 `system health alert show -instance`
@@ -141,7 +141,7 @@ There are no entries matching your query.
 ====
 
 
-. [[step13]]共有スイッチBのストレージRCFファイルを共有RCFファイルに置き換えます。。 link:install-nxos-rcf-9336c-shared.html["Cisco Nexus 9336C-FX2共有スイッチにRCFをインストールする"]詳細についてはこちらをご覧ください。
+. [[step13]]共有スイッチBのストレージRCFファイルを共有RCFファイルに置き換えます。見るlink:install-nxos-rcf-9336c-shared.html["Cisco Nexus 9336C-FX2共有スイッチにRCFをインストールする"]詳細については、こちらをご覧ください。
 . HA ペア 1 に接続されているストレージ、ストレージ スイッチ B が正常であることを確認します。
 +
 `system health alert show -instance`

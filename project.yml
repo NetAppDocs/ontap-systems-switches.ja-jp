@@ -20,7 +20,7 @@ sidebar:
       url: "/whats-new.html"
     - title: ONTAPシステムスイッチについて学ぶ
       url: "/get-started/learn-switch-concept.html"
-    - title: 立ち上がって走り出す
+    - title: 起動して実行
       url: "/get-started/get-up-and-running.html"
   - title: AFXシステムスイッチ
     url: "/afx/index.html"

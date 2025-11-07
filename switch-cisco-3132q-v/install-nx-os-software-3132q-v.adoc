@@ -23,8 +23,8 @@ Nexus 3132Q-V クラスタ スイッチに NX-OS ソフトウェアをインス�
 
 
 .推奨ドキュメント
-* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネットスイッチ"^] 。サポートされているONTAPおよび NX-OS バージョンについては、スイッチ互換性表を参照してください。
-* https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズ スイッチ"^] 。Ciscoスイッチのアップグレードおよびダウングレード手順の詳細なドキュメントについては、 Cisco Web サイトで入手可能な適切なソフトウェアおよびアップグレード ガイドを参照してください。
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネットスイッチ"^]。サポートされているONTAPおよび NX-OS バージョンについては、スイッチ互換性表を参照してください。
+* https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズ スイッチ"^]。Ciscoスイッチのアップグレードおよびダウングレード手順の詳細なドキュメントについては、 Cisco Web サイトで入手可能な適切なソフトウェアおよびアップグレード ガイドを参照してください。
 
 
 

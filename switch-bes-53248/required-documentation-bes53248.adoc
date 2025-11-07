@@ -15,7 +15,7 @@ BES-53248 スイッチのインストールとメンテナンスについては�
 
 
 
-== Broadcom のドキュメント
+== Broadcomのドキュメント
 
 BES-53248 クラスタ スイッチをセットアップするには、Broadcom サポート サイトから入手できる次のドキュメントが必要です。 https://www.broadcom.com/support/bes-switch["Broadcom イーサネットスイッチ製品ライン"^]
 

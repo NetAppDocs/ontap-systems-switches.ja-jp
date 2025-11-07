@@ -58,7 +58,7 @@ Cisco Nexus 3132Q-V スイッチは、 AFFまたはFASクラスタ内のクラ�
 * 最終：Nexus 3132Q-VからNexus 3132Q-V（QSFP28からQSFP28）の場合、2本のQSFP28光ファイバーまたは銅線直接接続ケーブル
 
 
-NetApp Twinax ケーブルは、Cisco Nexus 3132Q-V スイッチと互換性がありません。
+NetApp Twinax ケーブルは、 Cisco Nexus 3132Q-V スイッチと互換性がありません。
 
 現在の CN1610 構成でクラスタ ノードとスイッチ間の接続または ISL 接続にNetApp Twinax ケーブルを使用しており、環境内で Twinax を引き続き使用する場合は、 Cisco Twinax ケーブルを入手する必要があります。あるいは、ISL 接続とクラスター ノードとスイッチ間の接続の両方に光ファイバー ケーブルを使用することもできます。
 
@@ -88,4 +88,4 @@ NetApp Twinax ケーブルは、Cisco Nexus 3132Q-V スイッチと互換性が�
 
 
 .次の手順
-link:cn5596-prepare-to-migrate.html["移行の準備"] 。
+link:cn5596-prepare-to-migrate.html["移行の準備"]。

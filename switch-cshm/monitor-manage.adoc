@@ -2,7 +2,7 @@
 permalink: switch-cshm/monitor-manage.html 
 sidebar: sidebar 
 keywords: create, remove, switch, cluster, monitor, health, management 
-summary: イーサネット スイッチを手動で作成し、デフォルトの監視設定を変更し、監視から削除する方法を学習します。 
+summary: イーサネット スイッチを手動で作成し、デフォルトの監視設定を変更する方法、および監視から削除する方法を学習します。 
 ---
 = イーサネットスイッチの監視を管理する
 :allow-uri-read: 

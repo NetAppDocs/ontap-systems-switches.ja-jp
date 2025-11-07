@@ -172,7 +172,7 @@ link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイー�
 .. *説明* ページで *続行* をクリックし、ライセンス契約に同意してから、*ダウンロード* ページの指示に従って RCF をダウンロードします。
 .. 適切なバージョンのイメージ ソフトウェアをダウンロードします。
 +
-link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Ciscoクラスタおよび管理ネットワーク スイッチのリファレンス設定ファイルのダウンロード"^] 。
+link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Ciscoクラスタおよび管理ネットワーク スイッチのリファレンス設定ファイルのダウンロード"^]。
 
 
 
@@ -680,7 +680,7 @@ cluster::*> *network port modify -node n2 -port e4e -up-admin true*s
 .例を表示
 [%collapsible]
 ====
-次の例は、移行された LIF がホーム ポートに戻されることを示しています。
+次の例は、移行された LIF がホーム ポートに戻される様子を示しています。
 
 [listing, subs="+quotes"]
 ----
@@ -842,4 +842,4 @@ Larger than PMTU communication succeeds on 4 path(s) RPC status:
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"]。

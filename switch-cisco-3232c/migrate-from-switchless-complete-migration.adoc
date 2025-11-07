@@ -170,4 +170,4 @@ Larger than PMTU communication succeeds on 4 path(s) RPC status:
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"]。

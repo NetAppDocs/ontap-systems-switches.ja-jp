@@ -23,7 +23,7 @@ entries:
     url: "/switch-cisco-9332d-gx2b/configure-software-overview-9332d-cluster.html"
   - title: スイッチを設定する
     url: "/switch-cisco-9332d-gx2b/setup-switch-9332d-cluster.html"
-  - title: NX-OSとRCFのインストール準備
+  - title: NX-OSとRCFのインストールの準備
     url: "/switch-cisco-9332d-gx2b/install-nxos-overview-9332d-cluster.html"
   - title: NX-OSソフトウェアをインストールまたはアップグレードする
     url: "/switch-cisco-9332d-gx2b/install-nxos-software-9332d-cluster.html"

@@ -100,4 +100,4 @@ Cluster
 
 
 .次の手順
-link:migrate-switchless-configure-ports.html["ポートを設定する"] 。
+link:migrate-switchless-configure-ports.html["ポートを設定する"]。

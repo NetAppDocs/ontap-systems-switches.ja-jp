@@ -35,7 +35,7 @@ entries:
     url: "/switch-cisco-92300/configure-software-overview-92300-cluster.html"
   - title: スイッチを設定する
     url: "/switch-cisco-92300/configure-install-initial.html"
-  - title: NX-OSとRCFのインストール準備
+  - title: NX-OSとRCFのインストールの準備
     url: "/switch-cisco-92300/install-nxos-overview.html"
   - title: NX-OSをインストールする
     url: "/switch-cisco-92300/install-nxos-software.html"

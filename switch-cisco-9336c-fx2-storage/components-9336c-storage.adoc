@@ -89,7 +89,7 @@ N9K-9336C AC 1100W PSU - ポート側排気エアフロー
  a| 
 X-NXA-PAC-1100W-PI2
  a| 
-N9K-9336C AC 1100W PSU - ポート側吸気
+N9K-9336C AC 1100W PSU - ポート側吸気エアフロー
 
 
 

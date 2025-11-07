@@ -69,7 +69,7 @@ Group Port-        Type   Protocol  Member Ports
                                     Eth1/47(P)   Eth1/48(P)
 ----
 ====
-. ISLが `up`3132Q-VスイッチC2の場合:
+. ISLが `up`3132Q-V スイッチ C2:
 +
 `show port-channel summary`
 
@@ -422,4 +422,4 @@ Copy Complete.
 
 
 .次の手順
-link:cn5596-complete-migration.html["移行を完了する"] 。
+link:cn5596-complete-migration.html["移行を完了する"]。

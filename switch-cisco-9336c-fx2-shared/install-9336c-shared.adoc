@@ -21,16 +21,16 @@ Cisco Nexus 9336C-FX2 共有スイッチを設定するには、次の手順に�
 
 * 必要な共有スイッチのドキュメント、コントローラのドキュメント、およびONTAP のドキュメント。見るlink:required-documentation-9336c-shared.html["Cisco Nexus 9336C-FX2 共有スイッチのドキュメント要件"]そして https://docs.netapp.com/us-en/ontap/index.html["NetApp ONTAP ドキュメント"^]。
 * 適用可能なライセンス、ネットワークおよび構成情報、およびケーブル。
-* 完成したケーブル配線ワークシート。見るlink:cable-9336c-shared.html["Cisco Nexus 9336C-FX2 配線ワークシートを完成させる"] 。ケーブル接続の詳細については、 https://hwu.netapp.com["Hardware Universe"] 。
+* 完成したケーブル配線ワークシート。見るlink:cable-9336c-shared.html["Cisco Nexus 9336C-FX2 配線ワークシートを完成させる"]。ケーブル接続の詳細については、 https://hwu.netapp.com["Hardware Universe"] 。
 
 
 .手順
 . スイッチ、コントローラー、NS224 NVMe ストレージ シェルフをラックに取り付けます。
 +
-参照link:../switch-cisco-9336c-fx2/install-switch-and-passthrough-panel-9336c-cluster.html["ラックの取り付け手順"]NetAppキャビネットにスイッチをラックに取り付ける方法を学習します。
+参照link:../switch-cisco-9336c-fx2/install-switch-and-passthrough-panel-9336c-cluster.html["ラックの取り付け手順"]NetAppキャビネットにスイッチをラックに収納する方法を学びます。
 
 . スイッチ、コントローラー、NS224 NVMe ストレージ シェルフの電源を入れます。
 
 
 .次の手順
-オプションとして、link:install-switch-and-passthrough-panel-9336c-shared.html["NetAppキャビネットにCisco Nexus 9336C-FX2スイッチをインストールする"] 。それ以外の場合は、link:setup-and-configure-9336c-shared.html["スイッチを設定する"] 。
+オプションとして、 link:install-switch-and-passthrough-panel-9336c-shared.html["NetAppキャビネットにCisco Nexus 9336C-FX2スイッチをインストールする"]。それ以外の場合は、 link:setup-and-configure-9336c-shared.html["スイッチを設定する"]。

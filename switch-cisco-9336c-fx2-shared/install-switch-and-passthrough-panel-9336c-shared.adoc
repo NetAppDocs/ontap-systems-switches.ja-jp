@@ -24,7 +24,7 @@ summary: スイッチに付属の標準ブラケットを使用して、 Cisco N
 NOTE: ジャンパ コードはパススルー キットには含まれていません。スイッチに付属のものを使用してください。スイッチに同梱されていない場合は、 NetAppから注文できます (部品番号 X1558A-R6)。
 
 .必要な書類
-初期準備の要件、キットの内容、安全上の注意事項を以下で確認してください。 https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/hw/aci_9336cfx2_hig/guide/b_n9336cFX2_aci_hardware_installation_guide.html["Cisco Nexus 9000 シリーズ ハードウェア設置ガイド"^] 。
+初期準備の要件、キットの内容、安全上の注意事項を確認してください。 https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/hw/aci_9336cfx2_hig/guide/b_n9336cFX2_aci_hardware_installation_guide.html["Cisco Nexus 9000 シリーズ ハードウェア設置ガイド"^] 。
 
 .手順
 . NetAppキャビネットにパススルー ブランク パネルを取り付けます。
@@ -111,7 +111,7 @@ _(2) 前面ラックマウントブラケットが前面ポストと面一にな
 image::../media/3132q_attaching.gif[]
 
 +
-_(1) 1人がシャーシ前面を水平に押さえ、もう1人がキャビネットのポストに4本の背面ネジを完全に締めます。_
+_(1) 1人がシャーシ前面を水平に押さえ、もう1人が背面の4本のネジをキャビネットの支柱にしっかりと締めます。_
 
 .. 支えなしでもシャーシが動かなくなったら、前面のネジを支柱に完全に締め付けます。
 .. RU42 の場所にある 2 番目のスイッチに対して手順 5a ～ 5c を繰り返します。

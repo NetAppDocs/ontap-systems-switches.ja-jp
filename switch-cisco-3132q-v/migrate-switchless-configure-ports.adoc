@@ -339,7 +339,7 @@ e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 .例を表示
 [%collapsible]
 ====
-次の例は、移行された LIF がホーム ポートに戻されることを示しています。
+次の例は、移行された LIF がホーム ポートに戻される様子を示しています。
 
 [listing]
 ----
@@ -489,7 +489,7 @@ cluster::*> network port modify -node n2 -port e4e -up-admin true
 `network interface revert`
 
 +
-次の例は、移行された LIF がホーム ポートに戻されることを示しています。
+次の例は、移行された LIF がホーム ポートに戻される様子を示しています。
 
 +
 [listing]
@@ -556,4 +556,4 @@ e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 
 
 .次の手順
-link:migrate-switchless-complete-migration.html["移行を完了する"] 。
+link:migrate-switchless-complete-migration.html["移行を完了する"]。

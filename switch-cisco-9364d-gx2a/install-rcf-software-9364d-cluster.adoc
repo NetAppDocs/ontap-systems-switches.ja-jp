@@ -706,11 +706,11 @@ cs1#
 
 == ステップ3: ONTAPクラスタをセットアップする
 
-NetApp、System Manager を使用して新しいクラスタを設定することをお勧めします。
+NetApp、 System Manager を使用して新しいクラスタを設定することをお勧めします。
 
 System Managerを使用すれば、ノード管理IPアドレスの割り当て、クラスタの初期化、ローカル階層の作成、プロトコルの設定、初期ストレージのプロビジョニングなど、クラスタのセットアップと設定をシンプルで簡単なワークフローで実行できます。
 
 へ移動 https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["System Managerを使用した新しいクラスタでのONTAPの設定"]セットアップ手順についてはこちらをご覧ください。
 
 .次の手順
-RCFをインストールしたら、link:configure-ssh-keys.html["SSH設定を確認する"] 。
+RCFをインストールしたら、 link:configure-ssh-keys.html["SSH設定を確認する"]。

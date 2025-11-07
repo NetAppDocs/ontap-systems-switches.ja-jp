@@ -13,4 +13,4 @@ summary: 提供されているコマンドを使用できます。
 [role="lead"]
 ログ収集を設定すると、 AutoSupportによって収集される定期的なデータの 1 時間ごとの収集を有効にし、詳細なサポート ログを要求することができます。
 
-。 link:config-log-collection.html["ログ収集を構成する"]詳細についてはこちらをご覧ください。
+見るlink:config-log-collection.html["ログ収集を構成する"]詳細については、こちらをご覧ください。

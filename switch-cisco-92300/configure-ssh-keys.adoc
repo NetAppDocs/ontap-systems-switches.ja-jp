@@ -2,7 +2,7 @@
 permalink: switch-cisco-92300/configure-ssh-keys.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
-summary: 'クラスタ スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用する場合は、SSH が必須です。  Cisco 92300YC クラスタ スイッチで SSH を有効にするには、まず SSH キーを生成し、次に SSH を有効にします。' 
+summary: 'クラスタ スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用する場合は、SSH が必須です。Cisco 92300YC クラスタ スイッチで SSH を有効にするには、まず SSH キーを生成し、次に SSH を有効にします。' 
 ---
 = SSH構成を確認する
 :allow-uri-read: 
@@ -64,4 +64,4 @@ sshServer              1          enabled
 IMPORTANT: FIPSを有効にする場合は、次のコマンドを使用してスイッチのビットカウントを256に変更する必要があります。 `ssh key ecdsa 256 force` 。見る https://docs.netapp.com/us-en/ontap/networking/configure_network_security_using_federal_information_processing_standards_@fips@.html#enable-fips["FIPSを使用してネットワークセキュリティを構成する"^]詳細についてはこちらをご覧ください。
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"]。

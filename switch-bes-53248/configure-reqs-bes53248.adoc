@@ -17,7 +17,7 @@ BES-53248 スイッチのインストールとメンテナンスについては�
 
 == EFOS およびONTAP のサポート
 
-参照 https://hwu.netapp.com/Switch/Index["NetApp Hardware Universe"^]そして https://mysupport.netapp.com/site/info/broadcom-cluster-switch["Broadcomスイッチの互換性マトリックス"^]BES-53248 スイッチとの EFOS およびONTAP の互換性情報については、こちらをご覧ください。  EFOS およびONTAP のサポートは、BES-53248 スイッチの特定のマシン タイプによって異なる場合があります。  BES-52348スイッチマシンの全タイプの詳細については、link:components-bes53248.html["BES-53248 クラスタスイッチのコンポーネントと部品番号"] 。
+参照 https://hwu.netapp.com/Switch/Index["NetApp Hardware Universe"^]そして https://mysupport.netapp.com/site/info/broadcom-cluster-switch["Broadcomスイッチ互換性マトリックス"^]BES-53248 スイッチとの EFOS およびONTAP の互換性情報については、こちらをご覧ください。  EFOS およびONTAP のサポートは、BES-53248 スイッチの特定のマシン タイプによって異なる場合があります。  BES-52348スイッチマシンの全タイプの詳細については、link:components-bes53248.html["BES-53248 クラスタスイッチのコンポーネントと部品番号"] 。
 
 
 

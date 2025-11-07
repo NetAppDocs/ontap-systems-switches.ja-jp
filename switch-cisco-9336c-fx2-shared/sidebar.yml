@@ -45,7 +45,7 @@ entries:
   entries:
   - title: スイッチレスDASクラスタからの移行
     url: "/switch-cisco-9336c-fx2-shared/migrate-from-switchless-cluster-dat-storage.html"
-  - title: スイッチドDAS構成からの移行
+  - title: スイッチ型DAS構成からの移行
     url: "/switch-cisco-9336c-fx2-shared/migrate-from-switched-configuration-dat-storage.html"
   - title: スイッチレスSAT構成からの移行
     url: "/switch-cisco-9336c-fx2-shared/migrate-from-switchless-configuration-sat-storage.html"

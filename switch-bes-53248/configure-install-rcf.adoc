@@ -14,7 +14,7 @@ summary: 'BES-53248 クラスタ スイッチを構成し、新しいライセ�
 BES-53248 クラスタ スイッチを構成し、新しいライセンスを適用した後、リファレンス構成ファイル (RCF) をインストールできます。
 
 
-CAUTION: EFOS 3.12以降の場合は、link:efos-install-rcf-license-file.html["リファレンス構成ファイル（RCF）とライセンスファイルをインストールする"] 。
+CAUTION: EFOS 3.12以降の場合は、次のインストール手順に従ってください。link:efos-install-rcf-license-file.html["リファレンス構成ファイル（RCF）とライセンスファイルをインストールする"] 。
 
 
 
@@ -31,7 +31,7 @@ CAUTION: EFOS 3.12以降の場合は、link:efos-install-rcf-license-file.html["
 
 
 .推奨ドキュメント
-サポートされているONTAPおよび RCF バージョンについては、スイッチ互換性表を参照してください。参照 https://mysupport.netapp.com/site/info/broadcom-cluster-switch["EFOS ソフトウェアのダウンロード"^]ページ。  RCF のコマンド構文と EFOS のバージョンのコマンド構文の間にはコマンド依存関係がある可能性があることに注意してください。
+サポートされているONTAPおよび RCF バージョンについては、スイッチ互換性表を参照してください。参照 https://mysupport.netapp.com/site/info/broadcom-cluster-switch["EFOSソフトウェアのダウンロード"^]ページ。  RCF のコマンド構文と EFOS のバージョンのコマンド構文の間にはコマンド依存関係がある可能性があることに注意してください。
 
 
 
@@ -41,7 +41,7 @@ CAUTION: EFOS 3.12以降の場合は、link:efos-install-rcf-license-file.html["
 この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
 * 2 つの BES-53248 スイッチの名前は cs1 と cs2 です。
-* ノード名はcluster1-01、cluster1-02、cluster1-03、cluster1-04です。
+* ノード名は、cluster1-01、cluster1-02、cluster1-03、cluster1-04 です。
 * クラスタ LIF 名は、cluster1-01_clus1、cluster1-01_clus2、cluster1-02_clus1、cluster1-02_clus2、cluster1-03_clus1、cluster1-03_clus2、cluster1-04_clus1、cluster1-04_clus2 です。
 * その `cluster1::*>`プロンプトはクラスターの名前を示します。
 * この手順の例では、4 つのノードを使用します。これらのノードは2つの10GbEクラスタ相互接続ポートを使用します `e0a`そして `e0b`。参照 https://hwu.netapp.com/Home/Index["Hardware Universe"^]プラットフォーム上の正しいクラスター ポートを確認します。

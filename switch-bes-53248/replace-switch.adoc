@@ -121,7 +121,7 @@ NOTE: AutoSupportメッセージはテクニカル サポートにこのメン�
 
 +
 .. クラスタスイッチに適したBroadcom EFOSソフトウェアは、次のサイトからダウンロードできます。 https://www.broadcom.com/support/bes-switch["Broadcomイーサネット スイッチのサポート"^]サイト。[Download]ページの手順に従って、インストールするONTAPソフトウェアのバージョンに対応したEFOSファイルをダウンロードします。
-.. 適切なRCFは以下から入手可能です。 https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom クラスタスイッチ"^]ページ。[Download]ページの手順に従って、インストールするONTAPソフトウェアのバージョンに対応したRCFをダウンロードします。
+.. 適切なRCFは、 https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom クラスタスイッチ"^]ページ。[Download]ページの手順に従って、インストールするONTAPソフトウェアのバージョンに対応したRCFをダウンロードします。
 
 
 . 新しいスイッチで、 `admin`ノード クラスタ インターフェイスに接続されるすべてのポート (ポート 1 ～ 16) をシャットダウンします。

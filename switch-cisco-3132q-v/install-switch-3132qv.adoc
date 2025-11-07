@@ -21,7 +21,7 @@ Cisco Nexus 3132Q-V スイッチをセットアップおよび構成するには
 * 適用可能なライセンス、ネットワークおよび構成情報、およびケーブル。
 * 完了link:setup_worksheet_3132q.html["配線ワークシート"]。
 * 適用可能なNetAppクラスタネットワークおよび管理ネットワークRCFは、 NetAppサポートサイトからダウンロードできます。 http://mysupport.netapp.com/["mysupport.netapp.com"^] 。すべてのCiscoクラスタ ネットワークおよび管理ネットワーク スイッチは、標準のCisco工場出荷時のデフォルト構成で出荷されます。これらのスイッチにも NX-OS ソフトウェアの最新バージョンが搭載されていますが、RCF はロードされていません。
-* link:required-documentation-3132q.html["必要なスイッチとONTAPのドキュメント"] 。
+* link:required-documentation-3132q.html["必要なスイッチとONTAPのドキュメント"]。
 
 
 .手順

@@ -2,7 +2,7 @@
 permalink: switch-cisco-9336c-fx2/install-upgrade-rcf-overview-cluster.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
-summary: 'クラスタ スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用する場合は、SSH が必須です。  Cisco 9336c-fx2 クラスタ スイッチで SSH を有効にするには、まず SSH キーを生成し、次に SSH を有効にします。' 
+summary: 'クラスタ スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用する場合は、SSH が必須です。Cisco 9336c-fx2 クラスタ スイッチで SSH を有効にするには、まず SSH キーを生成し、次に SSH を有効にします。' 
 ---
 = 参照構成ファイル（RCF）のインストールまたはアップグレードの概要
 :allow-uri-read: 
@@ -63,7 +63,7 @@ Nexus 9336C-FX2 および 9336C-FX2-T スイッチを初めてセットアップ
  a| 
 クラスタ
  a| 
-4x10GbE ポート (ブレイクアウト) と 40/100GbE ポートの割り当てが異なる 2 種類の RCF。  AFF A320、 AFF A250、およびFAS500fシステムを除くすべてのFAS/ AFFノードがサポートされています。
+4x10GbE ポート (ブレイクアウト) と 40/100GbE ポートの割り当てが異なる 2 種類の RCF。AFF A320、 AFF A250、およびFAS500fシステムを除くすべてのFAS/ AFFノードがサポートされています。
 
 
 

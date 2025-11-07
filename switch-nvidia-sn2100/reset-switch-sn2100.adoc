@@ -21,7 +21,7 @@ SN2100 クラスタ スイッチを工場出荷時のデフォルトにリセッ
 
 
 
-NOTE: Cumulus Linuxのインストールの詳細については、link:configure-software-overview-sn2100-cluster.html["NVIDIA SN2100スイッチのソフトウェアインストールワークフロー"] 。
+NOTE: Cumulus Linuxのインストールの詳細については、以下を参照してください。link:configure-software-overview-sn2100-cluster.html["NVIDIA SN2100スイッチのソフトウェアインストールワークフロー"] 。
 
 .手順
 [role="tabbed-block"]
@@ -72,7 +72,7 @@ Do you want to continue? [y/n] *y*
 ----
 
 
-NVIDIAの https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-511/Installation-Management/Factory-Reset/["工場出荷時設定へのリセット"^]詳細についてはドキュメントを参照してください。
+NVIDIAの https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-511/Installation-Management/Factory-Reset/["工場出荷時設定へのリセット"^]詳細についてはドキュメントをご覧ください。
 
 --
 ====

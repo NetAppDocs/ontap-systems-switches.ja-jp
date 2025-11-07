@@ -227,4 +227,4 @@ Cluster
 
 
 .次の手順
-link:install-nxos-software.html["NX-OSソフトウェアをインストールする"] 。
+link:install-nxos-software.html["NX-OSソフトウェアをインストールする"]。

@@ -29,7 +29,7 @@ NX-OSは、Cisco Systemsが提供するNexusシリーズ イーサネット ス�
 
 * お使いのスイッチに適したNetApp Cisco NX-OSソフトウェアは、 NetAppサポートサイトから入手できます。 http://mysupport.netapp.com/["mysupport.netapp.com"]
 * 完全に機能するクラスター (ログにエラーや同様の問題がない)。
-* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ ページ"^] 。サポートされているONTAPおよび NX-OS バージョンについては、スイッチ互換性表を参照してください。
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ ページ"^]。サポートされているONTAPおよび NX-OS バージョンについては、スイッチ互換性表を参照してください。
 
 
 

@@ -14,7 +14,7 @@ entries:
   - title: Smart Call Homeの要件
     url: "/switch-cisco-3132q-v/smart-call-home-3132q.html"
 - title: ハードウェアを設置
-  pdf-filename: インストールハードウェア_3132q-v
+  pdf-filename: インストール_ハードウェア_3132q-v
   entries:
   - title: ハードウェアインストールワークフロー
     url: "/switch-cisco-3132q-v/install-hardware-workflow.html"
@@ -66,7 +66,7 @@ entries:
       url: "/switch-cisco-3132q-v/cn1610-configure-ports.html"
     - title: 移行を完了する
       url: "/switch-cisco-3132q-v/cn1610-complete-migration.html"
-  - title: Cisco Nexus 5596スイッチの移行
+  - title: Cisco Nexus 5596 スイッチの移行
     pdf-filename: CN5596_スイッチ移行
     entries:
     - title: Cisco Nexus 5596 スイッチの移行ワークフロー
@@ -79,7 +79,7 @@ entries:
       url: "/switch-cisco-3132q-v/cn5596-configure-ports.html"
     - title: 移行を完了する
       url: "/switch-cisco-3132q-v/cn5596-complete-migration.html"
-  - title: スイッチレス クラスタから 2 ノード スイッチ クラスタへの移行
+  - title: スイッチレス クラスタから 2 ノード スイッチ クラスタに移行する
     pdf-filename: スイッチレスからスイッチドクラスタへの移行
     entries:
     - title: スイッチレスから2ノードスイッチのワークフローへの移行

@@ -26,12 +26,12 @@ RCF バージョンと FASTPATH バージョンのコマンド構文間にはコ
 
 
 
-NOTE: RCF バージョン 1.2 では、セキュリティ上の懸念から、Telnet のサポートは明示的に無効になっています。 RCF 1.2 のインストール中に接続の問題を回避するには、Secure Shell (SSH) が有効になっていることを確認する必要があります。その https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp® CN1610 スイッチ管理者ガイド"^]SSH に関する詳細情報は、こちらを参照してください。
+NOTE: RCF バージョン 1.2 では、セキュリティ上の懸念から、Telnet のサポートが明示的に無効になっています。 RCF 1.2 のインストール中に接続の問題を回避するには、Secure Shell (SSH) が有効になっていることを確認する必要があります。その https://library.netapp.com/ecm/ecm_get_file/ECMP1117874["NetApp® CN1610 スイッチ管理者ガイド"^]SSH に関する詳細情報は、こちらを参照してください。
 
 .タスク概要
 この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* このドキュメントの手順では、clustered Data ONTAP 8.2 構文を使用します。その結果、クラスタ Vserver、LIF 名、および CLI 出力は、Data ONTAP 8.3 のものとは異なります。
+* このドキュメントの手順では、clustered Data ONTAP 8.2 構文を使用します。その結果、クラスタ Vserver、LIF 名、および CLI 出力は、 Data ONTAP 8.3 のものとは異なります。
 * 2 つのNetAppスイッチは cs1 と cs2 です。
 * 2 つのクラスター LIF は clus1 と clus2 です。
 * Vserver は vs1 と vs2 です。

@@ -21,7 +21,7 @@ Cisco Nexus 92300YC スイッチをセットアップおよび構成するには
 * 適用可能なライセンス、ネットワークおよび構成情報、およびケーブル。
 * 完了link:setup-worksheet-92300yc.html["配線ワークシート"]。
 * 適用可能なNetAppクラスタネットワークおよび管理ネットワークRCFは、 NetAppサポートサイトからダウンロードできます。 http://mysupport.netapp.com/["mysupport.netapp.com"^] 。すべてのCiscoクラスタ ネットワークおよび管理ネットワーク スイッチは、標準のCisco工場出荷時のデフォルト構成で出荷されます。これらのスイッチにも NX-OS ソフトウェアの最新バージョンが搭載されていますが、RCF はロードされていません。
-* link:required-documentation-92300.html["必要なスイッチとONTAPのドキュメント"] 。
+* link:required-documentation-92300.html["必要なスイッチとONTAPのドキュメント"]。
 
 
 .手順
@@ -50,4 +50,4 @@ NetAppキャビネットにスイッチをインストールする手順につ�
 
 
 .次の手順
-オプションとして、link:install-switch-netapp-cabinet-92300yc.html["NetAppキャビネットにCisco Nexus 3223Cスイッチをインストールする"] 。それ以外の場合は、link:cabling-considerations-92300.html["ケーブル配線と構成を確認する"] 。
+オプションとして、 link:install-switch-netapp-cabinet-92300yc.html["NetAppキャビネットにCisco Nexus 3223Cスイッチをインストールする"]。それ以外の場合は、 link:cabling-considerations-92300.html["ケーブル配線と構成を確認する"]。

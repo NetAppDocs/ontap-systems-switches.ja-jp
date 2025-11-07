@@ -15,7 +15,7 @@ Cisco Nexus 3232C スイッチは、 AFFまたはFASクラスタ内のクラス�
 
 NOTE: この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
 
-必要に応じて、次の詳細情報を参照してください。
+必要に応じて、詳細については以下を参照してください。
 
 * link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 および CN1610"^]
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]
@@ -75,7 +75,7 @@ CN1610から3232C（QSFPからSFP+）
 2本のQSFP光ファイバーまたは銅線直接接続ケーブル
 
 |===
-該当する参照構成ファイル (RCF) をダウンロードしておく必要があります。10 GbEおよび40/100 GbEポートの数は、以下のRCFで定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco® クラスタ ネットワーク スイッチ リファレンス コンフィギュレーション ファイルのダウンロード"^] 。
+該当する参照構成ファイル (RCF) をダウンロードしておく必要があります。  10 GbEおよび40/100 GbEポートの数は、以下のRCFで定義されています。link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco® クラスタ ネットワーク スイッチ リファレンス コンフィギュレーション ファイルのダウンロード"^] 。
 
 この手順でサポートされているONTAPおよびNX-OSのバージョンは、次のとおりです。link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^] 。
 
@@ -105,4 +105,4 @@ CN1610から3232C（QSFPからSFP+）
 
 
 .次の手順
-link:cn1610-prepare-to-migrate.html["移行の準備"] 。
+link:cn1610-prepare-to-migrate.html["移行の準備"]。

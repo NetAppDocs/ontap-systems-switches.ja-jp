@@ -2,7 +2,7 @@
 permalink: switch-cisco-3232c/cabling-considerations-3232c.html 
 sidebar: sidebar 
 keywords: 3232c cabling setup, 3232c switches configuration, nx-os 
-summary: Cisco 3232C スイッチを構成する前に、次の情報を確認してください。 
+summary: Cisco 3232C スイッチを設定する前に、次の情報を確認してください。 
 ---
 = ケーブル配線と構成の考慮事項を確認する
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: Cisco 3232C スイッチを構成する前に、次の情報を確認�
 
 
 [role="lead"]
-Cisco 3232C スイッチを構成する前に、次の考慮事項を確認してください。
+Cisco 3232C スイッチを設定する前に、次の考慮事項を確認してください。
 
 
 

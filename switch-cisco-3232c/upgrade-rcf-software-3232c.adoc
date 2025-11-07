@@ -193,7 +193,7 @@ cs2# *exit*
 ----
 +
 
-CAUTION: ネットワーク接続の問題を回避するために、接続されているすべてのクラスター ポートをシャットダウンしてください。ナレッジベースの記事を参照してください https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["スイッチ OS のアップグレード中にクラスタ LIF を移行するとノードがクォーラム外になる"^]詳細についてはこちらをご覧ください。
+CAUTION: ネットワーク接続の問題を回避するために、接続されているすべてのクラスター ポートをシャットダウンしてください。ナレッジベースの記事を参照 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["スイッチ OS のアップグレード中にクラスタ LIF を移行するとノードがクォーラム外になる"^]詳細については、こちらをご覧ください。
 
 . クラスター ポートがクラスター スイッチ cs1 でホストされているポートにフェールオーバーされたことを確認します。数秒かかる場合があります。
 +
@@ -278,7 +278,7 @@ cluster1::*>
 `cs2# echo "hardware access-list tcam region qos 256" >> bootflash:write_erase.cfg`
 
 +
-ナレッジベースの記事を参照してください https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細についてはこちらをご覧ください。
+ナレッジベースの記事を参照 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細については、こちらをご覧ください。
 
 . 確認するには `write_erase.cfg`ファイルは期待どおりに入力されます。
 +
@@ -334,7 +334,7 @@ Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/suppo
 .例を表示
 [%collapsible]
 ====
-この例ではRCFファイルを示します `Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt`スイッチ cs2 にインストールされています:
+この例ではRCFファイルを示します `Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt`スイッチ cs2 にインストールされます:
 
 [listing, subs="+quotes"]
 ----
@@ -470,7 +470,7 @@ cs2                         cluster-network    10.233.205.91    N3K-C3232C
 +
 [NOTE]
 ====
-スイッチに以前ロードされた RCF のバージョンに応じて、cs1 スイッチ コンソールに次の出力が表示される場合があります。2020 年 11 月 17 日 16:07:18 cs1 %$ VDC-1 %$ %STP-2-UNBLOCK_CONSIST_PORT: VLAN0092 のポート port-channel1 のブロックを解除します。ポートの一貫性が復元されました。 2020年11月17日 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_PEER: VLAN0001のポートチャネル1をブロックしています。ピア VLAN が一致しません。 2020年11月17日 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL: VLAN0092のポートチャネル1をブロックしています。ローカル VLAN が矛盾しています。
+スイッチに以前ロードされた RCF のバージョンに応じて、cs1 スイッチ コンソールに次の出力が表示される場合があります。2020 年 11 月 17 日 16:07:18 cs1 %$ VDC-1 %$ %STP-2-UNBLOCK_CONSIST_PORT: VLAN0092 のポート port-channel1 のブロックを解除します。ポートの一貫性が復元されました。2020年11月17日 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_PEER: VLAN0001のポートチャネル1をブロックしています。ピア VLAN が一致しません。2020年11月17日 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL: VLAN0092のポートチャネル1をブロックしています。ローカル VLAN が矛盾しています。
 
 ====
 

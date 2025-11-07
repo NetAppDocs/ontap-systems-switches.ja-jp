@@ -62,7 +62,7 @@ NOTE: 見るlink:cabling-considerations-sn2100-storage.html["ケーブル配線�
 * LIF の名前は、ノード 1 ではそれぞれ _node1_clus1_ と _node1_clus2_、ノード 2 ではそれぞれ _node2_clus1_ と _node2_clus2_ です。
 * その `cluster1::*>`プロンプトはクラスターの名前を示します。
 * この手順で使用されるクラスター ポートは _e3a_ と _e3b_ です。
-* ブレイクアウト ポートの形式は、swp[ポート]s[ブレイクアウト ポート 0-3] です。たとえば、swp1 の 4 つのブレークアウト ポートは、_swp1s0_、_swp1s1_、_swp1s2_、および _swp1s3_ です。
+* ブレイクアウト ポートの形式は、swp[ポート]s[ブレイクアウト ポート 0-3] です。たとえば、swp1 の 4 つのブレークアウト ポートは、_swp1s0_、_swp1s1_、_swp1s2_、_swp1s3_ です。
 +
 その https://hwu.netapp.com["Hardware Universe"^]プラットフォームの実際のクラスター ポートに関する最新情報が含まれています。
 

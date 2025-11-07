@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-shared/required-documentation-9336c-shared.html 
 keywords: shared storage cluster switch 
-summary: Cisco Nexus 9336C-FX2 スイッチのインストールとメンテナンスについては、特定のスイッチおよびコントローラのドキュメントを参照して、 Cisco 9336-FX2 スイッチとONTAPクラスタをセットアップしてください。 
+summary: Cisco Nexus 9336C-FX2 スイッチのインストールとメンテナンスについては、特定のスイッチおよびコントローラのドキュメントを確認して、 Cisco 9336-FX2 スイッチとONTAPクラスタをセットアップしてください。 
 ---
 = Cisco Nexus 9336C-FX2 共有スイッチのドキュメント要件
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Cisco Nexus 9336C-FX2 スイッチのインストールとメンテナ�
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2 スイッチのインストールとメンテナンスについては、特定のスイッチおよびコントローラのドキュメントを参照して、 Cisco 9336-FX2 スイッチとONTAPクラスタをセットアップしてください。
+Cisco Nexus 9336C-FX2 スイッチのインストールとメンテナンスについては、特定のスイッチおよびコントローラのドキュメントを確認して、 Cisco 9336-FX2 スイッチとONTAPクラスタをセットアップしてください。
 
 Cisco Nexus 9336C-FX2共有スイッチを設定するには、 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズ スイッチのサポート"]ページ。
 
@@ -31,7 +31,7 @@ Cisco Nexus 9336C-FX2共有スイッチを設定するには、 https://www.cisc
 | link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズ NX-OS ソフトウェアのアップグレードおよびダウングレード ガイド"](スイッチにインストールされている NX-OS リリースのガイドを選択してください) | 必要に応じて、スイッチをONTAP対応スイッチ ソフトウェアにダウングレードする方法に関する情報を提供します。 
 
 
-| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000 シリーズ NX-OS コマンドリファレンス マスターインデックス"] | Ciscoが提供するさまざまなコマンド リファレンスへのリンクを提供します。 
+| link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-command-reference-list.html["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス マスター インデックス"] | Ciscoが提供するさまざまなコマンド リファレンスへのリンクを提供します。 
 
 
 | link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/mib/reference/MIBRef.html["Cisco Nexus 9000 MIB リファレンス"] | Nexus 9000 スイッチの管理情報ベース (MIB) ファイルについて説明します。 

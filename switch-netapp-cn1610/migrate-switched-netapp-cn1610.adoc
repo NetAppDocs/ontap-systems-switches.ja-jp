@@ -321,7 +321,7 @@ e2a    node1           e2a                    FAS3270           161   H
 `network interface show -vserver Cluster`
 
 +
-各クラスタLIFには、 `true` 「`Is Home`」列に表示されます。
+各クラスタLIFには `true`「`Is Home`」列に表示されます。
 
 +
 .例を表示

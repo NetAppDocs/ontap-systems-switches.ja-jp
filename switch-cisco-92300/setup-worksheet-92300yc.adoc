@@ -1366,4 +1366,4 @@ summary: サポートされているプラットフォームを文書化する�
 
 |===
 .次の手順
-link:install-switch-92300yc.html["スイッチをインストールする"] 。
+link:install-switch-92300yc.html["スイッチをインストールする"]。

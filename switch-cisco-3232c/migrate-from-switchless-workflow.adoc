@@ -2,7 +2,7 @@
 permalink: switch-cisco-3232c/migrate-from-switchless-workflow.html 
 sidebar: sidebar 
 keywords: 3232c cabling setup, 3232c switches configuration, nx-os 
-summary: Cisco 3232C スイッチを構成する前に、次の情報を確認してください。 
+summary: Cisco 3232C スイッチを設定する前に、次の情報を確認してください。 
 ---
 = 2ノードのスイッチレスクラスタワークフローからの移行
 :allow-uri-read: 

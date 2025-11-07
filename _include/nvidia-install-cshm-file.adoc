@@ -4,7 +4,7 @@
 
 NVIDIAイーサネット スイッチでイーサネット スイッチのヘルス モニタリングを構成するには、次の手順に従います。
 
-これらの手順は、 NVIDIA X190006-PEおよびX190006-PIスイッチが正しく検出されない場合に適用されます。これは、実行することで確認できます。 `system switch ethernet show`モデルに *OTHER* が表示されているかどうかを確認します。  NVIDIAスイッチのモデルを識別するには、次のコマンドで部品番号を見つけます。 `nv show platform hardware` NVIDIA CL 5.8以前の場合、または `nv show platform`それ以降のバージョンの場合。
+これらの手順は、 NVIDIA X190006-PEおよびX190006-PIスイッチが正しく検出されない場合に適用されます。これは、実行することで確認できます。 `system switch ethernet show`モデルに *OTHER* が表示されているかどうかを確認します。  NVIDIAスイッチのモデルを識別するには、次のコマンドで部品番号を見つけます。 `nv show platform hardware` NVIDIA CL 5.8以前または `nv show platform`それ以降のバージョンの場合。
 
 [NOTE]
 ====

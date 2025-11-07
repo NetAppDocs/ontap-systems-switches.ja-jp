@@ -13,7 +13,7 @@ summary: この手順を使用して、Nexus 9336C-FX2クラスタ スイッチ�
 [role="lead"]
 Nexus 9336C-FX2 および 9336C-FX2-T クラスタ スイッチに NX-OS ソフトウェアをインストールまたはアップグレードするには、次の手順に従います。
 
-始める前に、以下の手順を完了してください。link:install-nxos-overview-9336c-cluster.html["NX-OSとRCFのインストール準備"] 。
+始める前に、以下の手順を完了してください。link:install-nxos-overview-9336c-cluster.html["NX-OSとRCFのインストールの準備"] 。
 
 
 
@@ -48,7 +48,7 @@ Ciscoスイッチのアップグレードおよびダウングレード手順の
 この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
 * 2 つのCiscoスイッチの名前は cs1 と cs2 です。
-* ノード名はcluster1-01、cluster1-02、cluster1-03、cluster1-04です。
+* ノード名は、cluster1-01、cluster1-02、cluster1-03、cluster1-04 です。
 * クラスタ LIF 名は、cluster1-01_clus1、cluster1-01_clus2、cluster1-02_clus1、cluster1-02_clus2、cluster1-03_clus1、cluster1-03_clus2、cluster1-04_clus1、cluster1-04_clus2 です。
 * その `cluster1::*>`プロンプトはクラスターの名前を示します。
 
@@ -61,7 +61,7 @@ Ciscoスイッチのアップグレードおよびダウングレード手順の
 
 .手順
 . クラスタ スイッチを管理ネットワークに接続します。
-. ping コマンドを使用して、NX-OS ソフトウェアと RCF をホストしているサーバへの接続を確認します。
+. ping コマンドを使用して、NX-OS ソフトウェアと RCF をホストしているサーバーへの接続を確認します。
 +
 .例を表示
 [%collapsible]

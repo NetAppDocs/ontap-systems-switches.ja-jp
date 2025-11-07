@@ -9,7 +9,7 @@ summary: Cisco Nexus 9332D-GX2B スイッチのポート詳細
 
 
 [role="lead"]
-Cisco Nexus 9332D-GX2B スイッチは、 Cisco Nexus 9000 プラットフォームの一部です。  AFX システム スイッチを使用すると、2 つ以上のノードを持つONTAPクラスターを構築できます。
+Cisco Nexus 9332D-GX2B スイッチは、 Cisco Nexus 9000 プラットフォームの一部です。AFX システム スイッチを使用すると、2 つ以上のノードを持つONTAPクラスターを構築できます。
 
 
 

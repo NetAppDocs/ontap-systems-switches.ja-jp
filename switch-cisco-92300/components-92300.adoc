@@ -68,4 +68,4 @@ Cisco Nexus 92300YC スイッチのエアフローの詳細:
 
 
 .次の手順
-link:required-documentation-92300.html["必要な書類"] 。
+link:required-documentation-92300.html["必要な書類"]。

@@ -174,7 +174,7 @@ advancedのプロンプト（*>）が表示されます。
 .例を表示
 [%collapsible]
 ====
-次の例は、すべてのノードのポート e0b をシャットダウンするコマンドを示しています。
+次の例は、すべてのノード上のポート e0b をシャットダウンするコマンドを示しています。
 
 [listing]
 ----
@@ -411,7 +411,7 @@ Are you sure you want to apply the configuration script? (y/n) y
 Configuration script 'CN1610_CS_RCF_v1.2.scr' applied.
 ----
 ====
-. 変更がスイッチに適用されたことを確認し、保存します。
+. 変更がスイッチに適用されたことを確認して保存します。
 +
 `show running-config`
 

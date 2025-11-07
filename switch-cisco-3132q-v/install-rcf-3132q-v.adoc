@@ -22,8 +22,8 @@ Nexus 3132Q-V スイッチを初めてセットアップした後、RCF をイ�
 * 完全に機能するクラスター (ログにエラーや同様の問題がない)。
 * 現在の参照構成ファイル (RCF)。
 * RCF をインストールする場合は、スイッチへのコンソール接続が必要です。この要件は、ナレッジベースの記事を使用した場合にはオプションです。 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]事前に設定をクリアしてください。
-* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネットスイッチ"^] 。サポートされているONTAPおよび RCF バージョンについては、スイッチ互換性表を参照してください。  RCF のコマンド構文と NX-OS のバージョンのコマンド構文の間にはコマンド依存関係がある可能性があることに注意してください。
-* https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズ スイッチ"^] 。Ciscoスイッチのアップグレードおよびダウングレード手順の詳細なドキュメントについては、 Cisco Web サイトで入手可能な適切なソフトウェアおよびアップグレード ガイドを参照してください。
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネットスイッチ"^]。サポートされているONTAPおよび RCF バージョンについては、スイッチ互換性表を参照してください。  RCF のコマンド構文と NX-OS のバージョンのコマンド構文の間にはコマンド依存関係がある可能性があることに注意してください。
+* https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズ スイッチ"^]。Ciscoスイッチのアップグレードおよびダウングレード手順の詳細なドキュメントについては、 Cisco Web サイトで入手可能な適切なソフトウェアおよびアップグレード ガイドを参照してください。
 
 
 
@@ -849,4 +849,4 @@ RPC status:
 --
 ====
 .次の手順
-link:configure-ssh-keys.html["SSH設定を確認する"] 。
+link:configure-ssh-keys.html["SSH設定を確認する"]。

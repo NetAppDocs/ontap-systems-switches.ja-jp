@@ -11,7 +11,7 @@ summary: Nexus 9332D-GX2B スイッチを初めてセットアップした後、
 
 
 [role="lead"]
-Nexus 9332D-GX2B スイッチを初めてセットアップした後、リファレンス コンフィギュレーション ファイル (RCF) をインストールします。スイッチに既存のバージョンの RCF ファイルがインストールされている場合は、RCF バージョンをアップグレードします。
+Nexus 9332D-GX2B スイッチを初めてセットアップした後、リファレンス構成ファイル (RCF) をインストールします。スイッチに既存のバージョンの RCF ファイルがインストールされている場合は、RCF バージョンをアップグレードします。
 
 ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]RCF をインストールまたはアップグレードする際の詳細については、こちらをご覧ください。
 

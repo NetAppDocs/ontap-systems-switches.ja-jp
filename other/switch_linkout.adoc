@@ -11,7 +11,7 @@ summary: これらのリンクは他のスイッチ モデルにも使用でき�
 
 
 [role="lead"]
-これらのリンクを使用して、クラスターおよびストレージ スイッチの以前のモデルのドキュメントを見つけることができます。リンクをクリックすると、別のドキュメント サイトに移動します。
+これらのリンクを使用すると、クラスターおよびストレージ スイッチの以前のモデルに関するドキュメントを見つけることができます。リンクをクリックすると、別のドキュメント サイトに移動します。
 
 * https://mysupport.netapp.com/documentation/docweb/index.html?productID=62376&language=en-US["Cisco Nexus 5596"]
 * https://mysupport.netapp.com/documentation/docweb/index.html?productID=62373&language=en-USNetApp["CN1601"]

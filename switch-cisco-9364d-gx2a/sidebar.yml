@@ -23,7 +23,7 @@ entries:
     url: "/switch-cisco-9364d-gx2a/configure-software-overview-9364d-cluster.html"
   - title: スイッチを設定する
     url: "/switch-cisco-9364d-gx2a/setup-switch-9364d-cluster.html"
-  - title: NX-OSとRCFのインストール準備
+  - title: NX-OSとRCFのインストールの準備
     url: "/switch-cisco-9364d-gx2a/install-nxos-overview-9364d-cluster.html"
   - title: NX-OSソフトウェアをインストールまたはアップグレードする
     url: "/switch-cisco-9364d-gx2a/install-nxos-software-9364d-cluster.html"

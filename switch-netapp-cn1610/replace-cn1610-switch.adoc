@@ -33,7 +33,7 @@ summary: 特定の一連のタスクを実行することで、障害のあるNe
 NetApp、使用しているデバイスでコンソール ログを有効にし、スイッチを交換するときに次のアクションを実行することを強くお勧めします。
 
 * メンテナンス中はAutoSupport を有効のままにしておきます。
-* メンテナンスの前後にメンテナンスAutoSupportをトリガーして、メンテナンス期間中のケース作成を無効にします。このナレッジベースの記事を参照してください https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92: スケジュールされたメンテナンス期間中の自動ケース作成を抑制する方法"^]詳細については、こちらをご覧ください。
+* メンテナンスの前後にメンテナンスAutoSupport をトリガーして、メンテナンス期間中のケース作成を無効にします。このナレッジベースの記事を参照してください https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92: スケジュールされたメンテナンス期間中の自動ケース作成を抑制する方法"^]詳細については、こちらをご覧ください。
 * すべての CLI セッションのセッション ログを有効にします。セッションログを有効にする方法については、このナレッジベースの記事の「セッション出力のログ記録」セクションを参照してください。 https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["ONTAPシステムへの最適な接続を実現するための PuTTY の設定方法"^] 。
 
 
@@ -416,7 +416,7 @@ cluster::*> *cluster ping-cluster -node <node_name>*
 ----
 ====
 . ストレージ管理者がスイッチの交換の準備ができているかどうかを確認します。
-. old_cs1 スイッチからすべてのケーブルを取り外し、それらのケーブルを new_cs1 スイッチの同じポートに接続します。
+. old_cs1 スイッチからすべてのケーブルを取り外し、new_cs1 スイッチの同じポートにケーブルを接続します。
 . cs2 スイッチで、ISL ポート 13 ～ 16 を起動します。
 +
 .例を表示
@@ -466,7 +466,7 @@ cluster::*> *network interface revert -vserver node1 -lif <cluster_lif_to_be_rev
 cluster::*> *network interface show -role cluster*
 ----
 ====
-. 最初のノードのクラスタ LIF が起動し、ホーム ポートに戻されている場合は、手順 25 と 26 を繰り返して、クラスタ ポートを起動し、クラスタ内の他のノードのクラスタ LIF を元に戻します。
+. 最初のノードのクラスタ LIF が起動していて、ホーム ポートに戻されている場合は、手順 25 と 26 を繰り返して、クラスタ ポートを起動し、クラスタ内の他のノードのクラスタ LIF を元に戻します。
 . クラスター内のノードに関する情報を表示します。
 +
 .例を表示

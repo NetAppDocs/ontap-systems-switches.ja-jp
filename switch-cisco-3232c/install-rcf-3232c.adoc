@@ -25,7 +25,7 @@ Nexus 3232C スイッチを初めてセットアップした後、RCF をイン�
 * 現在の参照構成ファイル (RCF)。
 * RCF をインストールするときに必要な、スイッチへのコンソール接続。
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ ページ"^]サポートされているONTAPおよび RCF バージョンについては、スイッチ互換性表を参照してください。  RCF のコマンド構文と NX-OS のバージョンのコマンド構文の間にはコマンド依存関係がある可能性があることに注意してください。
-* link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズ スイッチ"^] 。Ciscoスイッチのアップグレードおよびダウングレード手順の完全なドキュメントについては、 Cisco Web サイトにある適切なソフトウェアおよびアップグレード ガイドを参照してください。
+* link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 シリーズ スイッチ"^]。Ciscoスイッチのアップグレードおよびダウングレード手順の完全なドキュメントについては、 Cisco Web サイトにある適切なソフトウェアおよびアップグレード ガイドを参照してください。
 
 
 
@@ -46,7 +46,7 @@ Nexus 3232C スイッチを初めてセットアップした後、RCF をイン�
 
 この手順では、動作中のスイッチ間リンク (ISL) は必要ありません。これは、RCF バージョンの変更によって ISL 接続が一時的に影響を受ける可能性があるため、設計によるものです。クラスタ操作を中断せずに実行するために、次の手順では、ターゲット スイッチで手順を実行しながら、すべてのクラスタ LIF を動作中のパートナー スイッチに移行します。
 
-必ず手続きを完了してくださいlink:prepare-install-cisco-nexus-3232c.html["NX-OSとRCFのインストール準備"]、以下の手順に従います。
+必ず手続きを完了してくださいlink:prepare-install-cisco-nexus-3232c.html["NX-OSとRCFのインストールの準備"]、以下の手順に従います。
 
 .手順
 . クラスター スイッチに接続されている各ノード上のクラスター ポートを表示します。
@@ -343,7 +343,7 @@ Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/s
 .例を表示
 [%collapsible]
 ====
-この例ではRCFファイルを示します `Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt`スイッチ cs2 にインストールされています:
+この例ではRCFファイルを示します `Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt`スイッチ cs2 にインストールされます:
 
 [listing, subs="+quotes"]
 ----
@@ -816,4 +816,4 @@ RPC status:
 --
 ====
 .次の手順
-link:configure-ssh-keys.html["SSH設定を確認する"] 。
+link:configure-ssh-keys.html["SSH設定を確認する"]。

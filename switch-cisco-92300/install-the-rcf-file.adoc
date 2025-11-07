@@ -252,7 +252,7 @@ Copy complete.
 Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズ スイッチ"^]ガイド。
 
 +
-この例ではRCFファイルを示します `Nexus_92300YC_RCF_v1.0.2.txt`スイッチ cs2 にインストールされています:
+この例ではRCFファイルを示します `Nexus_92300YC_RCF_v1.0.2.txt`スイッチ cs2 にインストールされます:
 
 +
 [listing, subs="+quotes"]
@@ -649,4 +649,4 @@ RPC status:
 --
 ====
 .次の手順
-link:configure-ssh-keys.html["SSH設定を確認する"] 。
+link:configure-ssh-keys.html["SSH設定を確認する"]。

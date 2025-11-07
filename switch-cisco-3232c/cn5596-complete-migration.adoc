@@ -54,4 +54,4 @@ C2                          cluster-network    10.10.1.104      NX3232C
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"] 。
+link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"]。

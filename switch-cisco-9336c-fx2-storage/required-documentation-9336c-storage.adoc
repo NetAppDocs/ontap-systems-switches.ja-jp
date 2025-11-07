@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-storage/required-documentation-9336c-storage.html 
 keywords: shared storage cluster switch 
-summary: Cisco Nexus 9336C-FX2 スイッチのインストールとメンテナンスについては、特定のスイッチおよびコントローラのドキュメントを参照して、 Cisco 9336-FX2 スイッチとONTAPクラスタをセットアップしてください。 
+summary: Cisco Nexus 9336C-FX2 スイッチのインストールとメンテナンスについては、特定のスイッチおよびコントローラのドキュメントを確認して、 Cisco 9336-FX2 スイッチとONTAPクラスタをセットアップしてください。 
 ---
 = Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチのドキュメント要件
 :hardbreaks:
@@ -110,7 +110,7 @@ ONTAPリリースのあらゆる側面に関する詳細情報を提供します
  a| 
 https://hwu.netapp.com["Hardware Universe"^]
  a| 
-NetApp のハードウェア構成と互換性に関する情報を提供します。
+NetAppのハードウェア構成と互換性に関する情報を提供します。
 
 |===
 

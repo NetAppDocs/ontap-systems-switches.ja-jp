@@ -50,4 +50,4 @@ NetAppシステムキャビネット内のCisco Nexus 9336C-FX2
 
 
 .次の手順
-オプションとして、link:install-switch-and-passthrough-panel-9336c-storage.html["NetAppキャビネットにCisco Nexus 9336C-FX2スイッチをインストールする"] 。それ以外の場合は、link:setup-switch-9336c-storage.html["スイッチを設定する"] 。
+オプションとして、 link:install-switch-and-passthrough-panel-9336c-storage.html["NetAppキャビネットにCisco Nexus 9336C-FX2スイッチをインストールする"]。それ以外の場合は、 link:setup-switch-9336c-storage.html["スイッチを設定する"]。

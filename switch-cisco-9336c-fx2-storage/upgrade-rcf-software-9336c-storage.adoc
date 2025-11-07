@@ -132,7 +132,7 @@ cs1(config)# *exit*
 ----
 +
 
-CAUTION: ネットワーク接続の問題を回避するために、接続されているすべてのポートをシャットダウンしてください。ナレッジベースの記事を参照してください https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["スイッチ OS のアップグレード中にクラスタ LIF を移行するとノードがクォーラム外になる"^]詳細についてはこちらをご覧ください。
+CAUTION: ネットワーク接続の問題を回避するために、接続されているすべてのポートをシャットダウンしてください。ナレッジベースの記事を参照 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["スイッチ OS のアップグレード中にクラスタ LIF を移行するとノードがクォーラム外になる"^]詳細については、こちらをご覧ください。
 
 . クラスタ LIF がスイッチ cs1 でホストされているポートにフェイルオーバーされたことを確認します。数秒かかる場合があります。
 +

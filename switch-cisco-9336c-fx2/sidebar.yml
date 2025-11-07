@@ -34,7 +34,7 @@ entries:
     url: "/switch-cisco-9336c-fx2/configure-software-overview-9336c-cluster.html"
   - title: スイッチを設定する
     url: "/switch-cisco-9336c-fx2/setup-switch-9336c-cluster.html"
-  - title: NX-OSとRCFのインストール準備
+  - title: NX-OSとRCFのインストールの準備
     url: "/switch-cisco-9336c-fx2/install-nxos-overview-9336c-cluster.html"
   - title: NX-OSソフトウェアをインストールまたはアップグレードする
     url: "/switch-cisco-9336c-fx2/install-nxos-software-9336c-cluster.html"

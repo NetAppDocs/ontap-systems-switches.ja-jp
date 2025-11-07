@@ -106,7 +106,7 @@ cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
 image::../media/tnsc_clusterswitch_connections.PNG[ノード1とノード2間のクラスタスイッチ接続]
 
 +
-ポートの値が `up`「リンク」列の値は `healthy`「健康状態」列に表示されます。
+ポートの値が `up`「リンク」列の値は `healthy`「健康状態」列。
 
 +
 .例を表示
@@ -555,7 +555,7 @@ RPC status:
 `system node autosupport invoke -node * -type all -message MAINT=END`
 
 +
-詳細については、以下を参照してください。 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows_-_ONTAP_9["NetAppの技術情報アーティクル1010449：「How to suppress automatic case creation during scheduled maintenance windows」"^] 。
+詳細については、 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_suppress_automatic_case_creation_during_scheduled_maintenance_windows_-_ONTAP_9["NetAppの技術情報アーティクル1010449：「How to suppress automatic case creation during scheduled maintenance windows」"^]。
 
 . 権限レベルを管理者に戻します。
 +

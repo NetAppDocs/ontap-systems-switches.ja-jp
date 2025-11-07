@@ -336,7 +336,7 @@ RPC status:
 ----
 --
 ====
-. [[step10]]アクティブ Nexus 5596 スイッチ CL1 の ISL ポート 41 ～ 48 をシャットダウンします。
+. [[step10]]アクティブNexus 5596スイッチCL1のISLポート41～48をシャットダウンします。
 +
 .例を表示
 [%collapsible]
@@ -382,4 +382,4 @@ C2(config-if)# exit
 
 
 .次の手順
-link:cn5596-configure-ports.html["ポートを設定する"] 。
+link:cn5596-configure-ports.html["ポートを設定する"]。

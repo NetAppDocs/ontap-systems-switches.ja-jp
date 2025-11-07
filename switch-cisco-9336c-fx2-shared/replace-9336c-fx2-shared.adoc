@@ -593,7 +593,7 @@ node2
 ====
 
 
-. [[step18]]棚が正しくケーブル接続されていることを確認します。
+. [[step18]]棚のケーブルが正しく接続されていることを確認します。
 +
 `storage shelf port show -fields remote- device,remote-port`
 
