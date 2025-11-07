@@ -333,4 +333,4 @@ UP     swp16      100G  9216   BondMember  cs01 (swp16)     Master: cl
 --
 ====
 .次の手順
-ケーブル配線と構成要件を確認したら、 link:install-cable-shelves-sn2100-storage.html["NS224シェルフをスイッチ接続ストレージとしてケーブル接続する"]。
+ケーブル配線と構成要件を確認したら、link:install-cable-shelves-sn2100-storage.html["NS224シェルフをスイッチ接続ストレージとしてケーブル接続する"] 。

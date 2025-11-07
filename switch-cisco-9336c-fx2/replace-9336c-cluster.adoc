@@ -618,4 +618,4 @@ Total entries displayed: 4
 
 
 .次の手順
-スイッチを交換したら、link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"] 。
+スイッチを交換したら、 link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"]。

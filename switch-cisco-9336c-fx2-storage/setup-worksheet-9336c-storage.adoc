@@ -1023,4 +1023,4 @@ summary: サポートされているプラットフォームを文書化する�
 参照 https://hwu.netapp.com/Switch/Index["Hardware Universe"]スイッチ ポートの詳細については、こちらをご覧ください。
 
 .次の手順
-配線ワークシートを完了したら、link:install-9336c-storage.html["スイッチをインストールする"] 。
+配線ワークシートを完了したら、 link:install-9336c-storage.html["スイッチをインストールする"]。

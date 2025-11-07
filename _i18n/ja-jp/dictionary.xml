@@ -288,7 +288,6 @@
   <block id="c7ca49e9f550dc9b18f2402f13ad9430" category="list-text">[[step5]]自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。<block ref="9ac424c0d7b432975df36a19daf50c9c" prefix=" " category="inline-code"></block></block>
   <block id="58eaebf972358f1cf03d386a4ade1a0f" category="paragraph-title">次の手順</block>
   <block id="00a850fef80958a3c902c0d0b0fc20c4" category="inline-link-macro">スイッチのヘルスモニタリングを設定する</block>
-  <block id="07c675c656e29cd460e1d99b7aa706f4" category="paragraph">スイッチを移行したら、<block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block> 。</block>
   <block id="2b77bb88cf2794536ac9c658ce053c6b" category="doc">ONTAPが監視できるようにスイッチエントリを作成します</block>
   <block id="4aa02798c2feea1f87e6fb5301e10d30" category="paragraph">使用<block ref="e59cde6e921a1b23eb9bf8c1c9068aca" prefix=" " category="inline-code"></block>指定されたイーサネット スイッチの監視を手動で構成し、有効にするコマンド。これは、 ONTAP がスイッチを自動的に追加しない場合、または以前にスイッチを削除して再度追加する場合に役立ちます。</block>
   <block id="82b694a75e07a035b8cd3b7aae86fdb8" category="paragraph">典型的な例としては、[DeviceName] という名前のスイッチを追加し、IP アドレスを 1.2.3.4 にし、SNMPv2c 資格情報を *cshm1!* に設定します。使用<block ref="0fa5a8d20ad4f199ce4bb17e333f0a4a" prefix=" " category="inline-code"></block>の代わりに<block ref="0f3e90baa25250f9896e5ad67dd9d1f6" prefix=" " category="inline-code"></block>ストレージ スイッチを構成する場合。</block>
@@ -379,7 +378,6 @@
   <block id="74d14036e96594d67869316b84c6d566" category="paragraph">CSHM ダウンロード パッケージが正常に処理されました。</block>
   <block id="89c6b3e5f896b8d329ae4e4fe91cc812" category="paragraph">エラーが発生した場合は、NetAppサポートにお問い合わせください。</block>
   <block id="a6fd16052b19595c024aa4e5bcb0b366" category="list-text">[[step6]]イーサネットスイッチヘルスモニターのポーリング間隔の2倍まで待機します。<block ref="c9e6cd6140c9d8677df821c7cce2aac1" prefix=" " category="inline-code"></block>次のステップを完了する前に、 をクリックしてください。</block>
-  <block id="c947c5faccdddd0a9a87be7895f50511" category="list-text">コマンドを実行する<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block>ONTAPシステムで、監視対象フィールドが *True* に設定され、シリアル番号フィールドに *Unknown* が表示されていない状態でクラスタ スイッチが検出されていることを確認します。</block>
   <block id="d57382f230671f8cd52f47dc80838934" category="admonition">構成ファイルを適用した後もモデルに *OTHER* が表示される場合は、 NetAppサポートにお問い合わせください。</block>
   <block id="5667ca92a697e03bc95d429bfe20fda5" category="inline-link">システムスイッチイーサネットヘルスモニターの設定</block>
   <block id="a7692359e6ab53408219d1f4fbab4614" category="paragraph">参照<block ref="e8f3e733a7456e37aaeb3c329fac3e94" category="inline-link-rx"></block>詳細についてはコマンドを参照してください。</block>
@@ -3247,7 +3245,6 @@
   <block id="8fbba80df6dcbd4d547347fd146e1b83" category="list-text">既存のスマート アカウントへのアクセスをリクエストします。見る<block ref="f4476a827230258a80e0d6788d3c661e" category="inline-link-rx"></block>詳細については。</block>
   <block id="4363ac02ed8f94606b748a9c8093f0d1" category="admonition">スマート ライセンスを購入したら、適切な RCF をインストールして、使用可能な 36 個のポートすべてを有効にして構成します。</block>
   <block id="b50aca116f0bd723f5c38d48f51c2ab0" category="inline-link-macro">必要な書類</block>
-  <block id="e5cb7ccaa2366df9a6c6ca888569dc95" category="paragraph">コンポーネントと部品番号を確認したら、<block ref="59e15a623229fb37fc5dda6561b10061" category="inline-link-macro-rx"></block> 。</block>
   <block id="85fda41aaa9ea1a4147e242ab3ed56a9" category="doc">Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタ スイッチの構成要件</block>
   <block id="e80c428a7eea6075f03255c9ec326bc8" category="paragraph">Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチのインストールとメンテナンスについては、構成とネットワーク要件を必ず確認してください。</block>
   <block id="013647ab1eb017c353f89f46ca2c0d85" category="section-title">ONTAPのサポート</block>
@@ -3308,7 +3305,6 @@
   <block id="8608163382dad3a40accd48496936aa9" category="paragraph">NVIDIAイーサネット ポートのサポート、25GbE FEC 要件、および TCAM リソースに関する情報を確認します。</block>
   <block id="2436c6df17686f19f38ce6d35e26f6d3" category="summary">Cisco NX-OS ソフトウェアとリファレンス コンフィギュレーション ファイル (RCF) をCisco Nexus 9336C-FX2 クラスタ スイッチにインストールする必要があります。</block>
   <block id="51a2ed9bde6e6aaf9d7c536fcfb97d05" category="inline-link-macro">NX-OSソフトウェアをインストールまたはアップグレードする</block>
-  <block id="9a902e7f4742e91939e7f89660ba44b7" category="paragraph">NX-OSソフトウェアとRCFをインストールする準備ができたら、<block ref="af60ba4b6c39eb7f1655b798abad8e11" category="inline-link-macro-rx"></block> 。</block>
   <block id="bbb9faab95e3e9af13430c6529221602" category="summary">この手順を使用して、Nexus 9336C-FX2クラスタ スイッチにNX-OSソフトウェアをインストールできます。</block>
   <block id="9eb0d2dee744ca5726b57d78636445af" category="paragraph">Nexus 9336C-FX2 および 9336C-FX2-T クラスタ スイッチに NX-OS ソフトウェアをインストールまたはアップグレードするには、次の手順に従います。</block>
   <block id="242de61cd0710bcf5f8d68190d392f95" category="paragraph">始める前に、以下の手順を完了してください。<block ref="7be1885a02922674638042ed6280ba6b" category="inline-link-macro-rx"></block> 。</block>
@@ -3381,7 +3377,6 @@
   <block id="bca1ec7e101b6f013bc7eecb3a4e9ceb" category="paragraph">_(2) 前面ラックマウントブラケットが前面ポストと面一になるまで、スイッチをゆっくりとスライドさせます。_</block>
   <block id="7e2d17623d3c5b661d8a503fb0b8140e" category="list-text">各 9336C-FX2 および 9336C-FX2-T スイッチの管理ポートをいずれかの管理スイッチ (注文した場合) に接続するか、管理ネットワークに直接接続します。</block>
   <block id="11e38055fe460ee1b1086763cf1cd15b" category="inline-link-macro">Cisco Nexus 9336C-FX2および9336C-FX2-Tスイッチの設定</block>
-  <block id="875716c453b187736ba6daf886734549" category="paragraph">NetAppキャビネットにスイッチを設置したら、<block ref="04831059e32b83b4a29d50c410dcfb7a" category="inline-link-macro-rx"></block> 。</block>
   <block id="c3109b36f2c8edda93835ccefa0e4dc3" category="doc">参照構成ファイル（RCF）のインストールまたはアップグレードの概要</block>
   <block id="3770b71681be5f01527157fd0dc50b61" category="paragraph">Nexus 9336C-FX2 および 9336C-FX2-T スイッチを初めてセットアップした後、リファレンス コンフィギュレーション ファイル (RCF) をインストールします。スイッチに既存のバージョンの RCF ファイルがインストールされている場合は、RCF バージョンをアップグレードします。</block>
   <block id="db3af2b70c973de4437c254b7d216816" category="paragraph-title">利用可能なRCF構成</block>
@@ -3414,7 +3409,6 @@
   <block id="79509ba15c2970f327dd8610e3b4628c" category="paragraph-title">使用されるコマンド</block>
   <block id="eebaf4fed546b3a0992a87fde29aa8eb" category="inline-link-macro">RCFをインストールする</block>
   <block id="a5f34389dd818124e9902ca190b9a24e" category="inline-link-macro">RCFをアップグレードする</block>
-  <block id="4463dfd36adae473f01c4ccdf8c64bf3" category="paragraph">RCFのインストールまたはRCFのアップグレード手順を確認した後、<block ref="657b0126c63dca332f6eb2a1abd407b9" category="inline-link-macro-rx"></block>または<block ref="a2077d156a5f79cc9b42ae5ebd286488" category="inline-link-macro-rx"></block>必要に応じて。</block>
   <block id="0f2a4526602865cc9158a56028bf97de" category="summary">ONTAPクラスタ用のNetApp CN1610 クラスタ スイッチを、 Cisco Nexus 9336C-FX2 クラスタ ネットワーク スイッチに無停止で移行できます。</block>
   <block id="3a6d24a4a4d0d823eee73a6ee98e03ec" category="doc">NetApp CN1610 クラスタ スイッチからCisco 9336C-FX2 および 9336C-FX2-T クラスタ スイッチへの移行</block>
   <block id="8f14575a7f194822de8634bcb415b980" category="paragraph">ONTAPクラスタのNetApp CN1610 クラスタ スイッチをCisco 9336C-FX2 および 9336C-FX2-T クラスタ スイッチに移行できます。この手順は無停止で実行されます。</block>
@@ -3457,7 +3451,6 @@
   <block id="ba04a36ca69927056bab3bba36362e9b" category="list-text">スイッチ cs1 および cs2 で、すべてのノード クラスタ ポートが稼働していることを確認します。</block>
   <block id="366abeaa2bac7598f17d029db42f0407" category="paragraph"><block ref="478474aa0db28144d5db02c478cd5215" prefix="" category="inline-code"></block></block>
   <block id="496fe3dd70b4f5816f2c409909812bb5" category="list-text">すべてのクラスタ ネットワーク LIF がホーム ポートに戻っていることを確認します。</block>
-  <block id="5607369fa249db572762bd8da8119d88" category="paragraph">スイッチを移行したら、<block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block> 。</block>
   <block id="ccc533253625ec3fd1cd1ad3dd395ae6" category="summary">既存の2ノード スイッチレス クラスタ環境を使用している場合は、Cisco Nexus 9336C-FX2スイッチを使用して2ノード スイッチ クラスタ環境に移行し、3ノード以上にクラスタを拡張できます。</block>
   <block id="a2d07f4e7a36ed872e60c08cdcc73771" category="doc">2ノードスイッチクラスタへの移行</block>
   <block id="44062246be6e5585fa8092a371375894" category="paragraph">既存の 2 ノードのスイッチレス クラスタ環境がある場合は、 Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチを使用して 2 ノードのスイッチド クラスタ環境に移行できます。</block>
@@ -3533,7 +3526,6 @@
   <block id="e6119e5e7b756f5ac645bab3bd6b7cf5" category="paragraph">デフォルトのスイッチポートインターフェース状態（shut/noshut）を設定する</block>
   <block id="ddcc83d63cc173465ab257f25d480cfc" category="paragraph">CoPP システム プロファイルを構成する (厳密/中程度/寛容/高密度)</block>
   <block id="fa115eaa6bb67b1f30145b50e2909494" category="inline-link-macro">NX-OSソフトウェアとRCFのインストールの準備</block>
-  <block id="56de77ab5cc67b75b4ee729281c45085" category="paragraph">スイッチの設定が完了したら、<block ref="fc9a049c460091b99cacecbc6842e0d4" category="inline-link-macro-rx"></block> 。</block>
   <block id="20d4dc5b26b66af5b87062c8cb66e702" category="doc">Cisco Nexus 9336C-FX2 または 9336C-FX2-T の配線ワークシートを完成させる</block>
   <block id="d34235ce3b8eeb56732eac003a8b80f5" category="list-text"><block ref="5f7d0a649ff80997d8ca88905c993bff" category="inline-xref-macro-rx"></block></block>
   <block id="ade6c0cb61106114d61bca7ca65fe64c" category="list-text"><block ref="5e883d5b3902e61fee96d087a27d3028" category="inline-xref-macro-rx"></block></block>
@@ -3575,7 +3567,6 @@
   <block id="17c2de625275ee631aeeb131bcf75439" category="paragraph">ライセンスが必要です</block>
   <block id="811b4b7fb3b0d037ae140fe004831efe" category="section-title">9336C-FX2-T ブランク配線ワークシート (12 ポート)</block>
   <block id="659074b8bec9aa34a34060887c630758" category="inline-link-macro">スイッチをインストールする</block>
-  <block id="9ef15c24896a81d852e0ec927d07b576" category="paragraph">配線ワークシートを完了したら、<block ref="a4d08a22d117d50c4f6f41bb907b902c" category="inline-link-macro-rx"></block> 。</block>
   <block id="bdaa0ac1a14f06640cc063a63e6b48d5" category="summary">Smart Call Home は、ネットワーク上のハードウェアおよびソフトウェア コンポーネントを監視し、重大なシステム状態に関する電子メールベースの通知を生成します。デバイスでイベントが発生すると、Smart Call Home は宛先プロファイルに設定されているすべての受信者にアラートを送信します。</block>
   <block id="b0411eb90c7d5ca211940fcb5d8f219a" category="doc">参照構成ファイル (RCF) をアップグレードする</block>
   <block id="eba0713505eba2aab08d4d6fa9ca2cf7" category="paragraph">運用スイッチに既存のバージョンの RCF ファイルがインストールされている場合は、RCF バージョンをアップグレードします。</block>
@@ -3928,7 +3919,6 @@
   <block id="666618fc10fce8f3b4f820a79b261925" category="paragraph">Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチのインストールとメンテナンスについては、必ずコンポーネントと部品番号のリストを確認してください。</block>
   <block id="bcf1c9a6a953488392920f911a4c6e27" category="paragraph">次の表に、9336C-FX2 および 9336C-FX2-T ストレージ スイッチ、ファン、および電源装置の部品番号と説明を示します。</block>
   <block id="6aea76bb63b89b76edb29df0b9ec6a5c" category="paragraph">Cisco Nexus 9336C-FX-T ストレージ スイッチで 12 個を超えるポートをアクティブ化するには、 Cisco Smart ライセンスを購入する必要があります。  Cisco Smart ライセンスは、 Cisco Smart アカウントを通じて管理されます。</block>
-  <block id="b5091eb9e945ba6ef5067dde084633c9" category="paragraph">コンポーネントと部品番号を確認したら、<block ref="c9c7b33eb7ecfb82310ed8ccd1b741e8" category="inline-link-macro-rx"></block> 。</block>
   <block id="f7b54db8bb1edb66d9e7729b369d5cba" category="doc">Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチの構成要件</block>
   <block id="802eabd8abd0754593f6d0b63c7c7415" category="paragraph">Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチのインストールとメンテナンスについては、構成とネットワーク要件を必ず確認してください。</block>
   <block id="b7abf5be3f262d14e6b24c3da10f12bf" category="paragraph">構成要件を確認した後、<block ref="956f80516b807d0f1eb3f339d37ac1f0" category="inline-link-macro-rx"></block> 。</block>
@@ -3941,7 +3931,6 @@
   <block id="9418a59943ac2aed445a8e6f7a32f9b2" category="paragraph">Cisco NX-OS ソフトウェアおよびリファレンス コンフィギュレーション ファイル (RCF) をCisco 9336C-FX2 および 9336C-FX2-T ストレージ スイッチにインストールする必要があります。</block>
   <block id="96c0f9b9f35ec112769fb42b69304b92" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="6dc839faa17719bf6b40745660551f1b" category="inline-link-macro-rx"></block></block>
   <block id="2953cffbac344fff2421dadad04c271f" category="paragraph">Cisco 9336C-FX2 および 9336C-FX2-T ストレージ スイッチに NX-OS ソフトウェアをダウンロードしてインストールまたはアップグレードします。</block>
-  <block id="102c54c666c08f4173fa519e6ff129bc" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="7c940c5373653de732f444e5b7d2c3dd" category="inline-link-macro-rx"></block></block>
   <block id="6d7847194618d7f43d5ef4802d5b7bf5" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="6490da53052fc089e10d4c5945e4165d" category="inline-link-macro-rx"></block></block>
   <block id="8f80a77a0ded9f9cecc823645e77aa66" category="paragraph">9336C-FX2 および 9336C-FX2-T ストレージ スイッチの設定を消去します。</block>
   <block id="890132d2ea58089b7772d3a69da1fae8" category="paragraph">SSH設定を確認したら、<block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block> 。</block>
@@ -3973,22 +3962,17 @@
   <block id="986b831325814d3f0225e51df098b72b" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="d43bf43861b014b2f70de1c12cff1c76" category="inline-link-macro-rx"></block></block>
   <block id="0aece77864e401ea696f4af5f4c2400c" category="paragraph">必要に応じて、9336C-FX2 および 9336C-FX2-T スイッチとパススルー パネルをNetAppキャビネットにインストールします。</block>
   <block id="0da3cc28f42ccf09143f2cd285547a2a" category="doc">NX-OSソフトウェアとRCFのインストールまたはアップグレードの準備</block>
-  <block id="cb080d5089a28a8e356d2f35d216d871" category="paragraph">NX-OSソフトウェアとRCFをインストールする準備ができたら、<block ref="3344c060e83f2395d70c5fc1776e5497" category="inline-link-macro-rx"></block> 。</block>
   <block id="0399e2e67ad24e3896fc54df77685320" category="paragraph">Nexus 9336C-FX2 および 9336C-FX2-T スイッチに NX-OS ソフトウェアをインストールするには、次の手順に従います。</block>
   <block id="61c7408c0e623b660a741b6b2c143251" category="paragraph">始める前に、以下の手順を完了してください。<block ref="16a9a5fa8979bab3106e7aad0dfd20d9" category="inline-link-macro-rx"></block> 。</block>
   <block id="f0cf67e2ac311b9ab91b420f0644cb83" category="inline-link-macro">RCFをインストールまたはアップグレードする</block>
-  <block id="2f4c165bed0d1ff46749148ff938a80b" category="paragraph">NX-OSソフトウェアをインストールまたはアップグレードした後は、<block ref="7ffcba0482753b1f6ae93308b4e57219" category="inline-link-macro-rx"></block> 。</block>
   <block id="ea6719e8ba4a5a7aea0b4185afc5408b" category="summary">Nexus 9336C-FX2 ストレージ スイッチを初めてセットアップした後、RCF をインストールできます。この手順を使用して、RCF バージョンをアップグレードすることもできます。</block>
-  <block id="c41f329c2fc325ce101685a7ff1c2b6c" category="doc">参照構成ファイルをインストールまたはアップグレードする</block>
   <block id="a4af8e244603f507e79d0e5e42756fd0" category="paragraph">Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチを初めてセットアップした後、リファレンス構成ファイル (RCF) をインストールします。</block>
   <block id="26552c2532e5b34c96d8cef5f736c6ff" category="paragraph">ナレッジベースの記事を参照<block ref="862bab57a4acfb616afcae48c16f2cfe" category="inline-link-macro-rx"></block>RCF をインストールする際の詳細については、こちらをご覧ください。</block>
   <block id="f1de50ac922202c9581e806906499ae8" category="paragraph">この例ではRCFを示します<block ref="fcd688c0fb8c0256c7fc0b5ca2fd673d" prefix=" " category="inline-code"></block>スイッチ cs1 にインストールされます:</block>
   <block id="a697c9a980376d3a62210b2b53d5b0b8" category="list-text">バナー出力を調べる<block ref="6d53824b9996e36fd31937e922967215" prefix=" " category="inline-code"></block>指示。スイッチを正しく構成し、操作するには、これらの手順を読んで従う必要があります。</block>
   <block id="b0d1465a243b273a8f71d6084fd2c12c" category="list-text">RCF が正しい新しいバージョンであることを確認します。</block>
   <block id="f7b017d791fb57f4bbb1b2ce01659ed8" category="paragraph">System Manager は、ノード管理 IP アドレスの割り当て、クラスターの初期化、ローカル層の作成、プロトコルの構成、初期ストレージのプロビジョニングなど、クラスターのセットアップと構成のためのシンプルで簡単なワークフローを提供します。</block>
-  <block id="96299a3365c60d52212f4e4279da5d71" category="paragraph">RCFをインストールまたはアップグレードした後は、<block ref="9c2eadd0cc07686b4a17c38ca62f4a4c" category="inline-link-macro-rx"></block></block>
   <block id="4bdf8c06f6f7a17fdeee480cd24906a4" category="paragraph">構成によっては、 Cisco Nexus 9336C-FX2 9336C-FX2-T スイッチとパススルー パネルをNetAppキャビネットにインストールする必要がある場合があります。スイッチには標準ブラケットが付属しています。</block>
-  <block id="7ebdc9bd3d41414c92b63bf64adce4d5" category="paragraph">NetAppキャビネットにスイッチを設置したら、<block ref="cd8ba9a916eba0640468a7d563330303" category="inline-link-macro-rx"></block> 。</block>
   <block id="5b1bedb3dd2208af0449bbbfcc022136" category="paragraph">既存の 2 ノードのスイッチレス クラスタ環境がある場合は、 Cisco Nexus 9336C-FX2 スイッチを使用して 2 ノードのスイッチド クラスタ環境に移行し、クラスタ内の 2 ノードを超えて拡張できるようになります。</block>
   <block id="daba0abed2f861ff72b586dd0bd226bf" category="paragraph">ONTAPクラスタの古いCiscoスイッチをCisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ ネットワーク スイッチに移行できます。これは中断を伴わない手順です。</block>
   <block id="2f5712748f2dc83192b39344c5cb8cfb" category="doc">Cisco Nexus 9336C-FX2および9336C-FX2-Tストレージスイッチの交換</block>
@@ -4010,7 +3994,6 @@
   <block id="f29eb20a17171f9da2762c9003af3a0c" category="doc">9336C-FX2および9336C-FX2-Tストレージスイッチを工場出荷時のデフォルトにリセットします。</block>
   <block id="37ad66f3b8723f9e7bd118d6a030dfbd" category="paragraph">9336C-FX2 および 9336C-FX2-T ストレージ スイッチを工場出荷時のデフォルトにリセットするには、9336C-FX2 および 9336C-FX2-T スイッチの設定を消去する必要があります。</block>
   <block id="6a5127ae1421c6eadaa6d46f2df70ef6" category="doc">9336C-FX2および9336C-FX2-Tストレージスイッチを構成する</block>
-  <block id="bb1f78fc1f8bcd4ab502b4f5c6fcdea1" category="paragraph">スイッチの設定が完了したら、<block ref="48457dceaecddf3406f5c3a0ab2cf67e" category="inline-link-macro-rx"></block> 。</block>
   <block id="d80fed14d08f5cc94b5972605f7b1264" category="paragraph">4x100GbEノード1</block>
   <block id="f92dbce301746858220367bd16fe3670" category="paragraph">4x100GbEノード2</block>
   <block id="b360b026e43659aaec27da3653619648" category="paragraph">4x100GbEノード3</block>
@@ -4050,7 +4033,6 @@
   <block id="78fdfe1b105d9f6ad1f515d29394fcd3" category="paragraph">11から36</block>
   <block id="20eed5f0dc87e5058308718e45381220" category="paragraph">11～36</block>
   <block id="000bf48a29e422b515b1396c1aac3f2c" category="paragraph">空白の配線ワークシートを使用して、クラスター内のノードとしてサポートされているプラットフォームを文書化できます。</block>
-  <block id="8874a79dc54d118d630ce595ac682392" category="paragraph">配線ワークシートを完了したら、<block ref="d9d3d8dae0a36eea938e144b4f81717e" category="inline-link-macro-rx"></block> 。</block>
   <block id="cb037476ec4486d51b86d5dbeede8008" category="doc">ログ収集を構成する</block>
   <block id="da28641e557d1527788801659dc81fd5" category="inline-link-macro">ログ収集のトラブルシューティング</block>
   <block id="c309beb80230e73eabb3db48e81e52ab" category="admonition">ログ収集機能によってエラーステータスが報告された場合（<block ref="88354d538ba5d4e1746193ec5949ab4b" prefix=" " category="inline-code"></block> ）、 見る<block ref="2504f84f3fef22e482d1d3a35d9305fe" category="inline-link-macro-rx"></block>詳細については、こちらをご覧ください。</block>
@@ -5209,7 +5191,6 @@
   <block id="5ac09e984471f320b2e8920ece32b03d" category="sidebar">完全な配線ワークシート</block>
   <block id="fda45ed29ff5c085175df6a3a370ee1e" category="sidebar">ソフトウェアを構成する</block>
   <block id="82d8c229c8cbc923347549cf234c45f3" category="sidebar">構成ソフトウェア_3132q-v</block>
-  <block id="7246a16d8a655c05a2c1f478efbf9e66" category="sidebar">RCFをインストールまたはアップグレードする</block>
   <block id="c0297ebb85b4b11dd34e1a95ad8ae773" category="sidebar">スイッチの移行</block>
   <block id="5cb6e4827abbdff34c1577139d21756f" category="sidebar">移行スイッチ_3132q-v</block>
   <block id="a71e2a7b5da7f3f8346749ba6a40f97e" category="sidebar">CN1610スイッチの移行</block>
@@ -5786,9 +5767,7 @@
   <block id="88fdc99e69a743a1eb164994c319127b" category="paragraph">スイッチの設定が完了したら、 <block ref="cd06af6a9a8fb3236be1b579437fb58f" category="inline-link-macro-rx"></block>。</block>
   <block id="b23946ab85420318ad29297bc09065d0" category="paragraph">配線ワークシートを完了したら、 <block ref="158345103486debcc0cfc10501f464f8" category="inline-link-macro-rx"></block>。</block>
   <block id="1fc28573c4253eea534a9b0a7346c2ae" category="paragraph">配線ワークシートを完了したら、 <block ref="4952d250d292a65a90c0bebba6014799" category="inline-link-macro-rx"></block>。</block>
-  <block id="1ef6eed0ebf9cc7427083a8bd2e14d4b" category="paragraph">コンポーネントと部品番号を確認したら、 <block ref="df0358fd02066e7e9ccbaff4c1a048a5" category="inline-link-macro-rx"></block>。</block>
   <block id="3c7137666241068803662df69a2b396f" category="paragraph">構成要件を確認した後、 <block ref="7f669d24d9aef19198d4056386b39684" category="inline-link-macro-rx"></block>。</block>
-  <block id="fe8431277c54167a72c8b61fe4a00ac3" category="paragraph">RCFをインストールしたら、 <block ref="5b8b393a675dcaaee97c02828356657c" category="inline-link-macro-rx"></block>。</block>
   <block id="fe7ed7c52d6e6e2009c6cf35bf3fe240" category="paragraph">NX-OSソフトウェアをインストールしたら、 <block ref="081d00f96e1fa5769dbf06cd540488d3" category="inline-link-macro-rx"></block>。</block>
   <block id="0753226c968a573c0f0e13bee0aef3d8" category="paragraph">NX-OSソフトウェアとRCFをインストールする準備ができたら、 <block ref="9b6aa2dad0d0afce300d884800fc9c37" category="inline-link-macro-rx"></block>。</block>
   <block id="b843d161450c20e0071c16a2c9d56952" category="paragraph">スイッチの設定が完了したら、 <block ref="746057c05111c8d98d05f7c2aa1f8967" category="inline-link-macro-rx"></block>。</block>
@@ -5796,28 +5775,66 @@
   <block id="a294afff18b68f8c1e4f78aeef5ef294" category="list-text"><block ref="a294afff18b68f8c1e4f78aeef5ef294" category="inline-link-macro-rx"></block></block>
   <block id="62f22218ea7fb3cf6669cdfdb6c908e0" category="doc">スイッチのSNMPv3を設定する（オプション）</block>
   <block id="f8f4eb0f97707e7f8ebb995321498794" category="inline-link-macro">NS224シェルフをスイッチ接続ストレージとしてケーブル接続する</block>
-  <block id="ff22d5f888f5a0913f853ce7392a315e" category="paragraph">ケーブル配線と構成要件を確認したら、 <block ref="9b56153f8288ea213a61283aa51d0b66" category="inline-link-macro-rx"></block>。</block>
-  <block id="21d99f2d550020c5a0b4816423b48ba6" category="paragraph">コンポーネントと部品番号を確認したら、 <block ref="49a5e49bddaeabf84f2ee5cfa4f2c2f8" category="inline-link-macro-rx"></block>。</block>
   <block id="e078b89c94c4240cd6dab3e59e8b1f98" category="paragraph">構成要件を確認した後、 <block ref="73d4a57b8c77c4dbdae06c6c07cd9dcc" category="inline-link-macro-rx"></block>。</block>
   <block id="732e3e82bec2d756529a769494dc70f8" category="inline-link-macro">Cumulus LinuxをCumulusモードでインストールする</block>
   <block id="8043ee61c7f7379917235c3269fed7c9" category="inline-link-macro">ONIEモードでCumulus Linuxをインストールする</block>
-  <block id="88e5314f302655cbcf7f227e92429626" category="paragraph">スイッチの設定が完了したら、 <block ref="abc8e2fb5cb0373d7006d768e8dc0bfd" category="inline-link-macro-rx"></block> または <block ref="28a30a7b340666b28d9a4222e714aaf7" category="inline-link-macro-rx"></block>。</block>
-  <block id="255f37e0f64c267cbe1845aba29c7c7c" category="paragraph">棚にケーブルを配線したら、 <block ref="a5a547b7e695aa3612b72d881f169519" category="inline-link-macro-rx"></block>。</block>
   <block id="81f5064b20459a10b0a452ae24733718" category="inline-link-macro">参照構成ファイル（RCF）スクリプトをインストールする</block>
   <block id="ed3b40beeb91dc0a99c4580cb378b4b6" category="paragraph">Cumulus LinuxをCumulusモードでインストールしたら、 <block ref="83ca9f457d58548616bdf5d734a73df4" category="inline-link-macro-rx"></block>。</block>
-  <block id="482ccd1106eaba7536fd24593f4e76f2" category="paragraph">ハードウェアをインストールしたら、 <block ref="b80562321e7105a297052828d3712cf7" category="inline-link-macro-rx"></block> 要件。</block>
-  <block id="81b9a3178dc726848b0b45d04848ad99" category="paragraph">Cumulus LinuxをONIEモードでインストールしたら、 <block ref="83ca9f457d58548616bdf5d734a73df4" category="inline-link-macro-rx"></block>。</block>
   <block id="86a6c0bf628510e354b0911c128a4e0e" category="inline-link-macro">CSHMファイルをインストールする</block>
-  <block id="4976123a345a946ae994590aa9c2dfa3" category="paragraph">RCFをインストールしたら、 <block ref="f3791ff783629f66fe5f05b40418ed92" category="inline-link-macro-rx"></block>。</block>
-  <block id="ff10673c2cf2dcff4a056995095cf432" category="paragraph">CSHMファイルをインストールしたら、 <block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block>。</block>
   <block id="2c2eb6e2450884003d431faa5248647a" category="inline-link-macro">RCFスクリプトをインストールまたはアップグレードする</block>
-  <block id="800f95ad6373c68fc216bece87093f65" category="paragraph">Cumulus Linuxのバージョンをアップグレードしたら、 <block ref="ac720c45794c201b5f80c4938224f8dc" category="inline-link-macro-rx"></block>。</block>
-  <block id="548165e58dfad6461a9166d5091e701e" category="paragraph">ケーブル配線と構成要件を確認したら、 <block ref="75b216e283a24f30a49086565a4dd379" category="inline-link-macro-rx"></block>。</block>
-  <block id="3755fc7d8677ebe8f5018b192d76ecee" category="paragraph">コンポーネントと部品番号を確認したら、 <block ref="439fe3fb46bcc21d34c70ab0497fdf03" category="inline-link-macro-rx"></block>。</block>
   <block id="e151bfa4f47eb413c8e626e023b54eb2" category="paragraph">構成要件を確認した後、 <block ref="00ac7ae7a02f4d4916cc2e9a0c466e89" category="inline-link-macro-rx"></block>。</block>
-  <block id="abe2721f38aeb4a52b34f031e63cb999" category="paragraph">スイッチの設定が完了したら、 <block ref="393555469596ca2345e43e80c6e74ba5" category="inline-link-macro-rx"></block> または <block ref="ac50052da6099ecd2d2a2ee1cd713de9" category="inline-link-macro-rx"></block>。</block>
-  <block id="15d61e1a8c8e02ed201c6c136d785267" category="paragraph">Cumulus LinuxをCumulusモードでインストールしたら、 <block ref="3acf483c9de841e025c40a5da17bc790" category="inline-link-macro-rx"></block>。</block>
-  <block id="09398bfa676e806eeb6998df2ece8bef" category="paragraph">ハードウェアをインストールしたら、 <block ref="9158e03ff3d3214abbf7c9c47bc446be" category="inline-link-macro-rx"></block> 要件。</block>
-  <block id="9e54073d137b0a37710654f115f0a5c2" category="paragraph">Cumulus LinuxをONIEモードでインストールしたら、 <block ref="3acf483c9de841e025c40a5da17bc790" category="inline-link-macro-rx"></block>。</block>
-  <block id="b659527f486f2e9b0bf097bbf528b934" category="paragraph">RCFをインストールまたはアップグレードした後は、 <block ref="f3791ff783629f66fe5f05b40418ed92" category="inline-link-macro-rx"></block>。</block>
+  <block id="930d2612130a6eae69f4f0d6b6f79e03" category="paragraph">スイッチを移行したら、<block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block> 。</block>
+  <block id="62633c6c7bc1e478b0c226fc706ce7d1" category="list-text">コマンドを実行する<block ref="350d65f100fdbc8d411ce22a179f4b29" prefix=" " category="inline-code"></block>ONTAPシステムで、監視対象フィールドが *True* に設定され、シリアル番号フィールドに *Unknown* が表示されていない状態でクラスタ スイッチが検出されていることを確認します。</block>
+  <block id="e53b7c886f3f537cf2dee85298564259" category="list-text">RCF バージョン 1.12 以降をインストールする場合は、次のコマンドを実行します。</block>
+  <block id="7ffdde9c95545f134ed1094103de59de" category="paragraph">コンポーネントと部品番号を確認したら、 <block ref="59e15a623229fb37fc5dda6561b10061" category="inline-link-macro-rx"></block>。</block>
+  <block id="cfca9eeb73fd293484872bcafdcb1798" category="paragraph">NX-OSソフトウェアとRCFをインストールする準備ができたら、 <block ref="af60ba4b6c39eb7f1655b798abad8e11" category="inline-link-macro-rx"></block>。</block>
+  <block id="f81ef217d2c8bc05e0d4e6f1aad50a66" category="paragraph">NX-OSソフトウェアをインストールまたはアップグレードした後は、<block ref="d510068a163bd661380221025541f5da" category="inline-link-macro-rx"></block> 。</block>
+  <block id="4b4276f17a129d2a0b5a68d13f83c61f" category="paragraph">NetAppキャビネットにスイッチを設置したら、<block ref="04831059e32b83b4a29d50c410dcfb7a" category="inline-link-macro-rx"></block> 。</block>
+  <block id="dce26f97d0ce9fc5e48df873d850aee0" category="paragraph">RCFのインストールまたはRCFのアップグレード手順を確認した後、<block ref="657b0126c63dca332f6eb2a1abd407b9" category="inline-link-macro-rx"></block>または<block ref="a2077d156a5f79cc9b42ae5ebd286488" category="inline-link-macro-rx"></block>必要に応じて。</block>
+  <block id="266663ffc89ef64ec7152146a5acd185" category="inline-link-macro">再構成する</block>
+  <block id="181e8dbfe0f0edbd919610671d07e363" category="paragraph">スイッチをリセットしたら、<block ref="63b72c4143b368ca73fbdfe96509c1fb" category="inline-link-macro-rx"></block>必要に応じて変更します。</block>
+  <block id="79895eb9b79a1b70c4fa2f8ccf753423" category="paragraph">スイッチの設定が完了したら、 <block ref="fc9a049c460091b99cacecbc6842e0d4" category="inline-link-macro-rx"></block>。</block>
+  <block id="cf60172b5b7bd3108017a0c8d8931ff0" category="paragraph">配線ワークシートを完了したら、 <block ref="a4d08a22d117d50c4f6f41bb907b902c" category="inline-link-macro-rx"></block>。</block>
+  <block id="f3316ab2f1c41dcaa23af237fe3914f4" category="paragraph">RCFをアップグレードしたら、<block ref="9c2eadd0cc07686b4a17c38ca62f4a4c" category="inline-link-macro-rx"></block> 。</block>
+  <block id="4cb219409f45f928d2f889c1966a3169" category="paragraph">コンポーネントと部品番号を確認したら、 <block ref="df0358fd02066e7e9ccbaff4c1a048a5" category="inline-link-macro-rx"></block>。</block>
+  <block id="46dcef2d14a7c31860923194965da5f5" category="paragraph">RCFをインストールしたら、 <block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block>。</block>
+  <block id="29d8fe526a7d6929c1ad5f07b48f0f85" category="paragraph">スイッチをリセットしたら、<block ref="7af3609e284bdd614ac2f663cd73b283" category="inline-link-macro-rx"></block>必要に応じて変更します。</block>
+  <block id="b18dc978370f3f8cacf709e5705ad70f" category="paragraph">コンポーネントと部品番号を確認したら、 <block ref="c9c7b33eb7ecfb82310ed8ccd1b741e8" category="inline-link-macro-rx"></block>。</block>
+  <block id="6f709850fe16249960a6e2c10b9830b2" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="395d656047d87f7a6416e2793ec12679" category="inline-link-macro-rx"></block></block>
+  <block id="88225f1c375ed36ece935c872d1fb4d9" category="paragraph">NX-OSソフトウェアとRCFをインストールする準備ができたら、 <block ref="3344c060e83f2395d70c5fc1776e5497" category="inline-link-macro-rx"></block>。</block>
+  <block id="06f8321f45bda8cdd2fe178c765742ca" category="paragraph">NX-OSソフトウェアをインストールまたはアップグレードした後は、<block ref="7ffcba0482753b1f6ae93308b4e57219" category="inline-link-macro-rx"></block> 。</block>
+  <block id="231baebed8c9c3eb752573b55f8d5397" category="paragraph">RCFをインストールしたら、<block ref="9c2eadd0cc07686b4a17c38ca62f4a4c" category="inline-link-macro-rx"></block></block>
+  <block id="8335bad0d130ba0c631cf01fe0fbd9c5" category="paragraph">NetAppキャビネットにスイッチを設置したら、<block ref="cd8ba9a916eba0640468a7d563330303" category="inline-link-macro-rx"></block> 。</block>
+  <block id="0e20b420112310f5c09a775e13d5ec63" category="summary">Nexus 9336C-FX2 スイッチを初めてセットアップした後、RCF をインストールできます。この手順を使用して、RCF バージョンをアップグレードすることもできます。</block>
+  <block id="9fbd2c2a1c6faa13eae851caa7d33ad2" category="paragraph">Nexus 9336C-FX2 ストレージ スイッチを初めてセットアップした後、リファレンス構成ファイル (RCF) をインストールします。スイッチに既存のバージョンの RCF ファイルがインストールされている場合は、RCF バージョンをアップグレードします。</block>
+  <block id="4be048282f782e8a846872f71f451fc2" category="paragraph">ポートは、Cluster+HA の場合は 40/100GbE、Cluster の場合は 4x10GbE ブレークアウト、Cluster+HA の場合は 4x25GbE ブレークアウト、各ストレージ HA ペアの場合は 100GbE に設定されています。</block>
+  <block id="a6f7ce910d3dd7c5a5ef8b867451277f" category="paragraph">4x10GbE ポート (ブレイクアウト) と 40/100GbE ポートの割り当てが異なる 2 種類の RCF。  AFF A320、 AFF A250、およびFAS500fシステムを除くすべてのFASおよびAFFノードがサポートされています。</block>
+  <block id="856674c3de1f4bcf2e5ea5493575c451" category="paragraph">RCFのインストールまたはRCFのアップグレード手順を確認した後、<block ref="b8f42f23e92e2416c2fcc479cb623e08" category="inline-link-macro-rx"></block>または<block ref="e1e20e7ec447be8460e088f54ae82b68" category="inline-link-macro-rx"></block>必要に応じて。</block>
+  <block id="78934ddae7bf7ea3539dacd98defb22f" category="paragraph">スイッチをリセットしたら、<block ref="1b5b77ff163bc7f1424f4e9286f32076" category="inline-link-macro-rx"></block>必要に応じて変更します。</block>
+  <block id="892ab3f36730fc94ceea92587935d80f" category="paragraph">スイッチの設定が完了したら、 <block ref="48457dceaecddf3406f5c3a0ab2cf67e" category="inline-link-macro-rx"></block>。</block>
+  <block id="6c7072958775e2716da05784c2834f65" category="paragraph">配線ワークシートを完了したら、 <block ref="d9d3d8dae0a36eea938e144b4f81717e" category="inline-link-macro-rx"></block>。</block>
+  <block id="3e1208bc4bf9384a3afbda89e7d0cb5a" category="paragraph">ここで、_x_ はメンテナンス ウィンドウの期間 (時間単位) です。</block>
+  <block id="22e5bcc55974e1667f105918832f4dea" category="list-text">NX-OS 10.2以降では、<block ref="9c370f72db0e0d920841657ac5268365" prefix=" " category="inline-code"></block>ブートフラッシュに保存されている RCF ファイルと比較するコマンド。それ以外の場合は、サードパーティの diff ツールまたは比較ツールを使用します。</block>
+  <block id="545690f880b0659f4099413677e4a382" category="list-text">RCF バージョン 1.12 以降にアップグレードする場合は、次のコマンドを実行します。<block ref="c43d8f1df82823c11979a10dcc012390" prefix=" " category="inline-code"></block></block>
+  <block id="ebb31683cbe594d17c15073b14f55cf6" category="paragraph"><block ref="71d6cd1eac422fe68a9920549c567f16" prefix="" category="inline-code"></block></block>
+  <block id="7d7e314330aff9e7013f44b93a26b6d5" category="paragraph">この例ではRCFファイルを示します<block ref="f40a54f2bc400ed707f0cc267c8ad07a" prefix=" " category="inline-code"></block>スイッチ cs1 にインストールされます:</block>
+  <block id="9594f79ec7c1b5381a4d66f8bdec8cb3" category="list-text">スイッチ cs2 で手順 4 ～ 19 を繰り返します。</block>
+  <block id="0fe12ef2e89553af6379e839f094af65" category="paragraph">ケーブル配線と構成要件を確認したら、<block ref="9b56153f8288ea213a61283aa51d0b66" category="inline-link-macro-rx"></block> 。</block>
+  <block id="4ecfcea68abfc6c5e768c0c05c979d4c" category="paragraph">コンポーネントと部品番号を確認したら、 <block ref="49a5e49bddaeabf84f2ee5cfa4f2c2f8" category="inline-link-macro-rx"></block>。</block>
+  <block id="4c1ba37e9fde3a7a56ee066c6f5bbff0" category="paragraph">スイッチの設定が完了したら、<block ref="abc8e2fb5cb0373d7006d768e8dc0bfd" category="inline-link-macro-rx"></block>または<block ref="28a30a7b340666b28d9a4222e714aaf7" category="inline-link-macro-rx"></block>。</block>
+  <block id="aa690319dc0361fc52f6d6941197617e" category="paragraph">棚にケーブルを配線したら、<block ref="a5a547b7e695aa3612b72d881f169519" category="inline-link-macro-rx"></block> 。</block>
+  <block id="15f4bb46c2f563d794f12c95f7363bc3" category="paragraph">ハードウェアをインストールしたら、<block ref="b80562321e7105a297052828d3712cf7" category="inline-link-macro-rx"></block>要件。</block>
+  <block id="4a1181d68f4fdad9078d5fe767825f78" category="paragraph">Cumulus LinuxをONIEモードでインストールしたら、<block ref="83ca9f457d58548616bdf5d734a73df4" category="inline-link-macro-rx"></block> 。</block>
+  <block id="fa1137b5cd5dd8308f683c6f4c4f6fee" category="paragraph">RCFをインストールしたら、 <block ref="f3791ff783629f66fe5f05b40418ed92" category="inline-link-macro-rx"></block>。</block>
+  <block id="5bfbe06a9c5a1deae1ee6d69cbd2c74d" category="paragraph">スイッチをリセットしたら、<block ref="d31ba40b12700baf930882b0c2782421" category="inline-link-macro-rx"></block>必要に応じて変更します。</block>
+  <block id="0a7fa80f3e44e6ba2121fadd4ba8aea2" category="paragraph">CSHMファイルをインストールしたら、<block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block> 。</block>
+  <block id="d3ec46f2dac7a867fcfb9bfb7e7c420f" category="paragraph">Cumulus Linuxのバージョンをアップグレードしたら、<block ref="ac720c45794c201b5f80c4938224f8dc" category="inline-link-macro-rx"></block> 。</block>
+  <block id="ad10d9d4b39fe4e73cf4cfae7f45f48d" category="paragraph">ケーブル配線と構成要件を確認したら、<block ref="75b216e283a24f30a49086565a4dd379" category="inline-link-macro-rx"></block> 。</block>
+  <block id="8856be56f8aa4134e809b9a855cd3067" category="paragraph">コンポーネントと部品番号を確認したら、 <block ref="439fe3fb46bcc21d34c70ab0497fdf03" category="inline-link-macro-rx"></block>。</block>
+  <block id="0eea634734f912ee07b2637c3bf93f7f" category="paragraph">スイッチの設定が完了したら、<block ref="393555469596ca2345e43e80c6e74ba5" category="inline-link-macro-rx"></block>または<block ref="ac50052da6099ecd2d2a2ee1cd713de9" category="inline-link-macro-rx"></block>。</block>
+  <block id="203db0d4c4cef065192f0c1c8e11ec89" category="paragraph">Cumulus LinuxをCumulusモードでインストールしたら、<block ref="3acf483c9de841e025c40a5da17bc790" category="inline-link-macro-rx"></block> 。</block>
+  <block id="850c2098a891a6a0c730a37b6ad7c7aa" category="paragraph">ハードウェアをインストールしたら、<block ref="9158e03ff3d3214abbf7c9c47bc446be" category="inline-link-macro-rx"></block>要件。</block>
+  <block id="e97e9b3be2fac0213159d6416ed26304" category="paragraph">Cumulus LinuxをONIEモードでインストールしたら、<block ref="3acf483c9de841e025c40a5da17bc790" category="inline-link-macro-rx"></block> 。</block>
+  <block id="d1c87417ef01b3bb9ef749bfc91a91cd" category="paragraph">RCFをインストールまたはアップグレードした後は、<block ref="f3791ff783629f66fe5f05b40418ed92" category="inline-link-macro-rx"></block> 。</block>
+  <block id="03225e13f6008b647272291aae7f9169" category="paragraph">スイッチをリセットしたら、<block ref="bab7f2e68d62a2e1e4a58e02ed320bda" category="inline-link-macro-rx"></block>必要に応じて変更します。</block>
 </blocks>

@@ -836,4 +836,4 @@ RPC status:
 
 
 .次の手順
-スイッチを移行したら、link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"] 。
+スイッチを移行した後は、 link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"]。

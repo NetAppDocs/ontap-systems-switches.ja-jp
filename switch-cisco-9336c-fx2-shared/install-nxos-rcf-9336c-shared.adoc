@@ -406,4 +406,4 @@ System Managerを使用すれば、ノード管理IPアドレスの割り当て�
 へ移動 https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["System Managerを使用した新しいクラスタでのONTAPの設定"]セットアップ手順についてはこちらをご覧ください。
 
 .次の手順
-RCFをインストールしたら、 link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"]。
+RCFをインストールしたら、 link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"]。

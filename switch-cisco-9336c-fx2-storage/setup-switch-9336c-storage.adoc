@@ -192,4 +192,4 @@ NOTE: この段階で設定を保存しないと、次回スイッチを再起�
 
 
 .次の手順
-スイッチの設定が完了したら、link:install-nxos-overview-9336c-storage.html["NX-OSソフトウェアとRCFのインストールの準備"] 。
+スイッチの設定が完了したら、 link:install-nxos-overview-9336c-storage.html["NX-OSソフトウェアとRCFのインストールの準備"]。

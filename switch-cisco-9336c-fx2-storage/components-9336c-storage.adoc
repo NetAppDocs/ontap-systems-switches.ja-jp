@@ -120,4 +120,4 @@ Cisco Nexus 9336C-FX-T ストレージ スイッチで 12 個を超えるポー�
 NOTE: スマート ライセンスを購入したら、適切な RCF をインストールして、使用可能な 36 個のポートすべてを有効にして構成します。
 
 .次の手順
-コンポーネントと部品番号を確認したら、link:required-documentation-9336c-storage.html["必要な書類"] 。
+コンポーネントと部品番号を確認したら、 link:required-documentation-9336c-storage.html["必要な書類"]。

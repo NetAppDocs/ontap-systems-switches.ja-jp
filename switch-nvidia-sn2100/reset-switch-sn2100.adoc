@@ -76,3 +76,5 @@ NVIDIAの https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-511
 
 --
 ====
+.次の手順
+スイッチをリセットしたら、link:configure-overview-sn2100-cluster.html["再構成する"]必要に応じて変更します。

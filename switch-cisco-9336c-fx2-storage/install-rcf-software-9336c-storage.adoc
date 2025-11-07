@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install rcf, cisco switches, storage 
 summary: Nexus 9336C-FX2 ストレージ スイッチを初めてセットアップした後、RCF をインストールできます。この手順を使用して、RCF バージョンをアップグレードすることもできます。 
 ---
-= 参照構成ファイルをインストールまたはアップグレードする
+= 参照設定ファイルをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -122,7 +122,7 @@ cs1# copy running-config startup-config [#######################################
 +
 `cs1# show run | section "switchname" >> bootflash:write_erase.cfg`
 
-. RCF バージョン 1.12 以降の場合は、次のコマンドを実行します。
+. RCF バージョン 1.12 以降をインストールする場合は、次のコマンドを実行します。
 +
 `cs1# echo "hardware access-list tcam region ing-racl 1024" >> bootflash:write_erase.cfg`
 
@@ -137,7 +137,7 @@ cs1# copy running-config startup-config [#######################################
 
 . 確認するには `write_erase.cfg`ファイルは期待どおりに入力されます。
 +
-`show file bootflash:write_erase.cfg`
+`*show file bootflash:write_erase.cfg*`
 
 . 発行する `write erase`現在保存されている構成を消去するコマンド:
 +
@@ -486,4 +486,4 @@ System Manager は、ノード管理 IP アドレスの割り当て、クラス�
 へ移動 https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["System Managerを使用した新しいクラスタでのONTAPの設定"]セットアップ手順についてはこちらをご覧ください。
 
 .次の手順
-RCFをインストールまたはアップグレードした後は、link:configure-ssh-keys.html["SSH設定を確認する"]
+RCFをインストールしたら、link:configure-ssh-keys.html["SSH設定を確認する"]

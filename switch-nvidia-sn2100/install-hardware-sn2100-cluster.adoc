@@ -19,4 +19,4 @@ SN2100 ハードウェアをインストールするには、NVIDIA のドキュ
 
 
 .次の手順
-ハードウェアをインストールしたら、 link:cabling-considerations-sn2100-cluster.html["ケーブル配線と構成を確認する"] 要件。
+ハードウェアをインストールしたら、link:cabling-considerations-sn2100-cluster.html["ケーブル配線と構成を確認する"]要件。

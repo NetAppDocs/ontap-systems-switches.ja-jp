@@ -96,7 +96,7 @@ NVIDIAイーサネット スイッチでイーサネット スイッチのヘル
 +
 [listing, subs="+quotes"]
 ----
-cluster1::> *system switch ethernet*
+cluster1::> *system switch ethernet configure-health-monitor*
 ----
 . コマンド出力が、使用しているONTAPバージョンに応じて次のテキストで終了していることを確認します。
 
@@ -122,11 +122,11 @@ CSHM ダウンロード パッケージが正常に処理されました。
 エラーが発生した場合は、NetAppサポートにお問い合わせください。
 
 . [[step6]]イーサネットスイッチヘルスモニターのポーリング間隔の2倍まで待機します。 `system switch ethernet polling-interval show`次のステップを完了する前に、 をクリックしてください。
-. コマンドを実行する `system switch ethernet show`ONTAPシステムで、監視対象フィールドが *True* に設定され、シリアル番号フィールドに *Unknown* が表示されていない状態でクラスタ スイッチが検出されていることを確認します。
+. コマンドを実行する `system switch ethernet configure-health-monitor show`ONTAPシステムで、監視対象フィールドが *True* に設定され、シリアル番号フィールドに *Unknown* が表示されていない状態でクラスタ スイッチが検出されていることを確認します。
 +
 [listing, subs="+quotes"]
 ----
-cluster1::> *system switch ethernet show*
+cluster1::> *system switch ethernet configure-health-monitor show*
 ----
 
 
@@ -136,4 +136,4 @@ NOTE: 構成ファイルを適用した後もモデルに *OTHER* が表示さ�
 参照 https://docs.netapp.com/us-en/ontap-cli/system-switch-ethernet-configure-health-monitor.html["システムスイッチイーサネットヘルスモニターの設定"^]詳細についてはコマンドを参照してください。
 
 .次の手順
-CSHMファイルをインストールしたら、 link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"]。
+CSHMファイルをインストールしたら、link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"] 。

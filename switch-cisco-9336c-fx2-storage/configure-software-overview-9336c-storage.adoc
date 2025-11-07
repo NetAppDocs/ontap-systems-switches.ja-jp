@@ -25,7 +25,7 @@ Cisco NX-OS ソフトウェアおよびリファレンス コンフィギュレ�
 [role="quick-margin-para"]
 Cisco 9336C-FX2 および 9336C-FX2-T ストレージ スイッチに NX-OS ソフトウェアをダウンロードしてインストールまたはアップグレードします。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:install-rcf-software-9336c-storage.html["RCFをインストールまたはアップグレードする"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:install-upgrade-rcf-overview-9336c-storage.html["RCFをインストールまたはアップグレードする"]
 [role="quick-margin-para"]
 Cisco 9336C-FX2 および 9336C-FX2-T スイッチを初めてセットアップした後、RCF をインストールまたはアップグレードします。この手順を使用して、RCF バージョンをアップグレードすることもできます。
 

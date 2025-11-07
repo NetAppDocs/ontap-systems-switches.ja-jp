@@ -1,0 +1,459 @@
+---
+permalink: switch-cisco-9336c-fx2-storage/upgrade-rcf-software-9336c-storage.html 
+sidebar: sidebar 
+keywords: install rcf, cisco switches 
+summary: この手順を使用して、RCF バージョンをアップグレードできます。 
+---
+= 参照構成ファイル (RCF) をアップグレードする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+運用スイッチに既存のバージョンの RCF ファイルがインストールされている場合は、RCF バージョンをアップグレードします。
+
+.開始する前に
+以下のものがあることを確認してください。
+
+* スイッチ構成の現在のバックアップ。
+* 完全に機能するクラスター (ログにエラーや同様の問題がない)。
+* 現在のRCF。
+* RCF バージョンを更新する場合は、必要なブート イメージを反映したブート構成が RCF 内に必要です。
++
+現在のブート イメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、RCFを再適用する前に変更する必要があります。
+
+
+
+
+NOTE: この手順では、動作中のスイッチ間リンク (ISL) は必要ありません。これは、RCF バージョンの変更によって ISL 接続が一時的に影響を受ける可能性があるため、設計によるものです。クラスタ操作を中断せずに実行するために、次の手順では、ターゲット スイッチで手順を実行しながら、すべてのクラスタ LIF を動作中のパートナー スイッチに移行します。
+
+
+CAUTION: 新しいスイッチ ソフトウェア バージョンと RCF をインストールする前に、スイッチの設定を消去し、基本設定を実行する必要があります。スイッチ設定を消去する前に、シリアル コンソールを使用してスイッチに接続するか、基本的な構成情報を保存しておく必要があります。
+
+
+
+== ステップ1: アップグレードの準備
+
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
++
+`system node autosupport invoke -node * -type all -message MAINT=xh`
+
++
+ここで、_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
+
+. 続行するかどうかを尋ねられたら *y* と入力して、権限レベルを「advanced」に変更します。
++
+`set -privilege advanced`
+
++
+advancedのプロンプト（*>）が表示されます。
+
+. スイッチに接続されている各ノード上のポートを表示します。
++
+[source, cli]
+----
+network device-discovery show
+----
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> network device-discovery show
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID) Interface       Platform
+----------- ------ ------------------------ --------------- ---------
+node1-01/cdp
+            e3a    cs1                       Ethernet1/7     N9K-C9336C
+            e3b    cs2                       Ethernet1/7     N9K-C9336C
+node1-02/cdp
+            e3a    cs1                       Ethernet1/8     N9K-C9336C
+            e3b    cs2                       Ethernet1/8     N9K-C9336C
+.
+.
+.
+----
+====
+. すべてのストレージ ポートが正常な状態で稼働していることを確認します。
++
+[source, cli]
+----
+storage port show -port-type ENET
+----
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *storage port show -port-type ENET*
+
+
+                                      Speed
+Node               Port Type  Mode    (Gb/s) State    Status
+------------------ ---- ----- ------- ------ -------- -----------
+node1-01
+                   e3a ENET  -         100   enabled  online
+                   e3b ENET  -         100   enabled  online
+                   e7a ENET  -         100   enabled  online
+                   e7b ENET  -         100   enabled  online
+node1-02
+                   e3a ENET  -         100   enabled  online
+                   e3b ENET  -         100   enabled  online
+                   e7a ENET  -         100   enabled  online
+                   e7b ENET  -         100   enabled  online
+.
+.
+.
+----
+====
+. クラスタLIFで自動リバートを無効にします。
++
+`network interface modify -vserver Cluster -lif * -auto-revert false`
+
+
+
+
+
+== ステップ2: ポートを構成する
+
+. スイッチ cs1 で、ノードのすべてのポートに接続されているポートをシャットダウンします。
++
+[listing, subs="+quotes"]
+----
+cs1> *enable*
+cs1# *configure*
+cs1(config)# *interface eth1/1/1-2,eth1/7-8*
+cs1(config-if-range)# *shutdown*
+cs1(config-if-range)# *exit*
+cs1(config)# *exit*
+----
++
+
+CAUTION: ネットワーク接続の問題を回避するために、接続されているすべてのポートをシャットダウンしてください。ナレッジベースの記事を参照してください https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["スイッチ OS のアップグレード中にクラスタ LIF を移行するとノードがクォーラム外になる"^]詳細についてはこちらをご覧ください。
+
+. クラスタ LIF がスイッチ cs1 でホストされているポートにフェイルオーバーされたことを確認します。数秒かかる場合があります。
++
+[source, cli]
+----
+network interface show -role cluster
+----
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -role cluster*
+
+            Logical         Status     Network            Current     Current Is
+Vserver     Interface       Admin/Oper Address/Mask       Node        Port    Home
+----------- --------------- ---------- ------------------ ----------- ------- ----
+Cluster
+            node1-01_clus1  up/up      169.254.36.44/16   node1-01    e7a     true
+            node1-01_clus2  up/up      169.254.7.5/16     node1-01    e7b     true
+            node1-02_clus1  up/up      169.254.197.206/16 node1-02    e7a     true
+            node1-02_clus2  up/up      169.254.195.186/16 node1-02    e7b     true
+            node1-03_clus1  up/up      169.254.192.49/16  node1-03    e7a     true
+            node1-03_clus2  up/up      169.254.182.76/16  node1-03    e7b     true
+            node1-04_clus1  up/up      169.254.59.49/16   node1-04    e7a     true
+            node1-04_clus2  up/up      169.254.62.244/16  node1-04    e7b     true
+
+8 entries were displayed.
+----
+====
+. クラスタが正常に動作していることを確認します。
++
+`cluster show`
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster show*
+Node              Health  Eligibility   Epsilon
+----------------- ------- ------------  -------
+node1-01          true    true          false
+node1-02          true    true          false
+node1-03          true    true          true
+node1-04          true    true          false
+
+4 entries were displayed.
+----
+====
+. まだ行っていない場合は、次のコマンドの出力をテキスト ファイルにコピーして、現在のスイッチ構成のコピーを保存します。
++
+`show running-config`
+
++
+.. 現在のカスタム追加を記録します `running-config`使用中の RCF ファイル (組織の SNMP 構成など)。
+.. NX-OS 10.2以降では、 `show diff running-config`ブートフラッシュに保存されている RCF ファイルと比較するコマンド。それ以外の場合は、サードパーティの diff ツールまたは比較ツールを使用します。
+
+
+. 基本的な設定の詳細を `write_erase.cfg`ブートフラッシュ上のファイル。
++
+[NOTE]
+====
+必ず以下を設定してください。
+
+** ユーザ名とパスワード
+** 管理IPアドレス
+** デフォルト ゲートウェイ
+** スイッチ名
+
+
+====
++
+`cs1# show run | i "username admin password" > bootflash:write_erase.cfg`
+
++
+`cs1# show run | section "vrf context management" >> bootflash:write_erase.cfg`
+
++
+`cs1# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
+
++
+`cs1# show run | section "switchname" >> bootflash:write_erase.cfg`
+
+. RCF バージョン 1.12 以降にアップグレードする場合は、次のコマンドを実行します。
+`cs1# echo "hardware access-list tcam region ing-racl 1024" >> bootflash:write_erase.cfg`
++
+`cs1# echo "hardware access-list tcam region egr-racl 1024" >> bootflash:write_erase.cfg`
+
++
+`cs1# echo "hardware access-list tcam region ing-l2-qos 1280 >> bootflash:write_erase.cfg`
+
++
+ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細については、こちらをご覧ください。
+
+. 確認するには `write_erase.cfg`ファイルは期待どおりに入力されます。
++
+`*show file bootflash:write_erase.cfg*`
+
+. 発行する `write erase`現在保存されている構成を消去するコマンド:
++
+`cs1# *write erase*`
+
++
+`Warning: This command will erase the startup-configuration.`
+
++
+`Do you wish to proceed anyway? (y/n)  [n] *y*`
+
+. 以前に保存した基本設定をスタートアップ設定にコピーします。
++
+`cs1# *copy bootflash:write_erase.cfg startup-config*`
+
+. スイッチをリブートします。
++
+`cs1# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
+
+. 管理 IP アドレスに再度アクセスできるようになったら、SSH 経由でスイッチにログインします。
++
+SSH キーに関連するホスト ファイル エントリを更新する必要がある場合があります。
+
+. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs1のブートフラッシュにRCFをコピーします。
++
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]ガイド。
+
++
+.例を表示
+[%collapsible]
+====
+この例では、TFTPを使用してスイッチcs1のブートフラッシュにRCFをコピーしています。
+
+[listing, subs="+quotes"]
+----
+cs1# *copy tftp: bootflash: vrf management*
+Enter source filename: *Nexus_9336C_RCF_v1.6-Storage.txt*
+Enter hostname for the tftp server: *172.22.201.50*
+Trying to connect to tftp server......Connection to Server Established.
+TFTP get operation was successful
+Copy complete, now saving to disk (please wait)...
+----
+====
+. 前の手順でブートフラッシュにダウンロードしたRCFを適用します。
++
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]ガイド。
+
++
+この例ではRCFファイルを示します `NX9336C-FX2-RCF-v1.13-1-Storage.txt`スイッチ cs1 にインストールされます:
+
++
+[listing, subs="+quotes"]
+----
+cs1# *copy Nexus_9336C_RCF_v1.6-Storage.txt running-config echo-commands*
+----
++
+[CAUTION]
+====
+RCF の *インストール ノート*、*重要ノート*、および *バナー* セクションを必ずよくお読みください。スイッチが正しく動作するように設定するためには、出力を確認し、その指示に従う必要があります。
+
+====
+. RCF ファイルが正しい新しいバージョンであることを確認します。
++
+`show running-config`
+
++
+次の情報が正しいことを確認してください。
+
++
+** RCFのバナー
+** ノードとポートの設定
+** カスタマイズ
++
+出力内容はサイトの構成によって異なります。ポートの設定を確認し、インストールしたRCFに固有の変更がないかリリース ノートを参照してください。
+
+
+
+. 以前のカスタマイズをスイッチ構成に再適用します。
+. RCFのバージョン、カスタム追加、スイッチ設定が正しいことを確認したら、 `running-config`ファイルに `startup-config`ファイル。
++
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]ガイド。
+
++
+`cs1# *copy running-config startup-config*`
+
++
+`[########################################] 100% Copy complete`
+
+. スイッチcs1をリブートします。スイッチの再起動中にノードで報告される「`cluster switch health monitor`」アラートと「`cluster ports down`」イベントは無視できます。
++
+`cs1# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
+
+. すべてのストレージ ポートが正常な状態で稼働していることを確認します。
++
+[source, cli]
+----
+storage port show -port-type ENET
+----
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *storage port show -port-type ENET*
+
+
+                                      Speed
+Node               Port Type  Mode    (Gb/s) State    Status
+------------------ ---- ----- ------- ------ -------- -----------
+node1-01
+                   e3a  ENET  -          100 enabled  online
+                   e3b  ENET  -          100 enabled  online
+                   e7a  ENET  -          100 enabled  online
+                   e7b  ENET  -          100 enabled  online
+node1-02
+                   e3a  ENET  -          100 enabled  online
+                   e3b  ENET  -          100 enabled  online
+                   e7a  ENET  -          100 enabled  online
+                   e7b  ENET  -          100 enabled  online
+.
+.
+.
+----
+====
+. クラスタが正常に動作していることを確認します。
++
+`cluster show`
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster show*
+Node              Health   Eligibility   Epsilon
+----------------- -------- ------------- -------
+node1-01          true     true          false
+node1-02          true     true          false
+node1-03          true     true          true
+node1-04          true     true          false
+
+4 entries were displayed.
+----
+====
+. スイッチ cs2 で手順 4 ～ 19 を繰り返します。
+. クラスタLIFで自動リバートを有効にします。
++
+`network interface modify -vserver Cluster -lif * -auto-revert true`
+
+
+
+
+
+== ステップ3: クラスターネットワーク構成とクラスターの健全性を確認する
+
+. クラスター ポートに接続されているスイッチ ポートが *稼働中* であることを確認します。
++
+[source, cli]
+----
+show interface brief
+----
+. 期待されるノードがまだ接続されていることを確認します。
++
+[source, cli]
+----
+show cdp neighbors
+----
+. 次のコマンドを使用して、クラスタ ノードが正しいクラスタ VLAN 内にあることを確認します。
++
+[source, cli]
+----
+show vlan brief
+----
++
+[source, cli]
+----
+show interface trunk
+----
+. クラスタ LIF がホーム ポートに戻ったことを確認します。
++
+[source, cli]
+----
+network interface show -role cluster
+----
++
+クラスタ LIF がホーム ポートに戻っていない場合は、ローカル ノードから手動で元に戻します。
+
++
+`network interface revert -vserver vserver_name -lif <lif-name>`
+
+. クラスタが正常に動作していることを確認します。
++
+[source, cli]
+----
+cluster show
+----
+. リモート クラスタ インターフェイスの接続を確認します。
++
+.. 使用することができます `network interface check cluster-connectivity show`クラスター接続のアクセシビリティ チェックの詳細を表示するコマンド:
++
+[source, cli]
+----
+network interface check cluster-connectivity show
+----
+.. あるいは、 `cluster ping-cluster -node <node-name>`接続を確認するコマンド:
++
+[source, cli]
+----
+cluster ping-cluster -node <node-name>
+----
+
+
+
+
+.次の手順
+RCFをアップグレードしたら、link:configure-ssh-keys.html["SSH設定を確認する"] 。
