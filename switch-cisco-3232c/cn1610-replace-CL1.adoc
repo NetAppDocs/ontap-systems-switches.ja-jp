@@ -246,4 +246,4 @@ e0d   cluster   cluster    up    9000  auto/10000     -
 
 
 .次の手順
-link:cn1610-complete-migration.html["移行を完了する"]。
+CN1610スイッチCL1を交換した後、link:cn1610-complete-migration.html["移行を完了する"] 。

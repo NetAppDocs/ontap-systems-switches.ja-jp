@@ -422,4 +422,4 @@ Copy Complete.
 
 
 .次の手順
-link:cn5596-complete-migration.html["移行を完了する"]。
+スイッチポートを設定したら、link:cn5596-complete-migration.html["移行を完了する"] 。

@@ -105,4 +105,4 @@ CN1610から3232C（QSFPからSFP+）
 
 
 .次の手順
-link:cn1610-prepare-to-migrate.html["移行の準備"]。
+移行要件を確認したら、link:cn1610-prepare-to-migrate.html["スイッチの移行を準備する"] 。

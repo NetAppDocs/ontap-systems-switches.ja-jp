@@ -68,4 +68,4 @@ summary: Cisco Nexus 3232c スイッチを構成する前に、プロセスと�
 
 ====
 .次の手順
-link:migrate-from-switchless-prepare-to-migrate.html["移行の準備"]。
+移行要件を確認したら、link:migrate-from-switchless-prepare-to-migrate.html["スイッチの移行を準備する"] 。

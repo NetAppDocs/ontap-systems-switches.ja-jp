@@ -35,4 +35,4 @@ Cisco Nexus 92300YC スイッチのインストールとメンテナンスにつ
 参照 https://hwu.netapp.com["Hardware Universe"^]最新情報についてはこちらをご覧ください。
 
 .次の手順
-link:components-92300.html["コンポーネントと部品番号"]。
+構成要件を確認した後、 link:components-92300.html["コンポーネントと部品番号"]。

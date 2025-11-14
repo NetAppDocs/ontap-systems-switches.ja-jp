@@ -393,4 +393,4 @@ C2(config-if)# exit
 
 
 .次の手順
-link:cn1610-configure-ports.html["ポートを設定する"]。
+スイッチの移行準備が完了したら、link:cn1610-configure-ports.html["ポートを設定する"] 。

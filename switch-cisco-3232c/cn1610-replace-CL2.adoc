@@ -495,4 +495,4 @@ cluster::*> *network interface migrate -vserver cluster -lif n2_clus4 -source-no
 
 
 .次の手順
-link:cn1610-replace-CL1.html["CN1610スイッチCL1を3232CスイッチC1に交換する"]。
+CN1610スイッチCL2を交換した後、link:cn1610-replace-CL1.html["CN1610スイッチCL1を3232CスイッチC1に交換する"] 。

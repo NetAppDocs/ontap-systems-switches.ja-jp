@@ -219,4 +219,4 @@ Cluster
 
 
 .次の手順
-link:cn1610-replace-CL2.html["CN1610スイッチCL2を3232CスイッチC2に交換する"]。
+スイッチの移行準備が完了したら、link:cn1610-replace-CL2.html["CN1610スイッチCL2を3232CスイッチC2に交換する"] 。

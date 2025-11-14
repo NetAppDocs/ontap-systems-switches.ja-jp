@@ -609,4 +609,4 @@ Total entries displayed: 4
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"]。
+SSH設定を確認したら、 link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"]。

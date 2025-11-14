@@ -162,4 +162,4 @@ Copy complete.
 
 
 .次の手順
-link:install-nxos-overview.html["NX-OSソフトウェアとRCFのインストール準備"]。
+スイッチの設定が完了したら、 link:install-nxos-overview.html["NX-OSソフトウェアとRCFのインストールの準備"]。

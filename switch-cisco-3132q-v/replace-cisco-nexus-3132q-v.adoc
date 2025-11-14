@@ -957,4 +957,4 @@ C2                          cluster-network     10.10.1.103      NX3132V
 
 
 .次の手順
-link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"]
+スイッチを交換したら、link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"] 。

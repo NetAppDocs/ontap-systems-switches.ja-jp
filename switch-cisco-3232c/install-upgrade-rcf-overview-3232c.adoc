@@ -104,4 +104,4 @@ NOTE: コマンド出力は、ONTAPのリリースによって異なる場合が
 この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
 
 .次の手順
-RCFのインストールまたはRCFのアップグレード手順を確認した後、link:install-rcf-software-3232c.html["RCFをインストールする"]またはlink:upgrade-rcf-software-3232c.html["RCFをアップグレードする"]必要に応じて。
+RCFのインストールまたはRCFのアップグレード手順の概要を確認した後、link:install-rcf-software-3232c.html["RCFをインストールする"]またはlink:upgrade-rcf-software-3232c.html["RCFをアップグレードする"]必要に応じて。

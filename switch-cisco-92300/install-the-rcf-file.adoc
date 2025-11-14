@@ -649,4 +649,4 @@ RPC status:
 --
 ====
 .次の手順
-link:configure-ssh-keys.html["SSH設定を確認する"]。
+RCFをインストールしたら、 link:configure-ssh-keys.html["SSH設定を確認する"]。

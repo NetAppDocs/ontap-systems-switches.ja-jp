@@ -556,4 +556,4 @@ e4e       Cluster      Cluster          up   9000 auto/40000  -        -
 
 
 .次の手順
-link:migrate-switchless-complete-migration.html["移行を完了する"]。
+スイッチポートを設定したら、link:migrate-switchless-complete-migration.html["移行を完了する"] 。

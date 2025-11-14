@@ -389,4 +389,4 @@ cluster::*> *network interface revert -vserver Cluster -lif n2_clus2*
 
 
 .次の手順
-link:migrate-from-switchless-complete-migration.html["移行を完了する"]。
+ポートの設定が完了したら、link:migrate-from-switchless-complete-migration.html["移行を完了する"] 。

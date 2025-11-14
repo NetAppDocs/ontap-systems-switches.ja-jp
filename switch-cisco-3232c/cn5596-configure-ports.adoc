@@ -930,4 +930,4 @@ cluster::> system cluster-switch delete -device CL2
 
 
 .次の手順
-link:cn5596-complete-migration.html["移行を完了する"]。
+スイッチポートを設定したら、link:cn5596-complete-migration.html["移行を完了する"] 。

@@ -246,4 +246,4 @@ n2         /cdp
 
 
 .次の手順
-link:migrate-from-switchless-configure-ports.html["ポートを設定する"]。
+スイッチの移行準備が完了したら、link:migrate-from-switchless-configure-ports.html["ポートを設定する"] 。
