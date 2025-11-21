@@ -415,6 +415,39 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 
 === ステップ3: 構成を確認する
 
+. クラスタLIFで自動リバートを有効にします。
++
+`network interface modify -vserver Cluster -lif * -auto-revert true`
+
+. スイッチ cs2 で、すべてのクラスタ ポートをシャットダウンして再起動し、ホーム ポートにないすべてのクラスタ LIF の自動復帰をトリガーします。
++
+[listing, subs="+quotes"]
+----
+cs2> *enable*
+cs2# *configure*
+cs2(config)# *interface eth1/1-1/2*
+cs2(config-if-range)# *shutdown*
+
+(Wait for 5-10 seconds before re-enabling the ports)
+
+cs2(config-if-range)# *no shutdown*
+
+(After executing the no shutdown command, the nodes detect the change and begin to auto-revert the cluster LIFs to their home ports)
+
+cs2(config-if-range)# *exit*
+cs2(config)# *exit*
+cs2#
+----
+. クラスタ LIF がホーム ポートに戻ったことを確認します (これには 1 分ほどかかる場合があります)。
++
+`network interface show -vserver Cluster`
+
++
+いずれかのクラスタ LIF がホーム ポートに戻っていない場合は、手動で戻します。LIF を所有するローカル ノードの各ノード管理 LIF またはSP/ BMCシステム コンソールに接続する必要があります。
+
++
+`network interface revert -vserver Cluster -lif *`
+
 . すべてのインターフェースがtrueと表示されていることを確認します `Is Home`:
 +
 `network interface show -vserver Cluster`
@@ -521,17 +554,14 @@ node1      /cdp
 NOTE: コマンドが完了するまでに数分かかる場合があります。3分間の有効期間が終了することを通知するアナウンスが表示されるまで待ちます。
 
 +
-.例を表示
-[%collapsible]
-====
 次の例の false 出力は、構成設定が無効になっていることを示しています。
 
-[listing]
++
+[listing, subs="+quotes"]
 ----
 cluster1::*> network options switchless-cluster show
-Enable Switchless Cluster: false
+Enable Switchless Cluster: *false*
 ----
-====
 . クラスター内のノード メンバーのステータスを確認します。
 +
 `cluster show`
@@ -618,7 +648,7 @@ RPC status:
 ----
 --
 ====
-. [[step7]] 権限レベルを管理者に戻します。
+. [[step10]]権限レベルを管理者に戻します。
 +
 `set -privilege admin`
 

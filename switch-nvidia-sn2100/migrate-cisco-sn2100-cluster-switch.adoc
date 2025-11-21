@@ -528,28 +528,56 @@ swp16      100G   BondMember  sw1                 swp16
 +
 `cluster1::*> network interface modify -vserver Cluster -lif * -auto-revert true`
 
-. すべてのクラスタ ネットワーク LIF がホーム ポートに戻っていることを確認します。
-+
-`network interface show`
+. スイッチ sw2 で、すべてのクラスタ ポートをシャットダウンして再起動し、ホーム ポートにないすべてのクラスタ LIF の自動復帰をトリガーします。
 
-+
-.例を表示
-[%collapsible]
+
+[role="tabbed-block"]
 ====
+.キュムラス 4.4.3
+--
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -vserver Cluster*
+cumulus@sw2:mgmt:~$ *net add interface swp1-14 link down*
+cumulus@sw2:mgmt:~$ *net pending*
+cumulus@sw2:mgmt:~$ *net commit*
 
-            Logical    Status     Network            Current       Current Is
-Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
------------ ---------- ---------- ------------------ ------------- ------- ----
-Cluster
-            node1_clus1  up/up    169.254.209.69/16  node1         e3a     true
-            node1_clus2  up/up    169.254.49.125/16  node1         e3b     true
-            node2_clus1  up/up    169.254.47.194/16  node2         e3a     true
-            node2_clus2  up/up    169.254.19.183/16  node2         e3b     true
+(Wait for 5-10 seconds before re-enabling the ports)
+
+cumulus@sw2:mgmt:~$ *net add interface swp1-14 link up*
+cumulus@sw2:mgmt:~$ *net pending*
+cumulus@sw2:mgmt:~$ *net commit*
+
+(After executing the link state up command, the nodes detect the change and begin to auto-revert the cluster LIFs to their home ports)
 ----
+--
+.Cumulus 5.x
+--
+[listing, subs="+quotes"]
+----
+cumulus@sw2:mgmt:~$ *nv set interface swp1-14 link state down*
+cumulus@sw2:mgmt:~$ *nv config apply*
+cumulus@sw2:mgmt:~$ *nv show interface*
+
+(Wait for 5-10 seconds before re-enabling the ports)
+
+cumulus@sw2:mgmt:~$ *nv set interface swp1-14 link state up*
+cumulus@sw2:mgmt:~$ *nv config apply*
+cumulus@sw2:mgmt:~$ *nv show interface*
+
+(After executing the link state up command, the nodes detect the change and begin to auto-revert the cluster LIFs to their home ports)
+----
+--
 ====
+. [[step3]]クラスタLIFがホームポートに戻ったことを確認します（これには1分ほどかかる場合があります）。
++
+`network interface show -vserver Cluster`
+
++
+いずれかのクラスタ LIF がホーム ポートに戻っていない場合は、手動で戻します。LIF を所有するローカル ノードの各ノード管理 LIF またはSP/ BMCシステム コンソールに接続する必要があります。
+
++
+`network interface revert -vserver Cluster -lif *`
+
 . 権限レベルを管理者に戻します。
 +
 `set -privilege admin`

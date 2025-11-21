@@ -282,10 +282,8 @@
   <block id="85e04ff5dd770cff5dbbe435ea94a7dd" category="list-text">スイッチ cs1-new の観点からスイッチ ポートの接続を確認します。</block>
   <block id="800c1c0a764eb859a7e53df87ed00481" category="list-text">cs1-new と cs2-new 間の ISL がまだ動作していることを確認します。</block>
   <block id="f8a26b1330fe6b7b741993630dd932e2" category="list-text">クラスタ LIF がホーム ポートに戻ったことを確認します (これには 1 分ほどかかる場合があります)。</block>
-  <block id="65201dcfc7c620613613b15eb161d307" category="paragraph">クラスタ LIF がホーム ポートに戻っていない場合は、手動で戻します。</block>
   <block id="268d66b259b50e25cbef3d39885d450f" category="paragraph"><block ref="d4a4086e7952a80201c11ae52219be46" prefix="" category="inline-code"></block></block>
   <block id="fb17b612fdcb19e9fe42f0afa4b960d0" category="admonition">実行する前に数秒待ってください<block ref="a7dd12b1dab17d25467b0b0a4c8d4a92" prefix=" " category="inline-code"></block>詳細を表示するコマンド。</block>
-  <block id="c7ca49e9f550dc9b18f2402f13ad9430" category="list-text">[[step5]]自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。<block ref="9ac424c0d7b432975df36a19daf50c9c" prefix=" " category="inline-code"></block></block>
   <block id="58eaebf972358f1cf03d386a4ade1a0f" category="paragraph-title">次の手順</block>
   <block id="00a850fef80958a3c902c0d0b0fc20c4" category="inline-link-macro">スイッチのヘルスモニタリングを設定する</block>
   <block id="930d2612130a6eae69f4f0d6b6f79e03" category="paragraph">スイッチを移行したら、<block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block> 。</block>
@@ -1163,7 +1161,6 @@
   <block id="dae02701a0a247e1012b9b2832c32464" category="list-text">交換した CN1610 スイッチが自動的に削除されない場合は、クラスタのスイッチ テーブルから削除します。</block>
   <block id="b48ac462b57bcb2860eecd434bd2c80f" category="paragraph">ONTAP 9.8 以降では、次のコマンドを使用します。<block ref="b4720f8aa09f4e4b3a04e78c558b6c90" prefix=" " category="inline-code"></block></block>
   <block id="c8b9229aed88be3704b6c26029b7ae94" category="paragraph">ONTAP 9.7 以前の場合は、次のコマンドを使用します。<block ref="f055904a9fc3a4f0bc33aca13ecd2b2d" prefix=" " category="inline-code"></block></block>
-  <block id="4e4f70ba52e8cb595faa069991c5a9f4" category="list-text">[[step5]]自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。</block>
   <block id="30e3b2cfb1c72e5b230d98750db3bf2b" category="paragraph">スイッチを移行した後は、 <block ref="9c3be868eca09e30ec03c7542e485ba6" category="inline-link-macro-rx"></block>。</block>
   <block id="e8ab0c1581dc0dcc64441ffb1b729ce5" category="summary">2ノードのスイッチレスクラスタをお持ちの場合は、BroadcomがサポートするBES-53248クラスタスイッチを含む2ノードのスイッチクラスタに無停止で移行できます。</block>
   <block id="446e9d64184ff722494a9a706bbd9d06" category="doc">スイッチ型NetAppクラスタ環境への移行</block>
@@ -1209,7 +1206,6 @@
   <block id="3d7d92fe9fa50ff07a52fda11ae8d646" category="paragraph">次の例は、スイッチ cs2 でポート 1 ～ 16 が有効になっていることを示しています。</block>
   <block id="30530896511238b69b0e6acc7e04d6ce" category="list-text">すべてのインターフェースが表示されていることを確認する<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>のために<block ref="53db3ce0fe0e71f06b3beb0b676b806c" prefix=" " category="inline-code"></block>:</block>
   <block id="f1d50a679b7b3d0967aafba21d2b1454" category="paragraph">その<block ref="68934a3e9455fa72420237eb05902327" prefix=" " category="inline-code"></block>次の例の出力は、構成設定が無効になっていることを示しています。</block>
-  <block id="c97fddef37af781b99f2bb564a90861d" category="list-text">[[step9]]権限レベルを管理者に戻します。</block>
   <block id="470e1e7d03d4911b1e5ad8bf036ca8cb" category="inline-link">NetAppの技術情報アーティクル：「How to suppress automatic case creation during scheduled maintenance windows」</block>
   <block id="1e44ccea9f1ae385026deb840bc9b5f4" category="paragraph">詳細については、以下を参照してください。<block ref="780f810d0519883e7efdd6ef45cf51ed" category="inline-link-rx"></block></block>
   <block id="393a5f0f5f1f070aac964741815cca76" category="doc">Broadcom BES-53248 クラスタスイッチをスイッチレス接続に置き換える</block>
@@ -3789,7 +3785,6 @@
   <block id="db038ea8b37b62294a9f3eebe698b28a" category="paragraph">各ポートには<block ref="46c48bec0d282018b9d167eef7711b2c" prefix=" " category="inline-code"></block>のために<block ref="97e7c9a7d06eac006a28bf05467fcc8b" prefix=" " category="inline-code"></block>そして<block ref="741839f346d6e8126ae38ee76a96fd12" prefix=" " category="inline-code"></block>のために<block ref="fbcf0d1f787c74663ca9dc925ebf5f0c" prefix=" " category="inline-code"></block>。</block>
   <block id="ba04a36ca69927056bab3bba36362e9b" category="list-text">スイッチ cs1 および cs2 で、すべてのノード クラスタ ポートが稼働していることを確認します。</block>
   <block id="366abeaa2bac7598f17d029db42f0407" category="paragraph"><block ref="478474aa0db28144d5db02c478cd5215" prefix="" category="inline-code"></block></block>
-  <block id="496fe3dd70b4f5816f2c409909812bb5" category="list-text">すべてのクラスタ ネットワーク LIF がホーム ポートに戻っていることを確認します。</block>
   <block id="ccc533253625ec3fd1cd1ad3dd395ae6" category="summary">既存の2ノード スイッチレス クラスタ環境を使用している場合は、Cisco Nexus 9336C-FX2スイッチを使用して2ノード スイッチ クラスタ環境に移行し、3ノード以上にクラスタを拡張できます。</block>
   <block id="44062246be6e5585fa8092a371375894" category="paragraph">既存の 2 ノードのスイッチレス クラスタ環境がある場合は、 Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチを使用して 2 ノードのスイッチド クラスタ環境に移行できます。</block>
   <block id="ec9e474afc999353343db9439e541082" category="summary">ONTAPクラスタの古いCiscoクラスタ スイッチは、無停止でCisco Nexus 9336C-FX2クラスタ ネットワーク スイッチに移行できます。</block>
@@ -5224,7 +5219,6 @@
   <block id="ec493d1a781282d3b831640adff57617" category="paragraph"><block ref="1be2284fb441d5fc39c1bb2882bcfe33" prefix="" category="inline-code"></block></block>
   <block id="609878b299dde0e13898cea02c9f40e5" category="paragraph"><block ref="780e8a1ebd2c830e4aeaebb59c666b98" prefix="" category="inline-code"></block></block>
   <block id="7c1863f1ebbe4335b617904d5c56fbc1" category="admonition">完了するまでに 1 分ほどかかる場合があります。</block>
-  <block id="0e18e00d28d8ccbabfbea2b32f607774" category="list-text">[[step6]] 権限レベルを管理者に戻します。</block>
   <block id="0b9620a0fea8fa88010e59eebf7cbf63" category="summary">ONTAPクラスタ用の古いCiscoクラスタ スイッチを、 NVIDIA SN2100 クラスタ ネットワーク スイッチに無停止で移行できます。</block>
   <block id="9cb69df206c9ac9ed5e1f4f5f353f643" category="doc">Ciscoクラスタ スイッチからNVIDIA SN2100 クラスタ スイッチへの移行</block>
   <block id="65b0458ae1a5a43752e6cbb805a3b583" category="paragraph">ONTAPクラスタ用のCiscoクラスタ スイッチをNVIDIA SN2100 クラスタ スイッチに移行できます。この手順は無停止で実行されます。</block>
@@ -5857,4 +5851,15 @@
   <block id="896088c62ad7b687065540892080324f" category="paragraph">NetAppキャビネットにスイッチを設置したら、<block ref="e720d023779d66bfe8b12a8e36518dcc" category="inline-link-macro-rx"></block> 。</block>
   <block id="ce7e45bf2954b88a6750644b0448950a" category="paragraph">RCFをインストールしたら、 <block ref="9c2eadd0cc07686b4a17c38ca62f4a4c" category="inline-link-macro-rx"></block>。</block>
   <block id="c9c986f56a1b508d37d42c57396f5c6e" category="paragraph">配線ワークシートを完了したら、 <block ref="524641f31ca2f6882ec8e6343313f85c" category="inline-link-macro-rx"></block>。</block>
+  <block id="eb87b9d92bab86a5eff1f86bc4b9d609" category="list-text">スイッチ cs2 で、すべてのクラスタ ポートをシャットダウンして再起動し、ホーム ポートにないすべてのクラスタ LIF の自動復帰をトリガーします。</block>
+  <block id="0722720446d120472012852570da7854" category="paragraph">いずれかのクラスタ LIF がホーム ポートに戻っていない場合は、手動で戻します。LIF を所有するローカル ノードの各ノード管理 LIF またはSP/ BMCシステム コンソールに接続する必要があります。</block>
+  <block id="ec5ea2f0318e4d906c296f5576b9c026" category="list-text">[[step6]]自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。<block ref="9ac424c0d7b432975df36a19daf50c9c" prefix=" " category="inline-code"></block></block>
+  <block id="a012eaed89d2ac51303f8c01a7d0aaaa" category="list-text">[[step10]]権限レベルを管理者に戻します。</block>
+  <block id="2f3040f570b3d77425ad0bf50fc7985c" category="list-text">[[step6]]権限レベルを管理者に戻します。</block>
+  <block id="eee9eca0197e609d5560419338f13cb5" category="list-text">スイッチ sw2 で、すべてのクラスタ ポートをシャットダウンして再起動し、ホーム ポートにないすべてのクラスタ LIF の自動復帰をトリガーします。</block>
+  <block id="9867d4546ca72c2aef3de3dd388f027a" category="open-title">キュムラス 4.4.3</block>
+  <block id="c9e15b180ce232c5238f71bbe70022b5" category="open-title">Cumulus 5.x</block>
+  <block id="77c4c65090a7a14ac6d2a4180ac07a3c" category="list-text">[[step3]]クラスタLIFがホームポートに戻ったことを確認します（これには1分ほどかかる場合があります）。</block>
+  <block id="5a443ae50dfc3d613ac9445266752a19" category="list-text">[[step8]]権限レベルを管理者に戻します。</block>
+  <block id="397fcdbb1cd3a03c8bd47ec26ea0418d" category="list-text">[[step5]]スイッチc2で、クラスタLIFをフェイルオーバーするために、ノードのクラスタポートに接続されているポートをシャットダウンします。</block>
 </blocks>

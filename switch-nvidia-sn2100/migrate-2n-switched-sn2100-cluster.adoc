@@ -694,6 +694,56 @@ Cluster
           node2_clus2   true
 ----
 ====
+. スイッチ sw2 で、すべてのクラスタ ポートをシャットダウンして再起動し、ホーム ポートにないすべてのクラスタ LIF の自動復帰をトリガーします。
+
+
+[role="tabbed-block"]
+====
+.キュムラス 4.4.3
+--
+[listing, subs="+quotes"]
+----
+cumulus@sw2:mgmt:~$ *net add interface swp1-14 link down*
+cumulus@sw2:mgmt:~$ *net pending*
+cumulus@sw2:mgmt:~$ *net commit*
+
+(Wait for 5-10 seconds before re-enabling the ports)
+
+cumulus@sw2:mgmt:~$ *net add interface swp1-14 link up*
+cumulus@sw2:mgmt:~$ *net pending*
+cumulus@sw2:mgmt:~$ *net commit*
+
+(After executing the link state up command, the nodes detect the change and begin to auto-revert the cluster LIFs to their home ports)
+----
+--
+.Cumulus 5.x
+--
+[listing, subs="+quotes"]
+----
+cumulus@sw2:mgmt:~$ *nv set interface swp1-14 link state down*
+cumulus@sw2:mgmt:~$ *nv config apply*
+cumulus@sw2:mgmt:~$ *nv show interface*
+
+(Wait for 5-10 seconds before re-enabling the ports)
+
+cumulus@sw2:mgmt:~$ *nv set interface swp1-14 link state up*
+cumulus@sw2:mgmt:~$ *nv config apply*
+cumulus@sw2:mgmt:~$ *nv show interface*
+
+(After executing the link state up command, the nodes detect the change and begin to auto-revert the cluster LIFs to their home ports)
+----
+--
+====
+. [[step3]]クラスタLIFがホームポートに戻ったことを確認します（これには1分ほどかかる場合があります）。
++
+`network interface show -vserver Cluster`
+
++
+いずれかのクラスタ LIF がホーム ポートに戻っていない場合は、手動で戻します。LIF を所有するローカル ノードの各ノード管理 LIF またはSP/ BMCシステム コンソールに接続する必要があります。
+
++
+`network interface revert -vserver Cluster -lif *`
+
 . すべてのインターフェースが表示されていることを確認する `true`のために `Is Home`:
 +
 `net interface show -vserver Cluster`
@@ -728,17 +778,14 @@ Cluster
 `network options switchless-cluster show`
 
 +
-.例を表示
-[%collapsible]
-====
 次の例の false 出力は、構成設定が無効になっていることを示しています。
 
++
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network options switchless-cluster show*
+cluster1::*> network options switchless-cluster show
 Enable Switchless Cluster: *false*
 ----
-====
 . クラスター内のノード メンバーのステータスを確認します。
 +
 `cluster show`
@@ -825,7 +872,7 @@ RPC status:
 ----
 --
 ====
-. [[step6]] 権限レベルを管理者に戻します。
+. [[step8]]権限レベルを管理者に戻します。
 +
 `set -privilege admin`
 
