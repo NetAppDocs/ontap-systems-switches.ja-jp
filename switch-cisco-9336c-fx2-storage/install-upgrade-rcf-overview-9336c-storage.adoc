@@ -16,7 +16,7 @@ Nexus 9336C-FX2 ストレージ スイッチを初めてセットアップした
 ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]RCF をインストールまたはアップグレードする際の詳細については、こちらをご覧ください。
 
 .利用可能なRCF構成
-次の表では、さまざまな構成で使用できる RCF について説明します。構成に適した RCF を選択します。
+次の表では、さまざまな構成で使用できる RCF について説明します。構成に適した RCF を選択します。見るlink:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]詳細についてはこちらをご覧ください。
 
 特定のポートと VLAN の使用法の詳細については、RCF のバナーと重要な注意事項のセクションを参照してください。
 
@@ -71,6 +71,33 @@ Nexus 9336C-FX2 ストレージ スイッチを初めてセットアップした
 ストレージ
  a| 
 すべてのポートは 100GbE NVMe ストレージ接続用に構成されています。
+
+|===
+.利用可能なRCF
+次の表は、9336C-FX2 および 9336C-FX2-T スイッチで使用可能な RCF を示しています。構成に適した RCF バージョンを選択します。見るlink:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]詳細についてはこちらをご覧ください。
+
+[cols="1"]
+|===
+| RCF name 
+
+
+ a| 
+クラスター HA ブレイクアウト RCF 1._xx_
+
+
+
+ a| 
+クラスタ HA ストレージ RCF 1._xx_
+
+
+
+ a| 
+ストレージ RCF 1._xx_
+
+
+
+ a| 
+マルチクラスタ HA RCF 1._xx_
 
 |===
 .推奨ドキュメント

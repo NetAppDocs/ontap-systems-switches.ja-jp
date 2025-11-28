@@ -73,6 +73,33 @@ Nexus 3232C スイッチを初めてセットアップした後、リファレ�
 すべてのポートは 100GbE NVMe ストレージ接続用に構成されています。
 
 |===
+.利用可能なRCF
+次の表は、3232C スイッチで使用可能な RCF を示しています。構成に適した RCF バージョンを選択します。見るlink:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]詳細についてはこちらをご覧ください。
+
+[cols="1"]
+|===
+| RCF name 
+
+
+ a| 
+クラスター HA ブレイクアウト RCF v1._xx_
+
+
+
+ a| 
+クラスターHA RCF v1._xx_
+
+
+
+ a| 
+ストレージ RCF v1._xx_
+
+
+
+ a| 
+クラスター RCF 1._xx_
+
+|===
 .推奨ドキュメント
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ (NSS)"^]
 +

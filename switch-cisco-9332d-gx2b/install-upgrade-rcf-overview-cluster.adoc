@@ -16,10 +16,10 @@ Nexus 9332D-GX2B スイッチを初めてセットアップした後、リファ
 ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]RCF をインストールまたはアップグレードする際の詳細については、こちらをご覧ください。
 
 .利用可能なRCF構成
-* *Cluster-HA-Storage* - ポート上の共有クラスター/HA/ストレージ トラフィックをサポートします (NX9332D-GX2B-RCF-v10.0-Shared.txt)。
+* *クラスター-HA-ストレージ AFX* - すべてのポートは、AFX ノード クラスター、HA、ストレージ ポート、および NX224 ストレージ シェルフ ポートを普遍的にサポートする 4x100GbE ブレークアウト モードで構成されています。スイッチ間の 400GbE ISL。  (_Cluster-HA-Storage AFX RCF_vxx.x_)。
 
 
-特定のポートと VLAN の使用法の詳細については、RCF のバナーと重要な注意事項のセクションを参照してください。
+特定のポートと VLAN の使用法の詳細については、RCF のバナーと重要な注意事項のセクションを参照してください。見るlink:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]詳細についてはこちらをご覧ください。
 
 .推奨ドキュメント
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ (NSS)"^]
