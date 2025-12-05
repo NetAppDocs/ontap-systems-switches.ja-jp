@@ -53,34 +53,6 @@ entries:
 - title: スイッチの移行
   pdf-filename: 移行スイッチ_3232C
   entries:
-  - title: CN1610スイッチの移行
-    pdf-filename: CN1610_スイッチ移行
-    entries:
-    - title: CN1610スイッチからの移行ワークフロー
-      url: "/switch-cisco-3232c/cn1610-migrate-workflow.html"
-    - title: 移行要件
-      url: "/switch-cisco-3232c/cn1610-migrate-to-3232c-overview.html"
-    - title: 移行の準備
-      url: "/switch-cisco-3232c/cn1610-prepare-to-migrate.html"
-    - title: クラスタスイッチCL2を交換する
-      url: "/switch-cisco-3232c/cn1610-replace-CL2.html"
-    - title: クラスタスイッチCL1を交換する
-      url: "/switch-cisco-3232c/cn1610-replace-CL1.html"
-    - title: 移行を完了する
-      url: "/switch-cisco-3232c/cn1610-complete-migration.html"
-  - title: Nexus 5596スイッチの移行
-    pdf-filename: CN5596_スイッチ移行
-    entries:
-    - title: Cisco Nexus 5596スイッチからの移行ワークフロー
-      url: "/switch-cisco-3232c/cn5596-migrate-workflow.html"
-    - title: 移行要件
-      url: "/switch-cisco-3232c/cn5596-migrate-requirements.html"
-    - title: 移行の準備
-      url: "/switch-cisco-3232c/cn5596-prepare-to-migrate.html"
-    - title: ポートを設定する
-      url: "/switch-cisco-3232c/cn5596-configure-ports.html"
-    - title: 移行を完了する
-      url: "/switch-cisco-3232c/cn5596-complete-migration.html"
   - title: 2ノードのスイッチレスクラスタからの移行
     pdf-filename: スイッチレスクラスタからの移行
     entries:

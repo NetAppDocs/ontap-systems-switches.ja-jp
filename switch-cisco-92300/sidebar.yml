@@ -48,8 +48,6 @@ entries:
   entries:
   - title: 2ノードスイッチクラスタへの移行
     url: "/switch-cisco-92300/migrate-to-2n-switched.html"
-  - title: 古いCiscoスイッチからの移行
-    url: "/switch-cisco-92300/migrate-to-92300yc.html"
 - title: スイッチを交換する
   pdf-filename: スイッチ交換_92300yc
   entries:
