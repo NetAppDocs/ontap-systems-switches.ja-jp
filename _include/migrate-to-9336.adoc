@@ -32,7 +32,7 @@ NOTE: AFF A800またはAFF C800システムで e0a および e1a クラスタ �
 == スイッチを移行する
 
 .例について
-この手順の例では、2つのノードを使用します。これらのノードは、2 つの 10GbE クラスター相互接続ポート e0a と e0b を使用します。参照 https://hwu.netapp.com/["Hardware Universe"^]プラットフォーム上の正しいクラスター ポートを確認します。
+この手順の例では、2つのノードを使用します。これらのノードは、2 つの 10GbE クラスター相互接続ポート e0a と e0b を使用します。参照 https://hwu.netapp.com/["Hardware Universe"^]プラットフォーム上の正しいクラスター ポートを確認します。見る link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^] スイッチのインストール要件の詳細については、こちらをご覧ください。
 
 
 NOTE: コマンド出力は、 ONTAPのリリースによって異なる場合があります。

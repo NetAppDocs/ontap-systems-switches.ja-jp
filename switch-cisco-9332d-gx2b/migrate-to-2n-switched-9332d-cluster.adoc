@@ -57,7 +57,7 @@ summary: 既存の2ノード スイッチレス クラスタ環境を使用し�
 * この手順で使用されるクラスター ポートは e0a と e0b です。
 
 
-見る https://hwu.netapp.com["Hardware Universe"^]プラットフォームのクラスター ポートに関する情報。
+見る https://hwu.netapp.com["Hardware Universe"^]プラットフォームのクラスター ポートに関する情報。見る link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^] スイッチのインストール要件の詳細については、こちらをご覧ください。
 
 
 

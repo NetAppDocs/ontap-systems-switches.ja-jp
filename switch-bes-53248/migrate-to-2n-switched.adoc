@@ -38,7 +38,7 @@ summary: 2ノードのスイッチレスクラスタをお持ちの場合は、B
 ** クラスター スイッチへのコンソール アクセスがあります。
 ** BES-53248 ノード間スイッチおよびスイッチ間接続には、Twinax または光ファイバー ケーブルが使用されます。
 +
-その https://hwu.netapp.com/Home/Index["_NetApp ハードウェア ユニバース_"^]ONTAP の互換性、サポートされている EFOS ファームウェア、および BES-53248 スイッチへのケーブル接続に関する情報が含まれています。
+その link:https://hwu.netapp.com/Home/Index["_NetApp ハードウェア ユニバース_"^] ONTAP の互換性、サポートされている EFOS ファームウェア、および BES-53248 スイッチへのケーブル接続に関する情報が含まれています。見る link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^] スイッチのインストール要件の詳細については、こちらをご覧ください。
 
 
 

@@ -17,7 +17,7 @@ BES-53248 スイッチのインストールとメンテナンスについては�
 
 == EFOS およびONTAP のサポート
 
-参照 https://hwu.netapp.com/Switch/Index["NetApp Hardware Universe"^]そして https://mysupport.netapp.com/site/info/broadcom-cluster-switch["Broadcomスイッチ互換性マトリックス"^]BES-53248 スイッチとの EFOS およびONTAP の互換性情報については、こちらをご覧ください。  EFOS およびONTAP のサポートは、BES-53248 スイッチの特定のマシン タイプによって異なる場合があります。  BES-52348スイッチマシンの全タイプの詳細については、link:components-bes53248.html["BES-53248 クラスタスイッチのコンポーネントと部品番号"] 。
+参照 https://hwu.netapp.com/Switch/Index["NetApp Hardware Universe"^]そして https://mysupport.netapp.com/site/info/broadcom-cluster-switch["Broadcomスイッチ互換性マトリックス"^]BES-53248 スイッチとの EFOS およびONTAP の互換性情報については、こちらをご覧ください。EFOS およびONTAP のサポートは、BES-53248 スイッチの特定のマシン タイプによって異なる場合があります。BES-52348スイッチマシンの全タイプの詳細については、link:components-bes53248.html["BES-53248 クラスタスイッチのコンポーネントと部品番号"] 。見る link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"]^ スイッチのインストール要件の詳細については、こちらをご覧ください。
 
 
 
@@ -63,7 +63,7 @@ Broadcom がサポートする BES-53248 クラスタ スイッチのポート�
 100GbEクラスタ スイッチ間リンク（ISL）ポート、基本設定
 
 |===
-参照 https://hwu.netapp.com/Switch/Index["Hardware Universe"]スイッチ ポートの詳細については、こちらをご覧ください。
+参照 https://hwu.netapp.com/Switch/Index["Hardware Universe"]スイッチ ポートの詳細については、こちらをご覧ください。見る link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^] スイッチのインストール要件の詳細については、こちらをご覧ください。
 
 
 

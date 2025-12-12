@@ -50,7 +50,7 @@ swp15-16
 100GbE スイッチ間リンク (ISL) ポート
 
 |===
-参照 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]スイッチ ポートの詳細については、こちらをご覧ください。
+参照 link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^] スイッチ ポートの詳細については、こちらをご覧ください。
 
 
 
@@ -190,7 +190,7 @@ UP     swp4      100G  9216   Trunk/L2                     Master: bridge(UP)
 
 --
 ====
-ナレッジベースの記事を参照 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric_Interconnect_and_Management_Switches/NVIDIA_SN2100_switch_fails_to_connect_using_40_100GbE_copper_cable["SN2100スイッチが40/100GbE銅線ケーブルを使用して接続できない"^]詳細については、こちらをご覧ください。
+ナレッジベースの記事を参照link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/Fabric_Interconnect_and_Management_Switches/NVIDIA_SN2100_switch_fails_to_connect_using_40_100GbE_copper_cable["SN2100スイッチが40/100GbE銅線ケーブルを使用して接続できない"^]詳細については、こちらをご覧ください。
 
 Cumulus Linux 4.4.2 では、X1151A NIC、X1146A NIC、またはオンボード 100GbE ポートを備えた SN2100 スイッチでは銅線接続はサポートされません。例えば：
 
@@ -200,24 +200,23 @@ Cumulus Linux 4.4.2 では、X1151A NIC、X1146A NIC、またはオンボード 
 
 
 
-== QSAアダプター
+== QSAモジュール
 
-QSA アダプターを使用してプラットフォーム上の 10GbE/25GbE クラスター ポートに接続すると、リンクが起動しない可能性があります。
+QSFP+ (40GbE) から SFP+ (10GbE) へのアダプタ、または QSFP28 (100GbE) から SFP28 (25GbE) へのアダプタ (QSA) を使用する場合は、それらを非ブレイクアウト 40GbE/100GbE スイッチ ポート (swp3-swp14) に挿入します。ブレイクアウト用に設定されているポートに QSA モジュールを挿入しないでください。
+
+QSA モジュールを使用してプラットフォーム上の 10GbE/25GbE クラスター ポートに接続すると、リンクが起動しない場合があります。
 
 この問題を解決するには、次の手順を実行します。
 
-* 10GbE の場合、swp1s0-3 リンク速度を手動で 10000 に設定し、自動ネゴシエーションをオフに設定します。
-* 25GbE の場合、swp2s0-3 リンク速度を手動で 25000 に設定し、自動ネゴシエーションをオフに設定します。
+* 10GbE の場合、リンク速度を手動で 10000 に設定し、自動ネゴシエーションをオフに設定します。
+* 25GbE の場合、リンク速度を手動で 25000 に設定し、自動ネゴシエーションをオフに設定します。
 
-
-
-NOTE: 10GbE/25GbE QSA アダプターを使用する場合は、非ブレイクアウト 40GbE/100GbE ポート (swp3-swp14) に挿入します。ブレークアウト用に設定されているポートに QSA アダプタを挿入しないでください。
 
 
 
 == ブレイクアウトポートのインターフェース速度の設定
 
-スイッチ ポートのトランシーバーによっては、スイッチ インターフェイスの速度を固定速度に設定する必要がある場合があります。  10GbE および 25GbE ブレークアウト ポートを使用する場合は、自動ネゴシエーションがオフになっていることを確認し、スイッチのインターフェイス速度を設定します。
+スイッチ ポートのトランシーバーによっては、スイッチ インターフェイスの速度を固定速度に設定する必要がある場合があります。10GbE および 25GbE ブレークアウト ポートまたは QSA モジュールを使用している場合は、自動ネゴシエーションがオフになっていることを確認し、スイッチのインターフェイス速度を設定します。
 
 [role="tabbed-block"]
 ====
@@ -332,5 +331,7 @@ UP     swp16      100G  9216   BondMember  cs01 (swp16)     Master: cl
 ----
 --
 ====
+参照 link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^]ナレッジベースの記事 link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWUにない機器をインストールするにはどのような追加情報が必要ですか？"^] 詳細についてはこちらをご覧ください。
+
 .次の手順
 ケーブル配線と構成要件を確認したら、link:install-cable-shelves-sn2100-cluster.html["NS224シェルフをスイッチ接続ストレージとしてケーブル接続する"] 。

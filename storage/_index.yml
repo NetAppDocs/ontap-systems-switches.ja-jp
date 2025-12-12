@@ -3,8 +3,8 @@ indexpage:
   title: ストレージ スイッチ
   summary: このサイトのドキュメントを使用して、 ONTAPクラスタ展開用のストレージ スイッチをインストール、構成、および保守します。
   keywords: storage switches, cisco nexus switches, cluster switches, ontap clusters
-  lead: ストレージ スイッチを使用すると、2 つ以上のノードを持つONTAPクラスターを構築できます。これらのCisco Nexus 9000 プラットフォーム
-    スイッチは、 NetApp ONTAP環境におけるスケーラブルなクラスタ相互接続ソリューションの基盤を提供します。
+  lead: ストレージ スイッチを使用すると、2 つ以上のノードを持つONTAPクラスターを構築できます。これらのイーサネット ストレージ スイッチは、 NetApp
+    ONTAP環境におけるスケーラブルなクラスタ相互接続ソリューションの基盤を提供します。
   tiles:
   - title: 始めましょう
     links:

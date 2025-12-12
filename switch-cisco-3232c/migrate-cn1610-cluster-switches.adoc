@@ -27,6 +27,7 @@ NOTE: この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ ス�
 * link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601 および CN1610"^]
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]
 * link:http://hwu.netapp.com["Hardware Universe"^]
+* link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^]
 
 
 
@@ -34,7 +35,7 @@ NOTE: この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ ス�
 == スイッチを移行する
 
 .例について
-この手順の例では、4 つのノードを使用します。2 つのノードは、4 つの 10 GbE クラスタ相互接続ポート (e0a、e0b、e0c、e0d) を使用します。他の 2 つのノードは、2 本の 40 GbE クラスター相互接続ファイバー ケーブル (e4a と e4e) を使用します。そのlink:https://hwu.netapp.com/["_ハードウェアユニバース_"^]プラットフォーム上のクラスター ファイバー ケーブルに関する情報が記載されています。
+この手順の例では、4 つのノードを使用します。2 つのノードは、4 つの 10 GbE クラスタ相互接続ポート (e0a、e0b、e0c、e0d) を使用します。他の 2 つのノードは、2 本の 40 GbE クラスター相互接続ファイバー ケーブル (e4a と e4e) を使用します。そのlink:https://hwu.netapp.com/["_ハードウェアユニバース_"^]プラットフォーム上のクラスター ファイバー ケーブルに関する情報が記載されています。見る link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^] スイッチのインストール要件の詳細については、こちらをご覧ください。
 
 この手順の例で使用するスイッチとノードの名前は次のとおりです。
 

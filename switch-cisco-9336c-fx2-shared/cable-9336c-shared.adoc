@@ -24,7 +24,7 @@ NS224 ストレージをスイッチ接続としてケーブル接続する場�
 
 image:9336c_image1.jpg["スイッチ接続"]
 
-参照 https://hwu.netapp.com/Switch/Index["Hardware Universe"]スイッチ ポートの詳細については、こちらをご覧ください。
+参照 https://hwu.netapp.com/Switch/Index["Hardware Universe"]スイッチ ポートの詳細については、こちらをご覧ください。見る link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^] スイッチのインストール要件の詳細については、こちらをご覧ください。
 
 
 

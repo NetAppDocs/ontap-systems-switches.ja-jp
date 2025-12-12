@@ -35,11 +35,10 @@ summary: 既存の2ノード スイッチレス クラスタ環境を使用し�
 ** 両方のスイッチには管理ネットワーク接続があります。
 ** クラスター スイッチへのコンソール アクセスがあります。
 ** Nexus 9336C-FX2 のノード間スイッチおよびスイッチ間接続には、Twinax ケーブルまたは光ファイバー ケーブルを使用します。
-+
-見る https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- スイッチ"^]ケーブル接続の詳細については、こちらをご覧ください。
 
 
-
+* 見る link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- スイッチ"^] ケーブル接続の詳細については、こちらをご覧ください。
+* 見る link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^] スイッチのインストール要件の詳細については、こちらをご覧ください。
 * スイッチ間リンク (ISL) ケーブルは、両方の 9336C-FX2 スイッチのポート 1/35 と 1/36 に接続されています。
 * 両方の 9336C-FX2 スイッチの初期カスタマイズが完了し、次のようになりました。
 +

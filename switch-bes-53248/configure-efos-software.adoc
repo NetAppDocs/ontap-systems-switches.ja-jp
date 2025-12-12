@@ -238,13 +238,12 @@ Additional Packages............................ BGP-4
 ............................................... Prototype Open API
 ----
 ====
-. インストールを完了します。スイッチを再構成するには、次の 5 つの手順に従います。
+. インストールを完了します。スイッチを再構成するには、次の 4 つの手順に従います。
 +
 .. link:configure-licenses.html["ライセンスをインストールする"]
 .. link:configure-install-rcf.html["RCFファイルをインストールする"]
 .. link:configure-ssh.html["SSH を有効にする"]
-.. link:CSHM_log_collection.html["ログ収集を有効にする"]
-.. link:CSHM_snmpv3.html["監視用にSNMPv3を構成する"]
+.. link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"]
 
 
 . パートナー スイッチで手順 1 ～ 7 を繰り返します。
@@ -410,14 +409,13 @@ unit 	active 	    backup   current-active  next-active
 (cs2) #
 ----
 ====
-. インストールを完了します。スイッチは設定が適用されずに再起動し、工場出荷時のデフォルトにリセットされます。スイッチを再構成するには、次の 6 つの手順に従います。
+. インストールを完了します。スイッチは設定が適用されずに再起動し、工場出荷時のデフォルトにリセットされます。スイッチを再構成するには、次の 5 つの手順に従います。
 +
 .. link:configure-install-initial.html["スイッチの設定"]
 .. link:configure-licenses.html["ライセンスをインストールする"]
 .. link:configure-install-rcf.html["RCFファイルをインストールする"]
 .. link:configure-ssh.html["SSH を有効にする"]
-.. link:CSHM_log_collection.html["ログ収集を有効にする"]
-.. link:CSHM_snmpv3.html["監視用にSNMPv3を構成する"]
+.. link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを構成する"]
 
 
 . パートナー スイッチで手順 1 ～ 8 を繰り返します。

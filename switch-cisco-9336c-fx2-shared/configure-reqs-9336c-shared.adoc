@@ -41,7 +41,7 @@ ONTAP 9.9.1 以降では、 Cisco Nexus 9336C-FX2 スイッチを使用して、
 * 管理ネットワークトラフィック用の IP サブネット
 * 各ストレージ システム コントローラおよび該当するすべてのスイッチのホスト名と IP アドレス
 * ほとんどのストレージ システム コントローラは、イーサネット サービス ポート (レンチ アイコン) に接続して e0M インターフェイスを介して管理されます。AFF A800およびAFF A700sシステムでは、e0M イ​​ンターフェイスは専用のイーサネット ポートを使用します。
-* 参照 https://hwu.netapp.com["Hardware Universe"]最新情報についてはこちらをご覧ください。
+* 参照 https://hwu.netapp.com["Hardware Universe"]最新情報についてはこちらをご覧ください。見る link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^] スイッチのインストール要件の詳細については、こちらをご覧ください。
 
 
 スイッチの初期設定の詳細については、次のガイドを参照してください。 https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9336c-fx2-e/cisco-nexus-9336c-fx2-e-nx-os-mode-switch-hardware-installation-guide.html["Cisco Nexus 9336C-FX2 インストールおよびアップグレード ガイド"] 。

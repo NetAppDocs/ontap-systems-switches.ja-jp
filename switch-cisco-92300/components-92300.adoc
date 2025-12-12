@@ -11,7 +11,7 @@ summary: 2 つ以上のノードを持つONTAPクラスターを構築する場�
 
 
 [role="lead"]
-Cisco Nexus 92300YC スイッチのインストールとメンテナンスについては、すべてのスイッチ コンポーネントと部品番号を必ず確認してください。参照 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]詳細については。
+Cisco Nexus 92300YC スイッチのインストールとメンテナンスについては、すべてのスイッチ コンポーネントと部品番号を必ず確認してください。参照 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]詳細については。見る link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^] スイッチのインストール要件の詳細については、こちらをご覧ください。
 
 次の表に、92300YC スイッチ、ファン、および電源装置の部品番号と説明を示します。
 

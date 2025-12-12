@@ -29,4 +29,4 @@ NVIDIA ConnectX-6 Dx (CX6-DX) NIC ポート (部品番号 X50130B) を使用し�
 (cs1)(config)# *exit*
 (cs1)# *copy running-config startup-config*
 ----
-参照 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]スイッチ ポートの詳細については、こちらをご覧ください。
+参照 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]スイッチ ポートの詳細については、こちらをご覧ください。見る link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^] スイッチのインストール要件の詳細については、こちらをご覧ください。

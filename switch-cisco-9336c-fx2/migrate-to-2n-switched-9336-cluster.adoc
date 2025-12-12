@@ -57,7 +57,7 @@ summary: 既存の2ノード スイッチレス クラスタ環境を使用し�
 * この手順で使用されるクラスター ポートは e0a と e0b です。
 
 
-見る https://hwu.netapp.com["Hardware Universe"^]プラットフォームのクラスター ポートに関する情報。
+見る https://hwu.netapp.com["Hardware Universe"^]プラットフォームのクラスター ポートに関する情報。見る link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^] スイッチのインストール要件の詳細については、こちらをご覧ください。
 
 
 
@@ -264,9 +264,9 @@ Cluster
 4 entries were displayed.
 ----
 ====
-. すべてのクラスタLIFで自動リバートが有効になっていることを確認します。
+. すべてのクラスタ LIF で自動復帰を無効にします。
 +
-`network interface show -vserver Cluster -fields auto-revert`
+`network interface modify -vserver Cluster -lif * -auto-revert false`
 
 +
 .例を表示
@@ -274,16 +274,16 @@ Cluster
 ====
 [listing]
 ----
-cluster1::*> network interface show -vserver Cluster -fields auto-revert
+cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert false*
 
           Logical
 Vserver   Interface     Auto-revert
 --------- ------------- ------------
 Cluster
-          node1_clus1   true
-          node1_clus2   true
-          node2_clus1   true
-          node2_clus2   true
+          node1_clus1   false
+          node1_clus2   false
+          node2_clus1   false
+          node2_clus2   false
 
 4 entries were displayed.
 ----
