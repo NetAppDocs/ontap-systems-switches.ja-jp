@@ -5694,4 +5694,5 @@
   <block id="b863fc58b633b41e58cc8a5b99e7043b" category="inline-link-macro">HWUにない機器をインストールするにはどのような追加情報が必要ですか？</block>
   <block id="ab9a0b8fd43af09ec7cd6f43a3cafa97" category="paragraph">参照 <block ref="c845c6ffda77bc94ba897d84583cb923" category="inline-link-macro-rx"></block>ナレッジベースの記事 <block ref="eaa81338373f6673f7bec757b105ef25" category="inline-link-macro-rx"></block> 詳細についてはこちらをご覧ください。</block>
   <block id="a1fe5f79e41b7a07061c6e55eb0e9030" category="sidebar">ストレージ スイッチを使用すると、2 つ以上のノードを持つONTAPクラスターを構築できます。これらのイーサネット ストレージ スイッチは、 NetApp ONTAP環境におけるスケーラブルなクラスタ相互接続ソリューションの基盤を提供します。</block>
+  <block id="76980345fd6e2954226ddad45b3120c8" category="list-text">スイッチに追加のポート ライセンスがインストールされている場合は、RCF を変更して、ライセンスされた追加ポートを設定する必要があります。見る <block ref="029ce138066352981401c2da3f4be7ea" category="inline-link-macro-rx"></block> 詳細については。ただし、RCF 1.12以降にアップグレードすると、すべてのインターフェイスが事前設定されるため、変更は不要になります。</block>
 </blocks>
