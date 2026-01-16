@@ -45,6 +45,7 @@ entries:
       url: "/switch-cisco-9336c-fx2-storage/install-rcf-software-9336c-storage.html"
     - title: RCFバージョンをアップグレードする
       url: "/switch-cisco-9336c-fx2-storage/upgrade-rcf-software-9336c-storage.html"
+  - title: SSH構成を確認する
     url: "/switch-cisco-9336c-fx2-storage/configure-ssh-keys.html"
   - title: スイッチを工場出荷時の状態にリセットする
     url: "/switch-cisco-9336c-fx2-storage/reset-switch-9336c-storage.html"
