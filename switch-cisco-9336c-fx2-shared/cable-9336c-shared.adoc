@@ -44,7 +44,7 @@ image:9336c_image2.jpg["直接接続型"]
 
 各スイッチ ペアのサンプル ポート定義は次のとおりです。
 
-image:cabling_worksheet.jpg["配線ワークシート"]
+image:cabling-worksheet.jpg["配線ワークシート"]
 
 各値の意味は次のとおりです。
 
@@ -60,7 +60,7 @@ image:cabling_worksheet.jpg["配線ワークシート"]
 
 空白の配線ワークシートを使用して、クラスター内のノードとしてサポートされているプラ​​ットフォームを文書化できます。  Hardware Universeの「サポートされているクラスター接続」テーブルには、プラットフォームで使用されるクラスター ポートが定義されています。
 
-image:blank_cabling_worksheet.jpg["空白の配線ワークシート"]
+image:blank-cabling-worksheet.jpg["空白の配線ワークシート"]
 
 各値の意味は次のとおりです。
 

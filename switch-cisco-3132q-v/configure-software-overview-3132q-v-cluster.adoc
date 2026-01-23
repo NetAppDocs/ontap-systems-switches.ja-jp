@@ -25,9 +25,9 @@ Cisco NX-OS ソフトウェアと RCF は、 Cisco 3132Q-V クラスタ スイ�
 [role="quick-margin-para"]
 Cisco 3132Q-V クラスタ スイッチに NX-OS ソフトウェアをダウンロードしてインストールまたはアップグレードします。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:install-rcf-3132q-v.html["RCFのインストール"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:install-upgrade-rcf-overview-3132q-v.html["RCFをインストールまたはアップグレードする"]
 [role="quick-margin-para"]
-Cisco 3132Q-V スイッチを初めてセットアップした後、RCF をインストールします。
+Cisco 3132Q-V スイッチをセットアップした後、RCF をインストールまたはアップグレードします。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-ssh-keys.html["SSH設定を確認する"]
 [role="quick-margin-para"]
