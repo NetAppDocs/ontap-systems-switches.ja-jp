@@ -1,0 +1,67 @@
+---
+permalink: switch-cisco-3232c-storage/configure-ssh-keys.html 
+sidebar: sidebar 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
+summary: 'クラスタ スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用する場合は、SSH が必須です。Cisco 3232C クラスタ スイッチで SSH を有効にするには、まず SSH キーを生成し、次に SSH を有効にします。' 
+---
+= SSH構成を確認する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+イーサネット スイッチ ヘルス モニター (CSHM) とログ収集機能を使用している場合は、クラスター スイッチで SSH と SSH キーが有効になっていることを確認します。
+
+.手順
+. SSH が有効になっていることを確認します。
++
+[listing, subs="+quotes"]
+----
+(switch) *show ssh server*
+ssh version 2 is enabled
+----
+. SSH キーが有効になっていることを確認します。
++
+`show ssh key`
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(switch)# *show ssh key*
+
+rsa Keys generated:Fri Jun 28 02:16:00 2024
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDiNrD52Q586wTGJjFAbjBlFaA23EpDrZ2sDCewl7nwlioC6HBejxluIObAH8hrW8kR+gj0ZAfPpNeLGTg3APj/yiPTBoIZZxbWRShywAM5PqyxWwRb7kp9Zt1YHzVuHYpSO82KUDowKrL6lox/YtpKoZUDZjrZjAp8hTv3JZsPgQ==
+
+bitcount:1024
+fingerprint:
+SHA256:aHwhpzo7+YCDSrp3isJv2uVGz+mjMMokqdMeXVVXfdo
+
+could not retrieve dsa key information
+
+ecdsa Keys generated:Fri Jun 28 02:30:56 2024
+
+ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBABJ+ZX5SFKhS57evkE273e0VoqZi4/32dt+f14fBuKv80MjMsmLfjKtCWy1wgVt1Zi+C5TIBbugpzez529zkFSF0ADb8JaGCoaAYe2HvWR/f6QLbKbqVIewCdqWgxzrIY5BPP5GBdxQJMBiOwEdnHg1u/9Pzh/Vz9cHDcCW9qGE780QHA==
+
+bitcount:521
+fingerprint:
+SHA256:TFGe2hXn6QIpcs/vyHzftHJ7Dceg0vQaULYRAlZeHwQ
+
+(switch)# *show feature | include scpServer*
+scpServer              1          enabled
+(switch)# *show feature | include ssh*
+sshServer              1          enabled
+(switch)#
+----
+====
+
+
+
+IMPORTANT: FIPSを有効にする場合は、次のコマンドを使用してスイッチのビットカウントを256に変更する必要があります。 `ssh key ecdsa 256 force` 。見る https://docs.netapp.com/us-en/ontap/networking/configure_network_security_using_federal_information_processing_standards_@fips@.html#enable-fips["FIPSを使用してネットワークセキュリティを構成する"^]詳細についてはこちらをご覧ください。
+
+.次の手順
+SSH設定を確認したら、 link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"]。

@@ -1,0 +1,228 @@
+---
+permalink: switch-cisco-3232c-storage/prepare-install-cisco-nexus-3232c-storage.html 
+sidebar: sidebar 
+keywords: nx-os software, install, cisco nexus storage switches, 3232c, rcfs 
+summary: Cisco Nexus 3232C ストレージ スイッチには、Cisco NX-OS ソフトウェアとリファレンス コンフィギュレーション ファイル（RCF）がインストールされている必要があります。 
+---
+= NX-OS ソフトウェアとリファレンス コンフィギュレーション ファイル (RCF) のインストールの準備
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NX-OS ソフトウェアとリファレンス コンフィギュレーション ファイル (RCF) をインストールする前に、次の手順に従ってください。
+
+.例について
+この手順の例では、2つのノードを使用します。これらのノードは2つの10GbEクラスタ相互接続ポートを使用します `e0a`そして `e0b`。
+
+参照link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]プラットフォーム上の正しいクラスター ポートを確認します。見る link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^] スイッチのインストール要件の詳細については、こちらをご覧ください。
+
+[NOTE]
+====
+コマンド出力は、ONTAPのリリースによって異なる場合があります。
+
+====
+.スイッチとノードの命名法
+この手順の例で使用するスイッチとノードの名前は次のとおりです。
+
+* 2つのCiscoスイッチの名前は `cs1`そして `cs2`。
+* ノード名は `cluster1-01`そして `cluster1-02`。
+* クラスタLIF名は `cluster1-01_clus1`そして `cluster1-01_clus2`クラスター1-01および `cluster1-02_clus1`そして `cluster1-02_clus2`クラスター1-02用。
+* その `cluster1::*>`プロンプトはクラスターの名前を示します。
+
+
+.タスク概要
+この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
+
+.手順
+. このクラスタでAutoSupportが有効になっている場合は、 AutoSupportメッセージを呼び出して自動ケース作成を抑制します。
+`system node autosupport invoke -node * -type all -message MAINT=x h`
++
+ここで、_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
+
++
+[NOTE]
+====
+AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+
+====
+. 続行するかどうかを尋ねられたら *y* と入力して、権限レベルを「advanced」に変更します。
++
+`set -privilege advanced`
+
++
+高度なプロンプト(`*>`）が表示されます。
+
+. 各クラスタ相互接続スイッチの各ノードに設定されているクラスタ相互接続インターフェイスの数を表示します。
++
+`network device-discovery show -protocol cdp`
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network device-discovery show -protocol cdp*
+
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------- --------
+cluster1-02/cdp
+            e0a    cs1                       Eth1/2            N3K-C3232C
+            e0b    cs2                       Eth1/2            N3K-C3232C
+cluster1-01/cdp
+            e0a    cs1                       Eth1/1            N3K-C3232C
+            e0b    cs2                       Eth1/1            N3K-C3232C
+
+4 entries were displayed.
+----
+====
+. 各クラスタ インターフェイスの管理ステータスまたは動作ステータスを確認します。
++
+.. ネットワーク ポートの属性を表示します。
++
+`network port show -ipspace Cluster`
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network port show -ipspace Cluster*
+
+Node: cluster1-02
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+Node: cluster1-01
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- ------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+4 entries were displayed.
+----
+====
+.. LIF に関する情報を表示します。
+`network interface show -vserver Cluster`
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -vserver Cluster*
+
+            Logical            Status     Network            Current       Current Is
+Vserver     Interface          Admin/Oper Address/Mask       Node          Port    Home
+----------- ------------------ ---------- ------------------ ------------- ------- ----
+Cluster
+            cluster1-01_clus1  up/up      169.254.209.69/16  cluster1-01   e0a     true
+            cluster1-01_clus2  up/up      169.254.49.125/16  cluster1-01   e0b     true
+            cluster1-02_clus1  up/up      169.254.47.194/16  cluster1-02   e0a     true
+            cluster1-02_clus2  up/up      169.254.19.183/16  cluster1-02   e0b     true
+
+4 entries were displayed.
+----
+====
+
+
+. リモート クラスタ インターフェイスの接続を確認します。
+
+
+[role="tabbed-block"]
+====
+.ONTAP 9.9.1以降
+--
+使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
+
+`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start*
+----
+*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity show*
+                                  Source              Destination         Packet
+Node   Date                       LIF                 LIF                 Loss
+------ -------------------------- ------------------- ------------------- -----------
+cluster1-01
+       3/5/2022 19:21:18 -06:00   cluster1-01_clus2   cluster1-02_clus1   none
+       3/5/2022 19:21:20 -06:00   cluster1-01_clus2   cluster1-02_clus2   none
+.
+.
+cluster1-02
+       3/5/2022 19:21:18 -06:00   cluster1-02_clus2   cluster1-01_clus1   none
+       3/5/2022 19:21:20 -06:00   cluster1-02_clus2   cluster1-01_clus2   none
+----
+--
+.ONTAPのすべてのリリース
+--
+すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
+
+`cluster ping-cluster -node <name>`
+
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster ping-cluster -node local*
+Host is cluster1-02
+Getting addresses from network interface table...
+Cluster cluster1-01_clus1 169.254.209.69 cluster1-01     e0a
+Cluster cluster1-01_clus2 169.254.49.125 cluster1-01     e0b
+Cluster cluster1-02_clus1 169.254.47.194 cluster1-02     e0a
+Cluster cluster1-02_clus2 169.254.19.183 cluster1-02     e0b
+Local = 169.254.47.194 169.254.19.183
+Remote = 169.254.209.69 169.254.49.125
+Cluster Vserver Id = 4294967293
+Ping status:....
+Basic connectivity succeeds on 4 path(s)
+Basic connectivity fails on 0 path(s)
+................
+Detected 9000 byte MTU on 4 path(s):
+    Local 169.254.19.183 to Remote 169.254.209.69
+    Local 169.254.19.183 to Remote 169.254.49.125
+    Local 169.254.47.194 to Remote 169.254.209.69
+    Local 169.254.47.194 to Remote 169.254.49.125
+Larger than PMTU communication succeeds on 4 path(s)
+RPC status:
+2 paths up, 0 paths down (tcp check)
+2 paths up, 0 paths down (udp check)
+----
+--
+====
+. [[step6]]次のことを確認します `auto-revert`コマンドはすべてのクラスタ LIF で有効になっています。
+`network interface show -vserver Cluster -fields auto-revert`
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -vserver Cluster -fields auto-revert*
+
+          Logical
+Vserver   Interface           Auto-revert
+--------- ------------------- ------------
+Cluster
+          cluster1-01_clus1   true
+          cluster1-01_clus2   true
+          cluster1-02_clus1   true
+          cluster1-02_clus2   true
+4 entries were displayed.
+----
+====
+
+
+.次の手順
+NX-OS ソフトウェアと RCF をインストールする準備ができたら、link:install-nx-os-software-3232c-storage.html["NX-OSソフトウェアをインストールする"]できます。

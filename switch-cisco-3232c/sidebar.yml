@@ -73,3 +73,10 @@ entries:
     url: "/switch-cisco-3232c/replace-cluster-switch.html"
   - title: クラスタスイッチをスイッチレス接続に置き換える
     url: "/switch-cisco-3232c/migrate-to-switchless-cluster-interconnect.html"
+- title: Cisco 3232C ストレージ スイッチ
+  pdf-filename: 3232C_storage_switches
+  entries:
+  - title: 3232Cストレージスイッチのアップグレード
+    url: "/switch-cisco-3232c/upgrade-3232c-storage-switches.html"
+  - title: 3232Cストレージスイッチを交換する
+    url: "/switch-cisco-3232c/replace-storage-switch.html"

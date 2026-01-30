@@ -1,0 +1,38 @@
+---
+permalink: switch-cisco-3232c-storage/configure-software-overview-3232c-storage.html 
+sidebar: sidebar 
+keywords: switches, initial installation, configure switch-cisco-9336c-fx2 switch 
+summary: Cisco Nexus 3232C ストレージ スイッチのソフトウェア構成の概要 
+---
+= Cisco Nexus 3232C ストレージ スイッチのソフトウェア インストール ワークフロー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 3232C スイッチのソフトウェアをインストールして設定し、リファレンス コンフィギュレーション ファイル (RCF) をインストールまたはアップグレードするには、次の手順に従います。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:setup-switch-3232c-storage.html["スイッチを設定する"]
+[role="quick-margin-para"]
+3232C ストレージ スイッチを設定します。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:prepare-install-cisco-nexus-3232c-storage.html["NX-OSソフトウェアとRCFのインストールの準備"]
+[role="quick-margin-para"]
+Cisco NX-OS ソフトウェアとリファレンス コンフィギュレーション ファイル（RCF）を Cisco 3232C ストレージ スイッチにインストールする必要があります。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:install-nx-os-software-3232c-storage.html["NX-OSソフトウェアをインストールする"]
+[role="quick-margin-para"]
+Cisco 3232C ストレージスイッチに NX-OS ソフトウェアをダウンロードしてインストールまたはアップグレードします。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:install-rcf-software-3232c-storage.html["RCFのインストール"]
+[role="quick-margin-para"]
+Cisco 3232C ストレージスイッチを初めてセットアップした後、RCF をインストールします。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-ssh-keys.html["SSH設定を確認する"]
+[role="quick-margin-para"]
+イーサネット スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用するには、スイッチで SSH が有効になっていることを確認します。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:reset-switch-3232c-storage.html["スイッチを工場出荷時の状態にリセットする"]
+[role="quick-margin-para"]
+3232C ストレージ スイッチの設定を消去します。

@@ -1,0 +1,39 @@
+---
+sidebar: sidebar 
+permalink: switch-cisco-3232c-storage/configure-reqs-3232c-storage.html 
+keywords: shared storage cluster switch 
+summary: ONTAP 9.9.1以降では、Cisco Nexus 3232Cスイッチを使用して、ストレージとクラスタ機能を共有スイッチシナリオに組み合わせることができます。 
+---
+= Cisco Nexus 3232C ストレージ スイッチの構成要件
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 3232C スイッチのインストールとメンテナンスについては、必ず構成とネットワーク要件を確認してください。
+
+
+
+== 構成要件
+
+スイッチには、適切な数と種類のケーブルとケーブルコネクタが必要です。初期設定するスイッチの種類に応じて、付属のコンソールケーブルを使用してスイッチのコンソールポートに接続する必要があります。また、特定のネットワーク情報も提供する必要があります。
+
+
+
+== ネットワーク要件
+
+すべてのスイッチ構成には次のネットワーク情報が必要です。
+
+* 管理ネットワークトラフィック用の IP サブネット
+* 各ストレージ システム コントローラおよび該当するすべてのスイッチのホスト名と IP アドレス
+* ほとんどのストレージ システム コントローラは、イーサネット サービス ポート (レンチ アイコン) に接続して e0M インターフェイスを介して管理されます。AFF A800およびAFF A700システムでは、e0M イ​​ンターフェイスは専用のイーサネット ポートを使用します。
+
+
+参照 https://hwu.netapp.com["Hardware Universe"^]最新情報についてはこちらをご覧ください。見る link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^] スイッチのインストール要件の詳細については、こちらをご覧ください。
+
+.次の手順
+構成要件を確認したら、link:required-documentation-3232c-storage.html["必要な書類"]を確認できます。

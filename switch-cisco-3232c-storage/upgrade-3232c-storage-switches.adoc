@@ -1,5 +1,5 @@
 ---
-permalink: switch-cisco-3232c/upgrade-3232c-storage-switches.html 
+permalink: switch-cisco-3232c-storage/upgrade-3232c-storage-switches.html 
 sidebar: sidebar 
 keywords: upgrade, cisco nexus, 3232c storage switch 
 summary: 'Cisco Nexus 3232C ストレージ スイッチでは、 Cisco NX-OS ソフトウェアおよびリファレンス コンフィギュレーション ファイル (RCF) をアップグレードできます。' 
@@ -25,8 +25,8 @@ Cisco Nexus 3232C スイッチでCisco NX-OS ソフトウェアと参照コン�
 +
 現在のブート イメージを反映するようにブート変数を変更する必要がある場合は、将来の再起動時に正しいバージョンがインスタンス化されるように、RCF を再適用する前に変更する必要があります。
 
-* 適切なソフトウェアおよびアップグレードガイドを参照しました。 http://www.cisco.com/en/US/products/ps9670/prod_installation_guides_list.html["Cisco Nexus 3000 シリーズ スイッチ"^] Ciscoストレージのアップグレードおよびダウングレード手順に関する完全なドキュメントについては、このページをご覧ください。
-* 10 GbEおよび40/100 GbEポートの数は、 https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco® イーサネットスイッチ"^]ページ。
+* link:http://www.cisco.com/en/US/products/ps9670/prod_installation_guides_list.html["Cisco Nexus 3000 シリーズ スイッチ"^]ページで入手可能な適切なソフトウェアおよびアップグレード ガイドを参照し、Ciscoストレージのアップグレードおよびダウングレード手順に関する完全なドキュメントを確認してください。
+* 10 GbE ポートと 40/100 GbE ポートの数は、link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Cisco® イーサネットスイッチ"^]ページで入手できるリファレンス構成ファイル（RCF）で定義されています。
 
 
 
@@ -141,7 +141,7 @@ There are no entries matching your query.
 
 . FTP、HTTP、TFTP、SFTP、または SCP のいずれかの転送プロトコルを使用して、スイッチ S2 上の RCF をスイッチのブートフラッシュにコピーします。
 +
-Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^]の適切なガイドを参照してください。
 
 +
 .例を表示
@@ -245,7 +245,7 @@ NOTE: RCF を初めて適用する場合、「*エラー: VSH コマンドの書
 
 . ソフトウェアのバージョンとスイッチの設定が正しいことを確認したら、 `running-config`ファイルに `startup-config`スイッチ S2 上のファイル。
 +
-Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^]の適切なガイドを参照してください。
 
 +
 .例を表示
@@ -378,7 +378,7 @@ S2#
 ====
 . 設定を保存します。
 +
-Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^]の適切なガイドを参照してください。
 
 +
 システムを再起動するように求められます。
@@ -540,3 +540,6 @@ There are no entries matching your query.
 `system node autosupport invoke -node * -type all -message MAINT=END`
 
 
+
+.次の手順
+スイッチをアップグレードしたら、link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"]できます。

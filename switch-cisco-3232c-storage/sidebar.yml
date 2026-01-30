@@ -1,0 +1,45 @@
+---
+section: switch-cisco-3232c-storage
+title: Cisco Nexus 3232C
+entries:
+- title: 始めましょう
+  pdf-filename: 3232Cストレージの概要
+  entries:
+  - title: クイック スタート
+    url: "/switch-cisco-3232c-storage/configure-switch-overview-3232c-storage.html"
+  - title: 構成要件
+    url: "/switch-cisco-3232c-storage/configure-reqs-3232c-storage.html"
+  - title: 必要な書類
+    url: "/switch-cisco-3232c-storage/required-documentation-3232c-storage.html"
+  - title: Smart Call Homeの要件
+    url: "/switch-cisco-3232c-storage/smart-call-home-3232c-storage.html"
+- title: ハードウェアを設置
+  pdf-filename: Install_hardware_3232C_storageをインストールする
+  entries:
+  - title: ハードウェアインストールワークフロー
+    url: "/switch-cisco-3232c-storage/install-hardware-workflow.html"
+  - title: スイッチをインストールする
+    url: "/switch-cisco-3232c-storage/install-switch-3232c-storage.html"
+  - title: NetAppキャビネットにスイッチをインストールする
+    url: "/switch-cisco-3232c-storage/install-cisco-nexus-3232c-storage.html"
+- title: ソフトウェアを構成する
+  pdf-filename: ソフトウェア3232Cストレージを構成する
+  entries:
+  - title: ソフトウェアインストールワークフロー
+    url: "/switch-cisco-3232c-storage/configure-software-overview-3232c-storage.html"
+  - title: スイッチを設定する
+    url: "/switch-cisco-3232c-storage/setup-switch-3232c-storage.html"
+  - title: NX-OSソフトウェアとRCFのインストール準備
+    url: "/switch-cisco-3232c-storage/prepare-install-cisco-nexus-3232c-storage.html"
+  - title: NX-OSソフトウェアをインストールする
+    url: "/switch-cisco-3232c-storage/install-nx-os-software-3232c-storage.html"
+  - title: RCFのインストール
+    url: "/switch-cisco-3232c-storage/install-rcf-software-3232c-storage.html"
+  - title: SSH構成を確認する
+    url: "/switch-cisco-3232c-storage/configure-ssh-keys.html"
+  - title: スイッチを工場出荷時の状態にリセットする
+    url: "/switch-cisco-3232c-storage/reset-switch-3232c-storage.html"
+- title: 3232Cストレージスイッチを交換する
+  url: "/switch-cisco-3232c-storage/replace-storage-switch.html"
+- title: 3232Cストレージスイッチのアップグレード
+  url: "/switch-cisco-3232c-storage/upgrade-3232c-storage-switches.html"
