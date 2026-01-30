@@ -167,28 +167,7 @@ cs1# copy running-config startup-config [#######################################
 +
 `*show file bootflash:write_erase.cfg*`
 
-. 発行する `write erase`現在保存されている構成を消去するコマンド:
-+
-`cs1# *write erase*`
-
-+
-`Warning: This command will erase the startup-configuration.`
-
-+
-`Do you wish to proceed anyway? (y/n)  [n] *y*`
-
-. 以前に保存した基本設定をスタートアップ設定にコピーします。
-+
-`cs1# *copy bootflash:write_erase.cfg startup-config*.`
-
-. スイッチcs1をリブートします。
-+
-`cs1# *reload*`
-
-+
-`This command will reboot the system. (y/n)?  [n] *y*`
-
-. スイッチ cs2 で手順 1 ～ 13 を繰り返します。
+. スイッチ cs2 で手順 1 ～ 10 を繰り返します。
 . ONTAPクラスタ内のすべてのノードのクラスタ ポートをスイッチ cs1 および cs2 に接続します。
 
 

@@ -68,7 +68,7 @@ cluster1::*>
 +
 .. すべてのクラスター ポートが正常な状態で *up* していることを確認します。
 +
-`network port show -role cluster`
+`network port show -ipspace cluster`
 
 +
 .例を表示
@@ -76,7 +76,7 @@ cluster1::*>
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network port show -role cluster*
+cluster1::*> *network port show -ipspace cluster*
 
 Node: cluster1-01
                                                                        Ignore
@@ -116,7 +116,7 @@ cluster1::*>
 ====
 .. すべてのクラスタ インターフェイス (LIF) がホーム ポート上にあることを確認します。
 +
-`network interface show -role cluster`
+`network interface show -vserver cluster`
 
 +
 .例を表示
@@ -124,7 +124,7 @@ cluster1::*>
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -role cluster*
+cluster1::*> *network interface show -vserver cluster*
             Logical            Status     Network           Current      Current Is
 Vserver     Interface          Admin/Oper Address/Mask      Node         Port    Home
 ----------- ------------------ ---------- ----------------- ------------ ------- ----
@@ -209,7 +209,7 @@ CAUTION: ネットワーク接続の問題を回避するために、接続さ�
 
 . クラスタ LIF がクラスタ スイッチ cs1 でホストされているポートにフェイルオーバーされたことを確認します。数秒かかる場合があります。
 +
-`network interface show -role cluster`
+`network interface show -vserver cluster`
 
 +
 .例を表示
@@ -217,7 +217,7 @@ CAUTION: ネットワーク接続の問題を回避するために、接続さ�
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -role cluster*
+cluster1::*> *network interface show -vserver cluster*
             Logical           Status     Network            Current       Current Is
 Vserver     Interface         Admin/Oper Address/Mask       Node          Port    Home
 ----------- ----------------- ---------- ------------------ ------------- ------- ----
@@ -404,7 +404,7 @@ Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/s
 +
 .. クラスター内のすべてのノードでクラスター ポートが稼働しており正常であることを確認します。
 +
-`network port show -role cluster`
+`network port show -ipspace cluster`
 
 +
 .例を表示
@@ -412,7 +412,7 @@ Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/s
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network port show -role cluster*
+cluster1::*> *network port show -ipspace cluster*
 
 Node: cluster1-01
                                                                        Ignore
@@ -532,6 +532,13 @@ cluster1::*>
 . クラスタLIFで自動リバートを有効にします。
 +
 `cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True*`
+
+. スイッチ cs2 を再起動します。
++
+`cs2# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
 
 
 
@@ -771,7 +778,7 @@ cs1#
 ====
 . クラスタ LIF がホーム ポートに戻ったことを確認します。
 +
-`network interface show -role cluster`
+`network interface show -vserver cluster`
 
 +
 .例を表示
@@ -779,7 +786,7 @@ cs1#
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -role cluster*
+cluster1::*> *network interface show -vserver cluster*
             Logical            Status     Network            Current             Current Is
 Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
 ----------- ------------------ ---------- ------------------ ------------------- ------- ----
