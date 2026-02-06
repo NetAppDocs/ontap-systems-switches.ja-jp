@@ -274,7 +274,7 @@ cluster1::*>
 . 基本的な設定の詳細を `write_erase.cfg`ブートフラッシュ上のファイル。
 +
 
-NOTE: アップグレードまたは新しい RCF を適用する場合は、スイッチの設定を消去して基本設定を実行する必要があります。スイッチを再度セットアップするには、スイッチのシリアル コンソール ポートに接続する必要があります。
+NOTE: アップグレードまたは新しい RCF を適用する場合は、スイッチの設定を消去し、基本設定を実行する必要があります。
 
 +
 `cs2# show run | section "switchname" > bootflash:write_erase.cfg`
@@ -303,9 +303,6 @@ NOTE: アップグレードまたは新しい RCF を適用する場合は、ス
 
 +
 `cs2# echo "hardware access-list tcam region qos 256" >> bootflash:write_erase.cfg`
-
-+
-ナレッジベースの記事を参照 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細については、こちらをご覧ください。
 
 . 確認するには `write_erase.cfg`ファイルは期待どおりに入力されます。
 +
