@@ -20,10 +20,12 @@ Nexus 9336C-FX2 および 9336C-FX2-T クラスタ スイッチに NX-OS ソフ�
 == 要件の確認
 
 .開始する前に
-以下のものがあることを確認してください。
+必ず次のことを行ってください：
 
-* スイッチ構成の現在のバックアップ。
-* 完全に機能するクラスター (ログにエラーや同様の問題がない)。
+* スイッチで `show install all impact nxos bootflash:<image_name>.bin`コマンドを実行して、新しいNX-OSソフトウェアイメージのインストールまたはアップグレードの影響を確認します。イメージの整合性を検証し、必要な再起動をチェックし、ハードウェアの互換性を評価し、十分なスペースを確認します。
+* 対象となる NX-OS ソフトウェア バージョンのリリース ノートを参照して、特定の要件を確認します。
+* スイッチ構成の最新のバックアップがあることを確認します。
+* クラスターが完全に機能していることを確認します（ログにエラーや同様の問題がない）。
 
 
 .推奨ドキュメント
@@ -92,10 +94,10 @@ Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------  --------------
 cluster1-01/cdp
             e0a    cs1                       Ethernet1/7       N9K-C9336C-FX2
-            e0d    cs2                       Ethernet1/7       N9K-C9336C-FX2
+            e0b    cs2                       Ethernet1/7       N9K-C9336C-FX2
 cluster1-02/cdp
             e0a    cs1                       Ethernet1/8       N9K-C9336C-FX2
-            e0d    cs2                       Ethernet1/8       N9K-C9336C-FX2
+            e0b    cs2                       Ethernet1/8       N9K-C9336C-FX2
 cluster1-03/cdp
             e0a    cs1                       Ethernet1/1/1     N9K-C9336C-FX2
             e0b    cs2                       Ethernet1/1/1     N9K-C9336C-FX2
@@ -109,7 +111,7 @@ cluster1::*>
 +
 .. すべてのクラスター ポートが正常な状態で *up* していることを確認します。
 +
-`network port show -role cluster`
+`network port show -ipspace Cluster`
 
 +
 .例を表示
@@ -117,7 +119,7 @@ cluster1::*>
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network port show -role cluster*
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: cluster1-01
                                                                        Ignore
@@ -125,7 +127,7 @@ Node: cluster1-01
 Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
-e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
 
 Node: cluster1-02
                                                                        Ignore
@@ -133,7 +135,7 @@ Node: cluster1-02
 Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
-e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
 8 entries were displayed.
 
 Node: cluster1-03
@@ -157,7 +159,7 @@ cluster1::*>
 ====
 .. すべてのクラスタ インターフェイス (LIF) がホーム ポート上にあることを確認します。
 +
-`network interface show -role cluster`
+`network interface show -vserver Cluster`
 
 +
 .例を表示
@@ -165,15 +167,15 @@ cluster1::*>
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -role cluster*
+cluster1::*> *network interface show -vserver Cluster*
             Logical            Status     Network           Current      Current Is
 Vserver     Interface          Admin/Oper Address/Mask      Node         Port    Home
 ----------- ------------------ ---------- ----------------- ------------ ------- ----
 Cluster
             cluster1-01_clus1  up/up     169.254.3.4/23     cluster1-01  e0a     true
-            cluster1-01_clus2  up/up     169.254.3.5/23     cluster1-01  e0d     true
+            cluster1-01_clus2  up/up     169.254.3.5/23     cluster1-01  e0b     true
             cluster1-02_clus1  up/up     169.254.3.8/23     cluster1-02  e0a     true
-            cluster1-02_clus2  up/up     169.254.3.9/23     cluster1-02  e0d     true
+            cluster1-02_clus2  up/up     169.254.3.9/23     cluster1-02  e0b     true
             cluster1-03_clus1  up/up     169.254.1.3/23     cluster1-03  e0a     true
             cluster1-03_clus2  up/up     169.254.1.1/23     cluster1-03  e0b     true
             cluster1-04_clus1  up/up     169.254.1.6/23     cluster1-04  e0a     true
@@ -530,7 +532,7 @@ GEM  FPGA                        0x2
 +
 .. クラスター内のすべてのノードでクラスター ポートが稼働しており正常であることを確認します。
 +
-`network port show -role cluster`
+`network port show -ipspace Cluster`
 
 +
 .例を表示
@@ -538,7 +540,7 @@ GEM  FPGA                        0x2
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network port show -role cluster*
+cluster1::*> *network port show -ipspace Cluster*
 
 Node: cluster1-01
                                                                        Ignore
@@ -562,7 +564,7 @@ Node: cluster1-03
 Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
-e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
 
 Node: cluster1-04
                                                                        Ignore
@@ -570,7 +572,7 @@ Node: cluster1-04
 Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
-e0d       Cluster      Cluster          up   9000  auto/100000 healthy false
+e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
 8 entries were displayed.
 ----
 ====
@@ -590,10 +592,10 @@ Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
 ----------- ------ ------------------------- ----------------- --------------
 cluster1-01/cdp
             e0a    cs1                       Ethernet1/7       N9K-C9336C-FX2
-            e0d    cs2                       Ethernet1/7       N9K-C9336C-FX2
+            e0b    cs2                       Ethernet1/7       N9K-C9336C-FX2
 cluster01-2/cdp
             e0a    cs1                       Ethernet1/8       N9K-C9336C-FX2
-            e0d    cs2                       Ethernet1/8       N9K-C9336C-FX2
+            e0b    cs2                       Ethernet1/8       N9K-C9336C-FX2
 cluster01-3/cdp
             e0a    cs1                       Ethernet1/1/1     N9K-C9336C-FX2
             e0b    cs2                       Ethernet1/1/1     N9K-C9336C-FX2
@@ -678,10 +680,10 @@ cluster1::*> *network interface check cluster-connectivity show*
                                   Source               Destination         Packet
 Node   Date                       LIF                  LIF                 Loss
 ------ -------------------------- -------------------- ------------------- -----------
-node1
+cluster1-01
        3/5/2022 19:21:18 -06:00   cluster1-01_clus2    cluster1-02-clus1   none
        3/5/2022 19:21:20 -06:00   cluster1-01_clus2    cluster1-02_clus2   none
-node2
+cluster1-02
        3/5/2022 19:21:18 -06:00   cluster1-02_clus2    cluster1-01_clus1   none
        3/5/2022 19:21:20 -06:00   cluster1-02_clus2    cluster1-01_clus2   none
 ----
@@ -727,7 +729,7 @@ RPC status:
 
 . クラスタ LIF がホーム ポートに戻ったことを確認します。
 +
-`network interface show -role cluster`
+`network interface show -vserver Cluster`
 
 +
 .例を表示
@@ -735,15 +737,15 @@ RPC status:
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -role cluster*
+cluster1::*> *network interface show -vserver Cluster*
             Logical            Status     Network            Current             Current Is
 Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
 ----------- ------------------ ---------- ------------------ ------------------- ------- ----
 Cluster
-            cluster1-01_clus1  up/up      169.254.3.4/23     cluster1-01         e0d     true
-            cluster1-01_clus2  up/up      169.254.3.5/23     cluster1-01         e0d     true
-            cluster1-02_clus1  up/up      169.254.3.8/23     cluster1-02         e0d     true
-            cluster1-02_clus2  up/up      169.254.3.9/23     cluster1-02         e0d     true
+            cluster1-01_clus1  up/up      169.254.3.4/23     cluster1-01         e0b     true
+            cluster1-01_clus2  up/up      169.254.3.5/23     cluster1-01         e0b     true
+            cluster1-02_clus1  up/up      169.254.3.8/23     cluster1-02         e0b     true
+            cluster1-02_clus2  up/up      169.254.3.9/23     cluster1-02         e0b     true
             cluster1-03_clus1  up/up      169.254.1.3/23     cluster1-03         e0b     true
             cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
             cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     true
