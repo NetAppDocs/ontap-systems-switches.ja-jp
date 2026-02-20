@@ -19,17 +19,17 @@ Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチを初めて�
 次のインストールと接続を確認します。
 
 * スイッチへのコンソール接続。スイッチにリモートアクセスできる場合、コンソール接続はオプションです。
-* スイッチ cs1 とスイッチ cs2 の電源がオンになり、スイッチの初期セットアップが完了します (管理 IP アドレスと SSH がセットアップされています)。
+* スイッチ s1 とスイッチ s2 の電源がオンになり、スイッチの初期セットアップが完了します（Management IP アドレスと SSH がセットアップされています）。
 * 必要な NX-OS バージョンがインストールされました。
-* ONTAPノード クラスタ ポートが接続されていません。
+* ONTAP ノード ストレージ ポートとストレージ シェルフ ポートが接続されていません。
 
 
 
 
 == ステップ1: スイッチにRCFをインストールする
 
-. SSH またはシリアル コンソールを使用してスイッチ cs1 にログインします。
-. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs1のブートフラッシュにRCFをコピーします。
+. SSH またはシリアル コンソールを使用してスイッチ s2 にログインします。
+. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチs2のブートフラッシュにRCFをコピーします。
 +
 Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^] 。
 
@@ -37,12 +37,12 @@ Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/suppo
 .例を表示
 [%collapsible]
 ====
-この例では、TFTPを使用してスイッチcs1のブートフラッシュにRCFをコピーしています。
+この例では、TFTPを使用してスイッチs2のブートフラッシュにRCFをコピーしています。
 
 [listing, subs="+quotes"]
 ----
-cs1# *copy tftp: bootflash: vrf management*
-Enter source filename: *Nexus_9336C_RCF_v1.6-Storage.txt*
+s2# *copy tftp: bootflash: vrf management*
+Enter source filename: *NX9336C-FX2-RCF-v1.13-1-Storage.txt*
 Enter hostname for the tftp server: *172.22.201.50*
 Trying to connect to tftp server......Connection to Server Established.
 TFTP get operation was successful
@@ -57,11 +57,11 @@ Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/suppo
 .例を表示
 [%collapsible]
 ====
-この例ではRCFを示します `Nexus_9336C_RCF_v1.6-Storage.txt`スイッチ cs1 にインストールされます:
+この例では、スイッチ s2 に RCF `NX9336C-FX2-RCF-v1.13-1-Storage.txt` がインストールされています：
 
 [listing]
 ----
-cs1# copy Nexus_9336C_RCF_v1.6-Storage.txt running-config echo-commands
+s2# copy NX9336C-FX2-RCF-v1.13-1-Storage.txt running-config echo-commands
 ----
 ====
 . バナー出力を調べる `show banner motd`指示。スイッチを正しく構成し、操作するには、これらの手順を読んで従う必要があります。
@@ -71,19 +71,23 @@ cs1# copy Nexus_9336C_RCF_v1.6-Storage.txt running-config echo-commands
 ====
 [listing]
 ----
-cs1# show banner motd
+s2# show banner motd
 
-******************************************************************************
+**********************************************************
 * NetApp Reference Configuration File (RCF)
 *
-* Switch    : Nexus N9K-C9336C-FX2
-* Filename  : Nexus_9336C_RCF_v1.6-Storage.txt
-* Date      : 10-23-2020
-* Version   : v1.6
+* Switch    : NX9336C-FX2
+* Filename  : NX9336C-FX2-RCF-v1.13-1-Storage.txt
+* Date      : 05-22-2025
+* Version   : v1.13
 *
 * Port Usage : Storage configuration
 * Ports  1-36: 100GbE Controller and Shelf Storage Ports
-******************************************************************************
+*
+* IMPORTANT NOTES
+*
+* Interface port-channel999 is reserved to identify the version of this file.
+**********************************************************
 ----
 ====
 . RCF が正しい新しいバージョンであることを確認します。
@@ -107,68 +111,24 @@ cs1# show banner motd
 +
 [listing]
 ----
-cs1# copy running-config startup-config [########################################] 100% Copy complete
+s2# copy running-config startup-config [########################################] 100% Copy complete
 ----
-. 基本的な設定の詳細を `write_erase.cfg`ブートフラッシュ上のファイル。
+. スイッチs2をリブートします。
 +
-`cs1# show run | i "username admin password" > bootflash:write_erase.cfg`
-
-+
-`cs1# show run | section "vrf context management" >> bootflash:write_erase.cfg`
-
-+
-`cs1# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
-
-+
-`cs1# show run | section "switchname" >> bootflash:write_erase.cfg`
-
-. RCF バージョン 1.12 以降をインストールする場合は、次のコマンドを実行します。
-+
-`cs1# echo "hardware access-list tcam region ing-racl 1024" >> bootflash:write_erase.cfg`
-
-+
-`cs1# echo "hardware access-list tcam region egr-racl 1024" >> bootflash:write_erase.cfg`
-
-+
-`cs1# echo "hardware access-list tcam region ing-l2-qos 1280" >> bootflash:write_erase.cfg`
-
-+
-ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細については、こちらをご覧ください。
-
-. 確認するには `write_erase.cfg`ファイルは期待どおりに入力されます。
-+
-`*show file bootflash:write_erase.cfg*`
-
-. 発行する `write erase`現在保存されている構成を消去するコマンド:
-+
-`cs1# *write erase*`
-
-+
-`Warning: This command will erase the startup-configuration.`
-
-+
-`Do you wish to proceed anyway? (y/n)  [n] *y*`
-
-. 以前に保存した基本設定をスタートアップ設定にコピーします。
-+
-`cs1# *copy bootflash:write_erase.cfg startup-config*`
-
-. スイッチcs1をリブートします。
-+
-`cs1# *reload*`
+`s2# *reload*`
 
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
 
-. スイッチ cs2 で手順 1 ～ 13 を繰り返します。
-. ONTAPクラスタ内のすべてのノードのクラスタ ポートをスイッチ cs1 および cs2 に接続します。
+. スイッチ s1 で手順 1 ～ 8 を繰り返します。
+. ONTAP クラスタ内のすべてのノードのノード ストレージ ポートとストレージ シェルフ ポートをスイッチ s1 と s2 に接続します。
 
 
 
 
 == ステップ2: スイッチの接続を確認する
 
-. クラスター ポートに接続されているスイッチ ポートが *稼働中* であることを確認します。
+. スイッチ ポートが *up* であることを確認します。
 +
 `show interface brief`
 
@@ -178,7 +138,7 @@ cs1# copy running-config startup-config [#######################################
 ====
 [listing, subs="+quotes"]
 ----
-cs1# *show interface brief | grep up*
+s1# *show interface brief | grep up*
 mgmt0  --           up     _<mgmt ip address>_                       1000    1500
 Eth1/11         1       eth  trunk  up      none                     100G(D) --
 Eth1/12         1       eth  trunk  up      none                     100G(D) --
@@ -198,7 +158,7 @@ Eth1/29         1       eth  trunk  up      none                     100G(D) --
 Eth1/30         1       eth  trunk  up      none                     100G(D) --
 ----
 ====
-. 次のコマンドを使用して、クラスタ ノードが正しいクラスタ VLAN 内にあることを確認します。
+. 次のコマンドを使用して、ノード ストレージ ポートとストレージ シェルフ ポートが正しい VLAN にあることを確認します：
 +
 `show vlan brief`
 
@@ -211,7 +171,7 @@ Eth1/30         1       eth  trunk  up      none                     100G(D) --
 ====
 [listing, subs="+quotes"]
 ----
-cs1# *show vlan brief*
+s1# *show vlan brief*
 
 VLAN Name                             Status    Ports
 ---- -------------------------------- --------- -------------------------------
@@ -229,7 +189,7 @@ VLAN Name                             Status    Ports
                                                 Eth1/33, Eth1/34, Eth1/35
                                                 Eth1/36
 
-cs1# *show interface trunk*
+s1# *show interface trunk*
 
 -----------------------------------------------------
 Port          Native  Status        Port

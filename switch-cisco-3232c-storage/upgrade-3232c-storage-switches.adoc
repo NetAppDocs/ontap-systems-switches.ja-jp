@@ -36,11 +36,11 @@ Cisco Nexus 3232C スイッチでCisco NX-OS ソフトウェアと参照コン�
 .例について
 この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 2 つのストレージ スイッチの名前は S1 と S2 です。
-* ノードは node1 と node2 です。
+* 2 つのストレージ スイッチの名前は s1 と s2 です。
+* ノードは cluster1-01 と cluster1-02 です。
 
 
-この手順の例では、2 つのノード (2 つのストレージ ポートを持つ node1 と 2 つのストレージ ポートを持つ node2) を使用します。参照link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]プラットフォーム上の正しいストレージ ポートを確認します。見る link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^] スイッチのインストール要件の詳細については、こちらをご覧ください。
+この手順の例では、2 つのストレージ ポートを持つ cluster1-01 と 2 つのストレージ ポートを持つ cluster1-02 の 2 つのノードを使用します。link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]を参照して、プラットフォーム上の正しいストレージ ポートを確認してください。スイッチのインストール要件の詳細については、link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^]を参照してください。
 
 
 NOTE: この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。コマンド出力は、ONTAPのリリースによって異なる場合があります。
@@ -69,10 +69,10 @@ NOTE: AutoSupportメッセージはテクニカル サポートにこのメン�
 [listing, subs="+quotes"]
 ----
 storage::*> *system switch ethernet show*
-Switch                      Type               Address          Model
---------------------------- ------------------ ---------------- ---------------
-S1
-                            storage-network    172.17.227.5     NX3232C
+Switch                  Type               Address          Model
+----------------------- ------------------ ---------------- ---------------
+s1
+                        storage-network    172.17.227.5     NX3232C
      Serial Number: FOC221206C2
       Is Monitored: true
             Reason: None
@@ -80,8 +80,8 @@ S1
                     9.3(3)
     Version Source: CDP
 
-S2
-                            storage-network    172.17.227.6     NX3232C
+s2
+                        storage-network    172.17.227.6     NX3232C
      Serial Number: FOC220443LZ
       Is Monitored: true
             Reason: None
@@ -107,16 +107,18 @@ storage::*> *storage port show -port-type ENET*
                                       Speed                       VLAN
 Node               Port Type  Mode    (Gb/s) State    Status        ID
 ------------------ ---- ----- ------- ------ -------- ----------- ----
-node1
-                   e3a  ENET  storage    100 enabled  online        30
+cluster1-01
+                   e5a  ENET  storage    100 enabled  online        30
                    e3b  ENET  storage      0 enabled  offline       30
                    e7a  ENET  storage      0 enabled  offline       30
                    e7b  ENET  storage    100 enabled  online        30
-node2
-                   e3a  ENET  storage    100 enabled  online        30
+cluster1-02
+                   e5a  ENET  storage    100 enabled  online        30
                    e3b  ENET  storage      0 enabled  offline       30
                    e7a  ENET  storage      0 enabled  offline       30
                    e7b  ENET  storage    100 enabled  online        30
+.
+.
 ----
 ====
 . ストレージ スイッチまたはケーブル接続に問題がないことを確認します。
@@ -137,9 +139,9 @@ There are no entries matching your query.
 
 
 
-=== ステップ2: RCFをCiscoスイッチS2にコピーする
+=== ステップ2：RCFをCiscoスイッチs2にコピーする
 
-. FTP、HTTP、TFTP、SFTP、または SCP のいずれかの転送プロトコルを使用して、スイッチ S2 上の RCF をスイッチのブートフラッシュにコピーします。
+. FTP、HTTP、TFTP、SFTP、または SCP のいずれかの転送プロトコルを使用して、スイッチ s2 上の RCF をスイッチ bootflash にコピーします。
 +
 Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^]の適切なガイドを参照してください。
 
@@ -147,17 +149,17 @@ Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/s
 .例を表示
 [%collapsible]
 ====
-次の例は、HTTP を使用して RCF をスイッチ S2 のブートフラッシュにコピーする方法を示しています。
+次の例は、HTTP を使用して RCF をスイッチ s2 のブートフラッシュにコピーする方法を示しています：
 
 [listing, subs="+quotes"]
 ----
-S2# *copy http://172.16.10.1//cfg/Nexus_3232C_RCF_v1.6-Storage.txt bootflash: vrf management*
+s2# *copy http://172.16.10.1//cfg/Nexus_3232C_RCF_v1.6-Storage.txt bootflash: vrf management*
 % Total    % Received % Xferd  Average  Speed   Time    Time     Time                          Current
                                Dload    Upload  Total   Spent    Left                          Speed
   100        3254       100    3254     0       0       8175     0 --:--:-- --:--:-- --:--:-   8301
 Copy complete, now saving to disk (please wait)...
 Copy complete.
-S2#
+s2#
 ----
 ====
 . 以前にダウンロードした RCF をブートフラッシュに適用します。
@@ -168,11 +170,11 @@ S2#
 .例を表示
 [%collapsible]
 ====
-次の例はRCFファイルを示しています `Nexus_3232C_RCF_v1.6-Storage.txt`スイッチS2にインストールされます:
+次の例は、スイッチ s2 にインストールされる RCF ファイル `Nexus_3232C_RCF_v1.6-Storage.txt`を示しています：
 
 [listing, subs="+quotes"]
 ----
-S2# *copy Nexus_3232C_RCF_v1.6-Storage.txt running-config echo-commands*
+s2# *copy Nexus_3232C_RCF_v1.6-Storage.txt running-config echo-commands*
 ----
 ====
 . RCF ファイルが正しい新しいバージョンであることを確認します。
@@ -201,7 +203,7 @@ S2# *copy Nexus_3232C_RCF_v1.6-Storage.txt running-config echo-commands*
 ====
 [listing]
 ----
-S2# show banner motd
+s2# show banner motd
 
 ******************************************************************************
 * NetApp Reference Configuration File (RCF)
@@ -234,7 +236,7 @@ S2# show banner motd
 *
 *   (4) Save running-configuration again
 ******************************************************************************
-S2#
+s2#
 ----
 ====
 +
@@ -243,7 +245,7 @@ NOTE: RCF を初めて適用する場合、「*エラー: VSH コマンドの書
 
 
 
-. ソフトウェアのバージョンとスイッチの設定が正しいことを確認したら、 `running-config`ファイルに `startup-config`スイッチ S2 上のファイル。
+. ソフトウェアのバージョンとスイッチの設定が正しいことを確認したら、 `running-config`ファイルをスイッチ s2 上の `startup-config`ファイルにコピーします。
 +
 Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^]の適切なガイドを参照してください。
 
@@ -255,7 +257,7 @@ Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/s
 
 [listing]
 ----
-S2# copy running-config startup-config
+s2# copy running-config startup-config
 [########################################] 100% Copy complete.
 ----
 ====
@@ -263,16 +265,16 @@ S2# copy running-config startup-config
 
 
 
-=== ステップ3: NX-OSイメージをCiscoスイッチS2にコピーして再起動する
+=== ステップ3：NX-OSイメージをCiscoスイッチs2にコピーして再起動する
 
-. NX-OS イメージをスイッチ S2 にコピーします。
+. NX-OS イメージをスイッチ s2 にコピーします。
 +
 .例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
 ----
-S2# *copy sftp: bootflash: vrf management*
+s2# *copy sftp: bootflash: vrf management*
 Enter source filename: */code/nxos.9.3.4.bin*
 Enter hostname for the sftp server: *172.19.2.1*
 Enter username: *user1*
@@ -288,7 +290,7 @@ sftp> exit
 Copy complete, now saving to disk (please wait)...
 Copy complete.
 
-cs2# *copy sftp: bootflash: vrf management*
+s2# *copy sftp: bootflash: vrf management*
 Enter source filename: */code/n9000-epld.9.3.4.img*
 Enter hostname for the sftp server: *172.19.2.1*
 Enter username: *user1*
@@ -315,7 +317,7 @@ Copy complete.
 ====
 [listing, subs="+quotes"]
 ----
-S2# *install all nxos bootflash:nxos.9.3.4.bin*
+s2# *install all nxos bootflash:nxos.9.3.4.bin*
 Installer will perform compatibility check first. Please wait.
 Installer is forced disruptive
 
@@ -373,7 +375,7 @@ Warning: please do not remove or power off the module at this time.
 
 
 Finishing the upgrade, switch will reboot in 10 seconds.
-S2#
+s2#
 ----
 ====
 . 設定を保存します。
@@ -389,9 +391,9 @@ Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/s
 ====
 [listing, subs="+quotes"]
 ----
-S2# *copy running-config startup-config*
+s2# *copy running-config startup-config*
 [########################################] 100% Copy complete.
-S2# *reload*
+s2# *reload*
 This command will reboot the system. (y/n)?  [n] *y*
 ----
 ====
@@ -402,7 +404,7 @@ This command will reboot the system. (y/n)?  [n] *y*
 ====
 [listing, subs="+quotes"]
 ----
-S2# *show version*
+s2# *show version*
 Cisco Nexus Operating System (NX-OS) Software
 TAC support: http://www.cisco.com/tac
 Copyright (C) 2002-2020, Cisco and/or its affiliates.
@@ -450,7 +452,7 @@ plugin
 
 Active Package(s):
 
-S2#
+s2#
 ----
 ====
 
@@ -472,7 +474,7 @@ S2#
 storage::*> *system switch ethernet show*
 Switch                      Type               Address          Model
 --------------------------- ------------------ ---------------- ---------------
-S1
+s1
                             storage-network    172.17.227.5     NX3232C
      Serial Number: FOC221206C2
       Is Monitored: true
@@ -481,7 +483,7 @@ S1
                     9.3(4)
     Version Source: CDP
 
-S2
+s2
                             storage-network    172.17.227.6    NX3232C
      Serial Number: FOC220443LZ
       Is Monitored: true
@@ -489,9 +491,6 @@ S2
   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
                     9.3(4)
     Version Source: CDP
-
-2 entries were displayed.
-storage::*>
 ----
 ====
 . 再起動後にスイッチ ポートが正常に動作していることを確認します。
@@ -508,13 +507,13 @@ storage::*> *storage port show -port-type ENET*
                                       Speed                       VLAN
 Node               Port Type  Mode    (Gb/s) State    Status        ID
 ------------------ ---- ----- ------- ------ -------- ----------- ----
-node1
-                   e3a  ENET  storage    100 enabled  online        30
+cluster1-01
+                   e5a  ENET  storage    100 enabled  online        30
                    e3b  ENET  storage      0 enabled  offline       30
                    e7a  ENET  storage      0 enabled  offline       30
                    e7b  ENET  storage    100 enabled  online        30
-node2
-                   e3a  ENET  storage    100 enabled  online        30
+cluster1-02
+                   e5a  ENET  storage    100 enabled  online        30
                    e3b  ENET  storage      0 enabled  offline       30
                    e7a  ENET  storage      0 enabled  offline       30
                    e7b  ENET  storage    100 enabled  online        30
@@ -534,7 +533,7 @@ storage::*> *system health alert show -instance*
 There are no entries matching your query.
 ----
 ====
-. 手順を繰り返して、スイッチ S1 の NX-OS ソフトウェアと RCF をアップグレードします。
+. 手順を繰り返して、スイッチ s1 の NX-OS ソフトウェアと RCF をアップグレードします。
 . 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
 +
 `system node autosupport invoke -node * -type all -message MAINT=END`

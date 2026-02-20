@@ -23,6 +23,8 @@ entries:
     url: "/switch-cisco-9336c-fx2-shared/install-9336c-shared.html"
   - title: NetAppキャビネットにスイッチをインストールする
     url: "/switch-cisco-9336c-fx2-shared/install-switch-and-passthrough-panel-9336c-shared.html"
+  - title: ケーブル配線と構成を確認する
+    url: "/switch-cisco-9336c-fx2-shared/cabling-considerations-9336c-shared.html"
 - title: ソフトウェアの設定
   pdf-filename: 設定_ソフトウェア_9336c-fx2-shared
   entries:

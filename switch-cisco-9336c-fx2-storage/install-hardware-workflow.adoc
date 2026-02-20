@@ -24,3 +24,7 @@ summary: Cisco Nexus 9336C-FX2 クラスタ スイッチを構成する前に、
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:install-switch-and-passthrough-panel-9336c-storage.html["NetAppキャビネットにスイッチを設置する"]
 [role="quick-margin-para"]
 必要に応じて、9336C-FX2 および 9336C-FX2-T スイッチとパススルー パネルをNetAppキャビネットにインストールします。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:cabling-considerations-9336c-storage.html["ケーブル配線と構成の考慮事項を確認する"]
+[role="quick-margin-para"]
+9336C-FX2 および 9336C-FX2-T スイッチを構成する前に、ケーブル接続と構成に関する考慮事項を確認してください。

@@ -134,50 +134,6 @@ g mode:
 ----
 cs1# copy running-config startup-config [########################################] 100% Copy complete
 ----
-. 基本的な設定の詳細を `write_erase.cfg`ブートフラッシュ上のファイル。
-+
-`cs1# show run | i "username admin password" > bootflash:write_erase.cfg`
-
-+
-`cs1# show run | section "vrf context management" >> bootflash:write_erase.cfg`
-
-+
-`cs1# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
-
-+
-`cs1# show run | section "switchname" >> bootflash:write_erase.cfg`
-
-. RCF バージョン 1.12 以降の場合は、次のコマンドを実行します。
-+
-`cs1# echo "hardware access-list tcam region ing-racl 1024" >> bootflash:write_erase.cfg`
-
-+
-`cs1# echo "hardware access-list tcam region egr-racl 1024" >> bootflash:write_erase.cfg`
-
-+
-`cs1# echo "hardware access-list tcam region ing-l2-qos 1280" >> bootflash:write_erase.cfg`
-
-+
-ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細については、こちらをご覧ください。
-
-. 確認するには `write_erase.cfg`ファイルは期待どおりに入力されます。
-+
-`show file bootflash:write_erase.cfg`
-
-. 現在保存されている設定を消去するには、write erase コマンドを発行します。
-+
-`cs1# *write erase*`
-
-+
-`Warning: This command will erase the startup-configuration.`
-
-+
-`Do you wish to proceed anyway? (y/n)  [n] *y*`
-
-. 以前に保存した基本設定をスタートアップ設定にコピーします。
-+
-`cs1# *copy bootflash:write_erase.cfg startup-config*`
-
 . スイッチcs1をリブートします。
 +
 `cs1# *reload*`
@@ -185,7 +141,7 @@ cs1# copy running-config startup-config [#######################################
 +
 `This command will reboot the system. (y/n)?  [n] *y*`
 
-. スイッチ cs2 で手順 1 ～ 13 を繰り返します。
+. スイッチ cs2 で手順 1 ～ 8 を繰り返します。
 . ONTAPクラスタ内のすべてのノードのクラスタ ポートをスイッチ cs1 および cs2 に接続します。
 
 

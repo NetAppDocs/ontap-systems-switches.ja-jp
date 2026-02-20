@@ -1,8 +1,8 @@
 ---
 permalink: switch-cisco-9336c-fx2-storage/install-9336c-storage.html 
 sidebar: sidebar 
-keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 9336c-fx2 
-summary: 必要な構成情報とドキュメントがまだない場合は、クラスタと管理ネットワーク スイッチを設定する前にその情報を収集する必要があります。 
+keywords: require, configuration, information, documentation, storage, management, network, switches, set up the switches - cisco nexus 9336c-fx2 
+summary: 必要な構成情報とドキュメントがまだない場合は、ストレージおよび管理ネットワーク スイッチをセットアップする前にその情報を収集する必要があります。 
 ---
 = 9336C-FX2および9336C-FX2-Tストレージスイッチをインストールする
 :allow-uri-read: 
@@ -20,12 +20,15 @@ Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチをイ�
 * 該当するNX-OSバージョンは、 https://software.cisco.com/download/home["Ciscoソフトウェアのダウンロード"^]ページ。
 * 適用可能なライセンス、ネットワークおよび構成情報、およびケーブル。
 * 完了link:setup-worksheet-9336c-storage.html["配線ワークシート"]。
-* 適用可能なNetAppクラスタネットワークおよび管理ネットワークRCFは、 NetAppサポートサイトからダウンロードできます。 http://mysupport.netapp.com/["mysupport.netapp.com"^] 。すべてのCiscoクラスタ ネットワークおよび管理ネットワーク スイッチは、標準のCisco工場出荷時のデフォルト構成で出荷されます。これらのスイッチにも NX-OS ソフトウェアの最新バージョンが搭載されていますが、RCF はロードされていません。
+* 該当するNetAppストレージ ネットワークおよび管理ネットワークRCFは、NetApp Support Siteから http://mysupport.netapp.com/["mysupport.netapp.com"^]ダウンロードされます。
++
+すべての Cisco ストレージ ネットワークおよび管理ネットワーク スイッチには、標準の Cisco 工場出荷時のデフォルト設定が適用されています。これらのスイッチには NX-OS ソフトウェアの最新バージョンも搭載されていますが、RCF はロードされていません。
+
 * 必要なスイッチドキュメント。見るlink:required-documentation-9336c-storage.html["必要な書類"]詳細についてはこちらをご覧ください。
 
 
 .手順
-. クラスター ネットワークと管理ネットワーク スイッチおよびコントローラーをラックに設置します。
+. ネットワークおよび管理ネットワーク スイッチとコントローラをラックに設置します。
 +
 [cols="1,2"]
 |===
@@ -45,8 +48,8 @@ NetAppシステムキャビネット内のCisco Nexus 9336C-FX2
 スイッチ ハードウェア インストール ガイドおよびNetApp のインストールおよびセットアップ手順に記載されている手順を参照してください。
 
 |===
-. 完成した配線ワークシートを使用して、クラスター ネットワークと管理ネットワーク スイッチをコントローラーに配線します。
-. クラスター ネットワークと管理ネットワークのスイッチとコントローラーの電源をオンにします。
+. 完成した配線ワークシートを使用して、ネットワーク スイッチと管理ネットワーク スイッチをコントローラに配線します。
+. ネットワークおよび管理ネットワーク スイッチとコントローラの電源をオンにします。
 
 
 .次の手順

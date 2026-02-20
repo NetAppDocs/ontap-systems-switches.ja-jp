@@ -21,7 +21,7 @@ Cisco Nexus 3232C スイッチのソフトウェアをインストールして�
 [role="quick-margin-para"]
 Cisco NX-OS ソフトウェアとリファレンス コンフィギュレーション ファイル（RCF）を Cisco 3232C ストレージ スイッチにインストールする必要があります。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:install-nx-os-software-3232c-storage.html["NX-OSソフトウェアをインストールする"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:install-nx-os-software-3232c-storage.html["NX-OSソフトウェアをインストールまたはアップグレードする"]
 [role="quick-margin-para"]
 Cisco 3232C ストレージスイッチに NX-OS ソフトウェアをダウンロードしてインストールまたはアップグレードします。
 
@@ -29,10 +29,14 @@ Cisco 3232C ストレージスイッチに NX-OS ソフトウェアをダウン�
 [role="quick-margin-para"]
 Cisco 3232C ストレージスイッチを初めてセットアップした後、RCF をインストールします。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-ssh-keys.html["SSH設定を確認する"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:upgrade-rcf-software-3232c-storage.html["RCF をアップグレードする"]
+[role="quick-margin-para"]
+必要に応じて既存の RCF バージョンをアップグレードします。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:configure-ssh-keys.html["SSH設定を確認する"]
 [role="quick-margin-para"]
 イーサネット スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用するには、スイッチで SSH が有効になっていることを確認します。
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:reset-switch-3232c-storage.html["スイッチを工場出荷時の状態にリセットする"]
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["セブン"]link:reset-switch-3232c-storage.html["スイッチを工場出荷時の状態にリセットする"]
 [role="quick-margin-para"]
 3232C ストレージ スイッチの設定を消去します。

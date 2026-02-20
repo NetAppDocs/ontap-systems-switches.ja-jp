@@ -11,7 +11,7 @@ summary: この手順を使用して、Nexus 9336C-FX2クラスタ スイッチ�
 
 
 [role="lead"]
-Nexus 9336C-FX2 および 9336C-FX2-T スイッチに NX-OS ソフトウェアをインストールするには、次の手順に従います。
+Nexus 9336C-FX2 および 9336C-FX2-T スイッチに NX-OS ソフトウェアをインストールまたはアップグレードするには、次の手順に従います。
 
 始める前に、以下の手順を完了してください。link:install-nxos-overview-9336c-storage.html["NX-OSとRCFのインストールの準備"] 。
 
@@ -20,12 +20,10 @@ Nexus 9336C-FX2 および 9336C-FX2-T スイッチに NX-OS ソフトウェア�
 == 要件の確認
 
 .開始する前に
-必ず次のことを行ってください：
+以下のものがあることを確認してください。
 
-* スイッチで `show install all impact nxos bootflash:<image_name>.bin`コマンドを実行して、新しいNX-OSソフトウェアイメージのインストールまたはアップグレードの影響を確認します。イメージの整合性を検証し、必要な再起動をチェックし、ハードウェアの互換性を評価し、十分なスペースを確認します。
-* 対象となる NX-OS ソフトウェア バージョンのリリース ノートを参照して、特定の要件を確認します。
-* スイッチ構成の最新のバックアップがあることを確認します。
-* クラスターが完全に機能していることを確認します（ログにエラーや同様の問題がない）。
+* スイッチ構成の現在のバックアップ。
+* 完全に機能するクラスター (ログにエラーや同様の問題がない)。
 
 
 .推奨ドキュメント
@@ -49,21 +47,19 @@ Ciscoスイッチのアップグレードおよびダウングレード手順の
 .例について
 この手順の例で使用するスイッチとノードの名前は次のとおりです。
 
-* 2 つのCiscoスイッチの名前は cs1 と cs2 です。
-* ノード名は、cluster1-01、cluster1-02、cluster1-03、cluster1-04 です。
-* クラスタ LIF 名は、cluster1-01_clus1、cluster1-01_clus2、cluster1-02_clus1、cluster1-02_clus2、cluster1-03_clus1、cluster1-03_clus2、cluster1-04_clus1、cluster1-04_clus2 です。
-* その `cluster1::*>`プロンプトはクラスターの名前を示します。
+* 2 台の Cisco スイッチの名前は s1 と s2 です。
+* ノード名はcluster1-01とcluster1-02です。
 
 
 
 
-== ソフトウェアをインストールする
+== ソフトウェアをインストールまたはアップグレードする
 
 この手順では、ONTAPコマンドとCisco Nexus 9000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
 
 .手順
-. クラスタ スイッチを管理ネットワークに接続します。
-. ping コマンドを使用して、NX-OS ソフトウェアと RCF をホストしているサーバーへの接続を確認します。
+. スイッチを管理ネットワークに接続します。
+. 使用 `ping`NX-OS ソフトウェアと RCF をホストするサーバーへの接続を確認するコマンド。
 +
 .例を表示
 [%collapsible]
@@ -72,155 +68,101 @@ Ciscoスイッチのアップグレードおよびダウングレード手順の
 
 [listing, subs="+quotes"]
 ----
-cs2# *ping 172.19.2.1 VRF management*
+s2# *ping 172.19.2.1 VRF management*
 Pinging 172.19.2.1 with 0 bytes of data:
 
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 ----
 ====
-. クラスター スイッチに接続されている各ノード上のクラスター ポートを表示します。
+. スイッチを初めて設定する場合は、手順 5 に進んでください。スイッチをアップグレードする場合は、次の手順に進んでください。
+. 各ノード ストレージ ポートおよびストレージ シェルフ ポートの管理ステータスまたは動作ステータスを確認します。
 +
-`network device-discovery show`
-
+.. ノード ストレージ ポート属性を表示します：
++
+[source, cli]
+----
+storage port show
+----
 +
 .例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network device-discovery show*
-Node/       Local  Discovered
-Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
------------ ------ ------------------------- ----------------  --------------
-cluster1-01/cdp
-            e0a    cs1                       Ethernet1/7       N9K-C9336C-FX2
-            e0b    cs2                       Ethernet1/7       N9K-C9336C-FX2
-cluster1-02/cdp
-            e0a    cs1                       Ethernet1/8       N9K-C9336C-FX2
-            e0b    cs2                       Ethernet1/8       N9K-C9336C-FX2
-cluster1-03/cdp
-            e0a    cs1                       Ethernet1/1/1     N9K-C9336C-FX2
-            e0b    cs2                       Ethernet1/1/1     N9K-C9336C-FX2
-cluster1-04/cdp
-            e0a    cs1                       Ethernet1/1/2     N9K-C9336C-FX2
-            e0b    cs2                       Ethernet1/1/2     N9K-C9336C-FX2
-cluster1::*>
+cluster1::*> *storage port show*
+Speed                     VLAN
+Node           Port Type  Mode    (Gb/s) State    Status      ID
+-------------- ---- ----- ------- ------ -------- --------- ----
+cluster1-01
+               e5a  ENET  storage    100 enabled  online      -
+               e3b  ENET  storage    100 enabled  online      -
+cluster1-02
+
+               e5a  ENET  storage    100 enabled  online      -
+               e3b  ENET  storage    100 enabled  online      -
+.
+.
 ----
 ====
-. 各クラスタ ポートの管理ステータスと動作ステータスを確認します。
+.. ストレージ シェルフ ポートの属性を表示します：
 +
-.. すべてのクラスター ポートが正常な状態で *up* していることを確認します。
-+
-`network port show -ipspace Cluster`
-
+[source, cli]
+----
+storage shelf port show
+----
 +
 .例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network port show -ipspace Cluster*
+cluster1::*> *storage shelf port show*
 
-Node: cluster1-01
-                                                                       Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
-e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
-
-Node: cluster1-02
-                                                                       Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
-e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
-8 entries were displayed.
-
-Node: cluster1-03
-
-   Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
-e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-
-Node: cluster1-04
-                                                                       Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
-e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-cluster1::*>
+Shelf ID Module State        Internal?
+----- -- ------ ------------ ---------
+1.4
+       0 A      connected    false
+       1 A      connected    false
+       2 B      connected    false
+       3 B      connected    false
+.
+.
 ----
 ====
-.. すべてのクラスタ インターフェイス (LIF) がホーム ポート上にあることを確認します。
+.. スイッチが監視されるように、スイッチ ヘルス モニタリング（CSHM）がスイッチに対して有効になっていることを確認します：
 +
-`network interface show -vserver Cluster`
-
+[source, cli]
+----
+system switch ethernet show
+----
 +
 .例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -vserver Cluster*
-            Logical            Status     Network           Current      Current Is
-Vserver     Interface          Admin/Oper Address/Mask      Node         Port    Home
------------ ------------------ ---------- ----------------- ------------ ------- ----
-Cluster
-            cluster1-01_clus1  up/up     169.254.3.4/23     cluster1-01  e0a     true
-            cluster1-01_clus2  up/up     169.254.3.5/23     cluster1-01  e0b     true
-            cluster1-02_clus1  up/up     169.254.3.8/23     cluster1-02  e0a     true
-            cluster1-02_clus2  up/up     169.254.3.9/23     cluster1-02  e0b     true
-            cluster1-03_clus1  up/up     169.254.1.3/23     cluster1-03  e0a     true
-            cluster1-03_clus2  up/up     169.254.1.1/23     cluster1-03  e0b     true
-            cluster1-04_clus1  up/up     169.254.1.6/23     cluster1-04  e0a     true
-            cluster1-04_clus2  up/up     169.254.1.7/23     cluster1-04  e0b     true
-8 entries were displayed.
-cluster1::*>
-----
-====
-.. クラスターが両方のクラスター スイッチの情報を表示することを確認します。
-+
-`system cluster-switch show -is-monitoring-enabled-operational true`
-
-+
-.例を表示
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
-Switch                      Type               Address          Model
---------------------------- ------------------ ---------------- --------------
-cs1                         cluster-network    10.233.205.90    N9K-C9336C-FX2
-     Serial Number: FOCXXXXXXGD
+cluster1::> *system switch ethernet show*
+  Switch            Type               Address          Model
+  ----------------- ------------------ ---------------- ---------------
+  s1                storage-network    1.2.3.4          N9K-C9336C-FX2
+     Serial Number: FFFXXXXXXX1
       Is Monitored: true
             Reason: None
   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
-    Version Source: CDP
-
-cs2                         cluster-network    10.233.205.91    N9K-C9336C-FX2
-     Serial Number: FOCXXXXXXGS
+                    10.3(4a)
+    Version Source: CDP/ISDP
+  s2                storage-network    2.3.4.5          N9K-C9336C-FX2
+     Serial Number: FFFXXXXXXX2
       Is Monitored: true
             Reason: None
   Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
-    Version Source: CDP
-cluster1::*>
+                    10.3(4a)
+    Version Source: CDP/ISDP
 ----
 ====
 
 
-. クラスタLIFで自動リバートを無効にします。クラスタ LIF はパートナー クラスタ スイッチにフェイルオーバーし、対象スイッチでアップグレード手順を実行する間、そこに残ります。
-+
-`network interface modify -vserver Cluster -lif * -auto-revert false`
-
+. SSH またはシリアル コンソールを使用してスイッチにログインします。
 . NX-OSソフトウェアおよびEPLDイメージをNexus 9336C-FX2スイッチにコピーします。
 +
 .例を表示
@@ -228,7 +170,7 @@ cluster1::*>
 ====
 [listing, subs="+quotes"]
 ----
-cs2# *copy sftp: bootflash: vrf management*
+s2# *copy sftp: bootflash: vrf management*
 Enter source filename: */code/nxos.9.3.5.bin*
 Enter hostname for the sftp server: *172.19.2.1*
 Enter username: *user1*
@@ -245,7 +187,7 @@ Copy complete, now saving to disk (please wait)...
 Copy complete.
 
 
-cs2# *copy sftp: bootflash: vrf management*
+s2# *copy sftp: bootflash: vrf management*
 Enter source filename: */code/n9000-epld.9.3.5.img*
 Enter hostname for the sftp server: *172.19.2.1*
 Enter username: *user1*
@@ -272,7 +214,7 @@ Copy complete.
 ====
 [listing, subs="+quotes"]
 ----
-cs2# *show version*
+s2# *show version*
 Cisco Nexus Operating System (NX-OS) Software
 TAC support: http://www.cisco.com/tac
 Copyright (C) 2002-2020, Cisco and/or its affiliates.
@@ -306,7 +248,7 @@ Hardware
   Intel(R) Xeon(R) CPU E5-2403 v2 @ 1.80GHz with 8154432 kB of memory.
   Processor Board ID FOC20291J6K
 
-  Device name: cs2
+  Device name: s2
   bootflash:   53298520 kB
 Kernel uptime is 0 day(s), 0 hour(s), 3 minute(s), 42 second(s)
 
@@ -320,9 +262,6 @@ plugin
   Core Plugin, Ethernet Plugin
 
 Active Package(s):
-
-
-cs2#
 ----
 ====
 . NX-OSイメージをインストールします。
@@ -335,7 +274,7 @@ cs2#
 ====
 [listing, subs="+quotes"]
 ----
-cs2# *install all nxos bootflash:nxos.9.3.5.bin*
+s2# *install all nxos bootflash:nxos.9.3.5.bin*
 
 Installer will perform compatibility check first. Please wait.
 Installer is forced disruptive
@@ -407,7 +346,7 @@ Finishing the upgrade, switch will reboot in 10 seconds.
 ====
 [listing, subs="+quotes"]
 ----
-cs2# *show version*
+s2# *show version*
 
 Cisco Nexus Operating System (NX-OS) Software
 TAC support: http://www.cisco.com/tac
@@ -442,7 +381,7 @@ Hardware
   Intel(R) Xeon(R) CPU E5-2403 v2 @ 1.80GHz with 8154432 kB of memory.
   Processor Board ID FOC20291J6K
 
-  Device name: cs2
+  Device name: s2
   bootflash:   53298520 kB
 Kernel uptime is 0 day(s), 0 hour(s), 3 minute(s), 42 second(s)
 
@@ -464,7 +403,7 @@ Active Package(s):
 ====
 [listing, subs="+quotes"]
 ----
-cs2# *show version module 1 epld*
+s2# *show version module 1 epld*
 
 EPLD Device                     Version
 ---------------------------------------
@@ -476,7 +415,7 @@ GEM  FPGA                        0x2
 GEM  FPGA                        0x2
 GEM  FPGA                        0x2
 
-cs2# *install epld bootflash:n9000-epld.9.3.5.img module all*
+s2# *install epld bootflash:n9000-epld.9.3.5.img module all*
 Compatibility check:
 Module        Type         Upgradable        Impact    Reason
 ------  ------------------ ----------------- --------- -----------
@@ -508,14 +447,14 @@ EPLDs upgraded.
 Module 1 EPLD upgrade is successful.
 ----
 ====
-. スイッチのリブート後に再度ログインし、新しいバージョンのEPLDが正常にロードされたことを確認します。
+. スイッチが再起動したら、再度ログインし、新しいバージョンの EPLD が正常にロードされたことを確認します。
 +
 .例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
 ----
-cs2# *show version module 1 epld*
+s2# *show version module 1 epld*
 
 EPLD Device                     Version
 ---------------------------------------
@@ -528,238 +467,95 @@ GEM  FPGA                        0x2
 GEM  FPGA                        0x2
 ----
 ====
-. クラスタ ポートの健全性を確認します。
+. スイッチを初めて設定する場合は、手順 14 に進んでください。スイッチをアップグレードする場合は、次の手順に進んでください。
+. 各ノード ストレージ ポートとストレージ シェルフ ポートのヘルス ステータスを確認します。
 +
-.. クラスター内のすべてのノードでクラスター ポートが稼働しており正常であることを確認します。
+.. ノード ストレージ ポート属性を表示します：
 +
-`network port show -ipspace Cluster`
-
-+
-.例を表示
-[%collapsible]
-====
-[listing, subs="+quotes"]
+[source, cli]
 ----
-cluster1::*> *network port show -ipspace Cluster*
-
-Node: cluster1-01
-                                                                       Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
-e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-
-Node: cluster1-02
-                                                                       Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
-e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
-
-Node: cluster1-03
-                                                                       Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
-e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
-
-Node: cluster1-04
-                                                                       Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
-e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
-8 entries were displayed.
+storage port show
 ----
-====
-.. クラスターからスイッチの健全性を確認します。
-+
-`network device-discovery show -protocol cdp`
-
 +
 .例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network device-discovery show -protocol cdp*
-Node/       Local  Discovered
-Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
------------ ------ ------------------------- ----------------- --------------
-cluster1-01/cdp
-            e0a    cs1                       Ethernet1/7       N9K-C9336C-FX2
-            e0b    cs2                       Ethernet1/7       N9K-C9336C-FX2
-cluster01-2/cdp
-            e0a    cs1                       Ethernet1/8       N9K-C9336C-FX2
-            e0b    cs2                       Ethernet1/8       N9K-C9336C-FX2
-cluster01-3/cdp
-            e0a    cs1                       Ethernet1/1/1     N9K-C9336C-FX2
-            e0b    cs2                       Ethernet1/1/1     N9K-C9336C-FX2
-cluster1-04/cdp
-            e0a    cs1                       Ethernet1/1/2     N9K-C9336C-FX2
-            e0b    cs2                       Ethernet1/1/2     N9K-C9336C-FX2
-
-cluster1::*> *system cluster-switch show -is-monitoring-enabled-operational true*
-Switch                      Type               Address          Model
---------------------------- ------------------ ---------------- --------------
-cs1                         cluster-network    10.233.205.90    N9K-C9336C-FX2
-     Serial Number: FOCXXXXXXGD
-      Is Monitored: true
-            Reason: None
-  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
-    Version Source: CDP
-
-cs2                         cluster-network    10.233.205.91    N9K-C9336C-FX2
-     Serial Number: FOCXXXXXXGS
-      Is Monitored: true
-            Reason: None
-  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
-                    9.3(5)
-    Version Source: CDP
-
-2 entries were displayed.
-----
-前の手順でスイッチにロードしたRCFのバージョンによっては、cs1スイッチのコンソールに次の出力が表示されることがあります。
-
-[listing]
-----
-2020 Nov 17 16:07:18 cs1 %$ VDC-1 %$ %STP-2-UNBLOCK_CONSIST_PORT: Unblocking port port-channel1 on VLAN0092. Port consistency restored.
-2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_PEER: Blocking port-channel1 on VLAN0001. Inconsistent peer vlan.
-2020 Nov 17 16:07:23 cs1 %$ VDC-1 %$ %STP-2-BLOCK_PVID_LOCAL: Blocking port-channel1 on VLAN0092. Inconsistent local vlan.
-----
-====
-
-
-. クラスタが正常に動作していることを確認します。
-+
-`cluster show`
-
-+
-.例を表示
-[%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cluster1::*> *cluster show*
-Node                 Health   Eligibility   Epsilon
--------------------- -------- ------------- -------
-cluster1-01          true     true          false
-cluster1-02          true     true          false
-cluster1-03          true     true          true
-cluster1-04          true     true          false
-4 entries were displayed.
-cluster1::*>
-----
-====
-. 手順 6 ～ 13 を繰り返して、スイッチ cs1 に NX-OS ソフトウェアをインストールします。
-. クラスタ LIF で自動復帰を有効にする前に、リモート クラスタ インターフェイスの接続を確認します。
-
-
-[role="tabbed-block"]
-====
-.ONTAP 9.9.1以降
---
-使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
-
-`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
-
-[listing, subs="+quotes"]
-----
-cluster1::*> *network interface check cluster-connectivity start*
-----
-*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
-
-[listing, subs="+quotes"]
-----
-cluster1::*> *network interface check cluster-connectivity show*
-                                  Source               Destination         Packet
-Node   Date                       LIF                  LIF                 Loss
------- -------------------------- -------------------- ------------------- -----------
+cluster1::*> *storage port show*
+Speed                     VLAN
+Node           Port Type  Mode    (Gb/s) State    Status      ID
+-------------- ---- ----- ------- ------ -------- --------- ----
 cluster1-01
-       3/5/2022 19:21:18 -06:00   cluster1-01_clus2    cluster1-02-clus1   none
-       3/5/2022 19:21:20 -06:00   cluster1-01_clus2    cluster1-02_clus2   none
+               e5a  ENET  storage    100 enabled  online      -
+               e3b  ENET  storage    100 enabled  online      -
 cluster1-02
-       3/5/2022 19:21:18 -06:00   cluster1-02_clus2    cluster1-01_clus1   none
-       3/5/2022 19:21:20 -06:00   cluster1-02_clus2    cluster1-01_clus2   none
+
+               e5a  ENET  storage    100 enabled  online      -
+               e3b  ENET  storage    100 enabled  online      -
+.
+.
 ----
---
-.ONTAPのすべてのリリース
---
-すべてのONTAPリリースでは、 `cluster ping-cluster -node <name>`接続を確認するコマンド:
-
-`cluster ping-cluster -node <name>`
-
-[listing, subs="+quotes"]
-----
-cluster1::*> *cluster ping-cluster -node local*
-Host is cluster1-02
-Getting addresses from network interface table...
-Cluster cluster1-01_clus1 169.254.209.69 cluster1-01     e0a
-Cluster cluster1-01_clus2 169.254.49.125 cluster1-01     e0b
-Cluster cluster1-02_clus1 169.254.47.194 cluster1-02     e0a
-Cluster cluster1-02_clus2 169.254.19.183 cluster1-02     e0b
-Local = 169.254.47.194 169.254.19.183
-Remote = 169.254.209.69 169.254.49.125
-Cluster Vserver Id = 4294967293
-Ping status:
-
-Basic connectivity succeeds on 4 path(s)
-Basic connectivity fails on 0 path(s)
-
-Detected 9000 byte MTU on 4 path(s):
-    Local 169.254.19.183 to Remote 169.254.209.69
-    Local 169.254.19.183 to Remote 169.254.49.125
-    Local 169.254.47.194 to Remote 169.254.209.69
-    Local 169.254.47.194 to Remote 169.254.49.125
-Larger than PMTU communication succeeds on 4 path(s)
-RPC status:
-2 paths up, 0 paths down (tcp check)
-2 paths up, 0 paths down (udp check)
-----
---
 ====
-. [[step16]]クラスタLIFで自動復帰を有効にします。
+.. ストレージ シェルフ ポートの属性を表示します：
 +
-`*network interface modify -vserver Cluster -lif * -auto-revert true*`
-
-. クラスタ LIF がホーム ポートに戻ったことを確認します。
-+
-`network interface show -vserver Cluster`
-
+[source, cli]
+----
+storage shelf port show
+----
 +
 .例を表示
 [%collapsible]
 ====
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface show -vserver Cluster*
-            Logical            Status     Network            Current             Current Is
-Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
------------ ------------------ ---------- ------------------ ------------------- ------- ----
-Cluster
-            cluster1-01_clus1  up/up      169.254.3.4/23     cluster1-01         e0b     true
-            cluster1-01_clus2  up/up      169.254.3.5/23     cluster1-01         e0b     true
-            cluster1-02_clus1  up/up      169.254.3.8/23     cluster1-02         e0b     true
-            cluster1-02_clus2  up/up      169.254.3.9/23     cluster1-02         e0b     true
-            cluster1-03_clus1  up/up      169.254.1.3/23     cluster1-03         e0b     true
-            cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
-            cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     true
-            cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
-8 entries were displayed.
-cluster1::*>
+cluster1::*> *storage shelf port show*
+
+Shelf ID Module State        Internal?
+----- -- ------ ------------ ---------
+1.4
+       0 A      connected    false
+       1 A      connected    false
+       2 B      connected    false
+       3 B      connected    false
+.
+.
 ----
 ====
+.. スイッチが監視されるように、スイッチ ヘルス モニタリング（CSHM）が有効になっていることを確認します：
 +
-クラスタ LIF がホーム ポートに戻っていない場合は、ローカル ノードから手動で元に戻します。
-
+[source, cli]
+----
+system switch ethernet show
+----
 +
-`network interface revert -vserver Cluster -lif <lif_name>`
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::> *system switch ethernet show*
+  Switch            Type               Address          Model
+  ----------------- ------------------ ---------------- ---------------
+  s1                storage-network    1.2.3.4          N9K-C9336C-FX2
+     Serial Number: FFFXXXXXXX1
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    10.3(4a)
+    Version Source: CDP/ISDP
+  s2                storage-network    2.3.4.5          N9K-C9336C-FX2
+     Serial Number: FFFXXXXXXX2
+      Is Monitored: true
+            Reason: None
+  Software Version: Cisco Nexus Operating System (NX-OS) Software, Version
+                    10.3(4a)
+    Version Source: CDP/ISDP
+----
+====
 
+
+. 手順 5 ～ 13 を繰り返して、スイッチ s1 に NX-OS ソフトウェアをインストールします。
 
 
 .次の手順

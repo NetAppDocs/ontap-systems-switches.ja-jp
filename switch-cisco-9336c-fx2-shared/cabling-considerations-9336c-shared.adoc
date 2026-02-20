@@ -1,0 +1,67 @@
+---
+permalink: switch-cisco-9336c-fx2-shared/cabling-considerations-9336c-shared.html 
+sidebar: sidebar 
+keywords: 9336c-fx2 cabling setup, 9336c-fx2 switches configuration, nx-os 
+summary: Cisco 9336C-FX2 スイッチを設定する前に、次の情報を確認してください。 
+---
+= ケーブル配線と構成の考慮事項を確認する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+9336C-FX2 および 9336C-FX2-T スイッチを構成する前に、ケーブル接続と構成の要件を確認してください。
+
+
+
+== NVIDIA CX6、CX6-DX、CX7 イーサネット ポートのサポート
+
+NVIDIA ConnectX-6（CX6）、ConnectX-6 Dx（CX6-DX）、またはConnectX-7（CX7）NICポートを使用してスイッチ ポートをONTAPコントローラーに接続する場合は、スイッチ ポート速度をハードコードする必要があります。
+
+[listing, subs="+quotes"]
+----
+(cs1)(config)# interface Ethernet1/19
+*For 100GbE speed:*
+(cs1)(config-if)# *speed 100000*
+*For 40GbE speed:*
+(cs1)(config-if)# *speed 40000*
+(cs1)(config-if)# no negotiate auto
+(cs1)(config-if)# exit
+(cs1)(config)# exit
+*Save the changes:*
+(cs1)# *copy running-config startup-config*
+----
+
+
+== 25GbE FEC要件
+
+
+
+=== FAS2820 e0a/e0b ポート
+
+FAS2820 e0a および e0b ポートでは、9336C-FX2 および 9336C-FX2-T スイッチ ポートとリンクするために FEC 構成の変更が必要です。スイッチ ポート e0a および e0b の場合、 `fec`設定は `rs-cons16`に設定されます。
+
+[listing, subs="+quotes"]
+----
+(cs1)(config)# interface Ethernet1/8-9
+(cs1)(config-if-range)# *fec rs-cons16*
+(cs1)(config-if-range)# exit
+(cs1)(config)# exit
+*Save the changes:*
+(cs1)# *copy running-config startup-config*
+----
+
+
+== TCAMリソースのせいでポートがリンクアップしない
+
+9336C-FX2 および 9336C-FX2-T スイッチでは、スイッチが使用する設定で設定されている Ternary Content Addressable Memory (TCAM) リソースが使い果たされています。
+
+
+
+== 関連情報
+
+* スイッチ ポートの詳細については、 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]を参照してください。
+* スイッチのインストール要件の詳細については、 https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^]を参照してください。
+* TCAM の問題を解決する方法の詳細については、ナレッジベースの記事 https://kb.netapp.com/on-prem/Switches/Cisco-KBs/Ports_do_not_link_up_on_Cisco_Nexus_9336C-FX2_due_to_TCAM_resources["TCAMリソースが原因でCisco Nexus 9336C-FX2のポートがリンクアップしない"^]を参照してください。
+

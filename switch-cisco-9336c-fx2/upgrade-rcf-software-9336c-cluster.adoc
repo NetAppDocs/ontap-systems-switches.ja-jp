@@ -35,6 +35,20 @@ CAUTION: 新しいスイッチ ソフトウェア バージョンと RCF をイ�
 
 == ステップ1: アップグレードの準備
 
+. このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
++
+`system node autosupport invoke -node * -type all -message MAINT=xh`
+
++
+ここで、_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
+
+. 続行するかどうかを尋ねられたら *y* と入力して、権限レベルを「advanced」に変更します。
++
+`set -privilege advanced`
+
++
+advancedのプロンプト（*>）が表示されます。
+
 . クラスター スイッチに接続されている各ノード上のクラスター ポートを表示します。
 +
 `network device-discovery show`
