@@ -4707,7 +4707,6 @@
   <block id="80ba4b0b3a217933f761ba1440471dee" category="paragraph">X-MTEF-KIT-E</block>
   <block id="65adcaebf2b7d6b4197e6a8aff31717f" category="paragraph">レールキット、 NVIDIAシングルスイッチ ショートデプス</block>
   <block id="8a6e8b822a02f19c1d150c230a03bf69" category="inline-link">SN2100スイッチとレールキットのインストール</block>
-  <block id="865b448eabcf17df6b422f9231393d1a" category="admonition">詳細についてはNVIDIAのドキュメントをご覧ください。<block ref="39747b316e7d3df3f73757faf591c2d2" category="inline-link-rx"></block> 。</block>
   <block id="4ecfcea68abfc6c5e768c0c05c979d4c" category="paragraph">コンポーネントと部品番号を確認したら、 <block ref="49a5e49bddaeabf84f2ee5cfa4f2c2f8" category="inline-link-macro-rx"></block>。</block>
   <block id="2e48063923d7005a1d5b4c086c0a902a" category="summary">NVIDIA SN2100 スイッチは、Cumulus Linux を実行する 10/25/40/100 GbE イーサネット スイッチです。  SN2100 スイッチは、異なるスイッチ ペアを介してONTAP 9.10.1 のクラスタおよびストレージ アプリケーションを提供します。</block>
   <block id="4e66bc15577ca34b137ec086186da6aa" category="doc">NVIDIA SN2100スイッチのインストールとセットアップのワークフロー</block>
@@ -4842,7 +4841,6 @@
   <block id="ed3b40beeb91dc0a99c4580cb378b4b6" category="paragraph">Cumulus LinuxをCumulusモードでインストールしたら、 <block ref="83ca9f457d58548616bdf5d734a73df4" category="inline-link-macro-rx"></block>。</block>
   <block id="c5e47af2eefc12b7d3685bd941d8a3d9" category="doc">NVIDIA SN2100スイッチのハードウェアをインストールする</block>
   <block id="17229d37b35d8241550712be833af4b9" category="inline-link">NVIDIAスイッチ インストール ガイド</block>
-  <block id="0a24c8e3b4ea2ca8a30ceee3856e7638" category="list-text">以下の指示に従ってください<block ref="f3871f65af7ce4ce4161567e6adce2a8" category="inline-link-rx"></block>。</block>
   <block id="15f4bb46c2f563d794f12c95f7363bc3" category="paragraph">ハードウェアをインストールしたら、<block ref="b80562321e7105a297052828d3712cf7" category="inline-link-macro-rx"></block>要件。</block>
   <block id="c7a001e5237d88fee0ed6a186bf5042e" category="summary">NVIDIA SN2100 クラスター スイッチを構成する前に、構成の概要を確認してください。</block>
   <block id="19613dba5f729ac14e1b40a3e61a1ab9" category="doc">NVIDIA SN2100スイッチのハードウェアインストールワークフロー</block>
@@ -5875,4 +5873,10 @@
   <block id="888d27af1c8bead4bc090f7b57fe47dc" category="paragraph"><block ref="03642bd9ef2a92e7a683427a90d69064" prefix="" category="inline-code"></block></block>
   <block id="9c16d25919d69afd920c43d400da0ea8" category="paragraph"><block ref="e374209cc99be20be59ee159164d8226" prefix="" category="inline-code"></block></block>
   <block id="ab72b57a9a9f0e3ccd70b04752a4b2dc" category="list-text">ノード ストレージ ポートおよびストレージ シェルフ ポートに接続されているスイッチ ポートが *稼働中* であることを確認します。</block>
+  <block id="3050ed36cf7b28894b3ecbbbe2742aa2" category="list-text">EPLD イメージをアップグレードし、スイッチを再起動します。NX-OS 10.5(3)F 以降を使用している場合は、EPLD イメージが NX-OS イメージに含まれているため、別途 EPLD イメージのアップグレードを実行する必要はありません。この手順をスキップして、クラスター ポートの正常性の検証を続行します。</block>
+  <block id="6ff0796068f0d678948e289319a2aa28" category="admonition">詳細については、NVIDIA のドキュメントを参照してください<block ref="2e91dc3447d8fccbe6ba718f9aaf0270" category="inline-link-macro-rx"></block>。</block>
+  <block id="8b1e9b3cc32c2a1cf644a1cfe3dab553" category="summary">SN2100ハードウェアをインストールするには、NVIDIAのドキュメントを参照してください。</block>
+  <block id="c10fbc8cfb6421490d3e923dc2ea002a" category="paragraph">NVIDIA SN2100 スイッチ ハードウェアのインストールは、データ保護、レプリケーション、管理ワークフローをサポートする信頼性と拡張性に優れたネットワーク インフラを構築するための重要な第一歩です。</block>
+  <block id="1fcad359e819ec24939bbd1dc0e8cb54" category="paragraph">SN2100 スイッチをセットアップおよび構成するには、次の手順に従います。詳細な手順については、NVIDIA のドキュメントを参照してください。</block>
+  <block id="e14e8d7df79579d38cad8a73b8f91767" category="list-text"><block ref="a88c9397b5cfa4ad77a6fd0eed261f5e" category="inline-link-macro-rx"></block>の手順に従ってください。</block>
 </blocks>
