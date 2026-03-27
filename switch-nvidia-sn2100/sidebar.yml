@@ -40,8 +40,8 @@ entries:
     url: "/switch-nvidia-sn2100/install-rcf-sn2100-cluster.html"
   - title: CSHMファイルをインストールする
     url: "/switch-nvidia-sn2100/setup-install-cshm-file.html"
-  - title: スイッチを工場出荷時の状態にリセットする
-    url: "/switch-nvidia-sn2100/reset-switch-sn2100.html"
+- title: スイッチを工場出荷時の状態にリセットする
+  url: "/switch-nvidia-sn2100/reset-switch-sn2100.html"
 - title: スイッチを移行する
   pdf-filename: 移行スイッチsn2100
   entries:

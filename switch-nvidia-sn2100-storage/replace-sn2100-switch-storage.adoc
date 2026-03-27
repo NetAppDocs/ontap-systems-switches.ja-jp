@@ -20,7 +20,7 @@ NVIDIA SN2100 ストレージ スイッチに Cumulus ソフトウェアと RCF 
 * 該当する RCF をダウンロードしました。
 
 
-その http://hwu.netapp.com["Hardware Universe"^]サポートされているポートとその構成の完全な詳細を提供します。
+link:http://hwu.netapp.com["Hardware Universe"^]には、サポートされているポートとその設定に関する詳細情報が記載されています。
 
 既存のネットワーク構成には、次の特性が必要です。
 

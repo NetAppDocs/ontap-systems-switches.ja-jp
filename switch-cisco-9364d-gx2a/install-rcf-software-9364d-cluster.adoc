@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: install rcf, cisco switches 
 summary: Nexus 9364d-gx2a スイッチを初めてセットアップした後、RCF をインストールできます。 
 ---
-= 参照構成ファイル（RCF）をインストールする
+= RCFのインストール
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Nexus 9364D-GX2A スイッチを初めてセットアップした後、リファレンス構成ファイル (RCF) をインストールします。
+Nexus 9364D-GX2Aスイッチを初めてセットアップした後にRCFをインストールします。
 
 .開始する前に
 次のインストールと接続を確認します。
@@ -30,7 +30,7 @@ Nexus 9364D-GX2A スイッチを初めてセットアップした後、リファ
 . SSH またはシリアル コンソールを使用してスイッチ cs1 にログインします。
 . FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs1のブートフラッシュにRCFをコピーします。
 +
-Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]ガイド。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]の適切なガイドを参照してください。
 
 +
 .例を表示
@@ -50,7 +50,7 @@ Copy complete, now saving to disk (please wait)...
 ====
 . 前の手順でブートフラッシュにダウンロードしたRCFを適用します。
 +
-Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]ガイド。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]の適切なガイドを参照してください。
 
 +
 .例を表示
@@ -140,7 +140,7 @@ cs1# show banner motd
 `cs1# echo "hardware access-list tcam region ing-l2-qos 1536" >> bootflash:write_erase.cfg`
 
 +
-ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]詳細については、こちらをご覧ください。
+詳細については、ナレッジベースの記事link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]を参照してください。
 
 . 確認するには `write_erase.cfg`ファイルは期待どおりに入力されます。
 +

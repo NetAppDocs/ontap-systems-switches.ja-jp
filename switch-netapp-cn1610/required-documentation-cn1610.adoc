@@ -11,7 +11,7 @@ summary: NetApp CN1610 スイッチのインストールとメンテナンスに
 
 
 [role="lead"]
-NetApp CN1610 スイッチのインストールとメンテナンスについては、推奨されるすべてのドキュメントを必ず確認してください。
+NetApp CN1610スイッチの設置にあたっては、推奨されるすべてのドキュメントを必ず確認してください。
 
 [cols="1,2"]
 |===
@@ -19,21 +19,21 @@ NetApp CN1610 スイッチのインストールとメンテナンスについて
 
 
  a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMP1117853["1G インストールガイド"^]
+link:https://library.netapp.com/ecm/ecm_download_file/ECMP1117853["1G インストールガイド"^]
  a| 
 CN1601 スイッチのハードウェアとソフトウェアの機能およびインストール プロセスの概要。
 
 
 
  a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMP1117824["10G インストールガイド"^]
+link:https://library.netapp.com/ecm/ecm_download_file/ECMP1117824["10G インストールガイド"^]
  a| 
 CN1610 スイッチのハードウェアおよびソフトウェア機能の概要と、スイッチをインストールして CLI にアクセスするための機能について説明します。
 
 
 
  a| 
-https://library.netapp.com/ecm/ecm_download_file/ECMP1118645["CN1601およびCN1610スイッチのセットアップおよび構成ガイド"^]
+link:https://library.netapp.com/ecm/ecm_download_file/ECMP1118645["CN1601およびCN1610スイッチのセットアップおよび構成ガイド"^]
  a| 
 クラスタ環境に合わせてスイッチのハードウェアとソフトウェアを構成する方法について詳しく説明します。
 
@@ -44,9 +44,9 @@ CN1601 スイッチ管理者ガイド
  a| 
 一般的なネットワークでのCN1601スイッチの使用方法の例を示します。
 
-* https://library.netapp.com/ecm/ecm_download_file/ECMP1117844["管理者ガイド"^]
-* https://library.netapp.com/ecm/ecm_download_file/ECMLP2811865["管理者ガイド、バージョン 1.1.xx"^]
-* https://library.netapp.com/ecm/ecm_download_file/ECMP1117874["管理者ガイド、バージョン 1.2.xx"^]
+* link:https://library.netapp.com/ecm/ecm_download_file/ECMP1117844["管理者ガイド"^]
+* link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2811865["管理者ガイド、バージョン 1.1.xx"^]
+* link:https://library.netapp.com/ecm/ecm_download_file/ECMP1117874["管理者ガイド、バージョン 1.2.xx"^]
 
 
 
@@ -56,9 +56,9 @@ CN1610 ネットワークスイッチ CLI コマンドリファレンス
  a| 
 CN1601 ソフトウェアを構成するために使用するコマンドライン インターフェイス (CLI) コマンドに関する詳細情報を提供します。
 
-* https://library.netapp.com/ecm/ecm_download_file/ECMP1117834["コマンド リファレンス"^]
-* https://library.netapp.com/ecm/ecm_download_file/ECMLP2811863["コマンドリファレンス、バージョン 1.1.xx"^]
-* https://library.netapp.com/ecm/ecm_download_file/ECMP1117863["コマンドリファレンス、バージョン 1.2.xx"^]
+* link:https://library.netapp.com/ecm/ecm_download_file/ECMP1117834["コマンド リファレンス"^]
+* link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2811863["コマンドリファレンス、バージョン 1.1.xx"^]
+* link:https://library.netapp.com/ecm/ecm_download_file/ECMP1117863["コマンドリファレンス、バージョン 1.2.xx"^]
 
 
 |===

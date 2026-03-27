@@ -12,7 +12,7 @@ settings:
   langs: ja-jp,us-en,de-de,es-es,fr-fr,it-it,pt-br,ko-kr,zh-cn,zh-tw
 sidebar:
   entries:
-  - title: ONTAPハードウェア システムのスイッチ ドキュメント
+  - title: ONTAP ストレージシステムのドキュメントを切り替える
     url: "/index.html"
   - title: 始めましょう
     entries:

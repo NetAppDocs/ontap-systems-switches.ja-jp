@@ -11,7 +11,7 @@ summary: NVIDIA SN2100 スイッチのインストールとメンテナンスに
 
 
 [role="lead"]
-NVIDIA SN2100 スイッチのインストールとメンテナンスについては、推奨されるすべてのドキュメントを必ず確認してください。
+NVIDIA SN2100スイッチの設置にあたっては、推奨されるすべてのドキュメントを必ずご確認ください。
 
 次の表は、 NVIDIA SN2100 スイッチに関するドキュメントの一覧です。
 
@@ -21,29 +21,60 @@ NVIDIA SN2100 スイッチのインストールとメンテナンスについて
 
 
  a| 
-link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/install-hardware-sn2100-cluster.html["NVIDIA SN2100スイッチのセットアップと構成_"^]
+link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/install-hardware-sn2100-cluster.html["NVIDIA SN2100スイッチのセットアップと設定"^]
  a| 
 Cumulus Linux および該当する RCF のインストールを含む、 NVIDIA SN2100 スイッチのセットアップと構成の方法について説明します。
 
 
 
  a| 
-link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100-storage/migrate-cisco-storage-switch-sn2100-storage.html["Ciscoストレージ スイッチからNVIDIA SN2100 ストレージ スイッチへの移行_"^]
+link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100-storage/migrate-cisco-storage-switch-sn2100-storage.html["Ciscoストレージ スイッチからNVIDIA SN2100 ストレージ スイッチへの移行"^]
  a| 
 Ciscoストレージ スイッチを使用する環境からNVIDIA SN2100 ストレージ スイッチを使用する環境に移行する方法について説明します。
 
 
 
  a| 
-link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html["NVIDIA SN2100 クラスタ スイッチを使用した 2 ノード スイッチ クラスタへの移行_"^]
+link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/migrate-2n-switched-sn2100-cluster.html["2ノードスイッチクラスタへの移行"^]
  a| 
-NVIDIA SN2100 クラスタ スイッチを使用して 2 ノード スイッチ環境に移行する方法について説明します。
+NVIDIA SN2100スイッチを使用して2ノードのスイッチド環境に移行する方法について説明します。
 
 
 
  a| 
-link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100-storage/replace-sn2100-switch-storage.html["NVIDIA SN2100 ストレージ スイッチの交換_"^]
+link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100-storage/replace-sn2100-switch-storage.html["NVIDIA SN2100ストレージスイッチを交換する"^]
  a| 
 故障したNVIDIA SN2100 ストレージ スイッチを交換し、Cumulus Linux と参照構成ファイルをダウンロードする手順について説明します。
+
+|===
+
+
+== ONTAPシステムのドキュメント
+
+ONTAP システムをセットアップするには、お使いのオペレーティング システムのバージョンに応じて、以下のドキュメントが必要になります。
+
+[cols="1,2"]
+|===
+| Name | 説明 
+
+
+ a| 
+コントローラ固有の_インストールおよびセットアップ手順_
+ a| 
+NetAppハードウェアのインストール方法について説明します。
+
+
+
+ a| 
+link:https://docs.netapp.com/ontap-9/index.jsp["ONTAP 9"^]
+ a| 
+ONTAPリリースのあらゆる側面に関する詳細情報を提供します。
+
+
+
+ a| 
+link:https://hwu.netapp.com/["Hardware Universe"^]
+ a| 
+プラットフォーム モデルでサポートされているハードウェア (ストレージ スイッチやケーブルなど) を確認できます。
 
 |===

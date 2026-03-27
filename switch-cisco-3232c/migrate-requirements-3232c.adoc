@@ -87,7 +87,7 @@ CN1610から3232C（QSFPからSFP+）
 * ポート e1/41-48 (10 GbE): Nexus 5596
 * ポート e1/31-32 (40/100 GbE): Nexus 3232C
 +
-** そのlink:https://hwu.netapp.com/["_ハードウェアユニバース_"^]Nexus 3232C スイッチへのサポートされているケーブル接続に関する情報が含まれています。
+** link:https://hwu.netapp.com/["Hardware Universe"^]には、Nexus 3232Cスイッチへのサポートされているケーブル接続に関する情報が含まれています。
 
 
 * 10 GbE クラスタ接続を持つノードには、QSFP から SFP+ への光ファイバー ブレークアウト ケーブルまたは QSFP から SFP+ への銅線ブレークアウト ケーブルが必要です。

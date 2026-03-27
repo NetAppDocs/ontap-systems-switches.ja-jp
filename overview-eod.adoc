@@ -4,7 +4,7 @@ permalink: overview-eod.html
 keywords: switches, fas, aff systems, end of availability, EOD 
 summary: FASおよびAFFシステム用の EOD スイッチ。 
 ---
-= 販売終了
+= 販売終了スイッチ
 :allow-uri-read: 
 :icons: font
 :imagesdir: ./media/

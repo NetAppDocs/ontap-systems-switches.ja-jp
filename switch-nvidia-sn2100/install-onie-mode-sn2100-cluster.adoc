@@ -14,7 +14,7 @@ summary: 'Cumulus Linux (CL) OS は、スイッチが Cumulus Linux または ON
 スイッチが ONIE モードで実行されているときに Cumulus Linux (CL) OS をインストールするには、次の手順に従ってください。
 
 
-NOTE: Cumulus Linux (CL) OSは、スイッチがONIEまたはCumulus Linuxを実行しているときにインストールできます（link:install-cumulus-mode-sn2100-cluster.html["Cumulusモードでインストール"] ）。
+NOTE: Cumulus Linux (CL) OSは、スイッチがONIEまたはCumulus Linuxを実行しているときにインストールできます（link:install-cumulus-mode-sn2100-cluster.html["Cumulusモードでインストール"]を参照）。
 
 .タスク概要
 ネットワーク インストーラ イメージの自動検出を可能にする Open Network Install Environment (ONIE) を使用して Cumulus Linux をインストールできます。これにより、Cumulus Linux などのオペレーティング システムを選択してスイッチを保護するシステム モデルが容易になります。  ONIE を使用して Cumulus Linux をインストールする最も簡単な方法は、ローカル HTTP 検出を使用することです。
@@ -344,7 +344,7 @@ cumulus@cumulus:mgmt:~$ *sudo adduser admin nvshow*
      Done.
 ----
 +
-見る https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^]詳細についてはこちらをご覧ください。
+詳細については、 https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^]を参照してください。
 
 
 

@@ -41,8 +41,8 @@ entries:
     url: "/switch-cisco-3232c-storage/upgrade-rcf-software-3232c-storage.html"
   - title: SSH構成を確認する
     url: "/switch-cisco-3232c-storage/configure-ssh-keys.html"
-  - title: スイッチを工場出荷時の状態にリセットする
-    url: "/switch-cisco-3232c-storage/reset-switch-3232c-storage.html"
+- title: スイッチを工場出荷時の状態にリセットする
+  url: "/switch-cisco-3232c-storage/reset-switch-3232c-storage.html"
 - title: 3232Cストレージスイッチを交換する
   url: "/switch-cisco-3232c-storage/replace-storage-switch.html"
 - title: 3232Cストレージスイッチのアップグレード

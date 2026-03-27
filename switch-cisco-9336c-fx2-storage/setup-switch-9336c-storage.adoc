@@ -21,7 +21,7 @@ Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチを設定するには、
 * 適用可能なライセンス、ネットワークおよび構成情報、およびケーブル。
 * 完了link:setup-worksheet-9336c-storage.html["配線ワークシート"]。
 * 該当するNetAppネットワークおよび管理ネットワークRCFは、NetApp Support Siteから http://mysupport.netapp.com/["mysupport.netapp.com"^]ダウンロードされます。すべてのCiscoネットワークおよび管理ネットワークスイッチは、標準のCisco工場出荷時デフォルト設定で納品されます。これらのスイッチには最新バージョンのNX-OSソフトウェアも搭載されていますが、RCFはロードされていません。
-* 必要なスイッチドキュメント。見るlink:required-documentation-9336c-storage.html["必要な書類"]詳細についてはこちらをご覧ください。
+* 必要なスイッチ関連文書。詳細については、link:required-documentation-9336c-storage.html["必要な書類"]を参照してください。
 
 
 .手順

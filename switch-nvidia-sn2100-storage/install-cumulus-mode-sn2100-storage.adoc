@@ -14,7 +14,7 @@ summary: 'Cumulus Linux (CL) OS は、スイッチが Cumulus Linux または ON
 スイッチが Cumulus モードで実行されているときに Cumulus Linux (CL) OS をインストールするには、次の手順に従ってください。
 
 
-NOTE: Cumulus Linux (CL) OSは、スイッチがCumulus LinuxまたはONIEを実行しているときにインストールできます（link:install-onie-mode-sn2100-storage.html["ONIEモードでインストールする"] ）。
+NOTE: Cumulus Linux (CL) OSは、スイッチがCumulus LinuxまたはONIEを実行しているときにインストールできます（link:install-onie-mode-sn2100-storage.html["ONIEモードでインストールする"]を参照）。
 
 .開始する前に
 以下のものが利用可能であることを確認してください。
@@ -385,7 +385,7 @@ cumulus@sw1:~$ *nv config apply*
 cumulus@sw1:~$ *nv config save*
 ----
 +
-ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Nvidia-KBs/NTP_Server_configuration_is_not_working_with_NVIDIA_SN2100_Switches["NTPサーバーの構成がNVIDIA SN2100スイッチで機能しない"^]詳細については、こちらをご覧ください。
+詳細については、ナレッジベースの記事link:https://kb.netapp.com/on-prem/Switches/Nvidia-KBs/NTP_Server_configuration_is_not_working_with_NVIDIA_SN2100_Switches["NTPサーバーの構成がNVIDIA SN2100スイッチで機能しない"^]を参照してください。
 
 .. 確認する `ntpd`システム上で実行されています:
 +
@@ -508,7 +508,7 @@ cumulus@sw1:mgmt:~$ *sudo adduser admin nvshow*
      Done.
 ----
 +
-見る https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^]詳細についてはこちらをご覧ください。
+詳細についてはlink:https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-54/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^]を参照してください。
 
 
 
@@ -627,7 +627,7 @@ cumulus@sw1:~$ *nv config apply*
 cumulus@sw1:~$ *nv config save*
 ----
 +
-ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Nvidia-KBs/NTP_Server_configuration_is_not_working_with_NVIDIA_SN2100_Switches["NTPサーバーの構成がNVIDIA SN2100スイッチで機能しない"^]詳細については、こちらをご覧ください。
+詳細については、ナレッジベースの記事link:https://kb.netapp.com/on-prem/Switches/Nvidia-KBs/NTP_Server_configuration_is_not_working_with_NVIDIA_SN2100_Switches["NTPサーバーの構成がNVIDIA SN2100スイッチで機能しない"^]を参照してください。
 
 .. 確認する `ntpd`システム上で実行されています:
 +
@@ -718,7 +718,7 @@ swp16      100G   swp   sw6                                       swp16
 ----
 
 
-見る https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-511/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^]詳細についてはこちらをご覧ください。
+詳細についてはlink:https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-511/System-Configuration/Authentication-Authorization-and-Accounting/User-Accounts/["NVIDIAユーザーアカウント"^]を参照してください。
 
 --
 ====

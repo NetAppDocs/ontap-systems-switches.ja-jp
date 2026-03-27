@@ -256,7 +256,7 @@ system switch ethernet log show
 --
 ====
 
-CAUTION: ログ収集機能によってエラーステータスが報告された場合（ `system switch ethernet log show` ）、 見るlink:log-collection-troubleshoot.html["ログ収集のトラブルシューティング"]詳細については、こちらをご覧ください。
+CAUTION: ログ収集機能によってエラーステータスが報告された場合（ `system switch ethernet log show`の出力に表示されます）、詳細についてはlink:log-collection-troubleshoot.html["ログ収集のトラブルシューティング"]を参照してください。
 
 .次の手順
 link:config-snmpv3.html["SNMPv3 を構成する (オプション)"]。

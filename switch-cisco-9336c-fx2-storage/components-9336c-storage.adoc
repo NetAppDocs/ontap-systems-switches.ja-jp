@@ -112,8 +112,8 @@ N9K-9336C 65CFM、ポート側吸気流量
 
 Cisco Nexus 9336C-FX-T ストレージ スイッチで 12 個を超えるポートをアクティブ化するには、 Cisco Smart ライセンスを購入する必要があります。  Cisco Smart ライセンスは、 Cisco Smart アカウントを通じて管理されます。
 
-. 必要に応じて、新しいスマート アカウントを作成します。見る https://id.cisco.com/signin/register["新しいスマートアカウントを作成する"^]詳細については。
-. 既存のスマート アカウントへのアクセスをリクエストします。見る https://id.cisco.com/oauth2/default/v1/authorize?response_type=code&scope=openid%20profile%20address%20offline_access%20cci_coimemberOf%20email&client_id=cae-okta-web-gslb-01&state=s2wvKDiBja__7ylXonWrq8w-FAA&redirect_uri=https%3A%2F%2Frpfa.cloudapps.cisco.com%2Fcb%2Fsso&nonce=qO6s3cZE5ZdhC8UKMEfgE6fbu3mvDJ8PTw5jYOp6z30["既存のスマートアカウントへのアクセスをリクエストする"^]詳細については。
+. 必要に応じて、新しいSmartアカウントを作成してください。詳細については、link:https://id.cisco.com/signin/register["新しいスマートアカウントを作成する"^]を参照してください。
+. 既存のSmartアカウントへのアクセスをリクエストしてください。詳細については、link:https://id.cisco.com/oauth2/default/v1/authorize?response_type=code&scope=openid%20profile%20address%20offline_access%20cci_coimemberOf%20email&client_id=cae-okta-web-gslb-01&state=s2wvKDiBja__7ylXonWrq8w-FAA&redirect_uri=https%3A%2F%2Frpfa.cloudapps.cisco.com%2Fcb%2Fsso&nonce=qO6s3cZE5ZdhC8UKMEfgE6fbu3mvDJ8PTw5jYOp6z30["既存のスマートアカウントへのアクセスをリクエストする"^]を参照してください。
 
 
 

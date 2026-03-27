@@ -13,7 +13,7 @@ summary: Nexus 92300YC スイッチを初めてセットアップした後、RCF
 [role="lead"]
 Nexus 92300YC スイッチを初めてセットアップした後、RCF をインストールできます。この手順を使用して、RCF バージョンをアップグレードすることもできます。
 
-ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]RCF をインストールまたはアップグレードする際の詳細については、こちらをご覧ください。
+RCF のインストールまたはアップグレード時の詳細については、ナレッジベースの記事link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]を参照してください。
 
 .タスク概要
 この手順の例で使用するスイッチとノードの名前は次のとおりです。
@@ -224,7 +224,7 @@ Are you sure you would like to reset the system? (y/n) *y*
 ====
 
 
-. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs2のブートフラッシュにRCFをコピーします。Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズ スイッチ"^]ガイド。
+. 以下の転送プロトコル（FTP、TFTP、SFTP、SCP）のいずれかを使用して、RCFファイルをスイッチcs2のbootflashにコピーします。Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズ スイッチ"^]の適切なガイドを参照してください。
 +
 この例では、TFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーしています。
 
@@ -249,7 +249,7 @@ Copy complete.
 ----
 . 前の手順でブートフラッシュにダウンロードしたRCFを適用します。
 +
-Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズ スイッチ"^]ガイド。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズ スイッチ"^]の適切なガイドを参照してください。
 
 +
 この例ではRCFファイルを示します `Nexus_92300YC_RCF_v1.0.2.txt`スイッチ cs2 にインストールされます:
@@ -344,7 +344,7 @@ NOTE: RCF を初めて適用する場合、「*エラー: VSH コマンドの書
 . 以前のカスタマイズをスイッチ構成に再適用します。参照link:cabling-considerations-92300.html["ケーブル配線と構成の考慮事項を確認する"]今後必要な変更の詳細については、以下を参照してください。
 . RCFのバージョンとスイッチの設定が正しいことを確認したら、running-configファイルをstartup-configファイルにコピーします。
 +
-Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズ スイッチ"^]ガイド。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html#InstallandUpgrade["Cisco Nexus 9000 シリーズ スイッチ"^]の適切なガイドを参照してください。
 
 +
 [listing, subs="+quotes"]

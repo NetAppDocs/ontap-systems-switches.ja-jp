@@ -17,4 +17,4 @@ summary: 次のコマンドを使用できます。
 
 利用可能なイーサネット スイッチ ヘルス モニターのアラートを表示するには、次のコマンドを実行します。 `system health alert definition show -monitor ethernet-switch`
 
-ナレッジベースの記事を参照 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Cluster_Switch_Health_Monitor_CSHM_Alert_Resolution_Guide["スイッチヘルスモニターアラート解決ガイド"^]アラートの詳細な解決方法については、こちらをご覧ください。
+アラートの詳細な解決方法については、ナレッジベースの記事 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Cluster_Switch_Health_Monitor_CSHM_Alert_Resolution_Guide["スイッチヘルスモニターアラート解決ガイド"^]を参照してください。

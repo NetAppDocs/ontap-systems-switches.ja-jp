@@ -35,12 +35,12 @@ entries:
     url: "/switch-bes-53248/efos-install-rcf-license-file.html"
   - title: ライセンスをインストールする
     url: "/switch-bes-53248/configure-licenses.html"
-  - title: RCF設定ファイルをインストールする
+  - title: RCFのインストール
     url: "/switch-bes-53248/configure-install-rcf.html"
   - title: ログ収集のためにSSHを有効にする
     url: "/switch-bes-53248/configure-ssh.html"
-  - title: スイッチを工場出荷時の状態にリセットする
-    url: "/switch-bes-53248/reset-switch-bes-53248.html"
+- title: スイッチを工場出荷時の状態にリセットする
+  url: "/switch-bes-53248/reset-switch-bes-53248.html"
 - title: スイッチをアップグレードする
   pdf-filename: アップグレードスイッチbes53248
   entries:

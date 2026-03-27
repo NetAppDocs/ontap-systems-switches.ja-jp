@@ -13,7 +13,7 @@ summary: Nexus 9336C-FX2 スイッチを初めてセットアップした後、R
 [role="lead"]
 Nexus 9336C-FX2 ストレージ スイッチを初めてセットアップした後、リファレンス構成ファイル (RCF) をインストールします。スイッチに既存のバージョンの RCF ファイルがインストールされている場合は、RCF バージョンをアップグレードします。
 
-ナレッジベースの記事を参照link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]RCF をインストールまたはアップグレードする際の詳細については、こちらをご覧ください。
+RCF のインストールまたはアップグレード時の詳細については、ナレッジベースの記事link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]を参照してください。
 
 .利用可能なRCF構成
 ストレージ - （Storage RCF 1._xx_）は、すべてのポートが 100GbE NVMe ストレージ接続用に設定されている利用可能な RCF 設定です。
@@ -36,7 +36,7 @@ Ciscoスイッチのアップグレードおよびダウングレード手順の
 * ノード名はcluster1-01とcluster1-02です。
 
 
-参照 https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]プラットフォーム上の正しいポートを確認します。
+link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]を参照して、プラットフォームの正しいポートを確認してください。
 
 
 NOTE: コマンド出力は、ONTAPのリリースによって異なる場合があります。

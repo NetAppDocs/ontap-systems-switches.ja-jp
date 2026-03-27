@@ -147,7 +147,7 @@ Larger than PMTU communication succeeds on 4 path(s) RPC status:
 
 . C1 上のすべてのノード向けポートを有効にします。
 +
-Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^]に記載されているガイドを参照してください。
 
 +
 .例を表示

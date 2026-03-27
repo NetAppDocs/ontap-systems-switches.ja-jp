@@ -38,8 +38,8 @@ entries:
       url: "/switch-cisco-9332d-gx2b/upgrade-rcf-software-9332d-cluster.html"
   - title: SSHが有効になっていることを確認する
     url: "/switch-cisco-9332d-gx2b/configure-ssh-keys.html"
-  - title: スイッチを工場出荷時の状態にリセットする
-    url: "/switch-cisco-9332d-gx2b/reset-switch-9332d.html"
+- title: スイッチを工場出荷時の状態にリセットする
+  url: "/switch-cisco-9332d-gx2b/reset-switch-9332d.html"
 - title: 9332D-GX2Bスイッチを交換する
   pdf-filename: Replace_switches_9332d-gx2b
   url: "/switch-cisco-9332d-gx2b/replace-9332d-cluster.html"

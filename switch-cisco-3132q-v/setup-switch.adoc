@@ -15,11 +15,11 @@ Cisco Nexus 3132Q-V スイッチを設定するには、次の手順に従いま
 
 .開始する前に
 * インストール サイトの HTTP、FTP、または TFTP サーバーにアクセスして、該当する NX-OS および参照構成ファイル (RCF) リリースをダウンロードします。
-* 該当するNX-OSバージョンは、 https://software.cisco.com/download/home["Ciscoソフトウェアのダウンロード"^]ページ。
-* 必要なネットワーク スイッチのドキュメント、コントローラのドキュメント、およびONTAP のドキュメント。詳細については、 link:required-documentation-3132q.html["必要な書類"]。
+* 該当するNX-OSバージョンはlink:https://software.cisco.com/download/home["Ciscoソフトウェアのダウンロード"^]からダウンロードできます。
+* 必要なネットワーク スイッチのドキュメント、コントローラのドキュメント、および ONTAP のドキュメント。詳細については、link:required-documentation-3132q.html["必要な書類"]を参照してください。
 * 適用可能なライセンス、ネットワークおよび構成情報、およびケーブル。
-* 完成したケーブル配線ワークシート。見るlink:setup_worksheet_3132q.html["Cisco Nexus 3132Q-V の配線ワークシート一式"]。
-* 適用可能なNetAppクラスタネットワークおよび管理ネットワークRCFは、 NetAppサポートサイトからダウンロードできます。 http://mysupport.netapp.com/["mysupport.netapp.com"^]受け取ったスイッチについて。すべてのCiscoクラスタ ネットワークおよび管理ネットワーク スイッチは、標準のCisco工場出荷時のデフォルト構成で出荷されます。これらのスイッチにも NX-OS ソフトウェアの最新バージョンが搭載されていますが、RCF はロードされていません。
+* 配線作業シートを完成させました。link:setup_worksheet_3132q.html["Cisco Nexus 3132Q-V の配線ワークシート一式"]を参照してください。
+* 該当するNetAppクラスタ ネットワークおよび管理ネットワークのRCFは、NetApp Support Site（link:http://mysupport.netapp.com/["mysupport.netapp.com"^]）からダウンロードし、お手元のスイッチに適用します。すべてのCiscoクラスタ ネットワークおよび管理ネットワーク スイッチは、標準のCisco工場出荷時デフォルト構成で納品されます。これらのスイッチには最新バージョンのNX-OSソフトウェアも搭載されていますが、RCFはロードされていません。
 
 
 .手順
@@ -33,14 +33,14 @@ Cisco Nexus 3132Q-V スイッチを設定するには、次の手順に従いま
  a| 
 NetAppシステムキャビネット内のCisco Nexus 3132Q-V
  a| 
-NetAppキャビネットにスイッチをインストールする手順については、『 NetAppキャビネットへのCisco Nexus 3132Q-V クラスタ スイッチとパススルー パネルのインストール』ガイドを参照してください。
+スイッチをNetAppキャビネットに設置する手順については、_Installing a Cisco Nexus 3132Q-V cluster switch and pass-through panel in a NetApp cabinet_を参照してください。
 
 
 
  a| 
 通信ラック内の機器
  a| 
-スイッチ ハードウェア インストール ガイドおよびNetApp のインストールおよびセットアップ手順に記載されている手順を参照してください。
+スイッチ ハードウェアのインストール ガイドおよびNetAppのインストールおよびセットアップ手順に記載されている手順を参照してください。
 
 |===
 . 完成した配線ワークシートを使用して、クラスタネットワークと管理ネットワークスイッチをコントローラに配線します。link:setup_worksheet_3132q.html["Cisco Nexus 3132Q-V の配線ワークシート一式"] 。

@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/upgrade-rcf.html 
 sidebar: sidebar 
 keywords: upgrade rcf,setup rcf,rcf file 
-summary: 'BES-53248 クラスタ スイッチを構成し、新しいライセンスを適用した後、リファレンス構成ファイル (RCF) をアップグレードできます。' 
+summary: BES-53248クラスタ スイッチの設定後、および新しいライセンスを適用した後で、RCFをアップグレードできます。 
 ---
-= 参照構成ファイル (RCF) をアップグレードする
+= RCF バージョンをアップグレード
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248 クラスター スイッチ EFOS をアップグレードし、新しいライセンスを適用した後、リファレンス構成ファイル (RCF) をアップグレードできます。
+BES-53248 クラスタ スイッチの EFOS をアップグレードし、新しいライセンスを適用したあとで、RCF をアップグレードできます。
 
 .開始する前に
 以下のものがあることを確認してください。
@@ -24,8 +24,8 @@ BES-53248 クラスター スイッチ EFOS をアップグレードし、新し
 
 
 .推奨ドキュメント
-* サポートされているONTAPおよび RCF バージョンについては、スイッチ互換性表を参照してください。参照 https://mysupport.netapp.com/site/info/broadcom-cluster-switch["EFOSソフトウェアのダウンロード"^]ページ。  RCF のコマンド構文と EFOS のバージョンのコマンド構文の間にはコマンド依存関係がある可能性があることに注意してください。
-* 適切なソフトウェアおよびアップグレードガイドを参照してください。 https://www.broadcom.com/support/bes-switch["Broadcom"^] BES-53248 スイッチのアップグレードおよびダウングレード手順に関する完全なドキュメントについては、サイトをご覧ください。
+* サポートされているONTAPおよびRCFバージョンについては、スイッチ互換性表を参照してください。link:https://mysupport.netapp.com/site/info/broadcom-cluster-switch["EFOSソフトウェアのダウンロード"^]を参照してください。RCFのコマンド構文とEFOSの各バージョンにおけるコマンド構文の間には、コマンドの依存関係が存在する可能性があることに注意してください。
+* BES-53248スイッチのアップグレードおよびダウングレード手順に関する完全なドキュメントについては、link:https://www.broadcom.com/support/bes-switch["Broadcom"^]サイトで入手可能な適切なソフトウェアおよびアップグレードガイドを参照してください。
 
 
 .例について
@@ -35,7 +35,7 @@ BES-53248 クラスター スイッチ EFOS をアップグレードし、新し
 * ノード名は、cluster1-01、cluster1-02、cluster1-03、cluster1-04 です。
 * クラスタ LIF 名は、cluster1-01_clus1、cluster1-01_clus2、cluster1-02_clus1、cluster1-02_clus2、cluster1-03_clus1、cluster1-03_clus2、cluster1-04_clus1、cluster1-04_clus2 です。
 * その `cluster1::*>`プロンプトはクラスターの名前を示します。
-* この手順の例では、4 つのノードを使用します。これらのノードは2つの10GbEクラスタ相互接続ポートを使用します `e0a`そして `e0b`。参照 https://hwu.netapp.com/Home/Index["Hardware Universe"^]プラットフォーム上の正しいクラスター ポートを確認します。
+* この手順の例では、4つのノードを使用します。これらのノードは2つの10GbEクラスタ インターコネクト ポート `e0a`と `e0b`を使用します。link:https://hwu.netapp.com/Home/Index["Hardware Universe"^]を参照して、プラットフォーム上の正しいクラスタポートを確認してください。
 
 
 
@@ -444,7 +444,7 @@ Are you sure you would like to reset the system? (y/n) *y*
 
 . 次の点に注意してください。
 +
-.. スイッチに追加のポート ライセンスがインストールされている場合は、RCF を変更して、ライセンスされた追加ポートを設定する必要があります。見る link:configure-licenses.html#activate-newly-licensed-ports["新しくライセンスされたポートをアクティブ化する"] 詳細については。ただし、RCF 1.12以降にアップグレードすると、すべてのインターフェイスが事前設定されるため、変更は不要になります。
+.. スイッチに追加のポートライセンスがインストールされている場合は、追加のライセンスポートを設定するためにRCFファイルを変更する必要があります。詳細については、link:configure-licenses.html#activate-newly-licensed-ports["新しくライセンスされたポートをアクティブ化する"]を参照してください。ただし、RCF 1.12以降にアップグレードすると、すべてのインターフェイスが事前に設定されるため、変更は不要になります。
 .. 以前の RCF で行われたカスタマイズを記録し、新しい RCF に適用します。たとえば、ポート速度の設定や FEC モードのハードコーディングなどです。
 
 
@@ -917,7 +917,7 @@ network interface modify -vserver Cluster -lif * -auto-revert true
 network interface show -vserver Cluster
 ----
 +
-詳細については、link:https://docs.netapp.com/us-en/ontap/networking/revert_a_lif_to_its_home_port.html["ホーム ポートへのLIFのリバート"] 。
+詳細については、link:https://docs.netapp.com/us-en/ontap/networking/revert_a_lif_to_its_home_port.html["ホーム ポートへのLIFのリバート"]を参照してください。
 
 
 

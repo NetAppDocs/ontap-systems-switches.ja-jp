@@ -48,8 +48,8 @@ entries:
       url: "/switch-cisco-3132q-v/upgrade-rcf-3132q-v.html"
   - title: SSH構成を確認する
     url: "/switch-cisco-3132q-v/configure-ssh-keys.html"
-  - title: スイッチを工場出荷時の状態にリセットする
-    url: "/switch-cisco-3132q-v/reset-switch-3132q-v.html"
+- title: スイッチを工場出荷時の状態にリセットする
+  url: "/switch-cisco-3132q-v/reset-switch-3132q-v.html"
 - title: スイッチの移行
   pdf-filename: 移行スイッチ_3132q-v
   entries:

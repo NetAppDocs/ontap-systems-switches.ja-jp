@@ -247,7 +247,7 @@ cluster::*> network interface modify -vserver node2 -lif clus4 -auto-revert fals
 この時点で両方のスイッチを準備する必要があります。  RCF とイメージをアップグレードする必要がある場合は、次の手順に従います。
 
 +
-.. 見るlink:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]NetAppサポート サイトをご覧ください。
+.. link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]については、NetApp Support Siteを参照してください。
 .. そのページの表で、スイッチと必要なソフトウェア バージョンを書き留めてください。
 .. 適切なバージョンの RCF をダウンロードします。
 .. *説明* ページで *続行* をクリックし、ライセンス契約に同意してから、*ダウンロード* ページの指示に従って RCF をダウンロードします。

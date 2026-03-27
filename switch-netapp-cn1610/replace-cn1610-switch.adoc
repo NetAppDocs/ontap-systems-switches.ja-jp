@@ -33,8 +33,8 @@ summary: 特定の一連のタスクを実行することで、障害のあるNe
 NetApp、使用しているデバイスでコンソール ログを有効にし、スイッチを交換するときに次のアクションを実行することを強くお勧めします。
 
 * メンテナンス中はAutoSupport を有効のままにしておきます。
-* メンテナンスの前後にメンテナンスAutoSupport をトリガーして、メンテナンス期間中のケース作成を無効にします。このナレッジベースの記事を参照してください https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92: スケジュールされたメンテナンス期間中の自動ケース作成を抑制する方法"^]詳細については、こちらをご覧ください。
-* すべての CLI セッションのセッション ログを有効にします。セッションログを有効にする方法については、このナレッジベースの記事の「セッション出力のログ記録」セクションを参照してください。 https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["ONTAPシステムへの最適な接続を実現するための PuTTY の設定方法"^] 。
+* メンテナンスの前後にAutoSupportメンテナンスをトリガーして、メンテナンス期間中のケース作成を無効にします。詳細については、このナレッジベース記事link:https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92: スケジュールされたメンテナンス期間中の自動ケース作成を抑制する方法"^]を参照してください。
+* すべての CLI セッションのセッション ログを有効にします。セッションログを有効にする方法については、このナレッジベースの記事の「セッション出力のログ記録」セクションを参照してください。link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["ONTAPシステムへの最適な接続を実現するための PuTTY の設定方法"^] 。
 
 
 
@@ -97,8 +97,8 @@ NOTE: ファイル名は任意ですが、 `CN1610_CS_RCF_v1.2.scr` 。ファイ
 (old_cs1)# *copy nvram:script filename.scr scp://<Username>@<remote_IP_address>/path_to_file/filename.scr*
 ----
 ====
-. 互換性マトリックスでスイッチとONTAP のバージョンが一致していることを確認します。参照 https://mysupport.netapp.com/site/info/netapp-cluster-switch["NetApp CN1601およびCN1610スイッチ"^]詳細についてはページをご覧ください。
-. から https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/downloads-tab["ソフトウェアダウンロードページ"^]NetAppサポート サイトで、 NetApp Cluster Switches を選択し、適切な RCF および FASTPATH バージョンをダウンロードします。
+. スイッチとONTAPのバージョンが互換性マトリックスで一致していることを確認します。詳細については、link:https://mysupport.netapp.com/site/info/netapp-cluster-switch["NetApp CN1601およびCN1610スイッチ"^]を参照してください。
+. NetApp Support Siteのlink:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/downloads-tab["ソフトウェアダウンロードページ"^]から、NetAppクラスタスイッチを選択して、適切なRCFおよびFASTPATHバージョンをダウンロードします。
 . FASTPATH、RCF、および保存された構成を使用してTFTP（Trivial File Transfer Protocol）サーバーをセットアップします。 `.scr`新しいスイッチで使用するためのファイル。
 . シリアル ポート (スイッチの右側にある「IOIOI」というラベルの付いた RJ-45 コネクタ) を、端末エミュレーションを備えた使用可能なホストに接続します。
 . ホストで、シリアル端末の接続設定を設定します。

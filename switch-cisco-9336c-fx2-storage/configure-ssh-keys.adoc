@@ -61,7 +61,7 @@ sshServer              1          enabled
 
 
 
-IMPORTANT: FIPSを有効にする場合は、次のコマンドを使用してスイッチのビットカウントを256に変更する必要があります。 `ssh key ecdsa 256 force` 。見る https://docs.netapp.com/us-en/ontap/networking/configure_network_security_using_federal_information_processing_standards_@fips@.html#enable-fips["FIPSを使用してネットワークセキュリティを構成する"^]詳細についてはこちらをご覧ください。
+IMPORTANT: FIPSを有効にする場合は、 `ssh key ecdsa 256 force`コマンドを使用してスイッチのビット数を256に変更する必要があります。詳細については、link:https://docs.netapp.com/us-en/ontap/networking/configure_network_security_using_federal_information_processing_standards_@fips@.html#enable-fips["FIPSを使用してネットワークセキュリティを構成する"^]を参照してください。
 
 .次の手順
 SSH設定を確認したら、link:../switch-cshm/config-overview.html["スイッチのヘルスモニタリングを設定する"] 。

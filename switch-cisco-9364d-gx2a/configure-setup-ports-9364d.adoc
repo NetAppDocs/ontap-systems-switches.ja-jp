@@ -33,4 +33,4 @@ Ethernet1/1/1-4 から Ethernet1/62/1-4
 400GbE ISL
 
 |===
-参照 https://hwu.netapp.com["Hardware Universe"^]プラットフォームで使用されるポートの詳細については、こちらをご覧ください。
+プラットフォームが使用するポートの詳細については、link:https://hwu.netapp.com["Hardware Universe"^]を参照してください。

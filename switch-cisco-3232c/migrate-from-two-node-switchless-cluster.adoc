@@ -54,7 +54,7 @@ summary: 2 ノードのスイッチレス クラスタがある場合は、 Cisc
 * ノードは n1 と n2 です。
 
 
-この手順の例では、2 つのノードを使用し、各ノードは 2 つの 40 GbE クラスタ相互接続ポート e4a と e4e を使用します。そのlink:https://hwu.netapp.com/["_ハードウェアユニバース_"^]プラットフォーム上のクラスター ポートに関する詳細が記載されています。
+この手順の例では、2つのノードを使用し、それぞれが2つの40 GbEクラスタ インターコネクト ポートe4aとe4eを使用します。link:https://hwu.netapp.com/["Hardware Universe"^]には、お使いのプラットフォーム上のクラスタ ポートに関する詳細情報が含まれています。
 
 * n1_clus1 は、ノード n1 のクラスタ スイッチ C1 に接続される最初のクラスタ論理インターフェイス (LIF) です。
 * n1_clus2 は、ノード n1 のクラスタ スイッチ C2 に接続される最初のクラスタ LIF です。
@@ -179,7 +179,7 @@ link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storag
 . *説明* ページで *続行* をクリックし、ライセンス契約に同意してから、*ダウンロード* ページの指示に従って RCF をダウンロードします。
 . Nexus 3232C スイッチ C1 および C2 では、ノード側のポート C1 および C2 をすべて無効にしますが、ISL ポート e1/31-32 は無効にしないでください。
 +
-Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^]に記載されているガイドを参照してください。
 
 +
 .例を表示
@@ -211,7 +211,7 @@ C2(config)# exit
 `show port-channel summary`
 
 +
-Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^]に記載されているガイドを参照してください。
 
 +
 .例を表示
@@ -249,7 +249,7 @@ Group Port-        Type   Protocol  Member Ports
 ====
 . スイッチ上の隣接デバイスのリストを表示します。
 +
-Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^]に記載されているガイドを参照してください。
 
 +
 .例を表示
@@ -446,7 +446,7 @@ Larger than PMTU communication succeeds on 4 path(s) RPC status:
 
 . C1 上のすべてのノード向けポートを有効にします。
 +
-Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^]に記載されているガイドを参照してください。
 
 +
 .例を表示

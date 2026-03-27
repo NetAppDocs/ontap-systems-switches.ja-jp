@@ -48,8 +48,8 @@ entries:
       url: "/switch-cisco-3232c/upgrade-rcf-software-3232c.html"
   - title: SSH構成を確認する
     url: "/switch-cisco-3232c/configure-ssh-keys.html"
-  - title: スイッチを工場出荷時の状態にリセットする
-    url: "/switch-cisco-3232c/reset-switch-3232c.html"
+- title: スイッチを工場出荷時の状態にリセットする
+  url: "/switch-cisco-3232c/reset-switch-3232c.html"
 - title: スイッチの移行
   pdf-filename: 移行スイッチ_3232C
   entries:
@@ -73,10 +73,3 @@ entries:
     url: "/switch-cisco-3232c/replace-cluster-switch.html"
   - title: クラスタスイッチをスイッチレス接続に置き換える
     url: "/switch-cisco-3232c/migrate-to-switchless-cluster-interconnect.html"
-- title: Cisco 3232C ストレージ スイッチ
-  pdf-filename: 3232C_storage_switches
-  entries:
-  - title: 3232Cストレージスイッチのアップグレード
-    url: "/switch-cisco-3232c/upgrade-3232c-storage-switches.html"
-  - title: 3232Cストレージスイッチを交換する
-    url: "/switch-cisco-3232c/replace-storage-switch.html"

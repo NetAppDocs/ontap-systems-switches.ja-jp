@@ -23,7 +23,7 @@ summary:
 * Nexus 3232C
 
 
-この手順でサポートされているONTAPおよび NX-OS のバージョンについては、 Ciscoイーサネット スイッチ ページをご覧ください。見る https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネットスイッチ"]。
+この手順でサポートされている ONTAP および NX-OS のバージョンは、Cisco イーサネット スイッチのページに記載されています。を参照してください https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネットスイッチ"^]。
 
 .接続ポート
 スイッチは、次のポートを使用してノードに接続します。
@@ -48,7 +48,7 @@ summary:
 
 
 
-その https://hwu.netapp.com["Hardware Universe"]すべてのクラスタ スイッチでサポートされているケーブル接続に関する情報が含まれています。
+link:https://hwu.netapp.com["Hardware Universe"^]には、すべてのクラスタ スイッチでサポートされているケーブル接続に関する情報が含まれています。
 
 .要件
 * 次のタスクが完了していることを確認してください。

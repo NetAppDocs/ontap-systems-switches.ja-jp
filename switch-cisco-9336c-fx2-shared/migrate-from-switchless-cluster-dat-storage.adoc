@@ -18,7 +18,7 @@ summary:
 
 使用する手順は、各コントローラに2つの専用クラスタネットワーク ポートがあるか、1つのクラスタ ポートがあるかによって異なります。記載されているプロセスは、光ポートまたは Twinax ポートを使用するすべてのノードで機能しますが、ノードがクラスタ ネットワーク ポートにオンボード 10Gb BASE-T RJ45 ポートを使用している場合、このスイッチではサポートされません。
 
-ほとんどのシステムでは、各コントローラに2つの専用クラスタネットワーク ポートが必要です。見る https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"]詳細についてはこちらをご覧ください。
+ほとんどのシステムでは、各コントローラに2つの専用クラスタネットワーク ポートが必要です。詳細についてはlink:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^]を参照してください。
 
 既存の2ノード スイッチレス クラスタ環境を使用している場合は、Cisco Nexus 9336C-FX2スイッチを使用して2ノード スイッチ クラスタ環境に移行し、3ノード以上にクラスタを拡張できます。
 
@@ -41,7 +41,7 @@ summary:
 ** 両方のスイッチには管理ネットワーク接続があります。
 ** クラスター スイッチへのコンソール アクセスがあります。
 ** Nexus 9336C-FX2 のノード間スイッチおよびスイッチ間接続には、Twinax ケーブルまたは光ファイバー ケーブルを使用します。
-** NetApp https://hwu.netapp.com["Hardware Universe"]ケーブル接続に関する詳細情報が記載されています。
+** link:https://hwu.netapp.com["Hardware Universe"^]には、ケーブル配線に関する詳細情報が記載されています。
 ** スイッチ間リンク (ISL) ケーブルは、両方の 9336C-FX2 スイッチのポート 1/35 と 1/36 に接続されています。
 
 
@@ -65,7 +65,7 @@ summary:
 * クラスター SVM の名前は _node1_ と _node2_ です。
 * LIF の名前は、ノード 1 ではそれぞれ _node1_clus1_ と _node1_clus2_、ノード 2 ではそれぞれ _node2_clus1_ と _node2_clus2_ です。
 * cluster1::*> プロンプトはクラスターの名前を示します。
-* この手順で使用されるクラスタ ポートは、 AFF A400コントローラに応じて、_e3a_ と _e3b_ です。その https://hwu.netapp.com["Hardware Universe"]プラットフォームの実際のクラスター ポートに関する最新情報が含まれています。
+* この手順で使用されるクラスタポートは、AFF A400 コントローラに従って _e3a_ と _e3b_ です。link:https://hwu.netapp.com["Hardware Universe"^]には、お使いのプラットフォームの実際のクラスタポートに関する最新情報が記載されています。
 
 
 
@@ -283,7 +283,7 @@ Cluster
 
 . [[step9]]ノード1のクラスタポートe3aからケーブルを外し、9336C-FX2スイッチでサポートされている適切なケーブルを使用して、e3aをクラスタスイッチcs1のポート1に接続します。
 +
-NetApp https://hwu.netapp.com["Hardware Universe"]ケーブル接続に関する詳細情報が記載されています。見る link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^] スイッチのインストール要件の詳細については、こちらをご覧ください。
+link:https://hwu.netapp.com["Hardware Universe"^]には、ケーブル配線に関する詳細情報が記載されています。スイッチの設置要件の詳細については、link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^]を参照してください。
 
 . ノード 2 のクラスター ポート e3a からケーブルを外し、9336C-FX2 スイッチでサポートされている適切なケーブルを使用して、e3a をクラスター スイッチ cs1 のポート 2 に接続します。
 . クラスタ スイッチcs1のすべてのノード側ポートを有効にします。

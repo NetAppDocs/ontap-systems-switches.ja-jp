@@ -121,7 +121,7 @@ link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storag
 . *説明*ページで*続行*を選択し、ライセンス契約に同意してから、*ダウンロード*ページの指示に従ってRCFをダウンロードします。
 . Nexus 3232C スイッチ C1 および C2 では、ノード側のポート C1 および C2 をすべて無効にしますが、ISL ポート e1/31-32 は無効にしないでください。
 +
-Ciscoコマンドの詳細については、次のリストを参照してください。 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^]の以下のリストを参照してください。
 
 +
 .例を表示
@@ -153,7 +153,7 @@ C2(config)# exit
 `show port-channel summary`
 
 +
-Ciscoコマンドの詳細については、次のリストを参照してください。 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^]の以下のリストを参照してください。
 
 +
 .例を表示
@@ -191,7 +191,7 @@ Group Port-        Type   Protocol  Member Ports
 ====
 . スイッチ上の隣接デバイスのリストを表示します。
 +
-Ciscoコマンドの詳細については、次のリストを参照してください。 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^] 。
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-command-reference-list.html["Cisco Nexus 3000 シリーズ NX-OS コマンド リファレンス"^]の以下のリストを参照してください。
 
 +
 .例を表示
