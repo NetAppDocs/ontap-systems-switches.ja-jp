@@ -2,7 +2,7 @@
 permalink: switch-cisco-92300/replace-92300yc.html 
 sidebar: sidebar 
 keywords: replace,upgrade cisco nexus 92300yc cluster switch 
-summary: 'クラスタ ネットワーク内の故障した Nexus 92300YC スイッチを交換することは、無停止の手順 (NDU) です。' 
+summary: クラスタネットワーク内の故障したNexus 92300YCスイッチの交換は、システムを停止させることなく実施できる手順です。 
 ---
 = Cisco Nexus 92300YCスイッチを交換する
 :allow-uri-read: 

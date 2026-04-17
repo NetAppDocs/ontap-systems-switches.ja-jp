@@ -2,7 +2,7 @@
 permalink: switch-cisco-92300/install-nxos-overview.html 
 sidebar: sidebar 
 keywords: install nx-os rcf cisco nx 92300yc cluster switch 
-summary: 'Cisco NX-OS ソフトウェアとリファレンス コンフィギュレーション ファイル (RCF) をCisco Nexus 92300YC クラスタ スイッチにインストールする必要があります。' 
+summary: Cisco NX-OSソフトウェアおよびリファレンス構成ファイル（RCF）をCisco Nexus 92300YCクラスタ スイッチにインストールする必要があります。 
 ---
 = NX-OS ソフトウェアとリファレンス コンフィギュレーション ファイル (RCF) のインストールの準備
 :allow-uri-read: 

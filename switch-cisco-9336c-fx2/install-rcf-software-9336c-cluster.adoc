@@ -28,7 +28,7 @@ Nexus 9336C-FX2 および 9336C-FX2-T スイッチを初めてセットアップ
 == ステップ1: スイッチにRCFをインストールする
 
 . SSH またはシリアル コンソールを使用してスイッチ cs1 にログインします。
-. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs1のブートフラッシュにRCFをコピーします。
+. 以下の転送プロトコル（FTP、SFTP、SCP）のいずれかを使用して、RCFをスイッチcs1のbootflashにコピーします。
 +
 Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-9336c-fx2-switch/model.html#CommandReferences["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]の適切なガイドを参照してください。
 
@@ -36,15 +36,16 @@ Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/s
 .例を表示
 [%collapsible]
 ====
-この例では、TFTPを使用してスイッチcs1のブートフラッシュにRCFをコピーしています。
+この例では、SFTPを使用してスイッチcs1のブートフラッシュにRCFをコピーしています。
 
 [listing, subs="+quotes"]
 ----
-cs1# *copy tftp: bootflash: vrf management*
+cs1# *copy sftp: bootflash: vrf management*
 Enter source filename: *Nexus_9336C_RCF_v1.6-Cluster-HA-Breakout.txt*
-Enter hostname for the tftp server: *172.22.201.50*
-Trying to connect to tftp server......Connection to Server Established.
-TFTP get operation was successful
+Enter hostname for the sftp server: *172.22.201.50*
+Enter username: *user1*
+Trying to connect to sftp server......Connection to Server Established.
+SFTP get operation was successful
 Copy complete, now saving to disk (please wait)...
 ----
 ====

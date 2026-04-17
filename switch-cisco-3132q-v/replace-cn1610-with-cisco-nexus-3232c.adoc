@@ -253,7 +253,7 @@ cluster::*> network interface modify -vserver node2 -lif clus4 -auto-revert fals
 .. *説明* ページで *続行* をクリックし、ライセンス契約に同意してから、*ダウンロード* ページの指示に従って RCF をダウンロードします。
 .. 適切なバージョンのイメージ ソフトウェアをダウンロードします。
 +
-link:shttps://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco® クラスタおよび管理ネットワーク スイッチ リファレンス コンフィギュレーション ファイルのダウンロード"^]
+link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco® クラスタおよび管理ネットワーク スイッチ リファレンス コンフィギュレーション ファイルのダウンロード"^]
 
 
 

@@ -283,7 +283,8 @@ show isdp neighbor
 (cs2)(Config)# *interface 0/1-0/16*
 (cs2)(Interface 0/1-0/16)# *shutdown*
 (cs2)(Interface 0/1-0/16)# *exit*
-(cs2)(Config)#
+(cs2)(Config)# *exit*
+(cs2)#
 ----
 . クラスタ スイッチcs1でホストされているポートにクラスタLIFが移行されたことを確認します。数秒かかる場合があります。
 +
@@ -356,7 +357,7 @@ NOTE: 設定をクリアしてもライセンスは削除されません。
 +
 [listing]
 ----
-(cs2)> enable
+(cs2)> *enable*
 (cs2)#
 ----
 .. 以前の RCF 構成を削除するには、次のコマンドをコピーして貼り付けます (以前に使用した RCF のバージョンによっては、特定の設定が存在しない場合に一部のコマンドでエラーが発生する可能性があります)。
@@ -454,7 +455,10 @@ Are you sure you would like to reset the system? (y/n) *y*
 ====
 .EFOS バージョン 3.12.x 以降
 --
-. HTTP、HTTPS、FTP、TFTP、SFTP、または SCP のいずれかの転送プロトコルを使用して、RCF をスイッチ cs2 のブートフラッシュにコピーします。
+
+CAUTION: RCFファイルをアップロードして適用する際は、ファイル名を `reference-config.scr`にする必要があります。そうしないと、スクリプトの適用ステップが失敗します。
+
+. 以下の転送プロトコルのいずれかを使用して、RCFをスイッチcs2にコピーします：HTTP、HTTPS、FTP、SFTP、またはSCP。
 +
 この例では、SFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーしています。
 
@@ -462,9 +466,9 @@ Are you sure you would like to reset the system? (y/n) *y*
 
 [listing, subs="+quotes"]
 ----
-(cs2)# *copy sftp://172.19.2.1/BES-53248-RCF-v1.9-Cluster-HA.txt nvram:reference-config*
+(cs2)# *copy sftp://172.19.2.1/BES-53248_RCF_v1.9-Cluster-HA.txt nvram:reference-config.scr*
 Remote Password:**
-Mode........................................... TFTP
+Mode........................................... SFTP
 Set Server IP.................................. 172.19.2.1
 Path........................................... /
 Filename....................................... BES-53248_RCF_v1.9-Cluster-HA.txt
@@ -472,7 +476,7 @@ Data Type...................................... Config Script
 Destination Filename........................... reference-config.scr
 Management access will be blocked for the duration of the transfer
 Are you sure you want to start? (y/n) *y*
-TFTP Code transfer starting...
+SFTP Code transfer starting...
 File transfer operation completed successfully.
 ----
 . スクリプトがダウンロードされ、指定したファイル名で保存されたことを確認します。
@@ -513,7 +517,7 @@ Configuration script 'reference-config.scr' applied.
 --
 .その他のEFOSバージョン
 --
-. HTTP、HTTPS、FTP、TFTP、SFTP、または SCP のいずれかの転送プロトコルを使用して、RCF をスイッチ cs2 のブートフラッシュにコピーします。
+. 以下の転送プロトコルのいずれかを使用して、RCFをスイッチcs2にコピーします：HTTP、HTTPS、FTP、SFTP、またはSCP。
 +
 この例では、SFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーしています。
 

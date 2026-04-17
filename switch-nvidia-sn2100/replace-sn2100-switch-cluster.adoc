@@ -2,7 +2,7 @@
 permalink: switch-nvidia-sn2100/replace-sn2100-switch-cluster.html 
 sidebar: sidebar 
 keywords: replacing, replace, defective, nvidia, switch, cluster, network, nondisruptive, procedure, ndu, replace a nvidia msn2100 cluster switch - nvidia SN2100 
-summary: 'クラスター ネットワーク内の故障したNVIDIA SN2100 スイッチを交換することは、無停止の手順 (NDU) です。' 
+summary: クラスタネットワークで障害が発生した NVIDIA SN2100 スイッチを交換する手順は、無停止（NDU）で実行できます。 
 ---
 = NVIDIA SN2100 クラスタスイッチを交換する
 :allow-uri-read: 
