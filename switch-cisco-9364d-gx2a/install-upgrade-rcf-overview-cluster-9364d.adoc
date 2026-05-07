@@ -1,8 +1,8 @@
 ---
-permalink: switch-cisco-9332d-gx2b/install-upgrade-rcf-overview-cluster.html 
+permalink: switch-cisco-9364d-gx2a/install-upgrade-rcf-overview-cluster-9364d.html 
 sidebar: sidebar 
-keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9332d-gx2b 
-summary: Nexus 9332D-GX2B スイッチを初めてセットアップした後、RCF をインストールできます。この手順を使用して、RCF バージョンをアップグレードすることもできます。 
+keywords: install, upgarde, cluster, switch, cisco 9364d-gx2a 
+summary: Nexus 9364d-gx2a スイッチを初めてセットアップした後、RCF をインストールできます。この手順を使用して RCF をアップグレードすることもできます。 
 ---
 = リファレンス構成ファイル（RCF）のインストールまたはアップグレードの概要
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: Nexus 9332D-GX2B スイッチを初めてセットアップした後、
 
 
 [role="lead"]
-Nexus 9332D-GX2Bスイッチを初めてセットアップした後、リファレンス構成ファイル（RCF）をインストールします。スイッチに既存のバージョンのRCFファイルがインストールされている場合、RCFのバージョンをアップグレードします。
+RCFは、Nexus 9364D-GX2Aスイッチを初めてセットアップした後にインストールします。スイッチに既存のバージョンのRCFファイルがインストールされている場合は、RCFバージョンをアップグレードします。
 
 RCF のインストールまたはアップグレード時の詳細については、ナレッジベースの記事link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]を参照してください。
 
@@ -26,7 +26,7 @@ RCF のインストールまたはアップグレード時の詳細について�
 +
 サポートされているONTAPおよび RCF バージョンについては、 NetAppサポート サイトのスイッチ互換性表を参照してください。  RCF のコマンド構文と特定のバージョンの NX-OS の構文の間にはコマンド依存関係がある可能性があることに注意してください。
 
-* link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズ スイッチ"^]
+* link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-guides-list.html["Cisco Nexus 9000 シリーズ スイッチ"^]
 +
 Ciscoスイッチのアップグレードおよびダウングレード手順の完全なドキュメントについては、 Cisco Web サイトで入手可能な適切なソフトウェアおよびアップグレード ガイドを参照してください。
 
@@ -41,7 +41,7 @@ Ciscoスイッチのアップグレードおよびダウングレード手順の
 * その `cluster1::*>`プロンプトはクラスターの名前を示します。
 
 
- https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]を参照して、プラットフォームの正しいポートを確認してください。
+link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe"^]を参照して、プラットフォーム上の正しいクラスタポートを確認してください。
 
 
 NOTE: コマンド出力は、ONTAPのリリースによって異なる場合があります。
@@ -50,4 +50,4 @@ NOTE: コマンド出力は、ONTAPのリリースによって異なる場合が
 この手順では、ONTAPコマンドとCisco Nexus 9000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
 
 .次の手順
-RCFのインストールまたはRCFのアップグレード手順を確認した後、link:install-rcf-software-9332d-cluster.html["RCFをインストールする"]またはlink:upgrade-rcf-software-9332d-cluster.html["RCFをアップグレードする"]必要に応じて。
+RCFのインストールまたはRCFのアップグレード手順を確認した後、link:install-rcf-software-9364d-cluster.html["RCFをインストールする"]またはlink:upgrade-rcf-software-9364d-cluster.html["RCFをアップグレードする"]必要に応じて。

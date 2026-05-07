@@ -2,7 +2,7 @@
 permalink: switch-cisco-3232c/upgrade-rcf-software-3232c.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 3232c 
-summary: クラスタスイッチヘルスモニター（CSHM）およびログ収集機能を使用する場合、SSHが必要です。Cisco 3232cクラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。 
+summary: クラスタスイッチのヘルスモニター機能およびログ収集機能を使用するには、SSHが必要です。Cisco 3232cクラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。 
 ---
 = 参照構成ファイル (RCF) をアップグレードする
 :allow-uri-read: 

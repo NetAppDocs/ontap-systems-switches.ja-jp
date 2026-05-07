@@ -2,7 +2,7 @@
 permalink: switch-cisco-3132q-v/replace-cisco-nexus-3132q-v.html 
 sidebar: sidebar 
 keywords: replace, cisco nexus 3132q-v cluster switches 
-summary: 'クラスタ ネットワーク内の故障したCisco Nexus 3132Q-V スイッチを交換する作業は、非中断手順 (NDO) であり、特定の一連のタスクを実行する必要があります。' 
+summary: クラスタネットワーク内の欠陥のある Cisco Nexus 3132Q-V スイッチの交換は、無停止手順（NDU）であり、特定のタスクのシーケンスを実行する必要があります。 
 ---
 = Cisco Nexus 3132Q-Vクラスタスイッチの交換
 :allow-uri-read: 

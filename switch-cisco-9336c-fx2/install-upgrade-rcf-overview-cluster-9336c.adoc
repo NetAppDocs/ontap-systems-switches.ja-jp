@@ -1,8 +1,8 @@
 ---
-permalink: switch-cisco-9336c-fx2/install-upgrade-rcf-overview-cluster.html 
+permalink: switch-cisco-9336c-fx2/install-upgrade-rcf-overview-cluster-9336c.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
-summary: クラスタスイッチヘルスモニター（CSHM）およびログ収集機能を使用する場合、SSHが必要です。Cisco 9336c-fx2クラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。 
+summary: クラスタスイッチのヘルスモニター機能およびログ収集機能を使用するには、SSH接続が必要です。Cisco 9336c-fx2クラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。 
 ---
 = 参照構成ファイル（RCF）のインストールまたはアップグレードの概要
 :allow-uri-read: 

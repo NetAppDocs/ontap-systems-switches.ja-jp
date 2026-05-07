@@ -28,10 +28,10 @@ entries:
   - title: NX-OSソフトウェアをインストールまたはアップグレードする
     url: "/switch-cisco-9332d-gx2b/install-nxos-software-9332d-cluster.html"
   - title: RCFをインストールまたはアップグレードする
-    pdf-filename: インストール_アップグレード_rcf
+    pdf-filename: Install_upgrade_rcf_9332d-gx2b
     entries:
     - title: RCF のインストールまたはアップグレードの概要
-      url: "/switch-cisco-9332d-gx2b/install-upgrade-rcf-overview-cluster.html"
+      url: "/switch-cisco-9332d-gx2b/install-upgrade-rcf-overview-cluster-9332d.html"
     - title: RCFのインストール
       url: "/switch-cisco-9332d-gx2b/install-rcf-software-9332d-cluster.html"
     - title: RCFバージョンをアップグレードする

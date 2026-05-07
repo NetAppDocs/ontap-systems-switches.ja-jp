@@ -2,7 +2,7 @@
 permalink: switch-cisco-9336c-fx2/configure-ssh-keys.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
-summary: クラスタスイッチヘルスモニター（CSHM）およびログ収集機能を使用する場合、SSHが必要です。Cisco 9336c-fx2クラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。 
+summary: クラスタスイッチのヘルスモニター機能およびログ収集機能を使用するには、SSH接続が必要です。Cisco 9336c-fx2クラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。 
 ---
 = SSH構成を確認する
 :allow-uri-read: 

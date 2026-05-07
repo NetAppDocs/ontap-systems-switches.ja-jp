@@ -763,4 +763,4 @@ cluster1::*>
 
 
 .次の手順
-NX-OSソフトウェアをインストールまたはアップグレードした後は、link:install-upgrade-rcf-overview-cluster.html["参照構成ファイル (RCF) をインストールまたはアップグレードする"] 。
+NX-OSソフトウェアをインストールまたはアップグレードしたら、link:install-upgrade-rcf-overview-cluster-9336c.html["参照構成ファイル (RCF) をインストールまたはアップグレードする"]。

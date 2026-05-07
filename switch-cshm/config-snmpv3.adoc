@@ -2,7 +2,7 @@
 permalink: switch-cshm/config-snmpv3.html 
 sidebar: sidebar 
 keywords: cshm, configure, snmpv3, switch logs, debugging, collection 
-summary: 'この手順を使用して、イーサネット スイッチ ヘルス モニタリング (CSHM) をサポートする特定のスイッチに対して SNMPv3 を設定できます。' 
+summary: この手順を使用すると、イーサネット スイッチのヘルス モニタリング CSHM をサポートする特定のスイッチに対して SNMPv3 を設定できます。 
 ---
 = スイッチのSNMPv3を設定する（オプション）
 :allow-uri-read: 

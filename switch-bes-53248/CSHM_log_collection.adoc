@@ -2,7 +2,7 @@
 permalink: switch-bes-53248/CSHM_log_collection.html 
 sidebar: sidebar 
 keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation,BES-53248 Broadcom setup,BES-53248 switches configuration,EFOS 
-summary: 'イーサネット スイッチ ヘルス モニタ (CSHM) ログ収集機能は、 ONTAPのクラスタまたはストレージ ネットワーク スイッチからログを収集するために使用されます。' 
+summary: Ethernet スイッチのヘルスモニター CSHM ログ収集機能は、ONTAP のクラスタまたはストレージ ネットワーク スイッチからログを収集するために使用されます。 
 ---
 = イーサネットスイッチヘルスモニタリングログ収集
 :allow-uri-read: 

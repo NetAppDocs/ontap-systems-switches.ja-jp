@@ -2,7 +2,7 @@
 permalink: switch-cshm/config-log-collection.html 
 sidebar: sidebar 
 keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation 
-summary: 'イーサネット スイッチ ヘルス モニタ (CSHM) ログ収集機能は、 ONTAPのクラスタまたはストレージ ネットワーク スイッチからログを収集するために使用されます。' 
+summary: Ethernet スイッチのヘルスモニター CSHM ログ収集機能は、ONTAP のクラスタまたはストレージ ネットワーク スイッチからログを収集するために使用されます。 
 ---
 = ログ収集を構成する
 :allow-uri-read: 

@@ -39,10 +39,10 @@ entries:
   - title: NX-OSソフトウェアをインストールまたはアップグレードする
     url: "/switch-cisco-9336c-fx2/install-nxos-software-9336c-cluster.html"
   - title: RCFをインストールまたはアップグレードする
-    pdf-filename: インストール_アップグレード_rcf
+    pdf-filename: Install_upgrade_rcf_9336c-fx2
     entries:
     - title: RCF のインストールまたはアップグレードの概要
-      url: "/switch-cisco-9336c-fx2/install-upgrade-rcf-overview-cluster.html"
+      url: "/switch-cisco-9336c-fx2/install-upgrade-rcf-overview-cluster-9336c.html"
     - title: RCFのインストール
       url: "/switch-cisco-9336c-fx2/install-rcf-software-9336c-cluster.html"
     - title: RCFバージョンをアップグレードする

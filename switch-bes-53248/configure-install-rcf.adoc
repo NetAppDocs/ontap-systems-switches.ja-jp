@@ -2,7 +2,7 @@
 permalink: switch-bes-53248/configure-install-rcf.html 
 sidebar: sidebar 
 keywords: install rcf,setup rcf,rcf file 
-summary: 'BES-53248 クラスタ スイッチを構成し、新しいライセンスを適用した後、リファレンス構成ファイル (RCF) をインストールできます。' 
+summary: BES-53248クラスタスイッチの設定後、および新しいライセンスの適用後に、リファレンス構成ファイルRCFをインストールできます。 
 ---
 = リファレンス構成ファイル（RCF）をインストールします
 :allow-uri-read: 

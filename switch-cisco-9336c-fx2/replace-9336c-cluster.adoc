@@ -2,7 +2,7 @@
 permalink: switch-cisco-9336c-fx2/replace-9336c-cluster.html 
 sidebar: sidebar 
 keywords: replacing, replace, defective, nexus, switch, cluster, network, nondisruptive, procedure, ndu, replace a cisco nexus 9336c-fx2 cluster switch - cisco nexus 9336c-fx2 
-summary: クラスタ ネットワーク内で障害が発生したNexus 9336C-FX2スイッチは、無停止（NDU）で交換できます。 
+summary: クラスタネットワーク内の故障したNexus 9336C-FX2スイッチの交換は、システムを停止させることなく実施できる手順です。 
 ---
 = Cisco Nexus 9336C-FX2および9336C-FX2-Tクラスタスイッチの交換
 :allow-uri-read: 

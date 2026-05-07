@@ -2,7 +2,7 @@
 permalink: switch-bes-53248/CSHM_snmpv3.html 
 sidebar: sidebar 
 keywords: SNMP,SNMPv3,SNMPv3 setup,BES-53248 Broadcom setup,BES-3248 switches configuration,EFOS 
-summary: 'SNMPv3 は、イーサネット スイッチ ヘルス モニター (CSHM) で使用できます。' 
+summary: SNMPv3 は、イーサネット スイッチ ヘルス モニタ CSHM で使用できます。 
 ---
 = SNMPv3の設定
 :allow-uri-read: 

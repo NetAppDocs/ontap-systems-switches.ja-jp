@@ -2,7 +2,7 @@
 permalink: switch-cisco-9332d-gx2b/replace-9332d-cluster.html 
 sidebar: sidebar 
 keywords: replacing, replace, defective, nexus, switch, cluster, network, nondisruptive, procedure, ndu, replace a cisco nexus 9332d-gx2b cluster switch - cisco nexus 9332d-gx2b 
-summary: クラスタ ネットワーク内で障害が発生したNexus 9332D-GX2Bスイッチは、無停止（NDU）で交換できます。 
+summary: クラスタネットワーク内の故障したNexus 9332D-GX2Bスイッチの交換は、システムを停止させることなく実施できる手順です。 
 ---
 = Cisco Nexus 9332D-GX2Bスイッチを交換する
 :allow-uri-read: 

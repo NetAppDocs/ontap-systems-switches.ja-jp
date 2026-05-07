@@ -2,7 +2,7 @@
 permalink: switch-bes-53248/configure-efos-software.html 
 sidebar: sidebar 
 keywords: BES-53248 cluster switches,installing EFOS software 
-summary: 'BES-53248 クラスタ スイッチに Ethernet Fabric OS (EFOS) ソフトウェアをインストールするには、次の手順に従います。' 
+summary: BES-53248クラスタスイッチにEthernet Fabric OS（EFOS）ソフトウェアをインストールするには、以下の手順に従ってください。 
 ---
 = EFOSソフトウェアをインストールする
 :allow-uri-read: 
