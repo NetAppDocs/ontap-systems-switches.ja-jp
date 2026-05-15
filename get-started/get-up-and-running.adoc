@@ -68,7 +68,8 @@ AFX システム、クラスター、ストレージ、共有スイッチを起�
  a| 
  a| 
 * https://docs.netapp.com/us-en/ontap-afx/index.html["AFXシステム"^]
-* https://docs.netapp.com/us-en/ontap-systems/aff-landing/index.html["AFFシステム"^]
+* https://docs.netapp.com/us-en/ontap-systems/aff-aseries/index.html["AFF Aシリーズシステム"^]
+* https://docs.netapp.com/us-en/ontap-systems/aff-cseries/index.html["AFF Cシリーズシステム"^]
 * https://docs.netapp.com/us-en/ontap-systems/allsan-landing/index.html["ASAシステム"^]
 * https://docs.netapp.com/us-en/asa-r2/index.html["ASA r2 システム"^]
 * https://docs.netapp.com/us-en/ontap-systems/fas/index.html["FASシステム"^]
@@ -172,7 +173,8 @@ ONTAPシステムのインストールおよびセットアップ手順には、
  a| 
  a| 
 * https://docs.netapp.com/us-en/ontap-afx/index.html["AFXシステム"^]
-* https://docs.netapp.com/us-en/ontap-systems/aff-landing/index.html["AFFシステム"^]
+* https://docs.netapp.com/us-en/ontap-systems/aff-aseries/index.html["AFF Aシリーズシステム"^]
+* https://docs.netapp.com/us-en/ontap-systems/aff-cseries/index.html["AFF Cシリーズシステム"^]
 * https://docs.netapp.com/us-en/ontap-systems/allsan-landing/index.html["ASAシステム"^]
 * https://docs.netapp.com/us-en/asa-r2/index.html["ASA r2 システム"^]
 * https://docs.netapp.com/us-en/ontap-systems/fas/index.html["FASシステム"^]
