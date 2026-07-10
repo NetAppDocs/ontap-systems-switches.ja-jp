@@ -15,6 +15,7 @@ ONTAPクラスタ用のCiscoクラスタ スイッチをNVIDIA SN2100 クラス�
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 古いCiscoクラスタスイッチをNVIDIA SN2100クラスタスイッチに交換する際には、特定の構成情報、ポート接続、およびケーブル配線の要件を把握しておく必要があります。link:configure-overview-sn2100-cluster.html["NVIDIA SN2100スイッチのインストールと構成の概要"]を参照してください。
@@ -54,6 +55,7 @@ NOTE: AFF A800またはAFF C800システムでe0aおよびe1aクラスタポー�
 
 
 
+[[migrate-the-switches]]
 == スイッチを移行する
 
 .例について
@@ -89,6 +91,7 @@ NOTE: AFF A800またはAFF C800システムでe0aおよびe1aクラスタポー�
 
 
 
+[[step-1-prepare-for-migration]]
 === ステップ1: 移行の準備
 
 . このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
@@ -113,6 +116,7 @@ advancedのプロンプト（*>）が表示されます。
 
 
 
+[[step-2-configure-ports-and-cabling]]
 === ステップ2: ポートとケーブルを構成する
 
 . 各クラスタ インターフェイスの管理ステータスまたは動作ステータスを決定します。
@@ -522,6 +526,7 @@ swp16      100G   BondMember  sw1                 swp16
 
 
 
+[[step-3-verify-the-configuration]]
 === ステップ3: 構成を確認する
 
 . クラスタ LIF で自動復帰を有効にします。

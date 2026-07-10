@@ -15,6 +15,7 @@ Cisco Nexus 3232Cスイッチの設置にあたっては、推奨されるすべ
 
 
 
+[[switch-documentation]]
 == スイッチのドキュメント
 
 Cisco Nexus 3232C スイッチをセットアップするには、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/series.html["Cisco Nexus 3000 シリーズ スイッチのサポート"^]から次のドキュメントが必要です。
@@ -81,6 +82,7 @@ Nexus 3000 シリーズ スイッチに関する国際機関のコンプライ�
 |===
 
 
+[[ontap-systems-documentation]]
 == ONTAPシステムのドキュメント
 
 ONTAP システムをセットアップするには、お使いのオペレーティング システムのバージョンに応じて、以下のドキュメントが必要になります。
@@ -112,6 +114,7 @@ NetAppのハードウェア構成と互換性に関する情報を提供しま�
 |===
 
 
+[[rail-kit-and-cabinet-documentation]]
 == レールキットとキャビネットのドキュメント
 
 3232C CiscoスイッチをNetAppキャビネットにインストールするには、次のハードウェア ドキュメントを参照してください。

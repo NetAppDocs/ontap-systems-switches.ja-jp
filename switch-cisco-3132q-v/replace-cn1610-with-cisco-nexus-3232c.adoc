@@ -15,6 +15,7 @@ summary: クラスタ内の既存の CN1610 クラスタ スイッチをCisco Ne
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 NetApp CN1610の要件を確認するlink:switch-requirements.html["Cisco Nexus 3132Q-V クラスタ スイッチの交換要件"]。
@@ -28,6 +29,7 @@ NetApp CN1610の要件を確認するlink:switch-requirements.html["Cisco Nexus 
 
 
 
+[[replace-the-switch]]
 == スイッチを交換する
 
 .スイッチとノードの命名法
@@ -80,6 +82,7 @@ NOTE: この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ ス�
 
 
 
+[[step-1-prepare-for-replacement]]
 === ステップ1: 交換の準備
 
 . このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
@@ -462,6 +465,7 @@ C2(config-if)# exit
 
 
 
+[[step-2-configure-ports]]
 === ステップ2: ポートを構成する
 
 . すべてのノードで、CN1610 スイッチ CL2 に接続されているケーブルを取り外します。
@@ -911,6 +915,7 @@ Copy Complete.
 
 
 
+[[step-3-verify-the-configuration]]
 === ステップ3: 構成を確認する
 
 . ISL接続が `up`3132Q-V スイッチ C2:

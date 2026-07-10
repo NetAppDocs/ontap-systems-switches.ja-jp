@@ -15,6 +15,7 @@ NetAppスイッチに FASTPATH ソフトウェアをインストールする場�
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 .開始する前に
@@ -34,6 +35,7 @@ NetAppスイッチに FASTPATH ソフトウェアをインストールする場�
 
 
 
+[[install-fastpath]]
 == FASTPATHをインストールする
 
 次の手順では、clustered Data ONTAP 8.2 構文を使用します。その結果、クラスタ Vserver、LIF 名、および CLI 出力は、 Data ONTAP 8.3 のものとは異なります。
@@ -57,6 +59,7 @@ link:https://hwu.netapp.com/["Hardware Universe"^]には、お使いのプラッ
 
 
 
+[[step-1-migrate-cluster]]
 === ステップ1: クラスターの移行
 
 . このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
@@ -126,6 +129,7 @@ vs2
 
 
 
+[[step-2-install-fastpath-software]]
 === ステップ2: FASTPATHソフトウェアをインストールする
 
 . 両方のノードでクラスター ポート e2a をシャットダウンします。
@@ -318,6 +322,7 @@ System will now restart!
 
 
 
+[[step-3-validate-installation]]
 === ステップ3: インストールの検証
 
 . 再度ログインし、FASTPATH ソフトウェアの新しいバージョンを確認します。

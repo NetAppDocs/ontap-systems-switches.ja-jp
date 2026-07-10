@@ -15,12 +15,14 @@ NVIDIA SN2100 スイッチのインストールとメンテナンスについて
 
 
 
+[[cabinet-details]]
 == キャビネットの詳細
 
 NVIDIA SN2100 スイッチ (X190006/X190106) は、スイッチに付属の標準ブラケットを使用してNVIDIAデュアル/シングル スイッチ キャビネットに取り付けます。
 
 
 
+[[rail-kit-details]]
 == レールキットの詳細
 
 次の表に、MSN2100 スイッチおよびレール キットの部品番号と説明を示します。
@@ -72,7 +74,7 @@ X-MTEF-KIT-E
 
 |===
 
-NOTE: 詳細については、NVIDIA のドキュメントを参照してくださいlink:https://docs.nvidia.com/networking/display/sn2000pub/Installation["SN2100スイッチとレールキットのインストール"^]。
+NOTE: 詳細については、NVIDIA のドキュメントを参照してくださいlink:https://networking-docs.nvidia.com/sn2000hw/latest/installation["SN2100スイッチとレールキットのインストール"^]。
 
 .次の手順
 コンポーネントと部品番号を確認したら、 link:required-documentation-sn2100-storage.html["必要な書類"]。

@@ -15,6 +15,7 @@ summary: クラスタ内の既存の CN1610 クラスタ スイッチをCisco Ne
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 移行前に必ず確認してくださいlink:migrate-requirements-3232c.html["移行要件"]。
@@ -32,6 +33,7 @@ NOTE: この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ ス�
 
 
 
+[[migrate-the-switches]]
 == スイッチを移行する
 
 .例について
@@ -52,6 +54,7 @@ NOTE: この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ ス�
 
 
 
+[[step-1-prepare-for-migration]]
 === ステップ1: 移行の準備
 
 . このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
@@ -260,6 +263,7 @@ Cluster
 
 
 
+[[step-2-replace-cluster-switch-cl2-with-c2]]
 === ステップ2: クラスタスイッチCL2をC2に置き換える
 
 . スイッチ CL2 に物理的に接続されているクラスタ相互接続ポートをシャットダウンします。
@@ -744,6 +748,7 @@ cluster::*> *network interface migrate -vserver cluster -lif n2_clus4 -source-no
 
 
 
+[[step-3-replace-cluster-switch-cl1-with-c1]]
 === ステップ3: クラスタスイッチCL1をC1に置き換える
 
 . クラスターのステータスを確認します。
@@ -979,6 +984,7 @@ e0d   cluster   cluster    up    9000  auto/10000     -
 
 
 
+[[step-4-complete-the-procedure]]
 === ステップ4: 手順を完了する
 
 . すべてのノードで、元々 C1 に接続されていた移行されたクラスタ相互接続 LIF をすべて元に戻します。

@@ -18,6 +18,7 @@ Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチのインストールと
 
 
 
+[[part-number-details]]
 == 部品番号の詳細
 
 次の表に、9336C-FX2 および 9336C-FX2-T スイッチ、ファン、および電源装置の部品番号と説明を示します。
@@ -112,6 +113,7 @@ N9K-9336C 65CFM、ポート側吸気流量
 |===
 
 
+[[cisco-smart-licenses-for-9336c-fx2-t-ports-only]]
 == 9336C-FX2-T ポートのみのCisco Smart ライセンス
 
 Cisco Nexus 9336C-FX-T クラスタ スイッチで 12 個を超えるポートをアクティブ化するには、 Cisco Smart ライセンスを購入する必要があります。  Cisco Smart ライセンスは、 Cisco Smart アカウントを通じて管理されます。

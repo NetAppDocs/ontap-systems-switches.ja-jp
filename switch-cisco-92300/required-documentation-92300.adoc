@@ -15,6 +15,7 @@ Cisco Nexus 92300YCスイッチの設置にあたっては、推奨されるす�
 
 
 
+[[switch-documentation]]
 == スイッチのドキュメント
 
 Cisco Nexus 92300YC スイッチをセットアップするには、link:https://www.cisco.com/site/us/en/products/networking/cloud-networking-switches/nexus-9200-series-switches/index.html["Cisco Nexus 9000 シリーズ スイッチのサポート"^]から次のドキュメントが必要です。
@@ -81,6 +82,7 @@ Nexus 9000 シリーズ スイッチに関する国際機関のコンプライ�
 |===
 
 
+[[ontap-systems-documentation]]
 == ONTAPシステムのドキュメント
 
 ONTAP システムをセットアップするには、お使いのオペレーティング システムのバージョンに応じて、以下のドキュメントが必要になります。
@@ -112,6 +114,7 @@ NetAppのハードウェア構成と互換性に関する情報を提供しま�
 |===
 
 
+[[rail-kit-and-cabinet-documentation]]
 == レールキットとキャビネットのドキュメント
 
 Cisco Nexus 92300YC スイッチをNetAppキャビネットに設置するには、次のハードウェアドキュメントを参照してください。

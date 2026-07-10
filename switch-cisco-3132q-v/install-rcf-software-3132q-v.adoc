@@ -29,6 +29,7 @@ Nexus 3132Q-V スイッチを初めてセットアップした後、リファレ
 
 
 
+[[step-1-install-the-rcf-on-the-switches]]
 == ステップ1: スイッチにRCFをインストールする
 
 . クラスター スイッチに接続されている各ノード上のクラスター ポートを表示します。
@@ -315,6 +316,7 @@ NOTE: アップグレードまたは新しい RCF を適用する場合は、ス
 
 
 
+[[step-2-verify-the-switch-connections]]
 == ステップ2: スイッチの接続を確認する
 
 . クラスター ポートに接続されているスイッチ ポートが *稼働中* であることを確認します。
@@ -415,6 +417,7 @@ cluster1::*>
 
 
 
+[[step-3-setup-your-ontap-cluster]]
 == ステップ3: ONTAPクラスタをセットアップする
 
 NetApp、 System Manager を使用して新しいクラスタを設定することをお勧めします。

@@ -1,0 +1,76 @@
+---
+permalink: switch-cisco-9808/install-configure-switches-in-afx-workflow-9808.html 
+sidebar: sidebar 
+keywords: switches, initial installation, configure switch-cisco-9808 switch 
+summary: 新しいAFX 2Kシステムの一部として Cisco Nexus 9808 スイッチをインストールおよび設定するには、このスイッチサイトと AFX システムサイトのドキュメントを組み合わせて使用します。ドキュメントには、必要に応じて参照できるリンクが記載されています。 
+---
+= AFXシステムワークフローでスイッチをインストールおよび設定する - Cisco Nexus 9808
+:allow-uri-read: 
+
+
+[role="lead"]
+新しいAFX 2Kシステムの一部として Cisco Nexus 9808 スイッチをインストールおよび設定するには、このスイッチサイトと AFX システムサイトのドキュメントを組み合わせて使用します。ドキュメントには、必要に応じて参照できるリンクが記載されています。
+
+
+
+[[install-switches]]
+=== スイッチを取り付ける
+
+スイッチを設置するには、まず設置準備を行い、次にスイッチ（およびAFXシステムハードウェア）を設置する必要があります。これには、ケーブル配線とスイッチへの電源投入が含まれます。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:install-prepare-9808.html["設置の準備"]
+[role="quick-margin-para"]
+スイッチの設置と設定の準備として、Cisco および ONTAP システムのドキュメントを確認し、サイトを準備し、AFX システムがサポートする RCF のバージョンに対応したスイッチポートのプリセット構成を理解してください。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:install-switches-9808.html["スイッチを取り付けます"]
+[role="quick-margin-para"]
+スイッチ（およびAFXシステムハードウェア）のインストール、スイッチのケーブル接続、そしてスイッチの電源投入を行うには、AFX 2Kシステムのインストールおよびセットアップ手順を参照してください。その後、スイッチの設定を行うために、このワークフローに戻ります。
+
+
+
+[[configure-switches]]
+=== スイッチの設定
+
+スイッチを設定するには、まず初期スイッチ設定を行い、ケーブル配線と構成要件を確認し、NX-OSをインストールし、RCFをインストールし、ログ収集のためのSSHを確認し、イーサネットスイッチのヘルスモニタリング（CSHM）を設定し、Smart Call Home（オプション）を設定します。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:configure-complete-initial-setup-9808.html["スイッチの初期設定を完了する"]
+[role="quick-margin-para"]
+スイッチの電源を入れると、起動が開始され、設定ウィザードが起動します。スイッチの初期設定（起動設定）を行うために、一連の質問への回答を求められます。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:configure-review-cabling-config-requirements-9808.html["ケーブル配線と構成要件を確認する"]
+[role="quick-margin-para"]
+配線および構成要件を確認してください。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:configure-install-nxos-9808.html["NX-OSをインストールします"]
+[role="quick-margin-para"]
+お使いのAFX 2Kシステムをサポートするスイッチに、最新バージョンのNX-OSをインストールしてください。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:configure-install-upgrade-rcf-overview-9808.html["RCFのインストール"]
+[role="quick-margin-para"]
+お使いのAFX 2Kシステムをサポートするスイッチに、最新バージョンのRCFをインストールしてください。このリンクをクリックすると、RCFのインストールまたはアップグレードの概要に関するトピックが表示されます。そこには、RCFをインストールする前に知っておくべき情報が記載されています。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-verify-ssh-9808.html["SSHによるログ収集を確認する"]
+[role="quick-margin-para"]
+イーサネットスイッチのヘルスモニター（CSHM）ログ収集機能を使用するには、SSHが有効になっていることを確認してください。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:../switch-cshm/cshm-overview.html["イーサネットスイッチのヘルスモニタリングを設定する"]
+[role="quick-margin-para"]
+イーサネットスイッチの健全性監視（CSHM）を設定することで、スイッチの動作状態を確認し、デバッグやトラブルシューティングのためのスイッチログを収集できます。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["セブン"]link:configure-smart-call-9808.html["スマートコールホームの設定（オプション）"]
+[role="quick-margin-para"]
+ONTAP は、AFX クラスタスイッチを監視するためのイーサネットスイッチヘルスモニタリング（CSHM）をサポートするとともに、スイッチ診断ログを収集する機能も備えています。Cisco の Smart Call Home は、スイッチで発生する可能性のあるあらゆる問題をプロアクティブなサポートにより解決するためのオプションです。
+
+
+
+[[complete-afx-system-setup]]
+=== AFX システムのセットアップを完了する
+
+AFX 2Kシステムのセットアップを完了するには、AFXシステムコンポーネントの電源投入とシステムセットアップ手順を完了する必要があります。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:install-complete-afx-setup-9808.html["AFXシステムのセットアップを完了する"]
+[role="quick-margin-para"]
+AFX 2K システムのセットアップを完了するために、ストレージシェルフとコントローラの電源をオンにし、スイッチの接続を確認し、システムセットアップ手順を完了する方法については、AFX システムのドキュメントを参照してください。
+
+.次の手順
+AFXシステムのセットアップが完了したら、AFXシステムの使用を開始できます。また、link:https://docs.netapp.com/us-en/ontap-afx/index.html["AFXシステムの詳細と使用方法についてはこちらをご覧ください。"^]。

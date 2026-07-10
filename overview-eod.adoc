@@ -21,6 +21,7 @@ summary: FASおよびAFFシステム用の EOD スイッチ。
 
 
 
+[[end-of-sale-and-end-of-life-announcements]]
 == 販売終了およびサポート終了のお知らせ
 
 * link:https://www.cisco.com/c/en/us/products/collateral/switches/nexus-3000-series-switches/n3k-c3232c-eol.html["Cisco Nexus 3232C の販売終了およびサポート終了のお知らせ"]

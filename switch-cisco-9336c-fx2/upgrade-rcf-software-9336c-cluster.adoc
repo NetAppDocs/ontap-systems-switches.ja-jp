@@ -33,6 +33,7 @@ CAUTION: 新しいスイッチ ソフトウェア バージョンと RCF をイ�
 
 
 
+[[step-1-prepare-for-the-upgrade]]
 == ステップ1: アップグレードの準備
 
 . このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
@@ -196,6 +197,7 @@ cluster1::*>
 
 
 
+[[step-2-configure-ports]]
 == ステップ2: ポートを構成する
 
 . クラスタ スイッチcs1で、ノードのクラスタ ポートに接続されているポートをシャットダウンします。
@@ -562,6 +564,7 @@ CAUTION: RCFアップグレード後に9336C-FX2スイッチが起動しない�
 
 
 
+[[step-3-verify-the-cluster-network-configuration-and-cluster-health]]
 == ステップ3: クラスターネットワーク構成とクラスターの健全性を確認する
 
 . クラスター ポートに接続されているスイッチ ポートが *稼働中* であることを確認します。

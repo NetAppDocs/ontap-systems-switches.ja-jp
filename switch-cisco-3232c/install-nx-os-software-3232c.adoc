@@ -15,6 +15,7 @@ summary: この手順を使用して、Nexus 3232Cクラスタ スイッチにNX
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 .開始する前に
@@ -26,6 +27,7 @@ summary: この手順を使用して、Nexus 3232Cクラスタ スイッチにNX
 
 
 
+[[install-the-software]]
 == ソフトウェアをインストールする
 
 この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。

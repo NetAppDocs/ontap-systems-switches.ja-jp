@@ -15,6 +15,7 @@ summary: 特定の一連のタスクを実行することで、クラスタ内�
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 .要件
@@ -47,6 +48,7 @@ Ciscoイーサネット スイッチ ページには、スイッチの最新の 
 
 
 
+[[enable-console-logging]]
 == コンソールログを有効にする
 
 NetApp、使用しているデバイスでコンソール ログを有効にし、スイッチを交換するときに次のアクションを実行することを強くお勧めします。
@@ -58,6 +60,7 @@ NetApp、使用しているデバイスでコンソール ログを有効にし�
 
 
 
+[[replace-the-switch]]
 == スイッチを交換する
 
 .タスク概要
@@ -91,6 +94,7 @@ NetApp、使用しているデバイスでコンソール ログを有効にし�
 
 
 
+[[step-1-display-and-migrate-the-cluster-ports-to-switch]]
 === ステップ1: クラスタポートを表示してスイッチに移行する
 
 . このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
@@ -458,6 +462,7 @@ Larger than PMTU communication succeeds on 32 path(s) RPC status:
 ====
 
 
+[[step-2-migrate-isls-to-switch-cl1-and-c2]]
 === ステップ2: ISLをスイッチCL1とC2に移行する
 
 . クラスタ スイッチ CL1 のポート 1/31 と 1/32 をシャットダウンします。
@@ -572,6 +577,7 @@ cluster::*> *network port modify -node n4 -port e4e -up-admin true*
 
 
 
+[[step-3-revert-all-lifs-to-originally-assigned-ports]]
 === ステップ3: すべてのLIFを元のポートに戻す
 
 . すべてのノード上の移行されたクラスタ相互接続 LIF をすべて元に戻します。
@@ -784,6 +790,7 @@ Larger than PMTU communication succeeds on 32 path(s) RPC status:
 ====
 
 
+[[step-4-verify-all-ports-and-lif-are-correctly-migrated]]
 === ステップ4: すべてのポートとLIFが正しく移行されていることを確認する
 
 . 次のコマンドを入力して、構成内のデバイスに関する情報を表示します。

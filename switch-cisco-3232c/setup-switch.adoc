@@ -22,7 +22,7 @@ Cisco Nexus 3232C スイッチをセットアップおよび構成するには�
 
 * 必要なコントローラのドキュメントとONTAP のドキュメント。
 +
-link:https://netapp.com/us/documenation/index.aspx["NetAppのドキュメント"^]
+link:https://docs.netapp.com/us-en/ontap/index.html["ONTAP 9 ドキュメント"^]
 
 * 適用可能なライセンス、ネットワークおよび構成情報、およびケーブル。
 * 完成したケーブル配線ワークシート。

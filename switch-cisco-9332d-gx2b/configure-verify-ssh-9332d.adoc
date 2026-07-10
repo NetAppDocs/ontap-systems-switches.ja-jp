@@ -1,0 +1,80 @@
+---
+permalink: switch-cisco-9332d-gx2b/configure-verify-ssh-9332d.html 
+sidebar: sidebar 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9332d-gx2b 
+summary: 新しい AFX 1K または AFX 2K システムのインストール、スイッチの交換、または工場出荷時設定へのリセットの一環としてスイッチを設定し、Cluster Switch Health Monitor （CSHM）およびログ収集機能を使用する場合は、スイッチで SSH と SSH キーが有効になっていることを確認する必要があります。 
+---
+= SSHによるログ収集を確認する - Cisco Nexus 9332D-GX2B
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+新しい AFX 1K または AFX 2K システムのインストール、スイッチの交換、または工場出荷時の設定へのリセットの一環としてスイッチを構成する場合、イーサネットスイッチヘルスモニター（CSHM）のログ収集機能を使用するには、スイッチで SSH が有効になっていることを確認する必要があります。
+
+.開始する前に
+スイッチにシリアル コンソールを使用して接続する必要があります。
+
+.手順
+. SSH が有効になっていることを確認します。
++
+[listing, subs="+quotes"]
+----
+(switch) *show ssh server*
+ssh version 2 is enabled
+----
+. SSH キーが有効になっていることを確認します。
++
+`show ssh key`
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(switch)# *show ssh key*
+
+**************************************
+rsa Keys generated:Wed May 14 18:49:37 2025
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCndfdJesautdCwk5Mk/7pKOFl0IeShc9uBtj74F52vbjyf1FHOCXX7Xf3Vopxs6L1hbzgCpFLo9E7pZBd3I+1AoLyQULtR3svzNieGY8mlWZGLtpKf/P2fDCd8JVJaejrwQhm49WUPiC6ziEqBDMOGhJpD2e9++umyDdr6
+NbmK8Q==
+
+
+bitcount:1024
+fingerprint:
+SHA256:QtNU+Qq2I4ZfYwEfMEB1+z8w7xaKTlantTdsjLBx+OU
+**************************************
+could not retrieve dsa key information
+**************************************
+ecdsa Keys generated:Wed May 14 18:50:56 2025
+
+
+ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAAYnv17T+JlGmH8rg81xiOow0mPmkbkIG0o7h9EchixO3i3KjgQr8AwqkRHNTcQC3lRnizhJFUeMGCwuQTurziRCwE6fAOkWa2MRyXA1DYRKKXjVEOnW9+MvinMipHQ0cCc
+YSExhh7j4HvWHIuYv8RmD7e3rmDQFlyyiLwdmpGfas2yaw==
+
+
+bitcount:521
+fingerprint:
+SHA256:7cpZ5NGnIq5Iamw67ke+9o4qG9D3xxmGPauVl4X5934
+**************************************
+
+(switch)# *show feature | include scpServer*
+scpServer              1          enabled
+(switch)# *show feature | include ssh*
+sshServer              1          enabled
+(switch)#
+----
+====
+
+
+.次の手順
+* SSH がログ収集用に有効になっていることを確認したら、link:../switch-cshm/cshm-overview.html["イーサネットスイッチのヘルスモニタリングを設定する"]。
++
+** イーサネットスイッチのヘルスモニタリングを設定した後、Cisco の Smart Call Home サポート機能を利用する場合は、link:configure-smart-call-9332d.html["Smart Call Homeを設定する"]。
+
+
+* スイッチを新しい AFX 1K または AFX 2K システムのインストールの一部として構成した場合は、link:install-complete-afx-setup-9332d.html["AFXシステムのセットアップを完了する"]。
+

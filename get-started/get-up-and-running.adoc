@@ -17,7 +17,7 @@ AFX システム、クラスター、ストレージ、共有スイッチを起�
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]スイッチハードウェアをインストールする
 [role="quick-margin-para"]
-スイッチをラックまたはキャビネットに設置します。スイッチ モデルに応じて次の手順にアクセスします。
+スイッチをラックまたはキャビネットに取り付けてください。お使いのAFXシステムまたはスイッチモデルに応じて、以下の手順を参照してください。
 
 [cols="11,9,9,9"]
 |===
@@ -27,8 +27,9 @@ AFX システム、クラスター、ストレージ、共有スイッチを起�
 .AFXシステムスイッチ
 [%collapsible]
 ====
-* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-switches.html["Cisco Nexus 9332D-GX2Bスイッチをインストールする"^]
-* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-switches.html["Cisco Nexus 9364D-GX2Aスイッチをインストールする"^]
+* link:../switch-cisco-9332d-gx2b/install-prepare-9332d.html["Cisco Nexus 9332D-GX2B スイッチのインストールの準備"^]
+* link:../switch-cisco-9364d-gx2a/install-prepare-9364d.html["Cisco Nexus 9364D-GX2A スイッチのインストールの準備"^]
+* link:../switch-cisco-9808/install-prepare-9808.html["Cisco Nexus 9808スイッチのインストールの準備"^]
 
 
 ==== a| 
@@ -80,7 +81,7 @@ AFX システム、クラスター、ストレージ、共有スイッチを起�
 |===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]スイッチをコントローラーにケーブル接続する
 [role="quick-margin-para"]
-ONTAPシステムのインストールおよびセットアップ手順には、コントローラ ポートをスイッチにケーブル接続する手順が含まれています。ただし、サポートされているケーブルとトランシーバのリスト、およびスイッチのホスト ポートの詳細情報が必要な場合は、スイッチ モデルの次の手順にアクセスしてください。
+ONTAP システムのインストールおよびセットアップ手順には、コントローラポートをスイッチにケーブル接続する手順が含まれています。ただし、サポートされているケーブルやトランシーバーのリスト、およびスイッチのホストポートに関する詳細情報が必要な場合は、該当する AFX システムまたはスイッチモデルに関する以下の手順を参照してください。
 
 [cols="11,9,9,9"]
 |===
@@ -90,8 +91,8 @@ ONTAPシステムのインストールおよびセットアップ手順には、
 .AFXシステムスイッチ
 [%collapsible]
 ====
-* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/afx-cable-overview.html["Cisco Nexus 9332D-GX2Bスイッチのケーブル接続"^]
-* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/afx-cable-overview.html["Cisco Nexus 9364D-GX2Aスイッチのケーブル接続"^]
+* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/afx-cable-overview.html["AFX 1K システム用 Cisco Nexus スイッチのインストール"^]
+* link:https://review.docs.netapp.com/us-en/ontap-afx/install-afx-2k/afx-cable-overview.html["AFX 2K システム用 Cisco Nexus スイッチのインストール"^]
 
 
 ==== a| 
@@ -122,7 +123,7 @@ ONTAPシステムのインストールおよびセットアップ手順には、
 |===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]スイッチソフトウェアを設定する
 [role="quick-margin-para"]
-スイッチにソフトウェアをインストールして設定するには、スイッチ モデルのソフトウェア インストール ワークフローに従います。
+スイッチの設定とソフトウェアのインストールを行うには、お使いのスイッチモデルに応じたソフトウェアインストール手順に従ってください。
 
 [cols="11,9,9,9"]
 |===
@@ -132,8 +133,9 @@ ONTAPシステムのインストールおよびセットアップ手順には、
 .AFXシステムスイッチ
 [%collapsible]
 ====
-* link:../switch-cisco-9332d-gx2b/configure-software-overview-9332d-cluster.html["Cisco Nexus 9332D-GX2Bスイッチのソフトウェアをインストールする"^]
-* link:../switch-cisco-9364d-gx2a/configure-software-overview-9364d-cluster.html["Cisco Nexus 9364D-GX2Aスイッチのソフトウェアをインストールする"^]
+* link:../switch-cisco-9332d-gx2b/configure-switch-workflow-9332d.html["Cisco Nexus 9332D-GX2B スイッチの設定"^]
+* link:../switch-cisco-9364d-gx2a/configure-switch-workflow-9364d.html["Cisco Nexus 9364D-GX2A スイッチの設定"^]
+* link:../switch-cisco-9808/configure-switch-workflow-9808.html["Cisco Nexus 9808スイッチの設定"^]
 
 
 ==== a| 

@@ -17,7 +17,7 @@ SN2100 スイッチをセットアップおよび構成するには、次の手�
 
 .手順
 . レビューlink:configure-reqs-sn2100-cluster.html["構成要件"]。
-. link:https://docs.nvidia.com/networking/display/sn2000pub/Installation["NVIDIAスイッチ インストール ガイド"^]の手順に従ってください。
+. link:https://networking-docs.nvidia.com/sn2000hw/latest["NVIDIAスイッチ インストール ガイド"^]の手順に従ってください。
 
 
 .次の手順

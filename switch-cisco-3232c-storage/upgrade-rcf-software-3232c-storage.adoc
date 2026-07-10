@@ -30,6 +30,7 @@ CAUTION: 新しいスイッチ ソフトウェア バージョンと RCF をイ�
 
 
 
+[[step-1-prepare-for-the-upgrade]]
 == ステップ1: アップグレードの準備
 
 . このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
@@ -164,6 +165,7 @@ cluster1::*> *system switch ethernet show*
 
 
 
+[[step-2-upgrade-the-rcf]]
 == ステップ2：RCFをアップグレードする
 
 . SSH またはシリアル コンソールを使用してスイッチ s2 にログインします。
@@ -416,6 +418,7 @@ cluster1::*> *system switch ethernet show*
 
 
 
+[[step-3-verify-the-storage-network]]
 == ステップ3：ストレージ ネットワークを確認します
 
 各ストレージ スイッチで以下の手順を実行して、RCF アップグレード後にストレージ ネットワークが正常に機能していることを確認します。

@@ -15,17 +15,17 @@ Cisco Nexus 3232C スイッチをセットアップおよび構成するには�
 
 .開始する前に
 * インストール サイトの HTTP、FTP、または TFTP サーバーにアクセスして、該当する NX-OS および参照構成ファイル (RCF) リリースをダウンロードします。
-* 該当するNX-OSバージョンは、 https://software.cisco.com/download/home["Ciscoソフトウェアのダウンロード"^]ページ。
+* 該当する NX-OS バージョン。link:https://software.cisco.com/download/home["Ciscoソフトウェアのダウンロード"^] ページからダウンロードしてください。
 * 必要なネットワークおよび管理ネットワーク スイッチのドキュメント。
 +
 詳細については、link:required-documentation-3232c-storage.html["必要な書類"]をご覧ください。
 
 * 必要なコントローラのドキュメントとONTAP のドキュメント。
 +
-https://netapp.com/us/documenation/index.aspx["NetAppのドキュメント"^]
+link:https://docs.netapp.com/us-en/ontap/index.html["ONTAP 9 ドキュメント"^]
 
 * 適用可能なライセンス、ネットワークおよび構成情報、およびケーブル。
-* 該当するNetAppストレージ ネットワークおよび管理ネットワークRCFは、受け取ったスイッチ用にNetApp Support Siteの http://mysupport.netapp.com/["mysupport.netapp.com"^]からダウンロードしてください。すべてのCiscoストレージ ネットワークおよび管理ネットワーク スイッチは、標準のCisco工場出荷時のデフォルト設定で届きます。これらのスイッチにはNX-OSソフトウェアの最新バージョンも搭載されていますが、RCFはロードされていません。
+* 該当するNetApp ストレージ ネットワークおよび管理ネットワークの RCF は、受け取ったスイッチについて NetApp Support Site（link:http://mysupport.netapp.com/["mysupport.netapp.com"^]）からダウンロードしてください。すべての Cisco ストレージ ネットワークおよび管理ネットワークスイッチは、標準の Cisco 工場出荷時のデフォルト設定で出荷されます。これらのスイッチには最新バージョンの NX-OS ソフトウェアが搭載されていますが、RCF はロードされていません。
 
 
 .手順

@@ -2,9 +2,9 @@
 permalink: switch-cisco-9364d-gx2a/replace-9364d-cluster.html 
 sidebar: sidebar 
 keywords: replacing, replace, defective, nexus, switch, cluster, network, nondisruptive, procedure, ndu, replace a cisco nexus 9364d-gx2a cluster switch - cisco nexus 9364d-gx2a 
-summary: クラスタ ネットワーク内の故障した Nexus 9364d-gx2a スイッチの交換は、システムを停止させることなく実施できる手順です。 
+summary: 'クラスタ ネットワーク内の故障した Nexus 9364D-GX2A スイッチを交換するには、次の手順に従います。これは非中断手順 (NDU) です。' 
 ---
-= Cisco Nexus 9364D-GX2Aスイッチを交換する
+= スイッチを交換する - Cisco Nexus 9364D-GX2A
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -15,6 +15,7 @@ summary: クラスタ ネットワーク内の故障した Nexus 9364d-gx2a ス�
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 スイッチの交換を実行する前に、次の点を確認してください。
@@ -35,7 +36,7 @@ summary: クラスタ ネットワーク内の故障した Nexus 9364d-gx2a ス�
 ** ノード接続はポート1/1～1/62です。
 ** ポート 1/63 および 1/64 のすべての Inter-Switch Link (ISL) ポートが無効になっています。
 ** 必要な参照構成ファイル (RCF) と NX-OS オペレーティング システム イメージ スイッチがスイッチにロードされます。
-** スイッチの初期カスタマイズは完了しました。詳細はlink:setup-switch-9364d-cluster.html["9364D-GX2Aクラスタスイッチを構成する"]。
+** スイッチの初期カスタマイズが完了しました。詳細はlink:configure-complete-initial-setup-9364d.html["スイッチの初期設定を完了する"]を参照してください。
 +
 STP、SNMP、SSH などの以前のサイトのカスタマイズは、新しいスイッチにコピーされます。
 
@@ -46,6 +47,7 @@ STP、SNMP、SSH などの以前のサイトのカスタマイズは、新しい
 
 
 
+[[enable-console-logging]]
 == コンソールログを有効にする
 
 NetApp、使用しているデバイスでコンソール ログを有効にし、スイッチを交換するときに次のアクションを実行することを強くお勧めします。
@@ -57,6 +59,7 @@ NetApp、使用しているデバイスでコンソール ログを有効にし�
 
 
 
+[[replace-the-switch]]
 == スイッチを交換する
 
 .例について
@@ -208,6 +211,7 @@ Total entries displayed: 18
 ====
 
 
+[[step-1-prepare-for-replacement]]
 === ステップ1: 交換の準備
 
 . このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
@@ -363,6 +367,7 @@ RPC status:
 
 
 
+[[step-2-configure-cables-and-ports]]
 === ステップ2: ケーブルとポートを構成する
 
 . Nexus 9364D-GX2A スイッチ cs1 の ISL ポート 1/63 と 1/64 をシャットダウンします。
@@ -652,6 +657,7 @@ RPC status:
 
 
 
+[[step-3-verify-the-configuration]]
 === ステップ3: 構成を確認する
 
 . クラスター上のすべてのポートの正常性を確認します。

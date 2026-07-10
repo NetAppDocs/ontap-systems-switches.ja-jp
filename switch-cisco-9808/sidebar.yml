@@ -1,0 +1,59 @@
+---
+section: switch-cisco-9808
+title: Cisco Nexus 9808
+entries:
+- title: リファレンスドキュメント
+  pdf-filename: Reference_documents_9808を使用したチャンク アップロード署名要求がサポートされるようになりました。
+  url: "/switch-cisco-9808/reference-documentation-9808.html"
+- title: AFXシステムでスイッチをインストールおよび設定する
+  pdf-filename: AFXシステム9808にスイッチをインストールして構成する
+  entries:
+  - title: スイッチのインストールと設定のワークフロー
+    url: "/switch-cisco-9808/install-configure-switches-in-afx-workflow-9808.html"
+  - title: インストールの準備
+    url: "/switch-cisco-9808/install-prepare-9808.html"
+  - title: スイッチを取り付ける
+    url: "/switch-cisco-9808/install-switches-9808.html"
+    pdf-filename: Install_hardware_9808を使用したチャンク アップロード署名要求がサポートされるようになりました。
+  - title: AFX システムのセットアップを完了する
+    url: "/switch-cisco-9808/install-complete-afx-setup-9808.html"
+- title: スイッチの設定
+  pdf-filename: configure_switch_9808
+  entries:
+  - title: スイッチのワークフローを設定する
+    url: "/switch-cisco-9808/configure-switch-workflow-9808.html"
+  - title: スイッチの初期設定を完了する
+    url: "/switch-cisco-9808/configure-complete-initial-setup-9808.html"
+  - title: ケーブル配線と構成要件を確認する
+    url: "/switch-cisco-9808/configure-review-cabling-config-requirements-9808.html"
+  - title: NX-OSをインストールまたはアップグレードする
+    pdf-filename: Install_upgrade_nx-os
+    entries:
+    - title: NX-OSのインストールまたはアップグレードの概要
+      url: "/switch-cisco-9808/configure-install-upgrade-nxos-overview-9808.html"
+    - title: NX-OSをインストールする
+      url: "/switch-cisco-9808/configure-install-nxos-9808.html"
+    - title: NX-OSをアップグレードする
+      url: "/switch-cisco-9808/configure-upgrade-nxos-9808.html"
+  - title: RCFをインストールまたはアップグレードする
+    pdf-filename: インストール_アップグレード_rcf
+    entries:
+    - title: RCF のインストールまたはアップグレードの概要
+      url: "/switch-cisco-9808/configure-install-upgrade-rcf-overview-9808.html"
+    - title: RCFのインストール
+      url: "/switch-cisco-9808/configure-install-rcf-9808.html"
+    - title: RCFのアップグレード
+      url: "/switch-cisco-9808/configure-upgrade-rcf-9808.html"
+  - title: SSHによるログ収集を確認する
+    url: "/switch-cisco-9808/configure-verify-ssh-9808.html"
+  - title: スマートコールホームの設定
+    url: "/switch-cisco-9808/configure-smart-call-9808.html"
+- title: メンテナンス
+  pdf-filename: Maintain_switches_9808
+  entries:
+  - title: 全体像を把握する
+    url: "/switch-cisco-9808/maintain-overview-9808.html"
+  - title: FRUを交換する
+    url: "/switch-cisco-9808/maintain-replace-frus-9808.html"
+  - title: スイッチを工場出荷時の状態にリセットする
+    url: "/switch-cisco-9808/maintain-reset-switch-9808.html"

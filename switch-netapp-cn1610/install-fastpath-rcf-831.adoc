@@ -17,6 +17,7 @@ ONTAP 8.3.1 以降の FASTPATH ソフトウェアと RCF をインストール�
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 .開始する前に
@@ -36,6 +37,7 @@ ONTAP 8.3.1 以降の FASTPATH ソフトウェアと RCF をインストール�
 
 
 
+[[install-the-fastpath-software]]
 == FASTPATHソフトウェアをインストールする
 
 次の手順では、clustered Data ONTAP 8.2 構文を使用します。その結果、クラスタ Vserver、LIF 名、および CLI 出力は、 Data ONTAP 8.3 のものとは異なります。
@@ -62,6 +64,7 @@ link:https://hwu.netapp.com/["Hardware Universe"^]には、お使いのプラッ
 
 
 
+[[step-1-migrate-cluster]]
 === ステップ1: クラスターの移行
 
 . クラスター上のネットワーク ポートに関する情報を表示します。
@@ -252,6 +255,7 @@ Copy operation successful
 
 
 
+[[step-2-install-the-fastpath-software-and-rcf]]
 === ステップ2: FASTPATHソフトウェアとRCFをインストールする
 
 . 実行中の FASTPATH ソフトウェアのバージョンを確認します。
@@ -463,6 +467,7 @@ System will now restart!
 
 
 
+[[step-3-validate-installation]]
 === ステップ3: インストールの検証
 
 . 再度ログインし、スイッチが新しいバージョンの FASTPATH ソフトウェアを実行していることを確認します。

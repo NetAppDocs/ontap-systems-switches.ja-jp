@@ -15,6 +15,7 @@ Cisco Nexus 3232C スイッチでCisco NX-OS ソフトウェアと参照コン�
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 .開始する前に
@@ -31,6 +32,7 @@ Cisco Nexus 3232C スイッチでCisco NX-OS ソフトウェアと参照コン�
 
 
 
+[[replace-the-switch]]
 == スイッチを交換する
 
 .例について
@@ -47,6 +49,7 @@ NOTE: この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ ス�
 
 
 
+[[step-1-check-the-health-status-of-switches-and-ports]]
 === ステップ1: スイッチとポートのヘルスステータスを確認する
 
 . AutoSupportが有効になっている場合は、 AutoSupportメッセージを呼び出して自動ケース作成を抑制します。
@@ -139,6 +142,7 @@ There are no entries matching your query.
 
 
 
+[[step-2-copy-the-rcf-to-cisco-switch-s2]]
 === ステップ2：RCFをCiscoスイッチs2にコピーする
 
 . FTP、HTTP、TFTP、SFTP、または SCP のいずれかの転送プロトコルを使用して、スイッチ s2 上の RCF をスイッチ bootflash にコピーします。
@@ -265,6 +269,7 @@ s2# copy running-config startup-config
 
 
 
+[[step-3-copy-the-nx-os-image-to-cisco-switch-s2-and-reboot]]
 === ステップ3：NX-OSイメージをCiscoスイッチs2にコピーして再起動する
 
 . NX-OS イメージをスイッチ s2 にコピーします。
@@ -459,6 +464,7 @@ s2#
 
 
 
+[[step-4-recheck-the-health-status-of-switches-and-ports]]
 === ステップ4: スイッチとポートのヘルスステータスを再確認する
 
 . 再起動後にストレージ スイッチが使用可能であることを再確認します。

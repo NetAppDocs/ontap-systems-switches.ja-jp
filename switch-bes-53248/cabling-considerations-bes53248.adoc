@@ -15,6 +15,7 @@ Broadcom BES-53248 スイッチを構成する前に、次の考慮事項を確�
 
 
 
+[[cluster-port-switch-assignments]]
 == クラスターポートスイッチの割り当て
 
 Broadcom がサポートする BES-53248 クラスタ スイッチのポート割り当て表を、クラスタを構成するためのガイドとして使用できます。
@@ -56,6 +57,7 @@ link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^]を参照して、
 
 
 
+[[port-group-speed-constraint]]
 == ポート グループの速度制限
 
 * BES-53248 クラスター スイッチでは、48 個の 10/25GbE (SFP28/SFP+) ポートが次のように 12 x 4 ポート グループに結合されます: ポート 1 ～ 4、5 ～ 8、9 ～ 12、13 ～ 16、17 ～ 20、21 ～ 24、25 ～ 28、29 ～ 32、33 ～ 36、37 ～ 40、41 ～ 44、および 45 ～ 48。
@@ -65,6 +67,7 @@ link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^]を参照して、
 
 
 
+[[fec-requirements]]
 == FECの要件
 
 * 銅線ケーブルを使用した 25G ポートの詳細については、次の表を参照してください。
@@ -82,6 +85,7 @@ image::../media/FEC_fiber_table.jpg[光ファイバーケーブル付き25Gポ�
 
 
 
+[[bootarg-implementation]]
 === Bootargの実装
 
 25GポートFECを次のいずれかに設定するには、次のコマンドを使用します。 `auto`または `fc`必要に応じて：

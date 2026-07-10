@@ -15,6 +15,7 @@ Cisco 3132Q-V スイッチを設定する前に、次の考慮事項を確認し
 
 
 
+[[support-for-nvidia-cx6-cx6-dx-and-cx7-ethernet-ports]]
 == NVIDIA CX6、CX6-DX、CX7 イーサネット ポートのサポート
 
 NVIDIA ConnectX-6（CX6）、ConnectX-6 Dx（CX6-DX）、または ConnectX-7（CX7）NIC ポートを使用してスイッチ ポートをONTAPコントローラに接続する場合は、スイッチ ポート速度をハードコードする必要があります。

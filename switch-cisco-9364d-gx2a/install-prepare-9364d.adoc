@@ -1,0 +1,139 @@
+---
+sidebar: sidebar 
+permalink: switch-cisco-9364d-gx2a/install-prepare-9364d.html 
+keywords: shared storage cluster switch 
+summary: 新しい AFX 1K または AFX 2K システムのインストールの一部として Cisco Nexus 9364D-GX2A スイッチをインストールする前に、該当する Cisco スイッチのドキュメントと ONTAP システムのドキュメントを参照してスイッチとそのインストールに関する事項を理解し、AFX システムでサポートされている RCF バージョンを確認し、Smart Call Home の使用を検討する必要があります。 
+---
+= スイッチの設置準備 - Cisco Nexus 9364D-GX2A
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+新しい AFX 1K または AFX 2K システムのインストールの一部として Cisco Nexus 9364D-GX2A スイッチをインストールする前に、該当する Cisco スイッチのドキュメントと ONTAP システムのドキュメントを参照してスイッチとそのインストールに関する事項を理解し、AFX システムでサポートされている RCF バージョンを確認し、Smart Call Home の使用を検討する必要があります。
+
+
+
+[[step-1-review-the-cisco-switch-documentation]]
+=== ステップ 1：Cisco スイッチのドキュメントを確認する
+
+以下の Cisco インストールおよびセットアップに関するドキュメントを参照して、スイッチのリリースノート、安全情報、インストールオプション、初期ソフトウェア構成、およびコマンドリファレンスについて理解を深めてください。
+
+すべての Cisco ドキュメントは、link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズ スイッチのサポート"^] ページで入手できます。
+
+* link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-release-notes-list.html["Cisco Nexus 9000 シリーズ NX-OS リリース ノート"^](スイッチにインストールされている NX-OS リリースの注記を選択してください)
+* link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/mds9000/hw/regulatory/compliance/RCSI.html?dtid=osscdc000283&linkclickid=srch["Cisco Nexus 9000 シリーズの規制コンプライアンスおよび安全性に関する情報"^]
+* link:https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9364d-gx2a/cisco-nexus-9364d-gx2a-nx-os-mode-switch-hardware-installation-guide.html["Cisco Nexus 9364D-GX2A NX-OS モード スイッチ ハードウェア設置ガイド"^]
+* link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-and-configuration-guides-list.html["Cisco Nexus 9000 シリーズ スイッチ ソフトウェア コンフィギュレーション ガイド"^](スイッチにインストールされている NX-OS リリースのガイドを選択してください)
+* link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/102x/command-reference/config/b_n9k_config_commands_1021.html["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^] Cisco が提供するさまざまなコマンドリファレンスへのリンクを提供します。
+
+
+
+
+[[step-2-review-the-netapp-systems-documentation]]
+=== ステップ2：NetApp システムドキュメントを確認する
+
+AFX 1KまたはAFX 2Kシステムのインストール、ONTAPリリース情報、およびハードウェア構成と互換性の要件を十分に理解するために、次のNetAppシステム ドキュメントを確認してください。
+
+* link:https://docs.netapp.com/us-en/ontap-afx/index.html["AFXシステムのドキュメント"^]NetApp ハードウェアのインストール方法について説明します。
+* link:https://docs.netapp.com/us-en/ontap-family/["ONTAPのドキュメント"^] ONTAP リリースのあらゆる側面に関する詳細な情報を提供します。
+* link:https://hwu.netapp.com["Hardware Universe"^] NetApp のハードウェア構成および互換性情報を提供します。
+* link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^]ストレージシステムの設置要件に関する詳細情報を提供します。
+
+
+
+
+[[step-3-understand-the-supported-rcf-versions]]
+=== ステップ3：サポートされているRCFバージョンを理解する
+
+お使いのAFXシステムで実行されているONTAPのバージョンとスイッチのNX-OSのバージョンによって、スイッチでサポートされるRCFのバージョンが決まります。RCFバージョンには、ブレークアウトモード（4x100GbE）と非ブレークアウトモードのスイッチポートの数を決定する、プリセットされたポート速度構成があります。
+
+[NOTE]
+====
+現在サポートされている RCF バージョンの一覧については、link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["NetApp Cisco イーサネットスイッチ"^]ページを参照してください。
+
+スイッチポート情報は、 https://hwu.netapp.com["NetApp Hardware Universe"^]にも記載されています。
+
+====
+* AFX 1Kシステムをお持ちの場合は、RCF 10.0以降がサポートされています。
+* AFX 2Kシステムをお持ちの場合は、RCF 10.1以降がサポートされています。
+* RCF 10.0 には 1 つのファイルがあり、共有スイッチをサポートしています。 `Cluster-HA-Storage AFX RCF_10.0`
++
+例えば、次の表は、この RCF ファイルにおけるスイッチポートのプリセットされたグループ分け、ポート速度、および使用状況を示しています。
+
++
+[cols="1,2"]
+|===
+| スイッチポートグループ | ポートの速度と使用状況 
+
+
+ a| 
+Ethernet1/1/1-4 から Ethernet1/62/1-4
+ a| 
+クラスタ、HA、ストレージ接続用の4x100GbEモード
+
+
+
+ a| 
+イーサネット1/63、イーサネット1/64
+ a| 
+400GbE ISL
+
+|===
+* RCF 10.1には、AFX 1KシステムとAFX 2Kシステムそれぞれで、異なる使用事例に対応した異なるファイルが含まれています。AFX 1KまたはAFX 2Kシステム構成でスイッチをどのように使用するか（共有、ストレージ専用、クラスタおよびHA専用）に応じて、適切なRCFファイルを選択します。
++
+例えば、AFX 2Kシステムでスイッチを共有スイッチとして使用する場合は、その使用状況に適したRCFファイルを使用します。適切なRCFファイルは、 `RCF-v10.1-NX9364D-GX2A-CL1-ST1-100GBR31-400G31.txt`のように命名される場合があります。以下の表は、このRCFファイルにおけるスイッチポートのプリセットグループ、ポート速度、および使用状況を示しています。
+
++
+[cols="1,2"]
+|===
+| スイッチポートグループ | ポートの速度と使用状況 
+
+
+ a| 
+Ethernet1/1/1-4 から Ethernet1/31/1-4 まで
+ a| 
+クラスター内接続、HA接続、およびストレージシェルフ接続用の4x100GbEモード
+
+
+
+ a| 
+Ethernet1/32からEthernet1/62
+ a| 
+クラスター内接続、HA接続、ストレージ接続用の400GbEモード
+
+
+
+ a| 
+イーサネット1/63、イーサネット1/64
+ a| 
+400GbE クラスタ内 ISL 接続
+
+|===
++
+[NOTE]
+====
+AFXシステムで異なるポート速度構成に対応する必要がある場合は、プリセットグループを変更して、ブレークアウトモード（4x100GbE）と400GbEモードのスイッチポート数を調整できます。
+
+これは後で、RCFのインストール手順の一環として行います。
+
+====
+
+
+
+
+[[step-4-consider-using-smart-call-home]]
+=== ステップ4：Smart Call Homeの使用を検討する
+
+ONTAP は、AFX クラスタスイッチを監視するためのイーサネットスイッチヘルスモニタリング（CSHM）をサポートするとともに、スイッチ診断ログを収集する機能も備えています。
+
+Cisco の Smart Call Home は、スイッチで発生する可能性のあるあらゆる問題を解決するために、プロアクティブなサポートを提供するオプションです。
+
+Smart Call Home に関する詳細情報は、link:configure-smart-call-9364d.html["スマートコールホームの設定"]のドキュメントをご参照ください。
+
+.次の手順
+スイッチの設置準備ができたら、link:install-switches-9364d.html["スイッチを取り付けます"]。

@@ -31,6 +31,7 @@ Nexus 9336C-FX2 スイッチを初めてセットアップした後、リファ�
 
 
 
+[[step-1-install-the-rcf-on-the-switches]]
 == ステップ1: スイッチにRCFをインストールする
 
 . SSH またはシリアル コンソールを使用してスイッチ cs1 にログインします。
@@ -147,6 +148,7 @@ cs1# copy running-config startup-config [#######################################
 
 
 
+[[step-2-verify-the-switch-connections]]
 == ステップ2: スイッチの接続を確認する
 
 . クラスター ポートに接続されているスイッチ ポートが *稼働中* であることを確認します。
@@ -357,6 +359,7 @@ cs1#
 
 
 
+[[step-3-set-up-your-ontap-cluster]]
 == ステップ3: ONTAPクラスタをセットアップする
 
 NetApp、 System Manager を使用して新しいクラスタを設定することをお勧めします。

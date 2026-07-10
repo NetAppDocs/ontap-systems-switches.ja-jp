@@ -26,6 +26,7 @@ RCF のインストールに関する詳細については、ナレッジベー�
 
 
 
+[[step-1-install-the-rcf-on-the-switches]]
 == ステップ1: スイッチにRCFをインストールする
 
 . SSH またはシリアル コンソールを使用してスイッチ s2 にログインします。
@@ -126,6 +127,7 @@ s2# copy running-config startup-config [########################################
 
 
 
+[[step-2-verify-the-switch-connections]]
 == ステップ2: スイッチの接続を確認する
 
 . スイッチ ポートが *up* であることを確認します。
@@ -437,6 +439,7 @@ NOTE: 特定のポートと VLAN の使用法の詳細については、RCF の�
 
 
 
+[[step-3-set-up-your-ontap-cluster]]
 == ステップ3: ONTAPクラスタをセットアップする
 
 NetApp、 System Manager を使用して新しいクラスタを設定することをお勧めします。

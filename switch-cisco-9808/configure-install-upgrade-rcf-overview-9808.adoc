@@ -1,0 +1,145 @@
+---
+permalink: switch-cisco-9808/configure-install-upgrade-rcf-overview-9808.html 
+sidebar: sidebar 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9808 
+summary: Nexus 9808スイッチにリファレンス構成ファイル（RCF）をインストールまたはアップグレードできます。新しいAFX 2Kシステムのインストール、スーパーバイザーモジュールの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする際に、サポートされているバージョンのRCFをスイッチにインストールします。新しいハードウェアのサポート、新しいONTAPバージョンへの対応、またはAFX 2Kシステム構成における新しいNX-OSバージョンへの準拠を目的として、スイッチでサポートされているバージョンのRCFにアップグレードします。 
+---
+= RCFの概要をインストールまたはアップグレードする - Cisco Nexus 9808
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+参照構成ファイル（RCF）をCisco Nexus 9808スイッチにインストールまたはアップグレードできます。新しいAFX 2Kシステムのインストール、スーパーバイザーモジュールの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする際に、サポートされているバージョンのRCFをスイッチにインストールします。新しいハードウェア、新しいONTAPバージョンのサポート、またはAFXシステム構成での新しいNX-OSバージョンへの対応のために、スイッチでサポートされているバージョンのRCFにアップグレードします。
+
+
+NOTE: RCFのインストールまたはアップグレードは、NX-OSのインストールまたはアップグレードとは独立しています。NX-OSとRCFの両方をインストールまたはアップグレードする場合は、先にNX-OSをインストールまたはアップグレードすることをお勧めします。
+
+
+
+[[understand-the-supported-rcf-versions]]
+=== サポートされているRCFバージョンを理解する
+
+お使いのAFXシステムで実行中のONTAPのバージョンと、お使いのCisco Nexus 9808スイッチのNX-OSのバージョンによって、スイッチでサポートされるRCFのバージョンが決まります。RCFバージョンには、ブレークアウトモード（4x100GbE）と非ブレークアウトモードのスイッチポートの数を決定する、プリセットされたポート速度構成があります。
+
+[NOTE]
+====
+現在サポートされている RCF バージョンの一覧については、link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["NetApp Cisco イーサネットスイッチ"^]を参照してください。
+
+スイッチポート情報は、link:https://hwu.netapp.com["NetApp Hardware Universe"^]にも記載されています。
+
+====
+
+NOTE: 特定のポートおよびVLANの使用に関する詳細については、RCFのバナーおよび重要事項のセクションを参照してください。詳細については、link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["NetApp Cisco イーサネットスイッチ"^]を参照してください。
+
+例えば、次の表は、RCF バージョン 10.1 に基づいた、スイッチポートのプリセットグループ、ポート速度、および使用状況を示しています。
+
+[cols="1,2"]
+|===
+| スイッチポートグループ | ポートの速度と使用状況 
+
+
+ a| 
+Ethernet1/1～Ethernet1/18
+ a| 
+クラスター内接続、HA接続、およびストレージシェルフ接続用の400GbEモード
+
+
+
+ a| 
+Ethernet1/19からEthernet1/35
+ a| 
+クラスター内接続、HA接続、ストレージ接続用の4x100GbEモード
+
+
+
+ a| 
+Ethernet1/36
+ a| 
+400GbE クラスタ内 ISL 接続
+
+|===
+
+
+[[change-port-speed-configuration]]
+=== ポート速度設定を変更する
+
+RCF 10.1以降を搭載したスイッチでは、AFXシステムに合わせて異なるポート速度構成に対応する必要がある場合、ポート速度設定を変更して、ブレークアウトモード（4x100GbE）と非ブレークアウトモード（400GbE）のスイッチポート数を調整できます。ポートの変更は、現在使用されているラインカードごとに行われます。
+
+この変更は、RCFのインストールまたはアップグレード手順の一環として実施します。手順には、このページにリンクするステップが含まれています。
+
+両方のスイッチにコマンドを入力します。
+
+[cols="1,2"]
+|===
+| ポート速度を変更する | 手順 
+
+
+ a| 
+非ブレークアウトポートをブレークアウトポートに変更する
+ a| 
+. CLIで設定モードに入ります。
+. スイッチのポート速度とブレークアウトモードを変更します：
++
+ブレークアウトポートを指定するには、 `interface breakout module`コマンドを使用します。
+
++
+例えば、400GbE モードのポート 19～22 をブレークアウト（4x100GbE）ポートとして指定するには、以下を使用します。
+
++
+`interface breakout module 1 port 19-22 map 100g-4x`
+
+. 目的のポート速度を実現するためにポートプロファイルを使用する必要がある新しいポートをポートリストに追加して変更します。
++
+例えば、100G スピードのポート プロファイル用に新しいポート 19～22 でポート リストを変更するには、以下を使用します。
+
++
+`interface e1/19/1-4, e1/20/1-4, e1/21/1-4, e1/22/1-4`
+
+. スイッチのブレークアウトポート（4x100GbE）を100GbE用にハードコーディングします。速度をハードコーディングしない場合、ポートは起動せず、エラー無効状態になります。
++
+`speed 100000`
+
++
+`no negotiate auto`
+
+
+
+
+
+ a| 
+ブレークアウトポートを非ブレークアウトポートに戻す
+ a| 
+. CLIで設定モードに入ります。
+. ブレークアウトポートを非ブレークアウトポートに戻すには、設定モードで `no interface breakout`コマンドを使用します。
++
+例えば、ポート19～22を400GbEモードに戻すには、以下を使用します。
+
++
+`no interface breakout module 1 port 19-22`
+
+
+
+|===
+
+
+[[suggested-documentation]]
+=== 推奨ドキュメント
+
+スイッチに RCF をインストールまたはアップグレードする前に、以下のドキュメントを確認することをお勧めします。
+
+* RCF のインストールまたはアップグレードに関する詳細については、NetApp ナレッジベースの記事 link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^] を参照してください。
+*  https://hwu.netapp.com/SWITCH/INDEX["NetApp Hardware Universe"^]を参照して、プラットフォームの正しいポートを確認してください。
+* link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ (NSS)"^]
++
+サポートされているONTAPおよび RCF バージョンについては、 NetAppサポート サイトのスイッチ互換性表を参照してください。  RCF のコマンド構文と特定のバージョンの NX-OS の構文の間にはコマンド依存関係がある可能性があることに注意してください。
+
+* link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズ スイッチ"^]
++
+Ciscoスイッチのアップグレードおよびダウングレード手順の完全なドキュメントについては、 Cisco Web サイトで入手可能な適切なソフトウェアおよびアップグレード ガイドを参照してください。
+
+
+
+.次の手順
+RCF のインストールまたはアップグレードの概要を確認したら、必要に応じてlink:configure-install-rcf-9808.html["RCFをインストールする"]またはlink:configure-upgrade-rcf-9808.html["RCFをアップグレードする"]を実行できます。

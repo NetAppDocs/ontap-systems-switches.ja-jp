@@ -33,6 +33,7 @@ CAUTION: 新しいスイッチ ソフトウェア バージョンと RCF をイ�
 
 
 
+[[step-1-prepare-for-the-upgrade]]
 == ステップ1: アップグレードの準備
 
 . クラスター スイッチに接続されている各ノード上のクラスター ポートを表示します。
@@ -178,6 +179,7 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert fals
 
 
 
+[[step-2-configure-ports]]
 == ステップ2: ポートを構成する
 
 . クラスタ スイッチcs2で、ノードのクラスタ ポートに接続されているポートをシャットダウンします。
@@ -548,6 +550,7 @@ cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true
 
 
 
+[[step-3-verify-the-cluster-network-configuration-and-cluster-health]]
 == ステップ3: クラスターネットワーク構成とクラスターの健全性を確認する
 
 . クラスター ポートに接続されているスイッチ ポートが *稼働中* であることを確認します。

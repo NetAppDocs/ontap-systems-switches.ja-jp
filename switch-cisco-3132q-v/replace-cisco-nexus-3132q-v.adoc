@@ -15,6 +15,7 @@ summary: クラスタネットワーク内の欠陥のある Cisco Nexus 3132Q-V
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 .スイッチの要件
@@ -45,6 +46,7 @@ link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storag
 
 
 
+[[enable-console-logging]]
 == コンソールログを有効にする
 
 NetApp、使用しているデバイスでコンソール ログを有効にし、スイッチを交換するときに次のアクションを実行することを強くお勧めします。
@@ -56,6 +58,7 @@ NetApp、使用しているデバイスでコンソール ログを有効にし�
 
 
 
+[[replace-the-switch]]
 == スイッチを交換する
 
 この手順では、2 番目の Nexus 3132Q-V クラスタ スイッチ CL2 を新しい 3132Q-V スイッチ C2 に置き換えます。
@@ -86,6 +89,7 @@ NetApp、使用しているデバイスでコンソール ログを有効にし�
 
 
 
+[[step-1-prepare-for-replacement]]
 === ステップ1: 交換の準備
 
 . このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
@@ -476,6 +480,7 @@ RPC status:
 
 
 
+[[step-2-configure-ports]]
 === ステップ2: ポートを構成する
 
 . Nexus 3132Q-V スイッチ CL2 に接続されているすべてのケーブルを取り外し、すべてのノードの交換用スイッチ C2 に再接続します。
@@ -775,6 +780,7 @@ RPC status:
 ====
 
 
+[[step-3-verify-the-configuration]]
 === ステップ3: 構成を確認する
 
 . 構成内のデバイスに関する情報を表示します。

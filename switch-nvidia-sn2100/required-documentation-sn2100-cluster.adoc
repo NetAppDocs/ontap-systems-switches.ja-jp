@@ -19,7 +19,7 @@ NVIDIA SN2100スイッチの設置にあたっては、推奨されるすべて�
 
 
  a| 
-link:https://docs.nvidia.com/networking/display/sn2000pub/Installation["NVIDIAスイッチ インストール ガイド"^]
+link:https://networking-docs.nvidia.com/sn2000hw/latest["NVIDIAスイッチ インストール ガイド"^]
  a| 
 NVIDIA SN2100 スイッチのインストール方法について説明します。
 
@@ -33,6 +33,7 @@ link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2876580["NS224 NVMe �
 |===
 
 
+[[ontap-systems-documentation]]
 == ONTAPシステムのドキュメント
 
 ONTAP システムをセットアップするには、お使いのオペレーティング システムのバージョンに応じて、以下のドキュメントが必要になります。

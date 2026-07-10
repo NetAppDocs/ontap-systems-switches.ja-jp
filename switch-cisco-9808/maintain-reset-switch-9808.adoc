@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: switch-cisco-9808/maintain-reset-switch-9808.html 
+keywords: reset switch factory defaults 
+summary: Cisco Nexus 9808 スイッチを廃止する場合、またはスイッチが故障して復旧できない場合に、工場出荷時のデフォルト設定にリセットすることができます。その場合は手動で再設定する必要があります。 
+---
+= スイッチを工場出荷時の設定にリセットする - Cisco Nexus 9808
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 9808 スイッチを廃止する場合、またはスイッチが故障して復旧できない場合に、工場出荷時のデフォルト設定にリセットすることができます。その場合は手動で再設定する必要があります。
+
+.開始する前に
+スイッチにシリアル コンソールを使用して接続する必要があります。
+
+.タスク概要
+* このタスクでは、管理ネットワークの設定をリセットします。
+* この手順で使用する `reload`コマンドはスイッチを再起動し、そこを通過するすべてのネットワーク トラフィックを中断します。（この手順は、スイッチが使用されていないメンテナンス時間帯に実施してください。）
+
+
+.手順
+. 既存の起動設定を消去します：
++
+`write erase`
+
++
+[listing, subs="+quotes"]
+----
+(cs2)# *write erase*
+
+Warning: This command will erase the startup-configuration.
+Do you wish to proceed anyway? (y/n) [n] *y*
+----
+. NX-OS をリロードします。
++
+`reload`
+
++
+[listing, subs="+quotes"]
+----
+(cs2)# *reload*
+
+This command will reboot the system. (y/n)? [n] *y*
+----
++
+システムがリブートし、設定ウィザードが起動します。
+
++
+
+NOTE: 再起動中に「Abort Auto Provisioning and continue with normal setup?」というプロンプトが表示された場合、（yes/no）[n]」と表示されたら、続行するには *yes* と入力してください。
+
+. スイッチが廃止される場合は、この手順は完了です。そうでない場合は、link:configure-switch-workflow-9808.html["スイッチのワークフローを設定する"]を使用してスイッチを設定する必要があります。
+

@@ -17,6 +17,7 @@ RCF をインストールする前に、まずクラスタ LIF をスイッチ c
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 .開始する前に
@@ -36,6 +37,7 @@ RCF をインストールする前に、まずクラスタ LIF をスイッチ c
 
 
 
+[[install-the-rcf]]
 == RCFのインストール
 
 次の手順では、clustered Data ONTAP 8.2 構文を使用します。その結果、クラスタ Vserver、LIF 名、および CLI 出力は、 Data ONTAP 8.3 のものとは異なります。
@@ -66,6 +68,7 @@ link:https://hwu.netapp.com/["Hardware Universe"^]には、お使いのプラッ
 
 
 
+[[step-1-migrate-cluster]]
 === ステップ1: クラスターの移行
 
 . 現在のスイッチ構成情報を保存します。
@@ -180,6 +183,7 @@ node2
 
 
 
+[[step-2-install-rcf]]
 === ステップ2: RCFをインストールする
 
 . RCF をスイッチにコピーします。
@@ -369,6 +373,7 @@ cluster::*> network port modify -node node2 -port e2a -up-admin true
 
 
 
+[[step-3-validate-installation]]
 === ステップ3: インストールの検証
 
 . 両方のノードでポート e2a が稼働していることを確認します。

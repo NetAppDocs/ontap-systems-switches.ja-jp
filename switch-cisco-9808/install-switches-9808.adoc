@@ -1,0 +1,37 @@
+---
+permalink: switch-cisco-9808/install-switches-9808.html 
+sidebar: sidebar 
+keywords: switches, hardware installation, Cisco Nexus, 9808 switches 
+summary: 新しい AFX 2K システム設置の一環として Cisco Nexus 9808 スイッチを設置する作業には、スイッチをラックまたはキャビネットに設置し、システムコントローラやシェルフにケーブルで接続し、電源を入れることが含まれます。 
+---
+= スイッチを取り付ける - Cisco Nexus 9808
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+新しい AFX 2K システム設置の一環として Cisco Nexus 9808 スイッチを設置する作業には、スイッチをラックまたはキャビネットに設置し、システムコントローラやシェルフにケーブルで接続し、電源を入れることが含まれます。
+
+.開始する前に
+link:install-prepare-9808.html["スイッチの取り付け準備をする"]のスイッチの準備手順を完了している必要があります。
+
+.タスク概要
+AFXシステムドキュメントサイトに記載されている該当するAFX 2Kシステムのインストールおよびセットアップ手順に従って、システムハードウェアのインストールと配線を行い、スイッチの電源をオンにします。
+
+システムのインストールとセットアップのワークフローには、次のような手順が含まれます。
+
+* サイトを準備し、箱を開梱して箱の内容を梱包明細書と照合し、サポート特典にアクセスするためにシステムを登録するための手順。
+* NetApp キャビネットまたは通信ラックにスイッチ、コントローラー、およびストレージシェルフを取り付けるための手順。
+* システムの配線手順。コントローラーとスイッチの接続方法、およびストレージシェルフとスイッチの接続方法が含まれます。
+
+
+.手順
+. AFX 2K システムのインストールとセットアップワークフローの一部としてスイッチをインストールするには、link:https://docs.netapp.com/us-en/ontap-afx/install-afx-2k/install-setup-workflow.html["AFX 2Kのインストールとセットアップのワークフロー"^]を参照してください。
+
+
+
+NOTE: スイッチのインストールが完了すると、AFX のインストールおよびセットアップワークフローの手順に従って、スイッチを設定するためにこのスイッチドキュメントに戻るよう案内されます。
+
+.次の手順
+AFX 2K システムのインストールの一環としてスイッチをインストール、配線、電源投入したら、link:install-configure-switches-in-afx-workflow-9808.html#configure-switches["スイッチを設定する"]、その後link:install-configure-switches-in-afx-workflow-9808.html#complete-afx-system-setup["AFXシステムのセットアップを完了する"]。

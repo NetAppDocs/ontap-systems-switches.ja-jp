@@ -15,6 +15,7 @@ ONTAPクラスタ用の古いCiscoスイッチをNVIDIA SN2100 ストレージ �
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 次のストレージ スイッチがサポートされています。
@@ -45,6 +46,7 @@ ONTAPクラスタ用の古いCiscoスイッチをNVIDIA SN2100 ストレージ �
 
 
 
+[[migrate-the-switches]]
 == スイッチを移行する
 
 .例について
@@ -69,6 +71,7 @@ ONTAPクラスタ用の古いCiscoスイッチをNVIDIA SN2100 ストレージ �
 
 
 
+[[step-1-prepare-for-migration]]
 === ステップ1: 移行の準備
 
 . AutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を停止します。
@@ -93,6 +96,7 @@ advancedのプロンプト（*>）が表示されます。
 
 
 
+[[step-2-configure-cables-and-ports]]
 === ステップ2: ケーブルとポートを構成する
 
 . ネットワーク ポートの属性を表示します。
@@ -336,6 +340,7 @@ node2      /lldp
 
 
 
+[[step-3-verify-the-configuration]]
 === ステップ3: 構成を確認する
 
 . 最終的な構成を確認します。

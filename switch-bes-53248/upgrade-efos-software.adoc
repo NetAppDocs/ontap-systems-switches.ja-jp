@@ -17,6 +17,7 @@ EFOS ソフトウェアには、イーサネットおよび IP インフラス�
 
 
 
+[[prepare-for-upgrade]]
 == アップグレードの準備
 
 .開始する前に
@@ -125,6 +126,7 @@ IP_switch_a2 # *show fips status*
 ====
 
 
+[[upgrade-the-software]]
 == ソフトウェアをアップグレードする
 
 次のいずれかの方法を使用します。
@@ -138,6 +140,7 @@ NOTE: クラスター ネットワークの継続的な運用を確保するに�
 
 
 
+[[method-1-upgrade-efos]]
 === 方法1: EFOSをアップグレードする
 
 EFOS ソフトウェアをアップグレードするには、次の手順を実行します。
@@ -369,6 +372,7 @@ network interface show -vserver Cluster
 
 
 
+[[method-2-upgrade-efos-using-the-onie-os-installation]]
 === 方法2: ONIE OSインストールを使用してEFOSをアップグレードする
 
 次の手順は、一方のEFOSバージョンがFIPS準拠で、もう一方のEFOSバージョンがFIPS非準拠の場合に実行できます。スイッチの起動に失敗した場合は、次の手順を使用して、ONIE から FIPS 非準拠または FIPS 準拠の EFOS 3.7.xx イメージをアップグレードできます。

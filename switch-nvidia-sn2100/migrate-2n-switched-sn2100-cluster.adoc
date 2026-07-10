@@ -17,6 +17,7 @@ summary: 既存の 2 ノードのスイッチレス クラスタ環境がある�
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 .2ノードのスイッチレス構成
@@ -53,6 +54,7 @@ link:https://hwu.netapp.com["Hardware Universe"^]には、お使いのプラッ�
 
 
 
+[[migrate-the-switches]]
 == スイッチを移行する
 
 .例について
@@ -68,6 +70,7 @@ link:https://hwu.netapp.com["Hardware Universe"^]には、お使いのプラッ�
 
 
 
+[[step-1-prepare-for-migration]]
 === ステップ1: 移行の準備
 
 . このクラスタでAutoSupportが有効になっている場合は、 AutoSupportメッセージを呼び出して自動ケース作成を抑制します。 `system node autosupport invoke -node * -type all -message MAINT=xh`
@@ -82,6 +85,7 @@ link:https://hwu.netapp.com["Hardware Universe"^]には、お使いのプラッ�
 
 
 
+[[step-2-configure-ports-and-cabling]]
 === ステップ2: ポートとケーブルを構成する
 
 [role="tabbed-block"]
@@ -670,6 +674,7 @@ e3b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 
 
 
+[[step-3-verify-the-configuration]]
 === ステップ3: 構成を確認する
 
 . すべてのクラスタ LIF で自動復帰を有効にします。

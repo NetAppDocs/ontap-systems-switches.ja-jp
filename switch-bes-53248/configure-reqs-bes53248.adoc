@@ -15,18 +15,21 @@ BES-53248 スイッチのインストールとメンテナンスについては�
 
 
 
+[[efos-and-ontap-support]]
 == EFOS およびONTAP のサポート
 
 link:https://hwu.netapp.com/Switch/Index["Hardware Universe"^]およびlink:https://mysupport.netapp.com/site/info/broadcom-cluster-switch["Broadcomスイッチ互換性マトリックス"^]を参照して、BES-53248スイッチとのEFOSおよびONTAPの互換性情報を確認してください。EFOSおよびONTAPのサポートは、BES-53248スイッチの特定のマシンタイプによって異なる場合があります。すべてのBES-52348スイッチマシンタイプの詳細については、link:components-bes53248.html["BES-53248 クラスタスイッチのコンポーネントと部品番号"]を参照してください。スイッチの設置要件の詳細については、link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"]を参照してください。
 
 
 
+[[configuration-requirements]]
 == 構成要件
 
 クラスタを構成するには、クラスタ スイッチに適した数と種類のケーブルおよびケーブル コネクタが必要です。最初に設定するクラスタ スイッチのタイプに応じて、付属のコンソール ケーブルを使用してスイッチ コンソール ポートに接続する必要があります。
 
 
 
+[[cluster-switch-port-assignments]]
 === クラスタスイッチポートの割り当て
 
 Broadcom がサポートする BES-53248 クラスタ スイッチのポート割り当て表を、クラスタを構成するためのガイドとして使用できます。
@@ -67,6 +70,7 @@ link:https://hwu.netapp.com/Switch/Index["Hardware Universe"]スイッチポー�
 
 
 
+[[port-group-speed-constraint]]
 === ポート グループの速度制限
 
 * BES-53248 クラスター スイッチでは、48 個の 10/25GbE (SFP28/SFP+) ポートが次のように 12 x 4 ポート グループに結合されます: ポート 1 ～ 4、5 ～ 8、9 ～ 12、13 ～ 16、17 ～ 20、21 ～ 24、25 ～ 28、29 ～ 32、33 ～ 36、37 ～ 40、41 ～ 44、および 45 ～ 48。
@@ -75,6 +79,7 @@ link:https://hwu.netapp.com/Switch/Index["Hardware Universe"]スイッチポー�
 
 
 
+[[additional-requirements]]
 === その他の要件
 
 * 追加ライセンスを購入する場合は、link:configure-licenses.html["新規ライセンスポートを有効化"]でアクティブ化方法の詳細を参照してください。

@@ -15,6 +15,7 @@ summary: Cisco 3232C スイッチを設定する前に、次の情報を確認�
 
 
 
+[[support-for-nvidia-cx6-cx6-dx-and-cx7-ethernet-ports]]
 == NVIDIA CX6、CX6-DX、CX7 イーサネット ポートのサポート
 
 NVIDIA ConnectX-6（CX6）、ConnectX-6 Dx（CX6-DX）、またはConnectX-7（CX7）NICポートを使用してスイッチ ポートをONTAPコントローラーに接続する場合は、スイッチ ポート速度をハードコードする必要があります。
@@ -34,6 +35,7 @@ NVIDIA ConnectX-6（CX6）、ConnectX-6 Dx（CX6-DX）、またはConnectX-7（C
 ----
 
 
+[[related-information]]
 == 関連情報
 
 * スイッチポートの詳細については、 https://hwu.netapp.com/Switch/Index["Hardware Universe"^]を参照してください。

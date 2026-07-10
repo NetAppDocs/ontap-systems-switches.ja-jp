@@ -18,6 +18,7 @@ Cisco Nexus 9336C-FX2 スイッチのインストールとメンテナンスに�
 
 
 
+[[ontap-support]]
 == ONTAPのサポート
 
 ONTAP 9.9.1 以降では、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタ機能を共有スイッチ構成に組み合わせることができます。
@@ -26,6 +27,7 @@ ONTAP 9.9.1 以降では、 Cisco Nexus 9336C-FX2 スイッチを使用して、
 
 
 
+[[configuration-requirements]]
 == 構成要件
 
 構成するには、スイッチに適した数と種類のケーブルおよびケーブル コネクタが必要です。
@@ -34,6 +36,7 @@ ONTAP 9.9.1 以降では、 Cisco Nexus 9336C-FX2 スイッチを使用して、
 
 
 
+[[network-requirements]]
 == ネットワーク要件
 
 すべてのスイッチ構成には次のネットワーク情報が必要です。

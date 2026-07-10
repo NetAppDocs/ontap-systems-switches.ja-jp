@@ -17,6 +17,7 @@ summary: 既存の2ノード スイッチレス クラスタ環境を使用し�
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 .開始する前に
@@ -62,10 +63,12 @@ summary: 既存の2ノード スイッチレス クラスタ環境を使用し�
 
 
 
+[[migrate-the-switches]]
 == スイッチを移行する
 
 
 
+[[step-1-prepare-for-migration]]
 === ステップ1: 移行の準備
 
 . このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
@@ -90,6 +93,7 @@ NOTE: AutoSupportメッセージはテクニカル サポートにこのメン�
 
 
 
+[[step-2-configure-ports-and-cabling]]
 === ステップ2: ポートとケーブルを構成する
 
 . 新しいクラスタ スイッチcs1とcs2の両方で、すべてのノード側ポート（ISLポートではない）を無効にします。
@@ -411,6 +415,7 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
 
 
 
+[[step-3-verify-the-configuration]]
 === ステップ3: 構成を確認する
 
 . すべてのインターフェースがtrueと表示されていることを確認します `Is Home`:

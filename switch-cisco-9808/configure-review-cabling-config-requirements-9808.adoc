@@ -1,0 +1,37 @@
+---
+permalink: switch-cisco-9808/configure-review-cabling-config-requirements-9808.html 
+sidebar: sidebar 
+keywords: 9808 cabling setup, 9808 switches configuration, nx-os 
+summary: 新しい AFX 2K システムのインストールの一環として新しい Cisco Nexus 9808 スイッチをインストールする場合、スーパーバイザー モジュールを交換する場合、またはスイッチを工場出荷時のデフォルト設定にリセットする場合は、以下のケーブル配線および構成要件を確認してください。 
+---
+= 配線および構成要件を確認する - Cisco Nexus 9808
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+新しい AFX 2K システムのインストールの一環として Cisco Nexus 9808 スイッチをインストールする場合、スーパーバイザー モジュールを交換する場合、またはスイッチを工場出荷時のデフォルト設定にリセットする場合は、以下のケーブル配線および構成要件を確認する必要があります。
+
+
+
+[[hard-code-the-speed-on-breakout-ports]]
+== ブレークアウトポートの速度をハードコーディングする
+
+100GbE 用のスイッチブレークアウト (4x100GbE) ポートはハードコーディングする必要があります。速度をハードコーディングしない場合、ポートは起動せず、エラー無効状態になります。
+
+例えば、ブレークアウトポート19～35に100GbEをハードコーディングするには、設定モードで以下の操作を行います。この例では、最初のスイッチ（cs1）にコマンドが適用されている様子を示しています。2つ目のスイッチに対しても、これらのコマンドを繰り返します。
+
+[listing, subs="+quotes"]
+----
+(cs1)# *configure terminal*
+Enter configuration commands, one per line. End with CNTL/Z.
+(cs1)(config)# *interface e1/19/1-4,e1/20/1-4,e1/21/1-4,e1/22/1-4,e1/23/1-4,e1/24/1-4,e1/25/1-4,e1/26/1-4,e1/27/1-4,e1/28/1-4,e1/29/1-4,e1/30/1-4,e1/31/1-4,e1/32/1-4,e1/33/1-4,e1/34/1-4,e1/35/1-4*
+(cs1)(config-if)# *speed 100000*
+(cs1)(config-if)# *no negotiate auto*
+(cs1)(config-if)# *exit*
+(cs1)(config)# *exit*
+(cs1)# *copy running-config startup-config*
+----
+.次の手順
+ケーブル配線と構成の要件を満たしたら、link:configure-install-nxos-9808.html["NX-OSをインストールする"]。

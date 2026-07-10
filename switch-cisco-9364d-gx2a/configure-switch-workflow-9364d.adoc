@@ -1,0 +1,49 @@
+---
+permalink: switch-cisco-9364d-gx2a/configure-switch-workflow-9364d.html 
+sidebar: sidebar 
+keywords: switches, initial installation, configure 9364d-gx2a switch 
+summary: Cisco 9332D-GX2B スイッチは、新しい AFX 1K または AFX 2K システムの設置、スイッチの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする際に設定します。 
+---
+= スイッチのワークフローを設定する - Cisco Nexus 9364D-GX2A
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco 9364D-GX2A スイッチは、新しい AFX 1K または AFX 2K システムの設置、スイッチの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする際に設定します。
+
+特定の手順に応じて、このワークフローまたはこのワークフロー内の個々のトピックに誘導される場合があります（link:install-configure-switches-in-afx-workflow-9364d.html["新しいAFX 1KまたはAFX 2Kシステムのインストールとセットアップ"]、link:replace-9364d-cluster.html["スイッチを交換する"]、または link:maintain-reset-switch-9364d.html["スイッチを工場出荷時の設定にリセットする"]）。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:configure-complete-initial-setup-9364d.html["初期スイッチ設定を完了する"]
+[role="quick-margin-para"]
+スイッチの電源を入れると、起動が開始され、設定ウィザードが起動します。スイッチの初期設定（起動設定）を行うために、一連の質問への回答を求められます。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:configure-review-cabling-config-requirements-9364d.html["ケーブル配線と構成要件を確認する"]
+[role="quick-margin-para"]
+配線および構成要件を確認してください。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:configure-install-nxos-9364d.html["NX-OSをインストールする"]
+[role="quick-margin-para"]
+お使いのAFX 1KまたはAFX 2Kシステムをサポートするスイッチに、最新バージョンのNX-OSをインストールしてください。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:configure-install-upgrade-rcf-overview-9364d.html["RCFのインストール"]
+[role="quick-margin-para"]
+お使いのAFX 1KまたはAFX 2Kシステムをサポートするスイッチに、最新バージョンのRCFをインストールしてください。このリンクをクリックすると、RCFのインストールまたはアップグレードの概要に関するトピックが表示されます。そこには、RCFをインストールする前に知っておくべき情報が記載されています。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-verify-ssh-9364d.html["SSHによるログ収集を確認する"]
+[role="quick-margin-para"]
+イーサネットスイッチのヘルスモニター（CSHM）ログ収集機能を使用するには、SSHが有効になっていることを確認してください。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:../switch-cshm/cshm-overview.html["イーサネットスイッチのヘルスモニタリングを設定する"]
+[role="quick-margin-para"]
+イーサネットスイッチの健全性監視（CSHM）を設定することで、スイッチの動作状態を確認し、デバッグやトラブルシューティングのためのスイッチログを収集できます。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["セブン"]link:configure-smart-call-9364d.html["スマートコールホームの設定（オプション）"]
+[role="quick-margin-para"]
+ONTAP は、AFX クラスタスイッチを監視するためのイーサネットスイッチヘルスモニタリング（CSHM）をサポートするとともに、スイッチ診断ログを収集する機能も備えています。Cisco の Smart Call Home は、スイッチで発生する可能性のあるあらゆる問題をプロアクティブなサポートにより解決するためのオプションです。
+
+.次の手順
+* スイッチを新しい AFX 1K または AFX 2K システムのインストールの一部として構成した場合は、link:install-complete-afx-setup-9364d.html["AFXシステムのセットアップを完了する"]。
+* スイッチの交換の一環としてスイッチを設定した場合、またはスイッチを工場出荷時のデフォルト設定にリセットした場合は、スイッチは正常に動作しているはずです。
+

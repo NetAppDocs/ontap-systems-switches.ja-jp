@@ -15,6 +15,7 @@ summary: イーサネット スイッチの監視が機能しているかどう�
 
 
 
+[[confirm-monitoring-of-the-connected-ethernet-switches]]
 == 接続されたイーサネットスイッチの監視を確認する
 
 接続されているイーサネット スイッチが監視されていることを確認するには、次のコマンドを実行します。
@@ -34,6 +35,7 @@ system switch ethernet show
 ====
 
 
+[[confirm-firmware-and-rcf-versions-are-up-to-date]]
 == ファームウェアとRCFのバージョンが最新であることを確認します
 
 スイッチが最新のサポートされているファームウェアを実行していること、および互換性のある参照構成ファイル (RCF) が適用されていることを確認します。詳細は以下をご覧ください。https://mysupport.netapp.com/site/downloads["NetAppサポート ダウンロード ページ"^] 。
@@ -51,6 +53,7 @@ NOTE: 見るlink:config-snmpv3.html["オプション: SNMPv3 を構成する"]SN
 
 
 
+[[confirm-management-network-connection]]
 == 管理ネットワーク接続を確認する
 
 スイッチの管理ポートが管理ネットワークに接続されているかを確認します。

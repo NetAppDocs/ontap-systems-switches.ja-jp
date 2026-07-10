@@ -1,0 +1,42 @@
+---
+permalink: switch-cisco-9332d-gx2b/install-switches-9332d.html 
+sidebar: sidebar 
+keywords: switches, hardware installation, Cisco Nexus, 9332D-GX2B switches 
+summary: Cisco Nexus 9332D-GX2B スイッチを新しい AFX 1K または AFX 2K システムの一部としてインストールするには、スイッチをラックまたはキャビネットに設置し、システムコントローラとシェルフにケーブルで接続し、電源を投入します。 
+---
+= スイッチを取り付ける - Cisco Nexus 9332D-GX2B
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 9332D-GX2B スイッチを新しい AFX 1K または AFX 2K システムの一部としてインストールするには、スイッチをラックまたはキャビネットに設置し、システムコントローラとシェルフにケーブルで接続し、電源を投入します。
+
+.開始する前に
+link:install-prepare-9332d.html["スイッチの取り付け準備をする"]のスイッチの準備手順を完了している必要があります。
+
+.タスク概要
+AFXシステムドキュメントサイトにある該当するAFX 1KまたはAFX 2Kシステムのインストールおよびセットアップワークフローを使用して、システムハードウェアをインストールしてケーブルを接続し、スイッチの電源をオンにします。
+
+システムのインストールとセットアップのワークフローには、次のような手順が含まれます。
+
+* サイトを準備し、箱を開梱して箱の内容を梱包明細書と照合し、サポート特典にアクセスするためにシステムを登録するための手順。
+* NetApp キャビネットまたは通信ラックにスイッチ、コントローラー、およびストレージシェルフを取り付けるための手順。
+* システムの配線手順。コントローラーとスイッチの接続方法、およびストレージシェルフとスイッチの接続方法が含まれます。
+
+
+.手順
+. AFX 1KまたはAFX 2Kシステムのインストールおよびセットアップ手順の一環として、スイッチをインストールしてください。
++
+** AFX 1K システムについては、link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-setup-workflow.html["AFX 1Kのインストールとセットアップのワークフロー"^]を参照してください。
+** AFX 2K システムの場合は、link:https://docs.netapp.com/us-en/ontap-afx/install-afx-2k/install-setup-workflow.html["AFX 2Kのインストールとセットアップのワークフロー"^]。
+
+
+
+
+
+NOTE: スイッチのインストールが完了すると、AFX のインストールおよびセットアップワークフローの手順に従って、スイッチを設定するためにこのスイッチドキュメントに戻るよう案内されます。
+
+.次の手順
+AFX 1K または AFX 2K システムのインストールの一環としてスイッチをインストール、配線、電源投入したら、link:https://review.docs.netapp.com/us-en/ontap-systems-switches_hotfix-refactor-phase1/switch-cisco-9332d-gx2b/install-configure-switches-in-afx-workflow-9332d.html#configure-switches["スイッチを設定する"]、その後link:https://review.docs.netapp.com/us-en/ontap-systems-switches_hotfix-refactor-phase1/switch-cisco-9332d-gx2b/install-configure-switches-in-afx-workflow-9332d.html#complete-afx-system-setup["AFXシステムのセットアップを完了する"]。

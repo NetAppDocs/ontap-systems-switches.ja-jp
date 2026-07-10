@@ -31,6 +31,7 @@ Nexus 3232C スイッチを初めてセットアップした後、リファレ�
 
 
 
+[[step-1-install-the-rcf-on-the-switches]]
 == ステップ1: スイッチにRCFをインストールする
 
 . SSH またはシリアル コンソールを使用してスイッチ cs2 にログインします。
@@ -153,6 +154,7 @@ RCF の *インストール ノート*、*重要ノート*、および *バナ�
 
 
 
+[[step-2-verify-the-switch-connections]]
 == ステップ2：スイッチの接続を確認する
 
 . クラスター ポートに接続されているスイッチ ポートが *稼働中* であることを確認します。
@@ -259,6 +261,7 @@ cluster1::*>
 
 
 
+[[step-3-setup-your-ontap-cluster]]
 == ステップ3: ONTAPクラスタをセットアップする
 
 NetApp、 System Manager を使用して新しいクラスタを設定することをお勧めします。

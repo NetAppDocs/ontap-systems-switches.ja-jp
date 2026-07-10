@@ -1,0 +1,27 @@
+---
+permalink: switch-cisco-9808/configure-install-upgrade-nxos-overview-9808.html 
+sidebar: sidebar 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9808 
+summary: AFX 2Kシステム用のNexus 9808スイッチにNX-OSをインストールまたはアップグレードできます。 
+---
+= NX-OSのインストールまたはアップグレードの概要 - Cisco Nexus 9808
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NX-OS を、AFX 2K システム向けの Cisco Nexus 9808 スイッチにインストールまたはアップグレードできます。
+
+
+NOTE: NX-OSのインストールまたはアップグレードは、参照構成ファイル（RCF）のインストールまたはアップグレードとは独立しています。NX-OSとRCFの両方をインストールまたはアップグレードする場合は、先にNX-OSをインストールまたはアップグレードすることをお勧めします。
+
+* link:configure-install-nxos-9808.html["NX-OSをインストールします"]
++
+NX-OSは、新しいAFX 2Kシステムのインストール、スーパーバイザーモジュールの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする際に、スイッチにインストールします。
+
+* link:configure-upgrade-nxos-9808.html["NX-OSをアップグレードする"]
++
+新しいハードウェアまたは新しい ONTAP バージョンをAFX 2Kシステムでサポートするために、スイッチの NX-OS をアップグレードします。
+
+

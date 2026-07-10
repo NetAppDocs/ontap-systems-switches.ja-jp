@@ -17,6 +17,7 @@ NX-OSは、Cisco Systemsが提供するNexusシリーズ イーサネット ス�
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 .サポートされているポートとノード接続
@@ -34,6 +35,7 @@ NX-OSは、Cisco Systemsが提供するNexusシリーズ イーサネット ス�
 
 
 
+[[install-the-software]]
 == ソフトウェアをインストールする
 
 この手順の例では2つのノードを使用していますが、1つのクラスタには最大24のノードを含めることができます。

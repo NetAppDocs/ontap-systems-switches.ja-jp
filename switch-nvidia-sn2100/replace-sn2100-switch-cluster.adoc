@@ -15,6 +15,7 @@ summary: クラスタネットワークで障害が発生したNVIDIA SN2100ス�
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 .既存のクラスタとネットワークインフラストラクチャ
@@ -44,6 +45,7 @@ NOTE: クラスタLIFを移行するコマンドは、そのクラスタLIFが�
 
 
 
+[[enable-console-logging]]
 == コンソールログを有効にする
 
 NetApp、使用しているデバイスでコンソール ログを有効にし、スイッチを交換するときに次のアクションを実行することを強くお勧めします。
@@ -55,6 +57,7 @@ NetApp、使用しているデバイスでコンソール ログを有効にし�
 
 
 
+[[replace-the-switch]]
 == スイッチを交換する
 
 .例について
@@ -145,6 +148,7 @@ swp16      100G   BondMember  sw1                swp16
 ====
 
 
+[[step-1-prepare-for-replacement]]
 === ステップ1: 交換の準備
 
 . このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
@@ -174,6 +178,7 @@ advancedのプロンプト（*>）が表示されます。
 
 
 
+[[step-2-configure-ports-and-cabling]]
 === ステップ2: ポートとケーブルを構成する
 
 [role="tabbed-block"]
@@ -627,6 +632,7 @@ e3b       Cluster      Cluster          up    9000  auto/10000  healthy  false
 ====
 
 
+[[step-3-verify-the-configuration]]
 === ステップ3: 構成を確認する
 
 [role="tabbed-block"]

@@ -15,6 +15,7 @@ summary: 既存の 2 ノード スイッチレス クラスタ環境がある場
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 .開始する前に
@@ -53,6 +54,7 @@ SMTP、SNMP、SSH などの以前のサイトのカスタマイズは、新し�
 
 
 
+[[migrate-the-switches]]
 == スイッチを移行する
 
 .例について
@@ -70,6 +72,7 @@ SMTP、SNMP、SSH などの以前のサイトのカスタマイズは、新し�
 
 
 
+[[step-1-prepare-for-migration]]
 === ステップ1: 移行の準備
 
 . 権限レベルを上級に変更するには、次のように入力します。 `y`続行するように求められたら:
@@ -105,6 +108,7 @@ cluster::*> system node autosupport invoke -node * -type all -message MAINT=2h
 
 
 
+[[step-2-configure-ports]]
 === ステップ2: ポートを構成する
 
 . 新しいクラスタ スイッチ cs1 と cs2 の両方で、ノード側のポート (ISL ポートではない) をすべて無効にします。
@@ -865,6 +869,7 @@ NOTE: リリース 8.3 以降の場合、コマンドは次のようになりま
 
 
 
+[[step-3-complete-the-configuration]]
 === ステップ3: 設定を完了する
 
 . すべてのインターフェースが表示されていることを確認します `true`「ホーム」列に：

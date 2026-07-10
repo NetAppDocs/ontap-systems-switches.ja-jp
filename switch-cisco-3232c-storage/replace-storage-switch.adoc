@@ -15,6 +15,7 @@ summary: 特定の一連のタスクを実行することで、障害のあるCi
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 既存のネットワーク構成には、次の特性が必要です。
@@ -39,12 +40,14 @@ summary: 特定の一連のタスクを実行することで、障害のあるCi
 
 
 
+[[replace-the-switch]]
 == スイッチを交換する
 
 この手順では、2 番目の Nexus 3232C ストレージ スイッチ s2 を新しい 3232C スイッチ ns2 に置き換えます。2 つのノードは cluster1-01 と cluster1-02 です。
 
 
 
+[[step-1-confirm-the-switch-to-be-replaced-is-s2]]
 === ステップ1：交換するスイッチがs2であることを確認する
 
 . このクラスタでAutoSupportが有効になっている場合は、 AutoSupportメッセージを呼び出して自動ケース作成を抑制します。
@@ -145,6 +148,7 @@ SHFGD2008000022         Eth1/8          120        S           e0a
 
 
 
+[[step-2-configure-cabling]]
 === ステップ2: ケーブル配線を構成する
 
 . [[5]]ストレージシステムのシェルフポートを確認します。
@@ -177,6 +181,7 @@ shelf  id  remote-port  remote-device
 
 
 
+[[step-3-verify-all-device-configurations-on-switch-ns2]]
 === ステップ3：スイッチns2のすべてのデバイス構成を確認する
 
 . ストレージ ノード ポートのヘルス ステータスを確認します。

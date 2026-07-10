@@ -15,6 +15,7 @@ summary: ONTAPクラスタの古いCiscoクラスタ スイッチは、無停止
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 次のことを確認してください。
@@ -40,6 +41,7 @@ NOTE: AFF A800またはAFF C800システムで e0a および e1a クラスタ �
 
 
 
+[[migrate-the-switches]]
 == スイッチを移行する
 
 .例について
@@ -93,6 +95,7 @@ NOTE: この手順では、動作中のスイッチ間リンク (ISL) は必要�
 
 
 
+[[step-1-prepare-for-migration]]
 === ステップ1: 移行の準備
 
 . このクラスタでAutoSupportが有効になっている場合は、 AutoSupportメッセージを呼び出して自動ケース作成を抑制します。 `system node autosupport invoke -node * -type all -message MAINT=xh`
@@ -114,6 +117,7 @@ advancedのプロンプト（*>）が表示されます。
 
 
 
+[[step-2-configure-ports-and-cabling]]
 === ステップ2: ポートとケーブルを構成する
 
 . 新しいスイッチで、スイッチ cs1-new と cs2-new 間の ISL がケーブル接続され、正常であることを確認します。
@@ -620,6 +624,7 @@ Group Port-       Type     Protocol  Member Ports
 
 
 
+[[step-3-verify-the-configuration]]
 === ステップ3: 構成を確認する
 
 . クラスタLIFで自動リバートを有効にします。

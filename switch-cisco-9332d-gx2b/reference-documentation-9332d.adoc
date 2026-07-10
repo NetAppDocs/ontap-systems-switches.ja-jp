@@ -1,0 +1,146 @@
+---
+sidebar: sidebar 
+permalink: switch-cisco-9332d-gx2b/reference-documentation-9332d.html 
+keywords: shared storage cluster switch 
+summary: Cisco Nexus 9332D-GX2B スイッチの新規 AFX 1K または AFX 2K システムの一部としての設置および構成、または既存スイッチの保守については、該当する Cisco スイッチのドキュメントおよび NetApp システムドキュメントを参照してください。 
+---
+= 参考資料 - Cisco Nexus 9332D-GX2B
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 9332D-GX2B スイッチの新規 AFX 1K または AFX 2K システムの一部としての設置および構成、または既存スイッチの保守については、該当する Cisco スイッチのドキュメントおよび NetApp システムドキュメントを参照してください。
+
+
+NOTE: 新しい AFX 1K または AFX 2K システムの一部としてスイッチをインストールおよび構成するための手順については、link:install-configure-switches-in-afx-workflow-9332d.html["AFXシステムワークフローでのスイッチのインストールおよび設定"]を参照してください。
+
+
+
+[[cisco-switch-documentation]]
+== Ciscoスイッチのドキュメント
+
+Cisco Nexus 9332D-GX2B スイッチを新しい AFX 1K または AFX 2K システムの一部としてインストールおよび設定するには、以下の Cisco ドキュメントを参照して、スイッチのリリースノート、安全情報、インストールオプション、初期ソフトウェア設定、およびコマンドリファレンスについて理解を深めてください。
+
+スイッチのインストールと設定が完了したら、該当する Cisco のドキュメントを参照してスイッチを管理できます。
+
+これらのドキュメントはすべてlink:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズ スイッチのサポート"^]ページで入手できます。
+
+[cols="1,2,3"]
+|===
+| タスクの種類 | Cisco ドキュメントタイトル | 説明 
+
+
+ a| 
+インストールと設定
+ a| 
+link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-release-notes-list.html["Cisco Nexus 9000 シリーズ NX-OS リリース ノート"^](スイッチにインストールされている NX-OS リリースの注記を選択してください)
+ a| 
+Cisco Nexus 9000 シリーズの機能、バグ、および制限について説明します。
+
+
+
+ a| 
+インストールと設定
+ a| 
+link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/mds9000/hw/regulatory/compliance/RCSI.html?dtid=osscdc000283&linkclickid=srch["Cisco Nexus 9000 シリーズの規制コンプライアンスおよび安全性に関する情報"^]
+ a| 
+Nexus 9000 シリーズ スイッチに関する国際機関のコンプライアンス、安全性、および法定情報を提供します。
+
+
+
+ a| 
+インストールと設定
+ a| 
+link:https://www.cisco.com/c/en/us/td/docs/dcn/hw/nx-os/nexus9000/9332d-gx2b/cisco-nexus-9332d-gx2b-nx-os-mode-switch-hardware-installation-guide.html["Cisco Nexus 9332D-GX2B NX-OS モード スイッチ ハードウェア設置ガイド"^]
+ a| 
+サイト要件、スイッチ ハードウェアの詳細、およびインストール オプションに関する詳細情報を提供します。
+
+
+
+ a| 
+インストールと設定
+ a| 
+link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-and-configuration-guides-list.html["Cisco Nexus 9000 シリーズ スイッチ ソフトウェア コンフィギュレーション ガイド"^](スイッチにインストールされている NX-OS リリースのガイドを選択してください)
+ a| 
+ONTAP操作用にスイッチを構成する前に必要な初期スイッチ構成情報を提供します。
+
+
+
+ a| 
+インストール、設定、および保守
+ a| 
+link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/102x/command-reference/config/b_n9k_config_commands_1021.html["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]
+ a| 
+Ciscoが提供するさまざまなコマンド リファレンスへのリンクを提供します。
+
+
+
+ a| 
+インストールと設定
+ a| 
+link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/101x/upgrade/cisco-nexus-9000-nx-os-software-upgrade-downgrade-guide-101x.html["Cisco Nexus 9000 シリーズ NX-OS ソフトウェアのアップグレードおよびダウングレード ガイド"^](スイッチにインストールされている NX-OS リリースのガイドを選択してください)
+ a| 
+必要に応じて、スイッチをONTAP対応スイッチ ソフトウェアにダウングレードする方法に関する情報を提供します。
+
+
+
+ a| 
+メンテナンス
+ a| 
+link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-system-message-guides-list.html["Cisco Nexus 9000 シリーズ NX-OS システム メッセージ リファレンス"^]
+ a| 
+Cisco Nexus 9000 シリーズ スイッチのシステム メッセージについて説明します。システム メッセージには情報メッセージと、リンク、内部ハードウェア、またはシステム ソフトウェアの問題の診断に役立つメッセージが含まれます。
+
+|===
+
+
+[[netapp-systems-documentation]]
+== NetApp システムドキュメント
+
+Cisco Nexus 9332D-GX2B スイッチを新しい AFX 1K または AFX 2K システムの一部としてインストールおよび設定するには、以下の NetApp システム ドキュメントとリソースを参照して、AFX システム、サポートされている ONTAP リリース、サポートされているハードウェア構成、およびシステム インストール要件を把握してください。
+
+[cols="1,2,3"]
+|===
+| タスクの種類 | ONTAPドキュメントタイトル | 説明 
+
+
+ a| 
+インストールと設定
+ a| 
+link:https://docs.netapp.com/us-en/ontap-afx/index.html["AFXシステムのドキュメント"^]
+ a| 
+NetAppハードウェアのインストール方法について説明します。
+
+
+
+ a| 
+インストールと設定
+ a| 
+link:https://docs.netapp.com/us-en/ontap-family/["ONTAPのドキュメント"^]
+ a| 
+ONTAPリリースのあらゆる側面に関する詳細情報を提供します。
+
+
+
+ a| 
+インストールと設定
+ a| 
+link:https://hwu.netapp.com["Hardware Universe"^]
+ a| 
+NetAppのハードウェア構成と互換性に関する情報を提供します。
+
+
+
+ a| 
+インストールと設定
+ a| 
+link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^]
+ a| 
+ストレージシステムの設置要件に関する詳細情報を提供します。
+
+|===

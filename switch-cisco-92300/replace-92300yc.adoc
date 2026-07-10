@@ -15,6 +15,7 @@ summary: クラスタネットワーク内の故障したNexus 92300YCスイッ�
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 .開始する前に
@@ -45,6 +46,7 @@ STP、SNMP、SSH などの以前のサイトのカスタマイズは、新しい
 
 
 
+[[enable-console-logging]]
 == コンソールログを有効にする
 
 NetApp、使用しているデバイスでコンソール ログを有効にし、スイッチを交換するときに次のアクションを実行することを強くお勧めします。
@@ -56,6 +58,7 @@ NetApp、使用しているデバイスでコンソール ログを有効にし�
 
 
 
+[[replace-the-switch]]
 == スイッチを交換する
 
 .例について
@@ -162,6 +165,7 @@ Total entries displayed: 4
 ====
 
 
+[[step-1-prepare-for-replacement]]
 === ステップ1: 交換の準備
 
 . 適切なRCFとイメージをスイッチnewcs2にインストールし、必要なサイトの準備を行います。
@@ -282,6 +286,7 @@ RPC status:
 ====
 
 
+[[step-2-configure-cables-and-ports]]
 === ステップ2: ケーブルとポートを構成する
 
 . Nexus 92300YCスイッチcs1のISLポート1/65および1/66をシャットダウンします。
@@ -447,6 +452,7 @@ e0b       Cluster      Cluster          up    9000  auto/10000  healthy  false
 
 
 
+[[step-3-complete-the-procedure]]
 === ステップ3: 手順を完了する
 
 . リモート クラスタ インターフェイスの接続を確認します。

@@ -15,6 +15,7 @@ ONTAPクラスタ用の古いCiscoスイッチからNVIDIA SN2100 ストレー�
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 古い Cisco スイッチを NVIDIA SN2100 ストレージスイッチに交換する際には、特定の構成情報、ポート接続、およびケーブル配線の要件を把握しておく必要があります。link:configure-overview-sn2100-cluster.html["NVIDIA SN2100スイッチのインストールと構成の概要"]を参照してください。
@@ -48,6 +49,7 @@ ONTAPクラスタ用の古いCiscoスイッチからNVIDIA SN2100 ストレー�
 
 
 
+[[migrate-the-switches]]
 == スイッチを移行する
 
 .例について
@@ -72,6 +74,7 @@ ONTAPクラスタ用の古いCiscoスイッチからNVIDIA SN2100 ストレー�
 
 
 
+[[step-1-prepare-for-migration]]
 === ステップ1: 移行の準備
 
 . AutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を停止します。
@@ -89,6 +92,7 @@ advancedのプロンプト（*>）が表示されます。
 
 
 
+[[step-2-configure-ports-and-cabling]]
 === ステップ2: ポートとケーブルを構成する
 
 . 各ストレージ インターフェイスの管理ステータスまたは動作ステータスを決定します。
@@ -417,6 +421,7 @@ swp6       100G   Trunk/L2  SHFFG1826000102        e0b
 
 
 
+[[step-3-complete-the-procedure]]
 === ステップ3: 手順を完了する
 
 . イーサネット スイッチ ヘルス モニタ ログ収集機能のパスワードを作成します。

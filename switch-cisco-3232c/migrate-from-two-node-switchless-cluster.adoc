@@ -15,6 +15,7 @@ summary: 2 ノードのスイッチレス クラスタがある場合は、 Cisc
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 .開始する前に
@@ -70,6 +71,7 @@ summary: 2 ノードのスイッチレス クラスタがある場合は、 Cisc
 ====
 
 
+[[step-1-display-and-migrate-physical-and-logical-ports]]
 == ステップ1: 物理ポートと論理ポートを表示して移行する
 
 . このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
@@ -323,6 +325,7 @@ cluster::*> *network interface migrate -vserver cluster -lif n2_clus1 -source-no
 
 
 
+[[step-2-shut-down-the-reassigned-lifs-and-disconnect-the-cables]]
 == ステップ2: 再割り当てしたLIFをシャットダウンし、ケーブルを外します
 
 . クラスター インターフェースが正常に移行されたことを確認します。
@@ -438,6 +441,7 @@ Larger than PMTU communication succeeds on 4 path(s) RPC status:
 
 
 
+[[step-3-enable-the-cluster-ports]]
 == ステップ3: クラスターポートを有効にする
 
 . ノード n2 の e4a からケーブルを外します。
@@ -554,6 +558,7 @@ Cluster
 
 
 
+[[step-4-enable-the-reassigned-lifs]]
 == ステップ4: 再割り当てしたLIFを有効にする
 
 . 各ノードのクラスター ポートの接続を表示します。

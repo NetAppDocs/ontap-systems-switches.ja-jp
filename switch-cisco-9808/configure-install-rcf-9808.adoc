@@ -1,0 +1,150 @@
+---
+permalink: switch-cisco-9808/configure-install-rcf-9808.html 
+sidebar: sidebar 
+keywords: install rcf, cisco switches 
+summary: 新しい AFX 2K システムのインストールとセットアップの一環として、故障したスーパーバイザーモジュールの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする際に、新しい Cisco Nexus 9808 スイッチに RCF をインストールします。 
+---
+= RCFのインストール - Cisco Nexus 9808
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+新しい AFX 2K システムのインストールの一部として、スーパーバイザーモジュールの交換、またはスイッチの工場出荷時設定へのリセットを行う際に、新しい Cisco Nexus 9808 スイッチに RCF をインストールします。
+
+.開始する前に
+* スイッチの電源がオンになっている必要があり、link:configure-complete-initial-setup-9808.html["スイッチの初期設定を完了する"]の手順を完了している必要があります。
+* 目的の NX-OS バージョンを link:configure-install-nxos-9808.html["NX-OSをインストールします"] の手順を使用してインストールしておく必要があります。
+* link:configure-install-upgrade-rcf-overview-9808.html["RCF のインストールまたはアップグレードの概要"]ページを読んでいる必要があります。
+* スーパーバイザーモジュールの交換やスイッチの工場出荷時設定へのリセットの一環として RCF をスイッチにインストールする場合は、クラスタが完全に機能していることを確認してください。つまり、ログにエラーや同様の問題がないことを確認してください。
++
+RCFを新しいAFXシステムのインストールの一部としてインストールする場合は、この要件をスキップできます。AFXシステムのインストールとセットアップのこの段階では、AFXシステムのコントローラの電源がまだ入っていないためです。
+
+
+
+.タスク概要
+* 新しい AFX 2K システムのインストールの一環としてスイッチをインストールした場合は、この手順に従って、最初のスイッチ （cs1） にリファレンス構成ファイル （RCF） をインストールし、次に 2 番目のスイッチ （cs2） に対して同じ手順を繰り返します。
+* この手順では、Cisco Nexus 9000 シリーズスイッチのコマンドのみを使用します。
+* この手順の例では、最初のスイッチをcs1、2番目のスイッチをcs2と表記します。
+
+
+
+
+[[step-1-prepare-to-install-the-rcf]]
+== ステップ1：RCFのインストール準備
+
+スイッチにRCFをインストールする準備として、RCFのダウンロードに必要な接続が揃っていることを確認し、RCFをダウンロードしてください。
+
+.手順
+. HTTP、FTP、またはTFTPサーバーへのアクセス権が必要です。これらのサーバーのいずれかにアクセスすることで、サポートされているバージョンのRCFをダウンロードできます。
+. お使いのAFXシステムの種類に対応したRCFを、link:http://mysupport.netapp.com/["mysupport.netapp.com"^]のNetApp Support Siteからダウンロードしてください。
++
+
+NOTE: 新しいスイッチにはRCFはインストールされていません。スイッチにRCFをインストールする必要があります。
+
+. 各スイッチはコンソールに接続されているか、各スイッチへのリモートアクセスが可能である必要があります。
+. シリアルコンソールを使用してスイッチに接続しているか、基本的な設定情報が保存されている必要があります。これは、RCFアップグレード手順では、スイッチの設定を消去し、基本的な構成を実行する必要があるためです。
+
+
+
+
+[[step-2-install-the-rcf]]
+== ステップ2：RCFをインストールする
+
+最初のスイッチ（cs1）に RCF をインストールするには、RCF をコピーして bootflash に適用し、バナー出力を確認し、RCF バージョンが正しいことを確認し、カスタム追加を記録し、基本的な構成の詳細を保存し、 `write_erase.cfg`ファイルが作成されていることを確認し、現在保存されている設定を消去し、以前に保存した基本設定をスタートアップ設定にコピーしてから、スイッチを再起動します。RCF を新しい AFX システムのインストールの一部としてインストールする場合は、2 番目のスイッチ（cs2）でもこれらの手順を繰り返します。
+
+. SSH またはシリアル コンソールを使用してスイッチ cs1 にログインします。
+. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs1のブートフラッシュにRCFをコピーします。
++
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]ガイドの適切なガイドを参照してください。
+
++
+`copy <protocol>: bootflash: vrf management`
+
++
+.例を表示
+[%collapsible]
+====
+この例では、TFTPを使用してスイッチcs1のブートフラッシュにRCFをコピーしています。
+
+[listing, subs="+quotes"]
+----
+cs1# *copy tftp: bootflash: vrf management*
+Enter source filename: *RCF-v10.1-NX9808-CL1-ST1.txt*
+Enter hostname for the tftp server: *172.22.201.50*
+Trying to connect to tftp server......Connection to Server Established.
+TFTP get operation was successful
+Copy complete, now saving to disk (please wait)...
+----
+====
+. 以前にコピーしたRCFファイルをブートフラッシュに適用します。
++
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/series.html["Cisco Nexus 9000 シリーズ NX-OS コマンド リファレンス"^]ガイドの適切なガイドを参照してください。
+
++
+この例では、スイッチ cs1 に RCF ファイル `RCF-v10.1-NX9808-CL1-ST1.txt`がインストールされています：
+
++
+[listing, subs="+quotes"]
+----
+cs1# *copy RCF-v10.1-NX9808-CL1-ST1.txt running-config echo-commands*
+----
+. バナー出力を調べる `show banner motd`指示。スイッチが正しく動作するように設定するためには、出力を確認し、その指示に従う必要があります。
++
+.例を表示
+[%collapsible]
+====
+[listing]
+----
+cs1# show banner motd
+
+******************************************************************************
+* NetApp Reference Configuration File (RCF)
+*
+* Switch   : NX9808
+* Filename : RCF-v10.1-NX9808-CL1-ST1.txt
+* Date     : 06-15-2026
+* Version  : v10.1
+* Port Usage:
+* Ports   1-18 (LC1-LC8) : 400GbE Cluster/Storage/HA ports.
+* Ports   19-35 (LC1-LC8): 4 * 100 GbE Storage shelf ports, int e1-e8/{19-35}/1-4
+* Port    36 (LC1-LC8)   : Intra-Cluster ISL Ports, int e1-e8/36
+* IMPORTANT NOTES
+* Interface port-channel998/9 is reserved to identify the version of this file.
+
+******************************************************************************
+----
+====
+. RCFが正しいバージョンであることを確認してください。
++
+`show running-config`
+
++
+次の情報が正しいことを確認してください。
+
++
+** RCFのバナー
+** ノードとポートの設定
+** カスタマイズ
++
+出力内容はサイトの構成によって異なります。ポートの設定を確認し、インストールしたRCFに固有の変更がないかリリース ノートを参照してください。
+
+
+
+. 現在実行中の設定をスタートアップ設定にコピーして、永続化します。
++
+`cs1# *copy bootflash:write_erase.cfg startup-config*`
+
+. スイッチをリブートします。
++
+`cs1# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
+
+. スイッチcs2でもこれらの手順を繰り返してください。
+
+
+.次の手順
+RCFをスイッチにインストールしたら、link:configure-verify-ssh-9808.html["ログ収集のためにSSHを確認する"]。

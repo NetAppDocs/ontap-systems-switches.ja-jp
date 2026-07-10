@@ -1,0 +1,31 @@
+---
+permalink: switch-cisco-9364d-gx2a/install-complete-afx-setup-9364d.html 
+sidebar: sidebar 
+keywords: switches, complete system setup, Cisco Nexus, 9364D-GX2A switches, AFX 
+summary: Cisco Nexus 9364D-GX2A スイッチの設定手順が完了したら、AFX システムドキュメントサイトにアクセスして、AFX 1K または AFX 2K システムのストレージシェルフとコントローラの電源をオンにし、スイッチの接続を確認し、AFX システムのセットアップを完了します。 
+---
+= AFXシステムのセットアップを完了する - Cisco Nexus 9364D-GX2A
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 9364D-GX2A スイッチの設定手順が完了したら、AFX システムドキュメントサイトにアクセスして、AFX 1K または AFX 2K システムのストレージシェルフとコントローラの電源をオンにし、スイッチの接続を確認し、AFX システムのセットアップを完了します。
+
+.開始する前に
+* スイッチの設定手順を link:configure-switch-workflow-9364d.html["スイッチのワークフローを設定する"] で完了している必要があります。
+* 各スイッチはコンソールに接続されているか、各スイッチへのリモートアクセスが可能である必要があります。
+
+
+.手順
+. AFX 1KまたはAFX 2Kシステムの電源投入とセットアップの手順を完了してください：
++
+** AFX 1K システムの場合は、link:https://docs.netapp.com/us-en/ontap-afx/install-setup/power-on-hardware.html["AFX 1Kストレージシステムの電源をオンにします"^]の手順を参照してください。
+** AFX 2K システムの場合は、link:https://docs.netapp.com/us-en/ontap-afx/install-afx-2k/power-on-hardware.html["AFX 2K ストレージシステムの電源を入れる"^]の手順に進んでください。
+
+
+
+
+.次の手順
+ストレージシェルフとコントローラーの電源をオンにし、AFX 1KまたはAFX 2Kシステムのセットアップが完了したら、AFXシステムを使用する準備が整います。

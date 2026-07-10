@@ -1,0 +1,20 @@
+---
+permalink: switch-cisco-9808/maintain-overview-9808.html 
+sidebar: sidebar 
+keywords: maintain overview, frus, replace switch, reset to factory defaults, cisco 9808 
+summary: Cisco Nexus 9808 スイッチを適切にメンテナンスし、長期的な信頼性と最適なパフォーマンスを確保します。故障したスイッチコンポーネント（FRU）の交換、障害のあるスイッチの交換、スイッチを工場出荷時のデフォルト設定にリセットするなど、メンテナンス作業を実行できます。 
+---
+= 全体像を把握する - Cisco Nexus 9808
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 9808スイッチの長期的な信頼性と最適なパフォーマンスを維持します。故障したスイッチ部品（FRU）の交換、故障したスイッチの交換、スイッチを工場出荷時のデフォルト設定にリセットするなど、メンテナンス作業を実行できます。
+
+スイッチに対して、以下のメンテナンス作業を実行できます。
+
+* link:maintain-replace-frus-9808.html["FRUを交換する"]
+* link:maintain-reset-switch-9808.html["スイッチを工場出荷時の設定にリセットする"]
+

@@ -15,6 +15,7 @@ BES-53248 スイッチの設置については、必ずスイッチおよびコ�
 
 
 
+[[broadcom-documentation]]
 == Broadcomのドキュメント
 
 BES-53248クラスタスイッチをセットアップするには、Broadcomサポートサイトから入手できる以下のドキュメントが必要ですlink:https://www.broadcom.com/support/bes-switch["Broadcom イーサネットスイッチ製品ライン"^]。
@@ -81,6 +82,7 @@ _クラスタネットワークと管理ネットワークの互換性マトリ�
 |===
 
 
+[[ontap-systems-documentation-and-kb-articles]]
 == ONTAPシステムのドキュメントと KB 記事
 
 ONTAP システムをセットアップするには、NetApp Support Site（link:http://mysupport.netapp.com/["mysupport.netapp.com"^]）またはナレッジベース（KB）サイト（link:https://kb.netapp.com/["kb.netapp.com"^]）から以下のドキュメントが必要です。

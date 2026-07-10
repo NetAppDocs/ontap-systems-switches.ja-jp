@@ -2,44 +2,60 @@
 section: switch-cisco-9332d-gx2b
 title: Cisco Nexus 9332D-GX2B
 entries:
-- title: 始めましょう
-  pdf-filename: Overview_9332d-gx2b
+- title: リファレンスドキュメント
+  pdf-filename: Reference_documents_9332d-gx2b
+  url: "/switch-cisco-9332d-gx2b/reference-documentation-9332d.html"
+- title: AFXシステムでスイッチをインストールおよび設定する
+  pdf-filename: AFXシステム9332d-gx2bでのスイッチのインストールおよび設定
   entries:
-  - title: クイック スタート
-    url: "/switch-cisco-9332d-gx2b/configure-switch-overview-9332d-cluster.html"
-  - title: スイッチポートの詳細
-    url: "/switch-cisco-9332d-gx2b/configure-setup-ports-9332d.html"
-  - title: 必要な書類
-    url: "/switch-cisco-9332d-gx2b/required-documentation-9332d-cluster.html"
-  - title: Smart Call Homeの要件
-    url: "/switch-cisco-9332d-gx2b/smart-call-9332d-cluster.html"
-- title: ハードウェアを設置
-  url: "/switch-cisco-9332d-gx2b/install-hardware.html"
-  pdf-filename: Install_hardware_9332d-gx2b
-- title: ソフトウェアを構成する
-  pdf-filename: Configure_software_9332d-gx2b
+  - title: スイッチのインストールと設定のワークフロー
+    url: "/switch-cisco-9332d-gx2b/install-configure-switches-in-afx-workflow-9332d.html"
+  - title: インストールの準備
+    url: "/switch-cisco-9332d-gx2b/install-prepare-9332d.html"
+  - title: スイッチを取り付ける
+    url: "/switch-cisco-9332d-gx2b/install-switches-9332d.html"
+    pdf-filename: Install_hardware_9332d-gx2b
+  - title: AFX システムのセットアップを完了する
+    url: "/switch-cisco-9332d-gx2b/install-complete-afx-setup-9332d.html"
+- title: スイッチの設定
+  pdf-filename: configure_switch_9332d-gx2b
   entries:
-  - title: ソフトウェアワークフローを構成する
-    url: "/switch-cisco-9332d-gx2b/configure-software-overview-9332d-cluster.html"
-  - title: スイッチを設定する
-    url: "/switch-cisco-9332d-gx2b/setup-switch-9332d-cluster.html"
-  - title: NX-OSとRCFのインストールの準備
-    url: "/switch-cisco-9332d-gx2b/install-nxos-overview-9332d-cluster.html"
-  - title: NX-OSソフトウェアをインストールまたはアップグレードする
-    url: "/switch-cisco-9332d-gx2b/install-nxos-software-9332d-cluster.html"
+  - title: スイッチのワークフローを設定する
+    url: "/switch-cisco-9332d-gx2b/configure-switch-workflow-9332d.html"
+  - title: スイッチの初期設定を完了する
+    url: "/switch-cisco-9332d-gx2b/configure-complete-initial-setup-9332d.html"
+  - title: ケーブル配線と構成要件を確認する
+    url: "/switch-cisco-9332d-gx2b/configure-review-cabling-config-requirements-9332d.html"
+  - title: NX-OSをインストールまたはアップグレードする
+    pdf-filename: Install_upgrade_nx-os
+    entries:
+    - title: NX-OSのインストールまたはアップグレードの概要
+      url: "/switch-cisco-9332d-gx2b/configure-install-upgrade-nxos-overview-9332d.html"
+    - title: NX-OSをインストールする
+      url: "/switch-cisco-9332d-gx2b/configure-install-nxos-9332d.html"
+    - title: NX-OSをアップグレードする
+      url: "/switch-cisco-9332d-gx2b/configure-upgrade-nxos-9332d.html"
   - title: RCFをインストールまたはアップグレードする
-    pdf-filename: Install_upgrade_rcf_9332d-gx2b
+    pdf-filename: インストール_アップグレード_rcf
     entries:
     - title: RCF のインストールまたはアップグレードの概要
-      url: "/switch-cisco-9332d-gx2b/install-upgrade-rcf-overview-cluster-9332d.html"
+      url: "/switch-cisco-9332d-gx2b/configure-install-upgrade-rcf-overview-9332d.html"
     - title: RCFのインストール
-      url: "/switch-cisco-9332d-gx2b/install-rcf-software-9332d-cluster.html"
-    - title: RCFバージョンをアップグレードする
-      url: "/switch-cisco-9332d-gx2b/upgrade-rcf-software-9332d-cluster.html"
-  - title: SSHが有効になっていることを確認する
-    url: "/switch-cisco-9332d-gx2b/configure-ssh-keys.html"
-- title: スイッチを工場出荷時の状態にリセットする
-  url: "/switch-cisco-9332d-gx2b/reset-switch-9332d.html"
-- title: 9332D-GX2Bスイッチを交換する
-  pdf-filename: Replace_switches_9332d-gx2b
-  url: "/switch-cisco-9332d-gx2b/replace-9332d-cluster.html"
+      url: "/switch-cisco-9332d-gx2b/configure-install-rcf-9332d.html"
+    - title: RCFのアップグレード
+      url: "/switch-cisco-9332d-gx2b/configure-upgrade-rcf-9332d.html"
+  - title: SSHによるログ収集を確認する
+    url: "/switch-cisco-9332d-gx2b/configure-verify-ssh-9332d.html"
+  - title: スマートコールホームの設定
+    url: "/switch-cisco-9332d-gx2b/configure-smart-call-9332d.html"
+- title: メンテナンス
+  pdf-filename: Maintain_switches_9332d-gx2b
+  entries:
+  - title: 全体像を把握する
+    url: "/switch-cisco-9332d-gx2b/maintain-overview-9332d.html"
+  - title: スイッチを交換する
+    url: "/switch-cisco-9332d-gx2b/replace-9332d-cluster.html"
+  - title: FRUを交換する
+    url: "/switch-cisco-9332d-gx2b/maintain-replace-frus-9332d.html"
+  - title: スイッチを工場出荷時の設定にリセットする
+    url: "/switch-cisco-9332d-gx2b/maintain-reset-switch-9332d.html"

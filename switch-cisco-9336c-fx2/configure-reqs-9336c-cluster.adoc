@@ -18,6 +18,7 @@ Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチのインストールと
 
 
 
+[[ontap-support]]
 == ONTAPのサポート
 
 [role="tabbed-block"]
@@ -42,6 +43,7 @@ NOTE: イーサネット スイッチ ヘルス モニタは、 ONTAP 9.13.1P8 �
 ====
 
 
+[[configuration-requirements]]
 == 構成要件
 
 次の点を確認してください。
@@ -52,6 +54,7 @@ NOTE: イーサネット スイッチ ヘルス モニタは、 ONTAP 9.13.1P8 �
 
 
 
+[[network-requirements]]
 == ネットワーク要件
 
 すべてのスイッチ構成には次のネットワーク情報が必要です。

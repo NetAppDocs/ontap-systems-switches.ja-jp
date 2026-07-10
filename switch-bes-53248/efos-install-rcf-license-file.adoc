@@ -18,6 +18,7 @@ CAUTION: RCF をインストールするとすべてのポートが構成され�
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 .開始する前に
@@ -35,6 +36,7 @@ CAUTION: RCF をインストールするとすべてのポートが構成され�
 
 
 
+[[install-the-configuration-file]]
 == 設定ファイルをインストールする
 
 .例について
@@ -60,6 +62,7 @@ CAUTION: 新しいスイッチソフトウェアバージョンとRCFをイン�
 
 
 
+[[step-1-prepare-for-the-installation]]
 == ステップ1: インストールの準備
 
 . このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
@@ -278,6 +281,7 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 
 
 
+[[step-2-configure-ports]]
 == ステップ2: ポートを構成する
 
 . スイッチ cs2 で、クラスター内のノードに接続されているポートのリストを確認します。
@@ -948,6 +952,7 @@ Configuration Saved! System will now restart!
 
 
 
+[[step-3-verify-the-configuration]]
 == ステップ3: 構成を確認する
 
 . スイッチ cs1 で、クラスタ ポートに接続されているスイッチ ポートが *up* であることを確認します。

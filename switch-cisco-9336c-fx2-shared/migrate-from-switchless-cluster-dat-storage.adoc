@@ -24,6 +24,7 @@ summary:
 
 
 
+[[review-requirements]]
 == 要件の確認
 
 次のことを確認してください。
@@ -56,6 +57,7 @@ summary:
 
 
 
+[[migrate-the-switches]]
 == スイッチを移行する
 
 .例について
@@ -70,6 +72,7 @@ summary:
 
 
 
+[[step-1-migrate-from-a-switchless-cluster-with-direct-attached]]
 === ステップ1: 直接接続されたスイッチレスクラスタから移行する
 
 . このクラスタでAutoSupportが有効になっている場合は、 AutoSupportメッセージを呼び出して自動ケース作成を抑制します。 `system node autosupport invoke -node * -type all -message MAINT=xh` 。
@@ -649,6 +652,7 @@ RPC status:
 
 
 
+[[step-2-set-up-the-shared-switch]]
 === ステップ2: 共有スイッチを設定する
 
 この手順の例で使用するスイッチとノードの名前は次のとおりです。

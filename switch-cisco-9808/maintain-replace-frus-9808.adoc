@@ -1,0 +1,39 @@
+---
+permalink: switch-cisco-9808/maintain-replace-frus-9808.html 
+sidebar: sidebar 
+keywords: switches, hardware installation, Cisco Nexus, 9808 switches 
+summary: Cisco Nexus 9808スイッチには、故障した場合に交換可能なフィールド交換可能ユニット（FRU）が搭載されています。 
+---
+= FRUを交換する - Cisco Nexus 9808
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 9808スイッチには、故障した場合に交換可能なフィールド交換可能ユニット（FRU）が搭載されています。
+
+.タスク概要
+Cisco Nexus 9808スイッチには、以下のFRUがあります：
+
+* *シャーシドア用フォームエアフィルター*（合計2個）：ドアにはエアフィルターが予め取り付けられています。エアフィルターは3ヶ月ごとに点検し、必要に応じて交換してください。
+* *スーパーバイザーモジュール*（スイッチの注文方法に応じて、合計1つまたは2つ）：スイッチに2つのスーパーバイザーモジュールがインストールされている場合、1つはアクティブモジュールとして、もう1つはスタンバイモジュールとして機能します。アクティブなスーパーバイザーモジュールが取り外されると、スイッチは自動的にスタンバイのスーパーバイザーモジュールをアクティブにします。スイッチにスーパーバイザーモジュールが1つしか搭載されていない場合、稼働中に空いているスーパーバイザースロットに新しいスーパーバイザーモジュールを取り付けることができます。
+* *ラインカード*（合計8枚、各カードに16個の固定400GbEポート搭載）：スイッチは、シャーシに取り付けられた1枚以上のラインカードで動作します。
+* ファン用トレイ（合計2個）
+* *ファブリックモジュール*（合計2個）
+* *電源部品*（合計2個）
+* *ファンモジュール*（合計6個）
+* *OSFP/QSFPトランシーバーモジュール*（32個の固定400GbEポート）
+
+
+.手順
+. Cisco サイトにアクセスして、link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/hw/9800/9808/nx-os/cisco-nexus-9808-nx-os-mode-switch-hardware-installation-guide.html["Cisco Nexus 9808 NX-OS モードスイッチ ハードウェアインストールガイド"^]を参照してください。
+. link:https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/hw/9800/9808/nx-os/cisco-nexus-9808-nx-os-mode-switch-hardware-installation-guide/m-8000-replace-chassis-components.html["シャーシコンポーネントを交換する"^]セクションに移動して、FRUの手順を確認してください。
+. 故障したFRUを交換するには、該当する手順に従ってください。
++
+NetApp のハードウェア構成および互換性情報については、link:https://hwu.netapp.com["NetApp Hardware Universe"^] を参照してください。
+
+
+
+.次の手順
+該当する FRU 手順を Cisco サイトで完了したら、通常の運用を再開できます。
