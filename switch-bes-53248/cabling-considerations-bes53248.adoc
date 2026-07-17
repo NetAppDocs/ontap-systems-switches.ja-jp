@@ -109,3 +109,6 @@ systemshell -node <node> -command sudo sysctl dev.ice.<X>.requested_fec=<auto/fc
 
 
 
+
+.次の手順
+ケーブル配線と構成の要件を満たしたら、スイッチにlink:configure-efos-software.html["EFOSソフトウェアをインストールする"]をインストールします。

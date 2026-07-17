@@ -36,7 +36,7 @@ Nexus 9336C-FX2 および 9336C-FX2-T クラスタ スイッチに NX-OS ソフ�
 
 * link:https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-installation-guides-list.html["ソフトウェアのアップグレードとダウングレードのガイド"^]
 +
-Ciscoスイッチのアップグレードおよびダウングレード手順の完全なドキュメントについては、 Cisco Web サイトで入手可能な適切なソフトウェアおよびアップグレード ガイドを参照してください。
+ソフトウェアのアップグレードおよびダウングレードガイドについては、Cisco のウェブサイトを参照してください。
 
 * link:https://www.cisco.com/c/dam/en/us/td/docs/dcn/tools/nexus-9k3k-issu-matrix/index.html["Cisco Nexus 9000 および 3000 のアップグレードと ISSU マトリックス"^]
 +
@@ -61,11 +61,14 @@ Ciscoスイッチのアップグレードおよびダウングレード手順の
 [[install-the-software]]
 == ソフトウェアをインストールする
 
-この手順では、ONTAPコマンドとCisco Nexus 9000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
+この手順では、Cisco Nexus 9000 シリーズスイッチのコマンドが指定されている場合を除き、ONTAP コマンドを使用してください。
 
 .手順
 . クラスタ スイッチを管理ネットワークに接続します。
 . ping コマンドを使用して、NX-OS ソフトウェアと RCF をホストしているサーバーへの接続を確認します。
++
+`ping <IP address> vrf management`
+
 +
 .例を表示
 [%collapsible]
@@ -74,7 +77,7 @@ Ciscoスイッチのアップグレードおよびダウングレード手順の
 
 [listing, subs="+quotes"]
 ----
-cs2# *ping 172.19.2.1 VRF management*
+cs2# *ping 172.19.2.1 vrf management*
 Pinging 172.19.2.1 with 0 bytes of data:
 
 Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
@@ -93,7 +96,7 @@ Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 cluster1::*> *network device-discovery show*
 Node/       Local  Discovered
 Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
------------ ------ ------------------------- ----------------  --------------
+----------- ------ ------------------------- ----------------- --------------
 cluster1-01/cdp
             e0a    cs1                       Ethernet1/7       N9K-C9336C-FX2
             e0b    cs2                       Ethernet1/7       N9K-C9336C-FX2
@@ -124,38 +127,37 @@ cluster1::*>
 cluster1::*> *network port show -ipspace Cluster*
 
 Node: cluster1-01
-                                                                       Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
-e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
+                                                                        Ignore
+                                                  Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ---- ------------ -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/100000 healthy  false
 
 Node: cluster1-02
-                                                                       Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
-e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
-8 entries were displayed.
+                                                                        Ignore
+                                                  Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ---- ------------ -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/100000 healthy  false
 
 Node: cluster1-03
 
-   Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
-e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+                                                                        Ignore
+                                                  Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ---- ------------ -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/100000 healthy  false
 
 Node: cluster1-04
-                                                                       Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
-e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+                                                                        Ignore
+                                                  Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ---- ------------ -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/100000 healthy  false
 cluster1::*>
 ----
 ====
@@ -170,19 +172,18 @@ cluster1::*>
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface show -vserver Cluster*
-            Logical            Status     Network           Current      Current Is
-Vserver     Interface          Admin/Oper Address/Mask      Node         Port    Home
------------ ------------------ ---------- ----------------- ------------ ------- ----
+            Logical            Status     Network            Current             Current Is
+Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
+----------- ------------------ ---------- ------------------ ------------------- ------- ----
 Cluster
-            cluster1-01_clus1  up/up     169.254.3.4/23     cluster1-01  e0a     true
-            cluster1-01_clus2  up/up     169.254.3.5/23     cluster1-01  e0b     true
-            cluster1-02_clus1  up/up     169.254.3.8/23     cluster1-02  e0a     true
-            cluster1-02_clus2  up/up     169.254.3.9/23     cluster1-02  e0b     true
-            cluster1-03_clus1  up/up     169.254.1.3/23     cluster1-03  e0a     true
-            cluster1-03_clus2  up/up     169.254.1.1/23     cluster1-03  e0b     true
-            cluster1-04_clus1  up/up     169.254.1.6/23     cluster1-04  e0a     true
-            cluster1-04_clus2  up/up     169.254.1.7/23     cluster1-04  e0b     true
-8 entries were displayed.
+            cluster1-01_clus1  up/up      169.254.3.4/23     cluster1-01         e0b     true
+            cluster1-01_clus2  up/up      169.254.3.5/23     cluster1-01         e0b     true
+            cluster1-02_clus1  up/up      169.254.3.8/23     cluster1-02         e0b     true
+            cluster1-02_clus2  up/up      169.254.3.9/23     cluster1-02         e0b     true
+            cluster1-03_clus1  up/up      169.254.1.3/23     cluster1-03         e0b     true
+            cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
+            cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     true
+            cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
 cluster1::*>
 ----
 ====
@@ -223,57 +224,74 @@ cluster1::*>
 +
 `network interface modify -vserver Cluster -lif * -auto-revert false`
 
-. NX-OSソフトウェアおよびEPLDイメージをNexus 9336C-FX2スイッチにコピーします。
+. NX-OS ソフトウェアと EPLD イメージをダウンロードしてインストールします。手順は、現在の NX-OS バージョンとターゲットの NX-OS バージョンによって異なる場合があります。
 +
-.例を表示
+ご自身の状況に該当するタブを選択してください。
+
++
+** バージョン10.4(5)(M)にアップグレード
+** 10.4(5)(M)以前のバージョンから10.5(3)(F)以降のバージョンにアップグレードする
+** バージョン10.5(3)(F)からそれ以降のバージョンにアップグレードする
+
+
+
+
+[role="tabbed-block"]
+====
+.バージョン10.4(5)(M)にアップグレード
+--
+. [[stepa]] NX-OSソフトウェアとEPLDイメージをNexus 9336C-FX2スイッチにコピーします。
++
+`copy <protocol>: bootflash: vrf management`
+
++
+.例
 [%collapsible]
-====
-[listing, subs="+quotes"]
-----
+=====
+....
 cs2# *copy sftp: bootflash: vrf management*
-Enter source filename: */code/nxos.9.3.5.bin*
+Enter source filename: */code/nxos.10.4.5.M.bin*
 Enter hostname for the sftp server: *172.19.2.1*
 Enter username: *user1*
 
 Outbound-ReKey for 172.19.2.1:22
 Inbound-ReKey for 172.19.2.1:22
 user1@172.19.2.1's password:
-sftp> progress
+sftp> *progress*
 Progress meter enabled
-sftp> get   /code/nxos.9.3.5.bin  /bootflash/nxos.9.3.5.bin
-/code/nxos.9.3.5.bin  100% 1261MB   9.3MB/s   02:15
-sftp> exit
+sftp> *get /code/nxos.10.4.5.M.bin /bootflash/nxos.10.4.5.M.bin*
+/code/nxos.10.4.5.M.bin  100% 1261MB   9.3MB/s   02:15
+sftp> *exit*
 Copy complete, now saving to disk (please wait)...
 Copy complete.
 
 
 cs2# *copy sftp: bootflash: vrf management*
-Enter source filename: */code/n9000-epld.9.3.5.img*
+Enter source filename: */code/n9000-epld.10.4.5.M.img*
 Enter hostname for the sftp server: *172.19.2.1*
 Enter username: *user1*
 
 Outbound-ReKey for 172.19.2.1:22
 Inbound-ReKey for 172.19.2.1:22
 user1@172.19.2.1's password:
-sftp> progress
+sftp> *progress*
 Progress meter enabled
-sftp> get   /code/n9000-epld.9.3.5.img  /bootflash/n9000-epld.9.3.5.img
-/code/n9000-epld.9.3.5.img  100%  161MB   9.5MB/s   00:16
-sftp> exit
+sftp> *get /code/n9000-epld.10.4.5.M.img /bootflash/n9000-epld.10.4.5.M.img*
+/code/n9000-epld.10.4.5.M.img  100%  161MB   9.5MB/s   00:16
+sftp> *exit*
 Copy complete, now saving to disk (please wait)...
 Copy complete.
-----
-====
+....
+=====
 . NX-OSソフトウェアの実行中のバージョンを確認します。
 +
 `show version`
 
 +
-.例を表示
+.例
 [%collapsible]
-====
-[listing, subs="+quotes"]
-----
+=====
+....
 cs2# *show version*
 Cisco Nexus Operating System (NX-OS) Software
 TAC support: http://www.cisco.com/tac
@@ -297,9 +315,9 @@ http://www.gnu.org/licenses/old-licenses/library.txt.
 
 Software
   BIOS: version 08.38
-  NXOS: version 9.3(4)
+  NXOS: version 10.3(5)
   BIOS compile time:  05/29/2020
-  NXOS image file is: bootflash:///nxos.9.3.4.bin
+  NXOS image file is: bootflash:///nxos.10.3.5.bin
   NXOS compile time:  4/28/2020 21:00:00 [04/29/2020 02:28:31]
 
 
@@ -325,41 +343,42 @@ Active Package(s):
 
 
 cs2#
-----
-====
+....
+=====
 . NX-OSイメージをインストールします。
 +
 イメージ ファイルをインストールすると、スイッチをリブートするたびにこのファイルがロードされます。
 
 +
-.例を表示
+`install all nxos bootflash:<bin_file_name>`
+
++
+.例
 [%collapsible]
-====
-[listing, subs="+quotes"]
-----
-cs2# *install all nxos bootflash:nxos.9.3.5.bin*
+=====
+....
+cs2# *install all nxos bootflash:nxos.10.4.5.M.bin*
 
 Installer will perform compatibility check first. Please wait.
 Installer is forced disruptive
 
-Verifying image bootflash:/nxos.9.3.5.bin for boot variable "nxos".
-[####################] 100% -- SUCCESS
+Verifying image bootflash:/nxos.10.4.5.M.bin for boot variable "nxos".
+[] 100% -- SUCCESS
 
 Verifying image type.
-[####################] 100% -- SUCCESS
+[] 100% -- SUCCESS
 
-Preparing "nxos" version info using image bootflash:/nxos.9.3.5.bin.
-[####################] 100% -- SUCCESS
+Preparing "nxos" version info using image bootflash:/nxos.10.4.5.M.bin.
+[] 100% -- SUCCESS
 
-Preparing "bios" version info using image bootflash:/nxos.9.3.5.bin.
-[####################] 100% -- SUCCESS
+Preparing "bios" version info using image bootflash:/nxos.10.4.5.M.bin.
+[] 100% -- SUCCESS
 
 Performing module support checks.
-[####################] 100% -- SUCCESS
+[] 100% -- SUCCESS
 
 Notifying services about system upgrade.
-[####################] 100% -- SUCCESS
-
+[] 100% -- SUCCESS
 
 
 Compatibility check is done:
@@ -368,12 +387,11 @@ Module  Bootable  Impact          Install-type  Reason
   1     yes       Disruptive      Reset         Default upgrade is not hitless
 
 
-
 Images will be upgraded according to following table:
 
 Module   Image    Running-Version(pri:alt)                 New-Version         Upg-Required
 ------- --------- ---------------------------------------- ------------------- ------------
-  1      nxos     9.3(4)                                   9.3(5)                  yes
+  1      nxos     10.3(5)                                   10.4.5(M)              yes
   1      bios     v08.37(01/28/2020):v08.23(09/23/2015)    v08.38(05/29/2020)      yes
 
 
@@ -384,31 +402,30 @@ Do you want to continue with the installation (y/n)? [n] *y*
 Install is in progress, please wait.
 
 Performing runtime checks.
-[####################] 100% -- SUCCESS
+[] 100% -- SUCCESS
 
 Setting boot variables.
-[####################] 100% -- SUCCESS
+[] 100% -- SUCCESS
 
 Performing configuration copy.
-[####################] 100% -- SUCCESS
+[] 100% -- SUCCESS
 
 Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
 Warning: please do not remove or power off the module at this time.
-[####################] 100% -- SUCCESS
+[] 100% -- SUCCESS
 
 Finishing the upgrade, switch will reboot in 10 seconds.
-----
-====
+....
+=====
 . スイッチを再起動した後、NX-OS ソフトウェアの新しいバージョンを確認します。
 +
 `show version`
 
 +
-.例を表示
+.例
 [%collapsible]
-====
-[listing, subs="+quotes"]
-----
+=====
+....
 cs2# *show version*
 
 Cisco Nexus Operating System (NX-OS) Software
@@ -433,9 +450,8 @@ http://www.gnu.org/licenses/old-licenses/library.txt.
 
 Software
   BIOS: version 05.33
-  NXOS: version 9.3(5)
-  BIOS compile time:  09/08/2018
-  NXOS image file is: bootflash:///nxos.9.3.5.bin
+  NXOS: version 10.4.5(M)  BIOS compile time:  09/08/2018
+  NXOS image file is: bootflash:///nxos.10.4.5.M.bin
   NXOS compile time:  11/4/2018 21:00:00 [11/05/2018 06:11:06]
 
 
@@ -450,22 +466,27 @@ Kernel uptime is 0 day(s), 0 hour(s), 3 minute(s), 42 second(s)
 
 Last reset at 277524 usecs after Mon Nov  2 22:45:12 2020
   Reason: Reset due to upgrade
-  System version: 9.3(4)
+  System version: 10.4.5(M)
   Service:
 
 plugin
   Core Plugin, Ethernet Plugin
 
 Active Package(s):
-----
-====
-. EPLD イメージをアップグレードし、スイッチを再起動します。NX-OS 10.5(3)F 以降を使用している場合は、EPLD イメージが NX-OS イメージに含まれているため、別途 EPLD イメージのアップグレードを実行する必要はありません。この手順をスキップして、クラスター ポートの正常性の検証を続行します。
+....
+=====
+. EPLDイメージをアップグレードし、スイッチをリブートします。
 +
-.例を表示
+`show version module 1 epld`
+
++
+`install epld bootflash:<image_file_name> module all`
+
++
+.例
 [%collapsible]
-====
-[listing, subs="+quotes"]
-----
+=====
+....
 cs2# *show version module 1 epld*
 
 EPLD Device                     Version
@@ -478,11 +499,11 @@ GEM  FPGA                        0x2
 GEM  FPGA                        0x2
 GEM  FPGA                        0x2
 
-cs2# *install epld bootflash:n9000-epld.9.3.5.img module all*
+cs2# *install epld bootflash:n9000-epld.10.4.5.M.img module all*
 Compatibility check:
-Module        Type         Upgradable        Impact    Reason
-------  ------------------ ----------------- --------- -----------
-     1         SUP         Yes       disruptive  Module Upgradable
+Module  Type      Upgradable        Impact      Reason
+------  --------- ----------------- ----------- -----------
+     1  SUP       Yes               disruptive  Module Upgradable
 
 Retrieving EPLD versions.... Please wait.
 Images will be upgraded according to following table:
@@ -508,15 +529,379 @@ Module   Type  Upgrade-Result
 EPLDs upgraded.
 
 Module 1 EPLD upgrade is successful.
-----
-====
+....
+=====
 . スイッチのリブート後に再度ログインし、新しいバージョンのEPLDが正常にロードされたことを確認します。
 +
-.例を表示
+`show version module 1 epld`
+
++
+.例
 [%collapsible]
+=====
+....
+cs2# *show version module 1 epld*
+
+EPLD Device                     Version
+---- -------------------------- -------
+MI   FPGA                        0x7
+IO   FPGA                        0x19
+MI   FPGA2                       0x2
+GEM  FPGA                        0x2
+GEM  FPGA                        0x2
+GEM  FPGA                        0x2
+GEM  FPGA                        0x2
+....
+=====
+
+
+--
+.10.4(5)(M)以前のバージョンから10.5(3)(F)以降のバージョンにアップグレードする
+--
+. [[stepa]] NX-OSソフトウェアとEPLDイメージをNexus 9336C-FX2スイッチにコピーします。
++
+`copy <protocol>: bootflash: vrf management`
+
++
+.例
+[%collapsible]
+=====
+....
+cs2# *copy sftp: bootflash: vrf management*
+Enter source filename: */code/nxos.10.5.3.F.bin*
+Enter hostname for the sftp server: *172.19.2.1*
+Enter username: *user1*
+
+Outbound-ReKey for 172.19.2.1:22
+Inbound-ReKey for 172.19.2.1:22
+user1@172.19.2.1's password:
+sftp> *progress*
+Progress meter enabled
+sftp> *get /code/nxos.10.5.3.F.bin /bootflash/nxos.10.5.3.F.bin*
+/code/nxos.10.5.3.F.bin  100% 1261MB   9.3MB/s   02:15
+sftp> *exit*
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+
+
+cs2# *copy sftp: bootflash: vrf management*
+Enter source filename: */code/n9000-epld.10.5.3.F.img*
+Enter hostname for the sftp server: *172.19.2.1*
+Enter username: *user1*
+
+Outbound-ReKey for 172.19.2.1:22
+Inbound-ReKey for 172.19.2.1:22
+user1@172.19.2.1's password:
+sftp> *progress*
+Progress meter enabled
+sftp> *get /code/n9000-epld.10.5.3.F.img /bootflash/n9000-epld.10.5.3.F.img*
+/code/n9000-epld.10.5.3.F.img  100%  161MB   9.5MB/s   00:16
+sftp> *exit*
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+....
+=====
+. NX-OSソフトウェアの実行中のバージョンを確認します。
++
+`show version`
+
++
+.例
+[%collapsible]
+=====
+....
+cs2# *show version*
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2020, Cisco and/or its affiliates.
+All rights reserved.
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under their own
+licenses, such as open source.  This software is provided "as is," and unless
+otherwise stated, there is no warranty, express or implied, including but not
+limited to warranties of merchantability and fitness for a particular purpose.
+Certain components of this software are licensed under
+the GNU General Public License (GPL) version 2.0 or
+GNU General Public License (GPL) version 3.0  or the GNU
+Lesser General Public License (LGPL) Version 2.1 or
+Lesser General Public License (LGPL) Version 2.0.
+A copy of each such license is available at
+http://www.opensource.org/licenses/gpl-2.0.php and
+http://opensource.org/licenses/gpl-3.0.html and
+http://www.opensource.org/licenses/lgpl-2.1.php and
+http://www.gnu.org/licenses/old-licenses/library.txt.
+
+Software
+  BIOS: version 08.38
+  NXOS: version 10.5.3(F)
+  BIOS compile time:  05/29/2020
+  NXOS image file is: bootflash:///nxos.10.5.3.F.bin
+  NXOS compile time:  4/28/2020 21:00:00 [04/29/2020 02:28:31]
+
+
+Hardware
+  cisco Nexus9000 C9336C-FX2 Chassis
+  Intel(R) Xeon(R) CPU E5-2403 v2 @ 1.80GHz with 8154432 kB of memory.
+  Processor Board ID FOC20291J6K
+
+  Device name: cs2
+  bootflash:   53298520 kB
+Kernel uptime is 0 day(s), 0 hour(s), 3 minute(s), 42 second(s)
+
+
+Last reset at 157524 usecs after Mon Nov  2 18:32:06 2020
+  Reason: Reset Requested by CLI command reload
+  System version: 9.3(4)
+  Service:
+
+plugin
+  Core Plugin, Ethernet Plugin
+
+Active Package(s):
+
+cs2#
+....
+=====
+. NX-OSおよびEPLDイメージをインストールします。
++
+[NOTE]
 ====
-[listing, subs="+quotes"]
-----
+NX-OS 10.5(3)(F)以降にアップグレードしても、EPLDイメージは自動的に更新されません。アップグレードが完了し、スイッチが再起動したら、同じアップグレード `install all`コマンドを再度実行する必要があります。
+
+** 2回目のアップグレード処理では検証が行われますが、NX-OS のアップグレードはスキップされ、EPLD イメージのみが更新されます。
+** 既にNX-OS 10.5(3)(F)以降にアップグレード済みの場合、両方のイメージが同時に更新されます。
+
+
+====
++
+イメージ ファイルをインストールすると、スイッチをリブートするたびにこのファイルがロードされます。
+
++
+以下の手順は、NX-OS 10.4(5)(M) から 10.5(3)(F) へのアップグレードを示しています。最初の処理では NX-OS のアップグレードが実行され、2回目の処理では EPLD イメージのアップグレードが実行されます。
+
++
+`install all nxos bootflash:<nxos_image.bin>`
+
++
+.例
+[%collapsible]
+=====
+....
+cs2# *install all nxos bootflash:nxos.10.5.3.F.bin*   <---- 1st pass updates NX-OS only
+
+Installer will perform compatibility check first. Please wait.
+Installer is forced disruptive
+
+Verifying image bootflash:/nxos.10.5.3.F.bin for boot variable "nxos".
+[####################] 100% -- SUCCESS
+
+Verifying image type.
+[####################] 100% -- SUCCESS
+
+Preparing "nxos" version info using image bootflash:/nxos.10.5.3.F.bin.
+[####################] 100% -- SUCCESS
+
+Preparing "bios" version info using image bootflash:/nxos.10.5.3.F.bin.
+[####################] 100% -- SUCCESS
+
+Performing module support checks.
+[####################] 100% -- SUCCESS
+
+Notifying services about system upgrade.
+[####################] 100% -- SUCCESS
+
+
+Compatibility check is done:
+Module  Bootable  Impact          Install-type  Reason
+------  --------  --------------- ------------  ---------
+1       yes       Disruptive      Reset         Default upgrade is not hitless
+
+
+Images will be upgraded according to following table:
+
+Module   Image    Running-Version(pri:alt)                 New-Version          Upg-Required
+------- --------- ---------------------------------------- -------------------- ------------ 
+1        nxos     10.4(5)(M)                                10.5(3)(F)            yes
+1        bios     v05.47(04/28/2022):v05.47(04/28/2022)    v05.53(01/22/2025)     yes
+
+Switch will be reloaded for disruptive upgrade.
+
+Do you want to continue with the installation (y/n)? [n] *y*
+
+Install is in progress, please wait.
+
+Performing runtime checks.
+[####################] 100% -- SUCCESS
+
+Setting boot variables.
+[####################] 100% -- SUCCESS
+
+Performing configuration copy.
+[####################] 100% -- SUCCESS
+
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+[####################] 100% -- SUCCESS
+[####################] 100% -- SUCCESS
+
+Finishing the upgrade, switch will reboot in 10 seconds.
+
+
+cs2# *install all nxos bootflash:nxos.10.5.3.F.bin*   <---- 2nd pass updates EPLD image only
+ 
+Installer will perform compatibility check first. Please wait. 
+Installer is forced disruptive
+ 
+Verifying image bootflash:/nxos.10.5.3.F.bin for boot variable "nxos".
+[####################] 100% -- SUCCESS
+ 
+Verifying EPLD/FPGA image //bootflash/nxos.10.5.3.F.bin.
+[####################] 100% -- SUCCESS
+ 
+Verifying image type.
+[####################] 100% -- SUCCESS
+ 
+Preparing "nxos" version info using image bootflash:/nxos.10.5.3.F.bin.
+[####################] 100% -- SUCCESS
+ 
+Preparing "bios" version info using image bootflash:/nxos.10.5.3.F.bin.
+[####################] 100% -- SUCCESS
+
+Performing module support checks.
+[####################] 100% -- SUCCESS
+ 
+Notifying services about system upgrade.
+[####################] 100% -- SUCCESS
+ 
+
+Compatibility check is done:
+Module  bootable  Impact          Install-type  Reason
+------  --------  --------------  ------------  ------
+1       yes       disruptive      reset         default upgrade is not hitless
+27      yes       disruptive      none          default upgrade is not hitless
+ 
+ 
+Images will be upgraded according to following table:
+Module    Image                  Running-Version(pri:alt)              New-Version         Upg-Required
+--------  ---------------------  ------------------------------------- -----------------  ------------
+27        nxos                   10.4(5)(M)                            10.5(3)(F)             no
+27        bios                   v05.53(01/22/2025):v05.47(04/28/2022) v05.53(01/22/2025)    no
+ 
+ 
+FPGA microcode will be upgraded according to following table:
+Module  Type  EPLD               Running-Version  Flashed-Version*   New-Version  Upg-Required
+------  ----  -----------------  ---------------  ----------------   -----------  ------------
+27      SUP   MI FPGA            0x5              0x5                0x5          No
+27      SUP   IO FPGA            0x17             0x17               0x18         Yes
+
+If Running-Version and Flashed-Version are different it implies that the system has not yet been reloaded for the new version to take effect.
+ 
+EPLD Upgrade may result in multiple modules going offline.
+ 
+ 
+Switch will be reloaded for disruptive upgrade.
+ 
+Do you want to continue with the installation (y/n)?  [n] *y*
+ 
+Install is in progress, please wait.
+
+Setting boot variables.
+[####################] 100% -- SUCCESS
+ 
+Performing configuration copy.
+[####################] 100% -- SUCCESS
+Performing configuration copy.
+[####################] 100% -- SUCCESS
+ 
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+[####################] 100% -- SUCCESS
+ 
+Module 27: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+
+Module 27: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+[####################] 100% -- SUCCESS
+ 
+EPLD/FPGA upgrade can take up to 4 mins.
+
+Performing EPLD/FPGA upgrade.
+[####################] 100% -- SUCCESS
+ 
+Install has been successful.
+....
+=====
+. スイッチを再起動した後、NX-OS ソフトウェアの新しいバージョンを確認します。
++
+`show version`
+
++
+.例
+[%collapsible]
+=====
+....
+cs2# *show version*
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2020, Cisco and/or its affiliates.
+All rights reserved.
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under their own
+licenses, such as open source.  This software is provided "as is," and unless
+otherwise stated, there is no warranty, express or implied, including but not
+limited to warranties of merchantability and fitness for a particular purpose.
+Certain components of this software are licensed under
+the GNU General Public License (GPL) version 2.0 or
+GNU General Public License (GPL) version 3.0  or the GNU
+Lesser General Public License (LGPL) Version 2.1 or
+Lesser General Public License (LGPL) Version 2.0.
+A copy of each such license is available at
+http://www.opensource.org/licenses/gpl-2.0.php and
+http://opensource.org/licenses/gpl-3.0.html and
+http://www.opensource.org/licenses/lgpl-2.1.php and
+http://www.gnu.org/licenses/old-licenses/library.txt.
+
+Software
+  BIOS: version 05.33
+  NXOS: version 10.5.3(f)
+  BIOS compile time:  09/08/2018
+  NXOS image file is: bootflash:///nxos.10.5.3.F.bin
+  NXOS compile time:  11/4/2018 21:00:00 [11/05/2018 06:11:06]
+
+
+Hardware
+  cisco Nexus9000 C9336C-FX2 Chassis
+  Intel(R) Xeon(R) CPU E5-2403 v2 @ 1.80GHz with 8154432 kB of memory.
+  Processor Board ID FOC20291J6K
+
+  Device name: cs2
+  bootflash:   53298520 kB
+Kernel uptime is 0 day(s), 0 hour(s), 3 minute(s), 42 second(s)
+
+Last reset at 277524 usecs after Mon Nov  2 22:45:12 2020
+  Reason: Reset due to upgrade
+  System version: 9.3(4)
+  Service:
+
+plugin
+  Core Plugin, Ethernet Plugin
+
+Active Package(s):
+....
+=====
+. スイッチのリブート後に再度ログインし、新しいバージョンのEPLDが正常にロードされたことを確認します。
++
+`show version module 1 epld`
+
++
+.例
+[%collapsible]
+=====
+....
 cs2# *show version module 1 epld*
 
 EPLD Device                     Version
@@ -528,9 +913,419 @@ GEM  FPGA                        0x2
 GEM  FPGA                        0x2
 GEM  FPGA                        0x2
 GEM  FPGA                        0x2
-----
+....
+=====
+
+
+--
+.バージョン10.5(3)(F)からそれ以降のバージョンにアップグレードする
+--
+. NX-OSとEPLDのイメージを最初のスイッチにコピーします。
++
+`copy <protocol>: bootflash: vrf management`
+
++
+この例ではsftpを使用しています。
+
++
+.例
+[%collapsible]
+=====
+....
+cs2# *copy sftp: bootflash: vrf management*
+Enter source filename: *nxos64-cs.10.5.4.M.bin*
+Enter hostname for the sftp server: *172.19.2.1*
+Enter username: *user1*
+
+Outbound-ReKey for 172.19.2.1:22
+Inbound-ReKey for 172.19.2.1:22
+user1@172.19.2.1's password:
+sftp> *progress*
+Progress meter enabled
+sftp> *get /code/nxos64-cs.10.5.4.M.bin /bootflash/nxos64-cs.10.5.4.M.bin*
+/code/nxos64-cs.10.5.4.M.bin  100% 1261MB   9.3MB/s   02:15
+sftp> *exit*
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+....
+=====
+. NX-OS の実行中のバージョンを確認します：
++
+`show version`
+
++
+.例
+[%collapsible]
+=====
+....
+cs2# *show version*
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2025, Cisco and/or its affiliates.
+All rights reserved.
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under their own
+licenses, such as open source.  This software is provided "as is," and unless
+otherwise stated, there is no warranty, express or implied, including but not
+limited to warranties of merchantability and fitness for a particular purpose.
+Certain components of this software are licensed under
+the GNU General Public License (GPL) version 2.0 or
+GNU General Public License (GPL) version 3.0  or the GNU
+Lesser General Public License (LGPL) Version 2.1 or
+Lesser General Public License (LGPL) Version 2.0.
+A copy of each such license is available at
+http://www.opensource.org/licenses/gpl-2.0.php and
+http://opensource.org/licenses/gpl-3.0.html and
+http://www.opensource.org/licenses/lgpl-2.1.php and
+http://www.gnu.org/licenses/old-licenses/library.txt.
+
+
+Software
+  BIOS: version 01.14
+  NXOS: version 10.5(3)(F) [Feature Release]
+  Host NXOS: version 10.5(3)(F)
+  BIOS compile time:  11/25/2024
+  NXOS image file is: bootflash:///nxos.10.5.3.F.bin
+  NXOS compile time:  02/27/2026 12:00:00 [03/14/2026 05:25:50]
+  NXOS boot mode: LXC
+
+
+Hardware
+  cisco  Nexus9000 C9336C-FX2 Chassis
+  Intel(R) Xeon(R) CPU D-1633N @ 2.50GHz with 32802156 kB of memory.
+  Processor Board ID FLMXXXXXXXX
+  Device name: cs2
+  bootflash:  115802886 kB
+
+
+Kernel uptime is 5 day(s), 2 hour(s), 13 minute(s), 21 second(s)
+
+
+Last reset at 3580 usecs after Thu Mar 5 15:55:08 2026
+  Reason: Reset Requested by CLI command reload
+  System version: 10.5.3(f)
+  Service:
+
+
+plugin
+  Core Plugin, Ethernet Plugin
+
+
+Active Package(s):
+
+cs2#
+....
+=====
+. NX-OSとEPLDイメージをインストールします。
++
+イメージ ファイルをインストールすると、スイッチをリブートするたびにこのファイルがロードされます。
+
++
+`install all nxos bootflash:<nxos_image.bin>`
+
++
+この例では、NX-OS バージョン 10.5(4)(M) を使用しています。
+
++
+.例
+[%collapsible]
+=====
+....
+cs2# *install all nxos bootflash:nxos64-cs.10.5.4.M.bin*
+
+Installer will perform compatibility check first. Please wait.
+Installer is forced disruptive
+
+Verifying image bootflash:/nxos64-cs.10.5.4.M.bin for boot variable "nxos".
+[####################] 100% -- SUCCESS
+
+Verifying image type.
+[####################] 100% -- SUCCESS
+
+Preparing "nxos" version info using image bootflash:/nxos64-cs.10.5.4.M.bin.
+[####################] 100% -- SUCCESS
+
+Preparing "bios" version info using image bootflash:/nxos64-cs.10.5.4.M.bin.
+[####################] 100% -- SUCCESS
+
+Performing module support checks.
+[####################] 100% -- SUCCESS
+
+Notifying services about system upgrade.
+[####################] 100% -- SUCCESS
+
+
+Compatibility check is done:
+Module  Bootable  Impact          Install-type  Reason
+------  --------  --------------- ------------  ---------
+  1     yes       Disruptive      Reset         Default upgrade is not hitless
+
+
+Images will be upgraded according to following table:
+
+Module   Image    Running-Version(pri:alt)            New-Version         Upg-Required
+------- --------- ----------------------------------- ------------------- ------------
+  1      nxos     10.5(3)(F)                          10.5(4)(M)          Yes
+  1      bios     <current_version>                   <new_version>       No
+
+
+Switch will be reloaded for disruptive upgrade.
+
+Do you want to continue with the installation (y/n)? [n] *y*
+
+Install is in progress, please wait.
+
+Performing runtime checks.
+[####################] 100% -- SUCCESS
+
+Setting boot variables.
+[####################] 100% -- SUCCESS
+
+Performing configuration copy.
+[####################] 100% -- SUCCESS
+
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+[####################] 100% -- SUCCESS
+
+Finishing the upgrade, switch will reboot in 10 seconds.
+....
+=====
+. スイッチの再起動後、NX-OS の新しいバージョンを確認します：
++
+`show version`
+
++
+.例
+[%collapsible]
+=====
+....
+cs2# *show version*
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2025, Cisco and/or its affiliates.
+All rights reserved.
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under their own
+licenses, such as open source.  This software is provided "as is," and unless
+otherwise stated, there is no warranty, express or implied, including but not
+limited to warranties of merchantability and fitness for a particular purpose.
+Certain components of this software are licensed under
+the GNU General Public License (GPL) version 2.0 or
+GNU General Public License (GPL) version 3.0  or the GNU
+Lesser General Public License (LGPL) Version 2.1 or
+Lesser General Public License (LGPL) Version 2.0.
+A copy of each such license is available at
+http://www.opensource.org/licenses/gpl-2.0.php and
+http://opensource.org/licenses/gpl-3.0.html and
+http://www.opensource.org/licenses/lgpl-2.1.php and
+http://www.gnu.org/licenses/old-licenses/library.txt.
+
+
+Software
+  BIOS: version 01.14
+  NXOS: version 10.5(4)(M) [Feature Release]
+  Host NXOS: version 10.5(4)(M)
+  BIOS compile time:  11/25/2024
+  NXOS image file is: bootflash:///nxos64-cs.10.5.4.M.bin
+  NXOS compile time:  05/30/2026 12:00:00 [06/14/2026 05:25:50]
+  NXOS boot mode: LXC
+
+
+Hardware
+  cisco Nexus9000 C9336C-FX2 Chassis
+  Intel(R) Xeon(R) CPU D-1633N @ 2.50GHz with 32802156 kB of memory.
+  Processor Board ID FLMXXXXXXXX
+  Device name: cs2
+  bootflash:  115802886 kB
+
+
+Kernel uptime is 5 day(s), 2 hour(s), 13 minute(s), 21 second(s)
+
+
+Last reset at 3580 usecs after Thu Jun 5 15:55:08 2026
+  Reason: Reset Requested by CLI command reload
+  System version: 10.5(4)(M)
+  Service:
+
+
+plugin
+  Core Plugin, Ethernet Plugin
+
+
+Active Package(s):
+....
+=====
+. 新しいバージョンの EPLD が正常にロードされたことを確認します。
++
+`show install epld status`
+
++
+この例では、EPLD バージョン 10.5(4)(M) を使用しています。
+
++
+.例
+[%collapsible]
+=====
+....
+cs2# *show install epld status*
+
+1) Module 2 upgraded on Mon May  4 09:17:08 2026 (631239  us)
+EPLD Install Image: EPLD image file 10.5.4.M. built on Fri Apr 24 19:49:50 2026
+
+Status: EPLD Upgrade was Successful
+
+EPLD                             Curr Ver       Old Ver
+-------------------------------------------------------
+MI FPGA                         0x10014         0x1000b
+IO FPGA                         0x10033         0x10006
+
+2) Module 27 upgraded on Wed Apr  1 15:03:13 2026 (193093  us)
+EPLD Install Image: EPLD image file 10.5.4.M. built on Mon Mar 16 03:28:47 2026
+
+Status: EPLD Upgrade was Successful
+
+EPLD                            Curr Ver        Old Ver
+-------------------------------------------------------
+IO FPGA                         0x1002d         0x10020
+
+3) Module 28 upgraded on Wed Apr  1 14:59:53 2026 (843907  us)
+EPLD Install Image: EPLD image file 10.5.4.M. built on Mon Mar 16 03:28:47 2026
+
+Status: EPLD Upgrade was Successful
+
+EPLD                            Curr Ver        Old Ver
+-------------------------------------------------------
+IO FPGA                         0x1002d         0x10020
+
+4) Module 27 upgraded on Fri Mar 27 21:55:55 2026 (132290  us)
+EPLD Install Image: EPLD image file 10.5.4.M. built on Fri Dec 12 11:15:18 2025
+
+Status: EPLD Upgrade was Successful
+
+EPLD                            Curr Ver        Old Ver
+-------------------------------------------------------
+FM-19 FPGA                      0x10006         0x10000
+FM-20 FPGA                      0x10006         0x10000
+FM-21 FPGA                      0x10006         0x10000
+FM-22 FPGA                      0x10006         0x10000
+FM-23 FPGA                      0x10006         0x10000
+FM-24 FPGA                      0x10006         0x10000
+FM-25 FPGA                      0x10006         0x10000
+FM-26 FPGA                      0x10006         0x10000
+
+5) Module 27 upgraded on Fri Mar 27 21:50:16 2026 (  4899  us)
+EPLD Install Image: EPLD image file 10.5.4.M. built on Fri Dec 12 11:15:18 2025
+
+Status: EPLD Upgrade was Successful
+
+EPLD                            Curr Ver        Old Ver
+-------------------------------------------------------
+FM-19 FPGA                      0x10006         0x10000
+FM-20 FPGA                      0x10006         0x10000
+FM-21 FPGA                      0x10006         0x10000
+FM-22 FPGA                      0x10006         0x10000
+FM-23 FPGA                      0x10006         0x10000
+FM-24 FPGA                      0x10006         0x10000
+FM-25 FPGA                      0x10006         0x10000
+FM-26 FPGA                      0x10006         0x10000
+
+6) Module 27 upgraded on Fri Mar 27 21:44:36 2026 (775397  us)
+EPLD Install Image: EPLD image file 10.5.4.M. built on Fri Dec 12 11:15:18 2025
+
+Status: EPLD Upgrade was Successful
+
+EPLD                            Curr Ver        Old Ver
+-------------------------------------------------------
+FM-19 FPGA                      0x10006         0x10000
+FM-20 FPGA                      0x10006         0x10000
+FM-21 FPGA                      0x10006         0x10000
+FM-22 FPGA                      0x10006         0x10000
+FM-23 FPGA                      0x10006         0x10000
+FM-24 FPGA                      0x10006         0x10000
+FM-25 FPGA                      0x10006         0x10000
+FM-26 FPGA                      0x10006         0x10000
+
+7) Module 27 upgraded on Fri Mar 27 21:38:58 2026 (330582  us)
+EPLD Install Image: EPLD image file 10.5.4.M. built on Fri Dec 12 11:15:18 2025
+
+Status: EPLD Upgrade was Successful
+
+EPLD                            Curr Ver        Old Ver
+-------------------------------------------------------
+FM-19 FPGA                      0x10006         0x10000
+FM-20 FPGA                      0x10006         0x10000
+FM-21 FPGA                      0x10006         0x10000
+FM-22 FPGA                      0x10006         0x10000
+FM-23 FPGA                      0x10006         0x10000
+FM-24 FPGA                      0x10006         0x10000
+FM-25 FPGA                      0x10006         0x10000
+FM-26 FPGA                      0x10006         0x10000
+
+8) Module 27 upgraded on Fri Mar 27 21:33:19 2026 (112679  us)
+EPLD Install Image: EPLD image file 10.5.4.M. built on Fri Dec 12 11:15:18 2025
+
+Status: EPLD Upgrade was Successful
+
+EPLD                            Curr Ver        Old Ver
+-------------------------------------------------------
+FM-19 FPGA                      0x10006         0x10000
+FM-20 FPGA                      0x10006         0x10000
+FM-21 FPGA                      0x10006         0x10000
+FM-22 FPGA                      0x10006         0x10000
+FM-23 FPGA                      0x10006         0x10000
+FM-24 FPGA                      0x10006         0x10000
+FM-25 FPGA                      0x10006         0x10000
+FM-26 FPGA                      0x10006         0x10000
+
+9) Module 27 upgraded on Fri Mar 27 21:27:41 2026 (957182  us)
+EPLD Install Image: EPLD image file 10.5.4.M. built on Fri Dec 12 11:15:18 2025
+
+Status: EPLD Upgrade was Successful
+
+EPLD                            Curr Ver        Old Ver
+-------------------------------------------------------
+FM-19 FPGA                      0x10006         0x10000
+FM-20 FPGA                      0x10006         0x10000
+FM-21 FPGA                      0x10006         0x10000
+FM-22 FPGA                      0x10006         0x10000
+FM-23 FPGA                      0x10006         0x10000
+FM-24 FPGA                      0x10006         0x10000
+FM-25 FPGA                      0x10006         0x10000
+FM-26 FPGA                      0x10006         0x10000
+
+10) Module 27 upgraded on Fri Mar 27 21:22:03 2026 ( 90303  us)
+EPLD Install Image: EPLD image file 10.5.4.M. built on Fri Dec 12 11:15:18 2025
+
+Status: EPLD Upgrade was Successful
+
+EPLD                            Curr Ver        Old Ver
+-------------------------------------------------------
+FM-19 FPGA                      0x10006         0x10000
+FM-20 FPGA                      0x10006         0x10000
+FM-21 FPGA                      0x10006         0x10000
+FM-22 FPGA                      0x10006         0x10000
+FM-23 FPGA                      0x10006         0x10000
+FM-24 FPGA                      0x10006         0x10000
+FM-25 FPGA                      0x10006         0x10000
+FM-26 FPGA                      0x10006         0x10000
+
+11) Module 1 upgraded on Fri Mar 27 21:16:24 2026 (240369  us)
+EPLD Install Image: EPLD image file 10.5.4.M. built on Fri Dec 12 11:15:18 2025
+
+Status: EPLD Upgrade was Successful
+
+EPLD                            Curr Ver        Old Ver
+-------------------------------------------------------
+MI FPGA                         0x10014         0x1000b
+IO FPGA                         0x10033         0x10006
+....
+=====
+
+
+--
 ====
-. クラスタ ポートの健全性を確認します。
+. [[step7]]クラスタ上のクラスタポートの健全性を確認します。
 +
 .. クラスター内のすべてのノードでクラスター ポートが稼働しており正常であることを確認します。
 +
@@ -545,28 +1340,28 @@ GEM  FPGA                        0x2
 cluster1::*> *network port show -ipspace Cluster*
 
 Node: cluster1-01
-                                                                       Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
-e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+                                                                        Ignore
+                                                  Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ---- ------------ -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/100000 healthy  false
 
 Node: cluster1-02
-                                                                       Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/10000 healthy  false
-e0b       Cluster      Cluster          up   9000  auto/10000 healthy  false
+                                                                        Ignore
+                                                  Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ---- ------------ -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/100000 healthy  false
 
 Node: cluster1-03
-                                                                       Ignore
-                                                  Speed(Mbps) Health   Health
-Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
---------- ------------ ---------------- ---- ---- ----------- -------- ------
-e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
-e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
+                                                                        Ignore
+                                                  Speed(Mbps)  Health   Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper   Status   Status
+--------- ------------ ---------------- ---- ---- ------------ -------- ------
+e0a       Cluster      Cluster          up   9000  auto/100000 healthy  false
+e0b       Cluster      Cluster          up   9000  auto/100000 healthy  false
 
 Node: cluster1-04
                                                                        Ignore
@@ -575,7 +1370,6 @@ Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
 --------- ------------ ---------------- ---- ---- ----------- -------- ------
 e0a       Cluster      Cluster          up   9000  auto/100000 healthy false
 e0b       Cluster      Cluster          up   9000  auto/100000 healthy false
-8 entries were displayed.
 ----
 ====
 .. クラスターからスイッチの健全性を確認します。
@@ -658,7 +1452,7 @@ cluster1-04          true     true          false
 cluster1::*>
 ----
 ====
-. 手順 6 ～ 13 を繰り返して、スイッチ cs1 に NX-OS ソフトウェアをインストールします。
+. 手順 6 ～ 8 を繰り返して、スイッチ cs1 に NX-OS ソフトウェアをインストールします。
 . クラスタ LIF で自動復帰を有効にする前に、リモート クラスタ インターフェイスの接続を確認します。
 
 
@@ -725,9 +1519,9 @@ RPC status:
 ----
 --
 ====
-. [[step16]]クラスタLIFで自動復帰を有効にします。
+. [[step11]]クラスタLIFで自動復帰を有効にします。
 +
-`*network interface modify -vserver Cluster -lif * -auto-revert true*`
+`network interface modify -vserver Cluster -lif * -auto-revert true`
 
 . クラスタ LIF がホーム ポートに戻ったことを確認します。
 +
@@ -752,12 +1546,11 @@ Cluster
             cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
             cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     true
             cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
-8 entries were displayed.
 cluster1::*>
 ----
 ====
 +
-クラスタ LIF がホーム ポートに戻っていない場合は、ローカル ノードから手動で元に戻します。
+クラスタLIFがホームポートに戻っていない場合は、ローカルノードから手動でリバートしてください。
 
 +
 `network interface revert -vserver Cluster -lif <lif_name>`

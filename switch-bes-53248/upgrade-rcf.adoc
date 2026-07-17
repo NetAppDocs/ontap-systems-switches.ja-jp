@@ -20,7 +20,7 @@ BES-53248 クラスタ スイッチの EFOS をアップグレードし、新し
 * 完全に機能するクラスター (ログにエラーや同様の問題がない)。
 * 現在のRCFファイルは、 https://mysupport.netapp.com/site/products/all/details/broadcom-cluster-switches/downloads-tab["Broadcom クラスタスイッチ"^]ページ。
 * 必要なブート イメージを反映する RCF 内のブート構成。EFOS のみをインストールし、現在の RCF バージョンを維持する場合に必要です。現在のブート イメージを反映するようにブート設定を変更する必要がある場合は、あとでリブートしたときに正しいバージョンがインスタンス化されるように、RCFを再適用する前に変更する必要があります。
-* 工場出荷時のデフォルト状態から RCF をインストールするときに必要な、スイッチへのコンソール接続。この要件は、ナレッジベースの記事を使用した場合にはオプションです。 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらBroadcom相互接続スイッチの設定をクリアする方法"^]事前に設定をクリアしてください。
+* RCFを工場出荷時の設定状態からインストールする際に必要な、スイッチへのコンソール接続。
 
 
 .推奨ドキュメント
@@ -47,12 +47,11 @@ NOTE: コマンド出力は、ONTAPのリリースによって異なる場合が
 この手順では、動作中のスイッチ間リンク (ISL) は必要ありません。これは、RCF バージョンの変更によって ISL 接続が一時的に影響を受ける可能性があるため、設計によるものです。クラスタ操作を中断せずに実行するために、次の手順では、ターゲット スイッチで手順を実行しながら、すべてのクラスタ LIF を動作中のパートナー スイッチに移行します。
 
 
-CAUTION: 新しいスイッチソフトウェアバージョンとRCFをインストールする前に、ナレッジベースの記事を参照してください。 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらBroadcom相互接続スイッチの設定をクリアする方法"^] 。スイッチの設定を完全に消去する必要がある場合は、基本設定を再度実行する必要があります。完全な構成消去を行うと管理ネットワークの構成がリセットされるため、シリアル コンソールを使用してスイッチに接続する必要があります。
-
-
 
 [[step-1-prepare-for-upgrade]]
 == ステップ1: アップグレードの準備
+
+以下の手順では ONTAP CLI を使用して、必要に応じて自動ケース作成を抑制し、ポートの管理ステータスと運用ステータスを確認し、クラスタ LIF の自動リバートを無効にすることで、RCF アップグレードの準備を行います。
 
 . このクラスタでAutoSupportが有効になっている場合は、AutoSupportメッセージを呼び出してケースの自動作成を抑制します。
 +
@@ -270,6 +269,8 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 [[step-2-configure-ports]]
 == ステップ2: ポートを構成する
 
+ポート設定には、スイッチ CLI と ONTAP CLI（以下の手順で示すとおり）を使用します。まず最初のスイッチ（cs2）でポートを設定し、次に2番目のスイッチ（cs1）に対して同じ手順を繰り返します。
+
 . スイッチ cs2 で、クラスター内のノードに接続されているポートのリストを確認します。
 +
 [source, cli]
@@ -344,7 +345,7 @@ show running-config
 . スイッチcs2の設定を消去し、基本的なセットアップを実行します。
 +
 
-CAUTION: RCF を更新または新しいものを適用する場合は、スイッチの設定を消去して基本設定を実行する必要があります。スイッチの設定を消去するには、シリアル コンソールを使用してスイッチに接続する必要があります。この要件は、ナレッジベースの記事を使用した場合にはオプションです。 https://kb.netapp.com/onprem/Switches/Broadcom/How_to_clear_configuration_on_a_Broadcom_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらBroadcom相互接続スイッチの設定をクリアする方法"]事前に設定をクリアしてください。
+CAUTION: RCFを更新または新規適用する際は、スイッチの設定を消去し、基本設定を行う必要があります。スイッチの設定を消去するには、シリアルコンソールを使用してスイッチに接続する必要があります。
 
 +
 
@@ -457,9 +458,6 @@ Are you sure you would like to reset the system? (y/n) *y*
 ====
 .EFOS バージョン 3.12.x 以降
 --
-
-CAUTION: RCFファイルをアップロードして適用する際は、ファイル名を `reference-config.scr`にする必要があります。そうしないと、スクリプトの適用ステップが失敗します。
-
 . 以下の転送プロトコルのいずれかを使用して、RCFをスイッチcs2にコピーします：HTTP、HTTPS、FTP、SFTP、またはSCP。
 +
 この例では、SFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーしています。
@@ -468,7 +466,7 @@ CAUTION: RCFファイルをアップロードして適用する際は、ファ�
 
 [listing, subs="+quotes"]
 ----
-(cs2)# *copy sftp://172.19.2.1/BES-53248_RCF_v1.9-Cluster-HA.txt nvram:reference-config.scr*
+(cs2)# *copy sftp://172.19.2.1/BES-53248_RCF_v1.9-Cluster-HA.txt nvram:reference-config*
 Remote Password:**
 Mode........................................... SFTP
 Set Server IP.................................. 172.19.2.1
@@ -528,7 +526,7 @@ Configuration script 'reference-config.scr' applied.
 [listing, subs="+quotes"]
 ----
 (cs2)# *copy sftp://172.19.2.1/tmp/BES-53248_RCF_v1.9-Cluster-HA.txt
-nvram:script BES-53248_RCF_v1.9-Cluster-HA.scr*
+nvram:script BES-53248_RCF_v1.9-Cluster-HA*
 Remote Password:**
 Mode........................................... SFTP
 Set Server IP.................................. 172.19.2.1
@@ -696,16 +694,6 @@ Configuration Saved!
 (cs2)# *reload*
 Are you sure you would like to reset the system? (y/n) *y*
 System will now restart!
-----
-. クラスタ スイッチ cs2 で、ノードのクラスタ ポートに接続されているポートを起動します。
-+
-[listing, subs="+quotes"]
-----
-(cs2)> *enable*
-(cs2)# *configure*
-(cs2)(Config)# *interface 0/1-0/16*
-(cs2)(Interface 0/1-0/16)# *no shutdown*
-(cs2)(Config)# *exit*
 ----
 . 実行中の設定をスタートアップ コンフィギュレーションに保存します。
 +
@@ -909,14 +897,14 @@ cluster1::*>
 ----
 --
 ====
-. [[step21]]スイッチcs1で手順1～20を繰り返します。
+. [[step20]]スイッチcs1でステップ1から19を繰り返します。
 . クラスタ LIF で自動復帰を有効にします。
 +
 [source, cli]
 ----
 network interface modify -vserver Cluster -lif * -auto-revert true
 ----
-. 。クラスタ LIF がホーム ポートに戻ったことを確認します。
+. クラスタ LIF がホーム ポートに戻ったことを確認します。
 +
 [source, cli]
 ----
@@ -931,6 +919,8 @@ network interface show -vserver Cluster
 
 [[step-3-verify-the-configuration]]
 == ステップ3: 構成を確認する
+
+両方のスイッチでRCFをアップグレードした後、クラスタネットワーク構成とクラスタの状態を確認してください。
 
 . スイッチ cs1 で、クラスタ ポートに接続されているスイッチ ポートが *up* であることを確認します。
 +
@@ -1124,7 +1114,7 @@ RPC status:
 ----
 --
 ====
-. 権限レベルを管理者に戻します。
+. [[step6]] 権限レベルを admin に戻します：
 +
 [source, cli]
 ----
@@ -1137,3 +1127,6 @@ set -privilege admin
 system node autosupport invoke -node * -type all -message MAINT=END
 ----
 
+
+.次の手順
+RCFをアップグレードしたら、link:configure-ssh.html["ログ収集のためにSSHを有効にする"]。

@@ -37,4 +37,4 @@ BES-53248 スイッチとONTAPクラスタをセットアップするには、�
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:../switch-cshm/config-overview.html["CSHMの設定"]
 [role="quick-margin-para"]
-スイッチの状態監視を設定します。
+イーサネットスイッチの健全性監視を設定します。

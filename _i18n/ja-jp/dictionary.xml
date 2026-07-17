@@ -749,8 +749,6 @@
   <block id="1fc245f373dd47304db35c4ef2df408e" category="inline-link-macro">スイッチの設定</block>
   <block id="163c95e139774086e604f88f7e2f31d3" category="list-text"><block ref="163c95e139774086e604f88f7e2f31d3" category="inline-link-macro-rx"></block></block>
   <block id="04204be9eff305a81c8050c2ee21ed34" category="list-text">パートナー スイッチで手順 1 ～ 8 を繰り返します。</block>
-  <block id="74af5112ab6cf8732ffe8eba910e2290" category="inline-link-macro">ライセンスをインストールする</block>
-  <block id="85290349ee32e9f062a4795f3e1e06bb" category="paragraph">EFOSソフトウェアをインストールしたら、 <block ref="172517aa1fa2cd21dd6fb86167c00f86" category="inline-link-macro-rx"></block>。</block>
   <block id="88045e5af7830d69afafc3e6e7a9cf86" category="summary">この手順を使用して、BES-53248クラスタ スイッチの初期取り付けを実行できます。</block>
   <block id="a804fe3633b3e8edd13e681d83563c08" category="doc">BES-53248クラスタスイッチを構成する</block>
   <block id="67777be64987c8c0fadb924db93389aa" category="paragraph">BES-53248 クラスタ スイッチの初期セットアップを実行するには、次の手順に従います。</block>
@@ -1306,18 +1304,13 @@
   <block id="c0d96a8467e1acc3623933447f6f212c" category="inline-link-macro">RCFのインストール</block>
   <block id="11c8d833dc677f2da3e3a05f17e029da" category="list-text"><block ref="11c8d833dc677f2da3e3a05f17e029da" category="inline-link-macro-rx"></block></block>
   <block id="b75ec32f89267a27b5a0e0b014097f77" category="list-text">スイッチ cs1 で手順 2 から 8 を繰り返します。</block>
-  <block id="d814617aab418a35a7ebbe46f6db2549" category="list-text">工場出荷時のデフォルト状態から RCF をインストールするときに必要な、スイッチへのコンソール接続。この要件は、ナレッジベースの記事を使用した場合にはオプションです。<block ref="18b4271d2bf70dbfb01e42cb4850cea6" category="inline-link-rx"></block>事前に設定をクリアしてください。</block>
   <block id="93933c6ca68705cf2c6eee19987428b0" category="inline-link">Broadcom</block>
-  <block id="20e5ec5f7186bff24f7aeef0c34a7edc" category="admonition">新しいスイッチソフトウェアバージョンとRCFをインストールする前に、ナレッジベースの記事を参照してください。<block ref="18b4271d2bf70dbfb01e42cb4850cea6" category="inline-link-rx"></block> 。スイッチの設定を完全に消去する必要がある場合は、基本設定を再度実行する必要があります。完全な構成消去を行うと管理ネットワークの構成がリセットされるため、シリアル コンソールを使用してスイッチに接続する必要があります。</block>
   <block id="833aa928a446532020e8ea26e29a32b7" category="section-title">ステップ1: アップグレードの準備</block>
   <block id="31e544384f3325abd25b797e025ef614" category="list-text">スイッチ cs2 で、ノードのクラスター ポートに接続されているポートをシャットダウンします。たとえば、ポート 0/1 ～ 0/16 がONTAPノードに接続されている場合:</block>
   <block id="c66ea64be71d87967746ef74fac6ec75" category="list-text">[[step11]]バナー出力を調べる<block ref="db837131dc56fab41bddc52d5aff8865" prefix=" " category="inline-code"></block>指示。スイッチが正しく動作するように設定するためには、出力を確認し、その指示に従う必要があります。</block>
   <block id="05299bd158481c8acf552dc1d004ab41" category="paragraph"><block ref="db837131dc56fab41bddc52d5aff8865" prefix="" category="inline-code"></block></block>
   <block id="4a00b51f01daee860d41dd95bb500266" category="list-text">スイッチ上で変更が行われたことを確認します。</block>
   <block id="f35806549fff4250f43cb0acde28b920" category="list-text">スイッチを再起動し、実行中の設定が正しいことを確認します。</block>
-  <block id="111cada5d22121a7e11aef39f4aca355" category="list-text">クラスタ スイッチ cs2 で、ノードのクラスタ ポートに接続されているポートを起動します。</block>
-  <block id="7271f66e0cb527adb71302d7377910b7" category="list-text">[[step21]]スイッチcs1で手順1～20を繰り返します。</block>
-  <block id="9b241cba96d2cafd3c0f5c9f7bf12560" category="list-text">。クラスタ LIF がホーム ポートに戻ったことを確認します。</block>
   <block id="16d074a2c9c574f7e8d9dbc312b16d88" category="summary">BES-53248 クラスタ スイッチを構成する前に、プロセスと命名法の概要を確認してください。</block>
   <block id="510290e42c307729b66d338637599287" category="doc">BES-53248 クラスタスイッチのアップグレードワークフロー</block>
   <block id="95731780fd3171c29b73f348e1722fda" category="paragraph">該当する場合は、Broadcom BES-54328 クラスタ スイッチ上の EFOS ソフトウェアと参照構成ファイル (RCF) をアップグレードするには、次の手順に従います。</block>
@@ -5331,7 +5324,6 @@
   <block id="888d27af1c8bead4bc090f7b57fe47dc" category="paragraph"><block ref="03642bd9ef2a92e7a683427a90d69064" prefix="" category="inline-code"></block></block>
   <block id="9c16d25919d69afd920c43d400da0ea8" category="paragraph"><block ref="e374209cc99be20be59ee159164d8226" prefix="" category="inline-code"></block></block>
   <block id="ab72b57a9a9f0e3ccd70b04752a4b2dc" category="list-text">ノード ストレージ ポートおよびストレージ シェルフ ポートに接続されているスイッチ ポートが *稼働中* であることを確認します。</block>
-  <block id="3050ed36cf7b28894b3ecbbbe2742aa2" category="list-text">EPLD イメージをアップグレードし、スイッチを再起動します。NX-OS 10.5(3)F 以降を使用している場合は、EPLD イメージが NX-OS イメージに含まれているため、別途 EPLD イメージのアップグレードを実行する必要はありません。この手順をスキップして、クラスター ポートの正常性の検証を続行します。</block>
   <block id="8b1e9b3cc32c2a1cf644a1cfe3dab553" category="summary">SN2100ハードウェアをインストールするには、NVIDIAのドキュメントを参照してください。</block>
   <block id="c10fbc8cfb6421490d3e923dc2ea002a" category="paragraph">NVIDIA SN2100 スイッチ ハードウェアのインストールは、データ保護、レプリケーション、管理ワークフローをサポートする信頼性と拡張性に優れたネットワーク インフラを構築するための重要な第一歩です。</block>
   <block id="1fcad359e819ec24939bbd1dc0e8cb54" category="paragraph">SN2100 スイッチをセットアップおよび構成するには、次の手順に従います。詳細な手順については、NVIDIA のドキュメントを参照してください。</block>
@@ -5609,7 +5601,6 @@
   <block id="4900377d6745b8a03e6c9a542b3fe2f0" category="paragraph">イーサネットスイッチヘルスモニター（CSHM）は、ネットワークスイッチの動作状態を正常に保ち、デバッグ目的でスイッチログを収集する役割を担います。</block>
   <block id="bc2dfd2fdf95de6b810acf0fa5c67356" category="paragraph">イーサネットスイッチヘルスモニター（CSHM）は、SNMPを使用してネットワークスイッチの状態とパフォーマンスを監視します。デフォルトでは、SNMPv2cは参照設定ファイル（RCF）を通じて自動的に設定されます。SNMPv3はSNMPv2よりも安全です。なぜなら、SNMPv3は認証、暗号化、メッセージの完全性などの堅牢なセキュリティ機能を導入し、不正アクセスを防ぎ、送信中のデータの機密性と完全性を確保するためです。</block>
   <block id="7cb74dd4a33dec5dc1811198729f1a3d" category="paragraph">イーサネットスイッチヘルスモニター（CSHM）は、検出したネットワークスイッチを自動的に監視しようとしますが、スイッチが正しく設定されていない場合は、監視が自動的に行われない可能性があります。ヘルスモニターがスイッチを監視するように正しく設定されていることを確認してください。</block>
-  <block id="9bb9d88110e7f202f1952ebcc9fefc08" category="admonition">RCFファイルをアップロードして適用する際は、ファイル名を<block ref="a890eeb375a613e0acf945129af8cad4" prefix=" " category="inline-code"></block>にする必要があります。そうしないと、スクリプトの適用ステップが失敗します。</block>
   <block id="153aa60e53e376e3c47bb9de3f41cd5c" category="list-text">以下の転送プロトコルのいずれかを使用して、RCFをスイッチcs2にコピーします：HTTP、HTTPS、FTP、SFTP、またはSCP。</block>
   <block id="4bcfba45804fbbbd6422a9b0dea12c5f" category="summary">クラスタネットワーク内の故障したNexus 92300YCスイッチの交換は、システムを停止させることなく実施できる手順です。</block>
   <block id="c506cb52e11779e41b9479bb442eec6e" category="list-text">以下の転送プロトコル（FTP、SFTP、SCP）のいずれかを使用して、RCFをスイッチcs1のbootflashにコピーします。</block>
@@ -6376,4 +6367,43 @@
   <block id="c14342e34fe3c58a209b86a79b1bb2d0" category="sidebar">Install_hardware_9808を使用したチャンク アップロード署名要求がサポートされるようになりました。</block>
   <block id="4d9fbccb0431ca8e11e51b3dc51e81fb" category="sidebar">configure_switch_9808</block>
   <block id="ff8b1c67dbbb7af6775723d31c9e196a" category="sidebar">Maintain_switches_9808</block>
+  <block id="bbe11fdd91fda58af0bba559cb07294d" category="paragraph">ソフトウェアのアップグレードおよびダウングレードガイドについては、Cisco のウェブサイトを参照してください。</block>
+  <block id="aa5c6ec45e4c4b6dcc0850deb97f2e44" category="paragraph">この手順では、Cisco Nexus 9000 シリーズスイッチのコマンドが指定されている場合を除き、ONTAP コマンドを使用してください。</block>
+  <block id="9fc86f4dabe0859a40dac8d1f8b5531d" category="paragraph"><block ref="b67d565e5390da794178d81e41d9d587" prefix="" category="inline-code"></block></block>
+  <block id="9487ccc182d124ffae84e3326c18b6cf" category="list-text">NX-OS ソフトウェアと EPLD イメージをダウンロードしてインストールします。手順は、現在の NX-OS バージョンとターゲットの NX-OS バージョンによって異なる場合があります。</block>
+  <block id="c25086ea467dc08f96b34fa5ddfe6f95" category="paragraph">ご自身の状況に該当するタブを選択してください。</block>
+  <block id="545f32c102da8b5c806f0a9252f74aa7" category="list-text">バージョン10.4(5)(M)にアップグレード</block>
+  <block id="6d4c71f053835d50b253965bf9e22247" category="list-text">10.4(5)(M)以前のバージョンから10.5(3)(F)以降のバージョンにアップグレードする</block>
+  <block id="6a3e1271fda881036b04a9948f12b930" category="list-text">バージョン10.5(3)(F)からそれ以降のバージョンにアップグレードする</block>
+  <block id="22c721af68f3e238337fd6682565a004" category="list-text">[[stepa]] NX-OSソフトウェアとEPLDイメージをNexus 9336C-FX2スイッチにコピーします。</block>
+  <block id="0a52730597fb4ffa01fc117d9e71e3a9" category="example-title">例</block>
+  <block id="5471ccde54f76964db229481cc1fb109" category="paragraph"><block ref="741d4bb5899dd2abc3bdd986dd32f159" prefix="" category="inline-code"></block></block>
+  <block id="6634794e8c206b378c65c5faa7c4c80b" category="paragraph"><block ref="a121d8672e9b479ad82c8ef2e7e9c717" prefix="" category="inline-code"></block></block>
+  <block id="f005b45baba8377a1ac45612282d2dc7" category="list-text">[[stepa]] NX-OSソフトウェアとEPLDイメージをNexus 9336C-FX2スイッチにコピーします。</block>
+  <block id="5a252ea0dbbfb3da5e794e2acb54d70e" category="list-text">NX-OSおよびEPLDイメージをインストールします。</block>
+  <block id="ee1c8dab6911f396921f8d9c99310d8e" category="paragraph">NX-OS 10.5(3)(F)以降にアップグレードしても、EPLDイメージは自動的に更新されません。アップグレードが完了し、スイッチが再起動したら、同じアップグレード<block ref="1f3226f23ea270e1a1024cd0db05413e" prefix=" " category="inline-code"></block>コマンドを再度実行する必要があります。</block>
+  <block id="63866b50d1c752b87d0a35424ec78d9f" category="list-text">2回目のアップグレード処理では検証が行われますが、NX-OS のアップグレードはスキップされ、EPLD イメージのみが更新されます。</block>
+  <block id="e891366244f7639a1cebce5d7b254878" category="list-text">既にNX-OS 10.5(3)(F)以降にアップグレード済みの場合、両方のイメージが同時に更新されます。</block>
+  <block id="7d625d674a5fa1ee8f231bbe934d59c5" category="paragraph">以下の手順は、NX-OS 10.4(5)(M) から 10.5(3)(F) へのアップグレードを示しています。最初の処理では NX-OS のアップグレードが実行され、2回目の処理では EPLD イメージのアップグレードが実行されます。</block>
+  <block id="49b200eb8820638568f5d815c24fbe04" category="paragraph"><block ref="5ea68978710e999c37e81ef89e1609fb" prefix="" category="inline-code"></block></block>
+  <block id="30c31bba00ddc5f435e1609b696cfc11" category="paragraph">この例では、NX-OS バージョン 10.5(4)(M) を使用しています。</block>
+  <block id="03ff4c3f972d17b8f10bd0edb3043c3a" category="paragraph">この例では、EPLD バージョン 10.5(4)(M) を使用しています。</block>
+  <block id="28ccfd0538434ca8f7c3ed05eb919f9d" category="list-text">[[step7]]クラスタ上のクラスタポートの健全性を確認します。</block>
+  <block id="7b7c6479e04cac8c2008fe7ca440afea" category="list-text">手順 6 ～ 8 を繰り返して、スイッチ cs1 に NX-OS ソフトウェアをインストールします。</block>
+  <block id="95a058e5eceffbda103e7cb32bf0371d" category="list-text">[[step11]]クラスタLIFで自動復帰を有効にします。</block>
+  <block id="131977f29895c23a06e7ceb348f34fc9" category="paragraph">クラスタLIFがホームポートに戻っていない場合は、ローカルノードから手動でリバートしてください。</block>
+  <block id="c6d44233ebeaa055e8f937a641fb1053" category="paragraph">ケーブル配線と構成の要件を満たしたら、スイッチに<block ref="5f8c635ef985b849c8790b2e319cc3c1" category="inline-link-macro-rx"></block>をインストールします。</block>
+  <block id="56195d3edc2ef765239236e19cf9f9d8" category="paragraph">EFOSソフトウェアをインストールしたら、以下のことができます：</block>
+  <block id="69a4ab133a7f329e3b6d964412122368" category="inline-link-macro">ライセンスをインストールする</block>
+  <block id="c22dd3ffbd7eb0da1c9a797307a0e3d8" category="list-text"><block ref="f2a6d573030fd5cb26e30ca5f2de8d3e" category="inline-link-macro-rx"></block>。</block>
+  <block id="30c3e1a7dac3e78e6712ff0d67b9ecd3" category="inline-link-macro">EFOS 3.12.0.1以降用のRCFファイルとライセンスファイルをインストールする</block>
+  <block id="a20a23e9f22d1c30ea89d18cbe86e2c5" category="list-text"><block ref="313ea9029f73da8a306189cf101a9b89" category="inline-link-macro-rx"></block>お使いのシステム構成に該当する場合。</block>
+  <block id="a70191390fbf57b5cfe38e5b6a014d4a" category="paragraph">イーサネットスイッチの健全性監視を設定します。</block>
+  <block id="af2af2f8127907c37bce58e3ce83eff9" category="list-text">RCFを工場出荷時の設定状態からインストールする際に必要な、スイッチへのコンソール接続。</block>
+  <block id="f0da8e888101343acd4a7e72e76cff36" category="paragraph">ポート設定には、スイッチ CLI と ONTAP CLI（以下の手順で示すとおり）を使用します。まず最初のスイッチ（cs2）でポートを設定し、次に2番目のスイッチ（cs1）に対して同じ手順を繰り返します。</block>
+  <block id="c32a2c4a7520ad02a1a78600f2a6b3bd" category="admonition">RCFを更新または新規適用する際は、スイッチの設定を消去し、基本設定を行う必要があります。スイッチの設定を消去するには、シリアルコンソールを使用してスイッチに接続する必要があります。</block>
+  <block id="7032c38c00e10472c490db066ff31b0f" category="list-text">[[step20]]スイッチcs1でステップ1から19を繰り返します。</block>
+  <block id="0e18e00d28d8ccbabfbea2b32f607774" category="list-text">[[step6]] 権限レベルを admin に戻します：</block>
+  <block id="68c1d03c0bb262a8147f6acaedfa16af" category="inline-link-macro">ログ収集のためにSSHを有効にする</block>
+  <block id="3bbb1b891d8356deadf8d546d8aecf27" category="paragraph">RCFをアップグレードしたら、<block ref="00e69d49421223dfe97c48056e7abc6c" category="inline-link-macro-rx"></block>。</block>
 </blocks>

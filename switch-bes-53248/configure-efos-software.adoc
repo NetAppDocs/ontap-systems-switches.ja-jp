@@ -428,4 +428,8 @@ unit 	active 	    backup   current-active  next-active
 
 
 .次の手順
-EFOSソフトウェアをインストールしたら、 link:configure-licenses.html["ライセンスをインストールする"]。
+EFOSソフトウェアをインストールしたら、以下のことができます：
+
+* link:configure-licenses.html["ライセンスをインストールする"]。
+* link:efos-install-rcf-license-file.html["EFOS 3.12.0.1以降用のRCFファイルとライセンスファイルをインストールする"]お使いのシステム構成に該当する場合。
+
