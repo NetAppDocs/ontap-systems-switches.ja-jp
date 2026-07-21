@@ -39,4 +39,4 @@ AFXシステムドキュメントサイトにある該当するAFX 1KまたはAF
 NOTE: スイッチのインストールが完了すると、AFX のインストールおよびセットアップワークフローの手順に従って、スイッチを設定するためにこのスイッチドキュメントに戻るよう案内されます。
 
 .次の手順
-AFX 1K または AFX 2K システムのインストールの一環としてスイッチをインストール、配線、電源投入したら、link:https://review.docs.netapp.com/us-en/ontap-systems-switches_hotfix-refactor-phase1/switch-cisco-9332d-gx2b/install-configure-switches-in-afx-workflow-9332d.html#configure-switches["スイッチを設定する"]、その後link:https://review.docs.netapp.com/us-en/ontap-systems-switches_hotfix-refactor-phase1/switch-cisco-9332d-gx2b/install-configure-switches-in-afx-workflow-9332d.html#complete-afx-system-setup["AFXシステムのセットアップを完了する"]。
+AFX 1K または AFX 2K システムのインストールの一環としてスイッチをインストール、配線、電源投入したら、link:install-configure-switches-in-afx-workflow-9332d.html#configure-switches["スイッチを設定する"]、その後link:install-configure-switches-in-afx-workflow-9332d.html#complete-afx-system-setup["AFXシステムのセットアップを完了する"]。

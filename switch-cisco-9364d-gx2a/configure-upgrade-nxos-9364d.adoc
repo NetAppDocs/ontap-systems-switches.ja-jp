@@ -13,6 +13,9 @@ summary: Cisco Nexus 9364D-GX2A スイッチの NX-OS をアップグレード�
 [role="lead"]
 Cisco Nexus 9364D-GX2A スイッチの NX-OS をアップグレードして、AFX 1K または AFX 2K システムの新しいハードウェアまたは新しい ONTAP バージョンをサポートします。
 
+
+NOTE: NetApp では、最初に ONTAP ソフトウェアのアップグレードを完了してから、スイッチのソフトウェアアップグレードを実行することをお勧めします。
+
 .開始する前に
 * スイッチの設定に関する最新のバックアップがあることを確認してください。
 * クラスターが完全に機能していることを確認してください。つまり、ログにエラーや同様の問題がないことを確認してください。
@@ -455,7 +458,7 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 [[step-2-install-the-nx-os]]
 == ステップ2：NX-OSをインストールする
 
-最初のスイッチ（cs1）に NX-OS をインストールするには、NX-OS と EPLD の新しいバージョンをインストールして検証し、クラスタ上のすべてのポートの健全性を確認します。その後、2番目のスイッチ（cs2）でこれらの手順を繰り返します。
+最初のスイッチ（cs1）に NX-OS をインストールするには、NX-OS と EPLD の新しいバージョンをインストールして確認し、クラスタ上のすべてのポートの健全性を検証してから、2 番目のスイッチ（cs2）でこれらの手順を繰り返します。
 
 . スイッチのCLIを使用して、NX-OSおよびEPLDイメージをスイッチにコピーします。
 +
@@ -472,7 +475,7 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 
 [listing, subs="+quotes"]
 ----
-cs2# *copy sftp: bootflash: vrf management*
+cs1# *copy sftp: bootflash: vrf management*
 Enter source filename: */code/nxos.10.4.2.bin*
 Enter hostname for the sftp server: *172.19.2.1*
 Enter username: *root*
@@ -488,7 +491,7 @@ sftp> exit
 Copy complete, now saving to disk (please wait)...
 Copy complete.
 
-cs2# *copy sftp: bootflash: vrf management*
+cs1# *copy sftp: bootflash: vrf management*
 Enter source filename: */code/n9000-epld.10.4.2.F.img*
 Enter hostname for the sftp server: *172.19.2.1*
 Enter username: *user1*
@@ -515,7 +518,7 @@ Copy complete.
 ====
 [listing, subs="+quotes"]
 ----
-cs2# *show version*
+cs1# *show version*
 Cisco Nexus Operating System (NX-OS) Software
 TAC support: http://www.cisco.com/tac
 Copyright (C) 2002-2025, Cisco and/or its affiliates.
@@ -548,7 +551,7 @@ Software
 
 
 Hardware
-  cisco Nexus9000 C9332D-GX2B Chassis
+  cisco Nexus9000 C9364D-GX2A Chassis
   Intel(R) Xeon(R) CPU D-1633N @ 2.50GHz with 32802156 kB of memory.
   Processor Board ID FLMXXXXXXXX
   Device name: cs2
@@ -570,7 +573,7 @@ plugin
 
 Active Package(s):
 
-cs2#
+cs1#
 ----
 ====
 . スイッチのCLIを使用して、NX-OSイメージをインストールします。
@@ -588,7 +591,7 @@ cs2#
 
 [listing, subs="+quotes"]
 ----
-cs2# *install all nxos bootflash:nxos.10.4.2.bin*
+cs1# *install all nxos bootflash:nxos.10.4.2.bin*
 
 Installer will perform compatibility check first. Please wait.
 Installer is forced disruptive
@@ -659,7 +662,7 @@ Finishing the upgrade, switch will reboot in 10 seconds.
 ====
 [listing, subs="+quotes"]
 ----
-cs2# *show version*
+cs1# *show version*
 Cisco Nexus Operating System (NX-OS) Software
 TAC support: http://www.cisco.com/tac
 Copyright (C) 2002-2025, Cisco and/or its affiliates.
@@ -692,7 +695,7 @@ Software
 
 
 Hardware
-  cisco Nexus9000 C9332D-GX2B Chassis
+  cisco Nexus9000 C9364D-GX2A Chassis
   Intel(R) Xeon(R) CPU D-1633N @ 2.50GHz with 32802156 kB of memory.
   Processor Board ID FLMXXXXXXXX
   Device name: cs2
@@ -714,7 +717,7 @@ plugin
 
 Active Package(s):
 
-cs2#
+cs1#
 ----
 ====
 . スイッチのCLIを使用して、以下のコマンドでEPLDイメージをアップグレードします。
@@ -735,7 +738,7 @@ cs2#
 
 [listing, subs="+quotes"]
 ----
-cs2# *show version module 1 epld*
+cs1# *show version module 1 epld*
 
 EPLD Device                     Version
 ---------------------------------------
@@ -747,7 +750,7 @@ GEM  FPGA                        0x2
 GEM  FPGA                        0x2
 GEM  FPGA                        0x2
 
-cs2# *install epld bootflash:n9000-epld.10.4.2.F.img module all*
+cs1# *install epld bootflash:n9000-epld.10.4.2.F.img module all*
 Compatibility check:
 Module        Type         Upgradable        Impact    Reason
 ------  ------------------ ----------------- --------- -----------

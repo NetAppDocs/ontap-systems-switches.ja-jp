@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:  
 summary: クラスター、ストレージ、共有スイッチについて学習します。 
 ---
-= AFXシステム、クラスタ、ストレージ、共有スイッチをすぐに使い始めましょう
+= AFF システム、クラスタ、ストレージ、および共有スイッチのクイックスタート
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -92,7 +92,7 @@ ONTAP システムのインストールおよびセットアップ手順には�
 [%collapsible]
 ====
 * link:https://docs.netapp.com/us-en/ontap-afx/install-setup/afx-cable-overview.html["AFX 1K システム用 Cisco Nexus スイッチのインストール"^]
-* link:https://review.docs.netapp.com/us-en/ontap-afx/install-afx-2k/afx-cable-overview.html["AFX 2K システム用 Cisco Nexus スイッチのインストール"^]
+* link:https://docs.netapp.com/us-en/ontap-afx/install-afx-2k/afx-cable-overview.html["AFX 2K システム用 Cisco Nexus スイッチのインストール"^]
 
 
 ==== a| 

@@ -5,7 +5,7 @@ entries:
 - title: 始めましょう
   pdf-filename: 概要_bes53248
   entries:
-  - title: クイック スタート
+  - title: ワークフローのインストールと設定
     url: "/switch-bes-53248/configure-new-switch-overview.html"
   - title: 構成要件
     url: "/switch-bes-53248/configure-reqs-bes53248.html"

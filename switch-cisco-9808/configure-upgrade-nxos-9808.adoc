@@ -13,6 +13,9 @@ summary: Cisco Nexus 9808 スイッチの NX-OS をアップグレードして�
 [role="lead"]
 Cisco Nexus 9808 スイッチの NX-OS をアップグレードして、AFX 2K システムの新しいハードウェアまたは新しい ONTAP バージョンをサポートします。
 
+
+NOTE: NetApp では、最初に ONTAP ソフトウェアのアップグレードを完了してから、スイッチのソフトウェアアップグレードを実行することをお勧めします。
+
 .開始する前に
 * スイッチの設定に関する最新のバックアップがあることを確認してください。
 * クラスターが完全に機能していることを確認してください。つまり、ログにエラーや同様の問題がないことを確認してください。
@@ -22,7 +25,7 @@ Cisco Nexus 9808 スイッチの NX-OS をアップグレードして、AFX 2K �
 * 必要に応じて、詳細についてはlink:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/101x/upgrade/cisco-nexus-9000-nx-os-software-upgrade-downgrade-guide-101x.html["Cisco Nexus 9000 シリーズ NX-OS ソフトウェアのアップグレードおよびダウングレード ガイド"^]を参照してください。
 * お使いのAFXシステムで実行されているONTAPのバージョンによって、スイッチでサポートされるNX-OSのバージョンが決まります。
 +
-** AFX 2K システム内のスイッチの場合、ONTAP 9.19.1GA 以降、および NX-OS 10.6 以降の実行がサポートされています。
+** AFX 2K システム内のスイッチの場合、ONTAP 9.19.1GA 以降を実行している場合、NX-OS 10.6 以降がサポートされています。
 +
 サポートされている NX-OS バージョンの現在のリストについては、link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["NetApp Cisco イーサネットスイッチ"^]ページを参照してください。
 
@@ -32,7 +35,7 @@ NOTE: NX-OSのバージョンをサポートされていないバージョンに
 
 
 
-* この手順では、ONTAPコマンドとCisco Nexus 9000シリーズスイッチのコマンドを使用します。各手順には、コマンドを入力する際に使用するCLIが示されています。
+* この手順では、ONTAP コマンドと Cisco Nexus 9000 シリーズスイッチのコマンドを使用するため、各手順にはコマンドを入力する際に使用する CLI が示されています。
 * この手順の例で使用するスイッチとノードの名前は次のとおりです。
 +
 ** 2 つのCiscoスイッチの名前は cs1 と cs2 です。
@@ -1287,8 +1290,10 @@ ONTAP CLI を使用して、クラスタ LIF の自動復帰を再度有効に�
 
 . クラスタLIFの自動リバートを再度有効にします。
 +
-`network interface modify -vserver Cluster -lif * -auto-revert true`
-
+[source, cli]
+----
+network interface modify -vserver Cluster -lif * -auto-revert true
+----
 . クラスタ LIF がホーム ポートに戻ったことを確認します。
 +
 [source, cli]

@@ -11,6 +11,9 @@ summary: Cisco NX-OS ソフトウェアおよびリファレンス構成ファ�
 [role="lead"]
 NX-OS ソフトウェアとリファレンス コンフィギュレーション ファイル (RCF) をインストールする前に、次の手順に従ってください。
 
+
+NOTE: NetApp では、最初に ONTAP ソフトウェアのアップグレードを完了してから、スイッチのソフトウェアアップグレードを実行することをお勧めします。
+
 .推奨ドキュメント
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ ページ"^]
 +

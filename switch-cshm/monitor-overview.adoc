@@ -2,7 +2,7 @@
 permalink: switch-cshm/monitor-overview.html 
 sidebar: sidebar 
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
-summary: 以下のコマンドが使えます。 
+summary: イーサネット スイッチのヘルス モニター アラートを使用して、ONTAP クラスタのネットワーク スイッチの問題を特定して解決します。 
 ---
 = ヘルスチェックの概要
 :allow-uri-read: 
@@ -12,6 +12,8 @@ summary: 以下のコマンドが使えます。
 
 [role="lead"]
 ヘルスモニタは、クラスタ内の特定のクリティカルな状態をプロアクティブに監視します。
+
+CSHM を設定すると、ヘルス モニターがネットワーク スイッチを継続的にチェックし、潜在的な問題を検出します。ヘルス モニターが障害やリスクを検出すると、迅速な対応を支援するための診断情報を含むアラートを生成します。現在発生している問題を特定するためにアクティブなアラートを表示したり、監視対象となっている状況を把握するために利用可能なアラート定義を表示したりできます。
 
 現在発生しているイーサネット スイッチ ヘルス モニターのアラートを表示するには、次のコマンドを実行します。 `system health alert show -monitor ethernet-switch`
 

@@ -4,7 +4,7 @@ title: NVIDIA SN2100
 entries:
 - title: 始めましょう
   entries:
-  - title: クイック スタート
+  - title: ワークフローのインストールと設定
     url: "/switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
   - title: 構成要件
     url: "/switch-nvidia-sn2100/configure-reqs-sn2100-cluster.html"

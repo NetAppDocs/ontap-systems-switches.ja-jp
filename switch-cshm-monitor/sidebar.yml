@@ -1,0 +1,12 @@
+---
+section: switch-cshm-monitor
+title: スイッチの状態を確認する
+entries:
+- title: ヘルスチェックの概要
+  url: "/switch-cshm/monitor-overview.html"
+- title: スイッチ監視を管理する
+  url: "/switch-cshm/monitor-manage.html"
+- title: スイッチ監視を確認する
+  url: "/switch-cshm/monitor-verify.html"
+- title: アラートのトラブルシューティング
+  url: "/switch-cshm/monitor-troubleshoot.html"

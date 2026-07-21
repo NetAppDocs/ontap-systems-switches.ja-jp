@@ -16,6 +16,9 @@ Nexus 9336C-FX2 および 9336C-FX2-T スイッチに NX-OS ソフトウェア�
 始める前に、以下の手順を完了してください。link:install-nxos-overview-9336c-storage.html["NX-OSとRCFのインストールの準備"] 。
 
 
+NOTE: NetApp では、最初に ONTAP ソフトウェアのアップグレードを完了してから、スイッチのソフトウェアアップグレードを実行することをお勧めします。
+
+
 
 [[review-requirements]]
 == 要件の確認

@@ -2,7 +2,7 @@
 permalink: switch-cshm/log-collection-overview.html 
 sidebar: sidebar 
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
-summary: 提供されているコマンドを使用できます。 
+summary: CSHM ログ収集を使用して、ネットワーク スイッチの問題のトラブルシューティングに使用するスイッチログと診断データを収集します。 
 ---
 = ログ収集の概要
 :allow-uri-read: 
@@ -12,5 +12,7 @@ summary: 提供されているコマンドを使用できます。
 
 [role="lead"]
 ログ収集を設定すると、 AutoSupportによって収集される定期的なデータの 1 時間ごとの収集を有効にし、詳細なサポート ログを要求することができます。
+
+ログ収集は、スイッチのログと診断データを自動的に収集することで、ネットワーク スイッチの問題のトラブルシューティングに役立ちます。スケジュールに基づいて定期的にデータを収集するには AutoSupport を使用するか、特定の問題のトラブルシューティングに詳細なログが必要な場合はオンデマンド収集をトリガーします。収集されたログは、スイッチの状態、設定変更、およびネットワーク イベントに関する情報を提供します。
 
 詳細については、link:config-log-collection.html["ログ収集を構成する"]を参照してください。

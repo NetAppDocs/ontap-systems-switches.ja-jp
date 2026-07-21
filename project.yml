@@ -14,13 +14,17 @@ sidebar:
   entries:
   - title: ONTAP ストレージシステムのドキュメントを切り替える
     url: "/index.html"
+  - title: リリース ノート
+    entries:
+    - title: スイッチの最新情報
+      url: "/whats-new.html"
+    - title: サポート終了
+      url: "/eoa-switches.html"
   - title: 始めましょう
     entries:
-    - title: 新機能
-      url: "/whats-new.html"
     - title: ONTAPシステムスイッチについて学ぶ
       url: "/get-started/learn-switch-concept.html"
-    - title: 起動して実行
+    - title: クイック スタート
       url: "/get-started/get-up-and-running.html"
   - title: AFXシステムスイッチ
     url: "/afx/index.html"
@@ -33,27 +37,26 @@ sidebar:
     entries:
     - section: switch-bes-53248
     - section: switch-cisco-9336c-fx2
-    - section: switch-nvidia-sn2100
   - title: ストレージ スイッチ
     url: "/storage/index.html"
     entries:
     - section: switch-cisco-9336c-fx2-storage
-    - section: switch-cisco-3232c-storage
-    - section: switch-nvidia-sn2100-storage
   - title: 共有スイッチ
     url: "/shared/index.html"
     entries:
     - section: switch-cisco-9336c-fx2-shared
       pdf-filename: スイッチ-cisco-9336c-fx2-ストレージ
-  - section: switch-cshm
-  - title: 販売終了スイッチ
+  - title: スイッチの状態を監視する
+    url: "/cshm/index.html"
     entries:
-    - title: 概要
-      url: "/overview-eod.html"
-    - section: switch-cisco-3232c
-    - section: switch-cisco-3132q-v
-    - section: switch-cisco-92300
-    - section: switch-netapp-cn1610
+    - section: switch-cshm-configure
+    - section: switch-cshm-monitor
+    - section: switch-cshm-log-collection
+  - title: 販売終了スイッチ
+    url: "/eoa/index.html"
+    entries:
+    - section: switch-nvidia-sn2100
+    - section: switch-nvidia-sn2100-storage
   - title: 法律上の表示
     url: "/legal-notices.html"
 product-family:

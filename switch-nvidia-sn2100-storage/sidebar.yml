@@ -1,10 +1,10 @@
 ---
 section: switch-nvidia-sn2100-storage
-title: NVIDIA SN2100
+title: NVIDIA SN2100 ストレージ
 entries:
 - title: 始めましょう
   entries:
-  - title: クイック スタート
+  - title: ワークフローのインストールと設定
     url: "/switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html"
   - title: 構成要件
     url: "/switch-nvidia-sn2100-storage/configure-reqs-sn2100-storage.html"
@@ -46,5 +46,4 @@ entries:
   - title: Ciscoストレージ スイッチからの移行
     url: "/switch-nvidia-sn2100-storage/migrate-cisco-storage-switch-sn2100-storage.html"
 - title: スイッチを交換する
-  pdf-filename: Replaces_switch_sn2100-storage
   url: "/switch-nvidia-sn2100-storage/replace-sn2100-switch-storage.html"

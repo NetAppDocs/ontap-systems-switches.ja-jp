@@ -10,7 +10,7 @@ indexpage:
     links:
     - title: 新機能
       url: whats-new.html
-    - title: クイック スタート
+    - title: 始めましょう
       url: "/get-started/get-up-and-running.html"
     - title: ONTAP Release Notes
       url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508
@@ -26,14 +26,10 @@ indexpage:
       url: "/shared/index.html"
   - title: 販売終了スイッチ
     links:
-    - title: クラスタスイッチ - Cisco Nexus 3232c
-      url: "/switch-cisco-3232c/install-overview-cisco-3232c.html"
-    - title: クラスタスイッチ - Cisco Nexus 3132Q-V
-      url: "/switch-cisco-3132q-v/install-overview-cisco-3132qv.html"
-    - title: クラスタスイッチ - Cisco Nexus 92300YC
-      url: "/switch-cisco-92300/install-overview-cisco-92300.html"
-    - title: クラスタスイッチ - NetApp CN1610
-      url: "/switch-netapp-cn1610/switch-overview-cn1610.html"
+    - title: NVIDIA SN2100
+      url: "/switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
+    - title: NVIDIA SN2100 ストレージ
+      url: "/switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html"
   - title: イーサネットスイッチのヘルスモニタリング
     links:
     - title: スイッチのヘルスモニタリングを構成する

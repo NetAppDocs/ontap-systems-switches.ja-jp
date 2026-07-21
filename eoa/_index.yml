@@ -1,0 +1,36 @@
+---
+indexpage:
+  title: 販売終了スイッチ
+  summary: このサイトのドキュメントを使用して、ONTAPストレージシステムの提供終了スイッチをインストール、設定、および保守します。
+  keywords: end of availability, NVIDIA SN2100, cluster switches, storage switches,
+    ONTAP
+  lead: これらのスイッチは購入できなくなりましたが、ONTAP ストレージ システムでの使用は引き続きサポートされています。
+  tiles:
+  - title: NVIDIA SN2100 クラスタ スイッチ
+    links:
+    - title: 始めましょう
+      url: "../switch-nvidia-sn2100/configure-overview-sn2100-cluster.html"
+    - title: ハードウェアをインストールする
+      url: "../switch-nvidia-sn2100/install-hardware-workflow.html"
+    - title: ソフトウェアの設定
+      url: "../switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html"
+    - title: スイッチを移行する
+      url: "../switch-nvidia-sn2100/migrate-cisco-sn2100-cluster-switch.html"
+    - title: スイッチを交換する
+      url: "../switch-nvidia-sn2100/replace-sn2100-switch-cluster.html"
+  - title: NVIDIA SN2100 ストレージ ネットワーク スイッチ
+    links:
+    - title: 始めましょう
+      url: "../switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html"
+    - title: ハードウェアをインストールする
+      url: "../switch-nvidia-sn2100-storage/install-hardware-workflow.html"
+    - title: ソフトウェアの設定
+      url: "../switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html"
+    - title: スイッチを移行する
+      url: "../switch-nvidia-sn2100-storage/migrate-cisco-storage-switch-sn2100-storage.html"
+    - title: スイッチを交換する
+      url: "../switch-nvidia-sn2100-storage/replace-sn2100-switch-storage.html"
+  - title: 販売終了およびサポート終了のお知らせ
+    links:
+    - title: 提供終了：NVIDIA SN2100 シリーズ
+      url: https://mysupport.netapp.com/info/communications/CPC-00635.html

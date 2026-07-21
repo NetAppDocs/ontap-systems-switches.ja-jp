@@ -1,0 +1,32 @@
+---
+indexpage:
+  title: イーサネット スイッチの健全性モニター
+  summary: このサイトのドキュメントを使用して、ストレージ スイッチのイーサネット スイッチ ヘルス モニターを設定および管理してください。
+  keywords: Ethernet switch health monitor, storage switches, cisco nexus switches,
+    cluster switches, ontap clusters
+  lead: イーサネット スイッチのヘルス モニターを使用すると、ONTAP クラスター内のイーサネット ストレージ スイッチの健全性を監視できます。
+  tiles:
+  - title: スイッチのヘルスモニタリングを構成する
+    links:
+    - title: 設定の概要
+      url: "../switch-cshm/config-overview.html"
+    - title: ログ収集を構成する
+      url: "../switch-cshm/log-collection-overview.html"
+    - title: SNMPv3の設定（オプション）
+      url: "../switch-cshm/config-snmpv3.html"
+  - title: スイッチの状態を確認する
+    links:
+    - title: スイッチの状態を確認する
+      url: "../switch-cshm/monitor-overview.html"
+    - title: スイッチ監視を管理する
+      url: "../switch-cshm/monitor-manage.html"
+    - title: スイッチ監視を確認する
+      url: "../switch-cshm/monitor-verify.html"
+    - title: アラートのトラブルシューティング
+      url: "../switch-cshm/monitor-troubleshoot.html"
+  - title: ログ収集
+    links:
+    - title: ログ収集
+      url: "../switch-cshm/log-collection-overview.html"
+    - title: ログ収集のトラブルシューティング
+      url: "../switch-cshm/log-collection-troubleshoot.html"
