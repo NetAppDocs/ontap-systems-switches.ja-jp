@@ -1,0 +1,133 @@
+---
+permalink: switch-cisco-3232c/migrate-requirements-3232c.html 
+sidebar: sidebar 
+keywords: migrate, cn1610 switch, cisco nexus 3232c cluster 
+summary: CN1610クラスタスイッチをCisco Nexus 3232Cクラスタスイッチに交換する際には、特定の構成情報、ポート接続、およびケーブル接続要件に注意する必要があります。 
+---
+= Cisco Nexus 3232C クラスタスイッチの移行要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 3232C クラスタスイッチに移行する前に、構成情報、ポート接続、およびケーブル配線要件を確認してください。
+
+
+
+[[cn1610-migrate-requirements]]
+== CN1610 移行要件
+
+クラスター スイッチは次のノード接続をサポートします。
+
+* NetApp CN1610: ポート0/1～0/12 (10 GbE)
+* Cisco Nexus 3232C: ポート e1/1-30 （40 または 100 または 4x10GbE）
+
+
+クラスタスイッチは、以下のスイッチ間リンク（ISL）ポートを使用します。
+
+* NetApp CN1610: ポート0/13～0/16 (10 GbE)
+* Cisco Nexus 3232C：ポート 1/31-32 (100GbE)
+
+
+[NOTE]
+====
+Cisco Nexus 3232C クラスタスイッチでは、4x10G ブレークアウトケーブルを使用する必要があります。
+
+====
+次の表は、NetApp CN1610スイッチからCisco Nexus 3232Cクラスタスイッチへの移行の各段階で必要となるケーブル接続を示しています：
+
+|===
+| 段階 | 説明 | 必要なケーブル 
+
+
+ a| 
+初期
+ a| 
+CN1610からCN1610（SFP+からSFP+）
+ a| 
+SFP+光ファイバーまたは銅線ダイレクトアタッチケーブル4本
+
+
+
+ a| 
+移行
+ a| 
+CN1610から3232C（QSFPからSFP+）
+ a| 
+1 QSFPと4 SFP+の光ファイバーまたは銅線ブレークアウトケーブル
+
+
+
+ a| 
+最終
+ a| 
+3232Cから3232C（QSFPからQSFP）
+ a| 
+QSFP光ファイバーまたは銅線ダイレクトアタッチケーブル2本
+
+|===
+該当する参照構成ファイル（RCF）をダウンロードしておく必要があります。10 GbE および 40/100 GbE ポートの数は、link:https://mysupport.netapp.com/site/products/all/details/cisco-cluster-storage-switch/downloads-tab["Cisco® クラスタ ネットワークスイッチリファレンス設定ファイルのダウンロード"^] で入手可能な RCF で定義されています。
+
+この手順でサポートされている ONTAP および NX-OS のバージョンは、link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^] に記載されています。
+
+この手順でサポートされている ONTAP および FASTPATH のバージョンは、link:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/docs-tab["NetApp CN1601およびCN1610スイッチ"^] に記載されています。
+
+
+
+[[cn5596-requirements]]
+== CN5596の要件
+
+クラスタ スイッチは、ノードへの接続に次のポートを使用します。
+
+* ポート e1/1-40 (10 GbE)： Nexus 5596
+* ポート e1/1-30 (10/40/100 GbE)： Nexus 3232C
++
+** クラスタ スイッチは、次のスイッチ間リンク（ISL）ポートを使用します。
+
+
+* ポート e1/41-48 (10 GbE)：Nexus 5596
+* ポートe1/31-32（40/100 GbE）：Nexus 3232C
++
+** link:https://hwu.netapp.com/["Hardware Universe"^]には、Nexus 3232Cスイッチへのサポートされているケーブル接続に関する情報が含まれています。
+
+
+* 10 GbEクラスタ接続を備えたノードには、QSFP to SFP+光ファイバー分岐ケーブル、またはQSFP to SFP+銅線分岐ケーブルが必要です。
+* 40/100 GbE クラスタ接続を備えたノードには、サポートされている QSFP/QSFP28 光モジュールと光ファイバーケーブル、または QSFP/QSFP28 銅線ダイレクトアタッチケーブルが必要です。
++
+** クラスタスイッチは適切なISLケーブルを使用します。
+
+
+* 開始：Nexus 5596 (SFP+ to SFP+)
++
+** 8x SFP+光ファイバーまたは銅線直結ケーブル
+
+
+* 暫定版：Nexus 5596 から Nexus 3232C への移行（QSFP から 4xSFP+ ブレークアウト）
++
+** QSFPからSFP+への光ファイバー分岐ケーブルまたは銅線分岐ケーブル 1本
+
+
+* 最終版：Nexus 3232C から Nexus 3232C （QSFP28 から QSFP28）
++
+** 2x QSFP28光ファイバーまたは銅線ダイレクトアタッチケーブル
++
+*** Nexus 3232Cスイッチでは、QSFP/QSFP28ポートを40/100ギガビットイーサネットモードまたは4 x10ギガビットイーサネットモードのいずれかで動作させることができます。
++
+デフォルトでは、40/100ギガビットイーサネットモードには32個のポートがあります。これらの40ギガビットイーサネットポートは、2タプルの命名規則を使用して番号が付けられています。例えば、2番目の40ギガビットイーサネットポートは1/2と番号付けされます。40ギガビットイーサネットから10ギガビットイーサネットに構成を変更するプロセスを「ブレークアウト」と呼び、10ギガビットイーサネットから40ギガビットイーサネットに構成を変更するプロセスを「ブレークイン」と呼びます。40/100ギガビットイーサネットポートを10ギガビットイーサネットポートに分割すると、結果として得られるポートは3タプルの命名規則を使用して番号付けされます。例えば、2番目の40/100ギガビットイーサネットポートのブレークアウトポートは、1/2/1、1/2/2、1/2/3、および1/2/4と番号付けされています。
+
+*** Nexus 3232Cスイッチの左側面には、1/33と1/34と呼ばれる2つのSFP+ポートがあります。
+*** Nexus 3232Cスイッチの一部のポートを、10GbEまたは40/100GbEで動作するように設定しました。
++
+[NOTE]
+====
+最初の 6 つのポートを 4x10 GbE モードに分割するには、 `interface breakout module 1 port 1-6 map 10g-4x`コマンドを使用します。同様に、ブレークアウト構成から最初の 6 つの QSFP+ ポートを再グループ化するには、 `no interface breakout module 1 port 1-6 map 10g-4x`コマンドを使用します。
+
+====
+*** ノードから Nexus 3232C クラスタスイッチへの 10 GbE および 40/100 GbE 接続に関する計画、移行、および必要なドキュメントの確認が完了しています。
+*** この手順でサポートされている ONTAP および NX-OS のバージョンは、link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ"^] を参照してください。
+
+
+
+
+

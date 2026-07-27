@@ -1,0 +1,274 @@
+---
+permalink: switch-cisco-3232c/install-rcf-software-3232c.html 
+sidebar: sidebar 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 3232c 
+summary: クラスタスイッチのヘルスモニター機能およびログ収集機能を使用するには、SSHが必要です。Cisco 3232cクラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。 
+---
+= 参照構成ファイル（RCF）をインストールする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nexus 3232Cスイッチを初めてセットアップした後、リファレンス構成ファイル（RCF）をインストールします。
+
+.開始する前に
+次のインストールと接続を確認します。
+
+* スイッチ構成の現在のバックアップ。
+* 完全に機能するクラスター (ログにエラーや同様の問題がない)。
+* 現在のRCF。
+* RCFのインストール時に必要な、スイッチへのコンソール接続。
+
+
+.タスク概要
+この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
+
+この手順では、スイッチ間リンク（ISL）の運用は必要ありません。これは意図的な設計であり、RCF のバージョン変更は ISL 接続に一時的に影響を与える可能性があるためです。クラスタ運用を中断させないために、以下の手順では、ターゲットスイッチで手順を実行しながら、クラスタのすべての LIF を運用パートナースイッチに移行します。
+
+link:prepare-install-cisco-nexus-3232c.html["NX-OSとRCFのインストールの準備"]の手順を必ず完了してから、以下の手順に従ってください。
+
+
+
+[[step-1-install-the-rcf-on-the-switches]]
+== ステップ1: スイッチにRCFをインストールする
+
+. SSH またはシリアル コンソールを使用してスイッチ cs2 にログインします。
+. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチcs2のブートフラッシュにRCFをコピーします。Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS コマンドリファレンス"^]の適切なガイドを参照してください。
++
+.例を表示
+[%collapsible]
+====
+この例では、TFTPを使用してスイッチcs2のブートフラッシュにRCFをコピーしています。
+
+[listing, subs="+quotes"]
+----
+cs2# *copy tftp: bootflash: vrf management*
+Enter source filename: *Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt*
+Enter hostname for the tftp server: *172.22.201.50*
+Trying to connect to tftp server......Connection to Server Established.
+TFTP get operation was successful
+Copy complete, now saving to disk (please wait)...
+----
+====
+. 前の手順でブートフラッシュにダウンロードしたRCFを適用します。
++
+Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS コマンドリファレンス"^]の適切なガイドを参照してください。
+
++
+.例を表示
+[%collapsible]
+====
+この例では、スイッチ cs2 に RCF ファイル `Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt`がインストールされています：
+
+[listing, subs="+quotes"]
+----
+cs2# *copy Nexus_3232C_RCF_v1.6-Cluster-HA-Breakout.txt running-config echo-commands*
+----
+====
++
+[NOTE]
+====
+RCF の *インストール ノート*、*重要ノート*、および *バナー* セクションを必ずよくお読みください。スイッチが正しく動作するように設定するためには、出力を確認し、その指示に従う必要があります。
+
+====
+. バナー出力を調べます `show banner motd`コマンド。スイッチの適切な設定と動作を確保するため、*重要な注意事項*に記載されている指示をよく読んで従ってください。
+. RCF ファイルが正しい新しいバージョンであることを確認します。
++
+`show running-config`
+
++
+次の情報が正しいことを確認してください。
+
++
+** RCFのバナー
+** ノードとポートの設定
+** カスタマイズ
++
+出力内容はサイトの構成によって異なります。ポートの設定を確認し、インストールしたRCFに固有の変更がないかリリース ノートを参照してください。
+
+
+
+. スイッチの設定に、以前に行ったカスタマイズをすべて再適用してください。必要な追加変更の詳細については、link:cabling-considerations-3232c.html["ケーブル配線と構成の考慮事項を確認する"]を参照してください。
+. 基本的な設定の詳細を `write_erase.cfg`ブートフラッシュ上のファイル。
++
+[NOTE]
+====
+以下の項目を必ず設定してください：* ユーザー名とパスワード * 管理IPアドレス * デフォルトゲートウェイ * スイッチ名
+
+====
++
+`cs2# show run | section "switchname" > bootflash:write_erase.cfg`
+
++
+`cs2# show run | section "hostname" >> bootflash:write_erase.cfg`
+
++
+`cs2# show run | i "username admin password" >> bootflash:write_erase.cfg`
+
++
+`cs2# show run | section "vrf context management" >> bootflash:write_erase.cfg`
+
++
+`cs2# show run | section "interface mgmt0" >> bootflash:write_erase.cfg`
+
+. RCF バージョン 1.12 以降をインストールする場合は、次のコマンドを実行します。
++
+`cs2# echo "hardware access-list tcam region racl-lite 512" >> bootflash:write_erase.cfg`
+
++
+`cs2# echo "hardware access-list tcam region qos 256" >> bootflash:write_erase.cfg`
+
++
+詳細については、ナレッジベースの記事link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]を参照してください。
+
+. 確認するには `write_erase.cfg`ファイルは期待どおりに入力されます。
++
+`show file bootflash:write_erase.cfg`
+
+. 発行する `write erase`現在保存されている構成を消去するコマンド:
++
+`cs2# *write erase*`
+
++
+`Warning: This command will erase the startup-configuration.`
+
++
+`Do you wish to proceed anyway? (y/n)  [n] *y*`
+
+. 以前に保存した基本設定をスタートアップ設定にコピーします。
++
+`cs2# *copy bootflash:write_erase.cfg startup-config*`
+
+. スイッチ cs2 を再起動します：
++
+`cs2# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
+
+. スイッチcs1について、手順1～12を繰り返します。
+. ONTAPクラスタ内のすべてのノードのクラスタ ポートをスイッチ cs1 および cs2 に接続します。
+
+
+
+
+[[step-2-verify-the-switch-connections]]
+== ステップ 2：スイッチの接続を確認する
+
+. クラスター ポートに接続されているスイッチ ポートが *稼働中* であることを確認します。
++
+`show interface brief | grep up`
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1# *show interface brief | grep up*
+.
+.
+Eth1/1/1      1       eth  access up      none                    10G(D) --
+Eth1/1/2      1       eth  access up      none                    10G(D) --
+Eth1/7        1       eth  trunk  up      none                   100G(D) --
+Eth1/8        1       eth  trunk  up      none                   100G(D) --
+.
+.
+----
+====
+. cs1 と cs2 間の ISL が機能していることを確認します。
++
+`show port-channel summary`
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cs1# *show port-channel summary*
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/31(P)   Eth1/32(P)
+cs1#
+----
+====
+. クラスタ LIF がホーム ポートに戻ったことを確認します。
++
+`network interface show -role cluster`
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface show -role cluster*
+            Logical            Status     Network            Current             Current Is
+Vserver     Interface          Admin/Oper Address/Mask       Node                Port    Home
+----------- ------------------ ---------- ------------------ ------------------- ------- ----
+Cluster
+            cluster1-01_clus1  up/up      169.254.3.4/23     cluster1-01         e0d     true
+            cluster1-01_clus2  up/up      169.254.3.5/23     cluster1-01         e0d     true
+            cluster1-02_clus1  up/up      169.254.3.8/23     cluster1-02         e0d     true
+            cluster1-02_clus2  up/up      169.254.3.9/23     cluster1-02         e0d     true
+            cluster1-03_clus1  up/up      169.254.1.3/23     cluster1-03         e0b     true
+            cluster1-03_clus2  up/up      169.254.1.1/23     cluster1-03         e0b     true
+            cluster1-04_clus1  up/up      169.254.1.6/23     cluster1-04         e0b     true
+            cluster1-04_clus2  up/up      169.254.1.7/23     cluster1-04         e0b     true
+8 entries were displayed.
+cluster1::*>
+----
+====
++
+クラスタLIFがホームポートに戻っていない場合は、手動でリバートしてください：
+`network interface revert -vserver <vserver_name> -lif <lif_name>`
+
+. クラスタが正常に動作していることを確認します。
++
+`cluster show`
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster1::*> *cluster show*
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------- -------
+cluster1-01          true    true          false
+cluster1-02          true    true          false
+cluster1-03          true    true          true
+cluster1-04          true    true          false
+4 entries were displayed.
+cluster1::*>
+----
+====
+
+
+
+
+[[step-3-setup-your-ontap-cluster]]
+== ステップ3：ONTAPクラスタをセットアップする
+
+NetApp、 System Manager を使用して新しいクラスタを設定することをお勧めします。
+
+System Manager は、ノード管理 IP アドレスの割り当て、クラスタの初期化、ローカル階層の作成、プロトコルの設定、初期ストレージのプロビジョニングなど、クラスタのセットアップと構成のためのシンプルで簡単なワークフローを提供します。
+
+セットアップ手順については、 https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["System Managerを使用した新しいクラスタでのONTAPの設定"]を参照してください。
+
+.次の手順
+RCFをインストールしたら、 link:configure-ssh-keys.html["SSH設定を確認する"]。

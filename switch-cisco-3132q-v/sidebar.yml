@@ -14,7 +14,7 @@ entries:
   - title: Smart Call Homeの要件
     url: "/switch-cisco-3132q-v/smart-call-home-3132q.html"
 - title: ハードウェアを設置
-  pdf-filename: インストール_ハードウェア_3132q-v
+  pdf-filename: Install_hardware_3132q-v
   entries:
   - title: ハードウェアインストールワークフロー
     url: "/switch-cisco-3132q-v/install-hardware-workflow.html"
@@ -27,7 +27,7 @@ entries:
   - title: ケーブル配線と構成を確認する
     url: "/switch-cisco-3132q-v/cabling-considerations-3132q-v.html"
 - title: ソフトウェアを構成する
-  pdf-filename: 構成ソフトウェア_3132q-v
+  pdf-filename: Configure_software_3132q-v
   entries:
   - title: ソフトウェアインストールワークフロー
     url: "/switch-cisco-3132q-v/configure-software-overview-3132q-v-cluster.html"
@@ -38,7 +38,7 @@ entries:
   - title: NX-OSソフトウェアをインストールする
     url: "/switch-cisco-3132q-v/install-nx-os-software-3132q-v.html"
   - title: RCFをインストールまたはアップグレードする
-    pdf-filename: インストールアップグレードrcf
+    pdf-filename: install_upgrade_rcf
     entries:
     - title: RCF のインストールまたはアップグレードの概要
       url: "/switch-cisco-3132q-v/install-upgrade-rcf-overview-3132q-v.html"
@@ -51,12 +51,12 @@ entries:
 - title: スイッチを工場出荷時の状態にリセットする
   url: "/switch-cisco-3132q-v/reset-switch-3132q-v.html"
 - title: スイッチの移行
-  pdf-filename: 移行スイッチ_3132q-v
+  pdf-filename: Migrate_switches_3132q-v
   entries:
-  - title: スイッチレス クラスタから 2 ノード スイッチ クラスタに移行する
-    pdf-filename: スイッチレスからスイッチドクラスタへの移行
+  - title: スイッチレスクラスタから2ノードスイッチドクラスタへの移行
+    pdf-filename: スイッチレスクラスタからスイッチドクラスタへの移行
     entries:
-    - title: スイッチレスから2ノードスイッチのワークフローへの移行
+    - title: スイッチレスワークフローから2ノードスイッチドワークフローへの移行
       url: "/switch-cisco-3132q-v/migrate-switchless-to-switched-workflow.html"
     - title: 移行要件
       url: "/switch-cisco-3132q-v/migrate-switchless-to-switched-requirements.html"
@@ -67,7 +67,7 @@ entries:
     - title: 移行を完了する
       url: "/switch-cisco-3132q-v/migrate-switchless-complete-migration.html"
 - title: スイッチを交換する
-  pdf-filename: スイッチの交換_3132q-v
+  pdf-filename: Replace_switches_3132q-v
   entries:
   - title: 要件を置き換える
     url: "/switch-cisco-3132q-v/switch-requirements.html"

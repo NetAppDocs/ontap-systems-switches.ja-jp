@@ -1,0 +1,121 @@
+---
+permalink: switch-cisco-92300/92300-overview.html 
+sidebar: sidebar 
+keywords: cisco nexus 92300YC 
+summary: 2 つ以上のノードを持つONTAPクラスターを構築する場合は、サポートされているクラスター ネットワーク スイッチが 2 つ必要です。オプションとして追加の管理スイッチを使用することもできます。 
+---
+= Cisco Nexus 92300YC スイッチの概要
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+2 つ以上のノードを持つONTAPクラスターを構築する場合は、サポートされているクラスター ネットワーク スイッチが 2 つ必要です。オプションとして追加の管理スイッチを使用することもできます。
+
+Cisco Nexus 92300YC スイッチ （X190003/R） は、スイッチに付属の標準ブラケットを使用して、NetApp システムキャビネットまたはサードパーティ製キャビネットに取り付けることができます。
+
+以下の表は、92300YC スイッチ、ファン、および電源装置の部品番号と説明を示しています。
+
+[cols="1,2"]
+|===
+| 部品番号 | 説明 
+
+
+ a| 
+190003
+ a| 
+Cisco 92300YC、CLSW、48Pt10/25GB、18Pt100G、PTSX（PTSX = Port Side Exhaust）
+
+
+
+ a| 
+190003Rを使用したチャンク アップロード署名要求がサポートされるようになりました。
+ a| 
+Cisco 92300YC、CLSW、48Pt10/25GB、18Pt100G、PSIN (PSIN = Port Side Intake)
+
+
+
+ a| 
+X-NXA-FAN-35CFM-Bを使用したチャンク アップロード署名要求がサポートされるようになりました。
+ a| 
+ファン、Cisco N9K ポート側吸気エアフロー
+
+
+
+ a| 
+X-NXA-FAN-35CFM-Fを使用したチャンク アップロード署名要求がサポートされるようになりました。
+ a| 
+ファン、Cisco N9K ポート側排気エアフロー
+
+
+
+ a| 
+X-NXA-PAC-650W-Bを使用したチャンク アップロード署名要求がサポートされるようになりました。
+ a| 
+電源、Cisco 650W - ポート側吸気
+
+
+
+ a| 
+X-NXA-PAC-650W-Fを使用したチャンク アップロード署名要求がサポートされるようになりました。
+ a| 
+電源、Cisco 650W - ポート側排気
+
+|===
+Cisco Nexus 92300YC スイッチのエアフローの詳細：
+
+* ポート側排気気流（標準空気）--冷気は、コールドアイルのファンおよび電源モジュールを通じてシャーシに取り込まれ、ホットアイルのシャーシのポート端から排気されます。青色で示されたポート側排気気流。
+* ポート側吸気流（逆流）--冷たい空気は、コールドアイルのポート端からシャーシに入り、ホットアイルのファンと電源モジュールから排出されます。ポート側吸気流はバーガンディ色で示されています。
+
+
+.利用可能なドキュメント
+以下の表は、Cisco Nexus 92300YC スイッチで利用可能なドキュメントの一覧です。
+
+|===
+
+
+| タイトル | 説明 
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/install-overview-cisco-92300.html["_Cisco® Nexus 92300YC クラスタスイッチのセットアップ_"^]
+ a| 
+Cisco Nexus 92300YC クラスタスイッチのセットアップと構成方法について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/install-nxos-overview.html["_NX-OSと参照構成ファイル（RCF）をインストールする_"^]
+ a| 
+Nexus 92300YCクラスタスイッチにNX-OSと参照構成ファイル（RCF）をインストールする方法について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/configure-install-initial.html["_新しい Cisco Nexus 92300YC スイッチを設定する_"^]
+ a| 
+古い Cisco スイッチを使用する環境から Cisco 92300YC スイッチを使用する環境に移行する方法について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/migrate-to-92300yc.html["_古い Cisco スイッチから Cisco Nexus 92300YC スイッチへの移行_"^]
+ a| 
+古い Cisco スイッチを Cisco Nexus 92300YC クラスタスイッチに交換する手順について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/migrate-to-2n-switched.html["_2ノードのスイッチレスクラスタからの移行_"^]
+ a| 
+Cisco Nexus 92300YC クラスタスイッチを使用して、2ノードのスイッチレスクラスタ環境から2ノードのスイッチド環境に移行する方法について説明します。
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-switches/switch-cisco-92300/replace-92300yc.html["_Cisco Nexus 92300YC クラスタスイッチの交換_"^]
+ a| 
+クラスタ内の障害のある Cisco Nexus 92300YC スイッチを交換し、スイッチのオペレーティングシステムと参照構成ファイルをダウンロードする手順について説明します。
+
+|===

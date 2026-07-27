@@ -3,7 +3,7 @@ section: switch-cisco-92300
 title: Cisco Nexus 92300YC
 entries:
 - title: 始めましょう
-  pdf-filename: 概要_92300yc
+  pdf-filename: Overview_92300ycを使用したチャンク アップロード署名要求がサポートされるようになりました。
   entries:
   - title: クイック スタート
     url: "/switch-cisco-92300/install-overview-cisco-92300.html"
@@ -16,7 +16,7 @@ entries:
   - title: Smart Call Homeの要件
     url: "/switch-cisco-92300/smart-call-home-92300.html"
 - title: ハードウェアを設置
-  pdf-filename: インストールハードウェア_92300yc
+  pdf-filename: Install_hardware_92300yc
   entries:
   - title: ハードウェアインストールワークフロー
     url: "/switch-cisco-92300/install-hardware-workflow.html"
@@ -29,7 +29,7 @@ entries:
   - title: ケーブル配線と構成を確認する
     url: "/switch-cisco-92300/cabling-considerations-92300.html"
 - title: ソフトウェアの設定
-  pdf-filename: 構成ソフトウェア_92300yc
+  pdf-filename: Configure_software_92300yc
   entries:
   - title: ソフトウェアインストールワークフロー
     url: "/switch-cisco-92300/configure-software-overview-92300-cluster.html"
@@ -39,17 +39,17 @@ entries:
     url: "/switch-cisco-92300/install-nxos-overview.html"
   - title: NX-OSをインストールする
     url: "/switch-cisco-92300/install-nxos-software.html"
-  - title: RCF設定ファイルをインストールする
+  - title: RCF設定ファイルのインストール
     url: "/switch-cisco-92300/install-the-rcf-file.html"
   - title: SSH設定を確認する
     url: "/switch-cisco-92300/configure-ssh-keys.html"
 - title: スイッチの移行
-  pdf-filename: 移行スイッチ_92300yc
+  pdf-filename: Migrate_switches_92300ycを使用したチャンク アップロード署名要求がサポートされるようになりました。
   entries:
   - title: 2ノードスイッチクラスタへの移行
     url: "/switch-cisco-92300/migrate-to-2n-switched.html"
 - title: スイッチを交換する
-  pdf-filename: スイッチ交換_92300yc
+  pdf-filename: Replace_switches_92300yc
   entries:
   - title: スイッチを交換する
     url: "/switch-cisco-92300/replace-92300yc.html"

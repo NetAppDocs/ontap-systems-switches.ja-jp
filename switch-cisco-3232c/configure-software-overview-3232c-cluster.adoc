@@ -1,0 +1,34 @@
+---
+permalink: switch-cisco-3232c/configure-software-overview-3232c-cluster.html 
+sidebar: sidebar 
+keywords: switches, initial installation, configure switch-cisco-9336c-fx2 switch 
+summary: Cisco Nexus 3232C クラスタスイッチのソフトウェア構成の概要 
+---
+= Cisco Nexus 3232C クラスタスイッチのソフトウェアインストールワークフロー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 3232C スイッチのソフトウェアをインストールして設定し、Reference Configuration File （RCF）をインストールまたはアップグレードするには、次の手順に従ってください。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:setup-switch.html["スイッチを設定する"]
+[role="quick-margin-para"]
+3232Cクラスタスイッチを設定します。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:prepare-install-cisco-nexus-3232c.html["NX-OSソフトウェアとRCFのインストールの準備"]
+[role="quick-margin-para"]
+Cisco NX-OSソフトウェアおよびリファレンス構成ファイル（RCF）は、Cisco 3232Cクラスタスイッチにインストールする必要があります。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:install-nx-os-software-3232c.html["NX-OSソフトウェアをインストールまたはアップグレードする"]
+[role="quick-margin-para"]
+Cisco 3232C クラスタスイッチに NX-OS ソフトウェアをダウンロードしてインストールまたはアップグレードします。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:install-rcf-3232c.html["RCFのインストール"]
+[role="quick-margin-para"]
+Cisco 3232C スイッチを初めてセットアップした後に RCF をインストールします。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-ssh-keys.html["SSH設定を確認する"]
+[role="quick-margin-para"]
+イーサネット スイッチ ヘルス モニタ (CSHM) およびログ収集機能を使用するには、スイッチで SSH が有効になっていることを確認します。

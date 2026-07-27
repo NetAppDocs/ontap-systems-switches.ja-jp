@@ -1,0 +1,137 @@
+---
+permalink: switch-cisco-3232c-storage/install-rcf-software-3232c-storage.html 
+sidebar: sidebar 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 3232c 
+summary: クラスタスイッチのヘルスモニター機能およびログ収集機能を使用するには、SSHが必要です。Cisco 3232cクラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。 
+---
+= 参照構成ファイル（RCF）をインストールする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nexus 3232Cスイッチを初めてセットアップした後、リファレンス構成ファイル（RCF）をインストールします。
+
+.開始する前に
+次のインストールと接続を確認します。
+
+* スイッチ構成の現在のバックアップ。
+* 完全に機能するクラスター (ログにエラーや同様の問題がない)。
+* 現在のRCF。
+* スイッチへのコンソール接続。これは RCF をインストールするときに必要です。
+
+
+.タスク概要
+この手順では、ONTAPコマンドとCisco Nexus 3000シリーズ スイッチ コマンドの両方を使用する必要があります。特に明記されていないかぎり、ONTAPコマンドを使用します。
+
+link:prepare-install-cisco-nexus-3232c-storage.html["NX-OSとRCFのインストールの準備"]の手順を完了してから、以下の手順に従います。
+
+
+
+[[step-1-install-the-rcf-on-the-switches]]
+== ステップ1: スイッチにRCFをインストールする
+
+. SSH またはシリアル コンソールを使用してスイッチ s2 にログインします。
+. FTP、TFTP、SFTP、SCPのいずれかの転送プロトコルを使用して、スイッチs2のブートフラッシュにRCFをコピーします。Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS コマンドリファレンス"^]を参照してください。
++
+.例を表示
+[%collapsible]
+====
+この例では、TFTPを使用してスイッチs2のブートフラッシュにRCFをコピーしています。
+
+[listing, subs="+quotes"]
+----
+s2# *copy tftp: bootflash: vrf management*
+Enter source filename: *NX3232C-RCF-v1.13-1-Storage.txt*
+Enter hostname for the tftp server: *172.22.201.50*
+Trying to connect to tftp server......Connection to Server Established.
+TFTP get operation was successful
+Copy complete, now saving to disk (please wait)...
+----
+====
+. 前の手順でブートフラッシュにダウンロードしたRCFを適用します。
++
+Ciscoコマンドの詳細については、 https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-installation-guides-list.html["Cisco Nexus 3000 Series NX-OS コマンドリファレンス"^]を参照してください。
+
++
+.例を表示
+[%collapsible]
+====
+この例では、スイッチ s2 に RCF ファイル `NX9336C-FX2-RCF-v1.13-1-Storage.txt`がインストールされています：
+
+[listing, subs="+quotes"]
+----
+s2# *copy NX9336C-FX2-RCF-v1.13-1-Storage.txt running-config echo-commands*
+----
+====
++
+[NOTE]
+====
+RCFの*Installation notes*、*Important Notes*、および*banner*セクションをよくお読みください。スイッチの適切な設定と動作を確認するために、これらの手順をよく読んで従ってください。
+
+====
+. バナー出力を調べます `show banner motd`コマンド。スイッチの適切な設定と動作を確保するため、*重要な注意事項*に記載されている指示をよく読んで従ってください。
+. RCF が正しい新しいバージョンであることを確認します。
++
+`show running-config`
+
++
+次の情報が正しいことを確認してください。
+
++
+** RCFのバナー
+** ノードとポートの設定
+** カスタマイズ
++
+出力内容はサイトの構成によって異なります。ポートの設定を確認し、インストールしたRCFに固有の変更がないかリリース ノートを参照してください。
+
+
+
+. 以前のカスタマイズをスイッチ構成に再適用します。
+. RCFのバージョンとスイッチの設定が正しいことを確認したら、 `running-config`ファイルに `startup-config`ファイル。
++
+`s2# copy running-config startup-config [########################################] 100% Copy complete`
+
+. スイッチ s2 を再起動します：
++
+`s2# *reload*`
+
++
+`This command will reboot the system. (y/n)?  [n] *y*`
+
+. スイッチs1について、手順1～8を繰り返します。
+. ONTAP クラスタ内のすべてのノードのノード ストレージ ポートとストレージ シェルフ ポートをスイッチ s1 と s2 に接続します。
+
+
+
+
+[[step-2-verify-the-switch-connections]]
+== ステップ2: スイッチの接続を確認する
+
+. スイッチ ポートが *up* であることを確認します。
++
+`show interface brief`
+
+. 次のコマンドを使用して、ノード ストレージ ポートとストレージ シェルフ ポートが正しい VLAN にあることを確認します：
++
+`show vlan brief`
+
++
+`show interface trunk`
+
+
+
+
+
+[[step-3-set-up-your-ontap-cluster]]
+== ステップ3: ONTAPクラスタをセットアップする
+
+NetApp、 System Manager を使用して新しいクラスタを設定することをお勧めします。
+
+System Manager は、ノード管理 IP アドレスの割り当て、クラスタの初期化、ローカル階層の作成、プロトコルの設定、初期ストレージのプロビジョニングなど、クラスタのセットアップと構成のためのシンプルで簡単なワークフローを提供します。
+
+セットアップ手順については、 https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["System Managerを使用した新しいクラスタでのONTAPの設定"]を参照してください。
+
+.次の手順
+RCFをインストールしたら、 link:configure-ssh-keys.html["SSH設定を確認する"]。

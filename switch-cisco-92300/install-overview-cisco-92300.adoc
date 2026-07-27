@@ -1,0 +1,40 @@
+---
+permalink: switch-cisco-92300/install-overview-cisco-92300.html 
+sidebar: sidebar 
+keywords: install, cisco nexus 92300 switch, 
+summary: Cisco Nexus 92300スイッチを設定する前に、プロセスと用語の概要を確認してください。 
+---
+= Cisco Nexus 92300YC スイッチのインストールとセットアップのワークフロー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 92300YC スイッチは、AFF または FAS クラスタのクラスタスイッチとして使用できます。クラスタスイッチを使用すると、2つ以上のノードを持つ ONTAP クラスタを構築できます。
+
+以下のワークフロー手順に従って、Cisco Nexus 92300YC スイッチのインストールとセットアップを行います。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:configure-reqs-92300.html["構成要件"]
+[role="quick-margin-para"]
+92300YCクラスタスイッチの構成要件を確認してください。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:required-documentation-92300.html["必要な書類"]
+[role="quick-margin-para"]
+92300YC スイッチと ONTAP クラスタをセットアップするには、特定のスイッチおよびコントローラのドキュメントを参照してください。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:smart-call-home-92300.html["Smart Call Homeの要件"]
+[role="quick-margin-para"]
+ネットワーク上のハードウェアおよびソフトウェア コンポーネントを監視するために使用されるCisco Smart Call Home 機能の要件を確認します。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:install-hardware-workflow.html["ハードウェアをインストールする"]
+[role="quick-margin-para"]
+スイッチのハードウェアをインストールします。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]link:configure-software-overview-92300-cluster.html["ソフトウェアの設定"]
+[role="quick-margin-para"]
+スイッチ ソフトウェアを構成します。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]link:../switch-cshm/config-overview.html["CSHMの設定"]
+[role="quick-margin-para"]
+スイッチの状態監視を設定します。

@@ -1,0 +1,30 @@
+---
+permalink: switch-cisco-3132q-v/install-hardware-workflow.html 
+sidebar: sidebar 
+keywords: switches, initial installation, configure switch-cisco-9336c-fx2 switch 
+summary: Cisco Nexus 3132Q-V クラスタスイッチを設定する前に、設定の概要を確認してください。 
+---
+= Cisco Nexus 3132Q-V スイッチのハードウェアインストールワークフロー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+3132Q-V クラスタスイッチのハードウェアをインストールおよび設定するには、次の手順に従ってください。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:setup-worksheet-3132q.html["配線ワークシートを完成させる"]
+[role="quick-margin-para"]
+サンプル配線ワークシートには、スイッチからコントローラへの推奨ポート割り当ての例が示されています。空白のワークシートには、クラスターの設定に使用できるテンプレートが用意されています。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:install-switch-3132qv.html["スイッチをインストールする"]
+[role="quick-margin-para"]
+3132Q-Vスイッチを取り付けます。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:install-cisco-nexus-3132qv.html["NetAppキャビネットにスイッチを設置する"]
+[role="quick-margin-para"]
+3132Q-V スイッチとパススルーパネルを、必要に応じて NetApp キャビネットに設置してください。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:cabling-considerations-3132q-v.html["ケーブル配線と構成を確認する"]
+[role="quick-margin-para"]
+NVIDIA イーサネットポートのサポートを確認します。

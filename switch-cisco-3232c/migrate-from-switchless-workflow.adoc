@@ -1,0 +1,30 @@
+---
+permalink: switch-cisco-3232c/migrate-from-switchless-workflow.html 
+sidebar: sidebar 
+keywords: 3232c cabling setup, 3232c switches configuration, nx-os 
+summary: Cisco 3232C スイッチを設定する前に、以下の情報を確認してください。 
+---
+= 2ノードのスイッチレスクラスタワークフローから移行する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+2ノードのスイッチレスクラスタから Cisco Nexus 3232C クラスタスイッチを使用するクラスタに移行するには、次のワークフロー手順に従ってください。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:migrate-from-switchless-migrate-requirements.html["移行要件"]
+[role="quick-margin-para"]
+移行プロセスにおけるスイッチ情報の例を確認してください。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]link:migrate-from-switchless-prepare-to-migrate.html["移行の準備"]
+[role="quick-margin-para"]
+2ノードのスイッチレスクラスタを、2ノードのスイッチドクラスタに移行するための準備を行います。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]link:migrate-from-switchless-configure-ports.html["ポートを設定する"]
+[role="quick-margin-para"]
+2ノードのスイッチレスクラスタを、2ノードのスイッチドクラスタへの移行に向けて構成します。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]link:migrate-from-switchless-complete-migration.html["移行を完了する"]
+[role="quick-margin-para"]
+2ノードのスイッチドクラスタへの移行を完了してください。

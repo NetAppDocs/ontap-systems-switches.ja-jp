@@ -1,0 +1,499 @@
+---
+permalink: switch-netapp-cn1610/replace-cn1610-switch.html 
+sidebar: sidebar 
+keywords: replace, netapp cn1610, cluster switch 
+summary: 特定のタスクシーケンスを実行することで、障害のある NetApp CN1610 クラスタスイッチを無停止で交換できます。 
+---
+= NetApp CN1610クラスタスイッチの交換
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスタネットワーク内の欠陥のある NetApp CN1610 スイッチを交換するには、以下の手順に従ってください。これは無停止手順（NDU）です。
+
+
+
+[[review-requirements]]
+== 要件の確認
+
+.開始する前に
+スイッチ交換を実行する前に、現在の環境および既存のクラスタとネットワーク インフラの交換用スイッチでスイッチ交換を実行する前に、次の条件が満たされている必要があります：
+
+* 既存のクラスタで、少なくとも1つのクラスタ スイッチが完全に接続されており、完全に機能できる状態であることを確認する必要があります。
+* クラスタポートはすべて稼働状態である必要があります。
+* クラスタの論理インターフェース（LIF）はすべて稼働状態であり、かつ移行されていない状態である必要があります。
+* ONTAP クラスタ `ping-cluster -node node1`コマンドは、すべてのパスで基本的な接続性と PMTU を超える通信が成功していることを示す必要があります。
+
+
+
+
+[[enable-console-logging]]
+== コンソールログを有効にする
+
+NetApp、使用しているデバイスでコンソール ログを有効にし、スイッチを交換するときに次のアクションを実行することを強くお勧めします。
+
+* メンテナンス中はAutoSupport を有効のままにしておきます。
+* メンテナンスの前後にAutoSupportメンテナンスをトリガーして、メンテナンス期間中のケース作成を無効にします。詳細については、このナレッジベース記事link:https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["SU92: スケジュールされたメンテナンス期間中の自動ケース作成を抑制する方法"^]を参照してください。
+* すべての CLI セッションのセッション ログを有効にします。セッションログを有効にする方法については、このナレッジベースの記事の「セッション出力のログ記録」セクションを参照してください。link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["ONTAPシステムへの最適な接続を実現するための PuTTY の設定方法"^] 。
+
+
+
+
+[[replace-the-switch]]
+== スイッチを交換する
+
+.タスク概要
+クラスタLIFを移行するコマンドは、そのクラスタLIFがホストされているノードで実行する必要があります。
+
+この手順の例では、クラスタ スイッチとノードで次の命名法を使用しています。
+
+* 2つのCN1610クラスタスイッチの名前は `cs1`と `cs2`です。
+* 交換対象となるCN1610スイッチ（故障したスイッチ）の名前は `old_cs1`です。
+* 新しいCN1610スイッチ（交換用スイッチ）の名前は `new_cs1`です。
+* 交換されないパートナースイッチの名前は `cs2`です。
+
+
+.手順
+. 起動時の設定ファイルと実行時の設定ファイルが一致していることを確認してください。交換作業中に使用するため、これらのファイルをローカルに保存する必要があります。
++
+以下の例で示す設定コマンドは、FASTPATH 1.2.0.7 用です：
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(old_cs1)> *enable*
+(old_cs1)# *show running-config*
+(old_cs1)# *show startup-config*
+----
+====
+. 実行中の設定ファイルのコピーを作成します。
++
+以下の例のコマンドは、FASTPATH 1.2.0.7 用です：
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(old_cs1)# *show running-config filename.scr*
+Config script created successfully.
+----
+====
+
+
+
+NOTE: ファイル名はどれでも使用できますが、 `CN1610_CS_RCF_v1.2.scr`は除きます。ファイル名には必ず *.scr* という拡張子を付ける必要があります。
+
+. [[step3]]交換に備えて、スイッチの実行構成ファイルを外部ホストに保存します。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(old_cs1)# *copy nvram:script filename.scr scp://<Username>@<remote_IP_address>/path_to_file/filename.scr*
+----
+====
+. スイッチとONTAPのバージョンが互換性マトリックスで一致していることを確認します。詳細については、link:https://mysupport.netapp.com/site/info/netapp-cluster-switch["NetApp CN1601およびCN1610スイッチ"^] を参照してください。
+. NetApp Support Siteのlink:https://mysupport.netapp.com/site/products/all/details/netapp-cluster-switches/downloads-tab["ソフトウェアダウンロードページ"^]から、NetAppクラスタスイッチを選択して、適切なRCFおよびFASTPATHバージョンをダウンロードします。
+. FASTPATH、RCF、および保存済みの設定ファイルを使用して、新しいスイッチで使用するための Trivial File Transfer Protocol (TFTP) サーバーをセットアップします。 `.scr`
+. シリアル ポート（スイッチ右側の「IOIOI」とラベル付けされた RJ-45 コネクタ）を、端末エミュレーションを備えた利用可能なホストに接続します。
+. ホスト側で、シリアル ポートの端末接続設定を行います。
++
+.. 9600ボー
+.. 8データ ビット
+.. 1ストップ ビット
+.. パリティ：なし
+.. フロー制御：なし
+
+
+. 管理ポート（スイッチの左側にあるRJ-45レンチ ポート）を、TFTPサーバが配置されているネットワークと同じネットワークに接続します。
+. TFTPサーバーのあるネットワークに接続する準備をしてください。
++
+動的ホスト構成プロトコル（DHCP）を使用している場合は、現時点でスイッチの IP アドレスを設定する必要はありません。サービスポートは、デフォルトで DHCP を使用するように設定されています。IPv4 および IPv6 プロトコル設定において、ネットワーク管理ポートは「なし」に設定されています。レンチポートが DHCP サーバーを備えたネットワークに接続されている場合、サーバー設定は自動的に構成されます。
+
++
+静的IPアドレスを設定するには、serviceport protocol、network protocol、およびserviceport ipコマンドを使用する必要があります。
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *serviceport ip <ipaddr> <netmask> <gateway>*
+----
+====
+. オプションとして、TFTP サーバーがノートパソコン上にある場合は、標準のイーサネット ケーブルを使用して CN1610 スイッチをノートパソコンに接続し、同じネットワーク内で代替 IP アドレスを使用してネットワーク ポートを設定します。
++
+ `ping`コマンドを使用してアドレスを確認できます。接続を確立できない場合は、ルーティングされていないネットワークを使用し、サービス ポートを IP 192.168.x または 172.16.x で設定する必要があります。サービス ポートは、後日、本番環境管理用の IP アドレスに再設定できます。
+
+. 必要に応じて、新しいスイッチに適したバージョンの RCF および FASTPATH ソフトウェアを確認し、インストールしてください。新しいスイッチが正しく設定されており、RCF および FASTPATH ソフトウェアのアップデートが必要ないことを確認した場合は、手順 13 に進んでください。
++
+.. 新しいスイッチ設定を確認してください。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)> *enable*
+(new_cs1)# *show version*
+----
+====
+.. RCFファイルを新しいスイッチにダウンロードします。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *copy tftp://<server_ip_address>/CN1610_CS_RCF_v1.2.txt nvram:script CN1610_CS_RCF_v1.2.scr*
+Mode.	TFTP
+Set Server IP.	172.22.201.50
+Path.	/
+Filename....................................... CN1610_CS_RCF_v1.2.txt
+Data Type...................................... Config Script
+Destination Filename........................... CN1610_CS_RCF_v1.2.scr
+File with same name already exists.
+WARNING:Continuing with this command will overwrite the existing file.
+
+Management access will be blocked for the duration of the transfer Are you sure you want to start? (y/n) y
+
+File transfer in progress. Management access will be blocked for the duration of the transfer. please wait...
+Validating configuration script...
+(the entire script is displayed line by line)
+...
+description "NetApp CN1610 Cluster Switch RCF v1.2 - 2015-01-13"
+...
+Configuration script validated.
+File transfer operation completed successfully.
+----
+====
+.. RCFファイルがスイッチにダウンロードされていることを確認してください。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *script list*
+Configuration Script Nam   Size(Bytes)
+-------------------------- -----------
+CN1610_CS_RCF_v1.1.scr            2191
+CN1610_CS_RCF_v1.2.scr            2240
+latest_config.scr                 2356
+
+4 configuration script(s) found.
+2039 Kbytes free.
+----
+====
+
+
+. RCFをCN1610スイッチに適用します。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *script apply CN1610_CS_RCF_v1.2.scr*
+Are you sure you want to apply the configuration script? (y/n) *y*
+...
+(the entire script is displayed line by line)
+...
+description "NetApp CN1610 Cluster Switch RCF v1.2 - 2015-01-13"
+...
+Configuration script 'CN1610_CS_RCF_v1.2.scr' applied. Note that the script output will go to the console.
+After the script is applied, those settings will be active in the running-config file. To save them to the startup-config file, you must use the write memory command, or if you used the reload answer yes when asked if you want to save the changes.
+----
+====
++
+.. 実行中の設定ファイルを保存して、スイッチを再起動した際に起動設定ファイルとして使用されるようにしてください。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *write memory*
+This operation may take a few minutes.
+Management interfaces will not be available during this time.
+
+Are you sure you want to save? (y/n) *y*
+
+Config file 'startup-config' created successfully.
+
+Configuration Saved!
+----
+====
+.. イメージをCN1610スイッチにダウンロードします。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *copy tftp://<server_ip_address>/NetApp_CN1610_1.2.0.7.stk active*
+Mode.	TFTP
+Set Server IP.	tftp_server_ip_address
+Path.	/
+Filename....................................... NetApp_CN1610_1.2.0.7.stk
+Data Type.	Code
+Destination Filename.	active
+
+Management access will be blocked for the duration of the transfer
+
+Are you sure you want to start? (y/n) *y*
+
+TFTP Code transfer starting...
+
+File transfer operation completed successfully.
+----
+====
+.. スイッチを再起動して、新しいアクティブブートイメージを実行します。
++
+ステップ6のコマンドが新しいイメージを反映するには、スイッチを再起動する必要があります。reload コマンドを入力した後に表示される応答には、2つの表示形式があります。
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *reload*
+The system has unsaved changes.
+Would you like to save them now? (y/n) *y*
+
+Config file 'startup-config' created successfully.
+
+Configuration Saved! System will now restart!
+.
+.
+.
+Cluster Interconnect Infrastructure
+
+User:admin Password: (new_cs1) >*enable*
+----
+====
+.. 古いスイッチに保存されている設定ファイルを新しいスイッチにコピーします。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *copy tftp://<server_ip_address>/<filename>.scr nvram:script <filename>.scr*
+----
+====
+.. 以前保存した設定を新しいスイッチに適用します。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *script apply <filename>.scr*
+Are you sure you want to apply the configuration script? (y/n) *y*
+
+The system has unsaved changes.
+Would you like to save them now? (y/n) *y*
+
+Config file 'startup-config' created successfully.
+
+Configuration Saved!
+----
+====
+.. 実行中の設定ファイルをスタートアップ設定ファイルに保存します。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *write memory*
+----
+====
+
+
+. このクラスターで AutoSupport が有効になっている場合は、AutoSupport メッセージを呼び出して自動ケース作成を抑制してください：
+`system node autosupport invoke -node * -type all - message MAINT=xh`
++
+_x_ はメンテナンス ウィンドウの期間 (時間単位) です。
+
++
+[NOTE]
+====
+AutoSupportメッセージはテクニカル サポートにこのメンテナンス タスクについて通知し、メンテナンス時間中はケースの自動作成が停止されます。
+
+====
+. 新しいスイッチ new_cs1 で、管理者ユーザーとしてログインし、ノード クラスタ インターフェイスに接続されているすべてのポート（ポート 1 ～ 12）をシャットダウンします。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+User:*admin*
+Password:
+(new_cs1)> *enable*
+(new_cs1)#
+(new_cs1)# *config*
+(new_cs1)(config)# *interface 0/1-0/12*
+(new_cs1)(interface 0/1-0/12)# *shutdown*
+(new_cs1)(interface 0/1-0/12)# *exit*
+(new_cs1)# *write memory*
+----
+====
+. old_cs1スイッチに接続されているポートからクラスタLIFを移行します。
++
+各クラスタLIFを現在のノードの管理インターフェイスから移行する必要があります。
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::> *set -privilege advanced*
+cluster::> *network interface migrate -vserver <vserver_name> -lif <Cluster_LIF_to_be_moved> - sourcenode <current_node> -dest-node <current_node> -dest-port <cluster_port_that_is_UP>*
+----
+====
+. すべてのクラスタ LIF が各ノードの適切なクラスタポートに移動されていることを確認してください。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::> *network interface show -role cluster*
+----
+====
+. 交換したスイッチに接続されているクラスタポートをシャットダウンします。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *network port modify -node <node_name> -port <port_to_admin_down> -up-admin false*
+----
+====
+. クラスタの健全性を確認します。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster show*
+----
+====
+. ポートがダウンしていることを確認してください。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster ping-cluster -node <node_name>*
+----
+====
+. スイッチcs2で、ISLポート13～16をシャットダウンします。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *config*
+(cs2)(config)# *interface 0/13-0/16*
+(cs2)(interface 0/13-0/16)# *shutdown*
+(cs2)# *show port-channel 3/1*
+----
+====
+. ストレージ管理者がスイッチの交換準備ができているかどうかを確認してください。
+. old_cs1スイッチからすべてのケーブルを取り外し、それらのケーブルをnew_cs1スイッチの同じポートに接続します。
+. cs2スイッチで、ISLポート13～16を起動します。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(cs2)# *config*
+(cs2)(config)# *interface 0/13-0/16*
+(cs2)(interface 0/13-0/16)# *no shutdown*
+----
+====
+. 新しいスイッチ上で、クラスタノードに関連付けられているポートを起動します。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)# *config*
+(new_cs1)(config)# *interface 0/1-0/12*
+(new_cs1)(interface 0/13-0/16)# *no shutdown*
+----
+====
+. 単一ノード上で、交換したスイッチに接続されているクラスタノードポートを起動し、リンクが確立されていることを確認します。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *network port modify -node node1 -port <port_to_be_onlined> -up-admin true*
+cluster::*> *network port show -role cluster*
+----
+====
+. ステップ25でポートに関連付けられたクラスタ LIF を、同じノード上でリバートします。
++
+この例では、「Is Home」列が true の場合、node1 上の LIF は正常にリバートされます。
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *network interface revert -vserver node1 -lif <cluster_lif_to_be_reverted>*
+cluster::*> *network interface show -role cluster*
+----
+====
+. 最初のノードのクラスタ LIF が起動していて、ホームポートにリバートされた場合は、手順 25 と 26 を繰り返してクラスタポートを起動し、クラスタ内の他のノードのクラスタ LIF をリバートします。
+. クラスタ内のノードに関する情報を表示します。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+cluster::*> *cluster show*
+----
+====
+. 交換したスイッチの起動設定ファイルと実行設定ファイルが正しいことを確認してください。この設定ファイルは、手順1の出力と一致する必要があります。
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+(new_cs1)> *enable*
+(new_cs1)# *show running-config*
+(new_cs1)# *show startup-config*
+----
+====
+. 自動ケース作成を抑制した場合は、 AutoSupportメッセージを呼び出して再度有効にします。
++
+`system node autosupport invoke -node * -type all -message MAINT=END`
+
+

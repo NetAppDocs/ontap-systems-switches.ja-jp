@@ -1,0 +1,165 @@
+---
+permalink: switch-cisco-92300/configure-install-initial.html 
+sidebar: sidebar 
+keywords: install cisco 92300YC cluster switch, cisco nx 92300yc 
+summary: この手順を使用して、Cisco Nexus 92300YCスイッチの初期取り付けを実行できます。 
+---
+= Cisco Nexus 92300YC スイッチの設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 92300YC スイッチをセットアップおよび設定するには、この手順に従ってください。
+
+.手順
+. シリアル ポートをホストまたはシリアル ポートに接続します。
+. 管理ポート（スイッチのポートの反対側にある）を、SFTPサーバが配置されているネットワークと同じネットワークに接続します。
+. コンソールで、ホスト側のシリアル設定を行います。
++
+** 9600ボー
+** 8データ ビット
+** 1ストップ ビット
+** パリティ：なし
+** フロー制御：なし
+
+
+. Nexus 92300YC スイッチは、初回起動時または実行中の設定を消去した後に再起動すると、起動サイクルを繰り返します。電源投入時の自動プロビジョニングを中止するには、*yes* と入力してこのサイクルを中断してください。
++
+システム管理者アカウントの設定画面が表示されます。
+
++
+.例を表示
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+$ VDC-1 %$ %POAP-2-POAP_INFO:   - Abort Power On Auto Provisioning [yes - continue with normal setup, skip - bypass password and basic configuration, no - continue with Power On Auto Provisioning] (yes/skip/no)[no]: *y*
+Disabling POAP.......Disabling POAP
+2019 Apr 10 00:36:17 switch %$ VDC-1 %$ poap: Rolling back, please wait... (This may take 5-15 minutes)
+
+          ---- System Admin Account Setup ----
+
+Do you want to enforce secure password standard (yes/no) [y]:
+----
+====
+. 安全なパスワード基準を適用するには、*y* と入力してください：
++
+[listing, subs="+quotes"]
+----
+Do you want to enforce secure password standard (yes/no) [y]: *y*
+----
+. ユーザadminのパスワードを入力して確定します。
++
+[listing]
+----
+Enter the password for "admin":
+Confirm the password for "admin":
+----
+. 基本システム設定ダイアログに入るには、*yes* と入力してください。
++
+.例を表示
+[%collapsible]
+====
+[listing]
+----
+This setup utility will guide you through the basic configuration of
+the system. Setup configures only enough connectivity for management
+of the system.
+
+Please register Cisco Nexus9000 Family devices promptly with your
+supplier. Failure to register may affect response times for initial
+service calls. Nexus9000 devices must be registered to receive
+entitled support services.
+
+Press Enter at anytime to skip a dialog. Use ctrl-c at anytime
+to skip the remaining dialogs.
+
+Would you like to enter the basic configuration dialog (yes/no):
+----
+====
+. 別のログイン アカウントを作成します。
++
+[listing]
+----
+Create another login account (yes/no) [n]:
+----
+. 読み取り専用および読み取り/ 書き込みのSNMPコミュニティ ストリングを設定します。
++
+[listing]
+----
+Configure read-only SNMP community string (yes/no) [n]:
+
+Configure read-write SNMP community string (yes/no) [n]:
+----
+. クラスタ スイッチ名を設定します。
++
+[listing, subs="+quotes"]
+----
+Enter the switch name : *cs2*
+----
+. アウトオブバンド管理インターフェイスを設定します。
++
+[listing, subs="+quotes"]
+----
+Continue with Out-of-band (mgmt0) management configuration? (yes/no) [y]: *y*
+
+Mgmt0 IPv4 address : 172.22.133.216
+
+Mgmt0 IPv4 netmask : 255.255.224.0
+
+Configure the default gateway? (yes/no) [y]: *y*
+
+IPv4 address of the default gateway : 172.22.128.1
+----
+. 高度なIPオプションを設定します。
++
+[listing, subs="+quotes"]
+----
+Configure advanced IP options? (yes/no) [n]: *n*
+----
+. Telnetサービスを設定します。
++
+[listing, subs="+quotes"]
+----
+Enable the telnet service? (yes/no) [n]: *n*
+----
+. SSHサービスとSSHキーを設定します。
++
+[listing, subs="+quotes"]
+----
+Enable the ssh service? (yes/no) [y]: *y*
+
+       Type of ssh key you would like to generate (dsa/rsa) [rsa]: *rsa*
+
+       Number of rsa key bits <1024-2048> [1024]: *2048*
+----
+. その他の設定を行います。
++
+[listing, subs="+quotes"]
+----
+Configure the ntp server? (yes/no) [n]: *n*
+
+  Configure default interface layer (L3/L2) [L2]: *L2*
+
+  Configure default switchport interface state (shut/noshut) [noshut]: *noshut*
+
+  Configure CoPP system profile (strict/moderate/lenient/dense) [strict]: *strict*
+----
+. スイッチ情報を確認し、設定を保存します。
++
+[listing, subs="+quotes"]
+----
+Would you like to edit the configuration? (yes/no) [n]: *n*
+
+Use this configuration and save it? (yes/no) [y]: *y*
+
+[########################################] 100%
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+----
+
+
+.次の手順
+スイッチを設定したら、link:install-nxos-overview.html["NX-OSソフトウェアとRCFのインストールの準備"]できます。

@@ -3,32 +3,32 @@ section: switch-netapp-cn1610
 title: NetApp CN1610
 entries:
 - title: 始めましょう
-  pdf-filename: 概要_cn1610
+  pdf-filename: Overview_cn1610
   url: "/switch-netapp-cn1610/switch-overview-cn1610.html"
 - title: インストールと設定のワークフロー
   url: "/switch-netapp-cn1610/install-overview-cn1610.html"
 - title: 必要な書類
   url: "/switch-netapp-cn1610/required-documentation-cn1610.html"
 - title: インストールと設定
-  pdf-filename: インストール_configure_cn1610
+  pdf-filename: Install_configure_cn1610を使用したチャンク アップロード署名要求がサポートされるようになりました。
   entries:
   - title: ハードウェアを設置
     url: "/switch-netapp-cn1610/install-hardware-cn1610.html"
-  - title: FASTPATHソフトウェアをインストールする
+  - title: FASTPATHソフトウェアのインストール
     url: "/switch-netapp-cn1610/install-fastpath-software.html"
   - title: RCFをインストールする
     url: "/switch-netapp-cn1610/install-rcf-file.html"
-  - title: ONTAP 8.3.1以降にFASTPATHとRCFをインストールする
+  - title: ONTAP 8.3.1 以降向けの FASTPATH と RCF のインストール
     url: "/switch-netapp-cn1610/install-fastpath-rcf-831.html"
   - title: スイッチの設定
     url: "/switch-netapp-cn1610/configure-hardware-cn1610.html"
 - title: スイッチの移行
-  pdf-filename: 移行スイッチ_cn1610
+  pdf-filename: Migrate_switches_cn1610を使用したチャンク アップロード署名要求がサポートされるようになりました。
   entries:
-  - title: スイッチレスクラスタからスイッチクラスタへの移行
+  - title: スイッチレスクラスタからスイッチドクラスタへの移行
     url: "/switch-netapp-cn1610/migrate-switched-netapp-cn1610.html"
 - title: スイッチを交換する
-  pdf-filename: スイッチの交換_cn1610
+  pdf-filename: Replace_switches_cn1610を使用したチャンク アップロード署名要求がサポートされるようになりました。
   entries:
   - title: NetApp CN1610クラスタスイッチの交換
     url: "/switch-netapp-cn1610/replace-cn1610-switch.html"

@@ -1,9 +1,9 @@
 ---
 section: switch-cisco-3232c-storage
-title: Cisco Nexus 3232C
+title: Cisco Nexus 3232C ストレージ スイッチ
 entries:
 - title: 始めましょう
-  pdf-filename: 3232Cストレージの概要
+  pdf-filename: Overview_3232C_storage
   entries:
   - title: クイック スタート
     url: "/switch-cisco-3232c-storage/configure-switch-overview-3232c-storage.html"
@@ -14,7 +14,7 @@ entries:
   - title: Smart Call Homeの要件
     url: "/switch-cisco-3232c-storage/smart-call-home-3232c-storage.html"
 - title: ハードウェアを設置
-  pdf-filename: Install_hardware_3232C_storageをインストールする
+  pdf-filename: Install_hardware_3232C_storage
   entries:
   - title: ハードウェアインストールワークフロー
     url: "/switch-cisco-3232c-storage/install-hardware-workflow.html"
@@ -25,7 +25,7 @@ entries:
   - title: ケーブル配線と構成を確認する
     url: "/switch-cisco-3232c-storage/cabling-considerations-3232c-storage.html"
 - title: ソフトウェアを構成する
-  pdf-filename: ソフトウェア3232Cストレージを構成する
+  pdf-filename: Configure_software_3232C_storage
   entries:
   - title: ソフトウェアインストールワークフロー
     url: "/switch-cisco-3232c-storage/configure-software-overview-3232c-storage.html"

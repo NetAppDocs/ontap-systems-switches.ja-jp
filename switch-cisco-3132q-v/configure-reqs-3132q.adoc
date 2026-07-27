@@ -1,0 +1,41 @@
+---
+permalink: switch-cisco-3132q-v/configure-reqs-3132q.html 
+sidebar: sidebar 
+keywords: Cisco, 3132Q-V 
+summary: Cisco Nexus 3132Q-V スイッチの設置とメンテナンスについては、ネットワークと構成の要件を必ず確認してください。 
+---
+= Cisco Nexus 3132Q-V スイッチの構成要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cisco Nexus 3132Q-V スイッチの設置および保守を行う際は、ネットワークおよび構成要件を必ず確認してください。
+
+
+
+[[configuration-requirements]]
+== 構成要件
+
+クラスターを構成するには、スイッチに適した本数と種類のケーブルおよびケーブルコネクタが必要です。最初に設定するスイッチの種類に応じて、付属のコンソールケーブルを使用してスイッチのコンソールポートに接続する必要があります。また、特定のネットワーク情報も提供する必要があります。
+
+
+
+[[network-requirements]]
+== ネットワーク要件
+
+すべてのスイッチ構成には、以下のネットワーク情報が必要です。
+
+* 管理ネットワーク トラフィック用のIPサブネット。
+* 各ストレージシステムコントローラおよび該当するすべてのスイッチのホスト名とIPアドレス。
+* ほとんどのストレージシステムコントローラは、イーサネットサービスポート（レンチのアイコン）に接続することで、e0Mインターフェースを介して管理されます。AFF A800 および AFF A700 システムでは、e0Mインターフェースは専用のイーサネットポートを使用します。
+
+
+.関連情報
+* 最新情報についてはlink:https://hwu.netapp.com["Hardware Universe"^]を参照してください。
+* スイッチの設置要件の詳細については、link:https://kb.netapp.com/Support/General_Support/What_additional_information_do_I_need_to_install_my_equipment_that_is_not_in_HWU["HWU にない機器をインストールするには、どのような追加情報が必要ですか?"^]を参照してください。
+
+
+.次の手順
+構成要件を確認したら、link:required-documentation-3132q.html["必要な書類"]を確認できます。

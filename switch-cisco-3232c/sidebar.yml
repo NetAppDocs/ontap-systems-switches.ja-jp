@@ -1,9 +1,9 @@
 ---
 section: switch-cisco-3232c
-title: Cisco Nexus 3232C
+title: Cisco Nexus 3232C クラスタ スイッチ
 entries:
 - title: 始めましょう
-  pdf-filename: 概要_3232C
+  pdf-filename: Overview_3232Cを使用したチャンク アップロード署名要求がサポートされるようになりました。
   entries:
   - title: クイック スタート
     url: "/switch-cisco-3232c/install-overview-cisco-3232c.html"
@@ -14,7 +14,7 @@ entries:
   - title: Smart Call Homeの要件
     url: "/switch-cisco-3232c/smart-call-home-3232c.html"
 - title: ハードウェアを設置
-  pdf-filename: インストールハードウェア_3232C
+  pdf-filename: Install_hardware_3232C
   entries:
   - title: ハードウェアインストールワークフロー
     url: "/switch-cisco-3232c/install-hardware-workflow.html"
@@ -27,7 +27,7 @@ entries:
   - title: ケーブル配線と構成を確認する
     url: "/switch-cisco-3232c/cabling-considerations-3232c.html"
 - title: ソフトウェアを構成する
-  pdf-filename: 構成ソフトウェア_3232C
+  pdf-filename: Configure_software_3232C
   entries:
   - title: ソフトウェアインストールワークフロー
     url: "/switch-cisco-3232c/configure-software-overview-3232c-cluster.html"
@@ -38,7 +38,7 @@ entries:
   - title: NX-OSソフトウェアをインストールする
     url: "/switch-cisco-3232c/install-nx-os-software-3232c.html"
   - title: RCFをインストールまたはアップグレードする
-    pdf-filename: インストールアップグレードrcf
+    pdf-filename: install_upgrade_rcf
     entries:
     - title: RCF のインストールまたはアップグレードの概要
       url: "/switch-cisco-3232c/install-upgrade-rcf-overview-3232c.html"
@@ -51,12 +51,12 @@ entries:
 - title: スイッチを工場出荷時の状態にリセットする
   url: "/switch-cisco-3232c/reset-switch-3232c.html"
 - title: スイッチの移行
-  pdf-filename: 移行スイッチ_3232C
+  pdf-filename: Migrate_switches_3232C
   entries:
-  - title: 2ノードのスイッチレスクラスタからの移行
-    pdf-filename: スイッチレスクラスタからの移行
+  - title: 2ノード構成のスイッチレスクラスタから移行する
+    pdf-filename: スイッチレスクラスターからの移行
     entries:
-    - title: 2ノードスイッチレスクラスタからの移行ワークフロー
+    - title: 2ノードのスイッチレスクラスタからの移行ワークフロー
       url: "/switch-cisco-3232c/migrate-from-switchless-workflow.html"
     - title: 移行要件
       url: "/switch-cisco-3232c/migrate-from-switchless-migrate-requirements.html"
@@ -67,7 +67,7 @@ entries:
     - title: 移行を完了する
       url: "/switch-cisco-3232c/migrate-from-switchless-complete-migration.html"
 - title: スイッチを交換する
-  pdf-filename: スイッチ3232Cの交換
+  pdf-filename: Replace_switches_3232Cを使用したチャンク アップロード署名要求がサポートされるようになりました。
   entries:
   - title: クラスタスイッチを交換する
     url: "/switch-cisco-3232c/replace-cluster-switch.html"

@@ -19,55 +19,34 @@ AFX システム、クラスター、ストレージ、共有スイッチを起�
 [role="quick-margin-para"]
 スイッチをラックまたはキャビネットに取り付けてください。お使いのAFXシステムまたはスイッチモデルに応じて、以下の手順を参照してください。
 
-[cols="11,9,9,9"]
+[cols="1,1,1,1"]
 |===
+| AFXシステムスイッチ | クラスタースイッチ | ストレージ スイッチ | 共有スイッチ 
 
 
  a| 
-.AFXシステムスイッチ
-[%collapsible]
-====
-* link:../switch-cisco-9332d-gx2b/install-prepare-9332d.html["Cisco Nexus 9332D-GX2B スイッチのインストールの準備"^]
-* link:../switch-cisco-9364d-gx2a/install-prepare-9364d.html["Cisco Nexus 9364D-GX2A スイッチのインストールの準備"^]
-* link:../switch-cisco-9808/install-prepare-9808.html["Cisco Nexus 9808スイッチのインストールの準備"^]
+* link:../switch-cisco-9332d-gx2b/install-prepare-9332d.html["Cisco Nexus 9332D-GX2B スイッチ"^]
+* link:../switch-cisco-9364d-gx2a/install-prepare-9364d.html["Cisco Nexus 9364D-GX2A スイッチ"^]
+* link:../switch-cisco-9808/install-prepare-9808.html["Cisco Nexus 9808スイッチ"^]
+
+ a| 
+* link:../switch-bes-53248/install-hardware-bes53248.html["BES-53248スイッチ"^]
+* link:../switch-cisco-9336c-fx2/install-switch-9336c-cluster.html["Cisco Nexus 9336C-FX2 スイッチ"^]
+* link:../switch-nvidia-sn2100/install-hardware-sn2100-cluster.html["NVIDIA SN2100スイッチ"^]
+
+ a| 
+* link:../switch-cisco-9336c-fx2-storage/install-9336c-storage.html["Cisco Nexus 9336C-FX2 スイッチ"^]
+* link:../switch-nvidia-sn2100-storage/install-hardware-sn2100-storage.html["NVIDIA SN2100スイッチ"^]
+
+ a| 
+* link:../switch-cisco-9336c-fx2-shared/install-9336c-shared.html["Cisco Nexus 9336C-FX2 スイッチ"^]
 
 
-==== a| 
-.クラスタースイッチ
-[%collapsible]
-====
-* link:../switch-bes-53248/install-hardware-bes53248.html["BES-53248スイッチをインストールする"^]
-* link:../switch-cisco-9336c-fx2/install-switch-9336c-cluster.html["Cisco Nexus 9336C-FX2スイッチをインストールする"^]
-* link:../switch-nvidia-sn2100/install-hardware-sn2100-cluster.html["NVIDIA SN2100スイッチをインストールする"^]
-
-
-==== a| 
-.ストレージ スイッチ
-[%collapsible]
-====
-* link:../switch-cisco-9336c-fx2-storage/install-9336c-storage.html["Cisco Nexus 9336C-FX2スイッチをインストールする"^]
-* link:../switch-nvidia-sn2100-storage/install-hardware-sn2100-storage.html["NVIDIA SN2100スイッチをインストールする"^]
-
-
-==== a| 
-.共有スイッチ
-[%collapsible]
-====
-* link:../switch-cisco-9336c-fx2-shared/install-9336c-shared.html["Cisco Nexus 9336C-FX2スイッチをインストールする"^]
-
-
-====
 |===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2"]収納システムと収納棚を設置する
 [role="quick-margin-para"]
 ストレージ システムとストレージ シェルフをキャビネットまたはラックに設置します。プラットフォーム モデルのインストールおよびセットアップ手順にアクセスします。
 
-[cols="2,9,9,9"]
-|===
-
-
- a| 
- a| 
 * https://docs.netapp.com/us-en/ontap-afx/index.html["AFXシステム"^]
 * https://docs.netapp.com/us-en/ontap-systems/aff-aseries/index.html["AFF Aシリーズシステム"^]
 * https://docs.netapp.com/us-en/ontap-systems/aff-cseries/index.html["AFF Cシリーズシステム"^]
@@ -75,105 +54,66 @@ AFX システム、クラスター、ストレージ、共有スイッチを起�
 * https://docs.netapp.com/us-en/asa-r2/index.html["ASA r2 システム"^]
 * https://docs.netapp.com/us-en/ontap-systems/fas/index.html["FASシステム"^]
 
- a| 
- a| 
 
-|===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三つ"]スイッチをコントローラーにケーブル接続する
 [role="quick-margin-para"]
 ONTAP システムのインストールおよびセットアップ手順には、コントローラポートをスイッチにケーブル接続する手順が含まれています。ただし、サポートされているケーブルやトランシーバーのリスト、およびスイッチのホストポートに関する詳細情報が必要な場合は、該当する AFX システムまたはスイッチモデルに関する以下の手順を参照してください。
 
-[cols="11,9,9,9"]
+[cols="1,1,1,1"]
 |===
+| AFXシステムスイッチ | クラスタースイッチ | ストレージ スイッチ | 共有スイッチ 
 
 
  a| 
-.AFXシステムスイッチ
-[%collapsible]
-====
-* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/afx-cable-overview.html["AFX 1K システム用 Cisco Nexus スイッチのインストール"^]
-* link:https://docs.netapp.com/us-en/ontap-afx/install-afx-2k/afx-cable-overview.html["AFX 2K システム用 Cisco Nexus スイッチのインストール"^]
+* link:https://docs.netapp.com/us-en/ontap-afx/install-setup/afx-cable-overview.html["Cisco Nexus スイッチ（AFX 1K システム用）"^]
+* link:https://docs.netapp.com/us-en/ontap-afx/install-afx-2k/afx-cable-overview.html["Cisco Nexus スイッチ（AFX 2K システム用）"^]
+
+ a| 
+* link:../switch-bes-53248/configure-reqs-bes53248.html#configuration-requirements["BES-53248スイッチ"^]
+* link:../switch-cisco-9336c-fx2/setup-worksheet-9336c-cluster.html["Cisco Nexus 9336C-FX2 スイッチ"^]
+* link:../switch-nvidia-sn2100/cabling-considerations-sn2100-cluster.html["NVIDIA SN2100スイッチ"^]
+
+ a| 
+* link:../switch-cisco-9336c-fx2-storage/setup-worksheet-9336c-storage.html["Cisco Nexus 9336C-FX2 スイッチ"^]
+* link:../switch-nvidia-sn2100-storage/cabling-considerations-sn2100-storage.html["NVIDIA SN2100スイッチ"^]
+
+ a| 
+* link:../switch-cisco-9336c-fx2-shared/cable-9336c-shared.html["Cisco Nexus 9336C-FX2 スイッチ"^]
 
 
-==== a| 
-.クラスタースイッチ
-[%collapsible]
-====
-* link:../switch-bes-53248/configure-reqs-bes53248.html#configuration-requirements["BES-53248スイッチの配線"^]
-* link:../switch-cisco-9336c-fx2/setup-worksheet-9336c-cluster.html["Cisco Nexus 9336C-FX2スイッチのケーブル接続"^]
-* link:../switch-nvidia-sn2100/cabling-considerations-sn2100-cluster.html["NVIDIA SN2100スイッチのケーブル接続"^]
-
-
-==== a| 
-.ストレージ スイッチ
-[%collapsible]
-====
-* link:../switch-cisco-9336c-fx2-storage/setup-worksheet-9336c-storage.html["Cisco Nexus 9336C-FX2スイッチのケーブル接続"^]
-* link:../switch-nvidia-sn2100-storage/cabling-considerations-sn2100-storage.html["NVIDIA SN2100スイッチのケーブル接続"^]
-
-
-==== a| 
-.共有スイッチ
-[%collapsible]
-====
-* link:../switch-cisco-9336c-fx2-shared/cable-9336c-shared.html["Cisco Nexus 9336C-FX2スイッチのケーブル接続"^]
-
-
-====
 |===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4"]スイッチソフトウェアを設定する
 [role="quick-margin-para"]
 スイッチの設定とソフトウェアのインストールを行うには、お使いのスイッチモデルに応じたソフトウェアインストール手順に従ってください。
 
-[cols="11,9,9,9"]
+[cols="1,1,1,1"]
 |===
+| AFXシステムスイッチ | クラスタースイッチ | ストレージ スイッチ | 共有スイッチ 
 
 
  a| 
-.AFXシステムスイッチ
-[%collapsible]
-====
-* link:../switch-cisco-9332d-gx2b/configure-switch-workflow-9332d.html["Cisco Nexus 9332D-GX2B スイッチの設定"^]
-* link:../switch-cisco-9364d-gx2a/configure-switch-workflow-9364d.html["Cisco Nexus 9364D-GX2A スイッチの設定"^]
-* link:../switch-cisco-9808/configure-switch-workflow-9808.html["Cisco Nexus 9808スイッチの設定"^]
+* link:../switch-cisco-9332d-gx2b/configure-switch-workflow-9332d.html["Cisco Nexus 9332D-GX2B スイッチ"^]
+* link:../switch-cisco-9364d-gx2a/configure-switch-workflow-9364d.html["Cisco Nexus 9364D-GX2A スイッチ"^]
+* link:../switch-cisco-9808/configure-switch-workflow-9808.html["Cisco Nexus 9808スイッチ"^]
+
+ a| 
+* link:../switch-bes-53248/configure-software-overview-bes53248.html["BES-53248スイッチ"^]
+* link:../switch-cisco-9336c-fx2/configure-software-overview-9336c-cluster.html["Cisco Nexus 9336C-FX2 スイッチ"^]
+* link:../switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html["NVIDIA SN2100スイッチ"^]
+
+ a| 
+* link:../switch-cisco-9336c-fx2-storage/configure-software-overview-9336c-storage.html["Cisco Nexus 9336C-FX2 スイッチ"^]
+* link:../switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html["NVIDIA SN2100スイッチ"^]
+
+ a| 
+* link:../switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html["Cisco Nexus 9336C-FX2 スイッチ"^]
 
 
-==== a| 
-.クラスタースイッチ
-[%collapsible]
-====
-* link:../switch-bes-53248/configure-software-overview-bes53248.html["BES-53248スイッチ用のソフトウェアをインストールする"^]
-* link:../switch-cisco-9336c-fx2/configure-software-overview-9336c-cluster.html["Cisco Nexus 9336C-FX2スイッチのソフトウェアをインストールする"^]
-* link:../switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html["NVIDIA SN2100スイッチ用のソフトウェアをインストールする"^]
-
-
-==== a| 
-.ストレージ スイッチ
-[%collapsible]
-====
-* link:../switch-cisco-9336c-fx2-storage/configure-software-overview-9336c-storage.html["Cisco Nexus 9336C-FX2スイッチのソフトウェアをインストールする"^]
-* link:../switch-nvidia-sn2100-storage/configure-software-sn2100-storage.html["NVIDIA SN2100スイッチ用のソフトウェアをインストールする"^]
-
-
-==== a| 
-.共有スイッチ
-[%collapsible]
-====
-* link:../switch-cisco-9336c-fx2-shared/configure-software-overview-9336c-shared.html["Cisco Nexus 9336C-FX2スイッチのソフトウェアをインストールする"^]
-
-
-====
 |===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五"]システムの完全なセットアップ
 [role="quick-margin-para"]
 スイッチを設定し、必要なソフトウェアをインストールしたら、 ONTAPシステム プラットフォーム モデルのインストールおよびセットアップ手順にアクセスして、システムのセットアップを完了します。
 
-[cols="2,9,9,9"]
-|===
-
-
- a| 
- a| 
 * https://docs.netapp.com/us-en/ontap-afx/index.html["AFXシステム"^]
 * https://docs.netapp.com/us-en/ontap-systems/aff-aseries/index.html["AFF Aシリーズシステム"^]
 * https://docs.netapp.com/us-en/ontap-systems/aff-cseries/index.html["AFF Cシリーズシステム"^]
@@ -181,10 +121,7 @@ ONTAP システムのインストールおよびセットアップ手順には�
 * https://docs.netapp.com/us-en/asa-r2/index.html["ASA r2 システム"^]
 * https://docs.netapp.com/us-en/ontap-systems/fas/index.html["FASシステム"^]
 
- a| 
- a| 
 
-|===
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六"]ONTAP構成を完了する
 [role="quick-margin-para"]
 ONTAPシステムのコントローラとスイッチをインストールしてセットアップしたら、 ONTAPでストレージの設定を完了する必要があります。展開構成に応じて次の手順にアクセスします。
