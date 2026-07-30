@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100-storage/migrate-cisco-storage-switch-sn2100-storage.html 
 sidebar: sidebar 
 keywords: migrating to a storage switch with NVIDIA SN2100 storage switches, how to migrate 
-summary: ONTAPクラスタ用の古いCiscoスイッチを、 NVIDIA SN2100 ストレージ スイッチに無停止で移行できます。 
+summary: 古い Cisco ストレージスイッチから NVIDIA SN2100 ストレージスイッチへ、ストレージ ネットワークの運用を中断することなく移行します。 
 ---
-= Ciscoストレージ スイッチからNVIDIA SN2100 ストレージ スイッチへの移行
+= Cisco ストレージスイッチから NVIDIA SN2100 ストレージスイッチへの移行
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-ONTAPクラスタ用の古いCiscoスイッチをNVIDIA SN2100 ストレージ スイッチに移行できます。これは中断を伴わない手順です。
+古い Cisco ストレージスイッチから NVIDIA SN2100 ストレージスイッチへ、ストレージ ネットワークの運用を中断することなく移行します。
 
 
 

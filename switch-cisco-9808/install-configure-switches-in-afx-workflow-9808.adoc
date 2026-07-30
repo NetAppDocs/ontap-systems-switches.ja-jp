@@ -2,14 +2,14 @@
 permalink: switch-cisco-9808/install-configure-switches-in-afx-workflow-9808.html 
 sidebar: sidebar 
 keywords: switches, initial installation, configure switch-cisco-9808 switch 
-summary: 新しいAFX 2Kシステムの一部として Cisco Nexus 9808 スイッチをインストールおよび設定するには、このスイッチサイトと AFX システムサイトのドキュメントを組み合わせて使用します。ドキュメントには、必要に応じて参照できるリンクが記載されています。 
+summary: このワークフローに従って、新しいAFX 2Kシステムの一部として Cisco Nexus 9808 スイッチをインストールおよび設定します。 
 ---
-= AFXシステムワークフローでスイッチをインストールおよび設定する - Cisco Nexus 9808
+= AFX システムにおける Cisco Nexus 9808 スイッチのインストールおよび設定ワークフロー
 :allow-uri-read: 
 
 
 [role="lead"]
-新しいAFX 2Kシステムの一部として Cisco Nexus 9808 スイッチをインストールおよび設定するには、このスイッチサイトと AFX システムサイトのドキュメントを組み合わせて使用します。ドキュメントには、必要に応じて参照できるリンクが記載されています。
+このワークフローに従って、新しい AFX 2K システムの一部として Cisco Nexus 9808 スイッチをインストールおよび設定してください。このワークフローは、このスイッチサイトと AFX システムズサイトの両方のドキュメントにリンクしています。
 
 
 

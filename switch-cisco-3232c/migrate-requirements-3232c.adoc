@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/migrate-requirements-3232c.html 
 sidebar: sidebar 
 keywords: migrate, cn1610 switch, cisco nexus 3232c cluster 
-summary: CN1610クラスタスイッチをCisco Nexus 3232Cクラスタスイッチに交換する際には、特定の構成情報、ポート接続、およびケーブル接続要件に注意する必要があります。 
+summary: CN1610クラスタスイッチをCisco Nexus 3232Cクラスタスイッチに交換する前に、移行要件を確認してください。 
 ---
-= Cisco Nexus 3232C クラスタスイッチの移行要件
+= Cisco Nexus 3232C クラスタスイッチの移行要件を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3232C クラスタスイッチに移行する前に、構成情報、ポート接続、およびケーブル配線要件を確認してください。
+CN1610クラスタスイッチをCisco Nexus 3232Cクラスタスイッチに交換する前に、構成情報、ポート接続、およびケーブル要件を確認してください。
 
 
 

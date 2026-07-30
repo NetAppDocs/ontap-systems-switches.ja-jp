@@ -2,14 +2,14 @@
 permalink: switch-bes-53248/reset-switch-bes-53248.html 
 sidebar: sidebar 
 keywords: BES-53248 reset switch to factory defaults, BES-53248 switches configuration, efos 
-summary: Broadcom BES-53248 スイッチを構成する前に、次の情報を確認してください。 
+summary: Broadcom BES-53248クラスタスイッチの現在のスイッチ設定を消去して、工場出荷時のデフォルト設定にリセットします。 
 ---
-= BES-53248クラスタスイッチを工場出荷時のデフォルトにリセットします
+= Broadcom BES-53248クラスタスイッチを工場出荷時のデフォルト設定にリセットする
 :allow-uri-read: 
 
 
 [role="lead"]
-BES-53248 クラスタ スイッチを工場出荷時のデフォルトにリセットするには、BES-53248 スイッチの設定を消去する必要があります。
+Broadcom BES-53248クラスタスイッチを工場出荷時のデフォルト設定にリセットするには、現在のスイッチ設定を消去し、スイッチを元の設定に復元します。
 
 .タスク概要
 * スイッチにシリアル コンソールを使用して接続する必要があります。

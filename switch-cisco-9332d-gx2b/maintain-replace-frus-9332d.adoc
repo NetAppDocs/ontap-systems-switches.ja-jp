@@ -2,16 +2,16 @@
 permalink: switch-cisco-9332d-gx2b/maintain-replace-frus-9332d.html 
 sidebar: sidebar 
 keywords: switches, hardware installation, Cisco Nexus, 9332D-GX2B switches 
-summary: Cisco Nexus 9332D-GX2B スイッチには、故障した場合に交換可能な現場交換可能ユニット（FRU）が搭載されています。 
+summary: Cisco Nexus 9332D-GX2B スイッチの故障した現場交換可能ユニット（FRU）を交換します。 
 ---
-= FRUを交換する - Cisco Nexus 9332D-GX2B
+= Cisco Nexus 9332D-GX2B スイッチの FRU を交換する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 9332D-GX2B スイッチには、故障した場合に交換可能な現場交換可能ユニット（FRU）が搭載されています。
+Cisco Nexus 9332D-GX2B スイッチの故障した現場交換可能ユニット（FRU）を交換することで、スイッチ全体を交換することなくスイッチの機能を復元できます。
 
 .タスク概要
 Cisco Nexus 9332D-GX2B スイッチには、以下の FRU が含まれています。

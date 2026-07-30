@@ -2,16 +2,16 @@
 permalink: switch-cisco-9808/install-switches-9808.html 
 sidebar: sidebar 
 keywords: switches, hardware installation, Cisco Nexus, 9808 switches 
-summary: 新しい AFX 2K システム設置の一環として Cisco Nexus 9808 スイッチを設置する作業には、スイッチをラックまたはキャビネットに設置し、システムコントローラやシェルフにケーブルで接続し、電源を入れることが含まれます。 
+summary: Cisco Nexus 9808 スイッチを新しい AFX 2K システムの一部としてインストールします。これには、ラックへの設置、コントローラーおよびシェルフへのケーブル配線、電源投入が含まれます。 
 ---
-= スイッチを取り付ける - Cisco Nexus 9808
+= AFX システムへの Cisco Nexus 9808 スイッチのインストール
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-新しい AFX 2K システム設置の一環として Cisco Nexus 9808 スイッチを設置する作業には、スイッチをラックまたはキャビネットに設置し、システムコントローラやシェルフにケーブルで接続し、電源を入れることが含まれます。
+Cisco Nexus 9808スイッチを新しいAFX 2Kシステムの一部としてインストールします。これには、スイッチをラックやキャビネットに設置し、システムコントローラやシェルフにケーブルで接続し、電源を入れる作業が含まれます。
 
 .開始する前に
 link:install-prepare-9808.html["スイッチの取り付け準備をする"]のスイッチの準備手順を完了している必要があります。

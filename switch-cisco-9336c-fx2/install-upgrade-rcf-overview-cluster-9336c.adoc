@@ -2,16 +2,16 @@
 permalink: switch-cisco-9336c-fx2/install-upgrade-rcf-overview-cluster-9336c.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
-summary: クラスタスイッチのヘルスモニター機能およびログ収集機能を使用するには、SSH接続が必要です。Cisco 9336c-fx2クラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。 
+summary: 初期設定後または既存の RCF をアップグレードする際に、Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタスイッチに参照構成ファイル （RCF） をインストールまたはアップグレードします。 
 ---
-= 参照構成ファイル（RCF）のインストールまたはアップグレードの概要
+= Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタスイッチへの RCF のインストールまたはアップグレード
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Nexus 9336C-FX2 および 9336C-FX2-T スイッチを初めてセットアップした後、リファレンス コンフィギュレーション ファイル (RCF) をインストールします。スイッチに既存のバージョンの RCF ファイルがインストールされている場合は、RCF バージョンをアップグレードします。
+参照構成ファイル（RCF）を Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタスイッチに初期設定後にインストールするか、新しいバージョンが利用可能になったときに RCF バージョンをアップグレードしてください。
 
 RCF のインストールまたはアップグレード時の詳細については、ナレッジベースの記事link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]を参照してください。
 

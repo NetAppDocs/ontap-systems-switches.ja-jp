@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/replace-switch-reqs.html 
 sidebar: sidebar 
 keywords: replace, replacing, defective, broadcom-supported, bes, cluster, switch, network, nondisruptive, procedure, ndu, replace a broadcom-supported bes-53428 cluster switch - bes-53428 switches 
-summary: クラスタ ネットワーク内の障害が発生した Broadcom 対応 BES-53248 クラスタ スイッチの交換は、無停止手順（ NDU ）です。 
+summary: Broadcom BES-53248クラスタスイッチを交換する前に満たす必要がある条件と要件を確認してください。 
 ---
-= 交換要件
+= Broadcom BES-53248クラスタスイッチの交換要件を確認します。
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-スイッチを交換する前に、現在の環境と交換スイッチで次の条件が満たされていることを確認してください。
+交換手順を開始する前に、現在の環境および交換後の Broadcom BES-53248 クラスタスイッチで満たさなければならない条件と要件を確認してください。
 
 
 

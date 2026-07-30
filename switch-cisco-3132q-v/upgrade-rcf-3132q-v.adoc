@@ -1,17 +1,17 @@
 ---
 permalink: switch-cisco-3132q-v/upgrade-rcf-3132q-v.html 
 sidebar: sidebar 
-keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 3132q-v 
-summary: クラスタスイッチのヘルスモニター機能およびログ収集機能を使用するには、SSHが必要です。Cisco 3132q-vクラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。 
+keywords: rcf, upgrade, cluster switch, cisco nexus 3132q-v 
+summary: 新しいバージョンが利用可能な場合は、Cisco Nexus 3132Q-V クラスタスイッチの参照構成ファイル（RCF）をアップグレードしてください。 
 ---
-= 参照構成ファイル (RCF) をアップグレードする
+= Cisco Nexus 3132Q-V クラスタスイッチの RCF をアップグレードする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-運用スイッチに既存のバージョンの RCF ファイルがインストールされている場合は、RCF バージョンをアップグレードします。
+新しいバージョンの RCF が利用可能になった場合に、Cisco Nexus 3132Q-V クラスタスイッチの参照構成ファイル（RCF）をアップグレードします。
 
 .開始する前に
 以下のものがあることを確認してください。

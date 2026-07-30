@@ -2,7 +2,7 @@
 permalink: switch-cisco-9336c-fx2-storage/setup-worksheet-9336c-storage.html 
 sidebar: sidebar 
 keywords: document, support, platform, complete, blank, cabling, worksheet, guide, cisco, nexus, cisco nexus 9336c-fx2 cabling worksheet - cisco nexus 9336-fx2 
-summary: サポートされているプラットフォームを文書化する場合は、完成したサンプル配線ワークシートをガイドとして使用して、空の配線ワークシートを完成させる必要があります。 
+summary: Cisco Nexus 9336C-FX2 または 9336C-FX2-T ストレージスイッチのケーブル配線ワークシートに記入し、ポート接続とサポートされているプラットフォーム構成を文書化します。 
 ---
 = Cisco Nexus 9336C-FX2 または 9336C-FX2-T の配線ワークシートを完成させる
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: サポートされているプラットフォームを文書化する�
 
 
 [role="lead"]
-サポートされているプラットフォームを文書化する場合は、このページの PDF をダウンロードし、ケーブル接続ワークシートを完成させてください。
+Cisco Nexus 9336C-FX2 または 9336C-FX2-T ストレージスイッチのケーブル配線ワークシートに記入し、ポート接続とサポートされているプラットフォーム構成を文書化します。
 
 サンプル配線ワークシートには、スイッチからコントローラへの推奨ポート割り当ての例が示されています。空白のワークシートには、クラスターの設定に使用できるテンプレートが用意されています。
 

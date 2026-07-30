@@ -2,16 +2,16 @@
 permalink: switch-cisco-9336c-fx2/install-switch-and-passthrough-panel-9336c-cluster.html 
 sidebar: sidebar 
 keywords: install, cisco, nexus, switch, pass-through, panel, netapp, cabinet, bracket, switch, install a cisco nexus 9336c-fx2 switch and pass-through panel in a netapp cabinet - cisco nexus 9336c-fx2 
-summary: スイッチに付属の標準ブラケットを使用して、 Cisco Nexus 9336C-FX2 スイッチとパススルー パネルをNetAppキャビネットに設置できます。 
+summary: Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタスイッチとパススルーパネルを、スイッチに付属の標準ブラケットを使用して NetApp キャビネットに取り付けます。 
 ---
-= Cisco Nexus 9336C-FX2および9336C-FX2-TスイッチをNetAppキャビネットに設置する
+= Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタスイッチを NetApp キャビネットに取り付ける
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-構成によっては、 Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチとパススルー パネルをNetAppキャビネットにインストールする必要がある場合があります。スイッチには標準ブラケットが付属しています。
+Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタスイッチとパススルーパネルを、スイッチに付属の標準ブラケットを使用して NetApp キャビネットに取り付けます。
 
 .開始する前に
 以下のものがあることを確認してください。

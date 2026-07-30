@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100/migrate-cn1610-sn2100-cluster-switch.html 
 sidebar: sidebar 
 keywords: migrate cluster NVIDIA SN2100 cluster switches cn1610 
-summary: ONTAPクラスタ用のNetApp CN1610 クラスタ スイッチをNVIDIA SN2100 クラスタ ネットワーク スイッチに無停止で移行できます。 
+summary: 既存の NetApp CN1610 クラスタースイッチを NVIDIA SN2100 クラスタースイッチに、クラスターの動作を中断することなく移行します。 
 ---
-= CN1610 クラスタ スイッチをNVIDIA SN2100 クラスタ スイッチに移行する
+= NetApp CN1610クラスタースイッチからNVIDIA SN2100クラスタースイッチへの移行
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-ONTAPクラスタのNetApp CN1610 クラスタ スイッチをNVIDIA SN2100 クラスタ スイッチに移行できます。この手順は無停止で実行されます。
+既存の NetApp CN1610 クラスタースイッチを NVIDIA SN2100 クラスタースイッチに、クラスターの動作を中断することなく移行します。
 
 
 

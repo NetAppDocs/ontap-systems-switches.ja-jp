@@ -1,17 +1,17 @@
 ---
 permalink: switch-cisco-3132q-v/install-rcf-software-3132q-v.html 
 sidebar: sidebar 
-keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 3132q-v 
-summary: クラスタスイッチのヘルスモニター機能およびログ収集機能を使用するには、SSHが必要です。Cisco 3132q-vクラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。 
+keywords: rcf, install, cluster switch, cisco nexus 3132q-v 
+summary: 初期設定後に、Cisco Nexus 3132Q-V クラスタスイッチに参照構成ファイル（RCF）をインストールします。 
 ---
-= 参照構成ファイル（RCF）をインストールする
+= Cisco Nexus 3132Q-V クラスタスイッチへの RCF のインストール
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Nexus 3132Q-Vスイッチを初めてセットアップした後、リファレンス構成ファイル（RCF）をインストールします。
+初期設定後に Cisco Nexus 3132Q-V クラスタスイッチに参照構成ファイル（RCF）をインストールします。RCF は、クラスタ運用に必要なポート割り当てとネットワーク設定を定義します。
 
 .開始する前に
 次のインストールと接続を確認します。

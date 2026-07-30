@@ -2,16 +2,16 @@
 permalink: switch-cisco-9336c-fx2/migrate-cn1610-9336c-cluster.html 
 sidebar: sidebar 
 keywords: migrate cluster Cisco Nexus 9336C-FX2 cluster switches cn1610 
-summary: ONTAPクラスタ用のNetApp CN1610 クラスタ スイッチを、 Cisco Nexus 9336C-FX2 クラスタ ネットワーク スイッチに無停止で移行できます。 
+summary: クラスタの動作を中断することなく、NetApp CN1610 クラスタスイッチを Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタスイッチに移行します。 
 ---
-= NetApp CN1610 クラスタ スイッチからCisco 9336C-FX2 および 9336C-FX2-T クラスタ スイッチへの移行
+= NetApp CN1610 クラスタースイッチから Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタースイッチへの移行
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-ONTAPクラスタのNetApp CN1610 クラスタ スイッチをCisco 9336C-FX2 および 9336C-FX2-T クラスタ スイッチに移行できます。この手順は無停止で実行されます。
+既存の NetApp CN1610 クラスタースイッチを、クラスターの動作を中断することなく Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタースイッチに移行します。
 
 
 

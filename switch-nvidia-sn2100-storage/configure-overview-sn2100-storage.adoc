@@ -2,18 +2,18 @@
 permalink: switch-nvidia-sn2100-storage/configure-overview-sn2100-storage.html 
 sidebar: sidebar 
 keywords: sn2100 SN2100 switches setup, sn2100 SN2100 switches install, cumulus linux 
-summary: NVIDIA SN2100 スイッチを構成する前に、手順の概要を確認してください。 
+summary: ONTAP 環境に NVIDIA SN2100 ストレージスイッチをインストールして設定するには、このワークフローに従ってください。 
 ---
-= NVIDIA SN2100スイッチのインストールとセットアップのワークフロー
+= NVIDIA SN2100 ストレージスイッチのインストールとセットアップのワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NVIDIA SN2100 は、コントローラとディスク シェルフ間でデータを切り替えることができるイーサネット スイッチです。
+ONTAP 環境に NVIDIA SN2100 ストレージスイッチをインストールして設定するには、このワークフローに従ってください。SN2100 ストレージスイッチは、ONTAP を実行しているサーバーとストレージアレイ間でデータをルーティングします。
 
-SN2100 スイッチをインストールしてセットアップするには、次のワークフロー手順に従ってください。
+SN2100スイッチのインストールと設定を行うには、以下のワークフロー手順に従ってください。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:configure-reqs-sn2100-storage.html["構成要件を確認する"]
 [role="quick-margin-para"]

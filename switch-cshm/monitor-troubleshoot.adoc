@@ -2,16 +2,16 @@
 permalink: switch-cshm/monitor-troubleshoot.html 
 sidebar: sidebar 
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
-summary: 次のコマンドを使用できます。 
+summary: ONTAP クラスタで CSHM によって発生した Ethernet スイッチのヘルスモニタリングアラートのトラブルシューティングを行います。 
 ---
-= アラートのトラブルシューティング
+= イーサネットスイッチのヘルスモニターに関するアラートのトラブルシューティング
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-クラスター内のイーサネット スイッチで障害、リスク、または重大な状態が検出されると、アラートが生成されます。
+ONTAP クラスタのネットワーク スイッチで障害、リスク、または重大な状態が検出されたときに、イーサネット スイッチ ヘルス モニター（CSHM）によって発生したアラートのトラブルシューティングを行います。
 
 アラートが発生した場合、システムのヘルス ステータスではクラスターの劣化ステータスが報告されます。発生したアラートには、システム状態の低下に対応するために必要な情報が含まれます。
 

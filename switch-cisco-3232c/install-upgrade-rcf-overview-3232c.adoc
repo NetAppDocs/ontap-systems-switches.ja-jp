@@ -1,17 +1,17 @@
 ---
 permalink: switch-cisco-3232c/install-upgrade-rcf-overview-3232c.html 
 sidebar: sidebar 
-keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 3232c 
-summary: クラスタスイッチのヘルスモニター機能およびログ収集機能を使用するには、SSHが必要です。Cisco 3232cクラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。 
+keywords: rcf, install, upgrade, cluster switch, cisco nexus 3232c 
+summary: Cisco Nexus 3232C クラスタスイッチへの RCF のインストールまたはアップグレードは、初期セットアップ後、または新しいバージョンが利用可能になった時点で実施します。 
 ---
-= 参照構成ファイル（RCF）のインストールまたはアップグレードの概要
+= Cisco Nexus 3232C クラスタスイッチへの RCF のインストールまたはアップグレードについて
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Nexus 3232Cスイッチを初めてセットアップした後、リファレンス構成ファイル（RCF）をインストールします。スイッチに既存のRCFファイルがインストールされている場合、RCFのバージョンをアップグレードします。
+初期設定後に Cisco Nexus 3232C クラスタスイッチに参照構成ファイル（RCF）をインストールするか、新しいバージョンが利用可能になった場合は RCF バージョンをアップグレードしてください。
 
 RCF のインストールまたはアップグレード時の詳細については、ナレッジベースの記事link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]を参照してください。
 

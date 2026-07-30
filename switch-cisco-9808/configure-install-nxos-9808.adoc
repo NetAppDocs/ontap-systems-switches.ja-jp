@@ -2,16 +2,16 @@
 permalink: switch-cisco-9808/configure-install-nxos-9808.html 
 sidebar: sidebar 
 keywords: procedure, install, nx-os, software, nexus, cluster, switch, install the nx-os software - cisco nexus 9808 
-summary: NX-OS を Cisco Nexus 9808 スイッチにインストールするのは、新しい AFX 2K システムのインストール、スーパーバイザーモジュールの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする場合です。 
+summary: 新規 AFX 2K システムのインストール、スーパーバイザー モジュールの交換、または工場出荷時設定へのリセットのために、Cisco Nexus 9808 スイッチに NX-OS をインストールします。 
 ---
-= NX-OS をインストールする - Cisco Nexus 9808
+= Cisco Nexus 9808スイッチにNX-OSをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NX-OS を Cisco Nexus 9808 スイッチにインストールするのは、新しい AFX 2K システムのインストール、スーパーバイザーモジュールの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする場合です。
+新しい AFX 2K システムのインストール、スーパーバイザー モジュールの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする場合は、Cisco Nexus 9808 スイッチに NX-OS をインストールします。
 
 .開始する前に
 * スイッチの電源がオンになっている必要があり、link:configure-complete-initial-setup-9808.html["スイッチの初期設定を完了する"]の手順を完了している必要があります。

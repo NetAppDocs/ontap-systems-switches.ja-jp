@@ -2,16 +2,16 @@
 permalink: switch-cisco-9808/configure-complete-initial-setup-9808.html 
 sidebar: sidebar 
 keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 9808 
-summary: 新しい AFX 2K システムのインストール、スイッチの交換の一環として Cisco Nexus 9808 スイッチの電源を入れた後、またはスイッチを工場出荷時のデフォルト設定にリセットした後、構成ウィザードを使用してスイッチの初期設定を完了するように求められます。スイッチの初期設定を完了するために、以下の構成ウィザードの質問と推奨される回答を参照してください。 
+summary: 新しい AFX 2K システムのインストール、スーパーバイザ モジュールの交換、または工場出荷時設定へのリセットを行う際に、構成ウィザードを使用して Cisco Nexus 9808 スイッチの初期設定を完了します。 
 ---
-= 初期スイッチ設定を完了する - Cisco Nexus 9808
+= Cisco Nexus 9808 スイッチの初期設定を完了する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-新しい AFX 2K システムのインストールまたはスーパーバイザー モジュールの交換の一環として Cisco Nexus 9808 スイッチの電源を入れた後、またはスイッチを工場出荷時のデフォルト設定にリセットした後、構成ウィザードを使用してスイッチの初期設定を完了するように求められます。スイッチの初期設定を完了するために、以下の設定ウィザードの質問と推奨される回答を参照してください。
+設定ウィザードを使用して、Cisco Nexus 9808 スイッチの初期設定を完了します。この手順は、AFX 2K システムの新規インストール、スーパーバイザー モジュールの交換、およびスイッチを工場出荷時のデフォルト設定にリセットする場合に適用されます。
 
 .開始する前に
 各スイッチのネットワーク情報と構成情報、および該当するライセンスを必ず確認してください。

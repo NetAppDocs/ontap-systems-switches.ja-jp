@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/components-bes53248.html 
 sidebar: sidebar 
 keywords: cluster-mode,supported versions,switches supported,cluster network,efos 
-summary: BES-53248 スイッチのインストールとメンテナンスについては、必ずコンポーネントと部品番号のリストを確認してください。 
+summary: Broadcom BES-53248クラスタスイッチのコンポーネントと部品番号を特定し、ハードウェアの設置および継続的なメンテナンスをサポートします。 
 ---
-= BES-53248 クラスタスイッチのコンポーネントと部品番号
+= Broadcom BES-53248クラスタスイッチのコンポーネントと部品番号について
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248 スイッチのインストールとメンテナンスについては、必ずコンポーネントと部品番号のリストを確認してください。
+Broadcom BES-53248クラスタスイッチのコンポーネントと部品番号を特定し、ハードウェアの設置および継続的なメンテナンスをサポートします。
 
 次の表には、ラックマウント レール キットの詳細を含む、BES-53248 クラスタ スイッチ コンポーネントの部品番号、説明、および最小の EFOS およびONTAPバージョンがリストされています。
 

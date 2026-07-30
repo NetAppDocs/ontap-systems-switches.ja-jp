@@ -2,16 +2,16 @@
 permalink: switch-cisco-3132q-v/install-nx-os-software-3132q-v.html 
 sidebar: sidebar 
 keywords: install, nx-os software 
-summary: この手順を使用して、Nexus 3132Q-Vクラスタ スイッチにNX-OSソフトウェアをインストールできます。 
+summary: Cisco Nexus 3132Q-V クラスタスイッチにNX-OSソフトウェアをインストールして、クラスタ運用に向けて準備します。 
 ---
-= NX-OSソフトウェアをインストールする
+= Cisco Nexus 3132Q-V クラスタスイッチへの NX-OS ソフトウェアのインストール
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Nexus 3132Q-V クラスタスイッチに NX-OS ソフトウェアをインストールするには、以下の手順に従ってください。
+Cisco Nexus 3132Q-V クラスタスイッチにNX-OSソフトウェアをインストールして、クラスタ運用に向けて準備します。
 
 
 

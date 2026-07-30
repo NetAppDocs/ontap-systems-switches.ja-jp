@@ -2,16 +2,16 @@
 permalink: switch-cisco-3132q-v/migrate-switchless-complete-migration.html 
 sidebar: sidebar 
 keywords: cisco 3132q-v, cluster switches 
-summary: Cisco Nexus 3132Q-V スイッチを、AFF または FAS クラスタのクラスタスイッチとして使用できます。 
+summary: 2ノードのスイッチレスクラスタから Cisco Nexus 3132Q-V クラスタスイッチへの移行を完了します。 
 ---
-= 2ノードのスイッチレスクラスタから2ノードのスイッチドクラスタへの移行を完了する
+= 2ノードのスイッチレスクラスタから Cisco Nexus 3132Q-V クラスタスイッチへの移行を完了する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-スイッチレスクラスタから2ノードスイッチドクラスタへの移行を完了するには、次の手順を実行します。
+Cisco Nexus 3132Q-V クラスタスイッチを使用して、2ノードのスイッチレスクラスタから2ノードのスイッチドクラスタへの移行を完了するための最終手順を実行します。
 
 .手順
 . 各ノードの各クラスタ ポートが接続されているクラスタ スイッチ ポート番号を表示します：

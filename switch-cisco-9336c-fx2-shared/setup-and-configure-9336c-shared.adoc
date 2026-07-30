@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-shared/setup-and-configure-9336c-shared.html 
 keywords:  
-summary:  
+summary: Cisco Nexus 9336C-FX2共有スイッチを設定して、クラスタとストレージを組み合わせた運用に対応できるよう準備します。 
 ---
 = Cisco Nexus 9336C-FX2共有スイッチを構成する
 :hardbreaks:
@@ -14,7 +14,7 @@ summary:
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2 共有スイッチを設定するには、次の手順に従います。
+Cisco Nexus 9336C-FX2 共有スイッチを設定して、クラスタとストレージ ネットワークの複合運用に備えます。
 
 .開始する前に
 以下のものがあることを確認してください。

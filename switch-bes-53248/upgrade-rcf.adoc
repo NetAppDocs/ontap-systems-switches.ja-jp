@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/upgrade-rcf.html 
 sidebar: sidebar 
 keywords: upgrade rcf,setup rcf,rcf file 
-summary: BES-53248クラスタ スイッチの設定後、および新しいライセンスを適用した後で、RCFをアップグレードできます。 
+summary: EFOSソフトウェアのアップグレード後、Broadcom BES-53248クラスタスイッチの参照構成ファイル（RCF）をアップグレードします。 
 ---
-= RCF バージョンをアップグレード
+= Broadcom BES-53248クラスタスイッチのRCFをアップグレードする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248 クラスタ スイッチの EFOS をアップグレードし、新しいライセンスを適用したあとで、RCF をアップグレードできます。
+EFOSソフトウェアのアップグレードと必要なライセンスの適用が完了したら、Broadcom BES-53248クラスタスイッチ上の参照構成ファイル（RCF）をアップグレードしてください。
 
 .開始する前に
 以下のものがあることを確認してください。

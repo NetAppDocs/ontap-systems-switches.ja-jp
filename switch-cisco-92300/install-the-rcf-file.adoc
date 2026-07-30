@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/install-the-rcf-file.html 
 sidebar: sidebar 
 keywords: install, rcf 
-summary: RCFは、Nexus 92300YCスイッチを初めてセットアップした後にインストールできます。 
+summary: 参照構成ファイル（RCF）を Cisco Nexus 92300YC クラスタスイッチに初期設定後、または新しいバージョンが利用可能になった際にインストールまたはアップグレードします。 
 ---
-= 参照構成ファイル（RCF）をインストールする
+= Cisco Nexus 92300YC クラスタスイッチへの RCF のインストールまたはアップグレード
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-RCFは、Nexus 92300YCスイッチを初めてセットアップした後にインストールできます。この手順は、RCFのバージョンアップにも使用できます。
+参照構成ファイル（RCF）を Cisco Nexus 92300YC クラスタスイッチに初期設定後にインストールするか、新しいバージョンが利用可能になったときに RCF バージョンをアップグレードしてください。
 
 RCF のインストールまたはアップグレード時の詳細については、ナレッジベースの記事link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^]を参照してください。
 

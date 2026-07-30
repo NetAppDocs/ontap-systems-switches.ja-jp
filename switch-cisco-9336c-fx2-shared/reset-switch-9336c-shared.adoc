@@ -2,14 +2,14 @@
 permalink: switch-cisco-9336c-fx2-shared/reset-switch-9336c-shared.html 
 sidebar: sidebar 
 keywords: 9336C-FX2 reset switch to factory defaults, 9336C-FX2 switches configuration, efos 
-summary: Cisco Nexus 9336C-FX2 スイッチを設定する前に、次の情報を確認してください。 
+summary: Cisco Nexus 9336C-FX2 共有スイッチの現在の設定を消去し、工場出荷時のデフォルト設定にリセットします。 
 ---
-= 9336C-FX2共有スイッチを工場出荷時のデフォルトにリセットします
+= Cisco Nexus 9336C-FX2 共有スイッチを工場出荷時のデフォルト設定にリセットする
 :allow-uri-read: 
 
 
 [role="lead"]
-9336C-FX2 共有スイッチを工場出荷時の設定にリセットするには、9336C-FX2 スイッチの設定を消去する必要があります。
+Cisco Nexus 9336C-FX2 共有スイッチを工場出荷時のデフォルト設定にリセットするには、現在のスイッチ設定を消去し、スイッチを元の設定に復元します。
 
 .タスク概要
 * スイッチにシリアル コンソールを使用して接続する必要があります。

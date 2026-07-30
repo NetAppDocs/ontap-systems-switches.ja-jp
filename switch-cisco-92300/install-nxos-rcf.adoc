@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/install-nxos-rcf.html 
 sidebar: sidebar 
 keywords: install rcf,rcf configure 
-summary: RCFは、Nexus 92300YCスイッチを初めてセットアップした後にインストールできます。 
+summary: 初期設定後に、Cisco Nexus 92300YC クラスタスイッチに参照構成ファイル（RCF）をインストールします。 
 ---
-= 参照構成ファイル（RCF）をインストールする
+= Cisco Nexus 92300YC クラスタスイッチへの RCF のインストール
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-RCFは、Nexus 92300YCスイッチを初めてセットアップした後にインストールできます。
+初期設定後、Cisco Nexus 92300YC クラスタスイッチに参照構成ファイル（RCF）をインストールします。RCF は、クラスタ運用に必要なポート割り当てとネットワーク設定を定義します。
 
 .スイッチとノードの命名法
 この手順の例で使用するスイッチとノードの名前は次のとおりです。

@@ -2,14 +2,14 @@
 permalink: switch-cisco-3232c-storage/reset-switch-3232c-storage.html 
 sidebar: sidebar 
 keywords: 3232C reset switch to factory defaults, 3232C switches configuration, efos 
-summary: Cisco Nexus 3232C スイッチを設定する前に、以下の情報を確認してください。 
+summary: Cisco Nexus 3232C ストレージスイッチを工場出荷時のデフォルト設定にリセットするには、現在のスイッチ構成を消去します。 
 ---
-= 3232Cストレージスイッチを工場出荷時のデフォルトにリセットする
+= Cisco Nexus 3232C ストレージスイッチを工場出荷時のデフォルト設定にリセットする
 :allow-uri-read: 
 
 
 [role="lead"]
-3232C ストレージ スイッチを工場出荷時のデフォルトにリセットするには、3232C ストレージ スイッチの設定を消去する必要があります。
+Cisco Nexus 3232C ストレージスイッチを工場出荷時のデフォルト設定にリセットするには、現在のスイッチ設定を消去し、スイッチを元の設定に復元します。
 
 .タスク概要
 * スイッチにシリアル コンソールを使用して接続する必要があります。

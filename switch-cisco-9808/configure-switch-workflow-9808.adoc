@@ -2,16 +2,16 @@
 permalink: switch-cisco-9808/configure-switch-workflow-9808.html 
 sidebar: sidebar 
 keywords: switches, initial installation, configure switch-cisco-9808 switch 
-summary: Cisco 9808スイッチは、新しいAFX 2Kシステムのインストール、スーパーバイザーモジュールの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする際に設定します。 
+summary: このワークフローに従って、AFX 2K システムのインストール、スーパーバイザー モジュールの交換、または工場出荷時のデフォルト設定へのリセットのために Cisco Nexus 9808 スイッチを設定してください。 
 ---
-= スイッチのワークフローを設定する - Cisco Nexus 9808
+= Cisco Nexus 9808 スイッチの構成ワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 9808スイッチは、新しいAFX 2Kシステムのインストール、スーパーバイザーモジュールの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする際に設定します。
+AFX 2K システムのインストール、スーパーバイザーモジュールの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする場合に、Cisco Nexus 9808 スイッチを設定するには、このワークフローに従ってください。
 
 必要に応じて、このワークフローまたはこのワークフロー内の個々のトピックに誘導される場合があります（link:install-configure-switches-in-afx-workflow-9808.html["新しいAFX 2Kシステムをインストールしてセットアップする"]、link:maintain-replace-frus-9808.html["FRUを交換する"]、または link:maintain-reset-switch-9808.html["スイッチを工場出荷時の設定にリセットする"]）。
 

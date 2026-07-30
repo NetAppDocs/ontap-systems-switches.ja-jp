@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100/configure-reqs-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: NVIDIA SN2100 スイッチのインストールとメンテナンスについては、すべての要件と推奨ドキュメントを必ず確認してください。 
+summary: インストールまたはアップグレードの前に、NVIDIA SN2100クラスタスイッチの構成要件を確認してください。 
 ---
-= NVIDIA SN2100スイッチの構成要件
+= NVIDIA SN2100クラスタスイッチの構成要件を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NVIDIA SN2100 スイッチのインストールとメンテナンスについては、すべての構成要件を必ず確認してください。
+インストールまたはアップグレードの前に、NVIDIA SN2100クラスタスイッチの構成要件を確認してください。
 
 
 

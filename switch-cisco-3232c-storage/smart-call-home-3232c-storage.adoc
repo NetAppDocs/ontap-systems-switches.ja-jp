@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c-storage/smart-call-home-3232c-storage.html 
 sidebar: sidebar 
 keywords: cisco 3232c, storage switches 
-summary: Cisco Nexus 3232C スイッチを AFF または FAS クラスタ内のスイッチとして使用できます。 
+summary: Cisco Nexus 3232C ストレージスイッチの Smart Call Home の要件と構成オプションを確認してください。 
 ---
-= Smart Call Homeの要件
+= Cisco Nexus 3232C ストレージスイッチの Smart Call Home 要件を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Smart Call Home を使用するには、電子メールを使用して Smart Call Home システムと通信するようにクラスター ネットワーク スイッチを構成する必要があります。さらに、オプションでクラスタ ネットワーク スイッチを設定して、Cisco の組み込み Smart Call Home サポート機能を利用することもできます。
+Cisco Nexus 3232C ストレージスイッチで Smart Call Home を設定するための要件を確認し、重要なシステムイベントに関する自動メール通知を有効にしてください。
 
 Cisco の Smart Call Home は、ネットワーク上のハードウェアおよびソフトウェアコンポーネントを監視します。重大なシステム構成上の問題が発生した場合、メールによる通知が生成され、宛先プロファイルに設定されているすべての受信者にアラートが送信されます。
 

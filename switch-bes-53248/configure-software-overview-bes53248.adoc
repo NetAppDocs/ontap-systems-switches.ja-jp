@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/configure-software-overview-bes53248.html 
 sidebar: sidebar 
 keywords: BES-53248 switches, initial installation, configure new bes-53248 switch 
-summary: ソフトウェアの概要を確認します。 
+summary: 新しい Broadcom BES-53248 クラスタスイッチに EFOS ソフトウェアと RCF をインストールするには、以下のワークフローに従ってください。 
 ---
-= BES-53248スイッチのソフトウェアインストールワークフロー
+= Broadcom BES-53248クラスタスイッチのソフトウェアインストールワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248 クラスタ スイッチのソフトウェアをインストールして構成するには、次の手順に従います。
+新しい Broadcom BES-53248 クラスタスイッチに EFOS ソフトウェアとリファレンス構成ファイル（RCF）をインストールするには、以下のワークフローに従ってください。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:configure-install-initial.html["スイッチを設定する"]
 [role="quick-margin-para"]

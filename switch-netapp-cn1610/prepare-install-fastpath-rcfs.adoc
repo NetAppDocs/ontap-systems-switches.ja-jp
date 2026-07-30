@@ -2,16 +2,16 @@
 permalink: switch-netapp-cn1610/prepare-install-fastpath-rcfs.html 
 sidebar: sidebar 
 keywords: install, fastpath, software, rcfs, netapp cluster switch 
-summary: FASTPATH ソフトウェアと参照構成ファイル RCF を NetApp CN1610 クラスタ スイッチにインストールする必要があります。 
+summary: NetApp CN1610 クラスタスイッチに FASTPATH ソフトウェアと参照構成ファイル（RCF）をインストールする前に準備を行います。 
 ---
-= FASTPATHソフトウェアとRCFをNetAppクラスタスイッチにインストールする準備をします
+= FASTPATH ソフトウェアと RCF を NetApp CN1610 クラスタスイッチにインストールする準備をします
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-FASTPATHソフトウェアと参照構成ファイル（RCF）をNetApp CN1610クラスタスイッチにインストールする必要があります。
+NetApp CN1610 クラスタスイッチに FASTPATH ソフトウェアと参照構成ファイル（RCF）をインストールする前に準備を行います。
 
 .開始する前に
 * クラスターは完全に機能するクラスターでなければなりません。

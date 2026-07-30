@@ -2,16 +2,16 @@
 permalink: switch-cisco-3132q-v/install-overview-cisco-3132qv.html 
 sidebar: sidebar 
 keywords: install, Cisco Nexus 3132Q-V 
-summary: Cisco Nexus 3132Q-V スイッチを設定する前に、プロセスと用語の概要を確認してください。 
+summary: ONTAP 環境に Cisco Nexus 3132Q-V クラスタスイッチをインストールして設定するには、このワークフローに従ってください。 
 ---
-= Cisco Nexus 3132Q-V スイッチのインストールとセットアップのワークフロー
+= Cisco Nexus 3132Q-V クラスタスイッチのインストールとセットアップのワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3132Q-V スイッチは、AFF または FAS クラスタのクラスタスイッチとして使用できます。クラスタスイッチを使用すると、2つ以上のノードを持つ ONTAP クラスタを構築できます。
+このワークフローに従って、ONTAP 環境に Cisco Nexus 3132Q-V クラスタスイッチをインストールおよび設定してください。3132Q-V は、3 つ以上のノードを持つ ONTAP クラスタをサポートします。
 
 以下のワークフロー手順に従って、Cisco Nexus 3132Q-V スイッチをインストールおよびセットアップしてください。
 

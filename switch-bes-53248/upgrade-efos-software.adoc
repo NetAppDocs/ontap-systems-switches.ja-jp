@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/upgrade-efos-software.html 
 sidebar: sidebar 
 keywords: BES-53248 cluster switches,upgrading EFOS software 
-summary: BES-53248クラスタスイッチのEthernet Fabric OS（EFOS）ソフトウェアをアップグレードするには、次の手順を実行します。 
+summary: Broadcom BES-53248クラスタスイッチのEthernet Fabric OS（EFOS）ソフトウェアをアップグレードして、ONTAPとの互換性を維持します。 
 ---
-= EFOSソフトウェアをアップグレードします。
+= Broadcom BES-53248クラスタスイッチのEFOSソフトウェアをアップグレードする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248 クラスター スイッチ上の EFOS ソフトウェアをアップグレードするには、次の手順に従います。
+Broadcom BES-53248クラスタスイッチのEthernet Fabric OS（EFOS）ソフトウェアをアップグレードして、ONTAPとの互換性を維持し、最新のスイッチ機能と修正プログラムにアクセスできます。
 
 EFOS ソフトウェアには、イーサネットおよび IP インフラストラクチャ システムを開発するための高度なネットワーク機能とプロトコルのセットが含まれています。このソフトウェア アーキテクチャは、徹底したパケット検査または分離を必要とするアプリケーションを使用するあらゆるネットワーク組織デバイスに適しています。
 

@@ -2,16 +2,16 @@
 permalink: switch-cisco-9808/configure-install-rcf-9808.html 
 sidebar: sidebar 
 keywords: install rcf, cisco switches 
-summary: 新しい AFX 2K システムのインストールとセットアップの一環として、故障したスーパーバイザーモジュールの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする際に、新しい Cisco Nexus 9808 スイッチに RCF をインストールします。 
+summary: 新規 AFX 2K システムのインストール、スーパーバイザー モジュールの交換、または工場出荷時設定へのリセットのために、Cisco Nexus 9808 スイッチに RCF をインストールします。 
 ---
-= RCFのインストール - Cisco Nexus 9808
+= Cisco Nexus 9808スイッチにRCFをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-新しい AFX 2K システムのインストールの一部として、スーパーバイザーモジュールの交換、またはスイッチの工場出荷時設定へのリセットを行う際に、新しい Cisco Nexus 9808 スイッチに RCF をインストールします。
+新しい AFX 2K システムのインストール、スーパーバイザー モジュールの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする場合に、Cisco Nexus 9808 スイッチに参照構成ファイル（RCF）をインストールします。
 
 .開始する前に
 * スイッチの電源がオンになっている必要があり、link:configure-complete-initial-setup-9808.html["スイッチの初期設定を完了する"]の手順を完了している必要があります。

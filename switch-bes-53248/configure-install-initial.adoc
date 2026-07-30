@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/configure-install-initial.html 
 sidebar: sidebar 
 keywords: switches initial setup,initial setup,efos download 
-summary: この手順を使用して、BES-53248クラスタ スイッチの初期取り付けを実行できます。 
+summary: Broadcom BES-53248クラスタスイッチの初期設定を実行し、EFOSソフトウェアのインストールとクラスタ展開の準備を行います。 
 ---
-= BES-53248クラスタスイッチを構成する
+= Broadcom BES-53248クラスタスイッチの設定
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248 クラスタ スイッチの初期セットアップを実行するには、次の手順に従います。
+Broadcom BES-53248クラスタスイッチの初期設定を実行し、EFOSソフトウェアのインストールとクラスタ展開の準備を行います。
 
 .開始する前に
 * ハードウェアは、link:install-hardware-bes53248.html["ハードウェアをインストールする"] 。

@@ -2,16 +2,16 @@
 permalink: switch-cisco-9364d-gx2a/configure-upgrade-rcf-9364d.html 
 sidebar: sidebar 
 keywords: install rcf, cisco switches 
-summary: Cisco Nexus 9364D-GX2A スイッチのリファレンス構成ファイル（RCF）のバージョンをアップグレードして、新しいハードウェア、新しい ONTAP バージョンのサポート、または AFX 1K や AFX 2K システム構成における新しい NX-OS バージョンへの対応を実現します。 
+summary: Cisco Nexus 9364D-GX2A スイッチの RCF をアップグレードして、AFX 1K または AFX 2K システムで新しいハードウェア、新しい ONTAP バージョン、または新しい NX-OS バージョンをサポートします。 
 ---
-= RCFバージョンのアップグレード - Cisco Nexus 9364D-GX2A
+= Cisco Nexus 9364D-GX2A スイッチの RCF をアップグレードする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 9364D-GX2A スイッチのリファレンス構成ファイル（RCF）のバージョンをアップグレードして、新しいハードウェア、新しい ONTAP バージョンのサポート、または AFX 1K や AFX 2K システム構成における新しい NX-OS バージョンへの対応を実現します。
+AFX 1K または AFX 2K システムで新しいハードウェア、新しい ONTAP バージョン、または新しい NX-OS バージョンをサポートするために、Cisco Nexus 9364D-GX2A スイッチの参照構成ファイル （RCF） をアップグレードします。
 
 
 NOTE: RCFのバージョンをサポートされていないバージョンにアップグレードまたはダウングレードしないでください。

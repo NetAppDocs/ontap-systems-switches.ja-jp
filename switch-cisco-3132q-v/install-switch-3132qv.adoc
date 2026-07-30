@@ -2,16 +2,16 @@
 permalink: switch-cisco-3132q-v/install-switch-3132qv.html 
 sidebar: sidebar 
 keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 3132q-v 
-summary: Cisco Nexus 3132Q-V スイッチをインストールするには、この手順に従ってください。 
+summary: Cisco Nexus 3132Q-V クラスタスイッチをインストールして、ネットワーク運用に向けて準備します。 
 ---
-= 3132Q-Vクラスタスイッチを取り付ける
+= Cisco Nexus 3132Q-V クラスタスイッチのインストール
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3132Q-V スイッチをセットアップおよび設定するには、この手順に従ってください。
+Cisco Nexus 3132Q-V クラスタスイッチをインストールして、ネットワーク運用に向けて準備します。
 
 .開始する前に
 以下のものがあることを確認してください。

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
 summary: イーサネット スイッチのヘルス モニター アラートを使用して、ONTAP クラスタのネットワーク スイッチの問題を特定して解決します。 
 ---
-= ヘルスチェックの概要
+= イーサネット スイッチのヘルス モニターのアラートについて
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

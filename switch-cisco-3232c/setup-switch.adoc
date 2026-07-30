@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/setup-switch.html 
 sidebar: sidebar 
 keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 9336c-fx2 
-summary: 必要な構成情報とドキュメントがまだない場合は、クラスタと管理ネットワーク スイッチを設定する前にその情報を収集する必要があります。 
+summary: Cisco Nexus 3232C クラスタスイッチを初期設定コマンドを使用して設定し、クラスタ運用に向けて準備します。 
 ---
-= 3232Cクラスタスイッチを設定する
+= Cisco Nexus 3232C クラスタスイッチの設定
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3232C スイッチをセットアップおよび設定するには、この手順に従ってください。
+Cisco Nexus 3232C クラスタスイッチを初期設定コマンドを使用して設定し、クラスタ運用に向けて準備します。
 
 .開始する前に
 * インストール サイトの HTTP、FTP、または TFTP サーバーにアクセスして、該当する NX-OS および参照構成ファイル (RCF) リリースをダウンロードします。

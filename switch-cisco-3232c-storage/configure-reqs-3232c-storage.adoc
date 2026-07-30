@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-3232c-storage/configure-reqs-3232c-storage.html 
 keywords: shared storage cluster switch 
-summary: ONTAP 9.9.1以降では、Cisco Nexus 3232Cスイッチを使用して、ストレージとクラスタ機能を共有スイッチシナリオに組み合わせることができます。 
+summary: Cisco Nexus 3232C ストレージスイッチの構成要件を、インストールまたはアップグレードの前に確認してください。 
 ---
-= Cisco Nexus 3232C ストレージ スイッチの構成要件
+= Cisco Nexus 3232C ストレージスイッチの構成要件を確認する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: ONTAP 9.9.1以降では、Cisco Nexus 3232Cスイッチを使用して�
 
 
 [role="lead"]
-Cisco Nexus 3232C スイッチの設置および保守を行う際は、構成とネットワーク要件を必ず確認してください。
+Cisco Nexus 3232C ストレージスイッチの構成要件を、インストールまたはアップグレードの前に確認してください。
 
 
 

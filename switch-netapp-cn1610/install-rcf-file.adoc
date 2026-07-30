@@ -2,16 +2,16 @@
 permalink: switch-netapp-cn1610/install-rcf-file.html 
 sidebar: sidebar 
 keywords: reference configuration, file ,install, cn1610, switch, install rcf 
-summary: 参照構成ファイル（RCF）をインストールする場合は、まずクラスタLIFをスイッチcs2から移行する必要があります。RCFのインストールと検証が完了したら、LIFを元の状態に戻すことができます。 
+summary: NetApp CN1610 クラスタスイッチに参照構成ファイル（RCF）をインストールして、ポートの割り当てとネットワーク設定を構成します。 
 ---
-= CN1610スイッチにリファレンス構成ファイルをインストールする
+= NetApp CN1610クラスタスイッチに参照構成ファイルをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-参照構成ファイル（RCF）をインストールするには、以下の手順に従ってください。
+NetApp CN1610クラスタスイッチに参照構成ファイル（RCF）をインストールします。
 
 RCFをインストールする前に、まずクラスタLIFをスイッチcs2から移行する必要があります。RCFのインストールと検証が完了したら、LIFを元の状態に戻すことができます。
 

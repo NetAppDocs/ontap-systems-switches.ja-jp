@@ -2,7 +2,7 @@
 permalink: switch-cisco-9336c-fx2-storage/install-hardware-workflow.html 
 sidebar: sidebar 
 keywords: witches, initial installation, configure switch-cisco-9336c-fx2 switch 
-summary: Cisco Nexus 9336C-FX2 クラスタ スイッチを構成する前に、構成の概要を確認してください。 
+summary: Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチのハードウェアをインストールするには、このワークフローに従ってください。 
 ---
 = Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチのハードウェア インストール ワークフロー
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: Cisco Nexus 9336C-FX2 クラスタ スイッチを構成する前に、
 
 
 [role="lead"]
-9336C-FX2 および 9336C-FX2-T ストレージ スイッチのハードウェアをインストールして構成するには、次の手順に従います。
+Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチのハードウェアをインストールして構成するには、このワークフローに従ってください。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:setup-worksheet-9336c-storage.html["配線ワークシートを完成させる"]
 [role="quick-margin-para"]

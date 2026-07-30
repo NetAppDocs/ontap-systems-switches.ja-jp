@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/required-documentation-bes53248.html 
 sidebar: sidebar 
 keywords: documentation requirements, BES-53248 switches,cluster switches 
-summary: clustered Data ONTAP構成をセットアップするには、特定のスイッチとコントローラに関するドキュメントが必要です。 
+summary: Broadcom BES-53248クラスタスイッチのセットアップと構成に必要なスイッチおよびコントローラのドキュメントを確認してください。 
 ---
-= BES-53248 クラスタスイッチのドキュメント要件
+= Broadcom BES-53248クラスタスイッチのセットアップに必要なドキュメント要件を確認します。
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248 スイッチの設置については、必ずスイッチおよびコントローラの関連ドキュメントを確認してください。
+Broadcom BES-53248 クラスタスイッチをセットアップし、ONTAP クラスタで設定するために必要なスイッチとコントローラのドキュメントを確認してください。
 
 
 

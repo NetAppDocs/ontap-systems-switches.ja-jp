@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100-storage/install-snmpv3-sn2100-storage.html 
 sidebar: sidebar 
 keywords: sn2100 SN2100 cabling setup, sn2100 switches configuration, cumulus linux os 
-summary: このリリースには、ログ監視用の SNMPv3 のサポートが含まれています。 
+summary: NVIDIA SN2100 ストレージスイッチで SNMPv3 を設定して、安全なスイッチログ収集と正常性監視を有効にします。 
 ---
-= スイッチログ収集用にSNMPv3を構成する
+= NVIDIA SN2100 ストレージスイッチの SNMPv3 を設定する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-スイッチ ログ収集とスイッチ ヘルス モニタリング (SHM) をサポートする SNMPv3 を構成するには、次の手順に従ってください。
+NVIDIA SN2100 ストレージスイッチで SNMPv3 を設定して、安全で認証済みのスイッチログ収集とイーサネットスイッチヘルスモニター（CSHM）を有効にします。
 
 .タスク概要
 次のコマンドは、 NVIDIA SN2100 スイッチで SNMPv3 ユーザー名を設定します。
@@ -27,7 +27,7 @@ summary: このリリースには、ログ監視用の SNMPv3 のサポートが
 次のコマンドは、 ONTAP側で SNMPv3 ユーザー名を設定します。
 `cluster1::*> security login create -user-or-group-name _SNMPv3_USER_ -application snmp -authentication-method usm -remote-switch-ipaddress _ADDRESS_`
 
-次のコマンドは、SHM を使用して SNMPv3 ユーザー名を確立します。
+次のコマンドは、CSHM を使用して SNMPv3 ユーザー名を確立します。
 `cluster1::*> system switch ethernet modify -device _DEVICE_ -snmp-version SNMPv3 -community-or-username _SNMPv3_USER_`
 
 .手順

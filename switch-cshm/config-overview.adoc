@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
 summary: イーサネット スイッチ ヘルス モニタ CSHM は、クラスタおよびストレージ ネットワーク スイッチの動作の健全性を確保し、デバッグ目的でスイッチ ログを収集する役割を担っています。 
 ---
-= 設定の概要
+= イーサネット スイッチのヘルス モニタリングの設定について
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -2,16 +2,16 @@
 permalink: switch-cisco-9336c-fx2-storage/install-rcf-software-9336c-storage.html 
 sidebar: sidebar 
 keywords: install rcf, cisco switches, storage 
-summary: Nexus 9336C-FX2 ストレージ スイッチを初めてセットアップした後、RCF をインストールできます。この手順を使用して、RCF バージョンをアップグレードすることもできます。 
+summary: 参照構成ファイル（RCF）を Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージスイッチにインストールし、初期設定後にポート割り当てとネットワーク設定を構成します。 
 ---
-= 参照設定ファイルをインストールする
+= Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージスイッチへの RCF のインストール
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチを初めてセットアップした後、リファレンス構成ファイル (RCF) をインストールします。
+初期設定後に、Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージスイッチに参照構成ファイル（RCF）をインストールします。RCF は、ストレージ ネットワークの運用に必要なポート割り当てとネットワーク設定を定義します。
 
 RCF のインストールに関する詳細については、ナレッジベースの記事 link:https://kb.netapp.com/on-prem/Switches/Cisco-KBs/How_to_clear_configuration_on_a_Cisco_interconnect_switch_while_retaining_remote_connectivity["リモート接続を維持しながらCiscoインターコネクトスイッチの設定をクリアする方法"^] を参照してください。
 

@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/configure-reqs-92300.html 
 sidebar: sidebar 
 keywords: cisco nexus 92300YC 
-summary: 2 つ以上のノードを持つONTAPクラスターを構築する場合は、サポートされているクラスター ネットワーク スイッチが 2 つ必要です。オプションとして追加の管理スイッチを使用することもできます。 
+summary: インストールまたはアップグレードの前に、Cisco Nexus 92300YC クラスタスイッチの構成要件を確認してください。 
 ---
-= Cisco Nexus 92300YC スイッチの構成要件
+= Cisco Nexus 92300YC クラスタスイッチの構成要件を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 92300YC スイッチの設置および保守を行う際は、すべての構成とネットワーク要件を必ず確認してください。
+インストールまたはアップグレードの前に、Cisco Nexus 92300YC クラスタスイッチの構成要件を確認してください。
 
 2 つ以上のノードを持つONTAPクラスターを構築する場合は、サポートされているクラスター ネットワーク スイッチが 2 つ必要です。オプションとして追加の管理スイッチを使用することもできます。
 

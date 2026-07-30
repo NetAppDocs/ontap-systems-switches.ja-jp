@@ -2,16 +2,16 @@
 permalink: switch-cisco-3132q-v/migrate-switchless-to-switched-workflow.html 
 sidebar: sidebar 
 keywords: 3132q-v cabling setup, 3132q-v switches configuration, nx-os 
-summary: Cisco 3132q-v スイッチを設定する前に、以下の情報を確認してください。 
+summary: 2ノードのスイッチレスクラスタからCisco Nexus 3132Q-Vクラスタスイッチを使用するスイッチドクラスタに移行するには、このワークフローに従ってください。 
 ---
-= スイッチレスクラスタから2ノードスイッチドクラスタへの移行ワークフロー
+= Cisco Nexus 3132Q-V クラスタスイッチの移行ワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-2ノードのスイッチレスクラスタから、Cisco Nexus 3132Q-V クラスタネットワークスイッチを含む2ノードのスイッチ付きクラスタに移行するには、以下のワークフロー手順に従ってください。
+2ノードのスイッチレスクラスタからCisco Nexus 3132Q-Vクラスタスイッチを使用するスイッチドクラスタに移行するには、このワークフローに従ってください。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:migrate-switchless-to-switched-requirements.html["移行要件"]
 [role="quick-margin-para"]

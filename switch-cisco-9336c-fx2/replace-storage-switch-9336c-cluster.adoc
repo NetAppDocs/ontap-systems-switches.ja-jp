@@ -2,7 +2,7 @@
 permalink: switch-cisco-9336c-fx2/replace-storage-switch-9336c-cluster.html 
 sidebar: sidebar 
 keywords: replacing, replace, defective, nexus, switch, cluster, network, nondisruptive, procedure, ndu, replace a cisco nexus 9336c-fx2 cluster switch - cisco nexus 9336c-fx2 
-summary: クラスタネットワーク内の故障したNexus 9336C-FX2スイッチの交換は、システムを停止させることなく実施できる手順です。 
+summary: 障害のある Cisco Nexus 9336C-FX2 ストレージスイッチを交換する前に、ポート接続とケーブル配線の要件を確認してください。 
 ---
 = Cisco Nexus 9336C-FX2 ストレージスイッチを交換する
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: クラスタネットワーク内の故障したNexus 9336C-FX2スイ�
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2 ストレージ スイッチを交換する場合は、特定の構成情報、ポート接続、およびケーブル接続の要件に注意する必要があります。
+Cisco Nexus 9336C-FX2 ストレージスイッチを交換する前に、構成情報、ポート接続、およびケーブル要件を確認してください。
 
 .要件
 Cisco Nexus 9336C-FX2 ストレージ スイッチに NX-OS ソフトウェアと RCF をインストールする前に、次の条件が満たされていることを確認する必要があります。

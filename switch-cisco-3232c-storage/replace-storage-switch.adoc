@@ -2,7 +2,7 @@
 permalink: switch-cisco-3232c-storage/replace-storage-switch.html 
 sidebar: sidebar 
 keywords: replace, cisco nexus, 3232c storage switch 
-summary: 欠陥のある Cisco Nexus 3232C ストレージ スイッチを、特定の順序でタスクを実行することにより、無停止で交換できます。 
+summary: 障害のある Cisco Nexus 3232C ストレージ スイッチを交換します。この手順は無停止で実施できます。 
 ---
 = Cisco Nexus 3232C ストレージ スイッチの交換
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 欠陥のある Cisco Nexus 3232C ストレージ スイッチを、特
 
 
 [role="lead"]
-欠陥のある Cisco Nexus 3232C ストレージ スイッチを交換するには、以下の手順に従ってください。これは無停止の手順です。
+ストレージ ネットワークの運用を中断することなく、障害のある Cisco Nexus 3232C ストレージスイッチを交換します。この無停止手順には、交換用スイッチの準備とストレージ ネットワーク構成の復元が含まれます。
 
 
 

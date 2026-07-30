@@ -2,16 +2,16 @@
 permalink: switch-cisco-9808/maintain-replace-frus-9808.html 
 sidebar: sidebar 
 keywords: switches, hardware installation, Cisco Nexus, 9808 switches 
-summary: Cisco Nexus 9808スイッチには、故障した場合に交換可能なフィールド交換可能ユニット（FRU）が搭載されています。 
+summary: Cisco Nexus 9808スイッチの故障した現場交換可能ユニット（FRU）を交換します。 
 ---
-= FRUを交換する - Cisco Nexus 9808
+= Cisco Nexus 9808 スイッチの FRU を交換する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 9808スイッチには、故障した場合に交換可能なフィールド交換可能ユニット（FRU）が搭載されています。
+Cisco Nexus 9808 スイッチの故障した現場交換可能ユニット（FRU）を交換することで、スイッチ全体を交換することなく、スイッチの機能を復元できます。
 
 .タスク概要
 Cisco Nexus 9808スイッチには、以下のFRUがあります：

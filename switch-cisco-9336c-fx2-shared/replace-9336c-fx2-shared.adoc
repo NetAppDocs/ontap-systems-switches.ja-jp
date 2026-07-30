@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-shared/replace-9336c-fx2-shared.html 
 keywords:  
-summary:  
+summary: 障害のある Cisco Nexus 9336C-FX2 共有スイッチを交換します。この手順は無停止で実行できます。 
 ---
 = Cisco Nexus 9336C-FX2共有スイッチの交換
 :hardbreaks:
@@ -14,7 +14,7 @@ summary:
 
 
 [role="lead"]
-故障した Nexus 9336C-FX2 共有スイッチを交換できます。これは非中断手順 (NDU) です。
+クラスタまたはストレージ ネットワークの動作を中断することなく、障害のある Cisco Nexus 9336C-FX2 共有スイッチを交換します。この無停止手順（NDU）では、交換用スイッチを準備し、共有スイッチの構成を復元します。
 
 .開始する前に
 スイッチの交換を実行する前に、次の点を確認してください。

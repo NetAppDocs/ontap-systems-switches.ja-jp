@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-shared/migrate-from-switched-configuration-dat-storage.html 
 keywords:  
-summary:  
+summary: 直接接続ストレージを備えたスイッチ構成から、新たに2台の共有スイッチを追加することで Cisco Nexus 9336C-FX2 共有スイッチに移行します。 
 ---
-= 直接接続ストレージを使用したスイッチ構成からの移行
+= 直接接続ストレージを使用したスイッチ構成から Cisco Nexus 9336C-FX2 共有スイッチへの移行
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary:
 
 
 [role="lead"]
-2 つの新しい共有スイッチを追加することで、直接接続ストレージを使用したスイッチ構成から移行できます。
+直接接続ストレージを備えたスイッチ構成から、新たに2台の共有スイッチを追加することで Cisco Nexus 9336C-FX2 共有スイッチに移行します。
 
 .サポートされるスイッチ
 次のスイッチがサポートされています。

@@ -2,7 +2,7 @@
 permalink: switch-cisco-9336c-fx2/configure-switch-overview-9336c-cluster.html 
 sidebar: sidebar 
 keywords: switches, initial installation, configure switch-cisco-9336c-fx2 switch 
-summary: Cisco Nexus 9336C-FX2 クラスタ スイッチのインストールと設定の概要 
+summary: ONTAP 環境に Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタスイッチをインストールして設定するには、このワークフローに従ってください。 
 ---
 = Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタ スイッチのインストールとセットアップのワークフロー
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: Cisco Nexus 9336C-FX2 クラスタ スイッチのインストールと
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタ スイッチは、 Cisco Nexus 9000 プラットフォームの一部であり、 NetAppシステム キャビネットに設置できます。クラスタ スイッチを使用すると、2 つ以上のノードを持つONTAPクラスタを構築できます。
+ONTAP 環境に Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタスイッチをインストールして設定するには、このワークフローに従ってください。これらのスイッチは Cisco Nexus 9000 プラットフォームの一部であり、3 ノード以上の ONTAP クラスタをサポートします。
 
 Cisco Nexus 9336C-FX2 (36 ポート) は、高ポート密度のクラスタ/ストレージ/データ スイッチです。Cisco Nexus 9336C-FX2-T (12 ポート) は、10/25/40/100GbE クラスタ構成をサポートする、ポート密度が低い高性能スイッチです。
 

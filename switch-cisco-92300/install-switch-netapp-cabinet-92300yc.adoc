@@ -2,7 +2,7 @@
 permalink: switch-cisco-92300/install-switch-netapp-cabinet-92300yc.html 
 sidebar: sidebar 
 keywords: install, cisco nexus, 92300yc cluster switch, pass-through panel, netapp cabinet 
-summary: Cisco Nexus 92300YC スイッチとパススルーパネルを、スイッチに付属している標準ブラケットを使用して NetApp キャビネットに取り付けることができます。 
+summary: スイッチに付属の標準ブラケットを使用して、Cisco Nexus 92300YC クラスタスイッチとパススルーパネルを NetApp キャビネットに取り付けます。 
 ---
 = Cisco Nexus 92300YC クラスタスイッチを NetApp キャビネットに設置する
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: Cisco Nexus 92300YC スイッチとパススルーパネルを、スイ
 
 
 [role="lead"]
-構成によっては、スイッチに付属している標準ブラケットを使用して、Cisco Nexus 92300YC クラスタスイッチとパススルーパネルを NetApp キャビネットにインストールする必要がある場合があります。
+スイッチに付属の標準ブラケットを使用して、Cisco Nexus 92300YC クラスタスイッチとパススルーパネルを NetApp キャビネットに取り付けます。
 
 .開始する前に
 * 初期準備要件、キットの内容、および安全上の注意事項については、link:https://www.cisco.com/site/us/en/products/networking/cloud-networking-switches/nexus-9200-series-switches/index.html["Cisco Nexus 9000 シリーズ ハードウェア設置ガイド"^]を参照してください。

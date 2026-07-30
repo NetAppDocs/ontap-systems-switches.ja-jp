@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100/upgrade-cl-version.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: Cumulus Linux バージョンをアップグレードするには、次の手順を実行します。 
+summary: NVIDIA SN2100 クラスタースイッチの Cumulus Linux バージョンをアップグレードして、ONTAP との互換性を維持し、最新のソフトウェア機能にアクセスします。 
 ---
-= Cumulus Linuxのバージョンをアップグレードする
+= NVIDIA SN2100クラスタスイッチの Cumulus Linux をアップグレードする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-必要に応じて Cumulus Linux バージョンをアップグレードするには、次の手順を実行します。
+NVIDIA SN2100 クラスタースイッチの Cumulus Linux バージョンをアップグレードして、ONTAP との互換性を維持し、最新のソフトウェア機能にアクセスします。
 
 
 NOTE: NetApp では、最初に ONTAP ソフトウェアのアップグレードを完了してから、スイッチのソフトウェアアップグレードを実行することをお勧めします。

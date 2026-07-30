@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/migrate-from-switchless-complete-migration.html 
 sidebar: sidebar 
 keywords: cisco 3232c, cluster switches 
-summary: Cisco Nexus 3232C スイッチをクラスタスイッチとして AFF または FAS クラスタで使用できます。 
+summary: 2ノードのスイッチレスクラスタから Cisco Nexus 3232C クラスタスイッチへの移行を完了します。 
 ---
-= 2ノードのスイッチレスクラスタから2ノードのスイッチドクラスタへの移行を完了する
+= 2ノードのスイッチレスクラスタから Cisco Nexus 3232C クラスタスイッチへの移行を完了する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Nexus 3232C スイッチ上で、2ノードのスイッチレスクラスタから2ノードのスイッチドクラスタへの移行を完了するには、以下の手順を実行します。
+Cisco Nexus 3232C クラスタスイッチを使用して、2ノードのスイッチレスクラスタから2ノードのスイッチドクラスタへの移行を完了するための最終手順を実行します。
 
 .手順
 . すべてのクラスタ インターコネクト ポートがホーム ポートに戻っていることを確認します。

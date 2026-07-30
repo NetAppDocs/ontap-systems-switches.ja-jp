@@ -2,16 +2,16 @@
 permalink: switch-cisco-9336c-fx2-storage/install-nxos-software-9336c-storage.html 
 sidebar: sidebar 
 keywords: procedure, install, nx-os, software, nexus, cluster, switch, install the nx-os software - cisco nexus 9336c-fx2 
-summary: この手順を使用して、Nexus 9336C-FX2クラスタ スイッチにNX-OSソフトウェアをインストールできます。 
+summary: Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージスイッチに NX-OS ソフトウェアをインストールまたはアップグレードします。 
 ---
-= NX-OSソフトウェアをインストールまたはアップグレードする
+= Cisco Nexus 9336C-FX2 ストレージスイッチへの NX-OS ソフトウェアのインストールまたはアップグレード
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Nexus 9336C-FX2 および 9336C-FX2-T スイッチに NX-OS ソフトウェアをインストールまたはアップグレードするには、次の手順に従います。
+Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチに NX-OS ソフトウェアをインストールまたはアップグレードします。スイッチの設定や参照設定ファイル（RCF）のインストールを行うには、まず NX-OS をインストールする必要があります。
 
 始める前に、以下の手順を完了してください。link:install-nxos-overview-9336c-storage.html["NX-OSとRCFのインストールの準備"] 。
 

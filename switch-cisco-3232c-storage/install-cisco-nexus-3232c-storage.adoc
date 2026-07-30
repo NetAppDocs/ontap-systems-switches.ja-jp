@@ -2,7 +2,7 @@
 permalink: switch-cisco-3232c-storage/install-cisco-nexus-3232c-storage.html 
 sidebar: sidebar 
 keywords: install, cisco nexus, 3232c storage switch, pass-through panel, netapp cabinet 
-summary: Cisco Nexus 3232C ストレージスイッチとパススルーパネルは、スイッチに付属の標準ブラケットを使用してNetAppキャビネットに設置できます。 
+summary: スイッチに付属の標準ブラケットを使用して、Cisco Nexus 3232C ストレージスイッチとパススルーパネルを NetApp キャビネットに取り付けます。 
 ---
 = Cisco Nexus 3232C ストレージスイッチをNetAppキャビネットに設置する
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: Cisco Nexus 3232C ストレージスイッチとパススルーパネ�
 
 
 [role="lead"]
-構成によっては、スイッチに付属の標準ブラケットを使用して、Cisco Nexus 3232C ストレージ スイッチとパススルー パネルをNetAppキャビネットに取り付ける必要がある場合があります。
+スイッチに付属の標準ブラケットを使用して、Cisco Nexus 3232C ストレージスイッチとパススルーパネルを NetApp キャビネットに取り付けます。
 
 .開始する前に
 次のものが揃っていることを確認してください。* link:http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus3000/hw/installation/guide/b_n3000_hardware_install_guide.html["Cisco Nexus 3000 シリーズ ハードウェア インストール ガイド"^]に記載されている初期準備要件、キットの内容、および安全に関する注意事項。* スイッチごとに、ブラケットとスライダ レールをキャビネットの前面および背面支柱に取り付けるための8本の10-32または12-24ネジとクリップ ナット。* NetAppキャビネットにスイッチを取り付けるためのCisco標準レール キット。

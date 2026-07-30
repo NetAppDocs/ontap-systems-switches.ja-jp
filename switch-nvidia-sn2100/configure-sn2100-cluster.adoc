@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100/configure-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: switches hardware installation 
-summary: SN2100 ハードウェアをインストールするには、NVIDIA のドキュメントを参照してください。 
+summary: NVIDIA のドキュメントに従って、NVIDIA SN2100 クラスタースイッチを設定します。 
 ---
-= NVIDIA SN2100スイッチを構成する
+= NVIDIA SN2100クラスタスイッチを設定する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-SN2100 スイッチを構成するには、NVIDIA のドキュメントを参照してください。
+NVIDIA のドキュメントに従って、NVIDIA SN2100 クラスタースイッチを設定します。
 
 .手順
 . レビューlink:configure-reqs-sn2100-cluster.html["構成要件"]。

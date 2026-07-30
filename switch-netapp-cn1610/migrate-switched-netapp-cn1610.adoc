@@ -2,16 +2,16 @@
 permalink: switch-netapp-cn1610/migrate-switched-netapp-cn1610.html 
 sidebar: sidebar 
 keywords: migrate, switchless cluster environment, switched netapp cn1610 
-summary: 既存の2ノード構成のスイッチレスクラスタ環境をお持ちの場合は、CN1610クラスタネットワークスイッチを使用して2ノード構成のスイッチドクラスタ環境に移行することで、2ノードを超える規模への拡張が可能になります。 
+summary: 2ノードのスイッチレスクラスタからスイッチドクラスタ環境へ移行するには、NetApp CN1610クラスタスイッチを使用します。 
 ---
-= スイッチレスクラスタ環境からスイッチ使用の NetApp CN1610 クラスタ環境への移行
+= スイッチレスクラスタからスイッチ使用の NetApp CN1610 クラスタ環境への移行
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-既存の2ノード構成のスイッチレスクラスタ環境をお持ちの場合は、CN1610クラスタネットワークスイッチを使用して2ノード構成のスイッチドクラスタ環境に移行することで、2ノードを超える規模への拡張が可能になります。
+2ノードのスイッチレスクラスタ環境からスイッチドクラスタ環境へ移行するには、NetApp CN1610クラスタスイッチを使用します。この移行により、クラスタを2ノード以上に拡張することが可能になります。
 
 
 

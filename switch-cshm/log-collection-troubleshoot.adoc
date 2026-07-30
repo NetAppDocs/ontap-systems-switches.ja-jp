@@ -2,9 +2,9 @@
 permalink: switch-cshm/log-collection-troubleshoot.html 
 sidebar: sidebar 
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
-summary: ここで提供されるコマンドを使用して......することができます。 
+summary: イーサネットスイッチのヘルスモニター（CSHM）ログ収集におけるエラーや障害のトラブルシューティングを行います。 
 ---
-= ログ収集のトラブルシューティング
+= イーサネットスイッチのヘルスモニターのログ収集に関するトラブルシューティング
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

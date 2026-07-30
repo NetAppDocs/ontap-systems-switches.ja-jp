@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c-storage/install-switch-3232c-storage.html 
 sidebar: sidebar 
 keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 3232c 
-summary: Cisco Nexus 3232C ストレージ スイッチをインストールするには、次の手順に従います。 
+summary: Cisco Nexus 3232C ストレージスイッチをインストールして、ストレージ ネットワーク運用の準備をします。 
 ---
-= 3232Cストレージスイッチをインストールする
+= Cisco Nexus 3232C ストレージスイッチのインストール
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3232C ストレージ スイッチをセットアップおよび構成するには、次の手順に従ってください。
+Cisco Nexus 3232C ストレージスイッチをインストールして、ストレージ ネットワーク運用の準備をします。
 
 .開始する前に
 以下のものがあることを確認してください。

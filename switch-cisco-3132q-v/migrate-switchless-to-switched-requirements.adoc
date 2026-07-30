@@ -2,15 +2,15 @@
 permalink: switch-cisco-3132q-v/migrate-switchless-to-switched-requirements.html 
 sidebar: sidebar 
 keywords: install, cisco nexus 3132q-v switch, 
-summary: Cisco Nexus 3132Q-V スイッチを設定する前に、プロセスと用語の概要を確認してください。 
+summary: 2ノードのスイッチレスクラスタから Cisco Nexus 3132Q-V クラスタスイッチへの移行要件を確認します。 
 ---
-= 移行要件
+= Cisco Nexus 3132Q-V クラスタスイッチの移行要件を確認する
 :allow-uri-read: 
 :imagesdir: ../media/
 
 
 [role="lead"]
-2ノードのスイッチレスクラスタを使用している場合は、2ノードのスイッチドクラスタに移行するための適用要件について、この手順を確認してください。
+2ノードのスイッチレスクラスタからCisco Nexus 3132Q-Vクラスタスイッチを使用するスイッチドクラスタへの移行要件を確認します。
 
 [NOTE]
 ====

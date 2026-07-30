@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100-storage/required-documentation-sn2100-storage.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: NVIDIA SN2100 スイッチのインストールとメンテナンスについては、推奨されるすべてのドキュメントを必ず確認してください。 
+summary: NVIDIA SN2100 ストレージスイッチのインストールとメンテナンスに必要なドキュメントを確認してください。 
 ---
-= NVIDIA SN2100スイッチのドキュメント要件
+= NVIDIA SN2100 ストレージスイッチのドキュメント要件を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NVIDIA SN2100スイッチの設置にあたっては、推奨されるすべてのドキュメントを必ずご確認ください。
+NVIDIA SN2100 ストレージスイッチのセットアップおよび ONTAP ストレージ ネットワークでの設定に必要なスイッチとコントローラーのドキュメントを確認してください。
 
 次の表は、 NVIDIA SN2100 スイッチに関するドキュメントの一覧です。
 

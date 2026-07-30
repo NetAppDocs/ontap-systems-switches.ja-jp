@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100/configure-software-overview-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: sn2100 SN2100 switches setup, sn2100 SN2100 switches install, cumulus linux 
-summary: NVIDIA SN2100 スイッチのソフトウェア構成の概要。 
+summary: NVIDIA SN2100クラスタスイッチにCumulus LinuxとRCFをインストールするには、このワークフローに従ってください。 
 ---
-= NVIDIA SN2100スイッチのソフトウェアインストールワークフロー
+= NVIDIA SN2100クラスタスイッチのソフトウェアインストールワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NVIDIA SN2100 スイッチのソフトウェアをインストールして構成するには、次の手順に従います。
+このワークフローに従って、NVIDIA SN2100クラスタスイッチにCumulus Linuxと参照構成ファイル（RCF）をインストールしてください。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:configure-sn2100-cluster.html["スイッチを設定する"]
 [role="quick-margin-para"]

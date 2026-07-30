@@ -2,16 +2,16 @@
 permalink: switch-cisco-3132q-v/configure-reqs-3132q.html 
 sidebar: sidebar 
 keywords: Cisco, 3132Q-V 
-summary: Cisco Nexus 3132Q-V スイッチの設置とメンテナンスについては、ネットワークと構成の要件を必ず確認してください。 
+summary: インストールまたはアップグレードの前に、Cisco Nexus 3132Q-V クラスタスイッチの構成要件を確認してください。 
 ---
-= Cisco Nexus 3132Q-V スイッチの構成要件
+= Cisco Nexus 3132Q-V クラスタスイッチの構成要件を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3132Q-V スイッチの設置および保守を行う際は、ネットワークおよび構成要件を必ず確認してください。
+インストールまたはアップグレードの前に、Cisco Nexus 3132Q-V クラスタスイッチの構成要件を確認してください。
 
 
 

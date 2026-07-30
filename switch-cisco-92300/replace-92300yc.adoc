@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/replace-92300yc.html 
 sidebar: sidebar 
 keywords: replace,upgrade cisco nexus 92300yc cluster switch 
-summary: クラスタネットワーク内の故障したNexus 92300YCスイッチの交換は、システムを停止させることなく実施できる手順です。 
+summary: クラスタネットワーク内の障害のある Cisco Nexus 92300YC クラスタスイッチを交換します。これは無停止の手順です。 
 ---
-= Cisco Nexus 92300YC スイッチの交換
+= Cisco Nexus 92300YC クラスタスイッチの交換
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-クラスタ ネットワーク内で障害が発生したNexus 92300YCスイッチは、無停止（NDU）で交換できます。
+クラスタの動作を中断することなく、クラスタネットワーク内の障害のある Cisco Nexus 92300YC クラスタスイッチを交換します。この無停止手順（NDU）では、交換用スイッチを準備し、故障したスイッチから接続を移行します。
 
 
 

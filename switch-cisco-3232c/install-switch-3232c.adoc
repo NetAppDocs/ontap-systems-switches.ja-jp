@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/install-switch-3232c.html 
 sidebar: sidebar 
 keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 3232c 
-summary: Cisco Nexus 3232C スイッチをインストールするには、この手順に従ってください。 
+summary: Cisco Nexus 3232C クラスタスイッチをインストールして、ネットワーク運用に向けて準備します。 
 ---
-= 3232Cクラスタスイッチのインストール
+= Cisco Nexus 3232C クラスタスイッチのインストール
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3232C スイッチをセットアップおよび設定するには、この手順に従ってください。
+Cisco Nexus 3232C クラスタスイッチをインストールして、ネットワーク運用に向けて準備します。
 
 .開始する前に
 以下のものがあることを確認してください。

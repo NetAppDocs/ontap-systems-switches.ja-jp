@@ -2,16 +2,16 @@
 permalink: switch-cisco-9336c-fx2/smart-call-9336c-cluster.html 
 sidebar: sidebar 
 keywords: cisco smart call,small call home 
-summary: Smart Call Home は、ネットワーク上のハードウェアおよびソフトウェア コンポーネントを監視し、重大なシステム状態に関する電子メールベースの通知を生成します。デバイスでイベントが発生すると、Smart Call Home は宛先プロファイルに設定されているすべての受信者にアラートを送信します。 
+summary: Cisco Nexus 9336C-FX2 クラスタスイッチの Smart Call Home の要件と構成オプションを確認してください。 
 ---
-= Smart Call Homeの要件
+= Cisco Nexus 9336C-FX2 クラスタスイッチの Smart Call Home 要件を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Smart Call Home を使用するには、電子メールを使用して Smart Call Home システムと通信するようにクラスター ネットワーク スイッチを構成する必要があります。さらに、オプションでクラスタ ネットワーク スイッチを設定して、Cisco の組み込み Smart Call Home サポート機能を利用することもできます。
+Cisco Nexus 9336C-FX2 クラスタスイッチで Smart Call Home を設定するための要件を確認し、重要なシステムイベントに関する自動メール通知を有効にしてください。
 
 Cisco の Smart Call Home は、ネットワーク上のハードウェアおよびソフトウェアコンポーネントを監視します。重大なシステム構成上の問題が発生した場合、メールによる通知が生成され、宛先プロファイルに設定されているすべての受信者にアラートが送信されます。
 

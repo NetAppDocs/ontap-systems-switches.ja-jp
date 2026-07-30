@@ -2,16 +2,16 @@
 permalink: switch-netapp-cn1610/required-documentation-cn1610.html 
 sidebar: sidebar 
 keywords: cn1610, switch, netapp 
-summary: NetApp CN1610スイッチの設置および保守を行う際は、推奨されるすべてのドキュメントを必ず確認してください。 
+summary: NetApp CN1610クラスタスイッチのインストールとメンテナンスに必要なドキュメントを確認してください。 
 ---
-= NetApp CN1610スイッチの文書要件
+= NetApp CN1610クラスタスイッチのドキュメント要件を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NetApp CN1610スイッチの設置にあたっては、推奨されるすべてのドキュメントを必ず確認してください。
+NetApp CN1610クラスタスイッチをセットアップしてONTAPクラスタで設定するために必要なスイッチとコントローラーのドキュメントを確認してください。
 
 [cols="1,2"]
 |===

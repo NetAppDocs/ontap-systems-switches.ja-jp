@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/92300-overview.html 
 sidebar: sidebar 
 keywords: cisco nexus 92300YC 
-summary: 2 つ以上のノードを持つONTAPクラスターを構築する場合は、サポートされているクラスター ネットワーク スイッチが 2 つ必要です。オプションとして追加の管理スイッチを使用することもできます。 
+summary: Cisco Nexus 92300YC クラスタスイッチと、ONTAPクラスタネットワークにおけるその役割について説明します。 
 ---
-= Cisco Nexus 92300YC スイッチの概要
+= Cisco Nexus 92300YC スイッチについて
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-2 つ以上のノードを持つONTAPクラスターを構築する場合は、サポートされているクラスター ネットワーク スイッチが 2 つ必要です。オプションとして追加の管理スイッチを使用することもできます。
+Cisco Nexus 92300YC は、2つ以上のノードを持つ ONTAP 環境向けのクラスタスイッチです。このスイッチをクラスターに導入する前に、その機能と使用例を確認してください。
 
 Cisco Nexus 92300YC スイッチ （X190003/R） は、スイッチに付属の標準ブラケットを使用して、NetApp システムキャビネットまたはサードパーティ製キャビネットに取り付けることができます。
 

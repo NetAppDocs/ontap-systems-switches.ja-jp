@@ -2,16 +2,16 @@
 permalink: switch-cisco-9332d-gx2b/install-complete-afx-setup-9332d.html 
 sidebar: sidebar 
 keywords: switches, complete system setup, Cisco Nexus, 9332D-GX2B switches, AFX 
-summary: Cisco Nexus 9332D-GX2B スイッチの設定手順が完了したら、AFX システムドキュメントサイトにアクセスして、AFX 1K または AFX 2K システムのストレージシェルフとコントローラの電源をオンにし、スイッチの接続を確認して、AFX システムのセットアップを完了してください。 
+summary: Cisco Nexus 9332D-GX2B スイッチの設定が完了したら、AFX 1K または AFX 2K システムのセットアップを完了してください。 
 ---
-= AFXシステムのセットアップを完了する - Cisco Nexus 9332D-GX2B
+= Cisco Nexus 9332D-GX2B スイッチの AFX システムセットアップを完了する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 9332D-GX2B スイッチの設定手順が完了したら、AFX システムドキュメントサイトにアクセスして、AFX 1K または AFX 2K システムのストレージシェルフとコントローラの電源をオンにし、スイッチの接続を確認して、AFX システムのセットアップを完了してください。
+Cisco Nexus 9332D-GX2B スイッチの設定が完了したら、ストレージシェルフとコントローラの電源を投入し、スイッチの接続を確認して、AFX 1K または AFX 2K システムのセットアップを完了します。
 
 .開始する前に
 * スイッチの設定手順を完了している必要があります（link:configure-switch-workflow-9332d.html["スイッチのワークフローを設定する"]）。

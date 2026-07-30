@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/configure-ssh-keys.html 
 sidebar: sidebar 
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
-summary: クラスタスイッチのヘルスモニター機能およびログ収集機能を使用するには、SSHが必要です。Cisco 92300YCクラスタスイッチでSSHを有効にするには、まずSSHキーを生成してからSSHを有効にします。 
+summary: SSH と SSH キーが Cisco Nexus 92300YC クラスタスイッチで有効になっていることを確認し、CSHM とログ収集をサポートします。 
 ---
-= SSH構成を確認する
+= Cisco Nexus 92300YC クラスタスイッチのSSH構成を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-イーサネット スイッチ ヘルス モニター (CSHM) とログ収集機能を使用している場合は、クラスター スイッチで SSH と SSH キーが有効になっていることを確認します。
+Cisco Nexus 92300YC クラスタスイッチで SSH および SSH キーが有効になっていることを確認し、イーサネットスイッチヘルスモニター（CSHM）およびログ収集機能をサポートします。
 
 .手順
 . SSH が有効になっていることを確認します。

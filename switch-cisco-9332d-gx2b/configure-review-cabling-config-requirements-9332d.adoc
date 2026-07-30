@@ -2,16 +2,16 @@
 permalink: switch-cisco-9332d-gx2b/configure-review-cabling-config-requirements-9332d.html 
 sidebar: sidebar 
 keywords: 9332d-gx2b cabling setup, 9332d-gx2b switches configuration, nx-os 
-summary: 新しい AFX 1K または AFX 2K システムのインストールの一部として新しい Cisco Nexus 9332D-GX2B スイッチをインストールする場合、スイッチを交換する場合、またはスイッチを工場出荷時のデフォルト設定にリセットする場合は、次のケーブル接続と構成の要件を確認する必要があります。 
+summary: Cisco Nexus 9332D-GX2B スイッチを AFX 1K または AFX 2K システムの一部としてインストールする前に、ケーブル配線と構成要件を確認してください。 
 ---
-= 配線および構成要件を確認する - Cisco Nexus 9332D-GX2B
+= Cisco Nexus 9332D-GX2B スイッチのケーブル配線と構成要件を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 9332D-GX2B スイッチを新しい AFX 1K または AFX 2K システムのインストールの一部としてインストールする場合、スイッチを交換する場合、またはスイッチを工場出荷時のデフォルト設定にリセットする場合は、次のケーブル接続と構成の要件を確認する必要があります。
+Cisco Nexus 9332D-GX2B スイッチを、新しい AFX 1K または AFX 2K システムの一部としてインストールする前、スイッチを交換する前、またはスイッチを工場出荷時のデフォルト設定にリセットする前に、ケーブル配線と構成要件を確認してください。
 
 
 

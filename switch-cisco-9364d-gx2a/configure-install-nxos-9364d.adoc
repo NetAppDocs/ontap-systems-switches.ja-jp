@@ -2,16 +2,16 @@
 permalink: switch-cisco-9364d-gx2a/configure-install-nxos-9364d.html 
 sidebar: sidebar 
 keywords: procedure, install, nx-os, software, nexus, cluster, switch, install the nx-os software - cisco nexus 9364d-gx2a 
-summary: NX-OS を Cisco Nexus 9364D-GX2A スイッチにインストールするのは、新しい AFX 1K または AFX 2K システムのインストール、スイッチの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする場合です。 
+summary: 新規の AFX 1K または AFX 2K システムのインストール、スイッチの交換、または工場出荷時設定へのリセットを行う場合は、Cisco Nexus 9364D-GX2A スイッチに NX-OS をインストールしてください。 
 ---
-= NX-OS をインストールする - Cisco Nexus 9364D-GX2A
+= NX-OS を Cisco Nexus 9364D-GX2A スイッチにインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NX-OS を Cisco Nexus 9364D-GX2A スイッチにインストールするのは、新しい AFX 1K または AFX 2K システムのインストール、スイッチの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする場合です。
+新規の AFX 1K または AFX 2K システムのインストール、スイッチの交換、またはスイッチを工場出荷時のデフォルト設定にリセットする場合は、Cisco Nexus 9364D-GX2A スイッチに NX-OS をインストールします。
 
 .開始する前に
 * スイッチの電源がオンになっている必要があり、link:configure-complete-initial-setup-9364d.html["スイッチの初期設定を完了する"]の手順を完了している必要があります。

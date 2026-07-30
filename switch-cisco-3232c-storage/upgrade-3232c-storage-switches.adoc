@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c-storage/upgrade-3232c-storage-switches.html 
 sidebar: sidebar 
 keywords: upgrade, cisco nexus, 3232c storage switch 
-summary: Cisco NX-OS ソフトウェアおよびリファレンス構成ファイル（RCF）は、Cisco Nexus 3232C ストレージ スイッチでアップグレードできます。 
+summary: Cisco Nexus 3232C ストレージスイッチの NX-OS ソフトウェアと RCF をアップグレードします。 
 ---
-= Cisco Nexus 3232C ストレージスイッチをアップグレードする
+= Cisco Nexus 3232C ストレージスイッチのアップグレード
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3232C スイッチの Cisco NX-OS ソフトウェアおよび参照構成ファイル（RCF）をアップグレードするには、以下の手順に従ってください。
+Cisco Nexus 3232C ストレージスイッチの NX-OS ソフトウェアおよびリファレンス構成ファイル（RCF）をアップグレードして、ONTAP との互換性を維持し、最新機能にアクセスできるようにします。
 
 
 

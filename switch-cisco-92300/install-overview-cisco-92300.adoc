@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/install-overview-cisco-92300.html 
 sidebar: sidebar 
 keywords: install, cisco nexus 92300 switch, 
-summary: Cisco Nexus 92300スイッチを設定する前に、プロセスと用語の概要を確認してください。 
+summary: ONTAP 環境に Cisco Nexus 92300YC クラスタスイッチをインストールして設定するには、このワークフローに従ってください。 
 ---
-= Cisco Nexus 92300YC スイッチのインストールとセットアップのワークフロー
+= Cisco Nexus 92300YC クラスタスイッチのインストールとセットアップのワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 92300YC スイッチは、AFF または FAS クラスタのクラスタスイッチとして使用できます。クラスタスイッチを使用すると、2つ以上のノードを持つ ONTAP クラスタを構築できます。
+ONTAP 環境に Cisco Nexus 92300YC クラスタスイッチをインストールして設定するには、このワークフローに従ってください。92300YC は、3 ノード以上の ONTAP クラスタをサポートします。
 
 以下のワークフロー手順に従って、Cisco Nexus 92300YC スイッチのインストールとセットアップを行います。
 

@@ -2,15 +2,15 @@
 permalink: switch-cisco-3232c/migrate-from-switchless-migrate-requirements.html 
 sidebar: sidebar 
 keywords: install, cisco nexus 3232c switch, 
-summary: Cisco Nexus 3232c スイッチを設定する前に、プロセスと用語の概要を確認してください。 
+summary: 2ノードのスイッチレスクラスタから Cisco Nexus 3232C クラスタスイッチへの移行要件を確認します。 
 ---
-= 移行要件
+= スイッチレスクラスタから Cisco Nexus 3232C クラスタスイッチへの移行要件を確認する
 :allow-uri-read: 
 :imagesdir: ../media/
 
 
 [role="lead"]
-2ノードのスイッチレスクラスタを使用している場合は、Cisco Nexus 3232Cクラスタネットワークスイッチを含む2ノードのスイッチドクラスタに移行できます。これは無停止の手順です。
+2ノードのスイッチレスクラスタからスイッチドクラスタへの移行要件を、Cisco Nexus 3232Cクラスタスイッチを使用して確認します。
 
 .開始する前に
 次のインストールと接続を確認します。

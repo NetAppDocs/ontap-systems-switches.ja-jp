@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/configure-reqs-3232c.html 
 sidebar: sidebar 
 keywords: cisco 3232c, cluster switches 
-summary: Cisco Nexus 3232C スイッチをクラスタスイッチとして AFF または FAS クラスタで使用できます。 
+summary: インストールまたはアップグレードの前に、Cisco Nexus 3232C クラスタスイッチの構成要件を確認してください。 
 ---
-= Cisco Nexus 3232C スイッチの構成要件
+= Cisco Nexus 3232C クラスタスイッチの構成要件を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3232C スイッチの設置および保守を行う際は、構成とネットワーク要件を必ず確認してください。
+インストールまたはアップグレードの前に、Cisco Nexus 3232C クラスタスイッチの構成要件を確認してください。
 
 
 

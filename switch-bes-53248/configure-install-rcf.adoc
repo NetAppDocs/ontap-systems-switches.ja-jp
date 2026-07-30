@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/configure-install-rcf.html 
 sidebar: sidebar 
 keywords: install rcf,setup rcf,rcf file 
-summary: BES-53248クラスタスイッチの設定後、および新しいライセンスの適用後に、リファレンス構成ファイルRCFをインストールできます。 
+summary: 初期設定を完了し、必要なライセンスを適用した後、Broadcom BES-53248クラスタスイッチにリファレンス構成ファイル（RCF）をインストールします。 
 ---
-= リファレンス構成ファイル（RCF）をインストールします
+= Broadcom BES-53248クラスタスイッチへのRCFのインストール
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248 クラスタ スイッチの設定後、および新しいライセンスの適用後に、RCF をインストールできます。
+初期設定を完了し、必要なライセンスを適用した後、Broadcom BES-53248クラスタスイッチにリファレンス構成ファイル（RCF）をインストールしてください。RCFは、クラスタ運用におけるポート割り当て、VLAN、およびネットワーク設定を定義します。
 
 
 CAUTION: EFOS 3.12以降の場合は、link:efos-install-rcf-license-file.html["リファレンス構成ファイル（RCF）とライセンスファイルをインストールします"]のインストール手順に従ってください。

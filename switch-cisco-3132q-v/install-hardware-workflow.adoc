@@ -2,16 +2,16 @@
 permalink: switch-cisco-3132q-v/install-hardware-workflow.html 
 sidebar: sidebar 
 keywords: switches, initial installation, configure switch-cisco-9336c-fx2 switch 
-summary: Cisco Nexus 3132Q-V クラスタスイッチを設定する前に、設定の概要を確認してください。 
+summary: Cisco Nexus 3132Q-V クラスタスイッチのハードウェアをインストールするには、このワークフローに従ってください。 
 ---
-= Cisco Nexus 3132Q-V スイッチのハードウェアインストールワークフロー
+= Cisco Nexus 3132Q-V クラスタスイッチのハードウェアインストールワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-3132Q-V クラスタスイッチのハードウェアをインストールおよび設定するには、次の手順に従ってください。
+Cisco Nexus 3132Q-V クラスタスイッチのハードウェアをインストールおよび設定するには、このワークフローに従ってください。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:setup-worksheet-3132q.html["配線ワークシートを完成させる"]
 [role="quick-margin-para"]

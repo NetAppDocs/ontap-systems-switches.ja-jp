@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/CSHM_snmpv3.html 
 sidebar: sidebar 
 keywords: SNMP,SNMPv3,SNMPv3 setup,BES-53248 Broadcom setup,BES-3248 switches configuration,EFOS 
-summary: SNMPv3 は、イーサネット スイッチ ヘルス モニタ CSHM で使用できます。 
+summary: Broadcom BES-53248クラスタスイッチでSNMPv3を設定し、イーサネットスイッチヘルスモニター（CSHM）との安全な通信を有効にします。 
 ---
-= SNMPv3の設定
+= Broadcom BES-53248クラスタスイッチのSNMPv3を設定する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-イーサネット スイッチ ヘルス モニタリング (CSHM) をサポートする SNMPv3 を構成するには、次の手順に従ってください。
+Broadcom BES-53248クラスタスイッチでSNMPv3を設定し、イーサネットスイッチヘルスモニター（CSHM）との安全で認証された通信を有効にします。SNMPv3は、ONTAPのヘルスモニタリングのためにスイッチのステータスを暗号化してポーリングします。
 
 .タスク概要
 次のコマンドは、Broadcom BES-53248 スイッチで SNMPv3 ユーザー名を設定します。

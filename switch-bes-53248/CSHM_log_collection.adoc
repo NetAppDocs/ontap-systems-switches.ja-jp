@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/CSHM_log_collection.html 
 sidebar: sidebar 
 keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation,BES-53248 Broadcom setup,BES-53248 switches configuration,EFOS 
-summary: Ethernet スイッチのヘルスモニター CSHM ログ収集機能は、ONTAP のクラスタまたはストレージ ネットワーク スイッチからログを収集するために使用されます。 
+summary: Broadcom BES-53248 クラスタスイッチでログ収集を設定して、CSHM がデバッグおよび AutoSupport レポート用のスイッチログを収集できるようにします。 
 ---
-= イーサネットスイッチヘルスモニタリングログ収集
+= Broadcom BES-53248クラスタスイッチのログ収集を設定する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-イーサネット スイッチ ヘルス モニター (CSHM) は、クラスターおよびストレージ ネットワーク スイッチの動作の健全性を確認し、デバッグのためにスイッチ ログを収集する役割を担います。この手順では、スイッチからの詳細な *サポート* ログの収集を設定および開始するプロセスをガイドし、 AutoSupportによって収集される *定期的* データの 1 時間ごとの収集を開始します。
+Broadcom BES-53248 クラスタスイッチでログ収集を設定して、イーサネットスイッチヘルスモニタ（CSHM）がデバッグおよび AutoSupport レポート用のスイッチログを収集できるようにします。この手順では、オンデマンドサポートログ収集と時間ごとの定期データ収集の両方を設定します。
 
 .開始する前に
 * ログ収集機能を有効にするには、 ONTAPバージョン 9.10.1P15、9.11.1P12、または 9.12.1 以降と EFOS 3.8.0.2 以降を実行している必要があります。

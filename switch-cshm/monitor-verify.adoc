@@ -2,9 +2,9 @@
 permalink: switch-cshm/monitor-verify.html 
 sidebar: sidebar 
 keywords: verify, monitor, cluster, management, network, switches, heath, monitor 
-summary: イーサネット スイッチの監視が機能しているかどうかを確認する方法を学習します。 
+summary: イーサネットスイッチのヘルスモニタリングが正しく設定され、スイッチで正常に動作していることを確認してください。 
 ---
-= イーサネットスイッチの監視を確認する
+= イーサネット スイッチのヘルスモニターの設定を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -2,16 +2,16 @@
 permalink: switch-netapp-cn1610/install-fastpath-software.html 
 sidebar: sidebar 
 keywords: install, fastpath, software 
-summary: FASTPATHソフトウェアをNetAppスイッチにインストールする場合、アップグレードは2番目のスイッチcs2から開始する必要があります。 
+summary: NetApp CN1610 クラスタスイッチに FASTPATH ソフトウェアをインストールします。アップグレードは2番目のスイッチ（cs2）から開始します。 
 ---
-= FASTPATHソフトウェアのインストール
+= FASTPATH ソフトウェアを NetApp CN1610 クラスタスイッチにインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-FASTPATHソフトウェアをNetAppスイッチにインストールする場合は、2番目のスイッチである _cs2_ からアップグレードを開始する必要があります。
+NetApp CN1610クラスタスイッチに FASTPATH ソフトウェアをインストールします。2番目のスイッチ _cs2_ からアップグレードを開始します。
 
 
 

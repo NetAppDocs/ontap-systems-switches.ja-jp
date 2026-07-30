@@ -2,16 +2,16 @@
 permalink: switch-netapp-cn1610/install-overview-cn1610.html 
 sidebar: sidebar 
 keywords: install, fastpath, software, rcfs 
-summary: NetApp CN1610スイッチを設定する前に、手順の概要を確認してください。 
+summary: ONTAP環境に NetApp CN1610クラスタスイッチをインストールして設定するには、このワークフローに従ってください。 
 ---
-= NetApp CN1610スイッチのインストールおよび設定ワークフロー
+= NetApp CN1610クラスタスイッチのインストールと構成のワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-ONTAP を実行しているシステムに NetApp CN1610 スイッチをインストールして設定するには、次の手順に従ってください。
+ONTAP を実行しているシステムに NetApp CN1610 クラスタスイッチをインストールして設定するには、このワークフローに従ってください。
 
 . link:install-hardware-cn1610.html["ハードウェアを設置"]
 . link:install-fastpath-software.html["FASTPATHソフトウェアのインストール"]

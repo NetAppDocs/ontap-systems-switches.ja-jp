@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100-storage/setup-install-cshm-file.html 
 sidebar: sidebar 
 keywords: install, applicable, configuration, file, cluster, switch, health, monitor, ontap, install the cluster switch health monitor configuration file for sn2100 switches 
-summary: この手順を使用して、NVIDIA SN2100ストレージスイッチのクラスタスイッチヘルスモニタリングに該当する構成ファイルをインストールできます。 
+summary: NVIDIA SN2100ストレージスイッチのイーサネットスイッチヘルスモニター（CSHM）構成ファイルをインストールして、ONTAPでスイッチの健全性監視を有効にします。 
 ---
-= イーサネットスイッチヘルスモニタ構成ファイルをインストールする
+= NVIDIA SN2100 ストレージスイッチ用イーサネットスイッチヘルスモニター構成ファイルのインストール
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NVIDIAクラスタ スイッチの Ethernet スイッチ ヘルス モニタリングに適した構成ファイルをインストールするには、次の手順に従います。サポートされているモデルは次のとおりです。
+NVIDIA SN2100ストレージスイッチのイーサネットスイッチヘルスモニター（CSHM）構成ファイルをインストールして、ONTAPでスイッチの状態監視を有効にします。対応機種は以下のとおりです。
 
 * MSN2100-CB2FC
 * MSN2100-CB2RC

@@ -2,7 +2,7 @@
 permalink: switch-cisco-3132q-v/install-cisco-nexus-3132qv.html 
 sidebar: sidebar 
 keywords: install, cisco nexus 3132q-v cluster switch, pass-through panel, netapp cabinet 
-summary: Cisco Nexus 3132Q-V スイッチとパススルーパネルは、スイッチに付属している標準ブラケットを使用して、NetApp キャビネットに取り付けることができます。 
+summary: Cisco Nexus 3132Q-V クラスタスイッチとパススルーパネルを、スイッチに付属の標準ブラケットを使用して NetApp キャビネットに取り付けます。 
 ---
 = Cisco Nexus 3132Q-V クラスタスイッチを NetApp キャビネットに取り付ける
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: Cisco Nexus 3132Q-V スイッチとパススルーパネルは、スイ
 
 
 [role="lead"]
-構成によっては、スイッチに付属の標準ブラケットを使用して、Cisco Nexus 3132Q-V スイッチとパススルーパネルを NetApp キャビネットにインストールする必要がある場合があります。
+Cisco Nexus 3132Q-V クラスタスイッチとパススルーパネルを、スイッチに付属の標準ブラケットを使用して NetApp キャビネットに取り付けます。
 
 .開始する前に
 * 初期準備要件、キットの内容、および安全上の注意事項については、 http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus3000/hw/installation/guide/b_n3000_hardware_install_guide.html["Cisco Nexus 3000 シリーズ ハードウェア インストール ガイド"^]を参照してください。手順を開始する前に、これらの文書を確認してください。

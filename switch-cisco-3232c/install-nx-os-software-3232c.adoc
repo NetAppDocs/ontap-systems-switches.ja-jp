@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/install-nx-os-software-3232c.html 
 sidebar: sidebar 
 keywords: install, nx-os software 
-summary: この手順を使用して、Nexus 3232Cクラスタ スイッチにNX-OSソフトウェアをインストールできます。 
+summary: Cisco Nexus 3232C クラスタスイッチに NX-OS ソフトウェアをインストールして、クラスタ運用に備えます。 
 ---
-= NX-OSソフトウェアをインストールする
+= Cisco Nexus 3232C クラスタスイッチに NX-OS ソフトウェアをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-この手順を使用して、Nexus 3232Cクラスタ スイッチにNX-OSソフトウェアをインストールできます。
+Cisco Nexus 3232C クラスタスイッチに NX-OS ソフトウェアをインストールして、クラスタ運用に備えます。
 
 
 

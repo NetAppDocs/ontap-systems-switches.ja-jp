@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/install-hardware-workflow.html 
 sidebar: sidebar 
 keywords: switches, initial installation, configure switch-cisco-9336c-fx2 switch 
-summary: Cisco Nexus 3232C クラスタスイッチを設定する前に、設定の概要を確認してください。 
+summary: Cisco Nexus 3232C クラスタスイッチのハードウェアをインストールするには、このワークフローに従ってください。 
 ---
-= Cisco Nexus 3232C スイッチのハードウェアインストールワークフロー
+= Cisco Nexus 3232C クラスタスイッチのハードウェアインストールワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-3232Cクラスタスイッチのハードウェアをインストールおよび構成するには、次の手順に従ってください。
+Cisco Nexus 3232C クラスタスイッチのハードウェアをインストールおよび設定するには、このワークフローに従ってください。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:setup_worksheet_3232c.html["配線ワークシートを完成させる"]
 [role="quick-margin-para"]

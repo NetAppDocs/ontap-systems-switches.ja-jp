@@ -2,16 +2,16 @@
 permalink: switch-cisco-9336c-fx2/install-switch-9336c-cluster.html 
 sidebar: sidebar 
 keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 9336c-fx2 
-summary: Cisco Nexus 9336C-FX2 スイッチをインストールするには、次の手順に従ってください。 
+summary: Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタスイッチをセットアップおよび設定して、ネットワーク運用に向けて準備します。 
 ---
-= 9336C-FX2および9336C-FX2-Tクラスタスイッチをインストールする
+= Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタスイッチのインストール
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチをセットアップおよび構成するには、次の手順に従ってください。
+Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタスイッチをセットアップおよび設定して、ネットワーク運用に向けて準備します。
 
 .開始する前に
 以下のものがあることを確認してください。

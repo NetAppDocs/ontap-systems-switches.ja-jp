@@ -2,16 +2,16 @@
 permalink: switch-netapp-cn1610/switch-overview-cn1610.html 
 sidebar: sidebar 
 keywords: install, fastpath, software, rcfs 
-summary: NetApp CN1610スイッチを設定する前に、手順の概要を確認してください。 
+summary: NetApp CN1610 クラスタスイッチと ONTAP クラスタネットワークにおけるその役割について説明します。 
 ---
-= NetApp CN1610スイッチのインストールと構成の概要
+= NetApp CN1610 クラスタスイッチについて
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-CN1610は、16個の10ギガビットSmall Form-Factor Pluggable Plus（SFP+）ポートを備えた、高帯域幅のマネージド型レイヤ2スイッチです。
+NetApp CN1610は、16個の10ギガビットSFP+ポートを備えた、高帯域幅のマネージド型レイヤ2クラスタスイッチです。このページでは、スイッチの機能とONTAPクラスタネットワークにおける役割について説明します。
 
 このスイッチには冗長電源とファンユニットが搭載されており、高可用性を実現するためにホットスワップに対応しています。この1Uスイッチは、標準的な19インチのNetApp 42Uシステムキャビネット、またはサードパーティ製キャビネットに取り付けることができます。
 

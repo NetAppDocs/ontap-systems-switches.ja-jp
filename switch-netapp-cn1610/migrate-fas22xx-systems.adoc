@@ -2,16 +2,16 @@
 permalink: switch-netapp-cn1610/migrate-fas22xx-systems.html 
 sidebar: sidebar 
 keywords: migrate, two-node switched cluster, fas22xx systems, single, network connection 
-summary: 既存の2ノードスイッチレスクラスタにFAS22xxシステムがあり、各コントローラモジュールにクラスタ接続用のスイッチを介さずに直接接続する10 GbE接続が1つある場合は、スイッチレスクラスタネットワークオプションを使用して、スイッチを介さずに直接接続をスイッチ接続に置き換えることができます。 
+summary: 単一のクラスタネットワーク接続を持つスイッチレスクラスタから、NetApp CN1610 クラスタスイッチを使用するスイッチ付きクラスタに FAS22xx システムを移行します。 
 ---
-= 単一のクラスタネットワーク接続を備えたFAS22xxシステムで、2ノードのスイッチドクラスタに移行する
+= FAS22xx システムを NetApp CN1610 クラスタスイッチを使用してスイッチドクラスタに移行する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-既存の2ノードスイッチレスクラスタにFAS22xxシステムがあり、各コントローラモジュールにクラスタ接続用のスイッチを介さずに直接接続する10 GbE接続が1つある場合は、スイッチレスクラスタネットワークオプションを使用して、スイッチを介さずに直接接続をスイッチ接続に置き換えることができます。
+FAS22xx システムを、コントローラごとに 1 つの 10 GbE 接続を持つ 2 ノードのスイッチレス クラスタから、NetApp CN1610 クラスタスイッチを使用したスイッチクラスタに移行します。
 
 
 

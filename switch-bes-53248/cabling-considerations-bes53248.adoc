@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/cabling-considerations-bes53248.html 
 sidebar: sidebar 
 keywords: BES-53248 cabling setup, BES-53248 switches configuration, efos 
-summary: Broadcom BES-53248 スイッチを構成する前に、次の情報を確認してください。 
+summary: Broadcom BES-53248クラスタスイッチを導入する前に、クラスタポートの割り当て、ポートグループの速度制限、FEC設定など、ケーブル配線と構成に関する制約事項を理解してください。 
 ---
-= ケーブル配線と構成の考慮事項を確認する
+= Broadcom BES-53248クラスタスイッチのケーブル配線と構成に関する考慮事項の確認
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Broadcom BES-53248 スイッチを構成する前に、次の考慮事項を確認してください。
+Broadcom BES-53248クラスタスイッチを導入する前に、ケーブル配線と構成に関する制約事項を理解してください。重要な検討事項としては、クラスタポートの割り当て、ポートグループの速度制約、および25G銅線および光ファイバー接続における前方誤り訂正（FEC）設定などが挙げられます。
 
 
 

@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100-storage/migrate-cisco-sn2100-cluster-switch-storage.html 
 sidebar: sidebar 
 keywords: migrating to a cluster with NVIDIA SN2100 cluster switches, how to migrate 
-summary: ONTAPクラスタ用の古いCiscoクラスタ スイッチを、 NVIDIA SN2100 クラスタ ネットワーク スイッチに無停止で移行できます。 
+summary: 古い Cisco クラスタースイッチから NVIDIA SN2100 クラスタースイッチへ、クラスターの動作を中断することなく移行します。 
 ---
-= Ciscoクラスタ スイッチからNVIDIA SN2100 クラスタ スイッチへの移行
+= Cisco クラスタスイッチから NVIDIA SN2100 クラスタスイッチへの移行
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-ONTAPクラスタ用のCiscoクラスタ スイッチをNVIDIA SN2100 クラスタ スイッチに無停止で移行できます。一部の古いCiscoクラスタ スイッチをNVIDIA SN2100 クラスタ スイッチに置き換える場合は、特定の構成情報、ポート接続、およびケーブル接続の要件に注意する必要があります。
+Cisco クラスタースイッチから NVIDIA SN2100 クラスタースイッチへ、クラスターの動作を中断することなく移行します。移行を開始する前に、構成情報、ポート接続、およびケーブル配線の要件を確認してください。
 
 次のCiscoクラスタ スイッチがサポートされています。
 

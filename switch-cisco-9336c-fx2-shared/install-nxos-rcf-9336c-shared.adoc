@@ -2,16 +2,16 @@
 permalink: switch-cisco-9336c-fx2-shared/install-nxos-rcf-9336c-shared.html 
 sidebar: sidebar 
 keywords: install rcf, cisco switches 
-summary: RCFは、Nexus 9336C-FX2スイッチの初回セットアップ後にインストールできます。また、同じ手順を使用してRCFのバージョンをアップグレードすることもできます。 
+summary: 参照構成ファイル（RCF）を Cisco Nexus 9336C-FX2 共有スイッチの初期設定後にインストールして、クラスタとストレージを組み合わせた運用のためのポート割り当てを設定します。 
 ---
-= 参照構成ファイル（RCF）をインストールする
+= Cisco Nexus 9336C-FX2共有スイッチにRCFをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Nexus 9336C-FX2 スイッチを初めてセットアップした後、リファレンス構成ファイル (RCF) をインストールできます。
+初期設定後に、Cisco Nexus 9336C-FX2 共有スイッチに参照構成ファイル（RCF）をインストールします。RCF は、クラスタとストレージを組み合わせた運用におけるポート割り当てを設定します。
 
 始める前に、以下の手順を完了してください。link:prepare-nxos-rcf-9336c-shared.html["NX-OSとRCFのインストールの準備"] 。
 

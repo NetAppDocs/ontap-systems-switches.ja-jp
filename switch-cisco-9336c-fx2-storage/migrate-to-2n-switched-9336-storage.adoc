@@ -2,16 +2,16 @@
 permalink: switch-cisco-9336c-fx2-storage/migrate-to-2n-switched-9336-storage.html 
 sidebar: sidebar 
 keywords: two-node switchless cluster environments,migrating to a two-node switched 9336C-FX2 cluster environment,switchless cluster environments,9336C-FX2 switches 
-summary: 既存の2ノード スイッチレス クラスタ環境を使用している場合は、Cisco Nexus 9336C-FX2スイッチを使用して2ノード スイッチ クラスタ環境に移行し、3ノード以上にクラスタを拡張できます。 
+summary: 既存の 2 ノード スイッチレス クラスタを、Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチを使用してスイッチ クラスタ環境に移行します。 
 ---
-= 2ノードスイッチクラスタへの移行
+= Cisco Nexus 9336C-FX2 ストレージスイッチを使用した2ノードスイッチドクラスタへの移行
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-既存の 2 ノードのスイッチレス クラスタ環境がある場合は、 Cisco Nexus 9336C-FX2 スイッチを使用して 2 ノードのスイッチド クラスタ環境に移行し、クラスタ内の 2 ノードを超えて拡張できるようになります。
+既存の 2 ノードスイッチレスクラスタを、Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージスイッチを使用してスイッチクラスタ環境に移行します。この無停止移行により、クラスタを 2 ノード以上に拡張することができます。
 
 移行プロセスは、光ポートまたは Twinax ポートを使用しているすべてのノードで機能しますが、ノードがクラスタ ネットワーク ポートにオンボード 10Gb BASE-T RJ45 ポートを使用している場合、このスイッチではサポートされません。
 

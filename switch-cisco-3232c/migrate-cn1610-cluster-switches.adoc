@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/migrate-cn1610-cluster-switches.html 
 sidebar: sidebar 
 keywords: migrate, cn1610 switch, cisco nexus 3232c cluster 
-summary: クラスター内の既存の CN1610 クラスタースイッチを Cisco Nexus 3232C クラスタースイッチに交換するには、特定の順序でタスクを実行する必要があります。 
+summary: NetApp CN1610 クラスタースイッチから Cisco Nexus 3232C クラスタースイッチへ、クラスターの動作を中断することなく移行できます。 
 ---
-= CN1610クラスタスイッチをCisco Nexus 3232Cクラスタスイッチに移行する
+= NetApp CN1610 クラスタースイッチから Cisco Nexus 3232C クラスタースイッチへの移行
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-クラスター内の既存の CN1610 クラスタースイッチを Cisco Nexus 3232C クラスタースイッチに交換するには、特定の順序でタスクを実行する必要があります。
+既存の NetApp CN1610 クラスタースイッチを Cisco Nexus 3232C クラスタースイッチに、クラスターの動作を中断することなく移行します。
 
 
 

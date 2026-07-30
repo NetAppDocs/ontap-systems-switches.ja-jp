@@ -2,16 +2,16 @@
 permalink: switch-cisco-3132q-v/switch-requirements.html 
 sidebar: sidebar 
 keywords: replace, cisco nexus 3132q-v cluster switches 
-summary: Cisco Nexus 3132Q-V クラスタスイッチを交換する際には、特定の構成情報、ポート接続、およびケーブル要件を把握しておく必要があります。 
+summary: Cisco Nexus 3132Q-V クラスタスイッチを交換する前に、構成、ポート接続、およびケーブル配線の要件を確認してください。 
 ---
-= Cisco Nexus 3132Q-V クラスタスイッチの交換要件
+= Cisco Nexus 3132Q-V クラスタスイッチの交換要件を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-クラスタスイッチを交換する際は、構成要件、ポート接続、およびケーブル配線要件を必ず理解しておいてください。
+Cisco Nexus 3132Q-V クラスタスイッチを交換する前に、構成要件、ポート接続、およびケーブル配線要件を確認してください。
 
 
 

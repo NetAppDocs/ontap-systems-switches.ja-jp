@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/cabling-considerations-92300.html 
 sidebar: sidebar 
 keywords: 92300YC cabling setup, 92300YC switches configuration, nx-os 
-summary: Cisco 92300YC スイッチを設定する前に、以下の情報を確認してください。 
+summary: 導入前に、Cisco Nexus 92300YC クラスタスイッチのケーブル配線と構成に関する考慮事項を確認してください。 
 ---
-= ケーブル配線と構成の考慮事項を確認する
+= Cisco Nexus 92300YC クラスタスイッチのケーブル配線と構成に関する考慮事項を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco 92300YC スイッチを設定する前に、以下の事項を確認してください。
+導入前に、Cisco Nexus 92300YC クラスタスイッチのケーブル配線と構成に関する考慮事項を確認してください。
 
 
 

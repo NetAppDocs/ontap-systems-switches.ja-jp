@@ -2,7 +2,7 @@
 permalink: switch-cisco-9336c-fx2-shared/configure-switch-overview-9336c-shared.html 
 sidebar: sidebar 
 keywords: BES-53248 switches, initial installation, configure switch-cisco-9336c-fx2 switch 
-summary: Cisco Nexus 9336C-FX2 共有スイッチのインストールと設定の概要 
+summary: このワークフローに従って、ONTAP 環境に Cisco Nexus 9336C-FX2 共有スイッチをインストールおよび設定します。 
 ---
 = Cisco Nexus 9336C-FX2 共有スイッチのインストールとセットアップのワークフロー
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: Cisco Nexus 9336C-FX2 共有スイッチのインストールと設定�
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2 共有スイッチは、 Cisco Nexus 9000 プラットフォームの一部であり、 NetAppシステム キャビネットに設置できます。共有スイッチを使用すると、共有クラスタおよびストレージの参照構成ファイルの使用をサポートすることで、クラスタとストレージの機能を共有スイッチ構成に組み合わせることができます。
+このワークフローに従って、ONTAP 環境に Cisco Nexus 9336C-FX2 共有スイッチをインストールおよび設定します。共有スイッチは、共有参照構成ファイル（RCF）を使用して、クラスタ機能とストレージ機能を統合します。
 
 Cisco 9336C-FX2 スイッチをインストールしてセットアップするには、次のワークフロー手順に従ってください。
 

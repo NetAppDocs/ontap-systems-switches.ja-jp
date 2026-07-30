@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/install-overview-cisco-3232c.html 
 sidebar: sidebar 
 keywords: install, cisco nexus 3232c switch, 
-summary: Cisco Nexus 3232c スイッチを設定する前に、プロセスと用語の概要を確認してください。 
+summary: ONTAP 環境に Cisco Nexus 3232C クラスタスイッチをインストールして設定するには、このワークフローに従ってください。 
 ---
-= Cisco Nexus 3232C スイッチのインストールとセットアップのワークフロー
+= Cisco Nexus 3232C クラスタスイッチのインストールとセットアップのワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3232C スイッチは、AFF または FAS クラスタのクラスタスイッチとして使用できます。クラスタスイッチを使用すると、2つ以上のノードを持つ ONTAP クラスタを構築できます。
+このワークフローに従って、ONTAP環境にCisco Nexus 3232Cクラスタスイッチをインストールおよび設定してください。3232CはONTAPクラスタで2つ以上のノードをサポートします。
 
 以下のワークフロー手順に従って、Cisco Nexus 3232C スイッチをインストールおよびセットアップしてください。
 

@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/install-hardware-workflow.html 
 sidebar: sidebar 
 keywords: BES-53248 switches, initial installation, configure new bes-53248 switch 
-summary: BES-53248 クラスター スイッチを構成する前に、構成の概要を確認してください。 
+summary: 新しい Broadcom BES-53248 クラスタスイッチのハードウェアをインストールおよび設定するには、以下のワークフローに従ってください。 
 ---
-= BES-53248スイッチのハードウェアインストールワークフロー
+= Broadcom BES-53248クラスタスイッチのハードウェアインストールワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248 クラスタ スイッチのハードウェアをインストールして構成するには、次の手順に従います。
+新しい Broadcom BES-53248 クラスタスイッチのハードウェアをインストールおよび設定するには、以下のワークフローに従ってください。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:install-hardware-bes53248.html["スイッチハードウェアをインストールする"]
 [role="quick-margin-para"]

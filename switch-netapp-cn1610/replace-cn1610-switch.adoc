@@ -2,7 +2,7 @@
 permalink: switch-netapp-cn1610/replace-cn1610-switch.html 
 sidebar: sidebar 
 keywords: replace, netapp cn1610, cluster switch 
-summary: 特定のタスクシーケンスを実行することで、障害のある NetApp CN1610 クラスタスイッチを無停止で交換できます。 
+summary: 欠陥のある NetApp CN1610 クラスタスイッチを交換します。これは無停止の手順です。 
 ---
 = NetApp CN1610クラスタスイッチの交換
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 特定のタスクシーケンスを実行することで、障害の�
 
 
 [role="lead"]
-クラスタネットワーク内の欠陥のある NetApp CN1610 スイッチを交換するには、以下の手順に従ってください。これは無停止手順（NDU）です。
+クラスターの動作を中断することなく、クラスターネットワーク内の障害のある NetApp CN1610 クラスタースイッチを交換します。この無停止手順（NDU）では、交換用スイッチを準備し、故障したスイッチから接続を移行します。
 
 
 

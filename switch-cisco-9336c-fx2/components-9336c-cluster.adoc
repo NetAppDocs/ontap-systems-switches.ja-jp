@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2/components-9336c-cluster.html 
 keywords: shared storage cluster switch 
-summary: ONTAP 9.9.1 以降では、 Cisco Nexus 9336C-FX2 スイッチを使用して、ストレージとクラスタ機能を共有スイッチ シナリオに組み合わせることができます。 
+summary: Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタスイッチのコンポーネントと部品番号を特定し、ハードウェアの設置および継続的なメンテナンスをサポートします。 
 ---
-= Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタ スイッチのコンポーネントと部品番号
+= Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタスイッチのコンポーネントと部品番号を確認してください
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: ONTAP 9.9.1 以降では、 Cisco Nexus 9336C-FX2 スイッチを使用
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2 および 9336C-FX2-T スイッチのインストールとメンテナンスについては、コンポーネントと部品番号のリストを必ず確認してください。
+Cisco Nexus 9336C-FX2 および 9336C-FX2-T クラスタスイッチのコンポーネントと部品番号を特定し、ハードウェアの設置および継続的なメンテナンスをサポートします。
 
 
 

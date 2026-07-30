@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-shared/migrate-from-switchless-configuration-sat-storage.html 
 keywords:  
-summary:  
+summary: 既存のストレージスイッチを再利用して、スイッチレス構成からスイッチ接続ストレージを備えた Cisco Nexus 9336C-FX2 共有スイッチに移行します。 
 ---
-= ストレージスイッチを再利用して、スイッチ接続ストレージを備えたスイッチレス構成から移行する
+= スイッチレス構成からスイッチ接続ストレージを使用した Cisco Nexus 9336C-FX2 共有スイッチへの移行
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary:
 
 
 [role="lead"]
-ストレージ スイッチを再利用することで、スイッチ接続ストレージを備えたスイッチレス構成から移行できます。
+既存のストレージスイッチを再利用して、スイッチレス構成からスイッチ接続ストレージを備えた Cisco Nexus 9336C-FX2 共有スイッチに移行します。
 
 ストレージ スイッチを再利用すると、次の図に示すように、HA ペア 1 のストレージ スイッチが共有スイッチになります。
 

@@ -2,16 +2,16 @@
 permalink: switch-cshm/config-snmpv3.html 
 sidebar: sidebar 
 keywords: cshm, configure, snmpv3, switch logs, debugging, collection 
-summary: この手順を使用すると、イーサネット スイッチのヘルス モニタリング CSHM をサポートする特定のスイッチに対して SNMPv3 を設定できます。 
+summary: ネットワーク スイッチで SNMPv3 を設定して、イーサネット スイッチ ヘルス モニター（CSHM）との安全な通信を有効にします。 
 ---
-= スイッチのSNMPv3を設定する（オプション）
+= イーサネットスイッチの状態監視のためにSNMPv3を設定する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-スイッチを監視するために SNMP が使用されます。  SNMPv3 による監視は、次の手順に従って設定します。
+ネットワーク スイッチで SNMPv3 を設定して、イーサネット スイッチ ヘルス モニター（CSHM）との安全で認証された通信を有効にします。SNMPv3 は、ONTAP でのヘルス監視のためにスイッチのステータスを暗号化してポーリングします。
 
 イーサネットスイッチヘルスモニター（CSHM）は、SNMPを使用してネットワークスイッチの状態とパフォーマンスを監視します。デフォルトでは、SNMPv2cは参照設定ファイル（RCF）を通じて自動的に設定されます。SNMPv3はSNMPv2よりも安全です。なぜなら、SNMPv3は認証、暗号化、メッセージの完全性などの堅牢なセキュリティ機能を導入し、不正アクセスを防ぎ、送信中のデータの機密性と完全性を確保するためです。
 

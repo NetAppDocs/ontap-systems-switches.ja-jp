@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9808/maintain-reset-switch-9808.html 
 keywords: reset switch factory defaults 
-summary: Cisco Nexus 9808 スイッチを廃止する場合、またはスイッチが故障して復旧できない場合に、工場出荷時のデフォルト設定にリセットすることができます。その場合は手動で再設定する必要があります。 
+summary: Cisco Nexus 9808 スイッチを廃止する場合や、設定できないスイッチを復旧する場合に、工場出荷時のデフォルト設定にリセットします。 
 ---
-= スイッチを工場出荷時の設定にリセットする - Cisco Nexus 9808
+= Cisco Nexus 9808 スイッチを工場出荷時のデフォルト設定にリセットする
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: Cisco Nexus 9808 スイッチを廃止する場合、またはスイッ
 
 
 [role="lead"]
-Cisco Nexus 9808 スイッチを廃止する場合、またはスイッチが故障して復旧できない場合に、工場出荷時のデフォルト設定にリセットすることができます。その場合は手動で再設定する必要があります。
+Cisco Nexus 9808 スイッチを廃止する場合、または故障して通常の設定方法では復旧できない場合に、工場出荷時のデフォルト設定にリセットします。
 
 .開始する前に
 スイッチにシリアル コンソールを使用して接続する必要があります。

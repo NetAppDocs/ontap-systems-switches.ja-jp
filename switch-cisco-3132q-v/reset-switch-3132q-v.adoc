@@ -2,14 +2,14 @@
 permalink: switch-cisco-3132q-v/reset-switch-3132q-v.html 
 sidebar: sidebar 
 keywords: 3132Q-V reset switch to factory defaults, 3132Q-V2 switches configuration, efos 
-summary: Cisco Nexus 3132Q-V スイッチを設定する前に、以下の情報を確認してください。 
+summary: 現在のスイッチ設定を消去して、Cisco Nexus 3132Q-V クラスタスイッチを工場出荷時のデフォルト設定にリセットします。 
 ---
-= 3132Q-Vクラスタスイッチを工場出荷時のデフォルト設定にリセットする
+= Cisco Nexus 3132Q-V クラスタスイッチを工場出荷時のデフォルト設定にリセットする
 :allow-uri-read: 
 
 
 [role="lead"]
-3132Q-Vクラスタスイッチを工場出荷時の設定にリセットするには、3132Q-Vスイッチの設定を消去する必要があります。
+Cisco Nexus 3132Q-V クラスタスイッチを工場出荷時のデフォルト設定にリセットするには、現在のスイッチ設定を消去し、スイッチを元の設定に復元します。
 
 .タスク概要
 * スイッチにシリアル コンソールを使用して接続する必要があります。

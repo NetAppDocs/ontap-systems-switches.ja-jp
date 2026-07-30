@@ -2,16 +2,16 @@
 permalink: switch-cisco-9808/configure-upgrade-nxos-9808.html 
 sidebar: sidebar 
 keywords: procedure, install, nx-os, software, nexus, cluster, switch, install the nx-os software - cisco nexus 9808 
-summary: Cisco Nexus 9808 スイッチの NX-OS をアップグレードして、AFX 2K システムの新しいハードウェアまたは新しい ONTAP バージョンをサポートします。 
+summary: Cisco Nexus 9808 スイッチの NX-OS をアップグレードして、AFX 2K システムで新しいハードウェアまたは新しい ONTAP バージョンをサポートします。 
 ---
-= NX-OS をアップグレードする - Cisco Nexus 9808
+= Cisco Nexus 9808スイッチのNX-OSをアップグレードする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 9808 スイッチの NX-OS をアップグレードして、AFX 2K システムの新しいハードウェアまたは新しい ONTAP バージョンをサポートします。
+Cisco Nexus 9808 スイッチの NX-OS をアップグレードして、AFX 2K システムで新しいハードウェアまたは新しい ONTAP バージョンをサポートします。
 
 
 NOTE: NetApp では、最初に ONTAP ソフトウェアのアップグレードを完了してから、スイッチのソフトウェアアップグレードを実行することをお勧めします。

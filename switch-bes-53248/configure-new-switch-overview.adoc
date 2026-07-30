@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/configure-new-switch-overview.html 
 sidebar: sidebar 
 keywords: BES-53248 switches, initial installation, configure new bes-53248 switch 
-summary: BES-53248 クラスター スイッチを構成する前に、構成の概要を確認してください。 
+summary: 要件の確認からハードウェアおよびソフトウェアのセットアップまで、新しい Broadcom BES-53248 クラスタスイッチのインストールと設定を行うには、このワークフローに従ってください。 
 ---
-= BES-53248スイッチのインストールとセットアップのワークフロー
+= Broadcom BES-53248クラスタスイッチのインストールおよびセットアップワークフロー
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248 は、2 ～ 24 ノードのONTAPクラスタで動作するように設計されたベア メタル スイッチです。
+このワークフローに従って、ONTAP 環境に新しい Broadcom BES-53248 クラスタスイッチをインストールおよび設定します。BES-53248 は、2 ノードから 24 ノードまでの ONTAP クラスタをサポートするベアメタルスイッチです。
 
 次のワークフロー手順に従って、BES-53248 スイッチをインストールしてセットアップします。
 

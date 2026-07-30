@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-shared/prepare-nxos-rcf-9336c-shared.html 
 keywords:  
-summary:  
+summary: NX-OSソフトウェアとリファレンス構成ファイル（RCF）をインストールする前に、Cisco Nexus 9336C-FX2共有スイッチを準備します。 
 ---
-= NX-OSソフトウェアとRCFのインストール準備
+= Cisco Nexus 9336C-FX2共有スイッチへのNX-OSソフトウェアとRCFのインストール準備
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary:
 
 
 [role="lead"]
-NX-OS ソフトウェアとリファレンス コンフィギュレーション ファイル (RCF) をインストールする前に、次の手順に従ってください。
+NX-OSソフトウェアとリファレンス構成ファイル（RCF）をインストールする前に、Cisco Nexus 9336C-FX2共有スイッチを準備します。スイッチがONTAP環境で動作するためには、NX-OSとRCFをインストールする必要があります。
 
 .推奨ドキュメント
 * link:https://mysupport.netapp.com/site/info/cisco-ethernet-switch["Ciscoイーサネット スイッチ ページ"^]

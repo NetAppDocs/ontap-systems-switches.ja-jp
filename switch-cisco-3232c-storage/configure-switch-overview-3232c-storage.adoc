@@ -2,7 +2,7 @@
 permalink: switch-cisco-3232c-storage/configure-switch-overview-3232c-storage.html 
 sidebar: sidebar 
 keywords: initial installation, configure switch-cisco-3232c-storage switch 
-summary: Cisco Nexus 3232C ストレージ スイッチのインストールと構成の概要 
+summary: ONTAP 環境に Cisco Nexus 3232C ストレージスイッチをインストールして設定するには、このワークフローに従ってください。 
 ---
 = Cisco Nexus 3232C ストレージ スイッチのインストールとセットアップのワークフロー
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: Cisco Nexus 3232C ストレージ スイッチのインストールと�
 
 
 [role="lead"]
-Cisco Nexus 3232C スイッチは Cisco Nexus 3000 プラットフォームの一部であり、NetApp システム キャビネットに設置できます。
+このワークフローに従って、ONTAP 環境に Cisco Nexus 3232C ストレージスイッチをインストールおよび設定してください。これらのスイッチは Cisco Nexus 3000 プラットフォームの一部です。
 
 Cisco 3232C スイッチをインストールしてセットアップするには、次のワークフロー手順に従ってください。
 

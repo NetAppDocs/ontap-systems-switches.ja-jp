@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/configure-licenses.html 
 sidebar: sidebar 
 keywords: bes, cluster, switch, base, model, license, 10gbe, 25gbe, 100gbe, port, add, purchasing, purchase, install licenses for bes-53248 cluster switches - bes-53248 switches 
-summary: BES-53248クラスタ スイッチ ベース モデルは、16個の10GbEまたは25GbEポートと、2個の100GbEポートに対してライセンスされています。ライセンスを新たに購入すると、新しいポートを追加できます。 
+summary: Broadcom BES-53248クラスタスイッチの基本モデルは、16個の10GbEまたは25GbEポートと2個の100GbEポートをサポートしています。スイッチの容量を拡張するには、追加のポートライセンスをインストールしてください。 
 ---
-= BES-53248 クラスタスイッチのライセンスをインストールする
+= Broadcom BES-53248クラスタスイッチのライセンスをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-BES-53248クラスタ スイッチ ベース モデルは、16個の10GbEまたは25GbEポートと、2個の100GbEポートに対してライセンスされています。ライセンスを追加購入することで、新しいポートを追加できます。
+Broadcom BES-53248クラスタスイッチの基本モデルは、16個の10GbEまたは25GbEポートと2個の100GbEポートに対応するライセンスを取得しています。スイッチを拡張して、より多くの10GbEまたは25GbEクラスタポートをサポートするには、追加のポートライセンスをインストールしてください。
 
 
 CAUTION: EFOS 3.12以降の場合は、次のインストール手順に従ってください。link:efos-install-rcf-license-file.html["リファレンス構成ファイル（RCF）とライセンスファイルをインストールする"] 。

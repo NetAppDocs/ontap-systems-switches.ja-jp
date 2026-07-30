@@ -2,16 +2,16 @@
 permalink: switch-cisco-9364d-gx2a/install-switches-9364d.html 
 sidebar: sidebar 
 keywords: switches, hardware installation, Cisco Nexus, 9364D-GX2A switches 
-summary: 新しい AFX 1K または AFX 2K システムの一部として Cisco Nexus 9364D-GX2A スイッチをインストールする場合、スイッチをラックまたはキャビネットに設置し、システムコントローラとシェルフにケーブルで接続し、電源を投入する必要があります。 
+summary: Cisco Nexus 9364D-GX2A スイッチを、ラックへの設置、コントローラおよびシェルフへのケーブル接続、電源投入を含む新しい AFX 1K または AFX 2K システムの一部としてインストールします。 
 ---
-= スイッチを取り付ける - Cisco Nexus 9364D-GX2A
+= AFX システムへの Cisco Nexus 9364D-GX2A スイッチのインストール
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-新しい AFX 1K または AFX 2K システムの一部として Cisco Nexus 9364D-GX2A スイッチをインストールする場合、スイッチをラックまたはキャビネットに設置し、システムコントローラとシェルフにケーブルで接続し、電源を投入する必要があります。
+Cisco Nexus 9364D-GX2A スイッチを新しい AFX 1K または AFX 2K システムの一部としてインストールします。これには、スイッチをラックやキャビネットに取り付け、システムコントローラおよびシェルフにケーブル接続し、電源を投入する作業が含まれます。
 
 .開始する前に
 link:install-prepare-9364d.html["スイッチの取り付け準備をする"]のスイッチの準備手順を完了している必要があります。

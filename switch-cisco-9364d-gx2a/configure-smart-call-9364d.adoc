@@ -1,17 +1,17 @@
 ---
 permalink: switch-cisco-9364d-gx2a/configure-smart-call-9364d.html 
 sidebar: sidebar 
-keywords: cisco smart call,small call home 
-summary: Smart Call Home を使用するには、電子メールを使用して Smart Call Home システムと通信するようにクラスター ネットワーク スイッチを構成する必要があります。さらに、オプションでクラスタ ネットワーク スイッチを設定して、Cisco の組み込み Smart Call Home サポート機能を利用することもできます。 
+keywords: cisco smart call,smart call home 
+summary: Cisco Nexus 9364D-GX2A スイッチで Smart Call Home を設定して、重要なシステムイベントに関する自動メール通知を有効にします。 
 ---
-= スマートコールホームの設定 - Cisco Nexus 9364D-GX2A
+= Cisco Nexus 9364D-GX2A スイッチの Smart Call Home を設定する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Smart Call Home を使用するには、電子メールを使用して Smart Call Home システムと通信するようにクラスター ネットワーク スイッチを構成する必要があります。さらに、オプションでクラスタ ネットワーク スイッチを設定して、Cisco の組み込み Smart Call Home サポート機能を利用することもできます。
+Cisco Nexus 9364D-GX2A スイッチで Smart Call Home を設定して、重要なシステムイベントに関する自動メール通知を有効にします。
 
 Cisco の Smart Call Home は、ネットワーク上のハードウェアおよびソフトウェアコンポーネントを監視します。重大なシステム構成上の問題が発生した場合、メールによる通知が生成され、宛先プロファイルに設定されているすべての受信者にアラートが送信されます。
 

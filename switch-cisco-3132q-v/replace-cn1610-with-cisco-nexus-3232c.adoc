@@ -2,16 +2,16 @@
 permalink: switch-cisco-3132q-v/replace-cn1610-with-cisco-nexus-3232c.html 
 sidebar: sidebar 
 keywords: replace, cn1610 cluster switches, cisco nexus 3132q-v 
-summary: クラスタ内の既存の CN1610 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換するには、特定の手順を実行する必要があります。 
+summary: NetApp CN1610 クラスタースイッチから Cisco Nexus 3132Q-V クラスタースイッチへ、クラスターの動作を中断することなく移行します。 
 ---
-= CN1610クラスタスイッチからCisco Nexus 3132Q-Vクラスタスイッチへの移行
+= NetApp CN1610 クラスタースイッチから Cisco Nexus 3132Q-V クラスタースイッチへの移行
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-既存の CN1610 クラスタスイッチを Cisco Nexus 3132Q-V クラスタスイッチに交換するには、この手順に従ってください。
+NetApp CN1610 クラスタースイッチから Cisco Nexus 3132Q-V クラスタースイッチへ、クラスターの動作を中断することなく移行します。
 
 
 

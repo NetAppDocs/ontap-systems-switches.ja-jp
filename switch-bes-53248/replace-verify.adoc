@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/replace-verify.html 
 sidebar: sidebar 
 keywords: command, verify, operational, bes, cluster, switch, upgrade, verify the configuration after a cluster switch upgrade - bes-53428 switches 
-summary: ここで提供されるコマンドを使用して、BES-53248 クラスタ スイッチのアップグレード後にすべてが動作していることを確認できます。 
+summary: Broadcom BES-53248クラスタスイッチのEFOSソフトウェアまたはRCFをアップグレードした後に、ONTAPクラスタネットワークの健全性を確認します。 
 ---
-= BES-53248クラスタスイッチのEFOSソフトウェアまたはRCFアップグレード後のONTAPクラスタネットワークを検証します。
+= Broadcom BES-53248クラスタスイッチのEFOSソフトウェアまたはRCFをアップグレードした後のONTAPクラスタネットワークを確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-EFOS ソフトウェアまたは BES-53248 クラスタ スイッチの RCF をアップグレードした後、次のコマンドを使用してONTAPクラスタ ネットワークの健全性を確認できます。
+Broadcom BES-53248クラスタスイッチでEFOSソフトウェアまたは参照構成ファイル（RCF）をアップグレードした後に、ONTAPクラスタネットワークの健全性を確認します。
 
 .手順
 . 次のコマンドを使用して、クラスター上のネットワーク ポートに関する情報を表示します。

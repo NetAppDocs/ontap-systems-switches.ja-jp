@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100/components-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: nvidia SN2100 switches 
-summary: 2 つ以上のノードを持つONTAPクラスターを構築する場合は、サポートされているクラスター ネットワーク スイッチが 2 つ必要です。オプションとして追加の管理スイッチを使用することもできます。 
+summary: NVIDIA SN2100クラスタスイッチのコンポーネントと部品番号を特定し、ハードウェアの設置および継続的なメンテナンスをサポートします。 
 ---
-= NVIDIA SN2100スイッチのコンポーネントと部品番号
+= NVIDIA SN2100クラスタスイッチのコンポーネントと部品番号を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NVIDIA SN2100 スイッチのインストールとメンテナンスについては、キャビネットとレール キットのコンポーネントと部品番号のリストを必ず確認してください。
+NVIDIA SN2100クラスタスイッチのコンポーネントと部品番号を特定し、ハードウェアの設置および継続的なメンテナンスをサポートします。
 
 
 

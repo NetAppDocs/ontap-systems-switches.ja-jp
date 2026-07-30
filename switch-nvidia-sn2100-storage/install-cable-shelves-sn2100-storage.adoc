@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100-storage/install-cable-shelves-sn2100-storage.html 
 sidebar: sidebar 
 keywords: sn2100 cabling setup, msn2100 sn2100 switches configuration, cumulus linux 
-summary: NS224ドライブシェルフを、直接接続ストレージではなく、スイッチ接続ストレージとして配線する必要があるシステムの場合は、ここに記載されている情報を使用してください。 
+summary: 直接接続ストレージを使用しない場合に、NVIDIA SN2100ストレージスイッチを使用してNS224ドライブシェルフをスイッチ接続ストレージとしてケーブル接続します。 
 ---
-= NS224シェルフをスイッチ接続ストレージとしてケーブル接続
+= NS224ドライブシェルフをスイッチ接続ストレージとしてNVIDIA SN2100ストレージスイッチにケーブル接続する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NS224 ドライブ シェルフをスイッチ接続ストレージ (直接接続ストレージではない) としてケーブル接続する必要があるシステムの場合は、ここで提供されている情報を使用してください。
+直接接続ストレージが構成に適さない場合は、NVIDIA SN2100ストレージスイッチを使用して、NS224ドライブシェルフをスイッチ接続ストレージとしてケーブル接続します。
 
 * NS224 ドライブ シェルフをストレージ スイッチ経由でケーブル接続します。
 +

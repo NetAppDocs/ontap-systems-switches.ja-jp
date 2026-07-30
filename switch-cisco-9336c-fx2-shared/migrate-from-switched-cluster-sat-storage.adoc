@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: switch-cisco-9336c-fx2-shared/migrate-from-switched-cluster-sat-storage.html 
 keywords:  
-summary:  
+summary: 既存のストレージスイッチを再利用して、スイッチ接続ストレージを備えたスイッチドクラスタから Cisco Nexus 9336C-FX2 共有スイッチに移行します。 
 ---
-= スイッチ接続ストレージを備えたスイッチドクラスタからの移行
+= スイッチ接続ストレージを備えたスイッチドクラスタから Cisco Nexus 9336C-FX2 共有スイッチへの移行
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary:
 
 
 [role="lead"]
-ストレージ スイッチを再利用することで、スイッチ接続ストレージを備えたスイッチ クラスターから移行できます。
+既存のストレージスイッチを共有スイッチとして再利用することで、スイッチ接続ストレージを備えたスイッチドクラスタから Cisco Nexus 9336C-FX2 共有スイッチに移行します。
 
 ストレージ スイッチを再利用すると、次の図に示すように、HA ペア 1 のストレージ スイッチが共有スイッチになります。
 

@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/required-documentation-3232c.html 
 sidebar: sidebar 
 keywords: cisco 3232c, cluster switches 
-summary: Cisco Nexus 3232C ネットワーク スイッチの設置およびメンテナンスを行う際は、推奨されるすべてのドキュメントを必ず確認してください。 
+summary: Cisco Nexus 3232C クラスタスイッチのインストールとメンテナンスに必要なドキュメントを確認してください。 
 ---
-= Cisco Nexus 3232C スイッチのドキュメント要件
+= Cisco Nexus 3232C クラスタスイッチのドキュメント要件を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3232Cスイッチの設置にあたっては、推奨されるすべてのドキュメントを必ず確認してください。
+Cisco Nexus 3232C クラスタスイッチをセットアップして ONTAP クラスタに設定するために必要なスイッチとコントローラーのドキュメントを確認してください。
 
 
 

@@ -2,16 +2,16 @@
 permalink: switch-cisco-3132q-v/required-documentation-3132q.html 
 sidebar: sidebar 
 keywords: Cisco, 3132Q-V 
-summary: Cisco Nexus 3132Q-V スイッチの設置および保守を行う際は、推奨されるすべてのドキュメントを必ず確認してください。 
+summary: Cisco Nexus 3132Q-V クラスタスイッチのインストールとメンテナンスに必要なドキュメントを確認してください。 
 ---
-= Cisco Nexus 3132Q-V スイッチのドキュメント要件
+= Cisco Nexus 3132Q-V クラスタスイッチのドキュメント要件を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 3132Q-Vスイッチの設置にあたっては、推奨されるすべてのドキュメントを必ず確認してください。
+Cisco Nexus 3132Q-V クラスタスイッチをセットアップして ONTAP クラスタに設定するために必要なスイッチとコントローラーのドキュメントを確認してください。
 
 
 

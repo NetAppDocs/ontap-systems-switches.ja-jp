@@ -2,16 +2,16 @@
 permalink: switch-cisco-9336c-fx2-storage/install-9336c-storage.html 
 sidebar: sidebar 
 keywords: require, configuration, information, documentation, storage, management, network, switches, set up the switches - cisco nexus 9336c-fx2 
-summary: 必要な構成情報とドキュメントがまだない場合は、ストレージおよび管理ネットワーク スイッチをセットアップする前にその情報を収集する必要があります。 
+summary: Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージスイッチをインストールして、ONTAP システムのフロントエンド ストレージ ネットワーク接続を提供します。 
 ---
-= 9336C-FX2および9336C-FX2-Tストレージスイッチをインストールする
+= Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチのインストール
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチをインストールするには、次の手順に従います。
+Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージスイッチをインストールして、ONTAP システムのフロントエンド ストレージ ネットワーク接続を提供します。
 
 .開始する前に
 以下のものがあることを確認してください。

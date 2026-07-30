@@ -1,17 +1,17 @@
 ---
 permalink: switch-cisco-9364d-gx2a/configure-verify-ssh-9364d.html 
 sidebar: sidebar 
-keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9332d-gx2b 
-summary: 新しい AFX 1K または AFX 2K システムのインストール、スイッチの交換、または工場出荷時の設定へのリセットの一環としてスイッチを構成する場合、イーサネットスイッチヘルスモニター（CSHM）のログ収集機能を使用するには、スイッチで SSH が有効になっていることを確認する必要があります。 
+keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9364d-gx2a 
+summary: Cisco Nexus 9364D-GX2A スイッチで SSH が有効になっていることを確認し、イーサネットスイッチヘルスモニター（CSHM）とログ収集をサポートします。 
 ---
-= SSHによるログ収集を確認する - Cisco Nexus 9364D-GX2A
+= Cisco Nexus 9364D-GX2A スイッチでのログ収集のための SSH を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-新しい AFX 1K または AFX 2K システムのインストール、スイッチの交換、または工場出荷時の設定へのリセットの一環としてスイッチを構成する場合、イーサネットスイッチヘルスモニター（CSHM）のログ収集機能を使用するには、スイッチで SSH が有効になっていることを確認する必要があります。
+Cisco Nexus 9364D-GX2A スイッチで SSH が有効になっていることを確認し、イーサネットスイッチヘルスモニター（CSHM）およびログ収集機能をサポートします。
 
 .開始する前に
 スイッチにシリアル コンソールを使用して接続する必要があります。

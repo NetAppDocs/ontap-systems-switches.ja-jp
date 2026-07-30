@@ -2,16 +2,16 @@
 permalink: switch-nvidia-sn2100/install-hardware-sn2100-cluster.html 
 sidebar: sidebar 
 keywords: switches hardware installation 
-summary: SN2100ハードウェアをインストールするには、NVIDIAのドキュメントを参照してください。 
+summary: NVIDIA SN2100クラスタスイッチハードウェアを、NVIDIAのドキュメントに従ってインストールします。 
 ---
-= NVIDIA SN2100スイッチのハードウェアをインストールする
+= NVIDIA SN2100クラスタスイッチのハードウェアをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-NVIDIA SN2100 スイッチ ハードウェアのインストールは、データ保護、レプリケーション、管理ワークフローをサポートする信頼性と拡張性に優れたネットワーク インフラを構築するための重要な第一歩です。
+NVIDIA のドキュメントに従って、NVIDIA SN2100 クラスタスイッチハードウェアをインストールします。ハードウェアのインストールは、スイッチをクラスタ運用用に構成する前の最初のステップです。
 
 SN2100 スイッチをセットアップおよび構成するには、次の手順に従います。詳細な手順については、NVIDIA のドキュメントを参照してください。
 

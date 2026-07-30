@@ -2,16 +2,16 @@
 permalink: switch-cisco-3232c/migrate-from-two-node-switchless-cluster.html 
 sidebar: sidebar 
 keywords: migrate, two-node cluster, switchless, cisco nexus 3232c 
-summary: 2ノードのスイッチレスクラスタを使用している場合は、Cisco Nexus 3232C クラスタネットワークスイッチを含む2ノードスイッチドクラスタに無停止で移行できます。 
+summary: Cisco Nexus 3232C クラスタスイッチを使用して、2ノードのスイッチレスクラスタからスイッチドクラスタに移行します。これは無停止の手順です。 
 ---
-= 2ノードのスイッチレスクラスタから Cisco Nexus 3232C クラスタスイッチを使用するクラスタへの移行
+= 2ノードのスイッチレスクラスタから Cisco Nexus 3232C クラスタスイッチへの移行
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-2ノードの_スイッチレス_クラスタをお持ちの場合は、Cisco Nexus 3232C クラスタネットワークスイッチを含む2ノードの_スイッチド_クラスタに移行できます。これは無停止で実行できる手順です。
+Cisco Nexus 3232C クラスタスイッチを使用して、2ノードのスイッチレスクラスタからスイッチドクラスタに移行します。これは無停止の手順です。
 
 
 

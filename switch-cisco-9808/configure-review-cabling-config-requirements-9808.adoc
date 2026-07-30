@@ -2,16 +2,16 @@
 permalink: switch-cisco-9808/configure-review-cabling-config-requirements-9808.html 
 sidebar: sidebar 
 keywords: 9808 cabling setup, 9808 switches configuration, nx-os 
-summary: 新しい AFX 2K システムのインストールの一環として新しい Cisco Nexus 9808 スイッチをインストールする場合、スーパーバイザー モジュールを交換する場合、またはスイッチを工場出荷時のデフォルト設定にリセットする場合は、以下のケーブル配線および構成要件を確認してください。 
+summary: AFX 2K システムの一部としてインストールする前に、Cisco Nexus 9808 スイッチのケーブル配線と構成要件を確認してください。 
 ---
-= 配線および構成要件を確認する - Cisco Nexus 9808
+= Cisco Nexus 9808 スイッチのケーブル配線と構成要件を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-新しい AFX 2K システムのインストールの一環として Cisco Nexus 9808 スイッチをインストールする場合、スーパーバイザー モジュールを交換する場合、またはスイッチを工場出荷時のデフォルト設定にリセットする場合は、以下のケーブル配線および構成要件を確認する必要があります。
+新しい AFX 2K システムの一部として Cisco Nexus 9808 スイッチをインストールする前、スーパーバイザーモジュールを交換する前、またはスイッチを工場出荷時のデフォルト設定にリセットする前に、ケーブル配線と構成要件を確認してください。
 
 
 

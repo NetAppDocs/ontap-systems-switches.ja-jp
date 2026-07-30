@@ -2,16 +2,16 @@
 permalink: switch-bes-53248/migrate-to-2n-switched.html 
 sidebar: sidebar 
 keywords: two-node switchless clusters, migrating to a two-node switched BES-53248 cluster environment,BES-53248 switches, migrating two-node switched clusters,2-node 
-summary: 2ノードのスイッチレスクラスタをお持ちの場合は、BroadcomがサポートするBES-53248クラスタスイッチを含む2ノードのスイッチクラスタに無停止で移行できます。 
+summary: Broadcom BES-53248クラスタスイッチを使用して、2ノード構成のスイッチレスクラスタをスイッチドクラスタ環境に移行し、2ノードを超える拡張を可能にします。 
 ---
-= スイッチ型NetAppクラスタ環境への移行
+= Broadcom BES-53248クラスタスイッチを使用して、2ノードのスイッチドクラスタに移行する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-既存の 2 ノードのスイッチレス クラスタ環境がある場合は、Broadcom がサポートする BES-53248 クラスタ スイッチを使用して 2 ノードのスイッチ クラスタ環境に移行できます。これにより、クラスタ内の 2 ノードを超えて拡張できるようになります。
+Broadcom BES-53248クラスタスイッチを使用して、既存の2ノードのスイッチレスクラスタをスイッチドクラスタ環境に移行します。この無停止移行により、クラスタを2ノード以上に拡張できます。
 
 移行プロセスは、光ポートまたは Twinax ポートを使用するすべてのクラスタ ノード ポートで機能しますが、ノードがクラスタ ネットワーク ポートにオンボード 10GBASE-T RJ45 ポートを使用している場合、このスイッチではサポートされません。
 

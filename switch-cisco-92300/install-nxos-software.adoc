@@ -2,16 +2,16 @@
 permalink: switch-cisco-92300/install-nxos-software.html 
 sidebar: sidebar 
 keywords: install nx-os,nx-os configure 
-summary: この手順を使用して、Nexus 92300YCスイッチにNX-OSソフトウェアをインストールできます。 
+summary: Cisco Nexus 92300YC クラスタスイッチにNX-OSソフトウェアをインストールして、クラスタ運用に備えます。 
 ---
-= NX-OSソフトウェアをインストールする
+= Cisco Nexus 92300YC クラスタスイッチに NX-OS ソフトウェアをインストールする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Nexus 92300YCスイッチにNX-OSソフトウェアをインストールするには、以下の手順に従ってください。
+Cisco Nexus 92300YC クラスタスイッチにNX-OSソフトウェアをインストールして、クラスタ運用に備えます。スイッチの設定やRCFのインストールを行うには、まずNX-OSをインストールする必要があります。
 
 NX-OSは、Cisco Systemsが提供するNexusシリーズ イーサネット スイッチおよびMDSシリーズFibre Channel（FC）ストレージ エリア ネットワーク スイッチのネットワーク オペレーティング システムです。
 

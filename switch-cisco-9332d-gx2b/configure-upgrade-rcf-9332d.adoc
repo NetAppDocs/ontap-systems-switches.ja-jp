@@ -2,16 +2,16 @@
 permalink: switch-cisco-9332d-gx2b/configure-upgrade-rcf-9332d.html 
 sidebar: sidebar 
 keywords: install rcf, cisco switches 
-summary: Cisco Nexus 9332D-GX2B スイッチのリファレンス構成ファイル（RCF）のバージョンをアップグレードすることで、新しいハードウェア、新しい ONTAP バージョンのサポート、または AFX 1K や AFX 2K システム構成における新しい NX-OS バージョンへの対応が可能になります。 
+summary: Cisco Nexus 9332D-GX2B スイッチの RCF をアップグレードして、AFX 1K または AFX 2K システムで新しいハードウェア、新しい ONTAP バージョン、または新しい NX-OS バージョンをサポートします。 
 ---
-= RCFバージョンのアップグレード - Cisco Nexus 9332D-GX2B
+= Cisco Nexus 9332D-GX2B スイッチの RCF をアップグレードする
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Cisco Nexus 9332D-GX2B スイッチのリファレンス構成ファイル（RCF）のバージョンをアップグレードすることで、新しいハードウェア、新しい ONTAP バージョンのサポート、または AFX 1K や AFX 2K システム構成における新しい NX-OS バージョンへの対応が可能になります。
+AFX 1K または AFX 2K システムで新しいハードウェア、新しい ONTAP バージョン、または新しい NX-OS バージョンをサポートするために、Cisco Nexus 9332D-GX2B スイッチの参照構成ファイル （RCF） をアップグレードします。
 
 
 NOTE: RCFのバージョンをサポートされていないバージョンにアップグレードまたはダウングレードしないでください。
