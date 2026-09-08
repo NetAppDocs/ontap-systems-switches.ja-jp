@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
 summary: ONTAP クラスタで CSHM によって発生した Ethernet スイッチのヘルスモニタリングアラートのトラブルシューティングを行います。 
 ---
-= イーサネットスイッチのヘルスモニターに関するアラートのトラブルシューティング
+= イーサネットスイッチの健全性監視に関するアラートのトラブルシューティング
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

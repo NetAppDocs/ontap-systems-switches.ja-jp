@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: log collection feature,collect switch-related log files,SSh key,crypto key generation 
 summary: CSHM がクラスターおよびストレージ ネットワーク スイッチからスイッチ ログと診断データを収集できるようにログ収集を設定します。 
 ---
-= イーサネットスイッチのヘルスモニターのログ収集を設定する
+= イーサネットスイッチの健全性監視のためのログ収集を設定する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

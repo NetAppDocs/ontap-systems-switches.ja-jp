@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: document, support, platform, complete, blank, cabling, worksheet, guide, cisco, nexus, cisco nexus 9336c-fx2 cabling worksheet - cisco nexus 9336-fx2-t 
 summary: Cisco Nexus 9336C-FX2 または 9336C-FX2-T クラスタスイッチのケーブル配線ワークシートに、ポート接続とサポートされているプラットフォーム構成を記録します。 
 ---
-= Cisco Nexus 9336C-FX2 または 9336C-FX2-T の配線ワークシートを完成させる
+= Cisco Nexus 9336C-FX2 または 9336C-FX2-T クラスタスイッチの配線ワークシートを確認してください
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

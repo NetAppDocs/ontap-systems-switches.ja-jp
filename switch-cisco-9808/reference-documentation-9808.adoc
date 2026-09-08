@@ -4,7 +4,7 @@ permalink: switch-cisco-9808/reference-documentation-9808.html
 keywords: shared storage cluster switch 
 summary: AFX 2K システムにおける Cisco Nexus 9808 スイッチの設置およびメンテナンスについては、Cisco スイッチと NetApp システムのドキュメントを参照してください。 
 ---
-= Cisco Nexus 9808 スイッチのリファレンスドキュメントを確認してください
+= Cisco Nexus 9808スイッチのドキュメント要件を確認する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

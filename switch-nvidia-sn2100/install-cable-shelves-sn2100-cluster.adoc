@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: sn2100 cabling setup, msn2100 sn2100 switches configuration, cumulus linux 
 summary: 直接接続ストレージを使用しない場合に、NVIDIA SN2100クラスタスイッチを使用してNS224ドライブシェルフをスイッチ接続ストレージとしてケーブル接続します。 
 ---
-= NS224ドライブシェルフをスイッチ接続ストレージとしてNVIDIA SN2100クラスタスイッチにケーブル接続する
+= NS224シェルフをNVIDIA SN2100スイッチのスイッチ接続ストレージとしてケーブル接続する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

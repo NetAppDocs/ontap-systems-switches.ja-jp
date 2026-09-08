@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: migrate, two-node switched cluster, fas22xx systems, single, network connection 
 summary: 単一のクラスタネットワーク接続を持つスイッチレスクラスタから、NetApp CN1610 クラスタスイッチを使用するスイッチ付きクラスタに FAS22xx システムを移行します。 
 ---
-= FAS22xx システムを NetApp CN1610 クラスタスイッチを使用してスイッチドクラスタに移行する
+= FAS22xx システムを NetApp CN1610 クラスタスイッチを使用して移行する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

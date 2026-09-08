@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: switches, initial installation, configure switch-cisco-9808 switch 
 summary: このワークフローに従って、新しいAFX 2Kシステムの一部として Cisco Nexus 9808 スイッチをインストールおよび設定します。 
 ---
-= AFX システムにおける Cisco Nexus 9808 スイッチのインストールおよび設定ワークフロー
+= Cisco Nexus 9808スイッチのインストールと構成のワークフロー
 :allow-uri-read: 
 
 

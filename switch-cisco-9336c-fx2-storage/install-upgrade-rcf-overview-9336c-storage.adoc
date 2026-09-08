@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ssh, requirement, cluster, switch, health, monitor, cshm, log, collection, feature, cisco 9336c-fx2 
 summary: 参照構成ファイル（RCF）を Cisco Nexus 9336C-FX2 および 9336C-FX2-T ストレージ スイッチにインストールまたはアップグレードするには、初期設定後、または既存の RCF をアップグレードする際に実行します。 
 ---
-= Cisco Nexus 9336C-FX2 ストレージスイッチへの RCF のインストールまたはアップグレード
+= Cisco Nexus 9336C-FX2 ストレージスイッチへの RCF のインストールまたはアップグレードについて
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

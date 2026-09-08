@@ -37,7 +37,7 @@ NVIDIA SN2100 クラスタスイッチを使用して、既存の 2 ノードス
 * NVIDIA SN2100 のノード間スイッチおよびスイッチ間接続には、Twinax または光ファイバー ケーブルが使用されます。
 +
 
-IMPORTANT: link:cabling-considerations-sn2100-cluster.html["ケーブル配線と構成の考慮事項を確認する"]注意事項および詳細については、こちらを参照してください。link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- スイッチ"^]には、ケーブル配線に関する詳細情報も含まれています。
+IMPORTANT: 注意事項および詳細については、link:cabling-considerations-sn2100-cluster.html["ケーブル配線と構成に関するガイドラインを確認します。"]を参照してください。link:https://hwu.netapp.com/SWITCH/INDEX["Hardware Universe- スイッチ"^]には、ケーブル配線に関する詳細情報も含まれています。
 
 * スイッチ間リンク (ISL) ケーブルは、両方のNVIDIA SN2100 スイッチのポート swp15 と swp16 に接続されています。
 * 両方の SN2100 スイッチの初期カスタマイズが完了し、次のようになりました。

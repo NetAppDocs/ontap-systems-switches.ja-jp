@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: migrate, switchless cluster interconnect, NVIDIA SN2100 
 summary: ONTAP 9.3 以降では、スイッチ クラスタ ネットワークを持つクラスタから、2 つのノードが直接接続されたクラスタに移行できます。 
 ---
-= NVIDIA SN2100 クラスタ スイッチを使用してスイッチ クラスタからスイッチレス クラスタに移行する
+= NVIDIA SN2100クラスタスイッチを使用してスイッチドからスイッチレスへ移行する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

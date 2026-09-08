@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cshm, cluster, storage, switch logs, debugging, collection 
 summary: イーサネットスイッチのヘルスモニター（CSHM）ログ収集におけるエラーや障害のトラブルシューティングを行います。 
 ---
-= イーサネットスイッチのヘルスモニターのログ収集に関するトラブルシューティング
+= イーサネットスイッチの健全性監視のためのログ収集のトラブルシューティング
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

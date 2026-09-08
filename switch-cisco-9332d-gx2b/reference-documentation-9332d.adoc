@@ -4,7 +4,7 @@ permalink: switch-cisco-9332d-gx2b/reference-documentation-9332d.html
 keywords: shared storage cluster switch 
 summary: AFX 1K および AFX 2K システムにおける Cisco Nexus 9332D-GX2B スイッチの設置およびメンテナンスについては、Cisco スイッチと NetApp システムのドキュメントを参照してください。 
 ---
-= Cisco Nexus 9332D-GX2B スイッチのリファレンスドキュメントを確認してください
+= Cisco Nexus 9332D-GX2B スイッチのドキュメント要件を確認する
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: nx-os software, install, cisco nexus storage switches, 3232c, rcfs 
 summary: Cisco Nexus 3232C ストレージスイッチに NX-OS ソフトウェアと参照構成ファイル（RCF）をインストールする前に、準備作業を行います。 
 ---
-= Cisco Nexus 3232C ストレージスイッチへの NX-OS ソフトウェアと RCF のインストールの準備
+= Cisco Nexus 3232C ストレージスイッチの NX-OS および RCF インストールの準備
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

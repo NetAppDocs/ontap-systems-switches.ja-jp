@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: migrate, switchless cluster interconnect, cisco nexus switch 92300YC 
 summary: ONTAP 9.3 以降では、スイッチ クラスタ ネットワークを持つクラスタから、2 つのノードが直接接続されたクラスタに移行できます。 
 ---
-= Cisco Nexus 92300YC クラスタスイッチをスイッチレス接続に交換する
+= Cisco Nexus 92300YC クラスタスイッチを使用してスイッチレスクラスタ インターコネクトに移行する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

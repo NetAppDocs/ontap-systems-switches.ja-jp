@@ -140,7 +140,7 @@ admin@sw1:mgmt:~$ cat /etc/issue
 
 NOTE: 修正できないRCF Pythonスクリプトの問題については、 https://mysupport.netapp.com/["NetAppサポート"^]援助をお願いします。
 
-. 以前のカスタマイズをスイッチ構成に再適用します。参照link:cabling-considerations-sn2100-cluster.html["ケーブル配線と構成の考慮事項を確認する"]今後必要な変更の詳細については、以下を参照してください。
+. スイッチの設定に、以前に行ったカスタマイズをすべて再適用してください。必要な追加変更の詳細については、link:cabling-considerations-sn2100-cluster.html["ケーブル配線と構成に関するガイドラインを確認します。"]を参照してください。
 . 再起動後に構成を確認します。
 +
 [listing, subs="+quotes"]
@@ -462,7 +462,7 @@ admin@sw1:mgmt:~$ cat /etc/issue
 
 NOTE: 修正できないRCF Pythonスクリプトの問題については、 https://mysupport.netapp.com/["NetAppサポート"^]援助をお願いします。
 
-. 以前のカスタマイズをスイッチ構成に再適用します。参照link:cabling-considerations-sn2100-cluster.html["ケーブル配線と構成の考慮事項を確認する"]今後必要な変更の詳細については、以下を参照してください。
+. スイッチの設定に、以前に行ったカスタマイズをすべて再適用してください。必要な追加変更の詳細については、link:cabling-considerations-sn2100-cluster.html["ケーブル配線と構成に関するガイドラインを確認します。"]を参照してください。
 . 再起動後に構成を確認します。
 +
 [listing, subs="+quotes"]
@@ -756,7 +756,7 @@ NOTE: 上記の手順3 *MOTDファイルの更新*では、コマンド `cat /et
 
 NOTE: 修正できないRCF Pythonスクリプトの問題については、 https://mysupport.netapp.com/["NetAppサポート"^]援助をお願いします。
 
-. 以前のカスタマイズをスイッチ構成に再適用します。参照link:cabling-considerations-sn2100-cluster.html["ケーブル配線と構成の考慮事項を確認する"]今後必要な変更の詳細については、以下を参照してください。
+. スイッチの設定に、以前に行ったカスタマイズをすべて再適用してください。必要な追加変更の詳細については、link:cabling-considerations-sn2100-cluster.html["ケーブル配線と構成に関するガイドラインを確認します。"]を参照してください。
 . 再起動後に構成を確認します。
 +
 [listing, subs="+quotes"]

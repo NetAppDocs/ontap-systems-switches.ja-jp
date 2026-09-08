@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cisco 3132q-v, cluster switches 
 summary: 2ノードのスイッチレスクラスタから Cisco Nexus 3132Q-V クラスタスイッチへの移行用にポートを設定します。 
 ---
-= スイッチレスクラスタから Cisco Nexus 3132Q-V クラスタスイッチへの移行のためのポートを設定する
+= Cisco Nexus 3132Q-V クラスタスイッチへの移行用ポートの設定
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

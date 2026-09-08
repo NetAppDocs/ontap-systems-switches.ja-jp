@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: sn2100 SN2100 cabling setup, sn2100 switches configuration, cumulus linux os 
 summary: 導入前に、NVIDIA SN2100ストレージスイッチのケーブル配線と構成に関する考慮事項を確認してください。 
 ---
-= NVIDIA SN2100 ストレージスイッチのケーブル配線と構成に関する考慮事項を確認する
+= NVIDIA SN2100 ストレージスイッチのケーブル配線ガイドラインを確認してください
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

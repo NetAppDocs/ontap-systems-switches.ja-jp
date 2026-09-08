@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 9808 
 summary: 新しい AFX 2K システムのインストール、スーパーバイザ モジュールの交換、または工場出荷時設定へのリセットを行う際に、構成ウィザードを使用して Cisco Nexus 9808 スイッチの初期設定を完了します。 
 ---
-= Cisco Nexus 9808 スイッチの初期設定を完了する
+= Cisco Nexus 9808スイッチでの初期設定を完了する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

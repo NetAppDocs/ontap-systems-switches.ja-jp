@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cluster-mode,supported versions,switches supported,cluster network,efos 
 summary: Broadcom BES-53248クラスタスイッチのコンポーネントと部品番号を特定し、ハードウェアの設置および継続的なメンテナンスをサポートします。 
 ---
-= Broadcom BES-53248クラスタスイッチのコンポーネントと部品番号について
+= Broadcom BES-53248クラスタスイッチの構成部品と部品番号
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

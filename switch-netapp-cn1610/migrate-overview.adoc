@@ -19,6 +19,6 @@ FAS22xxノードでは、各コントローラに1つのクラスタポートを
 
 移行オプションは2つあります：
 
-* link:migrate-switched-netapp-cn1610.html["スイッチレスクラスタからスイッチ使用の NetApp CN1610 クラスタ環境への移行"]
+* link:migrate-switched-netapp-cn1610.html["スイッチレスクラスタからスイッチ使用の NetApp CN1610 クラスタへの移行"]
 * link:migrate-fas22xx-systems.html["スイッチレスクラスタ（単一のクラスタネットワーク接続を持つFAS22xxシステム）からの移行"]
 

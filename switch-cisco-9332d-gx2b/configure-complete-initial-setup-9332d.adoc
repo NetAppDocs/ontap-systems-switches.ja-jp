@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: require, configuration, information, documentation, cluster, management, network, switches, set up the switches - cisco nexus 9332d-gx2b 
 summary: 新規 AFX 1K または AFX 2K システム、スイッチの交換、または工場出荷時設定へのリセットに対応する Cisco Nexus 9332D-GX2B スイッチの初期設定を、構成ウィザードを使用して完了します。 
 ---
-= Cisco Nexus 9332D-GX2B スイッチの初期設定を完了する
+= Cisco Nexus 9332D-GX2B スイッチでの初期設定を完了する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

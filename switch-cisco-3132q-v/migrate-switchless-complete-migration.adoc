@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cisco 3132q-v, cluster switches 
 summary: 2ノードのスイッチレスクラスタから Cisco Nexus 3132Q-V クラスタスイッチへの移行を完了します。 
 ---
-= 2ノードのスイッチレスクラスタから Cisco Nexus 3132Q-V クラスタスイッチへの移行を完了する
+= Cisco Nexus 3132Q-V クラスタスイッチへの完全移行
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

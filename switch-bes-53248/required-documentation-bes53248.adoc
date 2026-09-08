@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: documentation requirements, BES-53248 switches,cluster switches 
 summary: Broadcom BES-53248クラスタスイッチのセットアップと構成に必要なスイッチおよびコントローラのドキュメントを確認してください。 
 ---
-= Broadcom BES-53248クラスタスイッチのセットアップに必要なドキュメント要件を確認します。
+= Broadcom BES-53248 クラスタスイッチのドキュメント要件を確認する
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
