@@ -69,21 +69,21 @@ summary: 新しい AFX 2K システムの一部として Cisco Nexus 9808 スイ
 
 
  a| 
-Ethernet1/1/1-4 から Ethernet1/14/1-4 まで
+Ethernet1/1～Ethernet1/18
  a| 
-クラスター内接続、HA接続、およびストレージシェルフ接続用の4x100GbEモード
-
-
-
- a| 
-Ethernet1/15からEthernet1/30
- a| 
-クラスター内接続、HA接続、ストレージ接続用の400GbEモード
+クラスター内接続、HA接続、およびストレージシェルフ接続用の400GbEモード
 
 
 
  a| 
-イーサネット1/31、イーサネット1/32
+Ethernet1/19からEthernet1/35
+ a| 
+クラスター内接続、HA接続、ストレージ接続用の4x100Gbモード
+
+
+
+ a| 
+Ethernet1/36
  a| 
 400GbE クラスタ内 ISL 接続
 

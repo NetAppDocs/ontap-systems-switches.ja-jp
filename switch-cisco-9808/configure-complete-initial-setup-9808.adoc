@@ -18,7 +18,7 @@ summary: 新しい AFX 2K システムのインストール、スーパーバイ
 
 .タスク概要
 * 各スイッチで初期設定を完了する必要があります。
-* 必要に応じて、link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/106x/configuration/fundamentals/cisco-nexus-9000-series-nx-os-fundamentals-configuration-guide-release-106x/m-using-nnxos-setup-utility.html["Cisco Nexus 9000 シリーズ NX-OS 基本設定ガイド、リリース 10.6(x)"^]の「*Using the Cisco NX-OS Setup Utility*」の章でスイッチの設定に関する情報を参照できます。
+* 必要に応じて、link:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/106x/configuration/fundamentals/cisco-nexus-9000-series-nx-os-fundamentals-configuration-guide-release-106x.html["『Cisco Nexus 9000 Series NX-OS Fundamentals Configuration Guide』"^] の NX-OS バージョンを参照して、スイッチの設定に関する情報を確認してください。設定方法については、「Cisco NX-OS セットアップユーティリティの使用」の章を参照してください。ターミナル設定に関する情報は、「ターミナル設定とセッションの構成」の章でも確認できます。
 
 
 .手順

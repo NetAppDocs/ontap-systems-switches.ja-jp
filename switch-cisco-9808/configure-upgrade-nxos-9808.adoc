@@ -23,6 +23,10 @@ NOTE: NetApp では、最初に ONTAP ソフトウェアのアップグレード
 
 .タスク概要
 * 必要に応じて、詳細についてはlink:https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/101x/upgrade/cisco-nexus-9000-nx-os-software-upgrade-downgrade-guide-101x.html["Cisco Nexus 9000 シリーズ NX-OS ソフトウェアのアップグレードおよびダウングレード ガイド"^]を参照してください。
+* 必要に応じて、link:https://www.cisco.com/c/dam/en/us/td/docs/dcn/tools/nexus-9k3k-issu-matrix/index.html["Cisco Nexus 9000 および 3000 のアップグレードと ISSU マトリックス"^]を参照してください。これは、現在のリリースとターゲットリリースに基づいた Cisco Nexus 9000 シリーズスイッチのサービス中ソフトウェアアップグレード（ISSU）に関する情報を提供します。
++
+このページで、「*Disruptive Upgrade*」を選択し、ドロップダウン リストから現在のリリースとターゲット リリースを選択します。
+
 * お使いのAFXシステムで実行されているONTAPのバージョンによって、スイッチでサポートされるNX-OSのバージョンが決まります。
 +
 ** AFX 2K システム内のスイッチの場合、ONTAP 9.19.1GA 以降を実行している場合、NX-OS 10.6 以降がサポートされています。
@@ -51,6 +55,7 @@ NOTE: NX-OSのバージョンをサポートされていないバージョンに
 ** その `cluster1::*>`プロンプトはクラスターの名前を示します。
 
 
+* この手順で示す例は、RCF 10.1を実行しているスイッチを備えたAFX 2Kシステムを対象としています。入力と出力は、RCFのバージョンによって異なる場合があります。
 
 
 
@@ -494,7 +499,7 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 [[step-2-install-the-nx-os]]
 == ステップ2：NX-OSをインストールする
 
-最初のスイッチ（cs1）に NX-OS をインストールするには、新しいバージョンの NX-OS と EPLD をインストールして検証し、クラスタ上のすべてのポートの健全性を確認してから、2番目のスイッチ（cs2）でこれらの手順を繰り返します。
+最初のスイッチ（cs1）に NX-OS をインストールするには、新しいバージョンの NX-OS と EPLD をインストールして確認し、クラスタ上のすべてのポートの健全性を検証してから、2番目のスイッチ（cs2）で同じ手順を繰り返します。
 
 . スイッチのCLIを使用して、NX-OSとEPLDイメージをスイッチにコピーします。
 +
@@ -595,7 +600,7 @@ cs1#
 ====
 . スイッチのCLIを使用して、NX-OSとEPLDイメージをインストールします。
 +
-イメージ ファイルをインストールすると、スイッチをリブートするたびにこのファイルがロードされます。
+イメージファイルをインストールすると、スイッチが再起動するたびにそのイメージファイルが読み込まれるようになります。
 
 +
 `install all nxos bootflash:nxos.<version number>.bin`
@@ -669,7 +674,7 @@ Warning: please do not remove or power off the module at this time.
 Finishing the upgrade, switch will reboot in 10 seconds.
 ----
 ====
-. スイッチのCLIを使用して、スイッチの再起動後にNX-OSの新しいバージョンを確認します：
+. スイッチのCLIを使用して、スイッチの再起動後にNX-OSの新しいバージョンを確認します。
 +
 `show version`
 
@@ -1288,7 +1293,7 @@ node1-04             true    true          true
 
 ONTAP CLI を使用して、クラスタ LIF の自動復帰を再度有効にし、クラスタ LIF がホームポートに復帰したことを確認することで、NX-OS のアップグレードを完了します。
 
-. クラスタLIFの自動リバートを再度有効にします。
+. クラスタLIFの自動リバートを再度有効にします：
 +
 [source, cli]
 ----

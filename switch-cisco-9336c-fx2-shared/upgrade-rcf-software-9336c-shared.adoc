@@ -36,6 +36,13 @@ CAUTION: 新しいスイッチ ソフトウェア バージョンと RCF をイ�
 [[step-1-prepare-for-the-upgrade]]
 == ステップ1: アップグレードの準備
 
+. 続行するかどうかを尋ねられたら *y* と入力して、権限レベルを「advanced」に変更します。
++
+`set -privilege advanced`
+
++
+高度なプロンプト(`*>`）が表示されます。
+
 . クラスター スイッチに接続されている各ノード上のクラスター ポートを表示します。
 +
 `network device-discovery show`
@@ -696,7 +703,7 @@ cluster1::*>
 . スイッチ cs2 で手順 1 ～ 21 を繰り返します。
 . クラスタLIFで自動リバートを有効にします。
 +
-`cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert True*`
+`cluster1::*> *network interface modify -vserver Cluster -lif * -auto-revert true*`
 
 
 
@@ -994,14 +1001,16 @@ cluster1-04          true    true          false
 --
 使用することができます `network interface check cluster-connectivity`クラスター接続のアクセシビリティ チェックを開始し、詳細を表示するコマンド:
 
-`network interface check cluster-connectivity start`そして `network interface check cluster-connectivity show`
+[listing, subs="+quotes"]
+----
+cluster1::*> *network interface check cluster-connectivity start -node **
+----
+*注:* 数秒待ってから `show`コマンドを実行して詳細を表示してください。本日の日付に一致するエントリを確認してください。
 
 [listing, subs="+quotes"]
 ----
-cluster1::*> *network interface check cluster-connectivity start*
+cluster1::*> *network interface check cluster-connectivity show*
 ----
-*注意:* 実行する前に数秒待ってください `show`詳細を表示するコマンド。
-
 [listing, subs="+quotes"]
 ----
 cluster1::*> *network interface check cluster-connectivity show*
