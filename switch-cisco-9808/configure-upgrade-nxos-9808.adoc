@@ -501,7 +501,7 @@ network interface modify -vserver Cluster -lif * -auto-revert false
 
 最初のスイッチ（cs1）に NX-OS をインストールするには、新しいバージョンの NX-OS と EPLD をインストールして確認し、クラスタ上のすべてのポートの健全性を検証してから、2番目のスイッチ（cs2）で同じ手順を繰り返します。
 
-. スイッチのCLIを使用して、NX-OSとEPLDイメージをスイッチにコピーします。
+. スイッチのCLIを使用して、NX-OSとEPLDを結合したイメージをスイッチにコピーします：
 +
 `copy <protocol>: bootflash: vrf management`
 

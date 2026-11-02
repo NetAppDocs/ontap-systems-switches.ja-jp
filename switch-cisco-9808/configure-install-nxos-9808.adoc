@@ -80,7 +80,7 @@ Reply From 172.19.2.1: icmp_seq = 0. time= 5910 usec.
 
 NX-OS と EPLD イメージのバージョンをインストールして確認することで、最初のスイッチ（cs1）に NX-OS と EPLD イメージをインストールします。新しい AFX システムのインストールの一部として NX-OS をインストールする場合は、2 番目のスイッチ（cs2）でこれらの手順を繰り返します。
 
-. NX-OSとEPLDイメージを最初のスイッチにコピーします。
+. NX-OSとEPLDを結合したイメージを最初のスイッチにコピーします：
 +
 `copy <protocol>: bootflash: vrf management`
 
