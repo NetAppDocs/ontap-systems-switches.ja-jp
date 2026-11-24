@@ -445,7 +445,7 @@ RCF アップグレードには、スイッチ CLI と ONTAP CLI を使用しま
 . スイッチCLIを使用して、スイッチcs1上で、ノードのすべてのポートに接続されているポートをシャットダウンします。
 +
 
-CAUTION: ネットワーク接続の問題を避けるため、接続されている*すべて*のポートを必ずシャットダウンしてください。詳細については、ナレッジベースの記事 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["スイッチ OS のアップグレード中にクラスタ LIF を移行するとノードがクォーラム外になる"^]を参照してください。
+CAUTION: ネットワーク接続の問題を回避するため、接続されている*すべて*のポートを必ずシャットダウンしてください。詳細については、ナレッジベースの記事 https://kb.netapp.com/on-prem/ontap/OHW/OHW-KBs/Node_out_of_quorum_when_migrating_cluster_lif_during_switch_OS_upgrade["スイッチ OS のアップグレード中にクラスタ LIF を移行するとノードがクォーラム外になる"^]を参照してください。
 
 +
 [listing, subs="+quotes"]
@@ -685,7 +685,7 @@ Ciscoコマンドの詳細については、link:https://www.cisco.com/c/en/us/t
 +
 [source, cli]
 ----
-network port show -ipspace cluster
+network port show -ipspace Cluster
 ----
 +
 .例を表示

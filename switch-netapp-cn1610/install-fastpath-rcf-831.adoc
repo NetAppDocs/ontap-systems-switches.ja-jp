@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: fastpath, software, install, netapp cluster switches, rcfs, ontap 
 summary: FASTPATH ソフトウェアと参照構成ファイル（RCF）を NetApp CN1610 クラスタスイッチに ONTAP 8.3.1 以降でインストールします。 
 ---
-= FASTPATH ソフトウェアと RCF を NetApp CN1610 クラスタスイッチにインストールする（ONTAP 8.3.1 以降）
+= NetApp CN1610クラスタスイッチにFASTPATHソフトウェアとRCFをインストールします
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -40,7 +40,7 @@ FASTPATH ソフトウェアと参照構成ファイル（RCF）を NetApp CN1610
 [[install-the-fastpath-software]]
 == FASTPATHソフトウェアをインストールする
 
-以下の手順では、クラスタ化された Data ONTAP 8.2 の構文を使用します。そのため、クラスタ Vserver、LIF 名、および CLI 出力は Data ONTAP 8.3 のものとは異なります。
+この手順ではクラスタ化されたData ONTAP 8.2の構文を使用しているため、クラスタVserver、LIF名、およびCLI出力はData ONTAP 8.3のものとは異なります。
 
 RCF バージョンと FASTPATH バージョンのコマンド構文には、コマンド間の依存関係が存在する場合があります。
 
@@ -79,7 +79,7 @@ link:https://hwu.netapp.com/["Hardware Universe"^]には、お使いのプラッ
 
 [listing]
 ----
-cluster1::> network port show -ipspace cluster
+cluster1::> network port show -ipspace Cluster
                                                              Speed (Mbps)
 Node   Port      IPspace      Broadcast Domain Link   MTU    Admin/Oper
 ------ --------- ------------ ---------------- ----- ------- ------------
@@ -136,7 +136,7 @@ cluster1::> network interface migrate -vserver Cluster -lif node2_clus2 -destina
 ====
 +
 
-NOTE: このコマンドでは、クラスター名は大文字と小文字を区別します。また、このコマンドは各ノードで実行する必要があります。このコマンドは、一般的なクラスターLIFでは実行できません。
+NOTE: このコマンドでは、クラスタ名は大文字と小文字が区別されます。また、各ノードでコマンドを実行する必要があります。このコマンドは、一般的なクラスタLIFでは実行できません。
 
 . ノードで `network interface show`コマンドを使用して、移行が実行されたことを確認します。
 +
@@ -572,7 +572,7 @@ cluster1::*> network port modify -node node2 -port e0b -up-admin true
 ====
 . すべてのノードでポート e0b が稼働していることを確認します。
 +
-`network port show -ipspace cluster`
+`network port show -ipspace Cluster`
 
 +
 .例を表示
@@ -580,7 +580,7 @@ cluster1::*> network port modify -node node2 -port e0b -up-admin true
 ====
 [listing]
 ----
-cluster1::*> network port show -ipspace cluster
+cluster1::*> network port show -ipspace Cluster
 
                                                              Speed (Mbps)
 Node   Port      IPspace      Broadcast Domain Link   MTU    Admin/Oper
